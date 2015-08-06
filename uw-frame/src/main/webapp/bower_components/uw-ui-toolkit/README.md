@@ -6,7 +6,7 @@ A web front-end toolkit based on [Bootstrap](http://getbootstrap.com) for design
 
 This toolkit, developed by [University Marketing](http://umark.wisc.edu), sits on top of [Bootstrap](http://getbootstrap.com), providing all its features and functionality, with UW-Madison's look and feel layered on top.
 
-Here is a page with some [examples](http://staging-2.uc.wisc.edu/examples/).
+Here is a page with some [examples](http://webtoolkit.umark.wisc.edu/examples/).
 
 ## Who is it for?
 

@@ -1,6 +1,6 @@
 {
   "name": "uw-ui-toolkit",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "homepage": "https://github.com/UWMadisonUcomm/uw-ui-toolkit",
   "authors": [
     "UW-Madison University Communications"
@@ -59,14 +59,13 @@
   "dependencies": {
     "bootstrap": "3.1.1"
   },
-  "_release": "0.2.2",
+  "_release": "0.3.0",
   "_resolution": {
     "type": "version",
-    "tag": "v0.2.2",
-    "commit": "f622993fdaea721abf49a1359a20cf296ba70d4c"
+    "tag": "v0.3.0",
+    "commit": "bea9f1659519f62c7479017c1aa36c2cc435bd77"
   },
   "_source": "git://github.com/UWMadisonUcomm/uw-ui-toolkit.git",
-  "_target": "~0.2.2",
-  "_originalSource": "uw-ui-toolkit",
-  "_direct": true
+  "_target": "0.3.0",
+  "_originalSource": "uw-ui-toolkit"
 }

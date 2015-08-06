@@ -1,14 +1,15 @@
-(function(angular, factory) {
-    'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define('ngStorage', ['angular'], function(angular) {
-            return factory(angular);
-        });
-    } else {
-        return factory(angular);
-    }
-}(typeof angular === 'undefined' ? null : angular, function(angular) {
+(function (root, factory) {
+  'use strict';
 
+  if (typeof define === 'function' && define.amd) {
+    define(['angular'], factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory(require('angular'));
+  } else {
+    // Browser globals (root is window), we don't register it.
+    factory(root.angular);
+  }
+}(this , function (angular) {
     'use strict';
 
     /**
@@ -16,7 +17,7 @@
      * @name ngStorage
      */
 
-    angular.module('ngStorage', [])
+    return angular.module('ngStorage', [])
 
     /**
      * @ngdoc object
@@ -50,7 +51,20 @@
                 $timeout
             ){
                 function isStorageSupported(storageType) {
-                    var supported = $window[storageType];
+
+                    // Some installations of IE, for an unknown reason, throw "SCRIPT5: Error: Access is denied"
+                    // when accessing window.localStorage. This happens before you try to do anything with it. Catch
+                    // that error and allow execution to continue.
+
+                    // fix 'SecurityError: DOM Exception 18' exception in Desktop Safari, Mobile Safari
+                    // when "Block cookies": "Always block" is turned on
+                    var supported;
+                    try {
+                        supported = $window[storageType];
+                    }
+                    catch (err) {
+                        supported = false;
+                    }
 
                     // When Safari (OS X or iOS) is in private browsing mode, it appears as though localStorage
                     // is available, but trying to call .setItem throws an exception below:
@@ -82,7 +96,7 @@
                         },
                         $reset: function(items) {
                             for (var k in $storage) {
-                                '$' === k[0] || delete $storage[k];
+                                '$' === k[0] || (delete $storage[k] && webStorage.removeItem('ngStorage-' + k));
                             }
 
                             return $storage.$default(items);
@@ -129,7 +143,7 @@
                 });
 
                 // #6: Use `$window.addEventListener` instead of `angular.element` to avoid the jQuery-specific `event.originalEvent`
-                'localStorage' === storageType && $window.addEventListener && $window.addEventListener('storage', function(event) {
+                $window.addEventListener && $window.addEventListener('storage', function(event) {
                     if ('ngStorage-' === event.key.slice(0, 10)) {
                         event.newValue ? $storage[event.key.slice(10)] = angular.fromJson(event.newValue) : delete $storage[event.key.slice(10)];
 

@@ -20,7 +20,7 @@
 
 // Optional heading
 .panel-heading {
-  padding: @panel-heading-padding;
+  padding: 10px 15px;
   border-bottom: 1px solid transparent;
   .border-top-radius((@panel-border-radius - 1));
 
@@ -43,7 +43,7 @@
 
 // Optional footer (stays gray in every modifier class)
 .panel-footer {
-  padding: @panel-footer-padding;
+  padding: 10px 15px;
   background-color: @panel-footer-bg;
   border-top: 1px solid @panel-inner-border;
   .border-bottom-radius((@panel-border-radius - 1));
@@ -86,9 +86,7 @@
     border-top-width: 0;
   }
 }
-.list-group + .panel-footer {
-  border-top-width: 0;
-}
+
 
 // Tables in panels
 //
@@ -97,8 +95,7 @@
 
 .panel {
   > .table,
-  > .table-responsive > .table,
-  > .panel-collapse > .table {
+  > .table-responsive > .table {
     margin-bottom: 0;
   }
   // Add border top radius for first one
@@ -202,6 +199,7 @@
   .panel {
     margin-bottom: 0;
     border-radius: @panel-border-radius;
+    overflow: hidden; // crop contents when collapsed
     + .panel {
       margin-top: 5px;
     }
@@ -209,7 +207,7 @@
 
   .panel-heading {
     border-bottom: 0;
-    + .panel-collapse > .panel-body {
+    + .panel-collapse .panel-body {
       border-top: 1px solid @panel-inner-border;
     }
   }

@@ -1,9 +1,10 @@
 {
-  "name": "web",
-  "version": "0.0.0",
-  "homepage": "https://github.com/UW-Madison-DoIT/angularjs-portal",
+  "name": "uw-frame",
+  "version": "1.0.0",
+  "homepage": "https://github.com/UW-Madison-DoIT/uw-frame",
   "authors": [
-    "Jared Hanstra <jared.hanstra@wisc.edu>"
+    "Jared Hanstra <jared.hanstra@wisc.edu>",
+    "Tim Levett <tim.levett@wisc.edu>"
   ],
   "moduleType": [
     "amd",
@@ -19,19 +20,20 @@
   ],
   "dependencies": {
     "angular-bootstrap": "~0.13.0",
-    "angular-mocks": "1.4.0",
-    "angular-resource": "1.4.0",
-    "angular-route": "1.4.0",
-    "angular-sanitize": "1.4.0",
-    "angular": "1.4.0",
-    "requirejs": "*"
-  },
-  "devDependencies": {
+    "angular-mocks": "^1.4.4",
+    "angular-resource": "^1.4.4",
+    "angular-route": "^1.4.4",
+    "angular-sanitize": "^1.4.4",
+    "angular": "^1.4.4",
+    "requirejs": "*",
     "font-awesome": "^4.3.0",
-    "bootstrap": "~3.2.0",
+    "bootstrap": "~3.1.1",
     "jquery": "~2.1.1",
+    "jquery-ui": "~1.11.4",
     "normalize-less": "*",
-    "uw-ui-toolkit": "~0.2.2",
-    "angular-gravatar": "~0.3.1"
-  }
+    "uw-ui-toolkit": "0.3.0",
+    "angular-gravatar": "~0.3.1",
+    "ngstorage": "~0.3.7"
+  },
+  "devDependencies": {}
 }

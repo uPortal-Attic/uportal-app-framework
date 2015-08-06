@@ -1,12 +1,7 @@
-###[** Looking for Maintainers! **](https://github.com/gsklee/ngStorage/issues/84)
-
 ngStorage
 =========
 
-<!--
 [![Build Status](https://travis-ci.org/gsklee/ngStorage.svg)](https://travis-ci.org/gsklee/ngStorage)
--->
-
 [![Dependency Status](https://david-dm.org/gsklee/ngStorage.svg)](https://david-dm.org/gsklee/ngStorage)
 [![devDependency Status](https://david-dm.org/gsklee/ngStorage/dev-status.svg)](https://david-dm.org/gsklee/ngStorage#info=devDependencies)
 
@@ -25,8 +20,41 @@ An [AngularJS](https://github.com/angular/angular.js) module that makes Web Stor
 Install
 =======
 
+### Bower
+
 ```bash
 bower install ngstorage
+```
+
+*NOTE:* We are `ngstorage` and *NOT* `ngStorage`. The casing is important!
+
+### NPM
+```bash
+npm install ngstorage
+```
+
+*NOTE:* We are `ngstorage` and *NOT* `ngStorage`. The casing is important!
+
+CDN
+===
+
+### cdnjs
+cdnjs now hosts ngStorage at <https://cdnjs.com/libraries/ngStorage>
+
+To use it
+
+``` html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+```
+
+### jsDelivr
+
+jsDelivr hosts ngStorage at <http://www.jsdelivr.com/#!ngstorage>
+
+To use is
+
+``` html
+<script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
 ```
 
 Usage
