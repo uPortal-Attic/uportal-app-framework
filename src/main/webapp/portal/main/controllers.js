@@ -62,7 +62,7 @@ define(['angular','require'], function(angular, require) {
   }]);
   
   app.controller('WelcomeController', ['$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'mainService', '$sanitize', function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, mainService, $sanitize) {
-    $scope.openModal = function() {
+     var openModal = function() {
       if (APP_FLAGS.welcome && !$localStorage.hasSeenWelcome) {
         
         mainService.getWelcome().then(function(data) {
@@ -87,7 +87,7 @@ define(['angular','require'], function(angular, require) {
       }
     };
     
-    
+    openModal();
     
   }]);
   
