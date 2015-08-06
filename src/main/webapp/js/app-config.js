@@ -6,25 +6,25 @@ define(['angular'], function(angular) {
             'welcome' : false
         })
         .constant('SERVICE_LOC', {
-            'sessionInfo' : '/portal/web/session.json',
+            'sessionInfo' : 'samples/session.json',
             'sidebarInfo' : 'samples/sidebar.json',
             'welcomeInfo' : 'samples/welcome.json',
             'notificationsURL' : 'samples/notifications.json',
-            'groupURL' : '/portal/api/groups'
+            'groupURL' : null
         })
         .constant('NAMES', {
             'title' : 'MyUW',
             'crest' : 'img/uwcrest_web_sm.png',
             'crestalt' : 'UW Crest',
-            'sublogo' : 'beta'
+            'sublogo' : ''
         })
         .constant('SEARCH',{
             'isWeb' : false,
-            'searchURL' : '/web/apps/search/'
+            'searchURL' : 'https://my.wisc.edu/web/apps/search/'
         })
         .constant('NOTIFICATION', {
             'enabled' : false,
-            'groupFiltering' : true,
+            'groupFiltering' : false,
             'notificationFullURL' : 'notifications'
         })
         .constant('MISC_URLS',{
