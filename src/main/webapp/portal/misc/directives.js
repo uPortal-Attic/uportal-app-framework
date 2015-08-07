@@ -126,6 +126,8 @@ define(['angular', 'require'], function(angular, require) {
      * <li>app-image: background image for the div</li>
      * <li>app-title: displayed in an h1 child element</li>
      * <li>app-description: displayed in a p child element</li>
+     * <li>app-collapse: default state of header</li>
+     * <li>app-show-toggle: show a toggle button, default false</li>
      * </ol>
      *
      * Example:
@@ -141,7 +143,9 @@ define(['angular', 'require'], function(angular, require) {
     		scope: {
     			title: '@appTitle',
     			image: '@appImage',
-    			description: '@appDescription'
+    			description: '@appDescription',
+          collapse : '=appCollapse',
+          showToggle : '=appShowToggle'
     		},
     		templateUrl: require.toUrl('./partials/portlet-header.html')
     	};
