@@ -7,3 +7,4 @@ The frame is your starting point for a new application.  This has the MyUW heade
 Most applications will use this as a base.  See [my-app-seed](https://github.com/UW-Madison-DoIT/my-app-seed) for a great starter app using this frame.
 
 To run the frame app, just run `mvn jetty:run`
+
