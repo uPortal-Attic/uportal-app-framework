@@ -1,7 +1,7 @@
 language: java
-before_script:
+before_install: 
   - npm install -g bower
-before_install: echo `which bower`
+  - echo `which bower`
 jdk:
   - oraclejdk7
 sudo: false
