@@ -17,7 +17,7 @@
   <link rel="shortcut icon" href="bower_components/uw-ui-toolkit/dist/img/favicon.ico" type="image/x-icon"/>
 </head>
 
-<body ng-controller="MainController as mainCtrl">
+<body ng-controller="MainController as mainCtrl" class='my-uw'>
   <div class='sr-only' ng-if="classicURL">
     <a ng-href='{{classicURL}}'>Switch back to the classic MyUW</a>
   </div>
@@ -54,7 +54,7 @@
           <div ng-if="!($storage.showSidebar)" class="show-sidebar" ng-click="$storage.showSidebar = true">
             <span class="fa fa-bars"></span>
           </div>
-          <div id="region-main" class="col-xs-12 my-uw" ng-class="{'col-sm-10 col-sm-offset-2' : $storage.showSidebar, 'col-sm-11 max-view' : !($storage.showSidebar)}">
+          <div id="region-main" class="col-xs-12" ng-class="{'col-sm-10 col-sm-offset-2' : $storage.showSidebar, 'col-sm-11 max-view' : !($storage.showSidebar)}">
             <div ng-view></div>
           </div>
         </div>
