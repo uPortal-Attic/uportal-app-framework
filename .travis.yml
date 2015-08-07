@@ -1,7 +1,10 @@
 language: java
-before_install: alias bower=`which bower`
+before_install: 
+  - npm install -g bower
+  - echo `which bower`
+script :
+  - mvn package
 jdk:
   - oraclejdk7
 sudo: false
-before_script:
-  - npm install -g bower
+
