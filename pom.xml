@@ -106,7 +106,7 @@
            <arguments>
             <argument>install</argument>
            </arguments>
-           <workingDirectory>${project.basedir}/src/main/webapp</workingDirectory>
+           <workingDirectory>src/main/webapp</workingDirectory>
          </configuration>
       </plugin>
       <plugin>
