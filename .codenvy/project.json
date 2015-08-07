@@ -1,0 +1,1 @@
+{"mixinTypes":["contribution"],"builders":{"configs":{},"default":"maven"},"runners":{"configs":{"system:/java/web/jetty9":{"ram":1000,"variables":{},"options":{}}},"default":"system:/java/web/jetty9"},"type":"maven","attributes":{"contribute_branch":["master"],"languageVersion":["1.6"],"contribute_mode":["contribute"],"language":["java"]}}
