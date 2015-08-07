@@ -1,4 +1,5 @@
 language: java
+before_install: alias bower=`which bower`
 jdk:
   - oraclejdk7
 sudo: false
