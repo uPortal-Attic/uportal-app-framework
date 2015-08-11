@@ -123,6 +123,12 @@ define(['angular','require'], function(angular, require) {
     }
   }]);
 
+  /* Footer */
+  app.controller('FooterController', ['$scope', function($scope) {
+      $scope.date = new Date();
+
+  }]);
+
   app.controller('SidebarController',[ '$localStorage', '$scope', 'mainService', function($localStorage, $scope, mainService) {
       $scope.$storage = $localStorage;
       $scope.sidebar = [];
