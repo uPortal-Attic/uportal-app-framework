@@ -31,7 +31,7 @@
     "jquery": "~2.1.1",
     "jquery-ui": "~1.11.4",
     "normalize-less": "*",
-    "uw-ui-toolkit": "0.3.0",
+    "uw-ui-toolkit": "0.3.1",
     "angular-gravatar": "~0.3.1",
     "ngstorage": "~0.3.7"
   },
