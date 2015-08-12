@@ -1,4 +1,4 @@
-#### UW Frame
+# UW Frame
 
 [![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)
 
@@ -10,3 +10,8 @@ Most applications will use this as a base.  See [my-app-seed](https://github.com
 
 To run the frame app, just run `mvn jetty:run`
 
+## Requirements
+
+`uw-frame` requires [Bower](http://bower.io/).  Without Bower, Maven will give you an error along the lines of
+
+> [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:1.3.2:exec (default) on project uw-frame: Command execution failed. Cannot run program "bower" (in directory "<project-root>/src/main/webapp"): error=2, No such file or directory -> [Help 1]
