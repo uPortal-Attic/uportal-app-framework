@@ -14,4 +14,4 @@ To run the frame app, just run `mvn jetty:run`
 
 `uw-frame` requires [Bower](http://bower.io/).  Without Bower, Maven will give you an error along the lines of
 
-> [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:1.3.2:exec (default) on project uw-frame: Command execution failed. Cannot run program "bower" (in directory "/Users/apetro/code/github_uw/uw-frame/src/main/webapp"): error=2, No such file or directory -> [Help 1]
+> [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:1.3.2:exec (default) on project uw-frame: Command execution failed. Cannot run program "bower" (in directory "<project-root>/src/main/webapp"): error=2, No such file or directory -> [Help 1]
