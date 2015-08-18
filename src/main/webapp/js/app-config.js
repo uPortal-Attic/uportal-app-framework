@@ -3,12 +3,12 @@ define(['angular'], function(angular) {
     var config = angular.module('app-config', []);
     config
         .constant('APP_FLAGS', {
-            'welcome' : false
+            'features' : true
         })
         .constant('SERVICE_LOC', {
             'sessionInfo' : 'samples/session.json',
             'sidebarInfo' : 'samples/sidebar.json',
-            'welcomeInfo' : 'samples/welcome.json',
+            'featuresInfo' : 'samples/features.json',
             'notificationsURL' : 'samples/notifications.json',
             'groupURL' : null
         })

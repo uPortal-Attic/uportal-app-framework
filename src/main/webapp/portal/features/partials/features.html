@@ -1,0 +1,24 @@
+<div ng-controller="FeaturesController as featuresCtrl" class="row portlet-frame">
+  <div class="portlet-header">
+    <img src="img/square.jpg" alt="UW Campus cover image">
+    <h1>{{NAMES.title}} New Features</h1>
+    <p class="portlet-description">Stay up-to-date on the newest features of {{NAMES.title}}.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="features-feed">
+				<div ng-repeat="feature in features">
+	        <p class="date">{{feature.startDay}} / {{feature.startMonth}} / {{ feature.startYear }}</p>
+	        <h3>{{ feature.title }}</h3>
+	        <hr>
+	        <p>By popular demand, you can now rearrange your favorites on the home screen of MyUW while on desktop. This feature is not supported on mobile.</p>
+	        <div class="image-div"><img ng-src="{{feature.img}}"></div>
+	        <a class="btn btn-uw" href="/portal/p/feedback">{{ feature.buttonText }}</a>
+				</div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
