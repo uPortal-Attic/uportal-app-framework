@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
     var getFeatures = function() {
       return featuresPromise.success(
         function(data, status) { //success function
-          return data.welcome;
+          return data.features;
         }).error(function(data, status) { // failure function
           miscService.redirectUser(status, "Get features info");
         });
