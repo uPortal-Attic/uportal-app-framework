@@ -170,6 +170,18 @@ define(['angular', 'require'], function(angular, require) {
             link: linker
         };
     });
+    
+    app.directive('circleButton', function() {
+    	return {
+    		restrict: 'E',
+    		scope: {
+    			href: '@href',
+    			target: '@target',
+    			faIcon: '@faIcon'
+    		},
+    		templateUrl: require.toUrl('./partials/circle-button.html')
+    	};
+    });
 
     return app;
 
