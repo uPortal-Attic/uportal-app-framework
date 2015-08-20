@@ -17,7 +17,7 @@ define(['angular','require'], function(angular, require) {
             gravatarEmail : null,
             useGravatar : false,
             webPortletRender : false,
-            hasSeenLatestFeature : false
+            lastSeenFeature : 0
             };
 
 
@@ -63,7 +63,7 @@ define(['angular','require'], function(angular, require) {
   
   app.controller('PopupController', ['$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'featuresService', '$sanitize', function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, featuresService, $sanitize) {
      var openModal = function() {
-      if (APP_FLAGS.features && !$localStorage.hasSeenLatestFeature) {
+      if (APP_FLAGS.features) {
         
         featuresService.getFeatures().then(function(data) {
             var features = data;
@@ -76,14 +76,14 @@ define(['angular','require'], function(angular, require) {
             var today = Date.parse(new Date());
             var startDate = Date.parse(new Date($scope.latestFeature.popup.startYear, $scope.latestFeature.popup.startMonth, $scope.latestFeature.popup.startDay));
             var endDate = Date.parse(new Date($scope.latestFeature.popup.endYear, $scope.latestFeature.popup.endMonth, $scope.latestFeature.popup.endDay));
-            if (today > startDate && today < endDate) {
+            if ((today > startDate && today < endDate) && $localStorage.lastSeenFeature < $scope.latestFeature.id) {
               $modal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: require.toUrl('./partials/features-modal-template.html'),
                 size: 'lg',
                 scope: $scope 
               });
-              $localStorage.hasSeenLatestFeature = true;
+              $localStorage.lastSeenFeature = $scope.latestFeature.id;
             }
         });
       }
