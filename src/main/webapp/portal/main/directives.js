@@ -38,10 +38,10 @@ define(['angular', 'require'], function(angular, require) {
           templateUrl : require.toUrl('./partials/beta-header.html')
       }
   });
-  app.directive('welcomeModalTemplate', function() {
+  app.directive('featuresModalTemplate', function() {
       return {
           restrict : 'E',
-          templateUrl : require.toUrl('./partials/welcome-modal-template.html')
+          templateUrl : require.toUrl('./partials/features-modal-template.html')
       }
   });
 

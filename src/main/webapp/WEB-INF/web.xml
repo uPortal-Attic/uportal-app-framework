@@ -22,5 +22,6 @@
       <servlet-name>StaticServlet</servlet-name>
       <url-pattern>/settings</url-pattern>
       <url-pattern>/notifications</url-pattern>
+      <url-pattern>/features</url-pattern>
   </servlet-mapping>
 </web-app>

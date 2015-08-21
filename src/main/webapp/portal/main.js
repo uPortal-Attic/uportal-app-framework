@@ -17,6 +17,8 @@ define([
     './notifications/services',
     './search/controllers',
     './search/directives',
+    './features/controllers',
+    './features/services',
     'sortable',
     'ui-bootstrap',
     'ui-gravatar'
@@ -39,6 +41,8 @@ define([
         'portal.notifications.services',
         'portal.search.controllers',
         'portal.search.directives',
+        'portal.features.controllers',
+        'portal.features.services',
         'ui.bootstrap',
         'ui.gravatar',
         'ui.sortable'
