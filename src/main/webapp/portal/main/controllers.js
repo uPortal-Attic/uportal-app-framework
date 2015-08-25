@@ -17,7 +17,7 @@ define(['angular','require'], function(angular, require) {
             gravatarEmail : null,
             useGravatar : false,
             webPortletRender : false,
-            lastSeenFeature : 0
+            lastSeenFeature : -1
             };
 
 
@@ -78,10 +78,12 @@ define(['angular','require'], function(angular, require) {
             var endDate = Date.parse(new Date($scope.latestFeature.popup.endYear, $scope.latestFeature.popup.endMonth, $scope.latestFeature.popup.endDay));
             
             // handle legacy local storage
-            if ($localStorage.hasSeenWelcome) {
-              $localStorage.lastSeenFeature = 1;
-            } else {
-              $localStorage.lastSeenFeature = 0;
+            if ($localStorage.lastSeenFeature === -1) {
+              if ($localStorage.hasSeenWelcome) {
+                $localStorage.lastSeenFeature = 1;
+              } else {
+                $localStorage.lastSeenFeature = 0;
+              }
             }
             
             // criteria to show popup
