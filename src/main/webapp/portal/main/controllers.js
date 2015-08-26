@@ -84,6 +84,7 @@ define(['angular','require'], function(angular, require) {
               } else {
                 $localStorage.lastSeenFeature = 0;
               }
+              delete $localStorage.hasSeenWelcome;
             }
             
             // criteria to show popup
