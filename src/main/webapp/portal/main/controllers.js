@@ -17,7 +17,7 @@ define(['angular','require'], function(angular, require) {
             gravatarEmail : null,
             useGravatar : false,
             webPortletRender : false,
-            lastSeenFeature : 0
+            lastSeenFeature : -1
             };
 
 
@@ -76,7 +76,24 @@ define(['angular','require'], function(angular, require) {
             var today = Date.parse(new Date());
             var startDate = Date.parse(new Date($scope.latestFeature.popup.startYear, $scope.latestFeature.popup.startMonth, $scope.latestFeature.popup.startDay));
             var endDate = Date.parse(new Date($scope.latestFeature.popup.endYear, $scope.latestFeature.popup.endMonth, $scope.latestFeature.popup.endDay));
-            if ((today > startDate && today < endDate) && $localStorage.lastSeenFeature < $scope.latestFeature.id) {
+            
+            // handle legacy local storage
+            if ($localStorage.lastSeenFeature === -1) {
+              if ($localStorage.hasSeenWelcome) {
+                $localStorage.lastSeenFeature = 1;
+              } else {
+                $localStorage.lastSeenFeature = 0;
+              }
+              delete $localStorage.hasSeenWelcome;
+            }
+            
+            // criteria to show popup
+            var featureIsLive = today > startDate && today < endDate;
+            var userHasNotSeenFeature = $localStorage.lastSeenFeature < $scope.latestFeature.id;
+            var featureIsEnabled = $scope.latestFeature.popup.enabled;
+            
+            
+            if (featureIsLive && userHasNotSeenFeature && featureIsEnabled) {
               $modal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: require.toUrl('./partials/features-modal-template.html'),
