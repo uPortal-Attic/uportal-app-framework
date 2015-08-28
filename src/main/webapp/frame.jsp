@@ -54,7 +54,7 @@
           <div ng-if="!($storage.showSidebar)" class="show-sidebar" ng-click="$storage.showSidebar = true">
             <span class="fa fa-bars"></span>
           </div>
-          <div id="region-main" class="col-xs-12" ng-class="{'col-sm-10 col-sm-offset-2' : $storage.showSidebar, 'col-sm-11 max-view' : !($storage.showSidebar)}">
+          <div role="main" id="region-main" class="col-xs-12" ng-class="{'col-sm-10 col-sm-offset-2' : $storage.showSidebar, 'col-sm-11 max-view' : !($storage.showSidebar)}">
             <div ng-view></div>
           </div>
         </div>
