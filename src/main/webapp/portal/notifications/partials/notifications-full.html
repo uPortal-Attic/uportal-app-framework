@@ -1,19 +1,25 @@
-<div class="row portlet-frame">
-  <div class="portlet-header">
-    <img class="header-image" ng-src="{{$storage.homeImg}}" alt="UW Campus cover image">
-    <h1>Notifications</h1>
-  </div>
-  <div class="col-xs-12">
-    <ul class="notifications-list" ng-controller="NotificationController as notificationCtrl">
-      <!--TODO <li class="notification-item" ng-repeat="notification in notificationCtrl.notifications"
--          ng-class="notificationCtrl.getClass($index, notificationCtrl.notifications)"
--          ng-click="notificationCtrl.markRead($index, notificationCtrl.notifications)"> -->
-      <li class="notification-item" ng-repeat="notification in notifications">
-        <a ng-href='{{notification.actionURL}}' target='_blank' aria-label='{{notification.actionAlt}}'>{{ notification.title }}</a>
-      </li>
-      <li  class="notification-item read" ng-if='!notifications || notifications.length === 0'>
-        You have no notifications at this time.
-      </li>
-    </ul>
-  </div>
+<div class="portlet-frame"  ng-controller="NotificationController as notificationCtrl">
+	<portlet-header app-title="Notifications" app-image="img/square.jpg" app-description="Get Notified of important issues."></portlet-header>
+
+	<div class="portlet-body">
+		<div class="inner-nav-container">
+			<ul class="inner-nav">
+				<li ng-class="{ active : mode === 'new' }"><a href='javascript:;' ng-click="switch('new')"  aria-label='switch to see new notifications'>New</a></li>
+				<li  ng-class="{ active : mode === 'old' }"><a href='javascript:;' ng-click="switch('old')" aria-label='switch to see old and dismissed notifications'>Old/Dismissed</a></li>
+			</ul>
+		</div>
+		<div>
+			<ul class="notifications-list">
+          <li class="notification-item" ng-repeat="notification in notifications" ng-if='shouldShow(notification)'>
+            <a ng-href='{{notification.actionURL}}' target='_blank' aria-label='{{notification.actionAlt}}'>{{ notification.title }}</a>
+            <button class='btn btn-flat' ng-click='dismiss(notification)' ng-hide="!notification.dismissable || isDismissed(notification)">
+              <i class='fa fa-trash'></i>
+            </button>
+          </li>
+          <li  class="notification-item read" ng-if="isEmpty || (countWithDismissed() === 0 && mode === 'new')">
+            You have no notifications at this time.
+          </li>
+        </ul>
+		</div>
+	</div>
 </div>
