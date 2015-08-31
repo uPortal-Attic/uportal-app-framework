@@ -4,7 +4,7 @@ define(['angular'], function(angular) {
 
   var app = angular.module('portal.notifications.controllers ', []);
 
-  app.controller('NotificationController', [ '$scope', '$rootScope', 'NOTIFICATION', 'notificationsService', function($scope, $rootScope, NOTIFICATION, notificationsService){
+  app.controller('NotificationController', [ '$scope', '$rootScope', 'NOTIFICATION', 'SERVICE_LOC', 'notificationsService', function($scope, $rootScope, NOTIFICATION, SERVICE_LOC, notificationsService){
     var successFn = function(data){
       //success state
       $scope.count = data.length;
@@ -62,7 +62,9 @@ define(['angular'], function(angular) {
     
     $scope.dismiss = function (notification) {
       $rootScope.dismissedNotificationIds.push(notification.id);
-      notificationsService.setDismissedNotifications($rootScope.dismissedNotificationIds);
+      if(SERVICE_LOC.kvURL) { //key value store enabled, we can store dismiss of notifications
+        notificationsService.setDismissedNotifications($rootScope.dismissedNotificationIds); 
+      }
     }
     
     $scope.switch = function(mode) {
@@ -81,7 +83,9 @@ define(['angular'], function(angular) {
       $scope.notificationsEnabled = NOTIFICATION.enabled;
 
       if(NOTIFICATION.enabled) {
-        notificationsService.getDismissedNotificationIds().then(dismissedSuccessFn);
+        if(SERVICE_LOC.kvURL) { //key value store enabled, we can store dismiss of notifications
+          notificationsService.getDismissedNotificationIds().then(dismissedSuccessFn);
+        }
         if(NOTIFICATION.groupFiltering) {
           notificationsService.getNotificationsByGroups().then(successFn, errorFn);
         } else {
