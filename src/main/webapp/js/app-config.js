@@ -10,6 +10,7 @@ define(['angular'], function(angular) {
             'sidebarInfo' : 'samples/sidebar.json',
             'featuresInfo' : 'samples/features.json',
             'notificationsURL' : 'samples/notifications.json',
+            'kvURL' : null,
             'groupURL' : null
         })
         .constant('NAMES', {

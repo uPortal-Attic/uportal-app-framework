@@ -4,7 +4,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
   var app = angular.module('portal.notifications.services', []);
 
-  app.factory('notificationsService', ['$q','$http', 'miscService', 'SERVICE_LOC', function($q, $http, miscService, SERVICE_LOC) {
+  app.factory('notificationsService', ['$q','$http', 'miscService', 'keyValueService','SERVICE_LOC', function($q, $http, miscService, keyValueService, SERVICE_LOC) {
       var filteredNotificationPromise;
       var notificationPromise = $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(
                                               function(result) {
@@ -15,7 +15,20 @@ define(['angular', 'jquery'], function(angular, $) {
                                               }
                                           );
       var getAllNotifications = function() {
-          return notificationPromise;
+        return notificationPromise;
+      };
+      
+      var getDismissedNotificationIds = function() {
+      	return keyValueService.getValue('notification:dismiss').then(function(data){
+      	  if(data) {
+      	    return JSON.parse(data.value);
+      	  }
+      	});
+      };
+      
+      var setDismissedNotifications = function(arrayOfIds) {
+        var string = JSON.stringify(arrayOfIds);
+		keyValueService.setValue('notification:dismiss',string);
       };
 
       var getNotificationsByGroups = function() {
@@ -64,8 +77,10 @@ define(['angular', 'jquery'], function(angular, $) {
       };
 
       return {
-          getAllNotifications: getAllNotifications,
-          getNotificationsByGroups : getNotificationsByGroups
+        getAllNotifications: getAllNotifications,
+        getNotificationsByGroups : getNotificationsByGroups,
+        getDismissedNotificationIds : getDismissedNotificationIds,
+        setDismissedNotifications : setDismissedNotifications
       };
 
   }]);
