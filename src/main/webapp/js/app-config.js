@@ -9,8 +9,8 @@ define(['angular'], function(angular) {
             'sessionInfo' : 'samples/session.json',
             'sidebarInfo' : 'samples/sidebar.json',
             'featuresInfo' : 'samples/features.json',
-            'notificationsURL' : 'samples/sample_notification.json',
-            'kvURL' : 'samples/keyvalue/',
+            'notificationsURL' : 'samples/notifications.json',
+            'kvURL' : null,
             'groupURL' : null
         })
         .constant('NAMES', {
@@ -25,7 +25,7 @@ define(['angular'], function(angular) {
             'searchURL' : 'https://my.wisc.edu/web/apps/search/'
         })
         .constant('NOTIFICATION', {
-            'enabled' : true,
+            'enabled' : false,
             'groupFiltering' : false,
             'notificationFullURL' : 'notifications'
         })
