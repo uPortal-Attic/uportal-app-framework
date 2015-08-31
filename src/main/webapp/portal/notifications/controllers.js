@@ -73,8 +73,6 @@ define(['angular'], function(angular) {
 
     var init = function(){
       $scope.mode = 'new';
-      $scope.dismissedMode='';
-      $scope.activeMode='active';
       $scope.notifications = [];
       $rootScope.dismissedNotificationIds = [];
       $scope.count = 0;
