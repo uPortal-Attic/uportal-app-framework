@@ -16,7 +16,7 @@ define(['angular', 'jquery'], function(angular, $) {
       }
       
       var getValue = function(key){
-        return $http.get(SERVICE_LOC.kvURL + "getValue",key).then(successFn, errorFn);
+        return $http.get(SERVICE_LOC.kvURL + "getValue?key="+key).then(successFn, errorFn);
       };
       
       var setValue = function(key, value){
