@@ -10,18 +10,16 @@
 		</div>
 		<div>
 			<ul class="notifications-list">
-          <li class="notification-item" ng-repeat="notification in notifications" ng-if='shouldShow(notification)'>
-						<a class="content" ng-href='{{notification.actionURL}}' target='_blank' aria-label='{{notification.actionAlt}}'>
-	            <p>{{ notification.title }}</p>
-						</a>
-						<div class="action" ng-click='dismiss(notification)' ng-hide="!notification.dismissable || isDismissed(notification)">
-	            <i class='fa fa-times'tooltip="Dismiss notification" tooltip-placement="top" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
-						</div>
-          </li>
-          <li class="notification-item read" ng-if="isEmpty || (countWithDismissed() === 0 && mode === 'new')">
-            You have no notifications at this time.
-          </li>
-        </ul>
+        		<li class="notification-item" ng-repeat="notification in notifications" ng-if='shouldShow(notification)'>
+					<a class="content" ng-href='{{notification.actionURL}}' target='_blank' aria-label='{{notification.actionAlt}}'>
+	            		<p>{{ notification.title }}</p>
+					</a>
+					<div class="action" ng-click='dismiss(notification)' ng-hide="!notification.dismissable || isDismissed(notification)">
+	            		<i class='fa fa-times'tooltip="Dismiss notification" tooltip-placement="top" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
+					</div>
+        		</li>
+        		<li class="notification-item read" ng-if="isEmpty || (countWithDismissed() === 0 && mode === 'new')">You have no notifications at this time.</li>
+        	</ul>
 		</div>
 	</div>
 </div>
