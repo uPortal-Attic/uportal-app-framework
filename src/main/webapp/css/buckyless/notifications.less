@@ -1,140 +1,165 @@
 /* Notification Styling */
-
-.notifications-list {
-  margin: 0px;
-  padding: 0px;
-}
-.notifications-list li {
-  font-size: 1.1em;
-  color: #333;
-  background-color: @white;
-  padding: 8px 10px 8px 10px;
-  border:none;
-  border-left: 5px solid @color1;
-  border-bottom:1px solid #eee;
-  font-weight: 400;
-}
-
-.notifications-list li:hover {
-  background-color:#f3f3f3;
-}
-.notifications-list a {
-  color: @color1;
-}
-.notifications-list a :hover {
-  color: @color3;
-  text-decoration: none;
-}
-li.read {
-  background-color: @white;
-  font-weight: 200;
-  color: #555;
-  border: none;
-  opacity:1.0;
-  padding-left: 15px;
-  border-bottom:1px solid #eee;
-}
-li.read:hover {
-  cursor:pointer;
-
-}
-.unread {
-  font-weight: bold;
-  border: 1px black solid;
-  cursor: pointer;
-}
-
-
-// New Stuff Div
-
-.header-opaque {
-  width:100%;
-  position:absolute;
-  background-color:rgba(256,256,256,0.8);
-  bottom:0px;
-  z-index:150;
-  div {
+.notifications {
+  .notifications-list {
+    margin: 0px;
+    padding: 0px;
+  }
+  .notifications-list .notification-item {
+    font-size: 1.1em;
+    color: #333;
+    background-color: @white;
+    border:2px solid #ddd;
+    font-weight: 400;
+    border-radius:6px;
+    margin:8px 10px;
+  }
+  .content,
+  .action {
     display:inline-block;
-    float:left;
-    margin:0px 10px;
-    h3 {
-      margin-top:9px;
-      font-size:20px;
-    }
+    height:100%;
+    padding:8px 10px;
+    vertical-align: top;
+    overflow:hidden;
+  }
+  .content {
+    width:95%;
+    border-right:2px solid #ddd;
+    color:#900;
     p {
-      color:#555;
-      margin:10px 0px;
+      margin:0px;
+    }
+    &:hover {
+      background-color:#f5f5f5;
+      color:#b00;
+      text-decoration: underline;
+      cursor:pointer;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
     }
   }
-  .new {
-    text-transform:uppercase;
-    color:#fcf49c;
-    background-color:rgba(183,1,1,0.8);
-    border-radius:8px;
-    padding:3px 8px 1px;
-    margin:10px 0px;
-    font-size:12px;
-  }
-  .remove {
+  .action {
+    width:5%;
     float:right;
-    padding:10px 0px;
-    color:#555;
+    padding:0px;
+    min-height:30px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    i {
+      display: block;
+      text-align:center;
+      vertical-align: middle;
+      top:7px;
+      position:relative;
+      font-size:20px;
+      color:#aaa;
+    }
+    &:hover {
+      cursor:pointer;
+      i {
+        color:#b70101;
+      }
+    }
   }
-  .remove:hover {
+  li.read {
+    padding:8px 10px;
+  }
+  li.read:hover {
     cursor:pointer;
-    color:#333;
+
   }
-}
+  .unread {
+    font-weight: bold;
+    border: 1px black solid;
+    cursor: pointer;
+  }
+  
+  @media (max-width:768px ) {
+    .content {
+      width:90%;
+    }
+    .action {
+      width:10%;
+    }
+  }
 
-// News Mockups
+  // New Stuff Div
 
-.news-article-title {
-  font-weight:200;
-  position:absolute;
-  bottom:28px;
-  right:15px;
-  color:#333;
-  padding:0;
-  margin:0;
-  font-size:1.8em;
-}
-.news-article-description {
-  position:absolute;
-  bottom:8px;
-  right:15px;
-  color:#333;
-  margin:0;
-  padding:0;
-}
-.news-section-title {
-  font-size:0.7em;
-  position:absolute;
-  bottom:53px;
-  right:5px;
-  color:#333;
-  margin:0;
-  padding:0;
-}
-.news-article a {
-  color:@color1;
-}
-.page-h1 {
-  font-size: 2.3em;
-  color: @color1;
-  padding: 0;
-  font-weight: 200;
-}
+  .header-opaque {
+    width:100%;
+    position:absolute;
+    background-color:rgba(256,256,256,0.8);
+    bottom:0px;
+    z-index:150;
+    div {
+      display:inline-block;
+      float:left;
+      margin:0px 10px;
+      h3 {
+        margin-top:9px;
+        font-size:20px;
+      }
+      p {
+        color:#555;
+        margin:10px 0px;
+      }
+    }
+    .new {
+      text-transform:uppercase;
+      color:#fcf49c;
+      background-color:rgba(183,1,1,0.8);
+      border-radius:8px;
+      padding:3px 8px 1px;
+      margin:10px 0px;
+      font-size:12px;
+    }
+    .remove {
+      float:right;
+      padding:10px 0px;
+      color:#555;
+    }
+    .remove:hover {
+      cursor:pointer;
+      color:#333;
+    }
+  }
 
-/* old styles as backup
+  // News Mockups
 
-.notifications-list li {
-  font-size: 1.1em;
-  color: #333;
-  background-color: #e7d9c1;
-  border-radius: 4px;
-  margin: 8px 0px;
-  padding: 8px 10px 8px 10px;
-  border:none;
-  border-left: 10px solid @color1;
-  font-weight: 400;
-} */
+  .news-article-title {
+    font-weight:200;
+    position:absolute;
+    bottom:28px;
+    right:15px;
+    color:#333;
+    padding:0;
+    margin:0;
+    font-size:1.8em;
+  }
+  .news-article-description {
+    position:absolute;
+    bottom:8px;
+    right:15px;
+    color:#333;
+    margin:0;
+    padding:0;
+  }
+  .news-section-title {
+    font-size:0.7em;
+    position:absolute;
+    bottom:53px;
+    right:5px;
+    color:#333;
+    margin:0;
+    padding:0;
+  }
+  .news-article a {
+    color:@color1;
+  }
+  .page-h1 {
+    font-size: 2.3em;
+    color: @color1;
+    padding: 0;
+    font-weight: 200;
+  }
+
+}
