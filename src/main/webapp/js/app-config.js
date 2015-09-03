@@ -3,7 +3,7 @@ define(['angular'], function(angular) {
     var config = angular.module('app-config', []);
     config
         .constant('APP_FLAGS', {
-            'features' : true
+            'features' : false
         })
         .constant('SERVICE_LOC', {
             'sessionInfo' : 'samples/session.json',

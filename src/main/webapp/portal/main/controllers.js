@@ -64,43 +64,42 @@ define(['angular','require'], function(angular, require) {
   app.controller('PopupController', ['$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'featuresService', '$sanitize', function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, featuresService, $sanitize) {
      var openModal = function() {
       if (APP_FLAGS.features) {
+        $scope.features = [];
         
         featuresService.getFeatures().then(function(data) {
             var features = data;
             if (features.data.length > 0) {
-                $scope.features = features.data;
-            } else {
-                $scope.features = {};//init view
-            }
-            $scope.latestFeature = $scope.features[$scope.features.length - 1]
-            var today = Date.parse(new Date());
-            var startDate = Date.parse(new Date($scope.latestFeature.popup.startYear, $scope.latestFeature.popup.startMonth, $scope.latestFeature.popup.startDay));
-            var endDate = Date.parse(new Date($scope.latestFeature.popup.endYear, $scope.latestFeature.popup.endMonth, $scope.latestFeature.popup.endDay));
-            
-            // handle legacy local storage
-            if ($localStorage.lastSeenFeature === -1) {
-              if ($localStorage.hasSeenWelcome) {
-                $localStorage.lastSeenFeature = 1;
-              } else {
-                $localStorage.lastSeenFeature = 0;
+              $scope.features = features.data;
+              $scope.latestFeature = $scope.features[$scope.features.length - 1]
+              var today = Date.parse(new Date());
+              var startDate = Date.parse(new Date($scope.latestFeature.popup.startYear, $scope.latestFeature.popup.startMonth, $scope.latestFeature.popup.startDay));
+              var endDate = Date.parse(new Date($scope.latestFeature.popup.endYear, $scope.latestFeature.popup.endMonth, $scope.latestFeature.popup.endDay));
+              
+              // handle legacy local storage
+              if ($localStorage.lastSeenFeature === -1) {
+                if ($localStorage.hasSeenWelcome) {
+                  $localStorage.lastSeenFeature = 1;
+                } else {
+                  $localStorage.lastSeenFeature = 0;
+                }
+                delete $localStorage.hasSeenWelcome;
               }
-              delete $localStorage.hasSeenWelcome;
-            }
-            
-            // criteria to show popup
-            var featureIsLive = today > startDate && today < endDate;
-            var userHasNotSeenFeature = $localStorage.lastSeenFeature < $scope.latestFeature.id;
-            var featureIsEnabled = $scope.latestFeature.popup.enabled;
-            
-            
-            if (featureIsLive && userHasNotSeenFeature && featureIsEnabled) {
-              $modal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: require.toUrl('./partials/features-modal-template.html'),
-                size: 'lg',
-                scope: $scope 
-              });
-              $localStorage.lastSeenFeature = $scope.latestFeature.id;
+              
+              // criteria to show popup
+              var featureIsLive = today > startDate && today < endDate;
+              var userHasNotSeenFeature = $localStorage.lastSeenFeature < $scope.latestFeature.id;
+              var featureIsEnabled = $scope.latestFeature.popup.enabled;
+              
+              
+              if (featureIsLive && userHasNotSeenFeature && featureIsEnabled) {
+                $modal.open({
+                  animation: $scope.animationsEnabled,
+                  templateUrl: require.toUrl('./partials/features-modal-template.html'),
+                  size: 'lg',
+                  scope: $scope 
+                });
+                $localStorage.lastSeenFeature = $scope.latestFeature.id;
+              }
             }
         });
       }
