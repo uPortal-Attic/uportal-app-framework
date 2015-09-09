@@ -90,18 +90,24 @@
   width: 35px;
   height: 35px;
   padding-top: 3px;
-  margin: 10px 10px 3px auto;
+  margin: 8px 8px 3px auto;
   font-weight: 200;
   text-align: center;
   color: white;
+  
   .number-of-nots {
-    position: absolute;
-    bottom: 10px;
-    left: 14px;
-    text-align: center;
     color: @color1;
     font-weight: 400;
+    z-index: 2000.;
+    position: absolute;
+    top: 15px;
+    left: 14px;
 	}
+  .more-than-10-nots {
+    left: 10px;
+    font-size: small;
+    top: 17px;
+  }
 }
 
 .notification-badge-empty {
