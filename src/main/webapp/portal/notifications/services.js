@@ -20,15 +20,17 @@ define(['angular', 'jquery'], function(angular, $) {
       
       var getDismissedNotificationIds = function() {
       	return keyValueService.getValue('notification:dismiss').then(function(data){
-      	  if(data) {
+      	  if(data && data.value && data.value !== "") {
       	    return JSON.parse(data.value);
-      	  }
+      	  } else {
+            return [];
+          }
       	});
       };
       
       var setDismissedNotifications = function(arrayOfIds) {
         var string = JSON.stringify(arrayOfIds);
-		keyValueService.setValue('notification:dismiss',string);
+    		keyValueService.setValue('notification:dismiss',string);
       };
 
       var getNotificationsByGroups = function() {
