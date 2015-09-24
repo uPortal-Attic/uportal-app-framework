@@ -23,6 +23,10 @@ define(['angular'], function(angular) {
       $rootScope.dismissedNotificationIds = data;
     };
     
+    $scope.dismissedCount = function() {
+      return $rootScope.dismissedNotificationIds ? $rootScope.dismissedNotificationIds.length : 0;
+    }
+    
     $scope.countWithDismissed = function() {
       var count = 0;
       if($rootScope.dismissedNotificationIds && $scope.notifications) {
@@ -62,6 +66,16 @@ define(['angular'], function(angular) {
     
     $scope.dismiss = function (notification) {
       $rootScope.dismissedNotificationIds.push(notification.id);
+      if(SERVICE_LOC.kvURL) { //key value store enabled, we can store dismiss of notifications
+        notificationsService.setDismissedNotifications($rootScope.dismissedNotificationIds); 
+      }
+    }
+    
+    $scope.undismiss = function(notification) {
+      var index = $rootScope.dismissedNotificationIds.indexOf(notification.id);
+      if(index !== -1) {
+      	$rootScope.dismissedNotificationIds.splice(index,1);
+      }
       if(SERVICE_LOC.kvURL) { //key value store enabled, we can store dismiss of notifications
         notificationsService.setDismissedNotifications($rootScope.dismissedNotificationIds); 
       }
