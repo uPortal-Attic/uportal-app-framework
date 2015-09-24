@@ -3,7 +3,9 @@ define(['angular'], function(angular) {
     var config = angular.module('app-config', []);
     config
         .constant('APP_FLAGS', {
-            'features' : false
+            'features' : false,
+            'hideSidebar' : false,
+            'hideSearch' : false
         })
         .constant('SERVICE_LOC', {
             'sessionInfo' : 'samples/session.json',

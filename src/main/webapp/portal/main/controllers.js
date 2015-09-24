@@ -3,9 +3,9 @@
 define(['angular','require'], function(angular, require) {
   var app = angular.module('portal.main.controllers', []);
 
-  app.controller('MainController', ['$localStorage', '$sessionStorage','$scope', '$document', 'NAMES', 'MISC_URLS', function($localStorage, $sessionStorage, $scope, $document, NAMES, MISC_URLS) {
+  app.controller('MainController', ['$localStorage', '$sessionStorage','$scope', '$document', 'NAMES', 'MISC_URLS', 'APP_FLAGS', function($localStorage, $sessionStorage, $scope, $document, NAMES, MISC_URLS, APP_FLAGS) {
     var defaults = {
-            showSidebar: true,
+            showSidebar: !APP_FLAGS.hideSidebar,
             sidebarQuicklinks: false,
             showKeywordsInMarketplace : false,
             homeImg : "img/square.jpg",
@@ -27,6 +27,7 @@ define(['angular','require'], function(angular, require) {
 
       $scope.NAMES=NAMES;
       $scope.classicURL=MISC_URLS.back2ClassicURL;
+      $scope.APP_FLAGS=APP_FLAGS;
 
       if(NAMES.title) {
         $document[0].title=NAMES.title;
@@ -111,13 +112,14 @@ define(['angular','require'], function(angular, require) {
   
 
   /* Header */
-  app.controller('HeaderController', ['$scope','$location', 'NAMES', function($scope, $location, NAMES) {
+  app.controller('HeaderController', ['$scope','$location', 'NAMES', 'APP_FLAGS', function($scope, $location, NAMES, APP_FLAGS) {
     this.navbarCollapsed = true;
     this.crest = NAMES.crest;
     this.crestalt = NAMES.crestalt;
     this.sublogo = NAMES.sublogo;
     $scope.showSearch = false;
     $scope.showSearchFocus = false;
+    $scope.APP_FLAGS = APP_FLAGS;
 
     this.toggleSearch = function() {
         $scope.showSearch = !$scope.showSearch;
