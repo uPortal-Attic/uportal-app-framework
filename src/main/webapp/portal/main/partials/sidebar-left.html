@@ -9,7 +9,7 @@
       <username></username>
     </div>
     <hr>
-    <div ng-controller="SidebarController as sidebarCtrl">
+    <div ng-controller="PortalSidebarController as sidebarCtrl">
         <ul class="list-group sidebar-list">
           <li class="list-group-item" ng-repeat="item in sidebar" ng-if="sidebarCtrl.canSee(item.displayFlag)">
             <a href="{{item.hyperlink}}" target="{{item.target}}" ng-click="headerCtrl.navbarCollapsed = true">

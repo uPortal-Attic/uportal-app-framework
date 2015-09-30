@@ -4,8 +4,8 @@ define(['angular'], function(angular) {
     config
         .constant('APP_FLAGS', {
             'features' : false,
-            'hideSidebar' : false,
-            'hideSearch' : false
+            'showSidebar' : true,
+            'showSearch' : true
         })
         .constant('SERVICE_LOC', {
             'sessionInfo' : 'samples/session.json',

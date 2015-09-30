@@ -17,11 +17,11 @@
   <link rel="shortcut icon" href="bower_components/uw-ui-toolkit/dist/img/favicon.ico" type="image/x-icon"/>
 </head>
 
-<body ng-controller="MainController as mainCtrl" class='my-uw'>
+<body ng-controller="PortalMainController as mainCtrl" class='my-uw'>
   <div class='sr-only' ng-if="classicURL">
     <a ng-href='{{classicURL}}'>Switch back to the classic MyUW</a>
   </div>
-  <div ng-controller="PopupController as popupCtrl">
+  <div ng-controller="PortalPopupController as popupCtrl">
     <!--[if lt IE 10]>
     <div class="browserupgrade">
       <span class="fa fa-frown-o"></span>
@@ -48,13 +48,13 @@
         <!-- Body -->
         <div class="row page-content">
 
-          <div class="region-sidebar-left col-sm-2 col-xs-0 hidden-xs no-margin" ng-if="$storage.showSidebar && !APP_FLAGS.hideSidebar">
+          <div class="region-sidebar-left col-sm-2 col-xs-0 hidden-xs no-margin" ng-if="$storage.showSidebar && APP_FLAGS.showSidebar">
               <side-bar-menu></side-bar-menu>
           </div>
-          <div ng-if="(!($storage.showSidebar)) && !APP_FLAGS.hideSidebar" class="show-sidebar" ng-click="$storage.showSidebar = true">
+          <div ng-if="(!($storage.showSidebar)) && APP_FLAGS.showSidebar" class="show-sidebar" ng-click="$storage.showSidebar = true">
             <span class="fa fa-bars"></span>
           </div>
-          <div role="main" id="region-main" class="col-xs-12" ng-class="{'col-sm-10 col-sm-offset-2' : ($storage.showSidebar && !APP_FLAGS.hideSidebar), 'col-sm-11 max-view' : (!($storage.showSidebar) || APP_FLAGS.hideSidebar)}">
+          <div role="main" id="region-main" class="col-xs-12" ng-class="{'col-sm-10 col-sm-offset-2' : ($storage.showSidebar && APP_FLAGS.showSidebar), 'col-sm-11 max-view' : (!($storage.showSidebar) || !APP_FLAGS.showSidebar)}">
             <div ng-view></div>
           </div>
         </div>

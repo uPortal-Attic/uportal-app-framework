@@ -1,6 +1,6 @@
 'use strict';
 define(['angular-mocks', 'portal'], function() {
-    describe('MainController', function() {
+    describe('PortalMainController', function() {
         var scope;
         var controller;
         var $localStorage;
@@ -12,7 +12,7 @@ define(['angular-mocks', 'portal'], function() {
         beforeEach(inject(function($rootScope, $controller, _$localStorage_) {
           scope = $rootScope.$new();
           $localStorage = _$localStorage_;
-          controller = $controller('MainController', {'$localStorage' : $localStorage, '$scope': scope});
+          controller = $controller('PortalMainController', {'$localStorage' : $localStorage, '$scope': scope});
         }));
 
         it("should set storage in scope", function() {

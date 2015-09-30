@@ -3,7 +3,7 @@
 define(['angular','require'], function(angular, require) {
   var app = angular.module('portal.main.controllers', []);
 
-  app.controller('MainController', ['$localStorage', '$sessionStorage','$scope', '$document', 'NAMES', 'MISC_URLS', 'APP_FLAGS', function($localStorage, $sessionStorage, $scope, $document, NAMES, MISC_URLS, APP_FLAGS) {
+  app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$document', 'NAMES', 'MISC_URLS', 'APP_FLAGS', function($localStorage, $sessionStorage, $scope, $document, NAMES, MISC_URLS, APP_FLAGS) {
     var defaults = {
             showSidebar: !APP_FLAGS.hideSidebar,
             sidebarQuicklinks: false,
@@ -62,12 +62,12 @@ define(['angular','require'], function(angular, require) {
     });
   }]);
   
-  app.controller('PopupController', ['$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'featuresService', '$sanitize', function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, featuresService, $sanitize) {
+  app.controller('PortalPopupController', ['$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'portalFeaturesService', '$sanitize', function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, portalFeaturesService, $sanitize) {
      var openModal = function() {
       if (APP_FLAGS.features) {
         $scope.features = [];
         
-        featuresService.getFeatures().then(function(data) {
+        portalFeaturesService.getFeatures().then(function(data) {
             var features = data;
             if (features.data.length > 0) {
               $scope.features = features.data;
@@ -112,7 +112,7 @@ define(['angular','require'], function(angular, require) {
   
 
   /* Header */
-  app.controller('HeaderController', ['$scope','$location', 'NAMES', 'APP_FLAGS', function($scope, $location, NAMES, APP_FLAGS) {
+  app.controller('PortalHeaderController', ['$scope','$location', 'NAMES', 'APP_FLAGS', function($scope, $location, NAMES, APP_FLAGS) {
     this.navbarCollapsed = true;
     this.crest = NAMES.crest;
     this.crestalt = NAMES.crestalt;
@@ -128,12 +128,12 @@ define(['angular','require'], function(angular, require) {
   }]);
 
   /* Footer */
-  app.controller('FooterController', ['$scope', function($scope) {
+  app.controller('PortalFooterController', ['$scope', function($scope) {
       $scope.date = new Date();
 
   }]);
 
-  app.controller('SidebarController',[ '$localStorage', '$scope', 'mainService', function($localStorage, $scope, mainService) {
+  app.controller('PortalSidebarController',[ '$localStorage', '$scope', 'mainService', function($localStorage, $scope, mainService) {
       $scope.$storage = $localStorage;
       $scope.sidebar = [];
       mainService.getSidebar().then(function(result){

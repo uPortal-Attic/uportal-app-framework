@@ -1,13 +1,15 @@
-<div ng-controller="FeaturesController as featuresCtrl" class="row portlet-frame">
-  <div role="banner" class="portlet-header">
-    <img src="img/square.jpg" alt="UW Campus cover image">
-    <h1>{{NAMES.title}} New Features</h1>
-    <p class="portlet-description">Stay up-to-date on the newest features of {{NAMES.title}}.</p>
-  </div>
+<div ng-controller="PortalFeaturesController as featuresCtrl" class="portlet-frame">
+  <portlet-header app-title="{{NAMES.title}} New Features" 
+                  app-image="img/square.jpg" 
+                  app-description="Stay up-to-date on the newest features of {{NAMES.title}}.">
+  </portlet-header>
 
   <div class="row">
     <div class="col-xs-12">
       <div class="features-feed">
+        <div ng-if='features.length === 0'> <!--empty case -->
+          <p class='center'>No features listed at this time, please check back later.</p>
+        </div>
 				<div class="feature-item" ng-repeat="feature in features | orderBy: '-id'">
 	        <h5 class="date">{{feature.goLiveMonth + 1}}/{{feature.goLiveDay}}/{{ feature.goLiveYear }}</h5>
 	        <h3>{{ feature.title }}</h3>
@@ -19,11 +21,12 @@
 				</div>
       </div>
     </div>
-		<div class="col-xs-12">
-			<h3 class="center feedback-features">Have a feature you'd like to see in MyUW?</h3>
+		<div class="col-xs-12" ng-show="MISC_URLS.feedbackURL">
+			<h3 class="center feedback-features">Have a feature you'd like to see in {{NAMES.title}}?</h3>
 			<div class="center">
-				<a class="btn btn-primary btn-lg" href="http://my.wisc.edu/portal/p/feedback">Send us feedback</a>
-		</div>
+				<a class="btn btn-primary btn-lg" ng-href="{{MISC_URLS.feedbackURL}}">Send us feedback</a>
+		  </div>
+    </div>
   </div>
 
 

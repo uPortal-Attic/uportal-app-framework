@@ -4,24 +4,18 @@ define(['angular','require'], function(angular, require) {
   var app = angular.module('portal.features.controllers', []);
 	
 	
-	app.controller('FeaturesController', ['$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'featuresService', '$sanitize', function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, featuresService, $sanitize) {
-		
-		
-		
+	app.controller('PortalFeaturesController', ['$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'portalFeaturesService', '$sanitize', 'MISC_URLS', function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, portalFeaturesService, $sanitize, MISC_URLS) {
+    $scope.features = [];
+    $scope.MISC_URLS = MISC_URLS;
+
 		if (APP_FLAGS.features) {
-			featuresService.getFeatures().then(function(data) {
+			portalFeaturesService.getFeatures().then(function(data) {
 				var features = data;
 				if (features.data.length > 0) {
 					$scope.features = features.data;
-				} else {
-					$scope.features = {} //init view
 				}
-			})
+			});
 		}
-    
   }]);
-		
-		
 	return app;
-
 });
