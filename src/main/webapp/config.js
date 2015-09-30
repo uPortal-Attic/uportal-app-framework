@@ -10,8 +10,8 @@ define([], function() {
     ],
 
     paths: {
-        'angular'       : "bower_components/angular/angular",
-        'angular-mocks' : "bower_components/angular-mocks/angular-mocks",
+        'angular'       : "bower_components/angular/angular.min",
+        'angular-mocks' : "bower_components/angular-mocks/angular-mocks.min",
         'app-config'    : "js/app-config",
         'jquery'        : "bower_components/jquery/dist/jquery.min",
         'jquery-ui'     : "bower_components/jquery-ui/jquery-ui.min",
@@ -20,7 +20,7 @@ define([], function() {
         'ngStorage'     : "bower_components/ngstorage/ngStorage.min",
         'sortable'      : "js/sortable",
         'ui-bootstrap'  : "bower_components/angular-bootstrap/ui-bootstrap-tpls.min",
-        'ui-gravatar'   : "bower_components/angular-gravatar/build/angular-gravatar"
+        'ui-gravatar'   : "bower_components/angular-gravatar/build/angular-gravatar.min"
         // Use ui-bootstrap instead of bootstrap or uw-ui-toolkit.  See https://angular-ui.github.io/bootstrap/
         //'uw-ui-toolkit' : "bower_components/uw-ui-toolkit/dist/js/uw-ui-toolkit.min"
     },
