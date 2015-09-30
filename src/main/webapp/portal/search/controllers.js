@@ -3,7 +3,7 @@
 define(['angular'], function(angular) {
 
   var app = angular.module('portal.search.controllers', []);
-  app.controller('SearchController', [ 'miscService', '$location', '$scope', '$localStorage','SEARCH', function(miscService, $location, $scope, $localStorage, SEARCH) {
+  app.controller('PortalSearchController', [ 'miscService', '$location', '$scope', '$localStorage','SEARCH', function(miscService, $location, $scope, $localStorage, SEARCH) {
       $scope.initialFilter = '';
       $scope.filterMatches = [];
       $scope.portletListLoading = true;

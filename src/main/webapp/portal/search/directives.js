@@ -8,7 +8,7 @@ define(['angular', 'require'], function(angular, require) {
     return {
       restrict : 'E',
       templateUrl : require.toUrl('./partials/search.html'),
-      controller: 'SearchController'
+      controller: 'PortalSearchController'
     }
   }]);
 
