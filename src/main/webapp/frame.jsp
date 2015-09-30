@@ -17,11 +17,11 @@
   <link rel="shortcut icon" href="bower_components/uw-ui-toolkit/dist/img/favicon.ico" type="image/x-icon"/>
 </head>
 
-<body ng-controller="MainController as mainCtrl" class='my-uw'>
+<body ng-controller="PortalMainController as mainCtrl" class='my-uw'>
   <div class='sr-only' ng-if="classicURL">
     <a ng-href='{{classicURL}}'>Switch back to the classic MyUW</a>
   </div>
-  <div ng-controller="PopupController as popupCtrl">
+  <div ng-controller="PortalPopupController as popupCtrl">
     <!--[if lt IE 10]>
     <div class="browserupgrade">
       <span class="fa fa-frown-o"></span>
