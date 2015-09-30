@@ -4,7 +4,7 @@ define(['angular'], function(angular) {
 
   var app = angular.module('portal.features.services', []);
 
-  app.factory('featuresService', ['$http', 'miscService', 'SERVICE_LOC', function($http, miscService, SERVICE_LOC) {
+  app.factory('portalFeaturesService', ['$http', 'miscService', 'SERVICE_LOC', function($http, miscService, SERVICE_LOC) {
     var featuresPromise = $http.get(SERVICE_LOC.featuresInfo, { cache: true});
     
     var getFeatures = function() {

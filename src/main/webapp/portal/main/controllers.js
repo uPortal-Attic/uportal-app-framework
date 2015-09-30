@@ -62,12 +62,12 @@ define(['angular','require'], function(angular, require) {
     });
   }]);
   
-  app.controller('PopupController', ['$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'featuresService', '$sanitize', function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, featuresService, $sanitize) {
+  app.controller('PopupController', ['$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'portalFeaturesService', '$sanitize', function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, portalFeaturesService, $sanitize) {
      var openModal = function() {
       if (APP_FLAGS.features) {
         $scope.features = [];
         
-        featuresService.getFeatures().then(function(data) {
+        portalFeaturesService.getFeatures().then(function(data) {
             var features = data;
             if (features.data.length > 0) {
               $scope.features = features.data;
