@@ -9,7 +9,7 @@ define(['angular'], function(angular) {
     /**
      Used to redirect users to login screen iff result code is 0 (yay shib) or 302
      
-     Setup 
+     Setup MISC_URLS.loginURL in js/app-config.js to have redirects happen
     **/
     var redirectUser = function(status, caller) {
       if(status === 0 || status === 302) {
