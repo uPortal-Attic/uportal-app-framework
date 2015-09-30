@@ -4,7 +4,7 @@ define(['angular'], function(angular) {
 
   var app = angular.module('portal.notifications.controllers ', []);
 
-  app.controller('NotificationController', [ '$scope', '$rootScope', 'NOTIFICATION', 'SERVICE_LOC', 'notificationsService', function($scope, $rootScope, NOTIFICATION, SERVICE_LOC, notificationsService){
+  app.controller('NotificationController', [ '$scope', '$rootScope', 'NOTIFICATION', 'SERVICE_LOC', 'notificationsService', 'miscService', function($scope, $rootScope, NOTIFICATION, SERVICE_LOC, notificationsService, miscService){
     var successFn = function(data){
       //success state
       $scope.count = data.length;
@@ -86,6 +86,7 @@ define(['angular'], function(angular) {
     }
 
     var init = function(){
+      miscService.pushPageview();
       $scope.mode = 'new';
       $scope.notifications = [];
       $rootScope.dismissedNotificationIds = [];
