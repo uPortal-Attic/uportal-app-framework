@@ -1,4 +1,4 @@
-<ul class="notifications-list" ng-controller="NotificationController as notificationCtrl">
+<ul class="notifications-list" ng-controller="PortalNotificationController as notificationCtrl">
   <li class="notification-item" ng-repeat="notification in notifications"
       ng-class="getClass($index, notifications)"
       ng-click="markRead($index, notifications)">
