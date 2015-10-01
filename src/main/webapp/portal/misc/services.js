@@ -32,7 +32,7 @@ define(['angular'], function(angular) {
     var pushPageview = function (searchTerm) {
       var path = $location.path();
       if(searchTerm) {
-        path += "?q=" + search;
+        path += "?q=" + searchTerm;
       }
       console.log('ga pageview logged ' + path);
       $window._gaq.push(['_trackPageview', path]);
