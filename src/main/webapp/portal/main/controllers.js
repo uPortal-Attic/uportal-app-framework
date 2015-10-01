@@ -5,7 +5,7 @@ define(['angular','require'], function(angular, require) {
 
   app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$document', 'NAMES', 'MISC_URLS', 'APP_FLAGS', function($localStorage, $sessionStorage, $scope, $document, NAMES, MISC_URLS, APP_FLAGS) {
     var defaults = {
-            showSidebar: !APP_FLAGS.hideSidebar,
+            showSidebar: APP_FLAGS.showSidebar,
             sidebarQuicklinks: false,
             showKeywordsInMarketplace : false,
             homeImg : "img/square.jpg",
