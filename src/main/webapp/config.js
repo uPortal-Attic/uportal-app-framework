@@ -11,7 +11,7 @@ define([], function() {
 
     paths: {
         'angular'       : "bower_components/angular/angular.min",
-        'angular-mocks' : "bower_components/angular-mocks/angular-mocks.min",
+        'angular-mocks' : "bower_components/angular-mocks/angular-mocks",
         'app-config'    : "js/app-config",
         'jquery'        : "bower_components/jquery/dist/jquery.min",
         'jquery-ui'     : "bower_components/jquery-ui/jquery-ui.min",
