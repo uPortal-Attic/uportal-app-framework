@@ -171,13 +171,28 @@ define(['angular', 'require'], function(angular, require) {
         };
     });
     
+    
+    /**
+     * Circle Button Directive
+     * Displays a button that looks like a circle with a fa-icon in the middle, and a title below
+     * Template : <circle-button data-href='' data-target='' data-fa-icon='' data-disabled='false' data-title=''></circle-button> 
+     * 
+     * Params:
+     * - href : where you want them to go
+     * - target : open in new window
+     * - fa-icon : the font awesome icon to use
+     * - disabled : button disabled or not (can be a variable)
+     * - title : (optional) title that is displayed under the circle
+     */
     app.directive('circleButton', function() {
     	return {
     		restrict: 'E',
     		scope: {
     			href: '@href',
     			target: '@target',
-    			faIcon: '@faIcon'
+    			faIcon: '@faIcon',
+            cbDisabled : '=disabled',
+            title : '@title'
     		},
     		templateUrl: require.toUrl('./partials/circle-button.html')
     	};
