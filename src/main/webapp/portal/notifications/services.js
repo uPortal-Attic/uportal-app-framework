@@ -6,7 +6,8 @@ define(['angular', 'jquery'], function(angular, $) {
 
   app.factory('notificationsService', ['$q','$http', 'miscService', 'keyValueService','SERVICE_LOC', function($q, $http, miscService, keyValueService, SERVICE_LOC) {
       var filteredNotificationPromise;
-      var notificationPromise = $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(
+      var getAllNotifications = function() {
+        return $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(
                                               function(result) {
                                                   return  result.data.notifications;
                                               } ,
@@ -14,8 +15,6 @@ define(['angular', 'jquery'], function(angular, $) {
                                                   miscService.redirectUser(reason.status, 'notifications json feed call');
                                               }
                                           );
-      var getAllNotifications = function() {
-        return notificationPromise;
       };
       
       var getDismissedNotificationIds = function() {
@@ -73,7 +72,7 @@ define(['angular', 'jquery'], function(angular, $) {
         
 
         //setup new q
-        filteredNotificationPromise = $q.all([notificationPromise, groupPromise]).then(successFn, errorFn);
+        filteredNotificationPromise = $q.all([getAllNotifications(), groupPromise]).then(successFn, errorFn);
 
         return filteredNotificationPromise;
       };
