@@ -163,6 +163,57 @@
             </div>
 
          </li>
+         <li class="portlet-container-home beta-card-style center" ng-init="isDisabled=false">
+            <h4>Circle Button Examples</h4>
+            <div class='fluid-container row'>
+              <div class='col-sm-4'>
+                <h3>
+                  Disabled
+                </h3>
+                <circle-button data-href='https://www.google.com' 
+                               data-target='_blank' 
+                               data-fa-icon='fa-google' 
+                               data-disabled='true' 
+                               data-title='Google'>
+                </circle-button>
+              </div>
+              <div class='col-sm-4'>
+                <h3>
+                  Active
+                </h3>
+                <circle-button data-href='https://www.google.com' 
+                               data-target='_blank' 
+                               data-fa-icon='fa-google' 
+                               data-disabled='false' 
+                               data-title='Google'>
+                </circle-button>
+              </div>
+              <div class='col-sm-4'>
+                <h3>
+                  Toggle 
+                  <button class='btn btn-flat' ng-click='isDisabled=!isDisabled'>
+                  Switch
+                  </button>
+                </h3>
+                <circle-button data-href='https://www.google.com' 
+                               data-target='_blank' 
+                               data-fa-icon='fa-google' 
+                               data-disabled='isDisabled' 
+                               data-title='Google'>
+                </circle-button>
+              </div>
+              <div class='col-sm-4'>
+                <h3>
+                  No Title
+                </h3>
+                <circle-button data-href='https://www.google.com' 
+                               data-target='_blank' 
+                               data-fa-icon='fa-google' >
+                </circle-button>
+              </div>
+            </div>
+
+         </li>
     </ul>
   </div>
 </div>
