@@ -8,9 +8,9 @@ define(['angular'], function(angular) {
             'showSearch' : true
         })
         .constant('SERVICE_LOC', {
-            'sessionInfo' : 'samples/session.json',
-            'sidebarInfo' : 'samples/sidebar.json',
-            'featuresInfo' : 'samples/features.json',
+            'sessionInfo' : 'staticFeeds/session.json',
+            'sidebarInfo' : 'staticFeeds/sidebar.json',
+            'featuresInfo' : 'staticFeeds/features.json',
             'notificationsURL' : null,
             'kvURL' : null,
             'groupURL' : null
