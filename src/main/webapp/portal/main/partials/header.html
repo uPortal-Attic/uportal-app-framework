@@ -34,6 +34,9 @@
                 <li>
                     <notification-bell></notification-bell>
                 </li>
+                <li ng-show="{{headerCtrl.showLogout}}">
+                  <a ng-href="{{MISC_URLS.logoutURL}}" class='logout-link' title='Logout'><i  class='fa fa-sign-out'></i></a>
+                </li>
              </ul>
          </div>
      </div>
