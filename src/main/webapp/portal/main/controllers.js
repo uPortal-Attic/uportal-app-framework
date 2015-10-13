@@ -112,14 +112,16 @@ define(['angular','require'], function(angular, require) {
   
 
   /* Header */
-  app.controller('PortalHeaderController', ['$scope','$location', 'NAMES', 'APP_FLAGS', function($scope, $location, NAMES, APP_FLAGS) {
+  app.controller('PortalHeaderController', ['$scope','$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', function($scope, $location, NAMES, APP_FLAGS, MISC_URLS) {
     this.navbarCollapsed = true;
     this.crest = NAMES.crest;
     this.crestalt = NAMES.crestalt;
     this.sublogo = NAMES.sublogo;
+    this.showLogout = !APP_FLAGS.showSidebar;
     $scope.showSearch = false;
     $scope.showSearchFocus = false;
     $scope.APP_FLAGS = APP_FLAGS;
+    $scope.MISC_URLS = MISC_URLS;
 
     this.toggleSearch = function() {
         $scope.showSearch = !$scope.showSearch;
