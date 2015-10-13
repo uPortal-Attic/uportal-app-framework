@@ -11,7 +11,7 @@ define(['angular'], function(angular) {
             'sessionInfo' : 'samples/session.json',
             'sidebarInfo' : 'samples/sidebar.json',
             'featuresInfo' : 'samples/features.json',
-            'notificationsURL' : 'samples/notifications.json',
+            'notificationsURL' : null,
             'kvURL' : null,
             'groupURL' : null
         })
