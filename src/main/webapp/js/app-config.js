@@ -35,7 +35,8 @@ define(['angular'], function(angular) {
             'feedbackURL' : 'https://my.wisc.edu/portal/p/feedback',
             'back2ClassicURL' : null,
             'whatsNewURL' : null,
-            'loginURL' : '/portal/Login?profile=bucky'
+            'loginURL' : '/portal/Login?profile=bucky',
+            'helpdeskURL' : 'https://kb.wisc.edu/helpdesk/'
         });
 
     return config;
