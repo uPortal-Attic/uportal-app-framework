@@ -6,6 +6,7 @@
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
+                 <notification-bell mode='{{"mobile-bell"}}'></notification-bell>
              </button>
              <div class="header-mobile">
                <h3><a aria-label="{{NAMES.ariaLabelTitle}}" class="header-text" href="./" id="myuw-header"><img ng-src="{{::headerCtrl.crest}}" class="hidden-xs" alt="{{::headerCtrl.crestalt}}"><span>{{NAMES.title}}</span><span class="beta-logo">{{NAMES.sublogo}}</span></a></h3>
@@ -20,6 +21,7 @@
 
          <div class="collapse navbar-collapse" id="bucky-navbar-collapse"  collapse="headerCtrl.navbarCollapsed">
              <div class="nav navbar-nav hidden-sm hidden-md hidden-lg bucky-nav">
+                  <notification-bell mode='mobile-menu'></notification-bell>
                   <side-bar-menu></side-bar-menu>
              </div>
              <ul class="nav navbar-nav hidden-xs bucky-nav-large">
@@ -32,7 +34,7 @@
              </ul>
              <ul class="nav navbar-nav navbar-right hidden-xs">
                 <li>
-                    <notification-bell></notification-bell>
+                    <notification-bell mode='bell'></notification-bell>
                 </li>
                 <li ng-show="{{headerCtrl.showLogout}}">
                   <a ng-href="{{MISC_URLS.logoutURL}}" class='logout-link' title='Logout'><i  class='fa fa-sign-out'></i></a>
