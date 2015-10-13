@@ -44,6 +44,17 @@ define(['angular','require'], function(angular, require) {
     $scope.reload = function() {
         location.reload();
     }
+    $scope.pushGAEvent = function (category, action, label) {
+      miscService.pushGAEvent(category, action, label);
+    }
+    $scope.openSidebar = function() {
+      $scope.$storage.showSidebar = true;
+      miscService.pushGAEvent('Sidebar','Show/Hide Sidebar', 'Show Sidebar');
+    }
+    $scope.closeSidebar = function() {
+      $scope.$storage.showSidebar = false;
+      miscService.pushGAEvent('Sidebar','Show/Hide Sidebar', 'Hide Sidebar');
+    };
 
     //run init
     init();

@@ -27,7 +27,7 @@ define(['angular'], function(angular) {
             'searchURL' : 'https://my.wisc.edu/web/apps/search/'
         })
         .constant('NOTIFICATION', {
-            'enabled' : false,
+            'enabled' : true,
             'groupFiltering' : false,
             'notificationFullURL' : 'notifications'
         })

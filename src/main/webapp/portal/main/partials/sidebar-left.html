@@ -1,7 +1,7 @@
 <div>
   <nav role="navigation" class="side-bar-nav">
     <div class="hide-sidebar-div">
-      <span class="fa fa-arrow-left hide-sidebar" ng-click="$storage.showSidebar = false" popover="Minimize sidebar" popover-placement="bottom" popover-trigger="mouseenter" popover-popup-delay="600" popover-append-to-body="true" onClick="pushGaEvent('Sidebar','Minimize Sidebar', 'Minimize Sidebar')"></span>
+      <span class="fa fa-arrow-left hide-sidebar" ng-click="closeSidebar()" popover="Minimize sidebar" popover-placement="bottom" popover-trigger="mouseenter" popover-popup-delay="600" popover-append-to-body="true"></span>
     </div>
     <div class="profile-pic">
       <img ng-src="{{$storage.profileImg}}" ng-if="$storage.sidebarShowProfile && !$storage.useGravatar">
@@ -11,8 +11,8 @@
     <hr>
     <div ng-controller="PortalSidebarController as sidebarCtrl">
         <ul class="list-group sidebar-list">
-          <li class="list-group-item" ng-repeat="item in sidebar" ng-if="sidebarCtrl.canSee(item.displayFlag)">
-            <a href="{{item.hyperlink}}" target="{{item.target}}" ng-click="headerCtrl.navbarCollapsed = true" onClick="pushGaEvent('Sidebar','Click Link', item.title)">
+          <li class="list-group-item" ng-repeat="item in sidebar" ng-if="sidebarCtrl.canSee(item.displayFlag)" ng-click="headerCtrl.navbarCollapsed = true;">
+            <a href="{{item.hyperlink}}" target="{{item.target}}" ng-click="pushGAEvent('Sidebar', 'Click Link', item.title);">
               <span class="fa {{item.faIcon}} fa-fw"></span> {{item.title}}
             </a>
           </li>
