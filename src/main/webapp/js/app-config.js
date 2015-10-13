@@ -6,10 +6,10 @@ define(['angular'], function(angular) {
             'features' : false
         })
         .constant('SERVICE_LOC', {
-            'sessionInfo' : 'dynamicFeeds/session.json',
-            'sidebarInfo' : 'dynamicFeeds/sidebar.json',
-            'featuresInfo' : 'dynamicFeeds/features.json',
-            'notificationsURL' : 'dynamicFeeds/notifications.json',
+            'sessionInfo' : 'staticFeeds/session.json',
+            'sidebarInfo' : 'staticFeeds/sidebar.json',
+            'featuresInfo' : 'staticFeeds/features.json',
+            'notificationsURL' : 'staticFeeds/notifications.json',
             'kvURL' : null,
             'groupURL' : null
         })
