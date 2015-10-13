@@ -166,7 +166,7 @@
          <li class="portlet-container-home beta-card-style center" ng-init="isDisabled=false">
             <h4>Circle Button Examples</h4>
             <div class='fluid-container row'>
-              <div class='col-xs-4'>
+              <div class='col-sm-4'>
                 <h3>
                   Disabled
                 </h3>
@@ -177,7 +177,7 @@
                                data-title='Google'>
                 </circle-button>
               </div>
-              <div class='col-xs-4'>
+              <div class='col-sm-4'>
                 <h3>
                   Active
                 </h3>
@@ -188,7 +188,7 @@
                                data-title='Google'>
                 </circle-button>
               </div>
-              <div class='col-xs-4'>
+              <div class='col-sm-4'>
                 <h3>
                   Toggle 
                   <button class='btn btn-flat' ng-click='isDisabled=!isDisabled'>
@@ -200,6 +200,15 @@
                                data-fa-icon='fa-google' 
                                data-disabled='isDisabled' 
                                data-title='Google'>
+                </circle-button>
+              </div>
+              <div class='col-sm-4'>
+                <h3>
+                  No Title
+                </h3>
+                <circle-button data-href='https://www.google.com' 
+                               data-target='_blank' 
+                               data-fa-icon='fa-google' >
                 </circle-button>
               </div>
             </div>
