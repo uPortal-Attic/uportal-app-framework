@@ -86,17 +86,21 @@ define(['angular'], function(angular) {
     }
 
     var init = function(){
-      miscService.pushPageview();
+      
+      if(!$scope.directiveMode) { //means we are on the actual notification tab
+        miscService.pushPageview();
+      }
       $scope.mode = 'new';
       $scope.notifications = [];
-      $rootScope.dismissedNotificationIds = [];
+      $rootScope.dismissedNotificationIds = $rootScope.dismissedNotificationIds || [];
       $scope.count = 0;
       $scope.isEmpty = false;
       $scope.notificationUrl = NOTIFICATION.notificationFullURL;
       $scope.notificationsEnabled = NOTIFICATION.enabled;
 
       if(NOTIFICATION.enabled) {
-        if(SERVICE_LOC.kvURL) { //key value store enabled, we can store dismiss of notifications
+        if(SERVICE_LOC.kvURL && $rootScope.dismissedNotificationIds.length === 0) { 
+          //key value store enabled, we can store dismiss of notifications
           notificationsService.getDismissedNotificationIds().then(dismissedSuccessFn);
         }
         if(NOTIFICATION.groupFiltering) {

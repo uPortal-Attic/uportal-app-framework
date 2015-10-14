@@ -14,6 +14,9 @@ define(['angular', 'require'], function(angular, require){
     app.directive('notificationBell', function(){
         return {
             restrict : 'E',
+            scope : {
+              directiveMode : '@mode'
+            },
             templateUrl : require.toUrl('./partials/notification-bell.html')
         }
     });
