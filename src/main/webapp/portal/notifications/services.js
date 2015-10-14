@@ -6,6 +6,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
   app.factory('notificationsService', ['$q','$http', 'miscService', 'keyValueService','SERVICE_LOC', function($q, $http, miscService, keyValueService, SERVICE_LOC) {
       var filteredNotificationPromise;
+      var dismissedPromise;
       var getAllNotifications = function() {
         return $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(
                                               function(result) {
@@ -18,18 +19,20 @@ define(['angular', 'jquery'], function(angular, $) {
       };
       
       var getDismissedNotificationIds = function() {
-      	return keyValueService.getValue('notification:dismiss').then(function(data){
+        dismissedPromise = dismissedPromise || keyValueService.getValue('notification:dismiss').then(function(data){
       	  if(data && data.value && data.value !== "") {
       	    return JSON.parse(data.value);
       	  } else {
             return [];
           }
       	});
+      	return dismissedPromise;
       };
       
       var setDismissedNotifications = function(arrayOfIds) {
         var string = JSON.stringify(arrayOfIds);
     		keyValueService.setValue('notification:dismiss',string);
+        dismissedPromise = null;
       };
 
       var getNotificationsByGroups = function() {
