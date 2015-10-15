@@ -88,7 +88,49 @@
         <filtering>true</filtering>
       </resource>
     </resources>
+    
     <plugins>
+      <plugin>
+          <groupId>pl.project13.maven</groupId>
+          <artifactId>git-commit-id-plugin</artifactId>
+          <version>2.1.13</version>
+          <executions>
+              <execution>
+                  <phase>validate</phase>
+                  <goals>
+                      <goal>revision</goal>
+                   </goals>
+              </execution>
+          </executions>
+          <configuration>
+              <dotGitDirectory>${project.basedir}/../.git</dotGitDirectory>
+              <generateGitPropertiesFile>false</generateGitPropertiesFile>
+              <skip>false</skip>
+          </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <!-- here the phase you need -->
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/frame/staticFeeds</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>src/main/filtered-resources</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>            
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
          <groupId>org.codehaus.mojo</groupId>
          <artifactId>exec-maven-plugin</artifactId>
