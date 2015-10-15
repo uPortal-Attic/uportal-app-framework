@@ -10,7 +10,7 @@ define(['angular','require'], function(angular, require) {
           $scope.frameInfo = result;
       }, function(){});
     
-    $scope.appInfo = [];
+    $scope.appInfo = null;
     if(SERVICE_LOC.aboutURL) {
       portalAboutService.getDetails(SERVICE_LOC.aboutURL)
         .then(function(result){
