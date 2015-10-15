@@ -2,6 +2,7 @@ define([
     'angular',
     'require',
     'app-config',
+    'frame-config',
     'ngRoute',
     'ngSanitize',
     'ngStorage',
@@ -29,6 +30,7 @@ define([
 
     var app = angular.module('portal', [
         'app-config',
+        'frame-config',
         'ngRoute',
         'ngSanitize',
         'ngStorage',

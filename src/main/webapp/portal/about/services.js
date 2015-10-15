@@ -4,23 +4,26 @@ define(['angular'], function(angular) {
 
   var app = angular.module('portal.about.services', []);
 
-  app.factory('portalAboutService', ['$http', 'miscService', 'SERVICE_LOC', function($http, miscService, SERVICE_LOC) {
+  app.factory('portalAboutService', ['$http', 'miscService', 'FRAME_URLS', function($http, miscService, FRAME_URLS) {
     
     /**
     * Gets frame information from generated about-frame.json
     **/
     var getFrameDetails = function() {
-      return $http.get("staticFeeds/about-frame.json", {cache: true})
+      return getDetails(FRAME_URLS.aboutFrame);
+    };
+    
+    /**
+    * Get information 
+    **/
+    var getDetails = function(URL) {
+      return $http.get(URL, {cache: true})
         .then(function(result){
           return result.data;
         },
         function(reason){
-          miscService.redirectUser(reason.status, 'frame details json feed call');
+          miscService.redirectUser(reason.status, URL);
         });
-    };
-    
-    var getDetails = function(URL) {
-      return null;
     };
         
     return {
