@@ -3,7 +3,7 @@
 define(['angular','require'], function(angular, require) {
   var app = angular.module('portal.main.controllers', []);
 
-  app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$document', 'NAMES', 'MISC_URLS', 'APP_FLAGS', function($localStorage, $sessionStorage, $scope, $document, NAMES, MISC_URLS, APP_FLAGS) {
+  app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$document', 'NAMES', 'MISC_URLS', 'APP_FLAGS','miscService', function($localStorage, $sessionStorage, $scope, $document, NAMES, MISC_URLS, APP_FLAGS, miscService) {
     var defaults = {
             showSidebar: APP_FLAGS.showSidebar,
             sidebarQuicklinks: false,
@@ -44,6 +44,17 @@ define(['angular','require'], function(angular, require) {
     $scope.reload = function() {
         location.reload();
     }
+    $scope.pushGAEvent = function (category, action, label) {
+      miscService.pushGAEvent(category, action, label);
+    }
+    $scope.openSidebar = function() {
+      $scope.$storage.showSidebar = true;
+      miscService.pushGAEvent('Sidebar','Show/Hide Sidebar', 'Show Sidebar');
+    }
+    $scope.closeSidebar = function() {
+      $scope.$storage.showSidebar = false;
+      miscService.pushGAEvent('Sidebar','Show/Hide Sidebar', 'Hide Sidebar');
+    };
 
     //run init
     init();
@@ -135,7 +146,7 @@ define(['angular','require'], function(angular, require) {
 
   }]);
 
-  app.controller('PortalSidebarController',[ '$localStorage', '$scope', 'mainService', function($localStorage, $scope, mainService) {
+  app.controller('PortalSidebarController',[ '$localStorage', '$scope', 'mainService', 'miscService', function($localStorage, $scope, mainService, miscService) {
       $scope.$storage = $localStorage;
       $scope.sidebar = [];
       mainService.getSidebar().then(function(result){

@@ -51,7 +51,7 @@
           <div class="region-sidebar-left col-sm-2 col-xs-0 hidden-xs no-margin" ng-if="$storage.showSidebar && APP_FLAGS.showSidebar">
               <side-bar-menu></side-bar-menu>
           </div>
-          <div ng-if="(!($storage.showSidebar)) && APP_FLAGS.showSidebar" class="show-sidebar" ng-click="$storage.showSidebar = true">
+          <div ng-if="(!($storage.showSidebar)) && APP_FLAGS.showSidebar" class="show-sidebar" ng-click="openSidebar()">
             <span class="fa fa-bars"></span>
           </div>
           <div role="main" id="region-main" class="col-xs-12" ng-class="{'col-sm-10 col-sm-offset-2' : ($storage.showSidebar && APP_FLAGS.showSidebar), 'col-sm-11 max-view' : (!($storage.showSidebar) || !APP_FLAGS.showSidebar)}">
