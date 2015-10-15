@@ -1,0 +1,22 @@
+[
+  { 
+    "name" : "Frame Version",
+    "value" : "${project.version}"
+  },
+  { 
+    "name" : "Git Tags",
+    "value" : "${git.tags}"
+  },
+  { 
+    "name" : "Git Branch",
+    "value" : "${git.branch}"
+  },
+  { 
+    "name" : "Git Commit ID",
+    "value" : "${git.commit.id.abbrev}"
+  },
+  { 
+    "name" : "Build Time",
+    "value" : "${git.build.time}"
+  }
+]

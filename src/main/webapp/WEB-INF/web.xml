@@ -23,5 +23,6 @@
       <url-pattern>/settings</url-pattern>
       <url-pattern>/notifications</url-pattern>
       <url-pattern>/features</url-pattern>
+      <url-pattern>/about</url-pattern>
   </servlet-mapping>
 </web-app>
