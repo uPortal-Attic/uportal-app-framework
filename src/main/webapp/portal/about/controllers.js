@@ -4,10 +4,10 @@ define(['angular','require'], function(angular, require) {
   var app = angular.module('portal.about.controllers', []);
 	
 	
-	app.controller('PortalAboutController', ['$scope', 'portalAboutService', 'SERVICE_LOC', function($scope,portalAboutService, SERVICE_LOC) {
+	app.controller('PortalAboutController', ['$scope', 'portalAboutService', 'SERVICE_LOC', function($scope, portalAboutService, SERVICE_LOC) {
     portalAboutService.getFrameDetails()
       .then(function(result){
-          $scope.frameInfo = result.data;
+          $scope.frameInfo = result;
       }, function(){});
     
     if(SERVICE_LOC.aboutURL) {

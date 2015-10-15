@@ -16,6 +16,10 @@
     "value" : "${git.commit.id.abbrev}"
   },
   { 
+    "name" : "Git Dirty",
+    "value" : "${git.dirty}"
+  },
+  { 
     "name" : "Build Time",
     "value" : "${git.build.time}"
   }
