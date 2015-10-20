@@ -73,7 +73,7 @@ define(['angular','require'], function(angular, require) {
     mainService.getUser().then(function(result){
       that.user = result;
       //check if is guest
-      if (that.user && that.user.userName === NAMES.guestUserName)
+      if (NAMES.guestUserName && that.user && that.user.userName === NAMES.guestUserName)
         $rootScope.GuestMode = true;
 
     });
