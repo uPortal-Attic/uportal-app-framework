@@ -1,7 +1,7 @@
 {"sidebar" :  
             [
-                {"title": "Home", "hyperlink" : "/", "target" : "", "faIcon" : "fa-home", "displayFlag" : ""},
                 {"title": "Beta Settings", "hyperlink" : "settings", "target" : "", "faIcon" : "fa-cog", "displayFlag" : "sidebarShowSettings"},
-                {"title": "Log out", "hyperlink" : "/portal/Logout", "target" : "", "faIcon" : "fa-sign-out", "displayFlag" : ""}
+                {"title": "External URL", "hyperlink" : "http://www.wisc.edu", "target" : "", "faIcon" : "fa-external-link", "displayFlag" : ""},
+                {"title": "Local non-route", "hyperlink" : "logout", "target" : "_self", "faIcon" : "fa-shield", "displayFlag" : ""}
             ]
 }

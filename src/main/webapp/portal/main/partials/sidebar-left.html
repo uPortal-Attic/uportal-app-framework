@@ -10,6 +10,19 @@
     </div>
     <hr>
     <div ng-controller="PortalSidebarController as sidebarCtrl">
+    	<ul class="list-group sidebar-list">
+          <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
+            <a href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+              <span class="fa fa-home fa-fw"></span> Home
+            </a>
+          </li>
+          <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
+            <a href="{{MISC_URLS.logoutURL}}" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Log out');">
+              <span class="fa fa-sign-out fa-fw"></span> Log out
+            </a>
+          </li>
+       </ul>
+       <hr/>
         <ul class="list-group sidebar-list">
           <li class="list-group-item" ng-repeat="item in sidebar" ng-if="sidebarCtrl.canSee(item.displayFlag)" ng-click="headerCtrl.navbarCollapsed = true;">
             <a href="{{item.hyperlink}}" target="{{item.target}}" ng-click="pushGAEvent('Sidebar', 'Click Link', item.title);">
