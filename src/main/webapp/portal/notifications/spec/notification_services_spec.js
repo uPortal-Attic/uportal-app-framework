@@ -13,12 +13,13 @@ define(['angular-mocks', 'portal'], function() {
             backendURL = SERVICE_LOC.notificationsURL;
             groupURL   = SERVICE_LOC.groupURL;
             kvURL = SERVICE_LOC.kvURL;
+            
         }));
         
         it("should return an empty array when you get an empty string as a value", function(){
           //setup
           httpBackend.whenGET(backendURL).respond({"notifications" :[]});
-          httpBackend.whenGET(kvURL + "getValue?key=notification:dismiss").respond({value : ""});
+          httpBackend.whenGET(kvURL + "/notification:dismiss").respond([]);
           
           //test
           notificationsService.getDismissedNotificationIds().then(function(results){
