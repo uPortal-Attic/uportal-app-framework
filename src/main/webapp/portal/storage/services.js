@@ -34,14 +34,13 @@ define(['angular', 'jquery'], function(angular, $) {
       }
       
       var getValue = function(key){
-        return $http.get(SERVICE_LOC.kvURL + "getValue?key="+key).then(successFn, errorFn);
+        return $http.get(SERVICE_LOC.kvURL + "/"+key).then(successFn, errorFn);
       };
       
       var setValue = function(key, value){
         var data = {};
-        data.key = key;
         data.value = value;
-        return $http.post(SERVICE_LOC.kvURL + "setValue",data).then(successFn, errorFn);
+        return $http.put(SERVICE_LOC.kvURL + "/"+ key,data).then(successFn, errorFn);
       };
       
       return {
