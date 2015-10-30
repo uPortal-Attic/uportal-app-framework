@@ -20,8 +20,8 @@ define(['angular', 'jquery'], function(angular, $) {
       
       var getDismissedNotificationIds = function() {
         dismissedPromise = dismissedPromise || keyValueService.getValue('notification:dismiss').then(function(data){
-      	  if(data && data.value && data.value !== "") {
-      	    return JSON.parse(data.value);
+      	  if(data && !data.value) { //empty state is {value : ""}
+      	    return JSON.parse(data);
       	  } else {
             return [];
           }
@@ -30,8 +30,7 @@ define(['angular', 'jquery'], function(angular, $) {
       };
       
       var setDismissedNotifications = function(arrayOfIds) {
-        var string = JSON.stringify(arrayOfIds);
-    		keyValueService.setValue('notification:dismiss',string);
+    		keyValueService.setValue('notification:dismiss',arrayOfIds);
         dismissedPromise = null;
       };
 

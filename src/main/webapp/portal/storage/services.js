@@ -38,9 +38,7 @@ define(['angular', 'jquery'], function(angular, $) {
       };
       
       var setValue = function(key, value){
-        var data = {};
-        data.value = value;
-        return $http.put(SERVICE_LOC.kvURL + "/"+ key,data).then(successFn, errorFn);
+        return $http.put(SERVICE_LOC.kvURL + "/"+ key,value).then(successFn, errorFn);
       };
       
       return {
