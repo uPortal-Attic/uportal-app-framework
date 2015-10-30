@@ -20,9 +20,15 @@ define(['angular', 'jquery'], function(angular, $) {
       
       var getDismissedNotificationIds = function() {
         dismissedPromise = dismissedPromise || keyValueService.getValue('notification:dismiss').then(function(data){
-      	  if(data && !data.value) { //empty state is {value : ""}
+          if(data && typeof data.value === 'string') { //data and has a value string
+            if(data.value) { //value string contains things
+              return JSON.parse(data.value);
+            } else { //empty state
+              return [];
+            }
+          } else if (data) { //data exists, but data.value doesn't, so its just json
       	    return data;
-      	  } else {
+      	  } else { // null returned, just empty state it
             return [];
           }
       	});
