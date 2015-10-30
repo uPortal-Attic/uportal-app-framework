@@ -61,7 +61,7 @@ define(['angular','require'], function(angular, require) {
   } ]);
 
   /* Username */
-  app.controller('SessionCheckController', [ 'mainService', 'MISC_URLS', '$rootScope', function(mainService, MISC_URLS, $rootScope) {
+  app.controller('SessionCheckController', [ 'mainService', 'MISC_URLS', 'NAMES', '$rootScope', function(mainService, MISC_URLS, NAMES, $rootScope) {
     var that = this;
     that.user = [];
     that.feedbackURL = MISC_URLS.feedbackURL;
@@ -73,7 +73,7 @@ define(['angular','require'], function(angular, require) {
     mainService.getUser().then(function(result){
       that.user = result;
       //check if is guest
-      if (that.user.displayName === "Guest")
+      if (NAMES.guestUserName && that.user && that.user.userName === NAMES.guestUserName)
         $rootScope.GuestMode = true;
 
     });
