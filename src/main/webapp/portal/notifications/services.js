@@ -21,7 +21,7 @@ define(['angular', 'jquery'], function(angular, $) {
       var getDismissedNotificationIds = function() {
         dismissedPromise = dismissedPromise || keyValueService.getValue('notification:dismiss').then(function(data){
       	  if(data && !data.value) { //empty state is {value : ""}
-      	    return JSON.parse(data);
+      	    return data;
       	  } else {
             return [];
           }
