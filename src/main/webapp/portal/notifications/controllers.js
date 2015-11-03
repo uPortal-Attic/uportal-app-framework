@@ -10,7 +10,8 @@ define(['angular'], function(angular) {
       $scope.count = data.length;
       $scope.isEmpty = ($scope.count === 0);
       $scope.status = "You have "+ ($scope.isEmpty ? "no " : "") + "notifications";
-      $scope.notifications = data;
+      $scope.notifications = data.notifications;
+      $scope.dismissedNotifications = data.dismissedNotifications;
     };
 
     var errorFn = function(data){

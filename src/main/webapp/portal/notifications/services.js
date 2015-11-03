@@ -10,7 +10,7 @@ define(['angular', 'jquery'], function(angular, $) {
       var getAllNotifications = function() {
         return $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(
                                               function(result) {
-                                                  return  result.data.notifications;
+                                                  return  result.data;
                                               } ,
                                               function(reason){
                                                   miscService.redirectUser(reason.status, 'notifications json feed call');

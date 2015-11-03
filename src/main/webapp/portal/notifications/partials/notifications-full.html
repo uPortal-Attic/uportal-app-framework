@@ -10,19 +10,29 @@
 		</div>
 		<div>
 			<ul class="notifications-list">
-        		<li class="notification-item" ng-repeat="notification in notifications" ng-if='shouldShow(notification)'>
+        <li class="notification-item" ng-repeat="notification in notifications" ng-if='shouldShow(notification)'>
 					<a class="content" ng-href='{{notification.actionURL}}' target='_blank' aria-label='{{notification.actionAlt}}'>
-	            		<p>{{ notification.title }}</p>
+	          <p>{{ notification.title }}</p>
 					</a>
 					<div class="action" ng-click='dismiss(notification)' ng-hide="!notification.dismissable || isDismissed(notification)">
-	            	<i class='fa fa-times'tooltip="Dismiss notification" tooltip-placement="top" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
+	          <i class='fa fa-times'tooltip="Dismiss notification" tooltip-placement="left" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
 					</div>
-               <div class="action" ng-click="undismiss(notification)" ng-hide="!(mode === 'old')">
-                 <i class='fa fa-undo'tooltip="Revert Dismiss of notification" tooltip-placement="left" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
-              </div>
-        		</li>
-        		<li class="notification-item read" ng-if="isEmpty || (countWithDismissed() === 0 && mode === 'new') || (mode === 'old' && dismissedCount() === 0)">You have no <span ng-show='dismissedCount() === 0'>dismissed</span> notifications at this time.</li>
-        	</ul>
+          <div class="action" ng-click="undismiss(notification)" ng-hide="!(mode === 'old')">
+             <i class='fa fa-undo'tooltip="Revert Dismiss of notification" tooltip-placement="left" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
+          </div>
+        </li>
+        <li class="notification-item read" ng-if="isEmpty || (countWithDismissed() === 0 && mode === 'new') || (mode === 'old' && dismissedCount() === 0 && dismissedNotifications.length === 0)">You have no <span ng-show='dismissedCount() === 0'>dismissed</span> notifications at this time.</li>
+      </ul>
+			<ul class="notifications-list" ng-if="mode === 'old'">
+				<li class="notification-item" ng-repeat="notification in dismissedNotifications">
+					<p class='content'>{{ notification.title }}</p>
+					<div class='action'>
+						<i class='fa fa-info' 
+						   tooltip='dismissed {{notification.dismissedDate.m + "-" + notification.dismissedDate.d + "-" + notification.dismissedDate.y}}'
+						   tooltip-placement="left" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
