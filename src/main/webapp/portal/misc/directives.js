@@ -197,6 +197,30 @@ define(['angular', 'require'], function(angular, require) {
     		templateUrl: require.toUrl('./partials/circle-button.html')
     	};
     });
+    
+    /**
+    <frame-page> is a directive that is your typical page. Header, body.
+    
+    The header items are routed to the <portlet-header> (see above)
+    
+    The body of the tag is then the body of the application
+    
+    **/
+    app.directive('framePage', function(){
+      return {
+          restrict : 'E',
+          templateUrl : require.toUrl('./partials/frame-page.html'),
+          transclude: true,
+          scope : {
+            headerTitle:'@appHeaderTitle',
+            headerDescription:'@appHeaderDescription',
+            headerCollapse:'=appHeaderCollapse',
+            headerToggle:'=appHeaderToggle',
+            headerImage: '@appHeaderImage'
+          }
+      }
+    });
+
 
     return app;
 
