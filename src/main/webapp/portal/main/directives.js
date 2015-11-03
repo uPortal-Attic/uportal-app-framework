@@ -44,7 +44,7 @@ define(['angular', 'require'], function(angular, require) {
           templateUrl : require.toUrl('./partials/features-modal-template.html')
       }
   });
-
+  
   return app;
 
 });

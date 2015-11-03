@@ -1,11 +1,8 @@
-<div class="row portlet-frame">
-  <portlet-header role="banner"
-                  app-image='img/terrace.jpg'
-                  app-title="Frame App Home"
-                  app-description='This is just a dummy page to show you what a typical page looks like'
-                  app-collapse='true'
-                  app-show-toggle='true'></portlet-header>
-  <div role="main" class="col-xs-12 no-padding">
-    <p>Insert Stuff here</p>
-  </div>
-</div>
+<frame-page app-header-title='Frame App Home' 
+            app-header-description='This is just a simple page to show you what a typical page looks like using the frame-page directive'
+            app-header-collapse='false'
+            app-header-toggle='true'
+            app-header-image='img/terrace.jpg'>
+  <p class='center'>Insert Page Information here using ng-transclude</p>
+</frame-page>
+
