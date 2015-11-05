@@ -5,7 +5,8 @@ define(['angular'], function(angular) {
         .constant('APP_FLAGS', {
             'features' : false,
             'showSidebar' : true,
-            'showSearch' : true
+            'showSearch' : true,
+            'isWeb' : false
         })
         .constant('SERVICE_LOC', {
             'aboutURL' : null,
@@ -25,7 +26,6 @@ define(['angular'], function(angular) {
             'guestUserName' : 'guest'
         })
         .constant('SEARCH',{
-            'isWeb' : false,
             'searchURL' : 'https://my.wisc.edu/web/apps/search/'
         })
         .constant('NOTIFICATION', {
