@@ -34,11 +34,14 @@ define(['angular'], function(angular) {
             'notificationFullURL' : 'notifications'
         })
         .constant('MISC_URLS',{
-            'feedbackURL' : 'https://my.wisc.edu/portal/p/feedback',
             'back2ClassicURL' : null,
-            'whatsNewURL' : null,
+            'feedbackURL' : 'https://my.wisc.edu/portal/p/feedback',
+            'helpdeskURL' : 'https://kb.wisc.edu/helpdesk/',
             'loginURL' : '/portal/Login?profile=bucky',
-            'logoutURL' : '/portal/Logout'
+            'logoutURL' : '/portal/Logout',
+            'myuwHome' : 'https://my.wisc.edu',
+            'whatsNewURL' : null
+            
         });
 
     return config;
