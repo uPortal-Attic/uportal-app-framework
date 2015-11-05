@@ -1,4 +1,4 @@
-define(['angular', 'jquery', 'portal', 'portal/main/route', 'portal/settings/route', 'portal/notifications/route', 'portal/features/route', 'portal/about/route'], function(angular, $, portal, main, settings, notifications, features, about) {
+define(['angular', 'jquery', 'portal', 'portal/main/routes', 'portal/settings/route', 'portal/notifications/route', 'portal/features/route', 'portal/about/route'], function(angular, $, portal, main, settings, notifications, features, about) {
     /*
      This module intentionally left empty. This file is intended to serve as an extension point
      for My UW Madison 'App' developers that overlay angularjs-portal-frame.
@@ -16,7 +16,8 @@ define(['angular', 'jquery', 'portal', 'portal/main/route', 'portal/settings/rou
             when('/notifications', notifications).
             when('/features', features).
             when('/about', about).
-            otherwise(main);
+            when('/access-denied', main.accessDenied).
+            otherwise(main.main);
     }]);
 
     return app

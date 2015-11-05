@@ -28,6 +28,7 @@ define(['angular','require'], function(angular, require) {
       $scope.NAMES=NAMES;
       $scope.classicURL=MISC_URLS.back2ClassicURL;
       $scope.APP_FLAGS=APP_FLAGS;
+      $scope.MISC_URLS=MISC_URLS;
 
       if(NAMES.title) {
         $document[0].title=NAMES.title;
