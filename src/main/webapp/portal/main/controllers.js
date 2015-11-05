@@ -3,7 +3,7 @@
 define(['angular','require'], function(angular, require) {
   var app = angular.module('portal.main.controllers', []);
 
-  app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$document', 'NAMES', 'MISC_URLS', 'APP_FLAGS','miscService', function($localStorage, $sessionStorage, $scope, $document, NAMES, MISC_URLS, APP_FLAGS, miscService) {
+  app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS','miscService', function($localStorage, $sessionStorage, $scope, $document, $location, NAMES, MISC_URLS, APP_FLAGS, miscService) {
     var defaults = {
             showSidebar: APP_FLAGS.showSidebar,
             sidebarQuicklinks: false,
@@ -32,6 +32,9 @@ define(['angular','require'], function(angular, require) {
       if(NAMES.title) {
         $document[0].title=NAMES.title;
       }
+
+      //class for ng-view
+      $scope.routeClass = "route" + angular.lowercase($location.path().replace(new RegExp('/', 'g'), '-'));
     }
     $scope.resetLocal = function() {
         $localStorage.$reset(defaults);
