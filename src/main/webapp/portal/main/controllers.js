@@ -152,10 +152,11 @@ define(['angular','require'], function(angular, require) {
 
   }]);
 
-  app.controller('PortalSidebarController',[ '$localStorage', '$scope', 'mainService', 'miscService', 'MISC_URLS', function($localStorage, $scope, mainService, miscService, MISC_URLS) {
+  app.controller('PortalSidebarController',[ '$localStorage', '$scope', 'mainService', 'miscService', 'MISC_URLS', 'APP_FLAGS', function($localStorage, $scope, mainService, miscService, MISC_URLS, APP_FLAGS) {
       $scope.$storage = $localStorage;
       $scope.sidebar = [];
       $scope.MISC_URLS = MISC_URLS;
+      $scope.APP_FLAGS = APP_FLAGS;
       mainService.getSidebar().then(function(result){
           $scope.sidebar = result.data.sidebar;
       });

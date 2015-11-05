@@ -12,7 +12,10 @@
     <div ng-controller="PortalSidebarController as sidebarCtrl">
     	<ul class="list-group sidebar-list">
           <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
-            <a href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+            <a ng-if='APP_FLAGS.isWeb' href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+              <span class="fa fa-home fa-fw"></span> Home
+            </a>
+            <a ng-if='!APP_FLAGS.isWeb' href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
               <span class="fa fa-home fa-fw"></span> Home
             </a>
           </li>
