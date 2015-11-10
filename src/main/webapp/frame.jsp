@@ -55,7 +55,7 @@
             <span class="fa fa-bars"></span>
           </div>
           <div role="main" id="region-main" class="col-xs-12" ng-class="{'col-sm-10 col-sm-offset-2' : ($storage.showSidebar && APP_FLAGS.showSidebar), 'col-sm-11 max-view' : (!($storage.showSidebar) || !APP_FLAGS.showSidebar)}">
-            <div ng-class="routeClass" ng-view></div>
+            <div ng-class="routeClass" ng-view role="application" aria-labelledby="app-title"></div>
           </div>
         </div>
       </div>
