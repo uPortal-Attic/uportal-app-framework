@@ -183,6 +183,7 @@ define(['angular', 'require'], function(angular, require) {
      * - fa-icon : the font awesome icon to use
      * - disabled : button disabled or not (can be a variable)
      * - title : (optional) title that is displayed under the circle
+     * - truncLen : (optional) length to truncate the title
      */
     app.directive('circleButton', function() {
     	return {
@@ -191,8 +192,9 @@ define(['angular', 'require'], function(angular, require) {
     			href: '@href',
     			target: '@target',
     			faIcon: '@faIcon',
-            cbDisabled : '=disabled',
-            title : '@title'
+          cbDisabled : '=disabled',
+          title : '@title',
+          trunclen: '@trunclen'
     		},
     		templateUrl: require.toUrl('./partials/circle-button.html')
     	};
