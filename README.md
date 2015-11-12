@@ -32,6 +32,8 @@ In your existing Maven war project, add the following dependency:
 </dependency>
 ```
 
+(uw-frame is [available in The Central Repository](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22edu.wisc.my.apps%22%20AND%20a%3A%22uw-frame%22).)
+
 uw-frame provides the primary HTML page at the root of the servlet context that hosts your AngularJs single page application. In order to introduce your own content, uw-frame's extension point is 'my-app/main.js'.
 
 Start by creating the folder 'src/main/webapp/my-app' within your Maven war project, and copy [uw-frame's main.js](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/src/main/webapp/my-app/main.js) in to it.
