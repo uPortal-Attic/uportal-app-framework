@@ -27,7 +27,7 @@ In your existing Maven war project, add the following dependency:
 <dependency>
   <groupId>edu.wisc.my.apps</groupId>
   <artifactId>uw-frame</artifactId>
-  <version>1.0.0</version>
+  <version>x.y.z</version>
   <type>war</type>
 </dependency>
 ```
