@@ -37,7 +37,9 @@ define([], function() {
         'ui-bootstrap'  : { deps: ['angular'] },
         'ui-gravatar'   : { deps: ['angular'] },
         'uw-ui-toolkit' : { deps: ['jquery'] }
-    }
+    },
+    
+    waitSeconds : 0
 
   }
 });
