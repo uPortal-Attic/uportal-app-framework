@@ -42,7 +42,14 @@ define(['angular'], function(angular) {
             'myuwHome' : 'https://my.wisc.edu',
             'whatsNewURL' : null
             
-        });
+        })
+        .constant('APP_BETA_FEATURES', [
+          {
+            "id" : "sidebarQuicklinks",
+            "title" : "Sidebar Quicklinks",
+            "description" : "Shows quicklinks to various campus sites in sidebar"
+          }
+        ]);
 
     return config;
 
