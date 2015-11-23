@@ -30,7 +30,7 @@ define([
     'ui-bootstrap',
     'ui-gravatar'
 ], function(angular, require) {
-
+  
     var app = angular.module('portal', [
         'app-config',
         'frame-config',
@@ -62,10 +62,9 @@ define([
         'ui.sortable'
     ]);
     
-    app.run(function($rootScope, NAMES){
+    app.run(function($rootScope, NAMES, THEMES){
       $rootScope.portal = {};
-      $rootScope.portal.school = 'madison';
-      $rootScope.portal.crest = NAMES.crest;
+      $rootScope.portal.theme = THEMES[0];
     });
 
     return app;
