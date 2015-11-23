@@ -43,11 +43,11 @@ define(['angular'], function(angular) {
             'whatsNewURL' : null
             
         })
-        .constant('OPTIONS', [
+        .constant('APP_BETA_FEATURES', [
           {
-            "id" : "sidebarShowSettings",
-            "title" : "Sidebar Settings",
-            "description" : "Shows the settings button to get to this page easier"
+            "id" : "sidebarQuicklinks",
+            "title" : "Sidebar Quicklinks",
+            "description" : "Shows quicklinks to various campus sites in sidebar"
           }
         ]);
 
