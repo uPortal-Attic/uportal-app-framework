@@ -42,7 +42,14 @@ define(['angular'], function(angular) {
             'myuwHome' : 'https://my.wisc.edu',
             'whatsNewURL' : null
             
-        });
+        })
+        .constant('OPTIONS', [
+          {
+            "id" : "sidebarShowSettings",
+            "title" : "Sidebar Settings",
+            "description" : "Shows the settings button to get to this page easier"
+          }
+        ]);
 
     return config;
 

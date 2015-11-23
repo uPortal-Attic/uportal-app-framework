@@ -1,23 +1,19 @@
-<div class="row portlet-frame">
+<div class="row portlet-frame" ng-controller="SettingsController">
   <div role="banner" class="portlet-header">
     <img src="img/stand-back.jpg" alt="Science" height="180px" style="left: 30%; width: inherit;">
-    <h1>Beta Settings</h1>
-    <p>Opting in/out of beta features</p>
+    <h1>Alpha Settings</h1>
+    <p>Opting in/out of experimental features, no warranty included</p>
   </div>
   <div role="main" class="col-xs-12 no-padding portlet-body">
-    <h3 class="home-section-header">Your Options</h3>
+    <div class='col-sm-12'>
+      <ul class='container-fluid row' style='padding-top: 1em;'>
+        <li class='col-sm-6 portlet-container-home beta-card-style' ng-repeat='option in options'>
+          <setting-option></setting-option>
+        </li>
+      </ul>
+    </div>
+    
     <ul class='col-sm-6' style='padding-top: 1em;'>
-       <li class="portlet-container-home beta-card-style">
-           <h4>
-               <span class="btn-group">
-                   <label class="btn" ng-class="{'btn-success' : $storage.sidebarShowSettings, 'btn-default' : !$storage.sidebarShowSettings }" ng-model="$storage.sidebarShowSettings" btn-radio="true">On</label>
-                   <label class="btn" ng-class="{'btn-success' : $storage.sidebarShowSettings, 'btn-default' : !$storage.sidebarShowSettings }" ng-model="$storage.sidebarShowSettings" btn-radio="false">Off</label>
-               </span>
-               Sidebar Settings
-           </h4>
-           <small>Shows the settings button to get to this page easier</small>
-
-       </li>
        <li class="portlet-container-home beta-card-style">
            <h4>
                <span class="btn-group">
