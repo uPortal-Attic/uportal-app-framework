@@ -156,11 +156,12 @@
         <artifactId>lesscss-maven-plugin</artifactId>
         <version>1.7.0.1.1</version>
         <configuration>
-          <sourceDirectory>${project.basedir}/src/main/webapp/css/</sourceDirectory>
-          <outputDirectory>${webapp.target.directory}/css/</outputDirectory>
+          <sourceDirectory>${project.basedir}/src/main/webapp/css/themes/</sourceDirectory>
+          <outputDirectory>${webapp.target.directory}/css/themes/</outputDirectory>
           <compress>true</compress>
           <includes>
-            <include>angular.less</include>
+            <include>uw-madison.less</include>
+            <include>uw-system.less</include>
           </includes>
           <outputFileFormat>{fileName}.${project.version}.css</outputFileFormat>
         </configuration>

@@ -12,7 +12,7 @@
   <!-- CSS links -->
   <!-- Latest compiled and minified CSS -->
   <!-- <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
-  <link href="css/angular.${project.version}.css" rel="stylesheet" type="text/css"/>
+  <link ng-href="css/themes/uw-{{portal.school}}.${project.version}.css" rel="stylesheet" type="text/css"/>
   <link href="my-app/my-app.css" rel="stylesheet" type="text/css"/>
   <link rel="shortcut icon" href="bower_components/uw-ui-toolkit/dist/img/favicon.ico" type="image/x-icon"/>
 </head>

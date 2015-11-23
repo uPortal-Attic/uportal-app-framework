@@ -3,7 +3,7 @@
 define(['angular','require'], function(angular, require) {
   var app = angular.module('portal.main.controllers', []);
 
-  app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS','miscService', function($localStorage, $sessionStorage, $scope, $document, $location, NAMES, MISC_URLS, APP_FLAGS, miscService) {
+  app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$rootScope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS','miscService', function($localStorage, $sessionStorage, $scope, $rootScope, $document, $location, NAMES, MISC_URLS, APP_FLAGS, miscService) {
     var defaults = {
             showSidebar: APP_FLAGS.showSidebar,
             sidebarQuicklinks: false,
@@ -37,6 +37,13 @@ define(['angular','require'], function(angular, require) {
       //class for ng-view
       $scope.routeClass = "route" + angular.lowercase($location.path().replace(new RegExp('/', 'g'), '-'));
     }
+    
+    $scope.switchTheme = function(choice) {
+      $rootScope.portal.school = 'system';
+      $rootScope.portal.crest = 'css/img/uwsystem.png';
+      
+    }
+    
     $scope.resetLocal = function() {
         $localStorage.$reset(defaults);
     };
@@ -133,9 +140,9 @@ define(['angular','require'], function(angular, require) {
 
 
   /* Header */
-  app.controller('PortalHeaderController', ['$scope','$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', function($scope, $location, NAMES, APP_FLAGS, MISC_URLS) {
+  app.controller('PortalHeaderController', ['$rootScope', '$scope','$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS) {
     this.navbarCollapsed = true;
-    this.crest = NAMES.crest;
+    this.crest = $rootScope.portal.crest;
     this.crestalt = NAMES.crestalt;
     this.sublogo = NAMES.sublogo;
     this.showLogout = !APP_FLAGS.showSidebar;

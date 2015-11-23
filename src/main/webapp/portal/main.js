@@ -61,6 +61,12 @@ define([
         'ui.gravatar',
         'ui.sortable'
     ]);
+    
+    app.run(function($rootScope, NAMES){
+      $rootScope.portal = {};
+      $rootScope.portal.school = 'madison';
+      $rootScope.portal.crest = NAMES.crest;
+    });
 
     return app;
 
