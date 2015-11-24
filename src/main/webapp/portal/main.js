@@ -62,9 +62,18 @@ define([
         'ui.sortable'
     ]);
     
-    app.run(function($rootScope, NAMES, THEMES){
+    app.run(function($rootScope, $timeout, NAMES, THEMES){
       $rootScope.portal = {};
-      $rootScope.portal.theme = THEMES[0];
+      $rootScope.portal.theme = THEMES[0]; //theme default
+      
+      //loading sequence
+      $rootScope.portal.loading = {};
+      $rootScope.portal.loading.startFade = true;
+      console.log(new Date());
+      $timeout(function(){
+        $rootScope.portal.loading.hidden = true;
+        console.log(new Date());
+      }, 2000);
     });
 
     return app;

@@ -5,12 +5,12 @@ define(['angular'], function(angular) {
         .constant('THEMES', [
           {
             "name" : "madison",
-            "crest" : "css/img/uwcrest_web_sm.png",
+            "crest" : "img/uwcrest_web_sm.png",
             "title" : "MyUW"
           },
           {
             "name" : "system",
-            "crest" : "css/img/uwsystem.png",
+            "crest" : "img/uwsystem.png",
             "title" : "MyUW - System"
           },
           {
