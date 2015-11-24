@@ -19,18 +19,19 @@
 </head>
 
 <body ng-controller="PortalMainController as mainCtrl" class='my-uw'>
-  <div ng-hide="portal.loading.hidden" ng-class="{slowfade: portal.loading.startFade}" style=' 
+  <div ng-hide="portal.loading.hidden" ng-class="{slowfade: portal.loading.startFade}" style=" 
           position : fixed;
           top: 0;
           z-index: 2000;
-          color: lightgrey;
-          background: #b70101;
+          color: darkgrey;
+          background: #EAE8DF;
           height: 100vh;
           width: 100vw;
           text-align: center;
           padding-top: 45vh;
           font-size: xx-large;
-          margin: -8px;'>
+          margin: -8px;
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
           Loading...</div>
   <div class='sr-only' ng-if="classicURL">
     <a ng-href='{{classicURL}}'>Switch back to the classic MyUW</a>
