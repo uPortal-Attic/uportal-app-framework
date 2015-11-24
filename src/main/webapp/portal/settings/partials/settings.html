@@ -12,6 +12,12 @@
     </ul>
     <ul class="row" style='margin : 10px; padding : 0;'>
       <li class="col-sm-6 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
+          <h4>Theme Selector</h4>
+          <small>Pick which place you call home</small>
+          <select class="form-control" ng-options="item as item.title for item in THEMES track by item.title" ng-model="portal.theme">
+          </select>
+       </li>
+      <li class="col-sm-6 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
         <h4>Home Background Image &nbsp;</h4>
         <small>Pick a different background image for MyUW Home</small>
         <div style='text-align: center;'>

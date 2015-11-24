@@ -30,7 +30,7 @@ define([
     'ui-bootstrap',
     'ui-gravatar'
 ], function(angular, require) {
-
+  
     var app = angular.module('portal', [
         'app-config',
         'frame-config',
@@ -61,6 +61,20 @@ define([
         'ui.gravatar',
         'ui.sortable'
     ]);
+    
+    app.run(function($rootScope, $timeout, NAMES, THEMES){
+      $rootScope.portal = {};
+      $rootScope.portal.theme = THEMES[0]; //theme default
+      
+      //loading sequence
+      $rootScope.portal.loading = {};
+      $rootScope.portal.loading.startFade = true;
+      console.log(new Date());
+      $timeout(function(){
+        $rootScope.portal.loading.hidden = true;
+        console.log(new Date());
+      }, 2000);
+    });
 
     return app;
 

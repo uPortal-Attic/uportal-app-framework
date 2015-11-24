@@ -1,22 +1,3 @@
-/**
- * Licensed to Jasig under one or more contributor license
- * agreements. See the NOTICE file distributed with this work
- * for additional information regarding copyright ownership.
- * Jasig licenses this file to you under the Apache License,
- * Version 2.0 (the "License"); you may not use this file
- * except in compliance with the License. You may obtain a
- * copy of the License at:
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-
 /* ==========================================================================
    Variables
    ========================================================================== */
@@ -92,7 +73,7 @@
 
 @border: 1px solid @grayscale3;
 
-@body-background-color: #fff;
+@body-background-color: @white;
 @body-background-image: url(./common/images/grey-jean.png);
 /* Using the furley pattern from http://subtlepatterns.com */
 
@@ -105,7 +86,7 @@
  * Region Styles
  */
 @header-background-color: @color1;
-@header-text-color: #FFFFFF;
+@header-text-color: @white;
 
 @footer-background-color : #404040;
 @footer-text-color : #adadad;
@@ -120,20 +101,20 @@
 
 @user-portal-link-color: @link-color;
 
-@btn-skin-color:              #fff;
+@btn-skin-color:              @white;
 @btn-skin-bg:                 @color2;
 @btn-skin-border:             darken(@btn-skin-bg, 5%);
 
 @btn-skin-alt-color:              #grayscale10;
 @btn-skin-alt-bg:                 @color3;
 @btn-skin-alt-border:             darken(@color3, 5%);
-// @user-portal-background-color: #fff;
+// @user-portal-background-color: @white;
 
 
 /**
  * Header
  */
-@notification-icon-color: #fff;
+@notification-icon-color: @white;
 /**
  * Nav
  */
@@ -153,11 +134,11 @@
 // @navbar-item-active-hover-background-color: darken(@color1, 20%);
 @navbar-item-active-hover-background-color: lighten(@navbar-item-active-background-color, 5%);
 
-@navbar-item-active-text-color: #fff;
+@navbar-item-active-text-color: @white;
 @navbar-item-active-hover-text-color: inherit;
 
 @navbar-controls-color: @grayscale10;
-@navbar-controls-hover-color: #fff;
+@navbar-controls-hover-color: @white;
 
 @menu-toggle-background-color: @color2;
 @menu-toggle-text-color: @white;
@@ -168,7 +149,7 @@
 /**
  * Search field
  */
-@search-button-text-color: #fff;
+@search-button-text-color: @white;
 @search-button-background-color: rgb(30, 77, 43);
 /**
  * Portlet Chrome Settings
@@ -202,33 +183,3 @@
 .float (@direction: left) {
     float: @direction;
 }
-
-/*
- * Base formatting for converting a block-list to an inline-list.
- */
-
-.inline-block-list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-
-
-
-/* MyUW colors */
-@color1: #b70101;         // Badger Red
-@color2: #990000;         // Medium Red
-@color3: #660000;         // Dark Red
-@color4: #F7F5E8;         // Cream
-@link-color: #660000;     // Dark Red
-
-@state-info-bg: #E8E4D8;   // Olive Grey
-@state-info-text: #000000; // Black
-
-@portlet-titlebar-background-color: #E7D9C1;
-@portlet-border-color: #E7D9C1;
-
-@user-portal-logout-btn-text-color: #FFF; //White
-
-@input-border-focus: @color1;

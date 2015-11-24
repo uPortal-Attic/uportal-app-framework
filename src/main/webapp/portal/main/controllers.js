@@ -3,7 +3,7 @@
 define(['angular','require'], function(angular, require) {
   var app = angular.module('portal.main.controllers', []);
 
-  app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS','miscService', function($localStorage, $sessionStorage, $scope, $document, $location, NAMES, MISC_URLS, APP_FLAGS, miscService) {
+  app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$rootScope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS','THEMES','miscService', function($localStorage, $sessionStorage, $scope, $rootScope, $document, $location, NAMES, MISC_URLS, APP_FLAGS,THEMES, miscService) {
     var defaults = {
             showSidebar: APP_FLAGS.showSidebar,
             sidebarQuicklinks: false,
@@ -29,6 +29,7 @@ define(['angular','require'], function(angular, require) {
       $scope.classicURL=MISC_URLS.back2ClassicURL;
       $scope.APP_FLAGS=APP_FLAGS;
       $scope.MISC_URLS=MISC_URLS;
+      $scope.THEMES = THEMES;
 
       if(NAMES.title) {
         $document[0].title=NAMES.title;
@@ -37,6 +38,14 @@ define(['angular','require'], function(angular, require) {
       //class for ng-view
       $scope.routeClass = "route" + angular.lowercase($location.path().replace(new RegExp('/', 'g'), '-'));
     }
+    
+    // $scope.switchTheme = function(choice) {
+    //   $rootScope.portal.school = choice.name;
+    //   $rootScope.portal.crest = choice.crest;
+    //   $rootScope.portal.title = choice.title;
+    //   
+    // }
+    
     $scope.resetLocal = function() {
         $localStorage.$reset(defaults);
     };
@@ -133,9 +142,9 @@ define(['angular','require'], function(angular, require) {
 
 
   /* Header */
-  app.controller('PortalHeaderController', ['$scope','$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', function($scope, $location, NAMES, APP_FLAGS, MISC_URLS) {
+  app.controller('PortalHeaderController', ['$rootScope', '$scope','$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS) {
     this.navbarCollapsed = true;
-    this.crest = NAMES.crest;
+    this.crest = $rootScope.portal.crest;
     this.crestalt = NAMES.crestalt;
     this.sublogo = NAMES.sublogo;
     this.showLogout = !APP_FLAGS.showSidebar;

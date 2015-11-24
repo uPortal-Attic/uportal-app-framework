@@ -12,12 +12,26 @@
   <!-- CSS links -->
   <!-- Latest compiled and minified CSS -->
   <!-- <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
-  <link href="css/angular.${project.version}.css" rel="stylesheet" type="text/css"/>
+  <link ng-href="css/loading.css" rel="stylesheet" type="text/css"/>
+  <link ng-href="css/themes/uw-{{portal.theme.name}}.${project.version}.css" rel="stylesheet" type="text/css"/>
   <link href="my-app/my-app.css" rel="stylesheet" type="text/css"/>
   <link rel="shortcut icon" href="bower_components/uw-ui-toolkit/dist/img/favicon.ico" type="image/x-icon"/>
 </head>
 
 <body ng-controller="PortalMainController as mainCtrl" class='my-uw'>
+  <div ng-hide="portal.loading.hidden" ng-class="{slowfade: portal.loading.startFade}" style=' 
+          position : fixed;
+          top: 0;
+          z-index: 2000;
+          color: lightgrey;
+          background: #b70101;
+          height: 100vh;
+          width: 100vw;
+          text-align: center;
+          padding-top: 45vh;
+          font-size: xx-large;
+          margin: -8px;'>
+          Loading...</div>
   <div class='sr-only' ng-if="classicURL">
     <a ng-href='{{classicURL}}'>Switch back to the classic MyUW</a>
   </div>
