@@ -12,71 +12,18 @@
   <!-- CSS links -->
   <!-- Latest compiled and minified CSS -->
   <!-- <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
-  <link ng-href="css/loading.css" rel="stylesheet" type="text/css"/>
   <link ng-href="css/themes/uw-{{portal.theme.name}}.${project.version}.css" rel="stylesheet" type="text/css"/>
   <link href="my-app/my-app.css" rel="stylesheet" type="text/css"/>
   <link rel="shortcut icon" href="bower_components/uw-ui-toolkit/dist/img/favicon.ico" type="image/x-icon"/>
 </head>
 
-<body ng-controller="PortalMainController as mainCtrl" class='my-uw'>
-  <div ng-hide="portal.loading.hidden" ng-class="{slowfade: portal.loading.startFade}" style=" 
-          position : fixed;
-          top: 0;
-          z-index: 2000;
-          color: darkgrey;
-          background: #EAE8DF;
-          height: 100vh;
-          width: 100vw;
-          text-align: center;
-          padding-top: 45vh;
-          font-size: xx-large;
-          margin: -8px;
-          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-          Loading...</div>
-  <div class='sr-only' ng-if="classicURL">
-    <a ng-href='{{classicURL}}'>Switch back to the classic MyUW</a>
-  </div>
-  <div ng-controller="PortalPopupController as popupCtrl">
-    <!--[if lt IE 10]>
-    <div class="browserupgrade">
-      <span class="fa fa-frown-o"></span>
-      <p>Sorry, MyUW beta does not support your browser.<br/><a href="https://kb.wisc.edu/myuw/page.php?id=51345">Learn how to upgrade your browser.</a><br/>Can't upgrade? <a href="http://my.wisc.edu/portal/Login?profile=default">Switch back to MyUW classic.</a></p>
-    </div>
-    <![endif]-->
-    <noscript>
-        <div class="alert alert-warning alert-dismissible" role="alert" style="margin-bottom:0;">
-        <div class="container">
-          <i class="fa fa-2x fw fa-exclamation-triangle pull-left"></i>
-          <strong>
-            Please <a href="http://enable-javascript.com" target="_blank">enable Javascript</a> to interact with all forms and features on our website.  For further assistance, contact the <a href="https://kb.wisc.edu/helpdesk/" target="_blank">DoIT Help Desk</a>.
-          </strong>
-        </div>
-      </div>
-    </noscript>
+<body>
 
-      <!-- beta header -->
-      <!-- <beta-header></beta-header> -->
-      <!-- HEADER -->
-      <div class="container-fluid" id="body-background">
-        <portal-header></portal-header>
+  <jsp:include page="/static.html" />
+  <!--The MyUW Body-->
+  <uw-body></uw-body>
 
-        <!-- Body -->
-        <div class="row page-content">
-
-          <div class="region-sidebar-left col-sm-2 col-xs-0 hidden-xs no-margin" ng-if="$storage.showSidebar && APP_FLAGS.showSidebar">
-              <side-bar-menu></side-bar-menu>
-          </div>
-          <div ng-if="(!($storage.showSidebar)) && APP_FLAGS.showSidebar" class="show-sidebar" ng-click="openSidebar()">
-            <span class="fa fa-bars"></span>
-          </div>
-          <div role="main" id="region-main" class="col-xs-12" ng-class="{'col-sm-10 col-sm-offset-2' : ($storage.showSidebar && APP_FLAGS.showSidebar), 'col-sm-11 max-view' : (!($storage.showSidebar) || !APP_FLAGS.showSidebar)}">
-            <div ng-class="routeClass" ng-view role="application" aria-labelledby="app-title"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <!-- FOOTER  -->
-  <site-footer></site-footer>
+  <!--javascript-->
   <script type="text/javascript" src="js/config.js"></script>
   <script type="text/javascript" src="js/ga.js"></script>
   <script type="text/javascript" src="bower_components/requirejs/require.js" data-main="main"></script>
