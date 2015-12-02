@@ -1,5 +1,5 @@
 <div ng-if=" 'BUCKY' === mode && announcements && announcements.length > 0" class='announcement-creeper' ng-class="{ 'announcement-hover' : hover}" ng-mouseenter="hover = true">
-  <img ng-src='{{buckyImg}}' ng-click='hover=false'>
+  <img ng-src='{{buckyImg}}' ng-click="hover=false; pushGAEvent('feature', 'hide-bucky', 'na');">
   <div class='see-whats-new' ng-class="{ 'announcement-fade-in' : hover}">
     <ul style='padding: 0;'>
       <li ng-repeat="announcement in announcements | orderBy:'-id' | limitTo:3">

@@ -32,6 +32,11 @@ define(['angular','require'], function(angular, require) {
      
      //scope functions ---------------------------------------------------------
      
+     //need this due to isolated scope
+     $scope.pushGAEvent = function(a,b,c) {
+       miscService.pushGAEvent(a,b,c);
+     }
+     
      $scope.markAnnouncementsSeen = function(liked) {
        $localStorage.lastSeenAnnouncementId = $scope.announcements[$scope.announcements.length - 1].id;
        if($scope.headerCtrl) {
