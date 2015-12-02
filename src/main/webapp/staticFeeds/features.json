@@ -27,14 +27,14 @@
     "description": "We are enabling a new feature today that allows us to announce new features inside of MyUW. We promise to not be too annoying with every little detail.",
     "img": "img/bucky-announcement.png",
     "learnMoreURL": "",
-    "goLiveYear": 2016,
+    "goLiveYear": 2015,
     "goLiveMonth": 11,
     "goLiveDay": 2,
     "isBuckyAnnouncement" : true,
     "buckyAnnouncement" : {
       "shortTitle" : "What's New?",
       "shortDesc" : "This is where you can quickly learn about new features in MyUW.",
-      "endDate" : 1450159200000
+      "endDate" : 1481781600000
     }
   },
   {
@@ -50,7 +50,39 @@
     "buckyAnnouncement" : {
       "shortTitle" : "Sidebar is no more",
       "shortDesc" : "We refactored navigation to give apps a little more room on the page. You're welcome.",
-      "endDate" : 1450159200000
+      "endDate" : 1481781600000
+    }
+  },
+  {
+    "id": 4,
+    "title": "MyUW Search Reimagined",
+    "description": "We listened, we designed, we rewrote history.",
+    "img": "img/bucky-announcement.png",
+    "learnMoreURL": "",
+    "goLiveYear": 2015,
+    "goLiveMonth": 11,
+    "goLiveDay": 2,
+    "isBuckyAnnouncement" : true,
+    "buckyAnnouncement" : {
+      "shortTitle" : "MyUW Search 2.0",
+      "shortDesc" : "The new search will get you where you need to go faster.",
+      "endDate" : 1481781600000
+    }
+  },
+  {
+    "id": 5,
+    "title": "Do you know how to search?",
+    "description": "Blah blah blah",
+    "img": "img/bucky-announcement.png",
+    "learnMoreURL": "",
+    "goLiveYear": 2015,
+    "goLiveMonth": 11,
+    "goLiveDay": 2,
+    "isBuckyAnnouncement" : true,
+    "buckyAnnouncement" : {
+      "shortTitle" : "Searching is hard",
+      "shortDesc" : "We invented a robot to search for you. Its name is hubot.",
+      "endDate" : 1481781600000
     }
   }
 ]

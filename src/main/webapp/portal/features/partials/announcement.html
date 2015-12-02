@@ -2,7 +2,7 @@
   <img ng-src='{{buckyImg}}' ng-click='hover=false'>
   <div class='see-whats-new' ng-class="{ 'announcement-fade-in' : hover}">
     <ul style='padding: 0;'>
-      <li ng-repeat="announcement in announcements | orderBy:'-id'">
+      <li ng-repeat="announcement in announcements | orderBy:'-id' | limitTo:3">
         <a href='features' style='font-weight: 800;font-size: larger;' ng-click='markAnnouncementsSeen()'>{{announcement.buckyAnnouncement.shortTitle}}</a>
         <br>
         <p>
