@@ -27,16 +27,30 @@
     "description": "We are enabling a new feature today that allows us to announce new features inside of MyUW. We promise to not be too annoying with every little detail.",
     "img": "img/bucky-announcement.png",
     "learnMoreURL": "",
-    "goLiveYear": 2015,
+    "goLiveYear": 2016,
     "goLiveMonth": 11,
     "goLiveDay": 2,
     "isBuckyAnnouncement" : true,
     "buckyAnnouncement" : {
       "shortTitle" : "What's New?",
       "shortDesc" : "This is where you can quickly learn about new features in MyUW.",
-      "endYear" : 2017,
-      "endMonth" : 1,
-      "endDay" : 1
+      "endDate" : 1450159200000
+    }
+  },
+  {
+    "id": 3,
+    "title": "Sidebar, more like gonebar",
+    "description": "We are happy to announce that we are deleting the sidebar, you can still get to navigation by clicking the hambergler menu in the top left corner.",
+    "img": "img/bucky-announcement.png",
+    "learnMoreURL": "",
+    "goLiveYear": 2015,
+    "goLiveMonth": 11,
+    "goLiveDay": 2,
+    "isBuckyAnnouncement" : true,
+    "buckyAnnouncement" : {
+      "shortTitle" : "Sidebar is no more",
+      "shortDesc" : "We refactored navigation to give apps a little more room on the page. You're welcome.",
+      "endDate" : 1450159200000
     }
   }
 ]

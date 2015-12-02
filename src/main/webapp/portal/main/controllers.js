@@ -125,7 +125,27 @@ define(['angular','require'], function(angular, require) {
              var hasNotSeen = function(feature) {
                //TODO: take into consideration the expired announcement
                var compare = $localStorage.lastSeenAnnouncementId || 0;
-               return feature.id > compare;
+               if(feature.id <= compare) {
+                 return false;
+               } else {
+                 //check dates
+                 var today = Date.parse(new Date());
+                 var startDate = Date.parse(new Date(feature.goLiveYear, feature.goLiveMonth, feature.goLiveDay));
+                 var expirationDate = feature.buckyAnnouncement.endDate;
+                 
+                 if(startDate <= today && today <= expirationDate) {
+                   return true;
+                 } else if(expirationDate < today){
+                   //expired state, mark as read so its faster next time
+                   $localStorage.lastSeenAnnouncementId = feature.id;
+                   return false;
+                 } else {
+                   //hasn't started yet
+                   return false;
+                 }
+                 
+               }
+               
              }
              
              $scope.announcements = announcements.filter(hasNotSeen);
