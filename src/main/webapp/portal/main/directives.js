@@ -4,6 +4,14 @@ define(['angular', 'require'], function(angular, require) {
 
   var app = angular.module('portal.main.directives', []);
 
+  app.directive('uwBody', function(){
+    return {
+      restrict : 'E',
+      templateUrl : require.toUrl('./partials/body.html'),
+      controller : "PortalMainController"
+    };
+  });
+
   app.directive('portalHeader', function() {
     return {
       restrict : 'E',
@@ -44,8 +52,7 @@ define(['angular', 'require'], function(angular, require) {
           templateUrl : require.toUrl('./partials/features-modal-template.html')
       }
   });
-  
+
   return app;
 
 });
-
