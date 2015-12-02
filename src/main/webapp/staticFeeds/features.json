@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "id": 2,
+    "title": "Bucky says what's new",
+    "description": "We are enabling a new feature today that allows us to announce new features inside of MyUW. We promise to not be too annoying with every little detail.",
+    "img": "img/bucky-announcement.png",
+    "learnMoreURL": "",
+    "goLiveYear": 2015,
+    "goLiveMonth": 11,
+    "goLiveDay": 2,
+    "buckyAnnouncement" : {
+      "shortTitle" : "What's New?",
+      "shoreDesc" : "This is where you can quickly learn about new features in MyUW.",
+      "endYear" : 2017,
+      "endMonth" : 1,
+      "endDay" : 1
+    }
+  }
+]
