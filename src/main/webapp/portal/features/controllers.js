@@ -18,16 +18,28 @@ define(['angular','require'], function(angular, require) {
 		}
   }]);
   
-  app.controller('PortalPopupController', ['$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', 'filterFilter', '$modal', 'portalFeaturesService', '$sanitize', function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, filterFilter, $modal, portalFeaturesService, $sanitize) {
+  app.controller('PortalPopupController', ['$localStorage', 
+                                           '$sessionStorage',
+                                           '$scope', 
+                                           '$document', 
+                                           'APP_FLAGS', 
+                                           'filterFilter', 
+                                           '$modal', 
+                                           'portalFeaturesService', 
+                                           'miscService',
+                                           '$sanitize', 
+                                  function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, filterFilter, $modal, portalFeaturesService, miscService, $sanitize) {
      
      //scope functions ---------------------------------------------------------
      
-     $scope.markAnnouncementsSeen = function() {
+     $scope.markAnnouncementsSeen = function(liked) {
        $localStorage.lastSeenAnnouncementId = $scope.announcements[$scope.announcements.length - 1].id;
        if($scope.headerCtrl) {
          $scope.headerCtrl.navbarCollapsed = true;
        }
        postGetData($scope.features);
+       //send ga event for features, if they read more or dismissed, and what was the last id
+       miscService.pushGAEvent('features',liked ? 'read more' : 'dismissed', $localStorage.lastSeenAnnouncementId);
      }
      
      //local functions ---------------------------------------------------------

@@ -3,19 +3,19 @@
   <div class='see-whats-new' ng-class="{ 'announcement-fade-in' : hover}">
     <ul style='padding: 0;'>
       <li ng-repeat="announcement in announcements | orderBy:'-id' | limitTo:3">
-        <a href='features' style='font-weight: 800;font-size: larger;' ng-click='markAnnouncementsSeen()'>{{announcement.buckyAnnouncement.shortTitle}}</a>
+        <a href='features' style='font-weight: 800;font-size: larger;' ng-click='markAnnouncementsSeen(true)'>{{announcement.buckyAnnouncement.shortTitle}}</a>
         <br>
         <p>
           {{announcement.buckyAnnouncement.shortDesc}}
         </p>
       </li>
       <li>
-        <a href='features' style='color: #FFF;' ng-click='markAnnouncementsSeen()'>Tell me more</a>
-        <a href='javascript:;' ng-click='markAnnouncementsSeen()' style='color: #FFF;float: right; padding-top: 2px;'>Not Interested</span>
+        <a href='features' style='color: #FFF;' ng-click='markAnnouncementsSeen(true)'>Tell me more</a>
+        <a href='javascript:;' ng-click='markAnnouncementsSeen(false)' style='color: #FFF;float: right; padding-top: 2px;'>Not Interested</span>
       </li>
     </ul>
   </div>
 </div>
 <div ng-if=" 'BUCKY_MOBILE' === mode && announcements && announcements.length > 0" class='mobile'>
-  <a href='features' style='color: #FFF;' ng-click='markAnnouncementsSeen()'><i class='fa fa-star fa-fw'></i> What's New ({{announcements.length}})</a>
+  <a href='features' style='color: #FFF;' ng-click='markAnnouncementsSeen(true)'><i class='fa fa-star fa-fw'></i> What's New ({{announcements.length}})</a>
 </div>
