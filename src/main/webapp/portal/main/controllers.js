@@ -98,6 +98,9 @@ define(['angular','require'], function(angular, require) {
      
      $scope.markAnnouncementsSeen = function() {
        $localStorage.lastSeenAnnouncementId = $scope.announcements[$scope.announcements.length - 1].id;
+       if($scope.headerCtrl) {
+         $scope.headerCtrl.navbarCollapsed = true;
+       }
        postGetData($scope.features);
      }
      

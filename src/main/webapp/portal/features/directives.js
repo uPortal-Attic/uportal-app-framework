@@ -10,7 +10,8 @@ define(['angular', 'require'], function(angular, require) {
       templateUrl : require.toUrl('./partials/announcement.html'),
       controller : "PortalPopupController",
       scope : {
-        mode : "@"
+        mode : '@',
+        headerCtrl : '=headerCtrl'
       }
     };
   });
