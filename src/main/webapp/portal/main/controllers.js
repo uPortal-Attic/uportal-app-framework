@@ -117,7 +117,7 @@ define(['angular','require'], function(angular, require) {
            delete $localStorage.hasSeenWelcome;
          }
 
-         if("BUCKY" === $scope.mode) {
+         if("BUCKY" === $scope.mode || "BUCKY_MOBILE" === $scope.mode) {
            //do bucky announcement
            var announcements = filterFilter(features, {isBuckyAnnouncement : true});
            if(announcements && announcements.length != 0) {

@@ -1,4 +1,4 @@
-<div ng-if='announcements && announcements.length > 0' class='announcement-creeper' ng-class="{ 'announcement-hover' : hover}" ng-mouseenter="hover = true">
+<div ng-if=" 'BUCKY' === mode && announcements && announcements.length > 0" class='announcement-creeper' ng-class="{ 'announcement-hover' : hover}" ng-mouseenter="hover = true">
   <img ng-src='{{buckyImg}}' ng-click='hover=false'>
   <div class='see-whats-new' ng-class="{ 'announcement-fade-in' : hover}">
     <ul style='padding: 0;'>
@@ -15,4 +15,7 @@
       </li>
     </ul>
   </div>
+</div>
+<div ng-if=" 'BUCKY_MOBILE' === mode && announcements && announcements.length > 0" class='mobile'>
+  <a href='features' style='color: #FFF;' ng-click='markAnnouncementsSeen()'><i class='fa fa-star fa-fw'></i> What's New ({{announcements.length}})</a>
 </div>
