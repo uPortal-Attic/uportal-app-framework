@@ -8,6 +8,8 @@
     "goLiveYear": 2015,
     "goLiveMonth": 6,
     "goLiveDay": 11,
+    "isPopup" : false,
+    "isBuckyAnnouncement" : false,
     "popup": {
       "enabled": false,
       "startYear": 2015,
