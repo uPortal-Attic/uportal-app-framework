@@ -1,0 +1,17 @@
+<div ng-if='announcements && announcements.length > 0' class='announcement-creeper' ng-class="{ 'announcement-hover' : hover}" ng-mouseenter="hover = true">
+  <img ng-src='{{buckyImg}}' ng-click='hover=false'>
+  <div class='see-whats-new' ng-class="{ 'announcement-fade-in' : hover}">
+    <ul style='padding: 0;'>
+      <li ng-repeat="announcement in announcements | orderBy:'-id'">
+        <a href='features' style='color: #FFF;' ng-click='markAnnouncementsSeen()'>{{announcement.buckyAnnouncement.shortTitle}}</a>
+        <br>
+        <p>
+          {{announcement.buckyAnnouncement.shortDesc}}
+        </p>
+      </li>
+      <li>
+        <a href='features' style='color: #FFF;' ng-click='markAnnouncementsSeen()'>Tell me more</a>&nbsp;<a href='javascript:;' ng-click='markAnnouncementsSeen()' style='color: #FFF;'>Not Interested</span>
+      </li>
+    </ul>
+  </div>
+</div>

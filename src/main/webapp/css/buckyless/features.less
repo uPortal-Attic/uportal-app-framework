@@ -46,3 +46,43 @@
     margin-top:10px;
   }
 }
+
+bucky-announcement {
+  div.announcement-creeper {
+    margin-right: 20px;
+    vertical-align: bottom;
+    padding-top: 35px;
+    overflow: hidden;
+    max-height: 50px;
+		transition: all 0.5s ease;
+  }
+  div.announcement-hover {
+		transition: all 0.5s ease;
+    padding-top: 20px;
+  }
+	
+	div.announcement-fade-in {
+		opacity: 1 !important;
+	}
+	
+	div.see-whats-new {
+		transition: opacity 0.5s ease-in-out;
+		color: #fff;
+    border: 1px solid #fff;
+    padding: 5px;
+    border-radius: 5px;
+		float: left;
+		position: absolute;
+    top: 10px;
+    left: -205px;
+    background-color: #A51D22;
+    width: 200px;
+		opacity: 0;
+		
+		a {
+			text-decoration: underline;
+			color : @white;
+			font-size : smaller;
+		}
+	}
+}

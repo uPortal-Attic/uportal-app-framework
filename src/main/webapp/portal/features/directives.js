@@ -2,15 +2,15 @@
 
 define(['angular', 'require'], function(angular, require) {
 
-  var app = angular.module('portal.main.directives', []);
+  var app = angular.module('portal.features.directives', []);
 
-  app.directive('uwHeaderAnnouncement', function(){
+  app.directive('buckyAnnouncement', function(){
     return {
       restrict : 'E',
       templateUrl : require.toUrl('./partials/announcement.html'),
       controller : "PortalPopupController",
-      scope {
-        mode : "BUCKY"
+      scope : {
+        mode : "@"
       }
     };
   });
