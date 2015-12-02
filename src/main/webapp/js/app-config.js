@@ -3,7 +3,7 @@ define(['angular'], function(angular) {
     var config = angular.module('app-config', []);
     config
         .constant('APP_FLAGS', {
-            'features' : true,
+            'features' : false,
             'showSidebar' : true,
             'showSearch' : true,
             'isWeb' : false

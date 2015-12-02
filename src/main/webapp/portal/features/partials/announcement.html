@@ -3,14 +3,15 @@
   <div class='see-whats-new' ng-class="{ 'announcement-fade-in' : hover}">
     <ul style='padding: 0;'>
       <li ng-repeat="announcement in announcements | orderBy:'-id'">
-        <a href='features' style='color: #FFF;' ng-click='markAnnouncementsSeen()'>{{announcement.buckyAnnouncement.shortTitle}}</a>
+        <a href='features' style='font-weight: 800;font-size: larger;' ng-click='markAnnouncementsSeen()'>{{announcement.buckyAnnouncement.shortTitle}}</a>
         <br>
         <p>
           {{announcement.buckyAnnouncement.shortDesc}}
         </p>
       </li>
       <li>
-        <a href='features' style='color: #FFF;' ng-click='markAnnouncementsSeen()'>Tell me more</a>&nbsp;<a href='javascript:;' ng-click='markAnnouncementsSeen()' style='color: #FFF;'>Not Interested</span>
+        <a href='features' style='color: #FFF;' ng-click='markAnnouncementsSeen()'>Tell me more</a>
+        <a href='javascript:;' ng-click='markAnnouncementsSeen()' style='color: #FFF;float: right; padding-top: 2px;'>Not Interested</span>
       </li>
     </ul>
   </div>
