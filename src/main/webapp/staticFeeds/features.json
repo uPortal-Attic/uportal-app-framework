@@ -28,61 +28,13 @@
     "img": "img/bucky-announcement.png",
     "learnMoreURL": "",
     "goLiveYear": 2015,
-    "goLiveMonth": 11,
-    "goLiveDay": 2,
+    "goLiveMonth": 0,
+    "goLiveDay": 1,
     "isBuckyAnnouncement" : true,
     "buckyAnnouncement" : {
       "shortTitle" : "What's New?",
       "shortDesc" : "This is where you can quickly learn about new features in MyUW.",
-      "endDate" : 1481781600000
-    }
-  },
-  {
-    "id": 3,
-    "title": "Sidebar, more like gonebar",
-    "description": "We are happy to announce that we are deleting the sidebar, you can still get to navigation by clicking the hambergler menu in the top left corner.",
-    "img": "img/bucky-announcement.png",
-    "learnMoreURL": "",
-    "goLiveYear": 2015,
-    "goLiveMonth": 11,
-    "goLiveDay": 2,
-    "isBuckyAnnouncement" : true,
-    "buckyAnnouncement" : {
-      "shortTitle" : "Sidebar is no more",
-      "shortDesc" : "We refactored navigation to give apps a little more room on the page. You're welcome.",
-      "endDate" : 1481781600000
-    }
-  },
-  {
-    "id": 4,
-    "title": "MyUW Search Reimagined",
-    "description": "We listened, we designed, we rewrote history.",
-    "img": "img/bucky-announcement.png",
-    "learnMoreURL": "",
-    "goLiveYear": 2015,
-    "goLiveMonth": 11,
-    "goLiveDay": 2,
-    "isBuckyAnnouncement" : true,
-    "buckyAnnouncement" : {
-      "shortTitle" : "MyUW Search 2.0",
-      "shortDesc" : "The new search will get you where you need to go faster.",
-      "endDate" : 1481781600000
-    }
-  },
-  {
-    "id": 5,
-    "title": "Do you know how to search?",
-    "description": "Blah blah blah",
-    "img": "img/bucky-announcement.png",
-    "learnMoreURL": "",
-    "goLiveYear": 2015,
-    "goLiveMonth": 11,
-    "goLiveDay": 2,
-    "isBuckyAnnouncement" : true,
-    "buckyAnnouncement" : {
-      "shortTitle" : "Searching is hard",
-      "shortDesc" : "We invented a robot to search for you. Its name is hubot.",
-      "endDate" : 1481781600000
+      "endDate" : 1454306400000
     }
   }
 ]
