@@ -46,7 +46,7 @@ define(['angular','require'], function(angular, require) {
        }
        postGetData($scope.features);
        //send ga event for features, if they read more or dismissed, and what was the last id
-       miscService.pushGAEvent('features',liked ? 'read more' : 'dismissed', $localStorage.lastSeenAnnouncementId);
+       miscService.pushGAEvent('feature',liked ? 'read more' : 'dismissed', $localStorage.lastSeenAnnouncementId);
      }
      
      //local functions ---------------------------------------------------------
