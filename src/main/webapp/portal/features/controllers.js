@@ -4,9 +4,11 @@ define(['angular','require'], function(angular, require) {
   var app = angular.module('portal.features.controllers', []);
 	
 	
-	app.controller('PortalFeaturesController', ['$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'portalFeaturesService', '$sanitize', 'MISC_URLS', function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, portalFeaturesService, $sanitize, MISC_URLS) {
+	app.controller('PortalFeaturesController', ['miscService', '$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'portalFeaturesService', '$sanitize', 'MISC_URLS', function(miscService, $localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, portalFeaturesService, $sanitize, MISC_URLS) {
     $scope.features = [];
     $scope.MISC_URLS = MISC_URLS;
+    
+    miscService.pushPageview();
 
 		if (APP_FLAGS.features) {
 			portalFeaturesService.getFeatures().then(function(data) {
@@ -44,7 +46,7 @@ define(['angular','require'], function(angular, require) {
        }
        postGetData($scope.features);
        //send ga event for features, if they read more or dismissed, and what was the last id
-       miscService.pushGAEvent('features',liked ? 'read more' : 'dismissed', $localStorage.lastSeenAnnouncementId);
+       miscService.pushGAEvent('feature',liked ? 'read more' : 'dismissed', $localStorage.lastSeenAnnouncementId);
      }
      
      //local functions ---------------------------------------------------------

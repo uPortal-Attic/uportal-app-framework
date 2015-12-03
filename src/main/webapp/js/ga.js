@@ -26,8 +26,9 @@ function _gaLt(event){
         el = el.parentNode;
 
     if(el && el.href){
-    if(el.href.indexOf(location.host) == -1){ /* external link */
+    if(el.href.indexOf(location.host) == -1 && el.href != 'javascript:;'){ /* external link */
             _gaq.push(['_trackEvent', 'Outbound Link', el.href, el.text]);
+            console.log('ga event logged c: Outbound Link a: '+el.href+' l:'+ el.text);
             // Click will open in a new window if it is the middle button or the
             // meta or control keys are held
             var target = (el.target && !el.target.match(/^_(self|parent|top)$/i)) ? el.target : false;
