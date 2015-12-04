@@ -18,8 +18,6 @@
   "homepage": "https://github.com/UW-Madison-DoIT/angularjs-portal",
 
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-karma": "^0.10.1",
     "jasmine-core": "^2.3.4",
     "karma": "^0.12.36",
     "karma-chrome-launcher": "^0.1.12",

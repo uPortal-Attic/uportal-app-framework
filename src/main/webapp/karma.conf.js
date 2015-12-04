@@ -10,6 +10,10 @@ module.exports = function(config){
             { pattern: './**', included: false}
         ],
 
+        preprocessors : {
+          'portal/**/*.js': 'coverage'
+        },
+
         autoWatch: true,
 
         frameworks: ['jasmine', 'requirejs'],
