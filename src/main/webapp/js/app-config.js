@@ -13,7 +13,7 @@ define(['angular'], function(angular) {
             'sessionInfo' : 'staticFeeds/session.json',
             'sidebarInfo' : 'staticFeeds/sidebar.json',
             'featuresInfo' : 'staticFeeds/features.json',
-            'notificationsURL' : null,
+            'notificationsURL' : 'staticFeeds/notifications.json',
             'kvURL' : null,
             'groupURL' : null
         })
@@ -41,7 +41,7 @@ define(['angular'], function(angular) {
             'logoutURL' : '/portal/Logout',
             'myuwHome' : 'https://my.wisc.edu',
             'whatsNewURL' : null
-            
+
         })
         .constant('APP_BETA_FEATURES', [
           {

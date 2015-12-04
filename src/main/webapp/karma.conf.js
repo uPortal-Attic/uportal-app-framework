@@ -10,6 +10,10 @@ module.exports = function(config){
             { pattern: './**', included: false}
         ],
 
+        preprocessors : {
+          'portal/**/*.js': 'coverage'
+        },
+
         autoWatch: true,
 
         frameworks: ['jasmine', 'requirejs'],
@@ -21,10 +25,12 @@ module.exports = function(config){
             'karma-chrome-launcher',
             'karma-phantomjs-launcher',
             'karma-jasmine',
-            'karma-requirejs'
+            'karma-requirejs',
+            'karma-coverage',
+            'karma-coveralls'
         ],
- 
-        reporters: ['dots','html'],
+
+        reporters: ['dots','html','coverage', 'coveralls'],
 
         htmlReporter: {
           outputFile: 'test_out/units.html'
@@ -33,6 +39,11 @@ module.exports = function(config){
         junitReporter : {
             outputFile: 'test_out/unit.xml',
             suite: 'unit'
+        },
+
+        coverageReporter: {
+          type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
+          dir: 'coverage/'
         },
 
         colors: true

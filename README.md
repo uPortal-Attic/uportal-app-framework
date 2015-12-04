@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)
 
+[![Coverage Status](https://coveralls.io/repos/UW-Madison-DoIT/uw-frame/badge.svg?branch=master&service=github)](https://coveralls.io/github/UW-Madison-DoIT/uw-frame?branch=master)
+
 [![codenvy factory](https://codenvy.com/factory/resources/factory-white.png)](https://codenvy.com/factory?id=au4tpiai3n1ygpy1)
 
 uw-frame can be described as the "war dependency that you will need to overlay when creating a new My UW 'App'".  
@@ -16,8 +18,8 @@ It does still rely on /portal to be in the same container for the session inform
 ## Requirements
 
 * [Bower](http://bower.io/)
-* [Maven](http://maven.apache.org) 
-* JDK 7 
+* [Maven](http://maven.apache.org)
+* JDK 7
 
 ## Getting Started
 
@@ -49,6 +51,6 @@ You can run uw-frame locally with the following command:
 
 ### Common Issues
 
-If you see an error like the following from the Maven build, it means you haven't properly installed Bower (check that it's installed and on your path): 
+If you see an error like the following from the Maven build, it means you haven't properly installed Bower (check that it's installed and on your path):
 
 > [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:1.3.2:exec (default) on project uw-frame: Command execution failed. Cannot run program "bower" (in directory "<project-root>/src/main/webapp"): error=2, No such file or directory -> [Help 1]
