@@ -7,8 +7,11 @@ define(['require'], function(require) {
       
       accessDenied: {
         templateUrl: require.toUrl('./partials/access-denied.html')
-      }
+      },
       
+      serverError: {
+          templateUrl: require.toUrl('./partials/server-error.html')
+      }
     }
 
 });
