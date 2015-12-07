@@ -40,6 +40,7 @@ define(['angular'], function(angular) {
             'loginURL' : '/portal/Login?profile=bucky',
             'logoutURL' : '/portal/Logout',
             'myuwHome' : 'https://my.wisc.edu',
+            'rootURL' : '/web',
             'whatsNewURL' : null
 
         })
