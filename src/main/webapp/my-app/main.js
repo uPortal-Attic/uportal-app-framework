@@ -17,6 +17,7 @@ define(['angular', 'jquery', 'portal', 'portal/main/routes', 'portal/settings/ro
             when('/features', features).
             when('/about', about).
             when('/access-denied', main.accessDenied).
+            when('/server-error', main.serverError).
             otherwise(main.main);
     }]);
 
