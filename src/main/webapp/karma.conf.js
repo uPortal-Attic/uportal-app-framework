@@ -11,7 +11,8 @@ module.exports = function(config){
         ],
 
         preprocessors : {
-          'portal/**/*.js': 'coverage'
+          'portal/**/*.js': 'coverage',
+          'my-app/**/*.js': 'coverage'
         },
 
         autoWatch: true,
