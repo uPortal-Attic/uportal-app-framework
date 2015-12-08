@@ -38,14 +38,14 @@ define(['angular','require'], function(angular, require) {
       //class for ng-view
       $scope.routeClass = "route" + angular.lowercase($location.path().replace(new RegExp('/', 'g'), '-'));
     }
-    
+
     // $scope.switchTheme = function(choice) {
     //   $rootScope.portal.school = choice.name;
     //   $rootScope.portal.crest = choice.crest;
     //   $rootScope.portal.title = choice.title;
-    //   
+    //
     // }
-    
+
     $scope.resetLocal = function() {
         $localStorage.$reset(defaults);
     };
@@ -95,9 +95,6 @@ define(['angular','require'], function(angular, require) {
   /* Header */
   app.controller('PortalHeaderController', ['$rootScope', '$scope','$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS) {
     this.navbarCollapsed = true;
-    this.crest = $rootScope.portal.crest;
-    this.crestalt = NAMES.crestalt;
-    this.sublogo = NAMES.sublogo;
     this.showLogout = !APP_FLAGS.showSidebar;
     $scope.showSearch = false;
     $scope.showSearchFocus = false;
