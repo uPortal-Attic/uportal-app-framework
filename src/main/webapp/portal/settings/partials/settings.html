@@ -14,7 +14,7 @@
       <li class="col-sm-6 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
           <h4>Theme Selector</h4>
           <small>Pick which place you call home</small>
-          <select class="form-control" ng-options="item as item.title for item in THEMES track by item.title" ng-model="portal.theme">
+          <select class="form-control" ng-options="item as item.name for item in THEMES track by item.name" ng-model="portal.theme">
           </select>
        </li>
       <li class="col-sm-6 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
@@ -105,10 +105,10 @@
               <h3>
                 Disabled
               </h3>
-              <circle-button data-href='https://www.google.com' 
-                             data-target='_blank' 
-                             data-fa-icon='fa-google' 
-                             data-disabled='true' 
+              <circle-button data-href='https://www.google.com'
+                             data-target='_blank'
+                             data-fa-icon='fa-google'
+                             data-disabled='true'
                              data-title='Google'>
               </circle-button>
             </div>
@@ -116,24 +116,24 @@
               <h3>
                 Active
               </h3>
-              <circle-button data-href='https://www.google.com' 
-                             data-target='_blank' 
-                             data-fa-icon='fa-google' 
-                             data-disabled='false' 
+              <circle-button data-href='https://www.google.com'
+                             data-target='_blank'
+                             data-fa-icon='fa-google'
+                             data-disabled='false'
                              data-title='Google'>
               </circle-button>
             </div>
             <div class='col-sm-4'>
               <h3>
-                Toggle 
+                Toggle
                 <button class='btn btn-flat' ng-click='isDisabled=!isDisabled'>
                 Switch
                 </button>
               </h3>
-              <circle-button data-href='https://www.google.com' 
-                             data-target='_blank' 
-                             data-fa-icon='fa-google' 
-                             data-disabled='isDisabled' 
+              <circle-button data-href='https://www.google.com'
+                             data-target='_blank'
+                             data-fa-icon='fa-google'
+                             data-disabled='isDisabled'
                              data-title='Google'>
               </circle-button>
             </div>
@@ -141,8 +141,8 @@
               <h3>
                 No Title
               </h3>
-              <circle-button data-href='https://www.google.com' 
-                             data-target='_blank' 
+              <circle-button data-href='https://www.google.com'
+                             data-target='_blank'
                              data-fa-icon='fa-google' >
               </circle-button>
             </div>

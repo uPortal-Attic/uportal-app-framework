@@ -6,17 +6,26 @@ define(['angular'], function(angular) {
           {
             "name" : "madison",
             "crest" : "img/uwcrest_web_sm.png",
-            "title" : "MyUW"
+            "title" : "MyUW",
+            "subtitle" : null,
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Crest"
           },
           {
             "name" : "system",
             "crest" : "img/uwsystem.png",
-            "title" : "MyUW - System"
+            "title" : "MyUW",
+            "subtitle" : "beta",
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Crest"
           },
           {
             "name" : "",
             "crest" : "",
-            "title" : ""
+            "title" : "",
+            "subtitle" : "",
+            "ariaLabelTitle" : "",
+            "crestalt" : ""
           }
         ])
         .constant('FRAME_URLS', {
@@ -28,7 +37,7 @@ define(['angular'], function(angular) {
             "title" : "Sidebar Settings",
             "description" : "Shows the settings button to get to this page easier"
           },
-          
+
         ]);
 
     return config;
