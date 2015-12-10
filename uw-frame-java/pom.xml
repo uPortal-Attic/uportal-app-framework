@@ -140,6 +140,20 @@
               </resources>
             </configuration>            
           </execution>
+          <execution>
+            <id>copy-components-over</id>
+            <phase>validate</phase>
+            <goals><goal>copy-resources</goal></goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/frame/</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>../uw-frame-components</directory>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>  
+          </execution>
         </executions>
       </plugin>
       <plugin>
@@ -159,7 +173,7 @@
            <arguments>
             <argument>install</argument>
            </arguments>
-           <workingDirectory>src/main/webapp</workingDirectory>
+           <workingDirectory>target/frame</workingDirectory>
          </configuration>
       </plugin>
       <plugin>
@@ -167,7 +181,7 @@
         <artifactId>lesscss-maven-plugin</artifactId>
         <version>1.7.0.1.1</version>
         <configuration>
-          <sourceDirectory>${project.basedir}/src/main/webapp/css/themes/</sourceDirectory>
+          <sourceDirectory>${webapp.target.directory}/css/themes/</sourceDirectory>
           <outputDirectory>${webapp.target.directory}/css/themes/</outputDirectory>
           <compress>true</compress>
           <includes>
@@ -191,7 +205,7 @@
         <configuration>
           <webApp>
             <baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
-              <resourcesAsCSV>src/main/webapp,${webapp.target.directory}</resourcesAsCSV>
+              <resourcesAsCSV>src/main/webapp,${webapp.target.directory},../uw-frame-components</resourcesAsCSV>
             </baseResource>
           </webApp>
         </configuration>

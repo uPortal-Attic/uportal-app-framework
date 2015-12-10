@@ -4,7 +4,9 @@
   "description": "angular my-uw",
   "main": "index.js",
   "scripts": {
-    "test": "karma start src/main/webapp/karma.conf.js  --single-run"
+    "test": "karma start uw-frame-components/karma.conf.js  --single-run",
+    "build" : "cd uw-frame-java; mvn clean package",
+    "jetty" : "cd uw-frame-java; mvn jetty:run"
   },
   "repository": {
     "type": "git",
