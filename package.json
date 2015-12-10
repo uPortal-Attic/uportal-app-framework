@@ -6,7 +6,9 @@
   "scripts": {
     "test": "cd uw-frame-components; bower install; cd ..; karma start uw-frame-components/karma.conf.js  --single-run; cd uw-frame-components; rm -rf bower_components",
     "build-java" : "cd uw-frame-java; mvn clean package",
-    "jetty" : "cd uw-frame-java; mvn jetty:run"
+    "build-static" : "cd uw-frame-static; ./build.sh",
+    "jetty" : "cd uw-frame-java; mvn jetty:run",
+    "static" : "cd uw-frame-static/target; http-server"
   },
   "repository": {
     "type": "git",
