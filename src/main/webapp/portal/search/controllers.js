@@ -3,14 +3,13 @@
 define(['angular'], function(angular) {
 
   var app = angular.module('portal.search.controllers', []);
-  app.controller('PortalSearchController', [ 'miscService', '$location', '$scope', '$localStorage','SEARCH', 'APP_FLAGS', function(miscService, $location, $scope, $localStorage, SEARCH, APP_FLAGS) {
+  app.controller('PortalSearchController', [ 'miscService', '$location', '$scope', '$localStorage','$routeParams','SEARCH', 'APP_FLAGS', function(miscService, $location, $scope, $localStorage, $routeParams, SEARCH, APP_FLAGS) {
       $scope.initialFilter = '';
       $scope.filterMatches = [];
       $scope.portletListLoading = true;
       if($localStorage && $localStorage.typeaheadSearch) {
           //TODO : Add in search for somewhere for frame
-      }
-
+      }      
       $scope.$watch('initialFilter', function(newVal, oldVal) {
           if (!newVal || !$scope.portlets) {
               $scope.filterMatches = [];
@@ -23,7 +22,6 @@ define(['angular'], function(angular) {
       $scope.onSelect = function(portlet) {
           if(APP_FLAGS.isWeb) {
               $location.path("apps/search/"+ portlet.name);
-              $scope.initialFilter = "";
               $scope.showSearch = false;
               $scope.showSearchFocus = false;
           } else {
@@ -33,18 +31,23 @@ define(['angular'], function(angular) {
       };
 
       $scope.submit = function(){
-          if($scope.initialFilter != "") {
-            if(APP_FLAGS.isWeb) {
-                $location.path("apps/search/"+ $scope.initialFilter);
-                $scope.initialFilter = "";
-                $scope.showSearch = false;
-                $scope.showSearchFocus = false;
-            } else {
-                //frame app redirect
-                window.location = SEARCH.searchURL + $scope.initialFilter;
-            }
+        if($scope.initialFilter != "") {
+          if(APP_FLAGS.isWeb) {
+              $location.path("apps/search/"+ $scope.initialFilter);
+              $scope.showSearch = false;
+              $scope.showSearchFocus = false;
+          } else {
+              //frame app redirect
+              window.location = SEARCH.searchURL + $scope.initialFilter;
           }
-        };
+        }
+      };
+        
+      $scope.$on('$locationChangeStart', function(event) {
+        if ($location.url().indexOf('search') == -1) {
+          $scope.initialFilter = '';
+        }
+      });
     }]);
 
     return app;
