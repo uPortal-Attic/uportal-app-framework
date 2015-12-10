@@ -3,7 +3,7 @@ before_install:
   - npm install -g bower
   - npm install
 script :
-  - npm run build
+  - npm run build-all
   - npm test
 jdk:
   - oraclejdk7
