@@ -4,8 +4,8 @@
   "description": "angular my-uw",
   "main": "index.js",
   "scripts": {
-    "test": "karma start uw-frame-components/karma.conf.js  --single-run",
-    "build" : "cd uw-frame-java; mvn clean package",
+    "test": "cd uw-frame-components; bower install; cd ..; karma start uw-frame-components/karma.conf.js  --single-run; cd uw-frame-components; rm -rf bower_components",
+    "build-java" : "cd uw-frame-java; mvn clean package",
     "jetty" : "cd uw-frame-java; mvn jetty:run"
   },
   "repository": {
