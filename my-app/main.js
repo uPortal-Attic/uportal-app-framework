@@ -20,7 +20,9 @@ define(['angular'
             when('/about', about).
             when('/access-denied', main.accessDenied).
             when('/server-error', main.serverError).
-            otherwise(home);
+            when('/demo', home.demo).
+            when('/home', home.docHome).
+            otherwise(home.docHome);
     }]);
 
     return app
