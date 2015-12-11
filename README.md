@@ -11,8 +11,7 @@ This package includes the MyUW header, sidebar, settings, footer, and some reusa
 
 ![uw-frame screenshot](uw-frame-screenshot.png "UW Frame")
 
-
-It does still rely on /portal to be in the same container for the session information (name, server, etc...).  If you want to run outside the container just remove those two dependencies and fix the URL's in the `side-bar-left.html`.
+Learn more about the reusable components on our [docs page](http://uw-madison-doit.github.io/uw-frame/)
 
 ## Requirements
 
@@ -22,7 +21,6 @@ It does still rely on /portal to be in the same container for the session inform
 
 ### Static Pages
 
-* [less compiler](http://lesscss.org/)
 * [http-server](https://www.npmjs.com/package/http-server)
 
 ### Java
