@@ -21,6 +21,7 @@ define(['angular'
             when('/access-denied', main.accessDenied).
             when('/server-error', main.serverError).
             when('/demo', home.demo).
+            when('/home', home.docHome).
             otherwise(home.docHome);
     }]);
 
