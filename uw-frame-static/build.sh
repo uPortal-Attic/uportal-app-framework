@@ -15,5 +15,5 @@ bower install
 popd
 
 ## Build less
-lessc target/css/themes/uw-madison.less target/css/themes/uw-madison.css 
-lessc target/css/themes/uw-system.less target/css/themes/uw-system.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-madison.less > target/css/themes/uw-madison.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-system.less > target/css/themes/uw-system.css

@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "cd uw-frame-components; bower install; cd ..; karma start uw-frame-components/karma.conf.js  --single-run; cd uw-frame-components; rm -rf bower_components",
-    "build-all" : "npm run build-java; npm run build-static",
-    "build-java" : "cd uw-frame-java; mvn clean package",
-    "build-static" : "cd uw-frame-static; ./build.sh",
-    "jetty" : "cd uw-frame-java; mvn jetty:run",
-    "static" : "cd uw-frame-static/target; http-server",
-    "clean" : "rm -rf uw-frame-components/bower_components; cd uw-frame-java; mvn clean; cd ..; rm -rf uw-frame-static/target"
+    "build-all": "npm run build-java; npm run build-static",
+    "build-java": "cd uw-frame-java; mvn clean package",
+    "build-static": "cd uw-frame-static; ./build.sh",
+    "jetty": "cd uw-frame-java; mvn jetty:run",
+    "static": "cd uw-frame-static/target; http-server",
+    "clean": "rm -rf uw-frame-components/bower_components; cd uw-frame-java; mvn clean; cd ..; rm -rf uw-frame-static/target"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,6 @@
     "url": "https://github.com/UW-Madison-DoIT/angularjs-portal/issues"
   },
   "homepage": "https://github.com/UW-Madison-DoIT/angularjs-portal",
-
   "devDependencies": {
     "jasmine-core": "^2.3.4",
     "karma": "^0.12.36",
@@ -35,6 +34,7 @@
     "karma-jasmine-html-reporter": "^0.1.5",
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-requirejs": "^0.2.2",
+    "less": "1.7.5",
     "phantomjs": "^1.9.17",
     "requirejs": "^2.1.18"
   }
