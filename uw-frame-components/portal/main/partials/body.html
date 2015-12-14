@@ -2,16 +2,15 @@
   <div class='sr-only' ng-if="classicURL">
     <a ng-href='{{classicURL}}'>Switch back to the classic MyUW</a>
   </div>
-  <div ng-controller="PortalPopupController as popupCtrl">
-    <!-- HEADER -->
-    <div class="container-fluid" id="body-background">
-      <portal-header></portal-header>
+  <!-- HEADER -->
+  <div class="container-fluid" id="body-background">
+    <portal-header></portal-header>
 
-      <!-- Body -->
-      <div class="row page-content">
-        <div role="main" id="region-main" class="col-xs-12">
-          <div ng-class="routeClass" ng-view role="application" aria-labelledby="app-title"></div>
-        </div>
+    <!-- Body -->
+    <div class="row page-content">
+      <div role="main" id="region-main" class="col-xs-12">
+        <div ng-class="routeClass" ng-view role="application" aria-labelledby="app-title"></div>
+
       </div>
     </div>
   </div>
