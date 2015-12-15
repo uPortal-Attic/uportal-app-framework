@@ -40,7 +40,7 @@ define(['angular'], function(angular) {
 
         })
         .constant('FOOTER_URLS', [
-          { "url" : "https://kb.wisc.edu/helpdesk",
+          { "url" : "/web/static/myuw-help",
             "target" : "_blank",
             "title" : "Help"
           },
