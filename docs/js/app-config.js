@@ -27,6 +27,7 @@ define(['angular'], function(angular) {
             'notificationFullURL' : 'notifications'
         })
         .constant('MISC_URLS',{
+            'back2ClassicURL' : null,
             'feedbackURL' : 'https://my.wisc.edu/portal/p/feedback',
             'helpdeskURL' : 'https://kb.wisc.edu/helpdesk/',
             'myuwHome' : 'https://my.wisc.edu',
