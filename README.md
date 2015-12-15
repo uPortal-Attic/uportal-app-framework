@@ -3,7 +3,7 @@
 [![Gitter](https://badges.gitter.im/UW-Madison-DoIT/uw-frame.svg)](https://gitter.im/UW-Madison-DoIT/uw-frame?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)  [![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)  [![Coverage Status](https://coveralls.io/repos/UW-Madison-DoIT/uw-frame/badge.svg?branch=master&service=github)](https://coveralls.io/github/UW-Madison-DoIT/uw-frame?branch=master)  [![codenvy factory](https://codenvy.com/factory/resources/factory-white.png)](https://codenvy.com/factory?id=au4tpiai3n1ygpy1)
 
 uw-frame can be described as the "the framework for building applications for campus using modern technologies".  
-This package includes the MyUW header, sidebar, settings, footer, and some reusable components :
+This package includes the MyUW header, settings, footer, and some reusable components :
 
 ![uw-frame screenshot](uw-frame-screenshot.png "UW Frame")
 
