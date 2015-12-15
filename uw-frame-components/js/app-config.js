@@ -30,16 +30,24 @@ define(['angular'], function(angular) {
             'notificationFullURL' : 'notifications'
         })
         .constant('MISC_URLS',{
-            'back2ClassicURL' : null,
             'feedbackURL' : 'https://my.wisc.edu/portal/p/feedback',
             'helpdeskURL' : 'https://kb.wisc.edu/helpdesk/',
             'loginURL' : '/portal/Login?profile=bucky',
             'logoutURL' : '/portal/Logout',
             'myuwHome' : 'https://my.wisc.edu',
-            'rootURL' : '/web',
-            'whatsNewURL' : null
+            'rootURL' : '/web'
 
         })
+        .constant('FOOTER_URLS', [
+          { "url" : "https://kb.wisc.edu/helpdesk",
+            "target" : "_blank",
+            "title" : "Help"
+          },
+          { "url" : "https://my.wisc.edu/portal/p/feedback",
+            "target" : "_blank",
+            "title" : "Feedback"
+          }
+        ])
         .constant('APP_BETA_FEATURES', [
           {
             "id" : "sidebarQuicklinks",

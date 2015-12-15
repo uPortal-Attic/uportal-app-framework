@@ -33,6 +33,16 @@ define(['angular'], function(angular) {
             'rootURL' : '/uw-frame/',
             'logoutURL' : 'https://github.com/UW-Madison-DoIT/uw-frame',
         })
+        .constant('FOOTER_URLS', [
+          { "url" : "https://kb.wisc.edu/helpdesk",
+            "target" : "_blank",
+            "title" : "Help"
+          },
+          { "url" : "https://my.wisc.edu/portal/p/feedback",
+            "target" : "_blank",
+            "title" : "Feedback"
+          }
+        ])
         .constant('APP_BETA_FEATURES', []);
 
     return config;
