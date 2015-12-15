@@ -74,12 +74,11 @@ define(['angular','require'], function(angular, require) {
   } ]);
 
   /* Username */
-  app.controller('SessionCheckController', [ 'mainService', 'MISC_URLS', 'NAMES', '$rootScope', function(mainService, MISC_URLS, NAMES, $rootScope) {
+  app.controller('SessionCheckController', [ '$scope', 'mainService', 'NAMES', 'FOOTER_URLS', '$rootScope', function($scope, mainService, NAMES, FOOTER_URLS, $rootScope) {
     var that = this;
     that.user = [];
-    that.feedbackURL = MISC_URLS.feedbackURL;
-    that.back2ClassicURL = MISC_URLS.back2ClassicURL;
-    that.whatsNewURL = MISC_URLS.whatsNewURL;
+    
+    $scope.FOOTER_URLS = FOOTER_URLS;
 
     //initialize GuestMode
     $rootScope.GuestMode = false;
