@@ -34,21 +34,6 @@
              <div class="nav navbar-nav hidden-sm hidden-md hidden-lg bucky-nav">
                   <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
                   <notification-bell mode='mobile-menu' header-ctrl='headerCtrl'></notification-bell>
-                  <ul class="list-group sidebar-list">
-                    <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
-                      <a ng-if='APP_FLAGS.isWeb' href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
-                        <span class="fa fa-home fa-fw"></span> Home
-                      </a>
-                      <a ng-if='!APP_FLAGS.isWeb' href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
-                        <span class="fa fa-home fa-fw"></span> Home
-                      </a>
-                    </li>
-                    <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
-                      <a href="{{MISC_URLS.logoutURL}}" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Log out');">
-                        <span class="fa fa-sign-out fa-fw"></span> Log out
-                      </a>
-                    </li>
-                  </ul>
              </div>
              <ul class="nav navbar-nav hidden-xs bucky-nav-large">
                  <li>

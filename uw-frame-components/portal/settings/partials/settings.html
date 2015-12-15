@@ -1,28 +1,45 @@
-<frame-page app-title='Beta Settings'
-              app-icon='fa-gears'>
-  <ul class='row' style='margin : 10px; padding : 0;'>
-    <li class='col-sm-5 col-sm-offset-1 portlet-container-home beta-card-style' ng-repeat='option in options'>
-      <setting-option></setting-option>
-    </li>
-  </ul>
-  <ul class="row" style='margin : 10px; padding : 0;'>
-    <li class="col-sm-5  col-sm-offset-1 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
-        <h4>Theme Selector</h4>
-        <small>Pick which place you call home</small>
-        <select class="form-control" ng-options="item as item.name for item in THEMES track by item.name" ng-model="portal.theme">
-        </select>
-     </li>
-    <li class="col-sm-5 col-sm-offset-1 portlet-container-home beta-card-style center">
-        <h4>Danger Zone</h4>
-        <h4>
-        <span class="btn-group">
-          <label class="btn btn-default" ng-click="resetLocal()">Reset Local Storage</label>
-        </span>
-        <span class="btn-group">
-          <label class="btn btn-default" ng-click="clearSession()">Clear Session Storage</label>
-        </span>
-        </h4>
-        <small>Reset to default and clearing the session storage can be nice to clean the slate.</small>
-    </li>
-  </ul>
-</frame-page>
+<div class="portlet-frame container-fluid" ng-controller="SettingsController">
+  <div role="banner" class="portlet-header">
+    <img src="img/stand-back.jpg" alt="Science" height="180px" style="left: 30%; width: inherit;">
+    <h1>Beta Settings</h1>
+    <p>Opting in/out of experimental features, no warranty included</p>
+  </div>
+  <div role="main" class="portlet-body">
+    <ul class='row' style='margin : 10px; padding : 0;'>
+      <li class='col-sm-6 portlet-container-home beta-card-style' ng-repeat='option in options'>
+        <setting-option></setting-option>
+      </li>
+    </ul>
+    <ul class="row" style='margin : 10px; padding : 0;'>
+      <li class="col-sm-6 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
+          <h4>Theme Selector</h4>
+          <small>Pick which place you call home</small>
+          <select class="form-control" ng-options="item as item.name for item in THEMES track by item.name" ng-model="portal.theme">
+          </select>
+       </li>
+      <li class="col-sm-6 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
+        <h4>Home Background Image &nbsp;</h4>
+        <small>Pick a different background image for MyUW Home</small>
+        <div style='text-align: center;'>
+          <div style='padding: 1em;'>
+              <img ng-src="{{$storage.homeImg}}" height='100px'>
+          </div>
+          <label class="btn btn-primary" ng-model="$storage.homeImg" btn-radio="'img/terrace.jpg'">Chairs at the Union Terrace</label>
+          <label class="btn btn-primary" ng-model="$storage.homeImg" btn-radio="'img/square.jpg'">333 East Campus</label>
+        </div>
+      </li>
+      <li class="col-sm-6 portlet-container-home beta-card-style center">
+          <h4>Danger Zone</h4>
+          <h4>
+          <span class="btn-group">
+            <label class="btn btn-default" ng-click="resetLocal()">Reset Local Storage</label>
+          </span>
+          <span class="btn-group">
+            <label class="btn btn-default" ng-click="clearSession()">Clear Session Storage</label>
+          </span>
+          </h4>
+          <small>Reset to default and clearing the session storage can be nice to clean the slate.</small>
+      </li>
+    </ul>
+  </div>
+</div>
