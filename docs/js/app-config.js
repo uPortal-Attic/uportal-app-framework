@@ -35,7 +35,7 @@ define(['angular'], function(angular) {
             'logoutURL' : 'https://github.com/UW-Madison-DoIT/uw-frame',
         })
         .constant('FOOTER_URLS', [
-          { "url" : "https://kb.wisc.edu/helpdesk",
+          { "url" : "/web/static/myuw-help",
             "target" : "_blank",
             "title" : "Help"
           },
