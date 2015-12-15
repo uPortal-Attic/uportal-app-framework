@@ -7,7 +7,7 @@
 [![codenvy factory](https://codenvy.com/factory/resources/factory-white.png)](https://codenvy.com/factory?id=au4tpiai3n1ygpy1)
 
 uw-frame can be described as the "the framework for building applications for campus using modern technologies".  
-This package includes the MyUW header, sidebar, settings, footer, and some reusable components :
+This package includes the MyUW header, settings, footer, and some reusable components :
 
 ![uw-frame screenshot](uw-frame-screenshot.png "UW Frame")
 

@@ -4,13 +4,11 @@ define(['angular'], function(angular) {
     config
         .constant('APP_FLAGS', {
             'features' : false,
-            'showSidebar' : false,
             'showSearch' : false,
             'isWeb' : false
         })
         .constant('SERVICE_LOC', {
             'sessionInfo' : 'staticFeeds/session.json',
-            'sidebarInfo' : 'staticFeeds/sidebar.json',
             'featuresInfo' : 'staticFeeds/features.json',
             'notificationsURL' : 'staticFeeds/notifications.json'
         })
