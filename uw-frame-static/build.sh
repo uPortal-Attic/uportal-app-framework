@@ -11,7 +11,7 @@ cp index.html ./target
 ## Get bower stuff
 
 pushd target
-bower install
+../../node_modules/bower/bin/bower --config.interactive=false install
 popd
 
 ## Build less
