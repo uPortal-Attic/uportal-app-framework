@@ -18,7 +18,9 @@ define(['angular'], function(angular) {
 
     var saveLastSeenFeature = function(id) {
       if(keyValueService.isKVStoreActivated()) {
-        keyValueService.setValue(KV_KEYS.LAST_VIEWED_FEATURE_ID, id)
+        var storage = {};
+        storage.id = id;
+        keyValueService.setValue(KV_KEYS.LAST_VIEWED_FEATURE_ID, storage)
           .then(function(result){
             console.log("Saved feature id to " + result + " successfully.");
           });

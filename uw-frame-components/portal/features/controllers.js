@@ -101,8 +101,8 @@ define(['angular','require'], function(angular, require) {
              }
 
              if(!justSaved && portalFeaturesService.dbStoreLastSeenFeature()) { //if we are really initing, then get id from db
-               portalFeaturesService.getLastSeenFeature().then(function(id){
-                 $localStorage.lastSeenAnnouncementId = id;
+               portalFeaturesService.getLastSeenFeature().then(function(data){
+                 $localStorage.lastSeenAnnouncementId = data.id || $localStorage.lastSeenAnnouncementId;
                  $scope.announcements = announcements.filter(hasNotSeen);
                });
              } else {
