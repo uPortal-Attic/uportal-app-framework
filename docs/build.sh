@@ -15,4 +15,4 @@ bower install
 
 cp -r bower_components/marked bower_components/angular-marked target/bower_components
 
-cp -r js home demo markdown my-app config.js index.html target/
+cp -r js home demo markdown my-app config.js index.html superstatic.json target/

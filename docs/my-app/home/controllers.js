@@ -1,9 +1,11 @@
 'use strict';
 
 define(['angular','require', 'marked'], function(angular, require, marked) {
-  var app = angular.module('portal.main.controllers', []);
+  var app = angular.module('docs.main.controllers', []);
 
-  app.controller('DocumentationHomeController', ['$scope', function($scope) {
+  app.controller('MarkdownPageController', ['$scope', '$routeParams', function($scope, $routeParams) {
+    $scope.title = $routeParams.markdownfilename;
+    $scope.filename = 'markdown/' + $routeParams.markdownfilename + '.md';
 
   } ]);
 
