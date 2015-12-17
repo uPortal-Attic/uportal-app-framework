@@ -15,11 +15,20 @@
   <link ng-href="css/themes/uw-{{portal.theme.name}}.css" rel="stylesheet" type="text/css"/>
   <link href="my-app/my-app.css" rel="stylesheet" type="text/css"/>
   <link rel="shortcut icon" href="bower_components/uw-ui-toolkit/dist/img/favicon.ico" type="image/x-icon"/>
+  <link rel="import" href="static.html" />
 </head>
 
 <body>
 
-  <jsp:include page="/static.html" />
+  <div class='loading'></div>
+  <script type="text/javascript">
+    var content = document.querySelector('link[rel="import"]').import;
+    if(content) {
+      var el = content.querySelector('body');
+      document.body.appendChild(el.cloneNode(true));
+    }
+  </script>
+
   <!--The MyUW Body-->
   <uw-body></uw-body>
 
