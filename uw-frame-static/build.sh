@@ -6,8 +6,11 @@ mkdir -p target
 
 ## Resources
 cp -r ../uw-frame-components/* ./target/
-cp index.html ./target
+
+## Copy over superstatic configuration for dev superstatic instance
 cp superstatic.json ./target
+
+## Note index.html is copied in via grunt script
 
 ## Get bower stuff
 
