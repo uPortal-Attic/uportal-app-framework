@@ -31,6 +31,9 @@ define(['angular'], function(angular) {
         .constant('FRAME_URLS', {
             'aboutFrame' : 'staticFeeds/about-frame.json'
         })
+        .constant('KV_KEYS', {
+          "LAST_VIEWED_FEATURE_ID" : "lastviewedfeatureid"
+        })
         .constant('FRAME_BETA_FEATURES', [
           {
             "id" : "sidebarShowSettings",
