@@ -7,6 +7,7 @@ mkdir -p target
 ## Resources
 cp -r ../uw-frame-components/* ./target/
 cp index.html ./target
+cp superstatic.json ./target
 
 ## Get bower stuff
 

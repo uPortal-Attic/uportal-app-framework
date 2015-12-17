@@ -7,15 +7,15 @@
     "test": "karma start uw-frame-components/karma.conf.js --single-run",
     "posttest": "cd uw-frame-components && rm -rf bower_components",
     "build-all": "npm run build-java && npm run build-static",
-    "build-docs" : "cd docs && ./build.sh",
+    "build-docs": "cd docs && ./build.sh",
     "build-java": "cd uw-frame-java && mvn clean package",
     "prebuild-static": "npm install",
     "build-static": "cd uw-frame-static && ./build.sh",
     "predocs": "npm run build-docs",
-    "docs" : "cd docs/target && http-server",
+    "docs": "cd docs/target && superstatic",
     "jetty": "cd uw-frame-java && mvn jetty:run",
     "prestatic": "npm run build-static",
-    "static": "cd uw-frame-static/target && http-server",
+    "static": "cd uw-frame-static/target && superstatic",
     "clean": "npm run clean-uw-frame-components; npm run clean-uw-frame-java; npm run clean-uw-frame-static",
     "clean-uw-frame-components": "rm -rf uw-frame-components/bower_components",
     "clean-uw-frame-java": "cd uw-frame-java && mvn clean",
@@ -33,7 +33,6 @@
   "homepage": "https://github.com/UW-Madison-DoIT/uw-frame",
   "devDependencies": {
     "bower": "^1.7.1",
-    "http-server": "^0.8.5",
     "jasmine-core": "^2.3.4",
     "karma": "^0.12.36",
     "karma-chrome-launcher": "^0.1.12",
@@ -47,6 +46,7 @@
     "karma-requirejs": "^0.2.2",
     "less": "1.7.5",
     "phantomjs": "^1.9.17",
-    "requirejs": "^2.1.18"
+    "requirejs": "^2.1.18",
+    "superstatic": "^4.0.0"
   }
 }
