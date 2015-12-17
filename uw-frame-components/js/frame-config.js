@@ -32,7 +32,8 @@ define(['angular'], function(angular) {
             'aboutFrame' : 'staticFeeds/about-frame.json'
         })
         .constant('KV_KEYS', {
-          "LAST_VIEWED_FEATURE_ID" : "lastviewedfeatureid"
+          "LAST_VIEWED_ANNOUNCEMENT_ID" : "lastviewedannouncementid",
+          "LAST_VIEWED_POPUP_ID" : "lastviewedpopupid"
         })
         .constant('FRAME_BETA_FEATURES', [
           {

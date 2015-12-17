@@ -7,6 +7,11 @@ define(['angular'], function(angular) {
   app.factory('portalFeaturesService', ['$http', 'miscService', 'keyValueService', 'SERVICE_LOC', 'KV_KEYS', function($http, miscService, keyValueService, SERVICE_LOC, KV_KEYS) {
     var featuresPromise = $http.get(SERVICE_LOC.featuresInfo, { cache: true});
 
+    var TYPES = {
+      "ANNOUNCEMENTS" : KV_KEYS.LAST_VIEWED_ANNOUNCEMENT_ID,
+      "POPUP" : KV_KEYS.LAST_VIEWED_POPUP_ID
+    };
+
     var getFeatures = function() {
       return featuresPromise.success(
         function(data, status) { //success function
@@ -16,19 +21,19 @@ define(['angular'], function(angular) {
         });
     };
 
-    var saveLastSeenFeature = function(id) {
+    var saveLastSeenFeature = function(type, id) {
       if(keyValueService.isKVStoreActivated()) {
         var storage = {};
         storage.id = id;
-        keyValueService.setValue(KV_KEYS.LAST_VIEWED_FEATURE_ID, storage)
+        keyValueService.setValue(type, storage)
           .then(function(result){
             console.log("Saved feature id to " + result + " successfully.");
           });
       }
     };
 
-    var getLastSeenFeature = function(){
-      return keyValueService.getValue(KV_KEYS.LAST_VIEWED_FEATURE_ID);
+    var getLastSeenFeature = function(type){
+      return keyValueService.getValue(type);
     }
 
     var dbStoreLastSeenFeature = function() {
@@ -39,7 +44,8 @@ define(['angular'], function(angular) {
       getFeatures : getFeatures,
       saveLastSeenFeature : saveLastSeenFeature,
       getLastSeenFeature : getLastSeenFeature,
-      dbStoreLastSeenFeature : dbStoreLastSeenFeature
+      dbStoreLastSeenFeature : dbStoreLastSeenFeature,
+      TYPES : TYPES
     };
 
   }]);
