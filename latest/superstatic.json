@@ -5,6 +5,7 @@
     {"source":"/features", "destination" : "index.html"},
     {"source":"/about", "destination" : "index.html"},
     {"source":"/server-error", "destination" : "index.html"},
-    {"source":"/access-denied", "destination" : "index.html"}
+    {"source":"/access-denied", "destination" : "index.html"},
+    {"source":"/md/*", "destination" : "index.html"}
   ]
 }

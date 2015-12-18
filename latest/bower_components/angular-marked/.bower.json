@@ -42,5 +42,6 @@
   },
   "_source": "git://github.com/Hypercubed/angular-marked.git",
   "_target": "~1.0.1",
-  "_originalSource": "angular-marked"
+  "_originalSource": "angular-marked",
+  "_direct": true
 }
