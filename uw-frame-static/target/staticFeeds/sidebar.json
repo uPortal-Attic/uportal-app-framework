@@ -1,7 +1,0 @@
-{"sidebar" :  
-            [
-                {"title": "Beta Settings", "hyperlink" : "settings", "target" : "", "faIcon" : "fa-cog", "displayFlag" : "sidebarShowSettings"},
-                {"title": "External URL", "hyperlink" : "http://www.wisc.edu", "target" : "_blank", "faIcon" : "fa-external-link", "displayFlag" : ""},
-                {"title": "Local non-route", "hyperlink" : "logout", "target" : "_self", "faIcon" : "fa-shield", "displayFlag" : ""}
-            ]
-}
