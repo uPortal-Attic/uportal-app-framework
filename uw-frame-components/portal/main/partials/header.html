@@ -8,8 +8,19 @@
                  <span class="icon-bar"></span>
                  <notification-bell mode='mobile-bell'></notification-bell>
              </button>
-             <div class="header-mobile">
-               <h3><a aria-label="{{portal.theme.ariaLabelTitle}}" class="header-text" ng-href="{{MISC_URLS.rootURL}}" target="_self" id="myuw-header"><img ng-src="{{portal.theme.crest}}" class="hidden-xs" alt="{{portal.theme.crestalt}}"><span>{{portal.theme.title}}</span><span class="beta-logo">{{portal.theme.subtitle}}</span></a></h3>
+             <div class="header-crest">
+               <a aria-label="{{portal.theme.ariaLabelTitle}}"
+                  class="header-text" ng-href="{{MISC_URLS.rootURL}}"
+                  target="_self"
+                  id="myuw-header">
+                  <div class='header-inner'>
+                    <img ng-src="{{portal.theme.crest}}"
+                         class="hidden-xs crest"
+                         alt="{{portal.theme.crestalt}}">
+                    <span class='title'>{{portal.theme.title}}</span>
+                    <!-- <span class="beta-logo">{{portal.theme.subtitle}}</span> -->
+                  </div>
+               </a>
              </div>
               <div class="search-mobile-icon hidden-sm hidden-md hidden-lg">
                 <i class="fa fa-search" ng-click="headerCtrl.toggleSearch()"></i>
