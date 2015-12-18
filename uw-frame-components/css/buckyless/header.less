@@ -181,6 +181,28 @@ a#myuw-header img {
   height: 52px;
 }
 
-portal-header a.logout-link .fa {
-    color: white;
+portal-header li.username-menu {
+    color: @white;
+    line-height: 50px;
+    margin-right: 10px;
+
+    .username-option:hover {
+      cursor: pointer;
+    }
+
+    .popover {
+      left : -123px !important;
+    }
+
+    .arrow {
+      left: 94% !important;
+    }
+
+    .username-menu-template {
+      line-height: normal;
+      width : 200px;
+      p {
+        color: @black;
+      }
+    }
 }
