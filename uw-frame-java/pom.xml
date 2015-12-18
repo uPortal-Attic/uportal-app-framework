@@ -222,7 +222,6 @@
           <localCheckout>true</localCheckout>
           <tagNameFormat>uw-frame-maven-@{project.version}</tagNameFormat>
           <pushChanges>false</pushChanges>
-          </configuration>
         </configuration>
       </plugin>
       <plugin>
