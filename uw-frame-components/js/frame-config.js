@@ -37,7 +37,11 @@ define(['angular'], function(angular) {
             "title" : "Beta Settings",
             "description" : "Shows/Hides the Beta Settings"
           },
-
+          {
+            "id" : "useGravatar",
+            "title" : "Use Gravatar to get profile image",
+            "description" : "Show Gravatar in header"
+          },
         ]);
 
     return config;

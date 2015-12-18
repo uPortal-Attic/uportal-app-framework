@@ -3,12 +3,15 @@
        popover-placement="bottom"
        popover-trigger="click"
        class='username-option'>
-    {{sessionCtrl.user.displayName}}
+    <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar">
+    {{sessionCtrl.user.firstName ? sessionCtrl.user.firstName : sessionCtrl.user.displayName}}
     <i class="fa fa-caret-down"></i>
   </div>
   <script type="text/ng-template" id="usermenu.html">
     <div class='username-menu-template'>
-      <p class='bold'>{{sessionCtrl.user.displayName}}</p>
+      <p class='bold'>
+      <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar">
+      {{sessionCtrl.user.displayName}}</p>
       <a ng-href="{{MISC_URLS.logoutURL}}" class='logout-link' title='Logout' target='_self'>Sign out</a>
     </div>
   </script>
