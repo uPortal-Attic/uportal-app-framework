@@ -59,8 +59,9 @@ define(['angular','require'], function(angular, require) {
   app.controller('SessionCheckController', [ '$scope', 'mainService', 'NAMES', 'FOOTER_URLS', '$rootScope', function($scope, mainService, NAMES, FOOTER_URLS, $rootScope) {
     var that = this;
     that.user = [];
-    
+
     $scope.FOOTER_URLS = FOOTER_URLS;
+    $scope.usernameOptionOpen = false;
 
     //initialize GuestMode
     $rootScope.GuestMode = false;

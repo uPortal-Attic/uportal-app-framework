@@ -1,15 +1,18 @@
 <div ng-controller="SessionCheckController as sessionCtrl">
-  <div popover-template="'usermenu.html'"
-       popover-placement="bottom"
-       popover-trigger="click"
-       class='username-option'>
+  <div class='username-option' ng-click='usernameOptionOpen=!usernameOptionOpen'>
+    <img src='img/bucky.png' class='gravatar' ng-if="!$storage.useGravatar">
     <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar">
     {{sessionCtrl.user.firstName ? sessionCtrl.user.firstName : sessionCtrl.user.displayName}}
-    <i class="fa fa-caret-down"></i>
+    <i class="fa fa-caret-down"
+       popover-template="'usermenu.html'"
+       popover-is-open="usernameOptionOpen"
+       popover-placement="bottom"
+       popover-trigger="none"></i>
   </div>
   <script type="text/ng-template" id="usermenu.html">
     <div class='username-menu-template'>
       <p class='bold'>
+      <img src='img/bucky.png' class='gravatar' ng-if="!$storage.useGravatar">
       <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar">
       {{sessionCtrl.user.displayName}}</p>
       <a ng-href="{{MISC_URLS.logoutURL}}" class='logout-link' title='Logout' target='_self'>Sign out</a>
