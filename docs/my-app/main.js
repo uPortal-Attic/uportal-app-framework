@@ -13,7 +13,6 @@ define(['angular'
 , function(angular, $, portal, marked, ngMarked , main, settings, notifications, features, about, home) {
     var app = angular.module('my-app', ['portal', 'hc.marked', 'docs.main.controllers']);
     app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-        $locationProvider.html5Mode(true);
         $routeProvider.
             when('/settings', settings).
             when('/notifications', notifications).

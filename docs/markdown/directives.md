@@ -19,7 +19,7 @@ Displays a button that looks like a circle with a fa-icon in the middle, and a t
 * title : (optional) title that is displayed under the circle
 * truncLen : (optional) length to truncate the title
 
-<a href='demo' class='btn btn-flat btn-sm'>See Demo here</a>
+<a href='#/demo' class='btn btn-flat btn-sm'>See Demo here</a>
 
 ## Loading Gif
 
@@ -30,7 +30,7 @@ Shows loading gif when the length of said array is 0 and empty is not set
 + empty  : this is the scope boolean flag that you set if the data came back and it was empty
 + reuse  : (optional) set to true, it won't destroy the loading gif, just hide it
 
-<a href='demo' class='btn btn-flat btn-sm'>See Demo here</a>
+<a href='#/demo' class='btn btn-flat btn-sm'>See Demo here</a>
 
 ## Frame Page
 
