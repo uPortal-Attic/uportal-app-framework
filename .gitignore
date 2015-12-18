@@ -13,3 +13,5 @@ buildNumber.properties
 src/main/webapp/node_modules/
 src/main/webapp/test_out/
 node_modules
+npm-debug.log
+

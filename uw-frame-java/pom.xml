@@ -88,7 +88,7 @@
         <filtering>true</filtering>
       </resource>
     </resources>
-    
+
     <plugins>
       <plugin>
           <groupId>pl.project13.maven</groupId>
@@ -132,13 +132,13 @@
             </goals>
             <configuration>
               <outputDirectory>${basedir}/target/frame/staticFeeds</outputDirectory>
-              <resources>          
+              <resources>
                 <resource>
                   <directory>src/main/filtered-resources</directory>
                   <filtering>true</filtering>
                 </resource>
               </resources>
-            </configuration>            
+            </configuration>
           </execution>
           <execution>
             <id>copy-components-over</id>
@@ -146,13 +146,13 @@
             <goals><goal>copy-resources</goal></goals>
             <configuration>
               <outputDirectory>${basedir}/target/frame/</outputDirectory>
-              <resources>          
+              <resources>
                 <resource>
                   <directory>../uw-frame-components</directory>
                   <filtering>false</filtering>
                 </resource>
               </resources>
-            </configuration>  
+            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -219,6 +219,9 @@
           <useReleaseProfile>false</useReleaseProfile>
           <releaseProfiles>release</releaseProfiles>
           <goals>deploy</goals>
+          <localCheckout>true</localCheckout>
+          <tagNameFormat>uw-frame-maven-@{project.version}</tagNameFormat>
+          <pushChanges>false</pushChanges>
         </configuration>
       </plugin>
       <plugin>
