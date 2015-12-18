@@ -1,42 +1,67 @@
 /* Card UI Styling */
 
 .portlet-frame {
-  border-radius:4px;
   padding:0px 0px;
-  margin:16px 0px 16px;
-  background-color:@white;
+  margin:0px 0px 15px 0px;
   padding-bottom:5px;
-  box-shadow:0px 0px 15px #bbb;
   position:relative;
 }
-.portlet-header {
+.app-header {
   height:150px;
   position:relative;
-  overflow:hidden;
+  overflow:visible;
   z-index:20;
-  border-top-left-radius:4px;
-  border-top-right-radius:4px;
-  background-color:#222;
+  background-color:#ddd;
 }
-.portlet-header h1 {
-  color:@white;
+.app-header.collapse-header {		
+  height: 55px;		
+  h1 {		
+    font-size : x-large;		
+  }		
+}	
+.app-header .dropdown {
+  position:absolute;
+  top:20px;
+  right:20px;
+  .dropdown-menu {
+    right: 0px;
+    left: auto;
+  }
+  i {
+    font-size:20px;
+    color:@white;
+  }
+}	
+.app-header button {		
+  float: right;		
+  margin-right : 10px;		
+}
+.app-header h1 {
+  color:@black;
   margin-top:10px;
   font-weight:200;
-  padding:5px 20px 0px;
+  padding:5px 60px 0px;
   z-index:5;
 }
-.portlet-header p {
-  color:@white;
+.app-header p {
+  color:@black;
   width:60%;
   max-width:500px;
   padding:0px 20px;
   z-index:5;
 }
-.portlet-header img {
+.app-header img {
   width:120%;
   z-index:-1;
   position:absolute;
   opacity:0.3;
+}
+.app-header .header-links {
+  .link-div {
+    float:right;
+    padding-top:20px;
+    padding-right:40px;
+  }
 }
 .no-image {
   background-color:@uw-red-badger;

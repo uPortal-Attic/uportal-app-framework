@@ -119,7 +119,7 @@ define(['angular', 'require'], function(angular, require) {
       });
 
     /**
-     * Directive to render the div with the "portlet-header" class.
+     * Directive to render the div with the "app-header" class.
      * Supports 3 attributes:
      *
      * <ol>
@@ -132,22 +132,27 @@ define(['angular', 'require'], function(angular, require) {
      *
      * Example:
      * <pre>
-     * <portlet-header app-title="My App Title" app-image="img/square.jpg" app-description="Optional app description."></portlet-header>
+     * <app-header app-title="My App Title" app-image="img/square.jpg" app-description="Optional app description."></app-header>
      * </pre>
      *
-     * See ./partials/portlet-header.html.
+     * See ./partials/app-header.html.
      */
-    app.directive('portletHeader', function() {
+    app.directive('appHeader', function() {
     	return {
     		restrict: 'E',
     		scope: {
     			title: '@appTitle',
     			image: '@appImage',
+          icon: '@appIcon',
+          actionLinkUrl: '@appActionLinkUrl',
+          actionLinkIcon: '@appActionLinkIcon',
+          actionLinkText: '@appActionLinkText',
+          optionTemplate: '@appOptionTemplate',
     			description: '@appDescription',
           collapse : '=appCollapse',
           showToggle : '=appShowToggle'
     		},
-    		templateUrl: require.toUrl('./partials/portlet-header.html')
+    		templateUrl: require.toUrl('./partials/app-header.html')
     	};
     });
 
@@ -203,7 +208,7 @@ define(['angular', 'require'], function(angular, require) {
     /**
     <frame-page> is a directive that is your typical page. Header, body.
     
-    The header items are routed to the <portlet-header> (see above)
+    The header items are routed to the <app-header> (see above)
     
     The body of the tag is then the body of the application
     
