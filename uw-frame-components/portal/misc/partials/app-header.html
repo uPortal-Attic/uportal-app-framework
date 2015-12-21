@@ -1,13 +1,13 @@
 <div role="heading" class="row app-header">
-	<div class="col-xs-6">
-		<h3 id="app-title"><i class="fa fa-{{::icon}}"></i> {{::title}}</h3>
-	</div>
-	<div class="col-xs-6 header-links">
-		<div ng-if='optionTemplate' class="link-div">
-			<a popover-template="{{optionTemplate}}" popover-placement="bottom" popover-trigger="click">Options <i class="fa fa-angle-down"></i></a>
-		</div>
-		<div class="link-div xs-hidden" ng-if='actionLinkUrl'>
-			<a href="{{actionLinkUrl}}"><i class="fa fa-{{actionLinkIcon}}"></i> {{actionLinkText}}</a>
-		</div>
-	</div>
+  <div class="col-xs-6">
+    <h3 id="app-title"><i class="fa fa-{{::icon}}"></i> {{::title}}</h3>
+  </div>
+  <div class="col-xs-6 header-links">
+    <div ng-if='optionTemplate' class="link-div">
+      <a popover-template="{{optionTemplate}}" popover-placement="bottom" popover-trigger="click">Options <i class="fa fa-angle-down"></i></a>
+    </div>
+    <div class="link-div xs-hidden" ng-if='actionLinkUrl'>
+      <a href="{{actionLinkUrl}}"><i class="fa fa-{{actionLinkIcon}}"></i> {{actionLinkText}}</a>
+    </div>
+  </div>
 </div>

@@ -123,17 +123,15 @@ define(['angular', 'require'], function(angular, require) {
      * Supports 3 attributes:
      *
      * <ol>
-     * <li>app-image: background image for the div</li>
      * <li>app-title: displayed in an h1 child element</li>
-     * <li>app-description: displayed in a p child element</li>
-     * <li>app-collapse: default state of header</li>
-     * <li>app-show-toggle: show a toggle button, default false</li>
+     * <li>app-icon: the font awesome icon you want (e.g.: fa-google) </li>
+     * <li>app-action-link-*; url : the url you want, if not set action link hides. 
+                              icon: the icon you want for action, default fa-plus. 
+                              text : the text, default "add to home".</li>
+     * <li>app-option-template : The name of the template you want your option drop
+                            down to use. if not set, option drop down hidden.
+                              
      * </ol>
-     *
-     * Example:
-     * <pre>
-     * <app-header app-title="My App Title" app-image="img/square.jpg" app-description="Optional app description."></app-header>
-     * </pre>
      *
      * See ./partials/app-header.html.
      */
