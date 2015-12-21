@@ -11,9 +11,30 @@ This directive should be used for all pages in a frame based page. You can eithe
   app-action-link-url="/portal/web/layout?action=addPortlet&tabName=UW%20Bucky%20Home&fname=helloWorld"
   app-action-link-icon="fa-globe"
   app-action-link-text="add hello world to home"
-  app-option-template="HeyWorldOptionTemplate"
+  app-option-template="HeyWorldOptionTemplate.html"
 ></app-header>
 ```
+
+## Frame Page
+
+Frame page is basically the app header directive but with a transcude for the body. It **Inherits** all of the app-header directive parameters.
+
+#### Template :
+
+```
+<frame-page
+  app-title="Hello World"
+  app-icon="fa-google"
+  app-action-link-url="/portal/web/layout?action=addPortlet&tabName=UW%20Bucky%20Home&fname=helloWorld"
+  app-action-link-icon="fa-globe"
+  app-action-link-text="add hello world to home"
+  app-option-template="HeyWorldOptionTemplate.html"
+>
+This part is included via ng-transclude
+</frame-page>
+```
+
+**Example page** : see `/portal/main/partials/example-page.html`
 
 #### Params :
 
@@ -54,14 +75,6 @@ Displays a button that looks like a circle with a fa-icon in the middle, and a t
 <a href='#/demo' class='btn btn-flat btn-sm'>See Demo here</a>
 
 <a href='demo' class='btn btn-flat btn-sm'>See Demo here</a>
-
-## Frame Page
-
-#### Template
-
-#### Params
-
-+ In
 
 ## Loading Gif
 
