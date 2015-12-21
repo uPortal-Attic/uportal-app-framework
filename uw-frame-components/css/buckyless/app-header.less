@@ -7,6 +7,15 @@ app-header {
     z-index:20;
     background-color:#ddd;
   }
+  
+  .popover {
+    left: inherit !important;
+    right : 46px;
+  }
+
+  .arrow {
+    left: 91% !important;
+  }
 
   .dropdown {
     position:absolute;
@@ -31,10 +40,18 @@ app-header {
   }
   
   .header-links {
+    :hover {
+      cursor : pointer;
+    }
+    color : @link-color;
     .link-div {
       float:right;
       padding-top:20px;
       padding-right:40px;
+      
+      a:hover {
+        text-decoration: none;
+      }
     }
   }
 

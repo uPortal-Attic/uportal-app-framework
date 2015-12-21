@@ -1,8 +1,22 @@
-<frame-page app-header-title='Frame App Home'
-            app-header-description='This is just a simple page to show you what a typical page looks like using the frame-page directive'
-            app-header-collapse='true'
-            app-header-toggle='false'
-            app-header-action-link-url='/apps'
-            app-header-action-link-text='Add more to home'>
-  <p class='center'>Insert Page Information here using ng-transclude</p>
+<script type="text/ng-template" id="MainOptions.html">
+  <div>
+    <ul style='padding: 0;'>
+      <li>
+        <a href='settings'>Go to settings</a>
+      </li>
+      <li>
+        <a href='http://uw-madison-doit.github.io/uw-frame/latest/#/md/directives'>See Documentation</a>
+      </li>
+    </ul>
+  </div>
+</script>
+
+
+<frame-page app-title='Frame App Home'
+              app-icon='fa-home'
+              app-action-link-url="settings"
+              app-action-link-icon="fa-gears"
+              app-action-link-text="Go To Settings"
+              app-option-template="MainOptions.html">
+    <p class='center'>Insert Page Information here using ng-transclude</p>
 </frame-page>

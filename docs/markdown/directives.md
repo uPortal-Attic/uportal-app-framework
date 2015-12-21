@@ -11,6 +11,7 @@ This directive should be used for all pages in a frame based page. You can eithe
   app-action-link-url="/portal/web/layout?action=addPortlet&tabName=UW%20Bucky%20Home&fname=helloWorld"
   app-action-link-icon="fa-globe"
   app-action-link-text="add hello world to home"
+  app-option-template="HeyWorldOptionTemplate"
 ></app-header>
 ```
 
