@@ -139,21 +139,17 @@ define(['angular', 'require'], function(angular, require) {
      */
     app.directive('appHeader', function() {
     	return {
-    		restrict: 'E',
-    		scope: {
-    			title: '@appTitle',
-    			image: '@appImage',
+        restrict: 'E',
+        scope: {
+          title: '@appTitle',
           icon: '@appIcon',
           actionLinkUrl: '@appActionLinkUrl',
           actionLinkIcon: '@appActionLinkIcon',
           actionLinkText: '@appActionLinkText',
-          optionTemplate: '@appOptionTemplate',
-    			description: '@appDescription',
-          collapse : '=appCollapse',
-          showToggle : '=appShowToggle'
-    		},
-    		templateUrl: require.toUrl('./partials/app-header.html')
-    	};
+          optionTemplate: '@appOptionTemplate'
+        },
+        templateUrl: require.toUrl('./partials/app-header.html')
+      };
     });
 
     /**
