@@ -74,8 +74,6 @@ Displays a button that looks like a circle with a fa-icon in the middle, and a t
 
 <a href='#/demo' class='btn btn-flat btn-sm'>See Demo here</a>
 
-<a href='demo' class='btn btn-flat btn-sm'>See Demo here</a>
-
 ## Loading Gif
 
 Shows loading gif when the length of said array is 0 and empty is not set

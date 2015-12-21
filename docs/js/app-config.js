@@ -29,7 +29,7 @@ define(['angular'], function(angular) {
             'feedbackURL' : 'https://my.wisc.edu/portal/p/feedback',
             'helpdeskURL' : 'https://kb.wisc.edu/helpdesk/',
             'myuwHome' : 'https://my.wisc.edu',
-            'rootURL' : '/uw-frame/',
+            'rootURL' : '#/',
             'logoutURL' : 'https://github.com/UW-Madison-DoIT/uw-frame',
         })
         .constant('FOOTER_URLS', [
