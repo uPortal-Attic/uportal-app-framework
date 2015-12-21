@@ -79,7 +79,7 @@ define([
       $rootScope.portal.loading.startFade = true;
       $timeout(function(){
         $rootScope.portal.loading.hidden = true;
-      }, 2000);
+      }, 1500);
     });
 
     return app;
