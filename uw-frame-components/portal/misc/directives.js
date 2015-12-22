@@ -125,18 +125,18 @@ define(['angular', 'require'], function(angular, require) {
      * <ol>
      * <li>app-title: displayed in an h1 child element</li>
      * <li>app-icon: the font awesome icon you want (e.g.: fa-google) </li>
-     * <li>app-action-link-*; url : the url you want, if not set action link hides. 
-                              icon: the icon you want for action, default fa-plus. 
+     * <li>app-action-link-*; url : the url you want, if not set action link hides.
+                              icon: the icon you want for action, default fa-plus.
                               text : the text, default "add to home".</li>
      * <li>app-option-template : The name of the template you want your option drop
                             down to use. if not set, option drop down hidden.
-                              
+
      * </ol>
      *
      * See ./partials/app-header.html.
      */
     app.directive('appHeader', function() {
-    	return {
+      return {
         restrict: 'E',
         scope: {
           title: '@appTitle',
@@ -149,14 +149,29 @@ define(['angular', 'require'], function(angular, require) {
         templateUrl: require.toUrl('./partials/app-header.html')
       };
     });
-    
+
+    app.directive('appHeaderTwoWayBind', function() {
+      return {
+        restrict: 'E',
+        scope: {
+          title: '=appTitle',
+          icon: '=appIcon',
+          actionLinkUrl: '=appActionLinkUrl',
+          actionLinkIcon: '=appActionLinkIcon',
+          actionLinkText: '=appActionLinkText',
+          optionTemplate: '=appOptionTemplate'
+        },
+        templateUrl: require.toUrl('./partials/app-header.html')
+      };
+    });
+
     /**
     <frame-page> is a directive that is your typical page. Header, body.
-    
+
     The header items are routed to the <app-header> (see above)
-    
+
     The body of the tag is then the body of the application
-    
+
     **/
     app.directive('framePage', function(){
       return {
@@ -193,13 +208,13 @@ define(['angular', 'require'], function(angular, require) {
             link: linker
         };
     });
-    
-    
+
+
     /**
      * Circle Button Directive
      * Displays a button that looks like a circle with a fa-icon in the middle, and a title below
-     * Template : <circle-button data-href='' data-target='' data-fa-icon='' data-disabled='false' data-title=''></circle-button> 
-     * 
+     * Template : <circle-button data-href='' data-target='' data-fa-icon='' data-disabled='false' data-title=''></circle-button>
+     *
      * Params:
      * - href : where you want them to go
      * - target : open in new window
