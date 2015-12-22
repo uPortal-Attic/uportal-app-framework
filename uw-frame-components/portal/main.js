@@ -64,6 +64,12 @@ define([
         'ui.sortable'
     ]);
 
+    app.config(['gravatarServiceProvider', function(gravatarServiceProvider){
+      gravatarServiceProvider.defaults = {
+        "default" : "https://yt3.ggpht.com/-xE0EQR3Ngt8/AAAAAAAAAAI/AAAAAAAAAAA/zTofDHA3-s4/s100-c-k-no/photo.jpg"
+      };
+    }]);
+
     app.run(function($rootScope, $timeout, NAMES, THEMES){
       $rootScope.portal = {};
       $rootScope.portal.theme = THEMES[0]; //theme default
@@ -73,7 +79,7 @@ define([
       $rootScope.portal.loading.startFade = true;
       $timeout(function(){
         $rootScope.portal.loading.hidden = true;
-      }, 2000);
+      }, 1500);
     });
 
     return app;

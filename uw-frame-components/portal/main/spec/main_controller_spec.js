@@ -19,10 +19,6 @@ define(['angular-mocks', 'portal'], function() {
             expect(scope.$storage).not.toBeNull();
         });
 
-        it("should have a default of showing the sidebar", function() {
-            expect(scope.$storage.showSidebar).toBeTruthy();
-        });
-
         it("should have an app name defined", function() {
             expect(scope.NAMES.title).not.toBeNull();
         });

@@ -8,8 +8,19 @@
                  <span class="icon-bar"></span>
                  <notification-bell mode='mobile-bell'></notification-bell>
              </button>
-             <div class="header-mobile">
-               <h3><a aria-label="{{portal.theme.ariaLabelTitle}}" class="header-text" ng-href="{{MISC_URLS.rootURL}}" target="_self" id="myuw-header"><img ng-src="{{portal.theme.crest}}" class="hidden-xs" alt="{{portal.theme.crestalt}}"><span>{{portal.theme.title}}</span><span class="beta-logo">{{portal.theme.subtitle}}</span></a></h3>
+             <div class="header-crest">
+               <a aria-label="{{portal.theme.ariaLabelTitle}}"
+                  class="header-text" ng-href="{{MISC_URLS.rootURL}}"
+                  target="_self"
+                  id="myuw-header">
+                  <div class='header-inner'>
+                    <img ng-src="{{portal.theme.crest}}"
+                         class="hidden-xs crest"
+                         alt="{{portal.theme.crestalt}}">
+                    <span class='title'>{{portal.theme.title}}</span>
+                    <!-- <span class="beta-logo">{{portal.theme.subtitle}}</span> -->
+                  </div>
+               </a>
              </div>
               <div class="search-mobile-icon hidden-sm hidden-md hidden-lg">
                 <i class="fa fa-search" ng-click="headerCtrl.toggleSearch()"></i>
@@ -23,7 +34,21 @@
              <div class="nav navbar-nav hidden-sm hidden-md hidden-lg bucky-nav">
                   <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
                   <notification-bell mode='mobile-menu' header-ctrl='headerCtrl'></notification-bell>
-                  <side-bar-menu></side-bar-menu>
+                  <ul class="list-group sidebar-list">
+                       <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
+                        <a ng-if='APP_FLAGS.isWeb' href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+                         <span class="fa fa-home fa-fw"></span> Home
+                      </a>
+                      <a ng-if='!APP_FLAGS.isWeb' href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+                        <span class="fa fa-home fa-fw"></span> Home
+                      </a>
+                    </li>
+                    <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
+                      <a href="{{MISC_URLS.logoutURL}}" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Log out');">
+                        <span class="fa fa-sign-out fa-fw"></span> Log out
+                      </a>
+                    </li>
+                  </ul>
              </div>
              <ul class="nav navbar-nav hidden-xs bucky-nav-large">
                  <li>
@@ -40,8 +65,8 @@
                 <li>
                   <notification-bell mode='bell'></notification-bell>
                 </li>
-                <li ng-show="{{headerCtrl.showLogout}}">
-                  <a ng-href="{{MISC_URLS.logoutURL}}" class='logout-link' title='Logout' target='_self'><i  class='fa fa-sign-out'></i></a>
+                <li class='username-menu'>
+                  <username></username>
                 </li>
              </ul>
          </div>

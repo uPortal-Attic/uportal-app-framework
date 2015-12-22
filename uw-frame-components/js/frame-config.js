@@ -33,11 +33,15 @@ define(['angular'], function(angular) {
         })
         .constant('FRAME_BETA_FEATURES', [
           {
-            "id" : "sidebarShowSettings",
-            "title" : "Sidebar Settings",
-            "description" : "Shows the settings button to get to this page easier"
+            "id" : "showSettings",
+            "title" : "Beta Settings",
+            "description" : "Shows/Hides the Beta Settings"
           },
-
+          {
+            "id" : "useGravatar",
+            "title" : "Use Gravatar to get profile image",
+            "description" : "Show Gravatar in header"
+           }
         ]);
 
     return config;

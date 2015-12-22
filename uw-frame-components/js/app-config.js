@@ -4,14 +4,12 @@ define(['angular'], function(angular) {
     config
         .constant('APP_FLAGS', {
             'features' : false,
-            'showSidebar' : true,
             'showSearch' : true,
             'isWeb' : false
         })
         .constant('SERVICE_LOC', {
             'aboutURL' : null,
             'sessionInfo' : 'staticFeeds/session.json',
-            'sidebarInfo' : 'staticFeeds/sidebar.json',
             'featuresInfo' : 'staticFeeds/features.json',
             'notificationsURL' : 'staticFeeds/notifications.json',
             'kvURL' : null,
@@ -36,15 +34,24 @@ define(['angular'], function(angular) {
             'loginURL' : '/portal/Login?profile=bucky',
             'logoutURL' : '/portal/Logout',
             'myuwHome' : 'https://my.wisc.edu',
-            'rootURL' : '/web',
-            'whatsNewURL' : null
+            'rootURL' : '/web'
 
         })
+        .constant('FOOTER_URLS', [
+          { "url" : "/web/static/myuw-help",
+            "target" : "_blank",
+            "title" : "Help"
+          },
+          { "url" : "https://my.wisc.edu/portal/p/feedback",
+            "target" : "_blank",
+            "title" : "Feedback"
+          }
+        ])
         .constant('APP_BETA_FEATURES', [
           {
-            "id" : "sidebarQuicklinks",
-            "title" : "Sidebar Quicklinks",
-            "description" : "Shows quicklinks to various campus sites in sidebar"
+            "id" : "toogleSomething",
+            "title" : "Sample Toggle",
+            "description" : "This is just an example of a toggle. Look at your localStorage after you switch this on for the first time."
           }
         ]);
 

@@ -1,10 +1,12 @@
 <div class="row portlet-frame">
-  <portlet-header role="banner"
-                  app-title='{{headerTitle}}'
-                  app-description='{{headerDescription}}'
-                  app-image='{{headerImage}}'
-                  app-show-toggle='headerToggle'
-                  app-collapse='headerCollapse'></portlet-header>
+  <app-header
+    app-title="{{appTitle}}"
+    app-icon="{{appIcon}}"
+    app-action-link-url="{{appActionLinkUrl}}"
+    app-action-link-icon="{{appActionLinkIcon}}"
+    app-action-link-text="{{appActionLinkText}}"
+    app-option-template="{{appOptionTemplate}}"
+  ></app-header>
   <div role="main" class="col-xs-12 no-padding">
     <ng-transclude></ng-transclude>
   </div>

@@ -1,86 +1,28 @@
-<div class="portlet-frame container-fluid" ng-controller="SettingsController">
-  <div role="banner" class="portlet-header">
-    <img src="img/stand-back.jpg" alt="Science" height="180px" style="left: 30%; width: inherit;">
-    <h1>Beta Settings</h1>
-    <p>Opting in/out of experimental features, no warranty included</p>
-  </div>
-  <div role="main" class="portlet-body">
-    <ul class='row' style='margin : 10px; padding : 0;'>
-      <li class='col-sm-6 portlet-container-home beta-card-style' ng-repeat='option in options'>
-        <setting-option></setting-option>
-      </li>
-    </ul>
-    <ul class="row" style='margin : 10px; padding : 0;'>
-      <li class="col-sm-6 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
-          <h4>Theme Selector</h4>
-          <small>Pick which place you call home</small>
-          <select class="form-control" ng-options="item as item.name for item in THEMES track by item.name" ng-model="portal.theme">
-          </select>
-       </li>
-      <li class="col-sm-6 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
-        <h4>Home Background Image &nbsp;</h4>
-        <small>Pick a different background image for MyUW Home</small>
-        <div style='text-align: center;'>
-          <div style='padding: 1em;'>
-              <img ng-src="{{$storage.homeImg}}" height='100px'>
-          </div>
-          <label class="btn btn-primary" ng-model="$storage.homeImg" btn-radio="'img/terrace.jpg'">Chairs at the Union Terrace</label>
-          <label class="btn btn-primary" ng-model="$storage.homeImg" btn-radio="'img/square.jpg'">333 East Campus</label>
-
-        </div>
+<frame-page app-title='Beta Settings'
+              app-icon='fa-gears'>
+  <ul class='row' style='margin : 10px; padding : 0;'>
+    <li class='col-sm-5 col-sm-offset-1 portlet-container-home beta-card-style' ng-repeat='option in options'>
+      <setting-option></setting-option>
+    </li>
+  </ul>
+  <ul class="row" style='margin : 10px; padding : 0;'>
+    <li class="col-sm-5  col-sm-offset-1 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
+        <h4>Theme Selector</h4>
+        <small>Pick which place you call home</small>
+        <select class="form-control" ng-options="item as item.name for item in THEMES track by item.name" ng-model="portal.theme">
+        </select>
      </li>
-     <li class="col-sm-6 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
-       <h4>Home Profile Image &nbsp;</h4>
-       <small>Show a profile image in the sidebar</small>
-       <h5>
-         <span class="btn-group">
-           <label class="btn" ng-class="{'btn-success' : $storage.sidebarShowProfile, 'btn-default' : !$storage.sidebarShowProfile }" ng-model="$storage.sidebarShowProfile" btn-radio="true">On</label>
-           <label class="btn" ng-class="{'btn-success' : $storage.sidebarShowProfile, 'btn-default' : !$storage.sidebarShowProfile }" ng-model="$storage.sidebarShowProfile" btn-radio="false">Off</label>
-         </span>
-         Show profile picture
-       </h5>
-       <h5 ng-if='$storage.sidebarShowProfile'>
-         <span class="btn-group">
-           <label class="btn" ng-class="{'btn-success' : $storage.useGravatar, 'btn-default' : !$storage.useGravatar }" ng-model="$storage.useGravatar" btn-radio="true">Yes</label>
-           <label class="btn" ng-class="{'btn-success' : $storage.useGravatar, 'btn-default' : !$storage.useGravatar }" ng-model="$storage.useGravatar" btn-radio="false">No</label>
-         </span>
-         Use Gravatar Email
-       </h5>
-       <div ng-show="$storage.useGravatar && $storage.sidebarShowProfile">
-          <label for="gravatarEmail">Gravatar Email <small ng-show="$storage.useGravatar">Setup gravatar account <a href='https://en.gravatar.com/' target='_blank'>here</a>.</small></label>
-          <form class="form-inline">
-              <div class="form-group">
-                  <input type="email" class="form-control" id="gravatarEmail" placeholder="example@wisc.edu" ng-model="$storage.gravatarEmail">
-              </div>
-              <button class='btn btn-primary' ng-click='reload()'>Reload</button>
-          </form>
-       </div>
-       <small ng-if='$storage.sidebarShowProfile && !$storage.useGravatar'>Pick a different profile image for MyUW Home</small>
-       <div ng-if='$storage.sidebarShowProfile && !$storage.useGravatar' style='text-align: center;'>
-         <div style='padding: 1em;'>
-           <img ng-src="{{$storage.profileImg}}" height='100px' ng-click="showCustom=true;">
-         </div>
-         <div class="form-group" ng-if="showCustom">
-           <label for="customProfilePic">Custom URL</label>
-           <input type="URL" class="form-control" id="customProfilePic" placeholder="http://grumpycat.com" ng-model="$storage.profileImg">
-         </div>
-         <label class="btn btn-primary" ng-model="$storage.profileImg" btn-radio="'img/terrace.jpg'">Chairs at the Union Terrace</label>
-         <label class="btn btn-primary" ng-model="$storage.profileImg" btn-radio="'img/square.jpg'">333 East Campus</label>
-
-       </div>
-     </li>
-      <li class="col-sm-6 portlet-container-home beta-card-style center">
-          <h4>Danger Zone</h4>
-          <h4>
-          <span class="btn-group">
-            <label class="btn btn-default" ng-click="resetLocal()">Reset Local Storage</label>
-          </span>
-          <span class="btn-group">
-            <label class="btn btn-default" ng-click="clearSession()">Clear Session Storage</label>
-          </span>
-          </h4>
-          <small>Reset to default and clearing the session storage can be nice to clean the slate.</small>
-      </li>
-    </ul>
-  </div>
-</div>
+    <li class="col-sm-5 col-sm-offset-1 portlet-container-home beta-card-style center">
+        <h4>Danger Zone</h4>
+        <h4>
+        <span class="btn-group">
+          <label class="btn btn-default" ng-click="resetLocal()">Reset Local Storage</label>
+        </span>
+        <span class="btn-group">
+          <label class="btn btn-default" ng-click="clearSession()">Clear Session Storage</label>
+        </span>
+        </h4>
+        <small>Reset to default and clearing the session storage can be nice to clean the slate.</small>
+    </li>
+  </ul>
+</frame-page>
