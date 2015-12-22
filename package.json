@@ -37,7 +37,19 @@
     "frame",
     "angularjs"
   ],
-  "author": "Tim Levett <tim.levett@wisc.edu>",
+  "contributors": [
+    {
+      "name" : "Tim Levett",
+      "email" : "tim.levett@wisc.edu",
+    },
+    {
+      "name" : "Timothy Vertein"
+    },
+    {
+      "name" : "Jared Hanstra",
+      "email" : "jared.hanstra@wisc.edu"
+    }
+  ],
   "license": {
     "type" : "Apache-2.0",
     "url" : "https://github.com/UW-Madison-DoIT/uw-frame/blob/master/LICENSE"
