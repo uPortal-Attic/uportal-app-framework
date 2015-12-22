@@ -22,12 +22,26 @@
     "clean-uw-frame-java": "cd uw-frame-java && mvn clean",
     "clean-uw-frame-static": "rm -rf uw-frame-static/target"
   },
+  "files" : [
+    "uw-frame-components",
+    "uw-frame-static",
+    "Gruntfile.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/UW-Madison-DoIT/uw-frame.git"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "uw-frame",
+    "UW-Madison",
+    "frame",
+    "angularjs"
+  ],
+  "author": "Tim Levett <tim.levett@wisc.edu>",
+  "license": {
+    "type" : "Apache-2.0",
+    "url" : "https://github.com/UW-Madison-DoIT/uw-frame/blob/master/LICENSE"
+  },
   "bugs": {
     "url": "https://github.com/UW-Madison-DoIT/uw-frame/issues"
   },
