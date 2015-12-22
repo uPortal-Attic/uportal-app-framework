@@ -34,7 +34,7 @@
     "ngstorage": "~0.3.7",
     "normalize-less": "*",
     "requirejs": "*",
-    "uw-ui-toolkit": "0.3.2"
+    "uw-ui-toolkit": "0.4.1"
   },
   "devDependencies": {}
 }

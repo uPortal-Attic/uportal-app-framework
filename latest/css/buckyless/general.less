@@ -4,8 +4,7 @@ body {
   background-color: @color4;
 }
 #body-background {
-  background-color: @color4;
-  background-image: url('common/images/grey-jean.png');
+  background-color: #ccc;
   min-height: 90vh;
 }
 h1,h2,h3,h4,h5,h6 {
@@ -123,8 +122,12 @@ button:focus {
 
 .beta-card-style {
     border : 1px gainsboro solid; 
+    background-color: @white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     padding: 1em;
     min-height : 150px;
+    margin-bottom : 10px;
 }
 
 [class*="col-"] {
@@ -152,6 +155,17 @@ circle-button {
     padding-top: 15px;
     margin: 0 auto 3px;
   }  
+}
+
+.page-content {
+	padding: 48px 0px;  
+}
+
+.no-image {
+  background-color:@uw-red-badger;
+}
+.popover-content ul {
+  margin-bottom:0px;
 }
 
 /*

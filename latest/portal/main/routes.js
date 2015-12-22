@@ -2,7 +2,7 @@ define(['require'], function(require) {
 
     return {
       main : {
-        templateUrl: require.toUrl('./partials/main.html')
+        templateUrl: require.toUrl('./partials/example-page.html')
       },
       
       accessDenied: {

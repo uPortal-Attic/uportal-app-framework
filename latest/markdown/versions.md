@@ -4,4 +4,4 @@ Here are all the different versions of our documentation and our application. We
 
 + [1.4.0](http://uw-madison-doit.github.io/uw-frame/1.4.0/)
 
-Looking for how to release? Find that [here](http://uw-madison-doit.github.io/uw-frame/latest/#/md/releasing)
+Looking for how to release? Look at the latest [Releasing](http://uw-madison-doit.github.io/uw-frame/latest/#/md/releasing) document.

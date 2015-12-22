@@ -3,7 +3,10 @@
     "userName": "userx",
     "sessionKey": "someRandomKey",
     "serverName": "localhost",
+    "firstName" : "Bucky",
+    "sirName" : "Badger",
     "displayName": "Bucky Badger",
-    "version": "1.0.0"
+    "email" : "bucky@wisc.edu",
+    "version": "1.4.0"
   }
 }

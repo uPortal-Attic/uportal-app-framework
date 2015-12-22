@@ -1,11 +1,4 @@
-<div ng-controller="PortalFeaturesController as featuresCtrl" class="portlet-frame">
-  <portlet-header app-title="{{NAMES.title}} New Features" 
-                  app-image="img/square.jpg" 
-                  app-description="Stay up-to-date on the newest features of {{NAMES.title}}.">
-  </portlet-header>
-
-  <div class="row">
-    <div class="col-xs-12">
+<frame-page app-title="{{NAMES.title}} - New Features">
       <div class="features-feed">
         <div ng-if='features.length === 0'> <!--empty case -->
           <p class='center'>No features listed at this time, please check back later.</p>
@@ -26,8 +19,4 @@
       <div class="center">
         <a class="btn btn-primary btn-lg" ng-href="{{MISC_URLS.feedbackURL}}">Send us feedback</a>
       </div>
-    </div>
-  </div>
-
-
-</div>
+</frame-page>
