@@ -1,6 +1,8 @@
 ## App Header
 
-This directive should be used for all pages in a frame based page. You can either utilize the frame-page directive, or just this directive with custom code.
+`app-header` directive should be used for all pages in a frame based page. You can either utilize the frame-page directive, or just this directive with custom code.
+
+There is also a directive called `app-header-two-way-bind`. This has all the same features as `app-header` except all the scope attributes are passed in via `=` instead of `@`. This provides 2 way binding for your header. Research angular directives for more details.
 
 #### Template :
 
@@ -43,8 +45,8 @@ This part is included via ng-transclude
 **app-icon** : the font awesome icon you want (e.g.: fa-google)
 
 **app-action-link-\*** :
-+ url : the url you want, if not set action link hides. 
-+ icon: the icon you want for action, default `fa-plus`. 
++ url : the url you want, if not set action link hides.
++ icon: the icon you want for action, default `fa-plus`.
 + text : the text, default "add to home".
 
 **app-option-template** : The name of the template you want your option drop down to use. if not set, option drop down hidden.
