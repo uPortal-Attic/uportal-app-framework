@@ -1,6 +1,13 @@
-# UW Frame
+[![Gitter](https://badges.gitter.im/UW-Madison-DoIT/uw-frame.svg)](https://gitter.im/UW-Madison-DoIT/uw-frame?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)
+[![Coverage Status](https://coveralls.io/repos/UW-Madison-DoIT/uw-frame/badge.svg?branch=master&service=github)](https://coveralls.io/github/UW-Madison-DoIT/uw-frame?branch=master)
+[![npm version](https://badge.fury.io/js/uw-frame.svg)](https://badge.fury.io/js/uw-frame)
+[![codenvy factory](https://codenvy.com/factory/resources/factory-white.png)](https://codenvy.com/factory?id=au4tpiai3n1ygpy1)
+[![Issue Stats](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/pr)](http://issuestats.com/github/uw-madison-doit/uw-frame)
+[![Issue Stats](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/issue)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 
-[![Gitter](https://badges.gitter.im/UW-Madison-DoIT/uw-frame.svg)](https://gitter.im/UW-Madison-DoIT/uw-frame?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)  [![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)  [![Coverage Status](https://coveralls.io/repos/UW-Madison-DoIT/uw-frame/badge.svg?branch=master&service=github)](https://coveralls.io/github/UW-Madison-DoIT/uw-frame?branch=master)  [![codenvy factory](https://codenvy.com/factory/resources/factory-white.png)](https://codenvy.com/factory?id=au4tpiai3n1ygpy1)
+UW Frame
+=========
 
 uw-frame can be described as the "the framework for building applications for campus using modern technologies".  
 This package includes the MyUW header, settings, footer, and some reusable components :
@@ -13,17 +20,12 @@ Learn more about the reusable components on our [docs page](http://uw-madison-do
 
 * [node](https://nodejs.org/en/)
 * [npm](https://www.npmjs.com/)
-* [Bower](http://bower.io/)
-
-### Static Pages
-
-* [http-server](https://www.npmjs.com/package/http-server)
 
 ### Java
 * [Maven](http://maven.apache.org)
 * JDK 7
 
-## Getting started
+## Quickstart
 
 uw-frame provides the primary HTML page at the root of the context that hosts your AngularJS single page application. In order to introduce your own content, uw-frame's extension point is 'my-app/main.js'.
 
@@ -70,9 +72,3 @@ or
 
 static:
 > npm run static
-
-### Common Issues
-
-* Bower installed? If you see an error like the following from the Maven build, it means you haven't properly installed Bower (check that it's installed and on your path):
-
-> [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:1.3.2:exec (default) on project uw-frame: Command execution failed. Cannot run program "bower" (in directory "uw-frame-java/src/main/webapp"): error=2, No such file or directory -> [Help 1]

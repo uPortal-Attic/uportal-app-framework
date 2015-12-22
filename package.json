@@ -8,7 +8,7 @@
     "posttest": "cd uw-frame-components && rm -rf bower_components",
     "build-all": "npm run build-java && npm run build-static",
     "build-docs": "cd docs && ./build.sh",
-    "build-java": "cd uw-frame-java && mvn clean package",
+    "build-java": "cd uw-frame-java && mvn clean install",
     "prebuild-static": "npm install",
     "build-static": "cd uw-frame-static && ./build.sh",
     "postbuild-static" : "grunt",
