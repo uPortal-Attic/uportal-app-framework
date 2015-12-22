@@ -1,7 +1,7 @@
 {
-  "name": "web",
-  "version": "1.0.0",
-  "description": "angular my-uw",
+  "name": "uw-frame",
+  "version": "2.0.0",
+  "description": "MyUW's frame project for creating angular based microservices.",
   "scripts": {
     "pretest": "cd uw-frame-components && bower --config.interactive=false install",
     "test": "karma start uw-frame-components/karma.conf.js --single-run",
