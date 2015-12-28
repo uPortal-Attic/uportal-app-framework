@@ -128,8 +128,10 @@ define(['angular', 'require'], function(angular, require) {
      * <li>app-action-link-*; url : the url you want, if not set action link hides.
                               icon: the icon you want for action, default fa-plus.
                               text : the text, default "add to home".</li>
+     * <li>app-add-to-home: Replaces action link url with a function call to add to portal home
      * <li>app-option-template : The name of the template you want your option drop
                             down to use. if not set, option drop down hidden.
+     * <li>app-fname : The functional name of the application, if not provided it'll use NAMES.fname
 
      * </ol>
      *
@@ -144,6 +146,8 @@ define(['angular', 'require'], function(angular, require) {
           actionLinkUrl: '@appActionLinkUrl',
           actionLinkIcon: '@appActionLinkIcon',
           actionLinkText: '@appActionLinkText',
+          addToHome : '=appAddToHome',
+          fname : '@appFname',
           optionTemplate: '@appOptionTemplate'
         },
         templateUrl: require.toUrl('./partials/app-header.html')
@@ -159,6 +163,8 @@ define(['angular', 'require'], function(angular, require) {
           actionLinkUrl: '=appActionLinkUrl',
           actionLinkIcon: '=appActionLinkIcon',
           actionLinkText: '=appActionLinkText',
+          addToHome : '=appAddToHome',
+          fname : '=appFname',
           optionTemplate: '=appOptionTemplate'
         },
         templateUrl: require.toUrl('./partials/app-header.html')
@@ -184,6 +190,8 @@ define(['angular', 'require'], function(angular, require) {
             appActionLinkUrl: '@appActionLinkUrl',
             appActionLinkIcon: '@appActionLinkIcon',
             appActionLinkText: '@appActionLinkText',
+            appAddToHome : '=appAddToHome',
+            appFname : '=appFname',
             appOptionTemplate: '@appOptionTemplate'
           }
       }
@@ -236,6 +244,13 @@ define(['angular', 'require'], function(angular, require) {
     		},
     		templateUrl: require.toUrl('./partials/circle-button.html')
     	};
+    });
+
+    app.directive('addToHome', function() {
+      return {
+        restrict : 'E',
+        templateUrl : require.toUrl('./partials/add-to-home.html')
+      };
     });
 
 

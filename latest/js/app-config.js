@@ -14,7 +14,8 @@ define(['angular'], function(angular) {
         })
         .constant('NAMES', {
             'title' : 'uw-frame Docs',
-            'guestUserName' : 'guest'
+            'guestUserName' : 'guest',
+            'fname' : 'uw-frame-fname'
         })
         .constant('SEARCH',{
             'searchURL' : 'https://my.wisc.edu/web/apps/search/'
@@ -31,6 +32,10 @@ define(['angular'], function(angular) {
             'myuwHome' : 'https://my.wisc.edu',
             'rootURL' : '#/',
             'logoutURL' : 'https://github.com/UW-Madison-DoIT/uw-frame',
+            'addToHomeURLS' : {
+              'layoutURL' : '/portal/web/layoutDoc?tab=UW Bucky Home',
+              'addToHomeActionURL' : '/portal/web/layout?tabName=UW Bucky Home&action=addPortlet&fname='
+            }
         })
         .constant('FOOTER_URLS', [
           { "url" : "/web/static/myuw-help",

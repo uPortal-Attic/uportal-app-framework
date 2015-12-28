@@ -1,5 +1,5 @@
 <script type="text/ng-template" id="AppHeaderOptions.html">
-  <a ng-if='actionLinkUrl' class='visible-xs' ng-href="{{actionLinkUrl}}"><i class="fa {{actionLinkIcon}}"></i> {{actionLinkText}}</a>
+  <add-to-home class='visible-xs'></add-to-home>
   <div ng-include="optionTemplate">
 
   </div>
@@ -13,8 +13,6 @@
     <div ng-if='optionTemplate' class="link-div" popover-template="'AppHeaderOptions.html'" popover-placement="bottom" popover-trigger="click">
       <span class='visible-xs'><i class='fa fa-gear fa-fw'></i></span><span class='hidden-xs'>Options <i class="fa fa-angle-down"></i></span>
     </div>
-    <div class="link-div hidden-xs" ng-if='actionLinkUrl'>
-      <a ng-href="{{actionLinkUrl}}"><i class="fa {{actionLinkIcon}}"></i> {{actionLinkText}}</a>
-    </div>
+    <add-to-home class='hidden-xs'></add-to-home>
   </div>
 </div>
