@@ -190,6 +190,8 @@ define(['angular', 'require'], function(angular, require) {
             appActionLinkUrl: '@appActionLinkUrl',
             appActionLinkIcon: '@appActionLinkIcon',
             appActionLinkText: '@appActionLinkText',
+            appAddToHome : '=appAddToHome',
+            appFname : '=appFname',
             appOptionTemplate: '@appOptionTemplate'
           }
       }

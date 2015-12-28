@@ -28,7 +28,7 @@ define(['angular'], function(angular) {
       if(PortalAddToHomeService.canAddToHome($scope.fname)) {
         //check if in home layout
         PortalAddToHomeService.inHome().then(function(data){
-          $scope.inHome = data.inHome;
+          $scope.inHome = data;
         });
       }
     };
