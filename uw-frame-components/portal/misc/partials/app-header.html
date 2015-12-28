@@ -21,7 +21,7 @@
     <div class="link-div hidden-xs" ng-if='addToHome'>
       <div ng-controller='AddToHomeController'>
         <span ng-hide='inHome' ng-click='addToHome()'>
-          <i class="fa fa-fw {{actionLinkIcon}}" ng-class="{ 'fa-spin' : savingAddToHome}"></i> {{actionLinkText}}
+          <i class="fa fa-fw {{actionLinkIcon}}" ng-class="{ 'fa-spin' : savingAddToHome, 'fa-plus' : !actionLinkIcon}"></i> {{actionLinkText}}
         </span>
         <span ng-show='successfullyAdded'>
           <i class="fa fa-fw fa-check-square"></i> {{actionLinkText}} Saved

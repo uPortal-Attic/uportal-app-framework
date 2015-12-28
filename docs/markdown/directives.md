@@ -10,12 +10,34 @@ There is also a directive called `app-header-two-way-bind`. This has all the sam
 <app-header
   app-title="Hello World"
   app-icon="fa-google"
-  app-action-link-url="/portal/web/layout?action=addPortlet&tabName=UW%20Bucky%20Home&fname=helloWorld"
+  app-action-link-url="/go/to/this/url/when/you/click/me"
   app-action-link-icon="fa-globe"
   app-action-link-text="add hello world to home"
   app-option-template="HeyWorldOptionTemplate.html"
+  app-fname='hey-world-fname'
+  app-add-to-home='false'
 ></app-header>
 ```
+
+#### Params :
+
+All params are prefixed with `app-`.
+
+**title** : The title that will be displayed in the header
+
+**icon** : the fa icon that will be used as a prefix to the title (e.g.: fa-github)
+
+**action-link-url** : A URL that you want to goto when the action is clicked (alt to add to home feature)
+
+**action-link-text** : The text for the action link
+
+**action-link-icon** : The fa icon for prefixing the action-link-text. `fa-plus` by default. (e.g.: fa-plus)
+
+**add-to-home** : If set to true, will use the add to home controller instead of the action-link-url. False by default.
+
+**fname** : if provided, it'll use that in the add to home feature. if not, it'll try to use NAMES.fname constant.
+
+**option-template** : the name of the template to inject in the options dropdown. See the `example-page.html` for a good example of it's usage.
 
 ## Frame Page
 
@@ -31,6 +53,8 @@ Frame page is basically the app header directive but with a transcude for the bo
   app-action-link-icon="fa-globe"
   app-action-link-text="add hello world to home"
   app-option-template="HeyWorldOptionTemplate.html"
+  app-fname="hey-world-fname"
+  app-add-to-home='false'
 >
 This part is included via ng-transclude
 </frame-page>
@@ -40,18 +64,7 @@ This part is included via ng-transclude
 
 #### Params :
 
-**app-title** : The title of this page
-
-**app-icon** : the font awesome icon you want (e.g.: fa-google)
-
-**app-action-link-\*** :
-+ url : the url you want, if not set action link hides.
-+ icon: the icon you want for action, default `fa-plus`.
-+ text : the text, default "add to home".
-
-**app-option-template** : The name of the template you want your option drop down to use. if not set, option drop down hidden.
-
-*Demo* : This page is using the app-header directive
+_See `app-header`_
 
 ## Circle Button
 

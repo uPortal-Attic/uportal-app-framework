@@ -14,7 +14,7 @@ define(['angular'], function(angular) {
         })
         .constant('NAMES', {
             'title' : 'uw-frame Docs',
-            'guestUserName' : 'guest'
+            'guestUserName' : 'guest',
             'fname' : 'uw-frame-fname'
         })
         .constant('SEARCH',{
