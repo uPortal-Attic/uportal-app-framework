@@ -8,8 +8,11 @@ define(['angular'], function(angular) {
   app.factory('PortalAddToHomeService', function($http, filterFilter, NAMES, MISC_URLS){
 
     var canAddToHome = function(){
-      return MISC_URLS.addToHomeURLS
-          && MISC_URLS.addToHomeURLS.addToHomeActionURL;
+      if (MISC_URLS.addToHomeURLS && MISC_URLS.addToHomeURLS.addToHomeActionURL) {
+            return true;
+      } else {
+        return false;
+      }
     };
 
     var inHome = function(fname){
@@ -19,6 +22,8 @@ define(['angular'], function(angular) {
           var theFname = (fname ? fname : NAMES.fname);
           var filteredLayout = filterFilter(layout, {fname : theFname});
           return filteredLayout && filteredLayout.length > 0;
+        } else {
+          return false;
         }
       }, function(){
         //failed

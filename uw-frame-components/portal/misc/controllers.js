@@ -8,7 +8,7 @@ define(['angular'], function(angular) {
                  function($scope, PortalAddToHomeService) {
     $scope.addToHome = function() {
       if(!$scope.inHome && PortalAddToHomeService.canAddToHome($scope.fname)) {
-        PortalAddToHomeService.addToHome(data).then(
+        PortalAddToHomeService.addToHome($scope.fname).then(
           function(){
             //success
             $scope.inHome = true;
