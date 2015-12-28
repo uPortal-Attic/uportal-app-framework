@@ -2,13 +2,47 @@
 
 define(['angular'], function(angular) {
 
+
   var app = angular.module('portal.misc.services', []);
+
+  app.factory('PortalAddToHomeService', function($http, filterFilter, NAMES, MISC_URLS){
+
+    var canAddToHome = function(){
+      return MISC_URLS.addToHomeURLS
+          && MISC_URLS.addToHomeURLS.addToHomeActionURL;
+    };
+
+    var inHome = function(fname){
+      return $http.get(MISC_URLS.addToHomeURLS.layoutURL).then(function(result){
+        var layout = result.data.layout;
+        if(layout) {
+          var theFname = (fname ? fname : NAMES.fname);
+          var filteredLayout = filterFilter(layout, {fname : theFname});
+          return filteredLayout && filteredLayout.length > 0;
+        }
+      }, function(){
+        //failed
+        console.warn('could not reach portal server to get layout, portal down?');
+        return true; //returning it is in the layout by default since portal is down
+      });
+    };
+
+    var addToHome = function(fname){
+      return $http.post(MISC_URLS.addToHomeURLS.addToHomeActionURL + (fname ? fname : NAMES.fname));
+    };
+
+    return {
+      canAddToHome : canAddToHome,
+      inHome : inHome,
+      addToHome : addToHome
+    };
+  });
 
   app.factory('miscService', function($http, $window, $location, MISC_URLS) {
 
     /**
      Used to redirect users to login screen iff result code is 0 (yay shib) or 302
-     
+
      Setup MISC_URLS.loginURL in js/app-config.js to have redirects happen
     **/
     var redirectUser = function(status, caller) {
@@ -23,11 +57,11 @@ define(['angular'], function(angular) {
         console.warn("Strange behavior from " + caller +". Returned status code : " + status);
       }
     };
-    
+
     /**
      Google Analytics page view
-     - searchTerm : Optional parameter to say "this is a search page". 
-                    This is the actual search term used. 
+     - searchTerm : Optional parameter to say "this is a search page".
+                    This is the actual search term used.
     **/
     var pushPageview = function (searchTerm) {
       var path = $location.path();
@@ -43,7 +77,7 @@ define(['angular'], function(angular) {
      - category : e.g.: beta header
      - action   : e.g.: beta buttons
      - label    : e.g.: back to classic
-     
+
      See https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide for more info
     **/
     var pushGAEvent = function(category, action, label) {
@@ -62,4 +96,3 @@ define(['angular'], function(angular) {
   return app;
 
 });
-

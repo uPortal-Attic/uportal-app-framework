@@ -13,8 +13,15 @@
     <div ng-if='optionTemplate' class="link-div" popover-template="'AppHeaderOptions.html'" popover-placement="bottom" popover-trigger="click">
       <span class='visible-xs'><i class='fa fa-gear fa-fw'></i></span><span class='hidden-xs'>Options <i class="fa fa-angle-down"></i></span>
     </div>
-    <div class="link-div hidden-xs" ng-if='actionLinkUrl'>
-      <a ng-href="{{actionLinkUrl}}"><i class="fa {{actionLinkIcon}}"></i> {{actionLinkText}}</a>
+    <div class="link-div hidden-xs" ng-if='actionLinkUrl && !addToHome'>
+      <a ng-href="{{actionLinkUrl}}">
+        <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
+      </a>
+    </div>
+    <div class="link-div hidden-xs" ng-if='addToHome'>
+      <span ng-controller='AddToHomeController' ng-hide='inHome' ng-click='addToHome()'>
+        <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
+      </span>
     </div>
   </div>
 </div>

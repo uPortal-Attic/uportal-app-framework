@@ -17,7 +17,8 @@ define(['angular'], function(angular) {
         })
         .constant('NAMES', {
             'title' : 'App Name',
-            'guestUserName' : 'guest'
+            'guestUserName' : 'guest',
+            'fname' : 'sample-fname'
         })
         .constant('SEARCH',{
             'searchURL' : 'https://my.wisc.edu/web/apps/search/'
@@ -34,7 +35,11 @@ define(['angular'], function(angular) {
             'loginURL' : '/portal/Login?profile=bucky',
             'logoutURL' : '/portal/Logout',
             'myuwHome' : 'https://my.wisc.edu',
-            'rootURL' : '/web'
+            'rootURL' : '/web',
+            'addToHomeURLS' : {
+              'layoutURL' : '/portal/web/layoutDoc?tab=UW Bucky Home',
+              'addToHomeActionURL' : '/portal/web/layout?tabName=UW Bucky Home&action=addPortlet&fname='
+            }
 
         })
         .constant('FOOTER_URLS', [

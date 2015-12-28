@@ -1,17 +1,42 @@
 'use strict';
 
 define(['angular'], function(angular) {
-	var app = angular.module('portal.misc.controllers', []);
+  var app = angular.module('portal.misc.controllers', []);
 
-	/* Profile */
-	app.controller('ProfileController', [ '$http', function($http) {
-		var store = this;
-		store.user = {};
-		$http.get('/profile').success(function(data) {
-			store.user = data;
-		});
-	} ]);
+  /* AddToHomeController */
+  app.controller('AddToHomeController', [ '$scope', 'PortalAddToHomeService',
+                 function($scope, PortalAddToHomeService) {
+    $scope.addToHome = function() {
+      if(!$scope.inHome && PortalAddToHomeService.canAddToHome($scope.fname)) {
+        PortalAddToHomeService.addToHome(data).then(
+          function(){
+            //success
+            $scope.inHome = true;
+            $scope.actionLinkIcon = 'fa-check-square';
+          },
+          function(){
+            //failed
+            $scope.addToHomeFailed = true;
+          }
+        );
+      }
+    }
 
-	return app;
+    var init = function() {
+      //default it to being in your home to avoid service loading lag
+      $scope.inHome = true;
+      if(PortalAddToHomeService.canAddToHome($scope.fname)) {
+        //check if in home layout
+        PortalAddToHomeService.inHome().then(function(data){
+          $scope.inHome = data.inHome;
+        });
+      }
+    };
+
+    init();
+
+  } ]);
+
+  return app;
 
  });
