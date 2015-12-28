@@ -1,5 +1,5 @@
 <script type="text/ng-template" id="AppHeaderOptions.html">
-  <a ng-if='actionLinkUrl' class='visible-xs' ng-href="{{actionLinkUrl}}"><i class="fa {{actionLinkIcon}}"></i> {{actionLinkText}}</a>
+  <add-to-home class='visible-xs'></add-to-home>
   <div ng-include="optionTemplate">
 
   </div>
@@ -13,23 +13,6 @@
     <div ng-if='optionTemplate' class="link-div" popover-template="'AppHeaderOptions.html'" popover-placement="bottom" popover-trigger="click">
       <span class='visible-xs'><i class='fa fa-gear fa-fw'></i></span><span class='hidden-xs'>Options <i class="fa fa-angle-down"></i></span>
     </div>
-    <div class="link-div hidden-xs" ng-if='actionLinkUrl && !addToHome'>
-      <a ng-href="{{actionLinkUrl}}">
-        <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
-      </a>
-    </div>
-    <div class="link-div hidden-xs" ng-if='addToHome'>
-      <div ng-controller='AddToHomeController'>
-        <span ng-hide='inHome' ng-click='addToHome()'>
-          <i class="fa fa-fw {{actionLinkIcon}}" ng-class="{ 'fa-spin' : savingAddToHome, 'fa-plus' : !actionLinkIcon}"></i> {{actionLinkText}}
-        </span>
-        <span ng-show='successfullyAdded'>
-          <i class="fa fa-fw fa-check-square"></i> {{actionLinkText}} Saved
-        </span>
-        <span ng-show='addToHomeFailed'>
-          <i class="fa fa-fw fa-exclamation-triangle"></i> {{actionLinkText}} Failed
-        </span>
-      </div>
-    </div>
+    <add-to-home class='hidden-xs'></add-to-home>
   </div>
 </div>

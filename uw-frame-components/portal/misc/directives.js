@@ -246,6 +246,13 @@ define(['angular', 'require'], function(angular, require) {
     	};
     });
 
+    app.directive('addToHome', function() {
+      return {
+        restrict : 'E',
+        templateUrl : require.toUrl('./partials/add-to-home.html')
+      };
+    });
+
 
     return app;
 

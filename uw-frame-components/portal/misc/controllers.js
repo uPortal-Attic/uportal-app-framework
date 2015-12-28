@@ -28,14 +28,28 @@ define(['angular'], function(angular) {
       }
     }
 
+    var checkInHome = function(fname) {
+      PortalAddToHomeService.inHome(fname).then(function(data){
+        $scope.inHome = data;
+      });
+    }
+
     var init = function() {
       //default it to being in your home to avoid service loading lag
       $scope.inHome = true;
-      if(PortalAddToHomeService.canAddToHome($scope.fname)) {
-        //check if in home layout
-        PortalAddToHomeService.inHome($scope.fname).then(function(data){
-          $scope.inHome = data;
-        });
+
+      if(PortalAddToHomeService.canAddToHome()) {
+        if($scope.fname) {
+          //check if in home layout
+          checkInHome($scope.fname);
+        } else  {
+          $scope.$watch('fname', function() {
+            //must be using 2 way binding, add a watch on the fname
+            if($scope.fname) {
+              checkInHome($scope.fname);
+            }
+          });
+        }
       }
     };
 
