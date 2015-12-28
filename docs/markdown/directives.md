@@ -41,7 +41,7 @@ All params are prefixed with `app-`.
 
 ## Frame Page
 
-Frame page is basically the app header directive but with a transcude for the body. It **Inherits** all of the app-header directive parameters.
+Frame page is basically the app header directive but with a transclude for the body. It **Inherits** all of the app-header directive parameters.
 
 #### Template :
 
