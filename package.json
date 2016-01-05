@@ -8,7 +8,7 @@
     "posttest": "cd uw-frame-components && rm -rf bower_components",
     "build-all": "npm run build-java && npm run build-static",
     "build-docs": "cd docs && ./build.sh",
-    "build-java": "cd uw-frame-java && mvn clean package",
+    "build-java": "cd uw-frame-java && mvn clean install",
     "prebuild-static": "npm install",
     "build-static": "cd uw-frame-static && ./build.sh",
     "postbuild-static" : "grunt",
@@ -22,12 +22,38 @@
     "clean-uw-frame-java": "cd uw-frame-java && mvn clean",
     "clean-uw-frame-static": "rm -rf uw-frame-static/target"
   },
+  "files" : [
+    "uw-frame-components",
+    "uw-frame-static",
+    "Gruntfile.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/UW-Madison-DoIT/uw-frame.git"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "uw-frame",
+    "UW-Madison",
+    "frame",
+    "angularjs"
+  ],
+  "contributors": [
+    {
+      "name" : "Tim Levett",
+      "email" : "tim.levett@wisc.edu"
+    },
+    {
+      "name" : "Timothy Vertein"
+    },
+    {
+      "name" : "Jared Hanstra",
+      "email" : "jared.hanstra@wisc.edu"
+    }
+  ],
+  "license": {
+    "type" : "Apache-2.0",
+    "url" : "https://github.com/UW-Madison-DoIT/uw-frame/blob/master/LICENSE"
+  },
   "bugs": {
     "url": "https://github.com/UW-Madison-DoIT/uw-frame/issues"
   },

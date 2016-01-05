@@ -9,7 +9,8 @@ Now that you have a version you need to update that in a few places.
 ### Release steps
 
 + Update the version in `package.json` that is in the root directory. Commit that.
-+ Make tag for bower: `git tag <version>; git push <version>`
++ Deploy npm package to the world; `npm publish`. (if you don't have contribution rights contact authors)
++ Make tag: `git tag <version>; git push <version>`
 + Now do release for Java.
 
 `cd uw-frame-java`
