@@ -4,4 +4,5 @@ Here you will find some helpful resources in the components that are available a
 + Example Applications : _Coming Soon_
 + Frame Starters : _Coming Soon_
 + [Release Management](#/md/releasing) : How to release uw-frame
++ [Theming](#/md/theming) : Theme Support (early stages and plan)
 + _[Versions](#/md/versions)_ : Different versions of this documentation and versions of uw-frame.
