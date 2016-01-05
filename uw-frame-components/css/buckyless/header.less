@@ -1,5 +1,7 @@
 .bucky-nav-large li:first-of-type+li{
-  position:absolute;width:30%;left:35%
+  position:absolute;
+  width:40%;
+  left:140px;
 }
 .portlet-search-bar ul.dropdown-menu {
   min-width: 90%;
@@ -13,7 +15,7 @@
 
 .bucky-nav ul li a:hover {
   text-decoration:none;
-  color:#1a0000;
+  color:#ccc;
 }
 .navbar-default {
   height:52px !important;
@@ -44,7 +46,7 @@
 }
 .bucky-nav ul {
   width: 100% !important;
-  margin:0px;
+  margin:50px 0px 30px;
   li {
     position: relative;
     display: block;
@@ -55,7 +57,7 @@
     text-align: left;
     a {
       color:@white;
-      font-size:18px;
+      font-size:20px;
     }
   }
 }
@@ -83,9 +85,7 @@
 .main-search {
   width: 90%;
   display: block;
-  background-color: @color4;
-  border: none;
-  border-bottom: 1px solid @color4;
+  background-color: @white;
   margin-top: 6px;
   margin-bottom: 3px;
   border-top-left-radius:4px;
@@ -97,7 +97,7 @@
   height:38px;
 }
 .main-search[placeholder="Search My-UW"] {
-  color: @color1;
+  color: #222;
 }
 .main-search:focus {
   outline: none;
@@ -105,14 +105,22 @@
 .btn-search {
   padding:9px 12px;
   border:0px solid transparent;
-  background-color:@color4;
+  background-color:#eee;
   top:2px;
   height:38px;
   color:#222;
   &:hover {
-    background-color:#efe8d8;
+    background-color:#ddd;
     color:#111;
   }
+  .fa-search {
+    font-size:1.2em;
+  }
+}
+.search-mobile {
+  background-color:#bbb;
+  padding:12px;
+  
 }
 
 .navbar-header {
@@ -181,8 +189,6 @@ portal-header li.username-menu {
 //---------------------crest and title css -------------------------------------
 
 .navbar-header div.header-crest {
-  margin-top: 5px;
-
   .beta-logo {
     font-size:0.55em;
     color:#fcf49c;
@@ -197,12 +203,14 @@ portal-header li.username-menu {
   }
 
   .title {
-    font-size: 25px;
-    margin-left: 10px;
+    font-size: 26px;
+    margin-left: 0px;
+    position: relative;
+    top: -8px;
   }
 
   .header-inner {
-    height: 47px;
+    height: 52px;
     overflow: hidden;
   }
 
@@ -212,10 +220,10 @@ portal-header li.username-menu {
   }
 
   img {
-    height: 60px;
+    height: 80px;
     position: relative;
-    top: 0px;
-    left: 6px;
+    top: -18px;
+    left: -8px;
   }
 }
 
