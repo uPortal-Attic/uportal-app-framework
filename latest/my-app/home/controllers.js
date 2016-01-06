@@ -5,6 +5,9 @@ define(['angular','require', 'marked'], function(angular, require, marked) {
 
   app.controller('MarkdownPageController', ['$scope', '$routeParams', function($scope, $routeParams) {
     $scope.title = $routeParams.markdownfilename;
+    if($scope.title) {
+      $scope.title = $scope.title.replace('-',' ');
+    }
     $scope.filename = 'markdown/' + $routeParams.markdownfilename + '.md';
 
   } ]);
