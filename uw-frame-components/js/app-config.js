@@ -1,4 +1,6 @@
 define(['angular'], function(angular) {
+  
+  /*Keep in sync with docs/mardown/configuration.md*/
 
     var config = angular.module('app-config', []);
     config
