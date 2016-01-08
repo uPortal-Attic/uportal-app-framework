@@ -1,0 +1,8 @@
+<a ng-href="{{ cbDisabled ? '#' : href}}" target="{{cbDisabled ? '' : target}}">
+  <div class="btn btn-primary circle-button text-right" ng-class="{ 'btn-disabled' : cbDisabled}"> 
+    <i class="fa {{faIcon}} fa-2x"></i>
+  </div>
+</a>
+<p ng-show='title'>
+  {{title | truncate:trunclen}}
+</p>
