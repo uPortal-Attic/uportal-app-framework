@@ -1,6 +1,6 @@
 {
   "name": "uw-frame",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "MyUW's frame project for creating angular based microservices.",
   "scripts": {
     "pretest": "cd uw-frame-components && bower --config.interactive=false install",
@@ -11,7 +11,7 @@
     "build-java": "cd uw-frame-java && mvn clean install",
     "prebuild-static": "npm install",
     "build-static": "cd uw-frame-static && ./build.sh",
-    "postbuild-static" : "grunt",
+    "postbuild-static": "grunt",
     "predocs": "npm run build-docs",
     "docs": "cd docs/target && superstatic",
     "jetty": "cd uw-frame-java && mvn jetty:run",
@@ -22,7 +22,7 @@
     "clean-uw-frame-java": "cd uw-frame-java && mvn clean",
     "clean-uw-frame-static": "rm -rf uw-frame-static/target"
   },
-  "files" : [
+  "files": [
     "uw-frame-components",
     "uw-frame-static",
     "Gruntfile.js"
@@ -39,20 +39,20 @@
   ],
   "contributors": [
     {
-      "name" : "Tim Levett",
-      "email" : "tim.levett@wisc.edu"
+      "name": "Tim Levett",
+      "email": "tim.levett@wisc.edu"
     },
     {
-      "name" : "Timothy Vertein"
+      "name": "Timothy Vertein"
     },
     {
-      "name" : "Jared Hanstra",
-      "email" : "jared.hanstra@wisc.edu"
+      "name": "Jared Hanstra",
+      "email": "jared.hanstra@wisc.edu"
     }
   ],
   "license": {
-    "type" : "Apache-2.0",
-    "url" : "https://github.com/UW-Madison-DoIT/uw-frame/blob/master/LICENSE"
+    "type": "Apache-2.0",
+    "url": "https://github.com/UW-Madison-DoIT/uw-frame/blob/master/LICENSE"
   },
   "bugs": {
     "url": "https://github.com/UW-Madison-DoIT/uw-frame/issues"
