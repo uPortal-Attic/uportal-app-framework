@@ -23,6 +23,7 @@ _Iff it went well_
 ```
 git push origin master
 git push origin uw-frame-maven-<version>
+```
 
 + Release maven artifacts from central staging repository
 + Create release docs on gh-pages (Jenkins job) using the tag created for bower.
