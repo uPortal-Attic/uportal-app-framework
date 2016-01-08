@@ -1,7 +1,7 @@
 <div ng-controller="SessionCheckController as sessionCtrl">
   <div class='username-option' ng-click='usernameOptionOpen=!usernameOptionOpen'>
-    <img src='img/bucky.png' class='gravatar' ng-if="!$storage.useGravatar">
-    <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar">
+    <!-- <img src='img/bucky.png' class='gravatar' ng-if="!$storage.useGravatar">
+    <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar"> -->
     {{sessionCtrl.user.firstName ? sessionCtrl.user.firstName : sessionCtrl.user.displayName}}
     <i class="fa fa-caret-down"
        popover-template="'usermenu.html'"
@@ -13,8 +13,8 @@
     <div class='username-menu-template'>
       <ul class='no-padding'>
         <li>
-          <img src='img/bucky.png' class='gravatar' ng-if="!$storage.useGravatar">
-          <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar">
+          <!-- <img src='img/bucky.png' class='gravatar' ng-if="!$storage.useGravatar">
+           <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar"> -->
           {{sessionCtrl.user.displayName}}
         </li>
         <li ng-if='$storage.showSettings'>
@@ -24,7 +24,6 @@
           <a ng-href="{{MISC_URLS.logoutURL}}" class='logout-link' title='Logout' target='_self'>Sign out</a>
         </li>
       </ul>
-      < class='bold'>
     </div>
   </script>
 </div>
