@@ -15,7 +15,7 @@ cp superstatic.json ./target
 ## Get bower stuff
 
 pushd target
-../../node_modules/bower/bin/bower --config.interactive=false install
+../../node_modules/bower/bin/bower --config.interactive=false --allow-root install
 popd
 
 ## Build less
