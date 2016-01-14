@@ -4,6 +4,32 @@ define(['angular'], function(angular) {
 
 
   var app = angular.module('portal.misc.services', []);
+  
+  app.factory('PortalGroupService', function($http, miscService, SERVICE_LOC){
+    
+    var getGroups = function(){
+      var groupPromise = $http.get(SERVICE_LOC.groupURL, {cache : true}).then (
+                                    function(result){
+                                      return result.data.groups;
+                                    },function(reason){
+                                      miscService.redirectUser(reason.status, 'group json feed call');
+                                    });
+      return groupPromise;
+    }
+    
+    var groupsServiceEnabled = function() {
+      if(SERVICE_LOC.groupURL) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    
+    return {
+      getGroups : getGroups,
+      groupsServiceEnabled : groupsServiceEnabled
+    }
+  });
 
   app.factory('PortalAddToHomeService', function($http, filterFilter, NAMES, MISC_URLS){
 
