@@ -20,6 +20,7 @@ define(['angular-mocks', 'portal'], function() {
           //setup
           httpBackend.whenGET(backendURL).respond({"notifications" :[]});
           httpBackend.whenGET(kvURL + "/notification:dismiss").respond([]);
+          httpBackend.whenGET(groupURL).respond([]);
           
           //test
           notificationsService.getDismissedNotificationIds().then(function(results){
