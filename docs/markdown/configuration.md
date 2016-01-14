@@ -1,6 +1,7 @@
 Customization to the uw-frame constants is all done in `js/app-config.js`. Your application can overwrite any constants in this file to manipulate various things. At a minimum you should overwrite the app-config.js and have every constant defined. If you don't have every field defined it should be fine. For example, if you are not using `SERVICE_LOC.aboutURL` you don't have to define it as null. However, you do have to define `SERVICE_LOC`, even if its just an empty object.
 
 #### APP_FLAGS
++ `defaultTheme` : This is the default theme you want (see frame-config.js for the array list of themes). Provide an index number to just have simple selection, or set to the string `'group'` to enable group selection. If you do group selection make sure you set the `SERVICE_LOC.groupURL`.
 + `features` : This boolean will enable the features page, Bucky announcements, and the modal popup. Make sure to configure `SERVICE_LOC.featuresInfo` if you set this to true.
 + `showSearch` : This boolean hides/shows the search bar at the top.
 + `isWeb` : This boolean is a shortcut flag for the MyUW project. Majority of applications should set this to false.
