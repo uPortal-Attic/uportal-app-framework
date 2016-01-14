@@ -4,7 +4,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
   var app = angular.module('portal.notifications.services', []);
 
-  app.factory('notificationsService', ['$q','$http', 'miscService', 'keyValueService','SERVICE_LOC', function($q, $http, miscService, keyValueService, SERVICE_LOC) {
+  app.factory('notificationsService', ['$q','$http', 'miscService', 'PortalGroupService', 'keyValueService','SERVICE_LOC', function($q, $http, miscService, PortalGroupService, keyValueService, SERVICE_LOC) {
       var filteredNotificationPromise;
       var dismissedPromise;
       var getAllNotifications = function() {
@@ -70,17 +70,9 @@ define(['angular', 'jquery'], function(angular, $) {
         errorFn = function(reason) {
           miscService.redirectUser(reason.status, 'q for filtered notifications');
         }
-        
-        var groupPromise = $http.get(SERVICE_LOC.groupURL, {cache : true}).then (
-                                      function(result){
-                                        return result.data.groups;
-                                      },function(reason){
-                                        miscService.redirectUser(reason.status, 'group json feed call');
-                                      });
-        
 
         //setup new q
-        filteredNotificationPromise = $q.all([getAllNotifications(), groupPromise]).then(successFn, errorFn);
+        filteredNotificationPromise = $q.all([getAllNotifications(), PortalGroupService.getGroups()]).then(successFn, errorFn);
 
         return filteredNotificationPromise;
       };

@@ -20,8 +20,8 @@ define(['angular', 'jquery', 'portal', 'portal/main/routes', 'portal/settings/ro
             when('/server-error', main.serverError).
             otherwise(main.main);
     }]);
-
-    return app
+    
+    return app;
 
 });
 

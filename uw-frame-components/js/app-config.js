@@ -7,7 +7,8 @@ define(['angular'], function(angular) {
         .constant('APP_FLAGS', {
             'features' : false,
             'showSearch' : true,
-            'isWeb' : false
+            'isWeb' : false,
+            'defaultTheme' : 0
         })
         .constant('SERVICE_LOC', {
             'aboutURL' : null,
