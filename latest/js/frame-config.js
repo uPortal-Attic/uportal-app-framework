@@ -4,20 +4,22 @@ define(['angular'], function(angular) {
     config
         .constant('THEMES', [
           {
-            "name" : "madison",
+            "name" : "uw-madison",
             "crest" : "img/uwcrest_web_sm.png",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Crest"
+            "crestalt" : "UW Crest",
+            "group" : "UW-Madison"
           },
           {
-            "name" : "system",
+            "name" : "uw-system",
             "crest" : "img/uwsystem.png",
             "title" : "MyUW",
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Crest"
+            "crestalt" : "UW Crest",
+            "group" : "default"
           },
           {
             "name" : "",
