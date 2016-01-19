@@ -40,7 +40,7 @@ function _gaLt(event){
             
             if(newWindow){
                 setTimeout(function(){
-                    window.open(el.href);
+                    window.open(el.href, target);
                 }.bind(el),500);
                 /* Prevent standard click */
                 event.preventDefault ? event.preventDefault() : event.returnValue = !1;
