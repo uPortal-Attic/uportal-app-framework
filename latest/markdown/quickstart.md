@@ -14,6 +14,7 @@ If you want to just checkout uw-frame and see what it offers, you can run a loca
 
 + Clone the repo: `git clone git@github.com:UW-Madison-DoIT/uw-frame.git`
 + If you want to use a specific release checkout that [tag](https://github.com/UW-Madison-DoIT/uw-frame/releases): `git checkout <tag>`
++ exec `npm install -g grunt-cli`
 + exec `npm install`
 + exec `npm run static`
 + Launch browser at the location specified in the build output
