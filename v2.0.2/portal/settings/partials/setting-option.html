@@ -1,0 +1,8 @@
+<h4>
+    <span class="btn-group">
+        <label class="btn" ng-class="{'btn-success' : $storage[option.id], 'btn-default' : !$storage[option.id] }" ng-model="$storage[option.id]" btn-radio="true">On</label>
+        <label class="btn" ng-class="{'btn-success' : $storage[option.id], 'btn-default' : !$storage[option.id] }" ng-model="$storage[option.id]" btn-radio="false">Off</label>
+    </span>
+    {{option.title}}
+</h4>
+<small>{{option.description}}</small>
