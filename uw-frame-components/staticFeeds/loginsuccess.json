@@ -1,3 +1,4 @@
 {
-  "status" : "success"
+  "status" : "success",
+  "user" : "admin"
 }
