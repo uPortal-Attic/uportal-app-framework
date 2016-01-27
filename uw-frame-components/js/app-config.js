@@ -8,13 +8,16 @@ define(['angular'], function(angular) {
             'features' : false,
             'showSearch' : true,
             'isWeb' : false,
-            'defaultTheme' : 0
+            'defaultTheme' : 0,
+            'loginOnLoad' : false,
+            'loginDurationMills' : 14400000
         })
         .constant('SERVICE_LOC', {
             'aboutURL' : null,
             'sessionInfo' : 'staticFeeds/session.json',
             'featuresInfo' : 'staticFeeds/features.json',
             'notificationsURL' : 'staticFeeds/notifications.json',
+            'loginSilentURL' : '/portal/Login?silent=true',
             'kvURL' : null,
             'groupURL' : null
         })

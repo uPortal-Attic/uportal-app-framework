@@ -5,6 +5,8 @@ Customization to the uw-frame constants is all done in `js/app-config.js`. Your 
 + `features` : This boolean will enable the features page, Bucky announcements, and the modal popup. Make sure to configure `SERVICE_LOC.featuresInfo` if you set this to true.
 + `showSearch` : This boolean hides/shows the search bar at the top.
 + `isWeb` : This boolean is a shortcut flag for the MyUW project. Majority of applications should set this to false.
++ `loginOnLoad` : A optional boolean flag that when set to `true` it will fire a login event during the loading sequence. `SERVICE_LOC.loginSilentURL` must be set.
++ `loginDurationMills` : number of milliseconds a login session is valid for
 
 #### SERVICE_LOC
 + `aboutURL` : If your application has some data that it would like to show in `/about` in addition to the frame information, provide that here.
@@ -13,6 +15,7 @@ Customization to the uw-frame constants is all done in `js/app-config.js`. Your 
 + `notificationsURL` : This is an end point of which you can have notifications. See [this](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/staticFeeds/sample_notifications.json) for the example.
 + `kvURL` : This is the key value service. The key value service is a way to store information in a key/value store. The store should support GET and PUT on the same URL, where the URL includes the key. If you want this but not sure where to start, we wrote [a microservice called KeyValueStore](https://github.com/UW-Madison-DoIT/KeyValueStore) that you can use. You can also use the MyUW version under the storage context, but please contact MyUW devs before using for your application.
 + `groupURL` : This is a service which you can use to get group information. Currently this only used for notifications. See [this](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/staticFeeds/groups.json) for an example.
++ `loginSilentURL` : See `APP_FLAGS.loginOnLoad` for usage.
 
 #### NAMES
 + `title` : Your application's name
