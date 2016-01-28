@@ -93,7 +93,7 @@ define(['angular'], function(angular) {
      Google Analytics page view
      - searchTerm : Optional parameter to say "this is a search page".
                     This is the actual search term used.
-     @depricated
+     @deprecated : will drop in 3.0.0
     **/
     var pushPageview = function (searchTerm) {
       var path = $location.path();
