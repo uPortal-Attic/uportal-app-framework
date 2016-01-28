@@ -17,11 +17,12 @@ define(['angular'], function(angular) {
           function(data, status) { //success function
             if(APP_FLAGS.loginOnLoad) {
               //quick check to make sure you are who your browser says you are
-              if($sessionStorage.portal 
+              if($sessionStorage.portal
                 && $sessionStorage.portal.username
                 && data.data.person.userName != $sessionStorage.portal.username) {
-                  console.warn("Thought they were " + $sessionStorage.portal.username + " but session sent back " + data.data.person.userName +". Redirect!");
-                  miscService.redirectUser(302, "Get User Info");
+                  console.warn("Thought they were " + $sessionStorage.portal.username +
+                   " but session sent back " + data.data.person.userName +". Redirect!");
+                  miscService.redirectUser(302, "Wrong User than populated in session storage.");
               }
             }
             return data.data.person;
@@ -40,4 +41,3 @@ define(['angular'], function(angular) {
   return app;
 
 });
-

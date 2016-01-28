@@ -1,5 +1,5 @@
 define(['angular'], function(angular) {
-  
+
   /*Keep in sync with docs/mardown/configuration.md*/
 
     var config = angular.module('app-config', []);
@@ -9,8 +9,7 @@ define(['angular'], function(angular) {
             'showSearch' : true,
             'isWeb' : false,
             'defaultTheme' : 0,
-            'loginOnLoad' : true,
-            'loginDurationMills' : 14400000
+            'loginOnLoad' : false
         })
         .constant('SERVICE_LOC', {
             'aboutURL' : null,

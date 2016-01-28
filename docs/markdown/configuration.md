@@ -6,7 +6,7 @@ Customization to the uw-frame constants is all done in `js/app-config.js`. Your 
 + `showSearch` : This boolean hides/shows the search bar at the top.
 + `isWeb` : This boolean is a shortcut flag for the MyUW project. Majority of applications should set this to false.
 + `loginOnLoad` : A optional boolean flag that when set to `true` it will fire a login event during the loading sequence. `SERVICE_LOC.loginSilentURL` must be set.
-+ `loginDurationMills` : number of milliseconds a login session is valid for
++ `loginDurationMills` : number of milliseconds a login session is valid for. Default set to 4 hours (14400000).
 
 #### SERVICE_LOC
 + `aboutURL` : If your application has some data that it would like to show in `/about` in addition to the frame information, provide that here.
@@ -53,7 +53,7 @@ This is an array that consists of object that have 3 elements. These links show 
 + `title` : The hover text and the body of the anchor tag.
 
 #### APP_BETA_FEATURES
-This constant is an array of features that you want to show up in `/settings`. 
+This constant is an array of features that you want to show up in `/settings`.
 
 ![http://goo.gl/j9LmYA](http://goo.gl/j9LmYA)
 
