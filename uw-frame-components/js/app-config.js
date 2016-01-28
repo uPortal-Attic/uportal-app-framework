@@ -1,5 +1,5 @@
 define(['angular'], function(angular) {
-  
+
   /*Keep in sync with docs/mardown/configuration.md*/
 
     var config = angular.module('app-config', []);
@@ -8,13 +8,15 @@ define(['angular'], function(angular) {
             'features' : false,
             'showSearch' : true,
             'isWeb' : false,
-            'defaultTheme' : 0
+            'defaultTheme' : 0,
+            'loginOnLoad' : false
         })
         .constant('SERVICE_LOC', {
             'aboutURL' : null,
             'sessionInfo' : 'staticFeeds/session.json',
             'featuresInfo' : 'staticFeeds/features.json',
             'notificationsURL' : 'staticFeeds/notifications.json',
+            'loginSilentURL' : '/portal/Login?silent=true',
             'kvURL' : null,
             'groupURL' : null
         })

@@ -7,6 +7,7 @@
     {"source":"/server-error", "destination" : "index.html"},
     {"source":"/access-denied", "destination" : "index.html"},
     {"source":"/web", "destination" : "index.html"},
-    {"source":"/portal/web/*", "destination" : "/staticFeeds/emptyArray.json"}
+    {"source":"/portal/web/*", "destination" : "/staticFeeds/emptyArray.json"},
+    {"source":"/portal/Login", "destination" : "/staticFeeds/loginsuccess.json"}
   ]
 }

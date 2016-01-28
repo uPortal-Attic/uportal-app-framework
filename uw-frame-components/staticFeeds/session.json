@@ -1,6 +1,6 @@
 {
   "person": {
-    "userName": "userx",
+    "userName": "admin",
     "sessionKey": "someRandomKey",
     "serverName": "localhost",
     "firstName" : "Bucky",
