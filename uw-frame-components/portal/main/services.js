@@ -22,6 +22,7 @@ define(['angular'], function(angular) {
                 && data.data.person.userName != $sessionStorage.portal.username) {
                   console.warn("Thought they were " + $sessionStorage.portal.username +
                    " but session sent back " + data.data.person.userName +". Redirect!");
+                  delete $sessionStorage.portal;
                   miscService.redirectUser(302, "Wrong User than populated in session storage.");
               }
             }
