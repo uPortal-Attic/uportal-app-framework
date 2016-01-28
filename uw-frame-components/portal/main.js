@@ -68,10 +68,13 @@ define([
         'angulartics.google.analytics'
     ]);
 
-    app.config(['gravatarServiceProvider', function(gravatarServiceProvider){
+    app.config(['gravatarServiceProvider', '$analyticsProvider', function(gravatarServiceProvider, $analyticsProvider){
       gravatarServiceProvider.defaults = {
         "default" : "https://yt3.ggpht.com/-xE0EQR3Ngt8/AAAAAAAAAAI/AAAAAAAAAAA/zTofDHA3-s4/s100-c-k-no/photo.jpg"
       };
+
+      $analyticsProvider.firstPageview(true);
+      $analyticsProvider.withAutoBase(true); 
 
     }]);
 
