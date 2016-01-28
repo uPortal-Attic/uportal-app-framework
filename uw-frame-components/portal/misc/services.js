@@ -4,9 +4,9 @@ define(['angular'], function(angular) {
 
 
   var app = angular.module('portal.misc.services', []);
-  
+
   app.factory('PortalGroupService', function($http, miscService, SERVICE_LOC){
-    
+
     var getGroups = function(){
       var groupPromise = $http.get(SERVICE_LOC.groupURL, {cache : true}).then (
                                     function(result){
@@ -16,7 +16,7 @@ define(['angular'], function(angular) {
                                     });
       return groupPromise;
     }
-    
+
     var groupsServiceEnabled = function() {
       if(SERVICE_LOC.groupURL) {
         return true;
@@ -24,7 +24,7 @@ define(['angular'], function(angular) {
         return false;
       }
     }
-    
+
     return {
       getGroups : getGroups,
       groupsServiceEnabled : groupsServiceEnabled
@@ -69,7 +69,7 @@ define(['angular'], function(angular) {
     };
   });
 
-  app.factory('miscService', function($http, $window, $location, MISC_URLS) {
+  app.factory('miscService', function($analytics, $http, $window, $location, MISC_URLS) {
 
     /**
      Used to redirect users to login screen iff result code is 0 (yay shib) or 302
@@ -99,8 +99,9 @@ define(['angular'], function(angular) {
       if(searchTerm) {
         path += "?q=" + searchTerm;
       }
+      console.warn('this method is deprecated in favor of automatic page views in angulartics. Will be removed in 3.0.0');
       console.log('ga pageview logged ' + path);
-      $window._gaq.push(['_trackPageview', path]);
+      $analytics.pageTrack(path);
     };
 
     /**
@@ -113,7 +114,7 @@ define(['angular'], function(angular) {
     **/
     var pushGAEvent = function(category, action, label) {
       console.log('ga event logged c:' + category + " a:" + action + " l:" + label);
-      $window._gaq.push(['_trackEvent', category, action, label]);
+      $analytics.eventTrack(action, {  category: category, label: label });
     };
 
     return {

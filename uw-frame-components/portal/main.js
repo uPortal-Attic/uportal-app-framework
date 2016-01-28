@@ -29,7 +29,9 @@ define([
     './features/services',
     'sortable',
     'ui-bootstrap',
-    'ui-gravatar'
+    'ui-gravatar',
+    'angulartics',
+    'angulartics-google-analytics'
 ], function(angular, require) {
 
     var app = angular.module('portal', [
@@ -61,14 +63,16 @@ define([
         'portal.features.services',
         'ui.bootstrap',
         'ui.gravatar',
-        'ui.sortable'
+        'ui.sortable',
+        'angulartics',
+        'angulartics.google.analytics'
     ]);
 
     app.config(['gravatarServiceProvider', function(gravatarServiceProvider){
       gravatarServiceProvider.defaults = {
         "default" : "https://yt3.ggpht.com/-xE0EQR3Ngt8/AAAAAAAAAAI/AAAAAAAAAAA/zTofDHA3-s4/s100-c-k-no/photo.jpg"
       };
-      
+
     }]);
 
     app.run(function($http, $rootScope, $timeout,$sessionStorage, NAMES, THEMES, APP_FLAGS, SERVICE_LOC, filterFilter) {
