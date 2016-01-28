@@ -14,7 +14,9 @@ define(['angular-mocks', 'portal'], function() {
             groupURL   = SERVICE_LOC.groupURL;
             loginSilentURL = SERVICE_LOC.loginSilentURL;
             kvURL = SERVICE_LOC.kvURL;
-            httpBackend.whenGET(loginSilentURL).respond({"status" : "success", "username" : "admin"});
+            if(loginSilentURL) {
+              httpBackend.whenGET(loginSilentURL).respond({"status" : "success", "username" : "admin"});
+            }
         }));
 
         it("should return an empty array when you get an empty string as a value", function(){
