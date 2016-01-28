@@ -9,7 +9,7 @@ define(['angular'], function(angular) {
             'showSearch' : true,
             'isWeb' : false,
             'defaultTheme' : 0,
-            'loginOnLoad' : false,
+            'loginOnLoad' : true,
             'loginDurationMills' : 14400000
         })
         .constant('SERVICE_LOC', {

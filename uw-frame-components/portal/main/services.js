@@ -4,7 +4,7 @@ define(['angular'], function(angular) {
 
   var app = angular.module('portal.main.services', []);
 
-  app.factory('mainService', ['$http', '$sessionStorage', 'miscService', 'SERVICE_LOC', 'APP_FLAGS', function($http, miscService, SERVICE_LOC, APP_FLAGS) {
+  app.factory('mainService', ['$http', '$sessionStorage', 'miscService', 'SERVICE_LOC', 'APP_FLAGS', function($http, $sessionStorage, miscService, SERVICE_LOC, APP_FLAGS) {
     var prom = $http.get(SERVICE_LOC.sessionInfo, { cache: true});
     var userPromise;
 

@@ -142,10 +142,10 @@ define([
       }
       
       var lastLoginValid = function() {
-        var timeLapsBetweenLogins = APP_FLAGS.loginDurationMills || 14400000;
+        var timeLapseBetweenLogins = APP_FLAGS.loginDurationMills || 14400000;
         if($sessionStorage.portal && $sessionStorage.portal.lastAccessed) {
           var now = (new Date()).getTime();
-          if(now - $sessionStorage.portal.lastAccessed <= timeLapsBetweenLogins) {//4 hours
+          if(now - $sessionStorage.portal.lastAccessed <= timeLapseBetweenLogins) {//4 hours
             return true;
           }
         } 
@@ -160,7 +160,7 @@ define([
         
         if(APP_FLAGS.loginOnLoad && !lastLoginValid()) {
           $http.get(SERVICE_LOC.loginSilentURL).then(function(result){
-            console.log("login returned with " + result.data ? result.data.status : null);
+            console.log("login returned with " + (result.data ? result.data.status : null));
             themeLoading();
             if("success" === result.data.status) {
               $sessionStorage.portal.lastAccessed = (new Date).getTime();
