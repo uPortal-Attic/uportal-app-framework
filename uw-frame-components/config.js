@@ -12,6 +12,8 @@ define([], function() {
     paths: {
         'angular'       : "bower_components/angular/angular.min",
         'angular-mocks' : "bower_components/angular-mocks/angular-mocks",
+        'angulartics'   : "bower_components/angulartics/dist/angulartics.min",
+        'angulartics-google-analytics' : "bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min",
         'app-config'    : "js/app-config",
         'frame-config'  : "js/frame-config",
         'jquery'        : "bower_components/jquery/dist/jquery.min",
@@ -22,7 +24,7 @@ define([], function() {
         'sortable'      : "js/sortable",
         'ui-bootstrap'  : "bower_components/angular-bootstrap/ui-bootstrap-tpls.min",
         'ui-gravatar'   : "bower_components/angular-gravatar/build/angular-gravatar.min",
-        'ngAria'        : "bower_components/angular-aria/angular-aria.min", 
+        'ngAria'        : "bower_components/angular-aria/angular-aria.min",
         // Use ui-bootstrap instead of bootstrap or uw-ui-toolkit.  See https://angular-ui.github.io/bootstrap/
         //'uw-ui-toolkit' : "bower_components/uw-ui-toolkit/dist/js/uw-ui-toolkit.min"
     },
@@ -30,6 +32,8 @@ define([], function() {
     shim: {
         'angular'       : { deps: ['jquery'], exports: 'angular' },
         'angular-mocks' : { deps: ['angular'] },
+        'angulartics'   : { deps: ['angular'], exports: 'angulartics' },
+        'angulartics-google-analytics' : { deps: ['angulartics'] },
         'ngRoute'       : { deps: ['angular'] },
         'ngSanitize'    : { deps: ['angular'] },
         'ngStorage'     : { deps: ['angular'] },
@@ -38,7 +42,7 @@ define([], function() {
         'ui-gravatar'   : { deps: ['angular'] },
         'uw-ui-toolkit' : { deps: ['jquery'] }
     },
-    
+
     waitSeconds : 0
 
   }
