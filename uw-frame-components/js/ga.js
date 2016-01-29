@@ -7,15 +7,9 @@ var config = config || {};
 var _gaq = _gaq || [];
 
 if(config.gaID !== undefined && config.gaID !== null) {
-
-  _gaq.push(['_setAccount', config.gaID]);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
+  ga('create', config.gaID, 'auto');
+} else {
+  console.log("ga disabled for this app");
 }
 
 function _gaLt(event){
@@ -27,7 +21,8 @@ function _gaLt(event){
 
     if(el && el.href){
     if(el.href.indexOf(location.host) == -1 && el.href != 'javascript:;'){ /* external link */
-            _gaq.push(['_trackEvent', 'Outbound Link', el.href, el.text]);
+            var eventOptions = {eventCategory: 'Outbound Link', eventAction: el.href, eventLabel : el.text };
+            window.ga('send', 'event', eventOptions);
             console.log('ga event logged c: Outbound Link a: '+el.href+' l:'+ el.text);
             // Click will open in a new window if it is the middle button or the
             // meta or control keys are held

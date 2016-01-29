@@ -113,9 +113,9 @@ define(['angular'], function(angular) {
 
      See https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide for more info
     **/
-    var pushGAEvent = function(category, action, label) {
+    var pushGAEvent = function(category, action, label, value) {
       console.log('ga event logged c:' + category + " a:" + action + " l:" + label);
-      $analytics.eventTrack(action, {  category: category, label: label });
+      $analytics.eventTrack(action, {  category: category, label: label, value: (value || label) });
     };
 
     return {
