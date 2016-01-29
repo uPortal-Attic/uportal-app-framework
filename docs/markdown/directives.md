@@ -43,6 +43,9 @@ All params are prefixed with `app-`.
 
 Frame page is basically the app header directive but with a transclude for the body. It **Inherits** all of the app-header directive parameters.
 
+Option Attributes:
+**white-background** : A boolean when set to true with give you a white background with 98% width, with a 1% `left-margin`.
+
 #### Template :
 
 ```
@@ -55,6 +58,7 @@ Frame page is basically the app header directive but with a transclude for the b
   app-option-template="HeyWorldOptionTemplate.html"
   app-fname="hey-world-fname"
   app-add-to-home='false'
+  white-background='true'
 >
 This part is included via ng-transclude
 </frame-page>
