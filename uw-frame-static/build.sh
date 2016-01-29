@@ -21,3 +21,4 @@ popd
 ## Build less
 ../node_modules/less/bin/lessc -x target/css/themes/uw-madison.less > target/css/themes/uw-madison.css
 ../node_modules/less/bin/lessc -x target/css/themes/uw-system.less > target/css/themes/uw-system.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-river-falls.less > target/css/themes/uw-river-falls.css
