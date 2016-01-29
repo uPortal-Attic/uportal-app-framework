@@ -1,6 +1,5 @@
-<div class="portlet-frame"  ng-controller="PortalNotificationController as notificationCtrl">
-	<app-header app-title="Notifications" app-icon='fa-bell'></app-header>
-
+<frame-page app-title="Notifications" app-icon='fa-bell' white-background='true'>
+<div  ng-controller="PortalNotificationController as notificationCtrl" style='padding-bottom: 10px;'>
 	<div class="portlet-body notifications">
 		<div class="inner-nav-container">
 			<ul class="inner-nav">
@@ -21,8 +20,9 @@
                  <i class='fa fa-undo'tooltip="Revert Dismiss of notification" tooltip-placement="left" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
               </div>
         		</li>
-        		<li class="notification-item read" ng-if="isEmpty || (countWithDismissed() === 0 && mode === 'new') || (mode === 'old' && dismissedCount() === 0)">You have no <span ng-show='dismissedCount() === 0'>dismissed</span> notifications at this time.</li>
+        		<li class="notification-item read" ng-if="isEmpty || (countWithDismissed() === 0 && mode === 'new') || (mode === 'old' && dismissedCount() === 0)">You have no <span ng-show='dismissedCount() === 0 && countWithDismissed() !== 0'>dismissed</span> notifications at this time.</li>
         	</ul>
 		</div>
 	</div>
 </div>
+</frame-page>
