@@ -177,6 +177,8 @@ define(['angular', 'require'], function(angular, require) {
     The header items are routed to the <app-header> (see above)
 
     The body of the tag is then the body of the application
+    
+    Optional: whiteBackground : Adds in classes that do a white background with a border
 
     **/
     app.directive('framePage', function(){
@@ -192,7 +194,8 @@ define(['angular', 'require'], function(angular, require) {
             appActionLinkText: '@appActionLinkText',
             appAddToHome : '=appAddToHome',
             appFname : '=appFname',
-            appOptionTemplate: '@appOptionTemplate'
+            appOptionTemplate: '@appOptionTemplate',
+            whiteBackground: '='
           }
       }
     });
