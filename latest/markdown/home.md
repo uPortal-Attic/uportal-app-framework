@@ -11,6 +11,7 @@
 ### Setup & configuration
 + [Quickstart](#/md/quickstart) : How to jump in and see the uw-frame in action
 + [Configuration](#/md/configuration) : How to use this product to create  applications.
++ [Google Analytics Config](#/md/ga) : Configuring your Google Analytics for your application
 + [Directives](#/md/directives) : Angular directives specific to uw-frame
 + Example Applications : _Coming Soon_
 + Frame Starters : _Coming Soon_

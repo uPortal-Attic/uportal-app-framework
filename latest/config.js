@@ -12,6 +12,8 @@ define([], function() {
     paths: {
         'angular'       : "bower_components/angular/angular.min",
         'angular-mocks' : "bower_components/angular-mocks/angular-mocks",
+        'angulartics'   : "bower_components/angulartics/dist/angulartics.min",
+        'angulartics-google-analytics' : "bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min",
         'app-config'    : "js/app-config",
         'frame-config'  : "js/frame-config",
         'jquery'        : "bower_components/jquery/dist/jquery.min",
@@ -30,6 +32,8 @@ define([], function() {
     shim: {
         'angular'       : { deps: ['marked','jquery'], exports: 'angular' },
         'angular-mocks' : { deps: ['angular'] },
+        'angulartics'   : { deps: ['angular'], exports: 'angulartics' },
+        'angulartics-google-analytics' : { deps: ['angulartics'] },
         'ngRoute'       : { deps: ['angular'] },
         'ngSanitize'    : { deps: ['angular'] },
         'ngMarked'      : { deps: ['marked','angular']},

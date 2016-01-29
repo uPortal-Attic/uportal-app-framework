@@ -1,1 +1,3 @@
-/*placeholder that will replaced at build time.*/
+var config = {
+  gaID : 'UA-39233702-20'
+}

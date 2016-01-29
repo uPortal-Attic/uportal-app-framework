@@ -7,6 +7,7 @@ Customization to the uw-frame constants is all done in `js/app-config.js`. Your 
 + `isWeb` : This boolean is a shortcut flag for the MyUW project. Majority of applications should set this to false.
 + `loginOnLoad` : A optional boolean flag that when set to `true` it will fire a login event during the loading sequence. `SERVICE_LOC.loginSilentURL` must be set.
 + `loginDurationMills` : number of milliseconds a login session is valid for. Default set to 4 hours (14400000).
++ `gaSearchParam` : Default set to 'q'. This is the param that is tacked on to your search result page. Google later strips it in Google Analytics.
 
 #### SERVICE_LOC
 + `aboutURL` : If your application has some data that it would like to show in `/about` in addition to the frame information, provide that here.

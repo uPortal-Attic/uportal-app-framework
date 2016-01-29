@@ -29,7 +29,9 @@ define([
     './features/services',
     'sortable',
     'ui-bootstrap',
-    'ui-gravatar'
+    'ui-gravatar',
+    'angulartics',
+    'angulartics-google-analytics'
 ], function(angular, require) {
 
     var app = angular.module('portal', [
@@ -61,30 +63,35 @@ define([
         'portal.features.services',
         'ui.bootstrap',
         'ui.gravatar',
-        'ui.sortable'
+        'ui.sortable',
+        'angulartics',
+        'angulartics.google.analytics'
     ]);
 
-    app.config(['gravatarServiceProvider', function(gravatarServiceProvider){
+    app.config(['gravatarServiceProvider', '$analyticsProvider', function(gravatarServiceProvider, $analyticsProvider){
       gravatarServiceProvider.defaults = {
         "default" : "https://yt3.ggpht.com/-xE0EQR3Ngt8/AAAAAAAAAAI/AAAAAAAAAAA/zTofDHA3-s4/s100-c-k-no/photo.jpg"
       };
-      
+
+      $analyticsProvider.firstPageview(true);
+      $analyticsProvider.withAutoBase(true);
+
     }]);
 
-    app.run(function($http, $rootScope, $timeout,$sessionStorage, NAMES, THEMES, APP_FLAGS, SERVICE_LOC, filterFilter) {
+    app.run(function($location, $http, $rootScope, $timeout,$sessionStorage, NAMES, THEMES, APP_FLAGS, SERVICE_LOC, filterFilter) {
       var loadingCompleteSequence = function() {
-        
+
         //loading sequence
         $rootScope.portal.loading = {};
         $rootScope.portal.loading.startFade = true;
         $timeout(function(){
           $rootScope.portal.loading.hidden = true;
         }, 1500);
-        
+
         //save theme to session storage so we don't have to do below again
         $sessionStorage.portal.theme = $rootScope.portal.theme;
       };
-      
+
       var themeLoading = function(){
         if($sessionStorage.portal && $sessionStorage.portal.theme) {
           $rootScope.portal.theme = $sessionStorage.portal.theme;
@@ -114,7 +121,7 @@ define([
               for(var i = 0; i < THEMES.length; i++) {
                 var theme = THEMES[i];
                 var groupToTest = theme.group;
-                if('default'!==groupToTest) {//skip the default theme 
+                if('default'!==groupToTest) {//skip the default theme
                   var filterTest = filterFilter(groups, { name : groupToTest });
                   if(filterTest && filterTest.length > 0) {
                     $rootScope.portal.theme = theme;
@@ -140,7 +147,7 @@ define([
           loadingCompleteSequence();
         }
       }
-      
+
       var lastLoginValid = function() {
         var timeLapseBetweenLogins = APP_FLAGS.loginDurationMills || 14400000;
         if($sessionStorage.portal && $sessionStorage.portal.lastAccessed) {
@@ -148,16 +155,31 @@ define([
           if(now - $sessionStorage.portal.lastAccessed <= timeLapseBetweenLogins) {//4 hours
             return true;
           }
-        } 
+        }
         return false;
       }
-      
+
+      var searchRouteParameterInit = function(){
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+          var searchValue = '', paramToTackOn = '';
+          if(next.$$route && next.$$route.searchParam) {
+            paramToTackOn = APP_FLAGS.gaSearchParam || 'q';
+            searchValue = next.params[next.$$route.searchParam];
+            if(searchValue && $location.search()[paramToTackOn] !== searchValue) {
+              event.preventDefault();
+              //change route to have param of the search param
+              $location.search(paramToTackOn,searchValue);
+            }
+          }
+        });
+      }
+
       //loading sequence
       var init = function(){
-        
+        searchRouteParameterInit();
         $rootScope.portal = $rootScope.portal || {};
         $sessionStorage.portal = $sessionStorage.portal || {};
-        
+
         if(APP_FLAGS.loginOnLoad && !lastLoginValid()) {
           $http.get(SERVICE_LOC.loginSilentURL).then(function(result){
             console.log("login returned with " + (result.data ? result.data.status : null));
