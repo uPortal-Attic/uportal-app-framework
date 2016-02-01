@@ -13,21 +13,22 @@ define(['angular'], function(angular) {
             "group" : "UW-Madison"
           },
           {
+            "name" : "uw-river-falls",
+            "crest" : "img/uwrf-logo-65x105.png",
+            "title" : "MyUW",
+            "subtitle" : "beta",
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW River Falls Logo",
+            "group" : "UW System-River Falls"
+          },
+          {
             "name" : "uw-system",
             "crest" : "img/uwsystem.png",
             "title" : "MyUW",
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Crest",
+            "crestalt" : "UW System Logo",
             "group" : "default"
-          },
-          {
-            "name" : "",
-            "crest" : "",
-            "title" : "",
-            "subtitle" : "",
-            "ariaLabelTitle" : "",
-            "crestalt" : ""
           }
         ])
         .constant('FRAME_URLS', {
