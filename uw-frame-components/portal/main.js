@@ -2,6 +2,7 @@ define([
     'angular',
     'require',
     'app-config',
+    'override',
     'frame-config',
     'ngRoute',
     'ngSanitize',
@@ -36,6 +37,7 @@ define([
 
     var app = angular.module('portal', [
         'app-config',
+        'override',
         'frame-config',
         'ngRoute',
         'ngSanitize',
@@ -78,7 +80,7 @@ define([
 
     }]);
 
-    app.run(function($location, $http, $rootScope, $timeout,$sessionStorage, NAMES, THEMES, APP_FLAGS, SERVICE_LOC, filterFilter) {
+    app.run(function($location, $http, $rootScope, $timeout,$sessionStorage, NAMES, THEMES, APP_FLAGS, SERVICE_LOC, OVERRIDE, filterFilter) {
       var loadingCompleteSequence = function() {
 
         //loading sequence
@@ -99,7 +101,7 @@ define([
           loadingCompleteSequence();
           return;
         }
-        var themeIndex = APP_FLAGS.defaultTheme || 0;
+        var themeIndex = $rootScope.portal.config.APP_FLAGS.defaultTheme || 0;
         if('group' == themeIndex) {
           var themeSet = false;
           var defaultThemeGo = function() {
@@ -173,14 +175,29 @@ define([
           }
         });
       }
+      
+      var configureAppConfig = function(){
+        console.log(new Date() + " : start app-config");
+        $rootScope.portal.config = {};
+        $rootScope.portal.config.APP_FLAGS = APP_FLAGS;
+        if(OVERRIDE.APP_FLAGS) {
+          for(var key in $rootScope.portal.config.APP_FLAGS) {
+            if(typeof OVERRIDE.APP_FLAGS[key] !== 'undefined') {
+              $rootScope.portal.config.APP_FLAGS[key] = OVERRIDE.APP_FLAGS[key];
+            }
+          }
+        }
+        console.log(new Date() + " : ended app-config");
+      };
 
       //loading sequence
       var init = function(){
         searchRouteParameterInit();
         $rootScope.portal = $rootScope.portal || {};
         $sessionStorage.portal = $sessionStorage.portal || {};
+        configureAppConfig();
 
-        if(APP_FLAGS.loginOnLoad && !lastLoginValid()) {
+        if($rootScope.portal.config.APP_FLAGS.loginOnLoad && !lastLoginValid()) {
           $http.get(SERVICE_LOC.loginSilentURL).then(function(result){
             console.log("login returned with " + (result.data ? result.data.status : null));
             themeLoading();
