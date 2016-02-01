@@ -2,6 +2,7 @@ define([
     'angular',
     'require',
     'app-config',
+    'override',
     'frame-config',
     'ngRoute',
     'ngSanitize',
@@ -37,6 +38,7 @@ define([
 
     var app = angular.module('portal', [
         'app-config',
+        'override',
         'frame-config',
         'ngRoute',
         'ngSanitize',
@@ -78,7 +80,7 @@ define([
       $analyticsProvider.firstPageview(true);
     }]);
 
-    app.run(function($location, $http, $rootScope, $timeout,$sessionStorage, NAMES, THEMES, APP_FLAGS, SERVICE_LOC, filterFilter) {
+    app.run(function($location, $http, $rootScope, $timeout,$sessionStorage, NAMES, THEMES, APP_FLAGS, SERVICE_LOC, OVERRIDE, filterFilter) {
       var loadingCompleteSequence = function() {
 
         //loading sequence
@@ -174,11 +176,24 @@ define([
         });
       }
 
+      var configureAppConfig = function(){
+        console.log(new Date() + " : start app-config");
+        if(OVERRIDE.APP_FLAGS) {
+          for(var key in APP_FLAGS) {
+            if(typeof OVERRIDE.APP_FLAGS[key] !== 'undefined') {
+              APP_FLAGS[key] = OVERRIDE.APP_FLAGS[key];
+            }
+          }
+        }
+        console.log(new Date() + " : ended app-config");
+      };
+
       //loading sequence
       var init = function(){
         searchRouteParameterInit();
         $rootScope.portal = $rootScope.portal || {};
         $sessionStorage.portal = $sessionStorage.portal || {};
+        configureAppConfig();
 
         if(APP_FLAGS.loginOnLoad && !lastLoginValid()) {
           $http.get(SERVICE_LOC.loginSilentURL).then(function(result){
