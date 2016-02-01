@@ -4,10 +4,10 @@ define(['angular','require'], function(angular, require) {
   var app = angular.module('portal.features.controllers', []);
 
 
-  app.controller('PortalFeaturesController', ['miscService', '$localStorage', '$sessionStorage','$scope', '$document', 'APP_FLAGS', '$modal', 'portalFeaturesService', '$sanitize', 'MISC_URLS', function(miscService, $localStorage, $sessionStorage, $scope, $document, APP_FLAGS, $modal, portalFeaturesService, $sanitize, MISC_URLS) {
+  app.controller('PortalFeaturesController', ['miscService', '$localStorage', '$sessionStorage','$scope', '$rootScope', '$document', 'APP_FLAGS', '$modal', 'portalFeaturesService', '$sanitize', 'MISC_URLS', function(miscService, $localStorage, $sessionStorage, $scope, $rootScope, $document, APP_FLAGS, $modal, portalFeaturesService, $sanitize, MISC_URLS) {
     $scope.features = [];
     $scope.MISC_URLS = MISC_URLS;
-    if (APP_FLAGS.features) {
+    if ($rootScope.portal.config.APP_FLAGS.features) {
       portalFeaturesService.getFeatures().then(function(data) {
         var features = data;
         if (features.data.length > 0) {
@@ -19,6 +19,7 @@ define(['angular','require'], function(angular, require) {
 
   app.controller('PortalPopupController', ['$localStorage',
                                            '$sessionStorage',
+                                           '$rootScope',
                                            '$scope',
                                            '$document',
                                            'APP_FLAGS',
@@ -27,7 +28,7 @@ define(['angular','require'], function(angular, require) {
                                            'portalFeaturesService',
                                            'miscService',
                                            '$sanitize',
-                                  function($localStorage, $sessionStorage, $scope, $document, APP_FLAGS, filterFilter, $modal, portalFeaturesService, miscService, $sanitize) {
+                                  function($localStorage, $sessionStorage, $rootScope, $scope, $document, APP_FLAGS, filterFilter, $modal, portalFeaturesService, miscService, $sanitize) {
 
      //scope functions ---------------------------------------------------------
 
@@ -154,7 +155,7 @@ define(['angular','require'], function(angular, require) {
      }
 
      var init = function() {
-      if (APP_FLAGS.features) {
+      if ($rootScope.portal.config.APP_FLAGS.features) {
         $scope.features = [];
 
         portalFeaturesService.getFeatures().then(function(results) {

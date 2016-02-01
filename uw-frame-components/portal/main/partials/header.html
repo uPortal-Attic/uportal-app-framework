@@ -36,10 +36,10 @@
                   <notification-bell mode='mobile-menu' header-ctrl='headerCtrl'></notification-bell>
                   <ul class="list-group sidebar-list">
                        <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
-                        <a ng-if='APP_FLAGS.isWeb' href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+                        <a ng-if='portal.config.APP_FLAGS.isWeb' href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
                          <span class="fa fa-home fa-fw"></span> Home
                       </a>
-                      <a ng-if='!APP_FLAGS.isWeb' href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+                      <a ng-if='!portal.config.APP_FLAGS.isWeb' href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
                         <span class="fa fa-home fa-fw"></span> Home
                       </a>
                     </li>
@@ -55,7 +55,7 @@
                     &nbsp;
                  </li>
                  <li>
-                    <search ng-show='APP_FLAGS.showSearch'></search>
+                    <search ng-show='portal.config.APP_FLAGS.showSearch'></search>
                  </li>
              </ul>
              <ul class="nav navbar-nav navbar-right hidden-xs">

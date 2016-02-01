@@ -3,7 +3,7 @@
 define(['angular'], function(angular) {
 
   var app = angular.module('portal.search.controllers', []);
-  app.controller('PortalSearchController', [ 'miscService', '$location', '$scope', '$localStorage','$routeParams','SEARCH', 'APP_FLAGS', function(miscService, $location, $scope, $localStorage, $routeParams, SEARCH, APP_FLAGS) {
+  app.controller('PortalSearchController', [ 'miscService', '$location', '$rootScope', '$scope', '$localStorage','$routeParams','SEARCH', 'APP_FLAGS', function(miscService, $location,$rootScope, $scope, $localStorage, $routeParams, SEARCH, APP_FLAGS) {
       $scope.initialFilter = '';
       $scope.filterMatches = [];
       $scope.portletListLoading = true;
@@ -20,7 +20,7 @@ define(['angular'], function(angular) {
       });
 
       $scope.onSelect = function(portlet) {
-          if(APP_FLAGS.isWeb) {
+          if($rootScope.portal.config.APP_FLAGS.isWeb) {
               $location.path("apps/search/"+ portlet.name);
               $scope.showSearch = false;
               $scope.showSearchFocus = false;
@@ -32,7 +32,7 @@ define(['angular'], function(angular) {
 
       $scope.submit = function(){
         if($scope.initialFilter != "") {
-          if(APP_FLAGS.isWeb) {
+          if($rootScope.portal.config.APP_FLAGS.isWeb) {
               $location.path("apps/search/"+ $scope.initialFilter);
               $scope.showSearch = false;
               $scope.showSearchFocus = false;
