@@ -1,0 +1,62 @@
+
+// Classic UW - left/right sidebar
+
+.uw-content-classic .sidebar {
+	background: @uw-tan-light;
+	position:relative;
+	padding: @grid-gutter-width;
+	> h2:first-child {
+		margin-top: 8px;
+	}
+	&.sidebar-right {
+		border-left: 1px solid @uw-gray-medium;
+	}
+	&.sidebar-left {
+		border-right: 1px solid @uw-gray-medium;	
+	}
+	h2 {
+		font-size: 20px;
+	}
+	.nav-sidebar {
+		a:hover,
+		a:focus {
+			background-color: transparent;
+		}
+	}	
+	&.sidebar-right,
+	&.sidebar-left {
+		@media (max-width: @grid-float-breakpoint) {
+			border:none;
+		}		
+	}
+}
+
+.uw-sidebars > .container > .row .main {
+	padding: @grid-gutter-width;
+}
+.uw-content-classic.uw-content-carousel {
+	> .container > .row {
+		.main {
+			padding: 0;
+			.main-content {
+				padding: @grid-gutter-width;
+			}
+		}
+	}
+}
+
+@media (min-width: @grid-float-breakpoint) {
+	.uw-sidebars > .container > .row {
+		overflow: hidden;
+		.sidebar {
+			padding-bottom: 9999px;
+			margin-bottom: -9999px;
+		}
+	}
+	.uw-content-classic .sidebar {
+		padding: (@grid-gutter-width / 2);
+		> h2:first-child {
+			margin-top: 24px;
+		}
+	}
+}

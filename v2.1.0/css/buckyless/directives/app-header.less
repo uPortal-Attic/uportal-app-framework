@@ -1,0 +1,56 @@
+app-header,app-header-two-way-bind {
+
+  .app-header {
+    height:55px;
+    position:relative;
+    overflow:visible;
+    z-index:20;
+    background-color:#ddd;
+  }
+
+  .popover {
+    left: inherit !important;
+    right : 46px;
+  }
+
+  .arrow {
+    left: 91% !important;
+  }
+
+  .dropdown {
+    position:absolute;
+    top:20px;
+    right:20px;
+    .dropdown-menu {
+      right: 0px;
+      left: auto;
+    }
+    i {
+      font-size:20px;
+      color:@white;
+    }
+  }
+
+  h3.title {
+    color:@black;
+    font-weight:200;
+    margin: 15px 0px 0px;
+    z-index:5;
+  }
+
+  .header-links {
+    padding-right:0px;
+    :hover {
+      cursor : pointer;
+    }
+    color : @link-color;
+    .link-div {
+      float:right;
+      margin: 20px;
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+}
