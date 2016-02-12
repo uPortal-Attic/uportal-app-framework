@@ -187,6 +187,10 @@ define([
             if("success" === result.data.status) {
               $sessionStorage.portal.lastAccessed = (new Date).getTime();
               $sessionStorage.portal.username = result.data.username;
+              if (NAMES.guestUserName && result.data.username === NAMES.guestUserName) {
+                $rootScope.GuestMode = true;
+              }
+
             }
           },
           function(reason){
