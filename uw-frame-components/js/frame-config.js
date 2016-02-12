@@ -5,7 +5,7 @@ define(['angular'], function(angular) {
         .constant('THEMES', [
           {
             "name" : "uw-madison",
-            "crest" : "img/uwcrest_web_sm.png",
+            "crest" : "img/uw-madison-52.png",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
@@ -14,7 +14,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-river-falls",
-            "crest" : "img/uwrf-logo-65x105.png",
+            "crest" : "img/uw-riverfalls-52.png",
             "title" : "MyUW",
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
@@ -23,7 +23,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-system",
-            "crest" : "img/uwsystem.png",
+            "crest" : "img/uw-system-52.png",
             "title" : "MyUW",
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
