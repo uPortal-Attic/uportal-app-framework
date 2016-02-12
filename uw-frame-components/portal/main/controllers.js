@@ -63,8 +63,6 @@ define(['angular','require'], function(angular, require) {
     $scope.FOOTER_URLS = FOOTER_URLS;
     $scope.usernameOptionOpen = false;
 
-    //initialize GuestMode
-    $rootScope.GuestMode = false;
     mainService.getUser().then(function(result){
       that.user = result;
       //check if is guest
