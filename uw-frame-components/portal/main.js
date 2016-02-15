@@ -74,8 +74,6 @@ define([
       };
 
       $analyticsProvider.firstPageview(true);
-      $analyticsProvider.withAutoBase(true);
-
     }]);
 
     app.run(function($location, $http, $rootScope, $timeout,$sessionStorage, NAMES, THEMES, APP_FLAGS, SERVICE_LOC, filterFilter) {
