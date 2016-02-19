@@ -33,7 +33,7 @@
          <div class="collapse navbar-collapse" id="bucky-navbar-collapse"  collapse="headerCtrl.navbarCollapsed">
              <div class="nav navbar-nav visible-xs bucky-nav">
                   
-                  <ul class="list-group sidebar-list">
+                  <ul class="list-group sidebar-list" ng-class="{ 'searching' : showSearch}">
                     <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
                       <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
                     </li>
