@@ -14,7 +14,7 @@
 
 .bucky-nav ul li a:hover {
   text-decoration:none;
-  color:#ccc;
+  color:@color2;
 }
 .navbar-default {
   height:52px !important;
@@ -44,18 +44,17 @@
   margin: 60px 10px 30px;
 }
 .bucky-nav ul {
-  width: 100% !important;
-  margin: 20px 10px 30px;
+  margin: 20px 10px 10px;
   li {
     position: relative;
     display: block;
-    padding: 8px 30px;
+    padding: 8px 20px;
     margin-bottom: -1px;
     background-color: transparent;
     border: none;
     text-align: left;
     a {
-      color:@white;
+      color:@color1;
       font-size:20px;
     }
   }
@@ -117,9 +116,8 @@
   }
 }
 .search-mobile {
-  background-color:#333;
+  background-color:#fff;
   padding:12px;
-  
 }
 
 .navbar-header {
@@ -142,6 +140,14 @@
   top: 0;
   right: 0;
   height: 52px;
+}
+@media (max-width:767px) {
+  .navbar-collapse {
+    background-color:@white;
+  }
+  #bucky-navbar-collapse {
+    box-shadow: 0 5000px 0 5000px rgba(0,0,0,0.6);
+  }
 }
 
 //---------------------Username options-css ------------------------------------
