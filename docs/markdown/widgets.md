@@ -181,13 +181,13 @@ Display a search bar and two links. Here is the sample code:
                "actionParameter":"q",
                "launchText":"Go to resource guide",
                "links":[{
-                     "title":"Get started at the Initiate Phase",
+                     "title":"Get started",
                      "href":"https://rprg.wisc.edu/phases/initiate/",
                      "icon":"fa-map-o",
                      "target":"_blank"
                   },
                   {
-                     "title":"Resource List",
+                     "title":"Resources",
                      "href":"https://rprg.wisc.edu/category/resource/",
                      "icon":"fa-th-list",
                      "target":"_blank"
