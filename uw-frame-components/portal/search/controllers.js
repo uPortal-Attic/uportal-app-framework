@@ -3,21 +3,29 @@
 define(['angular'], function(angular) {
 
   var app = angular.module('portal.search.controllers', []);
-  app.controller('PortalSearchController', [ 'miscService', '$location', '$scope', '$localStorage','$routeParams','SEARCH', 'APP_FLAGS', function(miscService, $location, $scope, $localStorage, $routeParams, SEARCH, APP_FLAGS) {
+  app.controller('PortalSearchController', [ 'miscService', '$location', '$rootScope', '$scope', '$localStorage','$routeParams','SEARCH', 'APP_FLAGS', function(miscService, $location, $rootScope, $scope, $localStorage, $routeParams, SEARCH, APP_FLAGS) {
       $scope.initialFilter = '';
       $scope.filterMatches = [];
       $scope.portletListLoading = true;
       if($localStorage && $localStorage.typeaheadSearch) {
           //TODO : Add in search for somewhere for frame
-      }      
-      $scope.$watch('initialFilter', function(newVal, oldVal) {
-          if (!newVal || !$scope.portlets) {
-              $scope.filterMatches = [];
-              return;
-          }
+          $scope.$watch('initialFilter', function(newVal, oldVal) {
+              if (!newVal || !$scope.portlets) {
+                  $scope.filterMatches = [];
+                  return;
+              }
 
-          $scope.filterMatches = [];//this is where you would run your filter function
-      });
+              $scope.filterMatches = [];//this is where you would run your filter function
+          });
+      }
+
+      $rootScope.$watch('portalSearchTerm', function(newVal, oldVal) {
+        if(!newVal) {
+          return;
+        }
+        $scope.initialFilter = newVal;
+        $rootScope.portalSearchTerm = undefined;
+      })
 
       $scope.onSelect = function(portlet) {
           if(APP_FLAGS.isWeb) {
@@ -42,7 +50,7 @@ define(['angular'], function(angular) {
           }
         }
       };
-        
+
       $scope.$on('$locationChangeStart', function(event) {
         if ($location.url().indexOf('search') == -1) {
           $scope.initialFilter = '';
