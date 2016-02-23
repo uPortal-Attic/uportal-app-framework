@@ -22,6 +22,15 @@ define(['angular'], function(angular) {
             "group" : "UW System-River Falls"
           },
           {
+            "name" : "uw-stevens-point",
+            "crest" : "img/uwsp-logo-52.png",
+            "title" : "MyUW",
+            "subtitle" : "beta",
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Stevens Point Logo",
+            "group" : "UW System-Stevens Point"
+          },
+          {
             "name" : "uw-system",
             "crest" : "img/uw-system-52.png",
             "title" : "MyUW",
