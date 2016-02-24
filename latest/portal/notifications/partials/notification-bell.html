@@ -6,7 +6,7 @@
       </div>
     </div>
     <!--Mobile menu row or the notification bell on desktop-->
-    <a ng-if='notificationsEnabled && (directiveMode === "bell" || directiveMode === "mobile-menu")' title="click to view notifications" ng-href="{{notificationUrl}}">
+    <a ng-if='notificationsEnabled && (directiveMode === "bell" || directiveMode === "mobile-menu")' title="click to view notifications" class="menu-notification-link" ng-href="{{notificationUrl}}">
       <div ng-show='directiveMode !== "mobile-menu"' class='notification-badge' aria-label='{{status}}' ng-class='{ "notification-badge-empty" : (countWithDismissed() === 0 || isEmpty)}'>
         <span class="number-of-nots" ng-if='countWithDismissed() > 0' ng-class='{ "more-than-10-nots" : (countWithDismissed() > 9)}'>{{countWithDismissed()}}</span>
         <i class='fa fa-bell fa-2x'></i>
