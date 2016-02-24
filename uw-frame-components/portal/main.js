@@ -201,12 +201,18 @@ define([
         console.log(new Date() + " : start app-config override");
         var count = 0, groups = 0;
         for(var i in configsName) {
-          if(OVERRIDE[configsName[i]]) {
+          var curConfig = configsName[i];
+          if(OVERRIDE[curConfig]) {
             groups++;
-            for(var key in configs[i]) {
-              if(typeof OVERRIDE[configsName[i]][key] !== 'undefined') {
-                configs[i][key] = OVERRIDE[configsName[i]][key];
-                count++;
+            if(Array.isArray(configs[i])){//arrays are special, append
+              Array.prototype.push.apply(configs[i], OVERRIDE[curConfig]);
+              count++;
+            } else {//treat as an object
+              for(var key in configs[i]) {
+                if(typeof OVERRIDE[curConfig][key] !== 'undefined') {
+                  configs[i][key] = OVERRIDE[curConfig][key];
+                  count++;
+                }
               }
             }
           }

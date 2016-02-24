@@ -1,4 +1,4 @@
-Your application can overwrite any constant listed below by adding it to the `js/override.js` file.
+Your application can overwrite any constant listed below by adding it to the `js/override.js` file. You only need to add what you want different than what is in `js/app-config.js`.
 
 ## Example
 ```javascript
@@ -7,7 +7,11 @@ define(['angular'], function(angular) {
   config
       .constant('OVERRIDE', {
                               'FEATURES' : { 'enabled' : true },
-                              'APP_FLAG' : { 'loginOnLoad' : true, 'gaSearchParam' : 'f' }
+                              'APP_FLAG' : { 'loginOnLoad' : true, 'gaSearchParam' : 'f' },
+                              'FOOTER_URLS' : [{ "url" : "http://www.google.com",
+                                                 "target" : "_blank",
+                                                 "title" : "Google"
+                                               }]
                             })
   return config;
 });
@@ -15,11 +19,16 @@ define(['angular'], function(angular) {
 ```
 
 Alright, lot going on here so lets take a walk through this.
-+ Line 1 is just the `requirejs` wrapper, no biggy.
-+ Line 2 & 3 are just setting up this module in angular. This will be pulled in during the `/portal/main.js` execution.
-+ Line 4 defines the constant "OVERRIDE". This will contain the json that will be overwritten
-+ Line 5 is an example override for something in the `FEATURES` category. Each category must be the object name. In this instance that is `FEATURES`. The value is `JSON` and each key is a key shown below of which you wish to override. In this instance we are overwriting `enabled`. By default its set to `false`, but with this config it will now be `true`.
-+ Line 6 is an example of changing more than one config in a single category
++ `Line 1` is just the `requirejs` wrapper, no biggy.
++ `Line 2 & 3` are just setting up this module in angular. This will be pulled in during the `/portal/main.js` execution.
++ `Line 4` defines the constant "OVERRIDE". This will contain the json that will be overwritten
++ `Line 5` is an example override for something in the `FEATURES` category. Each category must be the object name. In this instance that is `FEATURES`. The value is `JSON` and each key is a key shown below of which you wish to override. In this instance we are overwriting `enabled`. By default its set to `false`, but with this config it will now be `true`.
++ `Line 6` is an example of changing more than one config in a single category
++ `Line 7-10` is an interesting example. Its an array config category. This will append to the default values. In this case it'll add a footer url for google.
+
+If you have questions please ask.
+
+## The Configuration Options
 
 #### APP_FLAGS
 + `defaultTheme` : This is the default theme you want (see frame-config.js for the array list of themes). Provide an index number to just have simple selection, or set to the string `'group'` to enable group selection. If you do group selection make sure you set the `SERVICE_LOC.groupURL`.
