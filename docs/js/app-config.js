@@ -3,13 +3,11 @@ define(['angular'], function(angular) {
     var config = angular.module('app-config', []);
     config
         .constant('APP_FLAGS', {
-            'features' : false,
             'showSearch' : false,
             'isWeb' : false
         })
         .constant('SERVICE_LOC', {
             'sessionInfo' : 'staticFeeds/session.json',
-            'featuresInfo' : 'staticFeeds/features.json',
             'notificationsURL' : 'staticFeeds/notifications.json'
         })
         .constant('NAMES', {
@@ -24,6 +22,11 @@ define(['angular'], function(angular) {
             'enabled' : false,
             'groupFiltering' : false,
             'notificationFullURL' : 'notifications'
+        })
+        .constant('FEATURES', {
+            'enabled' : false,
+            'groupFiltering' : false,
+            'serviceURL' : 'staticFeeds/features.json'
         })
         .constant('MISC_URLS',{
             'back2ClassicURL' : null,

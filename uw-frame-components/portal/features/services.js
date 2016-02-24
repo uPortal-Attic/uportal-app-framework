@@ -4,8 +4,21 @@ define(['angular'], function(angular) {
 
   var app = angular.module('portal.features.services', []);
 
-  app.factory('portalFeaturesService', ['$http', 'miscService', 'keyValueService', 'SERVICE_LOC', 'KV_KEYS', function($http, miscService, keyValueService, SERVICE_LOC, KV_KEYS) {
-    var featuresPromise = $http.get(SERVICE_LOC.featuresInfo, { cache: true});
+  app.factory('portalFeaturesService', ['$http',
+                                        '$q',
+                                        'miscService',
+                                        'keyValueService',
+                                        'PortalGroupService',
+                                        'KV_KEYS',
+                                        'FEATURES',
+                                        function($http,
+                                                 $q,
+                                                 miscService,
+                                                 keyValueService,
+                                                 PortalGroupService,
+                                                 KV_KEYS,
+                                                 FEATURES) {
+    var featuresPromise, filteredFeaturesPromise;
 
     var TYPES = {
       "ANNOUNCEMENTS" : KV_KEYS.LAST_VIEWED_ANNOUNCEMENT_ID,
@@ -13,13 +26,36 @@ define(['angular'], function(angular) {
     };
 
     var getFeatures = function() {
-      return featuresPromise.success(
-        function(data, status) { //success function
-          return data.features;
-        }).error(function(data, status) { // failure function
-          miscService.redirectUser(status, "Get features info");
-        });
-    };
+      if(!featuresPromise) {
+        featuresPromise = $http.get(FEATURES.serviceURL, { cache: true})
+                               .then(function(results, status) { //success function
+                                  return results.data;
+                               },function(data, status) { // failure function
+                                  miscService.redirectUser(status, "Get features info");
+                               });
+      }
+      if(FEATURES.groupFiltering && PortalGroupService.groupsServiceEnabled) {
+        if(filteredFeaturesPromise) {
+          //cache shortcut
+          return filteredFeaturesPromise;
+        }
+        var successFn = function(results){
+          var array = results[0];
+          var groups = results[1];
+          return PortalGroupService.filterArrayByGroups(array, groups, 'groups');
+        };
+        var errorFn = function(reason) {
+          miscService.redirectUser(reason.status, 'q for filtered features');
+        }
+        filteredFeaturesPromise = $q.all([featuresPromise,
+                                          PortalGroupService.getGroups()
+                                         ])
+                                    .then(successFn, errorFn);
+        return filteredFeaturesPromise;
+      } else {
+        return featuresPromise;
+      }
+    };//end get features
 
     var saveLastSeenFeature = function(type, id) {
       if(keyValueService.isKVStoreActivated()) {
