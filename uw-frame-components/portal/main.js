@@ -80,7 +80,23 @@ define([
       $analyticsProvider.firstPageview(true);
     }]);
 
-    app.run(function($location, $http, $rootScope, $timeout,$sessionStorage, NAMES, THEMES, APP_FLAGS, SERVICE_LOC, OVERRIDE, filterFilter) {
+    app.run(function($location,
+                     $http,
+                     $rootScope,
+                     $timeout,
+                     $sessionStorage,
+                     THEMES,
+                     OVERRIDE,
+                     filterFilter,
+                     APP_FLAGS,
+                     SERVICE_LOC,
+                     NAMES,
+                     SEARCH,
+                     FEATURES,
+                     NOTIFICATION,
+                     MISC_URLS,
+                     FOOTER_URLS,
+                     APP_BETA_FEATURES) {
       var loadingCompleteSequence = function() {
 
         //loading sequence
@@ -176,16 +192,27 @@ define([
         });
       }
 
+      //List of config. VERY IMPORTANT THAT THE CONFIGS has a corrisponding configsName in the same index
+      var configs = [APP_FLAGS, SERVICE_LOC, NAMES, SEARCH, FEATURES, NOTIFICATION, MISC_URLS, FOOTER_URLS, APP_BETA_FEATURES];
+      //TODO: make better
+      var configsName = ['APP_FLAGS', 'SERVICE_LOC', 'NAMES', 'SEARCH', 'FEATURES', 'NOTIFICATION', 'MISC_URLS', 'FOOTER_URLS', 'APP_BETA_FEATURES'];
+
       var configureAppConfig = function(){
-        console.log(new Date() + " : start app-config");
-        if(OVERRIDE.APP_FLAGS) {
-          for(var key in APP_FLAGS) {
-            if(typeof OVERRIDE.APP_FLAGS[key] !== 'undefined') {
-              APP_FLAGS[key] = OVERRIDE.APP_FLAGS[key];
+        console.log(new Date() + " : start app-config override");
+        var count = 0, groups = 0;
+        for(var i in configsName) {
+          if(OVERRIDE[configsName[i]]) {
+            groups++;
+            for(var key in configs[i]) {
+              if(typeof OVERRIDE[configsName[i]][key] !== 'undefined') {
+                configs[i][key] = OVERRIDE[configsName[i]][key];
+                count++;
+              }
             }
           }
         }
-        console.log(new Date() + " : ended app-config");
+        console.log(new Date() + " : ended app-config override");
+        console.log("Overwrote " + count + " configs in " + groups + " config groups.");
       };
 
       //loading sequence

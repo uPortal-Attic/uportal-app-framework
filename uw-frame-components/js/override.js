@@ -6,8 +6,8 @@ define(['angular'], function(angular) {
     config
         //see configuration.md for howto
         .constant('OVERRIDE', {
-            'APP_FLAGS' : {
-              'features' : false
+            'FEATURES' : {
+              'enabled' : true
             }
         })
 
