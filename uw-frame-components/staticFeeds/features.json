@@ -24,6 +24,24 @@
   },
   {
     "id": 2,
+    "title": "A new and improved search",
+    "description": "Search more places. In addition to searching MyUW, now you can find people in the campus directory, and search the entire Wisc.edu website. Quickly find what you’re looking for. The new streamlined search results page has a familiar and straightforward look, with tabs to narrow your search to what you need.",
+    "img": "img/search-demo.png",
+    "learnMoreURL": "",
+    "groups" : ["UW-Madison"],
+    "goLiveYear": 2016,
+    "goLiveMonth": 1,
+    "goLiveDay": 6,
+    "isPopup" : false,
+    "isBuckyAnnouncement" : true,
+    "buckyAnnouncement" : {
+      "shortTitle" : "Try the new MyUW search",
+      "shoreDesc" : "Now search across MyUW, Wisc.edu, and the campus directory.",
+      "endDate": 1487952401000
+    }
+  }
+  {
+    "id": 3,
     "title": "Bucky says what's new",
     "description": "We are enabling a new feature today that allows us to announce new features inside of MyUW. We promise to not be too annoying with every little detail.",
     "img": "img/bucky-announcement.png",
