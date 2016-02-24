@@ -5,7 +5,6 @@ define(['angular'], function(angular) {
     var config = angular.module('app-config', []);
     config
         .constant('APP_FLAGS', {
-            'features' : false,
             'showSearch' : true,
             'isWeb' : false,
             'defaultTheme' : 0,
@@ -14,7 +13,6 @@ define(['angular'], function(angular) {
         .constant('SERVICE_LOC', {
             'aboutURL' : null,
             'sessionInfo' : 'staticFeeds/session.json',
-            'featuresInfo' : 'staticFeeds/features.json',
             'notificationsURL' : 'staticFeeds/notifications.json',
             'loginSilentURL' : '/portal/Login?silent=true',
             'kvURL' : null,
@@ -27,6 +25,11 @@ define(['angular'], function(angular) {
         })
         .constant('SEARCH',{
             'searchURL' : 'https://my.wisc.edu/web/apps/search/'
+        })
+        .constant('FEATURES', {
+            'enabled' : false,
+            'groupFiltering' : false,
+            'serviceURL' : 'staticFeeds/features.json'
         })
         .constant('NOTIFICATION', {
             'enabled' : false,
