@@ -5,6 +5,7 @@
     "description": "",
     "img": "img/myuw-welcome.png",
     "learnMoreURL": "",
+    "groups" : ["UW-Madison"],
     "goLiveYear": 2015,
     "goLiveMonth": 6,
     "goLiveDay": 11,
