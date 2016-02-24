@@ -21,12 +21,16 @@ define(['angular', 'jquery'], function(angular, $) {
     * Filter the array given the groups, with an optional groupFieldName
     * @param array: an array of objects to be filteredLayout
     * @param groups: The array of groups
-    * @param groupFieldName : The field in the array to filter upon. @default 'group'.
+    * @param arrayGroupFieldName : The field in the array to filter upon. @default 'group'.
+    * @param groupsNameFieldName : The field on the group object that is the group's name. @default 'name'
     */
-    var filterArrayByGroups = function(array, groups, groupFieldName){
+    var filterArrayByGroups = function(array, groups, arrayGroupFieldName, groupsNameFieldName){
       //validation/setup
-      if(!groupFieldName) {
-        groupFieldName = 'group';
+      if(!arrayGroupFieldName) {
+        arrayGroupFieldName = 'group';
+      }
+      if(!groupsNameFieldName) {
+        groupsNameFieldName = 'name';
       }
       if(!array || array.length === 0 || !groups || groups.length === 0 || !Array.isArray(array)) {
         if(!Array.isArray(array)) {
@@ -38,10 +42,10 @@ define(['angular', 'jquery'], function(angular, $) {
       var returnArray = [];
       //filtering magic
       $.each(array, function (index, cur){ //for each object
-        if(Array.isArray(cur[groupFieldName])) {
+        if(Array.isArray(cur[arrayGroupFieldName])) {
           var added = false;
-          $.each(cur[groupFieldName], function(index, group) { //for each group for that object
-            var inGroup = $.grep(groups, function(e) {return e.name === group}).length; //intersect, then get length
+          $.each(cur[arrayGroupFieldName], function(index, group) { //for each group for that object
+            var inGroup = $.grep(groups, function(e) {return e[groupsNameFieldName] === group}).length; //intersect, then get length
             if(inGroup > 0) {//are they in that group?
               returnArray.push(cur); //they should get this object
               return false; //break;
@@ -49,7 +53,7 @@ define(['angular', 'jquery'], function(angular, $) {
           });
         } else {
           //single filter then
-          var inGroup = $.grep(groups, function(e) {return e.name === cur[groupFieldName]}).length; //intersect, then get length
+          var inGroup = $.grep(groups, function(e) {return e[groupsNameFieldName] === cur[arrayGroupFieldName]}).length; //intersect, then get length
           if(inGroup > 0) {
             returnArray.push(cur);
           }
