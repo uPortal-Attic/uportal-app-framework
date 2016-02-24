@@ -31,12 +31,16 @@
          </div>
 
          <div class="collapse navbar-collapse" id="bucky-navbar-collapse"  collapse="headerCtrl.navbarCollapsed">
-             <div class="nav navbar-nav hidden-sm hidden-md hidden-lg bucky-nav">
-                  <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
-                  <notification-bell mode='mobile-menu' header-ctrl='headerCtrl'></notification-bell>
-                  <ul class="list-group sidebar-list">
-                       <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
-                        <a ng-if='APP_FLAGS.isWeb' href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+             <div class="nav navbar-nav visible-xs bucky-nav">
+                  <ul class="list-group sidebar-list" ng-class="{ 'searching' : showSearch}">
+                    <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
+                      <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
+                    </li>
+                    <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
+                      <notification-bell mode='mobile-menu' header-ctrl='headerCtrl'></notification-bell>
+                    </li>
+                    <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
+                      <a ng-if='APP_FLAGS.isWeb' href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
                          <span class="fa fa-home fa-fw"></span> Home
                       </a>
                       <a ng-if='!APP_FLAGS.isWeb' href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
