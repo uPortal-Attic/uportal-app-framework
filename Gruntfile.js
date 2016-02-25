@@ -5,7 +5,8 @@ module.exports = function(grunt) {
     processhtml: {
       dist: {
         files: {
-          'uw-frame-static/target/index.html': ['uw-frame-static/index.html']
+          'uw-frame-static/target/index.html': ['uw-frame-static/index.html'],
+          'docs/target/index.html': ['docs/index.html']
         }
       }
     }
