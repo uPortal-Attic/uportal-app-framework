@@ -1,5 +1,8 @@
 <div ng-controller="SessionCheckController as sessionCtrl">
-  <div class='username-option' ng-click='usernameOptionOpen=!usernameOptionOpen'>
+  <div class='username-option' ng-show='GuestMode'>
+    <a ng-href="{{MISC_URLS.myuwHome}}" class='btn btn-flat' title='Login' target='_self'>Login</a>
+  </div>
+  <div ng-hide='GuestMode' class='username-option' ng-click='usernameOptionOpen=!usernameOptionOpen'>
     <!-- <img src='img/bucky.png' class='gravatar' ng-if="!$storage.useGravatar">
     <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar"> -->
     {{sessionCtrl.user.firstName ? sessionCtrl.user.firstName : sessionCtrl.user.displayName}}
