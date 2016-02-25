@@ -1,46 +1,56 @@
 define(['angular'], function(angular) {
 
+  /*Keep in sync with docs/mardown/configuration.md*/
+
     var config = angular.module('app-config', []);
     config
-        .constant('APP_FLAGS', {
-            'showSearch' : false,
-            'isWeb' : false
+        .value('APP_FLAGS', {
+            'showSearch' : true,
+            'isWeb' : false,
+            'defaultTheme' : 0,
+            'loginOnLoad' : false
         })
-        .constant('SERVICE_LOC', {
+        .value('SERVICE_LOC', {
+            'aboutURL' : null,
             'sessionInfo' : 'staticFeeds/session.json',
-            'notificationsURL' : 'staticFeeds/notifications.json'
+            'notificationsURL' : 'staticFeeds/notifications.json',
+            'loginSilentURL' : '/portal/Login?silent=true',
+            'kvURL' : null,
+            'groupURL' : null
         })
-        .constant('NAMES', {
-            'title' : 'uw-frame Docs',
+        .value('NAMES', {
+            'title' : 'App Name',
             'guestUserName' : 'guest',
-            'fname' : 'uw-frame-fname'
+            'fname' : 'sample-fname'
         })
-        .constant('SEARCH',{
+        .value('SEARCH',{
             'searchURL' : 'https://my.wisc.edu/web/apps/search/'
         })
-        .constant('NOTIFICATION', {
-            'enabled' : false,
-            'groupFiltering' : false,
-            'notificationFullURL' : 'notifications'
-        })
-        .constant('FEATURES', {
+        .value('FEATURES', {
             'enabled' : false,
             'groupFiltering' : false,
             'serviceURL' : 'staticFeeds/features.json'
         })
-        .constant('MISC_URLS',{
+        .value('NOTIFICATION', {
+            'enabled' : false,
+            'groupFiltering' : false,
+            'notificationFullURL' : 'notifications'
+        })
+        .value('MISC_URLS',{
             'back2ClassicURL' : null,
             'feedbackURL' : 'https://my.wisc.edu/portal/p/feedback',
             'helpdeskURL' : 'https://kb.wisc.edu/helpdesk/',
+            'loginURL' : '/portal/Login?profile=bucky',
+            'logoutURL' : '/portal/Logout',
             'myuwHome' : 'https://my.wisc.edu',
-            'rootURL' : '#/',
-            'logoutURL' : 'https://github.com/UW-Madison-DoIT/uw-frame',
+            'rootURL' : '/web',
             'addToHomeURLS' : {
               'layoutURL' : '/portal/web/layoutDoc?tab=UW Bucky Home',
               'addToHomeActionURL' : '/portal/web/layout?tabName=UW Bucky Home&action=addPortlet&fname='
             }
+
         })
-        .constant('FOOTER_URLS', [
+        .value('FOOTER_URLS', [
           { "url" : "/web/static/myuw-help",
             "target" : "_blank",
             "title" : "Help"
@@ -50,7 +60,13 @@ define(['angular'], function(angular) {
             "title" : "Feedback"
           }
         ])
-        .constant('APP_BETA_FEATURES', []);
+        .value('APP_BETA_FEATURES', [
+          {
+            "id" : "toogleSomething",
+            "title" : "Sample Toggle",
+            "description" : "This is just an example of a toggle. Look at your localStorage after you switch this on for the first time."
+          }
+        ]);
 
     return config;
 

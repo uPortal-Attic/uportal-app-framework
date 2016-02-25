@@ -6,7 +6,17 @@ define(['angular'], function(angular) {
     config
         //see configuration.md for howto
         .constant('OVERRIDE', {
-            
+          'APP_FLAGS' : {
+            'showSearch' : false
+          },
+          'NAMES' : {
+            'title' : 'uw-frame Docs',
+            'fname' : 'uw-frame-fname'
+          },
+          'MISC_URLS' : {
+            'rootURL' : '#/',
+            'logoutURL' : 'https://github.com/UW-Madison-DoIT/uw-frame'
+          }
         })
 
     return config;
