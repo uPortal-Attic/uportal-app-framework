@@ -15,6 +15,7 @@ define([], function() {
         'angulartics'   : "bower_components/angulartics/dist/angulartics.min",
         'angulartics-google-analytics' : "bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min",
         'app-config'    : "js/app-config",
+        'override'      : "js/override",
         'frame-config'  : "js/frame-config",
         'jquery'        : "bower_components/jquery/dist/jquery.min",
         'jquery-ui'     : "bower_components/jquery-ui/jquery-ui.min",
