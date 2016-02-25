@@ -2,6 +2,7 @@ define([
     'angular',
     'require',
     'app-config',
+    'override',
     'frame-config',
     'ngRoute',
     'ngSanitize',
@@ -37,6 +38,7 @@ define([
 
     var app = angular.module('portal', [
         'app-config',
+        'override',
         'frame-config',
         'ngRoute',
         'ngSanitize',
@@ -78,7 +80,23 @@ define([
       $analyticsProvider.firstPageview(true);
     }]);
 
-    app.run(function($location, $http, $rootScope, $timeout,$sessionStorage, NAMES, THEMES, APP_FLAGS, SERVICE_LOC, filterFilter) {
+    app.run(function($location,
+                     $http,
+                     $rootScope,
+                     $timeout,
+                     $sessionStorage,
+                     THEMES,
+                     OVERRIDE,
+                     filterFilter,
+                     APP_FLAGS,
+                     SERVICE_LOC,
+                     NAMES,
+                     SEARCH,
+                     FEATURES,
+                     NOTIFICATION,
+                     MISC_URLS,
+                     FOOTER_URLS,
+                     APP_BETA_FEATURES) {
       var loadingCompleteSequence = function() {
 
         //loading sequence
@@ -174,11 +192,41 @@ define([
         });
       }
 
+      //List of config. VERY IMPORTANT THAT THE CONFIGS has a corrisponding configsName in the same index
+      var configs = [APP_FLAGS, SERVICE_LOC, NAMES, SEARCH, FEATURES, NOTIFICATION, MISC_URLS, FOOTER_URLS, APP_BETA_FEATURES];
+      //TODO: make better
+      var configsName = ['APP_FLAGS', 'SERVICE_LOC', 'NAMES', 'SEARCH', 'FEATURES', 'NOTIFICATION', 'MISC_URLS', 'FOOTER_URLS', 'APP_BETA_FEATURES'];
+
+      var configureAppConfig = function(){
+        console.log(new Date() + " : start app-config override");
+        var count = 0, groups = 0;
+        for(var i in configsName) {
+          var curConfig = configsName[i];
+          if(OVERRIDE[curConfig]) {
+            groups++;
+            if(Array.isArray(configs[i])){//arrays are special, append
+              Array.prototype.push.apply(configs[i], OVERRIDE[curConfig]);
+              count++;
+            } else {//treat as an object
+              for(var key in configs[i]) {
+                if(typeof OVERRIDE[curConfig][key] !== 'undefined') {
+                  configs[i][key] = OVERRIDE[curConfig][key];
+                  count++;
+                }
+              }
+            }
+          }
+        }
+        console.log(new Date() + " : ended app-config override");
+        console.log("Overwrote " + count + " configs in " + groups + " config groups.");
+      };
+
       //loading sequence
       var init = function(){
         searchRouteParameterInit();
         $rootScope.portal = $rootScope.portal || {};
         $sessionStorage.portal = $sessionStorage.portal || {};
+        configureAppConfig();
 
         if(APP_FLAGS.loginOnLoad && !lastLoginValid()) {
           $http.get(SERVICE_LOC.loginSilentURL).then(function(result){
