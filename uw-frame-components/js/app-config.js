@@ -4,13 +4,13 @@ define(['angular'], function(angular) {
 
     var config = angular.module('app-config', []);
     config
-        .constant('APP_FLAGS', {
+        .value('APP_FLAGS', {
             'showSearch' : true,
             'isWeb' : false,
             'defaultTheme' : 0,
             'loginOnLoad' : false
         })
-        .constant('SERVICE_LOC', {
+        .value('SERVICE_LOC', {
             'aboutURL' : null,
             'sessionInfo' : 'staticFeeds/session.json',
             'notificationsURL' : 'staticFeeds/notifications.json',
@@ -18,25 +18,25 @@ define(['angular'], function(angular) {
             'kvURL' : null,
             'groupURL' : null
         })
-        .constant('NAMES', {
+        .value('NAMES', {
             'title' : 'App Name',
             'guestUserName' : 'guest',
             'fname' : 'sample-fname'
         })
-        .constant('SEARCH',{
+        .value('SEARCH',{
             'searchURL' : 'https://my.wisc.edu/web/apps/search/'
         })
-        .constant('FEATURES', {
+        .value('FEATURES', {
             'enabled' : false,
             'groupFiltering' : false,
             'serviceURL' : 'staticFeeds/features.json'
         })
-        .constant('NOTIFICATION', {
+        .value('NOTIFICATION', {
             'enabled' : false,
             'groupFiltering' : false,
             'notificationFullURL' : 'notifications'
         })
-        .constant('MISC_URLS',{
+        .value('MISC_URLS',{
             'back2ClassicURL' : null,
             'feedbackURL' : 'https://my.wisc.edu/portal/p/feedback',
             'helpdeskURL' : 'https://kb.wisc.edu/helpdesk/',
@@ -50,7 +50,7 @@ define(['angular'], function(angular) {
             }
 
         })
-        .constant('FOOTER_URLS', [
+        .value('FOOTER_URLS', [
           { "url" : "/web/static/myuw-help",
             "target" : "_blank",
             "title" : "Help"
@@ -60,7 +60,7 @@ define(['angular'], function(angular) {
             "title" : "Feedback"
           }
         ])
-        .constant('APP_BETA_FEATURES', [
+        .value('APP_BETA_FEATURES', [
           {
             "id" : "toogleSomething",
             "title" : "Sample Toggle",
