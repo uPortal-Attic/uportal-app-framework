@@ -6,7 +6,7 @@
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
-                 <notification-bell mode='mobile-bell'></notification-bell>
+                 <notification-bell mode='mobile-bell' ng-if='!GuestMode'></notification-bell>
              </button>
              <div class="header-crest">
                <a aria-label="{{portal.theme.ariaLabelTitle}}"
@@ -18,7 +18,7 @@
                          class="hidden-xs crest"
                          alt="{{portal.theme.crestalt}}">
                     <span class='title'>{{portal.theme.title}}</span>
-                    <!-- <span class="beta-logo">{{portal.theme.subtitle}}</span> -->
+                    <span class="beta-logo">{{portal.theme.subtitle}}</span>
                   </div>
                </a>
              </div>
@@ -37,7 +37,7 @@
                       <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
                     </li>
                     <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
-                      <notification-bell mode='mobile-menu' header-ctrl='headerCtrl'></notification-bell>
+                      <notification-bell mode='mobile-menu' header-ctrl='headerCtrl' ng-if='!GuestMode'></notification-bell>
                     </li>
                     <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
                       <a ng-if='APP_FLAGS.isWeb' href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
@@ -67,7 +67,7 @@
                   <bucky-announcement mode='BUCKY'></bucky-announcement>
                 </li>
                 <li>
-                  <notification-bell mode='bell'></notification-bell>
+                  <notification-bell mode='bell' ng-if='!GuestMode'></notification-bell>
                 </li>
                 <li class='username-menu'>
                   <username></username>
