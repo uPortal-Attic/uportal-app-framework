@@ -103,7 +103,7 @@ define(['angular'], function(angular) {
       $scope.notificationUrl = NOTIFICATION.notificationFullURL;
       $scope.notificationsEnabled = NOTIFICATION.enabled;
 
-      if(NOTIFICATION.enabled) {
+      if(NOTIFICATION.enabled && !$rootScope.GuestMode) {
         if(SERVICE_LOC.kvURL && $rootScope.dismissedNotificationIds.length === 0) {
           //key value store enabled, we can store dismiss of notifications
           notificationsService.getDismissedNotificationIds().then(dismissedSuccessFn);
