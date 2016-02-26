@@ -7,6 +7,7 @@ define(['angular','require'], function(angular, require) {
   app.controller('PortalFeaturesController', ['miscService',
                                               '$localStorage',
                                               '$sessionStorage',
+                                              '$rootScope',
                                               '$scope',
                                               '$document',
                                               'FEATURES',
@@ -38,6 +39,7 @@ define(['angular','require'], function(angular, require) {
 
   app.controller('PortalPopupController', ['$localStorage',
                                            '$sessionStorage',
+                                           '$rootScope',
                                            '$scope',
                                            '$document',
                                            'FEATURES',
@@ -48,6 +50,7 @@ define(['angular','require'], function(angular, require) {
                                            '$sanitize',
                                   function($localStorage,
                                            $sessionStorage,
+                                           $rootScope,
                                            $scope,
                                            $document,
                                            FEATURES,
@@ -182,7 +185,7 @@ define(['angular','require'], function(angular, require) {
      }
 
      var init = function() {
-      if (FEATURES.enabled) {
+      if (FEATURES.enabled && !$rootScope.GuestMode) {
         $scope.features = [];
         portalFeaturesService.getFeatures().then(function(data) {
           postGetData(data, false);
