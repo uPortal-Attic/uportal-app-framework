@@ -136,7 +136,14 @@ define(['angular','require'], function(angular, require) {
              } else {
                $scope.announcements = announcements.filter(hasNotSeen);
              }
-             $scope.buckyImg = 'img/bucky.gif';
+             $scope.buckyImg = $rootScope.portal.theme.mascotImg || 'img/bucky.gif';
+             $rootScope.$watch('portal.theme', function(newVal, oldVal) {
+               if(newVal === oldVal) {
+                 return;
+               } else {
+                 $scope.buckyImg = newVal.mascotImg || 'img/bucky.gif';
+               }
+             });
            }
          } else {
            //this is to setup popup modal stuff
