@@ -31,7 +31,7 @@ define(['angular'], function(angular) {
             "group" : "UW System-Stevens Point"
           },
           {
-            "name" : "UW-Milwaukee",
+            "name" : "uw-milwaukee",
             "crest" : "img/uwm-logo-52.png",
             "title" : "MyUW",
             "subtitle" : "beta",
