@@ -46,7 +46,8 @@ define(['angular'], function(angular) {
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW System Logo",
-            "group" : "default"
+            "group" : "default",
+            "mascotImg" : "img/the-cow.png"
           }
         ])
         .constant('FRAME_URLS', {
