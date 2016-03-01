@@ -10,7 +10,7 @@
       <div ng-show='directiveMode !== "mobile-menu"' class='notification-badge' aria-label='{{status}}' ng-class='{ "notification-badge-empty" : (countWithDismissed() === 0 || isEmpty)}'>
         <span class="number-of-nots" ng-if='countWithDismissed() > 0' ng-class='{ "more-than-10-nots" : (countWithDismissed() > 9)}'>{{countWithDismissed()}}</span>
         <div class="arrow-down" ng-if='hasPriorityNotifications'></div>
-        <i class='fa fa-bell fa-2x'></i>
+        <i class='fa fa-bell fa-2x' ng-class="{'has-priority-nots': hasPriorityNotifications}"></i>
       </div>
       <div ng-show='directiveMode === "mobile-menu"' class='notification-badge-mobile-menu'  ng-click="headerCtrl.navbarCollapsed = true">
        <i class='fa fa-bell fa-fw'></i>  Notifications ({{countWithDismissed()}})
