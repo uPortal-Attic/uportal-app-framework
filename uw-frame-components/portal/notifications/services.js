@@ -9,13 +9,13 @@ define(['angular', 'jquery'], function(angular, $) {
       var dismissedPromise;
       var getAllNotifications = function() {
         return $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(
-                                              function(result) {
-                                                  return  result.data.notifications;
-                                              } ,
-                                              function(reason){
-                                                  miscService.redirectUser(reason.status, 'notifications json feed call');
-                                              }
-                                          );
+            function(result) {
+                return  result.data.notifications;
+            } ,
+            function(reason){
+                miscService.redirectUser(reason.status, 'notifications json feed call');
+            }
+        );
       };
       
       var getDismissedNotificationIds = function() {

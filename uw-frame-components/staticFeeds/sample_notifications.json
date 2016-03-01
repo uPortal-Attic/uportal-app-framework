@@ -6,7 +6,8 @@
         "title"  : "This is an admin notification smoke test",
         "actionURL" : "http://www.google.com",
         "actionAlt" : "Google",
-        "dismissable" : true
+        "dismissable" : true,
+        "priority" : false
       },
       {
         "id"     : 2,
@@ -14,7 +15,8 @@
         "title"  : "Our records indicate the Social Security Number in your Personal Information is invalid or missing. Please provide your Social Security Number or select to not provide your Social Security Number.",
         "actionURL" : "/portal/p/my-info-student-center-ssn.ctf1/max/action.uP?pP_action=loginAction",
         "actionAlt" : "UW-Madison Student Information",
-        "dismissable" : true
+        "dismissable" : true,
+        "priority" : false
       },
       {
         "id"     : 3,
@@ -22,7 +24,8 @@
         "title"  : "You need to modify your NetID account to activate essential UW Services.",
         "actionURL" : "https://www.mynetid.wisc.edu/modify",
         "actionAlt" : "Activate Services",
-        "dismissable" : true
+        "dismissable" : true,
+        "priority" : true
       }
     ]
 }

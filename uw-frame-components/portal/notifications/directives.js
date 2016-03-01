@@ -11,16 +11,17 @@ define(['angular', 'require'], function(angular, require){
         }
     });
 
-    app.directive('notificationBell', function(){
+    app.directive('notificationPartials', function(){
         return {
             restrict : 'E',
             scope : {
               directiveMode : '@mode',
               headerCtrl : '=headerCtrl'
             },
-            templateUrl : require.toUrl('./partials/notification-bell.html')
+            templateUrl : require.toUrl('./partials/notification-partials.html')
         }
     });
+  
 
     return app;
 

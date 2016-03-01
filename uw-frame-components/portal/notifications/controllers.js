@@ -14,6 +14,8 @@ define(['angular'], function(angular) {
                                                     NOTIFICATION,
                                                     SERVICE_LOC,
                                                     notificationsService){
+                                                      
+    
     var successFn = function(data){
       //success state
       $scope.count = data.length;
@@ -93,6 +95,19 @@ define(['angular'], function(angular) {
     $scope.switch = function(mode) {
       $scope.mode = mode;
     }
+    
+    $scope.priorityNotifications = [];
+    notificationsService.getAllNotifications().then(function(data) {
+      var notifications = data;
+      var priorityNotifications = [];
+      for( var i=0; i < notifications.length; i++ ) {
+        if (notifications[i].priority === true) {
+          $scope.priorityNotifications.push(notifications[i]);
+          $scope.hasPriorityNotifications = true;
+        };
+      };
+    }, function(data) {});
+    
 
     var init = function(){
       $scope.mode = 'new';
