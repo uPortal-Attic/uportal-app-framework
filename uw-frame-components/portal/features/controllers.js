@@ -11,7 +11,7 @@ define(['angular','require'], function(angular, require) {
                                               '$scope',
                                               '$document',
                                               'FEATURES',
-                                              '$modal',
+                                              '$uibModal',
                                               'portalFeaturesService',
                                               '$sanitize',
                                               'MISC_URLS',
@@ -21,7 +21,7 @@ define(['angular','require'], function(angular, require) {
                                                        $scope,
                                                        $document,
                                                        FEATURES,
-                                                       $modal,
+                                                       $uibModal,
                                                        portalFeaturesService,
                                                        $sanitize,
                                                        MISC_URLS) {
@@ -44,7 +44,7 @@ define(['angular','require'], function(angular, require) {
                                            '$document',
                                            'FEATURES',
                                            'filterFilter',
-                                           '$modal',
+                                           '$uibModal',
                                            'portalFeaturesService',
                                            'miscService',
                                            '$sanitize',
@@ -55,7 +55,7 @@ define(['angular','require'], function(angular, require) {
                                            $document,
                                            FEATURES,
                                            filterFilter,
-                                           $modal,
+                                           $uibModal,
                                            portalFeaturesService,
                                            miscService,
                                            $sanitize) {
@@ -158,7 +158,7 @@ define(['angular','require'], function(angular, require) {
              var featureIsEnabled = $scope.latestFeature.popup.enabled;
 
              var displayPopup = function() {
-                 $modal.open({
+                 $uibModal.open({
                    animation: $scope.animationsEnabled,
                    templateUrl: require.toUrl('./partials/features-modal-template.html'),
                    size: 'lg',
