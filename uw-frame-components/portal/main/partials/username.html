@@ -7,7 +7,7 @@
     <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar"> -->
     {{sessionCtrl.user.firstName ? sessionCtrl.user.firstName : sessionCtrl.user.displayName}}
     <i class="fa fa-caret-down"
-       popover-template="'usermenu.html'"
+       uib-popover-template="'usermenu.html'"
        popover-is-open="usernameOptionOpen"
        popover-placement="bottom"
        popover-trigger="none"></i>

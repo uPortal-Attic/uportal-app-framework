@@ -17,7 +17,7 @@
     </div>
   </script>
   <img ng-src='{{buckyImg}}' ng-click="hover=false; pushGAEvent('feature', 'hide-bucky', 'na');"
-   popover-template="'see-whats-new.html'" popover-placement="left" popover-is-open="hover" popover-popup-delay='200' popover-trigger="none">
+   uib-popover-template="'see-whats-new.html'" popover-placement="left" popover-is-open="hover" popover-popup-delay='200' popover-trigger="none">
 </div>
 
 <div ng-if=" 'BUCKY_MOBILE' === mode && announcements && announcements.length > 0" class='mobile'>

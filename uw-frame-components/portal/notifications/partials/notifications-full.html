@@ -14,10 +14,10 @@
 	            		<p>{{ notification.title }}</p>
 					</a>
 					<div class="action" ng-click='dismiss(notification)' ng-hide="!notification.dismissable || isDismissed(notification)">
-	            	<i class='fa fa-times'tooltip="Dismiss notification" tooltip-placement="top" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
+	            	<i class='fa fa-times'uib-tooltip="Dismiss notification" tooltip-placement="top" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
 					</div>
                <div class="action" ng-click="undismiss(notification)" ng-hide="!(mode === 'old')">
-                 <i class='fa fa-undo'tooltip="Revert Dismiss of notification" tooltip-placement="left" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
+                 <i class='fa fa-undo'uib-tooltip="Revert Dismiss of notification" tooltip-placement="left" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
               </div>
         		</li>
         		<li class="notification-item read" ng-if="isEmpty || (countWithDismissed() === 0 && mode === 'new') || (mode === 'old' && dismissedCount() === 0)">You have no <span ng-show='dismissedCount() === 0 && countWithDismissed() !== 0'>dismissed</span> notifications at this time.</li>

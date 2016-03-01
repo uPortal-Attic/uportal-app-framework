@@ -21,7 +21,7 @@
   "dependencies": {
     "angular": "1.4.9",
     "angular-aria": "1.4.9",
-    "angular-bootstrap": "0.13.4",
+    "angular-bootstrap": "1.2.1",
     "angular-gravatar": "0.4.1",
     "angular-mocks": "1.4.9",
     "angular-resource": "1.4.9",
