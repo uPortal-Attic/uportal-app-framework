@@ -80,15 +80,6 @@ define(['angular','require'], function(angular, require) {
     $scope.showSearchFocus = false;
     $scope.APP_FLAGS = APP_FLAGS;
     $scope.MISC_URLS = MISC_URLS;
-    notificationsService.getAllNotifications().then(function(data) {
-      var notifications = data;
-      var priorityNotifications = [];
-      for( var i=0; i < notifications.length; i++ ) {
-        if (notifications[i].priority === true) {
-          $scope.hasPriorityNotifications = true;
-        };
-      };
-    }, function(data) {});
     
     this.toggleSearch = function() {
         $scope.showSearch = !$scope.showSearch;

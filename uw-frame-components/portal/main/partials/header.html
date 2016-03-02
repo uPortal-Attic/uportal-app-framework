@@ -1,6 +1,6 @@
 <div ng-controller="PortalHeaderController as headerCtrl">
-  <notification-partials mode="priority" class="hidden-xs"></notification-partials>
-  <nav class="navbar navbar-default navbar-fixed-top" ng-class="{'has-priority-nots': hasPriorityNotifications}" role="banner">
+  <notification-bell mode="priority" class="hidden-xs"></notification-bell>
+  <nav class="navbar navbar-default navbar-fixed-top" ng-class="{'has-priority-nots': headerCtrl.hasPriorityNotifications}" role="banner">
        <div class="container-fluid">
            <div class="navbar-header">
                <button type="button" class="navbar-toggle" ng-click="headerCtrl.toggleMenu()">
@@ -8,7 +8,7 @@
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
-                   <notification-partials mode='mobile-bell' ng-if='!GuestMode'></notification-partials>
+                   <notification-bell mode='mobile-bell' ng-if='!GuestMode'></notification-bell>
                </button>
                <div class="header-crest">
                  <a aria-label="{{portal.theme.ariaLabelTitle}}"
@@ -33,13 +33,13 @@
            </div>
            <div class="collapse navbar-collapse" id="bucky-navbar-collapse"  collapse="headerCtrl.navbarCollapsed">
                <div class="nav navbar-nav visible-xs bucky-nav">
-                  <notification-partials mode="priority" class="visible-xs"></notification-partials>
+                  <notification-bell mode="priority" class="visible-xs"></notification-bell>
                   <ul class="list-group sidebar-list">
                     <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
                       <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
                     </li>
                     <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
-                      <notification-partials mode='mobile-menu' header-ctrl='headerCtrl' ng-if='!GuestMode'></notification-partials>
+                      <notification-bell mode='mobile-menu' header-ctrl='headerCtrl' ng-if='!GuestMode'></notification-bell>
                     </li>
                     <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
                       <a ng-if='APP_FLAGS.isWeb' href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
@@ -69,7 +69,7 @@
                     <bucky-announcement mode='BUCKY'></bucky-announcement>
                   </li>
                   <li>
-                    <notification-partials mode='bell' ng-if='!GuestMode'></notification-partials>
+                    <notification-bell mode='bell' ng-if='!GuestMode'></notification-bell>
                   </li>
                   <li class='username-menu'>
                     <username></username>
