@@ -17,7 +17,7 @@
       </div>
     </a>
     <!-- Priority notifications -->
-    <div class="priority-notifications" ng-if='notificationsEnabled && (directiveMode === "priority")' ng-repeat="priority in priorityNotifications">
+    <div class="priority-notifications" ng-if='notificationsEnabled && (directiveMode === "priority")' ng-repeat="priority in priorityNotifications | limitTo: 1">
       <a href="{{priority.actionURL}}" alt="{{priority.actionAlt}}">{{priority.title}}</a>
   	</div>
     
