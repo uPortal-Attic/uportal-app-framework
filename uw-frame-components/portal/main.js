@@ -6,6 +6,7 @@ define([
     'frame-config',
     'ngRoute',
     'ngSanitize',
+    'ngMaterial',
     'ngStorage',
     'ngAria',
     './about/controllers',
@@ -43,6 +44,7 @@ define([
         'ngRoute',
         'ngSanitize',
         'ngStorage',
+        'ngMaterial',
         'ngAria',
         'portal.about.controllers',
         'portal.about.services',
@@ -72,12 +74,20 @@ define([
         'angulartics.google.analytics'
     ]);
 
-    app.config(['gravatarServiceProvider', '$analyticsProvider', function(gravatarServiceProvider, $analyticsProvider){
+    app.config(['gravatarServiceProvider', '$analyticsProvider', '$mdThemingProvider', function(gravatarServiceProvider, $analyticsProvider, $mdThemingProvider){
       gravatarServiceProvider.defaults = {
         "default" : "https://yt3.ggpht.com/-xE0EQR3Ngt8/AAAAAAAAAAI/AAAAAAAAAAA/zTofDHA3-s4/s100-c-k-no/photo.jpg"
       };
 
       $analyticsProvider.firstPageview(true);
+
+      $mdThemingProvider.theme('default')
+                        .primaryPalette('red', {
+                          'default': '800', // by default use shade 400 from the pink palette for primary intentions
+                          'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
+                          'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
+                          'hue-3': 'A100' // use shade A100 for the <code>md-hue-3</code> class
+                        }).accentPalette('grey');
     }]);
 
     app.run(function($location,

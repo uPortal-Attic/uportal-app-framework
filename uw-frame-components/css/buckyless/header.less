@@ -2,6 +2,11 @@
   position:absolute;
   width:40%;
 }
+
+.site-content-toolbar {
+  position : fixed;
+}
+
 .portlet-search-bar ul.dropdown-menu {
   min-width: 90%;
 
@@ -158,10 +163,9 @@
 
 //---------------------Username options-css ------------------------------------
 
-portal-header li.username-menu {
+.username-menu {
     color: @white;
     line-height: 50px;
-    margin-right: 20px;
 
     .gravatar {
       border-radius: 2000px;
@@ -176,13 +180,13 @@ portal-header li.username-menu {
     .popover {
       left: inherit !important;
       top: 40px !important;
-      right: -10px;
+      right: 5px;
     }
 
     .arrow {
       left: 92% !important;
     }
-    
+
     .popover-content {
       padding: 6px 12px;
     }
@@ -193,7 +197,7 @@ portal-header li.username-menu {
       text-align: right;
       ul li {
         color: @black;
-        
+
         a {
           padding-left: 43px;
         }
@@ -204,6 +208,14 @@ portal-header li.username-menu {
 //-----------------end-Username options-css ------------------------------------
 
 //---------------------crest and title css -------------------------------------
+
+.crest {
+  height: 56px;
+}
+
+.md-toolbar-tools {
+  padding-left : 0 !important;
+}
 
 .navbar-header div.header-crest {
   .beta-logo {

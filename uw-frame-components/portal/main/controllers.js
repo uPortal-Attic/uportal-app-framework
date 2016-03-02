@@ -73,13 +73,26 @@ define(['angular','require'], function(angular, require) {
   }]);
 
   /* Header */
-  app.controller('PortalHeaderController', ['$rootScope', '$scope','$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS) {
+  app.controller('PortalHeaderController', ['$mdSidenav', '$rootScope', '$scope','$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', function($mdSidenav, $rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS) {
     this.navbarCollapsed = true;
     this.showLogout = true;
     $scope.showSearch = false;
     $scope.showSearchFocus = false;
     $scope.APP_FLAGS = APP_FLAGS;
     $scope.MISC_URLS = MISC_URLS;
+
+    $scope.nav = [
+      {
+        target : '',
+        url : '/web',
+        name: 'Home',
+        faIcon: 'fa-house'
+      }
+    ]
+
+    $scope.toggleSidebar = function() {
+        $mdSidenav('left').toggle();
+      };
 
     this.toggleSearch = function() {
         $scope.showSearch = !$scope.showSearch;
