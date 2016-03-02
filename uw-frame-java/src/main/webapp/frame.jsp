@@ -15,13 +15,18 @@
   <link ng-if='portal.theme.name' ng-href="css/themes/{{portal.theme.name}}.${project.version}.css" rel="stylesheet" type="text/css"/>
   <link href="my-app/my-app.css" rel="stylesheet" type="text/css"/>
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
 </head>
 
 <body>
 
   <jsp:include page="/static.html" />
   <!--The MyUW Body-->
-  <uw-body></uw-body>
+  <uw-body ng-cloak></uw-body>
 
   <!--javascript-->
   <script type="text/javascript" src="js/config.js"></script>
