@@ -8,18 +8,30 @@ define(['angular'], function(angular) {
                                                    '$rootScope',
                                                    'NOTIFICATION',
                                                    'SERVICE_LOC',
+                                                   'filterFilter',
                                                    'notificationsService',
                                            function($scope,
                                                     $rootScope,
                                                     NOTIFICATION,
                                                     SERVICE_LOC,
+                                                    filterFilter,
                                                     notificationsService){
+                                                      
+    
     var successFn = function(data){
       //success state
       $scope.count = data.length;
       $scope.isEmpty = ($scope.count === 0);
       $scope.status = "You have "+ ($scope.isEmpty ? "no " : "") + "notifications";
       $scope.notifications = data;
+      $scope.priorityNotifications = filterFilter(data, {priority : true});
+      if ($scope.priorityNotifications && $scope.priorityNotifications.length > 0) {
+        $scope.hasPriorityNotifications = true;
+        $('.page-content').addClass('has-priority-nots');
+        $scope.headerCtrl.hasPriorityNotifications = true;  
+      } else {
+        $('.page-content').removeClass('has-priority-nots');
+      }
     };
 
     var errorFn = function(data){
@@ -93,6 +105,8 @@ define(['angular'], function(angular) {
     $scope.switch = function(mode) {
       $scope.mode = mode;
     }
+    
+    
 
     var init = function(){
       $scope.mode = 'new';

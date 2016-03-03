@@ -41,7 +41,7 @@
   padding:15px 15px 15px 0px;
 }
 .bucky-nav ul.searching {
-  margin: 60px 10px 30px;
+  margin: 20px 10px 30px;
 }
 .bucky-nav ul {
   margin: 20px 10px 10px;
@@ -70,10 +70,6 @@
 }
 .navbar-nav {
   margin:0px;
-}
-.navbar-fixed-top {
-  .container-fluid {
-  }
 }
 .close-nav {
   position:absolute;
@@ -136,7 +132,6 @@
   color:#fff;
   padding:14px 20px;
   cursor:pointer;
-  border-left:1px solid @color2;
 }
 .navbar-header .search-mobile-icon .fa-search:hover {
   background-color:@color2;
@@ -146,10 +141,19 @@
   top: 0;
   right: 0;
   height: 52px;
+} 
+@media (min-width: 768px) {
+  .navbar-fixed-top.has-priority-nots {
+    top:50px;
+  }
+  .page-content.has-priority-nots {
+    padding:102px 0px;
+  }
 }
 @media (max-width:767px) {
   .navbar-collapse {
     background-color:@white;
+    overflow-y:visible;
   }
   #bucky-navbar-collapse {
     box-shadow: 0 20px 60px 0px rgba(0,0,0,0.6);
@@ -161,14 +165,16 @@
 portal-header li.username-menu {
     color: @white;
     line-height: 50px;
-    margin-right: 20px;
+    margin-right: 5px;
 
     .gravatar {
       border-radius: 2000px;
       height: 32px;
       margin-right:5px;
     }
-
+    .username-option i {
+      padding-left:5px;
+    }
     .username-option:hover {
       cursor: pointer;
     }
