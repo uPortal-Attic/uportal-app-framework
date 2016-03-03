@@ -27,7 +27,8 @@ define(['angular'], function(angular) {
       $scope.priorityNotifications = filterFilter(data, {priority : true});
       if ($scope.priorityNotifications && $scope.priorityNotifications.length > 0) {
         $scope.hasPriorityNotifications = true;
-        $scope.headerCtrl.hasPriorityNotifications = true;
+        $('.page-content').addClass('has-priority-nots');
+        $scope.headerCtrl.hasPriorityNotifications = true;  
       }
     };
 

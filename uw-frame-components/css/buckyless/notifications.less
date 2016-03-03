@@ -175,11 +175,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  a {
-    color:@white;
+  .notification-message {
     font-size:15px;
-    text-align:center;
-    display: block;
   }
   
 }
@@ -188,13 +185,26 @@
   position: relative;
   top: 0px;
   margin:0px -15px;
-  padding:10px 20px;
+  padding:15px 20px 12px;
   background-color: lighten(@color1, 20%);
-  a {
-    color:@white;
+  .notification-message {
     font-size:13px;
-    text-align:center;
-    display: block;
+  }
+}
+
+.hidden-xs .priority-notifications .notification-message,
+.visible-xs .priority-notifications .notification-message {
+  color:@white;
+  text-align:center;
+  display: block;
+  margin-bottom:0px;
+  a {
+    color:#eee;
+    border-bottom:1px solid #eee;
+  }
+  a:hover {
+    color:#fff;
+    border-bottom:1px solid #fff;
   }
 }
 
