@@ -73,17 +73,22 @@ define(['angular','require'], function(angular, require) {
   }]);
 
   /* Header */
-  app.controller('PortalHeaderController', ['$rootScope', '$scope','$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS) {
+  app.controller('PortalHeaderController', ['$rootScope', '$scope','$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS','notificationsService', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS, notificationsService) {
     this.navbarCollapsed = true;
     this.showLogout = true;
     $scope.showSearch = false;
     $scope.showSearchFocus = false;
     $scope.APP_FLAGS = APP_FLAGS;
     $scope.MISC_URLS = MISC_URLS;
-
+    
     this.toggleSearch = function() {
         $scope.showSearch = !$scope.showSearch;
         $scope.showSearchFocus = !$scope.showSearchFocus;
+        this.navbarCollapsed = true;
+    }
+    this.toggleMenu = function () {
+      $scope.showSearch = false;
+      this.navbarCollapsed = !this.navbarCollapsed;
     }
   }]);
 

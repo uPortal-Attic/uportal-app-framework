@@ -21,6 +21,7 @@ define(['angular', 'require'], function(angular, require){
             templateUrl : require.toUrl('./partials/notification-bell.html')
         }
     });
+  
 
     return app;
 
