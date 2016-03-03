@@ -1,7 +1,8 @@
 FROM node:5.7.1-slim
-RUN npm install -g grunt-cli superstatic
+RUN npm install -g http-server grunt-cli
 
-RUN apt-get update && apt-get install bzip2
+RUN apt-get update
+RUN apt-get install bzip2
 
 # Add frame
 ADD uw-frame-components /build/uw-frame-components
@@ -14,7 +15,5 @@ WORKDIR /build
 RUN npm run build-static
 RUN cp -r /build/uw-frame-static/target /data
 
-WORKDIR /data
-
-EXPOSE 8009
-ENTRYPOINT ["superstatic","--port","8009","--host","0.0.0.0","--debug","true","--directory","/data"]
+# entry point
+ENTRYPOINT ["http-server","/data", "-p","8009"]
