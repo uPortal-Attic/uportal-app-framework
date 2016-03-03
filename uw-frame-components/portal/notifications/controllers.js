@@ -29,6 +29,8 @@ define(['angular'], function(angular) {
         $scope.hasPriorityNotifications = true;
         $('.page-content').addClass('has-priority-nots');
         $scope.headerCtrl.hasPriorityNotifications = true;  
+      } else {
+        $('.page-content').removeClass('has-priority-nots');
       }
     };
 
