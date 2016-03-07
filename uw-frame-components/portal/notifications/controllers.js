@@ -20,6 +20,40 @@ define(['angular'], function(angular) {
                                                     notificationsService){
 
 
+    var configurePriorityNotificationScope = function(data){
+      $scope.priorityNotifications = filterFilter(data, {priority : true});
+      if ($scope.priorityNotifications && $scope.priorityNotifications.length > 0) {
+        $scope.hasPriorityNotifications = true;
+        $('.page-content').addClass('has-priority-nots');
+        if($scope.headerCtrl) {
+          $scope.headerCtrl.hasPriorityNotifications = true;
+        }
+      } else {
+        $('.page-content').removeClass('has-priority-nots');
+        $scope.hasPriorityNotifications = false;
+        if($scope.headerCtrl) {
+          $scope.headerCtrl.hasPriorityNotifications = false;
+        }
+      }
+    };
+
+    var clearPriorityNotificationFlags = function() {
+      $scope.priorityNotifications = [];
+      $scope.hasPriorityNotifications = false;
+      if($scope.headerCtrl) {
+        $scope.headerCtrl.hasPriorityNotifications = false;
+      }
+      $('.page-content').removeClass('has-priority-nots');
+    }
+
+    $scope.$on('$locationChangeStart', function(event) {
+      if ($location.url().indexOf('notification') === -1) {
+        configurePriorityNotificationScope($scope.notifications);
+      } else {
+        clearPriorityNotificationFlags();
+      }
+    });
+
     var successFn = function(data){
       //success state
       $scope.count = data.length;
@@ -27,19 +61,9 @@ define(['angular'], function(angular) {
       $scope.status = "You have "+ ($scope.isEmpty ? "no " : "") + "notifications";
       $scope.notifications = data;
       if($location.url().indexOf('notifications') === -1) {
-        $scope.priorityNotifications = filterFilter(data, {priority : true});
-        if ($scope.priorityNotifications && $scope.priorityNotifications.length > 0) {
-          $scope.hasPriorityNotifications = true;
-          $('.page-content').addClass('has-priority-nots');
-          if($scope.headerCtrl) {
-            $scope.headerCtrl.hasPriorityNotifications = true;
-          }
-        } else {
-          $('.page-content').removeClass('has-priority-nots');
-          if($scope.headerCtrl) {
-            $scope.headerCtrl.hasPriorityNotifications = false;
-          }
-        }
+        configurePriorityNotificationScope(data);
+      } else {
+        clearPriorityNotificationFlags();
       }
     };
 
@@ -114,8 +138,6 @@ define(['angular'], function(angular) {
     $scope.switch = function(mode) {
       $scope.mode = mode;
     }
-
-
 
     var init = function(){
       $scope.mode = 'new';
