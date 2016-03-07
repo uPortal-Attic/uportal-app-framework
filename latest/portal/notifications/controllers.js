@@ -6,31 +6,56 @@ define(['angular'], function(angular) {
 
   app.controller('PortalNotificationController', [ '$scope',
                                                    '$rootScope',
+                                                   '$location',
                                                    'NOTIFICATION',
                                                    'SERVICE_LOC',
                                                    'filterFilter',
                                                    'notificationsService',
                                            function($scope,
                                                     $rootScope,
+                                                    $location,
                                                     NOTIFICATION,
                                                     SERVICE_LOC,
                                                     filterFilter,
                                                     notificationsService){
-                                                      
-    
+
+
+    var configurePriorityNotificationScope = function(data){
+      $scope.priorityNotifications = filterFilter(data, {priority : true});
+      if ($scope.priorityNotifications && $scope.priorityNotifications.length > 0) {
+        $scope.hasPriorityNotifications = true;
+        $('.page-content').addClass('has-priority-nots');
+        if($scope.headerCtrl) {
+          $scope.headerCtrl.hasPriorityNotifications = true;
+        }
+      } else {
+        $('.page-content').removeClass('has-priority-nots');
+        $scope.hasPriorityNotifications = false;
+        if($scope.headerCtrl) {
+          $scope.headerCtrl.hasPriorityNotifications = false;
+        }
+      }
+    };
+
+    var clearPriorityNotificationFlags = function() {
+      $scope.priorityNotifications = [];
+      $scope.hasPriorityNotifications = false;
+      if($scope.headerCtrl) {
+        $scope.headerCtrl.hasPriorityNotifications = false;
+      }
+      $('.page-content').removeClass('has-priority-nots');
+    }
+
     var successFn = function(data){
       //success state
       $scope.count = data.length;
       $scope.isEmpty = ($scope.count === 0);
       $scope.status = "You have "+ ($scope.isEmpty ? "no " : "") + "notifications";
       $scope.notifications = data;
-      $scope.priorityNotifications = filterFilter(data, {priority : true});
-      if ($scope.priorityNotifications && $scope.priorityNotifications.length > 0) {
-        $scope.hasPriorityNotifications = true;
-        $('.page-content').addClass('has-priority-nots');
-        $scope.headerCtrl.hasPriorityNotifications = true;  
+      if($location.url().indexOf('notifications') === -1) {
+        configurePriorityNotificationScope(data);
       } else {
-        $('.page-content').removeClass('has-priority-nots');
+        clearPriorityNotificationFlags();
       }
     };
 
@@ -105,8 +130,6 @@ define(['angular'], function(angular) {
     $scope.switch = function(mode) {
       $scope.mode = mode;
     }
-    
-    
 
     var init = function(){
       $scope.mode = 'new';
@@ -127,6 +150,14 @@ define(['angular'], function(angular) {
         } else {
           notificationsService.getAllNotifications().then(successFn, errorFn);
         }
+
+        $scope.$on('$locationChangeStart', function(event) {
+          if ($location.url().indexOf('notification') === -1) {
+            configurePriorityNotificationScope($scope.notifications);
+          } else {
+            clearPriorityNotificationFlags();
+          }
+        });
       }
     }
 
