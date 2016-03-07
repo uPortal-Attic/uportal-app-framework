@@ -2,6 +2,9 @@ Here are all the different versions of our documentation and our application.
 
 **[latest](http://uw-madison-doit.github.io/uw-frame/latest/)**
 
+## 2.2.x
++ v2.2.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.2.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.2.0))
+
 ## 2.1.x
 + v2.1.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.1.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.1.0))
 
