@@ -1,0 +1,60 @@
+<script type="text/ng-template" id="MainOptions.html">
+  <div>
+    <ul style='padding: 0;'>
+      <li>
+        <a href='http://uw-madison-doit.github.io/uw-frame/latest/#/md/directives'>See Documentation</a>
+      </li>
+      <li>
+        <a href='https://www.github.com/uw-madison-doit/uw-frame'>Checkout <i class='fa fa-github'></i> repo</a>
+      </li>
+
+    </ul>
+  </div>
+</script>
+
+
+<frame-page app-title='Frame App Home'
+              app-icon='fa-home'
+              app-action-link-url="settings"
+              app-add-to-home='true'
+              app-fname='fake-fname'
+              app-action-link-icon="fa-plus"
+              app-action-link-text="Add to home"
+              app-option-template="MainOptions.html"
+              white-background="true">
+    <p class='center'>This is just the default example page. Below are easy access links so you don't have to type the specific page you are working on.</p>
+
+    <ul class='row' style='margin : 10px; padding : 0;'>
+      <li class='col-sm-2 portlet-container-home beta-card-style center'>
+        <a href='settings'>Settings
+        <br><br>
+        <i class='fa fa-gears fa-3x'></i>
+        </a>
+      </li>
+      <li class='col-sm-2 col-sm-offset-1 portlet-container-home beta-card-style center'>
+        <a href='notifications'>Notifications
+        <br><br>
+        <i class='fa fa-bell fa-3x'></i>
+        </a>
+      </li>
+      <li class='col-sm-2 col-sm-offset-1 portlet-container-home beta-card-style center'>
+        <a href='server-error'>Server error
+        <br><br>
+        <i class='fa fa-exclamation-triangle fa-3x'></i>
+        </a>
+      </li>
+      <li class='col-sm-2 col-sm-offset-1 portlet-container-home beta-card-style center'>
+        <a href='access-denied'>Access denied
+        <br><br>
+        <i class='fa fa-exclamation-triangle fa-3x'></i>
+        </a>
+      </li>
+
+      <li class='col-sm-2 portlet-container-home beta-card-style center'>
+        <a href='features'>Features
+        <br><br>
+        <i class='fa fa-newspaper-o fa-3x'></i>
+        </a>
+      </li>
+    </ul>
+</frame-page>

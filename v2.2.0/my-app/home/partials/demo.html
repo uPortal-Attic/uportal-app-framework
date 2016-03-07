@@ -1,0 +1,74 @@
+<frame-page app-title='Demo Page'>
+  <div style='padding : 0 10px 0'>
+  <a href='#/home' class='btn btn-flat btn-sm'>< Back to Home</a>
+    <ul class="row" style='margin : 10px; padding : 0;'>
+      <li class="col-sm-6 portlet-container-home beta-card-style center" ng-init="isDisabled=false">
+         <h4>Circle Button Examples</h4>
+         <div class='fluid-container row'>
+           <div class='col-sm-4'>
+             <h3>
+               Disabled
+             </h3>
+             <circle-button data-href='https://www.google.com'
+                            data-target='_blank'
+                            data-fa-icon='fa-google'
+                            data-disabled='true'
+                            data-title='Google'>
+             </circle-button>
+           </div>
+           <div class='col-sm-4'>
+             <h3>
+               Active
+             </h3>
+             <circle-button data-href='https://www.google.com'
+                            data-target='_blank'
+                            data-fa-icon='fa-google'
+                            data-disabled='false'
+                            data-title='Google'>
+             </circle-button>
+           </div>
+           <div class='col-sm-4'>
+             <h3>
+               Toggle
+               <button class='btn btn-flat' ng-click='isDisabled=!isDisabled'>
+               Switch
+               </button>
+             </h3>
+             <circle-button data-href='https://www.google.com'
+                            data-target='_blank'
+                            data-fa-icon='fa-google'
+                            data-disabled='isDisabled'
+                            data-title='Google'>
+             </circle-button>
+           </div>
+           <div class='col-sm-4'>
+             <h3>
+               No Title
+             </h3>
+             <circle-button data-href='https://www.google.com'
+                            data-target='_blank'
+                            data-fa-icon='fa-google' >
+             </circle-button>
+           </div>
+         </div>
+      </li>
+      <li class="col-sm-6 portlet-container-home beta-card-style center" ng-init="dataempty=false;dataempty2=false;obj=[]">
+         <h4>Loading Icon Examples</h4>
+         <small>Loading Icon Usage Examples</small>
+         <div class='fluid-container row'>
+           <div class='col-xs-6'>
+             <h5>One Time Use</h5>
+             <button class='btn btn-flat' ng-click="dataempty2=!dataempty2">Toggle</button>
+             <loading-gif data-object='obj' data-empty='dataempty2'></loading-gif>
+           </div>
+           <div class='col-xs-6'>
+             <h5>Reusable</h5>
+             <button class='btn btn-flat' ng-click="dataempty=!dataempty">Toggle</button>
+             <loading-gif data-object='obj' data-empty='dataempty' data-reuse='true'></loading-gif>
+           </div>
+         </div>
+
+      </li>
+    </ul>
+  </div>
+</frame-page>

@@ -1,0 +1,22 @@
+// Basic Link
+a:not(.btn) {
+  text-decoration:none;
+  &:hover {
+    text-decoration:underline;
+  }
+}
+// If link is in a paragraph, use border-bottom
+p a:not(.btn) {
+  &:hover {
+    border-bottom:1px solid #6b0101;
+    text-decoration:none;
+  }
+}
+
+ul {
+  list-style-type:none;
+}
+.table {
+  border:1px solid #eee;
+  border-radius:@border-radius-base;
+}
