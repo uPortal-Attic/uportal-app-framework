@@ -46,14 +46,6 @@ define(['angular'], function(angular) {
       $('.page-content').removeClass('has-priority-nots');
     }
 
-    $scope.$on('$locationChangeStart', function(event) {
-      if ($location.url().indexOf('notification') === -1) {
-        configurePriorityNotificationScope($scope.notifications);
-      } else {
-        clearPriorityNotificationFlags();
-      }
-    });
-
     var successFn = function(data){
       //success state
       $scope.count = data.length;
@@ -158,6 +150,14 @@ define(['angular'], function(angular) {
         } else {
           notificationsService.getAllNotifications().then(successFn, errorFn);
         }
+
+        $scope.$on('$locationChangeStart', function(event) {
+          if ($location.url().indexOf('notification') === -1) {
+            configurePriorityNotificationScope($scope.notifications);
+          } else {
+            clearPriorityNotificationFlags();
+          }
+        });
       }
     }
 
