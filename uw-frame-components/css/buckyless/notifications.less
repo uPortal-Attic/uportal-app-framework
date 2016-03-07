@@ -13,6 +13,10 @@
     border-radius:6px;
     margin:8px 10px;
   }
+  .notifications-list .notification-item.priority {
+    border:2px solid @color1;
+  }
+
   .content,
   .action {
     display:inline-block;
@@ -72,7 +76,7 @@
     border: 1px black solid;
     cursor: pointer;
   }
-  
+
   @media (max-width:768px ) {
     .content {
       width:90%;
@@ -94,11 +98,11 @@
   font-weight: 200;
   text-align: center;
   color: white;
-  
+
   .number-of-nots {
     color: @color1;
     font-weight: 400;
-    z-index: 2000.;
+    z-index: 2000;
     position: absolute;
     top: 16px;
     left: 14px;
@@ -134,8 +138,8 @@
 }
 .menu-notification-link {
   .arrow-down {
-  	width: 0; 
-  	height: 0; 
+  	width: 0;
+  	height: 0;
   	border-left: 7px solid transparent;
   	border-right: 7px solid transparent;
   	border-top: 7px solid lighten(@color1, 20%);
@@ -178,7 +182,7 @@
   .notification-message {
     font-size:15px;
   }
-  
+
 }
 .visible-xs .priority-notifications {
   min-height:40px;
