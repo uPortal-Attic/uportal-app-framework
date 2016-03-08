@@ -19,6 +19,7 @@
 + [Text Guidelines](#/md/text-guidelines) : Titles, names, etc...
 + [Versions](#/md/versions) : Different versions of this documentation and versions of uw-frame.
 + [Widgets](#/md/widgets) : All things widgets
++ [Skinning](#/md/skinning) : How to skin
 
 ### Styling
 + [Buttons](#/md/buttons) : Button styling
