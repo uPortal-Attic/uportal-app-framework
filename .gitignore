@@ -1,4 +1,5 @@
 .classpath
+.idea
 .project
 .settings
 target/
@@ -14,4 +15,5 @@ src/main/webapp/node_modules/
 src/main/webapp/test_out/
 node_modules
 npm-debug.log
+*.iml
 
