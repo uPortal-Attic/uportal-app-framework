@@ -11,3 +11,8 @@ Maybe your skin needs some HTML
 ```
 
 No! **Never** do that! Don't use click here links!
+
+## This section is ready
+
+Blah Blah.
+
