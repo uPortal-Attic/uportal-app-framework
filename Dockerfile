@@ -1,7 +1,7 @@
 FROM node:5.7.1-slim
 RUN npm install -g grunt-cli superstatic
 
-RUN apt-get update && apt-get install bzip2
+RUN apt-get update && apt-get install -y bzip2 && apt-get install -y git
 
 # Add frame
 ADD uw-frame-components /build/uw-frame-components
