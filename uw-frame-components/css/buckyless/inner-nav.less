@@ -5,7 +5,7 @@
   margin:0px;
 }
 .inner-nav-container .inner-nav {
-  background-color:@white;
+  background:@white;
   border:0px solid transparent;
   border-top-left-radius:0px;
   border-top-right-radius:0px;
@@ -44,7 +44,7 @@
 }
 
 // Selected Tab styles
-.inner-nav-container .inner-nav li.active {
+.inner-nav-container .inner-nav li.active,.inner-nav-container .inner-nav li.ui-state-active {
   border-bottom:3px solid @color1 !important;
   padding-bottom:0px;
   a {
@@ -81,7 +81,7 @@
     }
   }
   .inner-nav-container .inner-nav li.ui-tabs-selected {
-    border-bottom:1px solid 
+    border-bottom:1px solid
      !important;
   }
 }
