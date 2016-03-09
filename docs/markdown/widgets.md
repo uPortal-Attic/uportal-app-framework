@@ -28,7 +28,7 @@ Widget template content is a great way to get some content right on the homepage
       <div class="widget-frame" id="portlet-id-">
         <div class="widget-header">
           <div class="widget-info">
-            <i title="Info" class="fa fa-info-circle" tooltip="" tooltip-trigger="mouseenter" tooltip-placement="top" tooltip-popup-delay="200"></i>
+            <i title="Info" class="fa fa-info-circle" uib-tooltip="" tooltip-trigger="mouseenter" tooltip-placement="top" tooltip-popup-delay="200"></i>
           </div>
           <div class="widget-remove">
             <i title="Remove" class="fa fa-times portlet-options" ng-click="widgetCtrl.removePortlet(portlet.nodeId, portlet.title)"></i>
@@ -67,7 +67,7 @@ Widget template content is a great way to get some content right on the homepage
       <div class="widget-frame" id="portlet-id-">
         <div class="widget-header">
           <div class="widget-info">
-            <i title="Info" class="fa fa-info-circle" tooltip="" tooltip-trigger="mouseenter" tooltip-placement="top" tooltip-popup-delay="200"></i>
+            <i title="Info" class="fa fa-info-circle" uib-tooltip="" tooltip-trigger="mouseenter" tooltip-placement="top" tooltip-popup-delay="200"></i>
           </div>
           <div class="widget-remove">
             <i title="Remove" class="fa fa-times portlet-options" ng-click="widgetCtrl.removePortlet(portlet.nodeId, portlet.title)"></i>
@@ -80,25 +80,25 @@ Widget template content is a great way to get some content right on the homepage
           <div class="row">
             <div class="col-xs-6 center icon-button-div">
                <div class="btn btn-primary rounded icon-button">
-                  <a href=""><i class="fa fa-calendar"></i></a> 
+                  <a href=""><i class="fa fa-calendar"></i></a>
                </div>
                <p>Link 1</p>
             </div>
             <div class="col-xs-6 center icon-button-div">
                <div class="btn btn-primary rounded icon-button">
-                  <a href=""><i class="fa fa-book"></i></a> 
+                  <a href=""><i class="fa fa-book"></i></a>
                </div>
                <p>Link 2</p>
             </div>
             <div class="col-xs-6 center icon-button-div">
                <div class="btn btn-primary rounded icon-button">
-                  <a href=""><i class="fa fa-filter"></i></a> 
+                  <a href=""><i class="fa fa-filter"></i></a>
                </div>
                <p>Link 3</p>
             </div>
             <div class="col-xs-6 center icon-button-div">
                <div class="btn btn-primary rounded icon-button">
-                  <a href=""><i class="fa fa-list"></i></a> 
+                  <a href=""><i class="fa fa-list"></i></a>
                </div>
                <p>Link 4</p>
             </div>
@@ -113,7 +113,7 @@ Widget template content is a great way to get some content right on the homepage
         <div class="widget-header">
           <!-- Widget Chrome -->
           <div class="widget-info">
-            <i title="Info" class="fa fa-info-circle" tooltip="View professional development opportunities for faculty and staff on the UW-Madison campus." tooltip-trigger="mouseenter" tooltip-placement="top" tooltip-popup-delay="200"></i>
+            <i title="Info" class="fa fa-info-circle" uib-tooltip="View professional development opportunities for faculty and staff on the UW-Madison campus." tooltip-trigger="mouseenter" tooltip-placement="top" tooltip-popup-delay="200"></i>
           </div>
           <div class="widget-remove">
             <i title="Remove" class="fa fa-times portlet-options" ng-click="widgetCtrl.removePortlet(portlet.nodeId, portlet.title)"></i>
@@ -126,13 +126,13 @@ Widget template content is a great way to get some content right on the homepage
           <div ng-controller="GenericWidgetController as genericWidgetCtrl" class="ng-scope">
               <content-item><div id="portlet-id-u29l1n11" class="ng-scope"><div><div class="widget-body widget-grid"><form action="http://www.myprofdev.wisc.edu/portal/portal_login.asp" class="ng-pristine ng-valid"><div class="input-group"><input type="text" name="searchtext" class="form-control" placeholder="Search courses and events"><span class="input-group-btn"><button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button></span></div></form><div class="row"><div class="col-xs-6 icon-button-div"><div class="btn btn-primary rounded icon-button"><a href="http://www.myprofdev.wisc.edu/default.asp"><i class="fa fa-book"></i></a></div><p>All courses and events</p></div><div class="col-xs-6 icon-button-div"><div class="btn btn-primary rounded icon-button"><a href="http://www.ohrd.wisc.edu/ohrdcatalogportal/LearningTranscript/tabid/57/Default.aspx?ctl=login"><i class="fa fa-envelope-o"></i></a></div><p>My transcript</p></div></div></div><a class="btn btn-default launch-app-button" href="/portal/f/u29l1s4/p/my-professional-development.u29l1n11/max/render.uP" target="">Launch full app</a></div></div></content-item>
           </div>
-        </div> 
+        </div>
       </div>
-      <p>Search with links example</p> 
+      <p>Search with links example</p>
     </div>
-     
+
   </div>
-  
+
 ### Widget Templates
 
 Generally, widgets should follow one of the following template structures for consistency and maintainability.
@@ -151,7 +151,7 @@ To use the list of links template, give the app's entity file a widgetType of 'l
       "launchText":"Launch talent development",
       "links": [{
           "title":"All courses and events",
-          "href":"https://www.ohrd.wisc.edu/home/", 
+          "href":"https://www.ohrd.wisc.edu/home/",
           icon":"fa-at",
           "target":"_blank"
         },
@@ -162,7 +162,7 @@ To use the list of links template, give the app's entity file a widgetType of 'l
           "target":"_blank"}]
       }]]></value>
   </portlet-preference>
-  
+
 ```
 
 #### Search with Links Template
@@ -205,7 +205,7 @@ Widgets with a JSON service is a great way to have user focused content in your 
 
 #### widgetURL
 
-This is where we will get the data from (in a JSON format). If your JSON feed lives outside of the portal, you will need to setup a rest proxy for that. Please contact the MyUW team for details on that. 
+This is where we will get the data from (in a JSON format). If your JSON feed lives outside of the portal, you will need to setup a rest proxy for that. Please contact the MyUW team for details on that.
 
 ```html
 <portlet-preference>
@@ -238,7 +238,7 @@ This is where the template goes. Suggest using a CDATA tag in here.
                <ul class='widget-list'><li ng-repeat=\"item in content.report |orderBy: ['-paid.substring(6)','-paid.substring(0,2)','-paid.substring(3,5)'] | limitTo:3\" class='center'><a href='/portal/p/earnings-statement/max/earning_statement.pdf.resource.uP?pP_docId={{item.docId}}' target='_blank'><i class='fa fa-bank fa-fw'></i> {{item.paid}} Statement</a></li></ul>
                <div ng-if='isEmpty' style='padding: 10px; font-size: 14px;'><i class='fa fa-exclamation-triangle fa-3x pull-left' style='color: #b70101;'></i><span style='color: #898989;'>We had a problem finding your statements (or you don't have any).</span></div>
                <div style='background-color: #EAEAEA; border-radius:4px;padding:10px; margin-top:10px;'>
-                  <span class='bold display-block left' style='text-align: left; padding-left: 10px; font-size: 14px;'>See all payroll information for more options:</span> 
+                  <span class='bold display-block left' style='text-align: left; padding-left: 10px; font-size: 14px;'>See all payroll information for more options:</span>
                   <ul style='text-align: left;list-style-type: disc; font-size: 12px;'>
                      <li>See all paystubs</li>
                      <li>Tax statements</li>
