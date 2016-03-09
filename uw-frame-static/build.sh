@@ -24,3 +24,4 @@ popd
 ../node_modules/less/bin/lessc -x target/css/themes/uw-river-falls.less > target/css/themes/uw-river-falls.css
 ../node_modules/less/bin/lessc -x target/css/themes/uw-stevens-point.less > target/css/themes/uw-stevens-point.css
 ../node_modules/less/bin/lessc -x target/css/themes/uw-milwaukee.less > target/css/themes/uw-milwaukee.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-whitewater.less > target/css/themes/uw-whitewater.css
