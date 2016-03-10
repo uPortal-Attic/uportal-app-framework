@@ -1,6 +1,7 @@
 define([
     'angular',
     'require',
+    'jquery',
     'app-config',
     'override',
     'frame-config',
@@ -258,4 +259,9 @@ define([
 
     return app;
 
+},
+function(angular, require, $){
+  //error block
+  console.error("/portal/main.js failed to load. Going to set user screen to generic error page");
+  $('#loading-splash').html('<b>An error has occured during loading, please try refreshing the page. If the issue persists please contact the helpdesk.</b>');
 });
