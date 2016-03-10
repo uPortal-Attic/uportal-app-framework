@@ -152,6 +152,10 @@ define([
                 defaultThemeGo();
               }
               loadingCompleteSequence();
+            }, function(reason){
+              console.error("We got a error back from groupURL, setting theme to default");
+              defaultThemeGo();
+              loadingCompleteSequence();
             });
           } else {
             console.warn('theme was setup as group, but the groupURL was not provided, going default');
@@ -242,7 +246,8 @@ define([
             }
           },
           function(reason){
-            console.warn('login erred unexpectely, portal down? ' + reason.status);
+            console.error('Login erred unexpectely, portal down? ' + reason.status);
+            themeLoading(); //still continue with theme loading so they don't get stuck on loading
           });
         } else {
           themeLoading();
