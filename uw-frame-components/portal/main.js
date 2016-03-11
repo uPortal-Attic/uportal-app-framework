@@ -223,11 +223,9 @@ define([
               Array.prototype.push.apply(configs[i], OVERRIDE[curConfig]);
               count++;
             } else {//treat as an object
-              for(var key in configs[i]) {
-                if(typeof OVERRIDE[curConfig][key] !== 'undefined') {
-                  configs[i][key] = OVERRIDE[curConfig][key];
-                  count++;
-                }
+              for(var key in OVERRIDE[curConfig]) {//for each config value object
+                configs[i][key] = OVERRIDE[curConfig][key];
+                count++;
               }
             }
           }
