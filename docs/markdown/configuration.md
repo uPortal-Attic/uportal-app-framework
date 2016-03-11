@@ -26,7 +26,9 @@ Alright, lot going on here so lets take a walk through this.
 + `Line 6` is an example of changing more than one config in a single category
 + `Line 7-10` is an interesting example. Its an array config category. This will append to the default values. In this case it'll add a footer url for google.
 
-If you have questions please ask.
+A feature that was introduced in 2.2.1 is you can add key/value pairs to existing categories (e.g.: `APP_FLAGS`). This can be helpful if your application has additional `APP_FLAGS` or `SERVICE_LOC` but you don't want to create another value service just for that. However, if you have a lot of these it may be wise just to create an app specific value service.
+
+If you have questions please ask the MyUW team.
 
 ## The Configuration Options
 
