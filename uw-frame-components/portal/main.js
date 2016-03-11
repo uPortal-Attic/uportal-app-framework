@@ -114,7 +114,9 @@ define([
       var themeLoading = function(){
         if($sessionStorage.portal && $sessionStorage.portal.theme) {
           $rootScope.portal.theme = $sessionStorage.portal.theme;
-          console.log('Using cached theme');
+          if(APP_FLAGS.debug) {
+            console.log('Using cached theme');
+          }
           loadingCompleteSequence();
           return;
         }
@@ -127,7 +129,9 @@ define([
             if(themeSet) {
               $rootScope.portal.theme = themes[0];
             } else {
-              console.error('something is wrong with setup, no default theme. Setting to THEMES[0].');
+              if(APP_FLAGS.debug) {
+                console.error('something is wrong with setup, no default theme. Setting to THEMES[0].');
+              }
               $rootScope.portal.theme = THEMES[0];
             }
           }
@@ -154,12 +158,16 @@ define([
               }
               loadingCompleteSequence();
             }, function(reason){
-              console.error("We got a error back from groupURL, setting theme to default");
+              if(APP_FLAGS.debug) {
+                console.error("We got a error back from groupURL, setting theme to default");
+              }
               defaultThemeGo();
               loadingCompleteSequence();
             });
           } else {
-            console.warn('theme was setup as group, but the groupURL was not provided, going default');
+            if(APP_FLAGS.debug) {
+              console.warn('theme was setup as group, but the groupURL was not provided, going default');
+            }
             //still not set, set to default theme
             defaultThemeGo();
             loadingCompleteSequence();
@@ -203,7 +211,9 @@ define([
       var configsName = ['APP_FLAGS', 'SERVICE_LOC', 'NAMES', 'SEARCH', 'FEATURES', 'NOTIFICATION', 'MISC_URLS', 'FOOTER_URLS', 'APP_BETA_FEATURES'];
 
       var configureAppConfig = function(){
-        console.log(new Date() + " : start app-config override");
+        if(APP_FLAGS.debug) {
+          console.log(new Date() + " : start app-config override");
+        }
         var count = 0, groups = 0;
         for(var i in configsName) {
           var curConfig = configsName[i];
@@ -222,8 +232,10 @@ define([
             }
           }
         }
-        console.log(new Date() + " : ended app-config override");
-        console.log("Overwrote " + count + " configs in " + groups + " config groups.");
+        if(APP_FLAGS.debug) {
+          console.log(new Date() + " : ended app-config override");
+          console.log("Overwrote " + count + " configs in " + groups + " config groups.");
+        }
       };
 
       //loading sequence
@@ -235,7 +247,9 @@ define([
 
         if(APP_FLAGS.loginOnLoad && !lastLoginValid()) {
           $http.get(SERVICE_LOC.loginSilentURL).then(function(result){
-            console.log("login returned with " + (result.data ? result.data.status : null));
+            if(APP_FLAGS.debug) {
+              console.log("login returned with " + (result.data ? result.data.status : null));
+            }
             themeLoading();
             if("success" === result.data.status) {
               $sessionStorage.portal.lastAccessed = (new Date).getTime();
@@ -247,7 +261,6 @@ define([
             }
           },
           function(reason){
-            console.error('Login erred unexpectely, portal down? ' + reason.status);
             themeLoading(); //still continue with theme loading so they don't get stuck on loading
           });
         } else {
@@ -262,6 +275,5 @@ define([
 },
 function(angular, require, $){
   //error block
-  console.error("/portal/main.js failed to load. Going to set user screen to generic error page");
   $('#loading-splash').html('<b>An error has occured during loading, please try refreshing the page. If the issue persists please contact the helpdesk.</b>');
 });
