@@ -36,20 +36,53 @@ module.exports = function(grunt) {
         options: {
           wait: false
         }
+      },
+      build_docs: {
+        cmd: 'npm',
+        args: [
+          'run',
+          'build-docs'
+        ],
+        options: {
+          wait: true
+        }
+      },
+      run_docs: {
+        cmd : 'npm',
+        args: [
+          'run','docs'
+        ],
+        options: {
+          wait: false
+        }
       }
     },
 
     watch: {
-     files: ['uw-frame-components/**/*'],
-     tasks: ['run:build_static'],
-   }
+      static : {
+        files: ['uw-frame-components/**/*'],
+        tasks: ['run:build_static']
+      },
+      docs : {
+        files: ['uw-frame-components/**/*','docs/**','!docs/target/**'],
+        tasks: ['run:build_docs']
+      }
+    }
   });
 
   grunt.registerTask('serve', 'Compile static and watch for change so it can recompile', function(){
     grunt.task.run([
       'run:get_bower',
       'run:run_static',
-      'watch'
+      'watch:static'
+    ]);
+  });
+
+  grunt.registerTask('serve_docs', 'Compile docs and watch for change so it can recompile', function(){
+    grunt.task.run([
+      'run:get_bower',
+      'run:run_docs',
+      'watch:docs'
     ]);
   })
   grunt.loadNpmTasks('grunt-run');
