@@ -9,19 +9,19 @@
 [![Issue Stats](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/issue)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 
 ### Setup & configuration
-+ [Quickstart](#/md/quickstart) : How to jump in and see the uw-frame in action
++ [Quickstart and How To Make a Frame App](#/md/quickstart) : How to jump in and see the uw-frame in action
 + [Configuration](#/md/configuration) : How to use this product to create  applications.
 + [Google Analytics Config](#/md/ga) : Configuring your Google Analytics for your application
 + [Directives](#/md/directives) : Angular directives specific to uw-frame
-+ Example Applications : _Coming Soon_
-+ Frame Starters : _Coming Soon_
-+ [Release Management](#/md/releasing) : How to release uw-frame
-+ [Text Guidelines](#/md/text-guidelines) : Titles, names, etc...
-+ [Versions](#/md/versions) : Different versions of this documentation and versions of uw-frame.
 + [Widgets](#/md/widgets) : All things widgets
 
 ### Styling
 + [Buttons](#/md/buttons) : Button styling
-+ [Coarse Grain Access](#/md/coarse-grain-access) : How to do access controls
++ [Coarse Grain Access](#/md/coarse-grain-access) : How to do access controls (Access denied, etc...)
 + [Tables](#/md/tables) : How to present tables
-+ [Theming](#/md/theming) : Theme Support (early stages and plan)
++ [Text Guidelines](#/md/text-guidelines) : Titles, names, etc...
++ [Theming](#/md/theming) : Theme Support
+
+### Administrative
++ [Release Management](#/md/releasing) : How to release uw-frame
++ [Versions](#/md/versions) : Different versions of this documentation and versions of uw-frame.

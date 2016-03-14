@@ -1,17 +1,58 @@
-## What we have
-+ THEME constant in `frame-config.js`
-+ uw-<theme-name>.less file with custom colors (needs work)
-+ uw-madison and uw-system themes
-+ [Settings page](#/settings) drop down to change theme, only at `$rootScope` level so a page refresh removes that
-+ Loading splash screen (could be neater, think Slack loading screen)
-+ Loading splash happens every time a page refresh happens
+The theming system is pretty straight forward. With minimal effort one could have there own skin in uw-frame. We extremely highly encourage you to contribute back your theme to this project so you don't have to manage an independent fork of uw-frame. Anyway, here are the steps to configure your theme:
 
-## What we need
-+ Persistent themes, through a page refresh (cache please)
-+ Theme selection based on user that is logged in (overwritable as a bonus)
-+ Themes for all the schools (colors, logo, add less file for compilation during build)
++ Configure your entry in the `THEME` constant located in [`frame-config.js`](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/frame-config.js). It should look something like :
 
-## How we could do it
-+ Persistence is simple. When the selection is made, store that result in `$sessionStorage`. Alternatively, we could save it in keyvaluestore, persist across devices. I guess it would depend how taxing the login would be. The loading splash should get out of the way quicker if the theme is already figured out.
-+ Theme based on user is interesting. **Approach one**: This will need to happen at the app level, currently its happening in the init of uw-frame. We will need to do a couple things: 1) add a flag (APP_FLAGS) that defaults to false, but lets theme selection overwritable. 2) Add an `app.run` to the `main.js` in `angularjs-portal`'s `my-app/main.js`. This should call the groups API, filter the themes down based on the groups, use the first one. **Approach two**: Take the group API call from notification service and generalize it to misc or something. Add a flag in app-config if you want theme selection based on the group. If set to true, it will do everything listed in approach one. All in `uw-frame`.
-+ Themes for all the schools will be interesting. Maybe a great thing for mum-student?
+```javascript
+{
+  "name" : "uw-madison",
+  "crest" : "img/uw-madison-52.png",
+  "title" : "MyUW",
+  "subtitle" : null,
+  "ariaLabelTitle" : "My U W",
+  "crestalt" : "UW Crest",
+  "group" : "UW-Madison"
+}
+```
+We recommend the crest image (in this example `img/uw-madison-52.png`) to be `52px` in height. Width doesn't really matter, but try to keep it under 100px for small screens.
+
++ Add in a <theme-name>.less file in the folder `/uw-frame-components/css/themes` that looks like this:
+
+```less
+@import "../angular.less"; //order is important here
+@import "common-variables.less";
+@import "uw-madison-variables.less";
+```
+
+In this example that is `uw-madison.less`. Notice I got the `uw-madison` from the name. That is important.
+
++ As you probably noticed above, you also will want to add in a `<theme>-variables.less` file in the same directory. This will be full of color variable declarations. Here is an example of that:
+
+```
+/* UW-Milwaukee colors */
+@color1: #000000;         
+@color2: lighten(@color1, 5%);
+@color3: darken(@color1, 5%);
+@color4: #E1DCCC;
+@link-color: @color3;
+
+@state-info-bg: #999999;   // Olive Grey
+@state-info-text: #000000; // Black
+
+@portlet-titlebar-background-color: #E7D9C1;
+@portlet-border-color: #E7D9C1;
+
+@user-portal-logout-btn-text-color: #FFF; //White
+
+@input-border-focus: @color1;
+```
+
+`@color1` is your primary color, in uw-madison's case, this is Badger Red, but for UW-Milwaukee this is Black. Its used for the banner, primary color of buttons, etc... `@color2` is a slightly lighter. For simplicity you can just use the lighten function in less, or you can specific a specific color. This is used for various sub important things. `@color3`: This is always slightly darker than `@color1` and it is used for links.
+
++ The last step is setting a default theme in your `override.js`. For more information on that see the [configuration](#/md/configuration) section under `APP_FLAGS` there is a variable called `defaultTheme`.
+
+
+### Testing
+If you want to override your default theme just for testing or something we created an access point in the settings page. For the default frame we have that at `/settings`. There should be a drop down that has every theme listed in the `THEME` constant. Switch over and give it a whirl.
+
+### More about multi-tenant themes
+If you set `APP_FLAGS.defaultTheme` equal to `group` then on page load it will pull the list of groups your in (so make sure you set that service up), then it will try to match a group name with a theme's group variable. Case sensitive. First one found it caches that theme in session storage. On the next page refresh it checks the cache first, to avoid another group search.

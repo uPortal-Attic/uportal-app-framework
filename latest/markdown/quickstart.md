@@ -29,5 +29,16 @@ To write a Java based uw-frame application, checkout the [my-app-seed](https://g
 #### PHP
 _Coming Soon_
 
-#### Static
-Steps for running uw-frame in a static way is documented above. If you want to use the uw-frame-components, you can just pull the npm dependency in. See the [npm package](https://www.npmjs.com/package/uw-frame) for that information. If you are curious how you would write something like that, checkout the `build.sh` in the `uw-frame-static` module.
+#### UW-Frame Static
+Sometimes you want just a simple front end that connects to an independent API in some other application. Static is the place to be for that.
+
+There are multiple ways you can create a static frame application.
+
+1. Use the [npm package](https://www.npmjs.com/package/uw-frame). For an example application using that see the [widget create](https://github.com/UW-Madison-DoIT/myuw-smart-widget-creator) app.
+2. Use the Docker superstatic container. See the [Dockerfile](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/Dockerfile) for specifics, but if one just builds this Docker container (`docker build -t myuw/frame .`) and runs it they get the frame demo application. If one did a `docker run -v myapp-dir:/data/my-app myuw/frame` they could replace the my-app directory with a volume mounted from localhost. Perfect for development. Then for deployment you could simply create a Dockerfile like so :
+
+```
+FROM myuw/frame
+
+COPY ./someapp /data/my-app
+```
