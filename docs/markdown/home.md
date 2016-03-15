@@ -16,6 +16,7 @@
 + [Widgets](#/md/widgets) : All things widgets
 
 ### Styling
++ [Material](#/md/material) : Information on how we use Material Design
 + [Buttons](#/md/buttons) : Button styling
 + [Coarse Grain Access](#/md/coarse-grain-access) : How to do access controls (Access denied, etc...)
 + [Tables](#/md/tables) : How to present tables
