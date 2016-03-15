@@ -4,10 +4,10 @@ RUN npm install -g grunt-cli superstatic
 RUN apt-get update && apt-get install -y bzip2 && apt-get install -y git
 
 # Add frame
-ADD uw-frame-components /build/uw-frame-components
-ADD uw-frame-static /build/uw-frame-static
-ADD package.json /build
-ADD Gruntfile.js /build
+COPY uw-frame-components /build/uw-frame-components
+COPY uw-frame-static /build/uw-frame-static
+COPY package.json /build
+COPY Gruntfile.js /build
 
 # build frame
 WORKDIR /build
