@@ -26,6 +26,14 @@ git push origin uw-frame-maven-<version>
 ```
 
 + Release maven artifacts from central staging repository
++ Deploy a new version to `docker.doit.wisc.edu` (note the version below x.y.z should be the release version)
+
+```
+git checkout vx.y.z
+docker build -t docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z .
+docker push docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z
+```
+
 + Create release docs on gh-pages (Jenkins job) using the tag created for bower.
 
 ### Documentation branching
