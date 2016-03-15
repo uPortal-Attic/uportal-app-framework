@@ -6,8 +6,8 @@ RUN apt-get update && apt-get install -y bzip2 && apt-get install -y git
 # Add frame
 COPY uw-frame-components /build/uw-frame-components
 COPY uw-frame-static /build/uw-frame-static
-COPY package.json /build
-COPY Gruntfile.js /build
+COPY package.json /build/
+COPY Gruntfile.js /build/
 
 # build frame
 WORKDIR /build
