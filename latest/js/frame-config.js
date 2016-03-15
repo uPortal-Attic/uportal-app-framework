@@ -49,6 +49,15 @@ define(['angular'], function(angular) {
             "group" : "UW System-Whitewater"
           },
           {
+            "name" : "uw-stout",
+            "crest" : "img/uws-logo-52.png",
+            "title" : "MyUW",
+            "subtitle" : null,
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Crest",
+            "group" : "UW System-Stout"
+          },
+          {
             "name" : "uw-system",
             "crest" : "img/uw-system-52.png",
             "title" : "MyUW",
