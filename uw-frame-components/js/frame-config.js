@@ -10,7 +10,8 @@ define(['angular'], function(angular) {
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Crest",
-            "group" : "UW-Madison"
+            "group" : "UW-Madison",
+            "mascotImg" : "img/bucky.gif"
           },
           {
             "name" : "uw-river-falls",
@@ -64,8 +65,7 @@ define(['angular'], function(angular) {
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW System Logo",
-            "group" : "default",
-            "mascotImg" : "img/the-cow.png"
+            "group" : "default"
           }
         ])
         .constant('FRAME_URLS', {
