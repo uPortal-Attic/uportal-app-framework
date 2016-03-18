@@ -11,18 +11,10 @@ This page will serve as a resource for Material documentation, and how MyUW uses
 #### Material Components in MyUW
 
 + **[Buttons](https://material.angularjs.org/latest/demo/button)**: Used throughout MyUW.
-```
-<md-button class="md-raised">Button</md-button>
-<md-button class="md-raised md-primary">Primary</md-button>
-<md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
-<md-button class="md-raised md-warn">Warn</md-button>
-```
-+ **[Fab Buttons](https://material.angularjs.org/latest/demo/button)**: Used for links inside of widgets. 
-```
-<md-button class="md-fab md-mini md-primary" aria-label="Use Android">
-  <md-icon md-svg-src="img/icons/android.svg" style="color: greenyellow;"></md-icon>
-</md-button>
-```
 + **[Cards](https://material.angularjs.org/latest/demo/card)**: Used for widgets, settings page, etc. Note there are many parts to a card, including title, media, actions, and content. Use the [official documentation](https://material.angularjs.org/latest/demo/card) to guide you.
 + **[Sidenav](https://material.angularjs.org/latest/demo/sidenav)**: For the sidebar.
 + **[Toolbar](https://material.angularjs.org/latest/demo/toolbar)**: Used for the MyUW header.
++ **[Input](https://material.angularjs.org/latest/demo/input)**: Bootstrap input components should be phased out in favor of Material input directives throughout MyUW. 
++ **[Loading icon](https://material.angularjs.org/latest/demo/progressCircular)**: Use the Material Progress Circular directive for loading screens in MyUW. This can be colored according to the school.
++ **[Radio Buttons](https://material.angularjs.org/latest/demo/radioButton)**, **[Selects](https://material.angularjs.org/latest/demo/select)**, **[Checkboxes](https://material.angularjs.org/latest/demo/checkbox)**, and **[Switches](https://material.angularjs.org/latest/demo/switch)**: Material's input components are fantastic, exclusively use them throughout MyUW.
+
