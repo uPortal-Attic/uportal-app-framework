@@ -18,3 +18,5 @@ This page will serve as a resource for Material documentation, and how MyUW uses
 + **[Loading icon](https://material.angularjs.org/latest/demo/progressCircular)**: Use the Material Progress Circular directive for loading screens in MyUW. This can be colored according to the school.
 + **[Radio Buttons](https://material.angularjs.org/latest/demo/radioButton)**, **[Selects](https://material.angularjs.org/latest/demo/select)**, **[Checkboxes](https://material.angularjs.org/latest/demo/checkbox)**, and **[Switches](https://material.angularjs.org/latest/demo/switch)**: Material's input components are fantastic, exclusively use them throughout MyUW.
 
+Add other Material directives that are in use in MyUW to this list.
+
