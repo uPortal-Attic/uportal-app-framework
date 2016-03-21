@@ -7,7 +7,6 @@ define(['angular','require'], function(angular, require) {
   app.controller('PortalFeaturesController', ['miscService',
                                               '$localStorage',
                                               '$sessionStorage',
-                                              '$rootScope',
                                               '$scope',
                                               '$document',
                                               'FEATURES',
