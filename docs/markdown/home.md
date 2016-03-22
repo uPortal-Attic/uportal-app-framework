@@ -9,6 +9,7 @@
 [![Issue Stats](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/issue)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 
 ### Setup & configuration
++ [Overview and Features](#/md/frame-features) : A high level overview of the features of uw-frame
 + [Quickstart and How To Make a Frame App](#/md/quickstart) : How to jump in and see the uw-frame in action
 + [Configuration](#/md/configuration) : How to use this product to create  applications.
 + [Google Analytics Config](#/md/ga) : Configuring your Google Analytics for your application
