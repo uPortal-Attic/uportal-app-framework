@@ -19,9 +19,8 @@ define(['angular'], function(angular) {
               //quick check to make sure you are who your browser says you are
               if($sessionStorage.portal
                 && $sessionStorage.portal.username
-                && (result.data.person.userName !== $sessionStorage.portal.username
-                    ||
-                    result.data.person.originalUsername !== $sessionStorage.portal.username)
+                && result.data.person.userName !== $sessionStorage.portal.username
+                && result.data.person.originalUsername !== $sessionStorage.portal.username)
                 ) {
                   console.warn("Thought they were " + $sessionStorage.portal.username +
                    " but session sent back " + result.data.person.userName +". Redirect!");
