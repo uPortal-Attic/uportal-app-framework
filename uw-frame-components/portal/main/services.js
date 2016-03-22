@@ -21,7 +21,7 @@ define(['angular'], function(angular) {
                 && $sessionStorage.portal.username
                 && (result.data.person.userName !== $sessionStorage.portal.username
                     ||
-                    result.data.person.impersonatedUserName !== $sessionStorage.portal.username)
+                    result.data.person.originalUsername !== $sessionStorage.portal.username)
                 ) {
                   console.warn("Thought they were " + $sessionStorage.portal.username +
                    " but session sent back " + result.data.person.userName +". Redirect!");
