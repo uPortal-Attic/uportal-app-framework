@@ -14,19 +14,21 @@ define(['angular'], function(angular) {
       }
 
       userPromise = prom.then(
-          function(data, status) { //success function
+          function(result, status) { //success function
             if(APP_FLAGS.loginOnLoad) {
               //quick check to make sure you are who your browser says you are
               if($sessionStorage.portal
                 && $sessionStorage.portal.username
-                && data.data.person.userName != $sessionStorage.portal.username) {
+                && result.data.person.userName !== $sessionStorage.portal.username
+                && result.data.person.originalUsername !== $sessionStorage.portal.username
+                ) {
                   console.warn("Thought they were " + $sessionStorage.portal.username +
-                   " but session sent back " + data.data.person.userName +". Redirect!");
+                   " but session sent back " + result.data.person.userName +". Redirect!");
                   delete $sessionStorage.portal;
                   miscService.redirectUser(302, "Wrong User than populated in session storage.");
               }
             }
-            return data.data.person;
+            return result.data.person;
           }, function(data, status) { // failure function
             miscService.redirectUser(status, "Get User Info");
           });
