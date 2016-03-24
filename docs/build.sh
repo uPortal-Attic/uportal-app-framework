@@ -15,4 +15,4 @@ popd
 
 cp -r bower_components/marked bower_components/angular-marked target/bower_components
 
-cp -r js markdown my-app config.js superstatic.json target/
+cp -r js img markdown my-app config.js superstatic.json target/
