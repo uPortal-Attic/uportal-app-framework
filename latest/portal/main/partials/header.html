@@ -1,6 +1,7 @@
 <div ng-controller="PortalHeaderController as headerCtrl">
   <notification-bell mode="priority" class="hidden-xs"></notification-bell>
   <nav class="navbar navbar-default navbar-fixed-top" ng-class="{'has-priority-nots': headerCtrl.hasPriorityNotifications}" role="banner">
+       <span ng-controller="PortalPopupController"></span>
        <div class="container-fluid">
            <div class="navbar-header">
                <button type="button" class="navbar-toggle" ng-click="headerCtrl.toggleMenu()">
