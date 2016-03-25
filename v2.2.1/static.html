@@ -1,0 +1,51 @@
+<style type="text/css">
+  .no-js, .bad-browser {
+    margin-bottom: 0;
+    font-size: medium;
+    background: #EEE;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+  }
+
+  .slowfade {
+      -webkit-transition: opacity 1.5s; /* For Safari 3.1 to 6.0 */
+      transition: opacity 1.5s;
+      opacity: 0;
+  }
+</style>
+<!-- Loading state -->
+<div ng-hide="portal.loading.hidden" ng-class="{slowfade: portal.loading.startFade}" style="
+        position : fixed;
+        top: 0;
+        z-index: 2000;
+        color: darkgrey;
+        background: #EAE8DF;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        padding-top: 45vh;
+        font-size: xx-large;
+        margin: -8px;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;"
+      id="loading-splash">
+        <!--Bad browser error message-->
+        <!--[if lt IE 10]>
+        <div class="bad-browser">
+          <span class="fa fa-frown-o"></span>
+          <p>Sorry, MyUW beta does not support your browser.<br/><a href="https://kb.wisc.edu/myuw/page.php?id=51345">Learn how to upgrade your browser.</a><br/>Can't upgrade? <a href="http://my.wisc.edu/portal/Login?profile=default">Switch back to MyUW classic.</a></p>
+        </div>
+        <![endif]-->
+        <!--No javascript enabled-->
+        <noscript>
+            <div class="no-js" role="alert">
+            <div class="container">
+              <i class="fa fa-2x fw fa-exclamation-triangle pull-left"></i>
+              <strong>
+                Please <a href="http://enable-javascript.com" target="_blank">enable Javascript</a> to interact with all forms and features on our website.  For further assistance, contact the <a href="https://kb.wisc.edu/helpdesk/" target="_blank">DoIT Help Desk</a>.
+              </strong>
+            </div>
+          </div>
+        </noscript>
+        <!--loading for realz-->
+        Loading...</div>

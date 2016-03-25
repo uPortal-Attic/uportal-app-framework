@@ -1,0 +1,12 @@
+{
+  "person": {
+    "userName": "guest",
+    "sessionKey": "someRandomKey",
+    "serverName": "localhost",
+    "firstName" : "Guest",
+    "sirName" : "Badger",
+    "displayName": "Guest Badger",
+    "email" : "bucky@wisc.edu",
+    "version": "2.2.0"
+  }
+}

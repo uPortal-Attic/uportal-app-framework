@@ -1,0 +1,196 @@
+/* General MyUW Styles */
+
+body {
+  background-color: @color4;
+}
+#body-background {
+  background-color: #ccc;
+  min-height: 90vh;
+}
+h1,h2,h3,h4,h5,h6 {
+  vertical-align: center;
+  font-weight: 200;
+}
+p {
+  font-weight:400;
+}
+
+.bold {
+  font-weight: 600;
+}
+.container-fluid b {
+  font-weight: 400;
+}
+ul {
+  list-style-type: none;
+}
+header {
+  width: 100%;
+}
+.fixed {
+  position: fixed;
+  z-index: 50;
+  width: 100%;
+}
+.center {
+  text-align: center;
+}
+
+.display-block {
+  display : block;
+}
+
+.navbar .container-fluid {
+  background-color: @color1;
+}
+.no-padding {
+  padding-left:0px;
+  padding-right:0px;
+}
+.no-margin {
+  margin-left:0px;
+  margin-right:0px;
+}
+.max-view {
+  margin-left:4.1666667%;
+}
+div:focus,
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none !important;
+}
+::-webkit-input-placeholder {
+  color: @color3;
+  font-size:0.8em;
+  font-weight:200;
+  line-height:1.8em;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: @color3;
+  font-size:1em;
+  font-weight:200;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+  color: @color3;
+  font-size:1em;
+  font-weight:200;
+}
+:-ms-input-placeholder {
+  color: @color3;
+  font-size:1em;
+  font-weight:200;
+}
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: opacity 0.1s ease;
+  opacity: 0;
+}
+[placeholder]:focus::-moz-placeholder {
+  transition: opacity 0.1s ease;
+  opacity: 0;
+}
+[placeholder]:focus:-moz-placeholder {
+  transition: opacity 0.1s ease;
+  opacity: 0;
+}
+[placeholder]:focus:-ms-input-placeholder {
+  transition: opacity 0.1s ease;
+  opacity: 0;
+}
+.btn-default:focus {
+  color:@grayscale5;
+  background-color:@white;
+  border-color:@grayscale5;
+}
+.loading-gif {
+  margin:20px 0px;
+}
+.loading-gif.abs-bottom-right {
+    margin: 0;
+    z-index : 1000;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.small-font-plus {
+  font-weight: 100;
+  font-size: small;
+  vertical-align: middle;
+}
+
+.beta-card-style {
+    border : 1px gainsboro solid;
+    background-color: @white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 1em;
+    min-height : 150px;
+    margin-bottom : 10px;
+}
+
+[class*="col-"] {
+  p, li {
+    a {
+      font-weight: 400;
+    }
+  }
+}
+.portlet-body {
+  padding-left:5px;
+  padding-right:5px;
+}
+.five-px-top-left {
+  position: relative; top: 5px; left: 5px;
+}
+
+
+.rounded {
+  border-radius:1000px !important;
+}
+
+circle-button {
+  .circle-button {
+    width: 55px;
+    height: 54px;
+    border-radius:1000px;
+    padding-top: 15px;
+    margin: 0 auto 3px;
+  }
+}
+
+.page-content {
+	padding: 52px 0px;
+}
+
+.no-image {
+  background-color:@color1;
+}
+.popover-content ul {
+  margin-bottom:0px;
+}
+
+/*
+ * Base formatting for converting a block-list to an inline-list.
+ */
+
+.inline-block-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/*
+ * Color applied to warning fa-icon on error views (e.g. access-denied, server-error).
+ */
+.warning-color {
+	color: @color1;
+}
+
+.white-page {
+  background-color: @white;
+  margin-left: 1%;
+  width: 98%;
+  float: left;
+}
