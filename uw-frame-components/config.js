@@ -25,9 +25,7 @@ define([], function() {
         'sortable'      : "js/sortable",
         'ui-bootstrap'  : "bower_components/angular-bootstrap/ui-bootstrap-tpls.min",
         'ui-gravatar'   : "bower_components/angular-gravatar/build/angular-gravatar.min",
-        'ngAria'        : "bower_components/angular-aria/angular-aria.min",
-        // Use ui-bootstrap instead of bootstrap or uw-ui-toolkit.  See https://angular-ui.github.io/bootstrap/
-        //'uw-ui-toolkit' : "bower_components/uw-ui-toolkit/dist/js/uw-ui-toolkit.min"
+        'ngAria'        : "bower_components/angular-aria/angular-aria.min"
     },
 
     shim: {
@@ -40,8 +38,7 @@ define([], function() {
         'ngStorage'     : { deps: ['angular'] },
         'ngAria'        : { deps: ['angular'] },
         'ui-bootstrap'  : { deps: ['angular'] },
-        'ui-gravatar'   : { deps: ['angular'] },
-        'uw-ui-toolkit' : { deps: ['jquery'] }
+        'ui-gravatar'   : { deps: ['angular'] }
     },
 
     waitSeconds : 0

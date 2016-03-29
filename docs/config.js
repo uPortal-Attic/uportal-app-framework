@@ -41,8 +41,7 @@ define([], function() {
         'ngStorage'     : { deps: ['angular'] },
         'ngAria'        : { deps: ['angular'] },
         'ui-bootstrap'  : { deps: ['angular'] },
-        'ui-gravatar'   : { deps: ['angular'] },
-        'uw-ui-toolkit' : { deps: ['jquery'] }
+        'ui-gravatar'   : { deps: ['angular'] }
     },
 
     waitSeconds : 0
