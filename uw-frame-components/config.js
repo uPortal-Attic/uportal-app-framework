@@ -21,7 +21,9 @@ define([], function() {
         'jquery-ui'     : "bower_components/jquery-ui/jquery-ui.min",
         'ngRoute'       : "bower_components/angular-route/angular-route.min",
         'ngSanitize'    : "bower_components/angular-sanitize/angular-sanitize.min",
+        'angular-animate' : 'bower_components/angular-animate/angular-animate',
         'ngStorage'     : "bower_components/ngstorage/ngStorage.min",
+        'ngMaterial'    : "bower_components/angular-material/angular-material.min",
         'sortable'      : "js/sortable",
         'ui-bootstrap'  : "bower_components/angular-bootstrap/ui-bootstrap-tpls.min",
         'ui-gravatar'   : "bower_components/angular-gravatar/build/angular-gravatar.min",
@@ -32,13 +34,15 @@ define([], function() {
 
     shim: {
         'angular'       : { deps: ['jquery'], exports: 'angular' },
+        'angular-animate'  : { deps: ['angular'], exports: 'angular-animate'   },
         'angular-mocks' : { deps: ['angular'] },
         'angulartics'   : { deps: ['angular'], exports: 'angulartics' },
         'angulartics-google-analytics' : { deps: ['angulartics'] },
         'ngRoute'       : { deps: ['angular'] },
         'ngSanitize'    : { deps: ['angular'] },
         'ngStorage'     : { deps: ['angular'] },
-        'ngAria'        : { deps: ['angular'] },
+        'ngAria'        : { deps: ['angular'], exports: 'ngAria' },
+        'ngMaterial'    : { deps: ['angular', 'ngAria', 'angular-animate','angular-mocks']},
         'ui-bootstrap'  : { deps: ['angular'] },
         'ui-gravatar'   : { deps: ['angular'] },
         'uw-ui-toolkit' : { deps: ['jquery'] }

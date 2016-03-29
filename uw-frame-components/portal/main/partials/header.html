@@ -1,4 +1,55 @@
-<nav ng-controller="PortalHeaderController as headerCtrl" class="navbar navbar-default navbar-fixed-top" role="banner">
+<md-sidenav md-component-id="left" class="md-sidenav-left">
+  <md-toolbar class='md-accent' ng-click="toggleSidebar()" style='cursor: pointer;' title='hide sidebar'>
+    <h3 class='header-sidebar'>The MyUW Sidebar</h3>
+  </md-toolbar>
+  <md-list>
+    <md-list-item  style='width: 100%;'>
+     <a class='full-width' href='web' ng-click="toggleSidebar()">
+       <md-button class='md-accent md-raised item-sidebar' style='    width: 90%;'>
+         <h3><i class='fa fa-house fa-fw fa-2x' style='float: left;'></i>Home</h3>
+       </md-button>
+     </a>
+    </md-list-item>
+    <md-list-item class='bottom-left-abs'>
+      <md-button ng-click="toggleSidebar()" class='md-raised md-accent'>
+        Close Sidebar
+      </md-button>
+    </md-list-item>
+  </md-list>
+</md-sidenav>
+
+<md-toolbar ng-controller="PortalHeaderController as headerCtrl" md-scroll-shrink='true' class='md-whiteframe-glow-z1 site-content-toolbar'>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="toggleSidebar()" aria-label="open menu">
+        <i class='fa fa-bars'></i>
+      </md-button>
+      <div class="header-crest">
+         <a aria-label="{{portal.theme.ariaLabelTitle}}"
+            class="header-text" ng-href="{{MISC_URLS.rootURL}}"
+            target="_self"
+            id="myuw-header">
+            <div class='header-inner'>
+              <!-- <img ng-src="{{portal.theme.crest}}"
+                   class="hidden-xs crest"
+                   alt="{{portal.theme.crestalt}}"> -->
+            </div>
+         </a>
+       </div>
+      <h2 style='padding-left: 10px;'>
+        <span class='title'>{{portal.theme.title}}</span>
+        <span class="beta-logo">{{portal.theme.subtitle}}</span>
+      </h2>
+      <div class="input-group" style='width: 50%; padding-left: 12px;'>
+        <input type="text" class="form-control" placeholder="Search" style='font-size: 1.1em;'>
+        <span class="input-group-addon"><i class='fa fa-search'></i></span>
+      </div>
+      <span flex></span>
+      <bucky-announcement mode='BUCKY'></bucky-announcement>
+      <username class='username-menu'></username>
+    </div>
+</md-toolbar>
+
+<!-- <nav ng-controller="PortalHeaderController as headerCtrl" class="navbar navbar-default navbar-fixed-top" role="banner">
      <div class="container-fluid">
          <div class="navbar-header">
              <button type="button" class="navbar-toggle" ng-click="headerCtrl.navbarCollapsed = !headerCtrl.navbarCollapsed">
@@ -8,20 +59,7 @@
                  <span class="icon-bar"></span>
                  <notification-bell mode='mobile-bell' ng-if='!GuestMode'></notification-bell>
              </button>
-             <div class="header-crest">
-               <a aria-label="{{portal.theme.ariaLabelTitle}}"
-                  class="header-text" ng-href="{{MISC_URLS.rootURL}}"
-                  target="_self"
-                  id="myuw-header">
-                  <div class='header-inner'>
-                    <img ng-src="{{portal.theme.crest}}"
-                         class="hidden-xs crest"
-                         alt="{{portal.theme.crestalt}}">
-                    <span class='title'>{{portal.theme.title}}</span>
-                    <span class="beta-logo">{{portal.theme.subtitle}}</span>
-                  </div>
-               </a>
-             </div>
+
               <div class="search-mobile-icon hidden-sm hidden-md hidden-lg">
                 <i class="fa fa-search" ng-click="headerCtrl.toggleSearch()"></i>
               </div>
@@ -75,4 +113,4 @@
              </ul>
          </div>
      </div>
- </nav>
+ </nav> -->
