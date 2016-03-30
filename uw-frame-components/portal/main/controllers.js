@@ -23,7 +23,6 @@ define(['angular','require'], function(angular, require) {
       $scope.$storage = $localStorage.$default(defaults);
 
       $scope.NAMES=NAMES;
-      $scope.classicURL=MISC_URLS.back2ClassicURL;
       $scope.APP_FLAGS=APP_FLAGS;
       $scope.MISC_URLS=MISC_URLS;
       $scope.THEMES = THEMES;

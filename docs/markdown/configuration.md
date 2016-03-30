@@ -69,7 +69,6 @@ If you have questions please ask the MyUW team.
 + `notificationFullURL` : The URL for the notifications full page.
 
 #### MISC_URLS
-+ `back2ClassicURL` : The URL to get back to classic MyUW. Used by screen reader button.
 + `feedbackURL` : A link to a feedback form
 + `helpdeskURL` : Link to your helpdesk page
 + `loginURL` : How a user would login. Used for guestMode, and for stale sessions when they hit a service.
