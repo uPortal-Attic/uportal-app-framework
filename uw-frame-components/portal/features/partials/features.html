@@ -8,8 +8,13 @@
       <h3>{{ feature.title }}</h3>
       <p>{{ feature.description }}</p>
       <p ng-if="feature.learnMoreURL">Learn more at <a ng-href="{{ feature.learnMoreURL }}">{{ feature.learnMoreURL }}</a>.</p>
-      <div class="image-div">
-        <img ng-if="feature.img" ng-src="{{feature.img}}">
+      <div class="image-div center" ng-if='feature.img'>
+        <img ng-src="{{feature.img}}">
+      </div>
+      <div ng-if='feature.imgs'>
+        <div class='images-div'>
+          <img ng-src="{{image}}" ng-repeat='image in feature.imgs'>
+        </div>
       </div>
     </div>
   </div>

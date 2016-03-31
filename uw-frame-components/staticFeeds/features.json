@@ -44,7 +44,7 @@
     "id": 3,
     "title": "Bucky says what's new",
     "description": "We are enabling a new feature today that allows us to announce new features inside of MyUW. We promise to not be too annoying with every little detail.",
-    "img": "img/bucky-announcement.png",
+    "imgs": ["img/features/bucky-announcement.png","img/features/bucky-announcement-2.png"],
     "learnMoreURL": "",
     "groups" : ["UW-Madison"],
     "goLiveYear": 2015,
