@@ -6,9 +6,7 @@ define(['angular'], function(angular) {
     config
         //see configuration.md for howto
         .constant('OVERRIDE', {
-          'FEATURES' : {
-            'enabled': true
-          }
+
         })
 
     return config;
