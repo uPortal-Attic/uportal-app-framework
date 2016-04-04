@@ -9,7 +9,7 @@
 		</div>
 		<div>
 			<ul class="notifications-list">
-        		<li class="notification-item" ng-class="{ priority : notification.priority }" ng-repeat="notification in notifications | orderBy:'-id'" ng-if='shouldShow(notification)'>
+        		<li class="notification-item" ng-class="{ priority : notification.priority }" ng-repeat="notification in notifications | orderBy:['-priority','-id']" ng-if='shouldShow(notification)'>
 						  <a class="content" ng-href='{{notification.actionURL}}' target='_blank' aria-label='{{notification.actionAlt}}'>
 	              <p><i class='fa fa-exclamation-triangle' ng-if='notification.priority'></i>{{ notification.title }}</p>
 					    </a>
