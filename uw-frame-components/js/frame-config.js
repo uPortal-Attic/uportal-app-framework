@@ -82,10 +82,10 @@ define(['angular'], function(angular) {
             "description" : "Shows/Hides the Beta Settings"
           },
           {
-            "id" : "useGravatar",
-            "title" : "Use Gravatar to get profile image",
-            "description" : "Show Gravatar in header"
-           }
+            "id" : "disableGroupFilteringForNotifications",
+            "title" : "Disable Notification Filter",
+            "description" : "This flag disables notification group filtering if you have it enabled. (page refresh required)"
+          }
         ]);
 
     return config;
