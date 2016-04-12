@@ -7,6 +7,7 @@ define(['angular'], function(angular) {
   app.controller('PortalNotificationController', [ '$scope',
                                                    '$rootScope',
                                                    '$location',
+                                                   '$localStorage',
                                                    'NOTIFICATION',
                                                    'SERVICE_LOC',
                                                    'filterFilter',
@@ -14,6 +15,7 @@ define(['angular'], function(angular) {
                                            function($scope,
                                                     $rootScope,
                                                     $location,
+                                                    $localStorage,
                                                     NOTIFICATION,
                                                     SERVICE_LOC,
                                                     filterFilter,
@@ -145,7 +147,7 @@ define(['angular'], function(angular) {
           //key value store enabled, we can store dismiss of notifications
           notificationsService.getDismissedNotificationIds().then(dismissedSuccessFn);
         }
-        if(NOTIFICATION.groupFiltering) {
+        if(NOTIFICATION.groupFiltering && !$localStorage.disableGroupFilteringForNotifications) {
           notificationsService.getNotificationsByGroups().then(successFn, errorFn);
         } else {
           notificationsService.getAllNotifications().then(successFn, errorFn);
