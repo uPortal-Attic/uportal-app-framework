@@ -25,7 +25,7 @@
     "branch": "master",
     "commit": "cf34639f272b1befa723804b4c6644d35bfd9a1a"
   },
-  "_source": "git://github.com/additiveinverse/normalize.less.git",
+  "_source": "https://github.com/additiveinverse/normalize.less.git",
   "_target": "*",
   "_originalSource": "normalize-less"
 }

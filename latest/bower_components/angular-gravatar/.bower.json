@@ -38,7 +38,7 @@
     "tag": "0.4.2",
     "commit": "d2cdd4fe27d86744f8c4fa86779be73e5af63a87"
   },
-  "_source": "git://github.com/wallin/angular-gravatar.git",
+  "_source": "https://github.com/wallin/angular-gravatar.git",
   "_target": "0.4.2",
   "_originalSource": "angular-gravatar"
 }

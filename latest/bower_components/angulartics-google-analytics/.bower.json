@@ -20,7 +20,7 @@
     "tag": "0.1.4",
     "commit": "505cd76db9bac8b402b7315e96880c1bc6bcaaa7"
   },
-  "_source": "git://github.com/angulartics/angulartics-google-analytics.git",
+  "_source": "https://github.com/angulartics/angulartics-google-analytics.git",
   "_target": "~0.1.4",
   "_originalSource": "angulartics-google-analytics"
 }
