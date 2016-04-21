@@ -1,6 +1,7 @@
 {
   "rewrites" : [
     {"source":"/settings", "destination" : "index.html"},
+    {"source":"/user-settings", "destination" : "index.html"},
     {"source":"/notifications", "destination" : "index.html"},
     {"source":"/features", "destination" : "index.html"},
     {"source":"/about", "destination" : "index.html"},

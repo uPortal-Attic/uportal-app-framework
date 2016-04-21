@@ -1,0 +1,24 @@
+<frame-page app-title='User Settings'
+              app-icon='fa-gears' white-background='true'>
+  <ul class='row' style='margin : 10px; padding : 0;'>
+    <li class='col-sm-5 col-sm-offset-1 portlet-container-home beta-card-style' ng-repeat='option in options'>
+      <uw-setting-option></uw-setting-option>
+    </li>
+  </ul>
+  <ul class="row" style='margin : 10px; padding : 0;'>
+    <li class='col-xs-12' ng-hide='kvEnabled'>
+      <div class='center'>
+        No settings for you to set a this time.
+      </div>
+    </li>
+    <li class="col-sm-5 col-sm-offset-1 portlet-container-home beta-card-style center" ng-if='kvEnabled'>
+        <h4>Reset Zone</h4>
+        <h4>
+        <span class="btn-group">
+          <button class="btn btn-flat" ng-click="resetAnnouncements()">Reset last seen announcement</button>
+        </span>
+        </h4>
+        <small>Reset various features to there default state.</small>
+    </li>
+  </ul>
+</frame-page>
