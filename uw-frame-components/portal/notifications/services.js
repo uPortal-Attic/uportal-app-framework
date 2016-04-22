@@ -4,7 +4,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
   var app = angular.module('portal.notifications.services', []);
 
-  app.factory('notificationsService', ['$q','$http', 'miscService', 'PortalGroupService', 'keyValueService','SERVICE_LOC', function($q, $http, miscService, PortalGroupService, keyValueService, SERVICE_LOC) {
+  app.factory('notificationsService', ['$q','$http', 'miscService', 'PortalGroupService', 'keyValueService','SERVICE_LOC', 'KV_KEYS', function($q, $http, miscService, PortalGroupService, keyValueService, SERVICE_LOC, KV_KEYS) {
       var filteredNotificationPromise;
       var dismissedPromise;
       var getAllNotifications = function() {
@@ -17,9 +17,9 @@ define(['angular', 'jquery'], function(angular, $) {
             }
         );
       };
-      
+
       var getDismissedNotificationIds = function() {
-        dismissedPromise = dismissedPromise || keyValueService.getValue('notification:dismiss').then(function(data){
+        dismissedPromise = dismissedPromise || keyValueService.getValue(KV_KEYS.DISMISSED_NOTIFICATION_IDS).then(function(data){
           if(data && typeof data.value === 'string') { //data and has a value string
             if(data.value) { //value string contains things
               return JSON.parse(data.value);
@@ -34,9 +34,9 @@ define(['angular', 'jquery'], function(angular, $) {
       	});
       	return dismissedPromise;
       };
-      
+
       var setDismissedNotifications = function(arrayOfIds) {
-    		keyValueService.setValue('notification:dismiss',arrayOfIds);
+    		keyValueService.setValue(KV_KEYS.DISMISSED_NOTIFICATION_IDS,arrayOfIds);
         dismissedPromise = null;
       };
 

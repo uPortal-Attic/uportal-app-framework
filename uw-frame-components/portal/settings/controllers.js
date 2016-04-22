@@ -12,23 +12,41 @@ define(['angular'], function(angular) {
 
   app.controller('PortalUserSettingsController', ['$scope',
                                                   '$q',
+                                                  '$window',
+                                                  '$localStorage',
                                                   'KV_KEYS',
+                                                  'NOTIFICATION',
+                                                  'FEATURES',
                                                   'keyValueService',
-    function($scope, $q, KV_KEYS, keyValueService)
+    function($scope, $q, $window, $localStorage, KV_KEYS, NOTIFICATION, FEATURES, keyValueService)
     {
       var init = function(){
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
+        $scope.KV_KEYS = KV_KEYS;
+        $scope.NOTIFICATION = NOTIFICATION;
+        $scope.FEATURES = FEATURES;
       };
 
       $scope.resetAnnouncements = function() {
         if(keyValueService.isKVStoreActivated()) {
-          $scope.loading = true;
+          $scope.loadingResetAnnouncements = true;
           $q.all([keyValueService.deleteValue(KV_KEYS.LAST_VIEWED_ANNOUNCEMENT_ID),
                   keyValueService.deleteValue(KV_KEYS.LAST_VIEWED_POPUP_ID)])
             .then(function(){
-              $scope.loading = false;
+              delete $localStorage.lastSeenAnnouncementId ;
+              delete $localStorage.lastSeenFeature;
+              $window.location.reload();
+              $scope.loadingResetAnnouncements = false;
             });
         }
+      }
+
+      $scope.resetKey = function(key, loadingKey) {
+        $scope[loadingKey] = true;
+        keyValueService.deleteValue(key).then(function(){
+          $window.location.reload();
+          $scope[loadingKey] = false;
+        });
       }
 
       init();
