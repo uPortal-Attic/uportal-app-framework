@@ -4,7 +4,7 @@ define(['angular'
 , 'marked'
 , 'ngMarked'
 , 'portal/main/routes'
-, 'portal/settings/route'
+, 'portal/settings/routes'
 , 'portal/notifications/route'
 , 'portal/features/route'
 , 'portal/about/route'
@@ -14,7 +14,7 @@ define(['angular'
     var app = angular.module('my-app', ['portal', 'hc.marked', 'docs.main.controllers']);
     app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider.
-            when('/settings', settings).
+            when('/settings', settings.betaSettings).
             when('/notifications', notifications).
             when('/features', features).
             when('/about', about).
