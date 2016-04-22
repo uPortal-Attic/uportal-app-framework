@@ -39,6 +39,7 @@ If you have questions please ask the MyUW team.
 + `loginOnLoad` : A optional boolean flag that when set to `true` it will fire a login event during the loading sequence. `SERVICE_LOC.loginSilentURL` must be set.
 + `loginDurationMills` : number of milliseconds a login session is valid for. Default set to 4 hours (14400000).
 + `gaSearchParam` : Default set to 'q'. This is the param that is tacked on to your search result page. Google later strips it in Google Analytics.
++ `showUserSettingsPage` : If set, this will add a `settings` link to the user drop down which will point at `/user-settings`. Default is `false`. _new as of 2.2.2_
 
 #### SERVICE_LOC
 + `aboutURL` : If your application has some data that it would like to show in `/about` in addition to the frame information, provide that here.
@@ -56,7 +57,7 @@ If you have questions please ask the MyUW team.
 #### SEARCH
 + `searchURL` : The URL that you want the search to go to when you search something in the site header. Suggested default should be `https://my.wisc.edu/web/apps/search/`
 
-#### FEATURES _(new as of 2.2.0)_
+#### FEATURES
 + `enabled` : This boolean will enable the features page, Bucky announcements, and the modal popup. Make sure to configure `FEATURES.serviceURL` if you set this to true.
 + `serviceURL` : This feed provides announcements about your application. See [this](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/staticFeeds/features.json) for an example.
 #### NOTIFICATION

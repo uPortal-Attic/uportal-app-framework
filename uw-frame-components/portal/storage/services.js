@@ -54,8 +54,14 @@ define(['angular', 'jquery'], function(angular, $) {
                   .then(successFn, errorFn);
       };
 
+      var deleteValue = function(key) {
+        return $http.delete(SERVICE_LOC.kvURL + "/"+ key)
+                  .then(successFn,errorFn);
+      }
+
       return {
         setValue : setValue,
+        deleteValue : deleteValue,
         getValue : getValue,
         isKVStoreActivated : isKVStoreActivated
       };

@@ -9,6 +9,7 @@ define(['angular'], function(angular) {
             'isWeb' : false,
             'defaultTheme' : 0,
             'loginOnLoad' : false,
+            'showUserSettingsPage' : false,
             'debug' : false
         })
         .value('SERVICE_LOC', {

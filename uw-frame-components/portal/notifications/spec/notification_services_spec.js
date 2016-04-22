@@ -1,19 +1,20 @@
 'use strict';
 define(['angular-mocks', 'portal'], function() {
     describe('NotificationsService', function() {
-        var notificationsService, httpBackend, backendURL, groupURL, kvURL, loginSilentURL;
+        var notificationsService, httpBackend, backendURL, groupURL, kvURL, loginSilentURL, kvKeys;
 
         beforeEach(function() {
           module('portal');
         });
 
-        beforeEach(inject(function(_notificationsService_, _$httpBackend_, SERVICE_LOC) {
+        beforeEach(inject(function(_notificationsService_, _$httpBackend_, SERVICE_LOC, KV_KEYS) {
             notificationsService = _notificationsService_;
             httpBackend = _$httpBackend_;
             backendURL = SERVICE_LOC.notificationsURL;
             groupURL   = SERVICE_LOC.groupURL;
             loginSilentURL = SERVICE_LOC.loginSilentURL;
             kvURL = SERVICE_LOC.kvURL;
+            kvKeys = KV_KEYS;
             if(loginSilentURL) {
               httpBackend.whenGET(loginSilentURL).respond({"status" : "success", "username" : "admin"});
             }
@@ -22,7 +23,7 @@ define(['angular-mocks', 'portal'], function() {
         it("should return an empty array when you get an empty string as a value", function(){
           //setup
           httpBackend.whenGET(backendURL).respond({"notifications" :[]});
-          httpBackend.whenGET(kvURL + "/notification:dismiss").respond([]);
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
           httpBackend.whenGET(groupURL).respond([]);
 
           //test

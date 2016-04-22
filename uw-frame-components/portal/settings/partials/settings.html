@@ -1,28 +1,35 @@
 <frame-page app-title='Beta Settings'
-              app-icon='fa-gears'>
-  <ul class='row' style='margin : 10px; padding : 0;'>
-    <li class='col-sm-5 col-sm-offset-1 portlet-container-home beta-card-style' ng-repeat='option in options'>
-      <setting-option></setting-option>
+              app-icon='fa-gears'
+              white-background='true'>
+  <ul class='row' style='margin-top : 10px;'>
+    <li class='col-sm-4' ng-repeat='option in options'>
+      <div class='beta-card-style'>
+        <uw-setting-option></uw-setting-option>
+      </div>
     </li>
   </ul>
-  <ul class="row" style='margin : 10px; padding : 0;'>
-    <li class="col-sm-5  col-sm-offset-1 no-padding portlet-container-home  beta-card-style" style='text-align : center;'>
+  <ul class="row" style='margin-top : 10px;'>
+    <li class="col-sm-6" style='text-align : center;'>
+      <div class='beta-card-style'>
         <h4>Theme Selector</h4>
         <small>Pick which place you call home</small>
         <select class="form-control" ng-options="item as item.name for item in THEMES track by item.name" ng-model="portal.theme">
         </select>
+      </div>
      </li>
-    <li class="col-sm-5 col-sm-offset-1 portlet-container-home beta-card-style center">
+    <li class="col-sm-6 center">
+      <div class='beta-card-style'>
         <h4>Danger Zone</h4>
         <h4>
         <span class="btn-group">
-          <label class="btn btn-default" ng-click="resetLocal()">Reset Local Storage</label>
+          <label class="btn btn-outline" ng-click="resetLocal()">Reset Local Storage</label>
         </span>
         <span class="btn-group">
-          <label class="btn btn-default" ng-click="clearSession()">Clear Session Storage</label>
+          <label class="btn btn-outline" ng-click="clearSession()">Clear Session Storage</label>
         </span>
         </h4>
         <small>Reset to default and clearing the session storage can be nice to clean the slate.</small>
+      </div>
     </li>
   </ul>
 </frame-page>
