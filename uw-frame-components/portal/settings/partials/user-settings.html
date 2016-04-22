@@ -6,7 +6,8 @@
         No settings for you to set a this time.
       </div>
     </li>
-    <li class="col-sm-3  user-card-style center" ng-if='kvEnabled'>
+    <li class="col-md-4 col-sm-6 center" ng-if='kvEnabled'>
+      <div class='user-card-style'>
         <h4>Reset Zone</h4>
         <div ng-if='FEATURES.enabled'>
           <button class="btn btn-flat" ng-click="resetAnnouncements()">Reset last seen announcement <i class='fa fa-spin fa-circle-o' ng-if='loadingResetAnnouncements'></i></button>
@@ -15,6 +16,7 @@
           <button class="btn btn-flat" ng-click="resetKey(KV_KEYS.DISMISSED_NOTIFICATION_IDS,'DISMISSED_NOTIFICATION_IDS')">Reset dismissed notifications <i class='fa fa-spin fa-circle-o' ng-if='DISMISSED_NOTIFICATION_IDS'></i></button>
         </div>
         <small>Reset various features to there default state.</small>
+      </div>
     </li>
   </ul>
 </frame-page>
