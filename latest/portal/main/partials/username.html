@@ -21,7 +21,10 @@
           {{sessionCtrl.user.displayName}}
         </li>
         <li ng-if='$storage.showSettings'>
-          <a href="settings" class='settings-link' title='Settings'>Settings</a>
+          <a href="settings" class='settings-link' title='Settings'>Beta Settings</a>
+        </li>
+        <li ng-if='APP_FLAGS.showUserSettingsPage'>
+          <a href="user-settings" class='settings-link' title='Settings'>Settings</a>
         </li>
         <li>
           <a ng-href="{{MISC_URLS.logoutURL}}" class='logout-link' title='Logout' target='_self'>Sign out</a>
