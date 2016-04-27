@@ -1,0 +1,82 @@
+<div ng-controller="PortalHeaderController as headerCtrl">
+  <notification-bell mode="priority" class="hidden-xs"></notification-bell>
+  <nav class="navbar navbar-default navbar-fixed-top" ng-class="{'has-priority-nots': headerCtrl.hasPriorityNotifications}" role="banner">
+       <span ng-controller="PortalPopupController"></span>
+       <div class="container-fluid">
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle" ng-click="headerCtrl.toggleMenu()">
+                   <span class="sr-only">Toggle navigation</span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <notification-bell mode='mobile-bell' ng-if='!GuestMode'></notification-bell>
+               </button>
+               <div class="header-crest">
+                 <a aria-label="{{portal.theme.ariaLabelTitle}}"
+                    class="header-text" ng-href="{{MISC_URLS.rootURL}}"
+                    target="_self"
+                    id="myuw-header">
+                    <div class='header-inner'>
+                      <img ng-src="{{portal.theme.crest}}"
+                           class="hidden-xs crest"
+                           alt="{{portal.theme.crestalt}}">
+                      <span class='title'>{{portal.theme.title}}</span>
+                      <span class="beta-logo">{{portal.theme.subtitle}}</span>
+                    </div>
+                 </a>
+               </div>
+                <div class="search-mobile-icon hidden-sm hidden-md hidden-lg">
+                  <i class="fa fa-search" ng-click="headerCtrl.toggleSearch()"></i>
+                </div>
+                <div class="search-mobile" ng-show="showSearch">
+                  <search class="hidden-sm hidden-md hidden-lg"></search>
+                </div>
+           </div>
+           <div class="collapse navbar-collapse" id="bucky-navbar-collapse"  collapse="headerCtrl.navbarCollapsed">
+               <div class="nav navbar-nav visible-xs bucky-nav">
+                  <notification-bell mode="priority" class="visible-xs"></notification-bell>
+                  <ul class="list-group sidebar-list">
+                    <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
+                      <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
+                    </li>
+                    <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
+                      <notification-bell mode='mobile-menu' header-ctrl='headerCtrl' ng-if='!GuestMode'></notification-bell>
+                    </li>
+                    <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
+                      <a ng-if='APP_FLAGS.isWeb' href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+                         <span class="fa fa-home fa-fw"></span> Home
+                      </a>
+                      <a ng-if='!APP_FLAGS.isWeb' href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+                        <span class="fa fa-home fa-fw"></span> Home
+                      </a>
+                    </li>
+                    <li class="list-group-item" ng-click="headerCtrl.navbarCollapsed = true;">
+                      <a href="{{MISC_URLS.logoutURL}}" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Log out');">
+                        <span class="fa fa-sign-out fa-fw"></span> Log out
+                      </a>
+                    </li>
+                  </ul>
+               </div>
+               <ul class="nav navbar-nav hidden-xs bucky-nav-large">
+                   <li>
+                      &nbsp;
+                   </li>
+                   <li>
+                      <search ng-show='APP_FLAGS.showSearch'></search>
+                   </li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right hidden-xs">
+                  <li>
+                    <bucky-announcement mode='BUCKY'></bucky-announcement>
+                  </li>
+                  <li>
+                    <notification-bell mode='bell' ng-if='!GuestMode'></notification-bell>
+                  </li>
+                  <li class='username-menu'>
+                    <username></username>
+                  </li>
+               </ul>
+           </div>
+       </div>
+   </nav>
+</div>
