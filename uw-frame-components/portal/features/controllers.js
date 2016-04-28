@@ -135,7 +135,11 @@ define(['angular','require'], function(angular, require) {
              } else {
                $scope.announcements = announcements.filter(hasNotSeen);
              }
-             $scope.buckyImg = $rootScope.portal.theme.mascotImg || 'img/robot-taco.gif';
+             if($rootScope.portal && $rootScope.portal.theme) {
+               $scope.buckyImg = $rootScope.portal.theme.mascotImg || 'img/robot-taco.gif';
+             } else {
+               $scope.buckyImg = 'img/robot-taco.gif';
+             }
              $rootScope.$watch('portal.theme', function(newVal, oldVal) {
                if(newVal === oldVal) {
                  return;
