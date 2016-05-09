@@ -26,3 +26,7 @@ popd
 ../node_modules/less/bin/lessc -x target/css/themes/uw-milwaukee.less > target/css/themes/uw-milwaukee.css
 ../node_modules/less/bin/lessc -x target/css/themes/uw-whitewater.less > target/css/themes/uw-whitewater.css
 ../node_modules/less/bin/lessc -x target/css/themes/uw-stout.less > target/css/themes/uw-stout.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-oskhosh.less > target/css/themes/uw-oskhosh.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-greenbay.less > target/css/themes/uw-greenbay.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-lacrosse.less > target/css/themes/uw-lacrosse.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-parkside.less > target/css/themes/uw-parkside.css
