@@ -59,6 +59,33 @@ define(['angular'], function(angular) {
             "group" : "UW System-Stout"
           },
           {
+            "name" : "uw-parkside",
+            "crest" : "img/uwp-logo-52.png",
+            "title" : "MyUW",
+            "subtitle" : null,
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Parkside",
+            "group" : "UW System-Parkside"
+          },
+          {
+            "name" : "uw-platteville",
+            "crest" : "img/uw-platteville-logo-52.png",
+            "title" : "MyUW",
+            "subtitle" : null,
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Platteville",
+            "group" : "UW System-Platteville"
+          },  
+          {
+            "name" : "uw-superior",
+            "crest" : "img/uw-superior-logo-52.png",
+            "title" : "MyUW",
+            "subtitle" : null,
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Superstatic",
+            "group" : "UW System-Superior"
+          },  
+          {
             "name" : "uw-system",
             "crest" : "img/uw-system-52.png",
             "title" : "MyUW",
