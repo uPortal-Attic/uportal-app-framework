@@ -13,21 +13,21 @@
        popover-trigger="none"></i>
   </div>
   <script type="text/ng-template" id="usermenu.html">
-    <div class='username-menu-template'>
-      <ul class='no-padding'>
-        <li>
+    <div role="navigation" aria-label="Main menu" class='username-menu-template'>
+      <ul role="menubar" aria-hidden="false" class='no-padding'>
+        <li role="menuitem" aria-haspopup="true">
           <!-- <img src='img/bucky.png' class='gravatar' ng-if="!$storage.useGravatar">
            <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar"> -->
           {{sessionCtrl.user.displayName}}
         </li>
-        <li ng-if='$storage.showSettings'>
-          <a href="settings" class='settings-link' title='Settings'>Beta Settings</a>
+        <li role="menuitem" ng-if='$storage.showSettings'>
+          <a tabindex="-1" href="settings" class='settings-link' title='Settings'>Beta Settings</a>
         </li>
-        <li ng-if='APP_FLAGS.showUserSettingsPage'>
-          <a href="user-settings" class='settings-link' title='Settings'>Settings</a>
+        <li role="menuitem" ng-if='APP_FLAGS.showUserSettingsPage'>
+          <a tabindex="-1" href="user-settings" class='settings-link' title='Settings'>Settings</a>
         </li>
-        <li>
-          <a ng-href="{{MISC_URLS.logoutURL}}" class='logout-link' title='Logout' target='_self'>Sign out</a>
+        <li role="menuitem">
+          <a tabindex="-1" ng-href="{{MISC_URLS.logoutURL}}" class='logout-link' title='Logout' target='_self'>Sign out</a>
         </li>
       </ul>
     </div>
