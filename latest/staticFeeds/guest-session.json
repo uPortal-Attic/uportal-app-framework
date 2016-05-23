@@ -4,7 +4,7 @@
     "sessionKey": "someRandomKey",
     "serverName": "localhost",
     "firstName" : "Guest",
-    "sirName" : "Badger",
+    "lastName" : "Badger",
     "displayName": "Guest Badger",
     "email" : "bucky@wisc.edu",
     "version": "2.2.0"
