@@ -29,3 +29,6 @@ popd
 ../node_modules/less/bin/lessc -x target/css/themes/uw-superior.less > target/css/themes/uw-superior.css
 ../node_modules/less/bin/lessc -x target/css/themes/uw-platteville.less > target/css/themes/uw-platteville.css
 ../node_modules/less/bin/lessc -x target/css/themes/uw-parkside.less > target/css/themes/uw-parkside.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-oskhosh.less > target/css/themes/uw-oskhosh.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-greenbay.less > target/css/themes/uw-greenbay.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-lacrosse.less > target/css/themes/uw-lacrosse.css
