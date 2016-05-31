@@ -59,6 +59,33 @@ define(['angular'], function(angular) {
             "group" : "UW System-Stout"
           },
           {
+            "name" : "uw-oskhosh",
+            "crest" : "img/uw-oshkosh-logo-52.png",
+            "title" : "MyUW",
+            "subtitle" : null,
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Crest",
+            "group" : "UW System-Oshkosh"
+          },
+          {
+            "name" : "uw-greenbay",
+            "crest" : "img/UWGB-logo-52.png",
+            "title" : "MyUW",
+            "subtitle" : null,
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Crest",
+            "group" : "UW System-Green Bay"
+          },
+          {
+            "name" : "uw-lacrosse",
+            "crest" : "img/UW-L-logo-52.png",
+            "title" : "MyUW",
+            "subtitle" : null,
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Crest",
+            "group" : "UW System-La Crosse"
+          },
+          {
             "name" : "uw-parkside",
             "crest" : "img/uwp-logo-52.png",
             "title" : "MyUW",
@@ -75,16 +102,16 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Platteville",
             "group" : "UW System-Platteville"
-          },  
+          },
           {
             "name" : "uw-superior",
-            "crest" : "img/uw-superior-logo-52.png",
+            "crest" : "img/uw-superior-logo-52.jpg",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Superstatic",
             "group" : "UW System-Superior"
-          },  
+          },
           {
             "name" : "uw-system",
             "crest" : "img/uw-system-52.png",
