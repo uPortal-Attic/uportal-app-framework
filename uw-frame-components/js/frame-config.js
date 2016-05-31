@@ -102,16 +102,16 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Platteville",
             "group" : "UW System-Platteville"
-          },  
+          },
           {
             "name" : "uw-superior",
-            "crest" : "img/uw-superior-logo-52.png",
+            "crest" : "img/uw-superior-logo-52.jpg",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Superstatic",
             "group" : "UW System-Superior"
-          },  
+          },
           {
             "name" : "uw-system",
             "crest" : "img/uw-system-52.png",
