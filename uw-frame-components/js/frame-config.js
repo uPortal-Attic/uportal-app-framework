@@ -113,6 +113,33 @@ define(['angular'], function(angular) {
             "group" : "UW System-Superior"
           },
           {
+            "name" : "uw-eau-claire",
+            "crest" : "img/uw-eauclaire-logo-52.png",
+            "title" : "MyUW",
+            "subtitle" : null,
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Eau Claire",
+            "group" : "UW System-Eau Claire",
+          },
+          {
+            "name" : "uw-extension",
+            "crest" : "img/UWEX-Logo-52.png",
+            "title" : "MyUW",
+            "subtitle" : null,
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Extension",
+            "group" : "UW System-Extension",
+          },
+          {
+            "name" : "uw-colleges",
+            "crest" : "img/uwc_vertlogo-52.png",
+            "title" : "MyUW",
+            "subtitle" : null,
+            "ariaLabelTitle" : "My U W",
+            "crestalt" : "UW Colleges",
+            "group" : "UW System-Colleges",
+          },
+          {
             "name" : "uw-system",
             "crest" : "img/uw-system-52.png",
             "title" : "MyUW",
