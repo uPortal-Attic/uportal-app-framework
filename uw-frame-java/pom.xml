@@ -198,6 +198,9 @@
             <include>uw-superior.less</include>
             <include>uw-platteville.less</include>
             <include>uw-parkside.less</include>
+            <include>uw-eau-claire.less</include>
+            <include>uw-extension.less</include>
+            <include>uw-colleges.less</include>
           </includes>
           <outputFileFormat>{fileName}.${project.version}.css</outputFileFormat>
         </configuration>

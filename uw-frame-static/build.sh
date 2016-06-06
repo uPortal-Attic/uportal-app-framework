@@ -32,3 +32,6 @@ popd
 ../node_modules/less/bin/lessc -x target/css/themes/uw-oskhosh.less > target/css/themes/uw-oskhosh.css
 ../node_modules/less/bin/lessc -x target/css/themes/uw-greenbay.less > target/css/themes/uw-greenbay.css
 ../node_modules/less/bin/lessc -x target/css/themes/uw-lacrosse.less > target/css/themes/uw-lacrosse.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-eau-claire.less > target/css/themes/uw-eau-claire.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-extension.less > target/css/themes/uw-extension.css
+../node_modules/less/bin/lessc -x target/css/themes/uw-colleges.less > target/css/themes/uw-colleges.css
