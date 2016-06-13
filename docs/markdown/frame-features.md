@@ -17,9 +17,8 @@ The username drop down will display the users first name with a down arrow carro
 #### Mobile Menu
 `TODO`
 #### Mascot Announcements
-`TODO`
 
-See also [MyUW KB documentation about announcements](https://kb.wisc.edu/myuw/page.php?id=63903).
+The mascot announcement is a way to tell your users about new application features. Read more about that [here](#/md/announcements)
 
 #### Notifications
 The notifications are a pretty complicated topic. The basics are a bell with unread count, priority notification banner, mobile notification bell on the hamburger menu, and in the mobile menu a notification link with unread count. Since this is so much we split out [the documentation](#/md/notifications) to its own thing.

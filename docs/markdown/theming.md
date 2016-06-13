@@ -22,9 +22,7 @@ The theming system is pretty straight forward. With minimal effort one could hav
  + `ariaLabelTitle` : The aria label put in place of the theme title
  + `crestalt` : the alt text
  + `group` : Which group should this be enabled for automatically? Not sure, ask the MyUW dev team.
- + `mascotImg` : Optional, if filled out it will replace the mascot that is used for site announcements (see image below)
-
-![./img/announcement-character.png](./img/announcement-character.png)
+ + `mascotImg` : (Optional) See documentation about the mascot for announcements [here](#/md/announcements)
 
 + Add in a <theme-name>.less file in the folder `/uw-frame-components/css/themes` that looks like this:
 
