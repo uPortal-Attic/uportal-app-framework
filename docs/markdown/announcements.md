@@ -21,7 +21,6 @@ The image itself should have the following characteristics (see what I did there
 <li>C) Transparent Background</li>
 <li>D) Eye height should be 12px down, so that you can see it during the hidden state.</li>
 <li>Can be an animated gif, but animations should be limited to blinking eyes.</li>
-<li>If you do have an arm, suggest the top of it to be under the top 16px.</li>
 </ul>
 </div>
 </div>
