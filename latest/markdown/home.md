@@ -23,6 +23,7 @@
 + [Tables](#/md/tables) : How to present tables
 + [Text Guidelines](#/md/text-guidelines) : Titles, names, etc...
 + [Theming](#/md/theming) : Theme Support
++ [Announcements](#/md/announcements) : Learn about the announcements feature
 
 ### Administrative
 + [Release Management](#/md/releasing) : How to release uw-frame

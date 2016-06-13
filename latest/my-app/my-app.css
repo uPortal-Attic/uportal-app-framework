@@ -1,6 +1,14 @@
-/*
- This file intentionally left empty. This file is intended to serve as an extension point
- for My UW Madison 'App' developers that overlay angularjs-portal-frame.
+.markdown {
+  padding: 0 10px 0;
+}
+.markdown ul {
+  list-style-type: circle !important;
+}
 
- For more information, see: https://github.com/UW-Madison-DoIT/my-app-seed
- */
+.markdown ul li {
+  margin-left : 40px;
+}
+
+.markdown .width-100 img {
+  width: 100%;
+}
