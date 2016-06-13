@@ -16,7 +16,7 @@ The theming system is pretty straight forward. With minimal effort one could hav
 ```
 + JSON above explained
   + `name`: the system id of the theme. Make sure its unique.
-  + `crest` : The relative URL to the crest image. We recommend the crest image (in this example `img/uw-madison-52.png`) to be `52px` in height. Width doesn't really matter, but try to keep it under 100px for small screens.
+  + `crest` : The relative URL to the crest image. We recommend the crest image (in this example `img/uw-madison-52.png`) to be `52px` in height.  The image height will be set to `52px`, so the width will scale to fit that. Width doesn't really matter, but try to keep it under 100px for small screens.
  + `title` : The title that will be show in the upper right
  + `subtitle` : an `optional` subtitle that is shown as subtext for the app. e.g.: beta
  + `ariaLabelTitle` : The aria label put in place of the theme title
