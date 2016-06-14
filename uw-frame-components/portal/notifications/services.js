@@ -49,20 +49,23 @@ define(['angular', 'jquery'], function(angular, $) {
 
         successFn = function(result){
           //post processing
-          var groups = result[1], allNotifications = result[0];
-          var notificationsByGroup = [];
-          $.each(allNotifications, function (index, notification){ //for each notification
-            var added = false;
-            $.each(notification.groups, function(index, group) { //for each group for that notification
-              if(!added) {
-                var inGroup = $.grep(groups, function(e) {return e.name === group}).length; //intersect, then get length
-                if(inGroup > 0) {//are they in that group?
-                  notificationsByGroup.push(notification); //they should see this notification
-                  added = true;
+          var groups = result[1]
+              , allNotifications = result[0]
+              , notificationsByGroup = [];
+          if(groups && allNotifications) {
+            $.each(allNotifications, function (index, notification){ //for each notification
+              var added = false;
+              $.each(notification.groups, function(index, group) { //for each group for that notification
+                if(!added) {
+                  var inGroup = $.grep(groups, function(e) {return e.name === group}).length; //intersect, then get length
+                  if(inGroup > 0) {//are they in that group?
+                    notificationsByGroup.push(notification); //they should see this notification
+                    added = true;
+                  }
                 }
-              }
+              });
             });
-          });
+          }
 
           return notificationsByGroup;
         }
