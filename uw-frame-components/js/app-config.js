@@ -15,10 +15,10 @@ define(['angular'], function(angular) {
         .value('SERVICE_LOC', {
             'aboutURL' : null,
             'sessionInfo' : 'staticFeeds/session.json',
-            'notificationsURL' : 'staticFeeds/notifications.json',
+            'notificationsURL' : '/web/staticFeeds/notifications.json',
             'loginSilentURL' : '/portal/Login?silent=true',
-            'kvURL' : null,
-            'groupURL' : null
+            'kvURL' : '/storage',
+            'groupURL' : '/portal/api/groups'
         })
         .value('NAMES', {
             'title' : 'App Name',
@@ -34,9 +34,9 @@ define(['angular'], function(angular) {
             'serviceURL' : 'staticFeeds/features.json'
         })
         .value('NOTIFICATION', {
-            'enabled' : false,
-            'groupFiltering' : false,
-            'notificationFullURL' : 'notifications'
+            'enabled' : true,
+            'groupFiltering' : true,
+            'notificationFullURL' : '/web/notifications'
         })
         .value('MISC_URLS',{
             'feedbackURL' : 'https://my.wisc.edu/portal/p/feedback',
