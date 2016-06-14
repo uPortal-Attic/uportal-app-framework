@@ -15,7 +15,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-river-falls",
-            "crest" : "img/uw-riverfalls-52.png",
+            "crest" : "img/UWRF white-transparent.png",
             "title" : "MyUW",
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
