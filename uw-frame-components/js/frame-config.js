@@ -20,7 +20,8 @@ define(['angular'], function(angular) {
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW River Falls Logo",
-            "group" : "UW System-River Falls"
+            "group" : "UW System-River Falls",
+            "mascotImg" : "img/finalWave.gif"
           },
           {
             "name" : "uw-stevens-point",
