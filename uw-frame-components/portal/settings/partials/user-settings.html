@@ -15,6 +15,9 @@
         <div ng-if='NOTIFICATION.enabled'>
           <button class="btn btn-flat" ng-click="resetKey(KV_KEYS.DISMISSED_NOTIFICATION_IDS,'DISMISSED_NOTIFICATION_IDS')">Reset dismissed notifications <i class='fa fa-spin fa-circle-o' ng-if='DISMISSED_NOTIFICATION_IDS'></i></button>
         </div>
+        <div ng-if='MISC_URLS.resetLayoutURL'>
+            <a ng-href="{{MISC_URLS.resetLayoutURL}}" role="button" class="btn btn-flat">Reset layout</a>
+        </div>
         <small>Reset various features to their default state.</small>
       </div>
     </li>
