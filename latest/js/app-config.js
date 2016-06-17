@@ -44,6 +44,7 @@ define(['angular'], function(angular) {
             'loginURL' : '/portal/Login?profile=bucky',
             'logoutURL' : '/portal/Logout',
             'myuwHome' : 'https://my.wisc.edu',
+            'resetLayoutURL' : '/portal/p/reset-my-layout',
             'rootURL' : '/web',
             'addToHomeURLS' : {
               'layoutURL' : '/portal/web/layoutDoc?tab=UW Bucky Home',
