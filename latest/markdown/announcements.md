@@ -16,10 +16,11 @@ The image itself should have the following characteristics (see what I did there
 </div>
 <div class='col-sm-6'>
 <ul>
-<li>A) height : 40px</li>
-<li>B) width : 60px</li>
-<li>C) Transparent Background</li>
-<li>D) Eye height should be 12px down, so that you can see it during the hidden state.</li>
+<li>A) Height of portion always visible : 16px from top</li>
+<li>B) Eye height: 12px from top, so that you can see them during the hidden state.</li>
+<li>C) Full height : 40px</li>
+<li>D) Full width : 60px</li>
+<li>E) Transparent background</li>
 <li>Can be an animated gif, but animations should be limited to blinking eyes.</li>
 </ul>
 </div>
