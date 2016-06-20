@@ -15,22 +15,23 @@ angular.module('angulartics.google.analytics', ['angulartics'])
 
   // Set the default settings for this module
   $analyticsProvider.settings.ga = {
-    // array of additional account names (only works for analyticsjs)
     additionalAccountNames: undefined,
     userId: null
   };
 
-  function setDimensionsAndMetrics(properties) {
+  function dimensionsAndMetrics(properties) {
     if (window.ga) {
       // add custom dimensions and metrics
+      var customData = {};
       for(var idx = 1; idx<=200;idx++) {
-        if (properties['dimension' +idx.toString()]) {
-          ga('set', 'dimension' +idx.toString(), properties['dimension' +idx.toString()]);
+        if (typeof properties['dimension' + idx] !== 'undefined') {
+          customData['dimension' + idx] = properties['dimension' + idx];
         }
-        if (properties['metric' +idx.toString()]) {
-          ga('set', 'metric' +idx.toString(), properties['metric' +idx.toString()]);
+        if (typeof properties['metric' +idx] !== 'undefined') {
+          customData['metric' + idx] = properties['metric' + idx];
         }
       }
+      return customData;
     }
   }
 
@@ -43,7 +44,7 @@ angular.module('angulartics.google.analytics', ['angulartics'])
     }
     if (window.ga) {
       if ($analyticsProvider.settings.ga.userId) {
-        ga('set', '&uid', $analyticsProvider.settings.ga.userId);
+        ga('set', 'userId', $analyticsProvider.settings.ga.userId);
       }
       ga('send', 'pageview', path);
       angular.forEach($analyticsProvider.settings.ga.additionalAccountNames, function (accountName){
@@ -63,7 +64,9 @@ angular.module('angulartics.google.analytics', ['angulartics'])
    *
    * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/events
    */
-  $analyticsProvider.registerEventTrack(function (action, properties) {
+  $analyticsProvider.registerEventTrack(eventTrack);
+
+  function eventTrack (action, properties) {
 
     // Google Analytics requires an Event Category
     if (!properties || !properties.category) {
@@ -90,61 +93,71 @@ angular.module('angulartics.google.analytics', ['angulartics'])
         userId: $analyticsProvider.settings.ga.userId
       };
 
-      // add custom dimensions and metrics
-      setDimensionsAndMetrics(properties);
+      // Round up any dimensions and metrics for this hit
+      var dimsAndMets = dimensionsAndMetrics(properties);
+      angular.extend(eventOptions, dimsAndMets);
 
-      if ($analyticsProvider.settings.ga.transport) {
-        ga('send', 'event', eventOptions, { transport: $analyticsProvider.settings.ga.transport});
+      // Add transport settings
+      if($analyticsProvider.settings.ga.transport) {
+        angular.extend(eventOptions, $analyticsProvider.settings.ga.transport);
       }
-      else {
-        ga('send', 'event', eventOptions);
-      }
+
+      ga('send', 'event', eventOptions);
 
       angular.forEach($analyticsProvider.settings.ga.additionalAccountNames, function (accountName){
         ga(accountName +'.send', 'event', eventOptions);
       });
-    }
 
-    else if (window._gaq) {
+    } else if (window._gaq) {
       _gaq.push(['_trackEvent', properties.category, action, properties.label, properties.value, properties.noninteraction]);
     }
 
-  });
+  }
 
   /**
    * Exception Track Event in GA
    * @name exceptionTrack
+   * Sugar on top of the eventTrack method for easily handling errors
    *
-   * @param {object} properties Comprised of the mandatory fields 'appId' (string), 'appName' (string) and 'appVersion' (string) and 
-   * optional  fields 'fatal' (boolean) and 'description' (string)
-   *
-   * @https://developers.google.com/analytics/devguides/collection/analyticsjs/exceptions
+   * @param {object} error An Error object to track: error.toString() used for event 'action', error.stack used for event 'label'.
+   * @param {object} cause The cause of the error given from $exceptionHandler, not used.
    *
    * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/events
    */
-  $analyticsProvider.registerExceptionTrack(function (properties) {
-    if (!properties || !properties.appId || !properties.appName || !properties.appVersion) {
-        console.error('Must be setted appId, appName and appVersion.');
-        return;
-    }
-
-    if(properties.fatal === undefined) {
-        console.log('No "fatal" provided, sending with fatal=true');
-        properties.exFatal = true;
-    }
-
-    properties.exDescription = properties.description;
-
-    ga('send', 'exception', properties);
+  $analyticsProvider.registerExceptionTrack(function (error, cause) {
+    eventTrack(error.toString(), {
+      category: 'Exceptions',
+      label: error.stack,
+      nonInteraction: true
+    });
   });
 
+  /**
+   * Set Username
+   * @name setUsername
+   *
+   * @param {string} userId Registers User ID of user for use with other hits 
+   *
+   * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
+   */
   $analyticsProvider.registerSetUsername(function (userId) {
     $analyticsProvider.settings.ga.userId = userId;
   });
 
+  /**
+   * Set User Properties
+   * @name setUserProperties
+   *
+   * @param {object} properties Sets all properties with dimensionN or metricN to their respective values 
+   *
+   * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#customs
+   */
   $analyticsProvider.registerSetUserProperties(function (properties) {
-    // add custom dimensions and metrics
-    setDimensionsAndMetrics(properties);
+    if(properties) {
+      // add custom dimensions and metrics to each hit
+      var dimsAndMets = dimensionsAndMetrics(properties);
+      ga('set', dimsAndMets); 
+    }
   });
 
   /**
@@ -161,8 +174,8 @@ angular.module('angulartics.google.analytics', ['angulartics'])
    * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/user-timings
    */
   $analyticsProvider.registerUserTimings(function (properties) {
-    if (!properties || !properties.timingCategory || !properties.timingVar || !properties.timingValue) {
-      console.error('Properties timingCategory, timingVar, and timingValue are required to be set.');
+    if (!properties || !properties.timingCategory || !properties.timingVar || typeof properties.timingValue === 'undefined') {
+      console.log('Properties timingCategory, timingVar, and timingValue are required to be set.');
       return;
     }
 
