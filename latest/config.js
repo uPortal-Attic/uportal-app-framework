@@ -13,7 +13,7 @@ define([], function() {
         'angular'       : "bower_components/angular/angular.min",
         'angular-mocks' : "bower_components/angular-mocks/angular-mocks",
         'angulartics'   : "bower_components/angulartics/dist/angulartics.min",
-        'angulartics-google-analytics' : "bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min",
+        'angulartics-google-analytics' : "bower_components/angulartics-google-analytics/dist/angulartics-ga.min",
         'app-config'    : "js/app-config",
         'override'      : "js/override",
         'frame-config'  : "js/frame-config",
