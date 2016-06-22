@@ -15,13 +15,13 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-river-falls",
-            "crest" : "img/UWRF white-transparent.png",
+            "crest" : "img/uwrf-logo.png",
             "title" : "MyUW",
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW River Falls Logo",
             "group" : "UW System-River Falls",
-            "mascotImg" : "img/finalWave.gif"
+            "mascotImg" : "img/uwrf-mascot.gif"
           },
           {
             "name" : "uw-stevens-point",
