@@ -1,0 +1,18 @@
+<div class="link-div" ng-if='actionLinkUrl && !addToHome'>
+  <a ng-href="{{actionLinkUrl}}">
+    <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
+  </a>
+</div>
+<div class="link-div" ng-if='addToHome'>
+  <div ng-controller='AddToHomeController'>
+    <span ng-hide='inHome' ng-click='addToHome()'>
+      <i class="fa fa-fw {{actionLinkIcon}}" ng-class="{ 'fa-spin' : savingAddToHome, 'fa-plus' : !actionLinkIcon}"></i> {{actionLinkText}}
+    </span>
+    <span ng-show='successfullyAdded'>
+      <i class="fa fa-fw fa-check-square"></i> {{actionLinkText}} Saved
+    </span>
+    <span ng-show='addToHomeFailed'>
+      <i class="fa fa-fw fa-exclamation-triangle"></i> {{actionLinkText}} Failed
+    </span>
+  </div>
+</div>

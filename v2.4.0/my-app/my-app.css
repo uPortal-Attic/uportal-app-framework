@@ -1,0 +1,14 @@
+.markdown {
+  padding: 0 10px 0;
+}
+.markdown ul {
+  list-style-type: circle !important;
+}
+
+.markdown ul li {
+  margin-left : 40px;
+}
+
+.markdown .width-100 img {
+  width: 100%;
+}
