@@ -12,6 +12,7 @@ define([], function() {
     paths: {
         'angular'       : "bower_components/angular/angular.min",
         'angular-mocks' : "bower_components/angular-mocks/angular-mocks",
+        'angular-animate' : 'bower_components/angular-animate/angular-animate',
         'angulartics'   : "bower_components/angulartics/dist/angulartics.min",
         'angulartics-google-analytics' : "bower_components/angulartics-google-analytics/dist/angulartics-ga.min",
         'app-config'    : "js/app-config",
@@ -19,6 +20,7 @@ define([], function() {
         'override'      : "js/override",
         'jquery'        : "bower_components/jquery/dist/jquery.min",
         'jquery-ui'     : "bower_components/jquery-ui/jquery-ui.min",
+        'ngMaterial'    : "bower_components/angular-material/angular-material.min",
         'ngRoute'       : "bower_components/angular-route/angular-route.min",
         'ngSanitize'    : "bower_components/angular-sanitize/angular-sanitize.min",
         'ngStorage'     : "bower_components/ngstorage/ngStorage.min",
@@ -30,6 +32,7 @@ define([], function() {
 
     shim: {
         'angular'       : { deps: ['jquery'], exports: 'angular' },
+        'angular-animate'  : { deps: ['angular'], exports: 'angular-animate'   },
         'angular-mocks' : { deps: ['angular'] },
         'angulartics'   : { deps: ['angular'], exports: 'angulartics' },
         'angulartics-google-analytics' : { deps: ['angulartics'] },
@@ -37,6 +40,7 @@ define([], function() {
         'ngSanitize'    : { deps: ['angular'] },
         'ngStorage'     : { deps: ['angular'] },
         'ngAria'        : { deps: ['angular'] },
+        'ngMaterial'    : { deps: ['angular', 'ngAria', 'angular-animate','angular-mocks'], exports: 'ngMaterial'},
         'ui-bootstrap'  : { deps: ['angular'] },
         'ui-gravatar'   : { deps: ['angular'] }
     },
