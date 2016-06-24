@@ -28,3 +28,10 @@
 ### Administrative
 + [Release Management](#/md/releasing) : How to release uw-frame
 + [Versions](#/md/versions) : Different versions of this documentation and versions of uw-frame.
+
+### Social
+
++ [MyUW Developers Google Group][] : A place to collaborate about MyUW.
+
+
+[MyUW Developers Google Group]: https://groups.google.com/forum/#!forum/myuw-developers
