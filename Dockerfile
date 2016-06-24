@@ -1,4 +1,5 @@
 FROM node:5.7.1-slim
+MAINTAINER Tim Levett <tim.levett@wisc.edu>
 RUN npm install -g grunt-cli superstatic
 
 RUN apt-get update && apt-get install -y bzip2 && apt-get install -y git
