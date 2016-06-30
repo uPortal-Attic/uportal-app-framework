@@ -6,22 +6,42 @@ define(['angular'], function(angular) {
           {
             "name" : "uw-madison",
             "crest" : "img/uw-madison-52.png",
-            "title" : "MyUW",
+            "title" : "MyUWdoug",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Crest",
             "group" : "UW-Madison",
-            "mascotImg" : "img/bucky.gif"
+            "mascotImg" : "img/bucky.gif",
+            "FOOTER_LINKS":[{ "url" : "/web/static/myuw-help",
+                "target" : "_blank",
+                "title" : "Help"
+              },
+              { "url" : "https://my.wisc.edu/portal/p/feedback",
+                "target" : "_blank",
+                "title" : "Feedback"
+              },
+              { "url" : "https://my.wisc.edu/web/features",
+                "target" : "_blank",
+                "title" : "What's New"
+              }]
           },
           {
             "name" : "uw-river-falls",
             "crest" : "img/uwrf-logo.png",
-            "title" : "MyUW",
+            "title" : "MyUW-doug",
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW River Falls Logo",
             "group" : "UW System-River Falls",
-            "mascotImg" : "img/uwrf-mascot.gif"
+            "mascotImg" : "img/uwrf-mascot.gif",
+            "FOOTER_LINKS":[{ "url" : "https://www.uwrf.edu/DOTS/",
+                "target" : "_blank",
+                "title" : "UWRF Help"
+              },
+              { "url" : "https://my.uwrf.edu/portal/p/uwrf-feedback",
+                "target" : "_blank",
+                "title" : "Feedback"
+              }]
           },
           {
             "name" : "uw-stevens-point",
@@ -30,7 +50,11 @@ define(['angular'], function(angular) {
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Stevens Point Logo",
-            "group" : "UW System-Stevens Point"
+            "group" : "UW System-Stevens Point",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-milwaukee",
@@ -39,7 +63,11 @@ define(['angular'], function(angular) {
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW-Milwaukee Logo",
-            "group" : "UW System-Milwaukee"
+            "group" : "UW System-Milwaukee",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-whitewater",
@@ -48,7 +76,11 @@ define(['angular'], function(angular) {
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW-Whitewater Logo",
-            "group" : "UW System-Whitewater"
+            "group" : "UW System-Whitewater",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-stout",
@@ -57,7 +89,11 @@ define(['angular'], function(angular) {
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Crest",
-            "group" : "UW System-Stout"
+            "group" : "UW System-Stout",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-oskhosh",
@@ -66,7 +102,11 @@ define(['angular'], function(angular) {
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Crest",
-            "group" : "UW System-Oshkosh"
+            "group" : "UW System-Oshkosh",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-greenbay",
@@ -75,7 +115,11 @@ define(['angular'], function(angular) {
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Crest",
-            "group" : "UW System-Green Bay"
+            "group" : "UW System-Green Bay",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-lacrosse",
@@ -84,7 +128,11 @@ define(['angular'], function(angular) {
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Crest",
-            "group" : "UW System-La Crosse"
+            "group" : "UW System-La Crosse",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-parkside",
@@ -93,7 +141,11 @@ define(['angular'], function(angular) {
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Parkside",
-            "group" : "UW System-Parkside"
+            "group" : "UW System-Parkside",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-platteville",
@@ -102,7 +154,11 @@ define(['angular'], function(angular) {
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Platteville",
-            "group" : "UW System-Platteville"
+            "group" : "UW System-Platteville",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-superior",
@@ -111,7 +167,11 @@ define(['angular'], function(angular) {
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Superstatic",
-            "group" : "UW System-Superior"
+            "group" : "UW System-Superior",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-eau-claire",
@@ -121,6 +181,10 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Eau Claire",
             "group" : "UW System-Eau Claire",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-extension",
@@ -130,6 +194,10 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Extension",
             "group" : "UW System-Extension",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-colleges",
@@ -139,6 +207,10 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Colleges",
             "group" : "UW System-Colleges",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           },
           {
             "name" : "uw-system",
@@ -147,7 +219,11 @@ define(['angular'], function(angular) {
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW System Logo",
-            "group" : "default"
+            "group" : "default",
+            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+                "target" : "_blank",
+                "title" : "TBD"
+              }]
           }
         ])
         .constant('FRAME_URLS', {
