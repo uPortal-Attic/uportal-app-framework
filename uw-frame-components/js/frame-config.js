@@ -6,7 +6,7 @@ define(['angular'], function(angular) {
           {
             "name" : "uw-madison",
             "crest" : "img/uw-madison-52.png",
-            "title" : "MyUWdoug",
+            "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Crest",
@@ -28,7 +28,7 @@ define(['angular'], function(angular) {
           {
             "name" : "uw-river-falls",
             "crest" : "img/uwrf-logo.png",
-            "title" : "MyUW-doug",
+            "title" : "MyUW",
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW River Falls Logo",
