@@ -34,7 +34,7 @@ define(['angular'], function(angular) {
             "crestalt" : "UW River Falls Logo",
             "group" : "UW System-River Falls",
             "mascotImg" : "img/uwrf-mascot.gif",
-            "FOOTER_LINKS":[{ "url" : "https://www.uwrf.edu/DOTS/",
+            "FOOTER_LINKS":[{ "url" : "https://technology.uwrf.edu/",
                 "target" : "_blank",
                 "title" : "UWRF Help"
               },
