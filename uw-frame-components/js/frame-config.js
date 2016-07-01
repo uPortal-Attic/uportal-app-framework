@@ -12,7 +12,7 @@ define(['angular'], function(angular) {
             "crestalt" : "UW Crest",
             "group" : "UW-Madison",
             "mascotImg" : "img/bucky.gif",
-            "FOOTER_LINKS":[{ "url" : "/web/static/myuw-help",
+            "footer_links":[{ "url" : "/web/static/myuw-help",
                 "target" : "_blank",
                 "title" : "Help"
               },
@@ -34,7 +34,7 @@ define(['angular'], function(angular) {
             "crestalt" : "UW River Falls Logo",
             "group" : "UW System-River Falls",
             "mascotImg" : "img/uwrf-mascot.gif",
-            "FOOTER_LINKS":[{ "url" : "https://technology.uwrf.edu/",
+            "footer_links":[{ "url" : "https://technology.uwrf.edu/",
                 "target" : "_blank",
                 "title" : "UWRF Help"
               },
@@ -51,7 +51,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Stevens Point Logo",
             "group" : "UW System-Stevens Point",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -64,7 +64,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW-Milwaukee Logo",
             "group" : "UW System-Milwaukee",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -77,7 +77,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW-Whitewater Logo",
             "group" : "UW System-Whitewater",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -90,7 +90,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Crest",
             "group" : "UW System-Stout",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -103,7 +103,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Crest",
             "group" : "UW System-Oshkosh",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -116,7 +116,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Crest",
             "group" : "UW System-Green Bay",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -129,7 +129,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Crest",
             "group" : "UW System-La Crosse",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -142,7 +142,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Parkside",
             "group" : "UW System-Parkside",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -155,7 +155,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Platteville",
             "group" : "UW System-Platteville",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -168,7 +168,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Superstatic",
             "group" : "UW System-Superior",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -181,7 +181,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Eau Claire",
             "group" : "UW System-Eau Claire",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -194,7 +194,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Extension",
             "group" : "UW System-Extension",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -207,7 +207,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Colleges",
             "group" : "UW System-Colleges",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]
@@ -220,7 +220,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW System Logo",
             "group" : "default",
-            "FOOTER_LINKS":[{ "url" : "https:www.Google.com",
+            "footer_links":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "TBD"
               }]

@@ -53,13 +53,9 @@ define(['angular'], function(angular) {
 
         })
         .value('FOOTER_URLS', [
-          { "url" : "/web/static/myuw-help",
+          { "url" : "https://kb.wisconsin.edu/myuwsystem/",
             "target" : "_blank",
-            "title" : "Help"
-          },
-          { "url" : "https://my.wisc.edu/portal/p/feedback",
-            "target" : "_blank",
-            "title" : "Feedback"
+            "title" : "About My-UW"
           }
         ])
         .value('APP_BETA_FEATURES', [

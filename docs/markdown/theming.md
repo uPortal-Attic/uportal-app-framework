@@ -12,7 +12,7 @@ The theming system is pretty straight forward. With minimal effort one could hav
   "crestalt" : "UW Crest",
   "group" : "UW-Madison",
   "mascotImg" : "img/bucky.gif",
-  "FOOTER_LINKS":[{ "url" : "/web/static/myuw-help",
+  "footer_links":[{ "url" : "/web/static/myuw-help",
       "target" : "_blank",
       "title" : "Help"
     }
@@ -27,7 +27,7 @@ The theming system is pretty straight forward. With minimal effort one could hav
  + `crestalt` : the alt text
  + `group` : Which group should this be enabled for automatically? Not sure, ask the MyUW dev team.
  + `mascotImg` : (Optional) See documentation about the mascot for announcements [here](#/md/announcements)
- + 'FOOTER_LINKS' : An array of links which appear in the footer. Typically the campus help desk and feedback portal. 
+ + 'footer_links' : An array of links which appear in the footer. Typically the campus help desk and feedback portal.
 
 + Add in a <theme-name>.less file in the folder `/uw-frame-components/css/themes` that looks like this:
 
