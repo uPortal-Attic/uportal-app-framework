@@ -11,7 +11,13 @@ The theming system is pretty straight forward. With minimal effort one could hav
   "ariaLabelTitle" : "My U W",
   "crestalt" : "UW Crest",
   "group" : "UW-Madison",
-  "mascotImg" : "img/bucky.gif"
+  "mascotImg" : "img/bucky.gif",
+  "footerLinks":[
+    { "url" : "/web/static/myuw-help",
+      "target" : "_blank",
+      "title" : "Help"
+    }
+  ]
 }
 ```
 + JSON above explained
@@ -23,6 +29,7 @@ The theming system is pretty straight forward. With minimal effort one could hav
  + `crestalt` : the alt text
  + `group` : Which group should this be enabled for automatically? Not sure, ask the MyUW dev team.
  + `mascotImg` : (Optional) See documentation about the mascot for announcements [here](#/md/announcements)
+ + `footerLinks` : An array of links which appear in the footer. Typically the campus help desk and feedback portal.
 
 + Add in a <theme-name>.less file in the folder `/uw-frame-components/css/themes` that looks like this:
 
