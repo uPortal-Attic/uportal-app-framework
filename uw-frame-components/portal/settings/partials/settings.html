@@ -3,9 +3,9 @@
               white-background='true'>
   <ul class='row' style='margin-top : 10px;'>
     <li class='col-sm-4' ng-repeat='option in options'>
-      <div class='beta-card-style'>
+      <md-card>
         <uw-setting-option></uw-setting-option>
-      </div>
+      </md-card>
     </li>
   </ul>
   <ul class="row" style='margin-top : 10px;'>
@@ -21,12 +21,15 @@
       <div class='beta-card-style'>
         <h4>Danger Zone</h4>
         <h4>
-        <span class="btn-group">
-          <label class="btn btn-outline" ng-click="resetLocal()">Reset Local Storage</label>
-        </span>
-        <span class="btn-group">
-          <label class="btn btn-outline" ng-click="clearSession()">Clear Session Storage</label>
-        </span>
+          <md-button class='md-primary md-raised' ng-click="resetAll()">
+            Reset All
+          </md-button>
+          <md-button class='md-accent md-raised' ng-click="resetSession(); reload();">
+            Reset Session
+          </md-button>
+          <md-button class='md-warn md-raised' ng-click="resetLocal(); reload();">
+            Reset Local
+          </md-button>
         </h4>
         <small>Reset to default and clearing the session storage can be nice to clean the slate.</small>
       </div>

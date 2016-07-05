@@ -1,8 +1,8 @@
-<h4>
-    <span class="btn-group">
-        <label class="btn" ng-class="{'btn-flat' : $storage[option.id], 'btn-outline' : !$storage[option.id] }" ng-model="$storage[option.id]" btn-radio="true">On</label>
-        <label class="btn" ng-class="{'btn-outline' : $storage[option.id], 'btn-flat' : !$storage[option.id] }" ng-model="$storage[option.id]" btn-radio="false">Off</label>
-    </span>
-    {{option.title}}
-</h4>
-<small>{{option.description}}</small>
+<div style="padding: 10px; min-height: 115px;">
+  <h4>
+      <md-switch ng-model="$storage[option.id]" class='md-primary'>
+        {{option.title}}
+      </md-switch>
+  </h4>
+  <small>{{option.description}}</small>
+</div>

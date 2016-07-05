@@ -35,11 +35,17 @@ define(['angular','require'], function(angular, require) {
       $scope.routeClass = "route" + angular.lowercase($location.path().replace(new RegExp('/', 'g'), '-'));
     }
 
+    $scope.resetAll = function(){
+      $scope.resetLocal();
+      $scope.resetSession();
+      $scope.reload();
+    }
+
     $scope.resetLocal = function() {
         $localStorage.$reset(defaults);
     };
 
-    $scope.clearSession = function() {
+    $scope.resetSession = function() {
         $sessionStorage.$reset();
     };
 
@@ -79,7 +85,7 @@ define(['angular','require'], function(angular, require) {
     $scope.showSearchFocus = false;
     $scope.APP_FLAGS = APP_FLAGS;
     $scope.MISC_URLS = MISC_URLS;
-    
+
     this.toggleSearch = function() {
         $scope.showSearch = !$scope.showSearch;
         $scope.showSearchFocus = !$scope.showSearchFocus;
