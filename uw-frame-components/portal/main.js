@@ -86,25 +86,27 @@ define([
       //theme config
       for(var i = 0; i < THEMES.length; i++) {
         var cur = THEMES[i];
-        if(cur && cur.materialTheme) {
+        if(cur) {
           $mdThemingProvider.theme(cur.name);
-          //set up primary
-          if(cur.materialTheme.primary) {
-            $mdThemingProvider.definePalette(cur.name + "-primary", cur.materialTheme.primary);
-            $mdThemingProvider.theme(cur.name)
-              .primaryPalette(cur.name + "-primary");
-          }
-          //set up accent
-          if(cur.materialTheme.accent) {
-            $mdThemingProvider.definePalette(cur.name + "-accent", cur.materialTheme.accent);
-            $mdThemingProvider.theme(cur.name)
-              .accentPalette(cur.name + "-accent");
-          }
-          //set warn
-          if(cur.materialTheme.warn) {
-            $mdThemingProvider.definePalette(cur.name + "-warn", cur.materialTheme.warn);
-            $mdThemingProvider.theme(cur.name)
-              .warnPalette(cur.name + "-warn");
+          if(cur.materialTheme) {
+            //set up primary
+            if(cur.materialTheme.primary) {
+              $mdThemingProvider.definePalette(cur.name + "-primary", cur.materialTheme.primary);
+              $mdThemingProvider.theme(cur.name)
+                .primaryPalette(cur.name + "-primary");
+            }
+            //set up accent
+            if(cur.materialTheme.accent) {
+              $mdThemingProvider.definePalette(cur.name + "-accent", cur.materialTheme.accent);
+              $mdThemingProvider.theme(cur.name)
+                .accentPalette(cur.name + "-accent");
+            }
+            //set warn
+            if(cur.materialTheme.warn) {
+              $mdThemingProvider.definePalette(cur.name + "-warn", cur.materialTheme.warn);
+              $mdThemingProvider.theme(cur.name)
+                .warnPalette(cur.name + "-warn");
+            }
           }
         }
         cur = null;
