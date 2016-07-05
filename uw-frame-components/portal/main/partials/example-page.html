@@ -23,56 +23,70 @@
               app-option-template="MainOptions.html"
               white-background="true">
     <p class='center'>This is just the default example page. Below are easy access links so you don't have to type the specific page you are working on.</p>
+    <style>
+      .cards {
+        margin : 10px; padding : 0;
+      }
+      md-card {
+        min-height : 150px;
+      }
+      a:hover {
+        text-decoration: none !important;
+      }
+    </style>
 
-    <ul class='row' style='margin : 10px; padding : 0;'>
-      <li class='col-sm-4 center'>
-        <div class='beta-card-style'>
-          <a href='settings'>Beta Settings
-          <br><br>
-          <i class='fa fa-gears fa-3x'></i>
-          </a>
-        </div>
+    <ul class='row' class='cards'>
+      <li class='col-sm-3 center'>
+        <a href='settings'>
+          <md-card>
+            Beta Settings
+            <br><br>
+            <i class='fa fa-gears fa-3x'></i>
+          </md-card>
+        </a>
       </li>
-      <li class='col-sm-4 center'>
-        <div class='beta-card-style'>
-          <a href='user-settings'>User Settings
-          <br><br>
-          <i class='fa fa-gears fa-3x'></i>
-          </a>
-        </div>
+      <li class='col-sm-3 center'>
+        <a href='user-settings'>
+          <md-card>
+            User Settings
+            <br><br>
+            <i class='fa fa-gears fa-3x'></i>
+
+          </md-card>
+        </a>
       </li>
-      <li class='col-sm-4 center'>
-        <div class='beta-card-style'>
+      <li class='col-sm-3 center'>
+        <md-card>
           <a href='notifications'>Notifications
           <br><br>
           <i class='fa fa-bell fa-3x'></i>
           </a>
-        </div>
+        </md-card>
       </li>
-      <li class='col-sm-4 center'>
-        <div class='beta-card-style'>
+      <li class='col-sm-3 center'>
+        <md-card>
           <a href='server-error'>Server error
           <br><br>
           <i class='fa fa-exclamation-triangle fa-3x'></i>
           </a>
-        </div>
+        </md-card>
       </li>
-      <li class='col-sm-4 center'>
-        <div class='beta-card-style'>
+      <li class='col-sm-3 center'>
+        <md-card>
           <a href='access-denied'>Access denied
           <br><br>
           <i class='fa fa-exclamation-triangle fa-3x'></i>
           </a>
-        </div>
+        </md-card>
       </li>
 
-      <li class='col-sm-4 center'>
-        <div class='beta-card-style'>
+      <li class='col-sm-3 center'>
+        <md-card>
           <a href='features'>Features
           <br><br>
           <i class='fa fa-newspaper-o fa-3x'></i>
           </a>
-        </div>
+        </md-card>
       </li>
     </ul>
 </frame-page>
