@@ -5,6 +5,7 @@
         <span>© <p style="display:inline">{{date | date:'yyyy'}}</p>, Board of Regents of the <a href="http://www.wisconsin.edu/" target="_blank">University of Wisconsin System</a></span>
       </div>
       <div class='underline'>
+        <span ng-repeat="link in portal.theme.footerLinks">&nbsp;<a ng-href='{{link.url}}' target='{{link.target}}' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a></span>
         <span ng-repeat="link in FOOTER_URLS">&nbsp;<a ng-href='{{link.url}}' target='{{link.target}}' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a></span>
       </div>
       <div>
