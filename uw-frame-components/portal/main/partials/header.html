@@ -25,10 +25,10 @@
                     </div>
                  </a>
                </div>
-                <div class="search-mobile-icon hidden-sm hidden-md hidden-lg">
+                <div class="search-mobile-icon hidden-sm hidden-md hidden-lg" ng-show='APP_FLAGS.showSearch'>
                   <i class="fa fa-search" ng-click="headerCtrl.toggleSearch()"></i>
                 </div>
-                <div class="search-mobile" ng-show="showSearch">
+                <div class="search-mobile" ng-show="showSearch && APP_FLAGS.showSearch">
                   <search class="hidden-sm hidden-md hidden-lg"></search>
                 </div>
            </div>
