@@ -50,7 +50,7 @@ define(['angular'], function(angular) {
 
     var successFn = function(data){
       //success state
-      $scope.count = data.length;
+      $scope.count = data ? data.length : 0;
       $scope.isEmpty = ($scope.count === 0);
       $scope.status = "You have "+ ($scope.isEmpty ? "no " : "") + "notifications";
       $scope.notifications = data;
