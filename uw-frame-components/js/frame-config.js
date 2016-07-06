@@ -95,14 +95,20 @@ define(['angular'], function(angular) {
             "crestalt" : "UW River Falls Logo",
             "group" : "UW System-River Falls",
             "mascotImg" : "img/uwrf-mascot.gif",
-            "footerLinks":[{ "url" : "https://technology.uwrf.edu/",
-                "target" : "_blank",
+            "footerLinks": [
+             { "url" : "https://technology.uwrf.edu/",
+               "target" : "_blank",
                 "title" : "UWRF Help"
-              },
-              { "url" : "https://my.uwrf.edu/portal/p/uwrf-feedback",
-                "target" : "_blank",
-                "title" : "Feedback"
-              }]
+             },
+             { "url" : "https://my.uwrf.edu/portal/p/uwrf-feedback",
+               "target" : "_blank",
+               "title" : "Feedback"
+             }],
+            "materialTheme" : {
+              "primary" : "red",
+              "accent" : "blue",
+              "warn" : "deep-orange"
+            }
           },
           {
             "name" : "uw-stevens-point",
@@ -115,7 +121,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+              }],
+            "materialTheme" : {
+             "primary" : "deep-purple",
+             "accent" : "amber",
+             "warn" : "red"
+            }
           },
           {
             "name" : "uw-milwaukee",
@@ -128,7 +139,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+              }],
+            "materialTheme" : {
+             "primary" : "grey",
+             "accent" : "amber",
+             "warn" : "red"
+            }
           },
           {
             "name" : "uw-whitewater",
@@ -141,7 +157,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+              }],
+            "materialTheme" : {
+             "primary" : "purple",
+             "accent" : "deep-purple",
+             "warn" : "red"
+            }
           },
           {
             "name" : "uw-stout",
@@ -154,7 +175,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+              }],
+            "materialTheme" : {
+             "primary" : "blue",
+             "accent" : "light-blue",
+             "warn" : "red"
+            }
           },
           {
             "name" : "uw-oskhosh",
@@ -167,7 +193,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+              }],
+            "materialTheme" : {
+             "primary" : "grey",
+             "accent" : "amber",
+             "warn" : "red"
+            }
           },
           {
             "name" : "uw-greenbay",
@@ -180,7 +211,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+            }],
+            "materialTheme" : {
+             "primary" : "green",
+             "accent" : "grey",
+             "warn" : "red"
+            }
           },
           {
             "name" : "uw-lacrosse",
@@ -193,7 +229,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+            }],
+            "materialTheme" : {
+             "primary" : "red",
+             "accent" : "grey",
+             "warn" : "blue"
+            }
           },
           {
             "name" : "uw-parkside",
@@ -206,7 +247,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+              }],
+              "materialTheme" : {
+               "primary" : "green",
+               "accent" : "grey",
+               "warn" : "red"
+              }
           },
           {
             "name" : "uw-platteville",
@@ -219,7 +265,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+            }],
+            "materialTheme" : {
+             "primary" : "blue",
+             "accent" : "deep-orange",
+             "warn" : "red"
+            }
           },
           {
             "name" : "uw-superior",
@@ -232,7 +283,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+            }],
+            "materialTheme" : {
+             "primary" : "grey",
+             "accent" : "amber",
+             "warn" : "red"
+            }
           },
           {
             "name" : "uw-eau-claire",
@@ -245,7 +301,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+              }],
+            "materialTheme" : {
+             "primary" : "blue",
+             "accent" : "amber",
+             "warn" : "red"
+            }
           },
           {
             "name" : "uw-extension",
@@ -258,7 +319,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+              }],
+            "materialTheme" : {
+             "primary" : "blue",
+             "accent" : "grey",
+             "warn" : "red"
+            }
           },
           {
             "name" : "uw-colleges",
@@ -271,7 +337,12 @@ define(['angular'], function(angular) {
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
-              }]
+              }],
+            "materialTheme" : {
+             "primary" : "red",
+             "accent" : "grey",
+             "warn" : "blue"
+            }
           },
           {
             "name" : "uw-system",
@@ -282,9 +353,14 @@ define(['angular'], function(angular) {
             "crestalt" : "UW System Logo",
             "group" : "default",
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
-                "target" : "_blank",
-                "title" : "Help"
-              }]
+                            "target" : "_blank",
+                            "title" : "Help"
+                          }],
+            "materialTheme" : {
+              "primary" : "green",
+              "accent" : "blue",
+              "warn" : "deep-orange"
+            }
           }
         ])
         .constant('FRAME_URLS', {
