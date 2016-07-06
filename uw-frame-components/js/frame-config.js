@@ -282,9 +282,14 @@ define(['angular'], function(angular) {
             "crestalt" : "UW System Logo",
             "group" : "default",
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
-                "target" : "_blank",
-                "title" : "Help"
-              }]
+                            "target" : "_blank",
+                            "title" : "Help"
+                          }],
+            "materialTheme" : {
+              "primary" : "green",
+              "accent" : "blue",
+              "warn" : "deep-orange"
+            }
           }
         ])
         .constant('FRAME_URLS', {

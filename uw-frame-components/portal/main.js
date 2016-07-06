@@ -91,21 +91,36 @@ define([
             $mdThemingProvider.theme(cur.name);
             //set up primary
             if(cur.materialTheme.primary) {
-              $mdThemingProvider.definePalette(cur.name + "-primary", cur.materialTheme.primary);
-              $mdThemingProvider.theme(cur.name)
-                .primaryPalette(cur.name + "-primary");
+              if(typeof cur.materialTheme.primary === 'string') {
+                $mdThemingProvider.theme(cur.name)
+                  .primaryPalette(cur.materialTheme.primary);
+              } else {
+                $mdThemingProvider.definePalette(cur.name + "-primary", cur.materialTheme.primary);
+                $mdThemingProvider.theme(cur.name)
+                  .primaryPalette(cur.name + "-primary");
+              }
             }
             //set up accent
             if(cur.materialTheme.accent) {
-              $mdThemingProvider.definePalette(cur.name + "-accent", cur.materialTheme.accent);
-              $mdThemingProvider.theme(cur.name)
-                .accentPalette(cur.name + "-accent");
+              if(typeof cur.materialTheme.accent === 'string') {
+                $mdThemingProvider.theme(cur.name)
+                  .accentPalette(cur.materialTheme.accent);
+              } else {
+                $mdThemingProvider.definePalette(cur.name + "-accent", cur.materialTheme.accent);
+                $mdThemingProvider.theme(cur.name)
+                  .accentPalette(cur.name + "-accent");
+              }
             }
             //set warn
             if(cur.materialTheme.warn) {
-              $mdThemingProvider.definePalette(cur.name + "-warn", cur.materialTheme.warn);
-              $mdThemingProvider.theme(cur.name)
-                .warnPalette(cur.name + "-warn");
+              if(typeof cur.materialTheme.warn === 'string') {
+                $mdThemingProvider.theme(cur.name)
+                  .warnPalette(cur.materialTheme.warn);
+              } else {
+                $mdThemingProvider.definePalette(cur.name + "-warn", cur.materialTheme.warn);
+                $mdThemingProvider.theme(cur.name)
+                  .warnPalette(cur.name + "-warn");
+              }
             }
           }
         }
