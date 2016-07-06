@@ -87,8 +87,8 @@ define([
       for(var i = 0; i < THEMES.length; i++) {
         var cur = THEMES[i];
         if(cur) {
-          $mdThemingProvider.theme(cur.name);
           if(cur.materialTheme) {
+            $mdThemingProvider.theme(cur.name);
             //set up primary
             if(cur.materialTheme.primary) {
               $mdThemingProvider.definePalette(cur.name + "-primary", cur.materialTheme.primary);
