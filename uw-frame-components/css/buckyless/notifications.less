@@ -100,7 +100,7 @@
   margin: 8px 8px 3px auto;
   font-weight: 200;
   text-align: center;
-  color: white;
+  color: @white;
 
   .number-of-nots {
     color: @color1;
@@ -145,7 +145,7 @@
   	height: 0;
   	border-left: 7px solid transparent;
   	border-right: 7px solid transparent;
-  	border-top: 7px solid lighten(@color1, 20%);
+  	border-top: 7px solid lighten(@color1, 10%);
     z-index:2000;
     position: relative;
     top:-11px;
@@ -165,7 +165,7 @@
 //empty bell
 
 .notification-badge-empty {
-  color : #DB7566;
+  color : lighten(@color1, 10%);
 }
 
 //end notification bell
@@ -177,7 +177,7 @@
   position: fixed;
   top: 0px;
   margin:0px -15px;
-  background-color: lighten(@color1, 20%);
+  background-color: lighten(@color1, 10%);
   z-index:1050;
   display: flex;
   justify-content: center;
@@ -193,7 +193,7 @@
   top: 0px;
   margin:0px -15px;
   padding:15px 20px 12px;
-  background-color: lighten(@color1, 20%);
+  background-color: lighten(@color1, 10%);
   .notification-message {
     font-size:13px;
   }
