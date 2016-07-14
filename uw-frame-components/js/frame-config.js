@@ -262,6 +262,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Platteville",
             "group" : "UW System-Platteville",
+            "mascotImg" : "img/uwp-pete.png",
             "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
                 "target" : "_blank",
                 "title" : "Help"
