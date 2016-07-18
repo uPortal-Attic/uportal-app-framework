@@ -20,7 +20,7 @@ define([], function() {
         'override'      : "js/override",
         'jquery'        : "bower_components/jquery/dist/jquery.min",
         'jquery-ui'     : "bower_components/jquery-ui/jquery-ui.min",
-        'ngMaterial'    : "bower_components/angular-material/angular-material.min",
+        'ngMaterial'    : "bower_components/angular-material/angular-material",
         'ngRoute'       : "bower_components/angular-route/angular-route.min",
         'ngSanitize'    : "bower_components/angular-sanitize/angular-sanitize.min",
         'ngStorage'     : "bower_components/ngstorage/ngStorage.min",
