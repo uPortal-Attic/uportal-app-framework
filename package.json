@@ -17,7 +17,7 @@
     "docs": "cd docs/target && superstatic",
     "jetty": "cd uw-frame-java && mvn jetty:run",
     "prestatic": "npm run build-static",
-    "static": "cd uw-frame-static/target && superstatic",
+    "static": "cd uw-frame-static/target && superstatic --host=0.0.0.0",
     "docker": "docker run -d --name frame -p 8009:8009 docker.doit.wisc.edu/myuw/uw-frame-superstatic:latest",
     "build-docker": "docker build -t docker.doit.wisc.edu/myuw/uw-frame-superstatic .",
     "stop-docker": "docker stop frame; docker rm frame;",
