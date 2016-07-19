@@ -10,7 +10,7 @@
       <div class='user-card-style'>
         <h4>Reset Zone</h4>
         <div ng-if='FEATURES.enabled'>
-          <button class="btn btn-flat" ng-click="resetAnnouncements()">Reset last seen announcement <i class='fa fa-spin fa-circle-o' ng-if='loadingResetAnnouncements'></i></button>
+          <button class="btn btn-flat" ng-click="resetAnnouncements()">Reset seen announcements <i class='fa fa-spin fa-circle-o' ng-if='loadingResetAnnouncements'></i></button>
         </div>
         <div ng-if='NOTIFICATION.enabled'>
           <button class="btn btn-flat" ng-click="resetKey(KV_KEYS.DISMISSED_NOTIFICATION_IDS,'DISMISSED_NOTIFICATION_IDS')">Reset dismissed notifications <i class='fa fa-spin fa-circle-o' ng-if='DISMISSED_NOTIFICATION_IDS'></i></button>
