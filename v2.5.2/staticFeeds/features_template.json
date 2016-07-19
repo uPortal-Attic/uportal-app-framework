@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "",
+    "description": "",
+    "img": "img/myuw-welcome.png",
+    "learnMoreURL": "",
+    "groups" : ["UW-Madison"],
+    "goLiveYear": 2015,
+    "goLiveMonth": 6,
+    "goLiveDay": 11,
+    "isPopup" : false,
+    "isBuckyAnnouncement" : false,
+    "popup": {
+      "enabled": false,
+      "startYear": 2015,
+      "startMonth": 7,
+      "startDay": 11,
+      "endYear": 2015,
+      "endMonth": 7, (0 based index)
+      "endDay": 25,
+      "buttonText": "Continue to MyUW"
+    },
+    "buckyAnnouncement" : {
+      "shortTitle" : "",
+      "shoreDesc" : "",
+      "endDate" : "" (mills)
+    }
+  }
+]
