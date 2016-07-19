@@ -370,8 +370,6 @@ define(['angular'], function(angular) {
         .constant('KV_KEYS', {
           "VIEWED_ANNOUNCEMENT_IDS" : "viewedannouncementids",
           "VIEWED_POPUP_IDS" : "viewedpopupids",
-          "LAST_VIEWED_ANNOUNCEMENT_ID" : "lastviewedannouncementid",
-          "LAST_VIEWED_POPUP_ID" : "lastviewedpopupid",
           'DISMISSED_NOTIFICATION_IDS' : 'notification:dismiss'
         })
         .constant('FRAME_BETA_FEATURES', [

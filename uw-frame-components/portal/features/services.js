@@ -24,11 +24,6 @@ define(['angular'], function(angular) {
                                                  FEATURES) {
     var featuresPromise, filteredFeaturesPromise;
 
-    var TYPES = {
-      "ANNOUNCEMENTS" : KV_KEYS.LAST_VIEWED_ANNOUNCEMENT_ID,
-      "POPUP" : KV_KEYS.LAST_VIEWED_POPUP_ID
-    };
-
     var getFeatures = function() {
       if(!featuresPromise) {
         featuresPromise = $http.get(FEATURES.serviceURL, { cache: true})
@@ -60,25 +55,6 @@ define(['angular'], function(angular) {
         return featuresPromise;
       }
     };//end get features
-
-    var saveLastSeenFeature = function(type, id) {
-      if(keyValueService.isKVStoreActivated()) {
-        var storage = {};
-        storage.id = id;
-        keyValueService.setValue(type, storage)
-          .then(function(result){
-            console.log("Saved feature id to " + result + " successfully.");
-          });
-      }
-    };
-
-    var getLastSeenFeature = function(type){
-      return keyValueService.getValue(type);
-    }
-
-    var dbStoreLastSeenFeature = function() {
-      return keyValueService.isKVStoreActivated();
-    }
     
     /*
      * If keyValueService is Active and there exists legacy announcement storage
@@ -314,10 +290,6 @@ define(['angular'], function(angular) {
 
     return {
       getFeatures : getFeatures,
-      saveLastSeenFeature : saveLastSeenFeature,
-      getLastSeenFeature : getLastSeenFeature,
-      dbStoreLastSeenFeature : dbStoreLastSeenFeature,
-      TYPES : TYPES,
       getUnseenAnnouncements: getUnseenAnnouncements,
       markAnnouncementSeen: markAnnouncementSeen,
       markPopupSeen:markPopupSeen,
