@@ -82,6 +82,7 @@ define([
 
       $analyticsProvider.firstPageview(true);
       $mdThemingProvider.alwaysWatchTheme(true);
+      $mdThemingProvider.generateThemesOnDemand(true);
 
       //theme config
       for(var i = 0; i < THEMES.length; i++) {
@@ -159,9 +160,20 @@ define([
         $sessionStorage.portal.theme = $rootScope.portal.theme;
       };
 
+      var generateTheme = function(name) {
+        if(!name) {
+          name = $rootScope.portal.theme.name;
+        }
+        var mdTheme = $mdTheming.THEMES[name];
+        if(mdTheme) {
+          $mdTheming.generateTheme(name,null);
+        }
+      };
+
       var themeLoading = function(){
         if($sessionStorage.portal && $sessionStorage.portal.theme) {
           $rootScope.portal.theme = $sessionStorage.portal.theme;
+          generateTheme();
           if(APP_FLAGS.debug) {
             console.log('Using cached theme');
           }
@@ -176,13 +188,15 @@ define([
             themeSet = themes.length > 0;
             if(themeSet) {
               $rootScope.portal.theme = themes[0];
+              generateTheme();
             } else {
               if(APP_FLAGS.debug) {
                 console.error('something is wrong with setup, no default theme. Setting to THEMES[0].');
               }
               $rootScope.portal.theme = THEMES[0];
+              generateTheme();
             }
-          }
+          };
           //themeIndex is group which means we need to run groups service to get which theme they use
           if(SERVICE_LOC.groupURL) {
             //normally this $http would be in a service, but due to loading we moved it to the run block
@@ -196,6 +210,7 @@ define([
                   var filterTest = filterFilter(groups, { name : groupToTest });
                   if(filterTest && filterTest.length > 0) {
                     $rootScope.portal.theme = theme;
+                    generateTheme();
                     themeSet = true;
                     break;
                   }
@@ -223,9 +238,10 @@ define([
         } else {
           //themeindex is a number, go with that
           $rootScope.portal.theme = THEMES[themeIndex]; //theme default
+          generateTheme();
           loadingCompleteSequence();
         }
-      }
+      };
 
       var lastLoginValid = function() {
         var timeLapseBetweenLogins = APP_FLAGS.loginDurationMills || 14400000;
@@ -236,7 +252,7 @@ define([
           }
         }
         return false;
-      }
+      };
 
       var searchRouteParameterInit = function(){
         $rootScope.$on("$routeChangeStart", function (event, next, current) {
