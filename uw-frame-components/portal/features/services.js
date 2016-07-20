@@ -59,7 +59,7 @@ define(['angular'], function(angular) {
     /*
      * If keyValueService is Active and there exists legacy announcement storage
      * this will convert that to the new store all seen announcement ids rather
-     * than just the latest.  Will then delete the legacy announcement
+     * than just the latest.  Will then delete the legacy announcement storage
      */
     var updateLegacySeenAnnouncements = function(){
       return $q(function(resolve, reject){
