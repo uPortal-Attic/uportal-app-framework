@@ -9,6 +9,8 @@ define(['angular'], function(angular) {
                                         'miscService',
                                         'keyValueService',
                                         'PortalGroupService',
+                                        '$sessionStorage',
+                                        'filterFilter',
                                         'KV_KEYS',
                                         'FEATURES',
                                         function($http,
@@ -16,14 +18,11 @@ define(['angular'], function(angular) {
                                                  miscService,
                                                  keyValueService,
                                                  PortalGroupService,
+                                                 $sessionStorage,
+                                                 filterFilter,
                                                  KV_KEYS,
                                                  FEATURES) {
     var featuresPromise, filteredFeaturesPromise;
-
-    var TYPES = {
-      "ANNOUNCEMENTS" : KV_KEYS.LAST_VIEWED_ANNOUNCEMENT_ID,
-      "POPUP" : KV_KEYS.LAST_VIEWED_POPUP_ID
-    };
 
     var getFeatures = function() {
       if(!featuresPromise) {
@@ -56,32 +55,245 @@ define(['angular'], function(angular) {
         return featuresPromise;
       }
     };//end get features
-
-    var saveLastSeenFeature = function(type, id) {
-      if(keyValueService.isKVStoreActivated()) {
-        var storage = {};
-        storage.id = id;
-        keyValueService.setValue(type, storage)
-          .then(function(result){
-            console.log("Saved feature id to " + result + " successfully.");
+    
+    /*
+     * If keyValueService is Active and there exists legacy announcement storage
+     * this will convert that to the new store all seen announcement ids rather
+     * than just the latest.  Will then delete the legacy announcement storage
+     */
+    var updateLegacySeenAnnouncements = function(){
+      return $q(function(resolve, reject){
+        if(keyValueService.isKVStoreActivated()){
+          keyValueService.getValue("lastviewedannouncementid").then(function(data){
+            if(data && data.id){
+              //create an array with the seen ids
+              var seenAnnouncements = [];
+              for(var i=0; i<=data.id; i++){
+                seenAnnouncements.push(i);
+              }
+              $sessionStorage.seenAnnouncmentIds = seenAnnouncements;
+              keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncmentIds).then(function(data){
+                keyValueService.deleteValue("lastviewedannouncementid").then(function(){
+                  return resolve(null);
+                }, function(response){
+                  return reject(response);
+                });
+              },function(response){
+                return reject(response);
+              }); 
+            }else{ //no legacy seenAnnounements
+              return resolve(null);
+            }
+          }, function(response){ //getLegacyLastViewAnnouncement promise failure
+            return resolve(response);
           });
+        }else{ //kvStore is not activated
+          return resolve(null);
+        }
+      });
+    }
+    
+    /*
+     * If keyValueService is Active and there exists legacy popup storage
+     * this will convert that to the new store all seen popup ids rather
+     * than just the latest.  Will then delete the legacy popup storage
+     */
+    var updateLegacyPopups = function(){
+      return $q(function(resolve, reject){
+        if(keyValueService.isKVStoreActivated()){
+          keyValueService.getValue("lastviewedpopupid").then(function(data){
+            if(data && data.id){
+              //create an array with the seen ids
+              var seenPopups = [];
+              for(var i=0; i<=data.id; i++){
+                seenPopups.push(i);
+              }
+              $sessionStorage.seenPopupIds = seenPopups;
+              keyValueService.setValue(KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds).then(function(data){
+                keyValueService.deleteValue("lastviewedpopupid").then(function(){
+                  return resolve(null);
+                }, function(response){
+                  return reject(response);
+                });
+              },function(response){
+                return reject(response);
+              }); 
+            }else{ //no legacy popups
+              return resolve(null);
+            }
+          }, function(response){ //getLegacyPopups promise failure
+            return resolve(response);
+          });
+        }else{ //kvStore is not activated
+          return resolve(null);
+        }
+      });
+    }
+
+    var getSeenAnnouncments = function(){
+      return $q(function(resolve, reject){
+        if(!$sessionStorage.seenAnnouncmentIds){
+          updateLegacySeenAnnouncements().then(function(){
+            keyValueService.getValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS).then(function(data){
+              if(!Array.isArray(data)){
+                $sessionStorage.seenAnnouncmentIds = [];
+              }else{
+                $sessionStorage.seenAnnouncmentIds = data;
+              }
+              return resolve($sessionStorage.seenAnnouncmentIds);
+            }, function(response){
+              return reject(response);
+            });
+          }, function(response){
+            return reject(response);
+          });
+        }else{
+          return resolve($sessionStorage.seenAnnouncmentIds);
+        };
+      });
+    }
+
+    var getSeenPopups = function(){
+      return $q(function(resolve, reject){
+        if(!$sessionStorage.seenPopupIds){
+          updateLegacyPopups().then(function(){
+            keyValueService.getValue(KV_KEYS.VIEWED_POPUP_IDS).then(function(data){
+              if(!Array.isArray(data)){
+                $sessionStorage.seenPopupIds = [];
+              }else{
+                $sessionStorage.seenPopupIds = data;
+              }
+              return resolve($sessionStorage.seenPopupIds);
+            }, function(response){
+              return reject(response);
+            });
+          }, function(response){
+            return reject(response);
+          });
+        }else{
+          return resolve($sessionStorage.seenPopupIds);
+        };
+      });
+    }
+    
+    var markAnnouncementSeen = function(announcementID){
+      return $q(function(resolve, reject){
+        //Store in session storage
+        if(!$sessionStorage.seenAnnouncmentIds){
+          $sessionStorage.seenAnnouncmentIds = [announcementID];
+        }else{
+          $sessionStorage.seenAnnouncmentIds.push(announcementID);
+        }
+        //Store in keyvalueStorage if able
+        if(keyValueService.isKVStoreActivated()){
+          keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncmentIds).then(function(data){
+            return resolve($sessionStorage.seenAnnouncmentIds);
+          },function(response){
+            return reject(response);
+          }); 
+        }else{
+          return resolve($sessionStorage.seenAnnouncmentIds);
+        }
+      });
+    }
+    
+    var markPopupSeen = function(popupID){
+      return $q(function(resolve, reject){
+        //Store in session storage
+        if(!$sessionStorage.seenPopupIds){
+          $sessionStorage.seenPopupIds = [popupID];
+        }else{
+          $sessionStorage.seenPopupIds.push(popupID);
+        }
+        //Store in keyvalueStorage if able
+        if(keyValueService.isKVStoreActivated()){
+          keyValueService.setValue(KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds).then(function(data){
+            return resolve($sessionStorage.seenPopupIds);
+          },function(response){
+            return reject(response);
+          }); 
+        }else{
+          return resolve($sessionStorage.seenPopupIds);
+        }
+      });
+    }
+
+    var getUnseenAnnouncements = function(){
+      var successFn, errorFn;
+      successFn = function(data){
+        //features in data[0]  //seenAnnouncments in data[1]
+        var announcements = filterFilter(data[0], {isBuckyAnnouncement : true});
+        if(announcements && announcements.length != 0) {
+         //filter down to ones they haven't seen
+          var hasNotSeen = function(feature) {
+            if(data[1].indexOf(feature.id) !== -1) {
+              return false;
+            } else {
+              //check dates
+              var today = Date.parse(new Date());
+              var startDate = Date.parse(new Date(feature.goLiveYear, feature.goLiveMonth, feature.goLiveDay));
+              var expirationDate = feature.buckyAnnouncement.endDate;
+              if(startDate <= today && today <= expirationDate) {
+                return true;
+              } else {//hasn't started yet
+                return false;
+              }
+            }
+          }
+          return announcements.filter(hasNotSeen);
+        }
+      };
+      errorFn = function(reason){
+        //Currently logging errors to console.
+        console.log("error retreiving unseenAnnouncements: " +  reason.status);
+        return reason;
+      };
+   
+      return $q.all([getFeatures(), getSeenAnnouncments()]).then(successFn, errorFn);
+    }
+
+    
+    var getUnseenPopups = function(){
+      var successFn, errorFn;
+      successFn = function(data){
+        var popupFeatures = filterFilter(data[0], {isPopup : true});
+        if(popupFeatures.length != 0){
+          var today = Date.parse(new Date());
+          var filterExpiredPopups = function(feature){
+            var startDate = Date.parse(new Date(feature.popup.startYear, feature.popup.startMonth, feature.popup.startDay));
+            var endDate = Date.parse(new Date(feature.popup.endYear, feature.popup.endMonth, feature.popup.endDay));
+            return (today > startDate && today < endDate);
+          }
+          var filterUnEnabledPopups = function(feature){
+              return feature.popup.enabled;
+          }
+          var filterSeenPopups = function(feature){
+            if(data[1].indexOf(feature.id) !== -1){
+              return false;
+            }
+            return true;
+          }
+          var filteredPopupFeatures = popupFeatures.filter(filterSeenPopups).filter(filterExpiredPopups).filter(filterUnEnabledPopups);
+          return filteredPopupFeatures;
+        }
       }
-    };
 
-    var getLastSeenFeature = function(type){
-      return keyValueService.getValue(type);
+      errorFn = function(reason){
+        //Currently logging errors to console.
+        console.log("error retreiving unseenPopups: " +  reason.status);
+        return reason;
+      };
+      
+      return $q.all([getFeatures(), getSeenPopups()]).then(successFn, errorFn);
     }
 
-    var dbStoreLastSeenFeature = function() {
-      return keyValueService.isKVStoreActivated();
-    }
 
     return {
       getFeatures : getFeatures,
-      saveLastSeenFeature : saveLastSeenFeature,
-      getLastSeenFeature : getLastSeenFeature,
-      dbStoreLastSeenFeature : dbStoreLastSeenFeature,
-      TYPES : TYPES
+      getUnseenAnnouncements: getUnseenAnnouncements,
+      markAnnouncementSeen: markAnnouncementSeen,
+      markPopupSeen:markPopupSeen,
+      getUnseenPopups: getUnseenPopups
     };
 
   }]);

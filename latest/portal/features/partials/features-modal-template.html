@@ -8,7 +8,7 @@
     </div>
     <p class="visible-xs learn-more" ng-if='latestFeature.learnMoreURL'>Learn more at <a ng-href="{{latestFeature.learnMoreURL}}" target='_blank'>{{ latestFeature.learnMoreURL}}.</a></p>
     <div>
-      <button class="btn btn-lg btn-primary" ng-click="$dismiss()">{{ latestFeature.popup.buttonText }}</button>
+      <button class="btn btn-lg btn-primary" ng-click="$close()">{{ latestFeature.popup.buttonText }}</button>
     </div>
     <p class="hidden-xs" ng-if='latestFeature.learnMoreURL'>Or learn more at <a ng-href="{{latestFeature.learnMoreURL}}" target='_blank'>{{ latestFeature.learnMoreURL }}.</a></p>
   </div>

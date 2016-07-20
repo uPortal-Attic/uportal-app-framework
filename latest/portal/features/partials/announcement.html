@@ -8,10 +8,8 @@
           <p>
             {{announcement.buckyAnnouncement.shortDesc}}
           </p>
-        </li>
-        <li>
-          <a href='features' ng-click='markAnnouncementsSeen(true)'>Tell me more</a>
-          <a href='javascript:;' ng-click='markAnnouncementsSeen(false)' style='float: right; padding-top: 2px;'>Not interested</span>
+          <a href='features' ng-click='markAnnouncementSeen(announcement.id, true)'>Tell me more</a>
+          <a href='javascript:;' ng-click='markAnnouncementSeen(announcement.id, false)' style='float: right; padding-top: 2px;'>Not interested</span>
         </li>
       </ul>
     </div>
@@ -21,5 +19,5 @@
 </div>
 
 <div ng-if=" 'BUCKY_MOBILE' === mode && announcements && announcements.length > 0" class='mobile'>
-  <a href='features' ng-click='markAnnouncementsSeen(true)'><i class='fa fa-star fa-fw'></i> What's New ({{announcements.length}})</a>
+  <a href='features' ng-click='markAllAnnouncementsSeen(true)'><i class='fa fa-star fa-fw'></i> What's New ({{announcements.length}})</a>
 </div>

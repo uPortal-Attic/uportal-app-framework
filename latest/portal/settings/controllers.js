@@ -15,11 +15,12 @@ define(['angular'], function(angular) {
                                                   '$q',
                                                   '$window',
                                                   '$localStorage',
+                                                  '$sessionStorage',
                                                   'KV_KEYS',
                                                   'NOTIFICATION',
                                                   'FEATURES',
                                                   'keyValueService',
-    function($scope, $q, $window, $localStorage, KV_KEYS, NOTIFICATION, FEATURES, keyValueService)
+    function($scope, $q, $window, $localStorage, $sessionStorage, KV_KEYS, NOTIFICATION, FEATURES, keyValueService)
     {
       var init = function(){
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
@@ -29,13 +30,13 @@ define(['angular'], function(angular) {
       };
 
       $scope.resetAnnouncements = function() {
+        delete $sessionStorage.seenAnnouncmentIds;
+        delete $sessionStorage.seenPopupIds;
         if(keyValueService.isKVStoreActivated()) {
           $scope.loadingResetAnnouncements = true;
-          $q.all([keyValueService.deleteValue(KV_KEYS.LAST_VIEWED_ANNOUNCEMENT_ID),
-                  keyValueService.deleteValue(KV_KEYS.LAST_VIEWED_POPUP_ID)])
+          $q.all([keyValueService.deleteValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS),
+                  keyValueService.deleteValue(KV_KEYS.VIEWED_POPUP_IDS)])
             .then(function(){
-              delete $localStorage.lastSeenAnnouncementId ;
-              delete $localStorage.lastSeenFeature;
               $window.location.reload();
               $scope.loadingResetAnnouncements = false;
             });

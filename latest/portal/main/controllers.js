@@ -13,8 +13,7 @@ define(['angular','require'], function(angular, require) {
             layoutMode : 'list', //other option is 'widgets'
             gravatarEmail : null,
             useGravatar : false,
-            webPortletRender : false,
-            lastSeenFeature : -1
+            webPortletRender : false
             };
 
 
