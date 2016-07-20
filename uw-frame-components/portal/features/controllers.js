@@ -74,7 +74,20 @@ define(['angular','require'], function(angular, require) {
        portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
          $scope.announcements = unseenAnnouncements;
        });
-       miscService.pushGAEvent('feature',liked ? 'read more' : 'dismissed', $localStorage.lastSeenAnnouncementId);
+       miscService.pushGAEvent('feature',liked ? 'read more' : 'dismissed', announcementID);
+     }
+     
+     $scope.markAllAnnouncementsSeen = function(liked){
+       portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
+         for(var i=0; i<unseenAnnouncements.length; i++){
+           var announcment = unseenAnnouncements[i];
+           portalFeaturesService.markAnnouncementSeen(announcment.id);
+           miscService.pushGAEvent('feature',liked ? 'read more' : 'dismissed', announcment.id);
+         }
+         portalFeaturesService.getUnseenAnnouncements().then(function(newUnseenAnnouncements) {
+           $scope.announcements = newUnseenAnnouncements;
+         });
+       });
      }
 
      //local functions ---------------------------------------------------------
