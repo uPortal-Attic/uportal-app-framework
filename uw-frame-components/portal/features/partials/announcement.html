@@ -8,8 +8,11 @@
           <p>
             {{announcement.buckyAnnouncement.shortDesc}}
           </p>
-          <a href='features' ng-click='markAnnouncementSeen(announcement.id, true)'>Tell me more</a>
-          <a href='javascript:;' ng-click='markAnnouncementSeen(announcement.id, false)' style='float: right; padding-top: 2px;'>Not interested</span>
+          <div style='padding-bottom: 3px;'>
+            <a href='features' ng-click='markAnnouncementSeen(announcement.id, true)'>Tell me more</a>
+            &nbsp;
+            <a href='javascript:;' ng-click='markAnnouncementSeen(announcement.id, false)'>Not interested</a>
+          </div>
         </li>
       </ul>
     </div>
