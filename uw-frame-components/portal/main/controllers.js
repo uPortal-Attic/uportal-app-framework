@@ -24,7 +24,7 @@ define(['angular','require'], function(angular, require) {
       $scope.NAMES=NAMES;
       $scope.APP_FLAGS=APP_FLAGS;
       $scope.MISC_URLS=MISC_URLS;
-      $scope.THEMES = THEMES;
+      $scope.THEMES = THEMES.themes;
 
       if(NAMES.title) {
         $document[0].title=NAMES.title;

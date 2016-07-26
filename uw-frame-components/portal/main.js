@@ -85,8 +85,8 @@ define([
       $mdThemingProvider.generateThemesOnDemand(true);
 
       //theme config
-      for(var i = 0; i < THEMES.length; i++) {
-        var cur = THEMES[i];
+      for(var i = 0; i < THEMES.themes.length; i++) {
+        var cur = THEMES.themes[i];
         if(cur) {
           if(cur.materialTheme) {
             $mdThemingProvider.theme(cur.name);
@@ -164,6 +164,7 @@ define([
         if(!name) {
           name = $rootScope.portal.theme.name;
         }
+        $rootScope.portal.theme.themeVersion = THEMES.themeVersion;
         var mdTheme = $mdTheming.THEMES[name];
         if(mdTheme) {
           $mdTheming.generateTheme(name,null);
@@ -171,7 +172,7 @@ define([
       };
 
       var themeLoading = function(){
-        if($sessionStorage.portal && $sessionStorage.portal.theme) {
+        if($sessionStorage.portal && $sessionStorage.portal.theme && $sessionStorage.portal.theme.themeVersion === THEMES.themeVersion) {
           $rootScope.portal.theme = $sessionStorage.portal.theme;
           generateTheme();
           if(APP_FLAGS.debug) {
@@ -191,9 +192,9 @@ define([
               generateTheme();
             } else {
               if(APP_FLAGS.debug) {
-                console.error('something is wrong with setup, no default theme. Setting to THEMES[0].');
+                console.error('something is wrong with setup, no default theme. Setting to THEMES.themes[0].');
               }
-              $rootScope.portal.theme = THEMES[0];
+              $rootScope.portal.theme = THEMES.themes[0];
               generateTheme();
             }
           };
@@ -203,8 +204,8 @@ define([
             $http.get(SERVICE_LOC.groupURL, {cache : true}).then(function(result) {
               var groups = result.data.groups;
               //go through each theme and see if there in that group
-              for(var i = 0; i < THEMES.length; i++) {
-                var theme = THEMES[i];
+              for(var i = 0; i < THEMES.themes.length; i++) {
+                var theme = THEMES.themes[i];
                 var groupToTest = theme.group;
                 if('default'!==groupToTest) {//skip the default theme
                   var filterTest = filterFilter(groups, { name : groupToTest });
@@ -237,7 +238,7 @@ define([
           }
         } else {
           //themeindex is a number, go with that
-          $rootScope.portal.theme = THEMES[themeIndex]; //theme default
+          $rootScope.portal.theme = THEMES.themes[themeIndex]; //theme default
           generateTheme();
           loadingCompleteSequence();
         }
