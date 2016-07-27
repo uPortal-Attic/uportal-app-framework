@@ -3,11 +3,15 @@
 define(['angular'], function(angular) {
   var app = angular.module('portal.settings.controllers', []);
 
-  app.controller('PortalBetaSettingsController', [ '$sessionStorage', '$scope', '$mdTheming', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES', function($sessionStorage, $scope, $mdTheming, APP_BETA_FEATURES, FRAME_BETA_FEATURES) {
+
+      app.controller('PortalBetaSettingsController', [ '$sessionStorage', '$scope', '$mdTheming', 'THEMES', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES', function($sessionStorage, $scope,$mdTheming, THEMES, APP_BETA_FEATURES, FRAME_BETA_FEATURES) {
+
     $scope.options = FRAME_BETA_FEATURES.concat(APP_BETA_FEATURES);
     $scope.$watch('portal.theme', function() {
       $sessionStorage.portal.theme = $scope.portal.theme;
+      $sessionStorage.portal.theme.themeVersion = THEMES.themeVersion;
       $mdTheming.generateTheme($sessionStorage.portal.theme.name,null);
+
     });
   }]);
 
@@ -54,4 +58,5 @@ define(['angular'], function(angular) {
       init();
     }]);
   return app;
+
  });
