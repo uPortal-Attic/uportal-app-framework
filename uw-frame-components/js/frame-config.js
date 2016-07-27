@@ -2,7 +2,11 @@ define(['angular'], function(angular) {
 
     var config = angular.module('frame-config', []);
     config
-        .constant('THEMES', [
+        .constant('THEMES',
+        {"themeVersion": 1,
+        /* THOU SHALT INCREMENT THIS VERSION NUMBER IF THOU CHANGEST ANY OF THE THEMES BELOW  */
+         "themes":
+        [
           {
             "name" : "uw-madison",
             "crest" : "img/uw-madison-52.png",
@@ -363,7 +367,7 @@ define(['angular'], function(angular) {
               "warn" : "deep-orange"
             }
           }
-        ])
+        ]})
         .constant('FRAME_URLS', {
             'aboutFrame' : 'staticFeeds/about-frame.json'
         })
