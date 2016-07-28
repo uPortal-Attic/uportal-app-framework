@@ -3,7 +3,7 @@
   "version": "2.5.2",
   "description": "MyUW's frame project for creating angular based microservices.",
   "scripts": {
-    "pretest": "cd uw-frame-components && bower --config.interactive=false install",
+    "pretest": "./uw-frame-components/test/build.sh",
     "test": "karma start uw-frame-components/karma.conf.js --single-run",
     "posttest": "cd uw-frame-components && rm -rf bower_components",
     "build-all": "npm run build-java && npm run build-static",
@@ -21,7 +21,8 @@
     "docker": "docker run -d --name frame -p 8009:8009 docker.doit.wisc.edu/myuw/uw-frame-superstatic:latest",
     "build-docker": "docker build -t docker.doit.wisc.edu/myuw/uw-frame-superstatic .",
     "stop-docker": "docker stop frame; docker rm frame;",
-    "clean": "npm run clean-uw-frame-components; npm run clean-uw-frame-java; npm run clean-uw-frame-static",
+    "clean": "npm run clean-uw-frame-components; npm run clean-uw-frame-java; npm run clean-uw-frame-static; npm run clean-test",
+    "clean-test": "rm -rf uw-frame-components/vendor uw-frame-components/test_out uw-frame-components/coverage",
     "clean-uw-frame-components": "rm -rf uw-frame-components/bower_components",
     "clean-uw-frame-java": "cd uw-frame-java && mvn clean",
     "clean-uw-frame-static": "rm -rf uw-frame-static/target"

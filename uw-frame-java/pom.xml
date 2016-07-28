@@ -154,6 +154,20 @@
               </resources>
             </configuration>
           </execution>
+          <execution>
+            <id>move-google-analytics</id>
+            <phase>process-sources</phase>
+            <goals><goal>copy-resources</goal></goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/frame/vendor</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/target/frame/bower_components/angulartics-google-analytics/dist/</directory>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
       <plugin>
