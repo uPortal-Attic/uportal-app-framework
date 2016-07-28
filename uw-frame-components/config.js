@@ -14,7 +14,7 @@ define([], function() {
         'angular-mocks' : "bower_components/angular-mocks/angular-mocks",
         'angular-animate' : 'bower_components/angular-animate/angular-animate',
         'angulartics'   : "bower_components/angulartics/dist/angulartics.min",
-        'angulartics-google-analytics' : "bower_components/angulartics-google-analytics/dist/angulartics-ga.min",
+        'angulartics-google-analytics' : "vendor/angulartics-ga.min",
         'app-config'    : "js/app-config",
         'frame-config'  : "js/frame-config",
         'override'      : "js/override",

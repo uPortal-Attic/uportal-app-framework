@@ -6,7 +6,9 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'uw-frame-static/target/index.html': ['uw-frame-static/index.html'],
-          'docs/target/index.html': ['docs/index.html']
+          'docs/target/index.html': ['docs/index.html'],
+          'uw-frame-static/target/vendor/angulartics-ga.min.js': ['uw-frame-components/bower_components/angulartics-google-analytics/dist/angulartics-ga.min.js'],
+          'uw-frame-static/target/vendor/angulartics-ga.min.js.map': ['uw-frame-components/bower_components/angulartics-google-analytics/dist/angulartics-ga.min.js.map']
         }
       }
     },
