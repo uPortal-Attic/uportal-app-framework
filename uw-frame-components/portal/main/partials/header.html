@@ -1,8 +1,7 @@
-<md-toolbar class="md-primary" ng-controller="PortalHeaderController as headerCtrl">
+<notification-bell mode="priority" class="hidden-xs" hide-xs></notification-bell>
+<md-toolbar md-scroll-shrink class="md-primary" ng-controller="PortalHeaderController as headerCtrl">
   <div class="md-toolbar-tools" ng-class="{'has-priority-nots': headerCtrl.hasPriorityNotifications}" role="banner">
     <div layout="row">
-      <!-- TODO: test appearance of priority notification bell -->
-      <notification-bell mode="priority"></notification-bell>
       <!-- MOBILE MENU -->
       <notification-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notification-bell>
       <md-menu md-position-mode="target target" md-offset="0 56">

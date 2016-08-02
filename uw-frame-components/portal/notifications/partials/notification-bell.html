@@ -1,5 +1,5 @@
 <div ng-controller="PortalNotificationController as notificationIconCtrl" class="notifications">
-  <!-- Mobile bell in hamburger-->
+  <!-- Mobile bell in hamburger -->
   <div class="notification-badge notification-badge-mobile" aria-label="{{status}}"
        ng-if="notificationsEnabled && directiveMode==='mobile-bell' && countWithDismissed() !== 0 && !isEmpty">
     <i class='fa fa-bell'></i>
@@ -23,16 +23,15 @@
      ng-href="{{notificationUrl}}">
     <div class="notification-badge" aria-label="{{status}}" ng-class="{ 'notification-badge-empty' : (countWithDismissed() === 0 || isEmpty)}">
       <div class="arrow-down" ng-if="hasPriorityNotifications"></div>
-      <span class="number-of-nots"
-            ng-if="countWithDismissed() > 0"
+      <span class="number-of-nots" ng-if="countWithDismissed() > 0"
             ng-class="{ 'more-than-10-nots' : (countWithDismissed() > 9)}">{{countWithDismissed()}}</span>
-      <i class="fa fa-bell fa-2x"></i>
+      <i class="fa fa-bell fa-2x" ng-class="{'has-priority-nots': hasPriorityNotifications}"></i>
     </div>
   </a>
 
   <!-- Priority notifications -->
   <div class="priority-notifications" ng-if='notificationsEnabled && (directiveMode === "priority")' ng-repeat="priority in priorityNotifications | limitTo: 1">
-    <a href="{{priority.actionURL}}" alt="{{priority.actionAlt}}" ng-if='priorityNotifications.length == 1' class="notification-message">{{priority.title}}</a>
+    <a ng-href="{{priority.actionURL}}" alt="{{priority.actionAlt}}" ng-if='priorityNotifications.length == 1' class="notification-message">{{priority.title}}</a>
     <p ng-if='priorityNotifications.length > 1' class="notification-message">
       You have {{priorityNotifications.length}} important notifications. <a href="notifications" alt="{{priority.actionAlt}}">View your notifications.</a>
     </p>
