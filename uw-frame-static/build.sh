@@ -16,6 +16,8 @@ cp superstatic.json ./target
 
 pushd target
 ../../node_modules/bower/bin/bower --config.interactive=false --allow-root install
+rm -rf vendor && mkdir vendor
+cp bower_components/angulartics-google-analytics/dist/* vendor/
 popd
 
 ## Build less
