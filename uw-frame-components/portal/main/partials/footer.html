@@ -4,9 +4,13 @@
       <div>
         <span>© <p style="display:inline">{{date | date:'yyyy'}}</p>, Board of Regents of the <a href="http://www.wisconsin.edu/" target="_blank">University of Wisconsin System</a></span>
       </div>
-      <div class='underline'>
-        <span ng-repeat="link in portal.theme.footerLinks">&nbsp;<a ng-href='{{link.url}}' target='{{link.target}}' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a></span>
-        <span ng-repeat="link in FOOTER_URLS">&nbsp;<a ng-href='{{link.url}}' target='{{link.target}}' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a></span>
+      <div layout="row" layout-align="center center" class="links__separated">
+        <span ng-repeat="link in portal.theme.footerLinks">
+          <a ng-href='{{link.url}}' target='{{link.target}}' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a>
+        </span>
+        <span ng-repeat="link in FOOTER_URLS">
+          <a ng-href='{{link.url}}' target='{{link.target}}' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a>
+        </span>
       </div>
       <div>
         <span>{{sessionCheckCtrl.user.version}}</span><span ng-show="sessionCheckCtrl.user.serverName"> - {{sessionCheckCtrl.user.serverName}}</span><span ng-show="sessionCheckCtrl.user.sessionKey"> - {{sessionCheckCtrl.user.sessionKey}}</span></span>
