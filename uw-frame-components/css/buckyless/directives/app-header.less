@@ -19,9 +19,15 @@ app-header,app-header-two-way-bind {
 
         .link-div {
           float:right;
-          a:hover {
-            text-decoration: none;
+          color: @white;
+          a {
+            color: @white;
+            &:hover {
+              text-decoration: none;
+              color: @white;
+            }
           }
+
           @media (max-width: 960px) {
             i.fa {
               font-size: 20px;
