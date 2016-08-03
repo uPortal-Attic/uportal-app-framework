@@ -1,10 +1,10 @@
 <notification-bell mode="priority" class="hidden-xs" hide-xs></notification-bell>
 <md-toolbar md-scroll-shrink class="md-primary" ng-controller="PortalHeaderController as headerCtrl">
   <div class="md-toolbar-tools" ng-class="{'has-priority-nots': headerCtrl.hasPriorityNotifications}" role="banner">
-    <div layout="row">
+    <div layout="row" flex="20" layout-align="start center">
       <!-- MOBILE MENU -->
       <notification-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notification-bell>
-      <md-menu md-position-mode="target target" md-offset="0 56">
+      <md-menu md-position-mode="target target" md-offset="0 56" hide-gt-xs>
         <md-button class="md-icon-button" aria-label="toggle mobile menu" hide-gt-xs ng-click="$mdOpenMenu($event)">
           <i class="fa fa-bars"></i>
         </md-button>
@@ -51,16 +51,16 @@
         </h1>
       </a>
     </div>
-    <span flex></span>
+
 
     <!-- SEARCH BAR SM+ -->
-    <div layout="row" flex="60" layout-align="center center" hide-xs>
+    <div layout="row" flex="50" layout-align="center center" hide-xs>
       <search ng-show="APP_FLAGS.showSearch"></search>
     </div>
     <span flex></span>
 
     <!-- COLLAPSIBLE MENU SM+ -->
-    <div layout="row" hide-xs>
+    <div layout="row" layout-align="end center" flex="30" hide-xs>
       <bucky-announcement mode="BUCKY"></bucky-announcement>
       <notification-bell mode="bell" ng-if="!GuestMode"></notification-bell>
       <username layout="row" layout-align="start center"></username>

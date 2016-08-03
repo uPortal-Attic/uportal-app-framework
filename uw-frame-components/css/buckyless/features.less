@@ -67,15 +67,23 @@
 bucky-announcement {
   div.announcement-creeper {
     margin-right: 20px;
-    vertical-align: bottom;
-    padding-top: 37px;
     overflow: hidden;
-    max-height: 52px;
-    transition: all 0.5s ease;
-  }
-  div.announcement-hover {
-    transition: all 0.5s ease;
-    padding-top: 12px;
+    max-height: 48px;
+    position: relative;
+    top: 8px;
+    img {
+      transition: @mascot-transition;
+      position: relative;
+      top: 26px;
+    }
+    &.announcement-hover {
+      img {
+        top: 0;
+      }
+    }
+    @media (max-width: 768px) {
+      margin-right: 0;
+    }
   }
   img:focus {
     outline: none;

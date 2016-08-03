@@ -22,5 +22,12 @@
 </div>
 
 <div ng-if=" 'BUCKY_MOBILE' === mode && announcements && announcements.length > 0" class='mobile'>
-  <a href='features' ng-click='markAllAnnouncementsSeen(true)'><i class='fa fa-star fa-fw'></i> What's New ({{announcements.length}})</a>
+  <md-menu-item>
+    <md-button class="md-accent" href="features"
+               ng-click="markAllAnnouncementsSeen(true)"
+               layout="row" layout-align="start center">
+      <span><i class='fa fa-star fa-fw'></i> </span>
+      <span>What's New ({{announcements.length}})</span>
+    </md-button>
+  </md-menu-item>
 </div>
