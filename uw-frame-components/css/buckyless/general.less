@@ -154,17 +154,22 @@ button:focus {
   padding: 56px 0 48px;
   @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
     padding: 48px 0;
+    &.has-priority-nots {
+      padding: 48px 0;
+    }
   }
   &.has-priority-nots {
     padding: 56px 0 48px;
   }
 }
 
-circle-button {
-  .md-fab.md-mini > .fa {
-    font-size: 18px;
-    padding-top: 11px;
-    padding-left: 1px;
+icon-button {
+  .md-icon-button {
+    height: 46px;
+    width: 46px;
+    > .fa {
+      font-size: 30px;
+    }
   }
 }
 
