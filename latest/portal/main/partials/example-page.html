@@ -1,92 +1,129 @@
 <script type="text/ng-template" id="MainOptions.html">
-  <div>
-    <ul style='padding: 0;'>
-      <li>
-        <a href='http://uw-madison-doit.github.io/uw-frame/latest/#/md/directives'>See Documentation</a>
-      </li>
-      <li>
-        <a href='https://www.github.com/uw-madison-doit/uw-frame'>Checkout <i class='fa fa-github'></i> repo</a>
-      </li>
-
-    </ul>
-  </div>
+  <md-menu-item>
+    <md-button class="md-accent" href='http://uw-madison-doit.github.io/uw-frame/latest/#/md/directives'>See Documentation</md-button>
+  </md-menu-item>
+  <md-menu-item>
+    <md-button class="md-accent" href='https://www.github.com/uw-madison-doit/uw-frame'><span><i class='fa fa-github'></i> Checkout Repo</span></md-button>
+  </md-menu-item>
 </script>
 
 
 <frame-page app-title='Frame App Home'
-              app-icon='fa-home'
-              app-action-link-url="settings"
-              app-add-to-home='true'
-              app-fname='fake-fname'
-              app-action-link-icon="fa-plus"
-              app-action-link-text="Add to home"
-              app-option-template="MainOptions.html"
-              white-background="true">
+            app-icon='fa-home'
+            app-action-link-url="settings"
+            app-add-to-home='true'
+            app-fname='fake-fname'
+            app-action-link-icon="fa-plus"
+            app-action-link-text="Add to home"
+            app-option-template="MainOptions.html"
+            white-background="false">
+  <style>
+    md-card {
+      height: 170px;
+      width: 180px;
+      background-color: #f3f3f3;
+    }
+    a:hover {
+      text-decoration: none !important;
+    }
+  </style>
+  <md-content style="background-color:transparent;max-width:820px;margin:0 auto;" layout-padding>
     <p class='center'>This is just the default example page. Below are easy access links so you don't have to type the specific page you are working on.</p>
-    <style>
-      .cards {
-        margin : 10px; padding : 0;
-      }
-      md-card {
-        min-height : 150px;
-      }
-      a:hover {
-        text-decoration: none !important;
-      }
-    </style>
 
-    <ul class='row' class='cards'>
-      <li class='col-sm-3 center'>
-        <a href='settings'>
-          <md-card>
-            Beta Settings
-            <br><br>
-            <i class='fa fa-gears fa-3x'></i>
+    <md-grid-list md-cols-gt-sm="4" md-cols="1" md-cols-sm="3"
+                  md-row-height="180px"
+                  md-gutter-gt-sm="12px" md-gutter-sm="8px" md-gutter="4px">
+
+      <md-grid-tile>
+        <a href="settings">
+          <md-card layout="column" layout-align="start center">
+            <md-card-header>
+              <md-card-header-text>
+                <span class="md-title">Beta Settings</span>
+              </md-card-header-text>
+            </md-card-header>
+            <md-card-content class="center">
+              <i class='fa fa-gears fa-3x'></i>
+            </md-card-content>
           </md-card>
         </a>
-      </li>
-      <li class='col-sm-3 center'>
-        <a href='user-settings'>
-          <md-card>
-            User Settings
-            <br><br>
-            <i class='fa fa-gears fa-3x'></i>
+      </md-grid-tile>
 
+      <md-grid-tile>
+        <a href="user-settings">
+          <md-card layout="column" layout-align="start center">
+            <md-card-header>
+              <md-card-header-text>
+                <span class="md-title">User Settings</span>
+              </md-card-header-text>
+            </md-card-header>
+            <md-card-content class="center">
+              <i class='fa fa-gears fa-3x'></i>
+            </md-card-content>
           </md-card>
         </a>
-      </li>
-      <li class='col-sm-3 center'>
-        <md-card>
-          <a href='notifications'>Notifications
-          <br><br>
-          <i class='fa fa-bell fa-3x'></i>
-          </a>
-        </md-card>
-      </li>
-      <li class='col-sm-3 center'>
-        <md-card>
-          <a href='server-error'>Server error
-          <br><br>
-          <i class='fa fa-exclamation-triangle fa-3x'></i>
-          </a>
-        </md-card>
-      </li>
-      <li class='col-sm-3 center'>
-        <md-card>
-          <a href='access-denied'>Access denied
-          <br><br>
-          <i class='fa fa-exclamation-triangle fa-3x'></i>
-          </a>
-        </md-card>
-      </li>
+      </md-grid-tile>
 
-      <li class='col-sm-3 center'>
-        <md-card>
-          <a href='features'>Features
-          <br><br>
-          <i class='fa fa-newspaper-o fa-3x'></i>
-          </a>
-        </md-card>
-      </li>
-    </ul>
+      <md-grid-tile>
+        <a href="notifications">
+          <md-card layout="column" layout-align="start center">
+            <md-card-header>
+              <md-card-header-text>
+                <span class="md-title">Notifications</span>
+              </md-card-header-text>
+            </md-card-header>
+            <md-card-content>
+              <i class='fa fa-bell fa-3x'></i>
+            </md-card-content>
+          </md-card>
+        </a>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <a href="server-error">
+          <md-card layout="column" layout-align="start center">
+            <md-card-header>
+              <md-card-header-text>
+                <span class="md-title">Server Error</span>
+              </md-card-header-text>
+            </md-card-header>
+            <md-card-content>
+              <i class='fa fa-exclamation-triangle fa-3x'></i>
+            </md-card-content>
+          </md-card>
+        </a>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <a href="access-denied">
+          <md-card layout="column" layout-align="start center">
+            <md-card-header>
+              <md-card-header-text>
+                <span class="md-title">Access Denied</span>
+              </md-card-header-text>
+            </md-card-header>
+            <md-card-content>
+              <i class='fa fa-exclamation-triangle fa-3x'></i>
+            </md-card-content>
+          </md-card>
+        </a>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <a href="features">
+          <md-card layout="column" layout-align="start center">
+            <md-card-header>
+              <md-card-header-text>
+                <span class="md-title">Features</span>
+              </md-card-header-text>
+            </md-card-header>
+            <md-card-content>
+              <i class='fa fa-newspaper-o fa-3x'></i>
+            </md-card-content>
+          </md-card>
+        </a>
+      </md-grid-tile>
+    </md-grid-list>
+
+  </md-content>
 </frame-page>

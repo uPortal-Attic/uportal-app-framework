@@ -7,8 +7,7 @@ body {
   background-color: #ccc;
   min-height: 90vh;
 }
-h1,h2,h3,h4,h5,h6 {
-  vertical-align: center;
+h1,h2,h3 {
   font-weight: 200;
 }
 p {
@@ -44,12 +43,12 @@ header {
   background-color: @color1;
 }
 .no-padding {
-  padding-left:0px;
-  padding-right:0px;
+  padding-left:0;
+  padding-right:0;
 }
 .no-margin {
-  margin-left:0px;
-  margin-right:0px;
+  margin-left:0;
+  margin-right:0;
 }
 .max-view {
   margin-left:4.1666667%;
@@ -151,25 +150,34 @@ button:focus {
   border-radius:1000px !important;
 }
 
-circle-button {
-  .circle-button {
-    width: 55px;
-    height: 54px;
-    border-radius:1000px;
-    padding-top: 15px;
-    margin: 0 auto 3px;
+.page-content {
+  padding: 56px 0 48px;
+  &.has-priority-nots {
+    padding: 102px 0 48px;
+  }
+  @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
+    padding: 48px 0;
+    &.has-priority-nots {
+      padding: 94px 0 48px;
+    }
   }
 }
 
-.page-content {
-	padding: 52px 0px;
+circle-button {
+  .md-icon-button {
+    position: relative;
+    top: 5px;
+    > .fa {
+      font-size: 24px;
+    }
+  }
 }
 
 .no-image {
   background-color:@color1;
 }
 .popover-content ul {
-  margin-bottom:0px;
+  margin-bottom:0;
 }
 
 /*
@@ -193,6 +201,6 @@ circle-button {
   background-color: @white;
   margin-left: 1%;
   width: 98%;
-  box-shadow: 0px 0px 2px 0px #222;
+  box-shadow: 0 0 2px 0 #222;
   float: left;
 }

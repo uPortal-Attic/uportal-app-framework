@@ -1,10 +1,15 @@
-// Basic Link
-a:not(.btn) {
-  text-decoration:none;
+a {
   &:hover {
-    text-decoration:underline;
+    transition: @link-hover-transition;
+  }
+  &:not(.md-button), &:not(.btn) {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
+
 // If link is in a paragraph, use border-bottom
 p a:not(.btn) {
   &:hover {

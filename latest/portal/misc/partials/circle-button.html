@@ -1,8 +1,10 @@
-<a ng-href="{{ cbDisabled ? '#' : href}}" target="{{cbDisabled ? '' : target}}">
-  <div class="btn btn-primary circle-button text-right" ng-class="{ 'btn-disabled' : cbDisabled}"> 
-    <i class="fa {{faIcon}} fa-2x"></i>
-  </div>
-</a>
+<md-button ng-href="{{ cbDisabled ? '#' : href}}"
+           target="{{cbDisabled ? '' : target}}"
+           class="md-icon-button md-primary"
+           aria-label="open {{title | truncate:trunclen}}"
+           ng-disabled="cbDisabled">
+  <i class="fa {{faIcon}}"></i>
+</md-button>
 <p ng-show='title'>
   {{title | truncate:trunclen}}
 </p>

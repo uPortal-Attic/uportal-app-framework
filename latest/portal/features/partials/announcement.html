@@ -1,26 +1,42 @@
-<div ng-if=" 'BUCKY' === mode && announcements && announcements.length > 0" class='announcement-creeper' ng-class="{ 'announcement-hover' : hover}" ng-mouseenter="hover = true" ng-init='hover = false'>
+<div ng-if=" 'BUCKY' === mode && announcements && announcements.length > 0"
+     ng-class="{ 'announcement-hover' : hover}"
+     ng-mouseenter="hover = true"
+     ng-init="hover = false"
+     popover-template="'see-whats-new.html'"
+     popover-placement="left"
+     popover-is-open="hover"
+     popover-popup-delay="200"
+     popover-trigger="none"
+     class="announcement-creeper">
   <script type="text/ng-template" id="see-whats-new.html">
     <div>
-      <ul style='padding: 0;'>
+      <ul style="padding:0;">
         <li ng-repeat="announcement in announcements | orderBy:'-id' | limitTo:3">
-          <a href='features' style='font-weight: 800;font-size: larger;' ng-click='markAnnouncementsSeen(true)'>{{announcement.buckyAnnouncement.shortTitle}}</a>
+          <a href="features" ng-click="markAnnouncementsSeen(true)" class="md-subhead">{{announcement.buckyAnnouncement.shortTitle}}</a>
           <br>
           <p>
             {{announcement.buckyAnnouncement.shortDesc}}
           </p>
-          <div style='padding-bottom: 3px;'>
-            <a href='features' ng-click='markAnnouncementSeen(announcement.id, true)'>Tell me more</a>
-            &nbsp;
-            <a href='javascript:;' ng-click='markAnnouncementSeen(announcement.id, false)'>Not interested</a>
+          <div layout="row" layout-align="space-between center">
+            <a href="features"
+               ng-click="markAnnouncementSeen(announcement.id, true)">Tell Me More</a>
+            <a href="javascript:;"
+               ng-click="markAnnouncementSeen(announcement.id, false)">Dismiss</a>
           </div>
         </li>
       </ul>
     </div>
   </script>
-  <img ng-src='{{buckyImg}}' ng-click="hover=false; pushGAEvent('feature', 'hide-bucky', 'na');"
-   popover-template="'see-whats-new.html'" popover-placement="left" popover-is-open="hover" popover-popup-delay='200' popover-trigger="none">
+  <img ng-src="{{buckyImg}}" ng-click="hover=false; pushGAEvent('feature', 'hide-bucky', 'na');">
 </div>
 
-<div ng-if=" 'BUCKY_MOBILE' === mode && announcements && announcements.length > 0" class='mobile'>
-  <a href='features' ng-click='markAllAnnouncementsSeen(true)'><i class='fa fa-star fa-fw'></i> What's New ({{announcements.length}})</a>
+<div ng-if=" 'BUCKY_MOBILE' === mode && announcements && announcements.length > 0" class="mobile">
+  <md-menu-item>
+    <md-button class="md-accent" href="features"
+               ng-click="markAllAnnouncementsSeen(true)"
+               layout="row" layout-align="start center">
+      <span><i class='fa fa-star fa-fw'></i> </span>
+      <span>What's New ({{announcements.length}})</span>
+    </md-button>
+  </md-menu-item>
 </div>

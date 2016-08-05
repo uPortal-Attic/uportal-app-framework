@@ -1,25 +1,40 @@
-<div ng-controller="PortalNotificationController as notificationIconCtrl">
-    <!--mobile bell in hamburger-->
-    <div ng-if='notificationsEnabled && directiveMode==="mobile-bell" && countWithDismissed() !== 0 && !isEmpty'>
-      <div class='notification-badge notification-badge-mobile' aria-label='{{status}}'>
-        <i class='fa fa-bell'></i>
-      </div>
+<div ng-controller="PortalNotificationController as notificationIconCtrl" class="notifications">
+  <!-- Mobile bell in hamburger -->
+  <div class="notification-badge notification-badge-mobile" aria-label="{{status}}"
+       ng-if="notificationsEnabled && directiveMode==='mobile-bell' && countWithDismissed() !== 0 && !isEmpty">
+    <i class='fa fa-bell'></i>
+  </div>
+
+  <!-- Mobile menu row -->
+  <md-menu-item ng-if="notificationsEnabled && directiveMode === 'mobile-menu'">
+    <md-button title="click to view notifications"
+               class="md-accent"
+               ng-href="{{notificationUrl}}"
+               layout="row" layout-align="start center">
+      <span><i class='fa fa-bell fa-fw'></i></span>
+      <span>Notifications ({{countWithDismissed()}})</span>
+    </md-button>
+  </md-menu-item>
+
+  <!-- Notification bell on desktop -->
+  <a ng-if='notificationsEnabled && directiveMode === "bell"'
+     title="click to view notifications"
+     class="menu-notification-link notification-desktop"
+     ng-href="{{notificationUrl}}">
+    <div class="notification-badge" aria-label="{{status}}" ng-class="{ 'notification-badge-empty' : (countWithDismissed() === 0 || isEmpty)}">
+      <div class="arrow-down" ng-if="hasPriorityNotifications"></div>
+      <span class="number-of-nots" ng-if="countWithDismissed() > 0"
+            ng-class="{ 'more-than-10-nots' : (countWithDismissed() > 9)}">{{countWithDismissed()}}</span>
+      <i class="fa fa-bell fa-2x" ng-class="{'has-priority-nots': hasPriorityNotifications}"></i>
     </div>
-    <!--Mobile menu row or the notification bell on desktop-->
-    <a ng-if='notificationsEnabled && (directiveMode === "bell" || directiveMode === "mobile-menu")' title="click to view notifications" class="menu-notification-link" ng-href="{{notificationUrl}}">
-      <div ng-show='directiveMode !== "mobile-menu"' class='notification-badge' aria-label='{{status}}' ng-class='{ "notification-badge-empty" : (countWithDismissed() === 0 || isEmpty)}'>
-        <div class="arrow-down" ng-if='hasPriorityNotifications'></div>
-        <span class="number-of-nots" ng-if='countWithDismissed() > 0' ng-class='{ "more-than-10-nots" : (countWithDismissed() > 9)}'>{{countWithDismissed()}}</span>
-        <i class='fa fa-bell fa-2x' ng-class="{'has-priority-nots': hasPriorityNotifications}"></i>
-      </div>
-      <div ng-show='directiveMode === "mobile-menu"' class='notification-badge-mobile-menu'  ng-click="headerCtrl.navbarCollapsed = true">
-       <i class='fa fa-bell fa-fw'></i>  Notifications ({{countWithDismissed()}})
-      </div>
-    </a>
-    <!-- Priority notifications -->
-    <div class="priority-notifications" ng-if='notificationsEnabled && (directiveMode === "priority")' ng-repeat="priority in priorityNotifications | limitTo: 1">
-      <a href="{{priority.actionURL}}" alt="{{priority.actionAlt}}" ng-if='priorityNotifications.length == 1' class="notification-message">{{priority.title}}</a>
-      <p ng-if='priorityNotifications.length > 1' class="notification-message">You have {{priorityNotifications.length}} important notifications. <a href="notifications" alt="{{priority.actionAlt}}">View your notifications.</a>
-    </div>
+  </a>
+
+  <!-- Priority notifications -->
+  <div class="priority-notifications" ng-if='notificationsEnabled && (directiveMode === "priority")' ng-repeat="priority in priorityNotifications | limitTo: 1">
+    <a ng-href="{{priority.actionURL}}" alt="{{priority.actionAlt}}" ng-if='priorityNotifications.length == 1' class="notification-message">{{priority.title}}</a>
+    <p ng-if='priorityNotifications.length > 1' class="notification-message">
+      You have {{priorityNotifications.length}} important notifications. <a href="notifications" alt="{{priority.actionAlt}}">View your notifications.</a>
+    </p>
+  </div>
 
 </div>

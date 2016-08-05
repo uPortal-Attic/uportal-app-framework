@@ -3,7 +3,7 @@ define(['angular'], function(angular) {
     var config = angular.module('frame-config', []);
     config
         .constant('THEMES',
-        {"themeVersion": 1,
+        {"themeVersion": 2,
         /* THOU SHALT INCREMENT THIS VERSION NUMBER IF THOU CHANGEST ANY OF THE THEMES BELOW  */
          "themes":
         [
@@ -315,7 +315,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-extension",
-            "crest" : "img/ceoel-logo-reverse-52.png",
+            "crest" : "img/uwex-logo-white-52.png",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",

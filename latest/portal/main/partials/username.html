@@ -1,35 +1,26 @@
-<div ng-controller="SessionCheckController as sessionCtrl">
-  <div class='username-option' ng-show='GuestMode'>
-    <a ng-href="{{MISC_URLS.myuwHome}}" class='btn btn-flat' title='Login' target='_self'>Login</a>
-  </div>
-  <div ng-hide='GuestMode' class='username-option' ng-click='usernameOptionOpen=!usernameOptionOpen'>
-    <!-- <img src='img/bucky.png' class='gravatar' ng-if="!$storage.useGravatar">
-    <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar"> -->
-    {{sessionCtrl.user.firstName ? sessionCtrl.user.firstName : sessionCtrl.user.displayName}}
-    <i class="fa fa-caret-down"
-       popover-template="'usermenu.html'"
-       popover-is-open="usernameOptionOpen"
-       popover-placement="bottom"
-       popover-trigger="none"></i>
-  </div>
-  <script type="text/ng-template" id="usermenu.html">
-    <div role="navigation" aria-label="Main menu" class='username-menu-template'>
-      <ul role="menubar" aria-hidden="false" class='no-padding'>
-        <li role="menuitem" aria-haspopup="true">
-          <!-- <img src='img/bucky.png' class='gravatar' ng-if="!$storage.useGravatar">
-           <img gravatar-src="'{{sessionCtrl.user.email}}'" class='gravatar' gravatar-size="50" ng-if="$storage.useGravatar"> -->
-          {{sessionCtrl.user.displayName}}
-        </li>
-        <li role="menuitem" ng-if='$storage.showSettings'>
-          <a tabindex="-1" href="settings" class='settings-link' title='Settings'>Beta Settings</a>
-        </li>
-        <li role="menuitem" ng-if='APP_FLAGS.showUserSettingsPage'>
-          <a tabindex="-1" href="user-settings" class='settings-link' title='Settings'>Settings</a>
-        </li>
-        <li role="menuitem">
-          <a tabindex="-1" ng-href="{{MISC_URLS.logoutURL}}" class='logout-link' title='Logout' target='_self'>Sign out</a>
-        </li>
-      </ul>
-    </div>
-  </script>
-</div>
+<!-- GUEST MODE ONLY -->
+<md-button ng-href="{{MISC_URLS.myuwHome}"
+           ng-show="GuestMode"
+           aria-label="Log in to MyUW"
+           target="_self">
+  Log In
+</md-button>
+
+<!-- NOT GUEST MODE -->
+<md-menu md-position-mode="target-right target" ng-controller="SessionCheckController as sessionCtrl" ng-hide="GuestMode" class="username-menu">
+  <md-button aria-label="open options menu" ng-click="$mdOpenMenu($event)">
+    <span>{{sessionCtrl.user.firstName ? sessionCtrl.user.firstName : sessionCtrl.user.displayName}}</span>
+    <i class="fa fa-caret-down"></i>
+  </md-button>
+  <md-menu-content width="3">
+    <md-menu-item ng-if="$storage.showSettings">
+      <md-button class="md-accent" aria-label="change beta settings" tabindex="-1" ng-href="settings" title="Settings" ng-transclude>Beta Settings</md-button>
+    </md-menu-item>
+    <md-menu-item ng-if="APP_FLAGS.showUserSettingsPage">
+      <md-button class="md-accent" aria-label="change user settings" tabindex="-1" ng-href="user-settings" title="Settings" ng-transclude>Settings</md-button>
+    </md-menu-item>
+    <md-menu-item>
+      <md-button class="md-accent" aria-label="log out" tabindex="-1" ng-href="{{MISC_URLS.logoutURL}}" title="Log Out" target="_self">Log Out</md-button>
+    </md-menu-item>
+  </md-menu-content>
+</md-menu>
