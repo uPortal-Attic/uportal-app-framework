@@ -315,7 +315,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-extension",
-            "crest" : "img/ceoel-logo-reverse-52.png",
+            "crest" : "img/uwex-logo-white-52.png",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
