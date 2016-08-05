@@ -3,9 +3,33 @@
 body {
   background-color: @color4;
 }
-#body-background {
-  background-color: #ccc;
-  min-height: 90vh;
+a {
+  &:hover {
+    transition: @link-hover-transition;
+  }
+  &:not(.md-button), &:not(.btn) {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+h1,h2,h3 {
+  font-weight: 200;
+}
+p {
+  font-weight: 400;
+  // If link is in a paragraph, use border-bottom
+  a:not(.btn), a:not(.md-button) {
+    &:hover {
+      border-bottom: 1px solid #6b0101;
+      text-decoration: none;
+    }
+  }
+}
+ul {
+  list-style-type: none;
+  -webkit-padding-start: 0px;
 }
 h1,h2,h3 {
   font-weight: 200;
@@ -14,44 +38,12 @@ p {
   font-weight:400;
 }
 
-.bold {
-  font-weight: 600;
-}
-.container-fluid b {
-  font-weight: 400;
-}
+
 ul {
   list-style-type: none;
 }
 header {
   width: 100%;
-}
-.fixed {
-  position: fixed;
-  z-index: 50;
-  width: 100%;
-}
-.center {
-  text-align: center;
-}
-
-.display-block {
-  display : block;
-}
-
-.navbar .container-fluid {
-  background-color: @color1;
-}
-.no-padding {
-  padding-left:0;
-  padding-right:0;
-}
-.no-margin {
-  margin-left:0;
-  margin-right:0;
-}
-.max-view {
-  margin-left:4.1666667%;
 }
 div:focus,
 input:focus,
@@ -102,105 +94,10 @@ button:focus {
   background-color:@white;
   border-color:@grayscale5;
 }
-.loading-gif {
-  margin:auto;
-}
-
-.small-font-plus {
-  font-weight: 100;
-  font-size: small;
-  vertical-align: middle;
-}
-
-.beta-card-style {
-  border: 1px #ccc solid;
-  background-color: #fff;
-  box-shadow: 0 0 5px 2px #ddd;
-  padding: 5px;
-  min-height: 150px;
-  margin: 5px;
-}
-
-.user-card-style {
-  border: 1px #ccc solid;
-  background-color: #fff;
-  box-shadow: 0 0 5px 2px #ddd;
-  padding: 5px;
-  min-height: 150px;
-  margin: 0;
-}
-
 [class*="col-"] {
   p, li {
     a {
       font-weight: 400;
     }
   }
-}
-.portlet-body {
-  padding-left:5px;
-  padding-right:5px;
-}
-.five-px-top-left {
-  position: relative; top: 5px; left: 5px;
-}
-
-
-.rounded {
-  border-radius:1000px !important;
-}
-
-.page-content {
-  padding: 56px 0 48px;
-  &.has-priority-nots {
-    padding: 102px 0 48px;
-  }
-  @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
-    padding: 48px 0;
-    &.has-priority-nots {
-      padding: 94px 0 48px;
-    }
-  }
-}
-
-circle-button {
-  .md-icon-button {
-    position: relative;
-    top: 5px;
-    > .fa {
-      font-size: 24px;
-    }
-  }
-}
-
-.no-image {
-  background-color:@color1;
-}
-.popover-content ul {
-  margin-bottom:0;
-}
-
-/*
- * Base formatting for converting a block-list to an inline-list.
- */
-
-.inline-block-list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-/*
- * Color applied to warning fa-icon on error views (e.g. access-denied, server-error).
- */
-.warning-color {
-	color: @color1;
-}
-
-.white-page {
-  background-color: @white;
-  margin-left: 1%;
-  width: 98%;
-  box-shadow: 0 0 2px 0 #222;
-  float: left;
 }
