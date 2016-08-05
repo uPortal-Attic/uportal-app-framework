@@ -3,7 +3,7 @@ define(['angular'], function(angular) {
     var config = angular.module('frame-config', []);
     config
         .constant('THEMES',
-        {"themeVersion": 1,
+        {"themeVersion": 2,
         /* THOU SHALT INCREMENT THIS VERSION NUMBER IF THOU CHANGEST ANY OF THE THEMES BELOW  */
          "themes":
         [
