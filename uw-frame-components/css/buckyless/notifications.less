@@ -1,8 +1,8 @@
 /* Notification Styling */
 .notifications {
   .notifications-list {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
   }
   .notifications-list .notification-item {
     font-size: 1.1em;
@@ -33,7 +33,7 @@
     border-right:2px solid #ddd;
     color:#900;
     p {
-      margin:0px;
+      margin:0;
     }
     &:hover {
       background-color:#f5f5f5;
@@ -47,7 +47,7 @@
   .action {
     width:5%;
     float:right;
-    padding:0px;
+    padding:0;
     min-height:30px;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
@@ -80,6 +80,77 @@
     cursor: pointer;
   }
 
+  .notification-badge {
+    width: 35px;
+    height: 35px;
+    margin: 5px 0 0;
+    font-weight: 200;
+    text-align: center;
+    color: @white;
+
+    &.notification-badge-empty {
+      color : lighten(@color1, 30%);
+    }
+
+    /* MOBILE BELL ON TOP OF HAMBURGER */
+    &.notification-badge-mobile {
+      position: absolute;
+      bottom: 26px;
+      background-color: #fff;
+      width: 18px;
+      height: 18px;
+      left: 28px;
+      margin: 0 0 0;
+      border-radius: 1000px;
+      padding: 0;
+      color: #c5050c;
+      z-index: 999;
+      > .fa-bell {
+        font-size: 12px;
+        position: relative;
+        bottom: 8px;
+      }
+    }
+
+    .number-of-nots {
+      color: @color1;
+      font-weight: 400;
+      z-index: 2000;
+      position: absolute;
+      top: 2px;
+      left: 12px;
+    }
+    .more-than-10-nots {
+      left: 11px;
+      top: 7px;
+      font-size: small;
+    }
+    > .fa-bell {
+      font-size: 1.5em;
+    }
+  }
+
+  /* DESkTOP-ONLY NOTIFICATION BELL */
+  .menu-notification-link {
+    .notification-badge {
+      position: relative;
+      transition: @link-hover-transition;
+      > .arrow-down {
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 7px solid lighten(@color1, 20%);
+        z-index:2000;
+        position: absolute;
+        top:-14px;
+        right:10px;
+      }
+      &:hover {
+        color:#ccc;
+        text-decoration:none !important;
+      }
+    }
+  }
+
   @media (max-width:768px ) {
     .content {
       width:90%;
@@ -91,109 +162,31 @@
 
 }
 
-//notification bell
-
-.notification-badge {
-  width: 35px;
-  height: 35px;
-  padding-top: 3px;
-  margin: 8px 8px 3px auto;
-  font-weight: 200;
-  text-align: center;
-  color: @white;
-
-  .number-of-nots {
-    color: @color1;
-    font-weight: 400;
-    z-index: 2000;
-    position: absolute;
-    top: 16px;
-    left: 14px;
-	}
-  .more-than-10-nots {
-    left: 10px;
-    font-size: small;
-    top: 17px;
-  }
-}
-
-//mobile bell
-
-.notification-badge.notification-badge-mobile {
-    position: absolute;
-    bottom: 15px;
-    background-color: @white;
-    width: 20px;
-    height: 20px;
-    left: 22px;
-    margin: 0px 0px 0px;
-    border-radius: 1000px;
-    padding: 0;
-    color: @color1;
-}
-
-//mobile menu bell
-
-.notification-badge-mobile-menu {
-  display: block;
-  background-color: transparent;
-  font-size: 20px;
-}
-.menu-notification-link {
-  .arrow-down {
-  	width: 0;
-  	height: 0;
-  	border-left: 7px solid transparent;
-  	border-right: 7px solid transparent;
-  	border-top: 7px solid lighten(@color1, 10%);
-    z-index:2000;
-    position: relative;
-    top:-11px;
-    float:right;
-    right:11px;
-  }
-  .fa.has-priority-nots {
-    position: relative;
-    top:-5px;
-  }
-  &:hover {
-    color:#ccc;
-    text-decoration:none !important;
-  }
-}
-
-//empty bell
-
-.notification-badge-empty {
-  color : lighten(@color1, 10%);
-}
-
-//end notification bell
-
-// priority notifications
+/* PRIORITY NOTIFICATIONS */
 .hidden-xs .priority-notifications {
+  height: 46px;
   width: 100%;
-  height:50px;
+  background-color: lighten(@color1, 20%);
+  z-index:100;
   position: fixed;
-  top: 0px;
-  margin:0px -15px;
-  background-color: lighten(@color1, 10%);
-  z-index:1050;
   display: flex;
   justify-content: center;
   align-items: center;
   .notification-message {
     font-size:15px;
   }
-
+  p {
+    margin-bottom: 0;
+  }
 }
+
 .visible-xs .priority-notifications {
   min-height:40px;
   position: relative;
-  top: 0px;
+  top: 0;
   margin:0px -15px;
   padding:15px 20px 12px;
-  background-color: lighten(@color1, 10%);
+  background-color: lighten(@color1, 20%);
   .notification-message {
     font-size:13px;
   }
@@ -204,7 +197,7 @@
   color:@white;
   text-align:center;
   display: block;
-  margin-bottom:0px;
+  margin-bottom:0;
   a {
     color:#eee;
     border-bottom:1px solid #eee;
@@ -217,45 +210,9 @@
 
 
 // New Stuff Div
-
-.header-opaque {
-  width:100%;
-  position:absolute;
-  background-color:rgba(256,256,256,0.8);
-  bottom:0px;
-  z-index:150;
-  div {
-    display:inline-block;
-    float:left;
-    margin:0px 10px;
-    h3 {
-      margin-top:9px;
-      font-size:20px;
-    }
-    p {
-      color:#555;
-      margin:10px 0px;
-    }
-  }
-  .new {
-    text-transform:uppercase;
-    color:#fcf49c;
-    background-color:rgba(183,1,1,0.8);
-    border-radius:8px;
-    padding:3px 8px 1px;
-    margin:10px 0px;
-    font-size:12px;
-  }
-  .remove {
-    float:right;
-    padding:10px 0px;
-    color:#555;
-  }
-  .remove:hover {
-    cursor:pointer;
-    color:#333;
-  }
-}
+/*
+  TODO: determine whether any of this is still needed
+*/
 
 // News Mockups
 

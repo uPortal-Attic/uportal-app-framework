@@ -1,250 +1,57 @@
-.bucky-nav-large li:first-of-type+li{
-  position:absolute;
-  width:40%;
-}
-.portlet-search-bar ul.dropdown-menu {
-  min-width: 90%;
-
-  li:first-of-type+li {
-    position: relative;
-    width: inherit;
-    left: 0;
+portal-header {
+  a:not(.btn):link, a:not(.btn):visited, a:not(.btn):hover,
+  a:not(.btn):focus, a:not(.btn):active {
+    text-decoration: none;
   }
-}
-
-.bucky-nav ul li a:hover {
-  text-decoration:none;
-  color:@color2;
-}
-.navbar-default {
-  height:52px !important;
-}
-.container-fluid {
-  height:inherit;
-}
-
-.navbar-default .navbar-toggle {
-  float: left;
-  margin-left: 8px;
-  background-color:transparent;
-  border-color:transparent;
-  .icon-bar {
-    background-color:@white;
-    height:4px;
-  }
-}
-.navbar.navbar-default .navbar-header,
-.navbar.navbar-inverse .navbar-header {
-  margin-left: -15px;
-}
-.navbar-brand {
-  padding:15px 15px 15px 0px;
-}
-.bucky-nav ul.searching {
-  margin: 20px 10px 30px;
-}
-.bucky-nav ul {
-  margin: 20px 10px 10px;
-  li {
-    position: relative;
-    display: block;
-    padding: 8px 20px;
-    margin-bottom: -1px;
-    background-color: transparent;
-    border: none;
-    text-align: left;
-    a {
-      color:@color1;
-      font-size:20px;
-    }
-  }
-}
-#bucky-navbar-collapse {
-  padding:0px;
-  border-color:@color1;
-}
-.navbar {
- border-radius : 0;
- border: 0;
- margin: 0;
- box-shadow: 0px 1px 1px #AAA;
-}
-.navbar-nav {
-  margin:0px;
-}
-.close-nav {
-  position:absolute;
-  right:20px;
-  height:30px;
-  z-index:100;
-}
-
-.portlet-title h1 i {
-  margin: 6px;
-}
-
-.main-search {
-  width: 90%;
-  display: block;
-  background-color: @white;
-  margin-top: 6px;
-  margin-bottom: 3px;
-  border-top-left-radius:4px;
-  border-bottom-left-radius:4px;
-  font-size: 1.6em;
-  color: @color3;
-  float: right;
-  padding: 0 0 0 15px;
-  height:38px;
-}
-.main-search[placeholder="Search My-UW"] {
-  color: #222;
-}
-.main-search:focus {
-  outline: none;
-}
-.btn-search {
-  padding:9px 12px;
-  border:0px solid transparent;
-  background-color:#eee;
-  top:2px;
-  height:38px;
-  color:#222;
-  &:hover {
-    background-color:#ddd;
-    color:#111;
-  }
-  .fa-search {
-    font-size:1.2em;
-  }
-}
-.search-mobile {
-  background-color:#fff;
-  padding:12px;
-}
-
-.navbar-header {
-  height: 52px;
-}
-
-.navbar-header .search-mobile-icon .fa-search {
-  float:right;
-  font-size:1.7em;
-  color: @white;
-  padding:14px 20px;
-  cursor:pointer;
-}
-.navbar-header .search-mobile-icon .fa-search:hover {
-  background-color:@color2;
-}
-.search-mobile-icon {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 52px;
-}
-@media (min-width: 768px) {
-  .navbar-fixed-top.has-priority-nots {
-    top:50px;
-  }
-  .page-content.has-priority-nots {
-    padding:102px 0px;
-  }
-}
-@media (max-width:767px) {
-  .navbar-collapse {
-    background-color:@white;
-    overflow-y:visible;
-  }
-  #bucky-navbar-collapse {
-    box-shadow: 0 20px 60px 0px rgba(0,0,0,0.6);
-  }
-}
-
-//---------------------Username options-css ------------------------------------
-
-portal-header li.username-menu {
+  ::-webkit-input-placeholder {
     color: @white;
-    line-height: 50px;
-    margin-right: 5px;
+    font-weight: 400;
+  }
+  :-moz-placeholder {
+    color: @white;
+    font-weight: 400;
+  }
+  ::-moz-placeholder {
+    color: @white;
+    font-weight: 400;
+  }
+  :-ms-input-placeholder {
+    color: @white;
+    font-weight: 400;
+  }
 
-    .gravatar {
-      border-radius: 2000px;
-      height: 32px;
-      margin-right:5px;
+  md-toolbar {
+    min-height: 56px;
+    position: fixed;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+    z-index: 100;
+    @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
+      min-height: 48px;
     }
-    .username-option i {
-      padding-left:5px;
-    }
-    .username-option:hover {
-      cursor: pointer;
-    }
-
-    .popover {
-      left: inherit !important;
-      top: 40px !important;
-      right: -10px;
-    }
-
-    .arrow {
-      left: 92% !important;
-    }
-
-    .popover-content {
-      padding: 6px 12px;
-    }
-
-    .username-menu-template {
-      line-height: 1.7em;
-      width : 160px;
-      text-align: right;
-      ul li {
-        color: @black;
-
-        a {
-          padding-left: 43px;
+    .md-toolbar-tools {
+      padding-left: 0;
+      max-height: 56px;
+      .title-link {
+        img {
+          height: 56px;
+          margin-right: 16px;
+          @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
+            height: 48px;
+          }
+        }
+        .beta-logo {
+          font-size:0.55em;
+          color:#fcf49c;
+          position:relative;
+          top:0;
+          margin-left:3px;
         }
       }
     }
-}
-
-//-----------------end-Username options-css ------------------------------------
-
-//---------------------crest and title css -------------------------------------
-
-.navbar-header div.header-crest {
-  .beta-logo {
-    font-size:0.55em;
-    color:#fcf49c;
-    position:relative;
-    top:5px;
-    margin-left:3px;
-  }
-
-  a {
-     color: @white;
-     font-weight: 200;
-  }
-
-  .title {
-    font-size: 26px;
-    margin-left: 10px;
-    position: relative;
-    top: 5px;
-  }
-
-  .header-inner {
-    height: 52px;
-    overflow: hidden;
-    img {
-      height:52px;
+    @media (min-width: 768px) {
+      &.has-priority-nots {
+        margin-top: 46px;
+      }
     }
   }
-
-  a:link, a:visited, a:hover,
-  a:focus, a:active {
-     text-decoration: none;
-  }
 }
-
-//----------------end--crest and title css -------------------------------------

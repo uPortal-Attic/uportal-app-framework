@@ -1,57 +1,60 @@
 app-header,app-header-two-way-bind {
 
   .app-header {
-    height:55px;
-    position:relative;
-    overflow:visible;
-    z-index:20;
-    background-color:#ddd;
-    box-shadow: 0px 1px 1px 0px #AAA;
-  }
-
-  .popover {
-    left: inherit !important;
-    right : 9px;
-  }
-
-  .arrow {
-    left: 91% !important;
-  }
-
-  .dropdown {
-    position:absolute;
-    top:20px;
-    right:20px;
-    .dropdown-menu {
-      right: 0px;
-      left: auto;
+    box-shadow: 0 1px 1px 0 @grayscale5;
+    h1.app-title {
+      font-weight: 200;
+      font-size: 20px;
+      margin: 10px 0;
+      color: @white;
     }
-    i {
-      font-size:20px;
-      color:@white;
-    }
-  }
+    .md-subheader-inner {
+      padding: 0 16px;
+      width: 100%;
 
-  h3.title {
-    color:@black;
-    font-weight:200;
-    margin: 15px 0px 0px;
-    z-index:5;
-  }
+      .md-subheader-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-  .header-links {
-    padding-right:0px;
-    :hover {
-      cursor : pointer;
-    }
-    color : @link-color;
-    .link-div {
-      float:right;
-      margin: 20px;
-      a:hover {
-        text-decoration: none;
+        .link-div {
+          float:right;
+          color: @white;
+          a {
+            color: @white;
+            &:hover {
+              text-decoration: none;
+              color: @white;
+            }
+          }
+
+          @media (max-width: 960px) {
+            i.fa {
+              font-size: 20px;
+            }
+          }
+          i.fa-gear {
+            font-size: 20px;
+          }
+        }
+
+        .md-button {
+          margin: 0 8px;
+          color: @white;
+          > a {
+            color: @white;
+            &:hover {
+              color: @white;
+            }
+          }
+          @media (max-width: 960px) {
+            min-width: inherit;
+          }
+        }
+      }
+      @media(max-width: 599px) {
+        padding-right: 0;
       }
     }
   }
-
 }

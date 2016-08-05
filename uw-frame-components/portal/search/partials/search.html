@@ -1,33 +1,37 @@
-<form ng-submit="submit()">
-  <div role="search" class="input-group portlet-search-bar">
-    <input type="search" class="main-search"
-            placeholder="Search {{portal.theme.title}}"
-            name="initialFilter"
-            ng-model="initialFilter"
-            aria-label="Search bar enter the app you are looking for"
-            focus-me="showSearchFocus"
-            ng-show="$storage.typeaheadSearch"
-            typeahead="title as match.title for match in filterMatches | limitTo:10"
-            typeahead-on-select="onSelect($item, $model, $label)"
-            typeahead-loading="portletListLoading"
-            typeahead-min-length="2"
-            typeahead-focus-first='false'
-            autocomplete="off" >
-
-      <input type="search" class="main-search"
-            placeholder="Search {{portal.theme.title}}"
-            name="initialFilter"
-            ng-model="initialFilter"
-            aria-label="Search bar enter the app you are looking for"
-            focus-me="showSearchFocus"
-            ng-hide="$storage.typeaheadSearch"
-            autocomplete="off" />
-
-
-    <span class="input-group-btn">
-      <button aria-label="Search button" class="btn btn-flat btn-search">
-        <i class="fa fa-search"></i>
-      </button>
-    </span>
-  </div>
+<form name="searchForm" ng-submit="submit()" ng-hide="$storage.typeaheadSearch">
+  <md-input-container class="md-block myuw-search" md-no-float layout="row" layout-align="start center" style="margin:0;">
+    <md-button class="md-icon-button" ng-click="submit()" aria-label="submit search"
+               style="padding:0;margin:0;width:36px;height:36px;">
+      <i class="fa fa-search"></i>
+    </md-button>
+    <input type="search"
+           name="initialFilter"
+           placeholder="Search {{portal.theme.title}}"
+           ng-model="initialFilter"
+           aria-label="Search bar enter the app you are looking for"
+           focus-me="showSearchFocus"
+           autocomplete="off"
+           style="display:inline-block;width:80%;">
+  </md-input-container>
+</form>
+<form name="searchForm" ng-submit="submit()" ng-show="$storage.typeaheadSearch">
+  <md-input-container class="md-block myuw-search" md-no-float layout="row" layout-align="start center" style="margin:0;">
+    <md-button class="md-icon-button" ng-click="submit()" aria-label="submit search"
+               style="padding:0;margin:0;width:36px;height:36px;">
+      <i class="fa fa-search"></i>
+    </md-button>
+    <input type="search"
+           name="initialFilter"
+           placeholder="Search {{portal.theme.title}}"
+           ng-model="initialFilter"
+           aria-label="Search bar enter the app you are looking for"
+           focus-me="showSearchFocus"
+           typeahead="title as match.title for match in filterMatches | limitTo:10"
+           typeahead-on-select="onSelect($item, $model, $label)"
+           typeahead-loading="portletListLoading"
+           typeahead-min-length="2"
+           typeahead-focus-first='false'
+           autocomplete="off"
+           style="display:inline-block;width:80%;">
+  </md-input-container>
 </form>

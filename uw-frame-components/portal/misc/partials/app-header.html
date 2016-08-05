@@ -1,18 +1,18 @@
-<script type="text/ng-template" id="AppHeaderOptions.html">
-  <add-to-home class='visible-xs'></add-to-home>
-  <div ng-include="optionTemplate">
-
+<md-subheader role="heading" class="app-header md-primary md-hue-2">
+  <h1 flex="60" class="app-title"><i class="fa {{::icon}}"></i> {{::title}}</h1>
+  <div flex="40" class="header-links">
+    <!-- Options menu -->
+    <md-menu ng-if="optionTemplate">
+      <md-button aria-label="Open options menu" class="md-primary link-div" ng-click="$mdOpenMenu($event)">
+        <span hide-gt-sm layout="row" layout-align="center center"><i class='fa fa-gear fa-fw'></i></span>
+        <span hide-xs hide-sm>Options <i class="fa fa-caret-down"></i></span>
+      </md-button>
+      <md-menu-content width="3">
+        <add-to-home hide-gt-sm></add-to-home>
+        <div ng-include="optionTemplate"></div>
+      </md-menu-content>
+    </md-menu>
+    <!-- Add to home button -->
+    <add-to-home hide-xs hide-sm></add-to-home>
   </div>
-</script>
-
-<div role="heading" class="app-header">
-  <div class="col-sm-7 col-xs-9">
-    <h3 id="app-title" class='title'><i class="fa {{::icon}}"></i> {{::title}}</h3>
-  </div>
-  <div class="col-sm-5 col-xs-3 header-links">
-    <div ng-if='optionTemplate' class="link-div" popover-template="'AppHeaderOptions.html'" popover-placement="bottom" popover-trigger="click">
-      <span class='visible-xs'><i class='fa fa-gear fa-fw'></i></span><span class='hidden-xs'>Options <i class="fa fa-caret-down"></i></span>
-    </div>
-    <add-to-home class='hidden-xs'></add-to-home>
-  </div>
-</div>
+</md-subheader>

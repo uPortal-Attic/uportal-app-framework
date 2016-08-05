@@ -67,45 +67,62 @@
 bucky-announcement {
   div.announcement-creeper {
     margin-right: 20px;
-    vertical-align: bottom;
-    padding-top: 37px;
     overflow: hidden;
-    max-height: 52px;
-    transition: all 0.5s ease;
-  }
-  div.announcement-hover {
-    transition: all 0.5s ease;
-    padding-top: 12px;
+    max-height: 48px;
+    position: relative;
+    top: 8px;
+    img {
+      transition: @mascot-transition;
+      position: relative;
+      top: 26px;
+    }
+    &.announcement-hover {
+      img {
+        top: 0;
+      }
+    }
+    @media (max-width: 768px) {
+      margin-right: 0;
+    }
+    @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
+      top: 4px;
+    }
   }
   img:focus {
     outline: none;
   }
-
-  div.mobile {
-    display: block;
-    color: #ddd;
-    padding-top: 10px;
-    background-color: transparent;
-    font-size: 20px;
-  }
 }
 
 bucky-announcement .popover {
-  padding: 7px;
-  border-radius: 5px;
-  float: left;
+  padding: 0;
   position: absolute;
   top: 10px !important;
-  left: -205px !important;
-  width: 200px !important;
-
+  width: 210px !important;
+  &.left {
+    margin-left: -20px;
+  }
   .arrow {
     top: 10% !important;
     right: -11px !important;
   }
-
-  a {
-    text-decoration: underline;
-    font-size : smaller;
+  .popover-content {
+    padding: 9px 12px;
+    a {
+      color: @link-color;
+      &:hover {
+        color: darken(@link-color, 20%);
+      }
+    }
+    li, p, span {
+      color: @black;
+    }
+    li div a {
+      font-size: smaller;
+      text-decoration: underline;
+      margin-bottom: 8px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
