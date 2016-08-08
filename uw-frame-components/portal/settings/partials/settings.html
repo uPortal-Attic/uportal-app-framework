@@ -1,26 +1,24 @@
 <frame-page app-title='Beta Settings'
-              app-icon='fa-gears'
-              white-background='true'>
-  <ul class='row' style='margin-top : 10px;'>
-    <li class='col-sm-4' ng-repeat='option in options'>
-      <md-card>
-        <uw-setting-option></uw-setting-option>
-      </md-card>
-    </li>
-  </ul>
-  <ul class="row" style='margin-top : 10px;'>
-    <li class="col-sm-6" style='text-align : center;'>
-      <div class='beta-card-style'>
-        <h4>Theme Selector</h4>
-        <small>Pick which place you call home</small>
+            app-icon='fa-gears'
+            white-background='true'
+            class="beta-settings-page">
+  <md-content layout-padding>
+    <div layout-gt-sm="row" layout="column">
+      <!-- Settings options -->
+      <div layout="column" flex-gt-sm="60" >
+        <div layout="row" ng-repeat="option in options">
+          <uw-setting-option></uw-setting-option>
+        </div>
+      </div>
+      <!-- Theme selector and 'danger zone' -->
+      <div layout="column" flex-gt-sm="40">
+        <h4 class="md-subhead">Theme Selector<br><small>Pick which place you call home.</small></h4>
         <select class="form-control" ng-options="item as item.name for item in THEMES track by item.name" ng-model="portal.theme">
         </select>
-      </div>
-     </li>
-    <li class="col-sm-6 center">
-      <div class='beta-card-style'>
-        <h4>Danger Zone</h4>
-        <h4>
+        <h4 class="md-subhead">Danger Zone<br>
+          <small>Clean the slate by clearing the session storage and resetting to defaults.</small>
+        </h4>
+        <div layout="column" layout-gt-xs="row">
           <md-button class='md-primary md-raised' ng-click="resetAll()">
             Reset All
           </md-button>
@@ -30,9 +28,9 @@
           <md-button class='md-warn md-raised' ng-click="resetLocal(); reload();">
             Reset Local
           </md-button>
-        </h4>
-        <small>Reset to default and clearing the session storage can be nice to clean the slate.</small>
+        </div>
       </div>
-    </li>
-  </ul>
+    </div>
+
+  </md-content>
 </frame-page>

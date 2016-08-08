@@ -1,25 +1,47 @@
-<frame-page app-title='User Settings'
-              app-icon='fa-gears' white-background='true'>
-  <ul class="row" style='margin : 10px;'>
-    <li class='col-xs-12' ng-hide='kvEnabled'>
-      <div class='center'>
-        No settings for you to set at this time.
+<frame-page app-title="User Settings"
+            app-icon="fa-gears"
+            white-background="true"
+            class="user-settings-page">
+  <md-content layout-padding>
+    <div layout="column">
+      <p ng-hide="kvEnabled">No settings for you to set at this time.</p>
+      <h4 class="md-subhead" ng-if="kvEnabled">Reset Zone<br>
+        <small>Reset various features to their default states.</small>
+      </h4>
+      <div ng-if="kvEnabled" layout="column" layout-align="center start">
+        <!-- RESET ANNOUNCEMENTS -->
+        <div layout="row" layout-align="start center">
+          <md-button ng-if="FEATURES.enabled"
+                     class="md-primary md-raised"
+                     ng-click="resetAnnouncements()"
+                     aria-label="reset seen announcements">
+            reset announcements
+            <i class="fa fa-spin fa-circle-o" ng-if="loadingResetAnnouncements"></i>
+          </md-button>
+          <small>Click to see previously-dismissed mascot and popup announcements.</small>
+        </div>
+        <!-- RESET NOTIFICATIONS -->
+        <div layout="row" layout-align="start center">
+          <md-button ng-if="NOTIFICATION.enabled"
+                     class="md-accent md-raised"
+                     ng-click="resetKey(KV_KEYS.DISMISSED_NOTIFICATION_IDS,'DISMISSED_NOTIFICATION_IDS')"
+                     aria-label="reset dismissed notifications">
+            reset notifications
+            <i class="fa fa-spin fa-circle-o" ng-if='DISMISSED_NOTIFICATION_IDS'></i>
+          </md-button>
+          <small>Click to see previously-dismissed notifications.</small>
+        </div>
+        <!-- RESET LAYOUT -->
+        <div layout="row" layout-align="start center">
+          <md-button ng-if="MISC_URLS.resetLayoutURL"
+                     class="md-warn md-raised"
+                     ng-href="{{MISC_URLS.resetLayoutURL}}"
+                     aria-label="reset layout">
+            reset layout
+          </md-button>
+          <small>Click to reset your portal layout.</small>
+        </div>
       </div>
-    </li>
-    <li class="col-md-4 col-sm-6 center" ng-if='kvEnabled'>
-      <div class='user-card-style'>
-        <h4>Reset Zone</h4>
-        <div ng-if='FEATURES.enabled'>
-          <button class="btn btn-flat" ng-click="resetAnnouncements()">Reset seen announcements <i class='fa fa-spin fa-circle-o' ng-if='loadingResetAnnouncements'></i></button>
-        </div>
-        <div ng-if='NOTIFICATION.enabled'>
-          <button class="btn btn-flat" ng-click="resetKey(KV_KEYS.DISMISSED_NOTIFICATION_IDS,'DISMISSED_NOTIFICATION_IDS')">Reset dismissed notifications <i class='fa fa-spin fa-circle-o' ng-if='DISMISSED_NOTIFICATION_IDS'></i></button>
-        </div>
-        <div ng-if='MISC_URLS.resetLayoutURL'>
-            <a ng-href="{{MISC_URLS.resetLayoutURL}}" role="button" class="btn btn-flat">Reset layout</a>
-        </div>
-        <small>Reset various features to their default state.</small>
-      </div>
-    </li>
-  </ul>
+    </div>
+  </md-content>
 </frame-page>
