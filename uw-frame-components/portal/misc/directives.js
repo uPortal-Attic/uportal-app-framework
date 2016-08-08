@@ -148,7 +148,8 @@ define(['angular', 'require'], function(angular, require) {
           actionLinkText: '@appActionLinkText',
           addToHome : '=appAddToHome',
           fname : '@appFname',
-          optionTemplate: '@appOptionTemplate'
+          optionTemplate: '@appOptionTemplate',
+          isSingleOption: '@appSingleOption'
         },
         templateUrl: require.toUrl('./partials/app-header.html')
       };
@@ -165,7 +166,8 @@ define(['angular', 'require'], function(angular, require) {
           actionLinkText: '=appActionLinkText',
           addToHome : '=appAddToHome',
           fname : '=appFname',
-          optionTemplate: '=appOptionTemplate'
+          optionTemplate: '=appOptionTemplate',
+          isSingleOption: '=appSingleOption'
         },
         templateUrl: require.toUrl('./partials/app-header.html')
       };
@@ -195,6 +197,7 @@ define(['angular', 'require'], function(angular, require) {
             appAddToHome : '=appAddToHome',
             appFname : '=appFname',
             appOptionTemplate: '@appOptionTemplate',
+            appSingleOption: '@appSingleOption',
             whiteBackground: '='
           }
       }
