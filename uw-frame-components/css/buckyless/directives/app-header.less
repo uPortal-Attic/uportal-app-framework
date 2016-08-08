@@ -22,6 +22,10 @@ app-header,app-header-two-way-bind {
         .link-div {
           float:right;
           color: @white;
+          text-transform: lowercase;
+          &:first-letter {
+            text-transform: uppercase;
+          }
           a {
             color: @white;
             &:hover {
@@ -37,6 +41,15 @@ app-header,app-header-two-way-bind {
           }
           i.fa-gear {
             font-size: 20px;
+          }
+        }
+
+        add-to-home {
+          .link-div {
+            text-transform: none;
+            &:first-letter {
+              text-transform: none;
+            }
           }
         }
 
