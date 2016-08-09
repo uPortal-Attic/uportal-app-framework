@@ -1,8 +1,9 @@
 <md-subheader role="heading" class="app-header md-primary md-hue-2">
-  <h1 flex="60" class="app-title"><i class="fa {{::icon}}"></i> {{::title}}</h1>
-  <div flex="40" class="header-links">
-    <!-- Options menu -->
-    <md-menu ng-if="optionTemplate">
+  <h1 flex="50" class="app-title"><i class="fa {{::icon}}"></i> {{::title}}</h1>
+  <div flex="50" class="header-links">
+
+    <!-- OPTIONS MENU WITH MULTIPLE OPTIONS -->
+    <md-menu ng-if="optionTemplate && !isSingleOption">
       <md-button aria-label="Open options menu" class="md-primary link-div" ng-click="$mdOpenMenu($event)">
         <span hide-gt-sm layout="row" layout-align="center center"><i class='fa fa-gear fa-fw'></i></span>
         <span hide-xs hide-sm>Options <i class="fa fa-caret-down"></i></span>
@@ -12,7 +13,24 @@
         <div ng-include="optionTemplate"></div>
       </md-menu-content>
     </md-menu>
-    <!-- Add to home button -->
+
+    <!-- SINGLE-OPTION MENU -->
+    <div class="link-div" ng-if="optionTemplate && isSingleOption" hide-xs hide-sm>
+      <div ng-include="optionTemplate"></div>
+    </div>
+    <md-menu ng-if="optionTemplate && isSingleOption" hide-gt-sm>
+      <md-button aria-label="Open options menu" class="md-primary link-div" ng-click="$mdOpenMenu($event)">
+        <span layout="row" layout-align="center center"><i class='fa fa-gear fa-fw'></i></span>
+      </md-button>
+      <md-menu-content width="3">
+        <add-to-home hide-gt-sm></add-to-home>
+        <md-menu-item>
+          <div ng-include="optionTemplate"></div>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+
+    <!-- ADD TO HOME BUTTON (HIDDEN XS) -->
     <add-to-home hide-xs hide-sm></add-to-home>
   </div>
 </md-subheader>
