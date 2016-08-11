@@ -19,7 +19,8 @@ define(['angular', 'jquery', 'portal', 'portal/main/routes', 'portal/settings/ro
             when('/about', about).
             when('/access-denied', main.accessDenied).
             when('/server-error', main.serverError).
-            otherwise(main.main);
+            when('/', main.main).
+            otherwise(main.fileNotFound); //default to 404
     }]);
     return app;
 });
