@@ -185,7 +185,7 @@ define(['angular'], function(angular) {
                'A200': '#fffaeb',
                'A400': '#ffd04d',
                'A700': '#f0b100',
-               'contrastDefaultColor': 'dark',
+               'contrastDefaultColor': 'dark'
              },
              "warn" : "red"
             }
