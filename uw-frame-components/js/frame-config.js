@@ -3,7 +3,7 @@ define(['angular'], function(angular) {
     var config = angular.module('frame-config', []);
     config
         .constant('THEMES',
-        {"themeVersion": 2,
+        {"themeVersion": 3,
         /* THOU SHALT INCREMENT THIS VERSION NUMBER IF THOU CHANGEST ANY OF THE THEMES BELOW  */
          "themes":
         [
@@ -358,8 +358,7 @@ define(['angular'], function(angular) {
                 "title" : "Help"
               }],
             "materialTheme" : {
-             "primary" : "grey",
-             "accent" : {
+             "primary" : {
                '50': '#ffffff',
                '100': '#fff7e1',
                '200': '#ffe8a9',
@@ -376,6 +375,24 @@ define(['angular'], function(angular) {
                'A700': '#e5a801',
                'contrastDefaultColor': 'dark',
                'contrastLightColors': ['900']
+             },
+             "accent" : {
+               '50': '#858585',
+               '100': '#5e5e5e',
+               '200': '#424242',
+               '300': '#1f1f1f',
+               '400': '#0f0f0f',
+               '500': '#000000',
+               '600': '#000000',
+               '700': '#000000',
+               '800': '#000000',
+               '900': '#000000',
+               'A100': '#858585',
+               'A200': '#5e5e5e',
+               'A400': '#0f0f0f',
+               'A700': '#000000',
+               'contrastDefaultColor': 'light',
+               'contrastDarkColors': ['50', 'A100']
              },
              "warn" : {
                '50': '#a3ffff',
