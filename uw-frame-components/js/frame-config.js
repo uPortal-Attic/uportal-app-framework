@@ -308,9 +308,63 @@ define(['angular'], function(angular) {
                 "title" : "Help"
               }],
             "materialTheme" : {
-             "primary" : "blue",
-             "accent" : "amber",
-             "warn" : "red"
+              "primary" : {
+                '50': '#cbd2ee',
+                '100': '#91a1db',
+                '200': '#677dce',
+                '300': '#3a54b3',
+                '400': '#32499c',
+                '500': '#2b3e85',
+                '600': '#24336e',
+                '700': '#1c2857',
+                '800': '#151e40',
+                '900': '#0d1328',
+                'A100': '#cbd2ee',
+                'A200': '#91a1db',
+                'A400': '#32499c',
+                'A700': '#1c2857',
+                'contrastDefaultColor': 'light',
+                'contrastDarkColors': ['50', '100', 'A100', 'A200'],
+                'contrastLightColors': undefined
+              },
+              "accent" : {
+                '50': '#ffffff',
+                '100': '#fbebc9',
+                '200': '#f7d995',
+                '300': '#f1c153',
+                '400': '#efb636',
+                '500': '#edac1a',
+                '600': '#d79a11',
+                '700': '#bb860f',
+                '800': '#9f720c',
+                '900': '#825d0a',
+                'A100': '#ffffff',
+                'A200': '#fbebc9',
+                'A400': '#efb636',
+                'A700': '#bb860f',
+                'contrastDefaultColor': 'dark',
+                'contrastDarkColors': undefined,
+                'contrastLightColors': ['800', '900']
+              },
+              "warn" : {
+                '50': '#ffffff',
+                '100': '#fae6d9',
+                '200': '#f3c6a8',
+                '300': '#ea9d69',
+                '400': '#e78c4e',
+                '500': '#e37a33',
+                '600': '#d96a1e',
+                '700': '#bf5c1a',
+                '800': '#a44f16',
+                '900': '#894213',
+                'A100': '#ffffff',
+                'A200': '#fae6d9',
+                'A400': '#e78c4e',
+                'A700': '#bf5c1a',
+                'contrastDefaultColor': 'dark',
+                'contrastDarkColors': undefined,
+                'contrastLightColors': ['700', '800', '900', 'A700']
+              }
             }
           },
           {
