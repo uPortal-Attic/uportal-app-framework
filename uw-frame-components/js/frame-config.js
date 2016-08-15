@@ -405,8 +405,42 @@ define(['angular'], function(angular) {
                 "title" : "Help"
               }],
             "materialTheme" : {
-             "primary" : "blue",
-             "accent" : "grey",
+             "primary" : {
+               '50': '#b0d2f8',
+               '100': '#6aaaf2',
+               '200': '#368ded',
+               '300': '#1269ca',
+               '400': '#105bae',
+               '500': '#0d4c92',
+               '600': '#0b3d76',
+               '700': '#082f5a',
+               '800': '#05203e',
+               '900': '#031122',
+               'A100': '#b0d2f8',
+               'A200': '#6aaaf2',
+               'A400': '#105bae',
+               'A700': '#082f5a',
+               'contrastDefaultColor': 'light',
+               'contrastDarkColors': ['50', '100', 'A100', 'A200']
+             },
+             "accent" : {
+               '50': '#ffffff',
+               '100': '#ffffff',
+               '200': '#ffffff',
+               '300': '#fcfcf8',
+               '400': '#f2f1e4',
+               '500': '#e8e6cf',
+               '600': '#dedbba',
+               '700': '#d4d0a6',
+               '800': '#cac691',
+               '900': '#c0bb7c',
+               'A100': '#ffffff',
+               'A200': '#ffffff',
+               'A400': '#f2f1e4',
+               'A700': '#d4d0a6',
+               'contrastDefaultColor': 'dark',
+               'contrastLightColors': ['900']
+             },
              "warn" : "red"
             }
           },
