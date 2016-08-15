@@ -40,11 +40,8 @@ define(['angular'], function(angular) {
                 'A200': 'FC8B8F',
                 'A400': 'E3060E',
                 'A700': '890308',
-                'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
-                                  // on this palette should be dark or light
-                'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
-                  '200', '300', '400', 'A100'],
-                'contrastLightColors': undefined    // could also specify this if default was 'dark'
+                'contrastDefaultColor': 'light',
+                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100']
               },
               "accent" : {
                 '50': 'B8E9FD',
@@ -61,11 +58,8 @@ define(['angular'], function(angular) {
                 'A200': '0479A8',
                 'A400': '058FC6',
                 'A700': '034E6C',
-                'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
-                                  // on this palette should be dark or light
-                'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
-                  '200', '300', '400', 'A100'],
-                'contrastLightColors': undefined    // could also specify this if default was 'dark'
+                'contrastDefaultColor': 'light',
+                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100']
               },
               "warn" : {
                 '50': 'FFFFFF',
@@ -82,11 +76,8 @@ define(['angular'], function(angular) {
                 'A200': 'F9E7D7',
                 'A400': 'E6934D',
                 'A700': 'BC651B',
-                'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
-                                  // on this palette should be dark or light
-                'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
-                  '200', '300', '400', 'A100'],
-                'contrastLightColors': undefined    // could also specify this if default was 'dark'
+                'contrastDefaultColor': 'light',
+                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100']
               }
             }
           },
@@ -109,8 +100,42 @@ define(['angular'], function(angular) {
                "title" : "Feedback"
              }],
             "materialTheme" : {
-              "primary" : "red",
-              "accent" : "blue",
+              "primary" : {
+                '50': '#fcdae1',
+                '100': '#f693a8',
+                '200': '#f25f7e',
+                '300': '#ed1d49',
+                '400': '#da113c',
+                '500': '#be0f34',
+                '600': '#a20d2c',
+                '700': '#850b24',
+                '800': '#69081d',
+                '900': '#4d0615',
+                'A100': '#fcdae1',
+                'A200': '#f693a8',
+                'A400': '#da113c',
+                'A700': '#850b24',
+                'contrastDefaultColor': 'light',
+                'contrastDarkColors': ['50', '100', '200', 'A100', 'A200']
+              },
+              "accent" : {
+                '50': '#ebecec',
+                '100': '#c5c5c6',
+                '200': '#a8a9aa',
+                '300': '#848687',
+                '400': '#757677',
+                '500': '#666768',
+                '600': '#575859',
+                '700': '#484849',
+                '800': '#39393a',
+                '900': '#292a2a',
+                'A100': '#ebecec',
+                'A200': '#c5c5c6',
+                'A400': '#757677',
+                'A700': '#484849',
+                'contrastDefaultColor': 'light',
+                'contrastDarkColors': ['50', '100', '200', '300', 'A100', 'A200']
+              },
               "warn" : "deep-orange"
             }
           },
