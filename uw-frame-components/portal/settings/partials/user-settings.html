@@ -10,9 +10,8 @@
       </h4>
       <div ng-if="kvEnabled" layout="column" layout-align="center start">
         <!-- RESET ANNOUNCEMENTS -->
-        <div layout="row" layout-align="start center">
-          <md-button ng-if="FEATURES.enabled"
-                     class="md-primary md-raised"
+        <div layout="row" layout-align="start center" ng-if="FEATURES.enabled">
+          <md-button class="md-primary md-raised"
                      ng-click="resetAnnouncements()"
                      aria-label="reset seen announcements">
             reset announcements
@@ -21,9 +20,8 @@
           <small>Click to see previously-dismissed mascot and popup announcements.</small>
         </div>
         <!-- RESET NOTIFICATIONS -->
-        <div layout="row" layout-align="start center">
-          <md-button ng-if="NOTIFICATION.enabled"
-                     class="md-accent md-raised"
+        <div layout="row" layout-align="start center" ng-if="NOTIFICATION.enabled">
+          <md-button class="md-accent md-raised"
                      ng-click="resetKey(KV_KEYS.DISMISSED_NOTIFICATION_IDS,'DISMISSED_NOTIFICATION_IDS')"
                      aria-label="reset dismissed notifications">
             reset notifications
@@ -32,9 +30,8 @@
           <small>Click to see previously-dismissed notifications.</small>
         </div>
         <!-- RESET LAYOUT -->
-        <div layout="row" layout-align="start center">
-          <md-button ng-if="MISC_URLS.resetLayoutURL"
-                     class="md-warn md-raised"
+        <div layout="row" layout-align="start center" ng-if="MISC_URLS.resetLayoutURL">
+          <md-button class="md-warn md-raised"
                      ng-href="{{MISC_URLS.resetLayoutURL}}"
                      aria-label="reset layout">
             reset layout
