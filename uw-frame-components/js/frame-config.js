@@ -358,7 +358,8 @@ define(['angular'], function(angular) {
                 "title" : "Help"
               }],
             "materialTheme" : {
-             "primary" : {
+             "primary" : "grey",
+             "accent" : {
                '50': '#ffffff',
                '100': '#fff7e1',
                '200': '#ffe8a9',
@@ -375,24 +376,6 @@ define(['angular'], function(angular) {
                'A700': '#e5a801',
                'contrastDefaultColor': 'dark',
                'contrastLightColors': ['900']
-             },
-             "accent" : {
-               '50': '#858585',
-               '100': '#5e5e5e',
-               '200': '#424242',
-               '300': '#1f1f1f',
-               '400': '#0f0f0f',
-               '500': '#000000',
-               '600': '#000000',
-               '700': '#000000',
-               '800': '#000000',
-               '900': '#000000',
-               'A100': '#858585',
-               'A200': '#5e5e5e',
-               'A400': '#0f0f0f',
-               'A700': '#000000',
-               'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', 'A100']
              },
              "warn" : {
                '50': '#a3ffff',
@@ -484,7 +467,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-lacrosse",
-            "crest" : "img/uwl-round-56.png",
+            "crest" : "img/uwl-round-56.jpg",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
@@ -692,7 +675,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-superior",
-            "crest" : "img/uw-superior-logo-52.jpg",
+            "crest" : "img/uw-superior-logo-112.jpg",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
@@ -738,7 +721,7 @@ define(['angular'], function(angular) {
                'A700': '#ffc009',
                'contrastDefaultColor': 'dark'
              },
-             "warn" : "red"
+             "warn" : "blue"
             }
           },
           {
@@ -916,7 +899,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-system",
-            "crest" : "img/uw-system-52.png",
+            "crest" : "img/uw-system-logo-112.png",
             "title" : "MyUW",
             "subtitle" : "beta",
             "ariaLabelTitle" : "My U W",
@@ -928,25 +911,59 @@ define(['angular'], function(angular) {
                           }],
             "materialTheme" : {
               "primary" : {
-                '50': '#ff82aa',
-                '100': '#ff3675',
-                '200': '#fd0050',
-                '300': '#b50039',
-                '400': '#970030',
-                '500': '#780026',
-                '600': '#59001c',
-                '700': '#3b0013',
-                '800': '#1c0009',
-                '900': '#000000',
-                'A100': '#ff82aa',
-                'A200': '#ff3675',
-                'A400': '#970030',
-                'A700': '#3b0013',
+                '50': '#ffa3c2',
+                '100': '#ff578f',
+                '200': '#ff1f69',
+                '300': '#d60047',
+                '400': '#b8003d',
+                '500': '#990033',
+                '600': '#7a0029',
+                '700': '#5c001f',
+                '800': '#3d0014',
+                '900': '#1f000a',
+                'A100': '#ffa3c2',
+                'A200': '#ff578f',
+                'A400': '#b8003d',
+                'A700': '#5c001f',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', 'A100']
+                'contrastDarkColors': ['50', '100', 'A100', 'A200']
               },
-              "accent" : "grey",
-              "warn" : "deep-orange"
+              "accent" : {
+                '50': '#a2bae6',
+                '100': '#668ed6',
+                '200': '#3a6dca',
+                '300': '#284f94',
+                '400': '#22427c',
+                '500': '#1b3564',
+                '600': '#14284c',
+                '700': '#0e1b34',
+                '800': '#070f1c',
+                '900': '#010204',
+                'A100': '#a2bae6',
+                'A200': '#668ed6',
+                'A400': '#22427c',
+                'A700': '#0e1b34',
+                'contrastDefaultColor': 'light',
+                'contrastDarkColors': ['50', '100', 'A100', 'A200']
+              },
+              "warn" : {
+                '50': '#ffffff',
+                '100': '#f5e0c9',
+                '200': '#edc59a',
+                '300': '#e1a25e',
+                '400': '#dd9344',
+                '500': '#d8842a',
+                '600': '#c07423',
+                '700': '#a6651e',
+                '800': '#8c551a',
+                '900': '#734515',
+                'A100': '#ffffff',
+                'A200': '#f5e0c9',
+                'A400': '#dd9344',
+                'A700': '#a6651e',
+                'contrastDefaultColor': 'dark',
+                'contrastLightColors': ['700', '800', '900', 'A700']
+              }
             }
           }
         ]})
