@@ -686,8 +686,7 @@ define(['angular'], function(angular) {
                 'A400': '#32499c',
                 'A700': '#1c2857',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', '100', 'A100', 'A200'],
-                'contrastLightColors': undefined
+                'contrastDarkColors': ['50', '100', 'A100', 'A200']
               },
               "accent" : {
                 '50': '#ffffff',
@@ -705,7 +704,6 @@ define(['angular'], function(angular) {
                 'A400': '#efb636',
                 'A700': '#bb860f',
                 'contrastDefaultColor': 'dark',
-                'contrastDarkColors': undefined,
                 'contrastLightColors': ['800', '900']
               },
               "warn" : {
@@ -724,7 +722,6 @@ define(['angular'], function(angular) {
                 'A400': '#e78c4e',
                 'A700': '#bf5c1a',
                 'contrastDefaultColor': 'dark',
-                'contrastDarkColors': undefined,
                 'contrastLightColors': ['700', '800', '900', 'A700']
               }
             }
