@@ -553,7 +553,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-parkside",
-            "crest" : "img/uwp-logo-56.png",
+            "crest" : "img/uw-parkside-logo-56.png",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
@@ -622,7 +622,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-platteville",
-            "crest" : "img/uw-platteville-logo-52.png",
+            "crest" : "img/uwp-logo-56.png",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
