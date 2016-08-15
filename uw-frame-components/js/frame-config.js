@@ -806,7 +806,7 @@ define(['angular'], function(angular) {
                 'A400': '#e78c4e',
                 'A700': '#bf5c1a',
                 'contrastDefaultColor': 'dark',
-                'contrastLightColors': ['700', '800', '900', 'A700']
+                'contrastLightColors': ['500', '600', '700', '800', '900', 'A700']
               }
             }
           },
