@@ -874,7 +874,7 @@ define(['angular'], function(angular) {
                'A400': '#ee202e',
                'A700': '#a50d17',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': '50 100 200 A100 A200'
+               'contrastDarkColors': ['50', '100', '200', 'A100', 'A200']
              },
              "accent" : {
                '50': '#ffffff',
