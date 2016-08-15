@@ -359,7 +359,24 @@ define(['angular'], function(angular) {
               }],
             "materialTheme" : {
              "primary" : "grey",
-             "accent" : "amber",
+             "accent" : {
+               '50': '#ffffff',
+               '100': '#fff7e1',
+               '200': '#ffe8a9',
+               '300': '#fed462',
+               '400': '#fecc43',
+               '500': '#fec425',
+               '600': '#febc07',
+               '700': '#e5a801',
+               '800': '#c69101',
+               '900': '#a87b01',
+               'A100': '#ffffff',
+               'A200': '#fff7e1',
+               'A400': '#fecc43',
+               'A700': '#e5a801',
+               'contrastDefaultColor': 'dark',
+               'contrastLightColors': ['900']
+             },
              "warn" : "red"
             }
           },
@@ -376,9 +393,43 @@ define(['angular'], function(angular) {
                 "title" : "Help"
             }],
             "materialTheme" : {
-             "primary" : "green",
-             "accent" : "grey",
-             "warn" : "red"
+             "primary" : {
+               '50': '#85eaca',
+               '100': '#43deae',
+               '200': '#23c794',
+               '300': '#188a67',
+               '400': '#147053',
+               '500': '#0f5640',
+               '600': '#0a3c2d',
+               '700': '#062219',
+               '800': '#010806',
+               '900': '#000000',
+               'A100': '#85eaca',
+               'A200': '#43deae',
+               'A400': '#147053',
+               'A700': '#062219',
+               'contrastDefaultColor': 'light',
+               'contrastDarkColors': ['50', '100', '200', 'A100', 'A200']
+             },
+             "accent" : {
+               '50': '#ffffff',
+               '100': '#fdfefc',
+               '200': '#e3edd4',
+               '300': '#c2d9a1',
+               '400': '#b4d08c',
+               '500': '#a6c776',
+               '600': '#98be60',
+               '700': '#8ab54b',
+               '800': '#79a041',
+               '900': '#698a38',
+               'A100': '#ffffff',
+               'A200': '#fdfefc',
+               'A400': '#b4d08c',
+               'A700': '#8ab54b',
+               'contrastDefaultColor': 'dark',
+               'contrastLightColors': ['900']
+             },
+             "warn" : "amber"
             }
           },
           {
