@@ -347,7 +347,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-oskhosh",
-            "crest" : "img/uw-oshkosh-logo-52.png",
+            "crest" : "img/uw-oshkosh-2016.png",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
@@ -358,8 +358,7 @@ define(['angular'], function(angular) {
                 "title" : "Help"
               }],
             "materialTheme" : {
-             "primary" : "grey",
-             "accent" : {
+             "primary" : {
                '50': '#ffffff',
                '100': '#fff7e1',
                '200': '#ffe8a9',
@@ -377,7 +376,42 @@ define(['angular'], function(angular) {
                'contrastDefaultColor': 'dark',
                'contrastLightColors': ['900']
              },
-             "warn" : "red"
+             "accent" : {
+               '50': '#858585',
+               '100': '#5e5e5e',
+               '200': '#424242',
+               '300': '#1f1f1f',
+               '400': '#0f0f0f',
+               '500': '#000000',
+               '600': '#000000',
+               '700': '#000000',
+               '800': '#000000',
+               '900': '#000000',
+               'A100': '#858585',
+               'A200': '#5e5e5e',
+               'A400': '#0f0f0f',
+               'A700': '#000000',
+               'contrastDefaultColor': 'light',
+               'contrastDarkColors': ['50', 'A100']
+             },
+             "warn" : {
+               '50': '#a3ffff',
+               '100': '#57ffff',
+               '200': '#1fffff',
+               '300': '#00d6d6',
+               '400': '#00b8b8',
+               '500': '#009999',
+               '600': '#007a7a',
+               '700': '#005c5c',
+               '800': '#003d3d',
+               '900': '#001f1f',
+               'A100': '#a3ffff',
+               'A200': '#57ffff',
+               'A400': '#00b8b8',
+               'A700': '#005c5c',
+               'contrastDefaultColor': 'dark',
+               'contrastLightColors': ['500', '600', '700', '800', '900', 'A700']
+             }
             }
           },
           {
