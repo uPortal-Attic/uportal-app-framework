@@ -484,7 +484,7 @@ define(['angular'], function(angular) {
           },
           {
             "name" : "uw-lacrosse",
-            "crest" : "img/UW-L-logo-52.png",
+            "crest" : "img/uwl-round-56.png",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
@@ -513,8 +513,42 @@ define(['angular'], function(angular) {
                'contrastDefaultColor': 'light',
                'contrastDarkColors': ['50', 'A100']
              },
-             "accent" : "grey",
-             "warn" : "blue"
+             "accent" : {
+               '50': '#ffffff',
+               '100': '#f3f7f7',
+               '200': '#d0e0e1',
+               '300': '#a4c2c6',
+               '400': '#92b6ba',
+               '500': '#7fa9ae',
+               '600': '#6c9ca2',
+               '700': '#5d8d93',
+               '800': '#517b80',
+               '900': '#45696d',
+               'A100': '#ffffff',
+               'A200': '#f3f7f7',
+               'A400': '#92b6ba',
+               'A700': '#5d8d93',
+               'contrastDefaultColor': 'dark',
+               'contrastLightColors': ['700', '800', '900', 'A700']
+             },
+             "warn" : {
+               '50': '#fcf7f2',
+               '100': '#ecceb5',
+               '200': '#e1b188',
+               '300': '#d38b4f',
+               '400': '#cd7b37',
+               '500': '#b76c2e',
+               '600': '#9f5e28',
+               '700': '#864f22',
+               '800': '#6e411c',
+               '900': '#553215',
+               'A100': '#fcf7f2',
+               'A200': '#ecceb5',
+               'A400': '#cd7b37',
+               'A700': '#864f22',
+               'contrastDefaultColor': 'light',
+               'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100', 'A200', 'A400']
+             }
             }
           },
           {
