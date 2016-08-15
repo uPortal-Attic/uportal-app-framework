@@ -59,7 +59,7 @@ define(['angular'], function(angular) {
                 'A400': '058FC6',
                 'A700': '034E6C',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', '100', '200', '300', 'A100', 'A200']
+                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100']
               },
               "warn" : {
                 '50': 'FFFFFF',
@@ -77,7 +77,7 @@ define(['angular'], function(angular) {
                 'A400': 'E6934D',
                 'A700': 'BC651B',
                 'contrastDefaultColor': 'dark',
-                'contrastLightColors': ['700', '800', '900', 'A700']
+                'contrastLightColors': ['500', '600', '700', '800', '900', 'A700']
               }
             }
           },
