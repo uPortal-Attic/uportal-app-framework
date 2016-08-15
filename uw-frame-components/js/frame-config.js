@@ -41,7 +41,7 @@ define(['angular'], function(angular) {
                 'A400': 'E3060E',
                 'A700': '890308',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100']
+                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100', 'A200']
               },
               "accent" : {
                 '50': 'B8E9FD',
@@ -59,7 +59,7 @@ define(['angular'], function(angular) {
                 'A400': '058FC6',
                 'A700': '034E6C',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100']
+                'contrastDarkColors': ['50', '100', '200', '300', 'A100', 'A200']
               },
               "warn" : {
                 '50': 'FFFFFF',
@@ -76,8 +76,8 @@ define(['angular'], function(angular) {
                 'A200': 'F9E7D7',
                 'A400': 'E6934D',
                 'A700': 'BC651B',
-                'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100']
+                'contrastDefaultColor': 'dark',
+                'contrastLightColors': ['700', '800', '900', 'A700']
               }
             }
           },
@@ -152,8 +152,41 @@ define(['angular'], function(angular) {
                 "title" : "Help"
               }],
             "materialTheme" : {
-             "primary" : "deep-purple",
-             "accent" : "amber",
+             "primary" : {
+               '50': '#efebf7',
+               '100': '#c5b4e0',
+               '200': '#a78dd0',
+               '300': '#805abb',
+               '400': '#7048af',
+               '500': '#623f99',
+               '600': '#543683',
+               '700': '#462d6e',
+               '800': '#382458',
+               '900': '#2a1b42',
+               'A100': '#efebf7',
+               'A200': '#c5b4e0',
+               'A400': '#7048af',
+               'A700': '#462d6e',
+               'contrastDefaultColor': 'light',
+               'contrastDarkColors': ['50', '100', '200', 'A100', 'A200']
+             },
+             "accent" : {
+               '50': '#ffffff',
+               '100': '#fffaeb',
+               '200': '#ffebb3',
+               '300': '#ffd86b',
+               '400': '#ffd04d',
+               '500': '#ffc82e',
+               '600': '#ffc00f',
+               '700': '#f0b100',
+               '800': '#d19a00',
+               '900': '#b38400',
+               'A100': '#ffffff',
+               'A200': '#fffaeb',
+               'A400': '#ffd04d',
+               'A700': '#f0b100',
+               'contrastDefaultColor': 'dark',
+             },
              "warn" : "red"
             }
           },
@@ -170,9 +203,43 @@ define(['angular'], function(angular) {
                 "title" : "Help"
               }],
             "materialTheme" : {
-             "primary" : "grey",
-             "accent" : "amber",
-             "warn" : "red"
+             "primary" : {
+               '50': '#858585',
+               '100': '#5e5e5e',
+               '200': '#424242',
+               '300': '#1f1f1f',
+               '400': '#0f0f0f',
+               '500': '#000000',
+               '600': '#000000',
+               '700': '#000000',
+               '800': '#000000',
+               '900': '#000000',
+               'A100': '#858585',
+               'A200': '#5e5e5e',
+               'A400': '#0f0f0f',
+               'A700': '#000000',
+               'contrastDefaultColor': 'light',
+               'contrastDarkColors': ['50', 'A100']
+             },
+             "accent" : {
+               '50': '#ffffff',
+               '100': '#ffeebd',
+               '200': '#ffdf85',
+               '300': '#ffcd3d',
+               '400': '#ffc51f',
+               '500': '#ffbd00',
+               '600': '#e0a600',
+               '700': '#c29000',
+               '800': '#a37900',
+               '900': '#856200',
+               'A100': '#ffffff',
+               'A200': '#ffeebd',
+               'A400': '#ffc51f',
+               'A700': '#c29000',
+               'contrastDefaultColor': 'dark',
+               'contrastLightColors': ['800', '900']
+             },
+             "warn" : "deep-orange"
             }
           },
           {
@@ -188,9 +255,42 @@ define(['angular'], function(angular) {
                 "title" : "Help"
               }],
             "materialTheme" : {
-             "primary" : "purple",
-             "accent" : "deep-purple",
-             "warn" : "red"
+             "primary" : {
+               '50': '#c7b7dc',
+               '100': '#9f83c2',
+               '200': '#825eb0',
+               '300': '#5f4185',
+               '400': '#513771',
+               '500': '#422d5c',
+               '600': '#332347',
+               '700': '#251933',
+               '800': '#160f1e',
+               '900': '#07050a',
+               'A100': '#c7b7dc',
+               'A200': '#9f83c2',
+               'A400': '#513771',
+               'A700': '#251933',
+               'contrastDefaultColor': 'light',
+               'contrastDarkColors': ['50', '100', 'A100', 'A200']
+             },
+             "accent" : {
+               '50': '#ffffff',
+               '100': '#ffffff',
+               '200': '#ffffff',
+               '300': '#fffffe',
+               '400': '#f6f6e9',
+               '500': '#ededd3',
+               '600': '#e4e4bd',
+               '700': '#dbdba8',
+               '800': '#d2d292',
+               '900': '#c9c97c',
+               'A100': '#ffffff',
+               'A200': '#ffffff',
+               'A400': '#f6f6e9',
+               'A700': '#dbdba8',
+               'contrastDefaultColor': 'dark'
+             },
+             "warn" : "amber"
             }
           },
           {
@@ -206,8 +306,42 @@ define(['angular'], function(angular) {
                 "title" : "Help"
               }],
             "materialTheme" : {
-             "primary" : "blue",
-             "accent" : "light-blue",
+             "primary" : {
+               '50': '#9acdff',
+               '100': '#4ea8ff',
+               '200': '#168cff',
+               '300': '#0068cd',
+               '400': '#0058af',
+               '500': '#004990',
+               '600': '#003971',
+               '700': '#002a53',
+               '800': '#001a34',
+               '900': '#000b16',
+               'A100': '#9acdff',
+               'A200': '#4ea8ff',
+               'A400': '#0058af',
+               'A700': '#002a53',
+               'contrastDefaultColor': 'light',
+               'contrastDarkColors': ['50', '100', 'A100', 'A200']
+             },
+             "accent" : {
+               '50': '#ffffff',
+               '100': '#fdecd2',
+               '200': '#fbd59c',
+               '300': '#f8b858',
+               '400': '#f6ab3a',
+               '500': '#f59f1d',
+               '600': '#e9900a',
+               '700': '#cc7e09',
+               '800': '#ae6c08',
+               '900': '#915a06',
+               'A100': '#ffffff',
+               'A200': '#fdecd2',
+               'A400': '#f6ab3a',
+               'A700': '#cc7e09',
+               'contrastDefaultColor': 'dark',
+               'contrastLightColors': ['800', '900', 'A700']
+             },
              "warn" : "red"
             }
           },
