@@ -15,6 +15,7 @@
 + [Google Analytics Config](#/md/ga) : Configuring your Google Analytics for your application
 + [Directives](#/md/directives) : Angular directives specific to uw-frame
 + [Widgets](#/md/widgets) : All things widgets
++ [Adding bower dependencies](#/md/injecting-dependencies) : Sometimes you need to add in additional dependencies, here is how.
 
 ### Styling
 + [Material](#/md/material) : Information on how we use Material Design
