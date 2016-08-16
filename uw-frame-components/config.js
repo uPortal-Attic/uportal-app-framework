@@ -1,5 +1,5 @@
 'use strict';
-define(['./my-app/app-config'], function(myAppConfig) {
+define(['./my-app/app-config.js'], function(myAppConfig) {
 
   //taken from https://plainjs.com/javascript/utilities/merge-two-javascript-objects-19/
   function extend(obj, src) {
