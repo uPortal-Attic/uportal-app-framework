@@ -182,7 +182,7 @@ If it is an object it will assume that it is a custom palette definition. e.g.:
 
 If you are defining a custom material theme, follow these guidelines when choosing the base colors of your palette:
 
-+ Each palette should consists of hues/shades of a single base color (the '500' color). You can use a [material palette generator](http://mcg.mbitson.com/#/)
++ Each palette should consists of hues/shades of a single base color (the '500' color). You can use a [material palette generator](https://angular-md-color.com/#/)
  to help you create palettes, or you can define them yourself.
 + Your `primary` palette should be based on your brand's primary color. For UW-Madison, this color is [c5050c](http://www.color-hex.com/color/c5050c). 
 	**Primary palette usage in uw-frame:**
