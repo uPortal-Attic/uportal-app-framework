@@ -5,10 +5,40 @@ You may be wondering, "how did we inject `ngMarked` into uw-frame for this docs 
 For this step-by-step we did this to my-app-seed (for Java applications). That [branch can be found on github](https://github.com/UW-Madison-DoIT/my-app-seed/tree/inject-bower-artifacts) but won't be merged because only some developers need to inject external components.
 
 ## Step 1 - Step your `bower.json` and `.bowerrc`
-In the `src/main/webapp` there are 2 bower files. In `bower.json` you can add in any bower dependency under the sun. The bower rc file is there so bower packages downloaded during bower install (step 3) will go into `src/main/webapp/vendor` instead of `bower_components`. This removes the possibility of overriding `bower_components` that are shipped with uw-frame's war file.
+In the `src/main/webapp` there should be 2 bower files. In `bower.json` you can add in any bower dependency under the sun. The bower rc file is there so bower packages downloaded during bower install (step 3) will go into `src/main/webapp/vendor` instead of `bower_components`. This removes the possibility of overriding `bower_components` that are shipped with uw-frame's war file.
+
+### .bowerrc
+```
+{
+  "directory" : "vendor"
+}
+```
+
+### bower.json
+```
+{
+  "name": "my-app-seed",
+  "version": "1.0.0",
+  "homepage": "https://github.com/UW-Madison-DoIT/my-app-seed",
+  "authors": [
+    "Tim Levett <tim.levett@wisc.edu>"
+  ],
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular-marked": "~1.0.1"
+  },
+  "devDependencies": {}
+}
+```
+
+Notice, you have to make sure that you are pulling in dependencies that match what is shipped with uw-frame. I know its not perfect but alas.
 
 ## Step 2 - Running `bower install` during build
-In the `pom.xml` of this application we call `bower install` in the webapp directory, and put the things in `bower.json` into `vendor/`. Yes this does require that you have bower installed on your dev machine, but who doesn't?
+In the [`pom.xml` of this application](https://github.com/UW-Madison-DoIT/my-app-seed/blob/inject-bower-artifacts/my-app-seed-war/pom.xml#L34) we call `bower install` in the webapp directory, and put the things in `bower.json` into `vendor/`. Yes this does require that you have bower installed on your dev machine, but who doesn't?
 
 ## Step 3 - paths and shims
 Now that we have artifacts to inject, lets inject them into the `requirejs` configuration. We inject `marked` and `ngMarked` into this project via the `/my-app/app-config.js`.
