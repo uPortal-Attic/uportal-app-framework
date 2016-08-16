@@ -16,6 +16,12 @@ define(['angular'], function(angular) {
           'MISC_URLS' : {
             'rootURL' : '#/',
             'logoutURL' : 'https://github.com/UW-Madison-DoIT/uw-frame'
+          },
+          "NOTIFICATION" : {
+            enabled : false
+          },
+          "FEATURES" : {
+            enabled : false
           }
         })
 
