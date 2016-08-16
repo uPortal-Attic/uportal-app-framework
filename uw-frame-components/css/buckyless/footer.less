@@ -9,10 +9,11 @@ footer {
     padding-top : 1em;
   }
   a {
-    color: @link-color;
-    text-decoration: none;
+    color: @footer-text-color;
+    text-decoration: underline;
     &:hover {
-      color: lighten(@link-color, 20%);
+      color: lighten(@footer-text-color, 20%);
+      text-decoration: underline;
     }
   }
   .links__separated > span {

@@ -3,7 +3,7 @@
 <md-toolbar md-scroll-shrink class="md-primary" ng-controller="PortalHeaderController as headerCtrl"
             ng-class="{'has-priority-nots': headerCtrl.hasPriorityNotifications}">
   <div class="md-toolbar-tools" ng-class="{'has-priority-nots': headerCtrl.hasPriorityNotifications}" role="banner">
-    <div layout="row" flex="20" layout-align="start center">
+    <div layout="row" flex="30" layout-align="start center">
       <!-- MOBILE MENU -->
       <notification-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notification-bell>
       <md-menu md-position-mode="target target" md-offset="0 56" hide-gt-xs>
@@ -20,16 +20,16 @@
           <notification-bell mode='mobile-menu' header-ctrl='headerCtrl' ng-if='!GuestMode'></notification-bell>
           <!-- Home link -->
           <md-menu-item>
-            <md-button class="md-accent" ng-if='APP_FLAGS.isWeb' ng-href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+            <md-button class="md-default" ng-if='APP_FLAGS.isWeb' ng-href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
               <span class="fa fa-home fa-fw"></span> Home
             </md-button>
-            <md-button class="md-accent" ng-if='!APP_FLAGS.isWeb' ng-href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+            <md-button class="md-default" ng-if='!APP_FLAGS.isWeb' ng-href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
               <span class="fa fa-home fa-fw"></span> Home
             </md-button>
           </md-menu-item>
           <!-- Log out link -->
           <md-menu-item>
-            <md-button class="md-accent" ng-href="{{MISC_URLS.logoutURL}}" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Log out');">
+            <md-button class="md-default" ng-href="{{MISC_URLS.logoutURL}}" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Log out');">
               <span class="fa fa-sign-out fa-fw"></span> Log Out
             </md-button>
           </md-menu-item>
@@ -56,7 +56,7 @@
 
 
     <!-- SEARCH BAR SM+ -->
-    <div layout="row" flex="50" layout-align="center center" hide-xs>
+    <div layout="row" flex="40" layout-align="center center" hide-xs>
       <search ng-show="APP_FLAGS.showSearch"></search>
     </div>
     <span flex></span>
