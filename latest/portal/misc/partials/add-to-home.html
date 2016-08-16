@@ -6,7 +6,7 @@
 
 <div ng-controller="AddToHomeController" ng-if="addToHome">
   <!-- Button for medium+ screens -->
-  <md-button class="md-accent link-div" aria-label="add to home" hide-xs hide-sm>
+  <md-button class="md-default link-div" aria-label="add to home" hide-xs hide-sm>
     <span ng-hide='inHome' ng-click='addToHome()'>
       <i class="fa fa-fw {{actionLinkIcon}}" ng-class="{ 'fa-spin' : savingAddToHome, 'fa-plus' : !actionLinkIcon}"></i> {{actionLinkText}}
     </span>
@@ -20,7 +20,7 @@
 
   <!-- Button for small and xs screens -->
   <md-menu-item hide-gt-sm>
-    <md-button class="md-accent link-div" aria-label="add to home">
+    <md-button class="md-default link-div" aria-label="add to home">
     <span ng-hide="inHome" ng-click="addToHome()" style="text-transform: capitalize;">
       <i class="fa fa-fw {{actionLinkIcon}}" ng-class="{ 'fa-spin' : savingAddToHome, 'fa-plus' : !actionLinkIcon}"></i> {{actionLinkText}}
     </span>
