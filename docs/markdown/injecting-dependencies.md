@@ -38,7 +38,15 @@ In the `src/main/webapp` there should be 2 bower files. In `bower.json` you can 
 Notice, you have to make sure that you are pulling in dependencies that match what is shipped with uw-frame. I know its not perfect but alas.
 
 ## Step 2 - Running `bower install` during build
+
+There are many ways you can run `bower install` while building a frame app. If you are using the Java module you can either do a `maven-exec-plugin` or inject the `frontend-maven-plugin`. If you are creating a static app, you can just run it as part of your [build script](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/docs/build.sh#L14). This docs page is an [example of that](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/docs/build.sh#L14).
+
+### `maven-exec-plugin`
 In the [`pom.xml` of this application](https://github.com/UW-Madison-DoIT/my-app-seed/blob/inject-bower-artifacts/my-app-seed-war/pom.xml#L34) we call `bower install` in the webapp directory, and put the things in `bower.json` into `vendor/`. Yes this does require that you have bower installed on your dev machine, but who doesn't?
+
+### `frontend-maven-plugin`
+
+Documented on their [gh page](https://github.com/eirslett/frontend-maven-plugin).
 
 ## Step 3 - paths and shims
 Now that we have artifacts to inject, lets inject them into the `requirejs` configuration. We inject `marked` and `ngMarked` into this project via the `/my-app/app-config.js`.
@@ -70,6 +78,3 @@ Curious to learn more, checkout [/config.js](https://github.com/UW-Madison-DoIT/
 Now that require knows about the artifact, we can now use that module in our angular configuration. Checkout the `my-app/main.js`. As you can see we are injecting marked and ngMarked, then adding the `'hc.marked'` module.
 
 And that should be it. Holler with questions, or weird edge cases.
-
-## After Thought
-For static applications (such as this docs page) its basically the same process. However, instead of adding the `bower install` to `pom.xml` you just add it to your build script. See `build.sh` for details.
