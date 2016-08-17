@@ -1,9 +1,18 @@
-<md-button class="md-primary link-div" ng-if='actionLinkUrl && !addToHome'>
+<!-- ADD MORE TO HOME BUTTON -->
+<md-button class="md-primary link-div" ng-if='actionLinkUrl && !addToHome' hide-sm hide-xs>
   <a ng-href="{{actionLinkUrl}}">
     <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
   </a>
 </md-button>
+<md-menu-item hide-gt-sm ng-if='actionLinkUrl && !addToHome'>
+  <md-button class="md-primary link-div" ng-if='actionLinkUrl && !addToHome'>
+    <a ng-href="{{actionLinkUrl}}">
+      <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
+    </a>
+  </md-button>
+</md-menu-item>
 
+<!-- ADD -THIS- TO HOME BUTTON -->
 <div ng-controller="AddToHomeController" ng-if="addToHome">
   <!-- Button for medium+ screens -->
   <md-button class="md-default link-div" aria-label="add to home" hide-xs hide-sm>
@@ -21,13 +30,13 @@
   <!-- Button for small and xs screens -->
   <md-menu-item hide-gt-sm>
     <md-button class="md-default link-div" aria-label="add to home">
-    <span ng-hide="inHome" ng-click="addToHome()" style="text-transform: capitalize;">
+    <span ng-hide="inHome" ng-click="addToHome()">
       <i class="fa fa-fw {{actionLinkIcon}}" ng-class="{ 'fa-spin' : savingAddToHome, 'fa-plus' : !actionLinkIcon}"></i> {{actionLinkText}}
     </span>
-    <span ng-show="successfullyAdded" style="text-transform: capitalize;">
+    <span ng-show="successfullyAdded">
       <i class="fa fa-fw fa-check-square"></i> {{actionLinkText}} Saved
     </span>
-    <span ng-show="addToHomeFailed" style="text-transform: capitalize;">
+    <span ng-show="addToHomeFailed">
       <i class="fa fa-fw fa-exclamation-triangle"></i> {{actionLinkText}} Failed
     </span>
     </md-button>
