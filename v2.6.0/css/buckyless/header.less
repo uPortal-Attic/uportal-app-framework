@@ -1,0 +1,57 @@
+portal-header {
+  a:not(.btn):link, a:not(.btn):visited, a:not(.btn):hover,
+  a:not(.btn):focus, a:not(.btn):active {
+    text-decoration: none;
+  }
+  ::-webkit-input-placeholder {
+    color: @white;
+    font-weight: 400;
+  }
+  :-moz-placeholder {
+    color: @white;
+    font-weight: 400;
+  }
+  ::-moz-placeholder {
+    color: @white;
+    font-weight: 400;
+  }
+  :-ms-input-placeholder {
+    color: @white;
+    font-weight: 400;
+  }
+
+  md-toolbar {
+    min-height: 56px;
+    position: fixed;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+    z-index: 100;
+    @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
+      min-height: 48px;
+    }
+    .md-toolbar-tools {
+      padding-left: 0;
+      max-height: 56px;
+      .title-link {
+        img {
+          height: 56px;
+          margin-right: 16px;
+          @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
+            height: 48px;
+          }
+        }
+        .beta-logo {
+          font-size:0.55em;
+          color: #fcf49c;
+          position:relative;
+          top:0;
+          margin-left:3px;
+        }
+      }
+    }
+    @media (min-width: 768px) {
+      &.has-priority-nots {
+        margin-top: 46px;
+      }
+    }
+  }
+}

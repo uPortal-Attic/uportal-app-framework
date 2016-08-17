@@ -1,0 +1,128 @@
+.features-feed {
+  padding:10px 20px;
+  h3 {
+    font-weight: 500;
+    font-size:30px;
+    color:#222;
+    margin-top:5px;
+  }
+  h5 {
+    font-size:14px;
+    color:#999;
+    margin-bottom:0;
+  }
+  .feature-item {
+    margin-bottom: 80px;
+  }
+  img {
+    border: 2px solid darkgray;
+    border-radius: 5px;
+  }
+
+  .image-div {
+    width:90%;
+    display: block;
+    margin:0 auto;
+    img {
+      max-width: 600px;
+    }
+  }
+  .images-div {
+    width: 90%;
+    img {
+      display: inline-block;
+      max-width: 400px;
+      vertical-align: top;
+      margin: 5px;
+    }
+  }
+}
+
+
+
+.feedback-features {
+  margin-top:50px;
+}
+
+
+.features-popup {
+  padding:30px;
+  p {
+    margin:10px 0;
+    a {
+      color:@color1;
+    }
+  }
+  img {
+    width:100%;
+  }
+  .learn-more {
+    margin:15px 0;
+  }
+  button {
+    margin-top:10px;
+  }
+}
+
+bucky-announcement {
+  div.announcement-creeper {
+    margin-right: 20px;
+    overflow: hidden;
+    max-height: 48px;
+    position: relative;
+    top: 8px;
+    img {
+      transition: @mascot-transition;
+      position: relative;
+      top: 26px;
+    }
+    &.announcement-hover {
+      img {
+        top: 0;
+      }
+    }
+    @media (max-width: 768px) {
+      margin-right: 0;
+    }
+    @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
+      top: 4px;
+    }
+  }
+  img:focus {
+    outline: none;
+  }
+}
+
+bucky-announcement .popover {
+  padding: 0;
+  position: absolute;
+  top: 10px !important;
+  width: 210px !important;
+  &.left {
+    margin-left: -20px;
+  }
+  .arrow {
+    top: 10% !important;
+    right: -11px !important;
+  }
+  .popover-content {
+    padding: 9px 12px;
+    a {
+      color: @link-color;
+      &:hover {
+        color: darken(@link-color, 15%);
+      }
+    }
+    li, p, span {
+      color: @black;
+    }
+    li div a {
+      font-size: smaller;
+      text-decoration: underline;
+      margin-bottom: 8px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
