@@ -1,7 +1,6 @@
 <form name="searchForm" ng-submit="submit()" ng-hide="$storage.typeaheadSearch">
-  <md-input-container class="md-block myuw-search" md-no-float layout="row" layout-align="start center" style="margin:0;">
-    <md-button class="md-icon-button" ng-click="submit()" aria-label="submit search"
-               style="padding:0;margin:0;width:36px;height:36px;">
+  <md-input-container class="md-block myuw-search" md-no-float layout="row" layout-align="start center">
+    <md-button class="md-icon-button" ng-click="submit()" aria-label="submit search">
       <i class="fa fa-search"></i>
     </md-button>
     <input type="search"
@@ -10,14 +9,12 @@
            ng-model="initialFilter"
            aria-label="Search bar enter the app you are looking for"
            focus-me="showSearchFocus"
-           autocomplete="off"
-           style="display:inline-block;width:80%;">
+           autocomplete="off">
   </md-input-container>
 </form>
 <form name="searchForm" ng-submit="submit()" ng-show="$storage.typeaheadSearch">
-  <md-input-container class="md-block myuw-search" md-no-float layout="row" layout-align="start center" style="margin:0;">
-    <md-button class="md-icon-button" ng-click="submit()" aria-label="submit search"
-               style="padding:0;margin:0;width:36px;height:36px;">
+  <md-input-container class="md-block myuw-search" md-no-float layout="row" layout-align="start center">
+    <md-button class="md-icon-button" ng-click="submit()" aria-label="submit search">
       <i class="fa fa-search"></i>
     </md-button>
     <input type="search"
@@ -31,7 +28,6 @@
            typeahead-loading="portletListLoading"
            typeahead-min-length="2"
            typeahead-focus-first='false'
-           autocomplete="off"
-           style="display:inline-block;width:80%;">
+           autocomplete="off">
   </md-input-container>
 </form>

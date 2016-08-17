@@ -1,12 +1,17 @@
-/* SEARCH BAR */
-search {
-  width: 100%;
-  form {
-    height: 36px;
-    max-width: 90%;
+md-menu-content {
+  a {
+    color: #000;
+    &:hover, &:active, &:focus {
+      color: #000;
+      text-decoration: none;
+    }
+  }
+  .md-button {
+    text-transform: capitalize;
+  }
+  md-menu-item {
     .myuw-search {
-      background: rgba(255,255,255,0.3);
-      margin: 0;
+      margin: 10px 0 0 0;
       padding: 0;
       .md-icon-button {
         margin: 0;
@@ -15,9 +20,6 @@ search {
         width: 36px;
       }
       .md-input {
-        float: none;
-        border-bottom: none;
-        color: @white;
         display:inline-block;
         width:80%;
       }
