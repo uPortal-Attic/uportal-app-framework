@@ -1,16 +1,18 @@
 <!-- ADD MORE TO HOME BUTTON -->
-<md-button class="md-primary link-div" ng-if='actionLinkUrl && !addToHome' hide-sm hide-xs>
-  <a ng-href="{{actionLinkUrl}}">
-    <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
-  </a>
-</md-button>
-<md-menu-item hide-gt-sm ng-if='actionLinkUrl && !addToHome'>
-  <md-button class="md-primary link-div" ng-if='actionLinkUrl && !addToHome'>
+<div ng-if='actionLinkUrl && !addToHome'>
+  <md-button class="md-primary link-div" hide-sm hide-xs>
     <a ng-href="{{actionLinkUrl}}">
       <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
     </a>
   </md-button>
-</md-menu-item>
+  <md-menu-item hide-gt-sm>
+    <md-button class="md-primary link-div">
+      <a ng-href="{{actionLinkUrl}}">
+        <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
+      </a>
+    </md-button>
+  </md-menu-item>
+</div>
 
 <!-- ADD -THIS- TO HOME BUTTON -->
 <div ng-controller="AddToHomeController" ng-if="addToHome">
