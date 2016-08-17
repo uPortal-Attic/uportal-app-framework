@@ -185,7 +185,7 @@ define([
         if('group' == themeIndex) {
           var themeSet = false;
           var defaultThemeGo = function() {
-            var themes = filterFilter(THEMES, {group : 'default'});
+            var themes = filterFilter(THEMES.themes, {group : 'default'});
             themeSet = themes.length > 0;
             if(themeSet) {
               $rootScope.portal.theme = themes[0];
