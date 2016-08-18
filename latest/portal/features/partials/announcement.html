@@ -1,35 +1,46 @@
 <div ng-if=" 'BUCKY' === mode && announcements && announcements.length > 0"
-     ng-class="{ 'announcement-hover' : hover}"
-     ng-mouseenter="hover = true"
-     ng-init="hover = false"
+     ng-class="{ 'announcement-hover' : hover, 'announcement-active' : active }"
      popover-template="'see-whats-new.html'"
      popover-placement="left"
-     popover-is-open="hover"
+     popover-is-open="active"
      popover-popup-delay="200"
      popover-trigger="none"
      class="announcement-creeper">
-  <script type="text/ng-template" id="see-whats-new.html">
-    <div>
-      <ul style="padding:0;">
-        <li ng-repeat="announcement in announcements | orderBy:'-id' | limitTo:3">
-          <a href="features" ng-click="markAnnouncementsSeen(true)" class="md-subhead">{{announcement.buckyAnnouncement.shortTitle}}</a>
-          <br>
-          <p>
-            {{announcement.buckyAnnouncement.shortDesc}}
-          </p>
-          <div layout="row" layout-align="space-between center">
-            <a href="features"
-               ng-click="markAnnouncementSeen(announcement.id, true)">Tell Me More</a>
-            <a href="javascript:;"
-               ng-click="markAnnouncementSeen(announcement.id, false)">Dismiss</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </script>
-  <img ng-src="{{buckyImg}}" ng-click="hover=false; pushGAEvent('feature', 'hide-bucky', 'na');">
+  <md-button class="mascot-button"
+             ng-click="active = active ? false : true;hover = false;"
+             ng-mouseenter="hover = true;"
+             aria-label="Click to see what's new"
+             md-no-ink>
+    <img ng-src="{{buckyImg}}"
+         ng-click="pushGAEvent('feature', 'toggle-bucky', 'na');">
+    <md-tooltip ng-if="!active" md-visible="hover" md-direction="top">
+      Click to see what's new ({{announcements.length}})
+    </md-tooltip>
+  </md-button>
 </div>
 
+<!-- POPOVER TEMPLATE -->
+<script type="text/ng-template" id="see-whats-new.html">
+  <div>
+    <ul style="padding:0;">
+      <li ng-repeat="announcement in announcements | orderBy:'-id' | limitTo:3">
+        <a href="features" ng-click="markAnnouncementsSeen(true)" class="md-subhead">{{announcement.buckyAnnouncement.shortTitle}}</a>
+        <br>
+        <p>
+          {{announcement.buckyAnnouncement.shortDesc}}
+        </p>
+        <div layout="row" layout-align="space-between center">
+          <a href="features"
+             ng-click="markAnnouncementSeen(announcement.id, true)">Tell Me More</a>
+          <a href="javascript:;"
+             ng-click="markAnnouncementSeen(announcement.id, false)">Dismiss</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</script>
+
+<!-- MOBILE MENU ANNOUNCEMENTS -->
 <div ng-if=" 'BUCKY_MOBILE' === mode && announcements && announcements.length > 0" class="mobile">
   <md-menu-item>
     <md-button class="md-default" href="features"
