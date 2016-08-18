@@ -1,11 +1,11 @@
 <!-- ADD MORE TO HOME BUTTON -->
 <div ng-if='actionLinkUrl && !addToHome'>
   <md-button class="md-primary link-div" ng-href="{{actionLinkUrl}}" hide-sm hide-xs>
-    <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
+    <span><i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}</span>
   </md-button>
   <md-menu-item hide-gt-sm>
     <md-button class="md-primary link-div" ng-href="{{actionLinkUrl}}">
-      <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
+      <span><i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}</span>
     </md-button>
   </md-menu-item>
 </div>
