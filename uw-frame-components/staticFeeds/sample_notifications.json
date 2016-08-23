@@ -2,7 +2,7 @@
     [
       {
         "id"     : 1,
-        "groups" : ["Everyone"],
+        "groups" : ["Portal Administrators"],
         "title"  : "This is an admin notification smoke test",
         "actionURL" : "http://www.google.com",
         "actionAlt" : "Google",
@@ -28,7 +28,7 @@
         "actionURL" : "https://www.mynetid.wisc.edu/modify",
         "actionAlt" : "Activate Services",
         "dismissable" : true,
-        "priority" : false
+        "priority" : true
       }
     ]
 }
