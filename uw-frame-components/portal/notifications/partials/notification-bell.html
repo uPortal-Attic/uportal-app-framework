@@ -31,7 +31,8 @@
 
   <!-- Priority notifications -->
   <div class="priority-notifications" ng-if='notificationsEnabled && (directiveMode === "priority")' ng-repeat="priority in priorityNotifications | limitTo: 1">
-    <a ng-href="{{priority.actionURL}}" alt="{{priority.actionAlt}}" ng-if='priorityNotifications.length == 1' class="notification-message">{{priority.title}}</a>
+
+    <span ng-if='priorityNotifications.length == 1' ><a ng-href="{{priority.actionURL}}" alt="{{priority.actionAlt}}" class="notification-message">{{priority.title}}</a> <div ng-if='priority.buttonText' ng-repeat="button in priority.buttonText track by button.caption"><md-button class="md-raised md-primary" href="{{button.url}}">{{button.caption}}</md-button></div></span>
     <p ng-if='priorityNotifications.length > 1' class="notification-message">
       You have {{priorityNotifications.length}} important notifications. <a href="notifications" alt="{{priority.actionAlt}}">View your notifications.</a>
     </p>
