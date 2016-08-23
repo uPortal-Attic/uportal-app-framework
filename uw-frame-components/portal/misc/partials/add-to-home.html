@@ -1,15 +1,11 @@
 <!-- ADD MORE TO HOME BUTTON -->
 <div ng-if='actionLinkUrl && !addToHome'>
-  <md-button class="md-primary link-div" hide-sm hide-xs>
-    <a ng-href="{{actionLinkUrl}}">
-      <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
-    </a>
+  <md-button class="md-primary link-div" ng-href="{{actionLinkUrl}}" hide-sm hide-xs>
+    <span><i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}</span>
   </md-button>
   <md-menu-item hide-gt-sm>
-    <md-button class="md-primary link-div">
-      <a ng-href="{{actionLinkUrl}}">
-        <i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}
-      </a>
+    <md-button class="md-primary link-div" ng-href="{{actionLinkUrl}}">
+      <span><i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}</span>
     </md-button>
   </md-menu-item>
 </div>
@@ -17,8 +13,8 @@
 <!-- ADD -THIS- TO HOME BUTTON -->
 <div ng-controller="AddToHomeController" ng-if="addToHome">
   <!-- Button for medium+ screens -->
-  <md-button class="md-default link-div" aria-label="add to home" hide-xs hide-sm>
-    <span ng-hide='inHome' ng-click='addToHome()'>
+  <md-button class="md-default link-div" aria-label="add to home" hide-xs hide-sm ng-hide='inHome' ng-click='addToHome()'>
+    <span ng-if="!successfullyAdded || !addToHomeFailed">
       <i class="fa fa-fw {{actionLinkIcon}}" ng-class="{ 'fa-spin' : savingAddToHome, 'fa-plus' : !actionLinkIcon}"></i> {{actionLinkText}}
     </span>
     <span ng-show='successfullyAdded'>
@@ -31,8 +27,8 @@
 
   <!-- Button for small and xs screens -->
   <md-menu-item hide-gt-sm>
-    <md-button class="md-default link-div" aria-label="add to home">
-    <span ng-hide="inHome" ng-click="addToHome()">
+    <md-button class="md-default link-div" aria-label="add to home" ng-click="addToHome()" ng-hide="inHome">
+    <span ng-if="!successfullyAdded || !addToHomeFailed">
       <i class="fa fa-fw {{actionLinkIcon}}" ng-class="{ 'fa-spin' : savingAddToHome, 'fa-plus' : !actionLinkIcon}"></i> {{actionLinkText}}
     </span>
     <span ng-show="successfullyAdded">
