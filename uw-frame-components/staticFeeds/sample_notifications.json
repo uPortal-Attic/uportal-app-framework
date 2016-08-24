@@ -3,14 +3,11 @@
       {
         "id"     : 1,
         "groups" : ["Portal Administrators"],
-        "title"  : "This is an admin notification smoke test.",
+        "title"  : "This is an admin notification smoke test",
         "actionURL" : "http://www.google.com",
         "actionAlt" : "Google",
         "dismissable" : true,
-        "priority" : true,
-        "buttonText" : [{"caption" : "Feedback", "url" : "/exclusive/feedback"},
-                        {"caption" : "Return To Old", "url" : "my.wisconsin.edu"}
-                       ]
+        "priority" : false
       },
       {
         "id"     : 2,
@@ -23,7 +20,7 @@
       },
       {
         "id"     : 3,
-        "groups" : ["Users - Service Activation Required"], 
+        "groups" : ["Users - Service Activation Required"],
         "title"  : "You need to modify your NetID account to activate essential UW Services.",
         "actionURL" : "https://www.mynetid.wisc.edu/modify",
         "actionAlt" : "Activate Services",
