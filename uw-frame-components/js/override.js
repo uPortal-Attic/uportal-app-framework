@@ -6,8 +6,8 @@ define(['angular'], function(angular) {
     config
         //see configuration.md for howto
         .constant('OVERRIDE', {
-          
-        });
+        
+});
 
     return config;
 
