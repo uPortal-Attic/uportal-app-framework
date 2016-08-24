@@ -3,12 +3,15 @@
       {
         "id"     : 1,
         "groups" : ["Everyone"],
-        "title"  : "This is an admin notification smoke test",
+        "title"  : "This is an admin notification smoke test.",
         "actionURL" : "http://www.google.com",
         "actionAlt" : "Google",
         "dismissable" : false,
         "priority" : true,
-         "html" : "<md-button class=\"md-raised md-primary\" href=\"/exclusive/feedback\">Give Feedback</md-button>   <md-button class=\"md-raised md-primary\" href=\"my.wisconsin.edu\">Return to Old</md-button>"
+		"buttonText" : [
+		  {"caption" : "Feedback", "url" : "/exclusive/feedback"},
+		  {"caption" : "Return To Old", "url" : "my.wisconsin.edu"}
+		]
       }
     ]
 }
