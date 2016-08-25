@@ -46,8 +46,12 @@ define(['angular', 'jquery'], function(angular, $) {
             return getSession().then(onGetTimeoutSuccess);
           }
 
-          function shibServiceActivated(){
-            return typeof SERVICE_LOC.shibbolethSessionURL !== 'undefined';
+          function shibServiceActivated() {
+            if(SERVICE_LOC.shibbolethSessionURL) {
+              return true;
+            } else {
+              return false;
+            }
           }
 
           return {
