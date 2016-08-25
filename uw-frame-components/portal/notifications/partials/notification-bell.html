@@ -33,7 +33,7 @@
   <div class="priority-notifications" ng-if='notificationsEnabled && (directiveMode === "priority")' ng-repeat="priority in priorityNotifications | limitTo: 1">
     <div ng-if='priorityNotifications.length == 1' layout="row" layout-align="center center" layout-fill>
       <a ng-href="{{priority.actionURL}}" alt="{{priority.actionAlt}}" class="notification-message">{{priority.title}}</a>
-      <div layout="row" layout-align="center center" ng-if='priority.actionButtons.length > 0' class="notification-buttons">
+      <div layout="row" layout-align="center center" ng-if="priority.actionButtons && priority.actionButtons.length > 0" class="notification-buttons">
         <md-button class="md-raised"
                    ng-href="button.url"
                    ng-repeat="button in priority.buttonText track by button.caption"
