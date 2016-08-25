@@ -1,15 +1,6 @@
 {"notifications" :
     [
       {
-        "id"     : 1,
-        "groups" : ["Portal Administrators"],
-        "title"  : "This is an admin notification smoke test",
-        "actionURL" : "http://www.google.com",
-        "actionAlt" : "Google",
-        "dismissable" : true,
-        "priority" : false
-      },
-      {
         "id"     : 2,
         "groups" : ["Users - Student SSN Update"],
         "title"  : "Our records indicate the Social Security Number in your Personal Information is invalid or missing. Please provide your Social Security Number or select to not provide your Social Security Number.",
@@ -26,6 +17,19 @@
         "actionAlt" : "Activate Services",
         "dismissable" : true,
         "priority" : true
-      }
+      },
+	  {
+		"id"     : 1,
+		"groups" : ["Everyone"],
+		"title"  : "This is an admin notification smoke test.",
+		"actionURL" : "http://www.google.com",
+		"actionAlt" : "Google",
+		"dismissable" : false,
+		"priority" : true,
+		"actionButtons" : [
+		  {"label" : "Feedback", "url" : "/exclusive/feedback", "action" : ""},
+		  {"label" : "Return To Old", "url" : "my.wisconsin.edu",  "action" : ""}
+		]
+	  }
     ]
 }
