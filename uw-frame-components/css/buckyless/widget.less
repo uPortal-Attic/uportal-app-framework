@@ -1,7 +1,7 @@
 /* Widget Styles */
 widget-card {
   .widget-header {
-    height: 20%;
+    height: 60px;
     line-height: 1.1;
     align-items: center;
     .md-title {
@@ -10,9 +10,8 @@ widget-card {
     }
   }
   .widget-content {
-    height: 80%;
+    height: 230px;
     padding: 0;
-    margin-bottom: 36px;
     .bold {
       font-weight: 500;
     }
@@ -144,8 +143,7 @@ widget-card {
     text-align:center;
     display:block;
     color:@grayscale8;
-    border-top-right-radius:0;
-    border-top-left-radius:0;
+    border-radius: 0 0 4px 4px;
     transition: @mascot-transition;
     &:hover {
       background-color:@color1;
