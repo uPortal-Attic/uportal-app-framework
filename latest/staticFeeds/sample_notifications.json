@@ -1,14 +1,26 @@
 {"notifications" :
     [
       {
+  		"id"     : 1,
+  		"groups" : ["Everyone"],
+  		"title"  : "This is an admin notification smoke test.",
+  		"actionURL" : "http://www.google.com",
+  		"actionAlt" : "Google",
+  		"dismissable" : false,
+  		"priority" : true,
+  		"actionButtons" : [
+  		  {"label" : "Feedback", "url" : "/web/exclusive/feedback", "action" : ""},
+  		  {"label" : "Return To Old", "url" : "https://my.wisconsin.edu",  "action" : ""}
+  		]
+      },
+      {
         "id"     : 2,
         "groups" : ["Users - Student SSN Update"],
         "title"  : "Our records indicate the Social Security Number in your Personal Information is invalid or missing. Please provide your Social Security Number or select to not provide your Social Security Number.",
         "actionURL" : "/portal/p/my-info-student-center-ssn.ctf1/max/action.uP?pP_action=loginAction",
         "actionAlt" : "UW-Madison Student Information",
         "dismissable" : true,
-        "priority" : false,
-		"actionButtons" : []
+        "priority" : false
       },
       {
         "id"     : 3,
@@ -17,21 +29,7 @@
         "actionURL" : "https://www.mynetid.wisc.edu/modify",
         "actionAlt" : "Activate Services",
         "dismissable" : true,
-        "priority" : true,
-		"actionButtons" : []
-      },
-	  {
-		"id"     : 1,
-		"groups" : ["Everyone"],
-		"title"  : "This is an admin notification smoke test.",
-		"actionURL" : "http://www.google.com",
-		"actionAlt" : "Google",
-		"dismissable" : false,
-		"priority" : true,
-		"actionButtons" : [
-		  {"label" : "Feedback", "url" : "/exclusive/feedback", "action" : ""},
-		  {"label" : "Return To Old", "url" : "my.wisconsin.edu",  "action" : ""}
-		]
-	  }
+        "priority" : false
+      }
     ]
 }
