@@ -138,7 +138,7 @@
       > .arrow-down {
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
-        border-top: 7px solid lighten(@color1, 20%);
+        border-top: 7px solid @grayscale2;
         z-index:2000;
         position: absolute;
         top:-14px;
@@ -166,12 +166,13 @@
 .hidden-xs .priority-notifications {
   height: 46px;
   width: 100%;
-  background-color: lighten(@color1, 20%);
+  background-color: @grayscale2;
   z-index:100;
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid @black;
   .notification-message {
     font-size:15px;
   }
@@ -186,25 +187,36 @@
   top: 0;
   margin:0px -15px;
   padding:15px 20px 12px;
-  background-color: lighten(@color1, 20%);
+  background-color: @grayscale2;
   .notification-message {
     font-size:13px;
   }
 }
 
-.hidden-xs .priority-notifications .notification-message,
-.visible-xs .priority-notifications .notification-message {
-  color:@white;
-  text-align:center;
-  display: block;
-  margin-bottom:0;
-  a {
-    color:#eee;
-    border-bottom:1px solid #eee;
+.hidden-xs .priority-notifications,
+.visible-xs .priority-notifications {
+  .notification-message {
+    color:@black;
+    text-align:center;
+    display: block;
+    margin-bottom:0;
+    a {
+      color:#eee;
+      border-bottom:1px solid #eee;
+    }
+    a:hover {
+      color:#fff;
+      border-bottom:1px solid #fff;
+    }
   }
-  a:hover {
-    color:#fff;
-    border-bottom:1px solid #fff;
+  .notification-buttons {
+    margin-left: 26px;
+    .md-button {
+      text-transform: none;
+      min-height: 0;
+      max-height: 26px;
+      line-height: 26px;
+    }
   }
 }
 
