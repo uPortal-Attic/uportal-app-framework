@@ -348,7 +348,7 @@ define(['angular'], function(angular) {
             }
           },
           {
-            "name" : "uw-oskhosh",
+            "name" : "uw-oshkosh",
             "crest" : "img/uw-oshkosh-2016.png",
             "title" : "MyUW",
             "subtitle" : null,
