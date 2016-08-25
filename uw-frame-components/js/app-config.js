@@ -14,11 +14,12 @@ define(['angular'], function(angular) {
         })
         .value('SERVICE_LOC', {
             'aboutURL' : null,
-            'sessionInfo' : 'staticFeeds/session.json',
-            'notificationsURL' : '/web/staticFeeds/notifications.json',
-            'loginSilentURL' : '/portal/Login?silent=true',
+            'groupURL' : '/portal/api/groups',
             'kvURL' : '/storage',
-            'groupURL' : '/portal/api/groups'
+            'loginSilentURL' : '/portal/Login?silent=true',
+            'notificationsURL' : '/web/staticFeeds/notifications.json',
+            'sessionInfo' : 'staticFeeds/session.json',
+            'shibbolethSessionURL' : null //'/Shibboleth.sso/Session.json'
         })
         .value('NAMES', {
             'title' : 'App Name',
