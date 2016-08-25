@@ -7,7 +7,8 @@
         "actionURL" : "/portal/p/my-info-student-center-ssn.ctf1/max/action.uP?pP_action=loginAction",
         "actionAlt" : "UW-Madison Student Information",
         "dismissable" : true,
-        "priority" : false
+        "priority" : false,
+		"actionButtons" : []
       },
       {
         "id"     : 3,
@@ -16,7 +17,8 @@
         "actionURL" : "https://www.mynetid.wisc.edu/modify",
         "actionAlt" : "Activate Services",
         "dismissable" : true,
-        "priority" : true
+        "priority" : true,
+		"actionButtons" : []
       },
 	  {
 		"id"     : 1,
