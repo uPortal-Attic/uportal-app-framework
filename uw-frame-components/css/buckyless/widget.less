@@ -1,76 +1,77 @@
 /* Widget Styles */
-widget-card {
-  .widget-frame {
-    position:relative;
-    margin:5px;
-    background:@grayscale1;
-    border-radius:3px;
-    height:290px;
+.widget-frame {
+  position:relative;
+  margin:5px;
+  background:@grayscale1;
+  border-radius:3px;
+  height:290px;
+  color:@grayscale10;
+  .widget-header {
+    height: 60px;
+    line-height: 1.1;
+    align-items: center;
+    .md-title {
+      font-size: 18px;
+      font-weight: 200;
+    }
+  }
+  .widget-body {
+    padding:0 8px;
+  }
+  .widget-content {
+    height: 230px;
+    padding: 0;
+    .bold {
+      font-weight: 500;
+    }
+    .widget-type-container {
+      height: 100%;
+    }
+  }
+  .widget-title {
+    font-size:1.2em;
+    padding:8px;
+    margin:0;
+    text-align:center;
     color:@grayscale10;
-    .widget-header {
-      height: 60px;
-      line-height: 1.1;
-      align-items: center;
-      .md-title {
-        font-size: 18px;
-        font-weight: 200;
-      }
-    }
-    .widget-content {
-      height: 230px;
-      padding: 0;
-      .bold {
-        font-weight: 500;
-      }
-      .widget-type-container {
-        height: 100%;
-      }
-    }
-    .widget-title {
-      font-size:1.2em;
-      padding:8px;
+    h4 {
       margin:0;
-      text-align:center;
+    }
+  }
+  a:hover {
+    text-decoration:none;
+  }
+  .widget-icon-container {
+    text-align:center;
+    i {
       color:@grayscale10;
-      h4 {
-        margin:0;
-      }
+      font-size:70px;
     }
-    a:hover {
+  }
+  p {
+    padding:3px 8px;
+  }
+  hr {
+    margin-top:0;
+    margin-bottom:0;
+  }
+  .launch-app-button {
+    width:100%;
+    padding:8px;
+    position:absolute;
+    background-color:@grayscale3;
+    border:0 solid transparent;
+    bottom:0;
+    margin:0;
+    text-align:center;
+    display:block;
+    color:@grayscale8;
+    border-radius: 0 0 4px 4px;
+    transition: @mascot-transition;
+    &:hover {
+      background-color:@color1;
+      color:@white;
       text-decoration:none;
-    }
-    .widget-icon-container {
-      text-align:center;
-      i {
-        color:@grayscale10;
-        font-size:70px;
-      }
-    }
-    p {
-      padding:3px 8px;
-    }
-    hr {
-      margin-top:0;
-      margin-bottom:0;
-    }
-    .launch-app-button {
-      width:100%;
-      padding:8px;
-      position:absolute;
-      background-color:@grayscale3;
-      border:0 solid transparent;
-      bottom:0;
-      margin:0;
-      text-align:center;
-      display:block;
-      color:@grayscale8;
-      border-radius: 0 0 4px 4px;
-      transition: @mascot-transition;
-      &:hover {
-        background-color:@color1;
-        color:@white;
-        text-decoration:none;
-      }
     }
   }
 }
