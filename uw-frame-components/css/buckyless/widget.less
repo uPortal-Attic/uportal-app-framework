@@ -48,10 +48,10 @@
     left:8px;
     top:3px;
     i {
-      color:#999;
+      color:@grayscale6;
       &:hover {
         cursor:pointer;
-        color:#666;
+        color:@grayscale8;
       }
     }
   }
@@ -62,10 +62,10 @@
   right:8px;
   top:3px;
   i {
-    color:#999;
+    color:@grayscale6;
     &:hover {
       cursor:pointer;
-      color:#666;
+      color:@grayscale8;
     }
   }
 }
@@ -73,16 +73,16 @@
 .widget-frame {
   position:relative;
   margin:5px;
-  background:#f3f3f3;
+  background:@grayscale1;
   border-radius:3px;
   height:290px;
-  color:#333;
+  color:@grayscale10;
   .widget-title {
     font-size:1.2em;
     padding:8px;
     margin:0;
     text-align:center;
-    color:#333;
+    color:@grayscale10;
     h4 {
       margin:0;
     }
@@ -95,7 +95,7 @@
     height:67%;
     text-align:center;
     i {
-      color:#333;
+      color:@grayscale10;
       vertical-align:middle;
       padding:30px 10px;
       font-size:70px;
@@ -112,13 +112,13 @@
     width:100%;
     padding:8px;
     position:absolute;
-    background-color:#ddd;
+    background-color:@grayscale3;
     border:0 solid transparent;
     bottom:0;
     margin:0;
     text-align:center;
     display:block;
-    color:#666;
+    color:@grayscale8;
     border-top-right-radius:0;
     border-top-left-radius:0;
     transition: @mascot-transition;
@@ -137,7 +137,7 @@
   margin:0;
   padding:0;
   li {
-    border-top:1px solid #ddd;
+    border-top:1px solid @grayscale3;
     margin:0 15px;
     padding:3px 0;
     a.full-width {
@@ -146,7 +146,7 @@
   }
 
   li.no-highlight {
-    background-color: #f3f3f3 !important;
+    background-color: @grayscale1 !important;
   }
   
   li:first-child {
@@ -155,7 +155,7 @@
   li:hover {
     margin:0 5px;
     padding:3px 10px;
-    background-color:#ddd;
+    background-color:@grayscale3;
     border-radius:4px;
   }
   li:hover + li {
@@ -163,7 +163,7 @@
     padding:4px 0 3px;
   }
   p {
-    color:#666;
+    color:@grayscale8;
     margin:0;
     padding:0;
     font-size:12px;
@@ -171,7 +171,7 @@
 
   .bold {
     font-weight:600;
-    color:#222;
+    color:@grayscale10;
   }
   .right {
     float:right;
