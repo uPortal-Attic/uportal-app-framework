@@ -1,6 +1,6 @@
 {
   "name": "uw-frame",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "MyUW's frame project for creating angular based microservices.",
   "scripts": {
     "pretest": "./uw-frame-components/test/build.sh",
