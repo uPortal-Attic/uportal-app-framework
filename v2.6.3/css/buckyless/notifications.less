@@ -1,0 +1,258 @@
+/* Notification Styling */
+.notifications {
+  .notifications-list {
+    margin: 0;
+    padding: 0;
+  }
+  .notifications-list .notification-item {
+    font-size: 1.1em;
+    color: #333;
+    background-color: @white;
+    border:2px solid #ddd;
+    font-weight: 400;
+    border-radius:6px;
+    margin:8px 10px;
+  }
+  .notifications-list .notification-item.priority {
+    border:2px solid @color1;
+    .fa.fa-exclamation-triangle {
+      padding-right: 5px;
+    }
+  }
+
+  .content,
+  .action {
+    display:inline-block;
+    height:100%;
+    padding:8px 10px;
+    vertical-align: top;
+    overflow:hidden;
+  }
+  .content {
+    width:95%;
+    border-right:2px solid #ddd;
+    color:#900;
+    p {
+      margin:0;
+    }
+    &:hover {
+      background-color:#f5f5f5;
+      color:#b00;
+      text-decoration: underline;
+      cursor:pointer;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+  }
+  .action {
+    width:5%;
+    float:right;
+    padding:0;
+    min-height:30px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    i {
+      display: block;
+      text-align:center;
+      vertical-align: middle;
+      top:7px;
+      position:relative;
+      font-size:20px;
+      color:#aaa;
+    }
+    &:hover {
+      cursor:pointer;
+      i {
+        color:@color1;
+      }
+    }
+  }
+  li.read {
+    padding:8px 10px;
+  }
+  li.read:hover {
+    cursor:pointer;
+
+  }
+  .unread {
+    font-weight: bold;
+    border: 1px black solid;
+    cursor: pointer;
+  }
+
+  .notification-badge {
+    width: 35px;
+    height: 35px;
+    margin: 5px 0 0;
+    font-weight: 200;
+    text-align: center;
+    color: @white;
+
+    &.notification-badge-empty {
+      color : lighten(@color1, 30%);
+    }
+
+    /* MOBILE BELL ON TOP OF HAMBURGER */
+    &.notification-badge-mobile {
+      position: absolute;
+      bottom: 26px;
+      background-color: #fff;
+      width: 18px;
+      height: 18px;
+      left: 28px;
+      margin: 0 0 0;
+      border-radius: 1000px;
+      padding: 0;
+      color: #c5050c;
+      z-index: 999;
+      > .fa-bell {
+        font-size: 12px;
+        position: relative;
+        bottom: 8px;
+      }
+    }
+
+    .number-of-nots {
+      color: @color1;
+      font-weight: 400;
+      z-index: 2000;
+      position: absolute;
+      top: 2px;
+      left: 12px;
+    }
+    .more-than-10-nots {
+      left: 11px;
+      top: 7px;
+      font-size: small;
+    }
+    > .fa-bell {
+      font-size: 1.5em;
+    }
+  }
+
+  /* DESkTOP-ONLY NOTIFICATION BELL */
+  .menu-notification-link {
+    .notification-badge {
+      position: relative;
+      transition: @link-hover-transition;
+      > .arrow-down {
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 7px solid @grayscale2;
+        z-index:2000;
+        position: absolute;
+        top:-14px;
+        right:10px;
+      }
+      &:hover {
+        color:#ccc;
+        text-decoration:none !important;
+      }
+    }
+  }
+
+  @media (max-width:768px ) {
+    .content {
+      width:90%;
+    }
+    .action {
+      width:10%;
+    }
+  }
+
+}
+
+/* PRIORITY NOTIFICATIONS */
+.hidden-xs .priority-notifications {
+  height: 46px;
+  width: 100%;
+  background-color: @grayscale2;
+  z-index:100;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid @black;
+  .notification-message {
+    font-size:15px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.visible-xs .priority-notifications {
+  min-height:40px;
+  position: relative;
+  top: 0;
+  margin:0px -15px;
+  padding:15px 20px 12px;
+  background-color: @grayscale2;
+  .notification-message {
+    font-size:13px;
+  }
+}
+
+.hidden-xs .priority-notifications,
+.visible-xs .priority-notifications {
+  .notification-message {
+    color:@black;
+    text-align:center;
+    display: block;
+    margin-bottom:0;
+  }
+  .notification-buttons {
+    margin-left: 26px;
+    .md-button {
+      text-transform: none;
+      min-height: 0;
+      max-height: 26px;
+      line-height: 26px;
+    }
+  }
+}
+
+
+// New Stuff Div
+/*
+  TODO: determine whether any of this is still needed
+*/
+
+// News Mockups
+
+.news-article-title {
+  font-weight:200;
+  position:absolute;
+  bottom:28px;
+  right:15px;
+  color:#333;
+  padding:0;
+  margin:0;
+  font-size:1.8em;
+}
+.news-article-description {
+  position:absolute;
+  bottom:8px;
+  right:15px;
+  color:#333;
+  margin:0;
+  padding:0;
+}
+.news-section-title {
+  font-size:0.7em;
+  position:absolute;
+  bottom:53px;
+  right:5px;
+  color:#333;
+  margin:0;
+  padding:0;
+}
+.news-article a {
+  color:@color1;
+}
+.page-h1 {
+  font-size: 2.3em;
+  color: @color1;
+  padding: 0;
+  font-weight: 200;
+}
