@@ -3,8 +3,8 @@
 define(['angular'], function(angular) {
   var app = angular.module('portal.timeout.controllers', []);
 
-  app.controller('PortalTimeoutController', ['$location', '$timeout', '$mdDialog', 'MISC_URLS', 'PortalShibbolethService',
-  function($location, $timeout, $mdDialog, MISC_URLS, PortalShibbolethService){
+  app.controller('PortalTimeoutController', ['$sessionStorage', '$log', '$location', '$timeout', '$mdDialog', 'MISC_URLS', 'PortalShibbolethService',
+  function($sessionStorage, $log, $location, $timeout, $mdDialog, MISC_URLS, PortalShibbolethService){
     function init(){
       if(PortalShibbolethService.shibServiceActivated()) {
         //initialize timeout and dialog
@@ -13,7 +13,13 @@ define(['angular'], function(angular) {
             if(timeoutData && timeoutData.expirationMills) {
               $timeout(triggerDialog, timeoutData.expirationMills);
             } else {
-              triggerDialog();
+              $log.info("Timeout data could not be found");
+              if($sessionStorage.portal
+                 && $sessionStorage.portal.username
+                 && $sessionStorage.portal.username !== 'guest'){
+                   //we know its not a guest session
+                   triggerDialog();
+                 }
             }
           }
         );
