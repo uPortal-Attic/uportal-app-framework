@@ -5,10 +5,10 @@
   <div class="md-toolbar-tools" ng-class="{'has-priority-nots': headerCtrl.hasPriorityNotifications}" role="banner">
     <div layout="row" flex="30" layout-align="start center">
       <!-- MOBILE MENU -->
-      <notification-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notification-bell>
       <md-menu md-position-mode="target target" md-offset="0 56" hide-gt-xs>
-        <md-button class="md-icon-button" aria-label="toggle mobile menu" hide-gt-xs ng-click="$mdOpenMenu($event)">
-          <i class="fa fa-bars"></i>
+        <md-button aria-label="toggle mobile menu" hide-gt-xs ng-click="$mdOpenMenu($event)">
+          <notification-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notification-bell>
+          <i class="fa fa-bars" style='font-size: 1.5em;'></i>
         </md-button>
         <md-menu-content width="5" class="mobile-menu">
           <md-menu-item>
