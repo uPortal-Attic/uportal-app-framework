@@ -1,0 +1,29 @@
+{
+  "expiration": 10,
+  "client_address": "127.0.0.1",
+  "protocol": "urn:oasis:names:tc:SAML:2.0:protocol",
+  "identity_provider": "https://logintest.wisc.edu/idp/shibboleth",
+  "authn_instant": "2016-08-25T14:00:44.635Z",
+  "authncontext_class": "FancyClass",
+  "attributes": [
+    {
+      "name": "eppn",
+      "values": [
+        "bucky@wisc.edu"
+      ]
+    },
+    {
+      "name": "isMemberOf",
+      "values": [
+        "uw:domain:my.wisc.edu:my_uw_taco_tuesday_member",
+        "uw:domain:my.wisc.edu:my_uw_beta_user"
+      ]
+    },
+    {
+      "name": "uid",
+      "values": [
+        "bucky"
+      ]
+    }
+  ]
+}
