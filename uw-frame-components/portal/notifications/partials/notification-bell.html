@@ -39,6 +39,7 @@
                    ng-repeat="button in priority.actionButtons track by button.label"
                    ng-class="{'md-primary' : $index === 0, 'md-accent' : $index > priority.buttonText.length / 2 - 1}"
                    ng-click="button.action"
+                   target="{{button.target}}"
                    aria-label="{{button.label}}">
           {{button.label}}
         </md-button>
