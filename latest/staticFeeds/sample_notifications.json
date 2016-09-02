@@ -3,14 +3,14 @@
       {
   		"id"     : 1,
   		"groups" : ["Everyone"],
-  		"title"  : "This is an admin notification smoke test.",
+  		"title"  : "Checkout these cool buttons ->.",
   		"actionURL" : "http://www.google.com",
   		"actionAlt" : "Google",
   		"dismissable" : false,
   		"priority" : true,
   		"actionButtons" : [
-  		  {"label" : "Feedback", "url" : "/web/exclusive/feedback", "action" : ""},
-  		  {"label" : "Return To Old", "url" : "https://my.wisconsin.edu",  "action" : ""}
+  		  {"label" : "Feedback", "url" : "/web/exclusive/feedback", "action" : "", "target" : ""},
+  		  {"label" : "Return To Old", "url" : "https://my.wisconsin.edu",  "action" : "", "target" : "_blank"}
   		]
       },
       {

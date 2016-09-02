@@ -22,7 +22,7 @@ define(['angular'], function(angular) {
             'shibbolethSessionURL' : null //'/Shibboleth.sso/Session.json'
         })
         .value('NAMES', {
-            'title' : 'App Name',
+            'title' : 'MyUW', //you can name your app whatever you want
             'guestUserName' : 'guest',
             'fname' : 'sample-fname'
         })
