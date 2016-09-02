@@ -5,17 +5,22 @@ define(['angular','require'], function(angular, require) {
 
   app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$rootScope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS','THEMES','miscService', function($localStorage, $sessionStorage, $scope, $rootScope, $document, $location, NAMES, MISC_URLS, APP_FLAGS,THEMES, miscService) {
     var defaults = {
-            showKeywordsInMarketplace : false,
-            homeImg : "img/square.jpg",
-            profileImg: "img/terrace.jpg",
-            typeaheadSearch: false,
-            exampleWidgets: false,
-            layoutMode : 'list', //other option is 'widgets'
-            gravatarEmail : null,
-            useGravatar : false,
-            webPortletRender : false
+            layoutMode : 'list' //other option is 'widgets
             };
 
+    function setTitle(){
+      var frameTitle = "";
+      if($rootScope.portal && $rootScope.portal.theme) {
+        frameTitle = $rootScope.portal.theme.title;
+        if(frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
+          frameTitle = " | " + frameTitle;
+        } else {
+          //since frame title equals the title in NAMES lets not duplicate it
+          frameTitle = "";
+        }
+      }
+      $document[0].title=NAMES.title + frameTitle;
+    }
 
     //=====functions ======
     var init = function(){
@@ -27,8 +32,14 @@ define(['angular','require'], function(angular, require) {
       $scope.THEMES = THEMES.themes;
 
       if(NAMES.title) {
-        $document[0].title=NAMES.title;
+        setTitle();
       }
+
+      $rootScope.$watch('portal.theme', function(newValue, oldValue) {
+        if(newValue && newValue !== oldValue) {
+          setTitle();
+        }
+      });
 
       //class for ng-view
       $scope.routeClass = "route" + angular.lowercase($location.path().replace(new RegExp('/', 'g'), '-'));
