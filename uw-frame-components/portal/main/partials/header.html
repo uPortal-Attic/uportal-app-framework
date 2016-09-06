@@ -6,7 +6,7 @@
     <div layout="row" flex="30" layout-align="start center">
       <!-- MOBILE MENU -->
       <md-menu md-position-mode="target target" md-offset="0 56" hide-gt-xs>
-        <md-button aria-label="toggle mobile menu" hide-gt-xs ng-click="$mdOpenMenu($event)">
+        <md-button aria-label="toggle mobile menu" hide-gt-xs ng-click="$mdOpenMenu($event)" layout="row" layout-align="center center">
           <notification-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notification-bell>
           <i class="fa fa-bars" style='font-size: 1.5em;'></i>
         </md-button>

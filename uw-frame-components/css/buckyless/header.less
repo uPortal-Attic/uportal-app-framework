@@ -26,11 +26,9 @@ portal-header {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
     z-index: 100;
     top: 0;
-    @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
-      min-height: 48px;
-    }
     .md-toolbar-tools {
       padding-left: 0;
+      height: 56px;
       max-height: 56px;
       .title-link {
         h1 {
@@ -41,9 +39,6 @@ portal-header {
         img {
           height: 56px;
           margin-right: 16px;
-          @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
-            height: 48px;
-          }
         }
         .beta-logo {
           font-size:0.55em;
@@ -51,6 +46,11 @@ portal-header {
           position:relative;
           top:0;
           margin-left:3px;
+        }
+      }
+      .md-menu {
+        > .md-button {
+          min-width: 48px;
         }
       }
     }
