@@ -98,12 +98,13 @@
       background-color: #fff;
       width: 18px;
       height: 18px;
-      right: 26px;
       margin: 0 0 0;
       border-radius: 1000px;
       padding: 0;
       color: @color1;
       z-index: 999;
+      top: 0;
+      right: 26px;
       > .fa-bell {
         font-size: 12px;
         position: relative;
@@ -185,7 +186,7 @@
   position: relative;
   top: 0;
   margin:0px -15px;
-  padding:15px 20px 12px;
+  padding:12px 20px;
   background-color: @grayscale2;
   .notification-message {
     font-size:13px;
@@ -202,6 +203,9 @@
     a {
       color: @link-color;
     }
+  }
+  a.notification-message {
+    color: @link-color;
   }
   .notification-buttons {
     margin-left: 26px;
