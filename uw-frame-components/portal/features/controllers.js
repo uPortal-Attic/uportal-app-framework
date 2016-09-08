@@ -37,7 +37,7 @@ define(['angular','require'], function(angular, require) {
         });
         miscService.pushGAEvent('feature',liked ? 'read more' : 'dismissed', announcementID);
       };
-     
+
       $scope.markAllAnnouncementsSeen = function(liked){
         portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
           for(var i=0; i<unseenAnnouncements.length; i++){
@@ -53,34 +53,36 @@ define(['angular','require'], function(angular, require) {
 
 
      //local functions ---------------------------------------------------------
-     
+
      var getPopups = function(){
-       portalFeaturesService.getUnseenPopups().then(function(unseenPopups) {
-         if(unseenPopups.length !=0){
-           var orderedPopups = $filter('orderBy')(unseenPopups, ['popup.startYear', 'popup.startMonth', 'popup.startDay', 'id']);
-           $scope.latestFeature = orderedPopups[0];
-           var displayPopup = function() {
-             var modalInstance = $modal.open({
-               animation: $scope.animationsEnabled,
-               templateUrl: require.toUrl('./partials/features-modal-template.html'),
-               size: 'lg',
-               scope: $scope
-             });
-             modalInstance.result.then(function(data){
-               //resolves upon closing of modal
-               miscService.pushGAEvent('popup','closed', orderedPopups[0].id);
-               portalFeaturesService.markPopupSeen(orderedPopups[0].id);
-               getPopups();
-             }, function(data){
-               //rejects upon dismissing of modal
-               miscService.pushGAEvent('popup','dismissed', orderedPopups[0].id);
-               portalFeaturesService.markPopupSeen(orderedPopups[0].id);
-               getPopups();
-             });
-           };
-           displayPopup();
-         }
-       });
+       if(!$rootScope.GuestMode) {
+         portalFeaturesService.getUnseenPopups().then(function(unseenPopups) {
+           if(unseenPopups.length !=0 && !$rootScope.GuestMode){
+             var orderedPopups = $filter('orderBy')(unseenPopups, ['popup.startYear', 'popup.startMonth', 'popup.startDay', 'id']);
+             $scope.latestFeature = orderedPopups[0];
+             var displayPopup = function() {
+               var modalInstance = $modal.open({
+                 animation: $scope.animationsEnabled,
+                 templateUrl: require.toUrl('./partials/features-modal-template.html'),
+                 size: 'lg',
+                 scope: $scope
+               });
+               modalInstance.result.then(function(data){
+                 //resolves upon closing of modal
+                 miscService.pushGAEvent('popup','closed', orderedPopups[0].id);
+                 portalFeaturesService.markPopupSeen(orderedPopups[0].id);
+                 getPopups();
+               }, function(data){
+                 //rejects upon dismissing of modal
+                 miscService.pushGAEvent('popup','dismissed', orderedPopups[0].id);
+                 portalFeaturesService.markPopupSeen(orderedPopups[0].id);
+                 getPopups();
+               });
+             };
+             displayPopup();
+           }
+         });
+       }
      };
 
      var setMascot = function(){
@@ -97,8 +99,8 @@ define(['angular','require'], function(angular, require) {
          }
        });
      };
-     
-     
+
+
 
      var init = function() {
        $scope.hover = false;
