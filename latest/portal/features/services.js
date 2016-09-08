@@ -9,6 +9,7 @@ define(['angular'], function(angular) {
                                         'miscService',
                                         'keyValueService',
                                         'PortalGroupService',
+                                        '$localStorage',
                                         '$sessionStorage',
                                         'filterFilter',
                                         'KV_KEYS',
@@ -18,6 +19,7 @@ define(['angular'], function(angular) {
                                                  miscService,
                                                  keyValueService,
                                                  PortalGroupService,
+                                                 $localStorage,
                                                  $sessionStorage,
                                                  filterFilter,
                                                  KV_KEYS,
@@ -33,7 +35,7 @@ define(['angular'], function(angular) {
                                   miscService.redirectUser(status, "Get features info");
                                });
       }
-      if(FEATURES.groupFiltering && PortalGroupService.groupsServiceEnabled) {
+      if(FEATURES.groupFiltering && PortalGroupService.groupsServiceEnabled && !$localStorage.disableGroupAnnouncementFiltering) {
         if(filteredFeaturesPromise) {
           //cache shortcut
           return filteredFeaturesPromise;
