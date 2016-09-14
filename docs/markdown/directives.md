@@ -85,13 +85,31 @@ Displays a flat, circular icon-button with a fa-icon in the middle, and a title 
 ```
 #### Params:
 * **href**: Where you want them to go
-* **target**: Open in new window
+* **target**: Open in new window, new tab, or the same window
 * **fa-icon**: The font awesome icon to use
 * **disabled**: Button disabled or not (can be a variable)
 * **title**: (optional) Title that is displayed under the circle
 * **truncLen**: (optional) Length to truncate the title
 
 <a href='#/demo' class='btn btn-flat btn-sm'>See Demo here</a>
+
+## LaunchButton
+
+Displays a launch button for portal widgets that fits their width and visual style
+
+#### Template :
+
+```html
+<launch-button 
+	data-href="" 
+	data-target="" 
+	data-title="">
+</launch-button>
+```
+#### Params:
+* **href**: Where you want them to go
+* **target**: Open in new window, new tab, or the same window
+* **title**: Launch app text (e.g. "Launch App," "Go to \[your site]," etc.
 
 ## Loading Gif
 
