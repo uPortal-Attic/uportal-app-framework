@@ -252,6 +252,28 @@ define(['angular', 'require'], function(angular, require) {
     	};
     });
 
+  /**
+   * Launch Button Directive
+   * Displays a button that fits the width and visual style of a widget
+   * Template: <launch-button data-href="" data-target="" data-title=""></launch-button>
+   *
+   * Params:
+   * - href: where you want them to go
+   * - target: open in new window, new tab, or same window
+   * - title: the text to be displayed
+   */
+    app.directive('launchButton', function() {
+      return {
+        restrict: 'E',
+        scope: {
+          href: '@href',
+          target: '@target',
+          title: '@title'
+        },
+        templateUrl: require.toUrl('./partials/launch-button.html')
+      }
+    });
+
     app.directive('addToHome', function() {
       return {
         restrict : 'E',
