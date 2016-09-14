@@ -93,7 +93,7 @@ Displays a flat, circular icon-button with a fa-icon in the middle, and a title 
 
 <a href='#/demo' class='btn btn-flat btn-sm'>See Demo here</a>
 
-## LaunchButton
+## Launch Button
 
 Displays a launch button for portal widgets that fits their width and visual style
 
