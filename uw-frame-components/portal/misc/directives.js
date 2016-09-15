@@ -255,12 +255,13 @@ define(['angular', 'require'], function(angular, require) {
   /**
    * Launch Button Directive
    * Displays a button that fits the width and visual style of a widget
-   * Template: <launch-button data-href="" data-target="" data-title=""></launch-button>
+   * Template: <launch-button data-href="" data-target="" data-button-text="" data-aria-label=""></launch-button>
    *
    * Params:
    * - href: where you want them to go
    * - target: open in new window, new tab, or same window
-   * - title: the text to be displayed
+   * - button-text: the text to be displayed
+   * - aria-label: (optional) text to provide additional context for screen readers, if necessary
    */
     app.directive('launchButton', function() {
       return {
@@ -268,7 +269,8 @@ define(['angular', 'require'], function(angular, require) {
         scope: {
           href: '@href',
           target: '@target',
-          title: '@title'
+          buttonText: '@buttonText',
+          ariaLabel: '@ariaLabel'
         },
         templateUrl: require.toUrl('./partials/launch-button.html')
       }
