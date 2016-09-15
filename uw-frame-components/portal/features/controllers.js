@@ -110,9 +110,12 @@ define(['angular','require'], function(angular, require) {
          delete $localStorage.lastSeenFeature;
          delete $localStorage.hasSeenWelcome;
          //Mode is set to bucky or bucky_mobile to signal mascot init of controller
-         if("BUCKY" === $scope.mode || "BUCKY_MOBILE" === $scope.mode) {
+         if(("BUCKY" === $scope.mode || "BUCKY_MOBILE" === $scope.mode)
+            && !$rootScope.GuestMode) {
            portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
-             $scope.announcements = unseenAnnouncements;
+             if(!$rootScope.GuestMode){
+               $scope.announcements = unseenAnnouncements;
+             }
            });
            setMascot();
          }else{
