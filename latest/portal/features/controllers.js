@@ -55,9 +55,9 @@ define(['angular','require'], function(angular, require) {
      //local functions ---------------------------------------------------------
      
      var getPopups = function(){
-       portalFeaturesService.getUnseenPopups().then(function(unSeenPopups) {
-         if(unSeenPopups.length !=0){
-           var orderedPopups = $filter('orderBy')(unSeenPopups, ['popup.startYear', 'popup.startMonth', 'popup.startDay', 'id']);
+       portalFeaturesService.getUnseenPopups().then(function(unseenPopups) {
+         if(unseenPopups.length !=0){
+           var orderedPopups = $filter('orderBy')(unseenPopups, ['popup.startYear', 'popup.startMonth', 'popup.startDay', 'id']);
            $scope.latestFeature = orderedPopups[0];
            var displayPopup = function() {
              var modalInstance = $modal.open({
