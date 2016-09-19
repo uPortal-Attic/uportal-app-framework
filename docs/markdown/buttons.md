@@ -1,36 +1,20 @@
-UW buttons build off the Bootstrap button styles. Buttons can be either `button` or `a` elements. Give every button a class of `.btn`, then add classes below to suit your needs.
+Buttons in uw-frame leverage [Angular Material buttons](https://material.angularjs.org/latest/demo/button), which conform to 
+Google Material design practices and come with built-in UX enhancements. Use the `<md-button>` directive to create a material button. 
 
-<div class="row">
-    <div class="col-sm-3">
-      <h3>Default buttons</h3>
-      <p>Add <code>.btn-default</code> for the default button. Add <code>.btn-lg</code>, <code>.btn-sm</code>, or <code>.btn-xs</code> to change the size of your button.</p>
-      <a href="" class="btn btn-default btn-lg">Large button</a><br>
-      <a href="" class="btn btn-default">Normal button</a><br>
-      <button href="" class="btn btn-default btn-sm">Small button</button><br>
-      <a href="" class="btn btn-default btn-xs">Extra Small button</a><br>
-    </div>
-    <div class="col-sm-3">
-      <h3>Primary buttons</h3>
-      <p>Add <code>.btn-primary</code> for a primary button, which adds extra visual weight.</p>
-      <button href="" class="btn btn-lg btn-primary">Large button</button><br>
-      <a href="" class="btn btn-primary">Normal button</a><br>
-      <a href="" class="btn btn-sm btn-primary">Small button</a><br>
-      <a href="" class="btn btn-xs btn-primary">Extra Small button</a><br>
-    </div>
-    <div class="col-sm-3">
-      <h3>Flat &amp; Outline buttons</h3>
-      <p>Add <code>.btn-outline</code> for an outline button. Add <code>.btn-flat</code> for a flat style. Note that the flat and outline styles cannot be combined with an action button class without manually adding another class.</p>
-      <a href="" class="btn btn-outline">Outline button</a><br>
-      <a href="" class="btn btn-outline btn-sm">Small outline button</a><br>
-      <a href="" class="btn btn-flat">Flat button</a><br>
-      <a href="" class="btn btn-flat btn-sm">Small flat button</a><br>
-    </div>
-    <div class="col-sm-3">
-      <h3>Action buttons</h3>
-      <p>Add <code>.btn-dark</code>, <code>.btn-success</code> for form submission or success actions, <code>.btn-neutral</code> for a neutral blue color, or <code>.btn-disabled</code> for a button that should be disabled.</p>
-      <a href="" class="btn btn-dark">Dark Red button</a><br>
-      <a href="" class="btn btn-success">Green Success button</a><br>
-      <a href="" class="btn btn-neutral">Blue Neutral button</a><br>
-      <a class="btn btn-disabled">Gray Disabled button</a><br>
-    </div>
-  </div>
+#### All buttons should have the following attributes:
++ The text should be sentence-case (e.g. "Reset announcements")
++ It should include an `aria-label` attribute that describes the action for screen readers
++ It should have either an `ng-click` or `ng-href` attribute for buttons and links, respectively
++ It should include a class for the desired color palette (i.e. `md-primary`, `md-accent`, `md-warn`, or `md-default`)
+
+#### When to use certain button types:
++ Flat: Use for links and actions that do not need to have special attention called to them
++ Raised (`md-raised`): Use for primary actions or when your chosen palette (e.g. `md-accent`) does not have sufficient contrast with 
+the background color of the button's containing element
++ FAB: Due to the complexity of uw-frame applications, it is best to avoid using FAB buttons
++ Icon button (`md-icon-button): Use on small screens when the button's action can be adequately expressed by an icon
+
+#### When to use certain color palette classes:
++ `md-primary`: Use for primary actions
++ `md-accent`: Use for flat links (*only if your theme's accent color sufficiently contrasts with the background color*) and secondary actions 
++ `md-warn`: Use when the button's action should be used cautiously

@@ -1,6 +1,8 @@
 <frame-page app-title='{{NAMES.title}} - {{title}}' white-background=true>
-  <div style='padding : 15px; background-color: white;'>
-    <a href='#/home' class='btn btn-flat btn-sm'>< Back to Home</a>
+  <md-content class="docs-page">
+    <md-button ng-href='#/home' class='md-primary'>
+      <i class="material-icons">arrow_back</i> Back to Home
+    </md-button>
     <div class='markdown' marked src="filename"></div>
-  </div>
+  </md-content>
 </frame-page>

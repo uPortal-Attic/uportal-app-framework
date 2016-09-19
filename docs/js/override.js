@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
             'showSearch' : false
           },
           'NAMES' : {
-            'title' : 'uw-frame Docs',
+            'title' : 'UW Frame Documentation',
             'fname' : 'uw-frame-fname'
           },
           'MISC_URLS' : {
@@ -23,7 +23,7 @@ define(['angular'], function(angular) {
           "FEATURES" : {
             enabled : false
           }
-        })
+        });
 
     return config;
 
