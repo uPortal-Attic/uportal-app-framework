@@ -17,7 +17,7 @@ define(['angular'], function(angular) {
             'groupURL' : '/portal/api/groups',
             'kvURL' : '/storage',
             'loginSilentURL' : '/portal/Login?silent=true',
-            'notificationsURL' : '/web/staticFeeds/notifications.json',
+            'notificationsURL' : '/staticFeeds/sample_notifications.json',
             'sessionInfo' : 'staticFeeds/session.json',
             'shibbolethSessionURL' : null //'/Shibboleth.sso/Session.json'
         })
