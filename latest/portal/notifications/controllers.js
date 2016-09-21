@@ -39,13 +39,16 @@ define(['angular'], function(angular) {
       }
     };
 
-    var clearPriorityNotificationFlags = function() {
+    var clearPriorityNotificationFlags = function(duringOnEvent) {
       $scope.priorityNotifications = [];
       $scope.hasPriorityNotifications = false;
       if($scope.headerCtrl) {
         $scope.headerCtrl.hasPriorityNotifications = false;
       }
       $('.page-content').removeClass('has-priority-nots');
+      if(!duringOnEvent) {
+        $rootScope.$broadcast('portalShutdownPriorityNotifications', { disable : true});
+      }
     }
 
     var successFn = function(data){
@@ -68,7 +71,8 @@ define(['angular'], function(angular) {
     };
 
     var dismissedSuccessFn = function(data) {
-      $rootScope.dismissedNotificationIds = data;
+      if(Array.isArray(data))
+        $rootScope.dismissedNotificationIds = data;
     };
 
     $scope.dismissedCount = function() {
@@ -112,10 +116,13 @@ define(['angular'], function(angular) {
       return false;
     };
 
-    $scope.dismiss = function (notification) {
+    $scope.dismiss = function (notification, fromPriority) {
       $rootScope.dismissedNotificationIds.push(notification.id);
       if(SERVICE_LOC.kvURL) { //key value store enabled, we can store dismiss of notifications
         notificationsService.setDismissedNotifications($rootScope.dismissedNotificationIds);
+      }
+      if(fromPriority) {
+        clearPriorityNotificationFlags();
       }
     }
 
@@ -159,6 +166,9 @@ define(['angular'], function(angular) {
           } else {
             clearPriorityNotificationFlags();
           }
+        });
+        $scope.$on('portalShutdownPriorityNotifications', function(event, data) {
+          clearPriorityNotificationFlags(true);
         });
       }
     }
