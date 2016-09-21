@@ -44,6 +44,9 @@
           {{button.label}}
         </md-button>
       </div>
+      <div class="dismiss-priority hidden-xs">
+        <md-button ng-if="priority.dismissable" ng-click="dismiss(priority, true)" aria-label="Dismiss this priority notification"><i class='fa fa-times'></i></md-button>
+      </div>
     </div>
     <p ng-if='priorityNotifications.length > 1' class="notification-message">
       You have {{priorityNotifications.length}} important notifications. <a href="notifications" alt="{{priority.actionAlt}}">View your notifications.</a>
