@@ -15,15 +15,35 @@
 	margin: 10px 0;
 }
 
+.docs-page h1 {
+	font-weight: 300;
+	font-size: 28px;
+}
+
 .docs-page h2 {
 	font-weight: 500;
 	font-size: 22px;
+}
+
+.docs-page__home h2 {
 	margin-bottom: 0;
+}
+
+.docs-page h3 {
+	font-weight: 300;
+	font-size: 20px;
+	border-bottom: 1px solid rgba(0,0,0,0.12);
+	padding-bottom: 6px;
 }
 
 .docs-page h4 {
 	font-weight: 500;
-	font-size: 18px;
+	font-size: 16px;
+}
+
+.docs-page h5 {
+	font-weight: 300;
+	font-size: 16px;
 }
 
 .home__main-content, .home__sidebar {

@@ -1,10 +1,10 @@
 define(['angular'], function(angular) {
 
-  /*Keep in sync with docs/markdown/Configuration.md*/
+  /*Keep in sync with docs/markdown/configuration.md*/
 
   var config = angular.module('override', []);
   config
-    //see Configuration.md for howto
+    //see configuration.md for howto
     .constant('OVERRIDE', {
 
     });

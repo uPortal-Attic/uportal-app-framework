@@ -1,9 +1,18 @@
-### MyUW, My UW-Madison, My UW-System
-Bare 'MyUW' never has a space between the letters. However, 'My UW-Madison' and 'My UW-System' are always spaced and dashed as so.
-### App Title
-30 characters maximum. Avoid the word “your.” When possible, avoid the word “my” unless it’s necessary to differentiate it from another app. (For example, an app with a list of a student’s courses would be titled “My Courses” because a “Courses” app would be a list of all courses at the university.)
+### Typography style guide
+For the time being, defer to the typography specs provided by [Google Material](https://material.google.com/style/typography.html) and
+[Angular Material](https://material.angularjs.org/latest/CSS/typography).
 
-Avoid the word "information". (There's little that isn't information.) Example, instead of "Retirement Information" prefer "Retirement" or "Retirement Planning" if emphasizing that the task the app supports is planning for retirement.
+### MyUW syntax
 
-### App Description
-80 characters maximum. Avoid the word “your.” (For example, instead of “view your earnings and tax statements,” use “view earnings and tax statements.”)
+#### MyUW vs. My UW-Madison
+"MyUW" by itself should never contain spaces. However, "My UW-Madison," "My UW-System," etc. are always spaced and hyphenated as written here.
+
+#### App title
+* Your app title (displayed in the app-header directive) should be **30 characters long at most** 
+* Avoid the word "your" 
+* Avoid the word "my" unless it’s necessary to differentiate it from another app (e.g. an pp with a list of a student’s courses would be titled “My Courses” because a “Courses” app would be a list of all courses at the university)
+* Avoid the word "information" (because there is little that isn't information). This word does not provide any helpful context. For example, instead of "Retirement Information," the title should be "Retirement."
+
+#### App Description
+* 80 characters max
+* Avoid the word “your” (e.g. instead of “view your earnings and tax statements,” use “view earnings and tax statements”)
