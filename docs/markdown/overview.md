@@ -17,6 +17,7 @@ See the [configuration doc](#/md/configuration) to learn how to configure these 
 
 In addition to the features pictured above, frame provides:
 + Error pages
++ Optional settings
 + [Frame-specific angular directives](#/md/directives)
 + [Mascot announcements and notifications](#/md/announcements)
 + Optimizations for small screens (including the [mobile menu](img/mobile-menu.png))

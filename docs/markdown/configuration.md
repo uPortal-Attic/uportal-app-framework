@@ -1,36 +1,6 @@
 Your application can overwrite any constant listed below by adding it to the `js/override.js` file. You only need to add what you want different than what is in `js/app-config.js`.
 
-## Example
-```javascript
-define(['angular'], function(angular) {
-  var config = angular.module('override', []);
-  config
-      .constant('OVERRIDE', {
-                              'FEATURES' : { 'enabled' : true },
-                              'APP_FLAG' : { 'loginOnLoad' : true, 'gaSearchParam' : 'f' },
-                              'FOOTER_URLS' : [{ "url" : "http://www.google.com",
-                                                 "target" : "_blank",
-                                                 "title" : "Google"
-                                               }]
-                            })
-  return config;
-});
-
-```
-
-Alright, lot going on here so lets take a walk through this.
-+ `Line 1` is just the `requirejs` wrapper, no biggy.
-+ `Line 2 & 3` are just setting up this module in angular. This will be pulled in during the `/portal/main.js` execution.
-+ `Line 4` defines the constant "OVERRIDE". This will contain the json that will be overwritten
-+ `Line 5` is an example override for something in the `FEATURES` category. Each category must be the object name. In this instance that is `FEATURES`. The value is `JSON` and each key is a key shown below of which you wish to override. In this instance we are overwriting `enabled`. By default its set to `false`, but with this config it will now be `true`.
-+ `Line 6` is an example of changing more than one config in a single category
-+ `Line 7-10` is an interesting example. Its an array config category. This will append to the default values. In this case it'll add a footer url for google.
-
-A feature that was introduced in 2.2.1 is you can add key/value pairs to existing categories (e.g.: `APP_FLAGS`). This can be helpful if your application has additional `APP_FLAGS` or `SERVICE_LOC` but you don't want to create another value service just for that. However, if you have a lot of these it may be wise just to create an app specific value service.
-
-If you have questions please ask the MyUW team.
-
-## The Configuration Options
+### Configuration options
 
 #### APP_FLAGS
 + `defaultTheme` : This is the default theme you want (see frame-config.js for the array list of themes). Provide an index number to just have simple selection, or set to the string `'group'` to enable group selection. If you do group selection make sure you set the `SERVICE_LOC.groupURL`.
@@ -61,11 +31,9 @@ If you have questions please ask the MyUW team.
 #### FEATURES
 + `enabled` : This boolean will enable the features page, Bucky announcements, and the modal popup. Make sure to configure `FEATURES.serviceURL` if you set this to true.
 + `serviceURL` : This feed provides announcements about your application. See [this](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/staticFeeds/features.json) for an example.
+
 #### NOTIFICATION
 + `groupFiltering` : If set to `true`, you will get filtered features based on the `feature.groups` attribute and the group service list. Requires the `SERVICE_LOC.groupURL` to be configured. Note the `feature.groups` attribute can be a `String` or an `Array`.
-
-![http://goo.gl/0IJOWS](http://goo.gl/0IJOWS)
-
 + `enabled` : a boolean that turns on/off the bell in the header.
 + `groupFiltering` : Enabled group filtered notifications. Must have `groupURL` set for this to work properly
 + `notificationFullURL` : The URL for the notifications full page.
@@ -81,19 +49,51 @@ If you have questions please ask the MyUW team.
 
 #### FOOTER_URLS
 
-![http://goo.gl/LRG1wa](http://goo.gl/LRG1wa)
-
-This is an array that consists of object that have 3 elements. These links show up in the footer (hence the name).
+An array that consists of object that have 3 elements. These links show up in the footer (hence the name).
 + `url` : The hyperlink of the footer
 + `target` : optional, but can be things like `_blank`
 + `title` : The hover text and the body of the anchor tag.
 
 #### APP_BETA_FEATURES
-This constant is an array of features that you want to show up in `/settings`.
+An array of features that you want to show up in `/settings`.
 
-![http://goo.gl/j9LmYA](http://goo.gl/j9LmYA)
+![settings option](img/settings-option.png)
 
 Each object in this array has 3 fields:
 + `id` : the id that will be stored in localStorage
 + `title` : The text next to the toggle switch on the settings page
 + `description` : The description under the toggle switch to describe what this toggle does.
+
+### Example override.js file
+```javascript
+define(['angular'], function(angular) {
+  var config = angular.module('override', []);
+  config
+  	.constant('OVERRIDE', {
+		'FEATURES': { 'enabled': true },
+		'APP_FLAG': { 'loginOnLoad': true, 'gaSearchParam': 'f' },
+		'FOOTER_URLS': [{ 
+		  'url': 'http://www.google.com',
+		  'target': '_blank',
+		  'title': 'Google'
+		}]
+	})
+  return config;
+});
+
+```
+
+Alright, lot going on here so lets take a walk through this.
++ `Lines 1-4` include the the requirejs wrapper, setup for the angular module (pulled in during the /portal/main.js execution), 
+and definition of the "OVERRIDE" constant. These lines should not change. 
++ `Line 5` is an example override for the `enabled` attribute in the `FEATURES` category. By default its set to false, but 
+with this config it will now be true.
++ `Line 6` is an example of changing more than one config in a single category.
++ `Lines 7-11` are overriding an array config category. This will append to the default values. In this case it'll add a footer url for google.
+
+In version 2.2.1 we added the option to add key/value pairs to existing categories (e.g.: `APP_FLAGS`). This can be helpful if your 
+application has additional `APP_FLAGS` or `SERVICE_LOC` but you don't want to create another value service just for that. However, if you have 
+a lot of these it may be wise just to create an app specific value service.
+
+If you have questions please [ask the MyUW team](mailto:myuw-infra@office365.wisc.edu).
+
