@@ -19,7 +19,8 @@ define(['angular'], function(angular) {
             'loginSilentURL' : '/portal/Login?silent=true',
             'notificationsURL' : '/web/staticFeeds/notifications.json',
             'sessionInfo' : 'staticFeeds/session.json',
-            'shibbolethSessionURL' : null //'/Shibboleth.sso/Session.json'
+            'shibbolethSessionURL' : null, //'/Shibboleth.sso/Session.json'
+            'portalLayoutRestEndpoint' : null //'/portal/api/layout'
         })
         .value('NAMES', {
             'title' : 'MyUW', //you can name your app whatever you want

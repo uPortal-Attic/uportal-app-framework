@@ -4,14 +4,18 @@ define(['angular'], function(angular) {
   var app = angular.module('portal.settings.controllers', []);
 
 
-      app.controller('PortalBetaSettingsController', [ '$sessionStorage', '$scope', '$mdTheming', 'THEMES', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES', function($sessionStorage, $scope,$mdTheming, THEMES, APP_BETA_FEATURES, FRAME_BETA_FEATURES) {
+      app.controller('PortalBetaSettingsController', [ '$sessionStorage', '$scope', '$mdTheming', 'portalSkinService', 'THEMES', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES', function($sessionStorage, $scope,$mdTheming, portalSkinService, THEMES, APP_BETA_FEATURES, FRAME_BETA_FEATURES) {
 
     $scope.options = FRAME_BETA_FEATURES.concat(APP_BETA_FEATURES);
-    $scope.$watch('portal.theme', function() {
-      $sessionStorage.portal.theme = $scope.portal.theme;
-      $sessionStorage.portal.theme.themeVersion = THEMES.themeVersion;
-      $mdTheming.generateTheme($sessionStorage.portal.theme.name,null);
-
+    $scope.$watch('portal.theme', function(newValue, oldValue) {
+      if($scope.portal.theme) {
+        $sessionStorage.portal.theme = $scope.portal.theme;
+        $sessionStorage.portal.theme.themeVersion = THEMES.themeVersion;
+        $mdTheming.generateTheme($sessionStorage.portal.theme.name,null);
+        if($scope.portal.theme && $scope.portal.theme.portalSkinKey) {
+          portalSkinService.setPortalSkin($scope.portal.theme.portalSkinKey);
+        }
+      }
     });
   }]);
 
