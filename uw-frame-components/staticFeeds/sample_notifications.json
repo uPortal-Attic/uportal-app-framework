@@ -6,7 +6,7 @@
   		"title"  : "Checkout these cool buttons ->.",
   		"actionURL" : "http://www.google.com",
   		"actionAlt" : "Google",
-  		"dismissable" : false,
+  		"dismissable" : true,
   		"priority" : true,
   		"actionButtons" : [
   		  {"label" : "Feedback", "url" : "/web/exclusive/feedback", "action" : "", "target" : ""},
