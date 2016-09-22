@@ -6,7 +6,12 @@ define(['angular'], function(angular) {
   config
     //see configuration.md for howto
     .constant('OVERRIDE', {
-
+      'FEATURES': {
+        'enabled': true
+      },
+      'SERVICE_LOC': {
+        'notificationsURL': 'staticFeeds/sample_notifications.json'
+      }
     });
 
   return config;
