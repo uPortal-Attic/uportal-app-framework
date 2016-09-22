@@ -57,9 +57,12 @@
 	cursor: pointer;
 }
 
+.docs-page__home ul li {
+	padding: 6px;
+}
+
 .docs-page__home ul li a {
 	display: block;
-	padding: 6px;
 }
 
 .docs-page__home ul li a:hover {
