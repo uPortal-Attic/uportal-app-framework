@@ -1,4 +1,4 @@
-## App Header
+## App header
 
 `app-header` directive should be used for all pages in a frame based page. You can either utilize the frame-page directive, or just this directive with custom code.
 
@@ -36,7 +36,7 @@ that option directly on the app-header, instead of inside a dropdown menu.
 * **option-template**: the name of the template to inject in the options dropdown. See `/portal/main/partials/example-page.html` for 
 examples of single- and many-option templates.
 
-## Frame Page
+## Frame page
 
 Frame page is basically the app header directive but with a transclude for the body. It **Inherits** all of the app-header directive parameters.
 
@@ -68,7 +68,7 @@ This part is included via ng-transclude
 
 _See `app-header`_
 
-## Circle Button
+## Circle button
 
 Displays a flat, circular icon-button with a fa-icon in the middle, and a title below.
 
@@ -91,9 +91,9 @@ Displays a flat, circular icon-button with a fa-icon in the middle, and a title 
 * **title**: (optional) Title that is displayed under the circle
 * **truncLen**: (optional) Length to truncate the title
 
-<a href='#/demo' class='btn btn-flat btn-sm'>See Demo here</a>
+<a href='#/demo' class='docs-button'>See Demo here</a>
 
-## Launch Button
+## Launch button
 
 Displays a launch button for portal widgets that fits their width and visual style
 
@@ -115,7 +115,7 @@ Displays a launch button for portal widgets that fits their width and visual sty
 learn how to make this text useful to your users. 
 * **aria-label**: (optional) Text for screen readers. Use this to clarify the context of the launch button, if necessary (e.g. "Launch Time and Absence app within MyUW")
 
-## Loading Gif
+## Loading gif
 
 Shows loading gif when the length of given array is 0 and "empty" is not set.
 
@@ -124,4 +124,4 @@ Shows loading gif when the length of given array is 0 and "empty" is not set.
 + **empty**: The scope boolean flag that you set if the data came back and it was empty
 + **reuse**: (optional) If set to true, it won't destroy the loading gif, just hide it
 
-<a href='#/demo' class='btn btn-flat btn-sm'>See Demo here</a>
+<a href='#/demo' class='docs-button'>See Demo here</a>

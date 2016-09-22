@@ -1,5 +1,9 @@
-<frame-page app-title='{{NAMES.title}} - Home' white-background=true>
-  <div style='padding : 15px; background-color: white;'>
-    <div marked src="'markdown/home.md'"></div>
-  </div>
+<frame-page app-title='{{NAMES.title}}' white-background=true>
+  <md-content class="docs-page docs-page__home">
+    <div marked src="'markdown/home/intro.md'"></div>
+    <div layout-gt-xs="row" layout-align-gt-xs="center start">
+      <div class="home__main-content" flex-gt-xs="60" marked src="'markdown/home/main.md'"></div>
+      <div class="home__sidebar" flex-gt-xs="40" marked src="'markdown/home/sidebar.md'"></div>
+    </div>
+  </md-content>
 </frame-page>

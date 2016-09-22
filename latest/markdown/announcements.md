@@ -1,65 +1,56 @@
-The announcements feature is used to notify users of new content. Read more about the business usage of this feature in [the KB article](https://kb.wisc.edu/myuw/page.php?id=63903). The following documentation talks more about the implementation details of the announcements.
+The announcements feature is used to notify users of new content. Read more about the business usage of this feature in 
+[the KB article](https://kb.wisc.edu/myuw/page.php?id=63903). The following documentation talks more about the implementation 
+details of the announcements.
 
-![./img/announcement-character.png](./img/announcement-character.png)
+### Theme
+By default, if you set nothing in [the theme](#/md/theming) the mascot pictured below will appear in the top bar:
 
-## The Theme
-By default, if you set nothing in [the theme](#/md/theming) the character in the image above will show. You can of course provide the `mascotImg` variable in the theme to override this.
+![default mascot image](./img/announcement-character.png)
+ 
+Provide a `mascotImg` variable in the theme to override this.
 
-## The Image
-The image itself should have the following characteristics (see what I did there?):
+### Creating a mascot image
+The image itself should have the following characteristics:
 
-<div class='row'>
-<div class='col-sm-6'>
+<div class="row">
+<div class="col-md-6 col-sm-12">
 <div class='width-100'>
 ![./img/mascot/mascot-w-comments.png](./img/mascot/mascot-w-comments.png)
 </div>
 </div>
-<div class='col-sm-6'>
-<ul>
-<li>A) Height of portion always visible : 16px from top</li>
-<li>B) Eye height: 12px from top, so that you can see them during the hidden state.</li>
-<li>C) Full height : 40px</li>
-<li>D) Full width : 60px</li>
-<li>E) Transparent background</li>
-<li>Can be an animated gif, but animations should be limited to blinking eyes.</li>
+<div class="col-md-6 col-sm-12">
+<ul style="list-style-type:upper-alpha!important">
+<li style="padding:4px 0">Height of always-visible portion: 16px from top</li>
+<li style="padding:4px 0">Eye height: 12px from top, so that you can see them during the hidden state.</li>
+<li style="padding:4px 0">Full height : 40px</li>
+<li style="padding:4px 0">Full width : 60px</li>
+<li style="padding:4px 0">Transparent background</li>
 </ul>
+*Note*: Your mascot image can be an animated gif, but animations should be limited to blinking eyes.
 </div>
 </div>
 
-## States
+### States
 
-### No new announcements
-
-<div class='width-100'>
-![./img/mascot/no-show-mascot.png](./img/mascot/no-show-mascot.png)
-</div>
+#### No new announcements
 
 When there are no new announcements the mascot is completely hidden.
 
-### Hidden
-![./img/mascot/hidden-mascot.png](./img/mascot/hidden-mascot.png)
+#### Initial state
+When there is at least one new announcement, the mascot will appear in the top bar but will be mostly hidden:
 
-This is the initial state if there is at least one unread announcement. This state shows just the top 16px of the character.
+![mascot initial state](./img/mascot/hidden-mascot.png)
 
-### Hidden to Presenting Transition
+#### Hover state
+This state is triggered when someone mouses over the hidden mascot. It slides up a little bit and shows a tooltip instructing 
+the user to click to see more:
 
-<div class='width-100'>
-![./img/mascot/hidden-to-present.gif](./img/mascot/hidden-to-present.gif)
-</div>
+![mascot hover state](./img/mascot/hover-mascot.png)
 
-This state is triggered when someone mouses over the hidden mascot. It is a quick slide up, and then presents the announcement bubble.
+#### Clicked state
 
-### Presenting
-![./img/announcement-character.png](./img/announcement-character.png)
+If the mascot is clicked while in hidden/hover state, it will slide up and the announcements will become visible:
 
-This shows the full mascot image and the text of the short announcement. The user has 3 available actions here.
-+ Tell me more : Brings the user to the `/features` page and marks that announcement as read.
-+ Not Interested : Marks the announcement as read (which then hides the mascot).
-+ Click the Mascot : Which triggers the "Presenting to Hidden Transition" documented below.
-
-### Presenting to Hidden Transition
-<div class='width-100'>
-![./img/mascot/present-to-hidden.gif](./img/mascot/present-to-hidden.gif)
-</div>
-
-If they click the mascot, the mascot transitions to hidden again.
+![mascot clicked state](./img/mascot/presenting-mascot.png)
+ 
+If clicked again while in this state, the mascot will slide back down to the initial state. If all the announcements are dismissed, the mascot will disappear. 
