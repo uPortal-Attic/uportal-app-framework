@@ -1,6 +1,6 @@
 define(['angular'], function(angular) {
 
-  /*Keep in sync with docs/mardown/configuration.md*/
+  /*Keep in sync with docs/markdown/configuration.md*/
 
     var config = angular.module('app-config', []);
     config
@@ -19,7 +19,8 @@ define(['angular'], function(angular) {
             'loginSilentURL' : '/portal/Login?silent=true',
             'notificationsURL' : '/staticFeeds/sample_notifications.json',
             'sessionInfo' : 'staticFeeds/session.json',
-            'shibbolethSessionURL' : null //'/Shibboleth.sso/Session.json'
+            'shibbolethSessionURL' : null, //'/Shibboleth.sso/Session.json'
+            'portalLayoutRestEndpoint' : null //'/portal/api/layout'
         })
         .value('NAMES', {
             'title' : 'MyUW', //you can name your app whatever you want

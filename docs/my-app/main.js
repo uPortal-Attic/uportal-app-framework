@@ -8,7 +8,7 @@ define(['angular'
 , 'portal/notifications/route'
 , 'portal/features/route'
 , 'portal/about/route'
-, 'my-app/home/route',
+, 'my-app/home/route'
 , 'my-app/home/controllers']
 , function(angular, $, portal, marked, ngMarked , main, settings, notifications, features, about, home) {
     var app = angular.module('my-app', ['portal', 'hc.marked', 'docs.main.controllers']);

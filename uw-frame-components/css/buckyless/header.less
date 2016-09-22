@@ -1,7 +1,10 @@
 portal-header {
-  a:not(.btn):link, a:not(.btn):visited, a:not(.btn):hover,
-  a:not(.btn):focus, a:not(.btn):active {
-    text-decoration: none !important;
+  a {
+    &:not(.md-button):not(.btn):not(.launch-app-button) {
+      &:hover, &:focus, &:active {
+        text-decoration: none;
+      }
+    }
   }
   ::-webkit-input-placeholder {
     color: @white;
@@ -49,8 +52,10 @@ portal-header {
         }
       }
       .md-menu {
+        margin: 0;
         > .md-button {
           min-width: 48px;
+          margin: 0;
         }
       }
     }
