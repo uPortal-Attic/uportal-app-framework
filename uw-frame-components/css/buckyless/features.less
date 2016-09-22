@@ -120,10 +120,11 @@ bucky-announcement .popover {
     }
     li div a {
       font-size: smaller;
-      text-decoration: underline;
       margin-bottom: 8px;
-      &:hover {
-        text-decoration: underline;
+      &:not(.md-button):not(.btn):not(.launch-app-button) {
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
