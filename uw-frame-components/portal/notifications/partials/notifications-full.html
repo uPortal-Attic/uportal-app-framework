@@ -20,8 +20,7 @@
                  layout-align="start center"
                  layout-xs="column"
                  layout-align-xs="center start">
-                <i class="fa fa-exclamation-triangle" ng-if="notification.priority"></i>
-                <span>{{ notification.title }}</span>
+                <span><i class="fa fa-exclamation-triangle" ng-if="notification.priority"></i> {{ notification.title }}</span>
                 <div ng-if="notification.actionButtons && notification.actionButtons.length > 0" class="notification-buttons">
                   <md-button class="md-raised"
                              ng-href="{{button.url}}"
@@ -67,8 +66,7 @@
                  layout-align="start center"
                  layout-xs="column"
                  layout-align-xs="center start">
-                <i class="fa fa-exclamation-triangle" ng-if="notification.priority"></i>
-                <span>{{ notification.title }}</span>
+                <span><i class="fa fa-exclamation-triangle" ng-if="notification.priority"></i> {{ notification.title }}</span>
                 <div ng-if="notification.actionButtons && notification.actionButtons.length > 0" class="notification-buttons">
                   <md-button class="md-raised"
                              ng-href="{{button.url}}"

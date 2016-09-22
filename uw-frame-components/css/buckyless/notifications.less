@@ -22,7 +22,9 @@
         display: flex;
         margin: 0 8px;
         .md-button {
-          margin: 0 8px;
+          @media (min-width: 600px) {
+            margin: 0 8px;
+          }
         }
       }
       a:not(.md-button):not(.btn):not(.launch-app-button) {
