@@ -9,11 +9,24 @@
 		</div>
 		<div>
 			<ul class="notifications-list">
-        		<li class="notification-item" ng-class="{ priority : notification.priority }" ng-repeat="notification in notifications | orderBy:['-priority','-id']" ng-if='shouldShow(notification)'>
-						  <a class="content" ng-href='{{notification.actionURL}}' target='_blank' aria-label='{{notification.actionAlt}}'>
-	              <p><i class='fa fa-exclamation-triangle' ng-if='notification.priority'></i>{{ notification.title }}</p>
+        		<li class="notification-item" ng-class="{ priority : notification.priority }" ng-repeat="notification in notifications | orderBy:['-priority','-id']" ng-if='shouldShow(notification)' layout="row" layout-align="center center" layout-fill>
+						  <a class="content" ng-href='{{notification.actionURL}}' target='_blank' aria-label='{{notification.actionAlt}}' layout="row" layout-align="start center">
+	              <i class='fa fa-exclamation-triangle' ng-if='notification.priority'></i>
+								{{ notification.title }}
+								<div ng-if="notification.actionButtons && notification.actionButtons.length > 0" class="notification-buttons">
+									<md-button class="md-raised"
+														 ng-href="{{button.url}}"
+														 ng-repeat="button in notification.actionButtons track by button.label"
+														 ng-class="{'md-primary' : $index === 0, 'md-accent' : $index > notification.buttonText.length / 2 - 1}"
+														 ng-click="button.action"
+														 target="{{button.target}}"
+														 aria-label="{{button.label}}">
+										{{button.label}}
+									</md-button>
+								</div>
 					    </a>
-							<div class="action" ng-click='dismiss(notification)' ng-hide="!notification.dismissable || isDismissed(notification)">
+
+							<div class="action" ng-click='dismiss(notification)' ng-hide="!notification.dismissable || isDismissed(notification)"  layout="row" layout-align="center center">
 	            	<i class='fa fa-times'tooltip="Dismiss notification" tooltip-placement="top" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
 							</div>
               <div class="action" ng-click="undismiss(notification)" ng-hide="!(mode === 'old')">
