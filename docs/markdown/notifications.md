@@ -1,0 +1,2 @@
+The notifications are a pretty complicated topic. The basics are a bell with unread count, priority notification banner, mobile notification bell on the hamburger menu, 
+and in the mobile menu a notification link with unread count.

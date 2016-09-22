@@ -1,4 +1,5 @@
-MyUW tables add little to the tables provided by Bootstrap. All tables should be given a class of .table. Prefer responsive tables (achieved by surrounding your <table> element with a div with a class of .table-responsive).
+MyUW tables add little to the tables provided by Bootstrap. All tables should be given a class of .table. Prefer responsive 
+tables (achieved by surrounding your \<table> element with a div with a class of .table-responsive).
 
 <h4 class="center">UW 2014 Football Roster</h4>
 
