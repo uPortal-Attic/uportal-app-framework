@@ -41,9 +41,9 @@ define(['angular','require'], function(angular, require) {
       $scope.markAllAnnouncementsSeen = function(liked){
         portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
           for(var i=0; i<unseenAnnouncements.length; i++){
-            var announcment = unseenAnnouncements[i];
-            portalFeaturesService.markAnnouncementSeen(announcment.id);
-            miscService.pushGAEvent('feature',liked ? 'read more' : 'dismissed', announcment.id);
+            var announcement = unseenAnnouncements[i];
+            portalFeaturesService.markAnnouncementSeen(announcement.id);
+            miscService.pushGAEvent('feature',liked ? 'read more' : 'dismissed', announcement.id);
           }
           portalFeaturesService.getUnseenAnnouncements().then(function(newUnseenAnnouncements) {
             $scope.announcements = newUnseenAnnouncements;
@@ -51,39 +51,53 @@ define(['angular','require'], function(angular, require) {
         });
       };
 
+      $scope.toggleHover = function() {
+        $scope.hover = $scope.hover ? false : true;
+      };
 
-     //local functions ---------------------------------------------------------
+      $scope.toggleActive = function() {
+        $scope.active = !$scope.active;
+      };
 
-     var getPopups = function(){
-       if(!$rootScope.GuestMode) {
-         portalFeaturesService.getUnseenPopups().then(function(unseenPopups) {
-           if(unseenPopups.length !=0 && !$rootScope.GuestMode){
-             var orderedPopups = $filter('orderBy')(unseenPopups, ['popup.startYear', 'popup.startMonth', 'popup.startDay', 'id']);
-             $scope.latestFeature = orderedPopups[0];
-             var displayPopup = function() {
-               var modalInstance = $modal.open({
-                 animation: $scope.animationsEnabled,
-                 templateUrl: require.toUrl('./partials/features-modal-template.html'),
-                 size: 'lg',
-                 scope: $scope
-               });
-               modalInstance.result.then(function(data){
-                 //resolves upon closing of modal
-                 miscService.pushGAEvent('popup','closed', orderedPopups[0].id);
-                 portalFeaturesService.markPopupSeen(orderedPopups[0].id);
-                 getPopups();
-               }, function(data){
-                 //rejects upon dismissing of modal
-                 miscService.pushGAEvent('popup','dismissed', orderedPopups[0].id);
-                 portalFeaturesService.markPopupSeen(orderedPopups[0].id);
-                 getPopups();
-               });
-             };
-             displayPopup();
-           }
-         });
-       }
-     };
+      $scope.$on("$mdMenuClose", function() {
+        $scope.hover = false;
+        $scope.active = false;
+      });
+
+      //local functions ---------------------------------------------------------
+
+      var getPopups = function(){
+        if(!$rootScope.GuestMode) {
+          portalFeaturesService.getUnseenPopups().then(function(unseenPopups) {
+            if(unseenPopups.length !=0 && !$rootScope.GuestMode){
+              var orderedPopups = $filter('orderBy')(unseenPopups, ['popup.startYear', 'popup.startMonth', 'popup.startDay', 'id']);
+              $scope.latestFeature = orderedPopups[0];
+
+              var displayPopup = function() {
+                var modalInstance = $modal.open({
+                  animation: $scope.animationsEnabled,
+                  templateUrl: require.toUrl('./partials/features-modal-template.html'),
+                  size: 'lg',
+                  scope: $scope
+                });
+
+                modalInstance.result.then(function(data){
+                  //resolves upon closing of modal
+                  miscService.pushGAEvent('popup','closed', orderedPopups[0].id);
+                  portalFeaturesService.markPopupSeen(orderedPopups[0].id);
+                  getPopups();
+                }, function(data){
+                  // rejects upon dismissing of modal
+                  miscService.pushGAEvent('popup','dismissed', orderedPopups[0].id);
+                  portalFeaturesService.markPopupSeen(orderedPopups[0].id);
+                  getPopups();
+                });
+              };
+              displayPopup();
+            }
+          });
+        }
+      };
 
      var setMascot = function(){
        if($rootScope.portal && $rootScope.portal.theme) {

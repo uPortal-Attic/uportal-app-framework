@@ -1,11 +1,5 @@
 .features-feed {
-  padding:10px 20px;
-  h3 {
-    font-weight: 500;
-    font-size:30px;
-    color:#222;
-    margin-top:5px;
-  }
+  padding:10px 20px 20px;
   h5 {
     font-size:14px;
     color:#999;
@@ -15,35 +9,29 @@
     margin-bottom: 80px;
   }
   img {
-    border: 2px solid darkgray;
-    border-radius: 5px;
+    border: 1px solid @grayscale3;
+    border-radius: 3px;
   }
 
   .image-div {
     width:90%;
     display: block;
-    margin:0 auto;
+    padding: 0 12px;
     img {
       max-width: 600px;
     }
   }
   .images-div {
     width: 90%;
+    padding: 0 6px;
     img {
       display: inline-block;
       max-width: 400px;
       vertical-align: top;
-      margin: 5px;
+      margin: 6px;
     }
   }
 }
-
-
-
-.feedback-features {
-  margin-top:50px;
-}
-
 
 .features-popup {
   padding:30px;
@@ -63,9 +51,8 @@
     margin-top:10px;
   }
 }
-
-bucky-announcement {
-  div.announcement-creeper {
+portal-header md-toolbar .md-toolbar-tools bucky-announcement {
+  .md-menu.announcement-creeper {
     margin-right: 20px;
     overflow: hidden;
     max-height: 48px;
@@ -90,6 +77,12 @@ bucky-announcement {
       &:hover {
         background-color: transparent;
       }
+    }
+    .mascot-menu-origin {
+      height: 0;
+      width: 0;
+      position: relative;
+      left: 0;
     }
     @media (max-width: 768px) {
       margin-right: 0;
