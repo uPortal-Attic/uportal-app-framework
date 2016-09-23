@@ -34,3 +34,47 @@ md-menu-content {
 md-dialog {
   background: @white;
 }
+
+md-menu-content.mascot-menu-content {
+  min-width: 275px;
+  padding: 0;
+  md-menu-item.mascot-menu-item {
+    height: auto;
+    max-width: 275px;
+    padding: 0;
+    border-bottom: 1px solid @grayscale2;
+    transition: @background-transition;
+    &:hover {
+      background: @grayscale2;
+    }
+    .announcement-link {
+      padding: 8px 16px;
+      transition: @mascot-transition;
+      .md-subhead {
+        color: @color1;
+      }
+      &:hover {
+        .md-subhead {
+          color: darken(@color1, 15%);
+          text-decoration: underline;
+        }
+      }
+    }
+    .announcement-text {
+      width: 190px;
+    }
+    .md-icon-button {
+      .material-icons {
+        font-size: 20px;
+      }
+      &:hover {
+        .material-icons {
+          color: @grayscale10;
+        }
+      }
+      .md-ripple-container {
+        width: 40px;
+      }
+    }
+  }
+}
