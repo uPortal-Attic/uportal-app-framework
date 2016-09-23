@@ -166,7 +166,6 @@ define(['angular'], function(angular) {
         });
       }
 
-      console.log($rootScope.dismissedNotificationIds.length);
     }
 
     init();
