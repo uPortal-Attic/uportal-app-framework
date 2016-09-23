@@ -3,12 +3,14 @@
   padding-left: 0;
   padding-right: 0;
   .notifications-list {
+    padding: 0;
     .notification-item {
       color: #333;
       font-weight: 400;
       margin: 0;
       padding: 0 16px;
       transition: @background-transition;
+      border-bottom: 1px solid @grayscale3;
       &.priority {
         .fa.fa-exclamation-triangle {
           padding-right: 5px;
@@ -35,6 +37,9 @@
       .md-list-item-text {
         width: 90%;
         padding: 16px 0;
+        @media (max-width:599px) {
+          width: 80%;
+        }
       }
       .md-secondary {
         color: @grayscale7;
@@ -42,6 +47,28 @@
         &:hover {
           color: @grayscale9;
         }
+      }
+    }
+  }
+  .md-tab {
+    text-transform: none;
+    .badge {
+      display: inline-block;
+      min-width: 10px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #fff;
+      line-height: 1;
+      vertical-align: baseline;
+      white-space: nowrap;
+      text-align: center;
+      background-color: #999;
+      border-radius: 10px;
+    }
+    &.md-active {
+      .badge {
+        background-color: @color1;
       }
     }
   }
@@ -89,7 +116,6 @@
         bottom: 10px;
       }
     }
-
     .number-of-nots {
       color: @color1;
       font-weight: 400;

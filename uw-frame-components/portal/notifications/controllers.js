@@ -165,6 +165,8 @@ define(['angular'], function(angular) {
           clearPriorityNotificationFlags(true);
         });
       }
+
+      console.log($rootScope.dismissedNotificationIds.length);
     }
 
     init();
