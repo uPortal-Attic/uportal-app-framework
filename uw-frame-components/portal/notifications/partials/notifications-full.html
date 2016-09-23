@@ -1,41 +1,113 @@
 <frame-page app-title="Notifications" app-icon='fa-bell' white-background='true'>
-<div  ng-controller="PortalNotificationController as notificationCtrl" style='padding-bottom: 10px;'>
+<div  ng-controller="PortalNotificationController as notificationCtrl">
 	<div class="portlet-body notifications">
-		<div class="inner-nav-container">
-			<ul class="inner-nav">
-				<li ng-class="{ active : mode === 'new' }"><a href='javascript:;' ng-click="switch('new')"  aria-label='switch to see new notifications'>New</a></li>
-				<li  ng-class="{ active : mode === 'old' }"><a href='javascript:;' ng-click="switch('old')" aria-label='switch to see old and dismissed notifications'>Dismissed</a></li>
-			</ul>
-		</div>
-		<div>
-			<ul class="notifications-list">
-        		<li class="notification-item" ng-class="{ priority : notification.priority }" ng-repeat="notification in notifications | orderBy:['-priority','-id']" ng-if='shouldShow(notification)' layout="row" layout-align="center center" layout-fill>
-						  <a class="content" ng-href='{{notification.actionURL}}' target='_blank' aria-label='{{notification.actionAlt}}' layout="row" layout-align="start center">
-	              <i class='fa fa-exclamation-triangle' ng-if='notification.priority'></i>
-								{{ notification.title }}
-								<div ng-if="notification.actionButtons && notification.actionButtons.length > 0" class="notification-buttons">
-									<md-button class="md-raised"
-														 ng-href="{{button.url}}"
-														 ng-repeat="button in notification.actionButtons track by button.label"
-														 ng-class="{'md-primary' : $index === 0, 'md-accent' : $index > notification.buttonText.length / 2 - 1}"
-														 ng-click="button.action"
-														 target="{{button.target}}"
-														 aria-label="{{button.label}}">
-										{{button.label}}
-									</md-button>
-								</div>
-					    </a>
-
-							<div class="action" ng-click='dismiss(notification)' ng-hide="!notification.dismissable || isDismissed(notification)"  layout="row" layout-align="center center">
-	            	<i class='fa fa-times'tooltip="Dismiss notification" tooltip-placement="top" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
-							</div>
-              <div class="action" ng-click="undismiss(notification)" ng-hide="!(mode === 'old')">
-                 <i class='fa fa-undo'tooltip="Revert Dismiss of notification" tooltip-placement="left" tooltip-popup-delay="300" tooltip-trigger="mouseenter"></i>
-              </div>
-        		</li>
-        		<li class="notification-item read" ng-if="isEmpty || (countWithDismissed() === 0 && mode === 'new') || (mode === 'old' && dismissedCount() === 0)">You have no <span ng-show='dismissedCount() === 0 && countWithDismissed() !== 0'>dismissed</span> notifications at this time.</li>
-        	</ul>
-		</div>
-	</div>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <!-- UNSEEN NOTIFICATIONS -->
+      <md-tab>
+        <md-tab-label>
+          New&nbsp;&nbsp;<span class="badge">{{ countWithDismissed() }}</span>
+        </md-tab-label>
+        <md-tab-body>
+          <md-content>
+            <md-list class="notifications-list" flex>
+              <md-list-item class="secondary-button-padding notification-item"
+                            ng-class="{ priority: notification.priority }"
+                            ng-repeat="notification in notifications | orderBy:['-priority', '-id']"
+                            ng-if="!isDismissed(notification)"
+                            layout="row"
+                            layout-align="start center">
+                <!-- NOTIFICATION TEXT AND ACTION BUTTONS -->
+                <a class="md-list-item-text"
+                   ng-href="{{ notification.actionURL }}"
+                   target="_blank"
+                   aria-label="{{ notification.actionAlt }}"
+                   layout="row"
+                   layout-align="start center"
+                   layout-xs="column"
+                   layout-align-xs="center start">
+                  <span><i class="fa fa-exclamation-triangle" ng-if="notification.priority"></i> {{ notification.title }}</span>
+                  <div ng-if="notification.actionButtons && notification.actionButtons.length > 0" class="notification-buttons"
+                       layout-xs="column" layout-align-xs="center start">
+                    <md-button class="md-raised"
+                               ng-href="{{button.url}}"
+                               ng-repeat="button in notification.actionButtons track by button.label"
+                               ng-class="{'md-primary' : $index === 0, 'md-accent' : $index > notification.buttonText.length / 2 - 1}"
+                               ng-click="button.action"
+                               target="{{button.target}}"
+                               aria-label="{{button.label}}">
+                      {{button.label}}
+                    </md-button>
+                  </div>
+                </a>
+                <!-- DISMISS BUTTON -->
+                <md-button class="md-icon-button md-secondary"
+                           ng-click="dismiss(notification)"
+                           ng-hide="!notification.dismissable || isDismissed(notification)"
+                           aria-label="dismiss this notification">
+                  <i class='fa fa-times'></i>
+                </md-button>
+              </md-list-item>
+              <!-- IF NO NOTIFICATIONS -->
+              <md-list-item class="notification-item read"
+                            ng-if="isEmpty || (countWithDismissed() === 0)">No new notifications
+              </md-list-item>
+            </md-list>
+          </md-content>
+        </md-tab-body>
+      </md-tab>
+      <!-- DISMISSED NOTIFICATIONS TAB -->
+      <md-tab>
+        <md-tab-label>
+          Dismissed&nbsp;&nbsp;<span class="badge">{{ dismissedCount() }}</span>
+        </md-tab-label>
+        <md-tab-body>
+          <md-content>
+            <md-list class="notifications-list" flex>
+              <md-list-item class="secondary-button-padding notification-item"
+                            ng-class="{ priority: notification.priority }"
+                            ng-repeat="notification in notifications | orderBy:['-priority', '-id']"
+                            ng-if="isDismissed(notification)"
+                            layout="row"
+                            layout-align="start center">
+                <!-- NOTIFICATION TEXT AND ACTION BUTTONS -->
+                <a class="md-list-item-text"
+                   ng-href="{{ notification.actionURL }}"
+                   target="_blank"
+                   aria-label="{{ notification.actionAlt }}"
+                   layout="row"
+                   layout-align="start center"
+                   layout-xs="column"
+                   layout-align-xs="center start">
+                  <span><i class="fa fa-exclamation-triangle" ng-if="notification.priority"></i> {{ notification.title }}</span>
+                  <div ng-if="notification.actionButtons && notification.actionButtons.length > 0" class="notification-buttons"
+                       layout-xs="column" layout-align-xs="center start">
+                    <md-button class="md-raised"
+                               ng-href="{{button.url}}"
+                               ng-repeat="button in notification.actionButtons track by button.label"
+                               ng-class="{'md-primary' : $index === 0, 'md-accent' : $index > notification.buttonText.length / 2 - 1}"
+                               ng-click="button.action"
+                               target="{{button.target}}"
+                               aria-label="{{button.label}}">
+                      {{button.label}}
+                    </md-button>
+                  </div>
+                </a>
+                <!-- RESTORE BUTTON -->
+                <md-button class="md-icon-button md-secondary"
+                           ng-click="undismiss(notification)"
+                           aria-label="restore this notification">
+                  <i class='fa fa-undo'></i>
+                </md-button>
+              </md-list-item>
+              <!-- IF NO NOTIFICATIONS -->
+              <md-list-item class="notification-item read" ng-if="dismissedCount() === 0">
+                No dismissed notifications
+              </md-list-item>
+            </md-list>
+          </md-content>
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+  </div>
 </div>
 </frame-page>

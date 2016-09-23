@@ -102,11 +102,6 @@ define(['angular'], function(angular) {
       return count;
     }
 
-    $scope.shouldShow = function(notification) {
-      var res = $scope.isDismissed(notification);
-      return $scope.mode === 'new' ? !res : res;
-    }
-
     $scope.isDismissed = function(notification) {
       for(var i = 0; i < $rootScope.dismissedNotificationIds.length; i++) {
         if(notification.id === $rootScope.dismissedNotificationIds[i]) {
@@ -141,7 +136,6 @@ define(['angular'], function(angular) {
     }
 
     var init = function(){
-      $scope.mode = 'new';
       $scope.notifications = [];
       $rootScope.dismissedNotificationIds = $rootScope.dismissedNotificationIds || [];
       $scope.count = 0;
@@ -171,6 +165,7 @@ define(['angular'], function(angular) {
           clearPriorityNotificationFlags(true);
         });
       }
+
     }
 
     init();
