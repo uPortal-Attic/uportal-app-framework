@@ -60,7 +60,6 @@ define(['angular','require'], function(angular, require) {
       };
 
       $scope.$on("$mdMenuClose", function() {
-        console.log("menu closing");
         $scope.hover = false;
         $scope.active = false;
       });
