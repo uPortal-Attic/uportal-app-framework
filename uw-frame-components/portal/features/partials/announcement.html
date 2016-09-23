@@ -2,13 +2,14 @@
 <md-menu class="mascot-menu announcement-creeper"
          ng-if=" 'BUCKY' === mode && announcements && announcements.length > 0"
          ng-class="{ 'announcement-hover' : hover, 'announcement-active' : active }"
-         md-offset="-5 20">
+         md-position-mode="target-right target">
   <md-button class="mascot-button"
              ng-click="toggleActive();toggleHover();$mdOpenMenu($event);addClickAway();"
              ng-mouseenter="toggleHover()"
              ng-mouseleave="toggleHover()"
              aria-label="Click to see what's new"
-             md-no-ink>
+             md-no-ink
+             md-menu-origin>
     <img ng-src="{{buckyImg}}"
          ng-click="pushGAEvent('feature', 'toggle-bucky', 'na');">
     <md-tooltip ng-if="!active" md-visible="hover" md-direction="top">
