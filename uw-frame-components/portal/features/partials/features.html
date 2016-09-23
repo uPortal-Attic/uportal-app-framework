@@ -1,14 +1,19 @@
-<frame-page app-title="{{NAMES.title}} - New Features" white-background='true'>
+<frame-page app-title="{{NAMES.title}} - New features" white-background='true'>
   <div class="features-feed">
-    <div ng-if='features.length === 0'> <!--empty case -->
+
+    <!-- NO FEATURES -->
+    <md-content ng-if='features.length === 0'> <!--empty case -->
       <p class='center'>No features listed at this time, please check back later.</p>
-    </div>
-    <div class="feature-item" ng-repeat="feature in features | orderBy: '-id'">
+    </md-content>
+
+    <!-- DISPLAY FEATURES -->
+    <md-content class="feature-item" ng-repeat="feature in features | orderBy: '-id'">
+      <md-divider></md-divider>
       <h5 class="date">{{feature.goLiveMonth + 1}}/{{feature.goLiveDay}}/{{ feature.goLiveYear }}</h5>
-      <h3>{{ feature.title }}</h3>
+      <h3 class="md-headline">{{ feature.title }}</h3>
       <p>{{ feature.description }}</p>
       <p ng-if="feature.learnMoreURL">Learn more at <a ng-href="{{ feature.learnMoreURL }}">{{ feature.learnMoreURL }}</a>.</p>
-      <div class="image-div center" ng-if='feature.img'>
+      <div class="image-div" ng-if='feature.img'>
         <img ng-src="{{feature.img}}">
       </div>
       <div ng-if='feature.imgs'>
@@ -16,12 +21,13 @@
           <img ng-src="{{image}}" ng-repeat='image in feature.imgs'>
         </div>
       </div>
+    </md-content>
+
+    <!-- REQUEST FEEDBACK -->
+    <div layout="column" layout-align="center center" ng-show="MISC_URLS.feedbackURL">
+      <h4 class="md-title">Have a feature you'd like to see in {{NAMES.title}}?</h4>
+      <md-button class="md-primary md-raised" ng-href="{{MISC_URLS.feedbackURL}}">Send us feedback</md-button>
     </div>
-  </div>
-  <div class="col-xs-12" ng-show="MISC_URLS.feedbackURL">
-    <h3 class="center feedback-features">Have a feature you'd like to see in {{NAMES.title}}?</h3>
-    <div class="center">
-      <a class="btn btn-primary btn-lg" ng-href="{{MISC_URLS.feedbackURL}}">Send us feedback</a>
-    </div>
+
   </div>
 </frame-page>
