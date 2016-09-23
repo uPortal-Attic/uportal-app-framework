@@ -1,10 +1,12 @@
 <frame-page app-title='{{NAMES.title}} - File Not Found' white-background='true'>
-  <h2 class='center'>We're sorry, the path you are looking for does not exist.</h2>
-  <p class='center'>
-    <i class='fa fa-exclamation-triangle fa-3x warning-color'></i>
-    <br/>
-    <h4 class='center'>You can try to head back to the MyUW <a href='{{MISC_URLS.myuwHome}}'>homepage</a>.</h4>
-    <h4 class='center'>If you continue to see this error, contact the <a href='{{MISC_URLS.helpdeskURL}}' target='_blank'>DoIT Help Desk</a>.</h4>
-    <br/>
-  </p>
+  <md-content layout-padding layout="column" layout-align="center center">
+    <h2 class="md-display-1">The path you are looking for does not exist</h2>
+    <p>
+      <i class='fa fa-exclamation-triangle fa-3x warning-color'></i>
+      <br/>
+      <h4 class="md-subhead"><a href='{{MISC_URLS.myuwHome}}'>Back to the MyUW homepage</a></h4>
+      <h4 class="md-subhead">If you continue to see this error, contact the <a href='{{MISC_URLS.helpdeskURL}}' target='_blank'>DoIT Help Desk</a></h4>
+      <br/>
+    </p>
+  </md-content>
 </frame-page>
