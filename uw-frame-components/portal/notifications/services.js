@@ -7,6 +7,7 @@ define(['angular', 'jquery'], function(angular, $) {
   app.factory('notificationsService', ['$q','$http', 'miscService', 'PortalGroupService', 'keyValueService','SERVICE_LOC', 'KV_KEYS', function($q, $http, miscService, PortalGroupService, keyValueService, SERVICE_LOC, KV_KEYS) {
       var filteredNotificationPromise;
       var dismissedPromise;
+
       var getAllNotifications = function() {
         return $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(
             function(result) {
