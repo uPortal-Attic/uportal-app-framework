@@ -56,7 +56,7 @@ define(['angular','require'], function(angular, require) {
       };
 
       $scope.toggleActive = function() {
-        $scope.active = $scope.active ? false : true;
+        $scope.active = !$scope.active;
       };
 
       $scope.$on("$mdMenuClose", function() {
