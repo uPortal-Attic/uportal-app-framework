@@ -5,8 +5,8 @@ define(['angular','require'], function(angular, require) {
 
 
   app.controller('PortalFeaturesController', ['miscService', '$localStorage', '$sessionStorage', '$scope', '$document', 'FEATURES',
-    '$modal', 'portalFeaturesService', '$sanitize', 'MISC_URLS',
-    function(miscService, $localStorage, $sessionStorage, $scope, $document, FEATURES, $modal, portalFeaturesService, $sanitize, MISC_URLS) {
+    '$mdDialog', 'portalFeaturesService', '$sanitize', 'MISC_URLS',
+    function(miscService, $localStorage, $sessionStorage, $scope, $document, FEATURES, $mdDialog, portalFeaturesService, $sanitize, MISC_URLS) {
       $scope.features = [];
       $scope.MISC_URLS = MISC_URLS;
       if (FEATURES.enabled) {
@@ -20,8 +20,8 @@ define(['angular','require'], function(angular, require) {
   }]);
 
   app.controller('PortalPopupController', ['$localStorage', '$sessionStorage', '$rootScope', '$scope', '$document', 'FEATURES',
-    'filterFilter', '$filter', '$modal', 'portalFeaturesService', 'miscService', '$sanitize',
-    function($localStorage, $sessionStorage, $rootScope, $scope, $document, FEATURES, filterFilter, $filter, $modal, portalFeaturesService, miscService, $sanitize) {
+    'filterFilter', '$filter', '$mdDialog', 'portalFeaturesService', 'miscService', '$sanitize',
+    function($localStorage, $sessionStorage, $rootScope, $scope, $document, FEATURES, filterFilter, $filter, $mdDialog, portalFeaturesService, miscService, $sanitize) {
       //scope functions ---------------------------------------------------------
 
       //need this due to isolated scope
@@ -74,21 +74,27 @@ define(['angular','require'], function(angular, require) {
               $scope.latestFeature = orderedPopups[0];
 
               var displayPopup = function() {
-                var modalInstance = $modal.open({
-                  animation: $scope.animationsEnabled,
-                  templateUrl: require.toUrl('./partials/features-modal-template.html'),
-                  size: 'lg',
-                  scope: $scope
-                });
-
-                modalInstance.result.then(function(data){
-                  //resolves upon closing of modal
-                  miscService.pushGAEvent('popup','closed', orderedPopups[0].id);
+                $mdDialog.show({
+                  templateUrl: require.toUrl('./partials/features-dialog-template.html'),
+                  parent: angular.element(document).find('div.my-uw')[0],
+                  clickOutsideToClose: true,
+                  openFrom: 'left',
+                  closeTo: 'right',
+                  scope: $scope,
+                  controller: function DialogController($scope, $mdDialog) {
+                    $scope.closeDialog = function(action) {
+                      $mdDialog.hide(action);
+                    };
+                  }
+                })
+                .then(function(action) {
+                  // if dialog is closed by clicking "continue" button
+                  miscService.pushGAEvent('popup', action, orderedPopups[0].id);
                   portalFeaturesService.markPopupSeen(orderedPopups[0].id);
                   getPopups();
-                }, function(data){
-                  // rejects upon dismissing of modal
-                  miscService.pushGAEvent('popup','dismissed', orderedPopups[0].id);
+                }, function() {
+                  // if popup is closed by clicking outside or pressing escape key
+                  miscService.pushGAEvent('popup', 'dismissed', orderedPopups[0].id);
                   portalFeaturesService.markPopupSeen(orderedPopups[0].id);
                   getPopups();
                 });
@@ -99,20 +105,18 @@ define(['angular','require'], function(angular, require) {
         }
       };
 
-     var setMascot = function(){
-       if($rootScope.portal && $rootScope.portal.theme) {
-         $scope.buckyImg = $rootScope.portal.theme.mascotImg || 'img/robot-taco.gif';
-       } else {
-         $scope.buckyImg = 'img/robot-taco.gif';
-       }
-       $rootScope.$watch('portal.theme', function(newVal, oldVal) {
-         if(newVal === oldVal) {
-           return;
-         } else {
-           $scope.buckyImg = newVal.mascotImg || 'img/robot-taco.gif';
-         }
-       });
-     };
+      var setMascot = function() {
+        if($rootScope.portal && $rootScope.portal.theme) {
+          $scope.buckyImg = $rootScope.portal.theme.mascotImg || 'img/robot-taco.gif';
+        } else {
+          $scope.buckyImg = 'img/robot-taco.gif';
+        }
+        $rootScope.$watch('portal.theme', function(newVal, oldVal) {
+          if (newVal !== oldVal) {
+            $scope.buckyImg = newVal.mascotImg || 'img/robot-taco.gif';
+          }
+        });
+      };
 
 
 

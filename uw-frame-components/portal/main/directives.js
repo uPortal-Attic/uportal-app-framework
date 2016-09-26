@@ -49,7 +49,7 @@ define(['angular', 'require'], function(angular, require) {
   app.directive('featuresModalTemplate', function() {
       return {
           restrict : 'E',
-          templateUrl : require.toUrl('./partials/features-modal-template.html')
+          templateUrl : require.toUrl('./partials/features-dialog-template.html')
       }
   });
 
