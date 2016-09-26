@@ -48,7 +48,9 @@
     margin:15px 0;
   }
   button {
-    margin-top:10px;
+    margin-top: 16px;
+    color: @white;
+    background-color: @color1;
   }
 }
 portal-header md-toolbar .md-toolbar-tools bucky-announcement {
@@ -93,37 +95,6 @@ portal-header md-toolbar .md-toolbar-tools bucky-announcement {
   }
 }
 
-bucky-announcement .popover {
-  padding: 0;
-  position: absolute;
-  top: 10px !important;
-  width: 210px !important;
-  &.left {
-    margin-left: 0;
-  }
-  .arrow {
-    top: 10% !important;
-    right: -11px !important;
-  }
-  .popover-content {
-    padding: 9px 12px;
-    a {
-      color: @link-color;
-      &:hover {
-        color: darken(@link-color, 15%);
-      }
-    }
-    li, p, span {
-      color: @black;
-    }
-    li div a {
-      font-size: smaller;
-      margin-bottom: 8px;
-      &:not(.md-button):not(.btn):not(.launch-app-button) {
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
+.md-dialog-container {
+  z-index: 101;
 }
