@@ -16,29 +16,9 @@
                             ng-if="!isDismissed(notification)"
                             layout="row"
                             layout-align="start center">
-                <!-- NOTIFICATION TEXT AND ACTION BUTTONS -->
-                <a class="md-list-item-text"
-                   ng-href="{{ notification.actionURL }}"
-                   target="_blank"
-                   aria-label="{{ notification.actionAlt }}"
-                   layout="row"
-                   layout-align="start center"
-                   layout-xs="column"
-                   layout-align-xs="center start">
-                  <span><i class="fa fa-exclamation-triangle" ng-if="notification.priority"></i> {{ notification.title }}</span>
-                  <div ng-if="notification.actionButtons && notification.actionButtons.length > 0" class="notification-buttons"
-                       layout-xs="column" layout-align-xs="center start">
-                    <md-button class="md-raised"
-                               ng-href="{{button.url}}"
-                               ng-repeat="button in notification.actionButtons track by button.label"
-                               ng-class="{'md-primary' : $index === 0, 'md-accent' : $index > notification.buttonText.length / 2 - 1}"
-                               ng-click="button.action"
-                               target="{{button.target}}"
-                               aria-label="{{button.label}}">
-                      {{button.label}}
-                    </md-button>
-                  </div>
-                </a>
+
+                <notifications-list-item></notifications-list-item>
+
                 <!-- DISMISS BUTTON -->
                 <md-button class="md-icon-button md-secondary"
                            ng-click="dismiss(notification)"
@@ -47,9 +27,10 @@
                   <i class='fa fa-times'></i>
                 </md-button>
               </md-list-item>
+
               <!-- IF NO NOTIFICATIONS -->
-              <md-list-item class="notification-item read"
-                            ng-if="isEmpty || (countWithDismissed() === 0)">No new notifications
+              <md-list-item class="notification-item read" ng-if="isEmpty || (countWithDismissed() === 0)">
+                No new notifications
               </md-list-item>
             </md-list>
           </md-content>
@@ -69,29 +50,9 @@
                             ng-if="isDismissed(notification)"
                             layout="row"
                             layout-align="start center">
-                <!-- NOTIFICATION TEXT AND ACTION BUTTONS -->
-                <a class="md-list-item-text"
-                   ng-href="{{ notification.actionURL }}"
-                   target="_blank"
-                   aria-label="{{ notification.actionAlt }}"
-                   layout="row"
-                   layout-align="start center"
-                   layout-xs="column"
-                   layout-align-xs="center start">
-                  <span><i class="fa fa-exclamation-triangle" ng-if="notification.priority"></i> {{ notification.title }}</span>
-                  <div ng-if="notification.actionButtons && notification.actionButtons.length > 0" class="notification-buttons"
-                       layout-xs="column" layout-align-xs="center start">
-                    <md-button class="md-raised"
-                               ng-href="{{button.url}}"
-                               ng-repeat="button in notification.actionButtons track by button.label"
-                               ng-class="{'md-primary' : $index === 0, 'md-accent' : $index > notification.buttonText.length / 2 - 1}"
-                               ng-click="button.action"
-                               target="{{button.target}}"
-                               aria-label="{{button.label}}">
-                      {{button.label}}
-                    </md-button>
-                  </div>
-                </a>
+
+                <notifications-list-item></notifications-list-item>
+
                 <!-- RESTORE BUTTON -->
                 <md-button class="md-icon-button md-secondary"
                            ng-click="undismiss(notification)"
@@ -99,6 +60,7 @@
                   <i class='fa fa-undo'></i>
                 </md-button>
               </md-list-item>
+
               <!-- IF NO NOTIFICATIONS -->
               <md-list-item class="notification-item read" ng-if="dismissedCount() === 0">
                 No dismissed notifications

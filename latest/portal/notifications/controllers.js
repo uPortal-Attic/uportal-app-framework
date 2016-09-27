@@ -49,7 +49,7 @@ define(['angular'], function(angular) {
       if(!duringOnEvent) {
         $rootScope.$broadcast('portalShutdownPriorityNotifications', { disable : true});
       }
-    }
+    };
 
     var successFn = function(data){
       //success state
@@ -77,7 +77,7 @@ define(['angular'], function(angular) {
 
     $scope.dismissedCount = function() {
       return $rootScope.dismissedNotificationIds ? $rootScope.dismissedNotificationIds.length : 0;
-    }
+    };
 
     $scope.countWithDismissed = function() {
       var count = 0;
@@ -100,7 +100,7 @@ define(['angular'], function(angular) {
       }
 
       return count;
-    }
+    };
 
     $scope.isDismissed = function(notification) {
       for(var i = 0; i < $rootScope.dismissedNotificationIds.length; i++) {
@@ -119,7 +119,7 @@ define(['angular'], function(angular) {
       if(fromPriority) {
         clearPriorityNotificationFlags();
       }
-    }
+    };
 
     $scope.undismiss = function(notification) {
       var index = $rootScope.dismissedNotificationIds.indexOf(notification.id);
@@ -129,11 +129,11 @@ define(['angular'], function(angular) {
       if(SERVICE_LOC.kvURL) { //key value store enabled, we can store dismiss of notifications
         notificationsService.setDismissedNotifications($rootScope.dismissedNotificationIds);
       }
-    }
+    };
 
     $scope.switch = function(mode) {
       $scope.mode = mode;
-    }
+    };
 
     var init = function(){
       $scope.notifications = [];
@@ -166,7 +166,7 @@ define(['angular'], function(angular) {
         });
       }
 
-    }
+    };
 
     init();
   }]);
