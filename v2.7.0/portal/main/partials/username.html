@@ -1,0 +1,27 @@
+<!-- GUEST MODE ONLY -->
+<md-button ng-href="{{MISC_URLS.myuwHome}}"
+           ng-show="GuestMode"
+           aria-label="Log in to MyUW"
+           target="_self"
+           class="md-default">
+  Log In
+</md-button>
+
+<!-- NOT GUEST MODE -->
+<md-menu md-position-mode="target-right target" ng-controller="SessionCheckController as sessionCtrl" ng-hide="GuestMode" class="username-menu">
+  <md-button aria-label="open options menu" ng-click="$mdOpenMenu($event)">
+    <span>{{sessionCtrl.user.firstName ? sessionCtrl.user.firstName : sessionCtrl.user.displayName}}</span>
+    <i class="fa fa-caret-down"></i>
+  </md-button>
+  <md-menu-content width="3">
+    <md-menu-item ng-if="$storage.showSettings">
+      <md-button class="md-default" aria-label="change beta settings" tabindex="-1" ng-href="settings" title="Settings" ng-transclude>Beta settings</md-button>
+    </md-menu-item>
+    <md-menu-item ng-if="APP_FLAGS.showUserSettingsPage">
+      <md-button class="md-default" aria-label="change user settings" tabindex="-1" ng-href="user-settings" title="Settings" ng-transclude>Settings</md-button>
+    </md-menu-item>
+    <md-menu-item>
+      <md-button class="md-default" aria-label="log out" tabindex="-1" ng-href="{{MISC_URLS.logoutURL}}" title="Log Out" target="_self">Log out</md-button>
+    </md-menu-item>
+  </md-menu-content>
+</md-menu>
