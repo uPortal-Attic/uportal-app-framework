@@ -21,6 +21,13 @@ define(['angular', 'require'], function(angular, require){
             templateUrl : require.toUrl('./partials/notification-bell.html')
         }
     });
+
+    app.directive('notificationsListItem', function() {
+      return {
+        restrict: 'E',
+        templateUrl: require.toUrl('./partials/notifications-list-item.html')
+      }
+    });
   
 
     return app;
