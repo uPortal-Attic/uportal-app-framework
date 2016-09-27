@@ -49,7 +49,7 @@ define(['angular'], function(angular) {
       if(!duringOnEvent) {
         $rootScope.$broadcast('portalShutdownPriorityNotifications', { disable : true});
       }
-    }
+    };
 
     var successFn = function(data){
       //success state
@@ -133,7 +133,7 @@ define(['angular'], function(angular) {
 
     $scope.switch = function(mode) {
       $scope.mode = mode;
-    }
+    };
 
     var init = function(){
       $scope.notifications = [];
@@ -166,7 +166,7 @@ define(['angular'], function(angular) {
         });
       }
 
-    }
+    };
 
     init();
   }]);
