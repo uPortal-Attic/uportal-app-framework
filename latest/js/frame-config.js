@@ -3,7 +3,7 @@ define(['angular'], function(angular) {
     var config = angular.module('frame-config', []);
     config
         .constant('THEMES',
-        {"themeVersion": 4,
+        {"themeVersion": 5,
         /* THOU SHALT INCREMENT THIS VERSION NUMBER IF THOU CHANGEST ANY OF THE THEMES BELOW  */
          "themes":
         [
@@ -87,7 +87,7 @@ define(['angular'], function(angular) {
             "portalSkinKey" : "uwRiverFalls",
             "crest" : "img/uwrf-logo.png",
             "title" : "MyUW",
-            "subtitle" : "beta",
+            "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW River Falls Logo",
             "group" : "UW System-River Falls",
@@ -146,7 +146,7 @@ define(['angular'], function(angular) {
             "portalSkinKey" : "uwStevensPoint",
             "crest" : "img/uwsp-logo-52.png",
             "title" : "MyUW",
-            "subtitle" : "beta",
+            "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Stevens Point Logo",
             "group" : "UW System-Stevens Point",
@@ -199,7 +199,7 @@ define(['angular'], function(angular) {
             "portalSkinKey" : "uwMilwaukee",
             "crest" : "img/uwm-logo-52.png",
             "title" : "MyUW",
-            "subtitle" : "beta",
+            "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW-Milwaukee Logo",
             "group" : "UW System-Milwaukee",
@@ -252,7 +252,7 @@ define(['angular'], function(angular) {
             "portalSkinKey" : "uwWhitewater",
             "crest" : "img/uww-logo-52.png",
             "title" : "MyUW",
-            "subtitle" : "beta",
+            "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW-Whitewater Logo",
             "group" : "UW System-Whitewater",
@@ -938,7 +938,7 @@ define(['angular'], function(angular) {
             "portalSkinKey" : "uwSystemAdministration",
             "crest" : "img/uw-system-logo-112.png",
             "title" : "MyUW",
-            "subtitle" : "beta",
+            "subtitle" : null,
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW System Logo",
             "group" : "default",
