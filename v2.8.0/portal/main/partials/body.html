@@ -1,0 +1,14 @@
+<div class='my-uw' md-theme="{{ portal.theme.name || 'default' }}">
+  <div id="body-background">
+    <portal-header></portal-header>
+
+    <div class="page-content" layout="column">
+      <div role="main" id="region-main" class="col-xs-12 no-padding">
+        <div ng-class="routeClass" ng-view role="application" aria-labelledby="app-title"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <site-footer class='my-uw'></site-footer>
+</div>

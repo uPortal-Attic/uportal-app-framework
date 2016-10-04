@@ -1,0 +1,49 @@
+<!-- DESKTOP MASCOT ANNOUNCEMENTS -->
+<md-menu class="mascot-menu announcement-creeper"
+         ng-if=" 'BUCKY' === mode && announcements && announcements.length > 0"
+         ng-class="{ 'announcement-hover' : hover, 'announcement-active' : active }"
+         md-position-mode="target-right target">
+  <md-button class="mascot-button"
+             ng-click="toggleActive();toggleHover();$mdOpenMenu($event);addClickAway();"
+             ng-mouseenter="toggleHover()"
+             ng-mouseleave="toggleHover()"
+             aria-label="Click to see what's new"
+             md-no-ink
+             md-menu-origin>
+    <img ng-src="{{buckyImg}}"
+         ng-click="pushGAEvent('feature', 'toggle-bucky', 'na');">
+    <md-tooltip ng-if="!active" md-visible="hover" md-direction="top">
+      Click to see what's new ({{announcements.length}})
+    </md-tooltip>
+  </md-button>
+  <md-menu-content class="mascot-menu-content">
+    <md-menu-item ng-repeat="announcement in announcements | orderBy:'-id' | limitTo:3"
+                  class="mascot-menu-item">
+      <a href="features"
+         class="announcement-link"
+         ng-click="markAnnouncementsSeen(true)"
+         layout="row"
+         layout-align="space-between center">
+        <div layout="column" layout-align="center start" class="announcement-text">
+          <span class="md-subhead">{{announcement.buckyAnnouncement.shortTitle}}</span>
+          <span>{{announcement.buckyAnnouncement.shortDesc}}</span>
+        </div>
+        <md-button class="md-icon-button button-dismiss" ng-click="markAnnouncementSeen(announcement.id, false)" aria-label="mark this announcement seen">
+          <md-icon>clear</md-icon>
+        </md-button>
+      </a>
+    </md-menu-item>
+  </md-menu-content>
+</md-menu>
+
+<!-- MOBILE MENU ANNOUNCEMENTS -->
+<div ng-if=" 'BUCKY_MOBILE' === mode && announcements && announcements.length > 0" class="mobile">
+  <md-menu-item>
+    <md-button class="md-default" href="features"
+               ng-click="markAllAnnouncementsSeen(true)"
+               layout="row" layout-align="start center">
+      <span><i class='fa fa-star fa-fw'></i> </span>
+      <span>What's new ({{announcements.length}})</span>
+    </md-button>
+  </md-menu-item>
+</div>
