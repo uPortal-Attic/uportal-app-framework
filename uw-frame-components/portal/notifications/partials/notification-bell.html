@@ -1,7 +1,7 @@
 <div ng-controller="PortalNotificationController as notificationIconCtrl" class="notifications">
   <!-- Mobile bell in hamburger -->
-  <div class="notification-badge notification-badge-mobile" aria-label="{{status}}"
-       ng-if="notificationsEnabled && directiveMode==='mobile-bell' && countWithDismissed() !== 0 && !isEmpty">
+  <div class="notification-badge notification-badge-mobile" aria-label="{{ status }}"
+       ng-if="notificationsEnabled && directiveMode === 'mobile-bell' && notifications.length !== 0">
     <i class='fa fa-bell'></i>
   </div>
 
@@ -21,11 +21,11 @@
      title="click to view notifications"
      class="menu-notification-link notification-desktop"
      ng-href="{{notificationUrl}}">
-    <div class="notification-badge" aria-label="{{status}}" ng-class="{ 'notification-badge-empty' : (countWithDismissed() === 0 || isEmpty)}">
+    <div class="notification-badge" aria-label="{{status}}" ng-class="{ 'notification-badge-empty' : notifications.length === 0 }">
       <div class="arrow-down" ng-if="hasPriorityNotifications"></div>
-      <span class="number-of-nots" ng-if="countWithDismissed() > 0"
-            ng-class="{ 'more-than-10-nots' : (countWithDismissed() > 9)}">{{countWithDismissed()}}</span>
-      <i class="fa fa-bell fa-2x" ng-class="{'has-priority-nots': hasPriorityNotifications}"></i>
+      <span class="number-of-nots" ng-if="notifications.length > 0"
+            ng-class="{ 'more-than-10-nots' : (notifications.length > 9) }">{{ notifications.length }}</span>
+      <i class="fa fa-bell fa-2x" ng-class="{ 'has-priority-nots': hasPriorityNotifications }"></i>
     </div>
   </a>
 
@@ -47,7 +47,7 @@
       <div class="dismiss-priority hidden-xs">
         <md-button class="md-icon-button"
                    ng-if="priority.dismissable"
-                   ng-click="dismissNotification(priority, true)"
+                   ng-click="dismissNotification(priority, $index, true)"
                    aria-label="Dismiss this priority notification">
           <md-icon>close</md-icon>
         </md-button>
