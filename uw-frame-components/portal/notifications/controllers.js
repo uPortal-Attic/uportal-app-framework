@@ -35,7 +35,7 @@ define(['angular'], function(angular) {
         }
       };
 
-      var successFn = function(data){
+      var getNotificationsSuccess = function(data){
         //success state
         $scope.count = data ? data.length : 0;
         $scope.isEmpty = ($scope.count === 0);
@@ -48,13 +48,13 @@ define(['angular'], function(angular) {
         }
       };
 
-      var errorFn = function(data){
+      var getNotificationsError = function(data){
         //error state (logging of error happens at service layer)
         $scope.count = 0;
         $scope.isEmpty = true;
       };
 
-      var dismissedSuccessFn = function(data) {
+      var getDismissedNotificationsSuccess = function(data) {
         if(Array.isArray(data))
           $rootScope.dismissedNotificationIds = data;
       };
@@ -126,12 +126,12 @@ define(['angular'], function(angular) {
         if(NOTIFICATION.enabled && !$rootScope.GuestMode) {
           if(SERVICE_LOC.kvURL && $rootScope.dismissedNotificationIds.length === 0) {
             //key value store enabled, we can store dismiss of notifications
-            notificationsService.getDismissedNotificationIds().then(dismissedSuccessFn);
+            notificationsService.getDismissedNotificationIds().then(getDismissedNotificationsSuccess);
           }
           if(NOTIFICATION.groupFiltering && !$localStorage.disableGroupFilteringForNotifications) {
-            notificationsService.getNotificationsByGroups().then(successFn, errorFn);
+            notificationsService.getNotificationsByGroups().then(getNotificationsSuccess, getNotificationsError);
           } else {
-            notificationsService.getAllNotifications().then(successFn, errorFn);
+            notificationsService.getAllNotifications().then(getNotificationsSuccess, getNotificationsError);
           }
 
           $scope.$on('$locationChangeStart', function(event) {
