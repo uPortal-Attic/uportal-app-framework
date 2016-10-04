@@ -1,4 +1,5 @@
 portal-header {
+  display: block;
   a {
     &:not(.md-button):not(.btn):not(.launch-app-button) {
       &:hover, &:focus, &:active {
@@ -59,9 +60,12 @@ portal-header {
         }
       }
     }
+  }
+  &.has-priority-nots {
     @media (min-width: 768px) {
-      &.has-priority-nots {
-        margin-top: 46px;
+      margin-top: 46px;
+      md-toolbar {
+        top: 46px;
       }
     }
   }

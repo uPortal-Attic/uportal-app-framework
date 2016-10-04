@@ -21,7 +21,7 @@
 
                 <!-- DISMISS BUTTON -->
                 <md-button class="md-icon-button md-secondary"
-                           ng-click="dismiss(notification)"
+                           ng-click="dismissNotification(notification)"
                            ng-hide="!notification.dismissable || isDismissed(notification)"
                            aria-label="dismiss this notification">
                   <i class='fa fa-times'></i>
@@ -55,7 +55,7 @@
 
                 <!-- RESTORE BUTTON -->
                 <md-button class="md-icon-button md-secondary"
-                           ng-click="undismiss(notification)"
+                           ng-click="restoreNotification(notification)"
                            aria-label="restore this notification">
                   <i class='fa fa-undo'></i>
                 </md-button>
