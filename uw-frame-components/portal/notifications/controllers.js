@@ -169,10 +169,14 @@ define(['angular'], function(angular) {
        * some event listeners.
        */
       var init = function() {
+        // Variables used in all notification directives
         $scope.notifications = [];
         $scope.dismissedNotifications = [];
+        // Variables used by notification-bell directive
+        $scope.notificationsUrl = NOTIFICATION.notificationFullURL;
+        $scope.notificationsEnabled = NOTIFICATION.enabled;
 
-        // GET ALL NOTIFICATIONS (should return array for each type)
+        // Get notifications (dismissed vs. non-dismissed is handled in service)
         if(NOTIFICATION.enabled && !$rootScope.GuestMode) {
           getNotifications();
         }
