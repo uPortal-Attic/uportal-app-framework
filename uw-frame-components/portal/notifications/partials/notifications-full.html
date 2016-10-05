@@ -3,9 +3,9 @@
 	<div class="portlet-body notifications">
     <md-tabs md-dynamic-height md-border-bottom>
       <!-- UNSEEN NOTIFICATIONS -->
-      <md-tab>
+      <md-tab ng-if="notifications.length > 0">
         <md-tab-label>
-          New&nbsp;&nbsp;<span class="badge">{{ countWithDismissed() }}</span>
+          New&nbsp;&nbsp;<span class="badge">{{ notifications.length }}</span>
         </md-tab-label>
         <md-tab-body>
           <md-content>
@@ -13,7 +13,6 @@
               <md-list-item class="secondary-button-padding notification-item"
                             ng-class="{ priority: notification.priority }"
                             ng-repeat="notification in notifications | orderBy:['-priority', '-id']"
-                            ng-if="!isDismissed(notification)"
                             layout="row"
                             layout-align="start center">
 
@@ -21,33 +20,27 @@
 
                 <!-- DISMISS BUTTON -->
                 <md-button class="md-icon-button md-secondary"
-                           ng-click="dismiss(notification)"
-                           ng-hide="!notification.dismissable || isDismissed(notification)"
+                           ng-click="dismissNotification(notification)"
+                           ng-hide="!notification.dismissable"
                            aria-label="dismiss this notification">
                   <i class='fa fa-times'></i>
                 </md-button>
-              </md-list-item>
-
-              <!-- IF NO NOTIFICATIONS -->
-              <md-list-item class="notification-item read" ng-if="isEmpty || (countWithDismissed() === 0)">
-                No new notifications
               </md-list-item>
             </md-list>
           </md-content>
         </md-tab-body>
       </md-tab>
       <!-- DISMISSED NOTIFICATIONS TAB -->
-      <md-tab>
+      <md-tab ng-if="dismissedNotifications.length > 0">
         <md-tab-label>
-          Dismissed&nbsp;&nbsp;<span class="badge">{{ dismissedCount() }}</span>
+          Dismissed&nbsp;&nbsp;<span class="badge">{{ dismissedNotifications.length }}</span>
         </md-tab-label>
         <md-tab-body>
           <md-content>
             <md-list class="notifications-list" flex>
               <md-list-item class="secondary-button-padding notification-item"
+                            ng-repeat="notification in dismissedNotifications | orderBy:['-priority', '-id']"
                             ng-class="{ priority: notification.priority }"
-                            ng-repeat="notification in notifications | orderBy:['-priority', '-id']"
-                            ng-if="isDismissed(notification)"
                             layout="row"
                             layout-align="start center">
 
@@ -55,14 +48,14 @@
 
                 <!-- RESTORE BUTTON -->
                 <md-button class="md-icon-button md-secondary"
-                           ng-click="undismiss(notification)"
+                           ng-click="restoreNotification(notification)"
                            aria-label="restore this notification">
                   <i class='fa fa-undo'></i>
                 </md-button>
               </md-list-item>
 
               <!-- IF NO NOTIFICATIONS -->
-              <md-list-item class="notification-item read" ng-if="dismissedCount() === 0">
+              <md-list-item class="notification-item read" ng-show="dismissedNotifications.length === 0">
                 No dismissed notifications
               </md-list-item>
             </md-list>

@@ -1,7 +1,7 @@
 <div ng-controller="PortalNotificationController as notificationIconCtrl" class="notifications">
   <!-- Mobile bell in hamburger -->
-  <div class="notification-badge notification-badge-mobile" aria-label="{{status}}"
-       ng-if="notificationsEnabled && directiveMode==='mobile-bell' && countWithDismissed() !== 0 && !isEmpty">
+  <div class="notification-badge notification-badge-mobile" aria-label="{{ status }}"
+       ng-if="notificationsEnabled && directiveMode === 'mobile-bell' && notifications.length !== 0">
     <i class='fa fa-bell'></i>
   </div>
 
@@ -9,10 +9,10 @@
   <md-menu-item ng-if="notificationsEnabled && directiveMode === 'mobile-menu'">
     <md-button title="click to view notifications"
                class="md-default"
-               ng-href="{{notificationUrl}}"
+               ng-href="{{ notificationsUrl }}"
                layout="row" layout-align="start center">
       <span><i class='fa fa-bell fa-fw'></i></span>
-      <span>Notifications ({{countWithDismissed()}})</span>
+      <span>Notifications ({{ notifications.length }})</span>
     </md-button>
   </md-menu-item>
 
@@ -20,12 +20,12 @@
   <a ng-if='notificationsEnabled && directiveMode === "bell"'
      title="click to view notifications"
      class="menu-notification-link notification-desktop"
-     ng-href="{{notificationUrl}}">
-    <div class="notification-badge" aria-label="{{status}}" ng-class="{ 'notification-badge-empty' : (countWithDismissed() === 0 || isEmpty)}">
+     ng-href="{{ notificationsUrl }}">
+    <div class="notification-badge" aria-label="{{status}}" ng-class="{ 'notification-badge-empty' : notifications.length === 0 }">
       <div class="arrow-down" ng-if="hasPriorityNotifications"></div>
-      <span class="number-of-nots" ng-if="countWithDismissed() > 0"
-            ng-class="{ 'more-than-10-nots' : (countWithDismissed() > 9)}">{{countWithDismissed()}}</span>
-      <i class="fa fa-bell fa-2x" ng-class="{'has-priority-nots': hasPriorityNotifications}"></i>
+      <span class="number-of-nots" ng-if="notifications.length > 0"
+            ng-class="{ 'more-than-10-nots' : (notifications.length > 9) }">{{ notifications.length }}</span>
+      <i class="fa fa-bell fa-2x" ng-class="{ 'has-priority-nots': hasPriorityNotifications }"></i>
     </div>
   </a>
 
@@ -45,7 +45,12 @@
         </md-button>
       </div>
       <div class="dismiss-priority hidden-xs">
-        <md-button ng-if="priority.dismissable" ng-click="dismiss(priority, true)" aria-label="Dismiss this priority notification"><i class='fa fa-times'></i></md-button>
+        <md-button class="md-icon-button"
+                   ng-if="priority.dismissable"
+                   ng-click="dismissNotification(priority, true)"
+                   aria-label="Dismiss this priority notification">
+          <md-icon>close</md-icon>
+        </md-button>
       </div>
     </div>
     <p ng-if='priorityNotifications.length > 1' class="notification-message">

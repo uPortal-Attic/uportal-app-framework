@@ -1,20 +1,7 @@
 {"notifications" :
     [
       {
-  		"id"     : 1,
-  		"groups" : ["Everyone"],
-  		"title"  : "Checkout these cool buttons ->.",
-  		"actionURL" : "http://www.google.com",
-  		"actionAlt" : "Google",
-  		"dismissable" : true,
-  		"priority" : true,
-  		"actionButtons" : [
-  		  {"label" : "Feedback", "url" : "/web/exclusive/feedback", "action" : "", "target" : ""},
-  		  {"label" : "Return To Old", "url" : "https://my.wisconsin.edu",  "action" : "", "target" : "_blank"}
-  		]
-      },
-      {
-        "id"     : 2,
+        "id"     : 1,
         "groups" : ["Users - Student SSN Update"],
         "title"  : "Our records indicate the Social Security Number in your Personal Information is invalid or missing. Please provide your Social Security Number or select to not provide your Social Security Number.",
         "actionURL" : "/portal/p/my-info-student-center-ssn.ctf1/max/action.uP?pP_action=loginAction",
@@ -22,8 +9,21 @@
         "dismissable" : true,
         "priority" : false
       },
+	  {
+		"id"     : 3,
+		"groups" : ["Everyone"],
+		"title"  : "Checkout these cool buttons ->.",
+		"actionURL" : "http://www.google.com",
+		"actionAlt" : "Google",
+		"dismissable" : true,
+		"priority" : true,
+		"actionButtons" : [
+		  {"label" : "Feedback", "url" : "/web/exclusive/feedback", "action" : "", "target" : ""},
+		  {"label" : "Return To Old", "url" : "https://my.wisconsin.edu",  "action" : "", "target" : "_blank"}
+		]
+	  },
       {
-        "id"     : 3,
+        "id"     : 2,
         "groups" : ["Users - Service Activation Required"],
         "title"  : "You need to modify your NetID account to activate essential UW Services.",
         "actionURL" : "https://www.mynetid.wisc.edu/modify",

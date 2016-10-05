@@ -157,6 +157,7 @@
   justify-content: center;
   align-items: center;
   border: 1px solid @black;
+  top: 0;
   .notification-message {
     font-size:15px;
   }
@@ -204,10 +205,13 @@
     position: fixed;
     right: 0;
     .md-button {
-      text-transform: none;
       min-height: 0;
-      max-height: 26px;
-      line-height: 26px;
+      max-height: 30px;
+      width: 30px;
+      padding: 0;
+      .md-icon {
+        font-size: 22px;
+      }
     }
   }
 }

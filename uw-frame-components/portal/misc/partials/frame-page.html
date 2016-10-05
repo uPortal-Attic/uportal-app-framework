@@ -1,4 +1,4 @@
-<div class="row portlet-frame" ng-class="{'has-priority-nots': hasPriorityNotifications}">
+<div class="row portlet-frame">
   <notification-bell mode="priority" class="visible-xs"></notification-bell>
   <app-header
     app-title="{{appTitle}}"
@@ -11,7 +11,7 @@
     app-add-to-home='appAddToHome'
     app-fname="{{appFname}}"
   ></app-header>
-  <div role="main" ng-class="{ 'white-page' : whiteBackground, 'col-xs-12 no-padding' : !whiteBackground }">
+  <div role="main" ng-class="{ 'white-page' : whiteBackground }">
     <ng-transclude></ng-transclude>
   </div>
 </div>
