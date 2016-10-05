@@ -12,14 +12,6 @@ cp superstatic.json ./target
 
 ## Note index.html is copied in via grunt script
 
-## Get bower stuff
-
-pushd target
-../../node_modules/bower/bin/bower --config.interactive=false --allow-root install
-rm -rf vendor && mkdir vendor
-cp bower_components/angulartics-google-analytics/dist/* vendor/
-popd
-
 ## Build less
 ../node_modules/less/bin/lessc -x target/css/themes/uw-madison.less > target/css/themes/uw-madison.css
 ../node_modules/less/bin/lessc -x target/css/themes/uw-system.less > target/css/themes/uw-system.css

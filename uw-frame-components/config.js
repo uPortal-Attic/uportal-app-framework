@@ -10,24 +10,27 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
   var allPaths, allShims, framePaths, frameShims;
 
   framePaths = {
-      'angular'       : "bower_components/angular/angular.min",
-      'angular-mocks' : "bower_components/angular-mocks/angular-mocks",
-      'angular-animate' : 'bower_components/angular-animate/angular-animate',
-      'angulartics'   : "bower_components/angulartics/dist/angulartics.min",
-      'angulartics-google-analytics' : "vendor/angulartics-ga.min",
+      'angular'       : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min",
+      'angular-animate' : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-animate.min",
+      'angular-mocks' : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-mocks",
+      'angulartics'   : "https://cdnjs.cloudflare.com/ajax/libs/angulartics/1.0.3/angulartics.min",
+      'angulartics-google-analytics' : [
+          "https://cdnjs.cloudflare.com/ajax/libs/angulartics-google-analytics/0.2.1/angulartics-ga.min",
+          "js/noop"
+      ],
+      'jquery'        : "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min",
+      'jquery-ui'     : "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min",
+      'ngAria'        : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-aria.min",
+      'ngMaterial'    : "https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.min",
+      'ngRoute'       : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-route.min",
+      'ngSanitize'    : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-sanitize.min",
+      'ngStorage'     : "https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min",
+      'ui-bootstrap'  : "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min",
+      'ui-gravatar'   : "https://cdnjs.cloudflare.com/ajax/libs/angular-gravatar/0.4.2/angular-gravatar.min",
       'app-config'    : "js/app-config",
       'frame-config'  : "js/frame-config",
       'override'      : "js/override",
-      'jquery'        : "bower_components/jquery/dist/jquery.min",
-      'jquery-ui'     : "bower_components/jquery-ui/jquery-ui.min",
-      'ngMaterial'    : "bower_components/angular-material/angular-material.min",
-      'ngRoute'       : "bower_components/angular-route/angular-route.min",
-      'ngSanitize'    : "bower_components/angular-sanitize/angular-sanitize.min",
-      'ngStorage'     : "bower_components/ngstorage/ngStorage.min",
-      'sortable'      : "js/sortable",
-      'ui-bootstrap'  : "bower_components/angular-bootstrap/ui-bootstrap-tpls.min",
-      'ui-gravatar'   : "bower_components/angular-gravatar/build/angular-gravatar.min",
-      'ngAria'        : "bower_components/angular-aria/angular-aria.min"
+      'sortable'      : "js/sortable"
   };
 
   frameShims = {

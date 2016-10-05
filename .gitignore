@@ -16,4 +16,5 @@ src/main/webapp/test_out/
 node_modules
 npm-debug.log
 *.iml
+*.swp
 
