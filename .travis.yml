@@ -1,6 +1,5 @@
 language: java
 before_install:
-  - npm install -g bower
   - npm install
 script :
   - npm run build-all

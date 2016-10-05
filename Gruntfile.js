@@ -6,20 +6,11 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'uw-frame-static/target/index.html': ['uw-frame-static/index.html'],
-          'docs/target/index.html': ['docs/index.html'],
-          'uw-frame-static/target/vendor/angulartics-ga.min.js': ['uw-frame-components/bower_components/angulartics-google-analytics/dist/angulartics-ga.min.js'],
-          'uw-frame-static/target/vendor/angulartics-ga.min.js.map': ['uw-frame-components/bower_components/angulartics-google-analytics/dist/angulartics-ga.min.js.map']
+          'docs/target/index.html': ['docs/index.html']
         }
       }
     },
     run: {
-      get_bower: {
-        cmd: 'npm',
-        args: [
-          'run',
-          'pretest'
-        ]
-      },
       build_static: {
         cmd: 'npm',
         args: [
@@ -74,7 +65,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('serve', 'Compile static and watch for change so it can recompile', function(){
     grunt.task.run([
-      'run:get_bower',
       'run:run_static',
       'watch:static'
     ]);
@@ -82,7 +72,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('serve_docs', 'Compile docs and watch for change so it can recompile', function(){
     grunt.task.run([
-      'run:get_bower',
       'run:run_docs',
       'watch:docs'
     ]);

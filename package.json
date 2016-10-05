@@ -3,9 +3,8 @@
   "version": "2.8.0",
   "description": "MyUW's frame project for creating angular based microservices.",
   "scripts": {
-    "pretest": "./uw-frame-components/test/build.sh",
     "test": "karma start uw-frame-components/karma.conf.js --single-run",
-    "posttest": "cd uw-frame-components && rm -rf bower_components",
+    "posttest": "cd uw-frame-components",
     "build-all": "npm run build-java && npm run build-static",
     "build-docs": "cd docs && ./build.sh",
     "postbuild-docs": "grunt",
@@ -21,9 +20,8 @@
     "docker": "docker run -d --name frame -p 8009:8009 docker.doit.wisc.edu/myuw/uw-frame-superstatic:latest",
     "build-docker": "docker build -t docker.doit.wisc.edu/myuw/uw-frame-superstatic .",
     "stop-docker": "docker stop frame; docker rm frame;",
-    "clean": "npm run clean-uw-frame-components; npm run clean-uw-frame-java; npm run clean-uw-frame-static; npm run clean-test",
-    "clean-test": "rm -rf uw-frame-components/vendor uw-frame-components/test_out uw-frame-components/coverage",
-    "clean-uw-frame-components": "rm -rf uw-frame-components/bower_components",
+    "clean": "npm run clean-uw-frame-java; npm run clean-uw-frame-static; npm run clean-test",
+    "clean-test": "uw-frame-components/test_out uw-frame-components/coverage",
     "clean-uw-frame-java": "cd uw-frame-java && mvn clean",
     "clean-uw-frame-static": "rm -rf uw-frame-static/target"
   },
@@ -70,7 +68,6 @@
   },
   "homepage": "https://github.com/UW-Madison-DoIT/uw-frame",
   "devDependencies": {
-    "bower": "^1.7.1",
     "graceful-fs": "^4.0.0",
     "grunt": "^0.4.5",
     "grunt-contrib-watch": "^0.6.1",

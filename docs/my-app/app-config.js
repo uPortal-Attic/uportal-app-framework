@@ -3,8 +3,8 @@ define([], function() {
 
   return {
     paths : {
-      'marked'        : "bower_components/marked/lib/marked",
-      'ngMarked'      : "bower_components/angular-marked/dist/angular-marked"
+      'marked'        : "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min",
+      'ngMarked'      : "https://cdn.rawgit.com/Hypercubed/angular-marked/v1.0.1/dist/angular-marked.min"
     },
 
     shims : {
