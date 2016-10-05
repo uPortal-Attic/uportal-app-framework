@@ -28,7 +28,7 @@ define(['angular'], function(angular) {
             'fname' : 'sample-fname'
         })
         .value('SEARCH',{
-            'searchURL' : 'https://my.wisc.edu/web/apps/search/'
+            'searchURL' : '/web/apps/search/'
         })
         .value('FEATURES', {
             'enabled' : false,
@@ -55,7 +55,7 @@ define(['angular'], function(angular) {
 
         })
         .value('FOOTER_URLS', [
-          { "url" : "https://my.wisc.edu/web/features",
+          { "url" : "/web/features",
             "target" : "_blank",
             "title" : "What's New"
           }
