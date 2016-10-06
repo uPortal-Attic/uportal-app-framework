@@ -18,14 +18,14 @@ define(['angular', 'jquery'], function(angular, $) {
      * @returns {*} A promise which returns an object containing notifications arrays
      */
     var getAllNotifications = function() {
-      return $http.get(SERVICE_LOC.notificationsURL, {cache : true})
-        .then(function(result) {
-          return sortNotifications(result.data.notifications);
-        },
-        function(reason) {
-          miscService.redirectUser(reason.status, 'notifications json feed call');
-        }
-      );
+      return $q.all([$http.get(SERVICE_LOC.notificationsURL, {cache : true}), getDismissedNotificationIds()])
+          .then(function(result) {
+            return sortNotifications(result[0].data.notifications, result[1]);
+          },
+          function(reason) {
+            miscService.redirectUser(reason.status, 'notifications json feed call');
+          }
+        );
     };
 
     /**
@@ -44,27 +44,13 @@ define(['angular', 'jquery'], function(angular, $) {
         //post processing
         var groups = result[1],
           allNotifications = result[0],
-          notificationsByGroup = [];
+          notificationsByGroup = {};
         if(groups && allNotifications) {
-          // For each notification
-          $.each(allNotifications, function (index, notification) {
-            var added = false;
-            // For each group for the current notification
-            $.each(notification.groups, function(index, group) {
-              if(!added) {
-                // Intersect, then get length
-                var inGroup = $.grep(groups, function(e) {return e.name === group}).length;
-                if(inGroup > 0) {
-                  // If user is in this group, he should see this notification
-                  notificationsByGroup.push(notification);
-                  added = true;
-                }
-              }
-            });
-          });
+          notificationsByGroup.dismissed = filterNotificationsByGroup(allNotifications.dismissed, groups);
+          notificationsByGroup.notDismissed = filterNotificationsByGroup(allNotifications.notDismissed, groups);
         }
         // Return filtered notifications, sorted into dismissed and notDismissed arrays
-        return sortNotifications(notificationsByGroup);
+        return notificationsByGroup;
       };
       // If $q failed, redirect user back to login and give a reason
       var errorFn = function(reason) {
@@ -91,6 +77,9 @@ define(['angular', 'jquery'], function(angular, $) {
      * @returns {*} A promise that returns an array of IDs
      */
     var getDismissedNotificationIds = function() {
+      if(!keyValueService.isKVStoreActivated()) {
+        return $q.resolve([]);
+      }
       dismissedPromise = dismissedPromise || keyValueService.getValue(KV_KEYS.DISMISSED_NOTIFICATION_IDS)
           .then(function(data) {
             if(data && typeof data.value === 'string') {
@@ -118,19 +107,13 @@ define(['angular', 'jquery'], function(angular, $) {
      * @param data Array of notifications
      * @returns {{dismissed: Array, notDismissed: Array}} Object with arrays sorted by dismissal
      */
-    var sortNotifications = function(data) {
+    var sortNotifications = function(data, dismissedIds) {
       var notifications = {
         'dismissed': [],
         'notDismissed': []
       };
-      if (SERVICE_LOC.kvURL) {
-        // If k/v store enabled, get dismissed notification IDs
-        getDismissedNotificationIds().then(function(data) {
-          if(Array.isArray(data)) {
-            dismissedIds = data;
-          }
-        });
-        // Check notification IDs against dismissed IDs from k/v store and sort notifications into appropriate array
+      // Check notification IDs against dismissed IDs from k/v store and sort notifications into appropriate array
+      if(angular.isArray(dismissedIds)) {
         angular.forEach(data, function(notification, index) {
           if (dismissedIds.indexOf(notification.id) > -1) {
             notifications.dismissed.push(notification);
@@ -139,12 +122,38 @@ define(['angular', 'jquery'], function(angular, $) {
           }
         });
       } else {
-        // If k/v store not enabled, assume no dismissed notifications
         notifications.notDismissed = data;
       }
       // Return sorted notifications
       return notifications;
     };
+
+    /**
+     * Filter the array of notifications based on the groups that were passed in
+     * @param arrayOfNotifications : an array of notifications
+     * @param groups : The list of groups one person is in
+     * @return : an array filtered by groups. Or an empty array if they have none
+    **/
+    function filterNotificationsByGroup(arrayOfNotifications, groups) {
+      var notificationsByGroup = [];
+      $.each(arrayOfNotifications, function (index, notification) {
+        var added = false;
+        // For each group for the current notification
+        $.each(notification.groups, function(index, group) {
+          if(!added) {
+            // Intersect, then get length
+            var inGroup = $.grep(groups, function(e) {return e.name === group}).length;
+            if(inGroup > 0) {
+              // If user is in this group, he should see this notification
+              notificationsByGroup.push(notification);
+              added = true;
+            }
+          }
+        });
+      });
+
+      return notificationsByGroup;
+    }
 
     return {
       getAllNotifications: getAllNotifications,
