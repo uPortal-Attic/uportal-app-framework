@@ -70,9 +70,7 @@ define(['angular','require'], function(angular, require) {
         if (!$rootScope.GuestMode) {
           portalFeaturesService.getUnseenPopups().then(function(unseenPopups) {
             if (unseenPopups.length !=0 && !$rootScope.GuestMode) {
-              console.log(unseenPopups);
               var orderedPopups = $filter('orderBy')(unseenPopups, ['popup.startYear', 'popup.startMonth', 'popup.startDay', 'id']);
-              console.log(orderedPopups);
               $scope.latestFeature = orderedPopups[0];
 
               var displayPopup = function() {
