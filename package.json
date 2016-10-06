@@ -21,7 +21,7 @@
     "build-docker": "docker build -t docker.doit.wisc.edu/myuw/uw-frame-superstatic .",
     "stop-docker": "docker stop frame; docker rm frame;",
     "clean": "npm run clean-uw-frame-java; npm run clean-uw-frame-static; npm run clean-test",
-    "clean-test": "uw-frame-components/test_out uw-frame-components/coverage",
+    "clean-test": "rm -rf uw-frame-components/test_out uw-frame-components/coverage",
     "clean-uw-frame-java": "cd uw-frame-java && mvn clean",
     "clean-uw-frame-static": "rm -rf uw-frame-static/target"
   },
