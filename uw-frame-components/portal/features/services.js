@@ -73,8 +73,8 @@ define(['angular'], function(angular) {
               for(var i=0; i<=data.id; i++){
                 seenAnnouncements.push(i);
               }
-              $sessionStorage.seenAnnouncmentIds = seenAnnouncements;
-              keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncmentIds).then(function(data){
+              $sessionStorage.seenAnnouncementIds = seenAnnouncements;
+              keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncementIds).then(function(data){
                 keyValueService.deleteValue("lastviewedannouncementid").then(function(){
                   return resolve(null);
                 }, function(response){
@@ -132,17 +132,17 @@ define(['angular'], function(angular) {
       });
     }
 
-    var getSeenAnnouncments = function(){
+    var getSeenAnnouncements = function(){
       return $q(function(resolve, reject){
-        if(!$sessionStorage.seenAnnouncmentIds){
+        if(!$sessionStorage.seenAnnouncementIds){
           updateLegacySeenAnnouncements().then(function(){
             keyValueService.getValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS).then(function(data){
               if(!Array.isArray(data)){
-                $sessionStorage.seenAnnouncmentIds = [];
+                $sessionStorage.seenAnnouncementIds = [];
               }else{
-                $sessionStorage.seenAnnouncmentIds = data;
+                $sessionStorage.seenAnnouncementIds = data;
               }
-              return resolve($sessionStorage.seenAnnouncmentIds);
+              return resolve($sessionStorage.seenAnnouncementIds);
             }, function(response){
               return reject(response);
             });
@@ -150,80 +150,82 @@ define(['angular'], function(angular) {
             return reject(response);
           });
         }else{
-          return resolve($sessionStorage.seenAnnouncmentIds);
+          return resolve($sessionStorage.seenAnnouncementIds);
         };
       });
     }
 
     var getSeenPopups = function(){
-      return $q(function(resolve, reject){
-        if(!$sessionStorage.seenPopupIds){
-          updateLegacyPopups().then(function(){
-            keyValueService.getValue(KV_KEYS.VIEWED_POPUP_IDS).then(function(data){
-              if(!Array.isArray(data)){
+      return $q(function(resolve, reject) {
+        if (!$sessionStorage.seenPopupIds) {
+          updateLegacyPopups().then(function() {
+            keyValueService.getValue(KV_KEYS.VIEWED_POPUP_IDS).then(function(data) {
+              if(!Array.isArray(data)) {
                 $sessionStorage.seenPopupIds = [];
-              }else{
+              } else {
                 $sessionStorage.seenPopupIds = data;
               }
               return resolve($sessionStorage.seenPopupIds);
-            }, function(response){
+            }, function(response) {
               return reject(response);
             });
-          }, function(response){
+          }, function(response) {
             return reject(response);
           });
-        }else{
+        } else {
           return resolve($sessionStorage.seenPopupIds);
-        };
+        }
       });
-    }
+    };
     
     var markAnnouncementSeen = function(announcementID){
       return $q(function(resolve, reject){
         //Store in session storage
-        if(!$sessionStorage.seenAnnouncmentIds){
-          $sessionStorage.seenAnnouncmentIds = [announcementID];
+        if(!$sessionStorage.seenAnnouncementIds){
+          $sessionStorage.seenAnnouncementIds = [announcementID];
         }else{
-          $sessionStorage.seenAnnouncmentIds.push(announcementID);
+          $sessionStorage.seenAnnouncementIds.push(announcementID);
         }
         //Store in keyvalueStorage if able
         if(keyValueService.isKVStoreActivated()){
-          keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncmentIds).then(function(data){
-            return resolve($sessionStorage.seenAnnouncmentIds);
+          keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncementIds).then(function(data){
+            return resolve($sessionStorage.seenAnnouncementIds);
           },function(response){
             return reject(response);
           }); 
         }else{
-          return resolve($sessionStorage.seenAnnouncmentIds);
+          return resolve($sessionStorage.seenAnnouncementIds);
         }
       });
     }
     
-    var markPopupSeen = function(popupID){
-      return $q(function(resolve, reject){
+    var markPopupSeen = function(popupID) {
+      return $q(function(resolve, reject) {
         //Store in session storage
-        if(!$sessionStorage.seenPopupIds){
+        if (!$sessionStorage.seenPopupIds) {
           $sessionStorage.seenPopupIds = [popupID];
-        }else{
+        } else {
           $sessionStorage.seenPopupIds.push(popupID);
         }
         //Store in keyvalueStorage if able
-        if(keyValueService.isKVStoreActivated()){
-          keyValueService.setValue(KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds).then(function(data){
-            return resolve($sessionStorage.seenPopupIds);
-          },function(response){
-            return reject(response);
-          }); 
-        }else{
+        if (keyValueService.isKVStoreActivated()) {
+          keyValueService.setValue(KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds)
+            .then(function(data) {
+              return resolve($sessionStorage.seenPopupIds);
+            },
+            function(response) {
+              return reject(response);
+            });
+        } else {
           return resolve($sessionStorage.seenPopupIds);
         }
       });
-    }
+    };
 
     var getUnseenAnnouncements = function(){
       var successFn, errorFn;
       successFn = function(data){
-        //features in data[0]  //seenAnnouncments in data[1]
+        //features in data[0]  //seenAnnouncements in data[1]
         var announcements = filterFilter(data[0], {isBuckyAnnouncement : true});
         if(announcements && announcements.length != 0) {
          //filter down to ones they haven't seen
@@ -247,47 +249,43 @@ define(['angular'], function(angular) {
       };
       errorFn = function(reason){
         //Currently logging errors to console.
-        console.log("error retreiving unseenAnnouncements: " +  reason.status);
+        console.log("error retrieving unseenAnnouncements: " +  reason.status);
         return reason;
       };
    
-      return $q.all([getFeatures(), getSeenAnnouncments()]).then(successFn, errorFn);
+      return $q.all([getFeatures(), getSeenAnnouncements()]).then(successFn, errorFn);
     }
 
     
-    var getUnseenPopups = function(){
+    var getUnseenPopups = function() {
       var successFn, errorFn;
-      successFn = function(data){
+      successFn = function(data) {
         var popupFeatures = filterFilter(data[0], {isPopup : true});
-        if(popupFeatures.length != 0){
+        if (popupFeatures.length != 0) {
           var today = Date.parse(new Date());
-          var filterExpiredPopups = function(feature){
+          var filterExpiredPopups = function(feature) {
             var startDate = Date.parse(new Date(feature.popup.startYear, feature.popup.startMonth, feature.popup.startDay));
             var endDate = Date.parse(new Date(feature.popup.endYear, feature.popup.endMonth, feature.popup.endDay));
             return (today > startDate && today < endDate);
-          }
-          var filterUnEnabledPopups = function(feature){
+          };
+          var filterUnEnabledPopups = function(feature) {
               return feature.popup.enabled;
-          }
-          var filterSeenPopups = function(feature){
-            if(data[1].indexOf(feature.id) !== -1){
-              return false;
-            }
-            return true;
-          }
-          var filteredPopupFeatures = popupFeatures.filter(filterSeenPopups).filter(filterExpiredPopups).filter(filterUnEnabledPopups);
-          return filteredPopupFeatures;
+          };
+          var filterSeenPopups = function(feature) {
+            return !(data[1].indexOf(feature.id) !== -1);
+          };
+          return popupFeatures.filter(filterSeenPopups).filter(filterExpiredPopups).filter(filterUnEnabledPopups);
         }
-      }
+      };
 
       errorFn = function(reason){
         //Currently logging errors to console.
-        console.log("error retreiving unseenPopups: " +  reason.status);
+        console.log("error retrieving unseenPopups: " +  reason.status);
         return reason;
       };
       
       return $q.all([getFeatures(), getSeenPopups()]).then(successFn, errorFn);
-    }
+    };
 
 
     return {
