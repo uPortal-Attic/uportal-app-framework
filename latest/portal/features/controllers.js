@@ -67,9 +67,9 @@ define(['angular','require'], function(angular, require) {
       //local functions ---------------------------------------------------------
 
       var getPopups = function(){
-        if(!$rootScope.GuestMode) {
+        if (!$rootScope.GuestMode) {
           portalFeaturesService.getUnseenPopups().then(function(unseenPopups) {
-            if(unseenPopups.length !=0 && !$rootScope.GuestMode){
+            if (unseenPopups.length !=0 && !$rootScope.GuestMode) {
               var orderedPopups = $filter('orderBy')(unseenPopups, ['popup.startYear', 'popup.startMonth', 'popup.startDay', 'id']);
               $scope.latestFeature = orderedPopups[0];
 
@@ -80,6 +80,7 @@ define(['angular','require'], function(angular, require) {
                   clickOutsideToClose: true,
                   openFrom: 'left',
                   closeTo: 'right',
+                  preserveScope: true,
                   scope: $scope,
                   controller: function DialogController($scope, $mdDialog) {
                     $scope.closeDialog = function(action) {
