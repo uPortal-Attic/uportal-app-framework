@@ -49,7 +49,7 @@ define(['angular-mocks', 'portal'], function() {
             httpBackend.flush();
         });
 
-        it("should have one result", function() {
+        it("should have one notDismissed result", function() {
             //setup
             httpBackend.whenGET(backendURL).respond(
               {"notifications" :
@@ -74,6 +74,36 @@ define(['angular-mocks', 'portal'], function() {
                 expect(results.notDismissed).toBeTruthy();
                 expect(results.dismissed).toBeTruthy();
                 expect(results.notDismissed.length).toEqual(1);
+            });
+            httpBackend.flush();
+        });
+
+        it("should have one dismissed result", function() {
+            //setup
+            httpBackend.whenGET(backendURL).respond(
+              {"notifications" :
+                  [
+                   {
+                     "id"     : 1,
+                     "groups" : ["Portal Administrators"],
+                     "title"  : "This is an admin notification smoke test",
+                     "actionURL" : "http://www.google.com",
+                     "actionAlt" : "Google"
+                   }
+                 ]
+               }
+            );
+            httpBackend.whenGET(groupURL).respond({"groups" :[]});
+            httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([1]);
+
+            //begin test
+            notificationsService.getAllNotifications().then(function(results){
+                console.log(results);
+                expect(results).toBeTruthy();
+                expect(results.notDismissed).toBeTruthy();
+                expect(results.dismissed).toBeTruthy();
+                expect(results.notDismissed.length).toEqual(0);
+                expect(results.dismissed.length).toEqual(1);
             });
             httpBackend.flush();
         });
