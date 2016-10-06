@@ -44,28 +44,13 @@ define(['angular', 'jquery'], function(angular, $) {
         //post processing
         var groups = result[1],
           allNotifications = result[0],
-          notificationsByGroup = [],
-          dismissedIds = result[2];
+          notificationsByGroup = {};
         if(groups && allNotifications) {
-          // For each notification
-          $.each(allNotifications, function (index, notification) {
-            var added = false;
-            // For each group for the current notification
-            $.each(notification.groups, function(index, group) {
-              if(!added) {
-                // Intersect, then get length
-                var inGroup = $.grep(groups, function(e) {return e.name === group}).length;
-                if(inGroup > 0) {
-                  // If user is in this group, he should see this notification
-                  notificationsByGroup.push(notification);
-                  added = true;
-                }
-              }
-            });
-          });
+          notificationsByGroup.dismissed = filterNotificationsByGroup(allNotifications.dismissed, groups);
+          notificationsByGroup.notDismissed = filterNotificationsByGroup(allNotifications.notDismissed, groups);
         }
         // Return filtered notifications, sorted into dismissed and notDismissed arrays
-        return sortNotifications(notificationsByGroup, dismissedIds);
+        return notificationsByGroup;
       };
       // If $q failed, redirect user back to login and give a reason
       var errorFn = function(reason) {
@@ -73,7 +58,7 @@ define(['angular', 'jquery'], function(angular, $) {
       };
 
       // Set up asynchronous calls to get notifications and portal groups
-      filteredNotificationPromise = $q.all([getAllNotifications(), PortalGroupService.getGroups(), getDismissedNotificationIds()]).then(successFn, errorFn);
+      filteredNotificationPromise = $q.all([getAllNotifications(), PortalGroupService.getGroups()]).then(successFn, errorFn);
 
       return filteredNotificationPromise;
     };
@@ -142,6 +127,33 @@ define(['angular', 'jquery'], function(angular, $) {
       // Return sorted notifications
       return notifications;
     };
+
+    /**
+     * Filter the array of notifications based on the groups that were passed in
+     * @param arrayOfNotifications : an array of notifications
+     * @param groups : The list of groups one person is in
+     * @return : an array filtered by groups. Or an empty array if they have none
+    **/
+    function filterNotificationsByGroup(arrayOfNotifications, groups) {
+      var notificationsByGroup = [];
+      $.each(arrayOfNotifications, function (index, notification) {
+        var added = false;
+        // For each group for the current notification
+        $.each(notification.groups, function(index, group) {
+          if(!added) {
+            // Intersect, then get length
+            var inGroup = $.grep(groups, function(e) {return e.name === group}).length;
+            if(inGroup > 0) {
+              // If user is in this group, he should see this notification
+              notificationsByGroup.push(notification);
+              added = true;
+            }
+          }
+        });
+      });
+
+      return notificationsByGroup;
+    }
 
     return {
       getAllNotifications: getAllNotifications,
