@@ -38,10 +38,13 @@ define(['angular-mocks', 'portal'], function() {
             //setup
             httpBackend.whenGET(backendURL).respond({"notifications" :[]});
             httpBackend.whenGET(groupURL).respond({"groups" :[]});
+            httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
             //begin test
             notificationsService.getAllNotifications().then(function(results){
-                expect(results).toBeTruthy();
-                expect(results.length).toEqual(0);
+              console.log(results);
+              expect(results).toBeTruthy();
+              expect(results.dismissed).toBeTruthy();
+              expect(results.notDismissed).toBeTruthy();
             });
             httpBackend.flush();
         });
@@ -62,12 +65,15 @@ define(['angular-mocks', 'portal'], function() {
                }
             );
             httpBackend.whenGET(groupURL).respond({"groups" :[]});
+            httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
 
             //begin test
             notificationsService.getAllNotifications().then(function(results){
                 console.log(results);
                 expect(results).toBeTruthy();
-                expect(results.length).toEqual(1);
+                expect(results.notDismissed).toBeTruthy();
+                expect(results.dismissed).toBeTruthy();
+                expect(results.notDismissed.length).toEqual(1);
             });
             httpBackend.flush();
         });
