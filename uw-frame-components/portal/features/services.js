@@ -236,8 +236,10 @@ define(['angular'], function(angular) {
               //check dates
               var today = Date.parse(new Date());
               var startDate = Date.parse(new Date(feature.goLiveYear, feature.goLiveMonth, feature.goLiveDay));
-              var isoDate = feature.buckyAnnouncement.endDate;
-              var expirationDate = new Date(isoDate).getTime();
+              var epochDate = feature.buckyAnnouncement.endDate;
+              if (typeof epochDate=="string"){
+                  var expirationDate = new Date(epochDate).getTime();
+              }
               
               if(startDate <= today && today <= expirationDate) {
                 return true;
