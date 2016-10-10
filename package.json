@@ -16,9 +16,13 @@
     "postbuild-static": "npm run build:html",
     "predocs": "npm run build-docs",
     "docs": "cd docs/target && superstatic",
+    "docs:watch": "onchange uw-frame-components/** docs/** -e docs/target -v -- npm run build-docs",
+    "docs:dev": "npm run build-docs -s && concurrently -k \"npm run docs -s\" \"npm run docs:watch -s\"",
     "jetty": "cd uw-frame-java && mvn jetty:run",
     "prestatic": "npm run build-static",
     "static": "cd uw-frame-static/target && superstatic --host=0.0.0.0",
+    "static:watch": "onchange uw-frame-components/** -i -- npm run build-static",
+    "static:dev": "npm run build-static -s && concurrently -k \"npm run static -s\" \"npm run static:watch -s\"",
     "docker": "docker run -d --name frame -p 8009:8009 docker.doit.wisc.edu/myuw/uw-frame-superstatic:latest",
     "build-docker": "docker build -t docker.doit.wisc.edu/myuw/uw-frame-superstatic .",
     "stop-docker": "docker stop frame; docker rm frame;",
@@ -69,6 +73,7 @@
   },
   "homepage": "https://github.com/UW-Madison-DoIT/uw-frame",
   "devDependencies": {
+    "concurrently": "^3.1.0",
     "graceful-fs": "^4.0.0",
     "htmlprocessor": "^0.2.4",
     "jasmine-core": "^2.3.4",
@@ -84,11 +89,11 @@
     "karma-requirejs": "0.2.6",
     "less": "1.7.5",
     "lodash": "^4.0.0",
+    "onchange": "^3.0.2",
     "phantomjs-prebuilt": "2.1.7",
     "recursive-copy": "^2.0.5",
     "requirejs": "^2.2.0",
     "rifraf": "^2.0.2",
-    "superstatic": "^4.0.0",
-    "watchify": "^3.7.0"
+    "superstatic": "^4.0.0"
   }
 }
