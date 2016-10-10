@@ -1,0 +1,74 @@
+/* Styles for portal/misc/partials/app-header.html */
+
+app-header,app-header-two-way-bind {
+
+  .app-header {
+    box-shadow: 0 1px 1px 0 @grayscale5;
+    h1.app-title {
+      font-weight: 200;
+      font-size: 20px;
+      margin: 10px 0;
+      color: @white;
+    }
+    .md-subheader-inner {
+      padding: 0 16px;
+      width: 100%;
+
+      .md-subheader-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .link-div {
+          float:right;
+          color: @white;
+          text-transform: lowercase;
+          &:first-letter {
+            text-transform: uppercase;
+          }
+          a {
+            color: @white;
+            &:hover {
+              color: @white;
+            }
+          }
+
+          @media (max-width: 960px) {
+            i.fa {
+              font-size: 20px;
+            }
+          }
+          i.fa-gear {
+            font-size: 20px;
+          }
+        }
+
+        add-to-home {
+          .link-div {
+            text-transform: none;
+            &:first-letter {
+              text-transform: none;
+            }
+          }
+        }
+
+        .md-button {
+          margin: 0 8px;
+          color: @white;
+          > a {
+            color: @white;
+            &:hover {
+              color: @white;
+            }
+          }
+          @media (max-width: 960px) {
+            min-width: inherit;
+          }
+        }
+      }
+      @media(max-width: 599px) {
+        padding-right: 0;
+      }
+    }
+  }
+}

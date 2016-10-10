@@ -1,0 +1,70 @@
+<notification-bell mode="priority" class="hidden-xs" hide-xs></notification-bell>
+<span ng-controller="PortalPopupController"></span>
+<md-toolbar md-scroll-shrink class="md-primary">
+  <div class="md-toolbar-tools"  role="banner">
+    <div layout="row" flex="30" layout-align="start center">
+      <!-- MOBILE MENU -->
+      <md-menu md-position-mode="target target" md-offset="0 56" hide-gt-xs>
+        <md-button aria-label="toggle mobile menu" hide-gt-xs ng-click="$mdOpenMenu($event)" layout="row" layout-align="center center">
+          <notification-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notification-bell>
+          <i class="fa fa-bars" style='font-size: 1.5em;'></i>
+        </md-button>
+        <md-menu-content width="5" class="mobile-menu">
+          <md-menu-item>
+            <search ng-show="APP_FLAGS.showSearch"></search>
+          </md-menu-item>
+          <!-- Bucky announcement -->
+          <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
+          <!-- Notifications -->
+          <notification-bell mode='mobile-menu' header-ctrl='headerCtrl' ng-if='!GuestMode'></notification-bell>
+          <!-- Home link -->
+          <md-menu-item>
+            <md-button class="md-default" ng-if='APP_FLAGS.isWeb' ng-href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+              <span class="fa fa-home fa-fw"></span> Home
+            </md-button>
+            <md-button class="md-default" ng-if='!APP_FLAGS.isWeb' ng-href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+              <span class="fa fa-home fa-fw"></span> Home
+            </md-button>
+          </md-menu-item>
+          <!-- Log out link -->
+          <md-menu-item>
+            <md-button class="md-default" ng-href="{{MISC_URLS.logoutURL}}" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Log out');">
+              <span class="fa fa-sign-out fa-fw"></span> Log out
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+
+      <!-- MyUW APP ICON AND TITLE -->
+      <a ng-href="{{MISC_URLS.rootURL}}"
+         class="title-link"
+         target="_self"
+         aria-label="{{portal.theme.ariaLabelTitle}}"
+         layout="row"
+         layout-align="start center">
+        <img ng-src="{{portal.theme.crest}}"
+             class="crest"
+             alt="{{portal.theme.crestalt}}"
+             hide-sm hide-xs>
+        <h1 class="md-title" layout="row">
+          <span>{{portal.theme.title}}</span>
+          <span class="beta-logo" ng-if="portal.theme.subtitle">{{portal.theme.subtitle}}</span>
+        </h1>
+      </a>
+    </div>
+
+
+    <!-- SEARCH BAR SM+ -->
+    <div layout="row" flex="40" layout-align="center center" hide-xs>
+      <search ng-show="APP_FLAGS.showSearch"></search>
+    </div>
+    <span flex></span>
+
+    <!-- COLLAPSIBLE MENU SM+ -->
+    <div layout="row" layout-align="end center" flex="30" hide-xs>
+      <bucky-announcement mode="BUCKY"></bucky-announcement>
+      <notification-bell mode="bell" ng-if="!GuestMode"></notification-bell>
+      <username layout="row" layout-align="start center"></username>
+    </div>
+  </div>
+</md-toolbar>

@@ -1,0 +1,27 @@
+<md-dialog aria-label="new features">
+  <md-toolbar class="md-accent">
+    <div class="md-toolbar-tools">
+      <h1>{{ latestFeature.title }}</h1>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog('dismissed')" aria-label="close features dialog">
+        <md-icon>close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content features-popup" layout="column" layout-align="center center">
+        <img ng-src="{{ latestFeature.img }}" aria-describedby="featureContent" hide-xs>
+        <p id="featureContent" class="sr-only" hide-xs>{{ latestFeature.description }}</p>
+        <p hide-gt-xs>{{ latestFeature.description }}</p>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+      <md-button class="md-default"
+                 ng-if="latestFeature.learnMoreURL"
+                 ng-click="closeDialog('closed')"
+                 ng-href="{{ latestFeature.learnMoreURL }}">
+        Learn more
+      </md-button>
+      <md-button class="md-primary" ng-click="closeDialog('closed')">{{ latestFeature.popup.buttonText }}</md-button>
+    </md-dialog-actions>
+</md-dialog>

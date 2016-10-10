@@ -1,0 +1,61 @@
+<div ng-controller="PortalNotificationController as notificationIconCtrl" class="notifications">
+  <!-- Mobile bell in hamburger -->
+  <div class="notification-badge notification-badge-mobile" aria-label="{{ status }}"
+       ng-if="notificationsEnabled && directiveMode === 'mobile-bell' && notifications.length !== 0">
+    <i class='fa fa-bell'></i>
+  </div>
+
+  <!-- Mobile menu row -->
+  <md-menu-item ng-if="notificationsEnabled && directiveMode === 'mobile-menu'">
+    <md-button title="click to view notifications"
+               class="md-default"
+               ng-href="{{ notificationsUrl }}"
+               layout="row" layout-align="start center">
+      <span><i class='fa fa-bell fa-fw'></i></span>
+      <span>Notifications ({{ notifications.length }})</span>
+    </md-button>
+  </md-menu-item>
+
+  <!-- Notification bell on desktop -->
+  <a ng-if='notificationsEnabled && directiveMode === "bell"'
+     title="click to view notifications"
+     class="menu-notification-link notification-desktop"
+     ng-href="{{ notificationsUrl }}">
+    <div class="notification-badge" aria-label="{{status}}" ng-class="{ 'notification-badge-empty' : notifications.length === 0 }">
+      <div class="arrow-down" ng-if="hasPriorityNotifications"></div>
+      <span class="number-of-nots" ng-if="notifications.length > 0"
+            ng-class="{ 'more-than-10-nots' : (notifications.length > 9) }">{{ notifications.length }}</span>
+      <i class="fa fa-bell fa-2x" ng-class="{ 'has-priority-nots': hasPriorityNotifications }"></i>
+    </div>
+  </a>
+
+  <!-- Priority notifications -->
+  <div class="priority-notifications" ng-if='notificationsEnabled && (directiveMode === "priority")' ng-repeat="priority in priorityNotifications | limitTo: 1">
+    <div ng-if='priorityNotifications.length == 1' layout="row" layout-align="center center" layout-fill>
+      <a ng-href="{{priority.actionURL}}" alt="{{priority.actionAlt}}" class="notification-message">{{priority.title}}</a>
+      <div layout="row" layout-align="center center" ng-if="priority.actionButtons && priority.actionButtons.length > 0" class="notification-buttons">
+        <md-button class="md-raised"
+                   ng-href="{{button.url}}"
+                   ng-repeat="button in priority.actionButtons track by button.label"
+                   ng-class="{'md-primary' : $index === 0, 'md-accent' : $index > priority.buttonText.length / 2 - 1}"
+                   ng-click="button.action"
+                   target="{{button.target}}"
+                   aria-label="{{button.label}}">
+          {{button.label}}
+        </md-button>
+      </div>
+      <div class="dismiss-priority hidden-xs">
+        <md-button class="md-icon-button"
+                   ng-if="priority.dismissable"
+                   ng-click="dismissNotification(priority, true)"
+                   aria-label="Dismiss this priority notification">
+          <md-icon>close</md-icon>
+        </md-button>
+      </div>
+    </div>
+    <p ng-if='priorityNotifications.length > 1' class="notification-message">
+      You have {{priorityNotifications.length}} important notifications. <a href="notifications" alt="{{priority.actionAlt}}">View your notifications.</a>
+    </p>
+  </div>
+
+</div>
