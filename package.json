@@ -6,7 +6,8 @@
     "test": "karma start uw-frame-components/karma.conf.js --single-run",
     "posttest": "cd uw-frame-components",
     "build-all": "npm run build-java && npm run build-static",
-    "build-docs": "cd docs && ./build.sh",
+    "prebuild-docs": "npm run build-static && rimraf docs/target && mkdir -p docs/target",
+    "build-docs": "cp -r uw-frame-static/target/* docs/target && cp -r docs/js docs/img docs/markdown docs/my-app docs/superstatic.json docs/target",
     "build:html": "htmlprocessor uw-frame-static/index.html -o uw-frame-static/target/index.html && htmlprocessor docs/index.html -o docs/target/index.html",
     "postbuild-docs": "npm run build:html",
     "build-java": "cd uw-frame-java && mvn clean install",
@@ -85,6 +86,7 @@
     "lodash": "^4.0.0",
     "phantomjs-prebuilt": "2.1.7",
     "requirejs": "^2.2.0",
+    "rifraf": "^2.0.2",
     "superstatic": "^4.0.0",
     "watchify": "^3.7.0"
   }
