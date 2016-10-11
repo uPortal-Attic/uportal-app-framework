@@ -21,7 +21,9 @@ var themes = ['uw-madison', 'uw-system', 'uw-river-falls',
 
 
 for (var i = 0; i < themes.length; i++) {
-    var cmd = 'node_modules/.bin/lessc -x uw-frame-components/css/themes/'+ themes[i]+ '.less > uw-frame-static/target/css/themes/' + themes[i] + '.css';
-    exec(cmd, exec_handler);
+  var cmd = 'node_modules/.bin/lessc -x uw-frame-components/css/themes/' +
+      themes[i] + '.less > uw-frame-static/target/css/themes/' +
+      themes[i] + '.css';
+  exec(cmd, exec_handler);
 }
 
