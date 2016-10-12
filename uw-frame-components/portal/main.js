@@ -268,14 +268,13 @@ define([
         }
       };
 
-      var findThemeByName = function(name) {
-        for(var i = 0; i < THEMES.themes.length; i++) {
-          var cur = THEMES.themes[i];
-          if(name === cur.name) {
-            return cur;
-          }
+      var findThemeByName = function(theName) {
+        var themes = filterFilter(THEMES.themes, {name : theName});
+        if(themes && themes.length > 0) {
+          return themes[0];
+        } else {
+          return null;
         }
-        return null;
       }
 
       var lastLoginValid = function() {
