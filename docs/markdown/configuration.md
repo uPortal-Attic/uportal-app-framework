@@ -3,7 +3,7 @@ Your application can overwrite any constant listed below by adding it to the `js
 ### Configuration options
 
 #### APP_FLAGS
-+ `defaultTheme` : This is the default theme you want (see frame-config.js for the array list of themes). Provide an index number to just have simple selection, or set to the string `'group'` to enable group selection. If you do group selection make sure you set the `SERVICE_LOC.groupURL`.
++ `defaultTheme` : This is the default theme you want (see /js/frame-config.js for the array list of themes). Provide an array index number to just have simple selection, set it to the string `'group'` to enable group selection, or set it to any one of the themes names (e.g.: `'uw-greenbay'`). If you do group selection make sure you set the `SERVICE_LOC.groupURL`.
 + `showSearch` : This boolean hides/shows the search bar at the top.
 + `isWeb` : This boolean is a shortcut flag for the MyUW project. Majority of applications should set this to false.
 + `loginOnLoad` : A optional boolean flag that when set to `true` it will fire a login event during the loading sequence. `SERVICE_LOC.loginSilentURL` must be set.
@@ -73,7 +73,7 @@ define(['angular'], function(angular) {
   	.constant('OVERRIDE', {
 		'FEATURES': { 'enabled': true },
 		'APP_FLAG': { 'loginOnLoad': true, 'gaSearchParam': 'f' },
-		'FOOTER_URLS': [{ 
+		'FOOTER_URLS': [{
 		  'url': 'http://www.google.com',
 		  'target': '_blank',
 		  'title': 'Google'
@@ -85,16 +85,15 @@ define(['angular'], function(angular) {
 ```
 
 Alright, lot going on here so lets take a walk through this.
-+ `Lines 1-4` include the the requirejs wrapper, setup for the angular module (pulled in during the /portal/main.js execution), 
-and definition of the "OVERRIDE" constant. These lines should not change. 
-+ `Line 5` is an example override for the `enabled` attribute in the `FEATURES` category. By default its set to false, but 
++ `Lines 1-4` include the the requirejs wrapper, setup for the angular module (pulled in during the /portal/main.js execution),
+and definition of the "OVERRIDE" constant. These lines should not change.
++ `Line 5` is an example override for the `enabled` attribute in the `FEATURES` category. By default its set to false, but
 with this config it will now be true.
 + `Line 6` is an example of changing more than one config in a single category.
 + `Lines 7-11` are overriding an array config category. This will append to the default values. In this case it'll add a footer url for google.
 
-In version 2.2.1 we added the option to add key/value pairs to existing categories (e.g.: `APP_FLAGS`). This can be helpful if your 
-application has additional `APP_FLAGS` or `SERVICE_LOC` but you don't want to create another value service just for that. However, if you have 
+In version 2.2.1 we added the option to add key/value pairs to existing categories (e.g.: `APP_FLAGS`). This can be helpful if your
+application has additional `APP_FLAGS` or `SERVICE_LOC` but you don't want to create another value service just for that. However, if you have
 a lot of these it may be wise just to create an app specific value service.
 
 If you have questions please [ask the MyUW team](mailto:myuw-infra@office365.wisc.edu).
-
