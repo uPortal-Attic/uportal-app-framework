@@ -93,7 +93,7 @@
     "phantomjs-prebuilt": "2.1.7",
     "recursive-copy": "^2.0.5",
     "requirejs": "^2.2.0",
-    "rifraf": "^2.0.2",
+    "rimraf": "^2.5.4",
     "superstatic": "^4.0.0"
   }
 }
