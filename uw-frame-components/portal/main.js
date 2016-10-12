@@ -247,6 +247,19 @@ define([
             defaultThemeGo();
             loadingCompleteSequence();
           }
+        } else if (typeof themeIndex === 'string') {
+          //themeindex is a theme name, search!
+          var theme = findThemeByName(themeIndex);
+          if(theme) {
+            $rootScope.portal.theme = theme;
+            generateTheme();
+          } else {
+            if(APP_FLAGS.debug) {
+              console.warn('APP_FLAGS.defaultTheme was set to ' + themeIndex + ' however we could not find that theme name. Please check frame-config.js for a list of available themes. Falling back to the default theme (uw-system).')
+            }
+            defaultThemeGo();
+          }
+          loadingCompleteSequence();
         } else {
           //themeindex is a number, go with that
           $rootScope.portal.theme = THEMES.themes[themeIndex]; //theme default
@@ -254,6 +267,15 @@ define([
           loadingCompleteSequence();
         }
       };
+
+      var findThemeByName = function(theName) {
+        var themes = filterFilter(THEMES.themes, {name : theName});
+        if(themes && themes.length > 0) {
+          return themes[0];
+        } else {
+          return null;
+        }
+      }
 
       var lastLoginValid = function() {
         var timeLapseBetweenLogins = APP_FLAGS.loginDurationMills || 14400000;
