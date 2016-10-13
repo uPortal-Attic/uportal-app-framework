@@ -12,11 +12,11 @@ Run a local instance of uw-frame in a matter of minutes using the following step
 1. Clone the repo: `git clone git@github.com:UW-Madison-DoIT/uw-frame.git`
     - (optional) If you want to use a specific release, checkout its [tag](https://github.com/UW-Madison-DoIT/uw-frame/releases): `git checkout <tag>`
 2. Run the following commands:
-    ```
-    npm install -g grunt-cli
-    npm install
-    npm run static
-    ```
+   ```
+   npm install
+   npm run static:dev
+   ```
+
 3. Open a browser and go to the location specified in the build output
 
 
@@ -36,7 +36,7 @@ There are a couple ways you can create a static frame application.
 1. Use the [npm package](https://www.npmjs.com/package/uw-frame). See the [widget creator](https://github.com/UW-Madison-DoIT/myuw-smart-widget-creator) app for an example that uses the package.
 2. Use the Docker superstatic container:
     - Build the docker container (`docker build -t myuw/frame .`) and run it to get the frame demo application
-    - Run `docker run -v myapp-dir:/data/my-app myuw/frame` to replace the my-app directory with a volume mounted from localhost
+    - Run `docker run -v myapp-dir:/data/my-app -p 8009:8009 myuw/frame` to replace the my-app directory with a volume mounted from localhost
     - For deployment, create a Dockerfile like so:
 	    ```
 		FROM myuw/frame
