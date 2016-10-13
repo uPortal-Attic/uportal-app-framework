@@ -17,4 +17,4 @@ node_modules
 npm-debug.log
 *.iml
 *.swp
-
+\.DS_Store

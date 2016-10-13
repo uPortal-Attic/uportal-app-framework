@@ -1,17 +1,19 @@
 FROM node:5.7.1-slim
 MAINTAINER Tim Levett <tim.levett@wisc.edu>
-RUN npm install -g grunt-cli superstatic
+RUN npm install -g superstatic
 
 RUN apt-get update && apt-get install -y bzip2 && apt-get install -y git
 
 # Add frame
+COPY tools /build/tools
+copy docs /build/docs
 COPY uw-frame-components /build/uw-frame-components
 COPY uw-frame-static /build/uw-frame-static
 COPY package.json /build/
-COPY Gruntfile.js /build/
 
 # build frame
 WORKDIR /build
+RUN npm install
 RUN npm run build-static
 RUN cp -r /build/uw-frame-static/target /data
 
