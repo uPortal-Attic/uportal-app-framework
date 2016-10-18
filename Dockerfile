@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y bzip2 && apt-get install -y git
 
 # Add frame
 COPY tools /build/tools
-copy docs /build/docs
 COPY uw-frame-components /build/uw-frame-components
 COPY uw-frame-static /build/uw-frame-static
 COPY package.json /build/
