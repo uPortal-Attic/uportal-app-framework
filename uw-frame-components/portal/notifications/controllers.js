@@ -92,8 +92,8 @@ define(['angular'], function(angular) {
        */
       var getNotificationsSuccess = function(data) {
         // SET NECESSARY SCOPE VARIABLES
-        $scope.notifications = data.notDismissed;
-        $scope.dismissedNotifications = data.dismissed;
+        $scope.notifications = data.notDismissed ? data.notDismissed : [];
+        $scope.dismissedNotifications = data.dismissed ? data.dismissed : [];
         $scope.status = "You have " + ($scope.isEmpty ? "no " : "") + "notifications";
 
         angular.forEach($scope.dismissedNotifications, function(value, key) {
