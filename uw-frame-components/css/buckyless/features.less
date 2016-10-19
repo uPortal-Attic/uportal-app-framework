@@ -19,6 +19,9 @@
     padding: 0 12px;
     img {
       max-width: 600px;
+      @media (max-width: 599px) {
+        width : 90%;
+      }
     }
   }
   .images-div {
@@ -29,6 +32,9 @@
       max-width: 400px;
       vertical-align: top;
       margin: 6px;
+      @media (max-width: 599px) {
+        width : 90%;
+      }
     }
   }
 }
@@ -43,6 +49,14 @@
   }
   img {
     width:100%;
+  }
+  @media (max-width: 599px) {
+    img {
+      display:none;
+    }
+    h1 {
+      font-size: 24px;
+    }
   }
 }
 portal-header md-toolbar .md-toolbar-tools bucky-announcement {
