@@ -94,5 +94,10 @@
     "requirejs": "^2.2.0",
     "rimraf": "^2.5.4",
     "superstatic": "^4.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3",
+    "normalize.less": "^1.0.0"
   }
 }
