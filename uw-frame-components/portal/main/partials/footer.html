@@ -1,20 +1,18 @@
-<footer class="portal-footer-legal" role="contentinfo" ng-controller="SessionCheckController as sessionCheckCtrl">
-  <div class="portal-power">
-    <div id="portalPageFooterLinks" ng-controller="PortalFooterController as portalFooterCtrl">
-      <div>
-        <span>© <p style="display:inline">{{date | date:'yyyy'}}</p>, Board of Regents of the <a href="http://www.wisconsin.edu/" target="_blank">University of Wisconsin System</a></span>
-      </div>
-      <div layout="row" layout-align="center center" class="links__separated">
+<footer role="contentinfo" ng-controller="SessionCheckController as sessionCheckCtrl">
+  <div class="footer-links" ng-controller="PortalFooterController as portalFooterCtrl">
+    <div class="copyright">
+      <span>© <p>{{date | date:'yyyy'}}</p>, Board of Regents of the <a href="http://www.wisconsin.edu/" target="_blank">University of Wisconsin System</a></span>
+    </div>
+    <div layout="row" layout-align="center center" class="links-separated">
         <span ng-repeat="link in portal.theme.footerLinks">
           <a ng-href='{{link.url}}' target='{{link.target}}' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a>
         </span>
         <span ng-repeat="link in FOOTER_URLS">
           <a ng-href='{{link.url}}' target='{{link.target}}' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a>
         </span>
-      </div>
-      <div>
-        <span>{{sessionCheckCtrl.user.version}}</span><span ng-show="sessionCheckCtrl.user.serverName"> - {{sessionCheckCtrl.user.serverName}}</span><span ng-show="sessionCheckCtrl.user.sessionKey"> - {{sessionCheckCtrl.user.sessionKey}}</span></span>
-      </div>
+    </div>
+    <div>
+      <span>{{sessionCheckCtrl.user.version}}</span><span ng-show="sessionCheckCtrl.user.serverName"> - {{sessionCheckCtrl.user.serverName}}</span><span ng-show="sessionCheckCtrl.user.sessionKey"> - {{sessionCheckCtrl.user.sessionKey}}</span></span>
     </div>
   </div>
   <span ng-controller="PortalTimeoutController"></span>
