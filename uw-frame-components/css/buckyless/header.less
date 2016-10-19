@@ -7,21 +7,11 @@ portal-header {
       }
     }
   }
-  ::-webkit-input-placeholder {
-    color: @white;
-    font-weight: 400;
-  }
-  :-moz-placeholder {
-    color: @white;
-    font-weight: 400;
-  }
-  ::-moz-placeholder {
-    color: @white;
-    font-weight: 400;
-  }
-  :-ms-input-placeholder {
-    color: @white;
-    font-weight: 400;
+  md-input-container[class*="-theme"] {
+    .md-placeholder {
+      color: @white!important;
+      font-weight: 400;
+    }
   }
 
   md-toolbar {
