@@ -18,8 +18,17 @@ search {
         float: none;
         border-bottom: none;
         color: @white;
-        display:inline-block;
-        width:80%;
+        display: inline-block;
+        width: 80%;
+        font-size: 16px;
+        top: 1px;
+        position: relative;
+      }
+      &.md-input-focused {
+        .md-input {
+          border-width: 0;
+          top: 1px;
+        }
       }
     }
   }
