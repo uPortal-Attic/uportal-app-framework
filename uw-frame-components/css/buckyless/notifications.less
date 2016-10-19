@@ -60,11 +60,6 @@
     cursor:pointer;
 
   }
-  .unread {
-    font-weight: bold;
-    border: 1px black solid;
-    cursor: pointer;
-  }
 
   .notification-badge {
     width: 35px;
@@ -116,7 +111,7 @@
   }
 
   /* DESKTOP-ONLY NOTIFICATION BELL */
-  .menu-notification-link {
+  .notification-desktop {
     .notification-badge {
       position: relative;
       transition: @link-hover-transition;
@@ -134,16 +129,6 @@
       }
     }
   }
-
-  @media (max-width:768px ) {
-    .content {
-      width:90%;
-    }
-    .action {
-      width:10%;
-    }
-  }
-
 }
 
 /* PRIORITY NOTIFICATIONS */
