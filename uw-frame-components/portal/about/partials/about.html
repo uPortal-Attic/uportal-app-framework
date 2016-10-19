@@ -9,7 +9,7 @@
       <div class='col-sm-10 col-sm-offset-1'>
         <div class='widget-frame'  style='height: auto;'>
           <div class='widget-header'><div class='widget-title'>Frame Version Information</div></div>
-          <p class='widget-body' ng-repeat='item in frameInfo'><span class='bold'>{{item.name}}</span> : <span ng-if='item.name==="Git Commit ID"'><a ng-href='https://github.com/UW-Madison-DoIT/uw-frame/commit/{{item.value}}' target='_blank'>{{item.value}}</a></span><span ng-if='item.name!=="Git Commit ID"'>{{item.value}}</span></p>
+          <p class='widget-body' ng-repeat='item in frameInfo'><span><b>{{item.name}}</b></span> : <span ng-if='item.name==="Git Commit ID"'><a ng-href='https://github.com/UW-Madison-DoIT/uw-frame/commit/{{item.value}}' target='_blank'>{{item.value}}</a></span><span ng-if='item.name!=="Git Commit ID"'>{{item.value}}</span></p>
         </div>
       </div>
     </div>
