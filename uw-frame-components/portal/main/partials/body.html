@@ -1,14 +1,14 @@
-<div class='my-uw' md-theme="{{ portal.theme.name || 'default' }}">
-  <div id="body-background">
+<div class="my-uw" md-theme="{{ portal.theme.name || 'default' }}">
+  <div class="my-uw-body">
     <portal-header ng-class="{'has-priority-nots': headerCtrl.hasPriorityNotifications}" ng-controller="PortalHeaderController as headerCtrl"></portal-header>
 
     <div class="page-content" layout="column">
-      <div role="main" id="region-main" class="col-xs-12 no-padding">
+      <div role="main" class="region-main" class="no-padding">
         <div ng-class="routeClass" ng-view role="application" aria-labelledby="app-title"></div>
       </div>
     </div>
 
   </div>
 
-  <site-footer class='my-uw'></site-footer>
+  <site-footer class="my-uw"></site-footer>
 </div>
