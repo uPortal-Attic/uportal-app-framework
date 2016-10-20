@@ -14,7 +14,7 @@ COPY package.json /build/
 WORKDIR /build
 RUN npm install
 RUN npm run build-static
-RUN cp -r /build/uw-frame-static/target /data
+RUN cp -r /build/target/uw-frame-static /data
 
 WORKDIR /data
 
