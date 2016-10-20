@@ -20,7 +20,7 @@ portal-header {
       max-height: 56px;
       .title-link {
         h1 {
-          @media (min-width:600px) and (max-width: 960px) {
+          @media (min-width: @xs) and (max-width: @sm) {
             margin-left: 16px;
           }
         }
@@ -46,7 +46,7 @@ portal-header {
     }
   }
   &.has-priority-nots {
-    @media (min-width: 768px) {
+    @media (min-width: @xs) {
       margin-top: 46px;
       md-toolbar {
         top: 46px;

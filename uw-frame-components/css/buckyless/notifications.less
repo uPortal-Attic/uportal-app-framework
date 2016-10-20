@@ -27,7 +27,7 @@
         display: flex;
         margin: 0 8px;
         .md-button {
-          @media (min-width: 600px) {
+          @media (min-width: @xs) {
             margin: 0 8px;
           }
         }
@@ -40,7 +40,7 @@
       .md-list-item-text {
         width: 90%;
         padding: 16px 0;
-        @media (max-width:599px) {
+        @media (max-width: @xs) {
           width: 80%;
         }
       }
@@ -52,7 +52,7 @@
         }
       }
     }
-    @media (max-width: 960px) {
+    @media (max-width: @sm) {
       margin-right: 0;
     }
   }
@@ -135,7 +135,7 @@
 }
 
 /* PRIORITY NOTIFICATIONS */
-.hidden-xs .priority-notifications {
+.priority-gt-xs .priority-notifications {
   height: 46px;
   width: 100%;
   background-color: @grayscale2;
@@ -154,7 +154,7 @@
   }
 }
 
-.visible-xs .priority-notifications {
+.priority-xs .priority-notifications {
   min-height:40px;
   position: relative;
   top: 0;
@@ -166,8 +166,8 @@
   }
 }
 
-.hidden-xs .priority-notifications,
-.visible-xs .priority-notifications {
+.priority-gt-xs .priority-notifications,
+.priority-xs .priority-notifications {
   .notification-message {
     color:@black;
     text-align:center;
