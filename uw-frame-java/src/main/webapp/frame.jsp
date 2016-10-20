@@ -2,7 +2,7 @@
 <html lang="en-US" class="respondr">
 <head>
   <base href="<%=getServletContext().getContextPath() %>/">
-  <link ng-if='portal.theme.name' ng-href="css/themes/{{portal.theme.name}}.${project.version}.css" rel="stylesheet" type="text/css"/>
+  <link ng-if='portal.theme.name' ng-href="css/themes/{{portal.theme.name}}.css" rel="stylesheet" type="text/css"/>
   <jsp:include page="/head-static.html" />
 </head>
 
