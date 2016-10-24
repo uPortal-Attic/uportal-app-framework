@@ -109,7 +109,8 @@ define([
                 // Enable browser color (mobile only)
                 $mdThemingProvider.enableBrowserColor({
                   theme: $mdThemingProvider.theme(cur.name),
-                  palette: cur.materialTheme.primary
+                  palette: cur.materialTheme.primary,
+                  hue: '500'
                 });
               } else {
                 $mdThemingProvider.definePalette(cur.name + "-primary", cur.materialTheme.primary);
@@ -118,7 +119,8 @@ define([
                 // Enable browser color (mobile only)
                 $mdThemingProvider.enableBrowserColor({
                   theme: $mdThemingProvider.theme(cur.name),
-                  palette: cur.name + '-primary'
+                  palette: cur.name + '-primary',
+                  hue: '500'
                 });
               }
             }
