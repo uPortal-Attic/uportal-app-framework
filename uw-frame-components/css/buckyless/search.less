@@ -46,6 +46,20 @@ search {
           position: relative;
         }
       }
+      @media (max-width: @xs) {
+        ::-webkit-input-placeholder {
+          color: @grayscale6;
+        }
+        :-moz-placeholder {
+          color: @grayscale6;
+        }
+        ::-moz-placeholder {
+          color: @grayscale6;
+        }
+        :-ms-input-placeholder {
+          color: @grayscale6;
+        }
+      }
     }
   }
 }

@@ -43,6 +43,9 @@ portal-header {
           margin: 0;
         }
       }
+      @media (max-width:@xs) {
+        padding-right: 0;
+      }
     }
   }
   &.has-priority-nots {
@@ -50,6 +53,50 @@ portal-header {
       margin-top: 46px;
       md-toolbar {
         top: 46px;
+      }
+    }
+  }
+  @media (max-width:@xs) {
+    .search-xs {
+      width: 100%;
+      position: absolute;
+      top: 56px;
+      z-index: 101;
+      overflow: hidden;
+      transition: @search-transition;
+      &:not(.search-expanded) {
+        height: 0;
+        .myuw-search {
+          padding: 0;
+        }
+      }
+      &.search-expanded {
+        height: 42px;
+        .myuw-search {
+          padding: 2px 0 2px 18px;
+        }
+      }
+      form {
+        max-width: none;
+        .myuw-search {
+          height: 42px;
+          background: @white;
+          .search-submit-xs {
+            min-height: 0;
+            height: 42px;
+            width: 15%;
+            border-radius: 0;
+            position: relative;
+            top: -2px;
+            right: -2px;
+          }
+          .md-input {
+            float: left;
+            color: @grayscale10;
+            height: 38px;
+            width: 85%;
+          }
+        }
       }
     }
   }

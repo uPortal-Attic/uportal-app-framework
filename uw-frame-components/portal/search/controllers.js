@@ -48,6 +48,10 @@ define(['angular'], function(angular) {
         }
       };
 
+      $scope.toggleSearch = function() {
+        $scope.searchExpanded = $scope.searchExpanded ? false : true;
+      };
+
       $scope.$on('$locationChangeStart', function(event) {
         if ($location.url().indexOf('search') == -1) {
           $scope.initialFilter = '';
@@ -58,6 +62,7 @@ define(['angular'], function(angular) {
       var init = function(){
         $scope.initialFilter = '';
         $scope.filterMatches = [];
+        $scope.searchExpanded = false;
         $scope.portletListLoading = true;
         if($localStorage && $localStorage.typeaheadSearch) {
             //TODO : Add in search for somewhere for frame
