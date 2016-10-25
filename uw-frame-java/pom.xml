@@ -146,42 +146,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.lesscss</groupId>
-        <artifactId>lesscss-maven-plugin</artifactId>
-        <version>1.7.0.1.1</version>
-        <configuration>
-          <sourceDirectory>${webapp.target.directory}/css/themes/</sourceDirectory>
-          <outputDirectory>${webapp.target.directory}/css/themes/</outputDirectory>
-          <compress>true</compress>
-          <includes>
-            <include>uw-madison.less</include>
-            <include>uw-system.less</include>
-            <include>uw-river-falls.less</include>
-            <include>uw-stevens-point.less</include>
-            <include>uw-milwaukee.less</include>
-            <include>uw-whitewater.less</include>
-            <include>uw-stout.less</include>
-            <include>uw-oshkosh.less</include>
-            <include>uw-greenbay.less</include>
-            <include>uw-lacrosse.less</include>
-            <include>uw-superior.less</include>
-            <include>uw-platteville.less</include>
-            <include>uw-parkside.less</include>
-            <include>uw-eau-claire.less</include>
-            <include>uw-extension.less</include>
-            <include>uw-colleges.less</include>
-          </includes>
-          <outputFileFormat>{fileName}.${project.version}.css</outputFileFormat>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
         <version>9.3.0.M2</version>
@@ -218,6 +182,76 @@
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.3.2</version>
+        <executions>
+        <!-- The following will ensure `npm install` is called
+          before anything else during the 'Default Lifecycle' -->
+            <execution>
+              <id>npm install (initialize)</id>
+              <goals>
+                <goal>exec</goal>
+              </goals>
+              <phase>initialize</phase>
+              <configuration>
+                <executable>npm</executable>
+                <arguments>
+                  <argument>install</argument>
+                </arguments>
+              </configuration>
+            </execution>
+
+            <!-- When you compile the maven build, compile the less-->
+            <execution>
+            <id>npm run build (compile)</id>
+              <goals>
+                <goal>exec</goal>
+              </goals>
+              <phase>compile</phase>
+              <configuration>
+                <executable>npm</executable>
+                <arguments>
+                  <argument>run</argument>
+                  <argument>build-static</argument>
+                </arguments>
+              </configuration>
+            </execution>
+
+            <!-- Before you can package, move the generated css files over -->
+            <execution>
+              <id>npm set java version</id>
+              <goals>
+                <goal>exec</goal>
+              </goals>
+              <phase>prepare-package</phase>
+              <configuration>
+                <executable>npm</executable>
+                <arguments>
+                  <argument>config</argument>
+                  <argument>set</argument>
+                  <argument>uw-frame:javaversion</argument>
+                  <argument>${project.version}</argument>
+                </arguments>
+              </configuration>
+            </execution>
+            <execution>
+              <id>npm copy css files over using version convention</id>
+              <goals>
+                <goal>exec</goal>
+              </goals>
+              <phase>prepare-package</phase>
+              <configuration>
+                <executable>npm</executable>
+                <arguments>
+                  <argument>run</argument>
+                  <argument>prepackage-java</argument>
+                </arguments>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
     </plugins>
   </build>
 
