@@ -2,9 +2,6 @@
   "name": "uw-frame",
   "version": "2.9.0",
   "description": "MyUW's frame project for creating angular based microservices.",
-  "config" : {
-    "javaversion" : "1"
-  },
   "scripts": {
     "test": "karma start uw-frame-components/karma.conf.js --single-run",
     "posttest": "cd uw-frame-components",
