@@ -251,6 +251,9 @@
               </configuration>
             </execution>
           </executions>
+          <configuration>
+            <workingDirectory>${project.basedir}/../</workingDirectory>
+          </configuration>
         </plugin>
     </plugins>
   </build>
