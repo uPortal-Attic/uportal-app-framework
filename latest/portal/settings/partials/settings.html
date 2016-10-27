@@ -1,6 +1,6 @@
-<frame-page app-title='Beta Settings'
-            app-icon='fa-gears'
-            white-background='true'
+<frame-page app-title="Beta Settings"
+            app-icon="fa-gears"
+            white-background="true"
             class="beta-settings-page">
   <md-content layout-padding>
     <div layout-gt-sm="row" layout="column">
@@ -10,16 +10,19 @@
           <uw-setting-option></uw-setting-option>
         </div>
       </div>
-      <!-- Theme selector and 'danger zone' -->
+      <!-- Theme selector and "danger zone" -->
       <div layout="column" flex-gt-sm="40">
-        <h4 class="md-subhead">Theme Selector<br><small>Pick which place you call home.</small></h4>
-        <select class="form-control" ng-options="item as item.name for item in THEMES track by item.name" ng-model="portal.theme">
-        </select>
+        <h4 class="md-subhead">Theme Selector</h4>
+        <md-input-container>
+          <md-select ng-model="portal.theme" placeholder="Pick which place you call home" aria-label="Select a theme">
+            <md-option ng-repeat="item in THEMES" ng-value="item">{{ item.name }}</md-option>
+          </md-select>
+        </md-input-container>
         <h4 class="md-subhead">Danger Zone<br>
           <small>Clean the slate by clearing the session storage and resetting to defaults.</small>
         </h4>
         <div layout="column" layout-gt-xs="row">
-          <md-button class='md-primary md-raised' ng-click="resetAll()">
+          <md-button class="md-primary md-raised" ng-click="resetAll()">
             Reset All
           </md-button>
           <md-button class="md-accent md-raised" ng-click="resetSession(); reload();">

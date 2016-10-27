@@ -27,6 +27,28 @@
     .widget-type-container {
       height: 100%;
     }
+    a {
+      color: @link-color;
+    }
+    .launch-app-button {
+      width:100%;
+      padding:8px;
+      position:absolute;
+      background-color:@grayscale3;
+      border:0 solid transparent;
+      bottom:0;
+      margin:0;
+      text-align:center;
+      display:block;
+      color:@grayscale8;
+      border-radius: 0 0 4px 4px;
+      transition: @mascot-transition;
+      &:hover {
+        background-color:@color1;
+        color:@white;
+        text-decoration: none;
+      }
+    }
   }
   .widget-title {
     font-size:1.2em;
@@ -51,25 +73,6 @@
   hr {
     margin-top:0;
     margin-bottom:0;
-  }
-  .launch-app-button {
-    width:100%;
-    padding:8px;
-    position:absolute;
-    background-color:@grayscale3;
-    border:0 solid transparent;
-    bottom:0;
-    margin:0;
-    text-align:center;
-    display:block;
-    color:@grayscale8;
-    border-radius: 0 0 4px 4px;
-    transition: @mascot-transition;
-    &:hover {
-      background-color:@color1;
-      color:@white;
-      text-decoration: none;
-    }
   }
 }
 

@@ -12,6 +12,12 @@ define(['angular'], function(angular) {
         $sessionStorage.portal.theme = $scope.portal.theme;
         $sessionStorage.portal.theme.themeVersion = THEMES.themeVersion;
         $mdTheming.generateTheme($sessionStorage.portal.theme.name,null);
+        // Set browser color
+        $mdTheming.setBrowserColor({
+          theme: $sessionStorage.portal.theme.name,
+          palette: $scope.portal.theme.name + '-primary',
+          hue: '500'
+        });
         if($scope.portal.theme && $scope.portal.theme.portalSkinKey) {
           portalSkinService.setPortalSkin($scope.portal.theme.portalSkinKey);
         }

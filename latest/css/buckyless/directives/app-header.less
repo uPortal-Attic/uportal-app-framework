@@ -3,6 +3,7 @@
 app-header,app-header-two-way-bind {
 
   .app-header {
+    background: rgb(66,66,66);
     box-shadow: 0 1px 1px 0 @grayscale5;
     h1.app-title {
       font-weight: 200;
@@ -33,7 +34,7 @@ app-header,app-header-two-way-bind {
             }
           }
 
-          @media (max-width: 960px) {
+          @media (max-width: @sm) {
             i.fa {
               font-size: 20px;
             }
@@ -61,12 +62,12 @@ app-header,app-header-two-way-bind {
               color: @white;
             }
           }
-          @media (max-width: 960px) {
+          @media (max-width: @sm) {
             min-width: inherit;
           }
         }
       }
-      @media(max-width: 599px) {
+      @media(max-width: @xs) {
         padding-right: 0;
       }
     }

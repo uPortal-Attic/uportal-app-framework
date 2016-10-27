@@ -1,6 +1,11 @@
 <form name="searchForm" ng-submit="submit()" ng-hide="$storage.typeaheadSearch">
   <md-input-container class="md-block myuw-search" md-no-float layout="row" layout-align="start center">
-    <md-button class="md-icon-button" ng-click="submit()" aria-label="submit search">
+    <!-- submit xs+ -->
+    <md-button class="md-icon-button" ng-click="submit()" aria-label="submit search" hide-xs>
+      <i class="fa fa-search"></i>
+    </md-button>
+    <!-- submit xs-only-->
+    <md-button class="md-icon-button search-submit-xs md-accent" ng-click="submit()" aria-label="submit search" hide-gt-xs>
       <i class="fa fa-search"></i>
     </md-button>
     <input type="search"

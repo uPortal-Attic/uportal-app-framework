@@ -1,8 +1,8 @@
-<notification-bell mode="priority" class="hidden-xs" hide-xs></notification-bell>
+<notification-bell mode="priority" class="priority-gt-xs" hide-xs></notification-bell>
 <span ng-controller="PortalPopupController"></span>
 <md-toolbar md-scroll-shrink class="md-primary">
   <div class="md-toolbar-tools"  role="banner">
-    <div layout="row" flex="30" layout-align="start center">
+    <div layout="row" flex-gt-xs="30" flex-xs="40" layout-align="start center">
       <!-- MOBILE MENU -->
       <md-menu md-position-mode="target target" md-offset="0 56" hide-gt-xs>
         <md-button aria-label="toggle mobile menu" hide-gt-xs ng-click="$mdOpenMenu($event)" layout="row" layout-align="center center">
@@ -10,9 +10,9 @@
           <i class="fa fa-bars" style='font-size: 1.5em;'></i>
         </md-button>
         <md-menu-content width="5" class="mobile-menu">
-          <md-menu-item>
-            <search ng-show="APP_FLAGS.showSearch"></search>
-          </md-menu-item>
+          <!--<md-menu-item>-->
+            <!--<search ng-show="APP_FLAGS.showSearch" md-prevent-menu-close="md-prevent-menu-close"></search>-->
+          <!--</md-menu-item>-->
           <!-- Bucky announcement -->
           <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
           <!-- Notifications -->
@@ -53,18 +53,30 @@
       </a>
     </div>
 
+    <!-- SEARCH BUTTON XS-ONLY -->
+    <div layout="row" layout-align="end center" flex-xs="60" hide-gt-xs>
+      <md-button class="md-icon-button" aria-label="Toggle MyUW search" ng-click="toggleSearch()">
+        <md-icon ng-if="!searchExpanded">search</md-icon>
+        <md-icon ng-if="searchExpanded">close</md-icon>
+      </md-button>
+    </div>
+
 
     <!-- SEARCH BAR SM+ -->
-    <div layout="row" flex="40" layout-align="center center" hide-xs>
+    <div layout="row" flex-gt-xs="40" layout-align="center center" hide-xs>
       <search ng-show="APP_FLAGS.showSearch"></search>
     </div>
     <span flex></span>
 
     <!-- COLLAPSIBLE MENU SM+ -->
-    <div layout="row" layout-align="end center" flex="30" hide-xs>
+    <div layout="row" layout-align="end center" flex-gt-xs="30" hide-xs>
       <bucky-announcement mode="BUCKY"></bucky-announcement>
       <notification-bell mode="bell" ng-if="!GuestMode"></notification-bell>
       <username layout="row" layout-align="start center"></username>
     </div>
   </div>
 </md-toolbar>
+<!-- SEARCH BAR XS-ONLY -->
+<div class="search-xs" ng-class="{ 'search-expanded' : searchExpanded }" hide-gt-xs>
+  <search ng-show="APP_FLAGS.showSearch"></search>
+</div>
