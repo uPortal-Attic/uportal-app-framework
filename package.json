@@ -9,6 +9,7 @@
     "prebuild-docs": "npm run build-static && rimraf docs/target && mkdir -p docs/target",
     "build-docs": "cp -r uw-frame-static/target/* docs/target && cp -r docs/js docs/img docs/markdown docs/my-app docs/superstatic.json docs/target",
     "postbuild-docs": "htmlprocessor docs/index.html -o docs/target/index.html",
+    "prepackage-java": "mkdir -p uw-frame-java/target/frame/css/themes && rm -f uw-frame-java/target/frame/css/themes/*.css && cp uw-frame-static/target/css/themes/*.css uw-frame-java/target/frame/css/themes/ && for file in uw-frame-java/target/frame/css/themes/*.css; do mv $file uw-frame-java/target/frame/css/themes/$(basename $file .css).$npm_package_config_javaversion.css; done",
     "build-java": "cd uw-frame-java && mvn clean install",
     "prebuild-static": "rimraf uw-frame-static/target && mkdir uw-frame-static/target",
     "build-static": "node tools/uw-frame-static/build.js",
@@ -94,5 +95,10 @@
     "requirejs": "^2.2.0",
     "rimraf": "^2.5.4",
     "superstatic": "^4.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "font-awesome" : "^4.6.3",
+    "normalize.less" : "^1.0.0"
   }
 }
