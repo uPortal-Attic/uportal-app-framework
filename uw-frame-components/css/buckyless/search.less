@@ -8,6 +8,22 @@ search {
       background: rgba(255,255,255,0.3);
       margin: 0;
       padding: 0;
+      ::-webkit-input-placeholder {
+        color: @white;
+        font-weight: 400;
+      }
+      :-moz-placeholder {
+        color: @white;
+        font-weight: 400;
+      }
+      ::-moz-placeholder {
+        color: @white;
+        font-weight: 400;
+      }
+      :-ms-input-placeholder {
+        color: @white;
+        font-weight: 400;
+      }
       .md-icon-button {
         margin: 0;
         padding: 0;
@@ -18,8 +34,31 @@ search {
         float: none;
         border-bottom: none;
         color: @white;
-        display:inline-block;
-        width:80%;
+        display: inline-block;
+        width: 80%;
+        font-size: 16px;
+        position: relative;
+      }
+      &.md-input-focused {
+        .md-input {
+          border-bottom: none;
+          top: 1px;
+          position: relative;
+        }
+      }
+      @media (max-width: @xs) {
+        ::-webkit-input-placeholder {
+          color: @grayscale6;
+        }
+        :-moz-placeholder {
+          color: @grayscale6;
+        }
+        ::-moz-placeholder {
+          color: @grayscale6;
+        }
+        :-ms-input-placeholder {
+          color: @grayscale6;
+        }
       }
     }
   }

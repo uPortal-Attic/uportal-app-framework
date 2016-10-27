@@ -1,59 +1,46 @@
 /* Portlet and Frame Content Styling */
 
-#body-background {
+.my-uw-body {
   background-color: #ccc;
   min-height: 90vh;
-}
-.page-content {
-  padding: 56px 0 48px;
-  &.has-priority-nots {
-    padding: 102px 0 48px;
-  }
-  @media (max-width: 959px) and (min-width: 0) {
+  .page-content {
+    padding: 56px 0 48px;
     &.has-priority-nots {
-      padding: 56px 0 48px;
+      padding: 102px 0 48px;
+    }
+    .white-page {
+      background-color: @white;
+      margin-left: 1%;
+      width: 98%;
+      box-shadow: 0 0 2px 0 #222;
+      float: left;
+    }
+    .region-main {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
-}
-.white-page {
-  background-color: @white;
-  margin-left: 1%;
-  width: 98%;
-  box-shadow: 0 0 2px 0 #222;
-  float: left;
-}
-.popover-content ul {
-  margin-bottom:0;
-}
-.loading-gif {
-  margin:auto;
-}
-.container-fluid b {
-  font-weight: 400;
 }
 
 /* PORTLET STYLES */
 .portlet-frame {
-  padding:0 0 5px 0;
-  margin:0 0 15px 0;
-  position:relative;
-}
-.portlet-body {
-  padding-left:5px;
-  padding-right:5px;
-}
-.portlet-footer {
-  border-top:1px solid @color1;
-  text-align:center;
-  ul {
-    margin:0;
-    padding:0;
+  padding: 0 0 5px 0;
+  margin: 0 0 15px 0;
+  position: relative;
+  .portlet-body {
+    padding-left:5px;
+    padding-right:5px;
   }
-  li {
-    display:inline-block;
-    padding:8px 10px 6px;
+  .portlet-footer {
+    border-top: 1px solid @color1;
+    text-align: center;
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      display: inline-block;
+      padding: 8px 10px 6px;
+    }
   }
-}
-.no-image {
-  background-color:@color1;
 }

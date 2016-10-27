@@ -19,6 +19,9 @@
     padding: 0 12px;
     img {
       max-width: 600px;
+      @media (max-width: @xs) {
+        width : 90%;
+      }
     }
   }
   .images-div {
@@ -29,6 +32,9 @@
       max-width: 400px;
       vertical-align: top;
       margin: 6px;
+      @media (max-width: @xs) {
+        width : 90%;
+      }
     }
   }
 }
@@ -44,13 +50,13 @@
   img {
     width:100%;
   }
-  .learn-more {
-    margin:15px 0;
-  }
-  button {
-    margin-top: 16px;
-    color: @white;
-    background-color: @color1;
+  @media (max-width: @xs) {
+    img {
+      display:none;
+    }
+    h1 {
+      font-size: 24px;
+    }
   }
 }
 portal-header md-toolbar .md-toolbar-tools bucky-announcement {
@@ -86,7 +92,7 @@ portal-header md-toolbar .md-toolbar-tools bucky-announcement {
       position: relative;
       left: 0;
     }
-    @media (max-width: 768px) {
+    @media (max-width: @sm) {
       margin-right: 0;
     }
   }

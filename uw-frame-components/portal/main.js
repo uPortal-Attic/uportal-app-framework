@@ -95,24 +95,36 @@ define([
       $mdThemingProvider.alwaysWatchTheme(true);
       $mdThemingProvider.generateThemesOnDemand(true);
 
-      //theme config
+      // Theme config
       for(var i = 0; i < THEMES.themes.length; i++) {
         var cur = THEMES.themes[i];
         if(cur) {
           if(cur.materialTheme) {
             $mdThemingProvider.theme(cur.name);
-            //set up primary
+            // Set up primary
             if(cur.materialTheme.primary) {
               if(typeof cur.materialTheme.primary === 'string') {
                 $mdThemingProvider.theme(cur.name)
                   .primaryPalette(cur.materialTheme.primary);
+                // Enable browser color (mobile only)
+                $mdThemingProvider.enableBrowserColor({
+                  theme: $mdThemingProvider.theme(cur.name),
+                  palette: cur.materialTheme.primary,
+                  hue: '500'
+                });
               } else {
                 $mdThemingProvider.definePalette(cur.name + "-primary", cur.materialTheme.primary);
                 $mdThemingProvider.theme(cur.name)
                   .primaryPalette(cur.name + "-primary");
+                // Enable browser color (mobile only)
+                $mdThemingProvider.enableBrowserColor({
+                  theme: $mdThemingProvider.theme(cur.name),
+                  palette: cur.name + '-primary',
+                  hue: '500'
+                });
               }
             }
-            //set up accent
+            // Set up accent
             if(cur.materialTheme.accent) {
               if(typeof cur.materialTheme.accent === 'string') {
                 $mdThemingProvider.theme(cur.name)
@@ -123,7 +135,7 @@ define([
                   .accentPalette(cur.name + "-accent");
               }
             }
-            //set warn
+            // Set up warn
             if(cur.materialTheme.warn) {
               if(typeof cur.materialTheme.warn === 'string') {
                 $mdThemingProvider.theme(cur.name)

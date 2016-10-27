@@ -21,7 +21,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'jquery'        : "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min",
       'jquery-ui'     : "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min",
       'ngAria'        : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-aria.min",
-      'ngMaterial'    : "https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.min",
+      'ngMaterial'    : "https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min",
       'ngRoute'       : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-route.min",
       'ngSanitize'    : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-sanitize.min",
       'ngStorage'     : "https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min",

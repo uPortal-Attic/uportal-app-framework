@@ -7,22 +7,6 @@ portal-header {
       }
     }
   }
-  ::-webkit-input-placeholder {
-    color: @white;
-    font-weight: 400;
-  }
-  :-moz-placeholder {
-    color: @white;
-    font-weight: 400;
-  }
-  ::-moz-placeholder {
-    color: @white;
-    font-weight: 400;
-  }
-  :-ms-input-placeholder {
-    color: @white;
-    font-weight: 400;
-  }
 
   md-toolbar {
     min-height: 56px;
@@ -36,7 +20,7 @@ portal-header {
       max-height: 56px;
       .title-link {
         h1 {
-          @media (min-width:600px) and (max-width: 960px) {
+          @media (min-width: @xs) and (max-width: @sm) {
             margin-left: 16px;
           }
         }
@@ -59,13 +43,58 @@ portal-header {
           margin: 0;
         }
       }
+      @media (max-width:@xs) {
+        padding-right: 0;
+      }
     }
   }
   &.has-priority-nots {
-    @media (min-width: 768px) {
+    @media (min-width: @xs) {
       margin-top: 46px;
       md-toolbar {
         top: 46px;
+      }
+    }
+  }
+  @media (max-width:@xs) {
+    .search-xs {
+      width: 100%;
+      position: absolute;
+      top: 56px;
+      z-index: 101;
+      overflow: hidden;
+      transition: @search-transition;
+      background: rgba(0,0,0,0.4);
+      &:not(.search-expanded) {
+        height: 0;
+      }
+      &.search-expanded {
+        height: 56px;
+      }
+      form {
+        height: auto;
+        max-width: none;
+        .myuw-search {
+          padding: 2px 0 2px 18px;
+          margin: 8px 12px;
+          height: 40px;
+          background: @white;
+          .search-submit-xs {
+            min-height: 0;
+            height: 40px;
+            width: 15%;
+            border-radius: 0;
+            position: relative;
+            top: -2px;
+            right: -2px;
+          }
+          .md-input {
+            float: left;
+            color: @grayscale10;
+            height: 36px;
+            width: 85%;
+          }
+        }
       }
     }
   }

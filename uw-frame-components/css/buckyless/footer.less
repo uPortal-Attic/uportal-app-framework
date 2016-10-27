@@ -5,9 +5,6 @@ footer {
   color: @footer-text-color;
   font-size : 12px;
   min-height: 10vh;
-  .portal-power {
-    padding-top : 1em;
-  }
   a {
     color: @footer-text-color;
     text-decoration: underline;
@@ -16,7 +13,7 @@ footer {
       text-decoration: underline;
     }
   }
-  .links__separated > span {
+  .links-separated > span {
     &:before {
       content: '\f111';
       font-family: 'FontAwesome';
@@ -30,7 +27,11 @@ footer {
       display: none;
     }
   }
-  #portalPageFooterLinks {
+  .copyright p {
+    display: inline;
+  }
+  .footer-links {
     line-height: 1.5em;
+    padding-top : 1em;
   }
 }
