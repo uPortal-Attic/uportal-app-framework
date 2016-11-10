@@ -2,6 +2,7 @@
 <a class="md-list-item-text"
    ng-href="{{ notification.actionURL }}"
    target="_blank"
+   rel='noopener noreferrer'
    aria-label="{{ notification.actionAlt }}"
    layout="row"
    layout-align="start center"
@@ -16,6 +17,7 @@
                ng-class="{'md-primary' : $index === 0, 'md-accent' : $index > notification.buttonText.length / 2 - 1}"
                ng-click="button.action"
                target="{{button.target}}"
+               rel='noopener noreferrer'
                aria-label="{{button.label}}">
       {{button.label}}
     </md-button>
