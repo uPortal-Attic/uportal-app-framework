@@ -11,9 +11,8 @@ development by handling things like:
 ### What's included
 See the [configuration doc](#/md/configuration) to learn how to configure these features.
 
-<a href="img/frame-overview.png" target="_blank">
-	<img src="img/frame-overview.png" alt="frame overview">
-</a>
+<img src="img/frame-overview.png" alt="frame overview">
+
 
 In addition to the features pictured above, frame provides:
 + Error pages
