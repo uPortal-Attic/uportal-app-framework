@@ -1,14 +1,14 @@
 <footer role="contentinfo" ng-controller="SessionCheckController as sessionCheckCtrl">
   <div class="footer-links" ng-controller="PortalFooterController as portalFooterCtrl">
     <div class="copyright">
-      <span>© <p>{{date | date:'yyyy'}}</p>, Board of Regents of the <a href="http://www.wisconsin.edu/" target="_blank">University of Wisconsin System</a></span>
+      <span>© <p>{{date | date:'yyyy'}}</p>, Board of Regents of the <a href="http://www.wisconsin.edu/" target="_blank" rel='noopener noreferrer'>University of Wisconsin System</a></span>
     </div>
     <div layout="row" layout-align="center center" class="links-separated">
         <span ng-repeat="link in portal.theme.footerLinks">
-          <a ng-href='{{link.url}}' target='{{link.target}}' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a>
+          <a ng-href='{{link.url}}' target='{{link.target}}' rel='noopener noreferrer' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a>
         </span>
         <span ng-repeat="link in FOOTER_URLS">
-          <a ng-href='{{link.url}}' target='{{link.target}}' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a>
+          <a ng-href='{{link.url}}' target='{{link.target}}' rel='noopener noreferrer' ng-click="pushGAEvent('footer-link',link.title,link.url + ' ' + link.target)">{{link.title}}</a>
         </span>
     </div>
     <div>
