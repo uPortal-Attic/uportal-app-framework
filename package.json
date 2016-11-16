@@ -79,7 +79,6 @@
   "devDependencies": {
     "autoprefixer": "^6.5.3",
     "concurrently": "^3.1.0",
-    "fs": "0.0.1-security",
     "graceful-fs": "^4.0.0",
     "htmlprocessor": "^0.2.4",
     "jasmine-core": "^2.3.4",
@@ -96,7 +95,6 @@
     "less": "1.7.5",
     "lodash": "^4.0.0",
     "onchange": "^3.0.2",
-    "path": "^0.12.7",
     "phantomjs-prebuilt": "2.1.7",
     "postcss": "^5.2.5",
     "recursive-copy": "^2.0.5",
