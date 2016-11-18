@@ -1,9 +1,9 @@
+dist: trusty
+sudo: false
+group: beta
 language: java
 before_install:
   - npm install
 script :
   - npm run build-all
   - npm test
-jdk:
-  - oraclejdk7
-sudo: false
