@@ -11,6 +11,7 @@ define(['angular', 'jquery', 'portal', 'portal/main/routes', 'portal/settings/ro
     // TODO: Think of a more extensible approach such that frame and app can each manage their own routing without conflict
     app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
+      console.log(main);
         $routeProvider.
             when('/settings', settings.betaSettings).
             when('/user-settings', settings.userSettings).
@@ -19,8 +20,10 @@ define(['angular', 'jquery', 'portal', 'portal/main/routes', 'portal/settings/ro
             when('/about', about).
             when('/access-denied', main.accessDenied).
             when('/server-error', main.serverError).
+            when('/sorry-safari', main.storageError).
             when('/', main.main).
             otherwise(main.fileNotFound); //default to 404
     }]);
+
     return app;
 });
