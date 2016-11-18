@@ -1,12 +1,8 @@
 <frame-page app-title="{{NAMES.title}} - File Not Found" white-background="true">
   <md-content layout-padding layout="column" layout-align="center center">
-    <h2 class="md-display-1 md-warn">The path you are looking for does not exist</h2>
-    <p>
-      <i class="fa fa-exclamation-triangle fa-3x"></i>
-      <br/>
-      <h4 class="md-subhead"><a href="{{MISC_URLS.myuwHome}}">Back to the MyUW homepage</a></h4>
-      <h4 class="md-subhead">If you continue to see this error, contact the <a href="{{MISC_URLS.helpdeskURL}}" target="_blank" rel='noopener noreferrer'>DoIT Help Desk</a></h4>
-      <br/>
-    </p>
+    <h1 class="md-display-1 md-warn"><md-icon class="md-48 md-warn">warning</md-icon> The path you are looking for does not exist</h1>
+    <br>
+    <h4 class="md-subhead"><md-button class="md-accent md-raised" ng-href="{{MISC_URLS.myuwHome}}"><md-icon>arrow_back</md-icon> Go back to the MyUW homepage</md-button></h4>
+    <p>If you continue to see this error, contact the <a href="{{MISC_URLS.helpdeskURL}}" target="_blank" rel='noopener noreferrer'>DoIT Help Desk</a></p>
   </md-content>
 </frame-page>
