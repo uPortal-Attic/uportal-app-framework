@@ -183,6 +183,20 @@ define([
         $sessionStorage.portal.theme = $rootScope.portal.theme;
       };
 
+      // Safari in Private Browsing Mode throws a QuotaExceededError whenever any calls to localStorage.setItem
+      // are made. This block tests if localStorage is working. If not, we redirect the user to a new URL with
+      // an explanation of the error and a link to go back to MyUW home.
+      if (typeof localStorage === 'object') {
+        try {
+          localStorage.setItem('localStorage', 1);
+          localStorage.removeItem('localStorage');
+        } catch (e) {
+          Storage.prototype._setItem = Storage.prototype.setItem;
+          Storage.prototype.setItem = function() {};
+          $location.path('/sorry-safari');
+        }
+      }
+
       var generateTheme = function(name) {
         if(!name) {
           name = $rootScope.portal.theme.name;
