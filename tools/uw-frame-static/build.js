@@ -10,8 +10,6 @@ var exec_handler = function(error, stdout, stderr) {
   if (error) throw error;
 };
 
-exec('rm -rf uw-frame-static/target/', exec_handler);
-
 exec('mkdir -p uw-frame-static/target/css/themes/', exec_handler);
 
 exec('cp -r uw-frame-components/* uw-frame-static/target', exec_handler);
