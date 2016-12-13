@@ -136,22 +136,6 @@ define(['angular', 'jquery'], function(angular, $) {
     };
 
     /**
-     Google Analytics page view
-     - searchTerm : Optional parameter to say "this is a search page".
-                    This is the actual search term used.
-     @deprecated : will drop in 3.0.0
-    **/
-    var pushPageview = function (searchTerm) {
-      var path = $location.path();
-      if(searchTerm) {
-        path += "?q=" + searchTerm;
-      }
-      console.warn('this method is deprecated in favor of automatic page views in angulartics. Will be removed in 3.0.0');
-      console.log('ga pageview logged ' + path);
-      $analytics.pageTrack(path);
-    };
-
-    /**
      Google Analytics event push
      - category : e.g.: beta header
      - action   : e.g.: beta buttons
@@ -160,13 +144,12 @@ define(['angular', 'jquery'], function(angular, $) {
      See https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide for more info
     **/
     var pushGAEvent = function(category, action, label, value) {
-      console.log('ga event logged c:' + category + " a:" + action + " l:" + label);
       $analytics.eventTrack(action, {  category: category, label: label, value: (value || label) });
+			console.log('ga event logged action: ' + action + " category: " + category + " label: " + label);
     };
 
     return {
       redirectUser: redirectUser,
-      pushPageview: pushPageview,
       pushGAEvent : pushGAEvent
     };
 

@@ -41,10 +41,10 @@ define([
 ], function(angular, require) {
 
     // Define a stub in case this angular module is undefined, i.e. was blocked
-    try {
-        angular.module('angulartics.google.analytics', []);
-    }
-    catch(e) {console.log('caught error getting angulartics');console.log(e);}
+    // try {
+    //     angular.module('angulartics.google.analytics', []);
+    // }
+    // catch(e) {}
 
     var app = angular.module('portal', [
         'app-config',
