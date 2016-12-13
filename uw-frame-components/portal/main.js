@@ -44,7 +44,7 @@ define([
     try {
         angular.module('angulartics.google.analytics', []);
     }
-    catch(e) {}
+    catch(e) {console.log('caught error getting angulartics');console.log(e);}
 
     var app = angular.module('portal', [
         'app-config',
