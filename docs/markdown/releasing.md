@@ -24,7 +24,7 @@ Tada! The pull requests in this release now say the version they released in rig
 ### Release steps
 
 + Update the npm package by running `npm version <update_type>` where <update_type> is based on the selection above: patch, minor, or major. This will: change the version in `package.json`, commit that (locally), and make a tag in the format `vx.y.z`. Read more about that [on npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages#updating-the-package).
-+ Deploy npm package to the world; `npm publish`. (if you don't have contribution rights contact authors)
++ Deploy npm package to the world; `npm publish`. (if you don't have [publish rights][uw-frame access on npm] contact authors)
 + Push git changes to the github via `git push origin master` and `git push origin <tag>`
 + Now do release for Java.
 
@@ -60,3 +60,4 @@ docker push docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z
 [Semantic Versioning]: http://semver.org/
 [uw-frame closed pull requests]: https://github.com/UW-Madison-DoIT/uw-frame/pulls?q=is%3Apr+is%3Aclosed
 [uw-frame milestones]: https://github.com/UW-Madison-DoIT/uw-frame/milestones
+[uw-frame access on npm]: https://www.npmjs.com/package/uw-frame/access
