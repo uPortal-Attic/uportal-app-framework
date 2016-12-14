@@ -145,7 +145,7 @@ define(['angular', 'jquery'], function(angular, $) {
     **/
     var pushGAEvent = function(category, action, label, value) {
       $analytics.eventTrack(action, {  category: category, label: label, value: (value || label) });
-			$log.log('ga event logged action: ' + action + " category: " + category + " label: " + label);
+			$log.log('ga event logged action: ' + action + ", category: " + category + ", label: " + label);
     };
 
     return {
