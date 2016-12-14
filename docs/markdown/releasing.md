@@ -46,7 +46,7 @@ git push origin master
 git push origin uw-frame-maven-<version>
 ```
 
-+ Release maven artifacts from central staging repository
++ Release maven artifacts from [central staging repository][central Maven staging repository]
 
 #### Docker release
 
@@ -70,3 +70,4 @@ docker push docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z
 [uw-frame closed pull requests]: https://github.com/UW-Madison-DoIT/uw-frame/pulls?q=is%3Apr+is%3Aclosed
 [uw-frame milestones]: https://github.com/UW-Madison-DoIT/uw-frame/milestones
 [uw-frame access on npm]: https://www.npmjs.com/package/uw-frame/access
+[central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
