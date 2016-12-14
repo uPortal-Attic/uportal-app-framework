@@ -2,7 +2,13 @@ Release engineering for uw-frame is pretty automated. We actually only have to d
 
 ### Select a version
 
-Look at the [closed pull requests](https://github.com/UW-Madison-DoIT/uw-frame/pulls?q=is%3Apr+is%3Aclosed) that were done since the last release. There should be tags on pull requests that deem a release: major, minor, or patch (x.y.z respectively).
+#### Labeling pull requests
+
+Look at the [closed pull requests][uw-frame closed pull requests] that were done since the last release. There should be labels on pull requests communicating what kind of release it's appropriate to include them in: major, minor, or patch (x.y.z respectively). (See [Semantic Versioning][], especially if you're adding missing change-type labels on those closed pull requests.)
+
+#### Determining the release version from those labels
+
+The next release should be the least-significant kind of release appropriate to include all the changes. For example, if it's all patch-appropriate change, you're cutting a patch release, but if there's even just one breaking change, it's a major release.
 
 Now that you have a version you need to update that in a few places.
 
@@ -41,3 +47,6 @@ docker push docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z
 + Update version.md to have the latest tag as a folder
 + Run jenkins job to release a new version of the documentation
 + Verify you can get to that version of the documentation on gh-pages
+
+[Semantic Versioning]: http://semver.org/
+[uw-frame closed pull requests]: https://github.com/UW-Madison-DoIT/uw-frame/pulls?q=is%3Apr+is%3Aclosed
