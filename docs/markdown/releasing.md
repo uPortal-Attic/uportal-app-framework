@@ -12,6 +12,15 @@ The next release should be the least-significant kind of release appropriate to 
 
 Now that you have a version you need to update that in a few places.
 
+#### Milestone in GitHub
+
++ [Create a milestone][uw-frame milestones] named for the version you're cutting, if it does not yet exist.
++ If using an existing milestone, ensure nothing is currently erroneously marked with that milestone, e.g. open pull requests or issues that someone hoped might be resolved for this version but alas were not. You can examine this by simply [clicking the milestone's name][uw-frame milestones] to view the milestone.
++ Mark the [pull requests that merged to `master`][uw-frame closed pull requests] since the previous release with that milestone.
++ [Close the milestone][uw-frame milestones].
+
+Tada! The pull requests in this release now say the version they released in right on them. And there's a handy milestone that rolls up all the pull requests in this version.
+
 ### Release steps
 
 + Update the npm package by running `npm version <update_type>` where <update_type> is based on the selection above: patch, minor, or major. This will: change the version in `package.json`, commit that (locally), and make a tag in the format `vx.y.z`. Read more about that [on npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages#updating-the-package).
@@ -50,3 +59,4 @@ docker push docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z
 
 [Semantic Versioning]: http://semver.org/
 [uw-frame closed pull requests]: https://github.com/UW-Madison-DoIT/uw-frame/pulls?q=is%3Apr+is%3Aclosed
+[uw-frame milestones]: https://github.com/UW-Madison-DoIT/uw-frame/milestones
