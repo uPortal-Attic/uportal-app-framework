@@ -74,6 +74,11 @@ Create release docs on gh-pages (Jenkins job) using the tag created for bower.
 * Title the release `x.y.z`, optionally `x.y.z - pithy summary`
 * Add release notes, linking pull requests included in this release, linking the newly released documentation, and especially articulating anything interesting about the upgrade path to this release for frame-based app developers.
 
+### Communicating
+
+* Announce the release on the [MyUW Developer Group][]
+
+
 [Semantic Versioning]: http://semver.org/
 [uw-frame closed pull requests]: https://github.com/UW-Madison-DoIT/uw-frame/pulls?q=is%3Apr+is%3Aclosed
 [uw-frame milestones]: https://github.com/UW-Madison-DoIT/uw-frame/milestones
@@ -81,3 +86,4 @@ Create release docs on gh-pages (Jenkins job) using the tag created for bower.
 [central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
 [uw-frame-release-docs-version Jenkins job]: https://tools.my.wisc.edu/jenkins/view/Misc./job/uw-frame-release-docs-version/
 [uw-frame releases]: https://github.com/UW-Madison-DoIT/uw-frame/releases
+[MyUW Developer Group]: https://groups.google.com/forum/#!forum/myuw-developers
