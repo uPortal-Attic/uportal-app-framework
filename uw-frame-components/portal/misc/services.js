@@ -5,7 +5,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
   var app = angular.module('portal.misc.services', []);
 
-  app.factory('PortalGroupService', function($http, miscService, SERVICE_LOC){
+  app.factory('PortalGroupService', function($http, $log, miscService, SERVICE_LOC){
 
     var getGroups = function(){
       var groupPromise = $http.get(SERVICE_LOC.groupURL, {cache : true}).then (
@@ -34,7 +34,7 @@ define(['angular', 'jquery'], function(angular, $) {
       }
       if(!array || array.length === 0 || !groups || groups.length === 0 || !Array.isArray(array)) {
         if(!Array.isArray(array)) {
-          console.warn("PortalGroupService.filterArrayByGroups was called, but not an array");
+          $log.warn("PortalGroupService.filterArrayByGroups was called, but not an array");
         }
         return array;
       }
@@ -77,7 +77,7 @@ define(['angular', 'jquery'], function(angular, $) {
     }
   });
 
-  app.factory('PortalAddToHomeService', function($http, filterFilter, NAMES, MISC_URLS){
+  app.factory('PortalAddToHomeService', function($http, $log, filterFilter, NAMES, MISC_URLS){
 
     var canAddToHome = function(){
       if (MISC_URLS.addToHomeURLS && MISC_URLS.addToHomeURLS.addToHomeActionURL) {
@@ -99,7 +99,7 @@ define(['angular', 'jquery'], function(angular, $) {
         }
       }, function(){
         //failed
-        console.warn('could not reach portal server to get layout, portal down?');
+        $log.warn('could not reach portal server to get layout, portal down?');
         return true; //returning it is in the layout by default since portal is down
       });
     };
@@ -115,7 +115,7 @@ define(['angular', 'jquery'], function(angular, $) {
     };
   });
 
-  app.factory('miscService', function($analytics, $http, $window, $location, MISC_URLS) {
+  app.factory('miscService', function($analytics, $http, $window, $location, $log, MISC_URLS) {
 
     /**
      Used to redirect users to login screen iff result code is 0 (yay shib) or 302
@@ -124,14 +124,14 @@ define(['angular', 'jquery'], function(angular, $) {
     **/
     var redirectUser = function(status, caller) {
       if(status === 0 || status === 302) {
-        console.log("redirect happening due to " + status);
+        $log.log("redirect happening due to " + status);
         if(MISC_URLS.loginURL) {
           window.location.replace(MISC_URLS.loginURL);
         } else {
-          console.warn("MISC_URLS.loginURL was not set, cannot redirect");
+          $log.warn("MISC_URLS.loginURL was not set, cannot redirect");
         }
       } else {
-        console.warn("Strange behavior from " + caller +". Returned status code : " + status);
+        $log.warn("Strange behavior from " + caller +". Returned status code : " + status);
       }
     };
 
@@ -145,7 +145,7 @@ define(['angular', 'jquery'], function(angular, $) {
     **/
     var pushGAEvent = function(category, action, label, value) {
       $analytics.eventTrack(action, {  category: category, label: label, value: (value || label) });
-			console.log('ga event logged action: ' + action + " category: " + category + " label: " + label);
+			$log.log('ga event logged action: ' + action + " category: " + category + " label: " + label);
     };
 
     return {
