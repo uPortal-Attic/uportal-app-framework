@@ -58,9 +58,9 @@ docker build -t docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z .
 docker push docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z
 ```
 
-+ Create release docs on gh-pages (Jenkins job) using the tag created for bower.
+#### Documentation release
 
-### Documentation branching
+Create release docs on gh-pages (Jenkins job) using the tag created for bower.
 
 + Update version.md to have the latest tag as a folder
 + Run [jenkins job][uw-frame-release-docs-version Jenkins job] to release a new version of the documentation
