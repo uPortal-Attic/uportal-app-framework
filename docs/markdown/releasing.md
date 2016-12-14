@@ -66,9 +66,18 @@ Create release docs on gh-pages (Jenkins job) using the tag created for bower.
 + Run [jenkins job][uw-frame-release-docs-version Jenkins job] to release a new version of the documentation
 + Verify you can get to that version of the documentation on gh-pages
 
+### Release notes
+
+* There should now be a couple tags above the `Latest release` on [the GitHub releases page][uw-frame releases]
+* Click into the top one ( `uw-frame-maven-x.y.z`)
+* Edit tag
+* Title the release `x.y.z`, optionally `x.y.z - pithy summary`
+* Add release notes, linking pull requests included in this release, linking the newly released documentation, and especially articulating anything interesting about the upgrade path to this release for frame-based app developers.
+
 [Semantic Versioning]: http://semver.org/
 [uw-frame closed pull requests]: https://github.com/UW-Madison-DoIT/uw-frame/pulls?q=is%3Apr+is%3Aclosed
 [uw-frame milestones]: https://github.com/UW-Madison-DoIT/uw-frame/milestones
 [uw-frame access on npm]: https://www.npmjs.com/package/uw-frame/access
 [central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
 [uw-frame-release-docs-version Jenkins job]: https://tools.my.wisc.edu/jenkins/view/Misc./job/uw-frame-release-docs-version/
+[uw-frame releases]: https://github.com/UW-Madison-DoIT/uw-frame/releases
