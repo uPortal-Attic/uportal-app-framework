@@ -63,7 +63,7 @@ docker push docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z
 ### Documentation branching
 
 + Update version.md to have the latest tag as a folder
-+ Run jenkins job to release a new version of the documentation
++ Run [jenkins job][uw-frame-release-docs-version Jenkins job] to release a new version of the documentation
 + Verify you can get to that version of the documentation on gh-pages
 
 [Semantic Versioning]: http://semver.org/
@@ -71,3 +71,4 @@ docker push docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z
 [uw-frame milestones]: https://github.com/UW-Madison-DoIT/uw-frame/milestones
 [uw-frame access on npm]: https://www.npmjs.com/package/uw-frame/access
 [central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
+[uw-frame-release-docs-version Jenkins job]: https://tools.my.wisc.edu/jenkins/view/Misc./job/uw-frame-release-docs-version/
