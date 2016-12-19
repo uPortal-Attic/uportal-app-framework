@@ -13,7 +13,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'angular'       : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min",
       'angular-animate' : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min",
       'angular-mocks' : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-mocks",
-      'angulartics'   : "https://cdnjs.cloudflare.com/ajax/libs/angulartics/1.0.3/angulartics.min",
+      'angulartics'   : "https://cdnjs.cloudflare.com/ajax/libs/angulartics/1.1.0/angulartics.min",
       'angulartics-google-analytics' : [
           "https://cdnjs.cloudflare.com/ajax/libs/angulartics-google-analytics/0.2.1/angulartics-ga.min",
           "js/noop"
