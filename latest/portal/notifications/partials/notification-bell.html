@@ -10,6 +10,7 @@
     <md-button title="click to view notifications"
                class="md-default"
                ng-href="{{ notificationsUrl }}"
+               ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Notifications');"
                layout="row" layout-align="start center">
       <span><i class='fa fa-bell fa-fw'></i></span>
       <span>Notifications ({{ notifications.length }})</span>
@@ -20,6 +21,7 @@
   <a ng-if='notificationsEnabled && directiveMode === "bell"'
      title="click to view notifications"
      class="notification-desktop"
+     ng-click="pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');"
      ng-href="{{ notificationsUrl }}">
     <div class="notification-badge" aria-label="{{status}}" ng-class="{ 'notification-badge-empty' : notifications.length === 0 }">
       <div class="arrow-down" ng-if="hasPriorityNotifications"></div>

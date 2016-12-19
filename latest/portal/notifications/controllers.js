@@ -5,8 +5,8 @@ define(['angular'], function(angular) {
   var app = angular.module('portal.notifications.controllers ', []);
 
   app.controller('PortalNotificationController', [ '$scope', '$rootScope', '$location', '$localStorage', 'NOTIFICATION',
-    'SERVICE_LOC', 'filterFilter', 'notificationsService',
-    function($scope, $rootScope, $location, $localStorage, NOTIFICATION, SERVICE_LOC, filterFilter, notificationsService) {
+    'SERVICE_LOC', 'filterFilter', 'notificationsService', 'miscService',
+    function($scope, $rootScope, $location, $localStorage, NOTIFICATION, SERVICE_LOC, filterFilter, notificationsService, miscService) {
 
       /////////////////////
       // LOCAL VARIABLES //
@@ -66,6 +66,16 @@ define(['angular'], function(angular) {
           notificationsService.setDismissedNotifications(dismissedNotificationIds);
         }
       };
+
+			/**
+			 * Track clicks on "Notifications" links in mobile menu and top bar
+			 * @param category
+			 * @param action
+			 * @param label
+			 */
+			$scope.pushGAEvent = function (category, action, label) {
+				miscService.pushGAEvent(category, action, label);
+			};
 
       ///////////////////
       // LOCAL METHODS //

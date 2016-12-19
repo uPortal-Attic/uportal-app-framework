@@ -19,16 +19,16 @@
           <notification-bell mode='mobile-menu' header-ctrl='headerCtrl' ng-if='!GuestMode'></notification-bell>
           <!-- Home link -->
           <md-menu-item>
-            <md-button class="md-default" ng-if='APP_FLAGS.isWeb' ng-href="/web" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+            <md-button class="md-default" ng-if='APP_FLAGS.isWeb' ng-href="/web" ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Home');">
               <span class="fa fa-home fa-fw"></span> Home
             </md-button>
-            <md-button class="md-default" ng-if='!APP_FLAGS.isWeb' ng-href="/" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Home');">
+            <md-button class="md-default" ng-if='!APP_FLAGS.isWeb' ng-href="/" target="_self" ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Home');">
               <span class="fa fa-home fa-fw"></span> Home
             </md-button>
           </md-menu-item>
           <!-- Log out link -->
           <md-menu-item>
-            <md-button class="md-default" ng-href="{{MISC_URLS.logoutURL}}" target="_self" ng-click="pushGAEvent('Sidebar', 'Click Link', 'Log out');">
+            <md-button class="md-default" ng-href="{{MISC_URLS.logoutURL}}" target="_self" ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Log out');">
               <span class="fa fa-sign-out fa-fw"></span> Log out
             </md-button>
           </md-menu-item>
