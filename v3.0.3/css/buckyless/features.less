@@ -1,0 +1,106 @@
+.features-feed {
+  padding:10px 20px 20px;
+  h5 {
+    font-size:14px;
+    color:#999;
+    margin-bottom:0;
+  }
+  .feature-item {
+    margin-bottom: 80px;
+  }
+  img {
+    border: 1px solid @grayscale3;
+    border-radius: 3px;
+  }
+
+  .image-div {
+    width:90%;
+    display: block;
+    padding: 0 12px;
+    img {
+      max-width: 600px;
+      @media (max-width: @xs) {
+        width : 90%;
+      }
+    }
+  }
+  .images-div {
+    width: 90%;
+    padding: 0 6px;
+    img {
+      display: inline-block;
+      max-width: 400px;
+      vertical-align: top;
+      margin: 6px;
+      @media (max-width: @xs) {
+        width : 90%;
+      }
+    }
+  }
+}
+
+.features-popup {
+  padding:30px;
+  p {
+    margin:10px 0;
+    a {
+      color:@color1;
+    }
+  }
+  img {
+    width:100%;
+  }
+  @media (max-width: @xs) {
+    img {
+      display:none;
+    }
+    h1 {
+      font-size: 24px;
+    }
+  }
+}
+portal-header md-toolbar .md-toolbar-tools bucky-announcement {
+  .md-menu.announcement-creeper {
+    margin-right: 20px;
+    overflow: hidden;
+    max-height: 48px;
+    position: relative;
+    top: 8px;
+    img {
+      transition: @mascot-transition;
+      position: relative;
+      top: 26px;
+    }
+    &.announcement-hover {
+      img {
+        top: 22px;
+      }
+    }
+    &.announcement-active {
+      img {
+        top: 0;
+      }
+    }
+    .mascot-button {
+      &:hover {
+        background-color: transparent;
+      }
+    }
+    .mascot-menu-origin {
+      height: 0;
+      width: 0;
+      position: relative;
+      left: 0;
+    }
+    @media (max-width: @sm) {
+      margin-right: 0;
+    }
+  }
+  img:focus {
+    outline: none;
+  }
+}
+
+.md-dialog-container {
+  z-index: 101;
+}

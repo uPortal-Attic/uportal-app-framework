@@ -1,0 +1,20 @@
+<frame-page app-title="{{NAMES.title}} - Browser error" white-background="true">
+  <md-content layout-padding layout="column" layout-align="center center">
+    <h1 class="md-display-1 md-warn"><md-icon class="md-48 md-warn">warning</md-icon> Your browser does not support local storage</h1>
+    <br>
+    <div layout="row" layout-align="center center">
+      <p flex-gt-sm="60">
+        <span>
+          The most common cause of this problem is using the Safari browser in "Private Browsing Mode." We recommend turning off "Private Browsing Mode" or using
+          a different browser (Google Chrome, Mozilla Firefox, etc.)
+          <br>
+          <br>
+          If you continue to use Safari in "Private Browsing Mode," some settings
+          may not save and some other features may not work properly for you
+        </span>
+      </p>
+    </div>
+    <br>
+    <h4 class="md-subhead"><md-button class="md-accent md-raised" ng-href="{{MISC_URLS.myuwHome}}"><md-icon>arrow_back</md-icon> Go back to the MyUW homepage</md-button></h4>
+  </md-content>
+</frame-page>

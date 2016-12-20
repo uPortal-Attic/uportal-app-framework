@@ -1,0 +1,51 @@
+/* General MyUW Styles */
+
+a {
+  transition: @link-hover-transition;
+  &:not(.md-button):not(.btn):not(.launch-app-button) {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+h1,h2,h3 {
+  font-weight: 200;
+}
+p {
+  font-weight: 400;
+}
+ul {
+  list-style-type: none;
+  -webkit-padding-start: 0px;
+  padding-left: 0;
+}
+div:focus,
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none !important;
+}
+.md-tab {
+  text-transform: none;
+  .badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #999;
+    border-radius: 10px;
+  }
+  &.md-active {
+    .badge {
+      background-color: @color1;
+    }
+  }
+}
