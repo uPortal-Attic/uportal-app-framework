@@ -1,5 +1,5 @@
 platform:
   Maven:
-    jstl:
+    "jstl:jstl":
       tests:
         unlicensed: skip
