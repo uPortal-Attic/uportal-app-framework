@@ -1,16 +1,16 @@
 [![Gitter](https://badges.gitter.im/UW-Madison-DoIT/uw-frame.svg)](https://gitter.im/UW-Madison-DoIT/uw-frame?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)
 [![Dependency Status](https://dependencyci.com/github/UW-Madison-DoIT/uw-frame/badge)](https://dependencyci.com/github/UW-Madison-DoIT/uw-frame)
-[![Coverage Status](https://coveralls.io/repos/UW-Madison-DoIT/uw-frame/badge.svg?branch=master&service=github)](https://coveralls.io/github/UW-Madison-DoIT/uw-frame?branch=master)
+[![Coverage Status](https://coveralls.io/repos/UW-Madison-DoIT/uw-frame/badge.svg?branch=master&service=github)](https://coveralls.io/github/UW-Madison-DoIT/uw-frame?branch=master) [![Code Climate](https://codeclimate.com/github/UW-Madison-DoIT/uw-frame/badges/gpa.svg)](https://codeclimate.com/github/UW-Madison-DoIT/uw-frame) [![Issue Count](https://codeclimate.com/github/UW-Madison-DoIT/uw-frame/badges/issue_count.svg)](https://codeclimate.com/github/UW-Madison-DoIT/uw-frame)
 [![npm version](https://badge.fury.io/js/uw-frame.svg)](https://badge.fury.io/js/uw-frame)
 [![codenvy factory](https://codenvy.com/factory/resources/factory-white.png)](https://codenvy.com/factory?id=au4tpiai3n1ygpy1)
-[![Issue Stats](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/pr)](http://issuestats.com/github/uw-madison-doit/uw-frame)
-[![Issue Stats](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/issue)](http://issuestats.com/github/uw-madison-doit/uw-frame)
+[![Time to PR close](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/pr)](http://issuestats.com/github/uw-madison-doit/uw-frame)
+[![Time to issue close](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/issue)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 
 UW Frame
 =========
 
-uw-frame can be described as the "the framework for building applications for campus using modern technologies".  
+uw-frame can be described as the "the framework for building applications for campus using modern technologies".
 This package includes the MyUW header, settings, footer, and some reusable components :
 
 ![uw-frame screenshot](uw-frame-screenshot.png "UW Frame")
@@ -69,7 +69,7 @@ You can run uw-frame locally with the following command:
 java:
 > npm run jetty
 
-or 
+or
 
 static:
 > npm run static
