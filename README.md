@@ -10,7 +10,7 @@
 UW Frame
 =========
 
-uw-frame can be described as the "the framework for building applications for campus using modern technologies".  
+uw-frame can be described as the "the framework for building applications for campus using modern technologies".
 This package includes the MyUW header, settings, footer, and some reusable components :
 
 ![uw-frame screenshot](uw-frame-screenshot.png "UW Frame")
@@ -69,7 +69,7 @@ You can run uw-frame locally with the following command:
 java:
 > npm run jetty
 
-or 
+or
 
 static:
 > npm run static
