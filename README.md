@@ -22,7 +22,7 @@ Learn more about the reusable components on our [docs page](http://uw-madison-do
 * [node](https://nodejs.org/en/)
 * [npm](https://www.npmjs.com/)
 
-### Java
+### Java (only if you want a maven artifact)
 * [Maven](http://maven.apache.org)
 * JDK 7
 
@@ -62,14 +62,13 @@ To run the test suite:
 
 > npm test
 
-### Contributing
+### Running locally
 
-You can run uw-frame locally with the following command:
+To build and run on a Superstatic server:
+> npm run static:dev
 
-java:
-> npm run jetty
+### Maven
 
-or
-
-static:
-> npm run static
+You can also create a artifact using maven.  There's a pom.xml file in the
+uw-frame-java directory.  The maven build will use the normal npm build and
+bundle into a deliverable war file.

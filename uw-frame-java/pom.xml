@@ -37,6 +37,7 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <webapp.target.directory>${project.build.directory}/${project.build.finalName}</webapp.target.directory>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <distributionManagement>
@@ -109,43 +110,6 @@
           </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>2.7</version>
-        <executions>
-          <execution>
-            <id>copy-resources</id>
-            <!-- here the phase you need -->
-            <phase>validate</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${basedir}/target/frame/staticFeeds</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>src/main/filtered-resources</directory>
-                  <filtering>true</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>copy-components-over</id>
-            <phase>validate</phase>
-            <goals><goal>copy-resources</goal></goals>
-            <configuration>
-              <outputDirectory>${basedir}/target/frame/</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>../uw-frame-components</directory>
-                  <filtering>false</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
         <version>9.3.0.M2</version>
@@ -202,8 +166,6 @@
                 </arguments>
               </configuration>
             </execution>
-
-            <!-- When you compile the maven build, compile the less-->
             <execution>
             <id>npm run build (compile)</id>
               <goals>
@@ -218,43 +180,277 @@
                 </arguments>
               </configuration>
             </execution>
-
-            <!-- Before you can package, move the generated css files over -->
-            <execution>
-              <id>npm set java version</id>
-              <goals>
-                <goal>exec</goal>
-              </goals>
-              <phase>prepare-package</phase>
-              <configuration>
-                <executable>npm</executable>
-                <arguments>
-                  <argument>config</argument>
-                  <argument>set</argument>
-                  <argument>uw-frame:javaversion</argument>
-                  <argument>${project.version}</argument>
-                </arguments>
-              </configuration>
-            </execution>
-            <execution>
-              <id>npm copy css files over using version convention</id>
-              <goals>
-                <goal>exec</goal>
-              </goals>
-              <phase>prepare-package</phase>
-              <configuration>
-                <executable>npm</executable>
-                <arguments>
-                  <argument>run</argument>
-                  <argument>prepackage-java</argument>
-                </arguments>
-              </configuration>
-            </execution>
           </executions>
           <configuration>
             <workingDirectory>${project.basedir}/../</workingDirectory>
           </configuration>
         </plugin>
+        <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+          <execution>
+            <id>copy-components</id>
+            <phase>compile</phase>
+            <goals><goal>copy-resources</goal></goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/frame/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>../uw-frame-components</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-node_modules</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/frame/css/themes/node_modules/</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>${basedir}/../node_modules/</directory>
+                  <include>normalize.less/</include>
+                  <include>bootstrap/</include>
+                  <include>font-awesome/</include>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+              <nonFilteredFileExtensions>
+                <nonFilteredFileExtension>woff</nonFilteredFileExtension>
+                <nonFilteredFileExtension>woff2</nonFilteredFileExtension>
+                <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+                <nonFilteredFileExtension>eot</nonFilteredFileExtension>
+                <nonFilteredFileExtension>otf</nonFilteredFileExtension>
+              </nonFilteredFileExtensions>          
+            </configuration>            
+          </execution>
+          <execution>
+            <id>copy-static-feeds</id>
+            <!-- here the phase you need -->
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/frame/staticFeeds</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>src/main/filtered-resources</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-css</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/frame/css</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>${basedir}/../uw-frame-static/target/css</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>              
+            </configuration>            
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.coderplus.maven.plugins</groupId>
+        <artifactId>copy-rename-maven-plugin</artifactId>
+        <version>1.0.1</version>
+        <executions>
+          <execution>
+            <id>rename-uw-madison-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-madison.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-madison.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-system-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-system.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-system.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-river-falls-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-river-falls.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-river-falls.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-stevens-point-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-stevens-point.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-stevens-point.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-milwaukee-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-milwaukee.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-milwaukee.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-whitewater-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-whitewater.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-whitewater.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-stout-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-stout.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-stout.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-oshkosh-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-oshkosh.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-oshkosh.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-greenbay-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-greenbay.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-greenbay.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-superior-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-superior.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-superior.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-platteville-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-platteville.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-platteville.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-parkside-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-parkside.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-parkside.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-eau-claire-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-eau-claire.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-eau-claire.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-extension-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-extension.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-extension.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-colleges-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-colleges.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-colleges.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
