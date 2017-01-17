@@ -5,5 +5,7 @@ language: java
 before_install:
   - npm install
 script :
-  - npm run build-all
+  - npm run build-static
   - npm test
+  - cd uw-frame-java/
+  - mvn clean install

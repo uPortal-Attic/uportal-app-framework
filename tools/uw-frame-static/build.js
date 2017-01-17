@@ -10,12 +10,20 @@ var exec_handler = function(error, stdout, stderr) {
   if (error) throw error;
 };
 
-exec('mkdir -p uw-frame-static/target/css/themes/', exec_handler);
+var mkdirp = require('mkdirp');
+var copy = require('recursive-copy');
 
-exec('cp -r uw-frame-components/* uw-frame-static/target', exec_handler);
+mkdirp('uw-frame-static/target/css/themes/', function (err) {
+  if (err) throw error;
+});
 
-exec('cp uw-frame-static/superstatic.json uw-frame-static/target/', exec_handler);
+copy('uw-frame-components/', 'uw-frame-static/target', function (err, results){
+  if (err) throw error;
+});
 
+copy('uw-frame-static/superstatic.json','uw-frame-static/target/', function (err, results){
+  if (err) throw error;
+});
 
 var themes = ['uw-madison', 'uw-system', 'uw-river-falls',
   'uw-stevens-point', 'uw-milwaukee', 'uw-whitewater', 'uw-stout',
@@ -37,6 +45,7 @@ for (var i = 0; i < themes.length; i++) {
     writeCss(src, themeName, data.toString());
   });
 }
+
 
 /**
  * Process the .less styles into css, auto-prefix the css, then write to a .css file
