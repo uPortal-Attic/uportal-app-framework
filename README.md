@@ -3,7 +3,6 @@
 [![Dependency Status](https://dependencyci.com/github/UW-Madison-DoIT/uw-frame/badge)](https://dependencyci.com/github/UW-Madison-DoIT/uw-frame)
 [![Coverage Status](https://coveralls.io/repos/UW-Madison-DoIT/uw-frame/badge.svg?branch=master&service=github)](https://coveralls.io/github/UW-Madison-DoIT/uw-frame?branch=master) [![Code Climate](https://codeclimate.com/github/UW-Madison-DoIT/uw-frame/badges/gpa.svg)](https://codeclimate.com/github/UW-Madison-DoIT/uw-frame) [![Issue Count](https://codeclimate.com/github/UW-Madison-DoIT/uw-frame/badges/issue_count.svg)](https://codeclimate.com/github/UW-Madison-DoIT/uw-frame)
 [![npm version](https://badge.fury.io/js/uw-frame.svg)](https://badge.fury.io/js/uw-frame)
-[![codenvy factory](https://codenvy.com/factory/resources/factory-white.png)](https://codenvy.com/factory?id=au4tpiai3n1ygpy1)
 [![Time to PR close](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/pr)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 [![Time to issue close](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/issue)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 
