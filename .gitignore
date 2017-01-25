@@ -19,3 +19,4 @@ npm-debug.log
 *.swp
 \.DS_Store
 docs/_site
+Gemfile.lock
