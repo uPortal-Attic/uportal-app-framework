@@ -1,41 +1,10 @@
-Here are all the different versions of our documentation and our application.
+# Documentation versions
 
-**[latest](http://uw-madison-doit.github.io/uw-frame/latest/)**
+The latest [documentation is live on the web](http://uw-madison-doit.github.io/uw-frame).
 
-## 3.x
-+ v3.0.3 ([docs](http://uw-madison-doit.github.io/uw-frame/v3.0.3/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/uw-frame-maven-3.0.3))
-+ v3.0.2 ([docs](http://uw-madison-doit.github.io/uw-frame/v3.0.2/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/uw-frame-maven-3.0.2))
-+ v3.0.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v3.0.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/3.0.0))
+To view documentation for a specific version of `uw-frame`
 
-## 2.x
-+ v2.9.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.9.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.9.0))
-+ v2.8.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.8.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.8.0))
-+ v2.7.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.7.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.7.0))
-+ v2.6.4 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.6.4/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.6.4))
-+ v2.6.3 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.6.3/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.6.3))
-+ v2.6.1 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.6.1/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.6.1))
-+ v2.6.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.6.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.6.0))
-+ v2.5.2 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.5.2/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.5.2))
-+ v2.5.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.5.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.5.0))
-+ v2.4.1 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.4.1/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.4.1))
-+ v2.4.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.4.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.4.0))
-+ v2.3.1 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.3.1/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.3.1))
-+ v2.3.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.3.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.3.0))
-+ v2.2.1 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.2.1/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.2.1))
-+ v2.2.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.2.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.2.0))
-+ v2.1.0 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.1.0/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.1.0))
-+ v2.0.3 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.0.3/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.0.3))
-+ v2.0.2 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.0.2/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.0.2))
-+ v2.0.1 ([docs](http://uw-madison-doit.github.io/uw-frame/v2.0.1/), [release notes](https://github.com/UW-Madison-DoIT/uw-frame/releases/tag/v2.0.1))
+1. Navigate to the desired [release on GitHub](https://github.com/UW-Madison-DoIT/uw-frame/releases) (or check out the desired tag in your local `git` clone).
+2. Read the documentation, either by inspecting a local copy of the source code (you can handily download this from the release on GitHub) or by looking at the codebase at that commit (linked from the release on GitHub).
 
-
-
-## Older
-
- We started doing this documentation during release 1.4.1 so there was a time when no documentation existed on github pages. We suggest people upgrading to at least 2.0.1.
-+ [1.4.0](http://uw-madison-doit.github.io/uw-frame/1.4.0/)
-
-
-## Something else?
-
-Looking for [how to release](releasing.md)?
+(Try not to need to look at old versions of the documentation. Upgrade to latest instead.)

@@ -23,6 +23,10 @@ Tada! The pull requests in this release now say the version they released in rig
 
 ### Release steps
 
+#### Finalize documentation
+
+Before cutting the release, do what you can to square away the documentation for the release. The documentation is in the `docs` folder right in the codebase and they'll be tagged and available for download with the code, so it's better to square it away before tagging and releasing rather than having errata not included with the release.
+
 #### Node release
 
 + Update the npm package by running `npm version <update_type>` where <update_type> is based on the selection above: patch, minor, or major. This will: change the version in `package.json`, commit that (locally), and make a tag in the format `vx.y.z`. Read more about that [on npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages#updating-the-package).
@@ -60,11 +64,7 @@ docker push docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z
 
 #### Documentation release
 
-Create release docs on gh-pages (Jenkins job) using the tag created for bower.
-
-+ Update `versions.md` to have the latest tag as a folder
-+ Run [jenkins job][uw-frame-release-docs-version Jenkins job] to release a new version of the documentation
-+ Verify you can get to that version of the documentation on gh-pages
+You don't have to do anything special to release the documentation. GitHub pages will run Jekyll on the `docs` folder of the latest commit in the `master` branch, continually deploying the latest documentation to [the live documentation website](http://uw-madison-doit.github.io/uw-frame/).
 
 ### Release notes
 
