@@ -37,4 +37,4 @@ define(['require'], function(require){
 
 ```
 
-4) (optional) you can overwrite what variable it gets set to in the search param. See [configuration->APP_FLAGS.gaSearchParam](#/md/configuration) By default it is q.
+4) (optional) you can overwrite what variable it gets set to in the search param. See [configuration->APP_FLAGS.gaSearchParam](configuration.md) By default it is q.

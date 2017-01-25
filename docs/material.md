@@ -1,4 +1,4 @@
-MyUW is transitioning from Bootstrap to Angular Material, as an implementation of Google's [Material Design](https://www.google.com/design/spec/material-design/introduction.html). 
+MyUW is transitioning from Bootstrap to Angular Material, as an implementation of Google's [Material Design](https://www.google.com/design/spec/material-design/introduction.html).
 
 The main reasons for doing this are:
 
@@ -23,4 +23,4 @@ Add other Material directives that are in use in MyUW to this list.
 
 ### Theming
 
-See [the Material Theme section in the theming documentation](#/md/theming).
+See [the Material Theme section in the theming documentation](theming.md).

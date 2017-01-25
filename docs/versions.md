@@ -37,4 +37,5 @@ Here are all the different versions of our documentation and our application.
 
 
 ## Something else?
-Looking for how to release? Look at the latest [Releasing](http://uw-madison-doit.github.io/uw-frame/latest/#/md/releasing) document.
+
+Looking for [how to release](releasing.md)?
