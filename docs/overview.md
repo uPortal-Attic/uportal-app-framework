@@ -22,4 +22,4 @@ In addition to the features pictured above, frame provides:
 + [Mascot announcements and notifications](announcements.md)
 + Optimizations for small screens (including the [mobile menu](img/mobile-menu.png))
 
-In-depth overviews of frame's features can be found under the Features heading on the [documentation home page](#/home).
+In-depth overviews of frame's features can be found under the Features heading on the [documentation home page](README.md).
