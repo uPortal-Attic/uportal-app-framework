@@ -3,11 +3,14 @@ Within-portal announcements draw attention to new content.
 MyUW [documents how it uses announcements](https://kb.wisc.edu/myuw/page.php?id=63903) in its Knowledge Base.
 
 ### Theme
-By default, if you set nothing in [the theme](theming.md) the mascot pictured below will appear in the top bar:
+
+A mascot in the header can make announcements.
+
+The `mascotImg` variable in [the theme](theming.md) sets the theme-specific mascot.
+
+If `mascotImg` is unset, `uw-frame` defaults to a generic robot mascot.
 
 ![default mascot image](./img/announcement-character.png)
-
-Provide a `mascotImg` variable in the theme to override this.
 
 ### Creating a mascot image
 The image itself should have the following characteristics:
