@@ -7,7 +7,7 @@
 * JDK 7,8 (for `uw-frame-java`)
 * [Maven](http://maven.apache.org) (for `uw-frame-java`)
 
-## Quick Start
+## Quick start
 
 Run a local instance of `uw-frame` in a matter of minutes in 3 easy steps.
 
