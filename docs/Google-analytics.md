@@ -7,6 +7,7 @@
 ## Basic configuration
 
 Add in a `/js/config.js` file that will overwrite the `uw-frame-components/js/config.js`.
+
 ```javascript
 var config = {
   gaID : 'UA-########-##'
@@ -20,6 +21,7 @@ GA has a great feature called site search. It collects information about what pe
 
 2) When setting up your route for your search result page pass the search term in as a path variable
 e.g.:
+
 ```javascript
 when('/features/search/:searchTerm', features.search)
 ```
@@ -27,6 +29,7 @@ when('/features/search/:searchTerm', features.search)
 3) In the route(s).js for that when, add in the variable 'searchParam' with the value of the path parameter (e.g.: searchParam : 'searchTerm').
 
 You should end up with something like this:
+
 ```javascript
 define(['require'], function(require){
   return {
