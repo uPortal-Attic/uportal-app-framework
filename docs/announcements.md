@@ -1,6 +1,6 @@
-The announcements feature draws attention to new content. Read more about the business usage of this feature in
-[the KB article](https://kb.wisc.edu/myuw/page.php?id=63903). The following documentation talks more about the implementation
-details of the announcements.
+Within-portal announcements draw attention to new content.
+
+MyUW [documents how it uses announcements](https://kb.wisc.edu/myuw/page.php?id=63903) in its Knowledge Base.
 
 ### Theme
 By default, if you set nothing in [the theme](theming.md) the mascot pictured below will appear in the top bar:
