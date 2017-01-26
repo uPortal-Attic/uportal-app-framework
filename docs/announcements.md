@@ -4,7 +4,7 @@ Within-portal announcements draw attention to new content.
 
 MyUW [documents how it uses announcements](https://kb.wisc.edu/myuw/page.php?id=63903) in its Knowledge Base.
 
-## Theme
+## The mascot announcer
 
 A mascot in the header can make announcements.
 
