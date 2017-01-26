@@ -10,7 +10,7 @@ encourage you to contribute back your theme to this project so you don't have to
 Configure your entry in the `THEME` constant located in [`frame-config.js`](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/frame-config.js).
 It should look something like :
 
-  ```javascript
+```javascript
   {
     "name" : "uw-madison",
     "crest" : "img/uw-madison-56.png",
@@ -33,7 +33,8 @@ It should look something like :
       "warn"    : "orange"
     }
   }
-  ```
+```
+
 **Explanation of JSON Attributes**
 
 + `name`: The system id of the theme. Make sure its unique.
@@ -58,11 +59,12 @@ It should look something like :
 Add in a `<theme-name>.less` file in the folder `/uw-frame-components/css/themes` that looks like this:
 
 **uw-madison.less**:
-  ```less
+
+```less
   @import "../angular.less"; // note: order is important here!
   @import "common-variables.less";
   @import "uw-madison-variables.less";
-  ```
+```
 
 In this example, the file name is is `uw-madison.less`. The "uw-madison" comes from the app's `name` attribute. That is important.
 
@@ -72,7 +74,7 @@ In this example, the file name is is `uw-madison.less`. The "uw-madison" comes f
 As you probably noticed above, you also will want to add in a `<theme>-variables.less` file in the same directory. This
 will be full of color variable declarations. Here is an example of that:
 
-  ```
+```less
   /* UW-Madison colors */
   @color1: #c5050c;
   @color2: lighten(@color1, 10%);
@@ -88,7 +90,7 @@ will be full of color variable declarations. Here is an example of that:
   @user-portal-logout-btn-text-color: #FFF;
 
   @input-border-focus: @color3;
-  ```
+```
 
   - `@color1` is your primary brand color. In uw-madison's case, this is Badger Red, but for UW-Milwaukee this is Black.
   - `@color2` is a slightly lighter. For simplicity you can just use the lighten function in less, or you can specify a color.
