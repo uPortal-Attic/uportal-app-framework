@@ -13,6 +13,7 @@ If `mascotImg` is unset, `uw-frame` defaults to a generic robot mascot.
 ![default mascot image](./img/announcement-character.png)
 
 ### Creating a mascot image
+
 The image itself should have the following characteristics:
 
 ![./img/mascot/mascot-w-comments.png](img/mascot/mascot-w-comments.png)
@@ -32,11 +33,13 @@ The image itself should have the following characteristics:
 When there are no new announcements the mascot is completely hidden.
 
 #### Initial state
+
 When there is at least one new announcement, the mascot will appear in the top bar but will be mostly hidden:
 
 ![mascot initial state](./img/mascot/hidden-mascot.png)
 
 #### Hover state
+
 This state is triggered when someone mouses over the hidden mascot. It slides up a little bit and shows a tooltip instructing
 the user to click to see more:
 
