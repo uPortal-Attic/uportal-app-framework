@@ -1,8 +1,10 @@
+# Announcements in uw-frame
+
 Within-portal announcements draw attention to new content.
 
 MyUW [documents how it uses announcements](https://kb.wisc.edu/myuw/page.php?id=63903) in its Knowledge Base.
 
-### Theme
+## Theme
 
 A mascot in the header can make announcements.
 
@@ -26,26 +28,26 @@ The image itself should have the following characteristics:
 
 *Note*: The mascot image can be an animated gif, but animations should be limited to e.g. blinking eyes to achieve subtle presence without excessive distraction.
 
-### States
+## States
 
-#### No new announcements
+### No new announcements
 
 When there are no new announcements the mascot is completely hidden.
 
-#### Initial state
+### Initial state
 
 When there is at least one new announcement, the mascot will appear in the top bar but will be mostly hidden:
 
 ![mascot initial state](./img/mascot/hidden-mascot.png)
 
-#### Hover state
+### Hover state
 
 This state is triggered when someone mouses over the hidden mascot. It slides up a little bit and shows a tooltip instructing
 the user to click to see more:
 
 ![mascot hover state](./img/mascot/hover-mascot.png)
 
-#### Clicked state
+### Clicked state
 
 If the mascot is clicked while in hidden/hover state, it will slide up and the announcements will become visible:
 
