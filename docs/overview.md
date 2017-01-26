@@ -15,6 +15,7 @@ See the [configuration doc](configuration.md) to learn how to configure these fe
 
 
 In addition to the features pictured above, frame provides:
+
 + Error pages
 + Optional settings
 + [Frame-specific angular directives](directives.md)
