@@ -11,15 +11,33 @@
 
 Run a local instance of `uw-frame` in a matter of minutes in 3 easy steps.
 
-1. Clone the repo: `git clone git@github.com:UW-Madison-DoIT/uw-frame.git`
-    - (optional) If you want to use a specific release, checkout its [tag](https://github.com/UW-Madison-DoIT/uw-frame/releases): `git checkout <tag>`
-2. Run the following commands:
-   ```
-   npm install
-   npm run static:dev
-   ```
+### 1. Clone
 
-3. Open a browser and go to the location specified in the build output
+Clone the repo:
+
+```shell
+git clone git@github.com:UW-Madison-DoIT/uw-frame.git
+```
+
+To use a specific release, checkout its [tag](https://github.com/UW-Madison-DoIT/uw-frame/releases):
+
+```shell
+git checkout <tag>
+```
+otherwise the `git clone` defaults to the latest code.
+
+### 2. Install and run using Node
+
+Run these commands:
+
+```shell
+npm install
+npm run static:dev
+```
+
+### 3. View in browser
+
+Open a web browser and go to the location specified in the build output.
 
 
 ## Writing an application using uw-frame
