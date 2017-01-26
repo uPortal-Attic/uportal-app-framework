@@ -1,11 +1,13 @@
-### Requirements
+# Getting started quickly with uw-frame
+
+## Requirements
 
 * [Node.js](https://nodejs.org/en/)
 * [npm](https://www.npmjs.com/)
 * JDK 7,8 (for `uw-frame-java`)
 * [Maven](http://maven.apache.org) (for `uw-frame-java`)
 
-### Quick Start
+## Quick Start
 
 Run a local instance of uw-frame in a matter of minutes using the following steps:
 
@@ -20,9 +22,9 @@ Run a local instance of uw-frame in a matter of minutes using the following step
 3. Open a browser and go to the location specified in the build output
 
 
-### Writing an application using uw-frame
+## Writing an application using uw-frame
 
-#### Java
+### Java
 To begin writing a Java-based uw-frame application, checkout the [my-app-seed](https://github.com/UW-Madison-DoIT/my-app-seed) project.
 
 This project is a wonderful starting point that will get you up and running quickly. If you only want to run uw-frame using the Java module,
