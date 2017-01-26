@@ -49,7 +49,7 @@ the user to click to see more:
 
 ### Clicked state
 
-If the mascot is clicked while in hidden/hover state, it will slide up and the announcements will become visible:
+If the mascot is clicked while in hidden/hover state, it will slide up and the announcements will show:
 
 ![mascot clicked state](./img/mascot/presenting-mascot.png)
 
