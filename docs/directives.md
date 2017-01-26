@@ -31,11 +31,11 @@ All params are prefixed with `app-`.
 * **action-link-url**: A URL that you want to goto when the action is clicked (alt to add to home feature)
 * **action-link-text**: The text for the action link
 * **action-link-icon**: The fa icon for prefixing the action-link-text. `fa-plus` by default. (e.g.: fa-plus)
-* **single-option**: If set to true, will assume there is only one option in the **option-template** and will display 
+* **single-option**: If set to true, will assume there is only one option in the **option-template** and will display
 that option directly on the app-header, instead of inside a dropdown menu.
 * **add-to-home**: If set to true, will use the add to home controller instead of the action-link-url. False by default.
 * **fname**: if provided, it'll use that in the add to home feature. if not, it'll try to use NAMES.fname constant.
-* **option-template**: the name of the template to inject in the options dropdown. See `/portal/main/partials/example-page.html` for 
+* **option-template**: the name of the template to inject in the options dropdown. See `/portal/main/partials/example-page.html` for
 examples of single- and many-option templates.
 
 ## Frame page
@@ -81,7 +81,7 @@ Displays a flat, circular icon-button with a fa-icon in the middle, and a title 
   data-href=''
   data-target=''
   data-fa-icon=''
-  data-disabled='false' 
+  data-disabled='false'
   data-title=''>
 </circle-button>
 ```
@@ -104,9 +104,9 @@ Displays a launch button for portal widgets that fits their width and visual sty
 ### Template :
 
 ```html
-<launch-button 
-	data-href="" 
-	data-target="" 
+<launch-button
+	data-href=""
+	data-target=""
 	data-button-text=""
 	data-aria-label="">
 </launch-button>
@@ -116,9 +116,9 @@ Displays a launch button for portal widgets that fits their width and visual sty
 
 * **href**: Where you want them to go
 * **target**: Open in new window, new tab, or the same window
-* **button-text**: Launch app text (e.g. "Launch App," "Go to \[your site]," etc. See our 
-[launch-button best practices](http://uw-madison-doit.github.io/angularjs-portal/latest/#/md/widget-launch-button) to 
-learn how to make this text useful to your users. 
+* **button-text**: Launch app text (e.g. "Launch App," "Go to \[your site]," etc. See our
+[launch-button best practices](http://uw-madison-doit.github.io/angularjs-portal/latest/#/md/widget-launch-button) to
+learn how to make this text useful to your users.
 * **aria-label**: (optional) Text for screen readers. Use this to clarify the context of the launch button, if necessary (e.g. "Launch Time and Absence app within MyUW")
 
 ## Loading gif
