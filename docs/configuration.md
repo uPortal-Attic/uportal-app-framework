@@ -96,6 +96,7 @@ define(['angular'], function(angular) {
 ```
 
 Alright, lot going on here so lets take a walk through this.
+
 + `Lines 1-4` include the the requirejs wrapper, setup for the angular module (pulled in during the /portal/main.js execution),
 and definition of the "OVERRIDE" constant. These lines should not change.
 + `Line 5` is an example override for the `enabled` attribute in the `FEATURES` category. By default its set to false, but
