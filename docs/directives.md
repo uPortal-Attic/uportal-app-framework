@@ -1,10 +1,12 @@
+# AngularJS directives in uw-frame
+
 ## App header
 
 `app-header` directive should be used for all pages in a frame based page. You can either utilize the frame-page directive, or just this directive with custom code.
 
 There is also a directive called `app-header-two-way-bind`. This has all the same features as `app-header` except all the scope attributes are passed in via `=` instead of `@`. This provides 2 way binding for your header. Research angular directives for more details.
 
-#### Template :
+### Template :
 
 ```
 <app-header
@@ -20,7 +22,7 @@ There is also a directive called `app-header-two-way-bind`. This has all the sam
 ></app-header>
 ```
 
-#### Params :
+### Params :
 
 All params are prefixed with `app-`.
 
@@ -42,7 +44,7 @@ Frame page is basically the app header directive but with a transclude for the b
 
 **Example page**: see `/portal/main/partials/example-page.html`
 
-#### Template :
+### Template :
 
 ```
 <frame-page
@@ -60,11 +62,11 @@ This part is included via ng-transclude
 </frame-page>
 ```
 
-#### Options
+### Options
 
 * **white-background**: A boolean when set to true with give you a white background with 98% width, with a 1% `left-margin`.
 
-#### Params :
+### Params :
 
 _See `app-header`_
 
@@ -72,7 +74,7 @@ _See `app-header`_
 
 Displays a flat, circular icon-button with a fa-icon in the middle, and a title below.
 
-#### Template :
+### Template :
 
 ```html
 <circle-button
@@ -83,7 +85,9 @@ Displays a flat, circular icon-button with a fa-icon in the middle, and a title 
   data-title=''>
 </circle-button>
 ```
+
 #### Params:
+
 * **href**: Where you want them to go
 * **target**: Open in new window, new tab, or the same window
 * **fa-icon**: The font awesome icon to use
@@ -97,7 +101,7 @@ Displays a flat, circular icon-button with a fa-icon in the middle, and a title 
 
 Displays a launch button for portal widgets that fits their width and visual style
 
-#### Template :
+### Template :
 
 ```html
 <launch-button 
@@ -107,7 +111,9 @@ Displays a launch button for portal widgets that fits their width and visual sty
 	data-aria-label="">
 </launch-button>
 ```
-#### Params:
+
+### Params:
+
 * **href**: Where you want them to go
 * **target**: Open in new window, new tab, or the same window
 * **button-text**: Launch app text (e.g. "Launch App," "Go to \[your site]," etc. See our 
@@ -119,7 +125,8 @@ learn how to make this text useful to your users.
 
 Shows loading gif when the length of given array is 0 and "empty" is not set.
 
-#### Params:
+### Params:
+
 + **object**: The scope array we are watching to show/hide gif
 + **empty**: The scope boolean flag that you set if the data came back and it was empty
 + **reuse**: (optional) If set to true, it won't destroy the loading gif, just hide it
