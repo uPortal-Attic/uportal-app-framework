@@ -17,18 +17,13 @@ The image itself should have the following characteristics:
 
 ![./img/mascot/mascot-w-comments.png](img/mascot/mascot-w-comments.png)
 
-<div class="row">
-<div class="col-md-6 col-sm-12">
-<ul style="list-style-type:upper-alpha!important">
-<li style="padding:4px 0">Height of always-visible portion: 16px from top</li>
-<li style="padding:4px 0">Eye height: 12px from top, so that you can see them during the hidden state.</li>
-<li style="padding:4px 0">Full height : 40px</li>
-<li style="padding:4px 0">Full width : 60px</li>
-<li style="padding:4px 0">Transparent background</li>
-</ul>
-*Note*: Your mascot image can be an animated gif, but animations should be limited to blinking eyes.
-</div>
-</div>
++ A. Height of always-visible portion: 16px from top
++ B. Eye height: 12px from top, so that you can see them during the hidden state.
++ C. Full height : 40px
++ D. Full width : 60px
++ E. Transparent background
+
+*Note*: The mascot image can be an animated gif, but animations should be limited to e.g. blinking eyes to achieve subtle presence without excessive distraction.
 
 ### States
 
