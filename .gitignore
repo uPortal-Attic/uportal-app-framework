@@ -18,3 +18,5 @@ npm-debug.log
 *.iml
 *.swp
 \.DS_Store
+docs/_site
+Gemfile.lock

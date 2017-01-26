@@ -4,13 +4,8 @@
   "description": "MyUW's frame project for creating angular based microservices.",
   "scripts": {
     "test": "karma start uw-frame-components/karma.conf.js --single-run",
-    "build-docs": "cp -r uw-frame-static/target/* docs/target && cp -r docs/js docs/img docs/markdown docs/my-app docs/superstatic.json docs/target",
     "build-static": "node tools/uw-frame-static/build.js",
     "postbuild-static": "htmlprocessor uw-frame-static/index.html -o uw-frame-static/target/index.html",
-    "predocs": "npm run build-docs",
-    "docs": "cd docs/target && superstatic",
-    "docs:watch": "onchange uw-frame-components/** docs/** -e docs/target -v -- npm run build-docs",
-    "docs:dev": "npm run build-docs -s && concurrently -k \"npm run docs -s\" \"npm run docs:watch -s\"",
     "prestatic": "npm run build-static",
     "static": "cd uw-frame-static/target && superstatic",
     "static:watch": "onchange uw-frame-components/** -i -- npm run build-static",

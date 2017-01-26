@@ -1,12 +1,12 @@
-The announcements feature is used to notify users of new content. Read more about the business usage of this feature in 
-[the KB article](https://kb.wisc.edu/myuw/page.php?id=63903). The following documentation talks more about the implementation 
+The announcements feature is used to notify users of new content. Read more about the business usage of this feature in
+[the KB article](https://kb.wisc.edu/myuw/page.php?id=63903). The following documentation talks more about the implementation
 details of the announcements.
 
 ### Theme
-By default, if you set nothing in [the theme](#/md/theming) the mascot pictured below will appear in the top bar:
+By default, if you set nothing in [the theme](theming.md) the mascot pictured below will appear in the top bar:
 
 ![default mascot image](./img/announcement-character.png)
- 
+
 Provide a `mascotImg` variable in the theme to override this.
 
 ### Creating a mascot image
@@ -42,7 +42,7 @@ When there is at least one new announcement, the mascot will appear in the top b
 ![mascot initial state](./img/mascot/hidden-mascot.png)
 
 #### Hover state
-This state is triggered when someone mouses over the hidden mascot. It slides up a little bit and shows a tooltip instructing 
+This state is triggered when someone mouses over the hidden mascot. It slides up a little bit and shows a tooltip instructing
 the user to click to see more:
 
 ![mascot hover state](./img/mascot/hover-mascot.png)
@@ -52,5 +52,5 @@ the user to click to see more:
 If the mascot is clicked while in hidden/hover state, it will slide up and the announcements will become visible:
 
 ![mascot clicked state](./img/mascot/presenting-mascot.png)
- 
-If clicked again while in this state, the mascot will slide back down to the initial state. If all the announcements are dismissed, the mascot will disappear. 
+
+If clicked again while in this state, the mascot will slide back down to the initial state. If all the announcements are dismissed, the mascot will disappear.
