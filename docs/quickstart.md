@@ -53,14 +53,22 @@ Use static when you want a simple front end that connects to an independent API 
 
 There are a couple ways you can create a static frame application.
 
-1. Use the [npm package](https://www.npmjs.com/package/uw-frame). See the [widget creator](https://github.com/UW-Madison-DoIT/myuw-smart-widget-creator) app for an example that uses the package.
-2. Use the Docker superstatic container:
-    - Build the docker container (`docker build -t myuw/frame .`) and run it to get the frame demo application
-    - Run `docker run -v myapp-dir:/data/my-app -p 8009:8009 myuw/frame` to replace the my-app directory with a volume mounted from localhost
-    - For deployment, create a Dockerfile like so:
-	    ```
-		FROM myuw/frame
+#### One way: the Node package
 
-		COPY ./someapp /data/my-app
-		```
-	See the [Dockerfile](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/Dockerfile) for specifics.
+Use the [npm package](https://www.npmjs.com/package/uw-frame). See the [widget creator](https://github.com/UW-Madison-DoIT/myuw-smart-widget-creator) app for an example that uses the package.
+
+#### Another way: the Docker container
+
+Use the Docker superstatic container:
+
+1. Build the docker container (`docker build -t myuw/frame .`) and run it to get the frame demo application
+2. Run `docker run -v myapp-dir:/data/my-app -p 8009:8009 myuw/frame` to replace the my-app directory with a volume mounted from localhost
+3. For deployment, create a Dockerfile like so:
+
+```
+FROM myuw/frame
+
+COPY ./someapp /data/my-app
+```
+
+See the [Dockerfile](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/Dockerfile) for specifics.
