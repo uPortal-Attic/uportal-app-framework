@@ -7,7 +7,7 @@
 [![Issue Stats](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/pr)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 [![Issue Stats](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/issue)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 
-The [uw-frame <i class='fa fa-github'></i>](https://github.com/UW-Madison-DoIT/uw-frame) project is the framework for building campus
+The [uw-frame](https://github.com/UW-Madison-DoIT/uw-frame) project is the framework for building campus
 applications using modern technologies. It includes the MyUW header, settings, footer, and some reusable components,
 as well as the configuration options and dependencies you need to get your app up and running quickly in MyUW.
 
