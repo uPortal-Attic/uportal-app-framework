@@ -1,9 +1,11 @@
+# Theming
+
 The theming system is pretty straightforward. You can have your own skin in uw-frame with minimal effort. We highly
 encourage you to contribute back your theme to this project so you don't have to manage an independent fork of uw-frame.
 
-## Configuring a Theme
+## Configuring a theme
 
-#### 1. Add an entry to the THEME constant
+### 1. Add an entry to the THEME constant
 
 Configure your entry in the `THEME` constant located in [`frame-config.js`](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/frame-config.js).
 It should look something like :
@@ -51,7 +53,7 @@ It should look something like :
 + `materialTheme`: [object or string] See the *Material Theme* section below.
 
 
-#### 2. Add a theme.less file
+### 2. Add a theme.less file
 
 Add in a `<theme-name>.less` file in the folder `/uw-frame-components/css/themes` that looks like this:
 
@@ -65,7 +67,7 @@ Add in a `<theme-name>.less` file in the folder `/uw-frame-components/css/themes
 In this example, the file name is is `uw-madison.less`. The "uw-madison" comes from the app's `name` attribute. That is important.
 
 
-#### 3. Add a theme-variables.less file
+### 3. Add a theme-variables.less file
 
 As you probably noticed above, you also will want to add in a `<theme>-variables.less` file in the same directory. This
 will be full of color variable declarations. Here is an example of that:
@@ -92,12 +94,12 @@ will be full of color variable declarations. Here is an example of that:
   - `@color2` is a slightly lighter. For simplicity you can just use the lighten function in less, or you can specify a color.
   - `@color3` is your accent color. If you're using a material theme, this should be the base (500) color of your accent palette.
 
-#### 4. Set a default theme
+### 4. Set a default theme
 
 The last step is setting a default theme in your `override.js`. For more information on that see the [configuration](configuration.md)
 section. Under `APP_FLAGS` there is a variable called `defaultTheme`.
 
-### Material Theme
+## Material theme
 
 Each theme can have a material theme. If it doesn't, it will use the Google default color selection for `primary`, `accent`, and `warn` palettes.
 Palette information can be found on the [angular material site](https://material.angularjs.org/latest/Theming/01_introduction).
@@ -178,7 +180,7 @@ If it is an object it will assume that it is a custom palette definition. e.g.:
 }
 ```
 
-#### Theme Guidance
+## Theme guidance
 
 If you are defining a custom material theme, follow these guidelines when choosing the base colors of your palette:
 
@@ -200,13 +202,14 @@ Generally, you should avoid using an excessively light or dark color as the base
 very light or dark color, use good judgment when selecting whether to use it for the primary palette or accent palette. In UW-Milwaukee's case, it is better to use black as the
 primary color and yellow (which is used sparingly) as the accent color.
 
-### Testing
+## Testing
 
 If you want to override your default theme just for testing or something we created an access point in the settings page.
 For the default frame we have that at `/settings`. There should be a drop down that has every theme listed in the `THEME`
 constant. Switch over and give it a whirl.
 
-### More about multi-tenant themes
+## More about multi-tenant themes
+
 If you set `APP_FLAGS.defaultTheme` equal to `group` then on page load it will pull the list of groups your in (so make
 sure you set that service up), then it will try to match a group name with a theme's group variable. Case sensitive. First
 one found it caches that theme in session storage. On the next page refresh it checks the cache first, to avoid another group search.
