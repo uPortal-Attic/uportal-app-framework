@@ -9,7 +9,7 @@
 
 ## Quick Start
 
-Run a local instance of uw-frame in a matter of minutes using the following steps:
+Run a local instance of `uw-frame` in a matter of minutes in 3 easy steps.
 
 1. Clone the repo: `git clone git@github.com:UW-Madison-DoIT/uw-frame.git`
     - (optional) If you want to use a specific release, checkout its [tag](https://github.com/UW-Madison-DoIT/uw-frame/releases): `git checkout <tag>`
