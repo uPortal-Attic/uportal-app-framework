@@ -1,4 +1,4 @@
-The announcements feature is used to notify users of new content. Read more about the business usage of this feature in
+The announcements feature draws attention to new content. Read more about the business usage of this feature in
 [the KB article](https://kb.wisc.edu/myuw/page.php?id=63903). The following documentation talks more about the implementation
 details of the announcements.
 
