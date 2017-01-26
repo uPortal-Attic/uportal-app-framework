@@ -23,9 +23,9 @@ Run a local instance of uw-frame in a matter of minutes using the following step
 ### Writing an application using uw-frame
 
 #### Java
-To begin writing a Java-based uw-frame application, checkout the [my-app-seed](https://github.com/UW-Madison-DoIT/my-app-seed) project. 
+To begin writing a Java-based uw-frame application, checkout the [my-app-seed](https://github.com/UW-Madison-DoIT/my-app-seed) project.
 
-This project is a wonderful starting point that will get you up and running quickly. If you only want to run uw-frame using the java module, 
+This project is a wonderful starting point that will get you up and running quickly. If you only want to run uw-frame using the java module,
 run `npm run jetty` and it'll boot up an embedded jetty container with uw-frame.
 
 #### UW-Frame Static
