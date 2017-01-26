@@ -15,12 +15,9 @@ If `mascotImg` is unset, `uw-frame` defaults to a generic robot mascot.
 ### Creating a mascot image
 The image itself should have the following characteristics:
 
+![./img/mascot/mascot-w-comments.png](img/mascot/mascot-w-comments.png)
+
 <div class="row">
-<div class="col-md-6 col-sm-12">
-<div class='width-100'>
-![./img/mascot/mascot-w-comments.png](./img/mascot/mascot-w-comments.png)
-</div>
-</div>
 <div class="col-md-6 col-sm-12">
 <ul style="list-style-type:upper-alpha!important">
 <li style="padding:4px 0">Height of always-visible portion: 16px from top</li>
