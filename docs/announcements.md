@@ -42,7 +42,7 @@ When there is at least one new announcement, the mascot will appear in the top b
 
 ### Hover state
 
-This state is triggered when someone mouses over the hidden mascot. It slides up a little bit and shows a tooltip instructing
+This state triggers when someone mouses over the hidden mascot. The mascot slides up a little bit and shows a tooltip inviting
 the user to click to see more:
 
 ![mascot hover state](./img/mascot/hover-mascot.png)
