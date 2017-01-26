@@ -1,8 +1,10 @@
-### Introduction
+# Using Google Analytics in uw-frame
+
+## Introduction
 
 [www.google.com/analytics](www.google.com/analytics) (GA for short) is a great (and free) way to see how many people are hitting your site. By default uw-frame disables GA. However, if you follow the config setup below, you will get reporting.
 
-### Basic Configuration
+## Basic Configuration
 Add in a `/js/config.js` file that will overwrite the `uw-frame-components/js/config.js`.
 ```javascript
 var config = {
@@ -10,7 +12,7 @@ var config = {
 }
 ```
 
-### Site search
+## Site search
 GA has a great feature called site search. It collects information about what people are searching for on your site. To configure it in uw-frame is a couple steps.
 
 1) Follow steps in [the GA docs](https://support.google.com/analytics/answer/1012264?hl=en) titled "Set up Site Search". The Query Parameter field is q by default. To overwrite that see step 4.
