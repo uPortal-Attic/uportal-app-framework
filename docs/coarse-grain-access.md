@@ -1,4 +1,6 @@
-### Initial Landing Before Shib Authorization
+# Best practices for coarse-grained access control in frame-based applications
+
+## Initial landing before Shibboleth authorization
 
 ![http://goo.gl/hqaa6o](http://goo.gl/hqaa6o)
 
@@ -6,7 +8,7 @@
 + After auth, redirect to the original destination. Note that shib removes # so your app should use HTML5 mode.
 + If the application has a public state, show this with notice that you can login to see personalize content.
 
-### Initial Landing After Shib Authorization
+## Initial landing after Shibboleth authorization
 
 ![http://goo.gl/Y7BqZ1](http://goo.gl/Y7BqZ1)
 
@@ -15,7 +17,8 @@
 + Present “access denied” page. If it’s an application, include the header to provide context. If applicable, this will include a link to the app’s directory page or service’s website. Otherwise, the default will have a link back to the user’s MyUW homepage.
 + If a user session has timed out when hitting a service, redirect the user to authenticate via login.wisc.edu.
 
-### What really makes your application secure
+## What really makes your application secure
+
 + Applying access control on the backing JSON web services themselves.
 + Making the UI reflect lack of access provides a better user experience to unauthorized users.
 + Making the backing JSON web services require authorization prevents unauthorized users from doing things they are not authorized to do.
