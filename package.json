@@ -21,12 +21,7 @@
     "uw-frame-components",
     "uw-frame-static"
   ],
-  "licenses": [
-    {
-      "type": "Apache-2.0",
-      "url": "https://github.com/UW-Madison-DoIT/uw-frame/blob/master/LICENSE"
-    }
-  ],
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/UW-Madison-DoIT/uw-frame.git"
@@ -50,10 +45,6 @@
       "email": "jared.hanstra@wisc.edu"
     }
   ],
-  "license": {
-    "type": "Apache-2.0",
-    "url": "https://github.com/UW-Madison-DoIT/uw-frame/blob/master/LICENSE"
-  },
   "bugs": {
     "url": "https://github.com/UW-Madison-DoIT/uw-frame/issues"
   },
