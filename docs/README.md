@@ -7,9 +7,8 @@
 [![Issue Stats](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/pr)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 [![Issue Stats](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/issue)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 
-The [uw-frame <i class='fa fa-github'></i>](https://github.com/UW-Madison-DoIT/uw-frame) project is the framework for building campus
-applications using modern technologies. It includes the MyUW header, settings, footer, and some reusable components,
-as well as the configuration options and dependencies you need to get your app up and running quickly in MyUW.
+[uw-frame](https://github.com/UW-Madison-DoIT/uw-frame) is a framework for building web applications that look and feel like they belong in an [AngularJS-portal][] portal (such as [MyUW][]). It includes the portal header, settings, footer, and some reusable components,
+as well as the configuration options and dependencies you need to get your app up and running quickly.
 
 
 ## Getting Started
@@ -55,3 +54,6 @@ as well as the configuration options and dependencies you need to get your app u
 + [Contribute to the uw-frame project](https://github.com/UW-Madison-DoIT/uw-frame)
 
 Email us your questions, concerns, and feedback at <mailto:myuw-infra@office365.wisc.edu>
+
+[AngularJS-portal]: https://github.com/UW-Madison-DoIT/angularjs-portal
+[MyUW]: https://it.wisc.edu/services/myuw/
