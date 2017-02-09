@@ -193,30 +193,11 @@
             <id>copy-components</id>
             <phase>compile</phase>
             <goals><goal>copy-resources</goal></goals>
-            <configuration>
+            <configuration>              
               <outputDirectory>${basedir}/target/frame/</outputDirectory>
               <resources>
                 <resource>
-                  <directory>../uw-frame-components</directory>
-                  <filtering>true</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>copy-node_modules</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${basedir}/target/frame/css/themes/node_modules/</outputDirectory>
-              <resources>          
-                <resource>
-                  <directory>${basedir}/../node_modules/</directory>
-                  <include>normalize.less/</include>
-                  <include>bootstrap/</include>
-                  <include>font-awesome/</include>
+                  <directory>${basedir}/../uw-frame-static/target/</directory>
                   <filtering>true</filtering>
                 </resource>
               </resources>
@@ -227,7 +208,7 @@
                 <nonFilteredFileExtension>eot</nonFilteredFileExtension>
                 <nonFilteredFileExtension>otf</nonFilteredFileExtension>
               </nonFilteredFileExtensions>          
-            </configuration>            
+            </configuration>
           </execution>
           <execution>
             <id>copy-static-feeds</id>
@@ -245,22 +226,6 @@
                 </resource>
               </resources>
             </configuration>
-          </execution>
-          <execution>
-            <id>copy-css</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${basedir}/target/frame/css</outputDirectory>
-              <resources>          
-                <resource>
-                  <directory>${basedir}/../uw-frame-static/target/css</directory>
-                  <filtering>true</filtering>
-                </resource>
-              </resources>              
-            </configuration>            
           </execution>
         </executions>
       </plugin>

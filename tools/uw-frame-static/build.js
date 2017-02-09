@@ -17,13 +17,6 @@ mkdirp('uw-frame-static/target/css/themes/', function (err) {
   if (err) throw error;
 });
 
-copy('uw-frame-components/', 'uw-frame-static/target', function (err, results){
-  if (err) throw error;
-});
-
-copy('uw-frame-static/superstatic.json','uw-frame-static/target/', function (err, results){
-  if (err) throw error;
-});
 
 var themes = ['uw-madison', 'uw-system', 'uw-river-falls',
   'uw-stevens-point', 'uw-milwaukee', 'uw-whitewater', 'uw-stout',
@@ -45,6 +38,26 @@ for (var i = 0; i < themes.length; i++) {
     writeCss(src, themeName, data.toString());
   });
 }
+
+copy('uw-frame-components/', 'uw-frame-static/target', function (err, results){
+  if (err) throw error;
+});
+
+copy('node_modules/bootstrap/', 'uw-frame-static/target/css/themes/node_modules/bootstrap/', function(err){
+  if (err) throw error;
+});
+
+copy('node_modules/font-awesome/', 'uw-frame-static/target/css/themes/node_modules/font-awesome/', function(err){
+  if (err) throw error;
+});
+
+copy('node_modules/normalize.less', 'uw-frame-static/target/css/themes/node_modules/', function(err){
+  if (err) throw error;
+})
+
+copy('uw-frame-static/superstatic.json','uw-frame-static/target/', function (err, results){
+  if (err) throw error;
+});
 
 
 /**
