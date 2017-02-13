@@ -45,7 +45,7 @@ define(['angular'], function(angular) {
             'helpdeskURL' : 'https://kb.wisc.edu/helpdesk/',
             'loginURL' : '/portal/Login?profile=bucky',
             'logoutURL' : '/portal/Logout',
-            'myuwHome' : 'https://my.wisc.edu',
+            'frameHomeURL' : 'https://my.wisc.edu',
             'resetLayoutURL' : '/portal/p/reset-my-layout',
             'rootURL' : '/web',
             'addToHomeURLS' : {
