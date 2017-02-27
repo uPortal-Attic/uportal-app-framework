@@ -65,7 +65,7 @@ point uw-frame to your desired feed.
 
 **Attribute breakdown**
 
-- **id**: A unique number to identify the notification. This is used for sort order on the notifications page.
+- **id**: A unique number to identify the notification. This is used for tracking dismissed/un-dismissed state as well as the sort order on the notifications page.
 - **groups**: An attribute to optionally show notifications only to specific groups (ex. Manifest groups, uPortal groups). **Must contain at least one value**. Using the "Everyone" group will make
 your notification visible to all users. Contact your portal development team for more information about group filtering.
 - **title**: The text to be displayed as the notification's main content. **Best practices:**
@@ -75,7 +75,10 @@ your notification visible to all users. Contact your portal development team for
 - **actionURL**: A URL where users can get more information or respond to calls to action.
 - **actionAlt** (*optional*): Applies an aria-label to the notification title. Use this if vision-impaired users might need additional context to understand your notification.
 - **dismissable**: Set to true if users should be able to dismiss the notification from their list. This also works for dismissing priority notifications from their fixed position above the top bar.
-**This should almost always be true**.
+This should almost always be true.
+    - **Example "false" use case**: In some cases, following through on a notification's call to action could result in that notification going away on its own. For example, you may have a notification only visible to a group called
+    "Users - Account Activation Required," which calls on those users to activate their accounts. Upon following through, a user would be removed from that group and the notification would be no longer visible. In this example, the call
+     to action is reasonably important, and the notification should stick around until the user takes the desired action.
 - **priority**: Set to true if the notification is of critical importance. The visibility of the notification will be amplified throughout the UI. **This feature should be used sparingly.**
 
 
