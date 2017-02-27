@@ -24,7 +24,7 @@ In addition to the bell icon, the mobile menu contains a link to the notificatio
 ### Priority notifications
 
 For critical notifications that require a higher degree of visibility, notifications can be designated as "priority" and will appear more prominently, fixed above the
-application top bar. In the case that the user has multiple unseen priority notifications, a generic message will be displayed, featuring the priority notifications
+application top bar. In cases when the user has more than one priority notification to view, a generic message will be displayed, featuring the priority notifications
 count and a link to the notifications page.
 
 [![priority notification](./img/notifications/priority.png)](img/notifications/priority.png)
@@ -40,7 +40,7 @@ Priority notification float to the top of the list and appear with a small icon 
 
 ## Technical implementation
 
-Notifications depend on a JSON feed containing certain attributes and flags. See the [configuraton]() doc for information about how to
+Notifications depend on a JSON feed containing certain attributes and flags. See the [configuraton](configuration.md) doc for information about how to
 point uw-frame to your desired feed.
 
 ### Example notification
