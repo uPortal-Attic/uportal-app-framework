@@ -68,13 +68,15 @@ point uw-frame to your desired feed.
 - **id**: A unique number to identify the notification. This is used for sort order on the notifications page.
 - **groups**: An attribute to optionally show notifications only to specific groups (ex. Manifest groups, uPortal groups). **Must contain at least one value**. Using the "Everyone" group will make
 your notification visible to all users. Contact your portal development team for more information about group filtering.
-- **title**: The text to be displayed as the notification's main content. **Be concise!** Try to limit your notification's title to ~140 characters. Longer titles are less likely
-to be read and can cause minor display errors.
+- **title**: The text to be displayed as the notification's main content. **Best practices:**
+    - Be concise! Try to limit your notification's title to ~140 characters. Shorter titles improve click-through and are less likely to cause display issues on smaller screens.
+    - Use general language and avoid pronouns for broadly visible notifications that don't pertain to specific users' needs (ex. "City of Madison - Declared Snow Emergency").
+    - Use the word "You" when the group filtering for a notification is somewhat specific (i.e. Users with unactivated accounts).
 - **actionURL**: A URL where users can get more information or respond to calls to action.
 - **actionAlt** (*optional*): Applies an aria-label to the notification title. Use this if vision-impaired users might need additional context to understand your notification.
 - **dismissable**: Set to true if users should be able to dismiss the notification from their list. This also works for dismissing priority notifications from their fixed position above the top bar.
 **This should almost always be true**.
-- **priority**: Set to true if the notification is of critical importance. The visibility of the notification will be amplified throughout the UI.
+- **priority**: Set to true if the notification is of critical importance. The visibility of the notification will be amplified throughout the UI. **This feature should be used sparingly.**
 
 
 ### Action buttons
