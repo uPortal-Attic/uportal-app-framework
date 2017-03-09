@@ -295,6 +295,18 @@
             </configuration>
           </execution>
           <execution>
+            <id>rename-uw-lacrosse-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-lacrosse.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-lacrosse.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
             <id>rename-uw-whitewater-file</id>
             <phase>compile</phase>
             <goals>
