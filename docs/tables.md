@@ -1,6 +1,11 @@
-MyUW tables add little to the tables provided by Bootstrap. All tables should be given a class of .table. Prefer responsive 
-tables (achieved by surrounding your \<table> element with a div with a class of .table-responsive).
+# Tables
 
+(This documentation is deprecated in that a future version of `uw-frame` will remove Bootstrap.)
+
+MyUW tables add little to the tables provided by Bootstrap. All tables should be given a class of .table. Prefer responsive
+tables (achieved by surrounding your `<table>` element with a `div` with a `class` of `.table-responsive`).
+
+```html
 <h4 class="center">UW 2014 Football Roster</h4>
 
 <div class="table-responsive">
@@ -18,3 +23,4 @@ tables (achieved by surrounding your \<table> element with a div with a class of
       <tr><td>7</td><td>D.J. Gillins</td><td>QB</td><td>6-3</td><td>185</td><td>FR</td><td>Jacksonville, FL</td></tr>
     </tbody></table>
   </div>
+```

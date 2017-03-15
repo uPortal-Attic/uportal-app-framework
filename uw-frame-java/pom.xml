@@ -4,7 +4,7 @@
   <groupId>edu.wisc.my.apps</groupId>
   <artifactId>uw-frame</artifactId>
   <packaging>war</packaging>
-  <version>3.0.4-SNAPSHOT</version>
+  <version>3.1.4-SNAPSHOT</version>
   <name>uw-frame-parent</name>
   <description>Frame for UW AngularJS applications</description>
   <url>https://github.com/UW-Madison-DoIT/uw-frame</url>
@@ -193,30 +193,11 @@
             <id>copy-components</id>
             <phase>compile</phase>
             <goals><goal>copy-resources</goal></goals>
-            <configuration>
+            <configuration>              
               <outputDirectory>${basedir}/target/frame/</outputDirectory>
               <resources>
                 <resource>
-                  <directory>../uw-frame-components</directory>
-                  <filtering>true</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>copy-node_modules</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${basedir}/target/frame/css/themes/node_modules/</outputDirectory>
-              <resources>          
-                <resource>
-                  <directory>${basedir}/../node_modules/</directory>
-                  <include>normalize.less/</include>
-                  <include>bootstrap/</include>
-                  <include>font-awesome/</include>
+                  <directory>${basedir}/../uw-frame-static/target/</directory>
                   <filtering>true</filtering>
                 </resource>
               </resources>
@@ -227,7 +208,7 @@
                 <nonFilteredFileExtension>eot</nonFilteredFileExtension>
                 <nonFilteredFileExtension>otf</nonFilteredFileExtension>
               </nonFilteredFileExtensions>          
-            </configuration>            
+            </configuration>
           </execution>
           <execution>
             <id>copy-static-feeds</id>
@@ -245,22 +226,6 @@
                 </resource>
               </resources>
             </configuration>
-          </execution>
-          <execution>
-            <id>copy-css</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${basedir}/target/frame/css</outputDirectory>
-              <resources>          
-                <resource>
-                  <directory>${basedir}/../uw-frame-static/target/css</directory>
-                  <filtering>true</filtering>
-                </resource>
-              </resources>              
-            </configuration>            
           </execution>
         </executions>
       </plugin>
@@ -326,6 +291,18 @@
             <configuration>
               <sourceFile>${basedir}/target/frame/css/themes/uw-milwaukee.css</sourceFile>
               <destinationFile>${basedir}/target/frame/css/themes/uw-milwaukee.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
+            <id>rename-uw-lacrosse-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/uw-lacrosse.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/uw-lacrosse.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>

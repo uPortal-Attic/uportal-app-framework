@@ -71,3 +71,12 @@ To build and run on a Superstatic server:
 You can also create a artifact using maven.  There's a pom.xml file in the
 uw-frame-java directory.  The maven build will use the normal npm build and
 bundle into a deliverable war file.
+
+## Running the documentation
+
+To run the Jekyll docs locally:
+
+> cd docs
+> bundle exec jekyll serve
+
+You may need to install the Jekyll bundler on your machine. See [Jekyll's quick-start guide](https://jekyllrb.com/docs/quickstart/) for instructions.

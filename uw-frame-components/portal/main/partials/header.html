@@ -55,7 +55,7 @@
 
     <!-- SEARCH BUTTON XS-ONLY -->
     <div layout="row" layout-align="end center" flex-xs="60" hide-gt-xs>
-      <md-button class="md-icon-button" aria-label="Toggle MyUW search" ng-click="toggleSearch()">
+      <md-button class="md-icon-button" aria-label="Toggle {{portal.theme.title}} search" ng-click="toggleSearch()">
         <md-icon ng-if="!searchExpanded">search</md-icon>
         <md-icon ng-if="searchExpanded">close</md-icon>
       </md-button>

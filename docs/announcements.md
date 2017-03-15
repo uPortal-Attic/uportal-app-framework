@@ -1,55 +1,55 @@
-The announcements feature is used to notify users of new content. Read more about the business usage of this feature in
-[the KB article](https://kb.wisc.edu/myuw/page.php?id=63903). The following documentation talks more about the implementation
-details of the announcements.
+# Announcements in uw-frame
 
-### Theme
-By default, if you set nothing in [the theme](theming.md) the mascot pictured below will appear in the top bar:
+Within-portal announcements draw attention to new content.
+
+MyUW [documents how it uses announcements](https://kb.wisc.edu/myuw/page.php?id=63903) in its Knowledge Base.
+
+## The mascot announcer
+
+A mascot in the header can make announcements.
+
+The `mascotImg` variable in [the theme](theming.md) sets the theme-specific mascot.
+
+If `mascotImg` is unset, `uw-frame` defaults to a generic robot mascot.
 
 ![default mascot image](./img/announcement-character.png)
 
-Provide a `mascotImg` variable in the theme to override this.
-
 ### Creating a mascot image
+
 The image itself should have the following characteristics:
 
-<div class="row">
-<div class="col-md-6 col-sm-12">
-<div class='width-100'>
-![./img/mascot/mascot-w-comments.png](./img/mascot/mascot-w-comments.png)
-</div>
-</div>
-<div class="col-md-6 col-sm-12">
-<ul style="list-style-type:upper-alpha!important">
-<li style="padding:4px 0">Height of always-visible portion: 16px from top</li>
-<li style="padding:4px 0">Eye height: 12px from top, so that you can see them during the hidden state.</li>
-<li style="padding:4px 0">Full height : 40px</li>
-<li style="padding:4px 0">Full width : 60px</li>
-<li style="padding:4px 0">Transparent background</li>
-</ul>
-*Note*: Your mascot image can be an animated gif, but animations should be limited to blinking eyes.
-</div>
-</div>
+![./img/mascot/mascot-w-comments.png](img/mascot/mascot-w-comments.png)
 
-### States
++ A. Height of always-visible portion: 16px from top
++ B. Eye height: 12px from top, so that you can see them during the hidden state.
++ C. Full height : 40px
++ D. Full width : 60px
++ E. Transparent background
 
-#### No new announcements
+*Note*: The mascot image can be an animated gif, but animations should be limited to e.g. blinking eyes to achieve subtle presence without excessive distraction.
+
+## States
+
+### No new announcements
 
 When there are no new announcements the mascot is completely hidden.
 
-#### Initial state
+### Initial state
+
 When there is at least one new announcement, the mascot will appear in the top bar but will be mostly hidden:
 
 ![mascot initial state](./img/mascot/hidden-mascot.png)
 
-#### Hover state
-This state is triggered when someone mouses over the hidden mascot. It slides up a little bit and shows a tooltip instructing
+### Hover state
+
+This state triggers when someone mouses over the hidden mascot. The mascot slides up a little bit and shows a tooltip inviting
 the user to click to see more:
 
 ![mascot hover state](./img/mascot/hover-mascot.png)
 
-#### Clicked state
+### Clicked state
 
-If the mascot is clicked while in hidden/hover state, it will slide up and the announcements will become visible:
+If the mascot is clicked while in hidden/hover state, it will slide up and the announcements will show:
 
 ![mascot clicked state](./img/mascot/presenting-mascot.png)
 
