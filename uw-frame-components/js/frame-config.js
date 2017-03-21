@@ -836,7 +836,7 @@ define(['angular'], function(angular) {
             "ariaLabelTitle" : "My U W",
             "crestalt" : "UW Extension",
             "group" : "UW System-Extension",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/",
+            "footerLinks":[{ "url" : "http://ce.uwex.edu/technical-support/",
                 "target" : "_blank",
                 "title" : "Help"
               }],
