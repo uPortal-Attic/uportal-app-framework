@@ -1,0 +1,51 @@
+<div class="widget-option-link" layout="column" layout-align="center center">
+
+  <!-- OPTION-LINK ICON -->
+  <div class="option-link-icon">
+    <a href="{{ widget.selectedUrl }}" target="_blank" rel="noopener noreferrer">
+      <frame-widget-icon></frame-widget-icon>
+    </a>
+  </div>
+
+  <!-- OPTION-LINK TEXT/CONTROLS -->
+  <div class="option-link-controls">
+    <!-- LOADING GIF IF EMPTY -->
+    <div ng-if="widget.widgetData.length == 0" layout="row" layout-align="center center">
+      <loading-gif data-object='widget.widgetData'></loading-gif>
+    </div>
+    <!-- IF ONE ELEMENT -->
+    <div ng-if="config.singleElement && (!widget.widgetData[config.arrayName] || widget.widgetData[config.arrayName].length == 0)"
+         layout="row" layout-align="center center">
+      <span title='{{ widget.widgetData[config.display].length > 26 ? widget.widgetData[config.display] : "" }}'>
+        {{ widget.widgetData[config.display] | trimMiddle:26 }}
+      </span>
+    </div>
+    <!-- IF MORE THAN ONE ELEMENT -->
+    <div ng-if="widget.widgetData && widget.widgetData[config.arrayName] && widget.widgetData[config.arrayName].length >= 1">
+      <md-input-container>
+        <md-select ng-model="widget.selectedUrl" class="md-accent">
+          <md-option ng-if="config.singleElement" selected="selected"
+                     class="md-default"
+                     value="{{widget.widgetData[config.value]}}"
+                     title='{{widget.widgetData[config.display].length > 26 ? widget.widgetData[config.display] : ""}}'>
+            {{widget.widgetData[config.display] | trimMiddle:26}}
+          </md-option>
+          <md-option ng-repeat="obj in widget.widgetData[config.arrayName]"
+                     class="md-default"
+                     value="{{obj[config.value]}}"
+                     title="{{obj[config.display].length > 26 ? obj[config.display] : ''}}">
+            {{obj[config.display] | trimMiddle:26}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+  </div>
+</div>
+
+<!-- LAUNCH BUTTON -->
+<a class="launch-app-button"
+   ng-href="{{ widget.selectedUrl }}"
+   target="_blank" rel="noopener noreferrer">
+  <span ng-if='config.launchText'>{{ config.launchText }}</span>
+  <span ng-if='!config.launchText'>Launch {{ widget.title }}</span>
+</a>

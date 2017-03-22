@@ -1,0 +1,327 @@
+{
+  "entry": {
+    "canAdd": false,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "UWRF News",
+      "description": "Local news important for UW-River Falls",
+      "url": "https://www.uwrf.edu/News/",
+      "iconUrl": null,
+      "faIcon": "fa-newspaper-o",
+      "fname": "uwrf-news-feed",
+      "lifecycleState": "PUBLISHED",
+      "target": "_blank",
+      "widgetURL": "/rss-to-json/rssTransform/prop/uwrf-news",
+      "widgetType": "rss",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "lim": 6,
+        "target": "_blank",
+        "showdate": true,
+        "titleLim": 40,
+        "dateFormat": "MM-dd-yyyy",
+        "showShowing": true
+      },
+      "staticContent": "\n            \n                Click <a href=\"https://www.uwrf.edu/News/\">here</a> to access the UWRF News.\n            \n        ",
+      "pithyStaticContent": null,
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "categories": [
+      "News"
+    ],
+    "portletName": "advanced-cms",
+    "title": "UWRF News",
+    "keywords": [
+      "widget",
+      "news",
+      "river falls",
+      "falls",
+      "UW-River Falls"
+    ],
+    "fname": "uwrf-news-feed",
+    "rating": 0.0,
+    "lifecycleState": "PUBLISHED",
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://www.uwrf.edu/News/",
+    "portletWebAppName": "/SimpleContentPortlet",
+    "maxUrl": "https://www.uwrf.edu/News/",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 0,
+    "faIcon": "fa-newspaper-o",
+    "relatedPortlets": [
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "News About MyUW",
+          "description": "News about MyUW.",
+          "url": "/portal/p/myuw-news/render.uP",
+          "iconUrl": null,
+          "faIcon": "fa-newspaper-o",
+          "fname": "myuw-news",
+          "lifecycleState": "EXPIRED",
+          "target": null,
+          "widgetURL": "http://www.doit.wisc.edu/cat/myuw/feed/?limit=3",
+          "widgetType": "rss",
+          "widgetTemplate": null,
+          "widgetConfig": {
+            "lim": 6
+          },
+          "staticContent": null,
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "categories": [
+          "News"
+        ],
+        "portletName": "XMLTransformPortlet",
+        "title": "News About MyUW",
+        "keywords": [
+          "MyUW",
+          "news",
+          "MyUW-Madison"
+        ],
+        "fname": "myuw-news",
+        "rating": 0.0,
+        "lifecycleState": "EXPIRED",
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "/portal/p/myuw-news/render.uP",
+        "portletWebAppName": "/XMLTransformPortlet",
+        "maxUrl": "/portal/p/myuw-news/render.uP",
+        "shortUrl": null,
+        "marketplaceScreenshots": [],
+        "userRated": 0,
+        "faIcon": "fa-newspaper-o",
+        "relatedPortlets": null,
+        "description": "News about MyUW.",
+        "name": "News About MyUW",
+        "id": "6097",
+        "type": "Portlet",
+        "target": null
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "Responsive MyUW",
+          "description": "Information about the new responsive view of MyUW",
+          "url": "/portal/p/responsive-myuw-announcement/render.uP",
+          "iconUrl": null,
+          "faIcon": null,
+          "fname": "responsive-myuw-announcement",
+          "lifecycleState": "PUBLISHED",
+          "target": null,
+          "widgetURL": null,
+          "widgetType": null,
+          "widgetTemplate": null,
+          "widgetConfig": null,
+          "staticContent": "\n          <style>\n            .classic-beta-transition {\n              font-family:'Helvetica Neue','Helvetica',sans-serif;\n              font-weight:200;\n            }\n            .classic-beta-transition h3 {\n              font-size:1.5em;\n              margin:5px 0px;\n            }\n            .center {\n              text-align:center;\n            }\n            #beta-button-div {\n              text-align:center;\n              margin-bottom:10px;\n            }\n            #beta-button {\n              width:180px;\n              height:40px;\n              margin:10px 0px;\n              background-color:#b70101;\n              border:none;\n              border-radius:4px;\n\n            }\n            #beta-button:hover {\n              background-color:#990000;\n            }\n            #beta-button a {\n              color:#fff !important;\n            }\n            #beta-button a:hover {\n              text-decoration:none;\n            }\n          </style>\n          <div data-role=\"content\" class=\"classic-beta-transition\">\n            <h3 class=\"center\">My UW is getting a facelift!</h3>\n            <div id=\"beta-button-div\">\n              <button class=\"btn btn-primary\" id=\"beta-button\"><a href=\"/portal/Login?profile=bucky\">Try the Beta Version</a></button>\n            </div>\n            <h4 class=\"center\">Share Your Feedback</h4>\n            <p class=\"center\">In the coming months, we&#39;ll continue to roll out enhancements but we want to hear from you!&nbsp; <a href=\"http://redesign.my.wisc.edu/contact/\">Send us your ideas, feedback and questions</a>.</p>\n          </div>\n",
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "categories": [
+          "News"
+        ],
+        "portletName": "advanced-cms",
+        "title": "Responsive MyUW",
+        "keywords": null,
+        "fname": "responsive-myuw-announcement",
+        "rating": 4.0,
+        "lifecycleState": "PUBLISHED",
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "/portal/p/responsive-myuw-announcement/render.uP",
+        "portletWebAppName": "/SimpleContentPortlet",
+        "maxUrl": "/portal/p/responsive-myuw-announcement/render.uP",
+        "shortUrl": null,
+        "marketplaceScreenshots": [],
+        "userRated": 1,
+        "faIcon": null,
+        "relatedPortlets": null,
+        "description": "Information about the new responsive view of MyUW",
+        "name": "Responsive MyUW",
+        "id": "1801",
+        "type": "Portlet",
+        "target": null
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "HR, Payroll and Benefits News",
+          "description": "News and announcements about University of Wisconsin HR, Payroll, and Benefit topics.",
+          "url": "/portal/p/hr-payroll-benefits-news/render.uP",
+          "iconUrl": null,
+          "faIcon": "fa-newspaper-o",
+          "fname": "hr-payroll-benefits-news",
+          "lifecycleState": "PUBLISHED",
+          "target": null,
+          "widgetURL": "/rss-to-json/rssTransform/prop/payroll-benefits-news",
+          "widgetType": "rss",
+          "widgetTemplate": null,
+          "widgetConfig": {
+            "lim": 4
+          },
+          "staticContent": null,
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "categories": [
+          "News",
+          "Work"
+        ],
+        "portletName": "AuthenticatedWebProxy",
+        "title": "HR, Payroll and Benefits News",
+        "keywords": [
+          "HR",
+          "benefit",
+          "payroll",
+          "news",
+          "work record"
+        ],
+        "fname": "hr-payroll-benefits-news",
+        "rating": 0.0,
+        "lifecycleState": "PUBLISHED",
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "/portal/p/hr-payroll-benefits-news/render.uP",
+        "portletWebAppName": "/WebProxyPortlet",
+        "maxUrl": "/portal/p/hr-payroll-benefits-news/render.uP",
+        "shortUrl": null,
+        "marketplaceScreenshots": [],
+        "userRated": 0,
+        "faIcon": "fa-newspaper-o",
+        "relatedPortlets": null,
+        "description": "News and announcements about University of Wisconsin HR, Payroll, and Benefit topics.",
+        "name": "UW-Madison HR, Payroll and Benefits News",
+        "id": "80",
+        "type": "Portlet",
+        "target": null
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "DoIT Help Desk Notices",
+          "description": "Computing support news and notices from the Help Desk.",
+          "url": "/portal/p/doit-help-desk-notices/render.uP",
+          "iconUrl": null,
+          "faIcon": "fa-bullhorn",
+          "fname": "doit-help-desk-notices",
+          "lifecycleState": "PUBLISHED",
+          "target": null,
+          "widgetURL": "/rss-to-json/rssTransform/prop/help-desk",
+          "widgetType": "rss",
+          "widgetTemplate": null,
+          "widgetConfig": {
+            "lim": 4
+          },
+          "staticContent": null,
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "categories": [
+          "News"
+        ],
+        "portletName": "XMLTransformPortlet",
+        "title": "DoIT Help Desk Notices",
+        "keywords": null,
+        "fname": "doit-help-desk-notices",
+        "rating": 0.0,
+        "lifecycleState": "PUBLISHED",
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "/portal/p/doit-help-desk-notices/render.uP",
+        "portletWebAppName": "/XMLTransformPortlet",
+        "maxUrl": "/portal/p/doit-help-desk-notices/render.uP",
+        "shortUrl": null,
+        "marketplaceScreenshots": [],
+        "userRated": 0,
+        "faIcon": "fa-bullhorn",
+        "relatedPortlets": null,
+        "description": "Computing support news and notices from the Help Desk.",
+        "name": "DoIT Help Desk Notices",
+        "id": "48",
+        "type": "Portlet",
+        "target": null
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "New! Mobile MyUW",
+          "description": "Information about the new mobile view of MyUW",
+          "url": "/portal/p/mobile-myuw-announcement/render.uP",
+          "iconUrl": null,
+          "faIcon": null,
+          "fname": "mobile-myuw-announcement",
+          "lifecycleState": "PUBLISHED",
+          "target": null,
+          "widgetURL": null,
+          "widgetType": null,
+          "widgetTemplate": null,
+          "widgetConfig": null,
+          "staticContent": "<div data-role=\"content\">\n    <h3>\n        My UW is now more mobile friendly!</h3>\n    <h4>\n        Desktop vs. Mobile</h4>\n    <ul>\n        <li>\n            Most, but not all, content is available in the mobile view. <a href=\"https://kb.wisc.edu/myuw/page.php?id=26743\" target=\"_blank\">Learn more</a>.</li>\n        <li>\n            Can&#39;t locate something in the mobile view? Use the &quot;Switch to Full Site&quot; link at the bottom of any page.</li>\n        <li>\n            Want to check out the mobile version from your desktop? Use the &quot;Switch to Mobile Site&quot; link at the bottom of any page.</li>\n    </ul>\n    <h4>\n        Share Your Feedback</h4>\n    <p>\n        In the coming months, we&#39;ll continue to roll out enhancements but we want to hear from you!&nbsp; <a href=\"http://my.wisc.edu/portal/p/feedback\">Send us your ideas, feedback and questions</a>.</p>\n</div>\n<p>\n    &nbsp;</p>\n<p>\n    &nbsp;</p>\n<p>\n    &nbsp;</p>\n",
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "categories": [
+          "News"
+        ],
+        "portletName": "advanced-cms",
+        "title": "New! Mobile MyUW",
+        "keywords": null,
+        "fname": "mobile-myuw-announcement",
+        "rating": 0.0,
+        "lifecycleState": "PUBLISHED",
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "/portal/p/mobile-myuw-announcement/render.uP",
+        "portletWebAppName": "/SimpleContentPortlet",
+        "maxUrl": "/portal/p/mobile-myuw-announcement/render.uP",
+        "shortUrl": null,
+        "marketplaceScreenshots": [],
+        "userRated": 0,
+        "faIcon": null,
+        "relatedPortlets": null,
+        "description": "Information about the new mobile view of MyUW",
+        "name": "New! Mobile MyUW",
+        "id": "1098",
+        "type": "Portlet",
+        "target": null
+      }
+    ],
+    "description": "Local news important for UW-River Falls",
+    "name": "UWRF News",
+    "id": "6296",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}

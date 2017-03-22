@@ -20,7 +20,11 @@ define(['angular'], function(angular) {
             'notificationsURL' : '/web/staticFeeds/notifications.json',
             'sessionInfo' : 'staticFeeds/session.json',
             'shibbolethSessionURL' : null, //'/Shibboleth.sso/Session.json'
-            'portalLayoutRestEndpoint' : null //'/portal/api/layout'
+            'portalLayoutRestEndpoint' : null, //'/portal/api/layout',
+            'widgetApi': {
+              'entry': '/portal/api/marketplace/entry/', // For local testing, change to 'staticFeeds/'
+              'entries': '/portal/api/marketplace/entries.json'
+            }
         })
         .value('NAMES', {
             'title' : 'MyUW', //you can name your app whatever you want
