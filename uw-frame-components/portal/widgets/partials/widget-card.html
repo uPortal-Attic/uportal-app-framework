@@ -1,0 +1,50 @@
+<md-card class="widget-frame" id="portlet-id-{{portlet.nodeId}}" aria-label="{{ portlet.title }} widget">
+
+  <!-- MAINTENANCE MODE OVERLAY -->
+  <div class="overlay__maintenance-mode" ng-if="portlet.lifecycleState === 'MAINTENANCE'">
+    <div class="maintenance-content">
+      <p>
+        <md-icon class="md-warn">warning</md-icon>
+      </p>
+      <p>This app is undergoing maintenance and is temporarily unavailable.</p>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <md-card-header class="widget-header">
+    <!-- Widget Chrome -->
+    <md-button class="widget-action widget-info md-icon-button" aria-label="Description: {{ portlet.description }}" role="tooltip" ng-hide="portlet.lifecycleState === 'MAINTENANCE'">
+      <md-tooltip md-direction="top" class="widget-action-tooltip">
+        {{ portlet.description }}
+      </md-tooltip>
+      <md-icon>info</md-icon>
+    </md-button>
+    <md-button class="widget-action widget-remove md-icon-button"
+               aria-label="remove {{ portlet.title }} widget from your home screen"
+               ng-click="widgetCtrl.removePortlet(portlet.nodeId, portlet.title)"
+               ng-hide="GuestMode || cantRemove || portlet.lifecycleState === 'MAINTENANCE'">
+      <md-icon>close</md-icon>
+    </md-button>
+
+    <md-card-header-text>
+      <span class="md-title" style="text-align: center;" aria-label="{{ portlet.title }}" tabindex="0">
+	      {{ portlet.title }}
+      </span>
+    </md-card-header-text>
+  </md-card-header>
+
+  <!-- BODY -->
+  <md-card-content class="widget-content">
+
+    <sub class="sr-only" id="goToApps-{{portlet.nodeId}}">go to</sub>
+
+    <div ng-switch="type" class="widget-type-container">
+
+      <div ng-switch-when="option-link">
+        <option-link app="portlet" config="portlet.widgetConfig"></option-link>
+      </div>
+
+    </div>
+  </md-card-content>
+
+</md-card>
