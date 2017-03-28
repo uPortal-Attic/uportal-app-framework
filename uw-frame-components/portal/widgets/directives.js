@@ -37,18 +37,6 @@ define(['angular', 'require'], function(angular, require) {
     };
   });
 
-  app.directive('weatherWidget', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-        config: '=config'
-      },
-      templateUrl: require.toUrl('./partials/weather-widget.html'),
-      controller: 'WeatherController'
-    };
-  });
-
   app.directive('listOfLinks', function() {
     return {
       restrict: 'E',
@@ -79,7 +67,8 @@ define(['angular', 'require'], function(angular, require) {
         widget: '=app',
         config: '=config'
       },
-      templateUrl: require.toUrl('./partials/rss-widget.html')
+      templateUrl: require.toUrl('./partials/rss-widget.html'),
+      controller: 'RSSWidgetController'
     };
   });
 

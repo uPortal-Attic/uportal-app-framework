@@ -58,7 +58,7 @@
         <search-with-links app="widget" config="widget.widgetConfig"></search-with-links>
       </div>
 
-      <div ng-switch-when="CUSTOM" class="custom-widget">
+      <div ng-switch-when="custom" class="custom-widget">
         <div ng-controller="CustomWidgetController as customWidgetCtrl">
           <div ng-if="loading" layout="row" layout-align="center center">
             <loading-gif data-object='content' data-empty='isEmpty'></loading-gif>

@@ -49,9 +49,25 @@ define(['angular'], function(angular) {
         })
     };
 
+    /**
+     *
+     * @param url
+     * @returns {*}
+     */
+    var getRssAsJson = function(url) {
+      return $http.get(url, {cache: true})
+        .then(function(result) {
+          return result.data;
+        })
+        .catch(function(error) {
+          $log.error('Couldn\'t get rss as JSON: ' + error);
+        })
+    };
+
     return {
       getMarketplaceEntry: getMarketplaceEntry,
-      getWidgetJson: getWidgetJson
+      getWidgetJson: getWidgetJson,
+      getRssAsJson: getRssAsJson
     }
 
   }]);
