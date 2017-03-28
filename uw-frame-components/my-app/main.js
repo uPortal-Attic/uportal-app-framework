@@ -1,4 +1,5 @@
-define(['angular', 'jquery', 'portal', 'portal/main/routes', 'portal/settings/routes', 'portal/notifications/route', 'portal/features/route', 'portal/about/route'], function(angular, $, portal, main, settings, notifications, features, about) {
+define(['angular', 'jquery', 'portal', 'portal/main/routes', 'portal/settings/routes', 'portal/notifications/route', 'portal/features/route', 'portal/about/route', 'portal/widgets/routes'],
+  function(angular, $, portal, main, settings, notifications, features, about, widgets) {
     /*
      This module intentionally left empty. This file is intended to serve as an extension point
      for My UW Madison 'App' developers that overlay angularjs-portal-frame.
@@ -11,7 +12,6 @@ define(['angular', 'jquery', 'portal', 'portal/main/routes', 'portal/settings/ro
     // TODO: Think of a more extensible approach such that frame and app can each manage their own routing without conflict
     app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
-      console.log(main);
         $routeProvider.
             when('/settings', settings.betaSettings).
             when('/user-settings', settings.userSettings).
@@ -21,6 +21,7 @@ define(['angular', 'jquery', 'portal', 'portal/main/routes', 'portal/settings/ro
             when('/access-denied', main.accessDenied).
             when('/server-error', main.serverError).
             when('/sorry-safari', main.storageError).
+            when('/demo-widgets', widgets.demoWidgets).
             when('/', main.main).
             otherwise(main.fileNotFound); //default to 404
     }]);
