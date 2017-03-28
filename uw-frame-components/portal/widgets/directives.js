@@ -7,7 +7,7 @@ define(['angular', 'require'], function(angular, require) {
   /**
    Just the widget card -- gets the widget type from the scope
    **/
-  app.directive('widget', function() {
+  app.directive('singleWidget', function() {
     return {
       restrict: 'E',
       scope: {
