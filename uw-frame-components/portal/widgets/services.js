@@ -12,14 +12,14 @@ define(['angular'], function(angular) {
      * @returns {*}
      */
     var getMarketplaceEntry = function getMarketplaceEntry(fname) {
-      return $http.get(SERVICE_LOC.marketplace.entry + fname + '.json')
+      return $http.get(SERVICE_LOC.widgetApi.entry + fname + '.json')
         .then(function(result) {
           if (result.data.entry.layoutObject != undefined) {
             return result.data.entry.layoutObject;
           }
         })
         .catch(function(error) {
-          $log.error('Something went wrong in the widgetService.getMarketplaceEntry: ' + error);
+          $log.error('Error getting marketplace entry for ' + fname + ': ' + error);
         });
     };
 
@@ -44,7 +44,7 @@ define(['angular'], function(angular) {
           return data;
         })
         .catch(function(error) {
-          $log.error('Something went wrong in the widgetService.getWidgetJson: ' + error);
+          $log.error('Error getting widget json for ' + fname + ': ' + error);
         })
     };
 
