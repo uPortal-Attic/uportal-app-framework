@@ -12,7 +12,6 @@ define(['angular'], function(angular) {
      * @returns {*}
      */
     var getMarketplaceEntry = function getMarketplaceEntry(fname) {
-      // SERVICE_LOC.portalApi + SERVICE_LOC.marketplace.base + SERVICE_LOC.marketplace.entry + fname + '.json'
       return $http.get(SERVICE_LOC.marketplace.entry + fname + '.json')
         .then(function(result) {
           if (result.data.entry.layoutObject != undefined) {
