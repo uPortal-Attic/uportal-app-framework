@@ -9,7 +9,7 @@ You can experiment with widgets in the [Widget Creator][].
 [Widget Creator]: https://public.my.wisc.edu/web/widget-creator
 [widget documentation]: http://uw-madison-doit.github.io/angularjs-portal/widgets.html
 
-## Getting a widget for a MyUW app
+## Fetching MyUW app widget
 
 If you're a uw-frame developer and you want to include, for example, the Wiscard Balance widget in your app, you can do so by
 using the `widget` directive, like so:
@@ -19,8 +19,9 @@ using the `widget` directive, like so:
 <widget fname="wiscard-balance"></widget>
 ```
 
-The only information you **must** know to include the widget for an app is its `fname` attribute. If you want to create a
-new widget to include in your frame app, follow the steps described in [widget documentation][]
+You **must** know the app's "`fname`" attribute to use this feature.
+
+If you want to create a new widget to include in your frame app, follow the steps described in [widget documentation][]
 and then:
 
 - [Contact your portal development team](mailto:uw-infra@office365.wisc.edu), OR
