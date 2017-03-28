@@ -185,7 +185,7 @@ define(['angular'], function(angular) {
   /**
    * Base widget functions -- determines widget type and sets launch button url for un-typed widgets
    */
-  app.controller('WidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
+  app.controller('SingleWidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
     var vm = this;
 
     // BINDABLE MEMBERS
@@ -214,8 +214,9 @@ define(['angular'], function(angular) {
         $scope.widgetType = vm.widgetType(data);
         console.log($scope.widget);
       })
-      .catch(function() {
-        $log.error('Something went wrong in WidgetController');
+      .catch(function(error) {
+        $log.error('Something went wrong in WidgetController);
+        $log.message(error);
       });
 
     // LOCAL FUNCTIONS

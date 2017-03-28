@@ -14,7 +14,7 @@ define(['angular', 'require'], function(angular, require) {
         fname: '@'
       },
       templateUrl: require.toUrl('./partials/widget-card.html'),
-      controller: 'WidgetController'
+      controller: 'SingleWidgetController'
     };
   });
 
