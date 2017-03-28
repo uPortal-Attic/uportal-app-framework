@@ -44,7 +44,7 @@ define(['angular'], function(angular) {
           return data;
         })
         .catch(function(error) {
-          $log.error('Error getting widget json for ' + fname + ': ' + error);
+          $log.error('Error getting widget json for ' + widget.fname + ': ' + error);
         })
     };
 
