@@ -215,7 +215,7 @@ define(['angular'], function(angular) {
         console.log($scope.widget);
       })
       .catch(function(error) {
-        $log.error('Something went wrong in WidgetController);
+        $log.error('Something went wrong in WidgetController');
         $log.message(error);
       });
 
