@@ -222,33 +222,22 @@ define(['angular'], function(angular) {
     vm.widgetType = function widgetType(widget) {
       var type = widget.widgetType;
 
-      if (type) {
-        if (type === 'option-link') {
-          return 'option-link';
-        } else if (type === 'weather') {
-          return 'weather';
-        } else if (type === 'rss') {
-          return 'rss';
-        } else if (type === 'list-of-links') {
+      // Check for widget types with extra configuration (including null type), default to the stated widgetType
+      switch(type) {
+        case 'list-of-links':
           if (widget.widgetConfig.links.length === 1 && widget.altMaxUrl && widget.widgetConfig.links[0].href === widget.url) {
             // If the list of links only has one link and it's the same as the launch button url, display default widget view
             return 'basic';
           } else {
             return 'list-of-links'
           }
-        } else if (type === 'search-with-links') {
-          return 'search-with-links';
-        } else if (type === 'generic') {
+        case 'generic':
           // DEPRECATED: Included for backwards compatibility. Use 'custom' instead.
           return 'custom';
-        } else if (type === 'custom') {
-          return 'custom';
-        } else {
-          return 'widget';
-        }
-      } else {
-        // Didn't receive a widgetType (null) -- Return default widget experience
-        return 'BASIC';
+        case null:
+          return 'basic';
+        default:
+          return type;
       }
     };
 
