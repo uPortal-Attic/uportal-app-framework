@@ -7,7 +7,7 @@ define(['angular'], function(angular) {
   /**
    * Controller for 'optionLink' directive
    */
-  app.controller('OptionLinkController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
+  app.controller('FrameOptionLinkController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
     /**
      * Set up default configuration if no config exists
      */
@@ -54,14 +54,14 @@ define(['angular'], function(angular) {
   /**
    * Controller for search-width-links widget type
    */
-  app.controller('SearchWithLinksController', ['$scope', '$sce', function($scope, $sce) {
+  app.controller('FrameSearchWithLinksController', ['$scope', '$sce', function($scope, $sce) {
     $scope.secureURL = $sce.trustAsResourceUrl($scope.config.actionURL);
   }]);
 
   /**
    *
    */
-  app.controller('RSSWidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
+  app.controller('FrameRSSWidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
     /**
      *
      * @param dateString
@@ -136,7 +136,7 @@ define(['angular'], function(angular) {
   /**
    * Controller for 'generic' and 'custom' widget types
    */
-  app.controller('CustomWidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
+  app.controller('FrameCustomWidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
     $scope.loading = false;
     /**
      * Configure widget content
@@ -185,7 +185,7 @@ define(['angular'], function(angular) {
   /**
    * Base widget functions -- determines widget type and sets launch button url for un-typed widgets
    */
-  app.controller('SingleWidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
+  app.controller('FrameWidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
     var vm = this;
 
     // BINDABLE MEMBERS

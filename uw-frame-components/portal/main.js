@@ -84,9 +84,6 @@ define([
         'portal.features.services',
         'portal.timeout.controllers',
         'portal.timeout.services',
-        'portal.widgets.controllers',
-        'portal.widgets.directives',
-        'portal.widgets.services',
         'ui.bootstrap',
         'ui.gravatar',
         'ui.sortable',
@@ -94,7 +91,7 @@ define([
         'angulartics.google.analytics'
     ]);
 
-    app.config(['gravatarServiceProvider', '$analyticsProvider', '$mdThemingProvider', 'THEMES' , function(gravatarServiceProvider, $analyticsProvider, $mdThemingProvider, THEMES){
+    app.config(['gravatarServiceProvider', '$analyticsProvider', '$mdThemingProvider', 'THEMES', function(gravatarServiceProvider, $analyticsProvider, $mdThemingProvider, THEMES) {
       gravatarServiceProvider.defaults = {
         "default" : "https://yt3.ggpht.com/-xE0EQR3Ngt8/AAAAAAAAAAI/AAAAAAAAAAA/zTofDHA3-s4/s100-c-k-no/photo.jpg"
       };
@@ -166,6 +163,7 @@ define([
                      $timeout,
                      $sessionStorage,
                      $mdTheming,
+                     $injector,
                      THEMES,
                      OVERRIDE,
                      filterFilter,
@@ -337,7 +335,7 @@ define([
         });
       }
 
-      //List of config. VERY IMPORTANT THAT THE CONFIGS has a corrisponding configsName in the same index
+      // List of config. VERY IMPORTANT THAT THE CONFIGS has a corresponding configsName in the same index
       var configs = [APP_FLAGS, SERVICE_LOC, NAMES, SEARCH, FEATURES, NOTIFICATION, MISC_URLS, FOOTER_URLS, APP_BETA_FEATURES];
       //TODO: make better
       var configsName = ['APP_FLAGS', 'SERVICE_LOC', 'NAMES', 'SEARCH', 'FEATURES', 'NOTIFICATION', 'MISC_URLS', 'FOOTER_URLS', 'APP_BETA_FEATURES'];

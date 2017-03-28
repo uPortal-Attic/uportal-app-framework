@@ -7,56 +7,56 @@ define(['angular', 'require'], function(angular, require) {
   /**
    Just the widget card -- gets the widget type from the scope
    **/
-  app.directive('singleWidget', function() {
+  app.directive('frameWidget', function() {
     return {
       restrict: 'E',
       scope: {
         fname: '@'
       },
-      templateUrl: require.toUrl('./partials/widget-card.html'),
-      controller: 'SingleWidgetController'
+      templateUrl: require.toUrl('./partials/frame-widget-card.html'),
+      controller: 'FrameWidgetController'
     };
   });
 
-  app.directive('widgetIcon', function() {
+  app.directive('frameWidgetIcon', function() {
     return {
       restrict: 'E',
-      templateUrl: require.toUrl('./partials/widget-icon.html')
+      templateUrl: require.toUrl('./partials/frame-widget-icon.html')
     }
   });
 
-  app.directive('optionLink', function() {
+  app.directive('frameOptionLink', function() {
     return {
       restrict: 'E',
       scope: {
         widget: '=app',
         config: '=config'
       },
-      templateUrl: require.toUrl('./partials/option-link.html'),
-      controller: 'OptionLinkController'
+      templateUrl: require.toUrl('./partials/frame-option-link.html'),
+      controller: 'FrameOptionLinkController'
     };
   });
 
-  app.directive('listOfLinks', function() {
+  app.directive('frameListOfLinks', function() {
     return {
       restrict: 'E',
       scope: {
         widget: '=app',
         config: '=config'
       },
-      templateUrl: require.toUrl('./partials/list-of-links.html')
+      templateUrl: require.toUrl('./partials/frame-list-of-links.html')
     };
   });
 
-  app.directive('searchWithLinks', function() {
+  app.directive('frameSearchWithLinks', function() {
     return {
       restrict: 'E',
       scope: {
         widget: '=app',
         config: '=config'
       },
-      templateUrl: require.toUrl('./partials/search-with-links.html'),
-      controller: 'SearchWithLinksController'
+      templateUrl: require.toUrl('./partials/frame-search-with-links.html'),
+      controller: 'FrameSearchWithLinksController'
     };
   });
 
@@ -68,7 +68,7 @@ define(['angular', 'require'], function(angular, require) {
         config: '=config'
       },
       templateUrl: require.toUrl('./partials/rss-widget.html'),
-      controller: 'RSSWidgetController'
+      controller: 'FrameRSSWidgetController'
     };
   });
 

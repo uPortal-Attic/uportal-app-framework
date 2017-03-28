@@ -39,7 +39,7 @@
     <div ng-switch="widgetType" class="widget-type-container">
 
       <div ng-switch-when="option-link">
-        <option-link app="widget" config="widget.widgetConfig"></option-link>
+        <frame-option-link app="widget" config="widget.widgetConfig"></frame-option-link>
       </div>
 
       <div ng-switch-when="rss">
@@ -47,15 +47,15 @@
       </div>
 
       <div ng-switch-when="list-of-links">
-        <list-of-links app="widget" config="widget.widgetConfig"></list-of-links>
+        <frame-list-of-links app="widget" config="widget.widgetConfig"></frame-list-of-links>
       </div>
 
       <div ng-switch-when="search-with-links">
-        <search-with-links app="widget" config="widget.widgetConfig"></search-with-links>
+        <frame-search-with-links app="widget" config="widget.widgetConfig"></frame-search-with-links>
       </div>
 
       <div ng-switch-when="custom" class="custom-widget">
-        <div ng-controller="CustomWidgetController as customWidgetCtrl">
+        <div ng-controller="FrameCustomWidgetController as customWidgetCtrl">
           <div ng-if="loading" layout="row" layout-align="center center">
             <loading-gif data-object='content' data-empty='isEmpty'></loading-gif>
           </div>
@@ -63,7 +63,7 @@
         </div>
       </div>
 
-      <div ng-switch-when="BASIC">
+      <div ng-switch-when="basic">
         <a tabindex="-1" ng-href="{{ renderUrl() }}" target="{{ widget.target }}" class="basic-widget" rel="noopener noreferrer">
           <div class="widget-icon-container" layout="column" layout-align="center center">
             <widget-icon></widget-icon>
