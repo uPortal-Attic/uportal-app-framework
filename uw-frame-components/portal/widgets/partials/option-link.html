@@ -2,35 +2,35 @@
 
   <!-- OPTION-LINK ICON -->
   <div class="option-link-icon">
-    <a href="{{portlet.selectedUrl}}" target="_blank" rel="noopener noreferrer">
-      <portlet-icon></portlet-icon>
+    <a href="{{ widget.selectedUrl }}" target="_blank" rel="noopener noreferrer">
+      <widget-icon></widget-icon>
     </a>
   </div>
 
   <!-- OPTION-LINK TEXT/CONTROLS -->
   <div class="option-link-controls">
     <!-- LOADING GIF IF EMPTY -->
-    <div ng-if="portlet.widgetData.length == 0" layout="row" layout-align="center center">
-      <loading-gif data-object='portlet.widgetData'></loading-gif>
+    <div ng-if="widget.widgetData.length == 0" layout="row" layout-align="center center">
+      <loading-gif data-object='widget.widgetData'></loading-gif>
     </div>
     <!-- IF ONE ELEMENT -->
-    <div ng-if="config.singleElement && (!portlet.widgetData[config.arrayName] || portlet.widgetData[config.arrayName].length == 0)"
+    <div ng-if="config.singleElement && (!widget.widgetData[config.arrayName] || widget.widgetData[config.arrayName].length == 0)"
          layout="row" layout-align="center center">
-      <span title='{{portlet.widgetData[config.display].length > 26 ? portlet.widgetData[config.display] : ""}}'>
-        {{portlet.widgetData[config.display] | trimMiddle:26}}
+      <span title='{{ widget.widgetData[config.display].length > 26 ? widget.widgetData[config.display] : "" }}'>
+        {{ widget.widgetData[config.display] | trimMiddle:26 }}
       </span>
     </div>
     <!-- IF MORE THAN ONE ELEMENT -->
-    <div ng-if="portlet.widgetData && portlet.widgetData[config.arrayName] && portlet.widgetData[config.arrayName].length >= 1">
+    <div ng-if="widget.widgetData && widget.widgetData[config.arrayName] && widget.widgetData[config.arrayName].length >= 1">
       <md-input-container>
-        <md-select ng-model="portlet.selectedUrl" class="md-accent">
+        <md-select ng-model="widget.selectedUrl" class="md-accent">
           <md-option ng-if="config.singleElement" selected="selected"
                      class="md-default"
-                     value="{{portlet.widgetData[config.value]}}"
-                     title='{{portlet.widgetData[config.display].length > 26 ? portlet.widgetData[config.display] : ""}}'>
-            {{portlet.widgetData[config.display] | trimMiddle:26}}
+                     value="{{widget.widgetData[config.value]}}"
+                     title='{{widget.widgetData[config.display].length > 26 ? widget.widgetData[config.display] : ""}}'>
+            {{widget.widgetData[config.display] | trimMiddle:26}}
           </md-option>
-          <md-option ng-repeat="obj in portlet.widgetData[config.arrayName]"
+          <md-option ng-repeat="obj in widget.widgetData[config.arrayName]"
                      class="md-default"
                      value="{{obj[config.value]}}"
                      title="{{obj[config.display].length > 26 ? obj[config.display] : ''}}">
@@ -44,8 +44,8 @@
 
 <!-- LAUNCH BUTTON -->
 <a class="launch-app-button"
-   ng-href="{{portlet.selectedUrl}}"
+   ng-href="{{ widget.selectedUrl }}"
    target="_blank" rel="noopener noreferrer">
-  <span ng-if='config.launchText'>{{config.launchText}}</span>
-  <span ng-if='!config.launchText'>Launch {{portlet.title}}</span>
+  <span ng-if='config.launchText'>{{ config.launchText }}</span>
+  <span ng-if='!config.launchText'>Launch {{ widget.title }}</span>
 </a>

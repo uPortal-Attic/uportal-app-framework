@@ -1,7 +1,7 @@
-<md-card class="widget-frame" id="portlet-id-{{portlet.nodeId}}" aria-label="{{ portlet.title }} widget">
+<md-card class="widget-frame" id="widget-id-{{ widget.nodeId }}" aria-label="{{ widget.title }} widget">
 
   <!-- MAINTENANCE MODE OVERLAY -->
-  <div class="overlay__maintenance-mode" ng-if="portlet.lifecycleState === 'MAINTENANCE'">
+  <div class="overlay__maintenance-mode" ng-if="widget.lifecycleState === 'MAINTENANCE'">
     <div class="maintenance-content">
       <p>
         <md-icon class="md-warn">warning</md-icon>
@@ -13,22 +13,22 @@
   <!-- HEADER -->
   <md-card-header class="widget-header">
     <!-- Widget Chrome -->
-    <md-button class="widget-action widget-info md-icon-button" aria-label="Description: {{ portlet.description }}" role="tooltip" ng-hide="portlet.lifecycleState === 'MAINTENANCE'">
+    <md-button class="widget-action widget-info md-icon-button" aria-label="Description: {{ widget.description }}" role="tooltip" ng-hide="widget.lifecycleState === 'MAINTENANCE'">
       <md-tooltip md-direction="top" class="widget-action-tooltip">
-        {{ portlet.description }}
+        {{ widget.description }}
       </md-tooltip>
       <md-icon>info</md-icon>
     </md-button>
     <md-button class="widget-action widget-remove md-icon-button"
-               aria-label="remove {{ portlet.title }} widget from your home screen"
-               ng-click="widgetCtrl.removePortlet(portlet.nodeId, portlet.title)"
-               ng-hide="GuestMode || cantRemove || portlet.lifecycleState === 'MAINTENANCE'">
+               aria-label="remove {{ widget.title }} widget from your home screen"
+               ng-click="widgetCtrl.removewidget(widget.nodeId, widget.title)"
+               ng-hide="GuestMode || cantRemove || widget.lifecycleState === 'MAINTENANCE'">
       <md-icon>close</md-icon>
     </md-button>
 
     <md-card-header-text>
-      <span class="md-title" style="text-align: center;" aria-label="{{ portlet.title }}" tabindex="0">
-	      {{ portlet.title }}
+      <span class="md-title" style="text-align: center;" aria-label="{{ widget.title }}" tabindex="0">
+	      {{ widget.title }}
       </span>
     </md-card-header-text>
   </md-card-header>
@@ -36,12 +36,49 @@
   <!-- BODY -->
   <md-card-content class="widget-content">
 
-    <sub class="sr-only" id="goToApps-{{portlet.nodeId}}">go to</sub>
-
-    <div ng-switch="type" class="widget-type-container">
+    <div ng-switch="widgetType" class="widget-type-container">
 
       <div ng-switch-when="option-link">
-        <option-link app="portlet" config="portlet.widgetConfig"></option-link>
+        <option-link app="widget" config="widget.widgetConfig"></option-link>
+      </div>
+
+      <div ng-switch-when="weather">
+        <weather-widget app="widget" config="widget.widgetConfig"></weather-widget>
+      </div>
+
+      <div ng-switch-when="rss">
+        <rss-widget app="widget" config="widget.widgetConfig"></rss-widget>
+      </div>
+
+      <div ng-switch-when="list-of-links">
+        <list-of-links app="widget" config="widget.widgetConfig"></list-of-links>
+      </div>
+
+      <div ng-switch-when="search-with-links">
+        <search-with-links app="widget" config="widget.widgetConfig"></search-with-links>
+      </div>
+
+      <div ng-switch-when="CUSTOM" class="custom-widget">
+        <div ng-controller="CustomWidgetController as customWidgetCtrl">
+          <div ng-if="loading" layout="row" layout-align="center center">
+            <loading-gif data-object='content' data-empty='isEmpty'></loading-gif>
+          </div>
+          <content-item ng-if="!loading"></content-item>
+        </div>
+      </div>
+
+      <div ng-switch-when="BASIC">
+        <a tabindex="-1" ng-href="{{ renderUrl() }}" target="{{ widget.target }}" class="basic-widget">
+          <div class="widget-icon-container" layout="column" layout-align="center center">
+            <widget-icon></widget-icon>
+          </div>
+        </a>
+        <launch-button data-href="{{ renderUrl() }}"
+                       data-target="_blank"
+                       data-rel="noopener noreferrer"
+                       data-button-text="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch full app' }}"
+                       data-aria-label="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch ' + widget.title }}">
+        </launch-button>
       </div>
 
     </div>

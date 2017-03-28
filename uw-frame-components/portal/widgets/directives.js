@@ -11,23 +11,77 @@ define(['angular', 'require'], function(angular, require) {
     return {
       restrict: 'E',
       scope: {
-        type: '@'
+        fname: '@'
       },
       templateUrl: require.toUrl('./partials/widget-card.html'),
       controller: 'WidgetController'
     };
   });
 
+  app.directive('widgetIcon', function() {
+    return {
+      restrict: 'E',
+      templateUrl: require.toUrl('./partials/widget-icon.html')
+    }
+  });
+
   app.directive('optionLink', function() {
     return {
       restrict: 'E',
       scope: {
-        portlet: '=app',
+        widget: '=app',
         config: '=config'
       },
       templateUrl: require.toUrl('./partials/option-link.html'),
       controller: 'OptionLinkController'
     };
   });
+
+  app.directive('weatherWidget', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config'
+      },
+      templateUrl: require.toUrl('./partials/weather-widget.html'),
+      controller: 'WeatherController'
+    };
+  });
+
+  app.directive('listOfLinks', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config'
+      },
+      templateUrl: require.toUrl('./partials/list-of-links.html')
+    };
+  });
+
+  app.directive('searchWithLinks', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config'
+      },
+      templateUrl: require.toUrl('./partials/search-with-links.html'),
+      controller: 'SearchWithLinksController'
+    };
+  });
+
+  app.directive('rssWidget', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config'
+      },
+      templateUrl: require.toUrl('./partials/rss-widget.html')
+    };
+  });
+
 
 });
