@@ -20,19 +20,6 @@ define(['angular-mocks', 'portal'], function() {
             }
         }));
 
-        it("should return an empty array when you get an empty string as a value", function(){
-          //setup
-          httpBackend.whenGET(backendURL).respond({"notifications" :[]});
-          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
-          httpBackend.whenGET(groupURL).respond([]);
-
-          //test
-          notificationsService.getDismissedNotificationIds().then(function(results){
-            expect(results).toBeTruthy();
-          });
-          httpBackend.flush();
-        });
-
         it("should return an empty set", function() {
 
             //setup
@@ -127,7 +114,7 @@ define(['angular-mocks', 'portal'], function() {
             httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([2]);
 
             //begin test
-            notificationsService.getNotificationsByGroups().then(function(results){
+            notificationsService.getFilteredNotifications().then(function(results){
                 console.log(results);
                 expect(results).toBeTruthy();
                 expect(results.notDismissed).toBeTruthy();
@@ -164,7 +151,7 @@ define(['angular-mocks', 'portal'], function() {
             httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([1]);
 
             //begin test
-            notificationsService.getNotificationsByGroups().then(function(results){
+            notificationsService.getFilteredNotifications().then(function(results){
                 expect(results).toBeTruthy();
                 expect(results.notDismissed).toBeTruthy();
                 expect(results.dismissed).toBeTruthy();
@@ -174,5 +161,363 @@ define(['angular-mocks', 'portal'], function() {
             });
             httpBackend.flush();
         });
+        
+        it("notification should not appear if dataURL is present but incorrect", function(){
+          //setup
+          //setup
+          httpBackend.whenGET(backendURL).respond(
+              {"notifications" :
+                [
+                 {
+                   "id"     : 1,
+                   "groups" : ["Everyone"],
+                   "title"  : "Notification 1",
+                   "actionURL" : "http://www.google.com",
+                   "actionAlt" : "Google"
+                 },
+                 {
+                   "id"     : 2,
+                   "groups" : ["Everyone"],
+                   "title"  : "Notification 2",
+                   "actionURL" : "http://www.google.com",
+                   "actionAlt" : "Google",
+                   "dataURL" : "http://www.google.com"
+                 }
+                 ]
+              }
+          );
+          httpBackend.whenGET(groupURL).respond({"groups" :[{"name" : "Everyone"}]});
+          httpBackend.whenGET("http://www.google.com").respond(400, {});
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+          notificationsService.getFilteredNotifications().then(function(results){
+            expect(results).toBeTruthy();
+            //Expect notification 1 to be good, but not 2
+            expect(results.notDismissed.length).toEqual(1);
+            expect(results.notDismissed[0].id).toEqual(1);
+          });
+          httpBackend.flush();
+        });
+        
+        it("notification should appear if dataURL is present and returns data", function(){
+          //setup
+          //setup
+          httpBackend.whenGET(backendURL).respond(
+              {"notifications" :
+                [
+                 {
+                   "id"     : 1,
+                   "groups" : ["Everyone"],
+                   "title"  : "Notification 1",
+                   "actionURL" : "http://www.google.com",
+                   "actionAlt" : "Google"
+                 },
+                 {
+                   "id"     : 2,
+                   "groups" : ["Everyone"],
+                   "title"  : "Notification 2",
+                   "actionURL" : "http://www.google.com",
+                   "actionAlt" : "Google",
+                   "dataURL" : "http://www.google.com"
+                 }
+                 ]
+              }
+          );
+          httpBackend.whenGET(groupURL).respond({"groups" :[{"name" : "Everyone"}]});
+          httpBackend.whenGET("http://www.google.com").respond(200, "something");
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+          notificationsService.getFilteredNotifications().then(function(results){
+            expect(results).toBeTruthy();
+            expect(results.notDismissed.length).toEqual(2);
+          });
+          httpBackend.flush();
+        });
+        
+        it("notification should appear if dataURL is present and returns data specifically asked for by dataObject", function(){
+          //setup
+          //setup
+          httpBackend.whenGET(backendURL).respond(
+              {"notifications" :
+                [
+                 {
+                   "id"     : 1,
+                   "groups" : ["Everyone"],
+                   "title"  : "Notification 1",
+                   "actionURL" : "http://www.google.com",
+                   "actionAlt" : "Google"
+                 },
+                 {
+                   "id"     : 2,
+                   "groups" : ["Everyone"],
+                   "title"  : "Notification 2",
+                   "actionURL" : "http://www.google.com",
+                   "actionAlt" : "Google",
+                   "dataURL" : "http://www.google.com",
+                   "dataObject" : "developers"
+                 }
+                 ]
+              }
+          );
+          httpBackend.whenGET(groupURL).respond({"groups" :[{"name" : "Everyone"}]});
+          httpBackend.whenGET("http://www.google.com").respond(200, "{\"developers\": [\"foo\", \"bar\"], \"favorite foods\":\"chicken\"}");
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+          notificationsService.getFilteredNotifications().then(function(results){
+            expect(results).toBeTruthy();
+            expect(results.notDismissed.length).toEqual(2);
+          });
+          httpBackend.flush();
+        });
+        
+        it("notification should not appear if dataURL is present and can't return data specifically asked for by dataObject", function(){
+          //setup
+          //setup
+          httpBackend.whenGET(backendURL).respond(
+              {"notifications" :
+                [
+                 {
+                   "id"     : 1,
+                   "groups" : ["Everyone"],
+                   "title"  : "Notification 1",
+                   "actionURL" : "http://www.google.com",
+                   "actionAlt" : "Google"
+                 },
+                 {
+                   "id"     : 2,
+                   "groups" : ["Everyone"],
+                   "title"  : "Notification 2",
+                   "actionURL" : "http://www.google.com",
+                   "actionAlt" : "Google",
+                   "dataURL" : "http://www.google.com",
+                   "dataObject" : "data"
+                 }
+                 ]
+              }
+          );
+          httpBackend.whenGET(groupURL).respond({"groups" :[{"name" : "Everyone"}]});
+          httpBackend.whenGET("http://www.google.com").respond(200, "{\"developers\": [\"foo\", \"bar\"], \"favorite foods\":\"chicken\"}");
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+          notificationsService.getFilteredNotifications().then(function(results){
+            expect(results).toBeTruthy();
+            expect(results.notDismissed.length).toEqual(1);
+            expect(results.notDismissed[0].id).toEqual(1);
+          });
+          httpBackend.flush();
+        });
+        
+        it("notification should appear if dataURL is not present and dataObject is mistakenly present", function(){
+          //setup
+          //setup
+          httpBackend.whenGET(backendURL).respond(
+              {"notifications" :
+                [
+                 {
+                   "id"     : 1,
+                   "groups" : ["Everyone"],
+                   "title"  : "Notification 1",
+                   "actionURL" : "http://www.google.com",
+                   "actionAlt" : "Google"
+                 },
+                 {
+                   "id"     : 2,
+                   "groups" : ["Everyone"],
+                   "title"  : "Notification 2",
+                   "actionURL" : "http://www.google.com",
+                   "actionAlt" : "Google",
+                   "dataObject" : "data"
+                 }
+                 ]
+              }
+          );
+          httpBackend.whenGET(groupURL).respond({"groups" :[{"name" : "Everyone"}]});
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+          notificationsService.getFilteredNotifications().then(function(results){
+            expect(results).toBeTruthy();
+            expect(results.notDismissed.length).toEqual(2);
+          });
+          httpBackend.flush();
+        });
+        
+        it("notification should appear if dataURL is present and returns data specifically asked for by dataArray and searched by object", function(){
+          //setup
+          //setup
+          httpBackend.whenGET(backendURL).respond(
+            {"notifications" :
+              [
+                {
+                  "id"     : 1,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 1",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google"
+                },
+                {
+                  "id"     : 2,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 2",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google",
+                  "dataURL" : "http://www.google.com",
+                  "dataObject" : "developers",
+                  "dataArrayFilter" : "{\"name\": \"baz\"}"
+                }
+              ]
+            }
+          );
+          httpBackend.whenGET(groupURL).respond({"groups" :[{"name" : "Everyone"}]});
+          httpBackend.whenGET("http://www.google.com").respond(200, {"developers":[{"name":"foo"}, {"name":"bar"}, {"name":"baz"}], 
+            "fruit":["apples, oranges"]});
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+          notificationsService.getFilteredNotifications().then(function(results){
+            expect(results).toBeTruthy();
+            expect(results.notDismissed.length).toEqual(2);
+          });
+          httpBackend.flush();
+        });
+        
+        it("notification should appear if dataURL is present and returns data specifically asked for by dataArray with two filters and searched by object", function(){
+          //setup
+          //setup
+          httpBackend.whenGET(backendURL).respond(
+            {"notifications" :
+              [
+                {
+                  "id"     : 1,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 1",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google"
+                },
+                {
+                  "id"     : 2,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 2",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google",
+                  "dataURL" : "http://www.google.com",
+                  "dataObject" : "developers",
+                  "dataArrayFilter" : "{\"name\": \"foo\", \"id\" : 4}"
+                }
+              ]
+            }
+          );
+          httpBackend.whenGET(groupURL).respond({"groups" :[{"name" : "Everyone"}]});
+          httpBackend.whenGET("http://www.google.com").respond(200, {"developers":[{"name":"foo", "id":4}, {"name":"foo"}, {"name":"foo"}], 
+            "fruit":["apples, oranges"]});
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+          notificationsService.getFilteredNotifications().then(function(results){
+            expect(results).toBeTruthy();
+            expect(results.notDismissed.length).toEqual(2);
+          });
+          httpBackend.flush();
+        });
+        
+        it("notification should not appear if dataURL is present and returns data specifically asked for by dataArray with two filters and searched by object when filter does not match", function(){
+          //setup
+          //setup
+          httpBackend.whenGET(backendURL).respond(
+            {"notifications" :
+              [
+                {
+                  "id"     : 1,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 1",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google"
+                },
+                {
+                  "id"     : 2,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 2",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google",
+                  "dataURL" : "http://www.google.com",
+                  "dataObject" : "developers",
+                  "dataArrayFilter" : "{\"name\": \"foo\", \"id\" : 3}"
+                }
+              ]
+            }
+          );
+          httpBackend.whenGET(groupURL).respond({"groups" :[{"name" : "Everyone"}]});
+          httpBackend.whenGET("http://www.google.com").respond(200, {"developers":[{"name":"foo", "id":4}, {"name":"foo"}, {"name":"foo"}], 
+            "fruit":["apples, oranges"]});
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+          notificationsService.getFilteredNotifications().then(function(results){
+            expect(results).toBeTruthy();
+            expect(results.notDismissed.length).toEqual(1);
+          });
+          httpBackend.flush();
+        });
+        
+        it("notification should not appear if dataURL is present and attempts to arrayFilter on non-array", function(){
+          //setup
+          //setup
+          httpBackend.whenGET(backendURL).respond(
+            {"notifications" :
+              [
+                {
+                  "id"     : 1,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 1",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google"
+                },
+                {
+                  "id"     : 2,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 2",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google",
+                  "dataURL" : "http://www.google.com",
+                  "dataArrayFilter" : "{\"name\": \"baz\"}"
+                }
+              ]
+            }
+          );
+          httpBackend.whenGET(groupURL).respond({"groups" :[{"name" : "Everyone"}]});
+          httpBackend.whenGET("http://www.google.com").respond(200, {"developers":[{"name":"foo"}, {"name":"bar"}, {"name":"baz"}], 
+            "fruit":["apples, oranges"]});
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+          notificationsService.getFilteredNotifications().then(function(results){
+            expect(results).toBeTruthy();
+            expect(results.notDismissed.length).toEqual(1);
+          });
+          httpBackend.flush();
+        });
+        
+        it("notification should appear in dismissed even when data feed doesn't apply anymore", function(){
+          //setup
+          //setup
+          httpBackend.whenGET(backendURL).respond(
+            {"notifications" :
+              [
+                {
+                  "id"     : 1,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 1",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google"
+                },
+                {
+                  "id"     : 2,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 2",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google",
+                  "dataURL" : "http://www.google.com",
+                  "dataArrayFilter" : "{\"name\": \"baz\"}"
+                }
+              ]
+            }
+          );
+          httpBackend.whenGET(groupURL).respond({"groups" :[{"name" : "Everyone"}]});
+          httpBackend.whenGET("http://www.google.com").respond(200, {"developers":[{"name":"foo"}, {"name":"bar"}, {"name":"baz"}], 
+            "fruit":["apples, oranges"]});
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([2]);
+          notificationsService.getFilteredNotifications().then(function(results){
+            expect(results).toBeTruthy();
+            expect(results.dismissed.length).toEqual(1);
+          });
+          httpBackend.flush();
+        });
+        
     });
 });
