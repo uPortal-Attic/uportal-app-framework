@@ -1,11 +1,28 @@
-### How do I use widgets?
-While uw-frame does include some CSS rules for widgets, the directives that govern them live in the [angularjs-portal](https://github.com/UW-Madison-DoIT/angularjs-portal)
-project, so their use is currently restricted to portal. See portal's [widget expanded mode documentation][] for
-information about how to use widgets in that app.
+# Widgets in uw-frame
+
+It's possible for uw-frame apps to pull in the markup and configuration for widgets in the MyUW "marketplace" of apps.
+
+For information about widget types and how to create new widgets, see angularjs-portal's [widget documentation][].
 
 You can experiment with widgets in the [Widget Creator][].
 
-[Let us know](mailto:uw-infra@office365.wisc.edu) if you'd like widgets available in your frame app.
-
 [Widget Creator]: https://public.my.wisc.edu/web/widget-creator
-[widget expanded mode documentation]: http://uw-madison-doit.github.io/angularjs-portal/expanded.html
+[widget documentation]: http://uw-madison-doit.github.io/angularjs-portal/widgets.html
+
+## Fetching MyUW app widget
+
+If you're a uw-frame developer and you want to include, for example, the Wiscard Balance widget in your app, you can do so by
+using the `widget` directive, like so:
+
+
+```html
+<widget fname="wiscard-balance"></widget>
+```
+
+You **must** know the app's "`fname`" attribute to use this feature.
+
+If you want to create a new widget to include in your frame app, follow the steps described in [widget documentation][]
+and then:
+
+- [Contact your portal development team](mailto:uw-infra@office365.wisc.edu), OR
+- See the [entities contribution guide](https://git.doit.wisc.edu/myuw-overlay/entities/blob/master/CONTRIBUTING.md) (UW-Madison only)

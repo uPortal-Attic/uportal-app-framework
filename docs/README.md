@@ -19,6 +19,7 @@ as well as the configuration options and dependencies you need to get your app u
 + [Frame-specific directives](directives.md)
 + [Notifications](notifications.md)
 + [Announcements](announcements.md)
++ [Widgets](widgets.md)
 + [Access and permission management](coarse-grain-access.md)
 + [Beta settings](beta-settings.md)
 + [Material design](material.md)
@@ -33,11 +34,6 @@ as well as the configuration options and dependencies you need to get your app u
 
 + [Release management](releasing.md)
 + [Frame versions with docs and release notes](versions.md)
-
-
-## FAQs
-
-+ [How do I use widgets?](widgets.md)
 
 [AngularJS-portal]: https://github.com/UW-Madison-DoIT/angularjs-portal
 [MyUW]: https://it.wisc.edu/services/myuw/
