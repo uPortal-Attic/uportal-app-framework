@@ -133,7 +133,7 @@ define(['angular', 'jquery'], function(angular, $) {
                   return notification;
                 }
               } else if (objectToFind) {
-                return notification
+                return notification;
               } 
               
               return;
