@@ -164,7 +164,6 @@ define(['angular-mocks', 'portal'], function() {
         
         it("notification should not appear if dataURL is present but incorrect", function(){
           //setup
-          //setup
           httpBackend.whenGET(backendURL).respond(
               {"notifications" :
                 [
@@ -200,7 +199,6 @@ define(['angular-mocks', 'portal'], function() {
         
         it("notification should appear if dataURL is present and returns data", function(){
           //setup
-          //setup
           httpBackend.whenGET(backendURL).respond(
               {"notifications" :
                 [
@@ -233,7 +231,6 @@ define(['angular-mocks', 'portal'], function() {
         });
         
         it("notification should appear if dataURL is present and returns data specifically asked for by dataObject", function(){
-          //setup
           //setup
           httpBackend.whenGET(backendURL).respond(
               {"notifications" :
@@ -268,7 +265,6 @@ define(['angular-mocks', 'portal'], function() {
         });
         
         it("notification should not appear if dataURL is present and can't return data specifically asked for by dataObject", function(){
-          //setup
           //setup
           httpBackend.whenGET(backendURL).respond(
               {"notifications" :
@@ -305,7 +301,6 @@ define(['angular-mocks', 'portal'], function() {
         
         it("notification should appear if dataURL is not present and dataObject is mistakenly present", function(){
           //setup
-          //setup
           httpBackend.whenGET(backendURL).respond(
               {"notifications" :
                 [
@@ -337,7 +332,6 @@ define(['angular-mocks', 'portal'], function() {
         });
         
         it("notification should appear if dataURL is present and returns data specifically asked for by dataArray and searched by object", function(){
-          //setup
           //setup
           httpBackend.whenGET(backendURL).respond(
             {"notifications" :
@@ -412,7 +406,6 @@ define(['angular-mocks', 'portal'], function() {
         
         it("notification should not appear if dataURL is present and returns data specifically asked for by dataArray with two filters and searched by object when filter does not match", function(){
           //setup
-          //setup
           httpBackend.whenGET(backendURL).respond(
             {"notifications" :
               [
@@ -449,7 +442,6 @@ define(['angular-mocks', 'portal'], function() {
         
         it("notification should not appear if dataURL is present and attempts to arrayFilter on non-array", function(){
           //setup
-          //setup
           httpBackend.whenGET(backendURL).respond(
             {"notifications" :
               [
@@ -484,7 +476,6 @@ define(['angular-mocks', 'portal'], function() {
         });
         
         it("notification should appear in dismissed even when data feed doesn't apply anymore", function(){
-          //setup
           //setup
           httpBackend.whenGET(backendURL).respond(
             {"notifications" :

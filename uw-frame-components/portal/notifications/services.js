@@ -14,8 +14,27 @@ define(['angular', 'jquery'], function(angular, $) {
     /////////////////////
     
     /**
+     * @typedef {Object} Notification
+     * @property {number} id
+     * @property {string} title
+     * @property {string} actionURL
+     * @property {boolean} dismissable
+     * @property {boolean} false
+     * @property {string} actionALt
+     * @property {string=} dataURL
+     * @propetry {string=} dataObject
+     * @property {Object=} dataArrayFilter
+     */
+    
+    /**
+     * @typedef {Object} NotificationReturnObject
+     * @property {Notification[]} dismissed
+     * @property {Notification[]} notDismissed
+     */
+    
+    /**
      * Get all notifications at the given URL (as set in app-config.js or override.js)
-     * @returns {*} A promise which returns an object containing notifications arrays
+     * @returns {Promise<NotificationReturnObject>} A promise which returns an object containing notifications arrays
      */
     var getAllNotifications = function() {
       return $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(
@@ -27,17 +46,16 @@ define(['angular', 'jquery'], function(angular, $) {
               $log.warn("Error Retrieving all notifications");
             }
           );
-        },
-        function(reason) {
+        }).catch (function(reason) {
           miscService.redirectUser(reason.status, 'notifications json feed call');
         }
-      );
+     );
     };
     
     /**
      * Gets notifications and filters them by group and via data if dataURL is
      * present.
-     * @returns {*} A promise which returns an object containing notifications arrays
+     * @returns {Promise<NotificationReturnObject>} A promise which returns an object containing notifications arrays
      */
     var getFilteredNotifications = function() {
       var notifications = {
@@ -54,7 +72,7 @@ define(['angular', 'jquery'], function(angular, $) {
          }).then(function(notificationsByData){
               notifications.notDismissed = notificationsByData;
               return notifications;
-         }).catch(function(reason){
+         }).catch (function(reason){
              $log.warn("Error in retrieving notifications");
              return [];
          });
@@ -62,22 +80,21 @@ define(['angular', 'jquery'], function(angular, $) {
     
     /**
      * Filter the array of notifications based on the groups that were passed in
-     * @param arrayOfNotifications : an array of notifications
-     * @param groups : The list of groups one person is in
-     * @return : an array filtered by groups. Or an empty array if they have none
+     * @param {Notification[]} arrayOfNotifications 
+     * @return {Promise<Notification[]>} : an array filtered by groups. Or an empty array if they have none
     **/
     function filterNotificationsByGroup(arrayOfNotifications) {
       return PortalGroupService.getGroups().then(
         function(groups){
             var notificationsByGroup = [];
-            $.each(arrayOfNotifications, function (index, notification) {
+            angular.forEach(arrayOfNotifications, function (notification, index) {
               var added = false;
               // For each group for the current notification
-              $.each(notification.groups, function(index, group) {
-                if(!added) {
+              angular.forEach(notification.groups, function(group, index) {
+                if (!added) {
                   // Intersect, then get length
                   var inGroup = $.grep(groups, function(e) {return e.name === group}).length;
-                  if(inGroup > 0) {
+                  if (inGroup > 0) {
                     // If user is in this group, he should see this notification
                     notificationsByGroup.push(notification);
                     added = true;
@@ -86,7 +103,7 @@ define(['angular', 'jquery'], function(angular, $) {
               });
             });
             return notificationsByGroup;
-        },function(reason){
+        }).catch (function(reason){
             miscService.redirectUser(reason.status, 'Unable to retrieve groups');
         }
       );
@@ -94,27 +111,27 @@ define(['angular', 'jquery'], function(angular, $) {
     
     /**
      * Filter the array of notifications based on if data was requested before showing
-     * @param notifications : an array of notifications
-     * @return : an array of notifications that includes only non-data notifications
+     * @param {Notification[]} : an array of notifications
+     * @return Promise<Notification[]>} : an array of notifications that includes only non-data notifications
      * and notifications that requested data and had data
     **/
     var filterNotificationsByData = function(notifications){
       var promises = [];
       var filteredNotifications = [];
 
-      $.each( notifications, function(index, notification){
-        if(notification.dataURL){
+      angular.forEach(notifications, function(notification, index){
+        if (notification.dataURL) {
           promises.push($http.get(notification.dataURL).then(
             function(result){
               var objectToFind = result.data;
               //If dataObject specified, try to use it
-              if(result && notification.dataObject){
+              if (result && notification.dataObject){
                 objectToFind = objectToFind[notification.dataObject];
               }
               //If dataArrayFilter specified, then filter
-              if(objectToFind && notification.dataArrayFilter){
+              if (objectToFind && notification.dataArrayFilter) {
                 //If you try to do an array filter on a non-array, return blank
-                if(!angular.isArray(objectToFind)){
+                if (!angular.isArray(objectToFind)) {
                   return;
                 }
                 var arrayFilter = angular.fromJson(notification.dataArrayFilter);
@@ -122,13 +139,12 @@ define(['angular', 'jquery'], function(angular, $) {
               }
               
               //If the data object is there, we have a match
-              if(objectToFind && objectToFind.length > 0){
+              if (objectToFind && objectToFind.length > 0) {
                 return notification;
               }else{
                 return;
               }
-            },
-            function(reason){
+            }).catch (function(reason){
               $log.warn("Error retrieving data for notification");
             }
           ));
@@ -139,8 +155,8 @@ define(['angular', 'jquery'], function(angular, $) {
 
       return $q.all(promises).then(
         function(result){
-          $.each(result, function(index, notification){
-            if(notification){
+          angular.forEach(result, function(notification, index){
+            if (notification) {
               filteredNotifications.push(notification);
             }
           });
@@ -152,8 +168,8 @@ define(['angular', 'jquery'], function(angular, $) {
     
     /**
      * Separates notification array into new object with two properties
-     * @param notifications : an array of notifications
-     * @return : an object with two properties. dismissed and notDismissed
+     * @param {Notification[]} : an array of notifications
+     * @return {Promise<Notification[]>}: an object with two properties. dismissed and notDismissed
     **/
     var separateNotificationsByDismissal = function(notifications){
       var separatedNotifications = {
@@ -163,7 +179,7 @@ define(['angular', 'jquery'], function(angular, $) {
       return getDismissedNotificationIDs().then(
         function(dismissedIDs){
           // Check notification IDs against dismissed IDs from k/v store and sort notifications into appropriate array
-          if(angular.isArray(dismissedIDs)) {
+          if (angular.isArray(dismissedIDs)) {
             angular.forEach(notifications, function(notification, index) {
               if (dismissedIDs.indexOf(notification.id) > -1) {
                 separatedNotifications.dismissed.push(notification);
@@ -176,8 +192,7 @@ define(['angular', 'jquery'], function(angular, $) {
           }
           // Return sorted notifications
           return separatedNotifications;
-        },
-        function(reason){
+        }).catch (function(reason){
           $log.warn("Error in retrieving previously dismissed notifications");
           return notifications;
         }
@@ -187,7 +202,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
     /**
      * Save array of dismissed notification IDs in k/v store, reset dismissedPromise
-     * @param dismissedIds Array of ID strings
+     * @param {Notification[]} - dismissedIds Array of ID strings
      */
     var setDismissedNotifications = function(dismissedIds) {
       keyValueService.setValue(KV_KEYS.DISMISSED_NOTIFICATION_IDS, dismissedIds);
@@ -196,17 +211,17 @@ define(['angular', 'jquery'], function(angular, $) {
 
     /**
      * Get array of dismissed notification IDs from k/v store
-     * @returns {*} A promise that returns an array of IDs
+     * @returns {Promise<number[]>} A promise that returns an array of IDs
      */
     var getDismissedNotificationIDs = function() {
-      if(!keyValueService.isKVStoreActivated()) {
+      if (!keyValueService.isKVStoreActivated()) {
         return $q.resolve([]);
       }
       dismissedPromise = dismissedPromise || keyValueService.getValue(KV_KEYS.DISMISSED_NOTIFICATION_IDS)
           .then(function(data) {
-            if(data && typeof data.value === 'string') {
+            if (data && typeof data.value === 'string') {
               // If data exists and is a string, check for emptiness
-              if(data.value) {
+              if (data.value) {
                 // If string contains things, return parsed JSON
                 return JSON.parse(data.value);
               } else {
