@@ -83,9 +83,9 @@ This should almost always be true.
     "Users - Account Activation Required," which calls on those users to activate their accounts. Upon following through, a user would be removed from that group and the notification would be no longer visible. In this example, the call
      to action is reasonably important, and the notification should stick around until the user takes the desired action.
 - **priority**: Set to true if the notification is of critical importance. The visibility of the notification will be amplified throughout the UI. **This feature should be used sparingly.**
-- **dataURL** (*optional*) : Will retrieve the data from the dataURL.  If data exists, will show notification to user, if data does not exist, will not show notification.  Only supports JSON.
+- **dataURL** (*optional*) : Will retrieve the data from the dataURL.  If data exists, will show notification to user, if data does not exist, will not show notification.  Only supports JSON.  You would use this feature if you want to only show the notification if the user has data.  For example, only show user if they have a certain document.
 - **dataObject** (*optional*) : Will only be looked at if `dataURL` is present, otherwise ignored.  Used as an optional further refinement from dataURL, if you want the notification to show only if the specific object is in the data.
-- **dataArrayFilter** (*optional*) : Will only be looked at if `dataURL` is present, otherwise ignored.  Used as an optional further refinement from dataURL.  If your object return is an array, you can filter on the array.  Does support multiple filtering criteria as shown in the example.  If used in conjucntion with `dataObject`, will filter to `dataObject` first.  [AngularJS array filtering documentation] (https://docs.angularjs.org/api/ng/filter/filter)
+- **dataArrayFilter** (*optional*) : Will only be looked at if `dataURL` is present, otherwise ignored.  Used as an optional further refinement from dataURL.  If your object return is an array, you can filter on the array.  Does support multiple filtering criteria as shown in the example.  If used in conjunction with `dataObject`, will filter to `dataObject` first.  [AngularJS array filtering documentation] (https://docs.angularjs.org/api/ng/filter/filter)
 
 ### Action buttons
 

@@ -37,19 +37,13 @@ define(['angular', 'jquery'], function(angular, $) {
      * @returns {Promise<NotificationReturnObject>} A promise which returns an object containing notifications arrays
      */
     var getAllNotifications = function() {
-      return $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(
-        function(result) {
-          return separateNotificationsByDismissal(result.data.notifications).then(
-            function(results){
-              return results;
-            },function(reason){
-              $log.warn("Error Retrieving all notifications");
-            }
-          );
-        }).catch (function(reason) {
-          miscService.redirectUser(reason.status, 'notifications json feed call');
-        }
-     );
+      return $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(function(result) {
+              return separateNotificationsByDismissal(result.data.notifications);
+          }).then(function(seperatedNotifications){
+              return seperatedNotifications;
+          }).catch (function(reason) {
+            miscService.redirectUser(reason.status, 'notifications json feed call');
+        });
     };
     
     /**
