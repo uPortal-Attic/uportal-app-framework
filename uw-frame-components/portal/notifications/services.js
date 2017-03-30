@@ -40,39 +40,24 @@ define(['angular', 'jquery'], function(angular, $) {
      * @returns {*} A promise which returns an object containing notifications arrays
      */
     var getFilteredNotifications = function() {
-      return $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(
-        function(allNotifications){
-          return filterNotificationsByGroup(allNotifications.data.notifications).then(
-            function(filteredNotificationsByGroup){
-              return separateNotificationsByDismissal(filteredNotificationsByGroup).then(
-                function (notificationsBydismissal){
-                  var dismissedNotifications = notificationsBydismissal.dismissed;
-                  return filterNotificationsByData(notificationsBydismissal.notDismissed).then(
-                    function(notificationsByData){
-                      var notificationsToReturn={};
-                      notificationsToReturn.dismissed = dismissedNotifications;
-                      notificationsToReturn.notDismissed = notificationsByData;
-                      return notificationsToReturn;
-                    },
-                    function(reason){
-                      $log.warn("Error in retrieving notifications that relied on data");
-                      return [];
-                    })
-                },
-                function(reason){
-                  $log.warn("Error in retrieving dismissed notifications");
-                  return [];
-                })
-            },
-            function(reason){
-              $log.warn("Error in retreiving notifications by group");
-              return [];
-            })
-        },
-        function(reason){
-          $log.warn("Error in retrieve notifications");
-          return [];
-        });
+      var notifications = {
+        'dismissed': [],
+        'notDismissed': []
+      };
+      return $http.get(SERVICE_LOC.notificationsURL, {cache : true}).then(function(allNotifications){
+              return filterNotificationsByGroup(allNotifications.data.notifications);
+         }).then(function(filteredNotificationsByGroup){
+              return separateNotificationsByDismissal(filteredNotificationsByGroup);
+         }).then(function (notificationsBydismissal){
+              notifications.dismissed = notificationsBydismissal.dismissed;
+              return filterNotificationsByData(notificationsBydismissal.notDismissed);
+         }).then(function(notificationsByData){
+              notifications.notDismissed = notificationsByData;
+              return notifications;
+         }).catch(function(reason){
+             $log.warn("Error in retrieving notifications");
+             return [];
+         });
     };
     
     /**
