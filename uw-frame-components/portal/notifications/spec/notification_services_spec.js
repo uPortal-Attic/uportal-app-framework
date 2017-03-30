@@ -510,5 +510,39 @@ define(['angular-mocks', 'portal'], function() {
           httpBackend.flush();
         });
         
+        it("notification should appear when dataObject is present and not an array", function(){
+          //setup
+          httpBackend.whenGET(backendURL).respond(
+            {"notifications" :
+              [
+                {
+                  "id"     : 1,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 1",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google"
+                },
+                {
+                  "id"     : 2,
+                  "groups" : ["Everyone"],
+                  "title"  : "Notification 2",
+                  "actionURL" : "http://www.google.com",
+                  "actionAlt" : "Google",
+                  "dataURL" : "http://www.google.com",
+                  "dataObject" : "id"
+                }
+              ]
+            }
+          );
+          httpBackend.whenGET(groupURL).respond({"groups" :[{"name" : "Everyone"}]});
+          httpBackend.whenGET("http://www.google.com").respond(200, {"name":"foo" , "id":"bar" , "favorite food":"baz"});
+          httpBackend.whenGET(kvURL + "/" + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+          notificationsService.getFilteredNotifications().then(function(results){
+            expect(results).toBeTruthy();
+            expect(results.notDismissed.length).toEqual(2);
+          });
+          httpBackend.flush();
+        });
+        
     });
 });
