@@ -1,0 +1,3 @@
+<i class="fa {{ ::widget.faIcon }}" ng-if="widget.faIcon && widget.faIcon.indexOf('fa-')===0"></i>
+<i class="{{ ::widget.faIcon }}" ng-if="widget.faIcon && widget.faIcon.indexOf('fa-')!==0"></i>
+<i class="fa fa-star" ng-if="!widget.faIcon && !widget.iconUrl"></i>
