@@ -22,7 +22,7 @@ define(['angular', 'jquery'], function(angular, $) {
      * @property {boolean} false
      * @property {string} actionALt
      * @property {string=} dataURL
-     * @propetry {string=} dataObject
+     * @property {string=} dataObject
      * @property {Object=} dataArrayFilter
      */
     
