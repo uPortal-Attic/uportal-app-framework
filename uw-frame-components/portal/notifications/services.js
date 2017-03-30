@@ -129,15 +129,15 @@ define(['angular', 'jquery'], function(angular, $) {
                   return;
                 }
                 var arrayFilter = angular.fromJson(notification.dataArrayFilter);
-                objectToFind = $filter('filter')(objectToFind, arrayFilter);
-              }
+                if ($filter('filter')(objectToFind, arrayFilter).length > 0) {
+                  return notification;
+                }
+              } else if (objectToFind) {
+                return notification
+              } 
               
-              //If the data object is there, we have a match
-              if (objectToFind && objectToFind.length > 0) {
-                return notification;
-              }else{
-                return;
-              }
+              return;
+             
             }).catch (function(reason){
               $log.warn("Error retrieving data for notification");
             }
