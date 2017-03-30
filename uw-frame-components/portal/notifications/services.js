@@ -4,7 +4,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
   var app = angular.module('portal.notifications.services', []);
 
-  app.factory('notificationsService', ['$q','$http', '$filter', 'miscService', 'PortalGroupService', 'keyValueService','SERVICE_LOC', 'KV_KEYS', function($q, $http, $filter, miscService, PortalGroupService, keyValueService, SERVICE_LOC, KV_KEYS) {
+  app.factory('notificationsService', ['$q','$http', '$log', '$filter', 'miscService', 'PortalGroupService', 'keyValueService','SERVICE_LOC', 'KV_KEYS', function($q, $http, $log, $filter, miscService, PortalGroupService, keyValueService, SERVICE_LOC, KV_KEYS) {
     // LOCAL VARIABLES
     var filteredNotificationPromise;
     var dismissedPromise;
@@ -24,7 +24,7 @@ define(['angular', 'jquery'], function(angular, $) {
             function(results){
               return results;
             },function(reason){
-              console.warn("Error Retrieving all notifications");
+              $log.warn("Error Retrieving all notifications");
             }
           );
         },
@@ -55,22 +55,22 @@ define(['angular', 'jquery'], function(angular, $) {
                       return notificationsToReturn;
                     },
                     function(reason){
-                      console.warn("Error in retrieving notifications that relied on data");
+                      $log.warn("Error in retrieving notifications that relied on data");
                       return [];
                     })
                 },
                 function(reason){
-                  console.warn("Error in retrieving dismissed notifications");
+                  $log.warn("Error in retrieving dismissed notifications");
                   return [];
                 })
             },
             function(reason){
-              console.warn("Error in retreiving notifications by group");
+              $log.warn("Error in retreiving notifications by group");
               return [];
             })
         },
         function(reason){
-          console.warn("Error in retrieve notifications");
+          $log.warn("Error in retrieve notifications");
           return [];
         });
     };
@@ -144,7 +144,7 @@ define(['angular', 'jquery'], function(angular, $) {
               }
             },
             function(reason){
-              console.warn("Error retrieving data for notification");
+              $log.warn("Error retrieving data for notification");
             }
           ));
         }else{
@@ -193,7 +193,7 @@ define(['angular', 'jquery'], function(angular, $) {
           return separatedNotifications;
         },
         function(reason){
-          console.warn("Error in retrieving previously dismissed notifications");
+          $log.warn("Error in retrieving previously dismissed notifications");
           return notifications;
         }
       );
