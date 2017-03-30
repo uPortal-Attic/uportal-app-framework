@@ -1,0 +1,351 @@
+{
+  "entry": {
+    "canAdd": false,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Wiscard Balance",
+      "description": "See your wiscard balance, make a deposit, or request money.",
+      "url": "https://online.wiscard.wisc.edu/login.php?cid=120",
+      "iconUrl": null,
+      "faIcon": "fa-credit-card-alt",
+      "fname": "wiscard-balance",
+      "lifecycleState": "PUBLISHED",
+      "target": "_blank",
+      "widgetURL": "/web/api/proxy/wiscard",
+      "widgetType": "generic",
+      "widgetTemplate": "\n          <div class='widget-body'>\n            <loading-gif data-object='content' data-empty='isEmpty'></loading-gif>\n            <div ng-if=\"content && (content.data | filter: account=103).length > 0\"  class='center' style='padding:20px; font-size: 35px; '>\n              <i class=\"fa fa-credit-card-alt\" style=\"color: #cbcbcb;\"></i> \n              <span style='color:#b70101; padding-left:10px;'>  {{ (content.data | filter: account=103)[0].balance | currency:\"$\":2}}</span>\n            </div>\n            <div ng-if='isEmpty' >\n              <circle-button data-href='https://online.wiscard.wisc.edu/login.php?cid=120' data-target='_blank' data-fa-icon='fa fa-credit-card-alt' data-title='See balance'></circle-button>\n            </div>\n            <div class='col-xs-6 v-center center'>\n                <circle-button data-href='https://online.wiscard.wisc.edu/login.php?wason=paymentach.php?tab=check' data-target='_blank' data-fa-icon='fa fa-dollar' data-title='Deposit money'></circle-button>\n            </div>\n            <div class='col-xs-6 v-center center'>\n                <circle-button data-href='https://online.wiscard.wisc.edu/login.php?wason=lost.php' data-target='_blank' data-fa-icon='fa fa-exclamation-triangle' data-title='Report lost card'></circle-button>\n            </div>\n          </div>\n          <a class='launch-app-button' target='_blank' href='https://online.wiscard.wisc.edu/login.php?cid=120'>Manage my Wiscard</a>\n        ",
+      "widgetConfig": {
+        "error": "config JSON not valid, syntax error? Double quotes not escaped?"
+      },
+      "staticContent": "\n        \n          <a href=\"https://online.wiscard.wisc.edu/login.php?cid=120\">Access your Wiscard account.</a>\n        \n      ",
+      "pithyStaticContent": null,
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "categories": [
+      "Applications"
+    ],
+    "portletName": "cms",
+    "title": "Wiscard Balance",
+    "keywords": [
+      "money",
+      "wisccard",
+      "wiscard",
+      "balance",
+      "deposit"
+    ],
+    "fname": "wiscard-balance",
+    "rating": 0.0,
+    "lifecycleState": "PUBLISHED",
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://online.wiscard.wisc.edu/login.php?cid=120",
+    "portletWebAppName": "/SimpleContentPortlet",
+    "maxUrl": "https://online.wiscard.wisc.edu/login.php?cid=120",
+    "shortUrl": null,
+    "marketplaceScreenshots": [
+      {
+        "url": "/images/screenshotImages/wiscard/wiscardscreenshot.png",
+        "captions": [
+          "View your wiscard balance"
+        ]
+      }
+    ],
+    "userRated": 0,
+    "faIcon": "fa-credit-card-alt",
+    "relatedPortlets": [
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "WiscChat",
+          "description": "Access to WiscChat instant messaging and group chat rooms from your browser.",
+          "url": "/portal/p/wisc-chat/render.uP",
+          "iconUrl": null,
+          "faIcon": "fa-comment-o",
+          "fname": "wisc-chat",
+          "lifecycleState": "PUBLISHED",
+          "target": null,
+          "widgetURL": null,
+          "widgetType": null,
+          "widgetTemplate": null,
+          "widgetConfig": null,
+          "staticContent": null,
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "categories": [
+          "Applications"
+        ],
+        "portletName": "AuthenticatedWebProxy",
+        "title": "WiscChat",
+        "keywords": null,
+        "fname": "wisc-chat",
+        "rating": 0.0,
+        "lifecycleState": "PUBLISHED",
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "/portal/p/wisc-chat/render.uP",
+        "portletWebAppName": "/WebProxyPortlet",
+        "maxUrl": "/portal/p/wisc-chat/render.uP",
+        "shortUrl": null,
+        "marketplaceScreenshots": [],
+        "userRated": 0,
+        "faIcon": "fa-comment-o",
+        "relatedPortlets": null,
+        "description": "Access to WiscChat instant messaging and group chat rooms from your browser.",
+        "name": "WiscChat",
+        "id": "57",
+        "type": "Portlet",
+        "target": null
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "OHR TREMS",
+          "description": "Office of Human Resources Talent Recruitment and Engagement Management System",
+          "url": "http://wisconsinmadison.pageuppeople.com/",
+          "iconUrl": null,
+          "faIcon": "fa-university",
+          "fname": "ohr-trems",
+          "lifecycleState": "PUBLISHED",
+          "target": "_blank",
+          "widgetURL": null,
+          "widgetType": null,
+          "widgetTemplate": null,
+          "widgetConfig": null,
+          "staticContent": "\n            \n                <p>Access <a href='http://wisconsinmadison.pageuppeople.com/' target='_blank'>TREMS</a>.</p>\n            \n        ",
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "categories": [
+          "Applications"
+        ],
+        "portletName": "advanced-cms",
+        "title": "OHR TREMS",
+        "keywords": [
+          "ATS",
+          "TREMS",
+          "OHR",
+          "TRE"
+        ],
+        "fname": "ohr-trems",
+        "rating": 0.0,
+        "lifecycleState": "PUBLISHED",
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "http://wisconsinmadison.pageuppeople.com/",
+        "portletWebAppName": "/SimpleContentPortlet",
+        "maxUrl": "http://wisconsinmadison.pageuppeople.com/",
+        "shortUrl": null,
+        "marketplaceScreenshots": [],
+        "userRated": 0,
+        "faIcon": "fa-university",
+        "relatedPortlets": null,
+        "description": "Office of Human Resources Talent Recruitment and Engagement Management System",
+        "name": "OHR TREMS",
+        "id": "6596",
+        "type": "Portlet",
+        "target": "_blank"
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "Enrollment",
+          "description": "Try out the newly redesigned student enrollment experience",
+          "url": "https://enroll.wisc.edu/",
+          "iconUrl": null,
+          "faIcon": "fa-university",
+          "fname": "enrollment-experience",
+          "lifecycleState": "PUBLISHED",
+          "target": null,
+          "widgetURL": null,
+          "widgetType": null,
+          "widgetTemplate": null,
+          "widgetConfig": {
+            "error": "config JSON not valid, syntax error? Double quotes not escaped?"
+          },
+          "staticContent": "\n\t\t\t\n\t\t\t\t<p>Access the \n\t\t\t\t\t<a href=\"https://enroll.wisc.edu\" target=\"_blank\" rel=\"noopener noreferrer\">student enrollment app</a>\n\t\t\t\t.</p>\n            \n\t\t",
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "categories": [
+          "Applications"
+        ],
+        "portletName": "advanced-cms",
+        "title": "Enrollment",
+        "keywords": [
+          "enroll",
+          "enrollment",
+          "SOAR"
+        ],
+        "fname": "enrollment-experience",
+        "rating": 0.0,
+        "lifecycleState": "PUBLISHED",
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "https://enroll.wisc.edu/",
+        "portletWebAppName": "/SimpleContentPortlet",
+        "maxUrl": "https://enroll.wisc.edu/",
+        "shortUrl": null,
+        "marketplaceScreenshots": [],
+        "userRated": 0,
+        "faIcon": "fa-university",
+        "relatedPortlets": null,
+        "description": "Try out the newly redesigned student enrollment experience",
+        "name": "Enrollment",
+        "id": "10296",
+        "type": "Portlet",
+        "target": null
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "Scheduling Assistant",
+          "description": "Make an appointment with people who have shared their schedules via the Scheduling Assistant.",
+          "url": "https://calendar.wisc.edu/scheduling-assistant/",
+          "iconUrl": null,
+          "faIcon": "fa-calendar-o",
+          "fname": "wisccal-available-portlet",
+          "lifecycleState": "PUBLISHED",
+          "target": "_blank",
+          "widgetURL": null,
+          "widgetType": null,
+          "widgetTemplate": null,
+          "widgetConfig": null,
+          "staticContent": "\n            \n                Click <a href=\"https://calendar.wisc.edu/scheduling-assistant/\">here</a> to access the scheduling assistant application.\n            \n        ",
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "categories": [
+          "Applications"
+        ],
+        "portletName": "advanced-cms",
+        "title": "Scheduling Assistant",
+        "keywords": [
+          "schedule",
+          "assistant",
+          "calendar",
+          "wisccal",
+          "advisors",
+          "appointment"
+        ],
+        "fname": "wisccal-available-portlet",
+        "rating": 3.0,
+        "lifecycleState": "PUBLISHED",
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "https://calendar.wisc.edu/scheduling-assistant/",
+        "portletWebAppName": "/SimpleContentPortlet",
+        "maxUrl": "https://calendar.wisc.edu/scheduling-assistant/",
+        "shortUrl": null,
+        "marketplaceScreenshots": [],
+        "userRated": 2,
+        "faIcon": "fa-calendar-o",
+        "relatedPortlets": null,
+        "description": "Make an appointment with people who have shared their schedules via the Scheduling Assistant.",
+        "name": "Scheduling Assistant",
+        "id": "39",
+        "type": "Portlet",
+        "target": "_blank"
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "Wisc Account Administration",
+          "description": "Manage accounts (NetID and departmental) that access Office 365, WiscChat, and Google Apps.",
+          "url": "https://wiscmail.wisc.edu/admin/",
+          "iconUrl": null,
+          "faIcon": "fa-user-plus",
+          "fname": "wisc-act-admin",
+          "lifecycleState": "PUBLISHED",
+          "target": "_blank",
+          "widgetURL": null,
+          "widgetType": null,
+          "widgetTemplate": null,
+          "widgetConfig": null,
+          "staticContent": "\n      \n        Access the \n        <a href=\"https://wiscmail.wisc.edu/admin/\">\n          Wisc Account Administration</a> tool.\n        \n    ",
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "categories": [
+          "Applications"
+        ],
+        "portletName": "cms",
+        "title": "Wisc Account Administration",
+        "keywords": [
+          "account",
+          "calandar",
+          "calendar",
+          "delegated",
+          "domain",
+          "e-mail",
+          "email",
+          "Google Apps",
+          "mail",
+          "NetID",
+          "Office 365",
+          "Office365",
+          "Wisc Cal",
+          "Wisc Mail Plus",
+          "WisCal",
+          "WiscCal",
+          "WisChat",
+          "WiscMail Plus",
+          "WiscMail",
+          "WiscMailPlus"
+        ],
+        "fname": "wisc-act-admin",
+        "rating": 0.0,
+        "lifecycleState": "PUBLISHED",
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "https://wiscmail.wisc.edu/admin/",
+        "portletWebAppName": "/SimpleContentPortlet",
+        "maxUrl": "https://wiscmail.wisc.edu/admin/",
+        "shortUrl": null,
+        "marketplaceScreenshots": [],
+        "userRated": 0,
+        "faIcon": "fa-user-plus",
+        "relatedPortlets": null,
+        "description": "Manage accounts (NetID and departmental) that access Office 365, WiscChat, and Google Apps.",
+        "name": "Wisc Account Administration",
+        "id": "5796",
+        "type": "Portlet",
+        "target": "_blank"
+      }
+    ],
+    "description": "See your wiscard balance, make a deposit, or request money.",
+    "name": "Wiscard Balance",
+    "id": "5996",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}
