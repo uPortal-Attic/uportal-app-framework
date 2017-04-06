@@ -40,12 +40,6 @@ define(['angular', 'require'], function(angular, require) {
       }
     });
 
-  app.directive('betaHeader', function() {
-      return {
-          restrict : 'E',
-          templateUrl : require.toUrl('./partials/beta-header.html')
-      }
-  });
   app.directive('featuresModalTemplate', function() {
       return {
           restrict : 'E',
