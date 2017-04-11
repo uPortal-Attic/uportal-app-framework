@@ -74,7 +74,7 @@
           </div>
         </a>
         <launch-button data-href="{{ renderUrl() }}"
-                       data-target="_blank"
+                       data-target="{{ widget.target ? widget.target : '_blank' }}"
                        data-rel="noopener noreferrer"
                        data-button-text="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch full app' }}"
                        data-aria-label="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch ' + widget.title }}">
