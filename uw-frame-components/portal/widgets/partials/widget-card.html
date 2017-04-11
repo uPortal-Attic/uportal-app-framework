@@ -68,7 +68,7 @@
       </div>
 
       <div ng-switch-when="basic">
-        <a tabindex="-1" ng-href="{{ renderUrl() }}" target="{{ widget.target }}" class="basic-widget" rel="noopener noreferrer">
+        <a tabindex="-1" ng-href="{{ renderUrl() }}" target="{{ widget.target ? widget.target : '_blank' }}" class="basic-widget" rel="noopener noreferrer">
           <div class="widget-icon-container" layout="column" layout-align="center center">
             <frame-widget-icon></frame-widget-icon>
           </div>
