@@ -14,8 +14,8 @@ define(['angular'], function(angular) {
     var getSingleWidgetData = function getSingleWidgetData(fname) {
       return $http.get(SERVICE_LOC.widgetApi.entry + fname + '.json')
         .then(function(result) {
-          if (result.data.entry.layoutObject != undefined) {
-            return result.data.entry.layoutObject;
+          if (result.data.portlet != undefined) {
+            return result.data.portlet;
           }
         })
         .catch(function(error) {

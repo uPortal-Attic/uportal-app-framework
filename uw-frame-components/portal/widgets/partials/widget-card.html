@@ -19,12 +19,8 @@
       </md-tooltip>
       <md-icon>info</md-icon>
     </md-button>
-    <md-button class="widget-action widget-remove md-icon-button"
-               aria-label="remove {{ widget.title }} widget from your home screen"
-               ng-click="widgetCtrl.removewidget(widget.nodeId, widget.title)"
-               ng-hide="GuestMode || cantRemove || widget.lifecycleState === 'MAINTENANCE'">
-      <md-icon>close</md-icon>
-    </md-button>
+    <div ng-transclude class="widget-removal">
+    </div>
 
     <md-card-header-text>
       <span class="md-title" style="text-align: center;" aria-label="{{ widget.title }}" tabindex="0">
@@ -70,7 +66,7 @@
       <div ng-switch-when="basic">
         <a tabindex="-1" ng-href="{{ renderUrl() }}" target="{{ widget.target }}" class="basic-widget" rel="noopener noreferrer">
           <div class="widget-icon-container" layout="column" layout-align="center center">
-            <frame-widget-icon></frame-widget-icon>
+            <widget-icon></widget-icon>
           </div>
         </a>
         <launch-button data-href="{{ renderUrl() }}"

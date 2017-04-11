@@ -10,6 +10,7 @@ define(['angular', 'require'], function(angular, require) {
   app.directive('widget', function() {
     return {
       restrict: 'E',
+      transclude: true,
       scope: {
         fname: '@'
       },
