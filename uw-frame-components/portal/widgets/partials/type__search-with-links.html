@@ -21,7 +21,7 @@
     </div>
   </div>
 </div>
-<a class="launch-app-button" ng-href="widget.url" target="{{ config.target }}" rel="noopener noreferrer">
+<a class="launch-app-button" ng-href="widget.url" target="{{ widget.target ? widget.target : '_blank' }}" rel="noopener noreferrer">
   <span ng-if='config.launchText'>{{ config.launchText }}</span>
   <span ng-if='!config.launchText'>Launch app</span>
 </a>
