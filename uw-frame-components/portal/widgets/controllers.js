@@ -260,7 +260,7 @@ define(['angular'], function(angular) {
     };
 
     /**
-     * Filter array for provided values of a given object -- used by some custom widgets (i.e. Leave Balances)
+     * Filter array for provided values of a given object -- used Leave Balances widget
      *
      * @param {Array<Object>} array The array to filter
      * @param {Object} object The array entry to search through
@@ -268,22 +268,26 @@ define(['angular'], function(angular) {
      * @returns {Array<Object>} An array containing only the desired
      */
     $scope.filteredArray = function(array, object, strings) {
-      $log.log('Filtering array for strings: ' + strings);
-      $log.log(array);
       if (array && object && strings) {
-        var filteredArray = array.filter(function(entry) {
+        return array.filter(function(entry) {
           for (var i = 0; i < strings.length; i++) {
             if (entry[object].indexOf(strings[i]) != -1) {
               return true;
             }
           }
         });
-        $log.log('Filtered array:');
-        $log.log(filteredArray);
-        return filteredArray;
       } else {
         return [];
       }
+    };
+
+    /**
+     * Used in tandem with filteredArray to display Leave Balances in order of value
+     * @param item Object containing a name string and a value string
+     * @returns {Number}
+     */
+    $scope.sortStringAsNumber = function(item) {
+      return parseInt(item.balance);
     };
 
     /**
