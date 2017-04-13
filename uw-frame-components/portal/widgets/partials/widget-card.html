@@ -1,4 +1,4 @@
-<md-card class="widget-frame" ng-class="{ 'single-widget-card' : isSingleWidget }" id="widget-id-{{ widget.nodeId }}" aria-label="{{ widget.title }} widget">
+<md-card class="widget-frame" id="widget-id-{{ widget.nodeId }}" aria-label="{{ widget.title }} widget">
 
   <!-- MAINTENANCE MODE OVERLAY -->
   <div class="overlay__maintenance-mode" ng-if="widget.lifecycleState === 'MAINTENANCE'">

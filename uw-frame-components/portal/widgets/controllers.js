@@ -44,9 +44,6 @@ define(['angular'], function(angular) {
       $scope.widget = {};
       $scope.widgetType = '';
 
-      // Temporarily necessary for CSS to enforce max-width on widgets not constrained by a responsive grid (i.e. not in ng-portal)
-      $scope.isSingleWidget = true;
-
       // Get widget data for provided app (fname)
       widgetService.getSingleWidgetData(fname)
         .then(function(data) {
