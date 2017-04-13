@@ -191,17 +191,17 @@ define(['angular'], function(angular) {
             $scope.loading = false;
 
             // Check for errors or emptiness and update display as needed
-            if ($scope.status !== 'ok') {
+            if ($scope.data.status !== 'ok') {
               $scope.error = true;
               $scope.loading = false;
             } else {
-              if (!$scope.items || $scope.items.length == 0) {
+              if (!$scope.data.items || $scope.data.items.length == 0) {
                 $scope.isEmpty = true;
                 $scope.loading = false;
                 $scope.error = true;
               } else {
                 // Show 'show more' if the feed is longer than the display limit
-                if (!$scope.config.showShowing && $scope.items.length > $scope.config.lim) {
+                if (!$scope.config.showShowing && $scope.data.items.length > $scope.config.lim) {
                   $scope.config.showShowing = true;
                 }
               }
