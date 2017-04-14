@@ -284,6 +284,8 @@ define(['angular'], function(angular) {
      * @returns {Number}
      */
     $scope.sortStringAsNumber = function(item) {
+      $log.log(item);
+      $log.log('item balance: ' + item.balance);
       return parseInt(item.balance);
     };
 
