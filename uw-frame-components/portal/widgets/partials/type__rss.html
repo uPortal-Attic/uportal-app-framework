@@ -21,7 +21,7 @@
     <li ng-if="isEmpty" class="no-highlight">No information at this time.</li>
   </ul>
 </div>
-<a target="{{ widget.target ? widget.target : '_blank' }}"
+<a target="{{ widget.target ? widget.target : '_self' }}"
    class="launch-app-button ng-scope"
    rel="noopener noreferrer"
    ng-href="{{ widget.url }}">

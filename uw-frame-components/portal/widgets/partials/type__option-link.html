@@ -2,7 +2,7 @@
 
   <!-- OPTION-LINK ICON -->
   <div class="option-link-icon">
-    <a href="{{ widget.selectedUrl }}" target="_blank" rel="noopener noreferrer">
+    <a href="{{ widget.selectedUrl }}" target="_self" rel="noopener noreferrer">
       <widget-icon></widget-icon>
     </a>
   </div>
@@ -45,7 +45,7 @@
 <!-- LAUNCH BUTTON -->
 <a class="launch-app-button"
    ng-href="{{ widget.selectedUrl }}"
-   target="{{ widget.target ? widget.target : '_blank' }}" rel="noopener noreferrer">
+   target="{{ widget.target ? widget.target : '_self' }}" rel="noopener noreferrer">
   <span ng-if='config.launchText'>{{ config.launchText }}</span>
   <span ng-if='!config.launchText'>Launch {{ widget.title }}</span>
 </a>
