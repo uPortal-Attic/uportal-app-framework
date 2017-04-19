@@ -177,7 +177,11 @@ define(['angular'], function(angular) {
         $scope.config.lim = 5;
       }
       if (!$scope.config.titleLim) {
-        $scope.config.titleLim = 45;
+        if ($scope.config.showdate) {
+          $scope.config.titleLim = 35;
+        } else {
+          $scope.config.titleLim = 45;
+        }
       }
       if (!$scope.config.showShowing) {
         $scope.config.showShowing = false;
