@@ -21,10 +21,9 @@
     <li ng-if="isEmpty" class="no-highlight">No information at this time.</li>
   </ul>
 </div>
-<a target="{{ widget.target ? widget.target : '_self' }}"
-   class="launch-app-button ng-scope"
-   rel="noopener noreferrer"
-   ng-href="{{ widget.url }}">
-  <span ng-if="config.launchText">{{ config.launchText }}</span>
-  <span ng-if="!config.launchText">See all</span>
-</a>
+<launch-button data-href="{{ widget.url }}"
+               data-target="{{ widget.target ? widget.target : '_self' }}"
+               data-rel="noopener noreferrer"
+               data-button-text="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'See all' }}"
+               data-aria-label="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch ' + widget.title }}">
+</launch-button>
