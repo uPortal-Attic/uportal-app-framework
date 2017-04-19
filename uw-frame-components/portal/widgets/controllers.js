@@ -279,17 +279,6 @@ define(['angular'], function(angular) {
     };
 
     /**
-     * Used in tandem with filteredArray to display Leave Balances in order of value
-     * @param item Object containing a name string and a value string
-     * @returns {Number}
-     */
-    $scope.sortStringAsNumber = function(item) {
-      $log.log(item);
-      $log.log('item balance: ' + item.balance);
-      return parseInt(item.balance);
-    };
-
-    /**
      * Initialize scope variables before getting widget content
      * @param template The provided custom HTML template
      */
