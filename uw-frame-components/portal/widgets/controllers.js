@@ -149,12 +149,7 @@ define(['angular'], function(angular) {
      */
     $scope.getPrettyDate = function(dateString) {
       // Create a new date if a date string was provided, otherwise return null
-      if (dateString === undefined) {
-        $log.warn('Date string in RSS widget controller is undefined');
-        return null;
-      } else {
-        return new Date(dateString);
-      }
+      return dateString ? new Date(dateString) : null;
     };
 
     /**
