@@ -29,6 +29,6 @@
 <!-- LAUNCH BUTTON -->
 <launch-button ng-if='config.launchText && widget.url'
                data-href="{{widget.url}}"
-               data-target="{{ widget.target ? widget.target : '_blank' }}"
+               data-target="{{ widget.target ? widget.target : '_self' }}"
                data-button-text="{{config.launchText}}"
                data-aria-label="{{'launch ' + config.launchText}}"></launch-button>

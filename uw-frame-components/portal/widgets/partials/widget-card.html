@@ -64,13 +64,13 @@
       </div>
 
       <div ng-switch-when="basic">
-        <a tabindex="-1" ng-href="{{ renderUrl() }}" target="{{ widget.target ? widget.target : '_blank' }}" class="basic-widget" rel="noopener noreferrer">
+        <a tabindex="-1" ng-href="{{ renderUrl() }}" target="{{ widget.target ? widget.target : '_self' }}" class="basic-widget" rel="noopener noreferrer">
           <div class="widget-icon-container" layout="column" layout-align="center center">
             <widget-icon></widget-icon>
           </div>
         </a>
         <launch-button data-href="{{ renderUrl() }}"
-                       data-target="{{ widget.target ? widget.target : '_blank' }}"
+                       data-target="{{ widget.target ? widget.target : '_self' }}"
                        data-rel="noopener noreferrer"
                        data-button-text="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch full app' }}"
                        data-aria-label="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch ' + widget.title }}">

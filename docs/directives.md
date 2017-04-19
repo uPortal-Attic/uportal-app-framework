@@ -89,7 +89,7 @@ Displays a flat, circular icon-button with a fa-icon in the middle, and a title 
 #### Params:
 
 * **href**: Where you want them to go
-* **target**: Open in new window, new tab, or the same window
+* **target**: Open in new window, new tab, or the same tab (i.e. "_self", "_blank", etc.). If no target is set, it will default to the same tab.
 * **fa-icon**: The font awesome icon to use
 * **disabled**: Button disabled or not (can be a variable)
 * **title**: (optional) Title that is displayed under the circle
