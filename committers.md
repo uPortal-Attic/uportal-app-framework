@@ -20,7 +20,7 @@ Committership is *not* access to write changes. Committers are entitled to write
 
 Committership is a state of mind. Of your mind, and of the minds of the other Committers. You become a Committer because the other committers recognize you as a Committer and because you recognize yourself as (and act like) a Committer.
 
-Formally, you become a Committer when the other Committers acknowledge this state of mind by formal vote.
+Formally, you become a Committer when the other Committers acknowledge this state of mind by formal nomination and vote on the email list.
 
 ## What happens to inactive Committers?
 
