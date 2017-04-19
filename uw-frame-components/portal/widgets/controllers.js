@@ -154,6 +154,15 @@ define(['angular'], function(angular) {
     };
 
     /**
+     * Remove leading/trailing spaces from RSS titles
+     * @param title The RSS title
+     * @returns String The trimmed title
+     */
+    $scope.trim = function(title) {
+      return title.trim();
+    };
+
+    /**
      * Set defaults if any values are missing from provided widgetConfig
      */
     var checkForWidgetConfig = function() {
