@@ -5,33 +5,29 @@
 
   <md-content layout-padding>
 
-    <!-- LOCAL DEMO -->
-    <div layout="row" layout-align="start center">
-      <div flex-xs="100">
+    <!--
+      LOCAL DEMO
+      - Must set SERVICE_LOC->widgetApi.entry in app-config.js to: "staticFeeds/"
+    -->
+    <div layout="row" layout-align="center center">
+      <div flex-xs="100" style="max-width:310px">
         <widget fname="sample-widget__search-with-links"></widget>
       </div>
-      <div flex-xs="100">
+      <div flex-xs="100" style="max-width:310px">
         <widget fname="sample-widget__custom"></widget>
       </div>
-    </div>
-    <div layout="row" layout-align="start center">
-      <div flex-xs="100">
+      <div flex-xs="100" style="max-width:310px">
         <widget fname="sample-widget__rss"></widget>
       </div>
-      <div flex-xs="100">
+    </div>
+    <div layout="row" layout-align="center center">
+      <div flex-xs="100" style="max-width:310px">
         <widget fname="sample-widget__list-of-links"></widget>
       </div>
-    </div>
-    <div layout="row" layout-align="start center">
-      <div flex-xs="100">
+      <div flex-xs="100" style="max-width:310px">
         <widget fname="sample-widget__weather"></widget>
       </div>
+      <span flex></span>
     </div>
-
-    <!-- PREDEV DEMO -->
-    <!--<widget fname="wiscard-balance"></widget>-->
-    <!--<widget fname="rprg"></widget>-->
-    <!--<widget fname="uwrf-news-feed"></widget>-->
-    <!--<widget fname="my-professional-development"></widget>-->
   </md-content>
 </frame-page>
