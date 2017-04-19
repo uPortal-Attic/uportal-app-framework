@@ -149,8 +149,12 @@ define(['angular'], function(angular) {
      */
     $scope.getPrettyDate = function(dateString) {
       // Create a new date if a date string was provided, otherwise return null
-      $log.log('rss widget got date string: ' + dateString);
-      return dateString ? new Date(dateString) : null;
+      if (dateString === undefined) {
+        $log.warn('Date string in RSS widget controller is undefined');
+        return null;
+      } else {
+        return new Date(dateString);
+      }
     };
 
     /**
@@ -173,11 +177,7 @@ define(['angular'], function(angular) {
         $scope.config.lim = 5;
       }
       if (!$scope.config.titleLim) {
-        if ($scope.config.showdate) {
-          $scope.config.titleLim = 35;
-        } else {
-          $scope.config.titleLim = 45;
-        }
+        $scope.config.titleLim = 45;
       }
       if (!$scope.config.showShowing) {
         $scope.config.showShowing = false;
