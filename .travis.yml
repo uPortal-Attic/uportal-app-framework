@@ -1,11 +1,18 @@
-dist: trusty
-sudo: false
-group: beta
 language: java
+jdk:
+  - oraclejdk7
+  - openjdk7
+  - oraclejdk8
+sudo: false
 before_install:
+  - nvm i node
   - npm install
 script :
   - npm run build-static
   - npm test
   - cd uw-frame-java/
   - mvn clean install
+cache:
+  directories:
+    - $HOME/.m2
+    - node_modules
