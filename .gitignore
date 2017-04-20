@@ -19,5 +19,6 @@ npm-debug.log
 *.swp
 \.DS_Store
 docs/_site
+docs/\.ruby-version
 Gemfile.lock
 nbproject/
