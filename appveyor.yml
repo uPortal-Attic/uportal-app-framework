@@ -8,8 +8,6 @@ install:
   - mvn --version
   - node --version
   - npm --version
-build_script:
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - npm install
 test_script:
   - npm run build-static
@@ -20,3 +18,5 @@ cache:
   - node_modules
   - '%APPDATA%\npm-cache'
   - C:\Users\appveyor\.m2\ -> pom.xml
+
+build: off
