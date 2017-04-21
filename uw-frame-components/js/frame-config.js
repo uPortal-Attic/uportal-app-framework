@@ -1,32 +1,31 @@
 define(['angular'], function(angular) {
-
     var config = angular.module('frame-config', []);
     config
         .constant('THEMES',
-        {"themeVersion": 6,
+        {'themeVersion': 6,
         /* THOU SHALT INCREMENT THIS VERSION NUMBER IF THOU CHANGEST ANY OF THE THEMES BELOW  */
-         "themes":
+         'themes':
         [
           {
-            "name" : "uw-madison",
-            "portalSkinKey" : "uwMadison",
-            "crest" : "img/uw-madison-52.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Crest",
-            "group" : "UW-Madison",
-            "mascotImg" : "img/bucky.gif",
-            "footerLinks": [{ "url" : "/web/static/myuw-help",
-                             "target" : "_blank",
-                             "title" : "Help"
+            'name': 'uw-madison',
+            'portalSkinKey': 'uwMadison',
+            'crest': 'img/uw-madison-52.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Crest',
+            'group': 'UW-Madison',
+            'mascotImg': 'img/bucky.gif',
+            'footerLinks': [{'url': '/web/static/myuw-help',
+                             'target': '_blank',
+                             'title': 'Help',
                            },
-                           { "url" : "https://my.wisc.edu/portal/p/feedback",
-                             "target" : "_blank",
-                             "title" : "Feedback"
+                           {'url': 'https://my.wisc.edu/portal/p/feedback',
+                             'target': '_blank',
+                             'title': 'Feedback',
                            }],
-            "materialTheme" : {
-              "primary" : {
+            'materialTheme': {
+              'primary': {
                 '50': 'FED5D7',
                 '100': 'FC8B8F',
                 '200': 'FB545A',
@@ -42,9 +41,9 @@ define(['angular'], function(angular) {
                 'A400': 'E3060E',
                 'A700': '890308',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100', 'A200']
+                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100', 'A200'],
               },
-              "accent" : {
+              'accent': {
                 '50': 'B8E9FD',
                 '100': '6DD3FC',
                 '200': '36C2FA',
@@ -60,9 +59,9 @@ define(['angular'], function(angular) {
                 'A400': '058FC6',
                 'A700': '034E6C',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100']
+                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100'],
               },
-              "warn" : {
+              'warn': {
                 '50': 'FFFFFF',
                 '100': 'F9E7D7',
                 '200': 'F2C9A6',
@@ -78,31 +77,31 @@ define(['angular'], function(angular) {
                 'A400': 'E6934D',
                 'A700': 'BC651B',
                 'contrastDefaultColor': 'dark',
-                'contrastLightColors': ['500', '600', '700', '800', '900', 'A700']
-              }
-            }
+                'contrastLightColors': ['500', '600', '700', '800', '900', 'A700'],
+              },
+            },
           },
           {
-            "name" : "uw-river-falls",
-            "portalSkinKey" : "uwRiverFalls",
-            "crest" : "img/uwrf-logo.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW River Falls Logo",
-            "group" : "UW System-River Falls",
-            "mascotImg" : "img/uwrf-mascot.gif",
-            "footerLinks": [
-             { "url" : "https://technology.uwrf.edu/",
-               "target" : "_blank",
-                "title" : "UWRF Help"
+            'name': 'uw-river-falls',
+            'portalSkinKey': 'uwRiverFalls',
+            'crest': 'img/uwrf-logo.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW River Falls Logo',
+            'group': 'UW System-River Falls',
+            'mascotImg': 'img/uwrf-mascot.gif',
+            'footerLinks': [
+             {'url': 'https://technology.uwrf.edu/',
+               'target': '_blank',
+                'title': 'UWRF Help',
              },
-             { "url" : "https://my.uwrf.edu/portal/p/uwrf-feedback",
-               "target" : "_blank",
-               "title" : "Feedback"
+             {'url': 'https://my.uwrf.edu/portal/p/uwrf-feedback',
+               'target': '_blank',
+               'title': 'Feedback',
              }],
-            "materialTheme" : {
-              "primary" : {
+            'materialTheme': {
+              'primary': {
                 '50': '#fcdae1',
                 '100': '#f693a8',
                 '200': '#f25f7e',
@@ -118,9 +117,9 @@ define(['angular'], function(angular) {
                 'A400': '#da113c',
                 'A700': '#850b24',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', '100', '200', 'A100', 'A200']
+                'contrastDarkColors': ['50', '100', '200', 'A100', 'A200'],
               },
-              "accent" : {
+              'accent': {
                 '50': '#ebecec',
                 '100': '#c5c5c6',
                 '200': '#a8a9aa',
@@ -136,26 +135,26 @@ define(['angular'], function(angular) {
                 'A400': '#757677',
                 'A700': '#484849',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', '100', 'A100', 'A200']
+                'contrastDarkColors': ['50', '100', 'A100', 'A200'],
               },
-              "warn" : "deep-orange"
-            }
+              'warn': 'deep-orange',
+            },
           },
           {
-            "name" : "uw-stevens-point",
-            "portalSkinKey" : "uwStevensPoint",
-            "crest" : "img/uwsp-logo-52.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Stevens Point Logo",
-            "group" : "UW System-Stevens Point",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-stevens-point',
+            'portalSkinKey': 'uwStevensPoint',
+            'crest': 'img/uwsp-logo-52.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Stevens Point Logo',
+            'group': 'UW System-Stevens Point',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
               }],
-            "materialTheme" : {
-             "primary" : {
+            'materialTheme': {
+             'primary': {
                '50': '#efebf7',
                '100': '#c5b4e0',
                '200': '#a78dd0',
@@ -171,9 +170,9 @@ define(['angular'], function(angular) {
                'A400': '#7048af',
                'A700': '#462d6e',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', '100', '200', 'A100', 'A200']
+               'contrastDarkColors': ['50', '100', '200', 'A100', 'A200'],
              },
-             "accent" : {
+             'accent': {
                '50': '#946d00',
                '100': '#ad8000',
                '200': '#c79300',
@@ -189,26 +188,26 @@ define(['angular'], function(angular) {
                'A400': '#ffc114',
                'A700': '#ffeaad',
                'contrastDefaultColor': 'dark',
-               'contrastLightColors': ['50', '100', '200', '300']
+               'contrastLightColors': ['50', '100', '200', '300'],
              },
-             "warn" : "red"
-            }
+             'warn': 'red',
+            },
           },
           {
-            "name" : "uw-milwaukee",
-            "portalSkinKey" : "uwMilwaukee",
-            "crest" : "img/uwm-logo-52.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW-Milwaukee Logo",
-            "group" : "UW System-Milwaukee",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-milwaukee',
+            'portalSkinKey': 'uwMilwaukee',
+            'crest': 'img/uwm-logo-52.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW-Milwaukee Logo',
+            'group': 'UW System-Milwaukee',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
               }],
-            "materialTheme" : {
-             "primary" : {
+            'materialTheme': {
+             'primary': {
                '50': '#858585',
                '100': '#5e5e5e',
                '200': '#424242',
@@ -224,9 +223,9 @@ define(['angular'], function(angular) {
                'A400': '#0f0f0f',
                'A700': '#000000',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', 'A100']
+               'contrastDarkColors': ['50', 'A100'],
              },
-             "accent" : {
+             'accent': {
                '50': '#664c00',
                '100': '#805e00',
                '200': '#997100',
@@ -242,26 +241,26 @@ define(['angular'], function(angular) {
                'A400': '#e6aa00',
                'A700': '#ffde80',
                'contrastDefaultColor': 'dark',
-               'contrastLightColors': ['50', '100', '200', '300', 'A400']
+               'contrastLightColors': ['50', '100', '200', '300', 'A400'],
              },
-             "warn" : "deep-orange"
-            }
+             'warn': 'deep-orange',
+            },
           },
           {
-            "name" : "uw-whitewater",
-            "portalSkinKey" : "uwWhitewater",
-            "crest" : "img/uww-logo-52.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW-Whitewater Logo",
-            "group" : "UW System-Whitewater",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-whitewater',
+            'portalSkinKey': 'uwWhitewater',
+            'crest': 'img/uww-logo-52.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW-Whitewater Logo',
+            'group': 'UW System-Whitewater',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
               }],
-            "materialTheme" : {
-             "primary" : {
+            'materialTheme': {
+             'primary': {
                '50': '#c7b7dc',
                '100': '#9f83c2',
                '200': '#825eb0',
@@ -277,9 +276,9 @@ define(['angular'], function(angular) {
                'A400': '#513771',
                'A700': '#251933',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', '100', 'A100', 'A200']
+               'contrastDarkColors': ['50', '100', 'A100', 'A200'],
              },
-             "accent" : {
+             'accent': {
                '50': '#afa756',
                '100': '#b7b068',
                '200': '#bfb979',
@@ -295,26 +294,26 @@ define(['angular'], function(angular) {
                'A400': '#d8d4ad',
                'A700': '#ffffff',
                'contrastDefaultColor': 'dark',
-               'contrastLightColors': ['50', '100', 'A400']
+               'contrastLightColors': ['50', '100', 'A400'],
              },
-             "warn" : "amber"
-            }
+             'warn': 'amber',
+            },
           },
           {
-            "name" : "uw-stout",
-            "portalSkinKey" : "uwStout",
-            "crest" : "img/uws-logo-52.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Crest",
-            "group" : "UW System-Stout",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-stout',
+            'portalSkinKey': 'uwStout',
+            'crest': 'img/uws-logo-52.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Crest',
+            'group': 'UW System-Stout',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
               }],
-            "materialTheme" : {
-             "primary" : {
+            'materialTheme': {
+             'primary': {
                '50': '#9acdff',
                '100': '#4ea8ff',
                '200': '#168cff',
@@ -330,9 +329,9 @@ define(['angular'], function(angular) {
                'A400': '#0058af',
                'A700': '#002a53',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', '100', 'A100', 'A200']
+               'contrastDarkColors': ['50', '100', 'A100', 'A200'],
              },
-             "accent" : {
+             'accent': {
                '50': '#744805',
                '100': '#8c5706',
                '200': '#a56607',
@@ -348,26 +347,26 @@ define(['angular'], function(angular) {
                'A400': '#ee930b',
                'A700': '#fad397',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['700', '800', '900', 'A700']
+               'contrastDarkColors': ['700', '800', '900', 'A700'],
              },
-             "warn" : "red"
-            }
+             'warn': 'red',
+            },
           },
           {
-            "name" : "uw-oshkosh",
-            "portalSkinKey" : "uwOshkosh",
-            "crest" : "img/uw-oshkosh-2016.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Crest",
-            "group" : "UW System-Oshkosh",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-oshkosh',
+            'portalSkinKey': 'uwOshkosh',
+            'crest': 'img/uw-oshkosh-2016.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Crest',
+            'group': 'UW System-Oshkosh',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
               }],
-            "materialTheme" : {
-             "primary" : {
+            'materialTheme': {
+             'primary': {
                '50': '#858585',
                '100': '#5e5e5e',
                '200': '#424242',
@@ -383,9 +382,9 @@ define(['angular'], function(angular) {
                'A400': '#0f0f0f',
                'A700': '#000000',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', 'A100']
+               'contrastDarkColors': ['50', 'A100'],
              },
-             "accent" : {
+             'accent': {
                '50': '#896501',
                '100': '#a37701',
                '200': '#bc8a01',
@@ -401,9 +400,9 @@ define(['angular'], function(angular) {
                'A400': '#febd0c',
                'A700': '#ffe6a4',
                'contrastDefaultColor': 'dark',
-               'contrastLightColors': ['50', '100', '200', '300', 'A400']
+               'contrastLightColors': ['50', '100', '200', '300', 'A400'],
              },
-             "warn" : {
+             'warn': {
                '50': '#a3ffff',
                '100': '#57ffff',
                '200': '#1fffff',
@@ -419,25 +418,25 @@ define(['angular'], function(angular) {
                'A400': '#00b8b8',
                'A700': '#005c5c',
                'contrastDefaultColor': 'dark',
-               'contrastLightColors': ['500', '600', '700', '800', '900', 'A700']
-             }
-            }
+               'contrastLightColors': ['500', '600', '700', '800', '900', 'A700'],
+             },
+            },
           },
           {
-            "name" : "uw-greenbay",
-            "portalSkinKey" : "uwGreenBay",
-            "crest" : "img/UWGB-logo-52.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Crest",
-            "group" : "UW System-Green Bay",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-greenbay',
+            'portalSkinKey': 'uwGreenBay',
+            'crest': 'img/UWGB-logo-52.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Crest',
+            'group': 'UW System-Green Bay',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
             }],
-            "materialTheme" : {
-             "primary" : {
+            'materialTheme': {
+             'primary': {
                '50': '#70ffb8',
                '100': '#24ff91',
                '200': '#00eb75',
@@ -453,9 +452,9 @@ define(['angular'], function(angular) {
                'A400': '#008542',
                'A700': '#002914',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', '100', '200', 'A100', 'A200']
+               'contrastDarkColors': ['50', '100', '200', 'A100', 'A200'],
              },
-             "accent" : {
+             'accent': {
                '50': '#000000',
                '100': '#001919',
                '200': '#003333',
@@ -471,9 +470,9 @@ define(['angular'], function(angular) {
                'A400': '#007f80',
                'A700': '#1affff',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['800', '900', 'A700']
+               'contrastDarkColors': ['800', '900', 'A700'],
              },
-             "warn" : {
+             'warn': {
                '50': '#ffffff',
                '100': '#f2cbcb',
                '200': '#e79d9d',
@@ -489,25 +488,25 @@ define(['angular'], function(angular) {
                'A400': '#d34c4c',
                'A700': '#9c2626',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', '100', '200', '300', 'A100', 'A200']
-             }
-            }
+               'contrastDarkColors': ['50', '100', '200', '300', 'A100', 'A200'],
+             },
+            },
           },
           {
-            "name" : "uw-lacrosse",
-            "portalSkinKey" : "uwLaCrosse",
-            "crest" : "img/uwl-round-56.jpg",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Crest",
-            "group" : "UW System-La Crosse",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-lacrosse',
+            'portalSkinKey': 'uwLaCrosse',
+            'crest': 'img/uwl-round-56.jpg',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Crest',
+            'group': 'UW System-La Crosse',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
             }],
-            "materialTheme" : {
-             "primary" : {
+            'materialTheme': {
+             'primary': {
                '50': '#ff7d99',
                '100': '#ff315e',
                '200': '#f80036',
@@ -523,9 +522,9 @@ define(['angular'], function(angular) {
                'A400': '#920020',
                'A700': '#36000c',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', 'A100']
+               'contrastDarkColors': ['50', 'A100'],
              },
-             "accent" : {
+             'accent': {
                '50': '#39575b',
                '100': '#43666a',
                '200': '#4d757a',
@@ -541,9 +540,9 @@ define(['angular'], function(angular) {
                'A400': '#6f9ea4',
                'A700': '#cddddf',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['700', '800', '900', 'A700']
+               'contrastDarkColors': ['700', '800', '900', 'A700'],
              },
-             "warn" : {
+             'warn': {
                '50': '#fcf7f2',
                '100': '#ecceb5',
                '200': '#e1b188',
@@ -559,25 +558,25 @@ define(['angular'], function(angular) {
                'A400': '#cd7b37',
                'A700': '#864f22',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100', 'A200', 'A400']
-             }
-            }
+               'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100', 'A200', 'A400'],
+             },
+            },
           },
           {
-            "name" : "uw-parkside",
-            "portalSkinKey" : "uwParkside",
-            "crest" : "img/uw-parkside-logo-56.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Parkside",
-            "group" : "UW System-Parkside",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-parkside',
+            'portalSkinKey': 'uwParkside',
+            'crest': 'img/uw-parkside-logo-56.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Parkside',
+            'group': 'UW System-Parkside',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
               }],
-              "materialTheme" : {
-               "primary" : {
+              'materialTheme': {
+               'primary': {
                  '50': '#73ffc6',
                  '100': '#27ffa6',
                  '200': '#00ee8c',
@@ -593,9 +592,9 @@ define(['angular'], function(angular) {
                  'A400': '#008850',
                  'A700': '#002c1a',
                  'contrastDefaultColor': 'light',
-                 'contrastDarkColors': ['50', '100', '200', 'A100', 'A200']
+                 'contrastDarkColors': ['50', '100', '200', 'A100', 'A200'],
                },
-               "accent" : {
+               'accent': {
                  '50': '#2b401e',
                  '100': '#375126',
                  '200': '#43632e',
@@ -611,9 +610,9 @@ define(['angular'], function(angular) {
                  'A400': '#669747',
                  'A700': '#b6d4a3',
                  'contrastDefaultColor': 'light',
-                 'contrastDarkColors': ['600', '700', '800', '900', 'A700']
+                 'contrastDarkColors': ['600', '700', '800', '900', 'A700'],
                },
-               "warn" : {
+               'warn': {
                  '50': '#ffffff',
                  '100': '#f1d1c0',
                  '200': '#e7ae92',
@@ -629,26 +628,26 @@ define(['angular'], function(angular) {
                  'A400': '#d5703f',
                  'A700': '#974821',
                  'contrastDefaultColor': 'light',
-                 'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100', 'A200', 'A400']
-               }
-              }
+                 'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100', 'A200', 'A400'],
+               },
+              },
           },
           {
-            "name" : "uw-platteville",
-            "portalSkinKey" : "uwPlatteville",
-            "crest" : "img/uwp-logo-56.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Platteville",
-            "group" : "UW System-Platteville",
-            "mascotImg" : "img/uwp-pete.png",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-platteville',
+            'portalSkinKey': 'uwPlatteville',
+            'crest': 'img/uwp-logo-56.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Platteville',
+            'group': 'UW System-Platteville',
+            'mascotImg': 'img/uwp-pete.png',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
             }],
-            "materialTheme" : {
-             "primary" : {
+            'materialTheme': {
+             'primary': {
                '50': '#c6e6fd',
                '100': '#7dc6fa',
                '200': '#47aef8',
@@ -664,9 +663,9 @@ define(['angular'], function(angular) {
                'A400': '#087dd0',
                'A700': '#054878',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', '100', '200', 'A100', 'A200']
+               'contrastDarkColors': ['50', '100', '200', 'A100', 'A200'],
              },
-             "accent" : {
+             'accent': {
                '50': '#753100',
                '100': '#8f3b01',
                '200': '#a84601',
@@ -682,9 +681,9 @@ define(['angular'], function(angular) {
                'A400': '#f46601',
                'A700': '#ffbe90',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['700', '800', '900', 'A700']
+               'contrastDarkColors': ['700', '800', '900', 'A700'],
              },
-             "warn" : {
+             'warn': {
                '50': '#5ba4dc',
                '100': '#2980c2',
                '200': '#1f6193',
@@ -700,25 +699,25 @@ define(['angular'], function(angular) {
                'A400': '#0d2a3f',
                'A700': '#000000',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', 'A100']
-             }
-            }
+               'contrastDarkColors': ['50', 'A100'],
+             },
+            },
           },
           {
-            "name" : "uw-superior",
-            "portalSkinKey" : "uwSuperior",
-            "crest" : "img/uw-superior-logo-112.jpg",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Superstatic",
-            "group" : "UW System-Superior",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-superior',
+            'portalSkinKey': 'uwSuperior',
+            'crest': 'img/uw-superior-logo-112.jpg',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Superstatic',
+            'group': 'UW System-Superior',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
             }],
-            "materialTheme" : {
-             "primary" : {
+            'materialTheme': {
+             'primary': {
                '50': '#858585',
                '100': '#5e5e5e',
                '200': '#424242',
@@ -734,9 +733,9 @@ define(['angular'], function(angular) {
                'A400': '#0f0f0f',
                'A700': '#000000',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', 'A100']
+               'contrastDarkColors': ['50', 'A100'],
              },
-             "accent" : {
+             'accent': {
                '50': '#ac8000',
                '100': '#c59300',
                '200': '#dfa600',
@@ -752,26 +751,26 @@ define(['angular'], function(angular) {
                'A400': '#ffca2c',
                'A700': '#fff0c5',
                'contrastDefaultColor': 'dark',
-               'contrastLightColors': ['50', '100', '200']
+               'contrastLightColors': ['50', '100', '200'],
              },
-             "warn" : "blue"
-            }
+             'warn': 'blue',
+            },
           },
           {
-            "name" : "uw-eau-claire",
-            "portalSkinKey" : "uwEauClaire",
-            "crest" : "img/uw-eauclaire-logo-52.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Eau Claire",
-            "group" : "UW System-Eau Claire",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-eau-claire',
+            'portalSkinKey': 'uwEauClaire',
+            'crest': 'img/uw-eauclaire-logo-52.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Eau Claire',
+            'group': 'UW System-Eau Claire',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
               }],
-            "materialTheme" : {
-              "primary" : {
+            'materialTheme': {
+              'primary': {
                 '50': '#cbd2ee',
                 '100': '#91a1db',
                 '200': '#677dce',
@@ -787,9 +786,9 @@ define(['angular'], function(angular) {
                 'A400': '#32499c',
                 'A700': '#1c2857',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', '100', 'A100', 'A200']
+                'contrastDarkColors': ['50', '100', 'A100', 'A200'],
               },
-              "accent" : {
+              'accent': {
                 '50': '#664908',
                 '100': '#7e5a0a',
                 '200': '#956b0c',
@@ -805,9 +804,9 @@ define(['angular'], function(angular) {
                 'A400': '#dc9e11',
                 'A700': '#f6d790',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['500', '600', '700', '800', '900', 'A100', 'A700']
+                'contrastDarkColors': ['500', '600', '700', '800', '900', 'A100', 'A700'],
               },
-              "warn" : {
+              'warn': {
                 '50': '#ffffff',
                 '100': '#fae6d9',
                 '200': '#f3c6a8',
@@ -823,25 +822,25 @@ define(['angular'], function(angular) {
                 'A400': '#e78c4e',
                 'A700': '#bf5c1a',
                 'contrastDefaultColor': 'dark',
-                'contrastLightColors': ['500', '600', '700', '800', '900', 'A700']
-              }
-            }
+                'contrastLightColors': ['500', '600', '700', '800', '900', 'A700'],
+              },
+            },
           },
           {
-            "name" : "uw-extension",
-            "portalSkinKey" : "uwExtension",
-            "crest" : "img/uwex-logo-white-52.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Extension",
-            "group" : "UW System-Extension",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-extension',
+            'portalSkinKey': 'uwExtension',
+            'crest': 'img/uwex-logo-white-52.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Extension',
+            'group': 'UW System-Extension',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
               }],
-            "materialTheme" : {
-             "primary" : {
+            'materialTheme': {
+             'primary': {
                '50': '#b0d2f8',
                '100': '#6aaaf2',
                '200': '#368ded',
@@ -857,9 +856,9 @@ define(['angular'], function(angular) {
                'A400': '#105bae',
                'A700': '#082f5a',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', '100', 'A100', 'A200']
+               'contrastDarkColors': ['50', '100', 'A100', 'A200'],
              },
-             "accent" : {
+             'accent': {
                '50': '#b6b068',
                '100': '#bfb979',
                '200': '#c7c28a',
@@ -875,26 +874,26 @@ define(['angular'], function(angular) {
                'A400': '#e0ddbe',
                'A700': '#ffffff',
                'contrastDefaultColor': 'dark',
-               'contrastLightColors': ['50', '100']
+               'contrastLightColors': ['50', '100'],
              },
-             "warn" : "red"
-            }
+             'warn': 'red',
+            },
           },
           {
-            "name" : "uw-colleges",
-            "portalSkinKey" : "uwColleges",
-            "crest" : "img/uw-colleges-56.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW Colleges",
-            "group" : "UW System-Colleges",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                "target" : "_blank",
-                "title" : "Help"
+            'name': 'uw-colleges',
+            'portalSkinKey': 'uwColleges',
+            'crest': 'img/uw-colleges-56.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW Colleges',
+            'group': 'UW System-Colleges',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                'target': '_blank',
+                'title': 'Help',
               }],
-            "materialTheme" : {
-             "primary" : {
+            'materialTheme': {
+             'primary': {
                '50': '#fffafa',
                '100': '#f9b3b7',
                '200': '#f57e87',
@@ -910,9 +909,9 @@ define(['angular'], function(angular) {
                'A400': '#ee202e',
                'A700': '#a50d17',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['50', '100', '200', 'A100', 'A200']
+               'contrastDarkColors': ['50', '100', '200', 'A100', 'A200'],
              },
-             "accent" : {
+             'accent': {
                '50': '#7a6a4c',
                '100': '#8a7756',
                '200': '#998560',
@@ -928,26 +927,26 @@ define(['angular'], function(angular) {
                'A400': '#b8a98d',
                'A700': '#f3f0ec',
                'contrastDefaultColor': 'light',
-               'contrastDarkColors': ['700', '800', '900', 'A700']
+               'contrastDarkColors': ['700', '800', '900', 'A700'],
              },
-             "warn" : "blue"
-            }
+             'warn': 'blue',
+            },
           },
           {
-            "name" : "uw-system",
-            "portalSkinKey" : "uwSystemAdministration",
-            "crest" : "img/uw-system-logo-112.png",
-            "title" : "MyUW",
-            "subtitle" : null,
-            "ariaLabelTitle" : "My U W",
-            "crestalt" : "UW System Logo",
-            "group" : "default",
-            "footerLinks":[{ "url" : "https://kb.wisconsin.edu/myuwsystem/page.php?id=15303",
-                            "target" : "_blank",
-                            "title" : "Help"
+            'name': 'uw-system',
+            'portalSkinKey': 'uwSystemAdministration',
+            'crest': 'img/uw-system-logo-112.png',
+            'title': 'MyUW',
+            'subtitle': null,
+            'ariaLabelTitle': 'My U W',
+            'crestalt': 'UW System Logo',
+            'group': 'default',
+            'footerLinks': [{'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
+                            'target': '_blank',
+                            'title': 'Help',
                           }],
-            "materialTheme" : {
-              "primary" : {
+            'materialTheme': {
+              'primary': {
                 '50': '#ffa3c2',
                 '100': '#ff578f',
                 '200': '#ff1f69',
@@ -963,9 +962,9 @@ define(['angular'], function(angular) {
                 'A400': '#b8003d',
                 'A700': '#5c001f',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', '100', 'A100', 'A200']
+                'contrastDarkColors': ['50', '100', 'A100', 'A200'],
               },
-              "accent" : {
+              'accent': {
                 '50': '#a2bae6',
                 '100': '#668ed6',
                 '200': '#3a6dca',
@@ -981,9 +980,9 @@ define(['angular'], function(angular) {
                 'A400': '#22427c',
                 'A700': '#0e1b34',
                 'contrastDefaultColor': 'light',
-                'contrastDarkColors': ['50', 'A100']
+                'contrastDarkColors': ['50', 'A100'],
               },
-              "warn" : {
+              'warn': {
                 '50': '#ffffff',
                 '100': '#f5e0c9',
                 '200': '#edc59a',
@@ -999,37 +998,36 @@ define(['angular'], function(angular) {
                 'A400': '#dd9344',
                 'A700': '#a6651e',
                 'contrastDefaultColor': 'dark',
-                'contrastLightColors': ['500', '600', '700', '800', '900', 'A700']
-              }
-            }
-          }
+                'contrastLightColors': ['500', '600', '700', '800', '900', 'A700'],
+              },
+            },
+          },
         ]})
         .constant('FRAME_URLS', {
-            'aboutFrame' : 'staticFeeds/about-frame.json'
+            'aboutFrame': 'staticFeeds/about-frame.json',
         })
         .constant('KV_KEYS', {
-          "VIEWED_ANNOUNCEMENT_IDS" : "viewedannouncementids",
-          "VIEWED_POPUP_IDS" : "viewedpopupids",
-          'DISMISSED_NOTIFICATION_IDS' : 'notification:dismiss'
+          'VIEWED_ANNOUNCEMENT_IDS': 'viewedannouncementids',
+          'VIEWED_POPUP_IDS': 'viewedpopupids',
+          'DISMISSED_NOTIFICATION_IDS': 'notification:dismiss',
         })
         .constant('FRAME_BETA_FEATURES', [
           {
-            "id" : "showSettings",
-            "title" : "Beta Settings",
-            "description" : "Shows/Hides the Beta Settings"
+            'id': 'showSettings',
+            'title': 'Beta Settings',
+            'description': 'Shows/Hides the Beta Settings',
           },
           {
-            "id" : "disableGroupFilteringForNotifications",
-            "title" : "Disable Notification Filter",
-            "description" : "This flag disables notification group filtering if you have it enabled. (page refresh required)"
+            'id': 'disableGroupFilteringForNotifications',
+            'title': 'Disable Notification Filter',
+            'description': 'This flag disables notification group filtering if you have it enabled. (page refresh required)',
           },
           {
-            "id" : "disableGroupAnnouncementFiltering",
-            "title" : "Disable Announcement Filtering",
-            "description" : "This flag disables announcement group filtering if you have it enabled (page refresh required)"
-          }
+            'id': 'disableGroupAnnouncementFiltering',
+            'title': 'Disable Announcement Filtering',
+            'description': 'This flag disables announcement group filtering if you have it enabled (page refresh required)',
+          },
         ]);
 
     return config;
-
 });

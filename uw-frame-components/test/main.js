@@ -1,7 +1,6 @@
 // This will be run from the context of karma,
 // so using absolute path from karma's '/base'
 require(['/base/config.js'], function(config) {
-
     // Add additional config for Karma testing
     // Karma serves files under "/base", which is the basePath from the karma config file
     config.baseUrl = '/base';
@@ -13,7 +12,7 @@ require(['/base/config.js'], function(config) {
     function getAllTestFiles() {
         var allTestFiles = [];
         var TEST_REGEXP = /(spec|test)\.js$/i;
-        var EXCLUDE_REGEXP = /.*bower_components|node_modules.*/
+        var EXCLUDE_REGEXP = /.*bower_components|node_modules.*/;
         var pathToModule = function(path) {
             return path.replace(/^\/base\//, '').replace(/\.js$/, '');
         };
@@ -27,5 +26,4 @@ require(['/base/config.js'], function(config) {
         });
         return allTestFiles;
     }
-
 });
