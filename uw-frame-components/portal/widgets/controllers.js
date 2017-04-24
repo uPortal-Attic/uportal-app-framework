@@ -181,6 +181,13 @@ define(['angular'], function(angular) {
       if (!$scope.config.showShowing) {
         $scope.config.showShowing = false;
       }
+      // Set sensible fallbacks in case widget config would create display problems.
+      if ($scope.config.lim > 6) {
+        $scope.config.lim = 6;
+      }
+      if ($scope.config.titleLim > 50) {
+        $scope.config.titleLim = 50;
+      }
     };
 
     /**
