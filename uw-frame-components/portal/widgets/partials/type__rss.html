@@ -9,7 +9,7 @@
           {{ trim(item.title) | truncate:config.titleLim }}
         </div>
         <div class="date bold" ng-if="config.showdate" layout="column" layout-align="center end">
-          <span>{{ getPrettyDate(item.pubDate) | date:'M/d' }}</span>
+          <span>{{ getPrettyDate(item.pubDate) | date:'shortDate' }}</span>
         </div>
       </a>
     </li>
