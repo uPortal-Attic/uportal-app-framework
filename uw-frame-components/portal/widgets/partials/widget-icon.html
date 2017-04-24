@@ -1,3 +1,4 @@
-<i class="fa {{ ::widget.faIcon }}" ng-if="widget.faIcon && widget.faIcon.indexOf('fa-')===0"></i>
-<i class="{{ ::widget.faIcon }}" ng-if="widget.faIcon && widget.faIcon.indexOf('fa-')!==0"></i>
-<i class="fa fa-star" ng-if="!widget.faIcon && !widget.iconUrl"></i>
+<md-icon ng-if="widget.mdIcon">{{ widget.mdIcon }}</md-icon>
+<i ng-if="!widget.mdIcon && widget.faIcon && widget.faIcon.indexOf('fa-')===0" class="fa {{ ::widget.faIcon }}"></i>
+<i ng-if="!widget.mdIcon && widget.faIcon && widget.faIcon.indexOf('fa-')!==0" class="{{ ::widget.faIcon }}"></i>
+<i ng-if="!widget.mdIcon && !widget.faIcon && !widget.iconUrl" class="fa fa-star"></i>
