@@ -4,7 +4,8 @@
            class="md-icon-button md-accent md-raised"
            aria-label="open {{title | truncate:trunclen}}"
            ng-disabled="cbDisabled">
-  <i class="fa {{faIcon}}"></i>
+  <md-icon ng-if="mdIcon">{{ mdIcon }}</md-icon>
+  <i ng-if="faIcon && !mdIcon" class="fa {{ faIcon }}"></i>
 </md-button>
 <p ng-show='title'>
   {{title | truncate:trunclen}}

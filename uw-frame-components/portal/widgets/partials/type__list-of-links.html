@@ -2,10 +2,20 @@
 
   <!-- FOUR LINKS OR LESS -->
   <div ng-show="config.links.length <= 4" class="list-of-links__{{config.links.length}}">
-    <circle-button ng-repeat="item in config.links"
+    <circle-button ng-if="item.icon.indexOf('fa-') > -1"
+                   ng-repeat="item in config.links"
                    data-href="{{item.href}}"
                    data-target="{{item.target}}"
                    data-fa-icon="{{item.icon}}"
+                   data-disabled="false"
+                   data-title="{{item.title}}"
+                   data-trunclen="24">
+    </circle-button>
+    <circle-button ng-if="item.icon.indexOf('fa-') <= -1"
+                   ng-repeat="item in config.links"
+                   data-href="{{item.href}}"
+                   data-target="{{item.target}}"
+                   data-md-icon="{{item.icon}}"
                    data-disabled="false"
                    data-title="{{item.title}}"
                    data-trunclen="24">
@@ -16,7 +26,8 @@
   <div ng-show="config.links.length > 4" class="list-of-links__long">
     <ul class="widget-list">
       <li ng-repeat='item in config.links | limitTo: 7' class="link-icon">
-        <i class="fa {{item.icon}}"></i>
+        <i ng-if="item.icon.indexOf('fa-') > -1" class="fa {{item.icon}}"></i>
+        <md-icon ng-if="item.icon.indexOf('fa-') <= -1">{{item.icon}}</md-icon>
         <a ng-href="{{item.href}}" target="{{item.target}}" rel="noopener noreferrer">
           {{item.title | truncate:24}}
         </a>
