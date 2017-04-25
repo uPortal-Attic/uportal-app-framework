@@ -3,14 +3,14 @@ define(['angular'], function(angular) {
     var config = angular.module('frame-config', []);
     config
         .constant('THEMES',
-        {"themeVersion": 6,
+        {"themeVersion": 7,
         /* THOU SHALT INCREMENT THIS VERSION NUMBER IF THOU CHANGEST ANY OF THE THEMES BELOW  */
          "themes":
         [
           {
             "name" : "uw-madison",
             "portalSkinKey" : "uwMadison",
-            "crest" : "img/uw-madison-52.png",
+            "crest" : "img/uw-madison-crest.svg",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
