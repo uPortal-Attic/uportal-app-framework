@@ -66,4 +66,7 @@
 </div>
 
 <!-- Launch app button -->
-<a class="btn btn-default launch-app-button" rel="noopener noreferrer" href="{{ ::widget.url }}" aria-label="go to weather" target="{{ widget.target ? widget.target : '_self`' }}">Launch full app</a>
+<launch-button data-href="{{ ::widget.url }}"
+               data-target="{{ widget.target ? widget.target : '_self' }}"
+               data-button-text="Launch full app"
+               data-aria-label="Launch weather app"></launch-button>
