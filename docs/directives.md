@@ -11,7 +11,7 @@ There is also a directive called `app-header-two-way-bind`. This has all the sam
 ```
 <app-header
   app-title="Hello World"
-  app-icon="fa-google"
+  app-icon="email"
   app-action-link-url="/go/to/this/url/when/you/click/me"
   app-action-link-icon="fa-globe"
   app-action-link-text="add hello world to home"
@@ -27,7 +27,7 @@ There is also a directive called `app-header-two-way-bind`. This has all the sam
 All params are prefixed with `app-`.
 
 * **title**: The title that will be displayed in the header
-* **icon**: the fa icon that will be used as a prefix to the title (e.g.: fa-github)
+* **icon**: The icon to use as a prefix to the app title. You can use Font Awesome (i.e. "fa-envelope") or Material Icons (i.e. "email").
 * **action-link-url**: A URL that you want to goto when the action is clicked (alt to add to home feature)
 * **action-link-text**: The text for the action link
 * **action-link-icon**: The fa icon for prefixing the action-link-text. `fa-plus` by default. (e.g.: fa-plus)
@@ -49,7 +49,7 @@ Frame page is basically the app header directive but with a transclude for the b
 ```
 <frame-page
   app-title="Hello World"
-  app-icon="fa-google"
+  app-icon="school"
   app-action-link-url="/portal/web/layout?action=addPortlet&tabName=UW%20Bucky%20Home&fname=helloWorld"
   app-action-link-icon="fa-globe"
   app-action-link-text="add hello world to home"
@@ -64,6 +64,7 @@ This part is included via ng-transclude
 
 ### Options
 
+* **app-icon**: Supports Font Awesome and Material Icons
 * **white-background**: A boolean when set to true with give you a white background with 98% width, with a 1% `left-margin`.
 
 ### Params :
@@ -81,6 +82,7 @@ Displays a flat, circular icon-button with a fa-icon in the middle, and a title 
   data-href=''
   data-target=''
   data-fa-icon=''
+  data-md-icon=''
   data-disabled='false'
   data-title=''>
 </circle-button>
@@ -90,7 +92,8 @@ Displays a flat, circular icon-button with a fa-icon in the middle, and a title 
 
 * **href**: Where you want them to go
 * **target**: Open in new window, new tab, or the same tab (i.e. "_self", "_blank", etc.). If no target is set, it will default to the same tab.
-* **fa-icon**: The font awesome icon to use
+* **md-icon**: The material icon to use. If a material icon is specific, it will be preferred over any fa-icon specified.
+* **fa-icon**: The Font Awesome icon to use. Will not be used if a md-icon is specified.
 * **disabled**: Button disabled or not (can be a variable)
 * **title**: (optional) Title that is displayed under the circle
 * **truncLen**: (optional) Length to truncate the title
