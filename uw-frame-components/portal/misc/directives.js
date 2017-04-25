@@ -179,7 +179,7 @@ define(['angular', 'require'], function(angular, require) {
     The header items are routed to the <app-header> (see above)
 
     The body of the tag is then the body of the application
-    
+
     Optional: whiteBackground : Adds in classes that do a white background with a border
 
     **/
@@ -233,6 +233,7 @@ define(['angular', 'require'], function(angular, require) {
      * - href : where you want them to go
      * - target : open in new window
      * - fa-icon : the font awesome icon to use
+     * - md-icon : the material icon to use (preferred to fa-icon if available)
      * - disabled : button disabled or not (can be a variable)
      * - title : (optional) title that is displayed under the circle
      * - truncLen : (optional) length to truncate the title
@@ -244,6 +245,7 @@ define(['angular', 'require'], function(angular, require) {
     			href: '@href',
     			target: '@target',
     			faIcon: '@faIcon',
+          mdIcon: '@mdIcon',
           cbDisabled : '=disabled',
           title : '@title',
           trunclen: '@trunclen'

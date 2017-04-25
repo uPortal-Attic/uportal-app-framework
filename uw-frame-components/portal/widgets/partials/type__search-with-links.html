@@ -10,10 +10,20 @@
   <!-- Links -->
   <div layout="row">
     <div class="search-with-links__{{ config.links.length }}">
-      <circle-button ng-repeat="item in config.links"
+      <circle-button ng-if="item.icon.indexOf('fa-') > -1"
+                     ng-repeat="item in config.links"
                      data-href="{{ item.href }}"
                      data-target="{{ item.target }}"
                      data-fa-icon="{{ item.icon }}"
+                     data-disabled="false"
+                     data-title="{{ item.title }}"
+                     data-trunclen="24">
+      </circle-button>
+      <circle-button ng-if="item.icon.indexOf('fa-') <= -1"
+                     ng-repeat="item in config.links"
+                     data-href="{{ item.href }}"
+                     data-target="{{ item.target }}"
+                     data-md-icon="{{ item.icon }}"
                      data-disabled="false"
                      data-title="{{ item.title }}"
                      data-trunclen="24">
@@ -23,5 +33,5 @@
 </div>
 <a class="launch-app-button" ng-href="widget.url" target="{{ widget.target ? widget.target : '_self' }}" rel="noopener noreferrer">
   <span ng-if='config.launchText'>{{ config.launchText }}</span>
-  <span ng-if='!config.launchText'>Launch app</span>
+  <span ng-if='!config.launchText'>Launch full app</span>
 </a>
