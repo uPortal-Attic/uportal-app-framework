@@ -10,7 +10,7 @@ define(['angular'], function(angular) {
           {
             "name" : "uw-madison",
             "portalSkinKey" : "uwMadison",
-            "crest" : "img/uw-madison-crest.svg",
+            "crest" : "img/uw-madison-crest.png",
             "title" : "MyUW",
             "subtitle" : null,
             "ariaLabelTitle" : "My U W",
