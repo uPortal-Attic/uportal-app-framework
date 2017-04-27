@@ -72,19 +72,26 @@ define(['angular','require'], function(angular, require) {
 
   /* Username */
   app.controller('SessionCheckController', [ '$scope', 'mainService', 'NAMES', 'FOOTER_URLS', '$rootScope', function($scope, mainService, NAMES, FOOTER_URLS, $rootScope) {
-    var that = this;
-    that.user = [];
+    var vm = this;
+    vm.user = [];
+    vm.username = '';
+    vm.firstLetter = '';
 
     $scope.FOOTER_URLS = FOOTER_URLS;
     $scope.usernameOptionOpen = false;
 
     mainService.getUser().then(function(result){
-      that.user = result;
-      //check if is guest
-      if (NAMES.guestUserName && that.user && that.user.userName === NAMES.guestUserName)
+      vm.user = result;
+      // Check if is guest
+      if (NAMES.guestUserName && vm.user && vm.user.userName === NAMES.guestUserName) {
         $rootScope.GuestMode = true;
-
+      } else {
+        // Get first letter of first name or display name
+        vm.username = vm.user.firstName ? vm.user.firstName : vm.user.displayName;
+        vm.firstLetter = vm.username.substring(0,1);
+      }
     });
+
   }]);
 
   /* Header */
