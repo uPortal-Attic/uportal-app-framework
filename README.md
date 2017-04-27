@@ -1,3 +1,5 @@
+# uPortal-app-framework
+
 [![Gitter](https://badges.gitter.im/UW-Madison-DoIT/uw-frame.svg)](https://gitter.im/UW-Madison-DoIT/uw-frame?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)
 [![Dependency Status](https://dependencyci.com/github/UW-Madison-DoIT/uw-frame/badge)](https://dependencyci.com/github/UW-Madison-DoIT/uw-frame)
@@ -6,15 +8,15 @@
 [![Time to PR close](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/pr)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 [![Time to issue close](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/issue)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 
-UW Frame
-=========
+`uPortal-app-framework` is a front-end framework for building web applications that users experience as "apps in the portal".
 
-uw-frame can be described as the "the framework for building applications for campus using modern technologies".
-This package includes the MyUW header, settings, footer, and some reusable components :
+This package includes the `uPortal-home` header, settings, footer, and some reusable components :
 
 ![uw-frame screenshot](uw-frame-screenshot.png "UW Frame")
 
 Learn more about the reusable components on our [docs page](http://uw-madison-doit.github.io/uw-frame/)
+
+`uPortal-app-framework` is somewhere in the process of renaming from its old `uw-frame` name.
 
 ## Requirements
 
