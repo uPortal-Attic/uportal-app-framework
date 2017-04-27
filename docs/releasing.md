@@ -1,6 +1,6 @@
-# uw-frame release engineering
+# uPortal-app-framework release engineering
 
-Release engineering for uw-frame is pretty automated. We actually only have to do a few things.
+Release engineering for `uPortal-app-framework` is pretty automated. We actually only have to do a few things.
 
 ## Select a version
 
