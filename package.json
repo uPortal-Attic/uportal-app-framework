@@ -34,15 +34,20 @@
   ],
   "contributors": [
     {
-      "name": "Tim Levett",
-      "email": "tim.levett@wisc.edu"
-    },
-    {
       "name": "Timothy Vertein"
     },
     {
-      "name": "Jared Hanstra",
-      "email": "jared.hanstra@wisc.edu"
+      "name": "Doug Reed"
+    },
+    {
+      "name": "David Sibley"
+    },
+    {
+      "name": "Zeke Witter",
+      "email": "david.witter@wisc.edu"
+    },
+    {
+      "name": "Tim Levett"
     }
   ],
   "bugs": {
