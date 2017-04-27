@@ -10,10 +10,9 @@
 <!-- NOT GUEST MODE -->
 <md-menu md-position-mode="target-right target" ng-controller="SessionCheckController as sessionCtrl" ng-hide="GuestMode" class="username-menu">
   <md-button aria-label="open options menu"
-             ng-click="$mdOpenMenu($event)"
-             ng-class="{ 'avatar__default' : APP_FLAGS.showUserAvatar }">
-    <span ng-if="!APP_FLAGS.showUserAvatar">{{ sessionCtrl.username }} <i class="fa fa-caret-down"></i></span>
-    <span ng-if="APP_FLAGS.showUserAvatar">{{ sessionCtrl.firstLetter }}</span>
+             class="avatar__default"
+             ng-click="$mdOpenMenu($event)">
+    <span>{{ sessionCtrl.firstLetter }}</span>
   </md-button>
   <md-menu-content width="3">
     <md-menu-item ng-if="$storage.showSettings">
