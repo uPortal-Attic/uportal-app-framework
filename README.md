@@ -79,6 +79,7 @@ bundle into a deliverable war file.
 To run the Jekyll docs locally:
 
 > cd docs
+>
 > bundle exec jekyll serve
 
 You may need to install the Jekyll bundler on your machine. See [Jekyll's quick-start guide](https://jekyllrb.com/docs/quickstart/) for instructions.
