@@ -21,8 +21,17 @@ define(['angular'], function(angular) {
         .catch(function(error) {
           $log.warn('Error getting marketplace entry for ' + fname);
           $log.error(error);
-        });
+          return getErrorPage(fname);
+      });
     };
+
+    var getErrorPage = function(fname) {
+      var layoutObject={title:fname, 
+        mdIcon:"md-help", widgetType: "generic",
+      widgetConfig:{additionalText: "Please contact your help desk if you feel you should be able to access this content"},
+        widgetTemplate:"<i class='fa fa-exclamation-triangle fa-3x pull-left' style='color: #b70101;'></i><span style='color: #898989;'>You do not have permission to access this content. If you feel this is an error, please contact your help desk.</span>"}
+      return layoutObject;
+    }
 
     /**
      * Get additional values/configuration not provided by the widget's basic configuration.
@@ -51,6 +60,8 @@ define(['angular'], function(angular) {
         })
     };
 
+    
+
     /**
      * Get an RSS feed from the provided url as json
      * @param url
@@ -69,7 +80,8 @@ define(['angular'], function(angular) {
     return {
       getSingleWidgetData: getSingleWidgetData,
       getWidgetJson: getWidgetJson,
-      getRssAsJson: getRssAsJson
+      getRssAsJson: getRssAsJson,
+      getErrorPage: getErrorPage
     }
 
   }]);
