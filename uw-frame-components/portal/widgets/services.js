@@ -19,10 +19,10 @@ define(['angular'], function(angular) {
           }
         })
         .catch(function(error) {
-          return getErrorPage(fname);
           $log.warn('Error getting marketplace entry for ' + fname);
           $log.error(error);
-        });
+          return getErrorPage(fname);
+      });
     };
 
     var getErrorPage = function(fname) {
