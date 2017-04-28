@@ -1,0 +1,23 @@
+<md-card class="list-content" id="widget-id-{{::widget.nodeId}}">
+  <md-button class="widget-action widget-info md-icon-button" aria-label="see a brief description of this app">
+    <md-tooltip md-direction="top" class="widget-action-tooltip">
+      {{widget.description}}
+    </md-tooltip>
+    <md-icon>info</md-icon>
+  </md-button>
+  <md-button class="widget-action widget-remove md-icon-button"
+             aria-label="remove {{ widget.title }} widget from your home screen"
+             ng-click="layoutCtrl.removePortlet(widget.nodeId, widget.title)"
+             ng-hide="GuestMode || cantRemove">
+    <md-icon>close</md-icon>
+  </md-button>
+
+  <a aria-labelledby="appTitle_widget.title-{{::widget.nodeId}}" tabindex="0" ng-href="{{widget.url}}" target="{{::widget.target}}">
+    <div class="icon-container">
+      <widget-icon></widget-icon>
+    </div>
+    <div class="list-item-container">
+      <h4 id="appTitle_widget.title-{{::widget.nodeId}}">{{ ::widget.title }}</h4>
+    </div>
+  </a>
+</md-card>

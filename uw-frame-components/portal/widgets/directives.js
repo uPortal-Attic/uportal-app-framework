@@ -18,6 +18,21 @@ define(['angular', 'require'], function(angular, require) {
       controller: 'WidgetCardController'
     };
   });
+  
+  /**
+  Just the widget card -- gets the widget type from the scope
+  **/
+  app.directive('compactWidget', function() {
+    return {
+      restrict: 'E',
+      transclude: true,
+      scope: {
+        fname: '@'
+      },
+      templateUrl: require.toUrl('./partials/compact-widget-card.html'),
+      controller: 'WidgetCardController'
+    };
+  });
 
   app.directive('widgetIcon', function() {
     return {
