@@ -6,13 +6,6 @@
     <md-icon>info</md-icon>
   </md-button>
   <div ng-transclude id="widget-removal"></div>
-<!--   <md-button class="widget-action widget-remove md-icon-button" -->
-<!--              aria-label="remove {{ widget.title }} widget from your home screen" -->
-<!--              ng-click="layoutCtrl.removePortlet(widget.nodeId, widget.title)" -->
-<!--              ng-hide="GuestMode || cantRemove"> -->
-<!--     <md-icon>close</md-icon> -->
-<!--   </md-button> -->
-
   <a aria-labelledby="appTitle_widget.title-{{::widget.nodeId}}" tabindex="0" ng-href="{{widget.url}}" target="{{::widget.target}}">
     <div class="icon-container">
       <widget-icon></widget-icon>
