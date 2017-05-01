@@ -12,9 +12,12 @@ var exec_handler = function(error, stdout, stderr) {
 
 var mkdirp = require('mkdirp');
 var copy = require('recursive-copy');
+var copyOptions = {
+  overwrite: true
+}
 
-mkdirp('uw-frame-static/target/css/themes/', function (err) {
-  if (err) throw error;
+mkdirp('uw-frame-static/target/css/themes/', function (error) {
+  if (error) throw error;
 });
 
 
@@ -39,24 +42,24 @@ for (var i = 0; i < themes.length; i++) {
   });
 }
 
-copy('uw-frame-components/', 'uw-frame-static/target', function (err, results){
-  if (err) throw error;
+copy('uw-frame-components/', 'uw-frame-static/target', copyOptions).catch(function (error, results){
+  if (error) throw error;
 });
 
-copy('node_modules/bootstrap/', 'uw-frame-static/target/css/themes/node_modules/bootstrap/', function(err){
-  if (err) throw error;
+copy('node_modules/bootstrap/', 'uw-frame-static/target/css/themes/node_modules/bootstrap/', copyOptions).catch(function(error){
+  if (error) throw error;
 });
 
-copy('node_modules/font-awesome/', 'uw-frame-static/target/css/themes/node_modules/font-awesome/', function(err){
-  if (err) throw error;
+copy('node_modules/font-awesome/', 'uw-frame-static/target/css/themes/node_modules/font-awesome/', copyOptions).catch(function(error){
+  if (error) throw error;
 });
 
-copy('node_modules/normalize.less', 'uw-frame-static/target/css/themes/node_modules/', function(err){
-  if (err) throw error;
-})
+copy('node_modules/normalize.less', 'uw-frame-static/target/css/themes/node_modules/normalize.less', copyOptions).catch(function(error){
+  if (error) throw error;
+});
 
-copy('uw-frame-static/superstatic.json','uw-frame-static/target/', function (err, results){
-  if (err) throw error;
+copy('uw-frame-static/superstatic.json','uw-frame-static/target/superstatic.json', copyOptions).catch(function (error, results){
+  if (error) throw error;
 });
 
 
