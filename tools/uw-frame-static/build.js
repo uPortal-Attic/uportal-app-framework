@@ -1,18 +1,18 @@
 'use strict';
-var less          = require('less');
-var path          = require('path');
-var fs            = require('fs');
-var exec          = require('child_process').exec;
-var autoprefixer  = require('autoprefixer');
-var postcss       = require('postcss');
+const less          = require('less');
+const path          = require('path');
+const fs            = require('fs');
+const exec          = require('child_process').exec;
+const autoprefixer  = require('autoprefixer');
+const postcss       = require('postcss');
 
-var exec_handler = function(error, stdout, stderr) {
+const exec_handler = function(error, stdout, stderr) {
   if (error) throw error;
 };
 
-var mkdirp = require('mkdirp');
-var copy = require('recursive-copy');
-var copyOptions = {
+const mkdirp = require('mkdirp');
+const copy = require('recursive-copy');
+const copyOptions = {
   overwrite: true
 }
 
@@ -21,14 +21,14 @@ mkdirp('uw-frame-static/target/css/themes/', function (error) {
 });
 
 
-var themes = ['uw-madison', 'uw-system', 'uw-river-falls',
+const themes = ['uw-madison', 'uw-system', 'uw-river-falls',
   'uw-stevens-point', 'uw-milwaukee', 'uw-whitewater', 'uw-stout',
   'uw-superior', 'uw-platteville', 'uw-parkside', 'uw-oshkosh',
   'uw-greenbay', 'uw-lacrosse', 'uw-eau-claire', 'uw-extension',
   'uw-colleges'];
 
 // Render less and write to .css file for each theme
-for (var i = 0; i < themes.length; i++) {
+for (let i = 0; i < themes.length; i++) {
   // Capture theme name and src path in constants to pass to less rendering
   const themeName = themes[i];
   const src = 'uw-frame-components/css/themes/' + themes[i] + '.less';
