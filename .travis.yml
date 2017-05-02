@@ -10,6 +10,7 @@ before_install:
 script :
   - npm run build-static
   - npm test
+  - npm run lint-js
   - cd uw-frame-java/
   - mvn clean install
 cache:
