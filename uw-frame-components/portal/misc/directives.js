@@ -11,13 +11,12 @@ define(['angular', 'require'], function(angular, require) {
      *   reuse  : (optional) set to true, it won't destroy the loading gif, just hide it
      *
      */
-    app.directive('loadingGif', [function(){
+    app.directive('loadingGif', [function() {
         return {
-            restrict : 'E',
+            restrict: 'E',
             templateUrl: require.toUrl('./partials/loading-gif.html'),
             link: function(scope, elm, attrs) {
-                scope.isLoading = function () {
-
+                scope.isLoading = function() {
                     if(typeof attrs.empty === undefined) {
                         attrs.empty = false;
                     }
@@ -25,81 +24,74 @@ define(['angular', 'require'], function(angular, require) {
                     return (!scope[attrs.object] || scope[attrs.object].length == 0) && ! scope[attrs.empty];
                 };
 
-                scope.$watch(scope.isLoading, function (v)
-                {
-                    if(v){
+                scope.$watch(scope.isLoading, function(v) {
+                    if(v) {
                         elm.show();
                     }else{
                         elm.hide();
                         if(!attrs.reuse) {
-                          elm.css('margin','0')
-                          elm.html(""); //removes content of div, so if it shows again later it doesn't make the page look funky
+                          elm.css('margin', '0');
+                          elm.html(''); // removes content of div, so if it shows again later it doesn't make the page look funky
                         }
                     }
                 });
-            }
-        }
+            },
+        };
     }]);
-    app.directive('loading',   ['$http' ,function ($http)
-    {
+    app.directive('loading', ['$http', function($http) {
         return {
             restrict: 'A',
-            link: function (scope, elm, attrs)
-            {
-                scope.isLoading = function () {
+            link: function(scope, elm, attrs) {
+                scope.isLoading = function() {
                     return $http.pendingRequests.length > 0;
                 };
 
-                scope.$watch(scope.isLoading, function (v)
-                {
-                    if(v){
+                scope.$watch(scope.isLoading, function(v) {
+                    if(v) {
                         elm.show();
                     }else{
                         elm.hide();
-                        elm.css('margin','0')
-                        elm.html(""); //removes content of div, so if it shows again later it doesn't make the page look funky
+                        elm.css('margin', '0');
+                        elm.html(''); // removes content of div, so if it shows again later it doesn't make the page look funky
                     }
                 });
-            }
+            },
         };
-
     }]);
 
-    app.directive('hideWhileLoading',   ['$http' ,function ($http)
-    {
+    app.directive('hideWhileLoading', ['$http', function($http) {
         return {
             restrict: 'A',
-            link: function (scope, elm, attrs)
-            {
-                scope.$watch(scope.isLoading, function (v)
-                {
-                    if(v){
+            link: function(scope, elm, attrs) {
+                scope.$watch(scope.isLoading, function(v) {
+                    if(v) {
                         elm.hide();
                     }else{
                         elm.show();
                     }
                 });
-            }
+            },
         };
-
     }]);
 
-    app.directive('selectOnPageLoad',function($timeout){
+    app.directive('selectOnPageLoad', function($timeout) {
         return {
             restrict: 'A',
-            link: function(scope,element){
-                //wait until intial value is there, then select it, then clear the watch so doesn't keep doing it
+            link: function(scope, element) {
+                // wait until intial value is there, then select it, then clear the watch so doesn't keep doing it
                 var clearWatch = scope.$watch(
-                    function(){ return $(element[0]).val(); },
-                    function(value){
-                        if (value){
+                    function() {
+ return $(element[0]).val();
+},
+                    function(value) {
+                        if (value) {
                             element[0].focus();
                             clearWatch();
                         }
                     }
-                )
-            }
-        }
+                );
+            },
+        };
     });
 
     app.directive('focusMe', function($timeout) {
@@ -107,14 +99,14 @@ define(['angular', 'require'], function(angular, require) {
           link: function(scope, element, attrs) {
             scope.$watch(attrs.focusMe, function(value) {
               if(value === true) {
-                console.log('value=',value);
+                console.log('value=', value);
                 $timeout(function() {
                   element[0].focus();
                   scope[attrs.focusMe] = false;
                 });
               }
             });
-          }
+          },
         };
       });
 
@@ -146,12 +138,12 @@ define(['angular', 'require'], function(angular, require) {
           actionLinkUrl: '@appActionLinkUrl',
           actionLinkIcon: '@appActionLinkIcon',
           actionLinkText: '@appActionLinkText',
-          addToHome : '=appAddToHome',
-          fname : '@appFname',
+          addToHome: '=appAddToHome',
+          fname: '@appFname',
           optionTemplate: '@appOptionTemplate',
-          isSingleOption: '@appSingleOption'
+          isSingleOption: '@appSingleOption',
         },
-        templateUrl: require.toUrl('./partials/app-header.html')
+        templateUrl: require.toUrl('./partials/app-header.html'),
       };
     });
 
@@ -164,12 +156,12 @@ define(['angular', 'require'], function(angular, require) {
           actionLinkUrl: '=appActionLinkUrl',
           actionLinkIcon: '=appActionLinkIcon',
           actionLinkText: '=appActionLinkText',
-          addToHome : '=appAddToHome',
-          fname : '=appFname',
+          addToHome: '=appAddToHome',
+          fname: '=appFname',
           optionTemplate: '=appOptionTemplate',
-          isSingleOption: '=appSingleOption'
+          isSingleOption: '=appSingleOption',
         },
-        templateUrl: require.toUrl('./partials/app-header.html')
+        templateUrl: require.toUrl('./partials/app-header.html'),
       };
     });
 
@@ -183,24 +175,24 @@ define(['angular', 'require'], function(angular, require) {
     Optional: whiteBackground : Adds in classes that do a white background with a border
 
     **/
-    app.directive('framePage', function(){
+    app.directive('framePage', function() {
       return {
-          restrict : 'E',
-          templateUrl : require.toUrl('./partials/frame-page.html'),
+          restrict: 'E',
+          templateUrl: require.toUrl('./partials/frame-page.html'),
           transclude: true,
-          scope : {
+          scope: {
             appTitle: '@appTitle',
             appIcon: '@appIcon',
             appActionLinkUrl: '@appActionLinkUrl',
             appActionLinkIcon: '@appActionLinkIcon',
             appActionLinkText: '@appActionLinkText',
-            appAddToHome : '=appAddToHome',
-            appFname : '=appFname',
+            appAddToHome: '=appAddToHome',
+            appFname: '=appFname',
             appOptionTemplate: '@appOptionTemplate',
             appSingleOption: '@appSingleOption',
-            whiteBackground: '='
-          }
-      }
+            whiteBackground: '=',
+          },
+      };
     });
 
     /**
@@ -210,16 +202,15 @@ define(['angular', 'require'], function(angular, require) {
      * Params:
      *  - template: the template to display (can have angular markup)
      */
-    app.directive('contentItem', function ($compile) {
-
+    app.directive('contentItem', function($compile) {
         var linker = function(scope, element, attrs) {
             element.html(scope.template).show();
             $compile(element.contents())(scope);
         };
 
         return {
-            restrict: "E",
-            link: linker
+            restrict: 'E',
+            link: linker,
         };
     });
 
@@ -246,11 +237,11 @@ define(['angular', 'require'], function(angular, require) {
     			target: '@target',
     			faIcon: '@faIcon',
           mdIcon: '@mdIcon',
-          cbDisabled : '=disabled',
-          title : '@title',
-          trunclen: '@trunclen'
+          cbDisabled: '=disabled',
+          title: '@title',
+          trunclen: '@trunclen',
     		},
-    		templateUrl: require.toUrl('./partials/circle-button.html')
+    		templateUrl: require.toUrl('./partials/circle-button.html'),
     	};
     });
 
@@ -272,20 +263,19 @@ define(['angular', 'require'], function(angular, require) {
           href: '@href',
           target: '@target',
           buttonText: '@buttonText',
-          ariaLabel: '@ariaLabel'
+          ariaLabel: '@ariaLabel',
         },
-        templateUrl: require.toUrl('./partials/launch-button.html')
-      }
+        templateUrl: require.toUrl('./partials/launch-button.html'),
+      };
     });
 
     app.directive('addToHome', function() {
       return {
-        restrict : 'E',
-        templateUrl : require.toUrl('./partials/add-to-home.html')
+        restrict: 'E',
+        templateUrl: require.toUrl('./partials/add-to-home.html'),
       };
     });
 
 
     return app;
-
 });

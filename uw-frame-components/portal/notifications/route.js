@@ -1,6 +1,4 @@
-define(['require'], function(require){
-
-    return {templateUrl: require.toUrl('./partials/notifications-full.html')}
-
+define(['require'], function(require) {
+    return {templateUrl: require.toUrl('./partials/notifications-full.html')};
 });
 
