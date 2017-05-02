@@ -40,12 +40,14 @@ define([
     'sortable',
     'ui-bootstrap',
     'ui-gravatar',
-    'angulartics-google-analytics',
+    'angulartics-google-analytics'
 ], function(angular, require) {
+
     // Define a stub in case this angular module is undefined, i.e. was blocked
     try {
         angular.module('angulartics.google.analytics');
-    } catch(e) {
+    }
+    catch(e) {
 			angular.module('angulartics.google.analytics', []);
 		}
 
@@ -89,12 +91,12 @@ define([
         'ui.gravatar',
         'ui.sortable',
         'angulartics',
-        'angulartics.google.analytics',
+        'angulartics.google.analytics'
     ]);
 
     app.config(['gravatarServiceProvider', '$analyticsProvider', '$mdThemingProvider', 'THEMES', function(gravatarServiceProvider, $analyticsProvider, $mdThemingProvider, THEMES) {
       gravatarServiceProvider.defaults = {
-        'default': 'https://yt3.ggpht.com/-xE0EQR3Ngt8/AAAAAAAAAAI/AAAAAAAAAAA/zTofDHA3-s4/s100-c-k-no/photo.jpg',
+        "default" : "https://yt3.ggpht.com/-xE0EQR3Ngt8/AAAAAAAAAAI/AAAAAAAAAAA/zTofDHA3-s4/s100-c-k-no/photo.jpg"
       };
 
       $analyticsProvider.firstPageview(true);
@@ -116,17 +118,17 @@ define([
                 $mdThemingProvider.enableBrowserColor({
                   theme: $mdThemingProvider.theme(cur.name),
                   palette: cur.materialTheme.primary,
-                  hue: '500',
+                  hue: '500'
                 });
               } else {
-                $mdThemingProvider.definePalette(cur.name + '-primary', cur.materialTheme.primary);
+                $mdThemingProvider.definePalette(cur.name + "-primary", cur.materialTheme.primary);
                 $mdThemingProvider.theme(cur.name)
-                  .primaryPalette(cur.name + '-primary');
+                  .primaryPalette(cur.name + "-primary");
                 // Enable browser color (mobile only)
                 $mdThemingProvider.enableBrowserColor({
                   theme: $mdThemingProvider.theme(cur.name),
                   palette: cur.name + '-primary',
-                  hue: '500',
+                  hue: '500'
                 });
               }
             }
@@ -136,9 +138,9 @@ define([
                 $mdThemingProvider.theme(cur.name)
                   .accentPalette(cur.materialTheme.accent);
               } else {
-                $mdThemingProvider.definePalette(cur.name + '-accent', cur.materialTheme.accent);
+                $mdThemingProvider.definePalette(cur.name + "-accent", cur.materialTheme.accent);
                 $mdThemingProvider.theme(cur.name)
-                  .accentPalette(cur.name + '-accent');
+                  .accentPalette(cur.name + "-accent");
               }
             }
             // Set up warn
@@ -147,9 +149,9 @@ define([
                 $mdThemingProvider.theme(cur.name)
                   .warnPalette(cur.materialTheme.warn);
               } else {
-                $mdThemingProvider.definePalette(cur.name + '-warn', cur.materialTheme.warn);
+                $mdThemingProvider.definePalette(cur.name + "-warn", cur.materialTheme.warn);
                 $mdThemingProvider.theme(cur.name)
-                  .warnPalette(cur.name + '-warn');
+                  .warnPalette(cur.name + "-warn");
               }
             }
           }
@@ -178,14 +180,15 @@ define([
                      FOOTER_URLS,
                      APP_BETA_FEATURES) {
       var loadingCompleteSequence = function() {
-        // loading sequence
+
+        //loading sequence
         $rootScope.portal.loading = {};
         $rootScope.portal.loading.startFade = true;
-        $timeout(function() {
+        $timeout(function(){
           $rootScope.portal.loading.hidden = true;
         }, 1500);
 
-        // save theme to session storage so we don't have to do below again
+        //save theme to session storage so we don't have to do below again
         $sessionStorage.portal.theme = $rootScope.portal.theme;
       };
 
@@ -210,11 +213,11 @@ define([
         $rootScope.portal.theme.themeVersion = THEMES.themeVersion;
         var mdTheme = $mdTheming.THEMES[name];
         if(mdTheme) {
-          $mdTheming.generateTheme(name, null);
+          $mdTheming.generateTheme(name,null);
         }
       };
 
-      var themeLoading = function() {
+      var themeLoading = function(){
         if($sessionStorage.portal && $sessionStorage.portal.theme && $sessionStorage.portal.theme.themeVersion === THEMES.themeVersion) {
           $rootScope.portal.theme = $sessionStorage.portal.theme;
           generateTheme();
@@ -228,7 +231,7 @@ define([
         if('group' == themeIndex) {
           var themeSet = false;
           var defaultThemeGo = function() {
-            var themes = filterFilter(THEMES.themes, {group: 'default'});
+            var themes = filterFilter(THEMES.themes, {group : 'default'});
             themeSet = themes.length > 0;
             if(themeSet) {
               $rootScope.portal.theme = themes[0];
@@ -241,17 +244,17 @@ define([
               generateTheme();
             }
           };
-          // themeIndex is group which means we need to run groups service to get which theme they use
+          //themeIndex is group which means we need to run groups service to get which theme they use
           if(SERVICE_LOC.groupURL) {
-            // normally this $http would be in a service, but due to loading we moved it to the run block
-            $http.get(SERVICE_LOC.groupURL, {cache: true}).then(function(result) {
+            //normally this $http would be in a service, but due to loading we moved it to the run block
+            $http.get(SERVICE_LOC.groupURL, {cache : true}).then(function(result) {
               var groups = result.data.groups;
-              // go through each theme and see if there in that group
+              //go through each theme and see if there in that group
               for(var i = 0; i < THEMES.themes.length; i++) {
                 var theme = THEMES.themes[i];
                 var groupToTest = theme.group;
-                if('default'!==groupToTest) {// skip the default theme
-                  var filterTest = filterFilter(groups, {name: groupToTest});
+                if('default'!==groupToTest) {//skip the default theme
+                  var filterTest = filterFilter(groups, { name : groupToTest });
                   if(filterTest && filterTest.length > 0) {
                     $rootScope.portal.theme = theme;
                     generateTheme();
@@ -264,9 +267,9 @@ define([
                 defaultThemeGo();
               }
               loadingCompleteSequence();
-            }, function(reason) {
+            }, function(reason){
               if(APP_FLAGS.debug) {
-                console.error('We got a error back from groupURL, setting theme to default');
+                console.error("We got a error back from groupURL, setting theme to default");
               }
               defaultThemeGo();
               loadingCompleteSequence();
@@ -275,85 +278,85 @@ define([
             if(APP_FLAGS.debug) {
               console.warn('theme was setup as group, but the groupURL was not provided, going default');
             }
-            // still not set, set to default theme
+            //still not set, set to default theme
             defaultThemeGo();
             loadingCompleteSequence();
           }
         } else if (typeof themeIndex === 'string') {
-          // themeindex is a theme name, search!
+          //themeindex is a theme name, search!
           var theme = findThemeByName(themeIndex);
           if(theme) {
             $rootScope.portal.theme = theme;
             generateTheme();
           } else {
             if(APP_FLAGS.debug) {
-              console.warn('APP_FLAGS.defaultTheme was set to ' + themeIndex + ' however we could not find that theme name. Please check frame-config.js for a list of available themes. Falling back to the default theme (uw-system).');
+              console.warn('APP_FLAGS.defaultTheme was set to ' + themeIndex + ' however we could not find that theme name. Please check frame-config.js for a list of available themes. Falling back to the default theme (uw-system).')
             }
             defaultThemeGo();
           }
           loadingCompleteSequence();
         } else {
-          // themeindex is a number, go with that
-          $rootScope.portal.theme = THEMES.themes[themeIndex]; // theme default
+          //themeindex is a number, go with that
+          $rootScope.portal.theme = THEMES.themes[themeIndex]; //theme default
           generateTheme();
           loadingCompleteSequence();
         }
       };
 
       var findThemeByName = function(theName) {
-        var themes = filterFilter(THEMES.themes, {name: theName});
+        var themes = filterFilter(THEMES.themes, {name : theName});
         if(themes && themes.length > 0) {
           return themes[0];
         } else {
           return null;
         }
-      };
+      }
 
       var lastLoginValid = function() {
         var timeLapseBetweenLogins = APP_FLAGS.loginDurationMills || 14400000;
         if($sessionStorage.portal && $sessionStorage.portal.lastAccessed) {
           var now = (new Date()).getTime();
-          if(now - $sessionStorage.portal.lastAccessed <= timeLapseBetweenLogins) {// 4 hours
+          if(now - $sessionStorage.portal.lastAccessed <= timeLapseBetweenLogins) {//4 hours
             return true;
           }
         }
         return false;
       };
 
-      var searchRouteParameterInit = function() {
-        $rootScope.$on('$routeChangeStart', function(event, next, current) {
+      var searchRouteParameterInit = function(){
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
           var searchValue = '', paramToTackOn = '';
           if(next.$$route && next.$$route.searchParam) {
             paramToTackOn = APP_FLAGS.gaSearchParam || 'q';
             searchValue = next.params[next.$$route.searchParam];
             if(searchValue && $location.search()[paramToTackOn] !== searchValue) {
               event.preventDefault();
-              // change route to have param of the search param
-              $location.search(paramToTackOn, searchValue);
+              //change route to have param of the search param
+              $location.search(paramToTackOn,searchValue);
             }
           }
         });
-      };
+      }
 
       // List of config. VERY IMPORTANT THAT THE CONFIGS has a corresponding configsName in the same index
       var configs = [APP_FLAGS, SERVICE_LOC, NAMES, SEARCH, FEATURES, NOTIFICATION, MISC_URLS, FOOTER_URLS, APP_BETA_FEATURES];
-      // TODO: make better
+      //TODO: make better
       var configsName = ['APP_FLAGS', 'SERVICE_LOC', 'NAMES', 'SEARCH', 'FEATURES', 'NOTIFICATION', 'MISC_URLS', 'FOOTER_URLS', 'APP_BETA_FEATURES'];
 
-      var configureAppConfig = function() {
+      var configureAppConfig = function(){
         if(APP_FLAGS.debug) {
-          console.log(new Date() + ' : start app-config override');
+          console.log(new Date() + " : start app-config override");
         }
         var count = 0, groups = 0;
         for(var i in configsName) {
           var curConfig = configsName[i];
           if(OVERRIDE[curConfig]) {
             groups++;
-            if(Array.isArray(configs[i])) {// arrays are special, append
+            if(Array.isArray(configs[i])){//arrays are special, append
               Array.prototype.push.apply(configs[i], OVERRIDE[curConfig]);
               count++;
-            } else {// treat as an object
-              for(var key in OVERRIDE[curConfig]) {// for each config value object
+            } else {//treat as an object
+              for(var key in OVERRIDE[curConfig]) {//for each config value object
                 configs[i][key] = OVERRIDE[curConfig][key];
                 count++;
               }
@@ -361,34 +364,35 @@ define([
           }
         }
         if(APP_FLAGS.debug) {
-          console.log(new Date() + ' : ended app-config override');
-          console.log('Overwrote ' + count + ' configs in ' + groups + ' config groups.');
+          console.log(new Date() + " : ended app-config override");
+          console.log("Overwrote " + count + " configs in " + groups + " config groups.");
         }
       };
 
-      // loading sequence
-      var init = function() {
+      //loading sequence
+      var init = function(){
         searchRouteParameterInit();
         $rootScope.portal = $rootScope.portal || {};
         $sessionStorage.portal = $sessionStorage.portal || {};
         configureAppConfig();
 
         if(APP_FLAGS.loginOnLoad && !lastLoginValid()) {
-          $http.get(SERVICE_LOC.loginSilentURL).then(function(result) {
+          $http.get(SERVICE_LOC.loginSilentURL).then(function(result){
             if(APP_FLAGS.debug) {
-              console.log('login returned with ' + (result.data ? result.data.status : null));
+              console.log("login returned with " + (result.data ? result.data.status : null));
             }
             themeLoading();
-            if('success' === result.data.status) {
+            if("success" === result.data.status) {
               $sessionStorage.portal.lastAccessed = (new Date).getTime();
               $sessionStorage.portal.username = result.data.username;
               if (NAMES.guestUserName && result.data.username === NAMES.guestUserName) {
                 $rootScope.GuestMode = true;
               }
+
             }
           },
-          function(reason) {
-            themeLoading(); // still continue with theme loading so they don't get stuck on loading
+          function(reason){
+            themeLoading(); //still continue with theme loading so they don't get stuck on loading
           });
         } else {
           themeLoading();
@@ -398,8 +402,9 @@ define([
     });
 
     return app;
+
 },
-function(angular, require, $) {
-  // error block
+function(angular, require, $){
+  //error block
   $('#loading-splash').html('<b>An error has occured during loading, please try refreshing the page. If the issue persists please contact the helpdesk.</b>');
 });

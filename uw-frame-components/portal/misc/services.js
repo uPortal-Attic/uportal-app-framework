@@ -1,14 +1,17 @@
 'use strict';
 
 define(['angular', 'jquery'], function(angular, $) {
+
+
   var app = angular.module('portal.misc.services', []);
 
-  app.factory('PortalGroupService', function($http, $log, miscService, SERVICE_LOC) {
-    var getGroups = function() {
-      var groupPromise = $http.get(SERVICE_LOC.groupURL, {cache: true}).then(
-                                    function(result) {
+  app.factory('PortalGroupService', function($http, $log, miscService, SERVICE_LOC){
+
+    var getGroups = function(){
+      var groupPromise = $http.get(SERVICE_LOC.groupURL, {cache : true}).then (
+                                    function(result){
                                       return result.data.groups;
-                                    }, function(reason) {
+                                    },function(reason){
                                       miscService.redirectUser(reason.status, 'group json feed call');
                                     });
       return groupPromise;
@@ -21,8 +24,8 @@ define(['angular', 'jquery'], function(angular, $) {
     * @param arrayGroupFieldName : The field in the array to filter upon. @default 'group'.
     * @param groupsNameFieldName : The field on the group object that is the group's name. @default 'name'
     */
-    var filterArrayByGroups = function(array, groups, arrayGroupFieldName, groupsNameFieldName) {
-      // validation/setup
+    var filterArrayByGroups = function(array, groups, arrayGroupFieldName, groupsNameFieldName){
+      //validation/setup
       if(!arrayGroupFieldName) {
         arrayGroupFieldName = 'group';
       }
@@ -31,30 +34,26 @@ define(['angular', 'jquery'], function(angular, $) {
       }
       if(!array || array.length === 0 || !groups || groups.length === 0 || !Array.isArray(array)) {
         if(!Array.isArray(array)) {
-          $log.warn('PortalGroupService.filterArrayByGroups was called, but not an array');
+          $log.warn("PortalGroupService.filterArrayByGroups was called, but not an array");
         }
         return array;
       }
 
       var returnArray = [];
-      // filtering magic
-      $.each(array, function(index, cur) { // for each object
+      //filtering magic
+      $.each(array, function (index, cur){ //for each object
         if(Array.isArray(cur[arrayGroupFieldName])) {
           var added = false;
-          $.each(cur[arrayGroupFieldName], function(index, group) { // for each group for that object
-            var inGroup = $.grep(groups, function(e) {
-return e[groupsNameFieldName] === group;
-}).length; // intersect, then get length
-            if(inGroup > 0) {// are they in that group?
-              returnArray.push(cur); // they should get this object
-              return false; // break;
+          $.each(cur[arrayGroupFieldName], function(index, group) { //for each group for that object
+            var inGroup = $.grep(groups, function(e) {return e[groupsNameFieldName] === group}).length; //intersect, then get length
+            if(inGroup > 0) {//are they in that group?
+              returnArray.push(cur); //they should get this object
+              return false; //break;
             }
           });
         } else {
-          // single filter then
-          var inGroup = $.grep(groups, function(e) {
-return e[groupsNameFieldName] === cur[arrayGroupFieldName];
-}).length; // intersect, then get length
+          //single filter then
+          var inGroup = $.grep(groups, function(e) {return e[groupsNameFieldName] === cur[arrayGroupFieldName]}).length; //intersect, then get length
           if(inGroup > 0) {
             returnArray.push(cur);
           }
@@ -69,17 +68,18 @@ return e[groupsNameFieldName] === cur[arrayGroupFieldName];
       } else {
         return false;
       }
-    };
+    }
 
     return {
-      getGroups: getGroups,
-      filterArrayByGroups: filterArrayByGroups,
-      groupsServiceEnabled: groupsServiceEnabled,
-    };
+      getGroups : getGroups,
+      filterArrayByGroups : filterArrayByGroups,
+      groupsServiceEnabled : groupsServiceEnabled
+    }
   });
 
-  app.factory('PortalAddToHomeService', function($http, $log, filterFilter, NAMES, MISC_URLS) {
-    var canAddToHome = function() {
+  app.factory('PortalAddToHomeService', function($http, $log, filterFilter, NAMES, MISC_URLS){
+
+    var canAddToHome = function(){
       if (MISC_URLS.addToHomeURLS && MISC_URLS.addToHomeURLS.addToHomeActionURL) {
             return true;
       } else {
@@ -87,35 +87,36 @@ return e[groupsNameFieldName] === cur[arrayGroupFieldName];
       }
     };
 
-    var inHome = function(fname) {
-      return $http.get(MISC_URLS.addToHomeURLS.layoutURL).then(function(result) {
+    var inHome = function(fname){
+      return $http.get(MISC_URLS.addToHomeURLS.layoutURL).then(function(result){
         var layout = result.data.layout;
         if(layout) {
           var theFname = (fname ? fname : NAMES.fname);
-          var filteredLayout = filterFilter(layout, {fname: theFname});
+          var filteredLayout = filterFilter(layout, {fname : theFname});
           return filteredLayout && filteredLayout.length > 0;
         } else {
           return false;
         }
-      }, function() {
-        // failed
+      }, function(){
+        //failed
         $log.warn('could not reach portal server to get layout, portal down?');
-        return true; // returning it is in the layout by default since portal is down
+        return true; //returning it is in the layout by default since portal is down
       });
     };
 
-    var addToHome = function(fname) {
+    var addToHome = function(fname){
       return $http.post(MISC_URLS.addToHomeURLS.addToHomeActionURL + (fname ? fname : NAMES.fname));
     };
 
     return {
-      canAddToHome: canAddToHome,
-      inHome: inHome,
-      addToHome: addToHome,
+      canAddToHome : canAddToHome,
+      inHome : inHome,
+      addToHome : addToHome
     };
   });
 
   app.factory('miscService', function($analytics, $http, $window, $location, $log, MISC_URLS) {
+
     /**
      Used to redirect users to login screen iff result code is 0 (yay shib) or 302
 
@@ -123,14 +124,14 @@ return e[groupsNameFieldName] === cur[arrayGroupFieldName];
     **/
     var redirectUser = function(status, caller) {
       if(status === 0 || status === 302) {
-        $log.log('redirect happening due to ' + status);
+        $log.log("redirect happening due to " + status);
         if(MISC_URLS.loginURL) {
           window.location.replace(MISC_URLS.loginURL);
         } else {
-          $log.warn('MISC_URLS.loginURL was not set, cannot redirect');
+          $log.warn("MISC_URLS.loginURL was not set, cannot redirect");
         }
       } else {
-        $log.warn('Strange behavior from ' + caller +'. Returned status code : ' + status);
+        $log.warn("Strange behavior from " + caller +". Returned status code : " + status);
       }
     };
 
@@ -143,15 +144,17 @@ return e[groupsNameFieldName] === cur[arrayGroupFieldName];
      See https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide for more info
     **/
     var pushGAEvent = function(category, action, label, value) {
-      $analytics.eventTrack(action, {category: category, label: label, value: (value || label)});
-			$log.log('ga event logged action: ' + action + ', category: ' + category + ', label: ' + label);
+      $analytics.eventTrack(action, {  category: category, label: label, value: (value || label) });
+			$log.log('ga event logged action: ' + action + ", category: " + category + ", label: " + label);
     };
 
     return {
       redirectUser: redirectUser,
-      pushGAEvent: pushGAEvent,
+      pushGAEvent : pushGAEvent
     };
+
   });
 
   return app;
+
 });

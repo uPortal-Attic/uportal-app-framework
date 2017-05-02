@@ -1,6 +1,7 @@
 'use strict';
 
 define(['angular'], function(angular) {
+
   var app = angular.module('portal.widgets.controllers', []);
 
   /**
@@ -22,7 +23,7 @@ define(['angular'], function(angular) {
           if (widget.widgetConfig.links.length === 1 && widget.altMaxUrl && widget.widgetConfig.links[0].href === widget.url) {
             return 'basic';
           } else {
-            return 'list-of-links';
+            return 'list-of-links'
           }
         case 'generic':
           // DEPRECATED: Included for backwards compatibility. Use 'custom' instead.
@@ -83,6 +84,7 @@ define(['angular'], function(angular) {
     } else {
       $log.warn('WidgetCardController didn\'t get an fname.');
     }
+
   }]);
 
   // OPTION LINK widget type
@@ -95,7 +97,7 @@ define(['angular'], function(angular) {
         singleElement: false,
         arrayName: 'array',
         value: 'value',
-        display: 'display',
+        display: 'display'
       };
     };
 
@@ -179,6 +181,13 @@ define(['angular'], function(angular) {
       if (!$scope.config.showShowing) {
         $scope.config.showShowing = false;
       }
+      // Set sensible fallbacks in case widget config would create display problems.
+      if ($scope.config.lim > 6) {
+        $scope.config.lim = 6;
+      }
+      if ($scope.config.titleLim > 50) {
+        $scope.config.titleLim = 50;
+      }
     };
 
     /**
@@ -190,6 +199,7 @@ define(['angular'], function(angular) {
 
       // Only initialize if widget's json provides all the stuff we need
       if ($scope.widget && $scope.widget.widgetURL) {
+
         // Make sure config has values
         checkForWidgetConfig();
 
@@ -362,6 +372,7 @@ define(['angular'], function(angular) {
 
       // Execute promises, then resolve when both have returned something
       $q.all( [widgetPromise, userPreferencesPromise] ).then(function(data) {
+
         // Turn off loading spinner
         $scope.loading = false;
 
@@ -501,5 +512,7 @@ define(['angular'], function(angular) {
     } else {
       $log.warn('WeatherWidgetController did not receive a widgetURL');
     }
+
   }]);
+
 });

@@ -1,6 +1,12 @@
-# uw-frame release engineering
+# uPortal-app-framework release engineering
 
-Release engineering for uw-frame is pretty automated. We actually only have to do a few things.
+Release engineering for `uPortal-app-framework` is pretty automated. We actually only have to do a few things.
+
+## Release authorization
+
+This project has [adopted Apache rules][] with necessary or pragmatic local adaptations.
+
+Release authorization, or the delegation of release authority to one or more release engineers, should be documented by [a suitable vote][Apache Release Policy re Release Approval] of [the uPortal-app-framework Committers][] on [uportal-dev@][].
 
 ## Select a version
 
@@ -89,3 +95,7 @@ You don't have to do anything special to release the documentation. GitHub pages
 [uw-frame-release-docs-version Jenkins job]: https://tools.my.wisc.edu/jenkins/view/Misc./job/uw-frame-release-docs-version/
 [uw-frame releases]: https://github.com/UW-Madison-DoIT/uw-frame/releases
 [MyUW Developer Group]: https://groups.google.com/forum/#!forum/myuw-developers
+[adopted Apache rules]: https://github.com/UW-Madison-DoIT/uw-frame/blob/master/committers.md#rules
+[Apache Release Policy re Release Approval]: http://www.apache.org/legal/release-policy.html#release-approval
+[the uPortal-app-framework Committers]: https://github.com/UW-Madison-DoIT/uw-frame/blob/master/committers.md#who-are-the-committers
+[uportal-dev@]: https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev

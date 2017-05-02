@@ -1,6 +1,8 @@
-define(['require'], function(require) {
+define(['require'], function(require){
+
     return {
-			templateUrl: require.toUrl('./partials/about.html'),
-		};
+			templateUrl: require.toUrl('./partials/about.html')
+		}
+
 });
 

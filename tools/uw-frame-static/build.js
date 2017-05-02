@@ -1,31 +1,34 @@
 'use strict';
-var less          = require('less');
-var path          = require('path');
-var fs            = require('fs');
-var exec          = require('child_process').exec;
-var autoprefixer  = require('autoprefixer');
-var postcss       = require('postcss');
+const less          = require('less');
+const path          = require('path');
+const fs            = require('fs');
+const exec          = require('child_process').exec;
+const autoprefixer  = require('autoprefixer');
+const postcss       = require('postcss');
 
-var exec_handler = function(error, stdout, stderr) {
+const exec_handler = function(error, stdout, stderr) {
   if (error) throw error;
 };
 
-var mkdirp = require('mkdirp');
-var copy = require('recursive-copy');
+const mkdirp = require('mkdirp');
+const copy = require('recursive-copy');
+const copyOptions = {
+  overwrite: true
+}
 
-mkdirp('uw-frame-static/target/css/themes/', function (err) {
-  if (err) throw error;
+mkdirp('uw-frame-static/target/css/themes/', function (error) {
+  if (error) throw error;
 });
 
 
-var themes = ['uw-madison', 'uw-system', 'uw-river-falls',
+const themes = ['uw-madison', 'uw-system', 'uw-river-falls',
   'uw-stevens-point', 'uw-milwaukee', 'uw-whitewater', 'uw-stout',
   'uw-superior', 'uw-platteville', 'uw-parkside', 'uw-oshkosh',
   'uw-greenbay', 'uw-lacrosse', 'uw-eau-claire', 'uw-extension',
   'uw-colleges'];
 
 // Render less and write to .css file for each theme
-for (var i = 0; i < themes.length; i++) {
+for (let i = 0; i < themes.length; i++) {
   // Capture theme name and src path in constants to pass to less rendering
   const themeName = themes[i];
   const src = 'uw-frame-components/css/themes/' + themes[i] + '.less';
@@ -39,24 +42,24 @@ for (var i = 0; i < themes.length; i++) {
   });
 }
 
-copy('uw-frame-components/', 'uw-frame-static/target', function (err, results){
-  if (err) throw error;
+copy('uw-frame-components/', 'uw-frame-static/target', copyOptions).catch(function (error, results){
+  if (error) throw error;
 });
 
-copy('node_modules/bootstrap/', 'uw-frame-static/target/css/themes/node_modules/bootstrap/', function(err){
-  if (err) throw error;
+copy('node_modules/bootstrap/', 'uw-frame-static/target/css/themes/node_modules/bootstrap/', copyOptions).catch(function(error){
+  if (error) throw error;
 });
 
-copy('node_modules/font-awesome/', 'uw-frame-static/target/css/themes/node_modules/font-awesome/', function(err){
-  if (err) throw error;
+copy('node_modules/font-awesome/', 'uw-frame-static/target/css/themes/node_modules/font-awesome/', copyOptions).catch(function(error){
+  if (error) throw error;
 });
 
-copy('node_modules/normalize.less', 'uw-frame-static/target/css/themes/node_modules/', function(err){
-  if (err) throw error;
-})
+copy('node_modules/normalize.less', 'uw-frame-static/target/css/themes/node_modules/normalize.less', copyOptions).catch(function(error){
+  if (error) throw error;
+});
 
-copy('uw-frame-static/superstatic.json','uw-frame-static/target/', function (err, results){
-  if (err) throw error;
+copy('uw-frame-static/superstatic.json','uw-frame-static/target/superstatic.json', copyOptions).catch(function (error, results){
+  if (error) throw error;
 });
 
 

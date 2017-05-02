@@ -1,26 +1,28 @@
 'use strict';
 
 define(['angular'], function(angular) {
+
   var app = angular.module('portal.notifications.controllers ', []);
 
-  app.controller('PortalNotificationController', ['$scope', '$rootScope', '$location', '$localStorage', 'NOTIFICATION',
+  app.controller('PortalNotificationController', [ '$scope', '$rootScope', '$location', '$localStorage', 'NOTIFICATION',
     'SERVICE_LOC', 'filterFilter', 'notificationsService', 'miscService',
     function($scope, $rootScope, $location, $localStorage, NOTIFICATION, SERVICE_LOC, filterFilter, notificationsService, miscService) {
-      // ///////////////////
+
+      /////////////////////
       // LOCAL VARIABLES //
-      // ///////////////////
+      /////////////////////
       var dismissedNotificationIds;
 
-      // /////////////////
+      ///////////////////
       // SCOPE METHODS //
-      // /////////////////
+      ///////////////////
       /**
        * Dismiss a notification
        * This method moves the given notification into the array of dismissed notifications
        * @param notification Object, the notification with all its data
        * @param fromPriority Boolean, true if dismissal occurred in priority notifications alert
        */
-      $scope.dismissNotification = function(notification, fromPriority) {
+      $scope.dismissNotification = function (notification, fromPriority) {
         // Remove notification from non-dismissed array
         removeNotificationById($scope.notifications, notification.id);
 
@@ -47,6 +49,7 @@ define(['angular'], function(angular) {
        * @param notification Object, the notification with all its data
        */
       $scope.restoreNotification = function(notification) {
+
         // Remove notification from dismissed array
         removeNotificationById($scope.dismissedNotifications, notification.id);
 
@@ -70,13 +73,13 @@ define(['angular'], function(angular) {
 			 * @param action
 			 * @param label
 			 */
-			$scope.pushGAEvent = function(category, action, label) {
+			$scope.pushGAEvent = function (category, action, label) {
 				miscService.pushGAEvent(category, action, label);
 			};
 
-      // /////////////////
+      ///////////////////
       // LOCAL METHODS //
-      // /////////////////
+      ///////////////////
       /**
        *  Get notifications
        *  The data returned depends on whether group filtering is enabled. This method also initializes the local
@@ -101,7 +104,7 @@ define(['angular'], function(angular) {
         // SET NECESSARY SCOPE VARIABLES
         $scope.notifications = data.notDismissed ? data.notDismissed : [];
         $scope.dismissedNotifications = data.dismissed ? data.dismissed : [];
-        $scope.status = 'You have ' + ($scope.isEmpty ? 'no ' : '') + 'notifications';
+        $scope.status = "You have " + ($scope.isEmpty ? "no " : "") + "notifications";
 
         angular.forEach($scope.dismissedNotifications, function(value, key) {
           dismissedNotificationIds.push(value.id);
@@ -141,7 +144,7 @@ define(['angular'], function(angular) {
        * @param data Array of notification objects
        */
       var configurePriorityNotificationScope = function(data) {
-        $scope.priorityNotifications = filterFilter(data, {priority: true});
+        $scope.priorityNotifications = filterFilter(data, {priority : true});
         if ($scope.priorityNotifications && $scope.priorityNotifications.length > 0) {
           $scope.hasPriorityNotifications = true;
           if($scope.headerCtrl) {
@@ -166,7 +169,7 @@ define(['angular'], function(angular) {
           $scope.headerCtrl.hasPriorityNotifications = false;
         }
         if(!duringOnEvent) {
-          $rootScope.$broadcast('portalShutdownPriorityNotifications', {disable: true});
+          $rootScope.$broadcast('portalShutdownPriorityNotifications', { disable : true});
         }
       };
 
@@ -198,10 +201,13 @@ define(['angular'], function(angular) {
         $scope.$on('portalShutdownPriorityNotifications', function(event, data) {
           clearPriorityNotificationFlags(true);
         });
+
       };
 
       init();
+
   }]);
 
   return app;
+
 });

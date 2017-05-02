@@ -1,6 +1,7 @@
 'use strict';
 
 define(['angular', 'jquery'], function(angular, $) {
+
     var app = angular.module('portal.timeout.services', []);
 
     /**
@@ -12,17 +13,18 @@ define(['angular', 'jquery'], function(angular, $) {
                      and the time of that timeout.
     **/
     app.factory('PortalShibbolethService', ['$http', 'miscService', 'SERVICE_LOC',
-        function($http, miscService, SERVICE_LOC) {
-          function onError(response) {
-            miscService.redirectUser(response.status, 'Shibboleth Service');
+        function($http, miscService,SERVICE_LOC) {
+
+          function onError(response){
+            miscService.redirectUser(response.status, "Shibboleth Service");
             return response.data;
           }
 
-          function onGetSessionSuccess(response) {
+          function onGetSessionSuccess(response){
             return response.data;
           }
 
-          function onGetTimeoutSuccess(session) {
+          function onGetTimeoutSuccess(session){
             if(session && angular.isObject(session)) {
               var timeout = {};
               timeout.expirationMinutes = session.expiration;
@@ -35,12 +37,12 @@ define(['angular', 'jquery'], function(angular, $) {
             }
           }
 
-          function getSession() {
+          function getSession(){
             return $http.get(SERVICE_LOC.shibbolethSessionURL)
                         .then(onGetSessionSuccess, onError);
-          }
+          };
 
-          function getTimeout() {
+          function getTimeout(){
             return getSession().then(onGetTimeoutSuccess);
           }
 
@@ -53,9 +55,9 @@ define(['angular', 'jquery'], function(angular, $) {
           }
 
           return {
-            getSession: getSession,
-            getTimeout: getTimeout,
-            shibServiceActivated: shibServiceActivated,
+            getSession : getSession,
+            getTimeout : getTimeout,
+            shibServiceActivated : shibServiceActivated
           };
         }]);
 });

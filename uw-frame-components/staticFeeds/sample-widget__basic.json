@@ -1,0 +1,60 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Faculty Center",
+      "description": "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information.",
+      "url": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
+      "iconUrl": null,
+      "faIcon": "fa-graduation-cap",
+      "mdIcon": "school",
+      "fname": "faculty-center",
+      "lifecycleState": "PUBLISHED",
+      "target": "_blank",
+      "widgetURL": null,
+      "widgetType": null,
+      "widgetTemplate": null,
+      "widgetConfig": null,
+      "staticContent": null,
+      "pithyStaticContent": null,
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "keywords": [
+      "roster",
+      "class roster",
+      "manage grades",
+      "textbook",
+      "schedule",
+      "grades",
+      "advisee information",
+      "advisee"
+    ],
+    "fname": "faculty-center",
+    "lifecycleState": "PUBLISHED",
+    "rating": 4.5,
+    "portletWebAppName": "/ISISPortlets",
+    "faIcon": "fa-graduation-cap",
+    "maxUrl": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 2,
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
+    "title": "Faculty Center",
+    "categories": [
+      "Faculty services"
+    ],
+    "portletName": "BasicIsisLink",
+    "name": "Faculty Center",
+    "id": "55",
+    "type": "Portlet",
+    "target": "_blank",
+    "description": "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information."
+  }
+}

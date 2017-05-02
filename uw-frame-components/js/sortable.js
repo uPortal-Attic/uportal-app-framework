@@ -10,15 +10,15 @@ define(['angular', 'jquery-ui'], function(angular) {
       .value('uiSortableConfig', {})
       .directive('uiSortable', [
         'uiSortableConfig', '$timeout', '$log',
-        function(uiSortableConfig, $timeout, $log) {
+        function (uiSortableConfig, $timeout, $log) {
           return {
             require: '?ngModel',
-            link: function(scope, element, attrs, ngModel) {
+            link: function (scope, element, attrs, ngModel) {
               var savedNodes;
 
               function combineCallbacks(first, second) {
                 if (second && (typeof second === 'function')) {
-                  return function(e, ui) {
+                  return function (e, ui) {
                     first(e, ui);
                     second(e, ui);
                   };
@@ -44,7 +44,7 @@ define(['angular', 'jquery-ui'], function(angular) {
 
               // directive specific options
               var directiveOpts = {
-                'ui-floating': undefined,
+                'ui-floating': undefined
               };
 
               var callbacks = {
@@ -52,11 +52,11 @@ define(['angular', 'jquery-ui'], function(angular) {
                 remove: null,
                 start: null,
                 stop: null,
-                update: null,
+                update: null
               };
 
               var wrappers = {
-                helper: null,
+                helper: null
               };
 
               angular.extend(opts, directiveOpts, uiSortableConfig, scope.$eval(attrs.uiSortable));
@@ -67,20 +67,21 @@ define(['angular', 'jquery-ui'], function(angular) {
               }
 
               if (ngModel) {
+
                 // When we add or remove elements, we need the sortable to 'refresh'
                 // so it can find the new/removed elements.
-                scope.$watch(attrs.ngModel + '.length', function() {
+                scope.$watch(attrs.ngModel + '.length', function () {
                   // Timeout to let ng-repeat modify the DOM
-                  $timeout(function() {
+                  $timeout(function () {
                     // ensure that the jquery-ui-sortable widget instance
                     // is still bound to the directive's element
-                    if (element.data('ui-sortable')) {
+                    if (!!element.data('ui-sortable')) {
                       element.sortable('refresh');
                     }
                   }, 0, false);
                 });
 
-                callbacks.start = function(e, ui) {
+                callbacks.start = function (e, ui) {
                   if (opts['ui-floating'] === 'auto') {
                     // since the drag has started, the element will be
                     // absolutely positioned, so we check its siblings
@@ -94,26 +95,26 @@ define(['angular', 'jquery-ui'], function(angular) {
                     index: ui.item.index(),
                     source: ui.item.parent(),
                     sourceModel: ngModel.$modelValue,
-                    cancel: function() {
+                    cancel: function () {
                       ui.item.sortable._isCanceled = true;
                     },
-                    isCanceled: function() {
+                    isCanceled: function () {
                       return ui.item.sortable._isCanceled;
                     },
-                    isCustomHelperUsed: function() {
+                    isCustomHelperUsed: function () {
                       return !!ui.item.sortable._isCustomHelperUsed;
                     },
                     _isCanceled: false,
                     _isCustomHelperUsed: ui.item.sortable._isCustomHelperUsed,
-                    _destroy: function() {
-                      angular.forEach(ui.item.sortable, function(value, key) {
+                    _destroy: function () {
+                      angular.forEach(ui.item.sortable, function (value, key) {
                         ui.item.sortable[key] = undefined;
                       });
-                    },
+                    }
                   };
                 };
 
-                callbacks.activate = function(/* e, ui*/) {
+                callbacks.activate = function (/*e, ui*/) {
                   // We need to make a copy of the current element's contents so
                   // we can restore it after sortable has messed it up.
                   // This is inside activate (instead of start) in order to save
@@ -144,7 +145,7 @@ define(['angular', 'jquery-ui'], function(angular) {
                   }
                 };
 
-                callbacks.update = function(e, ui) {
+                callbacks.update = function (e, ui) {
                   // Save current drop position but only if this is not a second
                   // update that happens when moving between lists because then
                   // the value will be overwritten with the old value
@@ -188,20 +189,21 @@ define(['angular', 'jquery-ui'], function(angular) {
                   // stop event where we will know if it was a sort or item was
                   // moved here from another list
                   if (ui.item.sortable.received && !ui.item.sortable.isCanceled()) {
-                    scope.$apply(function() {
+                    scope.$apply(function () {
                       ngModel.$modelValue.splice(ui.item.sortable.dropindex, 0,
                           ui.item.sortable.moved);
                     });
                   }
                 };
 
-                callbacks.stop = function(e, ui) {
+                callbacks.stop = function (e, ui) {
                   // If the received flag hasn't be set on the item, this is a
                   // normal sort, if dropindex is set, the item was moved, so move
                   // the items in the list.
                   if (!ui.item.sortable.received &&
                       ('dropindex' in ui.item.sortable) && !ui.item.sortable.isCanceled()) {
-                    scope.$apply(function() {
+
+                    scope.$apply(function () {
                       ngModel.$modelValue.splice(
                           ui.item.sortable.dropindex, 0,
                           ngModel.$modelValue.splice(ui.item.sortable.index, 1)[0]);
@@ -219,13 +221,13 @@ define(['angular', 'jquery-ui'], function(angular) {
                   savedNodes = null;
                 };
 
-                callbacks.receive = function(e, ui) {
+                callbacks.receive = function (e, ui) {
                   // An item was dropped here from another list, set a flag on the
                   // item.
                   ui.item.sortable.received = true;
                 };
 
-                callbacks.remove = function(e, ui) {
+                callbacks.remove = function (e, ui) {
                   // Workaround for a problem observed in nested connected lists.
                   // There should be an 'update' event before 'remove' when moving
                   // elements. If the event did not fire, cancel sorting.
@@ -237,16 +239,16 @@ define(['angular', 'jquery-ui'], function(angular) {
                   // Remove the item from this list's model and copy data into item,
                   // so the next list can retrive it
                   if (!ui.item.sortable.isCanceled()) {
-                    scope.$apply(function() {
+                    scope.$apply(function () {
                       ui.item.sortable.moved = ngModel.$modelValue.splice(
                           ui.item.sortable.index, 1)[0];
                     });
                   }
                 };
 
-                wrappers.helper = function(inner) {
+                wrappers.helper = function (inner) {
                   if (inner && typeof inner === 'function') {
-                    return function(e, item) {
+                    return function (e, item) {
                       var innerResult = inner(e, item);
                       item.sortable._isCustomHelperUsed = item !== innerResult;
                       return innerResult;
@@ -255,11 +257,11 @@ define(['angular', 'jquery-ui'], function(angular) {
                   return inner;
                 };
 
-                scope.$watch(attrs.uiSortable, function(newVal /* , oldVal*/) {
+                scope.$watch(attrs.uiSortable, function (newVal /*, oldVal*/) {
                   // ensure that the jquery-ui-sortable widget instance
                   // is still bound to the directive's element
-                  if (element.data('ui-sortable')) {
-                    angular.forEach(newVal, function(value, key) {
+                  if (!!element.data('ui-sortable')) {
+                    angular.forEach(newVal, function (value, key) {
                       // if it's a custom option of the directive,
                       // handle it approprietly
                       if (key in directiveOpts) {
@@ -275,7 +277,7 @@ define(['angular', 'jquery-ui'], function(angular) {
                         if (key === 'stop') {
                           // call apply after stop
                           value = combineCallbacks(
-                              value, function() {
+                              value, function () {
                                 scope.$apply();
                               });
 
@@ -293,23 +295,25 @@ define(['angular', 'jquery-ui'], function(angular) {
                   }
                 }, true);
 
-                angular.forEach(callbacks, function(value, key) {
+                angular.forEach(callbacks, function (value, key) {
                   opts[key] = combineCallbacks(value, opts[key]);
                   if (key === 'stop') {
                     opts[key] = combineCallbacks(opts[key], afterStop);
                   }
                 });
+
               } else {
                 $log.info('ui.sortable: ngModel not provided!', element);
               }
 
               // Create sortable
               element.sortable(opts);
-            },
+            }
           };
-        },
+        }
       ]);
 
   return app;
+
 });
 

@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular', 'require'], function(angular, require) {
+define(['angular','require'], function(angular, require) {
   var app = angular.module('portal.features.controllers', []);
 
 
@@ -22,28 +22,28 @@ define(['angular', 'require'], function(angular, require) {
   app.controller('PortalPopupController', ['$localStorage', '$sessionStorage', '$rootScope', '$scope', '$document', 'FEATURES',
     'filterFilter', '$filter', '$mdDialog', 'portalFeaturesService', 'miscService', '$sanitize',
     function($localStorage, $sessionStorage, $rootScope, $scope, $document, FEATURES, filterFilter, $filter, $mdDialog, portalFeaturesService, miscService, $sanitize) {
-      // scope functions ---------------------------------------------------------
+      //scope functions ---------------------------------------------------------
 
-      // need this due to isolated scope
-      $scope.pushGAEvent = function(a, b, c) {
-        miscService.pushGAEvent(a, b, c);
+      //need this due to isolated scope
+      $scope.pushGAEvent = function(a,b,c) {
+        miscService.pushGAEvent(a,b,c);
       };
 
       $scope.markAnnouncementSeen = function(announcementID, liked) {
         portalFeaturesService.markAnnouncementSeen(announcementID);
-        // reloadAnnouncements
+        //reloadAnnouncements
         portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
           $scope.announcements = unseenAnnouncements;
         });
-        miscService.pushGAEvent('feature', liked ? 'read more' : 'dismissed', announcementID);
+        miscService.pushGAEvent('feature',liked ? 'read more' : 'dismissed', announcementID);
       };
 
-      $scope.markAllAnnouncementsSeen = function(liked) {
+      $scope.markAllAnnouncementsSeen = function(liked){
         portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
-          for(var i=0; i<unseenAnnouncements.length; i++) {
+          for(var i=0; i<unseenAnnouncements.length; i++){
             var announcement = unseenAnnouncements[i];
             portalFeaturesService.markAnnouncementSeen(announcement.id);
-            miscService.pushGAEvent('feature', liked ? 'read more' : 'dismissed', announcement.id);
+            miscService.pushGAEvent('feature',liked ? 'read more' : 'dismissed', announcement.id);
           }
           portalFeaturesService.getUnseenAnnouncements().then(function(newUnseenAnnouncements) {
             $scope.announcements = newUnseenAnnouncements;
@@ -59,14 +59,14 @@ define(['angular', 'require'], function(angular, require) {
         $scope.active = !$scope.active;
       };
 
-      $scope.$on('$mdMenuClose', function() {
+      $scope.$on("$mdMenuClose", function() {
         $scope.hover = false;
         $scope.active = false;
       });
 
-      // local functions ---------------------------------------------------------
+      //local functions ---------------------------------------------------------
 
-      var getPopups = function() {
+      var getPopups = function(){
         if (!$rootScope.GuestMode) {
           portalFeaturesService.getUnseenPopups().then(function(unseenPopups) {
             if (unseenPopups.length !=0 && !$rootScope.GuestMode) {
@@ -86,7 +86,7 @@ define(['angular', 'require'], function(angular, require) {
                     $scope.closeDialog = function(action) {
                       $mdDialog.hide(action);
                     };
-                  },
+                  }
                 })
                 .then(function(action) {
                   // if dialog is closed by clicking "continue" button
@@ -120,18 +120,19 @@ define(['angular', 'require'], function(angular, require) {
       };
 
 
+
      var init = function() {
        $scope.hover = false;
        $scope.active = false;
        if (FEATURES.enabled && !$rootScope.GuestMode) {
-         // handle legacy local storage #deleteIt
+         //handle legacy local storage #deleteIt
          delete $localStorage.lastSeenFeature;
          delete $localStorage.hasSeenWelcome;
-         // Mode is set to bucky or bucky_mobile to signal mascot init of controller
-         if(('BUCKY' === $scope.mode || 'BUCKY_MOBILE' === $scope.mode)
+         //Mode is set to bucky or bucky_mobile to signal mascot init of controller
+         if(("BUCKY" === $scope.mode || "BUCKY_MOBILE" === $scope.mode)
             && !$rootScope.GuestMode) {
            portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
-             if(!$rootScope.GuestMode) {
+             if(!$rootScope.GuestMode){
                $scope.announcements = unseenAnnouncements;
              }
            });
@@ -142,8 +143,9 @@ define(['angular', 'require'], function(angular, require) {
        }
     };
 
-    // run function -------------------------------------------------------------
+    //run function -------------------------------------------------------------
     init();
+
   }]);
 
   return app;

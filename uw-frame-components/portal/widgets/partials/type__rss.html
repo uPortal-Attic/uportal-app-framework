@@ -8,8 +8,8 @@
         <div class="headline" ng-class="{ 'nodate' :  !config.showdate }">
           {{ trim(item.title) | truncate:config.titleLim }}
         </div>
-        <div class="date bold" ng-if="config.showdate">
-          <span>{{ getPrettyDate(item.pubDate) | date:config.dateFormat }}</span>
+        <div class="date bold" ng-if="config.showdate" layout="column" layout-align="center end">
+          <span>{{ getPrettyDate(item.pubDate) | date:'shortDate' }}</span>
         </div>
       </a>
     </li>
@@ -23,7 +23,6 @@
 </div>
 <launch-button data-href="{{ widget.url }}"
                data-target="{{ widget.target ? widget.target : '_self' }}"
-               data-rel="noopener noreferrer"
                data-button-text="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'See all' }}"
                data-aria-label="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch ' + widget.title }}">
 </launch-button>

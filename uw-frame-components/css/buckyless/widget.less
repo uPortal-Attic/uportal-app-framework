@@ -77,7 +77,8 @@
   .widget-icon-container {
     text-align: center;
 
-    i {
+    i,
+    .material-icons {
       color: @grayscale10;
       font-size: 70px;
     }
@@ -100,6 +101,7 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 99;
     border-radius: 3px;
+    top: 0;
 
     .maintenance-content {
       text-align: center;
@@ -417,6 +419,85 @@
     .widget-action {
       opacity: 1;
     }
+  }
+}
+
+.list-content {
+  position: relative;
+  margin: 5px;
+  background: #f3f3f3;
+  border-radius: 3px;
+  height: 150px;
+  color: #333;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  a {
+    display: block;
+    height: 100%;
+    box-shadow: 0 2px 0 #ddd;
+    border-radius: 4px;
+    transition: @background-transition;
+
+    &:hover {
+      background-color: #f8f8f8;
+      box-shadow: 0 3px 0 #ddd;
+    }
+  }
+
+  h4 {
+    font-size: 1.2em;
+    margin: 0;
+    color: #333;
+    padding: 0 5px;
+  }
+
+  div {
+    display: inline-block;
+    float: left;
+  }
+
+  .icon-container {
+    width: 100%;
+    height: 67%;
+
+    i {
+      color: #333;
+      vertical-align: middle;
+      padding: 30px 10px;
+      font-size: 50px;
+    }
+  }
+
+  .list-item-container {
+    display: table;
+    width: 100%;
+    height: 33%;
+
+    h4 {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
+
+.add-favorites {
+  background: transparent;
+  border: 1px dashed #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    border: 1px solid #f8f8f8;
+  }
+
+  a {
+    transition: @background-transition;
+    box-shadow: 0 0 0 transparent;
   }
 }
 

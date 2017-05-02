@@ -1,6 +1,7 @@
 'use strict';
 
 define(['angular'], function(angular) {
+
     var DEFAULT_TRUNCATE_LENGTH = 160;
     var app = angular.module('portal.misc.filters', []);
 
@@ -18,18 +19,18 @@ define(['angular'], function(angular) {
             return input;
         };
     });
-
+    
     app.filter('trimMiddle', function() {
         return function(input, maxlen) {
             maxlen = maxlen || 20;
             if(input && input.length > maxlen) {
-              return input.substring(0, Math.floor(maxlen/2)-3) + ' ... ' + input.substring(input.length - (Math.floor(maxlen/2)-4), input.length);
+              return input.substring(0,Math.floor(maxlen/2)-3) + " ... " + input.substring(input.length - (Math.floor(maxlen/2)-4), input.length);
             } else {
                 return input;
             }
         };
     });
-
+    
     app.filter('showApplicable', function() {
         return function(portlets, showAll) {
             var filteredPortlets = [];
@@ -46,9 +47,9 @@ define(['angular'], function(angular) {
             }
         };
     });
-    app.filter('showCategory', function() {
-      return function(portlets, category) {
-        if (category === '') {
+    app.filter('showCategory', function () {
+      return function (portlets, category) {
+        if (category === "") {
           return portlets;
         }
         var filtered = [];
@@ -73,12 +74,13 @@ define(['angular'], function(angular) {
        If you don't understand what this filter does, no worries,
        but then you really shouldn't be using it! :)
      */
-    app.filter('to_trusted', ['$sce', function($sce) {
+    app.filter('to_trusted', ['$sce', function($sce){
       return function(text) {
           return $sce.trustAsHtml(text);
       };
     }]);
 
     return app;
+
 });
 

@@ -4,47 +4,47 @@ define(['angular'], function(angular) {
   var app = angular.module('portal.misc.controllers', []);
 
   /* AddToHomeController */
-  app.controller('AddToHomeController', ['$scope', '$timeout', 'PortalAddToHomeService',
+  app.controller('AddToHomeController', [ '$scope', '$timeout', 'PortalAddToHomeService',
                  function($scope, $timeout, PortalAddToHomeService) {
     $scope.addToHome = function() {
       if(!$scope.inHome && PortalAddToHomeService.canAddToHome($scope.fname)) {
         $scope.savingAddToHome = true;
-        $timeout(function() {
+        $timeout(function(){
           $scope.actionLinkIconTemp = $scope.actionLinkIcon;
           $scope.actionLinkIcon = 'fa-circle-o-notch';
         }, 500);
         PortalAddToHomeService.addToHome($scope.fname).then(
-          function() {
-            // success
+          function(){
+            //success
             $scope.inHome = true;
             $scope.successfullyAdded = true;
             $scope.actionLinkIcon = $scope.actionLinkIconTemp;
           },
-          function() {
-            // failed
+          function(){
+            //failed
             $scope.addToHomeFailed = true;
           }
         );
       }
-    };
+    }
 
     var checkInHome = function(fname) {
-      PortalAddToHomeService.inHome(fname).then(function(data) {
+      PortalAddToHomeService.inHome(fname).then(function(data){
         $scope.inHome = data;
       });
-    };
+    }
 
     var init = function() {
-      // default it to being in your home to avoid service loading lag
+      //default it to being in your home to avoid service loading lag
       $scope.inHome = true;
 
       if(PortalAddToHomeService.canAddToHome()) {
         if($scope.fname) {
-          // check if in home layout
+          //check if in home layout
           checkInHome($scope.fname);
-        } else {
+        } else  {
           $scope.$watch('fname', function() {
-            // must be using 2 way binding, add a watch on the fname
+            //must be using 2 way binding, add a watch on the fname
             if($scope.fname) {
               checkInHome($scope.fname);
             }
@@ -54,7 +54,9 @@ define(['angular'], function(angular) {
     };
 
     init();
-  }]);
+
+  } ]);
 
   return app;
+
  });

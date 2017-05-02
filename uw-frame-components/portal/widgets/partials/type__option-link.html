@@ -43,9 +43,7 @@
 </div>
 
 <!-- LAUNCH BUTTON -->
-<a class="launch-app-button"
-   ng-href="{{ widget.selectedUrl }}"
-   target="{{ widget.target ? widget.target : '_self' }}" rel="noopener noreferrer">
-  <span ng-if='config.launchText'>{{ config.launchText }}</span>
-  <span ng-if='!config.launchText'>Launch {{ widget.title }}</span>
-</a>
+<launch-button data-href="{{ widget.selectedUrl }}"
+               data-target="{{ widget.target ? widget.target : '_self' }}"
+               data-button-text="{{ config.launchText ? config.launchText : 'Launch full app' }}"
+               data-aria-label="{{ config.launchText ? config.launchText : 'Launch ' + widget.title }}"></launch-button>

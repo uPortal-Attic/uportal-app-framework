@@ -1,6 +1,7 @@
 'use strict';
 
 define(['angular', 'require'], function(angular, require) {
+
   var app = angular.module('portal.widgets.directives', []);
 
   /**
@@ -11,18 +12,33 @@ define(['angular', 'require'], function(angular, require) {
       restrict: 'E',
       transclude: true,
       scope: {
-        fname: '@',
+        fname: '@'
       },
       templateUrl: require.toUrl('./partials/widget-card.html'),
-      controller: 'WidgetCardController',
+      controller: 'WidgetCardController'
+    };
+  });
+  
+  /**
+  Just the widget card -- gets the widget type from the scope
+  **/
+  app.directive('compactWidget', function() {
+    return {
+      restrict: 'E',
+      transclude: true,
+      scope: {
+        fname: '@'
+      },
+      templateUrl: require.toUrl('./partials/compact-widget-card.html'),
+      controller: 'WidgetCardController'
     };
   });
 
   app.directive('widgetIcon', function() {
     return {
       restrict: 'E',
-      templateUrl: require.toUrl('./partials/widget-icon.html'),
-    };
+      templateUrl: require.toUrl('./partials/widget-icon.html')
+    }
   });
 
   app.directive('optionLink', function() {
@@ -30,10 +46,10 @@ define(['angular', 'require'], function(angular, require) {
       restrict: 'E',
       scope: {
         widget: '=app',
-        config: '=config',
+        config: '=config'
       },
       templateUrl: require.toUrl('./partials/type__option-link.html'),
-      controller: 'OptionLinkController',
+      controller: 'OptionLinkController'
     };
   });
 
@@ -42,9 +58,9 @@ define(['angular', 'require'], function(angular, require) {
       restrict: 'E',
       scope: {
         widget: '=app',
-        config: '=config',
+        config: '=config'
       },
-      templateUrl: require.toUrl('./partials/type__list-of-links.html'),
+      templateUrl: require.toUrl('./partials/type__list-of-links.html')
     };
   });
 
@@ -53,10 +69,10 @@ define(['angular', 'require'], function(angular, require) {
       restrict: 'E',
       scope: {
         widget: '=app',
-        config: '=config',
+        config: '=config'
       },
       templateUrl: require.toUrl('./partials/type__search-with-links.html'),
-      controller: 'SearchWithLinksController',
+      controller: 'SearchWithLinksController'
     };
   });
 
@@ -65,10 +81,10 @@ define(['angular', 'require'], function(angular, require) {
       restrict: 'E',
       scope: {
         widget: '=app',
-        config: '=config',
+        config: '=config'
       },
       templateUrl: require.toUrl('./partials/type__rss.html'),
-      controller: 'RssWidgetController',
+      controller: 'RssWidgetController'
     };
   });
 
@@ -77,10 +93,11 @@ define(['angular', 'require'], function(angular, require) {
       restrict: 'E',
       scope: {
         widget: '=app',
-        config: '=config',
+        config: '=config'
       },
       templateUrl: require.toUrl('./partials/type__weather.html'),
-      controller: 'WeatherWidgetController',
-    };
+      controller: 'WeatherWidgetController'
+    }
   });
+
 });

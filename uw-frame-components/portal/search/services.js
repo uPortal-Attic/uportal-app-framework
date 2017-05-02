@@ -1,29 +1,34 @@
 'use strict';
 
 define(['angular'], function(angular) {
+
+
   var app = angular.module('portal.search.services', []);
 
-  app.factory('PortalSearchService', function() {
+  app.factory('PortalSearchService', function(){
+
     var query;
 
     var getQuery = function() {
       return query;
-    };
+    }
 
-    var resetQuery = function() {
+    var resetQuery = function(){
       query = undefined;
-    };
+    }
 
-    var setQuery = function(q) {
+    var setQuery = function(q){
       query = q;
-    };
+    }
 
     return {
-      setQuery: setQuery,
-      getQuery: getQuery,
-      resetQuery: resetQuery,
+      setQuery : setQuery,
+      getQuery : getQuery,
+      resetQuery : resetQuery
     };
+
   });
 
   return app;
+
 });
