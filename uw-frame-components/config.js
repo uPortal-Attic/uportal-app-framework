@@ -1,16 +1,17 @@
 'use strict';
+// eslint-disable-next-line requirejs/no-js-extension
 define(['./my-app/app-config.js'], function(myAppConfig) {
-  // taken from https://plainjs.com/javascript/utilities/merge-two-javascript-objects-19/
+  /**
+   * taken from https://plainjs.com/javascript/utilities/merge-two-javascript-objects-19/
+   */
   function extend(obj, src) {
-      Object.keys(src).forEach(function(key) {
- obj[key] = src[key];
-});
-      return obj;
+    Object.keys(src).forEach(function(key) {
+      obj[key] = src[key];
+    });
+    return obj;
   }
 
-  var allPaths, allShims, framePaths, frameShims;
-
-  framePaths = {
+  var framePaths = {
       'angular': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min',
       'angular-animate': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min',
       'angular-mocks': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-mocks',
@@ -34,7 +35,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'sortable': 'js/sortable',
   };
 
-  frameShims = {
+  var frameShims = {
       'angular': {deps: ['jquery'], exports: 'angular'},
       'angular-animate': {deps: ['angular'], exports: 'angular-animate'},
       'angular-mocks': {deps: ['angular']},
@@ -44,17 +45,22 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'ngSanitize': {deps: ['angular']},
       'ngStorage': {deps: ['angular']},
       'ngAria': {deps: ['angular']},
-      'ngMaterial': {deps: ['angular', 'ngAria', 'angular-animate', 'angular-mocks'], exports: 'ngMaterial'},
+      'ngMaterial': {
+        deps: ['angular', 'ngAria', 'angular-animate', 'angular-mocks'],
+        exports: 'ngMaterial',
+      },
       'ui-bootstrap': {deps: ['angular']},
       'ui-gravatar': {deps: ['angular']},
   };
 
+  var allPaths;
   if(myAppConfig.paths) {
     allPaths = extend(framePaths, myAppConfig.paths);
   } else {
     allPaths = framePaths;
   }
 
+  var allShims;
   if(myAppConfig.shims) {
     allShims = extend(frameShims, myAppConfig.shims);
   } else {
