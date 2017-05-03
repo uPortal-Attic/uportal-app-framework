@@ -75,7 +75,7 @@ define(['angular', 'require'], function(angular, require) {
   }]);
 
   /* Username */
-  app.controller('SessionCheckController', ['$scope', 'mainService', 'NAMES', 'FOOTER_URLS', '$rootScope', function($scope, mainService, NAMES, FOOTER_URLS, $rootScope) {
+  app.controller('SessionCheckController', ['$log', '$scope', 'mainService', 'NAMES', 'FOOTER_URLS', '$rootScope', function($log, $scope, mainService, NAMES, FOOTER_URLS, $rootScope) {
     var vm = this;
     vm.user = [];
     vm.firstLetter = '';
@@ -98,6 +98,8 @@ define(['angular', 'require'], function(angular, require) {
         }
       }
       return result;
+    }).catch(function() {
+      $log.warn('could not get user');
     });
   }]);
 

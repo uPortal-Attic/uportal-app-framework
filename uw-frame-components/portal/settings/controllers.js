@@ -28,12 +28,13 @@ define(['angular'], function(angular) {
                                                   '$q',
                                                   '$window',
                                                   '$localStorage',
+                                                  '$log',
                                                   '$sessionStorage',
                                                   'KV_KEYS',
                                                   'NOTIFICATION',
                                                   'FEATURES',
                                                   'keyValueService',
-    function($scope, $q, $window, $localStorage, $sessionStorage, KV_KEYS, NOTIFICATION, FEATURES, keyValueService) {
+    function($scope, $q, $window, $localStorage, $log, $sessionStorage, KV_KEYS, NOTIFICATION, FEATURES, keyValueService) {
       var init = function() {
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
         $scope.KV_KEYS = KV_KEYS;
@@ -52,6 +53,8 @@ define(['angular'], function(angular) {
               $window.location.reload();
               $scope.loadingResetAnnouncements = false;
               return false;
+            }).catch(function() {
+              $log.warn('could not reset announcements');
             });
         }
       };
@@ -62,6 +65,8 @@ define(['angular'], function(angular) {
           $window.location.reload();
           $scope[loadingKey] = false;
           return false;
+        }).catch(function() {
+          $log.warn('could not reset key');
         });
       };
 

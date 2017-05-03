@@ -121,6 +121,8 @@ define(['angular'], function(angular) {
             $log.warn('OptionLinkController couldn\'t get json for: ' + $scope.widget.fname);
           }
           return data;
+        }).catch(function() {
+          $log.warn('could not getWidgetJson');
         });
       }
     };

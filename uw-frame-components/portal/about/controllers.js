@@ -7,6 +7,8 @@ define(['angular', 'require'], function(angular, require) {
       .then(function(result) {
           $scope.frameInfo = result;
           return result;
+      }).catch(function() {
+        $log.warn('issue getting frame details');
       });
 
     $scope.appInfo = null;

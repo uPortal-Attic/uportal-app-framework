@@ -26,7 +26,9 @@ define(['angular'], function(angular) {
             }
             return timeoutData;
           }
-        );
+        ).catch(function() {
+          $log.warn('could not get timeout');
+        });
       }
     }
 

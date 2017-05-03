@@ -4,8 +4,8 @@ define(['angular'], function(angular) {
   var app = angular.module('portal.misc.controllers', []);
 
   /* AddToHomeController */
-  app.controller('AddToHomeController', ['$scope', '$timeout', 'PortalAddToHomeService',
-                 function($scope, $timeout, PortalAddToHomeService) {
+  app.controller('AddToHomeController', ['$log', '$scope', '$timeout', 'PortalAddToHomeService',
+                 function($log, $scope, $timeout, PortalAddToHomeService) {
     $scope.addToHome = function() {
       if(!$scope.inHome && PortalAddToHomeService.canAddToHome($scope.fname)) {
         $scope.savingAddToHome = true;
@@ -32,6 +32,8 @@ define(['angular'], function(angular) {
       PortalAddToHomeService.inHome(fname).then(function(data) {
         $scope.inHome = data;
         return data;
+      }).catch(function() {
+        $log.warn('could not check inHome for ' + fname);
       });
     };
 

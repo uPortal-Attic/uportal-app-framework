@@ -81,16 +81,16 @@ define(['angular'], function(angular) {
               keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncementIds).then(function(data) {
                 keyValueService.deleteValue('lastviewedannouncementid').then(function() {
                   return resolve(null);
-                }, function(response) {
+                }).catch(function(response) {
                   return reject(response);
                 });
-              }, function(response) {
+              }).catch(function(response) {
                 return reject(response);
               });
             }else{ // no legacy seenAnnounements
               return resolve(null);
             }
-          }, function(response) { // getLegacyLastViewAnnouncement promise failure
+          }).catch(function(response) { // getLegacyLastViewAnnouncement promise failure
             return resolve(response);
           });
         }else{ // kvStore is not activated
@@ -118,16 +118,16 @@ define(['angular'], function(angular) {
               keyValueService.setValue(KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds).then(function(data) {
                 keyValueService.deleteValue('lastviewedpopupid').then(function() {
                   return resolve(null);
-                }, function(response) {
+                }).catch(function(response) {
                   return reject(response);
                 });
-              }, function(response) {
+              }).catch(function(response) {
                 return reject(response);
               });
             }else{ // no legacy popups
               return resolve(null);
             }
-          }, function(response) { // getLegacyPopups promise failure
+          }).catch(function(response) { // getLegacyPopups promise failure
             return resolve(response);
           });
         }else{ // kvStore is not activated
@@ -147,10 +147,10 @@ define(['angular'], function(angular) {
                 $sessionStorage.seenAnnouncementIds = data;
               }
               return resolve($sessionStorage.seenAnnouncementIds);
-            }, function(response) {
+            }).catch(function(response) {
               return reject(response);
             });
-          }, function(response) {
+          }).catch(function(response) {
             return reject(response);
           });
         }else{
@@ -170,10 +170,10 @@ define(['angular'], function(angular) {
                 $sessionStorage.seenPopupIds = data;
               }
               return resolve($sessionStorage.seenPopupIds);
-            }, function(response) {
+            }).catch(function(response) {
               return reject(response);
             });
-          }, function(response) {
+          }).catch(function(response) {
             return reject(response);
           });
         } else {
@@ -194,7 +194,7 @@ define(['angular'], function(angular) {
         if(keyValueService.isKVStoreActivated()) {
           keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncementIds).then(function(data) {
             return resolve($sessionStorage.seenAnnouncementIds);
-          }, function(response) {
+          }).catch(function(response) {
             return reject(response);
           });
         }else{
@@ -216,8 +216,7 @@ define(['angular'], function(angular) {
           keyValueService.setValue(KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds)
             .then(function(data) {
               return resolve($sessionStorage.seenPopupIds);
-            },
-            function(response) {
+            }).catch(function(response) {
               return reject(response);
             });
         } else {
