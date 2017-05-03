@@ -40,11 +40,10 @@ define(['angular', 'jquery'], function(angular, $) {
       // filtering magic
       $.each(array, function(index, cur) { // for each object
         if(Array.isArray(cur[arrayGroupFieldName])) {
-          var added = false;
           $.each(cur[arrayGroupFieldName], function(index, group) { // for each group for that object
             var inGroup = $.grep(groups, function(e) {
-return e[groupsNameFieldName] === group;
-}).length; // intersect, then get length
+              return e[groupsNameFieldName] === group;
+            }).length; // intersect, then get length
             if(inGroup > 0) {// are they in that group?
               returnArray.push(cur); // they should get this object
               return false; // break;
@@ -125,7 +124,7 @@ return e[groupsNameFieldName] === cur[arrayGroupFieldName];
       if(status === 0 || status === 302) {
         $log.log('redirect happening due to ' + status);
         if(MISC_URLS.loginURL) {
-          window.location.replace(MISC_URLS.loginURL);
+          $window.location.replace(MISC_URLS.loginURL);
         } else {
           $log.warn('MISC_URLS.loginURL was not set, cannot redirect');
         }

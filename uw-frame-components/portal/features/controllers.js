@@ -112,6 +112,8 @@ define(['angular', 'require'], function(angular, require) {
         } else {
           $scope.buckyImg = 'img/robot-taco.gif';
         }
+        // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
+        // eslint-disable-next-line angular/on-watch
         $rootScope.$watch('portal.theme', function(newVal, oldVal) {
           if (newVal !== oldVal) {
             $scope.buckyImg = newVal.mascotImg || 'img/robot-taco.gif';

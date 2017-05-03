@@ -1,7 +1,15 @@
 'use strict';
+/* eslint-env node */
+/* global inject */
 define(['angular-mocks', 'portal'], function() {
     describe('NotificationsService', function() {
-        var notificationsService, httpBackend, backendURL, groupURL, kvURL, loginSilentURL, kvKeys;
+        var notificationsService;
+        var httpBackend;
+        var backendURL;
+        var groupURL;
+        var kvURL;
+        var loginSilentURL;
+        var kvKeys;
 
         beforeEach(function() {
           module('portal');
@@ -27,7 +35,6 @@ define(['angular-mocks', 'portal'], function() {
             httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
             // begin test
             notificationsService.getAllNotifications().then(function(results) {
-              console.log(results);
               expect(results).toBeTruthy();
               expect(results.dismissed).toBeTruthy();
               expect(results.notDismissed).toBeTruthy();
@@ -55,7 +62,6 @@ define(['angular-mocks', 'portal'], function() {
 
             // begin test
             notificationsService.getAllNotifications().then(function(results) {
-                console.log(results);
                 expect(results).toBeTruthy();
                 expect(results.notDismissed).toBeTruthy();
                 expect(results.dismissed).toBeTruthy();
@@ -84,7 +90,6 @@ define(['angular-mocks', 'portal'], function() {
 
             // begin test
             notificationsService.getAllNotifications().then(function(results) {
-                console.log(results);
                 expect(results).toBeTruthy();
                 expect(results.notDismissed).toBeTruthy();
                 expect(results.dismissed).toBeTruthy();
@@ -114,7 +119,6 @@ define(['angular-mocks', 'portal'], function() {
 
             // begin test
             notificationsService.getFilteredNotifications().then(function(results) {
-                console.log(results);
                 expect(results).toBeTruthy();
                 expect(results.notDismissed).toBeTruthy();
                 expect(results.dismissed).toBeTruthy();

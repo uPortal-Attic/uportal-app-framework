@@ -159,6 +159,7 @@ define([
     }]);
 
     app.run(function($location,
+                     $log,
                      $http,
                      $rootScope,
                      $timeout,
@@ -219,7 +220,7 @@ define([
           $rootScope.portal.theme = $sessionStorage.portal.theme;
           generateTheme();
           if(APP_FLAGS.debug) {
-            console.log('Using cached theme');
+            $log.info('Using cached theme');
           }
           loadingCompleteSequence();
           return;
@@ -235,7 +236,7 @@ define([
               generateTheme();
             } else {
               if(APP_FLAGS.debug) {
-                console.error('something is wrong with setup, no default theme. Setting to THEMES.themes[0].');
+                $log.error('something is wrong with setup, no default theme. Setting to THEMES.themes[0].');
               }
               $rootScope.portal.theme = THEMES.themes[0];
               generateTheme();
@@ -266,14 +267,14 @@ define([
               loadingCompleteSequence();
             }, function(reason) {
               if(APP_FLAGS.debug) {
-                console.error('We got a error back from groupURL, setting theme to default');
+                $log.error('We got a error back from groupURL, setting theme to default');
               }
               defaultThemeGo();
               loadingCompleteSequence();
             });
           } else {
             if(APP_FLAGS.debug) {
-              console.warn('theme was setup as group, but the groupURL was not provided, going default');
+              $log.warn('theme was setup as group, but the groupURL was not provided, going default');
             }
             // still not set, set to default theme
             defaultThemeGo();
@@ -287,7 +288,7 @@ define([
             generateTheme();
           } else {
             if(APP_FLAGS.debug) {
-              console.warn('APP_FLAGS.defaultTheme was set to ' + themeIndex + ' however we could not find that theme name. Please check frame-config.js for a list of available themes. Falling back to the default theme (uw-system).');
+              $log.warn('APP_FLAGS.defaultTheme was set to ' + themeIndex + ' however we could not find that theme name. Please check frame-config.js for a list of available themes. Falling back to the default theme (uw-system).');
             }
             defaultThemeGo();
           }
@@ -321,8 +322,11 @@ define([
       };
 
       var searchRouteParameterInit = function() {
+        // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
+        // eslint-disable-next-line angular/on-watch
         $rootScope.$on('$routeChangeStart', function(event, next, current) {
-          var searchValue = '', paramToTackOn = '';
+          var searchValue = '';
+          var paramToTackOn = '';
           if(next.$$route && next.$$route.searchParam) {
             paramToTackOn = APP_FLAGS.gaSearchParam || 'q';
             searchValue = next.params[next.$$route.searchParam];
@@ -342,10 +346,11 @@ define([
 
       var configureAppConfig = function() {
         if(APP_FLAGS.debug) {
-          console.log(new Date() + ' : start app-config override');
+          $log.info(new Date() + ' : start app-config override');
         }
-        var count = 0, groups = 0;
-        for(var i in configsName) {
+        var count = 0;
+        var groups = 0;
+        for (var i = 0; i < configsName.length; i++) {
           var curConfig = configsName[i];
           if(OVERRIDE[curConfig]) {
             groups++;
@@ -354,15 +359,17 @@ define([
               count++;
             } else {// treat as an object
               for(var key in OVERRIDE[curConfig]) {// for each config value object
-                configs[i][key] = OVERRIDE[curConfig][key];
-                count++;
+                if ({}.hasOwnProperty.call(OVERRIDE[curConfig]), key) {
+                  configs[i][key] = OVERRIDE[curConfig][key];
+                  count++;
+                }
               }
             }
           }
         }
         if(APP_FLAGS.debug) {
-          console.log(new Date() + ' : ended app-config override');
-          console.log('Overwrote ' + count + ' configs in ' + groups + ' config groups.');
+          $log.info(new Date() + ' : ended app-config override');
+          $log.info('Overwrote ' + count + ' configs in ' + groups + ' config groups.');
         }
       };
 
@@ -376,7 +383,7 @@ define([
         if(APP_FLAGS.loginOnLoad && !lastLoginValid()) {
           $http.get(SERVICE_LOC.loginSilentURL).then(function(result) {
             if(APP_FLAGS.debug) {
-              console.log('login returned with ' + (result.data ? result.data.status : null));
+              $log.info('login returned with ' + (result.data ? result.data.status : null));
             }
             themeLoading();
             if('success' === result.data.status) {
@@ -398,8 +405,4 @@ define([
     });
 
     return app;
-},
-function(angular, require, $) {
-  // error block
-  $('#loading-splash').html('<b>An error has occured during loading, please try refreshing the page. If the issue persists please contact the helpdesk.</b>');
 });

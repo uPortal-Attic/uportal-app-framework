@@ -10,6 +10,7 @@ define(['angular'], function(angular) {
     '$scope',
     '$localStorage',
     '$routeParams',
+    '$window',
     'SEARCH',
     'APP_FLAGS',
     function(miscService,
@@ -19,6 +20,7 @@ define(['angular'], function(angular) {
              $scope,
              $localStorage,
              $routeParams,
+             $window,
              SEARCH,
              APP_FLAGS) {
       // scope functions
@@ -29,7 +31,7 @@ define(['angular'], function(angular) {
               $scope.showSearchFocus = false;
           } else {
               // frame app redirect
-              window.location = SEARCH.searchURL + portlet.name;
+              $window.location = SEARCH.searchURL + portlet.name;
           }
       };
 
@@ -41,7 +43,7 @@ define(['angular'], function(angular) {
               $scope.showSearchFocus = false;
           } else {
               // frame app redirect
-              window.location = SEARCH.searchURL + $scope.initialFilter;
+              $window.location = SEARCH.searchURL + $scope.initialFilter;
           }
         }
       };

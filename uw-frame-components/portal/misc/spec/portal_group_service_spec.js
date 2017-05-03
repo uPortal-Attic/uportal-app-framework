@@ -1,7 +1,12 @@
 'use strict';
+/* eslint-env node */
+/* global inject */
 define(['angular-mocks', 'portal'], function() {
     describe('PortalGroupService', function() {
-        var service, httpBackend, mockMiscService, URLS = {}, loginSilentURL;
+        var service;
+        var httpBackend;
+        var URLS = {};
+        var loginSilentURL;
 
         beforeEach(function() {
           module('portal');

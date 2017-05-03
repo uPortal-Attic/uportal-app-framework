@@ -387,7 +387,7 @@ define(['angular'], function(angular) {
           $scope.nextUnits = 'C';
 
           // If the user doesn't have a preference, default to Fahrenheit
-          if (userPreference === null || userPreference === '' || typeof userPreference === 'undefined') {
+          if (userPreference === null || userPreference === '' || angular.isUndefined(userPreference)) {
             userPreference = 'F';
           }
 

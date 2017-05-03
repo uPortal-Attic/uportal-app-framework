@@ -5,6 +5,9 @@ define(['angular', 'jquery'], function(angular, $) {
 
     app.factory('portalSkinService', ['$q', '$http', 'miscService', 'SERVICE_LOC',
         function($q, $http, miscService, SERVICE_LOC) {
+          /**
+           * Sets the skin on the backend layout manager
+           */
           function setPortalSkin(skinKey) {
             if(SERVICE_LOC.portalLayoutRestEndpoint) {
               var params = {
