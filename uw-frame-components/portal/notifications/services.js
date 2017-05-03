@@ -12,7 +12,7 @@ define(['angular', 'jquery'], function(angular, $) {
     /////////////////////
     // SERVICE METHODS //
     /////////////////////
-    
+
     /**
      * @typedef {Object} Notification
      * @property {number} id
@@ -25,13 +25,13 @@ define(['angular', 'jquery'], function(angular, $) {
      * @property {string=} dataObject
      * @property {Object=} dataArrayFilter
      */
-    
+
     /**
      * @typedef {Object} NotificationReturnObject
      * @property {Notification[]} dismissed
      * @property {Notification[]} notDismissed
      */
-    
+
     /**
      * Get all notifications at the given URL (as set in app-config.js or override.js)
      * @returns {Promise<NotificationReturnObject>} A promise which returns an object containing notifications arrays
@@ -45,7 +45,7 @@ define(['angular', 'jquery'], function(angular, $) {
             miscService.redirectUser(reason.status, 'notifications json feed call');
         });
     };
-    
+
     /**
      * Gets notifications and filters them by group and via data if dataURL is
      * present.
@@ -71,10 +71,10 @@ define(['angular', 'jquery'], function(angular, $) {
              return [];
          });
     };
-    
+
     /**
      * Filter the array of notifications based on the groups that were passed in
-     * @param {Notification[]} arrayOfNotifications 
+     * @param {Notification[]} arrayOfNotifications
      * @return {Promise<Notification[]>} : an array filtered by groups. Or an empty array if they have none
     **/
     function filterNotificationsByGroup(arrayOfNotifications) {
@@ -102,7 +102,7 @@ define(['angular', 'jquery'], function(angular, $) {
         }
       );
     };
-    
+
     /**
      * Filter the array of notifications based on if data was requested before showing
      * @param {Notification[]} : an array of notifications
@@ -134,10 +134,10 @@ define(['angular', 'jquery'], function(angular, $) {
                 }
               } else if (objectToFind) {
                 return notification;
-              } 
-              
+              }
+
               return;
-             
+
             }).catch (function(reason){
               $log.warn("Error retrieving data for notification");
             }
@@ -158,8 +158,8 @@ define(['angular', 'jquery'], function(angular, $) {
         }
       );
     }
-    
-    
+
+
     /**
      * Separates notification array into new object with two properties
      * @param {Notification[]} : an array of notifications
@@ -192,7 +192,7 @@ define(['angular', 'jquery'], function(angular, $) {
         }
       );
     };
-    
+
 
     /**
      * Save array of dismissed notification IDs in k/v store, reset dismissedPromise

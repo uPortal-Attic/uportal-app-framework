@@ -2,7 +2,7 @@
   <!-- Mobile bell in hamburger -->
   <div class="notification-badge notification-badge-mobile" aria-label="{{ status }}"
        ng-if="notificationsEnabled && directiveMode === 'mobile-bell' && notifications.length !== 0">
-    <i class='fa fa-bell'></i>
+    <md-icon>notifications</md-icon>
   </div>
 
   <!-- Mobile menu row -->
@@ -12,7 +12,7 @@
                ng-href="{{ notificationsUrl }}"
                ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Notifications');"
                layout="row" layout-align="start center">
-      <span><i class='fa fa-bell fa-fw'></i></span>
+      <span><md-icon>notifications</md-icon></span>
       <span>Notifications ({{ notifications.length }})</span>
     </md-button>
   </md-menu-item>
@@ -24,10 +24,9 @@
      ng-click="pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');"
      ng-href="{{ notificationsUrl }}">
     <div class="notification-badge" aria-label="{{status}}" ng-class="{ 'notification-badge-empty' : notifications.length === 0 }">
-      <div class="arrow-down" ng-if="hasPriorityNotifications"></div>
       <span class="number-of-nots" ng-if="notifications.length > 0"
             ng-class="{ 'more-than-10-nots' : (notifications.length > 9) }">{{ notifications.length }}</span>
-      <i class="fa fa-bell fa-2x" ng-class="{ 'has-priority-nots': hasPriorityNotifications }"></i>
+      <md-icon>notifications</md-icon>
     </div>
   </a>
 
