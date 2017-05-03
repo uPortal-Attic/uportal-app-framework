@@ -6,14 +6,16 @@ define(['angular', 'require'], function(angular, require) {
     portalAboutService.getFrameDetails()
       .then(function(result) {
           $scope.frameInfo = result;
-      }, function() {});
+          return result;
+      });
 
     $scope.appInfo = null;
     if(SERVICE_LOC.aboutURL) {
       portalAboutService.getDetails(SERVICE_LOC.aboutURL)
         .then(function(result) {
           $scope.appInfo = result;
-        }, function() {
+          return result;
+        }).catch(function() {
           $log.warn('issue getting frame info');
         });
     }

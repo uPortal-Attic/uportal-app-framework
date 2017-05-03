@@ -51,6 +51,7 @@ define(['angular'], function(angular) {
             .then(function() {
               $window.location.reload();
               $scope.loadingResetAnnouncements = false;
+              return false;
             });
         }
       };
@@ -60,6 +61,7 @@ define(['angular'], function(angular) {
         keyValueService.deleteValue(key).then(function() {
           $window.location.reload();
           $scope[loadingKey] = false;
+          return false;
         });
       };
 

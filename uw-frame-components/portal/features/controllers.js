@@ -15,6 +15,7 @@ define(['angular', 'require'], function(angular, require) {
           if (features.length > 0) {
             $scope.features = features;
           }
+          return features;
         });
       }
   }]);
@@ -34,19 +35,21 @@ define(['angular', 'require'], function(angular, require) {
         // reloadAnnouncements
         portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
           $scope.announcements = unseenAnnouncements;
+          return unseenAnnouncements;
         });
         miscService.pushGAEvent('feature', liked ? 'read more' : 'dismissed', announcementID);
       };
 
       $scope.markAllAnnouncementsSeen = function(liked) {
         portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
-          for(var i=0; i<unseenAnnouncements.length; i++) {
+          for (var i=0; i<unseenAnnouncements.length; i++) {
             var announcement = unseenAnnouncements[i];
             portalFeaturesService.markAnnouncementSeen(announcement.id);
             miscService.pushGAEvent('feature', liked ? 'read more' : 'dismissed', announcement.id);
           }
-          portalFeaturesService.getUnseenAnnouncements().then(function(newUnseenAnnouncements) {
+          return portalFeaturesService.getUnseenAnnouncements().then(function(newUnseenAnnouncements) {
             $scope.announcements = newUnseenAnnouncements;
+            return newUnseenAnnouncements;
           });
         });
       };
@@ -93,7 +96,8 @@ define(['angular', 'require'], function(angular, require) {
                   miscService.pushGAEvent('popup', action, orderedPopups[0].id);
                   portalFeaturesService.markPopupSeen(orderedPopups[0].id);
                   getPopups();
-                }, function() {
+                  return action;
+                }).catch(function() {
                   // if popup is closed by clicking outside or pressing escape key
                   miscService.pushGAEvent('popup', 'dismissed', orderedPopups[0].id);
                   portalFeaturesService.markPopupSeen(orderedPopups[0].id);
@@ -102,6 +106,7 @@ define(['angular', 'require'], function(angular, require) {
               };
               displayPopup();
             }
+            return unseenPopups;
           });
         }
       };
@@ -136,6 +141,7 @@ define(['angular', 'require'], function(angular, require) {
              if(!$rootScope.GuestMode) {
                $scope.announcements = unseenAnnouncements;
              }
+             return unseenAnnouncements;
            });
            setMascot();
          }else{

@@ -19,8 +19,8 @@ define(['angular'], function(angular) {
             $scope.inHome = true;
             $scope.successfullyAdded = true;
             $scope.actionLinkIcon = $scope.actionLinkIconTemp;
-          },
-          function() {
+            return true;
+          }).catch(function() {
             // failed
             $scope.addToHomeFailed = true;
           }
@@ -31,6 +31,7 @@ define(['angular'], function(angular) {
     var checkInHome = function(fname) {
       PortalAddToHomeService.inHome(fname).then(function(data) {
         $scope.inHome = data;
+        return data;
       });
     };
 

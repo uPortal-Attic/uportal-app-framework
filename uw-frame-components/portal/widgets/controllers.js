@@ -51,6 +51,7 @@ define(['angular'], function(angular) {
             $scope.widget = data;
             $scope.widgetType = widgetType(data);
           }
+          return data;
         })
         .catch(function(error) {
           $log.warn('WidgetCardController couldn\'t get data for: ' + fname);
@@ -119,6 +120,7 @@ define(['angular'], function(angular) {
           } else {
             $log.warn('OptionLinkController couldn\'t get json for: ' + $scope.widget.fname);
           }
+          return data;
         });
       }
     };
@@ -223,6 +225,7 @@ define(['angular'], function(angular) {
                 }
               }
             }
+            return result;
           })
           .catch(function(error) {
             // If the service couldn't get data, display error messages
@@ -266,7 +269,8 @@ define(['angular'], function(angular) {
             $log.warn('Got nothing back from widget fetch from: ' + $scope.widget.widgetURL);
             $scope.isEmpty = true;
           }
-        }, function() {
+          return data;
+        }).catch(function() {
           // After we get widget data, turn off loading spinner
           $scope.loading = false;
         });

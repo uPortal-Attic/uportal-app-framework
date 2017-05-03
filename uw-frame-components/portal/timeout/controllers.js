@@ -18,12 +18,13 @@ define(['angular'], function(angular) {
             } else {
               $log.info('Timeout data could not be found');
               if($sessionStorage.portal
-                 && $sessionStorage.portal.username
-                 && $sessionStorage.portal.username !== 'guest') {
-                   // we know its not a guest session
-                   triggerDialog();
-                 }
+                  && $sessionStorage.portal.username
+                  && $sessionStorage.portal.username !== 'guest') {
+                // we know its not a guest session
+                triggerDialog();
+              }
             }
+            return timeoutData;
           }
         );
       }

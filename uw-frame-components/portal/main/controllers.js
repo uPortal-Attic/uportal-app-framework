@@ -97,6 +97,7 @@ define(['angular', 'require'], function(angular, require) {
           vm.firstLetter = username.substring(0, 1);
         }
       }
+      return result;
     });
   }]);
 
