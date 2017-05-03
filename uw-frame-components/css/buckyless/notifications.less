@@ -65,9 +65,10 @@
   }
 
   .notification-badge {
-    width: 35px;
-    height: 35px;
-    margin: 5px 0 0;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 50%;
     font-weight: 200;
     text-align: center;
     color: @white;
@@ -85,14 +86,20 @@
       margin: 0 0 0;
       border-radius: 1000px;
       padding: 0;
-      color: @color1;
       z-index: 999;
       top: 0;
       right: 26px;
-      > .fa-bell {
-        font-size: 12px;
-        position: relative;
-        bottom: 10px;
+      > .material-icons {
+        color: @color1;
+        font-size: 16px;
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        min-height: 18px;
+        min-width: 18px;
+        line-height: 18px;
+        top: 0;
+        left: 0;
       }
     }
     .number-of-nots {
@@ -100,16 +107,12 @@
       font-weight: 400;
       z-index: 2000;
       position: absolute;
-      top: 2px;
-      left: 12px;
+      line-height: 40px;
+      left: 14px;
     }
     .more-than-10-nots {
-      left: 11px;
-      top: 7px;
+      left: 13px;
       font-size: small;
-    }
-    > .fa-bell {
-      font-size: 1.5em;
     }
   }
 
@@ -118,15 +121,15 @@
     .notification-badge {
       position: relative;
       transition: @link-hover-transition;
-      > .arrow-down {
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        border-top: 7px solid @grayscale2;
-        z-index:2000;
-        position: absolute;
-        top:-14px;
-        right:10px;
+
+      .material-icons {
+        width: 40px;
+        height: 40px;
+        font-size: 36px;
+        border-radius: 50%;
+        line-height: 40px;
       }
+
       &:hover {
         color:#ccc;
       }
