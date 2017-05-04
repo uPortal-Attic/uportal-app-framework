@@ -1,22 +1,19 @@
 'use strict';
-const less          = require('less');
-const path          = require('path');
-const fs            = require('fs');
-const exec          = require('child_process').exec;
-const autoprefixer  = require('autoprefixer');
-const postcss       = require('postcss');
-
-const exec_handler = function(error, stdout, stderr) {
-  if (error) throw error;
-};
+/* eslint-env node */
+/* eslint-disable angular/log, no-console */
+const less = require('less');
+const path = require('path');
+const fs = require('fs');
+const autoprefixer = require('autoprefixer');
+const postcss = require('postcss');
 
 const mkdirp = require('mkdirp');
 const copy = require('recursive-copy');
 const copyOptions = {
-  overwrite: true
-}
+  overwrite: true,
+};
 
-mkdirp('uw-frame-static/target/css/themes/', function (error) {
+mkdirp('uw-frame-static/target/css/themes/', function(error) {
   if (error) throw error;
 });
 
@@ -36,35 +33,56 @@ for (let i = 0; i < themes.length; i++) {
   // Read input .less file
   fs.readFile(src, function(error, data) {
     // Log any errors
-    if(error) throw error;
+    if (error) throw error;
     // Render less and write css
     writeCss(src, themeName, data.toString());
   });
 }
 
-copy('uw-frame-components/', 'uw-frame-static/target', copyOptions).catch(function (error, results){
+copy(
+  'uw-frame-components/',
+  'uw-frame-static/target',
+  copyOptions
+).catch(function(error, results) {
   if (error) throw error;
 });
 
-copy('node_modules/bootstrap/', 'uw-frame-static/target/css/themes/node_modules/bootstrap/', copyOptions).catch(function(error){
+copy(
+  'node_modules/bootstrap/',
+  'uw-frame-static/target/css/themes/node_modules/bootstrap/',
+  copyOptions
+).catch(function(error) {
   if (error) throw error;
 });
 
-copy('node_modules/font-awesome/', 'uw-frame-static/target/css/themes/node_modules/font-awesome/', copyOptions).catch(function(error){
+copy(
+  'node_modules/font-awesome/',
+  'uw-frame-static/target/css/themes/node_modules/font-awesome/',
+  copyOptions
+).catch(function(error) {
   if (error) throw error;
 });
 
-copy('node_modules/normalize.less', 'uw-frame-static/target/css/themes/node_modules/normalize.less', copyOptions).catch(function(error){
+copy(
+  'node_modules/normalize.less',
+  'uw-frame-static/target/css/themes/node_modules/normalize.less',
+  copyOptions
+).catch(function(error) {
   if (error) throw error;
 });
 
-copy('uw-frame-static/superstatic.json','uw-frame-static/target/superstatic.json', copyOptions).catch(function (error, results){
+copy(
+  'uw-frame-static/superstatic.json',
+  'uw-frame-static/target/superstatic.json',
+  copyOptions
+).catch(function(error, results) {
   if (error) throw error;
 });
 
 
 /**
- * Process the .less styles into css, auto-prefix the css, then write to a .css file
+ * Process the .less styles into css, auto-prefix the css,
+ * then write to a .css file
  * @param srcPath String for the input .less file path
  * @param theme String for the name of the theme
  * @param styles String read from the input less file
@@ -78,23 +96,27 @@ function writeCss(srcPath, theme, styles) {
       paths: [
         path.resolve('uw-frame-components/css/angular.less'),
         path.resolve('uw-frame-components/css/themes/common-variables.less'),
-        path.resolve('uw-frame-components/css/themes/' + theme + '-variables.less')],
+        path.resolve('uw-frame-components/css/themes/'+theme+'-variables.less'),
+      ],
       filename: path.resolve(srcPath),
-      compress: true
+      compress: true,
     },
     function(error, css) {
       // Log errors
       if(error) throw error;
       // Auto-prefix css
-      postcss([ autoprefixer ]).process(css).then(function (result) {
-        result.warnings().forEach(function (warn) {
+      return postcss([autoprefixer])
+      .process(css)
+      .then(function(result) {
+        result.warnings().forEach(function(warn) {
           console.warn(warn.toString());
         });
         // Write prefixed css to output file
         fs.writeFile(output, result.css, function(error) {
           if (error) throw error;
-        })
+        });
+        return result;
       });
-    });
-
+    }
+  );
 }

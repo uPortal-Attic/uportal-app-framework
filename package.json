@@ -5,6 +5,9 @@
   "scripts": {
     "test": "karma start uw-frame-components/karma.conf.js --single-run",
     "build-static": "node tools/uw-frame-static/build.js",
+    "dev-lint-js": "eslint --quiet --ext js --ext json --ext md --format html --output-file uw-frame-static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern uw-frame-components/css/lib/less-1.6.2.js --ignore-pattern uw-frame-components/js/ga.js --ignore-pattern uw-frame-components/js/sortable.js",
+    "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore --ignore-pattern uw-frame-components/css/lib/less-1.6.2.js --ignore-pattern uw-frame-components/js/ga.js --ignore-pattern uw-frame-components/js/sortable.js",
+    "precommit": "eslint-git-changes",
     "postbuild-static": "htmlprocessor uw-frame-static/index.html -o uw-frame-static/target/index.html",
     "prestatic": "npm run build-static",
     "static": "cd uw-frame-static/target && superstatic",
@@ -57,9 +60,20 @@
   "devDependencies": {
     "autoprefixer": "^6.5.3",
     "concurrently": "^3.1.0",
-    "recursive-copy": "^2.0.5",
+    "eslint": "^3.19.0",
+    "eslint-config-angular": "^0.5.0",
+    "eslint-config-google": "^0.7.1",
+    "eslint-git-changes": "^2.0.0",
+    "eslint-plugin-angular": "^2.3.0",
+    "eslint-plugin-compat": "^1.0.2",
+    "eslint-plugin-jasmine": "^2.2.0",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-markdown": "^1.0.0-beta.4",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-requirejs": "^3.1.1",
     "graceful-fs": "^4.0.0",
     "htmlprocessor": "^0.2.4",
+    "husky": "^0.13.3",
     "jasmine-core": "^2.3.4",
     "karma": "0.13.21",
     "karma-chrome-launcher": "0.2.2",
@@ -77,6 +91,7 @@
     "onchange": "^3.0.2",
     "phantomjs-prebuilt": "2.1.7",
     "postcss": "^5.2.5",
+    "recursive-copy": "^2.0.5",
     "requirejs": "^2.2.0",
     "rimraf": "^2.5.4",
     "superstatic": "^4.0.0"
@@ -85,5 +100,64 @@
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.3",
     "normalize.less": "^1.0.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parserOptions": {
+      "ecmaVersion": 5
+    },
+    "env": {
+      "browser": true,
+      "jasmine": true,
+      "amd": true
+    },
+    "plugins": [
+      "angular",
+      "compat",
+      "jasmine",
+      "json",
+      "markdown",
+      "promise",
+      "requirejs"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "google",
+      "angular",
+      "plugin:jasmine/recommended",
+      "plugin:promise/recommended",
+      "plugin:requirejs/recommended"
+    ],
+    "rules": {
+      "angular/di": [
+        "warn",
+        "array"
+      ],
+      "angular/controller-as": "off",
+
+      "angular/module-setter": "warn",
+      "angular/module-getter": "warn",
+      "angular/typecheck-object": "warn",
+      "angular/typecheck-array": "warn",
+      "angular/typecheck-string": "warn",
+      "angular/no-private-call": "warn",
+      "max-len": "warn",
+      "promise/catch-or-return": "warn",
+      "promise/always-return": "warn",
+
+      "compat/compat": "error",
+      "arrow-parens": "off",
+      "constructor-super": "off",
+      "generator-star-spacing": "off",
+      "no-new-symbol": "off",
+      "no-this-before-super": "off",
+      "no-invalid-this": "off",
+      "no-var": "off",
+      "prefer-rest-params": "off",
+      "prefer-spread": "off",
+      "valid-jsdoc": "warn",
+      "rest-spread-spacing": "off",
+      "yield-star-spacing": "off"
+    }
   }
 }
