@@ -1,10 +1,8 @@
 'use strict';
 
 define(['angular', 'require'], function(angular, require) {
-  var app = angular.module('portal.about.controllers', []);
-
-
-	app.controller('PortalAboutController', ['$scope', 'portalAboutService', 'SERVICE_LOC', function($scope, portalAboutService, SERVICE_LOC) {
+  return angular.module('portal.about.controllers', [])
+	.controller('PortalAboutController', ['$log', '$scope', 'portalAboutService', 'SERVICE_LOC', function($log, $scope, portalAboutService, SERVICE_LOC) {
     portalAboutService.getFrameDetails()
       .then(function(result) {
           $scope.frameInfo = result;
@@ -16,9 +14,8 @@ define(['angular', 'require'], function(angular, require) {
         .then(function(result) {
           $scope.appInfo = result;
         }, function() {
-          console.warn('issue getting frame info');
+          $log.warn('issue getting frame info');
         });
     }
   }]);
-	return app;
 });

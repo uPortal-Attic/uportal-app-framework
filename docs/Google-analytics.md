@@ -8,10 +8,11 @@
 
 Add in a `/js/config.js` file that will overwrite the `uw-frame-components/js/config.js`.
 
+<!-- eslint-disable no-unused-vars -->
 ```javascript
 var config = {
-  gaID : 'UA-########-##'
-}
+  gaID: 'UA-########-##',
+};
 ```
 
 ## Site search
@@ -22,6 +23,7 @@ GA has a great feature called site search. It collects information about what pe
 2) When setting up your route for your search result page pass the search term in as a path variable
 e.g.:
 
+<!-- eslint-disable no-undef, semi -->
 ```javascript
 when('/features/search/:searchTerm', features.search)
 ```
@@ -31,14 +33,14 @@ when('/features/search/:searchTerm', features.search)
 You should end up with something like this:
 
 ```javascript
-define(['require'], function(require){
+define(['require'], function(require) {
   return {
-    search : {
+    search: {
       templateUrl: require.toUrl('./partials/features.html'),
-      controller: "PortalFeaturesController",
-      searchParam : "searchTerm"
-    }
-  }
+      controller: 'PortalFeaturesController',
+      searchParam: 'searchTerm',
+    },
+  };
 });
 
 ```

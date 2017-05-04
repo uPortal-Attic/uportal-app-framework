@@ -3,7 +3,7 @@
 define(['angular'], function(angular) {
   var app = angular.module('portal.main.services', []);
 
-  app.factory('mainService', ['$http', '$sessionStorage', 'miscService', 'SERVICE_LOC', 'APP_FLAGS', function($http, $sessionStorage, miscService, SERVICE_LOC, APP_FLAGS) {
+  app.factory('mainService', ['$http', '$log', '$sessionStorage', 'miscService', 'SERVICE_LOC', 'APP_FLAGS', function($http, $log, $sessionStorage, miscService, SERVICE_LOC, APP_FLAGS) {
     var prom = $http.get(SERVICE_LOC.sessionInfo, {cache: true});
     var userPromise;
 
@@ -21,7 +21,7 @@ define(['angular'], function(angular) {
                 && result.data.person.userName !== $sessionStorage.portal.username
                 && result.data.person.originalUsername !== $sessionStorage.portal.username
                 ) {
-                  console.warn('Thought they were ' + $sessionStorage.portal.username +
+                  $log.warn('Thought they were ' + $sessionStorage.portal.username +
                    ' but session sent back ' + result.data.person.userName +'. Redirect!');
                   delete $sessionStorage.portal;
                   miscService.redirectUser(302, 'Wrong User than populated in session storage.');

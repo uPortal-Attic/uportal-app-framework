@@ -17,7 +17,7 @@ define(['angular', 'require'], function(angular, require) {
             templateUrl: require.toUrl('./partials/loading-gif.html'),
             link: function(scope, elm, attrs) {
                 scope.isLoading = function() {
-                    if(typeof attrs.empty === undefined) {
+                    if(angular.isUndefined(attrs.empty)) {
                         attrs.empty = false;
                     }
 
@@ -81,8 +81,8 @@ define(['angular', 'require'], function(angular, require) {
                 // wait until intial value is there, then select it, then clear the watch so doesn't keep doing it
                 var clearWatch = scope.$watch(
                     function() {
- return $(element[0]).val();
-},
+                      return angular.element(element[0]).val();
+                    },
                     function(value) {
                         if (value) {
                             element[0].focus();
@@ -94,12 +94,12 @@ define(['angular', 'require'], function(angular, require) {
         };
     });
 
-    app.directive('focusMe', function($timeout) {
+    app.directive('focusMe', function($log, $timeout) {
         return {
           link: function(scope, element, attrs) {
             scope.$watch(attrs.focusMe, function(value) {
               if(value === true) {
-                console.log('value=', value);
+                $log.log('value=', value);
                 $timeout(function() {
                   element[0].focus();
                   scope[attrs.focusMe] = false;
@@ -230,19 +230,19 @@ define(['angular', 'require'], function(angular, require) {
      * - truncLen : (optional) length to truncate the title
      */
     app.directive('circleButton', function() {
-    	return {
-    		restrict: 'E',
-    		scope: {
-    			href: '@href',
-    			target: '@target',
-    			faIcon: '@faIcon',
+      return {
+        restrict: 'E',
+        scope: {
+          href: '@href',
+          target: '@target',
+          faIcon: '@faIcon',
           mdIcon: '@mdIcon',
           cbDisabled: '=disabled',
           title: '@title',
           trunclen: '@trunclen',
-    		},
-    		templateUrl: require.toUrl('./partials/circle-button.html'),
-    	};
+        },
+        templateUrl: require.toUrl('./partials/circle-button.html'),
+      };
     });
 
   /**

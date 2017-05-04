@@ -8,6 +8,7 @@ define(['angular'], function(angular) {
                                         'miscService',
                                         'keyValueService',
                                         'PortalGroupService',
+                                        '$log',
                                         '$localStorage',
                                         '$sessionStorage',
                                         'filterFilter',
@@ -18,13 +19,14 @@ define(['angular'], function(angular) {
                                                  miscService,
                                                  keyValueService,
                                                  PortalGroupService,
+                                                 $log,
                                                  $localStorage,
                                                  $sessionStorage,
                                                  filterFilter,
                                                  KV_KEYS,
                                                  FEATURES) {
-    var featuresPromise, filteredFeaturesPromise;
-
+    var featuresPromise;
+    var filteredFeaturesPromise;
     var getFeatures = function() {
       if(!featuresPromise) {
         featuresPromise = $http.get(FEATURES.serviceURL, {cache: true})
@@ -222,8 +224,7 @@ define(['angular'], function(angular) {
     };
 
     var getUnseenAnnouncements = function() {
-      var successFn, errorFn;
-      successFn = function(data) {
+      var successFn = function(data) {
         // features in data[0]  //seenAnnouncements in data[1]
         var announcements = filterFilter(data[0], {isBuckyAnnouncement: true});
         if(announcements && announcements.length != 0) {
@@ -250,9 +251,8 @@ define(['angular'], function(angular) {
           return announcements.filter(hasNotSeen);
         }
       };
-      errorFn = function(reason) {
-        // Currently logging errors to console.
-        console.log('error retrieving unseenAnnouncements: ' + reason.status);
+      var errorFn = function(reason) {
+        $log.error('error retrieving unseenAnnouncements: ' + reason.status);
         return reason;
       };
 
@@ -261,8 +261,7 @@ define(['angular'], function(angular) {
 
 
     var getUnseenPopups = function() {
-      var successFn, errorFn;
-      successFn = function(data) {
+      var successFn = function(data) {
         var popupFeatures = filterFilter(data[0], {isPopup: true});
         if (popupFeatures.length != 0) {
           var today = Date.parse(new Date());
@@ -280,10 +279,8 @@ define(['angular'], function(angular) {
           return popupFeatures.filter(filterSeenPopups).filter(filterExpiredPopups).filter(filterUnEnabledPopups);
         }
       };
-
-      errorFn = function(reason) {
-        // Currently logging errors to console.
-        console.log('error retrieving unseenPopups: ' + reason.status);
+      var errorFn = function(reason) {
+        $log.error('error retrieving unseenPopups: ' + reason.status);
         return reason;
       };
 

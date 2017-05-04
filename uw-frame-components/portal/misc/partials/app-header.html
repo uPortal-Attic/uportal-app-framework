@@ -9,8 +9,7 @@
     <!-- OPTIONS MENU WITH MULTIPLE OPTIONS -->
     <md-menu ng-if="optionTemplate && !isSingleOption">
       <md-button aria-label="Open options menu" class="md-primary link-div" ng-click="$mdOpenMenu($event)">
-        <span hide-gt-sm layout="row" layout-align="center center"><i class='fa fa-gear fa-fw'></i></span>
-        <span hide-xs hide-sm>Options <i class="fa fa-caret-down"></i></span>
+        <span layout="row" layout-align="center center"><md-icon>settings</md-icon></span>
       </md-button>
       <md-menu-content width="4">
         <add-to-home hide-gt-sm></add-to-home>
@@ -24,7 +23,7 @@
     </div>
     <md-menu ng-if="optionTemplate && isSingleOption" hide-gt-sm>
       <md-button aria-label="Open options menu" class="md-primary link-div" ng-click="$mdOpenMenu($event)">
-        <span layout="row" layout-align="center center"><i class='fa fa-gear fa-fw'></i></span>
+        <span layout="row" layout-align="center center"><md-icon>settings</md-icon></span>
       </md-button>
       <md-menu-content width="4">
         <add-to-home hide-gt-sm></add-to-home>

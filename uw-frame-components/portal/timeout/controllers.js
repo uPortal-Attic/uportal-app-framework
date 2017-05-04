@@ -3,8 +3,11 @@
 define(['angular'], function(angular) {
   var app = angular.module('portal.timeout.controllers', []);
 
-  app.controller('PortalTimeoutController', ['$sessionStorage', '$log', '$location', '$timeout', '$mdDialog', 'MISC_URLS', 'PortalShibbolethService',
-  function($sessionStorage, $log, $location, $timeout, $mdDialog, MISC_URLS, PortalShibbolethService) {
+  app.controller('PortalTimeoutController', ['$sessionStorage', '$log', '$location', '$timeout', '$mdDialog', '$window', 'MISC_URLS', 'PortalShibbolethService',
+  function($sessionStorage, $log, $location, $timeout, $mdDialog, $window, MISC_URLS, PortalShibbolethService) {
+    /**
+     * initialize the controller
+     */
     function init() {
       if(PortalShibbolethService.shibServiceActivated()) {
         // initialize timeout and dialog
@@ -26,6 +29,9 @@ define(['angular'], function(angular) {
       }
     }
 
+    /**
+     * Trigger a Session Expired dialog box
+     */
     function triggerDialog() {
       var alert = $mdDialog.alert({
         title: 'Session Expired',
@@ -36,7 +42,7 @@ define(['angular'], function(angular) {
         .show( alert )
         .finally(function() {
           alert = undefined;
-          window.location.replace(MISC_URLS.loginURL);
+          $window.location.replace(MISC_URLS.loginURL);
         });
     }
 

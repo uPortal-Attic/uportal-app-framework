@@ -5,7 +5,6 @@ define(['angular', 'jquery'], function(angular, $) {
 
   app.factory('notificationsService', ['$q', '$http', '$log', '$filter', 'miscService', 'PortalGroupService', 'keyValueService', 'SERVICE_LOC', 'KV_KEYS', function($q, $http, $log, $filter, miscService, PortalGroupService, keyValueService, SERVICE_LOC, KV_KEYS) {
     // LOCAL VARIABLES
-    var filteredNotificationPromise;
     var dismissedPromise;
 
     // ///////////////////
@@ -182,7 +181,7 @@ return e.name === group;
               }
             });
           } else {
-            separatedNotifications.notDismissed = data;
+            separatedNotifications.notDismissed = dismissedIDs;
           }
           // Return sorted notifications
           return separatedNotifications;
@@ -217,7 +216,7 @@ return e.name === group;
               // If data exists and is a string, check for emptiness
               if (data.value) {
                 // If string contains things, return parsed JSON
-                return JSON.parse(data.value);
+                return angular.fromJson(data.value);
               } else {
                 // If it's empty, return empty array
                 return [];

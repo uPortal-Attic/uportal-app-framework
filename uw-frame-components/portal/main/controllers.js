@@ -5,9 +5,12 @@ define(['angular', 'require'], function(angular, require) {
 
   app.controller('PortalMainController', ['$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService', function($localStorage, $sessionStorage, $scope, $rootScope, $document, $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
     var defaults = {
-            layoutMode: 'list', // other option is 'widgets
-            };
+      layoutMode: 'list', // other option is 'widgets
+    };
 
+    /**
+     * set the frame title using theme
+     */
     function setTitle() {
       var frameTitle = '';
       if($rootScope.portal && $rootScope.portal.theme) {
@@ -34,7 +37,8 @@ define(['angular', 'require'], function(angular, require) {
       if(NAMES.title) {
         setTitle();
       }
-
+      // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
+      // eslint-disable-next-line angular/on-watch
       $rootScope.$watch('portal.theme', function(newValue, oldValue) {
         if(newValue && newValue !== oldValue) {
           setTitle();
@@ -98,21 +102,22 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Header */
   app.controller('PortalHeaderController', ['$rootScope', '$scope', '$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', 'notificationsService', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS, notificationsService) {
-    this.navbarCollapsed = true;
-    this.showLogout = true;
+    var vm = this;
+    vm.navbarCollapsed = true;
+    vm.showLogout = true;
     $scope.showSearch = false;
     $scope.showSearchFocus = false;
     $scope.APP_FLAGS = APP_FLAGS;
     $scope.MISC_URLS = MISC_URLS;
 
-    this.toggleSearch = function() {
+    vm.toggleSearch = function() {
         $scope.showSearch = !$scope.showSearch;
         $scope.showSearchFocus = !$scope.showSearchFocus;
-        this.navbarCollapsed = true;
+        vm.navbarCollapsed = true;
     };
-    this.toggleMenu = function() {
+    vm.toggleMenu = function() {
       $scope.showSearch = false;
-      this.navbarCollapsed = !this.navbarCollapsed;
+      vm.navbarCollapsed = !vm.navbarCollapsed;
     };
   }]);
 
