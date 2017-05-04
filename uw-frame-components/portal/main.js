@@ -325,11 +325,11 @@ define([
         // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
         // eslint-disable-next-line angular/on-watch
         $rootScope.$on('$routeChangeStart', function(event, next, current) {
-          var searchValue = '';
-          var paramToTackOn = '';
-          if(next.$$route && next.$$route.searchParam) {
-            paramToTackOn = APP_FLAGS.gaSearchParam || 'q';
-            searchValue = next.params[next.$$route.searchParam];
+          // eslint-disable-next-line angular/no-private-call
+          var nextRoute = next.$$route;
+          if(nextRoute && nextRoute.searchParam) {
+            var paramToTackOn = APP_FLAGS.gaSearchParam || 'q';
+            var searchValue = next.params[nextRoute.searchParam];
             if(searchValue && $location.search()[paramToTackOn] !== searchValue) {
               event.preventDefault();
               // change route to have param of the search param
