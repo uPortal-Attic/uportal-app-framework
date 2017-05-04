@@ -79,18 +79,21 @@ Each object in this array has 3 fields:
 
 ```javascript
 define(['angular'], function(angular) {
-  var config = angular.module('override', []);
-  config
-  	.constant('OVERRIDE', {
-		'FEATURES': { 'enabled': true },
-		'APP_FLAG': { 'loginOnLoad': true, 'gaSearchParam': 'f' },
-		'FOOTER_URLS': [{
-		  'url': 'http://www.google.com',
-		  'target': '_blank',
-		  'title': 'Google'
-		}]
-	})
-  return config;
+  return angular.module('override', [])
+  .constant('OVERRIDE', {
+    'FEATURES': {
+      'enabled': true,
+    },
+    'APP_FLAG': {
+      'loginOnLoad': true,
+      'gaSearchParam': 'f',
+    },
+    'FOOTER_URLS': [{
+      'url': 'http://www.google.com',
+      'target': '_blank',
+      'title': 'Google',
+    }],
+  });
 });
 
 ```

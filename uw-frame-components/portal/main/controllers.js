@@ -1,29 +1,32 @@
 'use strict';
 
-define(['angular','require'], function(angular, require) {
+define(['angular', 'require'], function(angular, require) {
   var app = angular.module('portal.main.controllers', []);
 
-  app.controller('PortalMainController', ['$localStorage', '$sessionStorage','$scope', '$rootScope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS','THEMES','miscService', function($localStorage, $sessionStorage, $scope, $rootScope, $document, $location, NAMES, MISC_URLS, APP_FLAGS,THEMES, miscService) {
+  app.controller('PortalMainController', ['$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService', function($localStorage, $sessionStorage, $scope, $rootScope, $document, $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
     var defaults = {
-            layoutMode : 'list' //other option is 'widgets
-            };
+      layoutMode: 'list', // other option is 'widgets
+    };
 
-    function setTitle(){
-      var frameTitle = "";
+    /**
+     * set the frame title using theme
+     */
+    function setTitle() {
+      var frameTitle = '';
       if($rootScope.portal && $rootScope.portal.theme) {
         frameTitle = $rootScope.portal.theme.title;
         if(frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
-          frameTitle = " | " + frameTitle;
+          frameTitle = ' | ' + frameTitle;
         } else {
-          //since frame title equals the title in NAMES lets not duplicate it
-          frameTitle = "";
+          // since frame title equals the title in NAMES lets not duplicate it
+          frameTitle = '';
         }
       }
       $document[0].title=NAMES.title + frameTitle;
     }
 
-    //=====functions ======
-    var init = function(){
+    // =====functions ======
+    var init = function() {
       $scope.$storage = $localStorage.$default(defaults);
 
       $scope.NAMES=NAMES;
@@ -34,22 +37,23 @@ define(['angular','require'], function(angular, require) {
       if(NAMES.title) {
         setTitle();
       }
-
+      // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
+      // eslint-disable-next-line angular/on-watch
       $rootScope.$watch('portal.theme', function(newValue, oldValue) {
         if(newValue && newValue !== oldValue) {
           setTitle();
         }
       });
 
-      //class for ng-view
-      $scope.routeClass = "route" + angular.lowercase($location.path().replace(new RegExp('/', 'g'), '-'));
-    }
+      // class for ng-view
+      $scope.routeClass = 'route' + angular.lowercase($location.path().replace(new RegExp('/', 'g'), '-'));
+    };
 
-    $scope.resetAll = function(){
+    $scope.resetAll = function() {
       $scope.resetLocal();
       $scope.resetSession();
       $scope.reload();
-    }
+    };
 
     $scope.resetLocal = function() {
         $localStorage.$reset(defaults);
@@ -61,17 +65,17 @@ define(['angular','require'], function(angular, require) {
 
     $scope.reload = function() {
         location.reload();
-    }
-    $scope.pushGAEvent = function (category, action, label) {
+    };
+    $scope.pushGAEvent = function(category, action, label) {
       miscService.pushGAEvent(category, action, label);
-    }
+    };
 
-    //run init
+    // run init
     init();
-  } ]);
+  }]);
 
   /* Username */
-  app.controller('SessionCheckController', [ '$scope', 'mainService', 'NAMES', 'FOOTER_URLS', '$rootScope', function($scope, mainService, NAMES, FOOTER_URLS, $rootScope) {
+  app.controller('SessionCheckController', ['$scope', 'mainService', 'NAMES', 'FOOTER_URLS', '$rootScope', function($scope, mainService, NAMES, FOOTER_URLS, $rootScope) {
     var vm = this;
     vm.user = [];
     vm.firstLetter = '';
@@ -79,7 +83,7 @@ define(['angular','require'], function(angular, require) {
     $scope.FOOTER_URLS = FOOTER_URLS;
     $scope.usernameOptionOpen = false;
 
-    mainService.getUser().then(function(result){
+    mainService.getUser().then(function(result) {
       vm.user = result;
       // Check if is guest
       if (NAMES.guestUserName && vm.user && vm.user.userName === NAMES.guestUserName) {
@@ -87,42 +91,40 @@ define(['angular','require'], function(angular, require) {
       } else {
         // Get first letter of first name or display name
         var username = vm.user.firstName ? vm.user.firstName : vm.user.displayName;
-        if (username === "" || (typeof username !== 'string')) {
-          vm.firstLetter = "?";
+        if (username === '' || (typeof username !== 'string')) {
+          vm.firstLetter = '?';
         } else {
-          vm.firstLetter = username.substring(0,1);
+          vm.firstLetter = username.substring(0, 1);
         }
       }
     });
-
   }]);
 
   /* Header */
-  app.controller('PortalHeaderController', ['$rootScope', '$scope','$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS','notificationsService', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS, notificationsService) {
-    this.navbarCollapsed = true;
-    this.showLogout = true;
+  app.controller('PortalHeaderController', ['$rootScope', '$scope', '$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', 'notificationsService', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS, notificationsService) {
+    var vm = this;
+    vm.navbarCollapsed = true;
+    vm.showLogout = true;
     $scope.showSearch = false;
     $scope.showSearchFocus = false;
     $scope.APP_FLAGS = APP_FLAGS;
     $scope.MISC_URLS = MISC_URLS;
 
-    this.toggleSearch = function() {
+    vm.toggleSearch = function() {
         $scope.showSearch = !$scope.showSearch;
         $scope.showSearchFocus = !$scope.showSearchFocus;
-        this.navbarCollapsed = true;
-    }
-    this.toggleMenu = function () {
+        vm.navbarCollapsed = true;
+    };
+    vm.toggleMenu = function() {
       $scope.showSearch = false;
-      this.navbarCollapsed = !this.navbarCollapsed;
-    }
+      vm.navbarCollapsed = !vm.navbarCollapsed;
+    };
   }]);
 
   /* Footer */
   app.controller('PortalFooterController', ['$scope', function($scope) {
       $scope.date = new Date();
-
   }]);
 
   return app;
-
 });

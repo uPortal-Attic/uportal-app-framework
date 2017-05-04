@@ -1,7 +1,6 @@
 'use strict';
 
 define(['angular', 'jquery'], function(angular, $) {
-
     var app = angular.module('portal.timeout.services', []);
 
     /**
@@ -13,18 +12,17 @@ define(['angular', 'jquery'], function(angular, $) {
                      and the time of that timeout.
     **/
     app.factory('PortalShibbolethService', ['$http', 'miscService', 'SERVICE_LOC',
-        function($http, miscService,SERVICE_LOC) {
-
-          function onError(response){
-            miscService.redirectUser(response.status, "Shibboleth Service");
+        function($http, miscService, SERVICE_LOC) {
+          var onError = function(response) {
+            miscService.redirectUser(response.status, 'Shibboleth Service');
             return response.data;
-          }
+          };
 
-          function onGetSessionSuccess(response){
+          var onGetSessionSuccess = function(response) {
             return response.data;
-          }
+          };
 
-          function onGetTimeoutSuccess(session){
+          var onGetTimeoutSuccess = function(session) {
             if(session && angular.isObject(session)) {
               var timeout = {};
               timeout.expirationMinutes = session.expiration;
@@ -35,17 +33,27 @@ define(['angular', 'jquery'], function(angular, $) {
             } else {
               return null;
             }
-          }
-
-          function getSession(){
-            return $http.get(SERVICE_LOC.shibbolethSessionURL)
-                        .then(onGetSessionSuccess, onError);
           };
 
-          function getTimeout(){
+          /**
+           * Retrieves the session from shibboleth
+           */
+          function getSession() {
+            return $http.get(SERVICE_LOC.shibbolethSessionURL)
+                        .then(onGetSessionSuccess, onError);
+          }
+
+          /**
+           * Retrieves the timeout for the current session
+           * from shibboleth
+           */
+          function getTimeout() {
             return getSession().then(onGetTimeoutSuccess);
           }
 
+          /**
+           * Checks whether the shibboleth endpoint is configured
+           */
           function shibServiceActivated() {
             if(SERVICE_LOC.shibbolethSessionURL) {
               return true;
@@ -55,9 +63,9 @@ define(['angular', 'jquery'], function(angular, $) {
           }
 
           return {
-            getSession : getSession,
-            getTimeout : getTimeout,
-            shibServiceActivated : shibServiceActivated
+            getSession: getSession,
+            getTimeout: getTimeout,
+            shibServiceActivated: shibServiceActivated,
           };
         }]);
 });

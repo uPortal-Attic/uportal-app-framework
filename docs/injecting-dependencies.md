@@ -14,18 +14,17 @@ Here is the content of that file:
 ```JavaScript
 'use strict';
 define([], function() {
-
   return {
-    paths : {
-      'marked'        : "path/or/uri/to/marked",
-      'ngMarked'      : "path/or/uri/to/angular-marked"
+    paths: {
+      'marked': 'path/or/uri/to/marked',
+      'ngMarked': 'path/or/uri/to/angular-marked',
     },
-
-    shims : {
-      'ngMarked'      : { deps: ['marked','angular']}
-    }
-
-  }
+    shims: {
+      'ngMarked': {
+        deps: ['marked', 'angular'],
+      },
+    },
+  };
 });
 ```
 
@@ -37,36 +36,28 @@ To learn more about how `app-config.js`works, check out [/config.js](https://git
 Now that require knows about the artifact, we can now use that module in the angular configuration. In your app's `my-app/main.js`, you would inject marked and ngMarked, then add the `'hc.marked'` module. Here's what the contents of `main.js` might look like:
 
 ```JavaScript
-define(['angular'
-, 'jquery'
-, 'portal'
-, 'marked'
-, 'ngMarked'
-, 'portal/main/routes'
-, 'portal/settings/routes'
-, 'portal/notifications/route'
-, 'portal/features/route'
-, 'portal/about/route'
-, 'my-app/home/route'
-, 'my-app/home/controllers']
-, function(angular, $, portal, marked, ngMarked , main, settings, notifications, features, about, home) {
-    var app = angular.module('my-app', ['portal', 'hc.marked', 'docs.main.controllers']);
-    app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-        $routeProvider.
-            when('/settings', settings.betaSettings).
-            when('/notifications', notifications).
-            when('/features', features).
-            when('/about', about).
-            when('/access-denied', main.accessDenied).
-            when('/server-error', main.serverError).
-            when('/demo', home.demo).
-            when('/home', home.docHome).
-            when('/md/:markdownfilename', home.md).
-            otherwise(home.docHome);
+define([
+  'angular', 'jquery', 'portal', 'marked', 'ngMarked', 'portal/main/routes',
+  'portal/settings/routes', 'portal/notifications/route',
+  'portal/features/route', 'portal/about/route', 'my-app/home/route',
+  ], function(angular, $, portal, marked, ngMarked, main,
+    settings, notifications, features, about, home) {
+    return angular.module('my-app', [
+      'portal', 'hc.marked', 'docs.main.controllers',
+    ]).config(['$routeProvider', '$locationProvider',
+        function($routeProvider, $locationProvider) {
+          $routeProvider
+            .when('/settings', settings.betaSettings)
+            .when('/notifications', notifications)
+            .when('/features', features)
+            .when('/about', about)
+            .when('/access-denied', main.accessDenied)
+            .when('/server-error', main.serverError)
+            .when('/demo', home.demo)
+            .when('/home', home.docHome)
+            .when('/md/:markdownfilename', home.md)
+            .otherwise(home.docHome);
     }]);
-
-    return app
-
 });
 ```
 

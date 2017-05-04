@@ -6,7 +6,7 @@ define(['angular',
     'portal/notifications/route',
     'portal/features/route',
     'portal/about/route',
-    'portal/widgets/routes'
+    'portal/widgets/routes',
   ], function(angular, $, portal, main, settings, notifications, features, about, widgets) {
     /*
      This module intentionally left empty. This file is intended to serve as an extension point
@@ -18,7 +18,7 @@ define(['angular',
 
     // Example route configuration
     // TODO: Think of a more extensible approach such that frame and app can each manage their own routing without conflict
-    app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+    app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
         $routeProvider.
             when('/settings', settings.betaSettings).
