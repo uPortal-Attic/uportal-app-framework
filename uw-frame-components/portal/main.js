@@ -109,7 +109,7 @@ define([
             $mdThemingProvider.theme(cur.name);
             // Set up primary
             if(cur.materialTheme.primary) {
-              if(typeof cur.materialTheme.primary === 'string') {
+              if(angular.isString(cur.materialTheme.primary)) {
                 $mdThemingProvider.theme(cur.name)
                   .primaryPalette(cur.materialTheme.primary);
                 // Enable browser color (mobile only)
@@ -132,7 +132,7 @@ define([
             }
             // Set up accent
             if(cur.materialTheme.accent) {
-              if(typeof cur.materialTheme.accent === 'string') {
+              if(angular.isString(cur.materialTheme.accent)) {
                 $mdThemingProvider.theme(cur.name)
                   .accentPalette(cur.materialTheme.accent);
               } else {
@@ -143,7 +143,7 @@ define([
             }
             // Set up warn
             if(cur.materialTheme.warn) {
-              if(typeof cur.materialTheme.warn === 'string') {
+              if(angular.isString(cur.materialTheme.warn)) {
                 $mdThemingProvider.theme(cur.name)
                   .warnPalette(cur.materialTheme.warn);
               } else {
@@ -193,7 +193,7 @@ define([
       // Safari in Private Browsing Mode throws a QuotaExceededError whenever any calls to localStorage.setItem
       // are made. This block tests if localStorage is working. If not, we redirect the user to a new URL with
       // an explanation of the error and a link to go back to MyUW home.
-      if (typeof localStorage === 'object') {
+      if (angular.isObject(localStorage)) {
         try {
           localStorage.setItem('localStorage', 1);
           localStorage.removeItem('localStorage');
@@ -280,7 +280,7 @@ define([
             defaultThemeGo();
             loadingCompleteSequence();
           }
-        } else if (typeof themeIndex === 'string') {
+        } else if (angular.isString(themeIndex)) {
           // themeindex is a theme name, search!
           var theme = findThemeByName(themeIndex);
           if(theme) {
@@ -354,7 +354,7 @@ define([
           var curConfig = configsName[i];
           if(OVERRIDE[curConfig]) {
             groups++;
-            if(Array.isArray(configs[i])) {// arrays are special, append
+            if(angular.isArray(configs[i])) {// arrays are special, append
               Array.prototype.push.apply(configs[i], OVERRIDE[curConfig]);
               count++;
             } else {// treat as an object

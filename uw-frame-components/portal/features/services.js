@@ -138,7 +138,7 @@ define(['angular'], function(angular) {
         if(!$sessionStorage.seenAnnouncementIds) {
           updateLegacySeenAnnouncements().then(function() {
             keyValueService.getValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS).then(function(data) {
-              if(!Array.isArray(data)) {
+              if(!angular.isArray(data)) {
                 $sessionStorage.seenAnnouncementIds = [];
               }else{
                 $sessionStorage.seenAnnouncementIds = data;
@@ -161,7 +161,7 @@ define(['angular'], function(angular) {
         if (!$sessionStorage.seenPopupIds) {
           updateLegacyPopups().then(function() {
             keyValueService.getValue(KV_KEYS.VIEWED_POPUP_IDS).then(function(data) {
-              if(!Array.isArray(data)) {
+              if(!angular.isArray(data)) {
                 $sessionStorage.seenPopupIds = [];
               } else {
                 $sessionStorage.seenPopupIds = data;
