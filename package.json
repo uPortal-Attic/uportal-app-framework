@@ -104,7 +104,7 @@
   "eslintConfig": {
     "root": true,
     "parserOptions": {
-      "ecmaVersion": 6
+      "ecmaVersion": 5
     },
     "env": {
       "browser": true,
@@ -144,7 +144,7 @@
       "max-len": "warn",
       "promise/catch-or-return": "warn",
       "promise/always-return": "warn",
-      
+
       "compat/compat": "error",
       "arrow-parens": "off",
       "constructor-super": "off",
