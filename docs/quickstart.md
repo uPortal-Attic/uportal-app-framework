@@ -65,7 +65,7 @@ Use the Docker superstatic container:
 2. Run `docker run -v myapp-dir:/data/my-app -p 8009:8009 myuw/frame` to replace the my-app directory with a volume mounted from localhost
 3. For deployment, create a Dockerfile like so:
 
-```
+```Dockerfile
 FROM myuw/frame
 
 COPY ./someapp /data/my-app

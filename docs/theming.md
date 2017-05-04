@@ -12,28 +12,28 @@ It should look something like :
 
 <!-- eslint-disable no-unused-vars -->
 ```javascript
-  var example = {
-    'name': 'uw-madison',
-    'crest': 'img/uw-madison-56.png',
-    'title': 'MyUW',
-    'subtitle': null,
-    'ariaLabelTitle': 'My U W',
-    'crestalt': 'UW Crest',
-    'group': 'UW-Madison',
-    'mascotImg': 'img/bucky.gif',
-    'footerLinks': [
-      {
-        'url': '/web/static/myuw-help',
-        'target': '_blank',
-        'title': 'Help',
-      },
-    ],
-    'materialTheme': {
-      'primary': 'red',
-      'accent': 'blue',
-      'warn': 'orange',
+var example = {
+  'name': 'uw-madison',
+  'crest': 'img/uw-madison-56.png',
+  'title': 'MyUW',
+  'subtitle': null,
+  'ariaLabelTitle': 'My U W',
+  'crestalt': 'UW Crest',
+  'group': 'UW-Madison',
+  'mascotImg': 'img/bucky.gif',
+  'footerLinks': [
+    {
+      'url': '/web/static/myuw-help',
+      'target': '_blank',
+      'title': 'Help',
     },
-  };
+  ],
+  'materialTheme': {
+    'primary': 'red',
+    'accent': 'blue',
+    'warn': 'orange',
+  },
+};
 ```
 
 **Explanation of JSON Attributes**
@@ -62,9 +62,9 @@ Add in a `<theme-name>.less` file in the folder `/uw-frame-components/css/themes
 **uw-madison.less**:
 
 ```less
-  @import "../angular.less"; // note: order is important here!
-  @import "common-variables.less";
-  @import "uw-madison-variables.less";
+@import "../angular.less"; // note: order is important here!
+@import "common-variables.less";
+@import "uw-madison-variables.less";
 ```
 
 In this example, the file name is is `uw-madison.less`. The "uw-madison" comes from the app's `name` attribute. That is important.
@@ -76,21 +76,21 @@ As you probably noticed above, you also will want to add in a `<theme>-variables
 will be full of color variable declarations. Here is an example of that:
 
 ```less
-  /* UW-Madison colors */
-  @color1: #c5050c;
-  @color2: lighten(@color1, 10%);
-  @color3: #0479a8;
-  @link-color: @color3;
+/* UW-Madison colors */
+@color1: #c5050c;
+@color2: lighten(@color1, 10%);
+@color3: #0479a8;
+@link-color: @color3;
 
-  @state-info-bg: #999999;
-  @state-info-text: #000000;
+@state-info-bg: #999999;
+@state-info-text: #000000;
 
-  @portlet-titlebar-background-color: @color1;
-  @portlet-border-color: darken(@color1, 15%);
+@portlet-titlebar-background-color: @color1;
+@portlet-border-color: darken(@color1, 15%);
 
-  @user-portal-logout-btn-text-color: #FFF;
+@user-portal-logout-btn-text-color: #FFF;
 
-  @input-border-focus: @color3;
+@input-border-focus: @color3;
 ```
 
   - `@color1` is your primary brand color. In uw-madison's case, this is Badger Red, but for UW-Milwaukee this is Black.
