@@ -35,7 +35,7 @@ uw-frame provides the primary HTML page at the root of the context that hosts yo
 
 In your existing Maven war project, add the following dependency:
 
-```
+```xml
 <dependency>
   <groupId>edu.wisc.my.apps</groupId>
   <artifactId>uw-frame</artifactId>
@@ -61,12 +61,17 @@ We love tests. We setup karma to run our tests.
 
 To run the test suite:
 
-> npm test
+```sh
+npm test
+```
 
 ### Running locally
 
 To build and run on a Superstatic server:
-> npm run static:dev
+
+```sh
+npm run static:dev
+```
 
 ### Maven
 
@@ -78,8 +83,10 @@ bundle into a deliverable war file.
 
 To run the Jekyll docs locally:
 
-> cd docs
->
-> bundle exec jekyll serve
+```sh
+cd docs
+
+bundle exec jekyll serve
+```
 
 You may need to install the Jekyll bundler on your machine. See [Jekyll's quick-start guide](https://jekyllrb.com/docs/quickstart/) for instructions.

@@ -10,29 +10,29 @@ encourage you to contribute back your theme to this project so you don't have to
 Configure your entry in the `THEME` constant located in [`frame-config.js`](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/frame-config.js).
 It should look something like :
 
-```javascript
-  {
-    "name" : "uw-madison",
-    "crest" : "img/uw-madison-56.png",
-    "title" : "MyUW",
-    "subtitle" : null,
-    "ariaLabelTitle" : "My U W",
-    "crestalt" : "UW Crest",
-    "group" : "UW-Madison",
-    "mascotImg" : "img/bucky.gif",
-    "footerLinks":[
-      {
-        "url" : "/web/static/myuw-help",
-        "target" : "_blank",
-        "title" : "Help"
-      }
-    ],
-    "materialTheme" : {
-      "primary" : "red",
-      "accent"  : "blue",
-      "warn"    : "orange"
+```json
+{
+  "name" : "uw-madison",
+  "crest" : "img/uw-madison-56.png",
+  "title" : "MyUW",
+  "subtitle" : null,
+  "ariaLabelTitle" : "My U W",
+  "crestalt" : "UW Crest",
+  "group" : "UW-Madison",
+  "mascotImg" : "img/bucky.gif",
+  "footerLinks":[
+    {
+      "url" : "/web/static/myuw-help",
+      "target" : "_blank",
+      "title" : "Help"
     }
+  ],
+  "materialTheme" : {
+    "primary" : "red",
+    "accent"  : "blue",
+    "warn"    : "orange"
   }
+}
 ```
 
 **Explanation of JSON Attributes**
@@ -61,9 +61,9 @@ Add in a `<theme-name>.less` file in the folder `/uw-frame-components/css/themes
 **uw-madison.less**:
 
 ```less
-  @import "../angular.less"; // note: order is important here!
-  @import "common-variables.less";
-  @import "uw-madison-variables.less";
+@import "../angular.less"; // note: order is important here!
+@import "common-variables.less";
+@import "uw-madison-variables.less";
 ```
 
 In this example, the file name is is `uw-madison.less`. The "uw-madison" comes from the app's `name` attribute. That is important.
@@ -75,21 +75,21 @@ As you probably noticed above, you also will want to add in a `<theme>-variables
 will be full of color variable declarations. Here is an example of that:
 
 ```less
-  /* UW-Madison colors */
-  @color1: #c5050c;
-  @color2: lighten(@color1, 10%);
-  @color3: #0479a8;
-  @link-color: @color3;
+/* UW-Madison colors */
+@color1: #c5050c;
+@color2: lighten(@color1, 10%);
+@color3: #0479a8;
+@link-color: @color3;
 
-  @state-info-bg: #999999;
-  @state-info-text: #000000;
+@state-info-bg: #999999;
+@state-info-text: #000000;
 
-  @portlet-titlebar-background-color: @color1;
-  @portlet-border-color: darken(@color1, 15%);
+@portlet-titlebar-background-color: @color1;
+@portlet-border-color: darken(@color1, 15%);
 
-  @user-portal-logout-btn-text-color: #FFF;
+@user-portal-logout-btn-text-color: #FFF;
 
-  @input-border-focus: @color3;
+@input-border-focus: @color3;
 ```
 
   - `@color1` is your primary brand color. In uw-madison's case, this is Badger Red, but for UW-Milwaukee this is Black.
@@ -112,8 +112,8 @@ for created palettes.
 
 e.g.:
 
-```
-"materialTheme" : {
+```json
+"materialTheme": {
   "primary" : "red",
   "accent"  : "blue",
   "warn"    : "orange"
@@ -122,62 +122,62 @@ e.g.:
 
 If it is an object it will assume that it is a custom palette definition. e.g.:
 
-```
+```json
 "materialTheme" : {
   "primary" : {
-    '50': 'FED5D7',
-    '100': 'FC8B8F',
-    '200': 'FB545A',
-    '300': 'F90E17',
-    '400': 'E3060E',
-    '500': 'C5050C', // the base color for this palette
-    '600': 'A7040A',
-    '700': '890308',
-    '800': '6B0307',
-    '900': '4E0205',
-    'A100': 'FED5D7',
-    'A200': 'FC8B8F',
-    'A400': 'E3060E',
-    'A700': '890308',
-    'contrastDefaultColor': 'light', // whether, by default, text (contrast) on this palette should be light or dark
-    'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100', 'A200'] // hues on which text should be dark by default
-    'contrastLightColors': undefined // only needed if default color is 'dark'
+    "50": "FED5D7",
+    "100": "FC8B8F",
+    "200": "FB545A",
+    "300": "F90E17",
+    "400": "E3060E",
+    "500": "C5050C", // the base color for this palette
+    "600": "A7040A",
+    "700": "890308",
+    "800": "6B0307",
+    "900": "4E0205",
+    "A100": "FED5D7",
+    "A200": "FC8B8F",
+    "A400": "E3060E",
+    "A700": "890308",
+    "contrastDefaultColor": "light", // whether, by default, text (contrast) on this palette should be light or dark
+    "contrastDarkColors": ["50", "100", "200", "300", "400", "A100", "A200"], // hues on which text should be dark by default
+    "contrastLightColors": undefined // only needed if default color is "dark"
   },
   "accent" : {
-    '50': 'B8E9FD',
-    '100': '6DD3FC',
-    '200': '36C2FA',
-    '300': '05A4E4',
-    '400': '058FC6',
-    '500': '0479A8', // the base color for this palette
-    '600': '03638A',
-    '700': '034E6C',
-    '800': '02384E',
-    '900': '012330',
-    'A100': 'B8E9FD',
-    'A200': '0479A8',
-    'A400': '058FC6',
-    'A700': '034E6C',
-    'contrastDefaultColor': 'light',
-    'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100']
+    "50": "B8E9FD",
+    "100": "6DD3FC",
+    "200": "36C2FA",
+    "300": "05A4E4",
+    "400": "058FC6",
+    "500": "0479A8", // the base color for this palette
+    "600": "03638A",
+    "700": "034E6C",
+    "800": "02384E",
+    "900": "012330",
+    "A100": "B8E9FD",
+    "A200": "0479A8",
+    "A400": "058FC6",
+    "A700": "034E6C",
+    "contrastDefaultColor": "light",
+    "contrastDarkColors": ["50", "100", "200", "300", "400", "A100"]
   },
   "warn" : {
-    '50': 'FFFFFF',
-    '100': 'F9E7D7',
-    '200': 'F2C9A6',
-    '300': 'EAA368',
-    '400': 'E6934D',
-    '500': 'E28332', // the base color for this palette
-    '600': 'D7731E',
-    '700': 'BC651B',
-    '800': 'A15717',
-    '900': '874813',
-    'A100': 'FFFFFF',
-    'A200': 'F9E7D7',
-    'A400': 'E6934D',
-    'A700': 'BC651B',
-    'contrastDefaultColor': 'dark',
-    'contrastLightColors': ['500', '600', '700', '800', '900', 'A700']
+    "50": "FFFFFF",
+    "100": "F9E7D7",
+    "200": "F2C9A6",
+    "300": "EAA368",
+    "400": "E6934D",
+    "500": "E28332", // the base color for this palette
+    "600": "D7731E",
+    "700": "BC651B",
+    "800": "A15717",
+    "900": "874813",
+    "A100": "FFFFFF",
+    "A200": "F9E7D7",
+    "A400": "E6934D",
+    "A700": "BC651B",
+    "contrastDefaultColor": "dark",
+    "contrastLightColors": ["500", "600", "700", "800", "900", "A700"]
   }
 }
 ```

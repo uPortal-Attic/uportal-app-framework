@@ -8,7 +8,7 @@ There is also a directive called `app-header-two-way-bind`. This has all the sam
 
 ### Template :
 
-```
+```html
 <app-header
   app-title="Hello World"
   app-icon="email"
@@ -46,7 +46,7 @@ Frame page is basically the app header directive but with a transclude for the b
 
 ### Template :
 
-```
+```html
 <frame-page
   app-title="Hello World"
   app-icon="school"
@@ -91,7 +91,7 @@ Displays a flat, circular icon-button with a fa-icon in the middle, and a title 
 #### Params:
 
 * **href**: Where you want them to go
-* **target**: Open in new window, new tab, or the same tab (i.e. "_self", "_blank", etc.). If no target is set, it will default to the same tab.
+* **target**: Open in new window, new tab, or the same tab (i.e. "\_self", "\_blank", etc.). If no target is set, it will default to the same tab.
 * **md-icon**: The material icon to use. If a material icon is specific, it will be preferred over any fa-icon specified.
 * **fa-icon**: The Font Awesome icon to use. Will not be used if a md-icon is specified.
 * **disabled**: Button disabled or not (can be a variable)

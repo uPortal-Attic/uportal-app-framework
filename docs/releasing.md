@@ -45,7 +45,7 @@ Before cutting the release, do what you can to square away the documentation for
 
 Now do release for Java.
 
-```
+```sh
 cd uw-frame-java
 mvn release:prepare
 mvn release:perform
@@ -53,7 +53,7 @@ mvn release:perform
 
 _Iff it went well_
 
-```
+```sh
 git push origin master
 git push origin uw-frame-maven-<version>
 ```
