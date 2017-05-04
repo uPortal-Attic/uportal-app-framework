@@ -137,9 +137,6 @@
 
       "angular/module-setter": "warn",
       "angular/module-getter": "warn",
-      "angular/typecheck-object": "warn",
-      "angular/typecheck-array": "warn",
-      "angular/typecheck-string": "warn",
       "angular/no-private-call": "warn",
       "max-len": "warn",
       "promise/catch-or-return": "warn",
