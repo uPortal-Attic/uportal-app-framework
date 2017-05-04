@@ -135,8 +135,6 @@
       ],
       "angular/controller-as": "off",
 
-      "angular/module-setter": "warn",
-      "angular/module-getter": "warn",
       "angular/typecheck-object": "warn",
       "angular/typecheck-array": "warn",
       "angular/typecheck-string": "warn",

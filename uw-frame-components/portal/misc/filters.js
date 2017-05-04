@@ -2,9 +2,9 @@
 
 define(['angular'], function(angular) {
     var DEFAULT_TRUNCATE_LENGTH = 160;
-    var app = angular.module('portal.misc.filters', []);
+    return angular.module('portal.misc.filters', [])
 
-    app.filter('truncate', function() {
+    .filter('truncate', function() {
         return function(input, maxlen, useEllipsis) {
             maxlen = maxlen || DEFAULT_TRUNCATE_LENGTH;
             useEllipsis = angular.isDefined(useEllipsis) ? !!useEllipsis : true;
@@ -17,9 +17,9 @@ define(['angular'], function(angular) {
 
             return input;
         };
-    });
+    })
 
-    app.filter('trimMiddle', function() {
+    .filter('trimMiddle', function() {
         return function(input, maxlen) {
             maxlen = maxlen || 20;
             if(input && input.length > maxlen) {
@@ -28,9 +28,9 @@ define(['angular'], function(angular) {
                 return input;
             }
         };
-    });
+    })
 
-    app.filter('showApplicable', function() {
+    .filter('showApplicable', function() {
         return function(portlets, showAll) {
             var filteredPortlets = [];
             if (showAll === true) {
@@ -45,8 +45,8 @@ define(['angular'], function(angular) {
               return filteredPortlets;
             }
         };
-    });
-    app.filter('showCategory', function() {
+    })
+    .filter('showCategory', function() {
       return function(portlets, category) {
         if (category === '') {
           return portlets;
@@ -62,7 +62,7 @@ define(['angular'], function(angular) {
         }
         return filtered;
       };
-    });
+    })
 
     /* WARNING: THIS FILTER IS DANGEROUS.
        You should only filter to trusted status HTML that you are
@@ -73,12 +73,9 @@ define(['angular'], function(angular) {
        If you don't understand what this filter does, no worries,
        but then you really shouldn't be using it! :)
      */
-    app.filter('to_trusted', ['$sce', function($sce) {
+    .filter('to_trusted', ['$sce', function($sce) {
       return function(text) {
           return $sce.trustAsHtml(text);
       };
     }]);
-
-    return app;
 });
-

@@ -1,8 +1,6 @@
 define(['angular'], function(angular) {
   /* Keep in sync with docs/markdown/configuration.md*/
-
-    var config = angular.module('app-config', []);
-    config
+  return angular.module('app-config', [])
         .value('APP_FLAGS', {
             'showSearch': true,
             'isWeb': false,
@@ -70,6 +68,4 @@ define(['angular'], function(angular) {
             'description': 'This is just an example of a toggle. Look at your localStorage after you switch this on for the first time.',
           },
         ]);
-
-    return config;
 });

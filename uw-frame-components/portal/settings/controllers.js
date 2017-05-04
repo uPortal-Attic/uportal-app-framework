@@ -1,10 +1,10 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.settings.controllers', []);
+  return angular.module('portal.settings.controllers', [])
 
 
-      app.controller('PortalBetaSettingsController', ['$sessionStorage', '$scope', '$mdTheming', 'portalSkinService', 'THEMES', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES', function($sessionStorage, $scope, $mdTheming, portalSkinService, THEMES, APP_BETA_FEATURES, FRAME_BETA_FEATURES) {
+  .controller('PortalBetaSettingsController', ['$sessionStorage', '$scope', '$mdTheming', 'portalSkinService', 'THEMES', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES', function($sessionStorage, $scope, $mdTheming, portalSkinService, THEMES, APP_BETA_FEATURES, FRAME_BETA_FEATURES) {
     $scope.options = FRAME_BETA_FEATURES.concat(APP_BETA_FEATURES);
     $scope.$watch('portal.theme', function(newValue, oldValue) {
       if($scope.portal.theme) {
@@ -22,9 +22,9 @@ define(['angular'], function(angular) {
         }
       }
     });
-  }]);
+  }])
 
-  app.controller('PortalUserSettingsController', ['$scope',
+  .controller('PortalUserSettingsController', ['$scope',
                                                   '$q',
                                                   '$window',
                                                   '$localStorage',
@@ -65,5 +65,4 @@ define(['angular'], function(angular) {
 
       init();
     }]);
-  return app;
  });

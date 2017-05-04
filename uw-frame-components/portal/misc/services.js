@@ -1,9 +1,9 @@
 'use strict';
 
 define(['angular', 'jquery'], function(angular, $) {
-  var app = angular.module('portal.misc.services', []);
+  return angular.module('portal.misc.services', [])
 
-  app.factory('PortalGroupService', function($http, $log, miscService, SERVICE_LOC) {
+  .factory('PortalGroupService', function($http, $log, miscService, SERVICE_LOC) {
     var getGroups = function() {
       var groupPromise = $http.get(SERVICE_LOC.groupURL, {cache: true}).then(
                                     function(result) {
@@ -52,8 +52,8 @@ define(['angular', 'jquery'], function(angular, $) {
         } else {
           // single filter then
           var inGroup = $.grep(groups, function(e) {
-return e[groupsNameFieldName] === cur[arrayGroupFieldName];
-}).length; // intersect, then get length
+            return e[groupsNameFieldName] === cur[arrayGroupFieldName];
+          }).length; // intersect, then get length
           if(inGroup > 0) {
             returnArray.push(cur);
           }
@@ -75,9 +75,9 @@ return e[groupsNameFieldName] === cur[arrayGroupFieldName];
       filterArrayByGroups: filterArrayByGroups,
       groupsServiceEnabled: groupsServiceEnabled,
     };
-  });
+  })
 
-  app.factory('PortalAddToHomeService', function($http, $log, filterFilter, NAMES, MISC_URLS) {
+  .factory('PortalAddToHomeService', function($http, $log, filterFilter, NAMES, MISC_URLS) {
     var canAddToHome = function() {
       if (MISC_URLS.addToHomeURLS && MISC_URLS.addToHomeURLS.addToHomeActionURL) {
             return true;
@@ -112,9 +112,9 @@ return e[groupsNameFieldName] === cur[arrayGroupFieldName];
       inHome: inHome,
       addToHome: addToHome,
     };
-  });
+  })
 
-  app.factory('miscService', function($analytics, $http, $window, $location, $log, MISC_URLS) {
+  .factory('miscService', function($analytics, $http, $window, $location, $log, MISC_URLS) {
     /**
      Used to redirect users to login screen iff result code is 0 (yay shib) or 302
 
@@ -151,6 +151,4 @@ return e[groupsNameFieldName] === cur[arrayGroupFieldName];
       pushGAEvent: pushGAEvent,
     };
   });
-
-  return app;
 });
