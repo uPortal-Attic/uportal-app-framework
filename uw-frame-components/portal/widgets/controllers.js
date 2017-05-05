@@ -1,13 +1,13 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.widgets.controllers', []);
+  return angular.module('portal.widgets.controllers', [])
 
   /**
    * Base widget controller (for /partials/widget-card.html). First point of access for all widget types -- determines
    * the type and sets launch button url for un-typed (basic) widgets.
    */
-  app.controller('WidgetCardController', ['$scope', '$log', '$localStorage', 'widgetService', function($scope, $log, $localStorage, widgetService) {
+  .controller('WidgetCardController', ['$scope', '$log', '$localStorage', 'widgetService', function($scope, $log, $localStorage, widgetService) {
     /**
      * Check for widget types that require extra configuration (including null/undefined case), default to provided
      * widget type.
@@ -83,10 +83,10 @@ define(['angular'], function(angular) {
     } else {
       $log.warn('WidgetCardController didn\'t get an fname.');
     }
-  }]);
+  }])
 
   // OPTION LINK widget type
-  app.controller('OptionLinkController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
+  .controller('OptionLinkController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
     /**
      * Set up default configuration if no config exists
      */
@@ -130,16 +130,16 @@ define(['angular'], function(angular) {
     }
     // Set up widget content
     populateWidgetContent();
-  }]);
+  }])
 
   // SEARCH WITH LINKS widget type
-  app.controller('SearchWithLinksController', ['$scope', '$sce', function($scope, $sce) {
+  .controller('SearchWithLinksController', ['$scope', '$sce', function($scope, $sce) {
     // Have faith our entity files aren't trying to bamboozle us
     $scope.secureURL = $sce.trustAsResourceUrl($scope.config.actionURL);
-  }]);
+  }])
 
   // RSS widget type
-  app.controller('RssWidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
+  .controller('RssWidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
     /**
      * Turn the provided date string into an actual Date so it can be filtered into something prettier.
      * @param dateString A hideously ugly date string
@@ -238,11 +238,11 @@ define(['angular'], function(angular) {
 
     // Initialize the widget
     initializeRssWidget();
-  }]);
+  }])
 
 
   // CUSTOM & GENERIC widget types
-  app.controller('CustomWidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
+  .controller('CustomWidgetController', ['$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
     /**
      * Fetch additional widget data
      */
@@ -315,10 +315,10 @@ define(['angular'], function(angular) {
       $scope.isEmpty = true;
       $log.warn($scope.widget.fname + ' said it\'s a custom/generic widget, but didn\'t provide a template.');
     }
-  }]);
+  }])
 
   // WEATHER widget type
-  app.controller('WeatherWidgetController', ['$scope', '$log', '$q', 'widgetService', 'keyValueService', function($scope, $log, $q, widgetService, keyValueService) {
+  .controller('WeatherWidgetController', ['$scope', '$log', '$q', 'widgetService', 'keyValueService', function($scope, $log, $q, widgetService, keyValueService) {
     // Local variables
     var fetchKey = 'userWeatherPreference';
 

@@ -1,9 +1,9 @@
 'use strict';
 
 define(['angular', 'jquery'], function(angular, $) {
-  var app = angular.module('portal.notifications.services', []);
+  return angular.module('portal.notifications.services', [])
 
-  app.factory('notificationsService', ['$q', '$http', '$log', '$filter', 'miscService', 'PortalGroupService', 'keyValueService', 'SERVICE_LOC', 'KV_KEYS', function($q, $http, $log, $filter, miscService, PortalGroupService, keyValueService, SERVICE_LOC, KV_KEYS) {
+  .factory('notificationsService', ['$q', '$http', '$log', '$filter', 'miscService', 'PortalGroupService', 'keyValueService', 'SERVICE_LOC', 'KV_KEYS', function($q, $http, $log, $filter, miscService, PortalGroupService, keyValueService, SERVICE_LOC, KV_KEYS) {
     // LOCAL VARIABLES
     var dismissedPromise;
 
@@ -86,8 +86,8 @@ define(['angular', 'jquery'], function(angular, $) {
                 if (!added) {
                   // Intersect, then get length
                   var inGroup = $.grep(groups, function(e) {
-return e.name === group;
-}).length;
+                    return e.name === group;
+                  }).length;
                   if (inGroup > 0) {
                     // If user is in this group, he should see this notification
                     notificationsByGroup.push(notification);
@@ -239,6 +239,4 @@ return e.name === group;
       getFilteredNotifications: getFilteredNotifications,
     };
   }]);
-
-  return app;
 });

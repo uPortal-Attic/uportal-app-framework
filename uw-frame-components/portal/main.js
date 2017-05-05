@@ -49,7 +49,7 @@ define([
 			angular.module('angulartics.google.analytics', []);
 		}
 
-    var app = angular.module('portal', [
+    return angular.module('portal', [
         'app-config',
         'override',
         'frame-config',
@@ -90,9 +90,9 @@ define([
         'ui.sortable',
         'angulartics',
         'angulartics.google.analytics',
-    ]);
+    ])
 
-    app.config(['gravatarServiceProvider', '$analyticsProvider', '$mdThemingProvider', 'THEMES', function(gravatarServiceProvider, $analyticsProvider, $mdThemingProvider, THEMES) {
+    .config(['gravatarServiceProvider', '$analyticsProvider', '$mdThemingProvider', 'THEMES', function(gravatarServiceProvider, $analyticsProvider, $mdThemingProvider, THEMES) {
       gravatarServiceProvider.defaults = {
         'default': 'https://yt3.ggpht.com/-xE0EQR3Ngt8/AAAAAAAAAAI/AAAAAAAAAAA/zTofDHA3-s4/s100-c-k-no/photo.jpg',
       };
@@ -156,9 +156,9 @@ define([
         }
         cur = null;
       }
-    }]);
+    }])
 
-    app.run(function($location,
+    .run(function($location,
                      $log,
                      $http,
                      $rootScope,
@@ -401,6 +401,4 @@ define([
       };
       init();
     });
-
-    return app;
 });

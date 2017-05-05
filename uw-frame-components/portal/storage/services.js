@@ -1,7 +1,7 @@
 'use strict';
 
 define(['angular', 'jquery'], function(angular, $) {
-    var app = angular.module('portal.storage.services', []);
+    return angular.module('portal.storage.services', [])
 
     /**
     Key Value Service
@@ -22,7 +22,7 @@ define(['angular', 'jquery'], function(angular, $) {
         - value : object
       - isKVStoreActivated()
     **/
-    app.factory('keyValueService', ['$http', 'miscService', 'SERVICE_LOC',
+    .factory('keyValueService', ['$http', 'miscService', 'SERVICE_LOC',
         function($http, miscService, SERVICE_LOC) {
       // private functions ------------------------------------------------------
       var successFn = function(response) {
@@ -65,6 +65,4 @@ define(['angular', 'jquery'], function(angular, $) {
         isKVStoreActivated: isKVStoreActivated,
       };
     }]);
-
-    return app;
 });

@@ -135,8 +135,6 @@
       ],
       "angular/controller-as": "off",
 
-      "angular/module-setter": "warn",
-      "angular/module-getter": "warn",
       "max-len": "warn",
       "promise/catch-or-return": "warn",
       "promise/always-return": "warn",
