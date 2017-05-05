@@ -91,7 +91,7 @@ define(['angular', 'require'], function(angular, require) {
       } else {
         // Get first letter of first name or display name
         var username = vm.user.firstName ? vm.user.firstName : vm.user.displayName;
-        if (username === '' || (typeof username !== 'string')) {
+        if (username === '' || !angular.isString(username)) {
           vm.firstLetter = '?';
         } else {
           vm.firstLetter = username.substring(0, 1);

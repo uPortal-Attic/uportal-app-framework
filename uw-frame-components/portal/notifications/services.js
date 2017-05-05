@@ -212,7 +212,7 @@ define(['angular', 'jquery'], function(angular, $) {
       }
       dismissedPromise = dismissedPromise || keyValueService.getValue(KV_KEYS.DISMISSED_NOTIFICATION_IDS)
           .then(function(data) {
-            if (data && typeof data.value === 'string') {
+            if (data && angular.isString(data.value)) {
               // If data exists and is a string, check for emptiness
               if (data.value) {
                 // If string contains things, return parsed JSON
