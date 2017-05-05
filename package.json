@@ -137,7 +137,6 @@
 
       "angular/module-setter": "warn",
       "angular/module-getter": "warn",
-      "angular/no-private-call": "warn",
       "max-len": "warn",
       "promise/catch-or-return": "warn",
       "promise/always-return": "warn",
