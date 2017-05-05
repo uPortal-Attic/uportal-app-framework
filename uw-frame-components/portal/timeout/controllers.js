@@ -1,9 +1,9 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.timeout.controllers', []);
+  return angular.module('portal.timeout.controllers', [])
 
-  app.controller('PortalTimeoutController', ['$sessionStorage', '$log', '$location', '$timeout', '$mdDialog', '$window', 'MISC_URLS', 'PortalShibbolethService',
+  .controller('PortalTimeoutController', ['$sessionStorage', '$log', '$location', '$timeout', '$mdDialog', '$window', 'MISC_URLS', 'PortalShibbolethService',
   function($sessionStorage, $log, $location, $timeout, $mdDialog, $window, MISC_URLS, PortalShibbolethService) {
     /**
      * initialize the controller

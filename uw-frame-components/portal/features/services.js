@@ -1,9 +1,8 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.features.services', []);
-
-  app.factory('portalFeaturesService', [
+  return angular.module('portal.features.services', [])
+  .factory('portalFeaturesService', [
     '$http',
     '$q',
     'miscService',
@@ -270,6 +269,4 @@ define(['angular'], function(angular) {
       getUnseenPopups: getUnseenPopups,
     };
   }]);
-
-  return app;
 });

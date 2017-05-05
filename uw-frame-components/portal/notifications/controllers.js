@@ -1,9 +1,9 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.notifications.controllers ', []);
+  return angular.module('portal.notifications.controllers ', [])
 
-  app.controller('PortalNotificationController', ['$scope', '$rootScope', '$location', '$localStorage', 'NOTIFICATION',
+  .controller('PortalNotificationController', ['$scope', '$rootScope', '$location', '$localStorage', 'NOTIFICATION',
     'SERVICE_LOC', 'filterFilter', 'notificationsService', 'miscService',
     function($scope, $rootScope, $location, $localStorage, NOTIFICATION, SERVICE_LOC, filterFilter, notificationsService, miscService) {
       // ///////////////////
@@ -202,6 +202,4 @@ define(['angular'], function(angular) {
 
       init();
   }]);
-
-  return app;
 });

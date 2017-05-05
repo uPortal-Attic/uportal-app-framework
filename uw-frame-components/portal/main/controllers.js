@@ -1,9 +1,9 @@
 'use strict';
 
 define(['angular', 'require'], function(angular, require) {
-  var app = angular.module('portal.main.controllers', []);
+  return angular.module('portal.main.controllers', [])
 
-  app.controller('PortalMainController', ['$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService', function($localStorage, $sessionStorage, $scope, $rootScope, $document, $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
+  .controller('PortalMainController', ['$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService', function($localStorage, $sessionStorage, $scope, $rootScope, $document, $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
@@ -72,10 +72,10 @@ define(['angular', 'require'], function(angular, require) {
 
     // run init
     init();
-  }]);
+  }])
 
   /* Username */
-  app.controller('SessionCheckController', ['$scope', 'mainService', 'NAMES', 'FOOTER_URLS', '$rootScope', function($scope, mainService, NAMES, FOOTER_URLS, $rootScope) {
+  .controller('SessionCheckController', ['$scope', 'mainService', 'NAMES', 'FOOTER_URLS', '$rootScope', function($scope, mainService, NAMES, FOOTER_URLS, $rootScope) {
     var vm = this;
     vm.user = [];
     vm.firstLetter = '';
@@ -91,17 +91,17 @@ define(['angular', 'require'], function(angular, require) {
       } else {
         // Get first letter of first name or display name
         var username = vm.user.firstName ? vm.user.firstName : vm.user.displayName;
-        if (username === '' || (typeof username !== 'string')) {
+        if (username === '' || !angular.isString(username)) {
           vm.firstLetter = '?';
         } else {
           vm.firstLetter = username.substring(0, 1);
         }
       }
     });
-  }]);
+  }])
 
   /* Header */
-  app.controller('PortalHeaderController', ['$rootScope', '$scope', '$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', 'notificationsService', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS, notificationsService) {
+  .controller('PortalHeaderController', ['$rootScope', '$scope', '$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', 'notificationsService', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS, notificationsService) {
     var vm = this;
     vm.navbarCollapsed = true;
     vm.showLogout = true;
@@ -119,12 +119,10 @@ define(['angular', 'require'], function(angular, require) {
       $scope.showSearch = false;
       vm.navbarCollapsed = !vm.navbarCollapsed;
     };
-  }]);
+  }])
 
   /* Footer */
-  app.controller('PortalFooterController', ['$scope', function($scope) {
+  .controller('PortalFooterController', ['$scope', function($scope) {
       $scope.date = new Date();
   }]);
-
-  return app;
 });

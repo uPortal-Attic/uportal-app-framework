@@ -1,7 +1,7 @@
 'use strict';
 
 define(['angular', 'require'], function(angular, require) {
-  var app = angular.module('portal.misc.directives', []);
+  return angular.module('portal.misc.directives', [])
 
     /**
      * Loading gif - show loading gif when the length of said array is 0 and empty is not set
@@ -11,7 +11,7 @@ define(['angular', 'require'], function(angular, require) {
      *   reuse  : (optional) set to true, it won't destroy the loading gif, just hide it
      *
      */
-    app.directive('loadingGif', [function() {
+    .directive('loadingGif', [function() {
         return {
             restrict: 'E',
             templateUrl: require.toUrl('./partials/loading-gif.html'),
@@ -37,8 +37,8 @@ define(['angular', 'require'], function(angular, require) {
                 });
             },
         };
-    }]);
-    app.directive('loading', ['$http', function($http) {
+    }])
+    .directive('loading', ['$http', function($http) {
         return {
             restrict: 'A',
             link: function(scope, elm, attrs) {
@@ -57,9 +57,9 @@ define(['angular', 'require'], function(angular, require) {
                 });
             },
         };
-    }]);
+    }])
 
-    app.directive('hideWhileLoading', ['$http', function($http) {
+    .directive('hideWhileLoading', ['$http', function($http) {
         return {
             restrict: 'A',
             link: function(scope, elm, attrs) {
@@ -72,9 +72,9 @@ define(['angular', 'require'], function(angular, require) {
                 });
             },
         };
-    }]);
+    }])
 
-    app.directive('selectOnPageLoad', function($timeout) {
+    .directive('selectOnPageLoad', function($timeout) {
         return {
             restrict: 'A',
             link: function(scope, element) {
@@ -92,9 +92,9 @@ define(['angular', 'require'], function(angular, require) {
                 );
             },
         };
-    });
+    })
 
-    app.directive('focusMe', function($log, $timeout) {
+    .directive('focusMe', function($log, $timeout) {
         return {
           link: function(scope, element, attrs) {
             scope.$watch(attrs.focusMe, function(value) {
@@ -108,7 +108,7 @@ define(['angular', 'require'], function(angular, require) {
             });
           },
         };
-      });
+      })
 
     /**
      * Directive to render the div with the "app-header" class.
@@ -129,7 +129,7 @@ define(['angular', 'require'], function(angular, require) {
      *
      * See ./partials/app-header.html.
      */
-    app.directive('appHeader', function() {
+    .directive('appHeader', function() {
       return {
         restrict: 'E',
         scope: {
@@ -145,9 +145,9 @@ define(['angular', 'require'], function(angular, require) {
         },
         templateUrl: require.toUrl('./partials/app-header.html'),
       };
-    });
+    })
 
-    app.directive('appHeaderTwoWayBind', function() {
+    .directive('appHeaderTwoWayBind', function() {
       return {
         restrict: 'E',
         scope: {
@@ -163,7 +163,7 @@ define(['angular', 'require'], function(angular, require) {
         },
         templateUrl: require.toUrl('./partials/app-header.html'),
       };
-    });
+    })
 
     /**
     <frame-page> is a directive that is your typical page. Header, body.
@@ -175,7 +175,7 @@ define(['angular', 'require'], function(angular, require) {
     Optional: whiteBackground : Adds in classes that do a white background with a border
 
     **/
-    app.directive('framePage', function() {
+    .directive('framePage', function() {
       return {
           restrict: 'E',
           templateUrl: require.toUrl('./partials/frame-page.html'),
@@ -193,7 +193,7 @@ define(['angular', 'require'], function(angular, require) {
             whiteBackground: '=',
           },
       };
-    });
+    })
 
     /**
      * content-item is a directive that
@@ -202,7 +202,7 @@ define(['angular', 'require'], function(angular, require) {
      * Params:
      *  - template: the template to display (can have angular markup)
      */
-    app.directive('contentItem', function($compile) {
+    .directive('contentItem', function($compile) {
         var linker = function(scope, element, attrs) {
             element.html(scope.template).show();
             $compile(element.contents())(scope);
@@ -212,7 +212,7 @@ define(['angular', 'require'], function(angular, require) {
             restrict: 'E',
             link: linker,
         };
-    });
+    })
 
 
     /**
@@ -229,7 +229,7 @@ define(['angular', 'require'], function(angular, require) {
      * - title : (optional) title that is displayed under the circle
      * - truncLen : (optional) length to truncate the title
      */
-    app.directive('circleButton', function() {
+    .directive('circleButton', function() {
       return {
         restrict: 'E',
         scope: {
@@ -243,7 +243,7 @@ define(['angular', 'require'], function(angular, require) {
         },
         templateUrl: require.toUrl('./partials/circle-button.html'),
       };
-    });
+    })
 
   /**
    * Launch Button Directive
@@ -256,7 +256,7 @@ define(['angular', 'require'], function(angular, require) {
    * - button-text: the text to be displayed
    * - aria-label: (optional) text to provide additional context for screen readers, if necessary
    */
-    app.directive('launchButton', function() {
+    .directive('launchButton', function() {
       return {
         restrict: 'E',
         scope: {
@@ -267,15 +267,12 @@ define(['angular', 'require'], function(angular, require) {
         },
         templateUrl: require.toUrl('./partials/launch-button.html'),
       };
-    });
+    })
 
-    app.directive('addToHome', function() {
+    .directive('addToHome', function() {
       return {
         restrict: 'E',
         templateUrl: require.toUrl('./partials/add-to-home.html'),
       };
     });
-
-
-    return app;
 });

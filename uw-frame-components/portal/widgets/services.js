@@ -1,9 +1,9 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.widgets.services', []);
+  return angular.module('portal.widgets.services', [])
 
-  app.factory('widgetService', ['$http', '$log', 'SERVICE_LOC', function($http, $log, SERVICE_LOC) {
+  .factory('widgetService', ['$http', '$log', 'SERVICE_LOC', function($http, $log, SERVICE_LOC) {
     /**
      * Get the a single app's full entity file as JSON
      * @param fname The app's fname value (<fname> in entity files)
@@ -95,6 +95,4 @@ define(['angular'], function(angular) {
       getErrorPage: getErrorPage,
     };
   }]);
-
-  return app;
 });
