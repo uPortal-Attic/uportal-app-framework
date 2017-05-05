@@ -1,5 +1,8 @@
 'use strict';
 
+/* this is the spaghetti'est thing I've ever seen. I'm not touching this. */
+/* eslint-disable promise/always-return */
+
 define(['angular'], function(angular) {
   return angular.module('portal.features.services', [])
   .factory('portalFeaturesService', [
@@ -64,7 +67,7 @@ define(['angular'], function(angular) {
       }
     };// end get features
 
-    /*
+    /**
      * If keyValueService is Active and there exists legacy announcement storage
      * this will convert that to the new store all seen announcement ids rather
      * than just the latest.  Will then delete the legacy announcement storage

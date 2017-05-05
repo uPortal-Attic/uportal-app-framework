@@ -85,9 +85,11 @@ define(['angular'], function(angular) {
       var getNotifications = function() {
         dismissedNotificationIds = [];
         if(NOTIFICATION.groupFiltering && !$localStorage.disableGroupFilteringForNotifications) {
-          notificationsService.getFilteredNotifications().then(getNotificationsSuccess, getNotificationsError);
+          notificationsService.getFilteredNotifications()
+            .then(getNotificationsSuccess).catch(getNotificationsError);
         } else {
-          notificationsService.getAllNotifications().then(getNotificationsSuccess, getNotificationsError);
+          notificationsService.getAllNotifications()
+            .then(getNotificationsSuccess).catch(getNotificationsError);
         }
       };
 

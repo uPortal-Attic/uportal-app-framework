@@ -38,6 +38,9 @@ define(['angular-mocks', 'portal'], function() {
               expect(results).toBeTruthy();
               expect(results.dismissed).toBeTruthy();
               expect(results.notDismissed).toBeTruthy();
+              return results;
+            }).catch(function(reason) {
+              fail(reason);
             });
             httpBackend.flush();
         });
@@ -66,6 +69,9 @@ define(['angular-mocks', 'portal'], function() {
                 expect(results.notDismissed).toBeTruthy();
                 expect(results.dismissed).toBeTruthy();
                 expect(results.notDismissed.length).toEqual(1);
+                return results;
+            }).catch(function(reason) {
+              fail(reason);
             });
             httpBackend.flush();
         });
@@ -95,6 +101,9 @@ define(['angular-mocks', 'portal'], function() {
                 expect(results.dismissed).toBeTruthy();
                 expect(results.notDismissed.length).toEqual(0);
                 expect(results.dismissed.length).toEqual(1);
+                return results;
+            }).catch(function(reason) {
+              fail(reason);
             });
             httpBackend.flush();
         });
@@ -124,6 +133,9 @@ define(['angular-mocks', 'portal'], function() {
                 expect(results.dismissed).toBeTruthy();
                 expect(results.notDismissed.length).toEqual(1);
                 expect(results.dismissed.length).toEqual(0);
+                return results;
+            }).catch(function(reason) {
+              fail(reason);
             });
             httpBackend.flush();
         });
@@ -161,6 +173,9 @@ define(['angular-mocks', 'portal'], function() {
                 // since the test user is not in Developers this should filter out notification 2
                 expect(results.notDismissed.length).toEqual(0);
                 expect(results.dismissed.length).toEqual(1);
+                return results;
+            }).catch(function(reason) {
+              fail(reason);
             });
             httpBackend.flush();
         });
@@ -196,6 +211,9 @@ define(['angular-mocks', 'portal'], function() {
             // Expect notification 1 to be good, but not 2
             expect(results.notDismissed.length).toEqual(1);
             expect(results.notDismissed[0].id).toEqual(1);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
@@ -229,6 +247,9 @@ define(['angular-mocks', 'portal'], function() {
           notificationsService.getFilteredNotifications().then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
@@ -263,6 +284,9 @@ define(['angular-mocks', 'portal'], function() {
           notificationsService.getFilteredNotifications().then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
@@ -298,6 +322,9 @@ define(['angular-mocks', 'portal'], function() {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(1);
             expect(results.notDismissed[0].id).toEqual(1);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
@@ -330,6 +357,9 @@ define(['angular-mocks', 'portal'], function() {
           notificationsService.getFilteredNotifications().then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
@@ -366,6 +396,9 @@ define(['angular-mocks', 'portal'], function() {
           notificationsService.getFilteredNotifications().then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
@@ -403,6 +436,9 @@ define(['angular-mocks', 'portal'], function() {
           notificationsService.getFilteredNotifications().then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
@@ -439,6 +475,9 @@ define(['angular-mocks', 'portal'], function() {
           notificationsService.getFilteredNotifications().then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(1);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
@@ -474,6 +513,9 @@ define(['angular-mocks', 'portal'], function() {
           notificationsService.getFilteredNotifications().then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(1);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
@@ -509,6 +551,9 @@ define(['angular-mocks', 'portal'], function() {
           notificationsService.getFilteredNotifications().then(function(results) {
             expect(results).toBeTruthy();
             expect(results.dismissed.length).toEqual(1);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
@@ -543,6 +588,9 @@ define(['angular-mocks', 'portal'], function() {
           notificationsService.getFilteredNotifications().then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });

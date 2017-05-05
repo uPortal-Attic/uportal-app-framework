@@ -15,6 +15,7 @@ define(['angular'], function(angular) {
           if (angular.isDefined(result.data.entry.layoutObject)) {
             return result.data.entry.layoutObject;
           }
+          return undefined;
         })
         .catch(function(error) {
           $log.warn('Error getting marketplace entry for ' + fname);

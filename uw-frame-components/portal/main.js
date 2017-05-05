@@ -265,7 +265,8 @@ define([
                 defaultThemeGo();
               }
               loadingCompleteSequence();
-            }, function(reason) {
+              return result;
+            }).catch(function(reason) {
               if(APP_FLAGS.debug) {
                 $log.error('We got a error back from groupURL, setting theme to default');
               }
@@ -391,8 +392,8 @@ define([
                 $rootScope.GuestMode = true;
               }
             }
-          },
-          function(reason) {
+            return result;
+          }).catch(function(reason) {
             themeLoading(); // still continue with theme loading so they don't get stuck on loading
           });
         } else {

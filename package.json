@@ -136,8 +136,6 @@
       "angular/controller-as": "off",
 
       "max-len": "warn",
-      "promise/catch-or-return": "warn",
-      "promise/always-return": "warn",
 
       "compat/compat": "error",
       "arrow-parens": "off",

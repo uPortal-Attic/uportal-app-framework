@@ -3,9 +3,9 @@
 define(['angular', 'require'], function(angular, require) {
   angular.module('portal.features.controllers', [])
 
-  .controller('PortalFeaturesController', ['miscService', '$localStorage', '$sessionStorage', '$scope', '$document', 'FEATURES',
+  .controller('PortalFeaturesController', ['miscService', '$localStorage', '$log', '$sessionStorage', '$scope', '$document', 'FEATURES',
     '$mdDialog', 'portalFeaturesService', '$sanitize', 'MISC_URLS',
-    function(miscService, $localStorage, $sessionStorage, $scope, $document, FEATURES, $mdDialog, portalFeaturesService, $sanitize, MISC_URLS) {
+    function(miscService, $localStorage, $log, $sessionStorage, $scope, $document, FEATURES, $mdDialog, portalFeaturesService, $sanitize, MISC_URLS) {
       $scope.features = [];
       $scope.MISC_URLS = MISC_URLS;
       if (FEATURES.enabled) {
@@ -14,13 +14,16 @@ define(['angular', 'require'], function(angular, require) {
           if (features.length > 0) {
             $scope.features = features;
           }
+          return features;
+        }).catch(function() {
+          $log.warn('Could not get features');
         });
       }
   }])
 
-  .controller('PortalPopupController', ['$localStorage', '$sessionStorage', '$rootScope', '$scope', '$document', 'FEATURES',
+  .controller('PortalPopupController', ['$localStorage', '$log', '$sessionStorage', '$rootScope', '$scope', '$document', 'FEATURES',
     'filterFilter', '$filter', '$mdDialog', 'portalFeaturesService', 'miscService', '$sanitize',
-    function($localStorage, $sessionStorage, $rootScope, $scope, $document, FEATURES, filterFilter, $filter, $mdDialog, portalFeaturesService, miscService, $sanitize) {
+    function($localStorage, $log, $sessionStorage, $rootScope, $scope, $document, FEATURES, filterFilter, $filter, $mdDialog, portalFeaturesService, miscService, $sanitize) {
       // scope functions ---------------------------------------------------------
 
       // need this due to isolated scope
@@ -33,20 +36,26 @@ define(['angular', 'require'], function(angular, require) {
         // reloadAnnouncements
         portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
           $scope.announcements = unseenAnnouncements;
+          return unseenAnnouncements;
+        }).catch(function() {
+          $log.warn('Could not getUnseenAnnouncements');
         });
         miscService.pushGAEvent('feature', liked ? 'read more' : 'dismissed', announcementID);
       };
 
       $scope.markAllAnnouncementsSeen = function(liked) {
         portalFeaturesService.getUnseenAnnouncements().then(function(unseenAnnouncements) {
-          for(var i=0; i<unseenAnnouncements.length; i++) {
+          for (var i=0; i<unseenAnnouncements.length; i++) {
             var announcement = unseenAnnouncements[i];
             portalFeaturesService.markAnnouncementSeen(announcement.id);
             miscService.pushGAEvent('feature', liked ? 'read more' : 'dismissed', announcement.id);
           }
-          portalFeaturesService.getUnseenAnnouncements().then(function(newUnseenAnnouncements) {
+          return portalFeaturesService.getUnseenAnnouncements().then(function(newUnseenAnnouncements) {
             $scope.announcements = newUnseenAnnouncements;
+            return newUnseenAnnouncements;
           });
+        }).catch(function() {
+          $log.warn('Could not getUnseenAnnouncements');
         });
       };
 
@@ -92,7 +101,8 @@ define(['angular', 'require'], function(angular, require) {
                   miscService.pushGAEvent('popup', action, orderedPopups[0].id);
                   portalFeaturesService.markPopupSeen(orderedPopups[0].id);
                   getPopups();
-                }, function() {
+                  return action;
+                }).catch(function() {
                   // if popup is closed by clicking outside or pressing escape key
                   miscService.pushGAEvent('popup', 'dismissed', orderedPopups[0].id);
                   portalFeaturesService.markPopupSeen(orderedPopups[0].id);
@@ -101,6 +111,9 @@ define(['angular', 'require'], function(angular, require) {
               };
               displayPopup();
             }
+            return unseenPopups;
+          }).catch(function() {
+            $log.warn('Could not get unseen popups');
           });
         }
       };
@@ -135,6 +148,9 @@ define(['angular', 'require'], function(angular, require) {
              if(!$rootScope.GuestMode) {
                $scope.announcements = unseenAnnouncements;
              }
+             return unseenAnnouncements;
+           }).catch(function() {
+             $log.warn('Could not get unseen announcements');
            });
            setMascot();
          }else{
