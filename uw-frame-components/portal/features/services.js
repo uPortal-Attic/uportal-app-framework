@@ -4,43 +4,45 @@
 /* eslint-disable promise/always-return */
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.features.services', []);
-
-  app.factory('portalFeaturesService', ['$http',
-                                        '$q',
-                                        'miscService',
-                                        'keyValueService',
-                                        'PortalGroupService',
-                                        '$log',
-                                        '$localStorage',
-                                        '$sessionStorage',
-                                        'filterFilter',
-                                        'KV_KEYS',
-                                        'FEATURES',
-                                        function($http,
-                                                 $q,
-                                                 miscService,
-                                                 keyValueService,
-                                                 PortalGroupService,
-                                                 $log,
-                                                 $localStorage,
-                                                 $sessionStorage,
-                                                 filterFilter,
-                                                 KV_KEYS,
-                                                 FEATURES) {
+  return angular.module('portal.features.services', [])
+  .factory('portalFeaturesService', [
+    '$http',
+    '$q',
+    'miscService',
+    'keyValueService',
+    'PortalGroupService',
+    '$log',
+    '$localStorage',
+    '$sessionStorage',
+    'filterFilter',
+    'KV_KEYS',
+    'FEATURES',
+    function(
+      $http,
+      $q,
+      miscService,
+      keyValueService,
+      PortalGroupService,
+      $log,
+      $localStorage,
+      $sessionStorage,
+      filterFilter,
+      KV_KEYS,
+      FEATURES
+    ) {
     var featuresPromise;
     var filteredFeaturesPromise;
     var getFeatures = function() {
       if(!featuresPromise) {
         featuresPromise = $http.get(FEATURES.serviceURL, {cache: true})
-                               .then(function(results, status) { // success function
-                                  return results.data;
-                               }, function(data, status) { // failure function
-                                  miscService.redirectUser(status, 'Get features info');
-                               });
+           .then(function(results, status) { // success function
+              return results.data;
+           }, function(data, status) { // failure function
+              miscService.redirectUser(status, 'Get features info');
+           });
       }
-      if(FEATURES.groupFiltering && PortalGroupService.groupsServiceEnabled && !$localStorage.disableGroupAnnouncementFiltering) {
-        if(filteredFeaturesPromise) {
+      if (FEATURES.groupFiltering && PortalGroupService.groupsServiceEnabled && !$localStorage.disableGroupAnnouncementFiltering) {
+        if (filteredFeaturesPromise) {
           // cache shortcut
           return filteredFeaturesPromise;
         }
@@ -52,10 +54,13 @@ define(['angular'], function(angular) {
         var errorFn = function(reason) {
           miscService.redirectUser(reason.status, 'q for filtered features');
         };
-        filteredFeaturesPromise = $q.all([featuresPromise,
-                                          PortalGroupService.getGroups(),
-                                         ])
-                                    .then(successFn, errorFn);
+
+        filteredFeaturesPromise = $q
+          .all([featuresPromise,
+            PortalGroupService.getGroups(),
+          ])
+          .then(successFn, errorFn);
+
         return filteredFeaturesPromise;
       } else {
         return featuresPromise;
@@ -68,35 +73,27 @@ define(['angular'], function(angular) {
      * than just the latest.  Will then delete the legacy announcement storage
      */
     var updateLegacySeenAnnouncements = function() {
-      return $q(function(resolve, reject) {
-        if(keyValueService.isKVStoreActivated()) {
-          keyValueService.getValue('lastviewedannouncementid').then(function(data) {
-            if(data && data.id) {
-              // create an array with the seen ids
-              var seenAnnouncements = [];
-              for(var i=0; i<=data.id; i++) {
-                seenAnnouncements.push(i);
-              }
-              $sessionStorage.seenAnnouncementIds = seenAnnouncements;
-              keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncementIds).then(function(data) {
-                keyValueService.deleteValue('lastviewedannouncementid').then(function() {
-                  return resolve(null);
-                }).catch(function(response) {
-                  return reject(response);
-                });
-              }).catch(function(response) {
-                return reject(response);
-              });
-            }else{ // no legacy seenAnnounements
-              return resolve(null);
-            }
-          }).catch(function(response) { // getLegacyLastViewAnnouncement promise failure
-            return resolve(response);
-          });
-        }else{ // kvStore is not activated
-          return resolve(null);
-        }
-      });
+      if (!keyValueService.isKVStoreActivated()) {
+        return $q.resolve(null);
+      }
+
+      return keyValueService
+        .getValue('lastviewedannouncementid')
+        .then(function(data) {
+          if (!data || !data.id) {
+            throw Error('no legacy seenAnnouncements');
+          }
+          // create an array with the seen ids
+          var seenAnnouncements = [];
+          for (var i = 0; i <= data.id; i++) {
+            seenAnnouncements.push(i);
+          }
+          $sessionStorage.seenAnnouncementIds = seenAnnouncements;
+          return keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncementIds);
+        })
+        .then(function(data) {
+          return keyValueService.deleteValue('lastviewedannouncementid');
+        });
     };
 
     /*
@@ -105,149 +102,126 @@ define(['angular'], function(angular) {
      * than just the latest.  Will then delete the legacy popup storage
      */
     var updateLegacyPopups = function() {
-      return $q(function(resolve, reject) {
-        if(keyValueService.isKVStoreActivated()) {
-          keyValueService.getValue('lastviewedpopupid').then(function(data) {
-            if(data && data.id) {
-              // create an array with the seen ids
-              var seenPopups = [];
-              for(var i=0; i<=data.id; i++) {
-                seenPopups.push(i);
-              }
-              $sessionStorage.seenPopupIds = seenPopups;
-              keyValueService.setValue(KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds).then(function(data) {
-                keyValueService.deleteValue('lastviewedpopupid').then(function() {
-                  return resolve(null);
-                }).catch(function(response) {
-                  return reject(response);
-                });
-              }).catch(function(response) {
-                return reject(response);
-              });
-            }else{ // no legacy popups
-              return resolve(null);
-            }
-          }).catch(function(response) { // getLegacyPopups promise failure
-            return resolve(response);
-          });
-        }else{ // kvStore is not activated
-          return resolve(null);
-        }
+      if (!keyValueService.isKVStoreActivated()) {
+        return $q.resolve(null);
+      }
+
+      return keyValueService
+        .getValue('lastviewedpopupid')
+        .then(function(data) {
+          if (!data || !data.id) {
+            throw Error('no legacy popups');
+          }
+          // create an array with the seen ids
+          var seenPopups = [];
+          for (var i = 0; i <= data.id; i++) {
+            seenPopups.push(i);
+          }
+          $sessionStorage.seenPopupIds = seenPopups;
+          return keyValueService.setValue(KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds);
+      })
+      .then(function(data) {
+        return keyValueService.deleteValue('lastviewedpopupid');
       });
     };
 
     var getSeenAnnouncements = function() {
-      return $q(function(resolve, reject) {
-        if(!$sessionStorage.seenAnnouncementIds) {
-          updateLegacySeenAnnouncements().then(function() {
-            keyValueService.getValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS).then(function(data) {
-              if(!Array.isArray(data)) {
-                $sessionStorage.seenAnnouncementIds = [];
-              }else{
-                $sessionStorage.seenAnnouncementIds = data;
-              }
-              return resolve($sessionStorage.seenAnnouncementIds);
-            }).catch(function(response) {
-              return reject(response);
-            });
-          }).catch(function(response) {
-            return reject(response);
-          });
-        }else{
-          return resolve($sessionStorage.seenAnnouncementIds);
-        }
-      });
+      if (sessionStorage.seenAnnouncementIds) {
+        return $q.resolve($sessionStorage.seenAnnouncementIds);
+      }
+
+      return updateLegacySeenAnnouncements()
+        .then(function() {
+          return keyValueService.getValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS);
+        })
+        .then(function(data) {
+          if (angular.isArray(data)) {
+            $sessionStorage.seenAnnouncementIds = data;
+          } else {
+            $sessionStorage.seenAnnouncementIds = [];
+          }
+
+          return $sessionStorage.seenAnnouncementIds;
+        });
     };
 
     var getSeenPopups = function() {
-      return $q(function(resolve, reject) {
-        if (!$sessionStorage.seenPopupIds) {
-          updateLegacyPopups().then(function() {
-            keyValueService.getValue(KV_KEYS.VIEWED_POPUP_IDS).then(function(data) {
-              if(!Array.isArray(data)) {
-                $sessionStorage.seenPopupIds = [];
-              } else {
-                $sessionStorage.seenPopupIds = data;
-              }
-              return resolve($sessionStorage.seenPopupIds);
-            }).catch(function(response) {
-              return reject(response);
-            });
-          }).catch(function(response) {
-            return reject(response);
-          });
-        } else {
-          return resolve($sessionStorage.seenPopupIds);
-        }
-      });
+      if (sessionStorage.seenPopupIds) {
+        return $q.resolve($sessionStorage.seenPopupIds);
+      }
+
+      return updateLegacyPopups()
+        .then(function() {
+            return keyValueService.getValue(KV_KEYS.VIEWED_POPUP_IDS);
+        })
+        .then(function(data) {
+          if (angular.isArray(data)) {
+            $sessionStorage.seenPopupIds = data;
+          } else {
+            $sessionStorage.seenPopupIds = [];
+          }
+
+          return $sessionStorage.seenPopupIds;
+        });
     };
 
     var markAnnouncementSeen = function(announcementID) {
-      return $q(function(resolve, reject) {
-        // Store in session storage
-        if(!$sessionStorage.seenAnnouncementIds) {
-          $sessionStorage.seenAnnouncementIds = [announcementID];
-        }else{
-          $sessionStorage.seenAnnouncementIds.push(announcementID);
-        }
-        // Store in keyvalueStorage if able
-        if(keyValueService.isKVStoreActivated()) {
-          keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncementIds).then(function(data) {
-            return resolve($sessionStorage.seenAnnouncementIds);
-          }).catch(function(response) {
-            return reject(response);
-          });
-        }else{
-          return resolve($sessionStorage.seenAnnouncementIds);
-        }
-      });
+      if ($sessionStorage.seenAnnouncementIds) {
+        $sessionStorage.seenAnnouncementIds.push(announcementID);
+      } else {
+        $sessionStorage.seenAnnouncementIds = [announcementID];
+      }
+
+      if (!keyValueService.isKVStoreActivated()) {
+        return $q.resolve($sessionStorage.seenAnnouncementIds);
+      }
+
+      return keyValueService
+        .setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncementIds)
+        .then(function(data) {
+          return $sessionStorage.seenAnnouncementIds;
+        });
     };
 
     var markPopupSeen = function(popupID) {
-      return $q(function(resolve, reject) {
-        // Store in session storage
-        if (!$sessionStorage.seenPopupIds) {
-          $sessionStorage.seenPopupIds = [popupID];
-        } else {
-          $sessionStorage.seenPopupIds.push(popupID);
-        }
-        // Store in keyvalueStorage if able
-        if (keyValueService.isKVStoreActivated()) {
-          keyValueService.setValue(KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds)
-            .then(function(data) {
-              return resolve($sessionStorage.seenPopupIds);
-            }).catch(function(response) {
-              return reject(response);
-            });
-        } else {
-          return resolve($sessionStorage.seenPopupIds);
-        }
-      });
+      // Store in session storage
+      if ($sessionStorage.seenPopupIds) {
+        $sessionStorage.seenPopupIds.push(popupID);
+      } else {
+        $sessionStorage.seenPopupIds = [popupID];
+      }
+
+      // Store in keyvalueStorage if able
+      if (!keyValueService.isKVStoreActivated()) {
+        return $q.resolve($sessionStorage.seenPopupIds);
+      }
+
+      return keyValueService
+        .setValue(KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds)
+        .then(function(data) {
+          return $sessionStorage.seenPopupIds;
+        });
     };
 
     var getUnseenAnnouncements = function() {
       var successFn = function(data) {
         // features in data[0]  //seenAnnouncements in data[1]
         var announcements = filterFilter(data[0], {isBuckyAnnouncement: true});
-        if(announcements && announcements.length != 0) {
+        if (announcements && announcements.length != 0) {
          // filter down to ones they haven't seen
           var hasNotSeen = function(feature) {
-            if(data[1].indexOf(feature.id) !== -1) {
+            if (data[1].indexOf(feature.id) !== -1) {
               return false;
             } else {
               // check dates
-              var today = Date.parse(new Date());
-              var startDate = Date.parse(new Date(feature.goLiveYear, feature.goLiveMonth, feature.goLiveDay));
+              var today = new Date().getTime();
+              var startDate = new Date(feature.goLiveYear, feature.goLiveMonth, feature.goLiveDay).getTime();
               var expirationDate = feature.buckyAnnouncement.endDate;
-              if (typeof expirationDate=='string') {
+              if (angular.isString(expirationDate)) {
                   expirationDate = new Date(expirationDate).getTime();
               }
 
-              if(startDate <= today && today <= expirationDate) {
-                return true;
-              } else {// hasn't started yet
-                return false;
-              }
+              return startDate <= today && today <= expirationDate;
             }
           };
           return announcements.filter(hasNotSeen);
@@ -258,7 +232,7 @@ define(['angular'], function(angular) {
         return reason;
       };
 
-      return $q.all([getFeatures(), getSeenAnnouncements()]).then(successFn, errorFn);
+      return $q.all([getFeatures(), getSeenAnnouncements()]).then(successFn).catch(errorFn);
     };
 
 
@@ -266,11 +240,11 @@ define(['angular'], function(angular) {
       var successFn = function(data) {
         var popupFeatures = filterFilter(data[0], {isPopup: true});
         if (popupFeatures.length != 0) {
-          var today = Date.parse(new Date());
+          var today = new Date().getTime();
           var filterExpiredPopups = function(feature) {
-            var startDate = Date.parse(new Date(feature.popup.startYear, feature.popup.startMonth, feature.popup.startDay));
-            var endDate = Date.parse(new Date(feature.popup.endYear, feature.popup.endMonth, feature.popup.endDay));
-            return (today > startDate && today < endDate);
+            var startDate = new Date(feature.popup.startYear, feature.popup.startMonth, feature.popup.startDay).getTime();
+            var endDate = new Date(feature.popup.endYear, feature.popup.endMonth, feature.popup.endDay).getTime();
+            return today > startDate && today < endDate;
           };
           var filterUnEnabledPopups = function(feature) {
               return feature.popup.enabled;
@@ -286,7 +260,7 @@ define(['angular'], function(angular) {
         return reason;
       };
 
-      return $q.all([getFeatures(), getSeenPopups()]).then(successFn, errorFn);
+      return $q.all([getFeatures(), getSeenPopups()]).then(successFn).catch(errorFn);
     };
 
 
@@ -298,6 +272,4 @@ define(['angular'], function(angular) {
       getUnseenPopups: getUnseenPopups,
     };
   }]);
-
-  return app;
 });

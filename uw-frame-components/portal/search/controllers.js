@@ -1,8 +1,8 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.search.controllers', []);
-  app.controller('PortalSearchController', [
+  return angular.module('portal.search.controllers', [])
+  .controller('PortalSearchController', [
     'miscService',
     'PortalSearchService',
     '$location',
@@ -87,6 +87,4 @@ define(['angular'], function(angular) {
       };
       init();
     }]);
-
-    return app;
 });

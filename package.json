@@ -5,8 +5,8 @@
   "scripts": {
     "test": "karma start uw-frame-components/karma.conf.js --single-run",
     "build-static": "node tools/uw-frame-static/build.js",
-    "dev-lint-js": "eslint --quiet --ext js --ext json --ext md --format html --output-file uw-frame-static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern uw-frame-components/css/lib/less-1.6.2.js --ignore-pattern uw-frame-components/js/ga.js --ignore-pattern uw-frame-components/js/sortable.js",
-    "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore --ignore-pattern uw-frame-components/css/lib/less-1.6.2.js --ignore-pattern uw-frame-components/js/ga.js --ignore-pattern uw-frame-components/js/sortable.js",
+    "dev-lint-js": "eslint --quiet --ext js --ext json --ext md --format html --output-file uw-frame-static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern uw-frame-components/js/ga.js --ignore-pattern uw-frame-components/js/sortable.js",
+    "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern uw-frame-components/js/ga.js --ignore-pattern uw-frame-components/js/sortable.js",
     "precommit": "eslint-git-changes",
     "postbuild-static": "htmlprocessor uw-frame-static/index.html -o uw-frame-static/target/index.html",
     "prestatic": "npm run build-static",
@@ -135,12 +135,6 @@
       ],
       "angular/controller-as": "off",
 
-      "angular/module-setter": "warn",
-      "angular/module-getter": "warn",
-      "angular/typecheck-object": "warn",
-      "angular/typecheck-array": "warn",
-      "angular/typecheck-string": "warn",
-      "angular/no-private-call": "warn",
       "max-len": "warn",
 
       "compat/compat": "error",

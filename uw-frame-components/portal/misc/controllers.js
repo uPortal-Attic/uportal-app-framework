@@ -1,10 +1,10 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.misc.controllers', []);
+  return angular.module('portal.misc.controllers', [])
 
   /* AddToHomeController */
-  app.controller('AddToHomeController', ['$log', '$scope', '$timeout', 'PortalAddToHomeService',
+  .controller('AddToHomeController', ['$log', '$scope', '$timeout', 'PortalAddToHomeService',
                  function($log, $scope, $timeout, PortalAddToHomeService) {
     $scope.addToHome = function() {
       if(!$scope.inHome && PortalAddToHomeService.canAddToHome($scope.fname)) {
@@ -58,6 +58,4 @@ define(['angular'], function(angular) {
 
     init();
   }]);
-
-  return app;
  });

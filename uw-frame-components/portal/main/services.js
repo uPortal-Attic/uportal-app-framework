@@ -1,9 +1,9 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.main.services', []);
+  return angular.module('portal.main.services', [])
 
-  app.factory('mainService', ['$http', '$log', '$sessionStorage', 'miscService', 'SERVICE_LOC', 'APP_FLAGS', function($http, $log, $sessionStorage, miscService, SERVICE_LOC, APP_FLAGS) {
+  .factory('mainService', ['$http', '$log', '$sessionStorage', 'miscService', 'SERVICE_LOC', 'APP_FLAGS', function($http, $log, $sessionStorage, miscService, SERVICE_LOC, APP_FLAGS) {
     var prom = $http.get(SERVICE_LOC.sessionInfo, {cache: true});
     var userPromise;
 
@@ -38,6 +38,4 @@ define(['angular'], function(angular) {
       getUser: getUser,
     };
   }]);
-
-  return app;
 });
