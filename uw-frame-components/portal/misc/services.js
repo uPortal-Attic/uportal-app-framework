@@ -29,8 +29,8 @@ define(['angular', 'jquery'], function(angular, $) {
       if(!groupsNameFieldName) {
         groupsNameFieldName = 'name';
       }
-      if(!array || array.length === 0 || !groups || groups.length === 0 || !Array.isArray(array)) {
-        if(!Array.isArray(array)) {
+      if(!array || array.length === 0 || !groups || groups.length === 0 || !angular.isArray(array)) {
+        if(!angular.isArray(array)) {
           $log.warn('PortalGroupService.filterArrayByGroups was called, but not an array');
         }
         return array;
@@ -39,7 +39,7 @@ define(['angular', 'jquery'], function(angular, $) {
       var returnArray = [];
       // filtering magic
       $.each(array, function(index, cur) { // for each object
-        if(Array.isArray(cur[arrayGroupFieldName])) {
+        if(angular.isArray(cur[arrayGroupFieldName])) {
           $.each(cur[arrayGroupFieldName], function(index, group) { // for each group for that object
             var inGroup = $.grep(groups, function(e) {
               return e[groupsNameFieldName] === group;
