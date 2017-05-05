@@ -1,9 +1,8 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.features.services', []);
-
-  app.factory('portalFeaturesService', [
+  return angular.module('portal.features.services', [])
+  .factory('portalFeaturesService', [
     '$http',
     '$q',
     'miscService',
@@ -133,7 +132,7 @@ define(['angular'], function(angular) {
           return keyValueService.getValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS);
         })
         .then(function(data) {
-          if (Array.isArray(data)) {
+          if (angular.isArray(data)) {
             $sessionStorage.seenAnnouncementIds = data;
           } else {
             $sessionStorage.seenAnnouncementIds = [];
@@ -153,7 +152,7 @@ define(['angular'], function(angular) {
             return keyValueService.getValue(KV_KEYS.VIEWED_POPUP_IDS);
         })
         .then(function(data) {
-          if (Array.isArray(data)) {
+          if (angular.isArray(data)) {
             $sessionStorage.seenPopupIds = data;
           } else {
             $sessionStorage.seenPopupIds = [];
@@ -215,7 +214,7 @@ define(['angular'], function(angular) {
               var today = new Date().getTime();
               var startDate = new Date(feature.goLiveYear, feature.goLiveMonth, feature.goLiveDay).getTime();
               var expirationDate = feature.buckyAnnouncement.endDate;
-              if (typeof expirationDate === 'string') {
+              if (angular.isString(expirationDate)) {
                   expirationDate = new Date(expirationDate).getTime();
               }
 
@@ -270,6 +269,4 @@ define(['angular'], function(angular) {
       getUnseenPopups: getUnseenPopups,
     };
   }]);
-
-  return app;
 });

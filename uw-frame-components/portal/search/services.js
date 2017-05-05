@@ -1,9 +1,9 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.search.services', []);
+  return angular.module('portal.search.services', [])
 
-  app.factory('PortalSearchService', function() {
+  .factory('PortalSearchService', function() {
     var query;
 
     var getQuery = function() {
@@ -24,6 +24,4 @@ define(['angular'], function(angular) {
       resetQuery: resetQuery,
     };
   });
-
-  return app;
 });

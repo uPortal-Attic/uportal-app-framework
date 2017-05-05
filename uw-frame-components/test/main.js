@@ -9,6 +9,7 @@ require(['/base/config.js'], function(config) {
     config.baseUrl = '/base';
     config.callback = window.__karma__.start;
     config.deps = getAllTestFiles();
+    // eslint-disable-next-line angular/module-getter
     require.config(config);
 
     /**

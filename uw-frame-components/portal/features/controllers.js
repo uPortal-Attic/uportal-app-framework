@@ -1,10 +1,9 @@
 'use strict';
 
 define(['angular', 'require'], function(angular, require) {
-  var app = angular.module('portal.features.controllers', []);
+  angular.module('portal.features.controllers', [])
 
-
-  app.controller('PortalFeaturesController', ['miscService', '$localStorage', '$sessionStorage', '$scope', '$document', 'FEATURES',
+  .controller('PortalFeaturesController', ['miscService', '$localStorage', '$sessionStorage', '$scope', '$document', 'FEATURES',
     '$mdDialog', 'portalFeaturesService', '$sanitize', 'MISC_URLS',
     function(miscService, $localStorage, $sessionStorage, $scope, $document, FEATURES, $mdDialog, portalFeaturesService, $sanitize, MISC_URLS) {
       $scope.features = [];
@@ -17,9 +16,9 @@ define(['angular', 'require'], function(angular, require) {
           }
         });
       }
-  }]);
+  }])
 
-  app.controller('PortalPopupController', ['$localStorage', '$sessionStorage', '$rootScope', '$scope', '$document', 'FEATURES',
+  .controller('PortalPopupController', ['$localStorage', '$sessionStorage', '$rootScope', '$scope', '$document', 'FEATURES',
     'filterFilter', '$filter', '$mdDialog', 'portalFeaturesService', 'miscService', '$sanitize',
     function($localStorage, $sessionStorage, $rootScope, $scope, $document, FEATURES, filterFilter, $filter, $mdDialog, portalFeaturesService, miscService, $sanitize) {
       // scope functions ---------------------------------------------------------
@@ -147,6 +146,4 @@ define(['angular', 'require'], function(angular, require) {
     // run function -------------------------------------------------------------
     init();
   }]);
-
-  return app;
 });

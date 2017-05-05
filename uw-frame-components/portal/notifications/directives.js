@@ -1,16 +1,16 @@
 'use strict';
 
 define(['angular', 'require'], function(angular, require) {
-    var app = angular.module('portal.notifications.directives', []);
+    return angular.module('portal.notifications.directives', [])
 
-    app.directive('notifications', function() {
+    .directive('notifications', function() {
         return {
             restrict: 'E',
             templateUrl: require.toUrl('./partials/notifications.html'),
         };
-    });
+    })
 
-    app.directive('notificationBell', function() {
+    .directive('notificationBell', function() {
         return {
             restrict: 'E',
             scope: {
@@ -19,16 +19,12 @@ define(['angular', 'require'], function(angular, require) {
             },
             templateUrl: require.toUrl('./partials/notification-bell.html'),
         };
-    });
+    })
 
-    app.directive('notificationsListItem', function() {
+    .directive('notificationsListItem', function() {
       return {
         restrict: 'E',
         templateUrl: require.toUrl('./partials/notifications-list-item.html'),
       };
     });
-
-
-    return app;
 });
-

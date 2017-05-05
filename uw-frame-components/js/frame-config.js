@@ -1,6 +1,5 @@
 define(['angular'], function(angular) {
-    var config = angular.module('frame-config', []);
-    config
+    return angular.module('frame-config', [])
         .constant('THEMES',
         {'themeVersion': 7,
         /* THOU SHALT INCREMENT THIS VERSION NUMBER IF THOU CHANGEST ANY OF THE THEMES BELOW  */
@@ -1028,6 +1027,4 @@ define(['angular'], function(angular) {
             'description': 'This flag disables announcement group filtering if you have it enabled (page refresh required)',
           },
         ]);
-
-    return config;
 });
