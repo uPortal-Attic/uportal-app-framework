@@ -41,7 +41,9 @@ define(['angular'], function(angular) {
               miscService.redirectUser(status, 'Get features info');
            });
       }
-      if (FEATURES.groupFiltering && PortalGroupService.groupsServiceEnabled && !$localStorage.disableGroupAnnouncementFiltering) {
+      if (FEATURES.groupFiltering &&
+        PortalGroupService.groupsServiceEnabled &&
+        !$localStorage.disableGroupAnnouncementFiltering) {
         if (filteredFeaturesPromise) {
           // cache shortcut
           return filteredFeaturesPromise;
@@ -49,7 +51,8 @@ define(['angular'], function(angular) {
         var successFn = function(results) {
           var array = results[0];
           var groups = results[1];
-          return PortalGroupService.filterArrayByGroups(array, groups, 'groups');
+          return PortalGroupService.filterArrayByGroups(
+            array, groups, 'groups');
         };
         var errorFn = function(reason) {
           miscService.redirectUser(reason.status, 'q for filtered features');
@@ -89,7 +92,10 @@ define(['angular'], function(angular) {
             seenAnnouncements.push(i);
           }
           $sessionStorage.seenAnnouncementIds = seenAnnouncements;
-          return keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncementIds);
+          return keyValueService.setValue(
+            KV_KEYS.VIEWED_ANNOUNCEMENT_IDS,
+            $sessionStorage.seenAnnouncementIds
+          );
         })
         .then(function(data) {
           return keyValueService.deleteValue('lastviewedannouncementid');
@@ -118,7 +124,8 @@ define(['angular'], function(angular) {
             seenPopups.push(i);
           }
           $sessionStorage.seenPopupIds = seenPopups;
-          return keyValueService.setValue(KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds);
+          return keyValueService.setValue(
+            KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds);
       })
       .then(function(data) {
         return keyValueService.deleteValue('lastviewedpopupid');
@@ -177,7 +184,9 @@ define(['angular'], function(angular) {
       }
 
       return keyValueService
-        .setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, $sessionStorage.seenAnnouncementIds)
+        .setValue(
+          KV_KEYS.VIEWED_ANNOUNCEMENT_IDS,
+          $sessionStorage.seenAnnouncementIds)
         .then(function(data) {
           return $sessionStorage.seenAnnouncementIds;
         });
@@ -215,7 +224,9 @@ define(['angular'], function(angular) {
             } else {
               // check dates
               var today = new Date().getTime();
-              var startDate = new Date(feature.goLiveYear, feature.goLiveMonth, feature.goLiveDay).getTime();
+              var startDate = new Date(
+                feature.goLiveYear, feature.goLiveMonth, feature.goLiveDay
+              ).getTime();
               var expirationDate = feature.buckyAnnouncement.endDate;
               if (angular.isString(expirationDate)) {
                   expirationDate = new Date(expirationDate).getTime();
@@ -232,7 +243,8 @@ define(['angular'], function(angular) {
         return reason;
       };
 
-      return $q.all([getFeatures(), getSeenAnnouncements()]).then(successFn).catch(errorFn);
+      return $q.all([getFeatures(), getSeenAnnouncements()])
+        .then(successFn).catch(errorFn);
     };
 
 
@@ -242,8 +254,16 @@ define(['angular'], function(angular) {
         if (popupFeatures.length != 0) {
           var today = new Date().getTime();
           var filterExpiredPopups = function(feature) {
-            var startDate = new Date(feature.popup.startYear, feature.popup.startMonth, feature.popup.startDay).getTime();
-            var endDate = new Date(feature.popup.endYear, feature.popup.endMonth, feature.popup.endDay).getTime();
+            var startDate = new Date(
+              feature.popup.startYear,
+              feature.popup.startMonth,
+              feature.popup.startDay
+            ).getTime();
+            var endDate = new Date(
+              feature.popup.endYear,
+              feature.popup.endMonth,
+              feature.popup.endDay
+            ).getTime();
             return today > startDate && today < endDate;
           };
           var filterUnEnabledPopups = function(feature) {
@@ -252,7 +272,10 @@ define(['angular'], function(angular) {
           var filterSeenPopups = function(feature) {
             return !(data[1].indexOf(feature.id) !== -1);
           };
-          return popupFeatures.filter(filterSeenPopups).filter(filterExpiredPopups).filter(filterUnEnabledPopups);
+          return popupFeatures
+            .filter(filterSeenPopups)
+            .filter(filterExpiredPopups)
+            .filter(filterUnEnabledPopups);
         }
       };
       var errorFn = function(reason) {
@@ -260,7 +283,8 @@ define(['angular'], function(angular) {
         return reason;
       };
 
-      return $q.all([getFeatures(), getSeenPopups()]).then(successFn).catch(errorFn);
+      return $q.all([getFeatures(), getSeenPopups()])
+        .then(successFn).catch(errorFn);
     };
 
 

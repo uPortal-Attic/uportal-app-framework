@@ -3,7 +3,11 @@
 define(['angular', 'require'], function(angular, require) {
   return angular.module('portal.main.controllers', [])
 
-  .controller('PortalMainController', ['$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document', '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService', function($localStorage, $sessionStorage, $scope, $rootScope, $document, $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
+  .controller('PortalMainController', [
+    '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
+    '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService',
+    function($localStorage, $sessionStorage, $scope, $rootScope, $document,
+      $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
@@ -46,7 +50,8 @@ define(['angular', 'require'], function(angular, require) {
       });
 
       // class for ng-view
-      $scope.routeClass = 'route' + angular.lowercase($location.path().replace(new RegExp('/', 'g'), '-'));
+      $scope.routeClass = 'route' +
+        angular.lowercase($location.path().replace(new RegExp('/', 'g'), '-'));
     };
 
     $scope.resetAll = function() {
@@ -88,11 +93,15 @@ define(['angular', 'require'], function(angular, require) {
     mainService.getUser().then(function(result) {
       vm.user = result;
       // Check if is guest
-      if (NAMES.guestUserName && vm.user && vm.user.userName === NAMES.guestUserName) {
+      if (
+        NAMES.guestUserName && vm.user &&
+        vm.user.userName === NAMES.guestUserName
+      ) {
         $rootScope.GuestMode = true;
       } else {
         // Get first letter of first name or display name
-        var username = vm.user.firstName ? vm.user.firstName : vm.user.displayName;
+        var username =
+          vm.user.firstName ? vm.user.firstName : vm.user.displayName;
         if (username === '' || !angular.isString(username)) {
           vm.firstLetter = '?';
         } else {
@@ -106,7 +115,12 @@ define(['angular', 'require'], function(angular, require) {
   }])
 
   /* Header */
-  .controller('PortalHeaderController', ['$rootScope', '$scope', '$location', 'NAMES', 'APP_FLAGS', 'MISC_URLS', 'notificationsService', function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS, notificationsService) {
+  .controller('PortalHeaderController', [
+    '$rootScope', '$scope', '$location', 'NAMES',
+    'APP_FLAGS', 'MISC_URLS', 'notificationsService',
+    function($rootScope, $scope, $location, NAMES,
+      APP_FLAGS, MISC_URLS, notificationsService
+    ) {
     var vm = this;
     vm.navbarCollapsed = true;
     vm.showLogout = true;

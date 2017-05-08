@@ -4,7 +4,13 @@ define(['angular'], function(angular) {
   return angular.module('portal.settings.controllers', [])
 
 
-  .controller('PortalBetaSettingsController', ['$sessionStorage', '$scope', '$mdTheming', 'portalSkinService', 'THEMES', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES', function($sessionStorage, $scope, $mdTheming, portalSkinService, THEMES, APP_BETA_FEATURES, FRAME_BETA_FEATURES) {
+  .controller('PortalBetaSettingsController', [
+    '$sessionStorage', '$scope', '$mdTheming', 'portalSkinService',
+    'THEMES', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES',
+    function(
+      $sessionStorage, $scope, $mdTheming, portalSkinService,
+      THEMES, APP_BETA_FEATURES, FRAME_BETA_FEATURES
+    ) {
     $scope.options = FRAME_BETA_FEATURES.concat(APP_BETA_FEATURES);
     $scope.$watch('portal.theme', function(newValue, oldValue) {
       if($scope.portal.theme) {
@@ -24,17 +30,13 @@ define(['angular'], function(angular) {
     });
   }])
 
-  .controller('PortalUserSettingsController', ['$scope',
-                                                  '$q',
-                                                  '$window',
-                                                  '$localStorage',
-                                                  '$log',
-                                                  '$sessionStorage',
-                                                  'KV_KEYS',
-                                                  'NOTIFICATION',
-                                                  'FEATURES',
-                                                  'keyValueService',
-    function($scope, $q, $window, $localStorage, $log, $sessionStorage, KV_KEYS, NOTIFICATION, FEATURES, keyValueService) {
+  .controller('PortalUserSettingsController', [
+    '$scope', '$q', '$window', '$localStorage', '$log', '$sessionStorage',
+    'KV_KEYS', 'NOTIFICATION', 'FEATURES', 'keyValueService',
+    function(
+      $scope, $q, $window, $localStorage, $log, $sessionStorage,
+      KV_KEYS, NOTIFICATION, FEATURES, keyValueService
+    ) {
       var init = function() {
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
         $scope.KV_KEYS = KV_KEYS;

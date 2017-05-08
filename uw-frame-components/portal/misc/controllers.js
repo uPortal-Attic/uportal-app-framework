@@ -4,8 +4,9 @@ define(['angular'], function(angular) {
   return angular.module('portal.misc.controllers', [])
 
   /* AddToHomeController */
-  .controller('AddToHomeController', ['$log', '$scope', '$timeout', 'PortalAddToHomeService',
-                 function($log, $scope, $timeout, PortalAddToHomeService) {
+  .controller('AddToHomeController', [
+    '$log', '$scope', '$timeout', 'PortalAddToHomeService',
+    function($log, $scope, $timeout, PortalAddToHomeService) {
     $scope.addToHome = function() {
       if(!$scope.inHome && PortalAddToHomeService.canAddToHome($scope.fname)) {
         $scope.savingAddToHome = true;

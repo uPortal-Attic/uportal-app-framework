@@ -71,8 +71,8 @@ define(['angular'], function(angular) {
                     $scope.filterMatches = [];
                     return;
                 }
-
-                $scope.filterMatches = [];// this is where you would run your filter function
+                // this is where you would run your filter function
+                $scope.filterMatches = [];
             });
         }
 

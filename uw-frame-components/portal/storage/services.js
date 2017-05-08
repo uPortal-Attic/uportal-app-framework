@@ -24,7 +24,7 @@ define(['angular', 'jquery'], function(angular, $) {
     **/
     .factory('keyValueService', ['$http', 'miscService', 'SERVICE_LOC',
         function($http, miscService, SERVICE_LOC) {
-      // private functions ------------------------------------------------------
+      // private functions
       var successFn = function(response) {
         return response.data;
       };
@@ -34,7 +34,7 @@ define(['angular', 'jquery'], function(angular, $) {
         return response.data;
       };
 
-      // public functions -------------------------------------------------------
+      // public functions
       var isKVStoreActivated = function() {
         if(SERVICE_LOC.kvURL) {
           return true;

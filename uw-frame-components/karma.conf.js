@@ -5,9 +5,11 @@ module.exports = function(config) {
         basePath: './',
 
         files: [
-            // main.js will handle finding and loading the tests, by way of RequireJS.
+            // main.js will handle finding and loading the tests,
+            // by way of RequireJS.
             'test/main.js',
-            // all other files need to be listed in order to be hosted and available, but excluded so that they are not run automatically.
+            // all other files need to be listed in order to be hosted and
+            // available, but excluded so that they are not run automatically.
             {pattern: './**', included: false},
         ],
 
@@ -44,7 +46,8 @@ module.exports = function(config) {
         },
 
         coverageReporter: {
-          type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
+          // lcov or lcovonly are required for generating lcov.info files
+          type: 'lcov',
           dir: 'coverage/',
         },
 

@@ -3,7 +3,9 @@
 define(['angular'], function(angular) {
   return angular.module('portal.widgets.services', [])
 
-  .factory('widgetService', ['$http', '$log', 'SERVICE_LOC', function($http, $log, SERVICE_LOC) {
+  .factory('widgetService', [
+    '$http', '$log', 'SERVICE_LOC',
+    function($http, $log, SERVICE_LOC) {
     /**
      * Get the a single app's full entity file as JSON
      * @param fname The app's fname value (<fname> in entity files)
@@ -25,9 +27,10 @@ define(['angular'], function(angular) {
     };
 
     /**
-     * Display error message if a user doesn't have permission to see/use the requested widget
+     * Display error message if a user doesn't have
+     * permission to see/use the requested widget
      * @param fname
-     * @returns {Object} Special error-case widget configuration
+     * @return {Object} Special error-case widget configuration
      */
     var getErrorPage = function(fname) {
       return {
@@ -35,28 +38,32 @@ define(['angular'], function(angular) {
         mdIcon: 'help',
         widgetType: 'generic',
         widgetConfig: {
-          additionalText: 'Please contact your help desk if you feel you should be able to access this content',
+          additionalText: 'Please contact your help desk if you ' +
+            'feel you should be able to access this content',
         },
-        widgetTemplate: '<div class=\'overlay__maintenance-mode\'>'
-          + '<div class=\'maintenance-content\'>'
-          + '<p><md-icon class=\'md-warn\'>warning</md-icon></p>'
-          + '<p>You do not have permission to access this content. If you feel this is an error, please contact your help desk.</p>'
-          + '</div>'
-          + '</div>',
+        widgetTemplate: '<div class=\'overlay__maintenance-mode\'>' +
+        '<div class=\'maintenance-content\'>' +
+        '<p><md-icon class=\'md-warn\'>warning</md-icon></p>' +
+        '<p>You do not have permission to access this content. ' +
+        'If you feel this is an error, please contact your help desk.</p>' +
+        '</div>' +
+        '</div>',
       };
     };
 
     /**
-     * Get additional values/configuration not provided by the widget's basic configuration.
+     * Get additional values/configuration not provided
+     * by the widget's basic configuration.
      * Used by Option Link and Custom widgets
      * @param widget
-     * @returns {*}
+     * @return {*}
      */
     var getWidgetJson = function(widget) {
       return $http.get(widget.widgetURL, {cache: true})
         .then(function(result) {
           var data = result.data;
-          // Consider refactoring to only pull in widgetUrl and only return the raw result -- sorting what to do with
+          // Consider refactoring to only pull in widgetUrl and
+          // only return the raw result -- sorting what to do with
           // the result should be the controller's responsibility
           if (data) {
             if (data.result) {

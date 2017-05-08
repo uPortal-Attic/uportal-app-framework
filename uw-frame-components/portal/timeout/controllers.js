@@ -2,9 +2,13 @@
 
 define(['angular'], function(angular) {
   return angular.module('portal.timeout.controllers', [])
-
-  .controller('PortalTimeoutController', ['$sessionStorage', '$log', '$location', '$timeout', '$mdDialog', '$window', 'MISC_URLS', 'PortalShibbolethService',
-  function($sessionStorage, $log, $location, $timeout, $mdDialog, $window, MISC_URLS, PortalShibbolethService) {
+  .controller('PortalTimeoutController', [
+    '$sessionStorage', '$log', '$location', '$timeout',
+    '$mdDialog', '$window', 'MISC_URLS', 'PortalShibbolethService',
+  function(
+    $sessionStorage, $log, $location, $timeout,
+    $mdDialog, $window, MISC_URLS, PortalShibbolethService
+  ) {
     /**
      * initialize the controller
      */
@@ -38,7 +42,8 @@ define(['angular'], function(angular) {
     function triggerDialog() {
       var alert = $mdDialog.alert({
         title: 'Session Expired',
-        textContent: 'Your session has expired. Please click below to login, or close this window to logout.',
+        textContent: 'Your session has expired. ' +
+          'Please click below to login, or close this window to logout.',
         ok: 'Login',
       });
       $mdDialog

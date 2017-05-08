@@ -3,7 +3,11 @@
 define(['angular', 'jquery'], function(angular, $) {
   return angular.module('portal.notifications.services', [])
 
-  .factory('notificationsService', ['$q', '$http', '$log', '$filter', 'miscService', 'PortalGroupService', 'keyValueService', 'SERVICE_LOC', 'KV_KEYS', function($q, $http, $log, $filter, miscService, PortalGroupService, keyValueService, SERVICE_LOC, KV_KEYS) {
+  .factory('notificationsService', [
+    '$q', '$http', '$log', '$filter', 'miscService', 'PortalGroupService',
+    'keyValueService', 'SERVICE_LOC', 'KV_KEYS',
+    function($q, $http, $log, $filter, miscService, PortalGroupService,
+      keyValueService, SERVICE_LOC, KV_KEYS) {
     // LOCAL VARIABLES
     var dismissedPromise;
 
@@ -31,55 +35,62 @@ define(['angular', 'jquery'], function(angular, $) {
      */
 
     /**
-     * Get all notifications at the given URL (as set in app-config.js or override.js)
-     * @returns {Promise<NotificationReturnObject>} A promise which returns an object containing notifications arrays
+     * Get all notifications at the given URL
+     * (as set in app-config.js or override.js)
+     * @return {Promise<NotificationReturnObject>}
+     *         A promise which returns an object containing notifications arrays
      */
     var getAllNotifications = function() {
-      return $http.get(SERVICE_LOC.notificationsURL, {cache: true}).then(function(result) {
-              return separateNotificationsByDismissal(result.data.notifications);
-          }).then(function(seperatedNotifications) {
-              return seperatedNotifications;
-          }).catch(function(reason) {
-            miscService.redirectUser(reason.status, 'notifications json feed call');
-        });
+      return $http.get(SERVICE_LOC.notificationsURL, {cache: true})
+      .then(function(result) {
+        return separateNotificationsByDismissal(result.data.notifications);
+      }).then(function(seperatedNotifications) {
+        return seperatedNotifications;
+      }).catch(function(reason) {
+        miscService.redirectUser(reason.status, 'notifications json feed call');
+      });
     };
 
     /**
      * Gets notifications and filters them by group and via data if dataURL is
      * present.
-     * @returns {Promise<NotificationReturnObject>} A promise which returns an object containing notifications arrays
+     * @return {Promise<NotificationReturnObject>}
+     *         A promise which returns an object containing notifications arrays
      */
     var getFilteredNotifications = function() {
       var notifications = {
         'dismissed': [],
         'notDismissed': [],
       };
-      return $http.get(SERVICE_LOC.notificationsURL, {cache: true}).then(function(allNotifications) {
-              return filterNotificationsByGroup(allNotifications.data.notifications);
-         }).then(function(filteredNotificationsByGroup) {
-              return separateNotificationsByDismissal(filteredNotificationsByGroup);
-         }).then(function(notificationsBydismissal) {
-              notifications.dismissed = notificationsBydismissal.dismissed;
-              return filterNotificationsByData(notificationsBydismissal.notDismissed);
-         }).then(function(notificationsByData) {
-              notifications.notDismissed = notificationsByData;
-              return notifications;
-         }).catch(function(reason) {
-             $log.warn('Error in retrieving notifications');
-             return [];
-         });
+      return $http.get(SERVICE_LOC.notificationsURL, {cache: true})
+      .then(function(allNotifications) {
+        return filterNotificationsByGroup(allNotifications.data.notifications);
+      }).then(function(filteredNotificationsByGroup) {
+        return separateNotificationsByDismissal(filteredNotificationsByGroup);
+      }).then(function(notificationsBydismissal) {
+        notifications.dismissed = notificationsBydismissal.dismissed;
+        return filterNotificationsByData(notificationsBydismissal.notDismissed);
+      }).then(function(notificationsByData) {
+        notifications.notDismissed = notificationsByData;
+        return notifications;
+      }).catch(function(reason) {
+        $log.warn('Error in retrieving notifications');
+        return [];
+      });
     };
 
     /**
      * Filter the array of notifications based on the groups that were passed in
      * @param {Notification[]} arrayOfNotifications
-     * @return {Promise<Notification[]>} : an array filtered by groups. Or an empty array if they have none
+     * @return {Promise<Notification[]>}
+     *         an array filtered by groups. Or an empty array if they have none
     **/
     function filterNotificationsByGroup(arrayOfNotifications) {
       return PortalGroupService.getGroups().then(
         function(groups) {
-            var notificationsByGroup = [];
-            angular.forEach(arrayOfNotifications, function(notification, index) {
+          var notificationsByGroup = [];
+          angular.forEach(arrayOfNotifications,
+            function(notification, index) {
               var added = false;
               // For each group for the current notification
               angular.forEach(notification.groups, function(group, index) {
@@ -96,18 +107,21 @@ define(['angular', 'jquery'], function(angular, $) {
                 }
               });
             });
-            return notificationsByGroup;
+          return notificationsByGroup;
         }).catch(function(reason) {
-            miscService.redirectUser(reason.status, 'Unable to retrieve groups');
+          miscService.redirectUser(
+            reason.status, 'Unable to retrieve groups');
         }
       );
     }
 
     /**
-     * Filter the array of notifications based on if data was requested before showing
+     * Filter the array of notifications based on if
+     * data was requested before showing
      * @param {Notification[]} : an array of notifications
-     * @return Promise<Notification[]>} : an array of notifications that includes only non-data notifications
-     * and notifications that requested data and had data
+     * @return Promise<Notification[]>} :
+     *         an array of notifications that includes only non-data
+     *         notifications and notifications that requested data and had data
     **/
     var filterNotificationsByData = function(notifications) {
       var promises = [];
@@ -128,7 +142,8 @@ define(['angular', 'jquery'], function(angular, $) {
                 if (!angular.isArray(objectToFind)) {
                   return;
                 }
-                var arrayFilter = angular.fromJson(notification.dataArrayFilter);
+                var arrayFilter =
+                  angular.fromJson(notification.dataArrayFilter);
                 if ($filter('filter')(objectToFind, arrayFilter).length > 0) {
                   return notification;
                 }
@@ -162,7 +177,8 @@ define(['angular', 'jquery'], function(angular, $) {
     /**
      * Separates notification array into new object with two properties
      * @param {Notification[]} : an array of notifications
-     * @return {Promise<Notification[]>}: an object with two properties. dismissed and notDismissed
+     * @return {Promise<Notification[]>}
+     *         an object with two properties. dismissed and notDismissed
     **/
     var separateNotificationsByDismissal = function(notifications) {
       var separatedNotifications = {
@@ -171,7 +187,8 @@ define(['angular', 'jquery'], function(angular, $) {
       };
       return getDismissedNotificationIDs().then(
         function(dismissedIDs) {
-          // Check notification IDs against dismissed IDs from k/v store and sort notifications into appropriate array
+          // Check notification IDs against dismissed IDs
+          // from k/v store and sort notifications into appropriate array
           if (angular.isArray(dismissedIDs)) {
             angular.forEach(notifications, function(notification, index) {
               if (dismissedIDs.indexOf(notification.id) > -1) {
@@ -194,23 +211,26 @@ define(['angular', 'jquery'], function(angular, $) {
 
 
     /**
-     * Save array of dismissed notification IDs in k/v store, reset dismissedPromise
+     * Save array of dismissed notification IDs
+     * in k/v store, reset dismissedPromise
      * @param {Notification[]} - dismissedIds Array of ID strings
      */
     var setDismissedNotifications = function(dismissedIds) {
-      keyValueService.setValue(KV_KEYS.DISMISSED_NOTIFICATION_IDS, dismissedIds);
+      keyValueService.setValue(
+        KV_KEYS.DISMISSED_NOTIFICATION_IDS, dismissedIds);
       dismissedPromise = null;
     };
 
     /**
      * Get array of dismissed notification IDs from k/v store
-     * @returns {Promise<number[]>} A promise that returns an array of IDs
+     * @return {Promise<number[]>} A promise that returns an array of IDs
      */
     var getDismissedNotificationIDs = function() {
       if (!keyValueService.isKVStoreActivated()) {
         return $q.resolve([]);
       }
-      dismissedPromise = dismissedPromise || keyValueService.getValue(KV_KEYS.DISMISSED_NOTIFICATION_IDS)
+      dismissedPromise = dismissedPromise ||
+        keyValueService.getValue(KV_KEYS.DISMISSED_NOTIFICATION_IDS)
           .then(function(data) {
             if (data && angular.isString(data.value)) {
               // If data exists and is a string, check for emptiness
