@@ -19,7 +19,8 @@ define(['angular'], function(angular) {
             'shibbolethSessionURL': null, // '/Shibboleth.sso/Session.json'
             'portalLayoutRestEndpoint': null, // '/portal/api/layout',
             'widgetApi': {
-              'entry': '/portal/api/marketplace/entry/', // For local testing, change to 'staticFeeds/'
+              // For local testing, change to 'staticFeeds/'
+              'entry': '/portal/api/marketplace/entry/',
               'entries': '/portal/api/marketplace/entries.json',
             },
         })
@@ -51,7 +52,9 @@ define(['angular'], function(angular) {
             'rootURL': '/web',
             'addToHomeURLS': {
               'layoutURL': '/portal/web/layoutDoc?tab=UW Bucky Home',
-              'addToHomeActionURL': '/portal/web/layout?tabName=UW Bucky Home&action=addPortlet&fname=',
+              'addToHomeActionURL':
+                '/portal/web/layout?tabName=UW Bucky Home' +
+                '&action=addPortlet&fname=',
             },
 
         })
@@ -65,7 +68,10 @@ define(['angular'], function(angular) {
           {
             'id': 'toogleSomething',
             'title': 'Sample Toggle',
-            'description': 'This is just an example of a toggle. Look at your localStorage after you switch this on for the first time.',
+            'description':
+              'This is just an example of a toggle. ' +
+              'Look at your localStorage after you ' +
+              'switch this on for the first time.',
           },
         ]);
 });

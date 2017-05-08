@@ -27,7 +27,8 @@ define(['angular', 'jquery'], function(angular, $) {
               var timeout = {};
               timeout.expirationMinutes = session.expiration;
               var now = new Date();
-              timeout.expirationTime = now.setMinutes(now.getMinutes() + session.expiration);
+              timeout.expirationTime =
+                now.setMinutes(now.getMinutes() + session.expiration);
               timeout.expirationMills = session.expiration * 60000;
               return timeout;
             } else {

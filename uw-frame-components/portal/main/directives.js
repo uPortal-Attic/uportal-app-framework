@@ -42,7 +42,8 @@ define(['angular', 'require'], function(angular, require) {
   .directive('featuresModalTemplate', function() {
       return {
           restrict: 'E',
-          templateUrl: require.toUrl('./partials/features-dialog-template.html'),
+          templateUrl:
+            require.toUrl('./partials/features-dialog-template.html'),
       };
   });
 });

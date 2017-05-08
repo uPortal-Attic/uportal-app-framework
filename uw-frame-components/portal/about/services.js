@@ -2,7 +2,9 @@
 
 define(['angular'], function(angular) {
   return angular.module('portal.about.services', [])
-  .factory('portalAboutService', ['$http', 'miscService', 'FRAME_URLS', function($http, miscService, FRAME_URLS) {
+  .factory('portalAboutService', [
+    '$http', 'miscService', 'FRAME_URLS',
+    function($http, miscService, FRAME_URLS) {
     /**
     * Gets frame information from generated about-frame.json
     **/

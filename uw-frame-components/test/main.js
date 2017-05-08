@@ -5,7 +5,8 @@
 // eslint-disable-next-line requirejs/no-js-extension
 require(['/base/config.js'], function(config) {
     // Add additional config for Karma testing
-    // Karma serves files under "/base", which is the basePath from the karma config file
+    // Karma serves files under "/base", which
+    // is the basePath from the karma config file
     config.baseUrl = '/base';
     config.callback = window.__karma__.start;
     config.deps = getAllTestFiles();
