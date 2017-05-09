@@ -21,6 +21,7 @@ define(['angular'], function(angular) {
             'widgetApi': {
               // For local testing, change to 'staticFeeds/'
               'entry': '/portal/api/marketplace/entry/',
+              'entrySuffix': '.json',
               'entries': '/portal/api/marketplace/entries.json',
             },
         })
