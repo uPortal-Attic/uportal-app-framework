@@ -1,6 +1,5 @@
 'use strict';
 
-/* this is the spaghetti'est thing I've ever seen. I'm not touching this. */
 /* eslint-disable promise/always-return */
 
 define(['angular'], function(angular) {
@@ -84,7 +83,7 @@ define(['angular'], function(angular) {
         .getValue('lastviewedannouncementid')
         .then(function(data) {
           if (!data || !data.id) {
-            throw Error('no legacy seenAnnouncements');
+            return $q.reject('no legacy seenAnnouncements');
           }
           // create an array with the seen ids
           var seenAnnouncements = [];
@@ -116,7 +115,7 @@ define(['angular'], function(angular) {
         .getValue('lastviewedpopupid')
         .then(function(data) {
           if (!data || !data.id) {
-            throw Error('no legacy popups');
+            return $q.reject('no legacy popups');
           }
           // create an array with the seen ids
           var seenPopups = [];
@@ -126,10 +125,10 @@ define(['angular'], function(angular) {
           $sessionStorage.seenPopupIds = seenPopups;
           return keyValueService.setValue(
             KV_KEYS.VIEWED_POPUP_IDS, $sessionStorage.seenPopupIds);
-      })
-      .then(function(data) {
-        return keyValueService.deleteValue('lastviewedpopupid');
-      });
+        })
+        .then(function(data) {
+          return keyValueService.deleteValue('lastviewedpopupid');
+        });
     };
 
     var getSeenAnnouncements = function() {
@@ -239,8 +238,8 @@ define(['angular'], function(angular) {
         }
       };
       var errorFn = function(reason) {
-        $log.error('error retrieving unseenAnnouncements: ' + reason.status);
-        return reason;
+        $log.error('error retrieving unseenAnnouncements: ' + reason);
+        return [];
       };
 
       return $q.all([getFeatures(), getSeenAnnouncements()])
@@ -279,8 +278,8 @@ define(['angular'], function(angular) {
         }
       };
       var errorFn = function(reason) {
-        $log.error('error retrieving unseenPopups: ' + reason.status);
-        return reason;
+        $log.error('error retrieving unseenPopups: ' + reason);
+        return [];
       };
 
       return $q.all([getFeatures(), getSeenPopups()])
