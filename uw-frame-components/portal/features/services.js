@@ -238,7 +238,7 @@ define(['angular'], function(angular) {
         }
       };
       var errorFn = function(reason) {
-        $log.error('error retrieving unseenAnnouncements: ' + reason);
+        $log.info('error retrieving unseenAnnouncements: ' + reason);
         return [];
       };
 
@@ -278,7 +278,7 @@ define(['angular'], function(angular) {
         }
       };
       var errorFn = function(reason) {
-        $log.error('error retrieving unseenPopups: ' + reason);
+        $log.info('error retrieving unseenPopups: ' + reason);
         return [];
       };
 
