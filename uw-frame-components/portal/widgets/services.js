@@ -12,7 +12,11 @@ define(['angular'], function(angular) {
      * @returns {*}
      */
     var getSingleWidgetData = function getSingleWidgetData(fname) {
-      return $http.get(SERVICE_LOC.widgetApi.entry + fname + '.json')
+      // configuration backwards compatibility
+      var entrySuffix =
+        angular.isUndefined(SERVICE_LOC.widgetApi.entrySuffix) ? '.json' :
+          SERVICE_LOC.widgetApi.entrySuffix;
+      return $http.get(SERVICE_LOC.widgetApi.entry + fname + entrySuffix)
         .then(function(result) {
           if (angular.isDefined(result.data.entry.layoutObject)) {
             return result.data.entry.layoutObject;
