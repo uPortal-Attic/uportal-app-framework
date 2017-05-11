@@ -45,13 +45,14 @@ define(['angular'], function(angular) {
      * Initial widget setup -- gets data for a single widget
      * from the provided fname attribute
      */
-    var initializeWidget = function(fname) {
+    $scope.initializeWidget = function(fname) {
       // Initialize scope variables
       $scope.widget = {};
       $scope.widgetType = '';
 
-      // Get widget data for provided app (fname)
-      widgetService.getSingleWidgetData(fname)
+      if (fname) {
+        // Get widget data for provided app (fname)
+        widgetService.getSingleWidgetData(fname)
         .then(function(data) {
           // Set scope variables
           if (data) {
@@ -64,6 +65,9 @@ define(['angular'], function(angular) {
           $log.warn('WidgetCardController couldn\'t get data for: ' + fname);
           $log.error(error);
         });
+      } else {
+        $log.warn('WidgetCardController didn\'t get an fname.');
+      }
     };
 
     /**
@@ -87,11 +91,7 @@ define(['angular'], function(angular) {
     };
 
     // Initialize the widget
-    if ($scope.fname) {
-      initializeWidget($scope.fname);
-    } else {
-      $log.warn('WidgetCardController didn\'t get an fname.');
-    }
+      $scope.initializeWidget($scope.fname);
   }])
 
   // OPTION LINK widget type
