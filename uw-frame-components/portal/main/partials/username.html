@@ -13,6 +13,7 @@
              class="avatar__default"
              ng-click="$mdOpenMenu($event)">
     <span>{{ sessionCtrl.firstLetter }}</span>
+    <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Options</md-tooltip>
   </md-button>
   <md-menu-content width="3">
     <md-menu-item ng-if="$storage.showSettings">

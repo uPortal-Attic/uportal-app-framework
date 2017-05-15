@@ -3,10 +3,12 @@
     <!-- submit xs+ -->
     <md-button class="md-icon-button" ng-click="submit()" aria-label="submit search" hide-xs>
       <md-icon>search</md-icon>
+      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Search</md-tooltip>
     </md-button>
     <!-- submit xs-only-->
     <md-button class="md-icon-button search-submit-xs md-accent" ng-click="submit()" aria-label="submit search" hide-gt-xs>
       <md-icon>search</md-icon>
+      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Submit</md-tooltip>
     </md-button>
     <input type="search"
            name="initialFilter"
