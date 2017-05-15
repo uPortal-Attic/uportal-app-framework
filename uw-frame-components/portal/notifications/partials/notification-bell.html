@@ -23,6 +23,7 @@
      class="notification-desktop"
      ng-click="pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');"
      ng-href="{{ notificationsUrl }}">
+    <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
     <div class="notification-badge" aria-label="{{status}}" ng-class="{ 'notification-badge-empty' : notifications.length === 0 }">
       <span class="number-of-nots" ng-if="notifications.length > 0"
             ng-class="{ 'more-than-10-nots' : (notifications.length > 9) }">{{ notifications.length }}</span>

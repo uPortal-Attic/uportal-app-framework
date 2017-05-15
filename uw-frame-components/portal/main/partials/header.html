@@ -8,11 +8,9 @@
         <md-button aria-label="toggle mobile menu" hide-gt-xs ng-click="$mdOpenMenu($event)" layout="row" layout-align="center center">
           <notification-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notification-bell>
           <i class="fa fa-bars" style='font-size: 1.5em;'></i>
+          <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Menu</md-tooltip>
         </md-button>
         <md-menu-content width="5" class="mobile-menu">
-          <!--<md-menu-item>-->
-            <!--<search ng-show="APP_FLAGS.showSearch" md-prevent-menu-close="md-prevent-menu-close"></search>-->
-          <!--</md-menu-item>-->
           <!-- Bucky announcement -->
           <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
           <!-- Notifications -->
@@ -58,6 +56,10 @@
       <md-button class="md-icon-button" aria-label="Toggle {{portal.theme.title}} search" ng-click="toggleSearch()">
         <md-icon ng-if="!searchExpanded">search</md-icon>
         <md-icon ng-if="searchExpanded">close</md-icon>
+        <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">
+          <span ng-if="!searchExpanded">Search</span>
+          <span ng-if="searchExpanded">Close Search</span>
+        </md-tooltip>
       </md-button>
     </div>
 
