@@ -13,7 +13,7 @@
   <!-- HEADER -->
   <md-card-header class="widget-header">
     <!-- Widget Chrome -->
-    <md-button class="widget-action widget-info md-icon-button" aria-label="Description: {{ widget.description }}" role="tooltip" ng-hide="widget.lifecycleState === 'MAINTENANCE'">
+    <md-button class="widget-action widget-info md-icon-button" aria-label="{{ widget.title }}: {{ widget.description }}" role="tooltip" ng-hide="widget.lifecycleState === 'MAINTENANCE'">
       <md-tooltip md-direction="top" class="widget-action-tooltip">
         {{ widget.description }}
       </md-tooltip>
@@ -23,7 +23,7 @@
     </div>
 
     <md-card-header-text>
-      <span class="md-title" style="text-align: center;" aria-label="{{ widget.title }}" tabindex="0">
+      <span class="md-title" style="text-align: center;" aria-label="{{ widget.title }}" aria-hidden="true">
 	      {{ widget.title }}
       </span>
     </md-card-header-text>
