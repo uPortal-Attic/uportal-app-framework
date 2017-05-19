@@ -3,6 +3,21 @@
 define(['angular'], function(angular) {
   return angular.module('portal.settings.controllers', [])
 
+    .filter('prettyName',function() {
+      return function(input) {
+        if (input) {
+          if (input.indexOf('uw-') > -1) {
+            var partOne = input.slice(0, 3).toUpperCase();
+            var partTwo = input.slice(input.indexOf('-') + 1)
+              .replace(/-/g, ' ')
+              .replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+            return partOne + partTwo;
+          } else {
+            return input;
+          }
+        }
+      }
+    })
 
   .controller('PortalBetaSettingsController', [
     '$sessionStorage', '$scope', '$mdTheming', 'portalSkinService',
@@ -74,4 +89,5 @@ define(['angular'], function(angular) {
 
       init();
     }]);
+
  });
