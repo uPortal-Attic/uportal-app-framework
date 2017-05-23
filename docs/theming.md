@@ -3,6 +3,8 @@
 The theming system is pretty straightforward. You can have your own skin in uw-frame with minimal effort. We highly
 encourage you to contribute back your theme to this project so you don't have to manage an independent fork of uw-frame.
 
+For a step-by-step exercise in setting up a theme, see [`skinning.md`](`https://github.com/UW-Madison-DoIT/uw-frame/blob/master/docs/theming.md`).
+ 
 ## Configuring a theme
 
 ### 1. Add an entry to the THEME constant

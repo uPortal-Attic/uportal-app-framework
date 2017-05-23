@@ -56,7 +56,7 @@ For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoI
 
 
 
-5. Also in the /uw-frame-components/css/themes directory, add a <theme-name>-variables.less file. Copy and paste the following code into the file. These are the colors for UW-Madison. Feel free to use a color picker, such as http://www.designskilz.com/colors/red to generate your own colors, and experiment with the palette.
+5. Also in the /uw-frame-components/css/themes directory, add a <theme-name>-variables.less file. Copy and paste the following code into the file. These are the colors for UW-Madison. Feel free to use a color picker, such as http://www.designskilz.com/colors to generate your own colors, and experiment with the palette.
 
 ```
 
