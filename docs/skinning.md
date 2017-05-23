@@ -16,7 +16,7 @@ For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoI
 3.  Add the following json to the themes array:
 
 
-```json
+```js
 {
   'name': '',
   'crest': 'img/uw-madison.png',
