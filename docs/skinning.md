@@ -16,14 +16,14 @@ For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoI
 3.  Add the following json to the themes array:
 
 
-```
+```json
 {
-  'name': 'your-schools-name',
+  'name': '',
   'crest': 'img/uw-madison.png',
-  'title': 'TITLE',
+  'title': '',
   'subtitle': null,
-  'ariaLabelTitle': 'aria-title>',
-  'crestalt': 'alt-text',
+  'ariaLabelTitle': '',
+  'crestalt': '',
   'group': 'Everyone',
   'mascotImg': 'img/robot-taco.gif',
   'footerLinks': [
@@ -41,13 +41,18 @@ For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoI
 },
 
 ```
-   Change the italicized values to reflect your school. The name value you choose will be a key you will use in subsequent steps. 
+   Fill in the blank values to reflect your school. 
+     * name: The name value you choose will become a filename in subsequent steps. The convention is all lower-case with no spaces.  
+     * title: The display name of your frame.  
+     * ariaLabelTitle: The aria label of your title.   
+     * crestAlt: Used to place a small bit of text (e.g. "Beta") next to your school's crest.  
+     
 
 4. In the \/uw-frame-components/css/themes directory, add a <theme-name>.less file. The theme name corresponds to the name attribute you assigned in the step above. 
 
    Add the following imports:
 
-```
+```sass
 @import "../angular.less"; // note: order is important here!
 @import "common-variables.less";
 @import "<your-schools-name>-variables.less";
@@ -58,7 +63,7 @@ For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoI
 
 5. Also in the /uw-frame-components/css/themes directory, add a <theme-name>-variables.less file. Copy and paste the following code into the file. These are the colors for UW-Madison. Feel free to use a color picker, such as http://www.designskilz.com/colors to generate your own colors, and experiment with the palette.
 
-```
+```sass
 
 /* MyUW-Madison colors */
 @color1: #c5050c;         // Badger Red
@@ -86,7 +91,7 @@ For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoI
 6. Make your theme the default:
 
     In uw-frame-components/js, update the override.js with the following code. 
-```
+```javascript
 .value('APP_FLAGS', {
             'defaultTheme': <your-theme-name>,
                    })
@@ -96,12 +101,12 @@ For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoI
 7. In your tools/uw-frame-static/build.js file, add your theme’s name to the array of themes.
 
 8. From a command line, navigate to your uw-frame-java directory, and run 
-```
+```sass
 mvn clean package
 ```
 
 9. Run
-```
+```sass
  npm run static:dev
  ```
  
