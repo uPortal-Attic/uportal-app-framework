@@ -1,7 +1,9 @@
 # Skinning Your uPortal-home #
 
 _Prerequisites:_
+
 _A working uPortal-app-framework application._
+
 _A code editor._
 
 For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoIT/uw-frame/blob/master/docs/theming.md
@@ -13,49 +15,50 @@ For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoI
 
 3.  Add the following json to the themes array:
 
->
->
->{
->  'name': 'your-schools-name',
->  'crest': 'img/uw-madison.png',
->  'title': 'TITLE',
->  'subtitle': null,
->  'ariaLabelTitle': 'aria-title>',
->  'crestalt': 'alt-text',
->  'group': 'Everyone',
->  'mascotImg': 'img/robot-taco.gif',
->  'footerLinks': [
->    {
->      'url': 'http://www.thebeatles.com/album/help',
->      'target': '_blank',
->      'title': 'Help',
->    },
->  ],
->  'materialTheme': {
->    'primary': 'red',
->    'accent': 'blue',
->    'warn': 'orange',
->  },
->},
->
 
-Change the italicized values to reflect your school. The name value you choose will be a key you will use in subsequent steps. 
+```
+{
+  'name': 'your-schools-name',
+  'crest': 'img/uw-madison.png',
+  'title': 'TITLE',
+  'subtitle': null,
+  'ariaLabelTitle': 'aria-title>',
+  'crestalt': 'alt-text',
+  'group': 'Everyone',
+  'mascotImg': 'img/robot-taco.gif',
+  'footerLinks': [
+    {
+      'url': 'https://www.merriam-webster.com/dictionary/help',
+      'target': '_blank',
+      'title': 'Help',
+    },
+  ],
+  'materialTheme': {
+    'primary': 'red',
+    'accent': 'blue',
+    'warn': 'orange',
+  },
+},
 
-4. In the /uw-frame-components/css/themes directory, add a <theme-name>.less file. The theme name corresponds to the name attribute you assigned in the step above. 
+```
+   Change the italicized values to reflect your school. The name value you choose will be a key you will use in subsequent steps. 
 
-Add the following imports::
+4. In the \/uw-frame-components/css/themes directory, add a <theme-name>.less file. The theme name corresponds to the name attribute you assigned in the step above. 
 
+   Add the following imports:
+
+```
 @import "../angular.less"; // note: order is important here!
 @import "common-variables.less";
 @import "<your-schools-name>-variables.less";
 
-
+```
 
 
 
 5. Also in the /uw-frame-components/css/themes directory, add a <theme-name>-variables.less file. Copy and paste the following code into the file. These are the colors for UW-Madison. Feel free to use a color picker, such as http://www.designskilz.com/colors/red to generate your own colors, and experiment with the palette.
 
-
+```
 
 /* MyUW-Madison colors */
 @color1: #c5050c;         // Badger Red
@@ -77,27 +80,31 @@ Add the following imports::
 @username-menu-color: #fff;
 @username-menu-bg: lighten(@color1, 30%);
 
-
+```
 
 
 6. Make your theme the default:
 
-In uw-frame-components/js, update the override.js with the following code. 
-
+    In uw-frame-components/js, update the override.js with the following code. 
+```
 .value('APP_FLAGS', {
             'defaultTheme': <your-theme-name>,
                    })
-
+```
 
 
 7. In your tools/uw-frame-static/build.js file, add your theme’s name to the array of themes.
 
 8. From a command line, navigate to your uw-frame-java directory, and run 
+```
 mvn clean package
-
+```
 
 9. Run
+```
  npm run static:dev
+ ```
+ 
  … and view the results on browser pointed at localhost:3474
 
 
