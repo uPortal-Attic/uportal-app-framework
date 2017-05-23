@@ -1,10 +1,10 @@
-<div class="my-uw" md-theme="{{ portal.theme.name || 'default' }}" tabindex="0" aria-live="polite" aria-atomic="true">
+<div class="my-uw" md-theme="{{ portal.theme.name || 'default' }}" tabindex="0" aria-live="polite" aria-atomic="false">
   <div class="my-uw-body">
     <portal-header ng-class="{'has-priority-nots': headerCtrl.hasPriorityNotifications}" ng-controller="PortalHeaderController as headerCtrl"></portal-header>
 
     <div class="page-content" layout="column">
       <div role="main" class="region-main" class="no-padding">
-        <div ng-class="routeClass" ng-view role="application" aria-labelledby="app-title"></div>
+        <div ng-class="routeClass" ng-view role="application" aria-labelledby="app-title" aria-live="off"></div>
       </div>
     </div>
 
