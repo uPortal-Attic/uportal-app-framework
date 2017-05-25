@@ -237,7 +237,7 @@ define(['angular'], function(angular) {
             }
           };
           return announcements.filter(hasNotSeen);
-        }else{
+        } else {
           return [];
         }
       };
@@ -279,7 +279,7 @@ define(['angular'], function(angular) {
             .filter(filterSeenPopups)
             .filter(filterExpiredPopups)
             .filter(filterUnEnabledPopups);
-        }else{
+        } else {
           return [];
         }
       };
