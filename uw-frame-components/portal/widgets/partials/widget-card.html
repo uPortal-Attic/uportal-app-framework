@@ -13,7 +13,7 @@
   <!-- HEADER -->
   <md-card-header class="widget-header">
     <!-- Widget Chrome -->
-    <md-button class="widget-action widget-info md-icon-button" aria-label="Description: {{ widget.description }}" role="tooltip" ng-hide="widget.lifecycleState === 'MAINTENANCE'">
+    <md-button class="widget-action widget-info md-icon-button" aria-label="{{ widget.title }}: {{ widget.description }}" role="tooltip" ng-hide="widget.lifecycleState === 'MAINTENANCE'">
       <md-tooltip md-direction="top" class="widget-action-tooltip">
         {{ widget.description }}
       </md-tooltip>
@@ -57,7 +57,7 @@
       <div ng-switch-when="custom" class="custom-widget">
         <div ng-controller="CustomWidgetController as customWidgetCtrl">
           <div ng-if="loading" layout="row" layout-align="center center">
-            <loading-gif data-object='content' data-empty='isEmpty'></loading-gif>
+            <loading-gif data-object="content" data-empty="isEmpty"></loading-gif>
           </div>
           <content-item ng-if="!loading"></content-item>
         </div>
