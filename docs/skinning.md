@@ -10,36 +10,48 @@ For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoI
 
 1. Locate and open the frame-config.js file in your uw-frame-components/js/ directory.
 
-
 2. Increment the themeVersion in line 9. 
 
 3.  Add the following json to the themes array:
 
-
-```js
-{
-  'name': '',
-  'crest': 'img/uw-madison.png',
-  'title': '',
-  'subtitle': null,
-  'ariaLabelTitle': '',
-  'crestalt': '',
-  'group': 'Everyone',
-  'mascotImg': 'img/robot-taco.gif',
-  'footerLinks': [
-    {
-      'url': 'https://www.merriam-webster.com/dictionary/help',
-      'target': '_blank',
-      'title': 'Help',
-    },
-  ],
-  'materialTheme': {
-    'primary': 'red',
-    'accent': 'blue',
-    'warn': 'orange',
-  },
-},
-
+```javascript
+define(['angular'], function(angular) {
+  return angular.module('frame-config', [])
+    .constant('THEMES',
+      {
+        /*
+         * THOU SHALT INCREMENT THIS VERSION NUMBER
+         * IF THOU CHANGEST ANY OF THE THEMES BELOW
+         */
+        'themeVersion': 1,
+        // Add your theme here
+        'themes': [
+            {
+              'name': '',
+              'crest': 'img/uw-madison.png',
+              'title': '',
+              'subtitle': null,
+              'ariaLabelTitle': '',
+              'crestalt': '',
+              'group': 'Everyone',
+              'mascotImg': 'img/robot-taco.gif',
+              'footerLinks': [
+                {
+                  'url': 'https://www.merriam-webster.com/dictionary/help',
+                  'target': '_blank',
+                  'title': 'Help',
+                },
+              ],
+              'materialTheme': {
+                'primary': 'red',
+                'accent': 'blue',
+                'warn': 'orange',
+              },
+            },
+        ]});
+        // End of themes
+        // Rest of file truncated
+      });
 ```
    Fill in the blank values to reflect your school. 
      * name: The name value you choose will become a filename in subsequent steps. The convention is all lower-case with no spaces.  
@@ -92,13 +104,21 @@ For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoI
 
     In uw-frame-components/js, update the override.js with the following code. 
 ```javascript
-.value('APP_FLAGS', {
-            'defaultTheme': <your-theme-name>,
-                   })
+define(['angular'], function(angular) {
+  /* Keep in sync with docs/markdown/configuration.md*/
+  return angular.module('override', [])
+    .constant('OVERRIDE', {
+      // Add your theme configuration here
+      'APP_FLAGS': {
+        'defaultTheme': '<your-theme-name>',
+      },
+      // End theme configuration
+    });
+});
 ```
 
 
-7. In your tools/uw-frame-static/build.js file, add your theme’s name to the array of themes.
+7. In your tools/uw-frame-static/build.js file, add your theme's name to the array of themes.
 
 8. From a command line, navigate to your uw-frame-java directory, and run 
 ```sass
@@ -110,7 +130,7 @@ mvn clean package
  npm run static:dev
  ```
  
- … and view the results on browser pointed at localhost:3474
+...and view the results on browser pointed at localhost:3474
 
 
 
