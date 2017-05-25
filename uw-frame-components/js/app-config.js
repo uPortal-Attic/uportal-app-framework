@@ -19,7 +19,7 @@ define(['angular'], function(angular) {
             'shibbolethSessionURL': null, // '/Shibboleth.sso/Session.json'
             'portalLayoutRestEndpoint': null, // '/portal/api/layout',
             'widgetApi': {
-              'entry': '/portal/api/marketplace/entry/', // For local testing, change to 'staticFeeds/'
+              'entry': '/portal/api/marketplace/entry/', // 'staticFeeds/'
               'entrySuffix': '.json',
               'entries': '/portal/api/marketplace/entries.json',
             },
