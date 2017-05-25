@@ -73,17 +73,18 @@ define(['angular'], function(angular) {
      * If keyValueService is Active and there exists legacy announcement storage
      * this will convert that to the new store all seen announcement ids rather
      * than just the latest.  Will then delete the legacy announcement storage
+     * @return {String[]} ids that were updated from legacy storage system
      */
     var updateLegacySeenAnnouncements = function() {
       if (!keyValueService.isKVStoreActivated()) {
-        return $q.resolve(null);
+        return $q.resolve([]);
       }
 
       return keyValueService
         .getValue('lastviewedannouncementid')
         .then(function(data) {
           if (!data || !data.id) {
-            return $q.resolve(null);
+            return $q.resolve([]);
           }
           // create an array with the seen ids
           var seenAnnouncements = [];
@@ -101,21 +102,22 @@ define(['angular'], function(angular) {
         });
     };
 
-    /*
+    /**
      * If keyValueService is Active and there exists legacy popup storage
      * this will convert that to the new store all seen popup ids rather
      * than just the latest.  Will then delete the legacy popup storage
+     * @return {String[]} ids that were updated from legacy storage system
      */
     var updateLegacyPopups = function() {
       if (!keyValueService.isKVStoreActivated()) {
-        return $q.resolve(null);
+        return $q.resolve([]);
       }
 
       return keyValueService
         .getValue('lastviewedpopupid')
         .then(function(data) {
           if (!data || !data.id) {
-            return $q.resolve(null);
+            return $q.resolve([]);
           }
           // create an array with the seen ids
           var seenPopups = [];
