@@ -83,7 +83,7 @@ define(['angular'], function(angular) {
         .getValue('lastviewedannouncementid')
         .then(function(data) {
           if (!data || !data.id) {
-            return $q.reject('no legacy seenAnnouncements');
+            return $q.resolve(null);
           }
           // create an array with the seen ids
           var seenAnnouncements = [];
@@ -115,7 +115,7 @@ define(['angular'], function(angular) {
         .getValue('lastviewedpopupid')
         .then(function(data) {
           if (!data || !data.id) {
-            return $q.reject('no legacy popups');
+            return $q.resolve(null);
           }
           // create an array with the seen ids
           var seenPopups = [];
@@ -235,6 +235,8 @@ define(['angular'], function(angular) {
             }
           };
           return announcements.filter(hasNotSeen);
+        }else{
+          return [];
         }
       };
       var errorFn = function(reason) {
@@ -275,6 +277,8 @@ define(['angular'], function(angular) {
             .filter(filterSeenPopups)
             .filter(filterExpiredPopups)
             .filter(filterUnEnabledPopups);
+        }else{
+          return [];
         }
       };
       var errorFn = function(reason) {
