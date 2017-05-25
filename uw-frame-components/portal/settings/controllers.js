@@ -3,7 +3,10 @@
 define(['angular'], function(angular) {
   return angular.module('portal.settings.controllers', [])
 
-    .filter('prettyName',function() {
+  /**
+   * For UW-prefixed theme names, formats the name for a more attractive display in the theme selection settings box.
+   */
+    .filter('formatThemeNameForDisplay',function() {
       return function(input) {
         if (input) {
           if (input.indexOf('uw-') > -1) {
