@@ -12,7 +12,7 @@ For a more in-depth discussion of theming, see https://github.com/UW-Madison-DoI
 
 2. Increment the themeVersion in line 9. 
 
-3.  Add the following json to the themes array:
+3.  Add your theme to the themes array as shown below:
 
 ```javascript
 define(['angular'], function(angular) {
@@ -24,8 +24,8 @@ define(['angular'], function(angular) {
          * IF THOU CHANGEST ANY OF THE THEMES BELOW
          */
         'themeVersion': 1,
-        // Add your theme here
         'themes': [
+            // Add your theme here
             {
               'name': '',
               'crest': 'img/uw-madison.png',
@@ -102,17 +102,18 @@ define(['angular'], function(angular) {
 
 6. Make your theme the default:
 
-    In uw-frame-components/js, update the override.js with the following code. 
+    In uw-frame-components/js, update the override.js with the following code.
+    
 ```javascript
 define(['angular'], function(angular) {
   /* Keep in sync with docs/markdown/configuration.md*/
   return angular.module('override', [])
     .constant('OVERRIDE', {
-      // Add your theme configuration here
+      // Add your defaultTheme configuration here
       'APP_FLAGS': {
         'defaultTheme': '<your-theme-name>',
       },
-      // End theme configuration
+      // End defaultTheme configuration
     });
 });
 ```
