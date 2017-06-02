@@ -1,4 +1,5 @@
 <i ng-if="widget.mdIcon" class="material-icons">{{ widget.mdIcon }}</i>
 <i ng-if="!widget.mdIcon && widget.faIcon && widget.faIcon.indexOf('fa-')===0" class="fa {{ ::widget.faIcon }}"></i>
 <i ng-if="!widget.mdIcon && widget.faIcon && widget.faIcon.indexOf('fa-')!==0" class="{{ ::widget.faIcon }}"></i>
+<img ng-src="{{widget.iconUrl}}" ng-if="!widget.mdIcon && !widget.faIcon && widget.iconUrl" alt="Widget icon">
 <i ng-if="!widget.mdIcon && !widget.faIcon && !widget.iconUrl" class="fa fa-star"></i>
