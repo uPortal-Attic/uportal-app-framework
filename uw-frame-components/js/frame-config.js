@@ -6,8 +6,21 @@ define(['angular'], function(angular) {
          * THOU SHALT INCREMENT THIS VERSION NUMBER
          * IF THOU CHANGEST ANY OF THE THEMES BELOW
          */
-        'themeVersion': 7,
+        'themeVersion': 8,
         'themes': [
+          {
+            'name': 'default',
+            'portalSkinKey': 'default',
+            'crest': '',
+            'title': 'uPortal',
+            'subtitle': null,
+            'ariaLabelTitle': 'uPortal',
+            'materialTheme': {
+              'primary': 'blue',
+              'accent': 'grey',
+              'warn': 'red',
+             },
+          },
           {
             'name': 'uw-madison',
             'portalSkinKey': 'uwMadison',
