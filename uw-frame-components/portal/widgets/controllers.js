@@ -84,10 +84,8 @@ define(['angular'], function(angular) {
         } else if (widget.renderOnWeb || $localStorage.webPortletRender) {
           return 'exclusive/' + widget.fname;
         }
-      } else {
-        // For basic widget, just use the provided url
-        return widget.url;
       }
+      return widget.url;
     };
 
     // Initialize the widget

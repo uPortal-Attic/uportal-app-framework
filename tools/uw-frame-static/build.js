@@ -18,7 +18,7 @@ mkdirp('uw-frame-static/target/css/themes/', function(error) {
 });
 
 
-const themes = ['uw-madison', 'uw-system', 'uw-river-falls',
+const themes = ['default', 'uw-madison', 'uw-system', 'uw-river-falls',
   'uw-stevens-point', 'uw-milwaukee', 'uw-whitewater', 'uw-stout',
   'uw-superior', 'uw-platteville', 'uw-parkside', 'uw-oshkosh',
   'uw-greenbay', 'uw-lacrosse', 'uw-eau-claire', 'uw-extension',

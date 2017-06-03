@@ -235,6 +235,18 @@
         <version>1.0.1</version>
         <executions>
           <execution>
+            <id>rename-default-file</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>rename</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/target/frame/css/themes/default.css</sourceFile>
+              <destinationFile>${basedir}/target/frame/css/themes/default.${project.version}.css</destinationFile>
+              <filtering>true</filtering>
+            </configuration>
+          </execution>
+          <execution>
             <id>rename-uw-madison-file</id>
             <phase>compile</phase>
             <goals>
