@@ -241,13 +241,18 @@ define(['angular', 'jquery'], function(angular, $) {
                 // If it's empty, return empty array
                 return [];
               }
-            } else if (data) {
+            } else if (data && angular.isArray(data)) {
               // If data exists but it's just JSON, return the data
               return data;
             } else {
               // If nothing exists, return empty array
               return [];
             }
+        })
+        .catch(function(error) {
+          $log.error('Could not get dismissed notification IDs');
+          $log.error(error);
+          return [];
         });
       return dismissedPromise;
     };
