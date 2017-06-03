@@ -11,10 +11,10 @@ define(['angular'], function(angular) {
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,
-            'groupURL': '/portal/api/groups',
+            'groupURL': 'staticFeeds/groups.json',
             'kvURL': '/storage',
             'loginSilentURL': '/portal/Login?silent=true',
-            'notificationsURL': '/web/staticFeeds/notifications.json',
+            'notificationsURL': 'staticFeeds/notifications.json',
             'sessionInfo': 'staticFeeds/session.json',
             'shibbolethSessionURL': null, // '/Shibboleth.sso/Session.json'
             'portalLayoutRestEndpoint': null, // '/portal/api/layout',
@@ -40,7 +40,7 @@ define(['angular'], function(angular) {
         .value('NOTIFICATION', {
             'enabled': true,
             'groupFiltering': true,
-            'notificationFullURL': '/web/notifications',
+            'notificationFullURL': '/notifications',
         })
         .value('MISC_URLS', {
             'feedbackURL': 'https://my.wisc.edu/portal/p/feedback',
