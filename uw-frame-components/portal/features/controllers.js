@@ -147,16 +147,16 @@ define(['angular', 'require'], function(angular, require) {
 
       var setMascot = function() {
         if($rootScope.portal && $rootScope.portal.theme) {
-          $scope.buckyImg =
+          $scope.mascotImage =
             $rootScope.portal.theme.mascotImg || 'img/robot-taco.gif';
         } else {
-          $scope.buckyImg = 'img/robot-taco.gif';
+          $scope.mascotImage = 'img/robot-taco.gif';
         }
         // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
         // eslint-disable-next-line angular/on-watch
         $rootScope.$watch('portal.theme', function(newVal, oldVal) {
           if (newVal !== oldVal) {
-            $scope.buckyImg = newVal.mascotImg || 'img/robot-taco.gif';
+            $scope.mascotImage = newVal.mascotImg || 'img/robot-taco.gif';
           }
         });
       };
@@ -169,21 +169,20 @@ define(['angular', 'require'], function(angular, require) {
         // handle legacy local storage #deleteIt
         delete $localStorage.lastSeenFeature;
         delete $localStorage.hasSeenWelcome;
-        // Mode is set to bucky or bucky_mobile
+        // Mode is set to mascot or mobile-menu
         // to signal mascot init of controller
-        if (
-          ('BUCKY' === $scope.mode || 'BUCKY_MOBILE' === $scope.mode) &&
-          !$rootScope.GuestMode
-        ) {
+        if (($scope.mode === 'mascot' || $scope.mode === 'mobile-menu') &&
+          !$rootScope.GuestMode) {
+          // Get announcements
           portalFeaturesService.getUnseenAnnouncements()
-          .then(function(unseenAnnouncements) {
-            if(!$rootScope.GuestMode) {
-              $scope.announcements = unseenAnnouncements;
-            }
-            return unseenAnnouncements;
-          }).catch(function() {
-            $log.warn('Could not get unseen announcements');
-          });
+            .then(function(unseenAnnouncements) {
+              if(!$rootScope.GuestMode) {
+                $scope.announcements = unseenAnnouncements;
+              }
+              return unseenAnnouncements;
+            }).catch(function() {
+              $log.warn('Could not get unseen announcements');
+            });
           setMascot();
         } else {
           getPopups();

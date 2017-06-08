@@ -4,7 +4,7 @@
 */
 md-menu-content {
   a {
-    color: @black!important;
+    color: @black;
     &:hover, &:active, &:focus {
       color: @black;
       text-decoration: none;
@@ -40,6 +40,7 @@ md-dialog {
 }
 .md-open-menu-container.md-whiteframe-z2 {
   box-shadow: none;
+
   > md-menu-content {
     box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
   }
@@ -47,44 +48,64 @@ md-dialog {
 md-menu-content.mascot-menu-content {
   min-width: 275px;
   padding: 0;
-  right: 70px;
   position: relative;
-  md-menu-item.mascot-menu-item {
-    height: auto;
-    max-width: 275px;
-    padding: 0;
-    border-bottom: 1px solid @grayscale2;
-    transition: @background-transition;
-    &:hover {
-      background: @grayscale2;
-    }
-    .announcement-link {
-      padding: 8px 16px;
-      transition: @mascot-transition;
-      .md-subhead {
-        color: @color1;
+
+  md-menu-item {
+    a.link__see-all {
+      max-width: 80px;
+      color: @color1;
+      text-decoration: underline;
+
+      md-icon {
+        transition: @link-hover-transition;
       }
+
       &:hover {
-        .md-subhead {
-          color: darken(@color1, 15%);
-          text-decoration: underline;
+        color: darken(@color1, 15%);
+        cursor: pointer;
+      }
+    }
+
+    &.mascot-menu-item {
+      height: auto;
+      max-width: 275px;
+      padding: 0;
+      border-bottom: 1px solid @grayscale2;
+      transition: @background-transition;
+
+      &:hover {
+        background: @grayscale2;
+      }
+
+      .announcement-item {
+        padding: 8px 0 8px 16px;
+        background-color: @grayscale1;
+
+        .announcement-title {
+          font-weight: 600;
         }
+
       }
-    }
-    .announcement-text {
-      width: 190px;
-    }
-    .md-icon-button {
-      .material-icons {
-        font-size: 20px;
-      }
-      &:hover {
+
+      .md-icon-button.button__mark-seen {
+        max-width: 40px;
+        background: transparent;
+
         .material-icons {
-          color: @grayscale10;
+          transition: @background-transition;
         }
-      }
-      .md-ripple-container {
-        width: 40px;
+
+        &:not([disabled]):hover {
+          background: transparent;
+
+          .material-icons {
+            color: @grayscale10;
+          }
+        }
+
+        .md-ripple-container {
+          width: 40px;
+        }
       }
     }
   }
