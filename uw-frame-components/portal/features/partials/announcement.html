@@ -31,7 +31,7 @@
           <span class="announcement-title">{{announcement.buckyAnnouncement.shortTitle}}</span>
           <span>{{announcement.buckyAnnouncement.shortDesc}}</span>
         </div>
-        <md-button class="md-icon-button button__mark-seen" ng-click="markAnnouncementSeen(announcement.id, false);" aria-label="mark this announcement seen" flex="20">
+        <md-button class="md-icon-button button__mark-seen" ng-click="markAnnouncementSeen(announcement.id, false);" md-prevent-menu-close="md-prevent-menu-close" aria-label="mark this announcement seen" flex="20">
           <md-icon>clear</md-icon>
         </md-button>
       </div>
@@ -45,7 +45,7 @@
     <md-button class="md-default" href="features"
                ng-click="markAllAnnouncementsSeen(true)"
                layout="row" layout-align="start center">
-      <span><i class='fa fa-star fa-fw'></i> </span>
+      <md-icon>new_releases</md-icon>
       <span>What's new ({{announcements.length}})</span>
     </md-button>
   </md-menu-item>
