@@ -11,7 +11,7 @@ define(['angular'], function(angular) {
           {
             'name': 'default',
             'portalSkinKey': 'default',
-            'crest': '',
+            'crest': 'img/apereo-logo.png',
             'title': 'uPortal',
             'subtitle': null,
             'ariaLabelTitle': 'uPortal',
