@@ -1,27 +1,29 @@
-<frame-page app-title="{{NAMES.title}} - New features" white-background='true'>
-  <div class="features-feed">
+<frame-page app-title="{{NAMES.title}} - New features" app-icon="new_releases" white-background='true'>
+  <md-content class="features-feed" layout-padding>
 
     <!-- NO FEATURES -->
-    <md-content ng-if="features.length === 0" layout="row" layout-align="center center"> <!--empty case -->
+    <div ng-if="features.length === 0" layout="row" layout-align="center center"> <!--empty case -->
       <p>No features listed at this time, please check back later.</p>
-    </md-content>
+    </div>
 
     <!-- DISPLAY FEATURES -->
-    <md-content class="feature-item" ng-repeat="feature in features | orderBy: '-id'">
-      <md-divider></md-divider>
-      <h5 class="date">{{feature.goLiveMonth + 1}}/{{feature.goLiveDay}}/{{ feature.goLiveYear }}</h5>
-      <h3 class="md-headline">{{ feature.title }}</h3>
-      <p>{{ feature.description }}</p>
-      <p ng-if="feature.learnMoreURL">Learn more at <a ng-href="{{ feature.learnMoreURL }}">{{ feature.learnMoreURL }}</a>.</p>
-      <div class="image-div" ng-if='feature.img'>
-        <img ng-src="{{feature.img}}">
-      </div>
-      <div ng-if='feature.imgs'>
-        <div class='images-div'>
-          <img ng-src="{{image}}" ng-repeat='image in feature.imgs'>
+    <div class="feature-item" ng-repeat="feature in features | orderBy: '-id'">
+      <p class="date">{{feature.goLiveMonth + 1}}/{{feature.goLiveDay}}/{{ feature.goLiveYear }}</p>
+      <h3 class="md-title">{{ feature.title }}</h3>
+
+      <div class="feature-content" layout="column" layout-align-xs="start none">
+        <div class="feature-text">
+          <p class="description">{{ feature.description }}</p>
+          <p ng-if="feature.learnMoreURL">Learn more at <a ng-href="{{ feature.learnMoreURL }}">{{ feature.learnMoreURL }}</a>.</p>
+        </div>
+        <div class="feature-images" ng-if="feature.img || feature.imgs" layout-gt-xs="row" layout-xs="column" layout-align="start start">
+          <img ng-if="feature.img" ng-src="{{feature.img}}">
+          <img ng-if="feature.imgs" ng-src="{{image}}" ng-repeat="image in feature.imgs">
         </div>
       </div>
-    </md-content>
+
+      <md-divider></md-divider>
+    </div>
 
     <!-- REQUEST FEEDBACK -->
     <div layout="column" layout-align="center center" ng-show="MISC_URLS.feedbackURL">
@@ -29,5 +31,5 @@
       <md-button class="md-primary md-raised" ng-href="{{MISC_URLS.feedbackURL}}">Send us feedback</md-button>
     </div>
 
-  </div>
+  </md-content>
 </frame-page>
