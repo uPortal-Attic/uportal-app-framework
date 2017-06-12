@@ -11,10 +11,10 @@ define(['angular'], function(angular) {
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,
-            'groupURL': 'staticFeeds/groups.json',
+            'groupURL': '/portal/api/groups',
             'kvURL': '/storage',
             'loginSilentURL': '/portal/Login?silent=true',
-            'notificationsURL': '/portal/api/groups',
+            'notificationsURL': 'staticFeeds/notifications.json',
             'sessionInfo': 'staticFeeds/session.json',
             'shibbolethSessionURL': null, // '/Shibboleth.sso/Session.json'
             'portalLayoutRestEndpoint': null, // '/portal/api/layout',
