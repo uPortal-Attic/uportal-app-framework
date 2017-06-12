@@ -12,7 +12,7 @@
 	  {
 		"id"     : 3,
 		"groups" : ["Everyone"],
-		"title"  : "Checkout these cool buttons",
+		"title"  : "Check out these cool buttons",
 		"actionURL" : "http://www.google.com",
 		"actionAlt" : "Google",
 		"dismissable" : true,
