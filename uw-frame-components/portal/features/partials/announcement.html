@@ -17,7 +17,7 @@
       Click to see what's new ({{announcements.length}})
     </md-tooltip>
   </md-button>
-  <md-menu-content class="mascot-menu-content">
+  <md-menu-content class="top-bar-menu-content">
     <md-menu-item layout="row" layout-align="space-between center">
       <span>Announcements</span>
       <a href="features" ng-click="markAnnouncementsSeen(true)" aria-label="see all announcements" class="link__see-all">
@@ -25,10 +25,10 @@
       </a>
     </md-menu-item>
     <md-menu-item ng-repeat="announcement in announcements | orderBy:'-id' | limitTo:3"
-                  class="mascot-menu-item">
-      <div class="announcement-item" layout="row" layout-align="space-between center">
+                  class="top-bar-menu-item">
+      <div class="menu-item-content" layout="row" layout-align="space-between start">
         <div layout="column" layout-align="center start" flex="80">
-          <span class="announcement-title">{{announcement.buckyAnnouncement.shortTitle}}</span>
+          <span class="menu-item-title">{{announcement.buckyAnnouncement.shortTitle}}</span>
           <span>{{announcement.buckyAnnouncement.shortDesc}}</span>
         </div>
         <md-button class="md-icon-button button__mark-seen" ng-click="markAnnouncementSeen(announcement.id, false);" md-prevent-menu-close="md-prevent-menu-close" aria-label="mark this announcement seen" flex="20">
