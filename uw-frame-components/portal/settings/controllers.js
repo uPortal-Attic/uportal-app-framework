@@ -20,7 +20,7 @@ define(['angular'], function(angular) {
               });
             return partOne + partTwo;
           } else {
-            return input;
+            return input.charAt(0).toUpperCase() + input.substr(1).toLowerCase();
           }
         }
       };
