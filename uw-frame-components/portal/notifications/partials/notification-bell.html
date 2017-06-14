@@ -38,7 +38,7 @@
       <md-menu-item layout="row" layout-align="space-between center">
         <span>Notifications</span>
         <a ng-href="{{ notificationsUrl }}" ng-click="pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');" aria-label="see all notifications" class="link__see-all">
-          See all
+          See all ({{ notifications.length }})
         </a>
       </md-menu-item>
       <!-- SHOW UP TO 3 NEW NOTIFICATIONS -->
