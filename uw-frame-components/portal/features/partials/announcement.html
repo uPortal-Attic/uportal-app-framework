@@ -21,7 +21,7 @@
     <md-menu-item layout="row" layout-align="space-between center">
       <span>Announcements</span>
       <a href="features" ng-click="markAnnouncementsSeen(true)" aria-label="see all announcements" class="link__see-all">
-        See all
+        See all ({{ announcements.length }})
       </a>
     </md-menu-item>
     <md-menu-item ng-repeat="announcement in announcements | orderBy:'-id' | limitTo:3"
