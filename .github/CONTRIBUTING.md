@@ -1,5 +1,9 @@
 # Contributing to `uw-frame`
 
+## Code of conduct
+
+The [Apereo Welcoming Policy][] applies. Cf. [CODE_OF_CONDUCT.md][]
+
 ## Contributor License Agreements
 
 As an [incubating, aspiring Apereo product][AngularJS-portal website on incubating], `uw-frame` requires contributors and contributions to comply with [Apereo inbound intellectual property licensing practices][].
@@ -26,3 +30,5 @@ The long version:
 [Apereo website on Contributor License Agreement]: https://www.apereo.org/licensing/agreements
 [Apereo licensing discussion Google Group]: https://groups.google.com/a/apereo.org/forum/#!forum/licensing-discuss
 [Apereo CLA roster]: http://licensing.apereo.org/completed-clas
+[CODE_OF_CONDUCT.md]: ../CODE_OF_CONDUCT.md
+[Apereo Welcoming Policy]: https://www.apereo.org/content/apereo-welcoming-policy
