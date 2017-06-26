@@ -15,7 +15,8 @@ define(['angular-mocks', 'portal'], function() {
           module('portal');
         });
 
-        beforeEach(inject(function(_notificationsService_, _$httpBackend_, SERVICE_LOC, KV_KEYS) {
+        beforeEach(inject(function(
+          _notificationsService_, _$httpBackend_, SERVICE_LOC, KV_KEYS) {
             notificationsService = _notificationsService_;
             httpBackend = _$httpBackend_;
             backendURL = SERVICE_LOC.notificationsURL;
@@ -24,7 +25,8 @@ define(['angular-mocks', 'portal'], function() {
             kvURL = SERVICE_LOC.kvURL;
             kvKeys = KV_KEYS;
             if(loginSilentURL) {
-              httpBackend.whenGET(loginSilentURL).respond({'status': 'success', 'username': 'admin'});
+              httpBackend.whenGET(loginSilentURL)
+              .respond({'status': 'success', 'username': 'admin'});
             }
         }));
 
@@ -32,12 +34,16 @@ define(['angular-mocks', 'portal'], function() {
             // setup
             httpBackend.whenGET(backendURL).respond({'notifications': []});
             httpBackend.whenGET(groupURL).respond({'groups': []});
-            httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+            httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+            .respond([]);
             // begin test
             notificationsService.getAllNotifications().then(function(results) {
               expect(results).toBeTruthy();
               expect(results.dismissed).toBeTruthy();
               expect(results.notDismissed).toBeTruthy();
+              return results;
+            }).catch(function(reason) {
+              fail(reason);
             });
             httpBackend.flush();
         });
@@ -58,7 +64,8 @@ define(['angular-mocks', 'portal'], function() {
                }
             );
             httpBackend.whenGET(groupURL).respond({'groups': []});
-            httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
+            httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+            .respond([]);
 
             // begin test
             notificationsService.getAllNotifications().then(function(results) {
@@ -66,6 +73,9 @@ define(['angular-mocks', 'portal'], function() {
                 expect(results.notDismissed).toBeTruthy();
                 expect(results.dismissed).toBeTruthy();
                 expect(results.notDismissed.length).toEqual(1);
+                return results;
+            }).catch(function(reason) {
+              fail(reason);
             });
             httpBackend.flush();
         });
@@ -86,7 +96,8 @@ define(['angular-mocks', 'portal'], function() {
                }
             );
             httpBackend.whenGET(groupURL).respond({'groups': []});
-            httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([1]);
+            httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+            .respond([1]);
 
             // begin test
             notificationsService.getAllNotifications().then(function(results) {
@@ -95,11 +106,15 @@ define(['angular-mocks', 'portal'], function() {
                 expect(results.dismissed).toBeTruthy();
                 expect(results.notDismissed.length).toEqual(0);
                 expect(results.dismissed.length).toEqual(1);
+                return results;
+            }).catch(function(reason) {
+              fail(reason);
             });
             httpBackend.flush();
         });
 
-        it('should have one group filtered notification that is not dismissed', function() {
+        it('should have one group filtered notification that is not dismissed',
+          function() {
             // setup
             httpBackend.whenGET(backendURL).respond(
               {'notifications':
@@ -114,21 +129,28 @@ define(['angular-mocks', 'portal'], function() {
                  ],
                }
             );
-            httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Portal Administrators'}]});
-            httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([2]);
+            httpBackend.whenGET(groupURL)
+            .respond({'groups': [{'name': 'Portal Administrators'}]});
+            httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+            .respond([2]);
 
             // begin test
-            notificationsService.getFilteredNotifications().then(function(results) {
+            notificationsService.getFilteredNotifications()
+            .then(function(results) {
                 expect(results).toBeTruthy();
                 expect(results.notDismissed).toBeTruthy();
                 expect(results.dismissed).toBeTruthy();
                 expect(results.notDismissed.length).toEqual(1);
                 expect(results.dismissed.length).toEqual(0);
+                return results;
+            }).catch(function(reason) {
+              fail(reason);
             });
             httpBackend.flush();
         });
 
-        it('should filter out one of the notDismissed notifications because of group membership', function() {
+        it('should filter out one of the notDismissed ' +
+          'notifications because of group membership', function() {
             // setup
             httpBackend.whenGET(backendURL).respond(
               {'notifications':
@@ -150,22 +172,30 @@ define(['angular-mocks', 'portal'], function() {
                  ],
                }
             );
-            httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Portal Administrators'}]});
-            httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([1]);
+            httpBackend.whenGET(groupURL)
+            .respond({'groups': [{'name': 'Portal Administrators'}]});
+            httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+            .respond([1]);
 
             // begin test
-            notificationsService.getFilteredNotifications().then(function(results) {
+            notificationsService.getFilteredNotifications()
+              .then(function(results) {
                 expect(results).toBeTruthy();
                 expect(results.notDismissed).toBeTruthy();
                 expect(results.dismissed).toBeTruthy();
-                // since the test user is not in Developers this should filter out notification 2
+                // since the test user is not in Developers
+                // this should filter out notification 2
                 expect(results.notDismissed.length).toEqual(0);
                 expect(results.dismissed.length).toEqual(1);
+                return results;
+            }).catch(function(reason) {
+              fail(reason);
             });
             httpBackend.flush();
         });
 
-        it('notification should not appear if dataURL is present but incorrect', function() {
+        it('notification should not appear if dataURL is present but incorrect',
+          function() {
           // setup
           httpBackend.whenGET(backendURL).respond(
               {'notifications':
@@ -188,19 +218,27 @@ define(['angular-mocks', 'portal'], function() {
                  ],
               }
           );
-          httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Everyone'}]});
-          httpBackend.whenGET('http://www.google.com').respond(400, {});
-          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
-          notificationsService.getFilteredNotifications().then(function(results) {
+          httpBackend.whenGET(groupURL)
+          .respond({'groups': [{'name': 'Everyone'}]});
+          httpBackend.whenGET('http://www.google.com')
+          .respond(400, {});
+          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+          .respond([]);
+          notificationsService.getFilteredNotifications()
+          .then(function(results) {
             expect(results).toBeTruthy();
             // Expect notification 1 to be good, but not 2
             expect(results.notDismissed.length).toEqual(1);
             expect(results.notDismissed[0].id).toEqual(1);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
 
-        it('notification should appear if dataURL is present and returns data', function() {
+        it('notification should appear if dataURL is present and returns data',
+          function() {
           // setup
           httpBackend.whenGET(backendURL).respond(
               {'notifications':
@@ -223,17 +261,25 @@ define(['angular-mocks', 'portal'], function() {
                  ],
               }
           );
-          httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Everyone'}]});
-          httpBackend.whenGET('http://www.google.com').respond(200, 'something');
-          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
-          notificationsService.getFilteredNotifications().then(function(results) {
+          httpBackend.whenGET(groupURL)
+          .respond({'groups': [{'name': 'Everyone'}]});
+          httpBackend.whenGET('http://www.google.com')
+          .respond(200, 'something');
+          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+          .respond([]);
+          notificationsService.getFilteredNotifications()
+            .then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
 
-        it('notification should appear if dataURL is present and returns data specifically asked for by dataObject', function() {
+        it('notification should appear if dataURL is present ' +
+          'and returns data specifically asked for by dataObject', function() {
           // setup
           httpBackend.whenGET(backendURL).respond(
               {'notifications':
@@ -257,17 +303,27 @@ define(['angular-mocks', 'portal'], function() {
                  ],
               }
           );
-          httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Everyone'}]});
-          httpBackend.whenGET('http://www.google.com').respond(200, '{"developers": ["foo", "bar"], "favorite foods":"chicken"}');
-          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
-          notificationsService.getFilteredNotifications().then(function(results) {
+          httpBackend.whenGET(groupURL)
+          .respond({'groups': [{'name': 'Everyone'}]});
+          httpBackend.whenGET('http://www.google.com')
+          .respond(200,
+              '{"developers": ["foo", "bar"], "favorite foods":"chicken"}');
+          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+          .respond([]);
+          notificationsService.getFilteredNotifications()
+          .then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
 
-        it('notification should not appear if dataURL is present and can\'t return data specifically asked for by dataObject', function() {
+        it('notification should not appear if dataURL is present and ' +
+          'can\'t return data specifically asked for by dataObject',
+          function() {
           // setup
           httpBackend.whenGET(backendURL).respond(
               {'notifications':
@@ -291,18 +347,27 @@ define(['angular-mocks', 'portal'], function() {
                  ],
               }
           );
-          httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Everyone'}]});
-          httpBackend.whenGET('http://www.google.com').respond(200, '{"developers": ["foo", "bar"], "favorite foods":"chicken"}');
-          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
-          notificationsService.getFilteredNotifications().then(function(results) {
+          httpBackend.whenGET(groupURL)
+          .respond({'groups': [{'name': 'Everyone'}]});
+          httpBackend.whenGET('http://www.google.com')
+          .respond(200,
+              '{"developers": ["foo", "bar"], "favorite foods":"chicken"}');
+          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+          .respond([]);
+          notificationsService.getFilteredNotifications()
+          .then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(1);
             expect(results.notDismissed[0].id).toEqual(1);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
 
-        it('notification should appear if dataURL is not present and dataObject is mistakenly present', function() {
+        it('notification should appear if dataURL is not ' +
+          'present and dataObject is mistakenly present', function() {
           // setup
           httpBackend.whenGET(backendURL).respond(
               {'notifications':
@@ -325,16 +390,24 @@ define(['angular-mocks', 'portal'], function() {
                  ],
               }
           );
-          httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Everyone'}]});
-          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
-          notificationsService.getFilteredNotifications().then(function(results) {
+          httpBackend.whenGET(groupURL)
+          .respond({'groups': [{'name': 'Everyone'}]});
+          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+          .respond([]);
+          notificationsService.getFilteredNotifications()
+          .then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
 
-        it('notification should appear if dataURL is present and returns data specifically asked for by dataArray and searched by object', function() {
+        it('notification should appear if dataURL is present and returns ' +
+          'data specifically asked for by dataArray and searched by object',
+          function() {
           // setup
           httpBackend.whenGET(backendURL).respond(
             {'notifications':
@@ -359,18 +432,29 @@ define(['angular-mocks', 'portal'], function() {
               ],
             }
           );
-          httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Everyone'}]});
-          httpBackend.whenGET('http://www.google.com').respond(200, {'developers': [{'name': 'foo'}, {'name': 'bar'}, {'name': 'baz'}],
-            'fruit': ['apples, oranges']});
-          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
-          notificationsService.getFilteredNotifications().then(function(results) {
+          httpBackend.whenGET(groupURL)
+          .respond({'groups': [{'name': 'Everyone'}]});
+          httpBackend.whenGET('http://www.google.com')
+          .respond(200, {
+            'developers': [{'name': 'foo'}, {'name': 'bar'}, {'name': 'baz'}],
+            'fruit': ['apples, oranges'],
+          });
+          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+          .respond([]);
+          notificationsService.getFilteredNotifications()
+          .then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
 
-        it('notification should appear if dataURL is present and returns data specifically asked for by dataArray with two filters and searched by object', function() {
+        it('notification should appear if dataURL is present and returns ' +
+          'data specifically asked for by dataArray with two filters and ' +
+          'searched by object', function() {
           // setup
           // setup
           httpBackend.whenGET(backendURL).respond(
@@ -396,18 +480,30 @@ define(['angular-mocks', 'portal'], function() {
               ],
             }
           );
-          httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Everyone'}]});
-          httpBackend.whenGET('http://www.google.com').respond(200, {'developers': [{'name': 'foo', 'id': 4}, {'name': 'foo'}, {'name': 'foo'}],
-            'fruit': ['apples, oranges']});
-          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
-          notificationsService.getFilteredNotifications().then(function(results) {
+          httpBackend.whenGET(groupURL)
+          .respond({'groups': [{'name': 'Everyone'}]});
+          httpBackend.whenGET('http://www.google.com')
+          .respond(200, {
+            'developers':
+              [{'name': 'foo', 'id': 4}, {'name': 'foo'}, {'name': 'foo'}],
+            'fruit': ['apples, oranges'],
+          });
+          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+          .respond([]);
+          notificationsService.getFilteredNotifications()
+          .then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
 
-        it('notification should not appear if dataURL is present and returns data specifically asked for by dataArray with two filters and searched by object when filter does not match', function() {
+        it('notification should not appear if dataURL is present and returns ' +
+        'data specifically asked for by dataArray with two filters and ' +
+        'searched by object when filter does not match', function() {
           // setup
           httpBackend.whenGET(backendURL).respond(
             {'notifications':
@@ -432,18 +528,31 @@ define(['angular-mocks', 'portal'], function() {
               ],
             }
           );
-          httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Everyone'}]});
-          httpBackend.whenGET('http://www.google.com').respond(200, {'developers': [{'name': 'foo', 'id': 4}, {'name': 'foo'}, {'name': 'foo'}],
+          httpBackend.whenGET(groupURL)
+          .respond({'groups': [{'name': 'Everyone'}]});
+          httpBackend.whenGET('http://www.google.com')
+          .respond(200, {
+            'developers': [
+              {'name': 'foo', 'id': 4},
+              {'name': 'foo'},
+              {'name': 'foo'},
+            ],
             'fruit': ['apples, oranges']});
-          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
-          notificationsService.getFilteredNotifications().then(function(results) {
+          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+          .respond([]);
+          notificationsService.getFilteredNotifications()
+          .then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(1);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
 
-        it('notification should not appear if dataURL is present and attempts to arrayFilter on non-array', function() {
+        it('notification should not appear if dataURL is present' +
+          'and attempts to arrayFilter on non-array', function() {
           // setup
           httpBackend.whenGET(backendURL).respond(
             {'notifications':
@@ -467,18 +576,28 @@ define(['angular-mocks', 'portal'], function() {
               ],
             }
           );
-          httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Everyone'}]});
-          httpBackend.whenGET('http://www.google.com').respond(200, {'developers': [{'name': 'foo'}, {'name': 'bar'}, {'name': 'baz'}],
-            'fruit': ['apples, oranges']});
-          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
-          notificationsService.getFilteredNotifications().then(function(results) {
+          httpBackend.whenGET(groupURL)
+          .respond({'groups': [{'name': 'Everyone'}]});
+          httpBackend.whenGET('http://www.google.com')
+          .respond(200, {
+            'developers': [{'name': 'foo'}, {'name': 'bar'}, {'name': 'baz'}],
+            'fruit': ['apples, oranges'],
+          });
+          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+          .respond([]);
+          notificationsService.getFilteredNotifications()
+          .then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(1);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
 
-        it('notification should appear in dismissed even when data feed doesn\'t apply anymore', function() {
+        it('notification should appear in dismissed even ' +
+          'when data feed doesn\'t apply anymore', function() {
           // setup
           httpBackend.whenGET(backendURL).respond(
             {'notifications':
@@ -502,18 +621,27 @@ define(['angular-mocks', 'portal'], function() {
               ],
             }
           );
-          httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Everyone'}]});
-          httpBackend.whenGET('http://www.google.com').respond(200, {'developers': [{'name': 'foo'}, {'name': 'bar'}, {'name': 'baz'}],
+          httpBackend.whenGET(groupURL)
+          .respond({'groups': [{'name': 'Everyone'}]});
+          httpBackend.whenGET('http://www.google.com')
+          .respond(200, {
+            'developers': [{'name': 'foo'}, {'name': 'bar'}, {'name': 'baz'}],
             'fruit': ['apples, oranges']});
-          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([2]);
-          notificationsService.getFilteredNotifications().then(function(results) {
+          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+          .respond([2]);
+          notificationsService.getFilteredNotifications()
+          .then(function(results) {
             expect(results).toBeTruthy();
             expect(results.dismissed.length).toEqual(1);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });
 
-        it('notification should appear when dataObject is present and not an array', function() {
+        it('notification should appear when dataObject' +
+          'is present and not an array', function() {
           // setup
           httpBackend.whenGET(backendURL).respond(
             {'notifications':
@@ -537,12 +665,19 @@ define(['angular-mocks', 'portal'], function() {
               ],
             }
           );
-          httpBackend.whenGET(groupURL).respond({'groups': [{'name': 'Everyone'}]});
-          httpBackend.whenGET('http://www.google.com').respond(200, {'name': 'foo', 'id': 'bar', 'favorite food': 'baz'});
-          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS).respond([]);
-          notificationsService.getFilteredNotifications().then(function(results) {
+          httpBackend.whenGET(groupURL)
+          .respond({'groups': [{'name': 'Everyone'}]});
+          httpBackend.whenGET('http://www.google.com')
+          .respond(200, {'name': 'foo', 'id': 'bar', 'favorite food': 'baz'});
+          httpBackend.whenGET(kvURL + '/' + kvKeys.DISMISSED_NOTIFICATION_IDS)
+          .respond([]);
+          notificationsService.getFilteredNotifications()
+          .then(function(results) {
             expect(results).toBeTruthy();
             expect(results.notDismissed.length).toEqual(2);
+            return results;
+          }).catch(function(reason) {
+            fail(reason);
           });
           httpBackend.flush();
         });

@@ -54,3 +54,33 @@ If the mascot is clicked while in hidden/hover state, it will slide up and the a
 ![mascot clicked state](./img/mascot/presenting-mascot.png)
 
 If clicked again while in this state, the mascot will slide back down to the initial state. If all the announcements are dismissed, the mascot will disappear.
+
+### Announcements Exercise
+
+To try announcements, switch the [announcements enabled to true](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js#L36)
+and the [group filtering flag to true](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js#L37).
+
+Next, add a sample announcement
+
+try adding this announcement to the sample feed
+
+```json
+  {
+    "id": 4,
+    "title": "My first feature announcement",
+    "description": "A trial of uPortal-Home's features",
+    "learnMoreURL": "",
+    "groups" : ["Everyone"],
+    "goLiveYear": 2017,
+    "goLiveMonth": 5,
+    "goLiveDay": 1,
+    "isBuckyAnnouncement" : true,
+    "buckyAnnouncement" : {
+      "shortTitle" : "Check out a sample announcement",
+      "shortDesc" : "This is a sample announcment",
+      "endDate" : "2017-08-31"
+    }
+  }
+```
+
+Try making it a pop up feature too.  

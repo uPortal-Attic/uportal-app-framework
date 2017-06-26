@@ -1,9 +1,9 @@
 'use strict';
 
 define(['angular', 'jquery'], function(angular, $) {
-    var app = angular.module('portal.settings.services', []);
+    return angular.module('portal.settings.services', [])
 
-    app.factory('portalSkinService', ['$q', '$http', 'miscService', 'SERVICE_LOC',
+    .factory('portalSkinService', ['$q', '$http', 'miscService', 'SERVICE_LOC',
         function($q, $http, miscService, SERVICE_LOC) {
           /**
            * Sets the skin on the backend layout manager

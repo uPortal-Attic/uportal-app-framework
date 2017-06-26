@@ -6,7 +6,7 @@ With gratitude to the many [contributors to this project](contributors.md).
 
 ## Getting Started
 
-+ [How to make a frame app](quickstart.md)
++ [How to run locally and how to make a uPortal Framework Application](quickstart.md)
 + [What is uw-frame?](overview.md)
 
 ## Configuration

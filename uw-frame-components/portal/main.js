@@ -49,7 +49,7 @@ define([
 			angular.module('angulartics.google.analytics', []);
 		}
 
-    var app = angular.module('portal', [
+    return angular.module('portal', [
         'app-config',
         'override',
         'frame-config',
@@ -90,9 +90,13 @@ define([
         'ui.sortable',
         'angulartics',
         'angulartics.google.analytics',
-    ]);
+    ])
 
-    app.config(['gravatarServiceProvider', '$analyticsProvider', '$mdThemingProvider', 'THEMES', function(gravatarServiceProvider, $analyticsProvider, $mdThemingProvider, THEMES) {
+    .config([
+      'gravatarServiceProvider', '$analyticsProvider',
+      '$mdThemingProvider', 'THEMES',
+      function(gravatarServiceProvider, $analyticsProvider,
+        $mdThemingProvider, THEMES) {
       gravatarServiceProvider.defaults = {
         'default': 'https://yt3.ggpht.com/-xE0EQR3Ngt8/AAAAAAAAAAI/AAAAAAAAAAA/zTofDHA3-s4/s100-c-k-no/photo.jpg',
       };
@@ -109,7 +113,7 @@ define([
             $mdThemingProvider.theme(cur.name);
             // Set up primary
             if(cur.materialTheme.primary) {
-              if(typeof cur.materialTheme.primary === 'string') {
+              if(angular.isString(cur.materialTheme.primary)) {
                 $mdThemingProvider.theme(cur.name)
                   .primaryPalette(cur.materialTheme.primary);
                 // Enable browser color (mobile only)
@@ -119,7 +123,10 @@ define([
                   hue: '500',
                 });
               } else {
-                $mdThemingProvider.definePalette(cur.name + '-primary', cur.materialTheme.primary);
+                $mdThemingProvider.definePalette(
+                  cur.name + '-primary',
+                  cur.materialTheme.primary
+                );
                 $mdThemingProvider.theme(cur.name)
                   .primaryPalette(cur.name + '-primary');
                 // Enable browser color (mobile only)
@@ -132,22 +139,28 @@ define([
             }
             // Set up accent
             if(cur.materialTheme.accent) {
-              if(typeof cur.materialTheme.accent === 'string') {
+              if(angular.isString(cur.materialTheme.accent)) {
                 $mdThemingProvider.theme(cur.name)
                   .accentPalette(cur.materialTheme.accent);
               } else {
-                $mdThemingProvider.definePalette(cur.name + '-accent', cur.materialTheme.accent);
+                $mdThemingProvider.definePalette(
+                  cur.name + '-accent',
+                  cur.materialTheme.accent
+                );
                 $mdThemingProvider.theme(cur.name)
                   .accentPalette(cur.name + '-accent');
               }
             }
             // Set up warn
             if(cur.materialTheme.warn) {
-              if(typeof cur.materialTheme.warn === 'string') {
+              if(angular.isString(cur.materialTheme.warn)) {
                 $mdThemingProvider.theme(cur.name)
                   .warnPalette(cur.materialTheme.warn);
               } else {
-                $mdThemingProvider.definePalette(cur.name + '-warn', cur.materialTheme.warn);
+                $mdThemingProvider.definePalette(
+                  cur.name + '-warn',
+                  cur.materialTheme.warn
+                );
                 $mdThemingProvider.theme(cur.name)
                   .warnPalette(cur.name + '-warn');
               }
@@ -156,9 +169,9 @@ define([
         }
         cur = null;
       }
-    }]);
+    }])
 
-    app.run(function($location,
+    .run(function($location,
                      $log,
                      $http,
                      $rootScope,
@@ -190,10 +203,12 @@ define([
         $sessionStorage.portal.theme = $rootScope.portal.theme;
       };
 
-      // Safari in Private Browsing Mode throws a QuotaExceededError whenever any calls to localStorage.setItem
-      // are made. This block tests if localStorage is working. If not, we redirect the user to a new URL with
-      // an explanation of the error and a link to go back to MyUW home.
-      if (typeof localStorage === 'object') {
+      // Safari in Private Browsing Mode throws a QuotaExceededError
+      // whenever any calls to localStorage.setItem are made. This block
+      // tests if localStorage is working. If not, we redirect the user to
+      // a new URL with an explanation of the error and a link to go back
+      // to MyUW home.
+      if (angular.isObject(localStorage)) {
         try {
           localStorage.setItem('localStorage', 1);
           localStorage.removeItem('localStorage');
@@ -216,7 +231,10 @@ define([
       };
 
       var themeLoading = function() {
-        if($sessionStorage.portal && $sessionStorage.portal.theme && $sessionStorage.portal.theme.themeVersion === THEMES.themeVersion) {
+        if($sessionStorage.portal &&
+          $sessionStorage.portal.theme &&
+          $sessionStorage.portal.theme.themeVersion === THEMES.themeVersion
+        ) {
           $rootScope.portal.theme = $sessionStorage.portal.theme;
           generateTheme();
           if(APP_FLAGS.debug) {
@@ -236,16 +254,22 @@ define([
               generateTheme();
             } else {
               if(APP_FLAGS.debug) {
-                $log.error('something is wrong with setup, no default theme. Setting to THEMES.themes[0].');
+                $log.error(
+                  'something is wrong with setup, no default theme. ' +
+                  'Setting to THEMES.themes[0].'
+                );
               }
               $rootScope.portal.theme = THEMES.themes[0];
               generateTheme();
             }
           };
-          // themeIndex is group which means we need to run groups service to get which theme they use
+          // themeIndex is group which means we need to
+          // run groups service to get which theme they use
           if(SERVICE_LOC.groupURL) {
-            // normally this $http would be in a service, but due to loading we moved it to the run block
-            $http.get(SERVICE_LOC.groupURL, {cache: true}).then(function(result) {
+            // normally this $http would be in a service,
+            // but due to loading we moved it to the run block
+            $http.get(SERVICE_LOC.groupURL, {cache: true})
+            .then(function(result) {
               var groups = result.data.groups;
               // go through each theme and see if there in that group
               for(var i = 0; i < THEMES.themes.length; i++) {
@@ -265,22 +289,28 @@ define([
                 defaultThemeGo();
               }
               loadingCompleteSequence();
-            }, function(reason) {
+              return result;
+            }).catch(function(reason) {
               if(APP_FLAGS.debug) {
-                $log.error('We got a error back from groupURL, setting theme to default');
+                $log.error(
+                  'We got a error back from groupURL, setting theme to default'
+                );
               }
               defaultThemeGo();
               loadingCompleteSequence();
             });
           } else {
             if(APP_FLAGS.debug) {
-              $log.warn('theme was setup as group, but the groupURL was not provided, going default');
+              $log.warn(
+                'theme was setup as group, but the groupURL ' +
+                'was not provided, going default'
+              );
             }
             // still not set, set to default theme
             defaultThemeGo();
             loadingCompleteSequence();
           }
-        } else if (typeof themeIndex === 'string') {
+        } else if (angular.isString(themeIndex)) {
           // themeindex is a theme name, search!
           var theme = findThemeByName(themeIndex);
           if(theme) {
@@ -288,7 +318,10 @@ define([
             generateTheme();
           } else {
             if(APP_FLAGS.debug) {
-              $log.warn('APP_FLAGS.defaultTheme was set to ' + themeIndex + ' however we could not find that theme name. Please check frame-config.js for a list of available themes. Falling back to the default theme (uw-system).');
+              $log.warn('APP_FLAGS.defaultTheme was set to ' + themeIndex +
+              ' however we could not find that theme name. Please check ' +
+              'frame-config.js for a list of available themes. ' +
+              'Falling back to the default theme (uw-system).');
             }
             defaultThemeGo();
           }
@@ -311,10 +344,10 @@ define([
       };
 
       var lastLoginValid = function() {
+        var portal = $sessionStorage.portal;
         var timeLapseBetweenLogins = APP_FLAGS.loginDurationMills || 14400000;
-        if($sessionStorage.portal && $sessionStorage.portal.lastAccessed) {
-          var now = (new Date()).getTime();
-          if(now - $sessionStorage.portal.lastAccessed <= timeLapseBetweenLogins) {// 4 hours
+        if(portal && portal.lastAccessed) {
+          if (Date.now() - portal.lastAccessed <= timeLapseBetweenLogins) {
             return true;
           }
         }
@@ -325,12 +358,13 @@ define([
         // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
         // eslint-disable-next-line angular/on-watch
         $rootScope.$on('$routeChangeStart', function(event, next, current) {
-          var searchValue = '';
-          var paramToTackOn = '';
-          if(next.$$route && next.$$route.searchParam) {
-            paramToTackOn = APP_FLAGS.gaSearchParam || 'q';
-            searchValue = next.params[next.$$route.searchParam];
-            if(searchValue && $location.search()[paramToTackOn] !== searchValue) {
+          if(next && next.searchParam) {
+            var paramToTackOn = APP_FLAGS.gaSearchParam || 'q';
+            var searchValue = next.params[next.searchParam];
+            if(
+              searchValue &&
+              $location.search()[paramToTackOn] !== searchValue
+            ) {
               event.preventDefault();
               // change route to have param of the search param
               $location.search(paramToTackOn, searchValue);
@@ -339,10 +373,17 @@ define([
         });
       };
 
-      // List of config. VERY IMPORTANT THAT THE CONFIGS has a corresponding configsName in the same index
-      var configs = [APP_FLAGS, SERVICE_LOC, NAMES, SEARCH, FEATURES, NOTIFICATION, MISC_URLS, FOOTER_URLS, APP_BETA_FEATURES];
+      // List of config. VERY IMPORTANT THAT THE CONFIGS has a
+      // corresponding configsName in the same index
+      var configs = [
+        APP_FLAGS, SERVICE_LOC, NAMES, SEARCH, FEATURES,
+        NOTIFICATION, MISC_URLS, FOOTER_URLS, APP_BETA_FEATURES,
+      ];
       // TODO: make better
-      var configsName = ['APP_FLAGS', 'SERVICE_LOC', 'NAMES', 'SEARCH', 'FEATURES', 'NOTIFICATION', 'MISC_URLS', 'FOOTER_URLS', 'APP_BETA_FEATURES'];
+      var configsName = [
+        'APP_FLAGS', 'SERVICE_LOC', 'NAMES', 'SEARCH', 'FEATURES',
+        'NOTIFICATION', 'MISC_URLS', 'FOOTER_URLS', 'APP_BETA_FEATURES',
+      ];
 
       var configureAppConfig = function() {
         if(APP_FLAGS.debug) {
@@ -354,11 +395,11 @@ define([
           var curConfig = configsName[i];
           if(OVERRIDE[curConfig]) {
             groups++;
-            if(Array.isArray(configs[i])) {// arrays are special, append
+            if(angular.isArray(configs[i])) {// arrays are special, append
               Array.prototype.push.apply(configs[i], OVERRIDE[curConfig]);
               count++;
             } else {// treat as an object
-              for(var key in OVERRIDE[curConfig]) {// for each config value object
+              for(var key in OVERRIDE[curConfig]) {
                 if ({}.hasOwnProperty.call(OVERRIDE[curConfig]), key) {
                   configs[i][key] = OVERRIDE[curConfig][key];
                   count++;
@@ -369,7 +410,9 @@ define([
         }
         if(APP_FLAGS.debug) {
           $log.info(new Date() + ' : ended app-config override');
-          $log.info('Overwrote ' + count + ' configs in ' + groups + ' config groups.');
+          $log.info(
+            'Overwrote ' + count + ' configs in ' + groups + ' config groups.'
+          );
         }
       };
 
@@ -383,19 +426,24 @@ define([
         if(APP_FLAGS.loginOnLoad && !lastLoginValid()) {
           $http.get(SERVICE_LOC.loginSilentURL).then(function(result) {
             if(APP_FLAGS.debug) {
-              $log.info('login returned with ' + (result.data ? result.data.status : null));
+              $log.info(
+                'login returned with ' +
+                (result.data ? result.data.status : null)
+              );
             }
             themeLoading();
             if('success' === result.data.status) {
               $sessionStorage.portal.lastAccessed = (new Date).getTime();
               $sessionStorage.portal.username = result.data.username;
-              if (NAMES.guestUserName && result.data.username === NAMES.guestUserName) {
+              if (NAMES.guestUserName &&
+                result.data.username === NAMES.guestUserName) {
                 $rootScope.GuestMode = true;
               }
             }
-          },
-          function(reason) {
-            themeLoading(); // still continue with theme loading so they don't get stuck on loading
+            return result;
+          }).catch(function(reason) {
+            // continue with theme loading so they don't get stuck on loading
+            themeLoading();
           });
         } else {
           themeLoading();
@@ -403,6 +451,4 @@ define([
       };
       init();
     });
-
-    return app;
 });

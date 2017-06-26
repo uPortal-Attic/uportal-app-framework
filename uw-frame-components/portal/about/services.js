@@ -1,9 +1,10 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.about.services', []);
-
-  app.factory('portalAboutService', ['$http', 'miscService', 'FRAME_URLS', function($http, miscService, FRAME_URLS) {
+  return angular.module('portal.about.services', [])
+  .factory('portalAboutService', [
+    '$http', 'miscService', 'FRAME_URLS',
+    function($http, miscService, FRAME_URLS) {
     /**
     * Gets frame information from generated about-frame.json
     **/
@@ -29,7 +30,4 @@ define(['angular'], function(angular) {
       getDetails: getDetails,
     };
   }]);
-
-  return app;
 });
-

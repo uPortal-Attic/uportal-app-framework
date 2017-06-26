@@ -1,11 +1,13 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.notifications.controllers ', []);
+  return angular.module('portal.notifications.controllers ', [])
 
-  app.controller('PortalNotificationController', ['$scope', '$rootScope', '$location', '$localStorage', 'NOTIFICATION',
+  .controller('PortalNotificationController', [
+    '$scope', '$rootScope', '$location', '$localStorage', 'NOTIFICATION',
     'SERVICE_LOC', 'filterFilter', 'notificationsService', 'miscService',
-    function($scope, $rootScope, $location, $localStorage, NOTIFICATION, SERVICE_LOC, filterFilter, notificationsService, miscService) {
+    function($scope, $rootScope, $location, $localStorage, NOTIFICATION,
+      SERVICE_LOC, filterFilter, notificationsService, miscService) {
       // ///////////////////
       // LOCAL VARIABLES //
       // ///////////////////
@@ -16,9 +18,12 @@ define(['angular'], function(angular) {
       // /////////////////
       /**
        * Dismiss a notification
-       * This method moves the given notification into the array of dismissed notifications
-       * @param notification Object, the notification with all its data
-       * @param fromPriority Boolean, true if dismissal occurred in priority notifications alert
+       * This method moves the given notification into the
+       *  array of dismissed notifications
+       * @param notification Object,
+       *        the notification with all its data
+       * @param fromPriority Boolean,
+       *        true if dismissal occurred in priority notifications alert
        */
       $scope.dismissNotification = function(notification, fromPriority) {
         // Remove notification from non-dismissed array
@@ -32,7 +37,8 @@ define(['angular'], function(angular) {
 
         // Call service to save changes if k/v store enabled
         if(SERVICE_LOC.kvURL) {
-          notificationsService.setDismissedNotifications(dismissedNotificationIds);
+          notificationsService
+            .setDismissedNotifications(dismissedNotificationIds);
         }
 
         // Clear priority notification flags if it was a priority notification
@@ -43,7 +49,8 @@ define(['angular'], function(angular) {
 
       /**
        * Restore notification
-       * This method moves the given notification into the array of unseen notifications
+       * This method moves the given notification
+       * into the array of unseen notifications
        * @param notification Object, the notification with all its data
        */
       $scope.restoreNotification = function(notification) {
@@ -53,14 +60,16 @@ define(['angular'], function(angular) {
         // Add notification to non-dismissed array
         $scope.notifications.push(notification);
 
-        // Remove the corresponding entry from local array of dismissed notification IDs
+        // Remove the corresponding entry from
+        // local array of dismissed notification IDs
         var index = dismissedNotificationIds.indexOf(notification.id);
         if(index !== -1) {
           dismissedNotificationIds.splice(index, 1);
         }
         // Call service to save changes if k/v store enabled
         if(SERVICE_LOC.kvURL) {
-          notificationsService.setDismissedNotifications(dismissedNotificationIds);
+          notificationsService
+            .setDismissedNotifications(dismissedNotificationIds);
         }
       };
 
@@ -79,15 +88,21 @@ define(['angular'], function(angular) {
       // /////////////////
       /**
        *  Get notifications
-       *  The data returned depends on whether group filtering is enabled. This method also initializes the local
+       *  The data returned depends on whether group filtering is enabled.
+       *  This method also initializes the local
        *  array of dismissed notification IDs.
        */
       var getNotifications = function() {
         dismissedNotificationIds = [];
-        if(NOTIFICATION.groupFiltering && !$localStorage.disableGroupFilteringForNotifications) {
-          notificationsService.getFilteredNotifications().then(getNotificationsSuccess, getNotificationsError);
+        if (
+          NOTIFICATION.groupFiltering &&
+          !$localStorage.disableGroupFilteringForNotifications
+        ) {
+          notificationsService.getFilteredNotifications()
+            .then(getNotificationsSuccess).catch(getNotificationsError);
         } else {
-          notificationsService.getAllNotifications().then(getNotificationsSuccess, getNotificationsError);
+          notificationsService.getAllNotifications()
+            .then(getNotificationsSuccess).catch(getNotificationsError);
         }
       };
 
@@ -95,13 +110,15 @@ define(['angular'], function(angular) {
        * Called if getNotifications completed successfully
        * @param data Object with two attributes:
        *  - notDismissed: An array of notification objects
-       *  - dismissed: An array of notifications previously saved as "dismissed" in k/v store
+       *  - dismissed: An array of notifications previously
+       *      saved as "dismissed" in k/v store
        */
       var getNotificationsSuccess = function(data) {
         // SET NECESSARY SCOPE VARIABLES
         $scope.notifications = data.notDismissed ? data.notDismissed : [];
         $scope.dismissedNotifications = data.dismissed ? data.dismissed : [];
-        $scope.status = 'You have ' + ($scope.isEmpty ? 'no ' : '') + 'notifications';
+        $scope.status =
+          'You have ' + ($scope.isEmpty ? 'no ' : '') + 'notifications';
 
         angular.forEach($scope.dismissedNotifications, function(value, key) {
           dismissedNotificationIds.push(value.id);
@@ -136,13 +153,17 @@ define(['angular'], function(angular) {
       };
 
       /**
-       * Filter the array of notifications and add notifications with the "priority" flag to a separate array,
+       * Filter the array of notifications and add notifications
+       * with the "priority" flag to a separate array,
        * set hasPriorityNotifications flag if applicable
        * @param data Array of notification objects
        */
       var configurePriorityNotificationScope = function(data) {
         $scope.priorityNotifications = filterFilter(data, {priority: true});
-        if ($scope.priorityNotifications && $scope.priorityNotifications.length > 0) {
+        if (
+          $scope.priorityNotifications
+          && $scope.priorityNotifications.length > 0
+        ) {
           $scope.hasPriorityNotifications = true;
           if($scope.headerCtrl) {
             $scope.headerCtrl.hasPriorityNotifications = true;
@@ -166,14 +187,15 @@ define(['angular'], function(angular) {
           $scope.headerCtrl.hasPriorityNotifications = false;
         }
         if(!duringOnEvent) {
-          $rootScope.$broadcast('portalShutdownPriorityNotifications', {disable: true});
+          $rootScope.$broadcast('portalShutdownPriorityNotifications',
+            {disable: true});
         }
       };
 
       /**
        * Initialize this controller
-       * This method initializes scope variables, calls the notifications service to get notifications, and instantiates
-       * some event listeners.
+       * This method initializes scope variables, calls the notifications
+       * service to get notifications, and instantiates some event listeners.
        */
       var init = function() {
         // Variables used in all notification directives
@@ -195,13 +217,13 @@ define(['angular'], function(angular) {
             clearPriorityNotificationFlags();
           }
         });
-        $scope.$on('portalShutdownPriorityNotifications', function(event, data) {
-          clearPriorityNotificationFlags(true);
-        });
+        $scope.$on('portalShutdownPriorityNotifications',
+          function(event, data) {
+            clearPriorityNotificationFlags(true);
+          }
+        );
       };
 
       init();
   }]);
-
-  return app;
 });

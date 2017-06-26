@@ -1,11 +1,12 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.misc.controllers', []);
+  return angular.module('portal.misc.controllers', [])
 
   /* AddToHomeController */
-  app.controller('AddToHomeController', ['$scope', '$timeout', 'PortalAddToHomeService',
-                 function($scope, $timeout, PortalAddToHomeService) {
+  .controller('AddToHomeController', [
+    '$log', '$scope', '$timeout', 'PortalAddToHomeService',
+    function($log, $scope, $timeout, PortalAddToHomeService) {
     $scope.addToHome = function() {
       if(!$scope.inHome && PortalAddToHomeService.canAddToHome($scope.fname)) {
         $scope.savingAddToHome = true;
@@ -19,8 +20,8 @@ define(['angular'], function(angular) {
             $scope.inHome = true;
             $scope.successfullyAdded = true;
             $scope.actionLinkIcon = $scope.actionLinkIconTemp;
-          },
-          function() {
+            return true;
+          }).catch(function() {
             // failed
             $scope.addToHomeFailed = true;
           }
@@ -31,6 +32,9 @@ define(['angular'], function(angular) {
     var checkInHome = function(fname) {
       PortalAddToHomeService.inHome(fname).then(function(data) {
         $scope.inHome = data;
+        return data;
+      }).catch(function() {
+        $log.warn('could not check inHome for ' + fname);
       });
     };
 
@@ -55,6 +59,4 @@ define(['angular'], function(angular) {
 
     init();
   }]);
-
-  return app;
  });

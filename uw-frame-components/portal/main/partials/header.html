@@ -1,6 +1,6 @@
 <notification-bell mode="priority" class="priority-gt-xs" hide-xs></notification-bell>
 <span ng-controller="PortalPopupController"></span>
-<md-toolbar md-scroll-shrink class="md-primary">
+<md-toolbar md-scroll-shrink class="md-primary" tabindex="0">
   <div class="md-toolbar-tools"  role="banner">
     <div layout="row" flex-gt-xs="30" flex-xs="40" layout-align="start center">
       <!-- MOBILE MENU -->
@@ -8,18 +8,16 @@
         <md-button aria-label="toggle mobile menu" hide-gt-xs ng-click="$mdOpenMenu($event)" layout="row" layout-align="center center">
           <notification-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notification-bell>
           <i class="fa fa-bars" style='font-size: 1.5em;'></i>
+          <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Main menu</md-tooltip>
         </md-button>
         <md-menu-content width="5" class="mobile-menu">
-          <!--<md-menu-item>-->
-            <!--<search ng-show="APP_FLAGS.showSearch" md-prevent-menu-close="md-prevent-menu-close"></search>-->
-          <!--</md-menu-item>-->
-          <!-- Bucky announcement -->
-          <bucky-announcement mode='BUCKY_MOBILE' header-ctrl='headerCtrl'></bucky-announcement>
+          <!-- Mascot announcement -->
+          <mascot-announcement mode="mobile-menu" header-ctrl="headerCtrl"></mascot-announcement>
           <!-- Notifications -->
-          <notification-bell mode='mobile-menu' header-ctrl='headerCtrl' ng-if='!GuestMode'></notification-bell>
+          <notification-bell mode="mobile-menu" header-ctrl="headerCtrl" ng-if="!GuestMode"></notification-bell>
           <!-- Home link -->
           <md-menu-item>
-            <md-button class="md-default" ng-if='APP_FLAGS.isWeb' ng-href="/web" ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Home');">
+            <md-button class="md-default" ng-if="APP_FLAGS.isWeb" ng-href="/web" ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Home');">
               <md-icon>home</md-icon> Home
             </md-button>
             <md-button class="md-default" ng-if='!APP_FLAGS.isWeb' ng-href="/" target="_self" ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Home');">
@@ -58,6 +56,10 @@
       <md-button class="md-icon-button" aria-label="Toggle {{portal.theme.title}} search" ng-click="toggleSearch()">
         <md-icon ng-if="!searchExpanded">search</md-icon>
         <md-icon ng-if="searchExpanded">close</md-icon>
+        <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">
+          <span ng-if="!searchExpanded">Search</span>
+          <span ng-if="searchExpanded">Close search</span>
+        </md-tooltip>
       </md-button>
     </div>
 
@@ -70,7 +72,7 @@
 
     <!-- COLLAPSIBLE MENU SM+ -->
     <div layout="row" layout-align="end center" flex-gt-xs="30" hide-xs>
-      <bucky-announcement mode="BUCKY"></bucky-announcement>
+      <mascot-announcement mode="mascot"></mascot-announcement>
       <notification-bell mode="bell" ng-if="!GuestMode"></notification-bell>
       <username layout="row" layout-align="start center"></username>
     </div>

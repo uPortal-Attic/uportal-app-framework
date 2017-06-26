@@ -1,10 +1,14 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.timeout.controllers', []);
-
-  app.controller('PortalTimeoutController', ['$sessionStorage', '$log', '$location', '$timeout', '$mdDialog', '$window', 'MISC_URLS', 'PortalShibbolethService',
-  function($sessionStorage, $log, $location, $timeout, $mdDialog, $window, MISC_URLS, PortalShibbolethService) {
+  return angular.module('portal.timeout.controllers', [])
+  .controller('PortalTimeoutController', [
+    '$sessionStorage', '$log', '$location', '$timeout',
+    '$mdDialog', '$window', 'MISC_URLS', 'PortalShibbolethService',
+  function(
+    $sessionStorage, $log, $location, $timeout,
+    $mdDialog, $window, MISC_URLS, PortalShibbolethService
+  ) {
     /**
      * initialize the controller
      */
@@ -18,14 +22,17 @@ define(['angular'], function(angular) {
             } else {
               $log.info('Timeout data could not be found');
               if($sessionStorage.portal
-                 && $sessionStorage.portal.username
-                 && $sessionStorage.portal.username !== 'guest') {
-                   // we know its not a guest session
-                   triggerDialog();
-                 }
+                  && $sessionStorage.portal.username
+                  && $sessionStorage.portal.username !== 'guest') {
+                // we know its not a guest session
+                triggerDialog();
+              }
             }
+            return timeoutData;
           }
-        );
+        ).catch(function() {
+          $log.warn('could not get timeout');
+        });
       }
     }
 
@@ -35,7 +42,8 @@ define(['angular'], function(angular) {
     function triggerDialog() {
       var alert = $mdDialog.alert({
         title: 'Session Expired',
-        textContent: 'Your session has expired. Please click below to login, or close this window to logout.',
+        textContent: 'Your session has expired. ' +
+          'Please click below to login, or close this window to logout.',
         ok: 'Login',
       });
       $mdDialog

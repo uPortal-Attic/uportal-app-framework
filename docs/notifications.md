@@ -112,5 +112,44 @@ Action buttons can also be used to call more attention to the `actionURL`.
 - **url**: A url for the action
 - **target** (*optional*): The `target` attribute for the button's `<a>` tag (ex. "_blank", "_self", etc)
 
+### Notification Exercise
+Follow these steps to create a notification.
 
+1. Add a notification to
+[uw-frame-components/staticFeeds/notifications.json](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/staticFeeds/notifications.json)
 
+you can use this json
+
+```json
+{
+  "id": 1,
+  "groups" : ["Everyone"],
+  "title"  : "Learn how to create a notification",
+  "actionURL" : "http://uw-madison-doit.github.io/uw-frame/notifications.html",
+  "actionAlt" : "notification documentation",
+  "dismissable" : true,
+  "priority" : false
+}
+```
+
+the file will look similar to this
+
+```json
+{"notifications" :
+    [
+        {
+          "id": 1,
+          "groups" : ["Everyone"],
+          "title"  : "Learn how to create a notification",
+          "actionURL" : "http://uw-madison-doit.github.io/uw-frame/notifications.html",
+          "actionAlt" : "notification documentation",
+          "dismissable" : true,
+          "priority" : false
+        }
+    ]
+}
+```
+2. [Start frame](quickstart.md)
+
+3. Try changing some of the options like making it a priority notification
+or undismissable

@@ -1,50 +1,49 @@
 'use strict';
 
 define(['angular', 'require'], function(angular, require) {
-  var app = angular.module('portal.main.directives', []);
+  return angular.module('portal.main.directives', [])
 
-  app.directive('uwBody', function() {
+  .directive('uwBody', function() {
     return {
       restrict: 'E',
       templateUrl: require.toUrl('./partials/body.html'),
       controller: 'PortalMainController',
     };
-  });
+  })
 
-  app.directive('portalHeader', function() {
+  .directive('portalHeader', function() {
     return {
       restrict: 'E',
       templateUrl: require.toUrl('./partials/header.html'),
     };
-  });
+  })
 
-  app.directive('sideBarMenu', function() {
+  .directive('sideBarMenu', function() {
     return {
       restrict: 'E',
       templateUrl: require.toUrl('./partials/sidebar-left.html'),
     };
-  });
+  })
 
-  app.directive('username', function() {
+  .directive('username', function() {
     return {
       restrict: 'E',
       templateUrl: require.toUrl('./partials/username.html'),
     };
-  });
+  })
 
-  app.directive('siteFooter', function() {
+  .directive('siteFooter', function() {
       return {
         restrict: 'E',
         templateUrl: require.toUrl('./partials/footer.html'),
       };
-    });
+    })
 
-  app.directive('featuresModalTemplate', function() {
+  .directive('featuresModalTemplate', function() {
       return {
           restrict: 'E',
-          templateUrl: require.toUrl('./partials/features-dialog-template.html'),
+          templateUrl:
+            require.toUrl('./partials/features-dialog-template.html'),
       };
   });
-
-  return app;
 });

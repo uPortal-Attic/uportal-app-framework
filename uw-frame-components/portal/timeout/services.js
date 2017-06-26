@@ -1,7 +1,7 @@
 'use strict';
 
 define(['angular', 'jquery'], function(angular, $) {
-    var app = angular.module('portal.timeout.services', []);
+    return angular.module('portal.timeout.services', [])
 
     /**
     Shibboleth Service
@@ -11,7 +11,7 @@ define(['angular', 'jquery'], function(angular, $) {
     * getTimeout() - Gets the shib session, but returns just the timeout
                      and the time of that timeout.
     **/
-    app.factory('PortalShibbolethService', ['$http', 'miscService', 'SERVICE_LOC',
+    .factory('PortalShibbolethService', ['$http', 'miscService', 'SERVICE_LOC',
         function($http, miscService, SERVICE_LOC) {
           var onError = function(response) {
             miscService.redirectUser(response.status, 'Shibboleth Service');
@@ -27,7 +27,8 @@ define(['angular', 'jquery'], function(angular, $) {
               var timeout = {};
               timeout.expirationMinutes = session.expiration;
               var now = new Date();
-              timeout.expirationTime = now.setMinutes(now.getMinutes() + session.expiration);
+              timeout.expirationTime =
+                now.setMinutes(now.getMinutes() + session.expiration);
               timeout.expirationMills = session.expiration * 60000;
               return timeout;
             } else {

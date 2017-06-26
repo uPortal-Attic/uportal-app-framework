@@ -1,10 +1,39 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  var app = angular.module('portal.settings.controllers', []);
+  return angular.module('portal.settings.controllers', [])
 
+  /**
+   * For UW-prefixed theme names, formats the name for a more
+   * attractive display in the theme selection settings box.
+   */
+    .filter('formatThemeNameForDisplay', function() {
+      return function(input) {
+        if (input) {
+          if (input.indexOf('uw-') > -1) {
+            var partOne = input.slice(0, 3).toUpperCase();
+            var partTwo = input.slice(input.indexOf('-') + 1)
+              .replace(/-/g, ' ')
+              .replace(/\w\S*/g, function(txt) {
+                return txt.charAt(0).toUpperCase()
+                  + txt.substr(1).toLowerCase();
+              });
+            return partOne + partTwo;
+          } else {
+            return input.charAt(0).toUpperCase()
+              + input.substr(1).toLowerCase();
+          }
+        }
+      };
+    })
 
-      app.controller('PortalBetaSettingsController', ['$sessionStorage', '$scope', '$mdTheming', 'portalSkinService', 'THEMES', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES', function($sessionStorage, $scope, $mdTheming, portalSkinService, THEMES, APP_BETA_FEATURES, FRAME_BETA_FEATURES) {
+  .controller('PortalBetaSettingsController', [
+    '$sessionStorage', '$scope', '$mdTheming', 'portalSkinService',
+    'THEMES', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES',
+    function(
+      $sessionStorage, $scope, $mdTheming, portalSkinService,
+      THEMES, APP_BETA_FEATURES, FRAME_BETA_FEATURES
+    ) {
     $scope.options = FRAME_BETA_FEATURES.concat(APP_BETA_FEATURES);
     $scope.$watch('portal.theme', function(newValue, oldValue) {
       if($scope.portal.theme) {
@@ -22,18 +51,15 @@ define(['angular'], function(angular) {
         }
       }
     });
-  }]);
+  }])
 
-  app.controller('PortalUserSettingsController', ['$scope',
-                                                  '$q',
-                                                  '$window',
-                                                  '$localStorage',
-                                                  '$sessionStorage',
-                                                  'KV_KEYS',
-                                                  'NOTIFICATION',
-                                                  'FEATURES',
-                                                  'keyValueService',
-    function($scope, $q, $window, $localStorage, $sessionStorage, KV_KEYS, NOTIFICATION, FEATURES, keyValueService) {
+  .controller('PortalUserSettingsController', [
+    '$scope', '$q', '$window', '$localStorage', '$log', '$sessionStorage',
+    'KV_KEYS', 'NOTIFICATION', 'FEATURES', 'keyValueService',
+    function(
+      $scope, $q, $window, $localStorage, $log, $sessionStorage,
+      KV_KEYS, NOTIFICATION, FEATURES, keyValueService
+    ) {
       var init = function() {
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
         $scope.KV_KEYS = KV_KEYS;
@@ -51,6 +77,9 @@ define(['angular'], function(angular) {
             .then(function() {
               $window.location.reload();
               $scope.loadingResetAnnouncements = false;
+              return false;
+            }).catch(function() {
+              $log.warn('could not reset announcements');
             });
         }
       };
@@ -60,10 +89,12 @@ define(['angular'], function(angular) {
         keyValueService.deleteValue(key).then(function() {
           $window.location.reload();
           $scope[loadingKey] = false;
+          return false;
+        }).catch(function() {
+          $log.warn('could not reset key');
         });
       };
 
       init();
     }]);
-  return app;
  });

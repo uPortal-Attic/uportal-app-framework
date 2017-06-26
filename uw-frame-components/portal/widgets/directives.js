@@ -1,12 +1,12 @@
 'use strict';
 
 define(['angular', 'require'], function(angular, require) {
-  var app = angular.module('portal.widgets.directives', []);
+  return angular.module('portal.widgets.directives', [])
 
   /**
    Just the widget card -- gets the widget type from the scope
    **/
-  app.directive('widget', function() {
+  .directive('widget', function() {
     return {
       restrict: 'E',
       transclude: true,
@@ -16,12 +16,12 @@ define(['angular', 'require'], function(angular, require) {
       templateUrl: require.toUrl('./partials/widget-card.html'),
       controller: 'WidgetCardController',
     };
-  });
+  })
 
   /**
   Just the widget card -- gets the widget type from the scope
   **/
-  app.directive('compactWidget', function() {
+  .directive('compactWidget', function() {
     return {
       restrict: 'E',
       transclude: true,
@@ -31,16 +31,16 @@ define(['angular', 'require'], function(angular, require) {
       templateUrl: require.toUrl('./partials/compact-widget-card.html'),
       controller: 'WidgetCardController',
     };
-  });
+  })
 
-  app.directive('widgetIcon', function() {
+  .directive('widgetIcon', function() {
     return {
       restrict: 'E',
       templateUrl: require.toUrl('./partials/widget-icon.html'),
     };
-  });
+  })
 
-  app.directive('optionLink', function() {
+  .directive('optionLink', function() {
     return {
       restrict: 'E',
       scope: {
@@ -50,9 +50,9 @@ define(['angular', 'require'], function(angular, require) {
       templateUrl: require.toUrl('./partials/type__option-link.html'),
       controller: 'OptionLinkController',
     };
-  });
+  })
 
-  app.directive('listOfLinks', function() {
+  .directive('listOfLinks', function() {
     return {
       restrict: 'E',
       scope: {
@@ -61,9 +61,9 @@ define(['angular', 'require'], function(angular, require) {
       },
       templateUrl: require.toUrl('./partials/type__list-of-links.html'),
     };
-  });
+  })
 
-  app.directive('searchWithLinks', function() {
+  .directive('searchWithLinks', function() {
     return {
       restrict: 'E',
       scope: {
@@ -73,9 +73,9 @@ define(['angular', 'require'], function(angular, require) {
       templateUrl: require.toUrl('./partials/type__search-with-links.html'),
       controller: 'SearchWithLinksController',
     };
-  });
+  })
 
-  app.directive('rssWidget', function() {
+  .directive('rssWidget', function() {
     return {
       restrict: 'E',
       scope: {
@@ -85,9 +85,9 @@ define(['angular', 'require'], function(angular, require) {
       templateUrl: require.toUrl('./partials/type__rss.html'),
       controller: 'RssWidgetController',
     };
-  });
+  })
 
-  app.directive('weatherWidget', function() {
+  .directive('weatherWidget', function() {
     return {
       restrict: 'E',
       scope: {

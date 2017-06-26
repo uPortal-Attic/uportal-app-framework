@@ -1,9 +1,10 @@
-<md-subheader role="heading" class="app-header">
+<md-subheader role="toolbar" class="app-header">
   <h1 flex="50" flex-xs="85" class="app-title">
     <i ng-if="icon.indexOf('fa-') > -1" class="fa {{::icon}}" aria-hidden="true"></i>
     <md-icon ng-if="icon.indexOf('fa-') <= -1" aria-label="">{{ ::icon }}</md-icon>
     {{::title}}
   </h1>
+
   <div flex="50" flex-xs="15" class="header-links">
 
     <!-- OPTIONS MENU WITH MULTIPLE OPTIONS -->

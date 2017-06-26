@@ -15,7 +15,7 @@
         <h4 class="md-subhead">Theme Selector</h4>
         <md-input-container>
           <md-select ng-model="portal.theme" placeholder="Pick which place you call home" aria-label="Select a theme">
-            <md-option ng-repeat="item in THEMES" ng-value="item">{{ item.name }}</md-option>
+            <md-option ng-repeat="item in THEMES" ng-value="item">{{ item.name | formatThemeNameForDisplay }}</md-option>
           </md-select>
         </md-input-container>
         <h4 class="md-subhead">Danger Zone<br>
