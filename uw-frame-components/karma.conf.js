@@ -22,12 +22,11 @@ module.exports = function(config) {
 
         frameworks: ['jasmine', 'requirejs'],
 
-        browsers: ['PhantomJS'], // or 'Chrome'
+        browsers: ['ChromeHeadless'], // or 'Chrome'
 
         plugins: [
             'karma-htmlfile-reporter',
             'karma-chrome-launcher',
-            'karma-phantomjs-launcher',
             'karma-jasmine',
             'karma-requirejs',
             'karma-coverage',
