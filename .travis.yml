@@ -3,6 +3,8 @@ jdk:
   - oraclejdk7
   - openjdk7
   - oraclejdk8
+addons:
+  chrome: stable
 sudo: false
 before_install:
   - nvm i node
@@ -16,4 +18,4 @@ script :
 cache:
   directories:
     - $HOME/.m2
-    - node_modules
+    - $HOME/.npm
