@@ -88,7 +88,6 @@
     "lodash": "^4.0.0",
     "mkdirp": "^0.5.1",
     "onchange": "^3.0.2",
-    "phantomjs-prebuilt": "2.1.7",
     "postcss": "^5.2.5",
     "recursive-copy": "^2.0.5",
     "requirejs": "^2.2.0",
