@@ -1,0 +1,43 @@
+<div class="widget-body action-items">
+
+  <div ng-show="actionItems.length == 0" layout="row" layout-align="center center">
+    <!-- Loading case -->
+    <loading-gif data-object="actionItems" data-empty="isEmpty"></loading-gif>
+
+    <!-- Empty case -->
+    <div>
+      <!-- TODO: Big icon to signify that everything is good to go -->
+      <p>No items require your attention at this time.</p>
+    </div>
+  </div>
+
+  <!-- Has action items to display -->
+  <div ng-show="actionItems.length != 0">
+    <ul class="widget-list">
+      <li ng-repeat="item in actionItems | limitTo:itemsLimit">
+        <a class="full-width" ng-href="{{ item.actionUrl }}" target="_blank" rel="noopener noreferrer">
+          <div class="headline">
+            <md-chip>{{ item.quantity }}</md-chip>
+            <span ng-if="item.quantity == 1">{{ item.textSingular }}</span>
+            <span ng-if="item.quantity > 1">{{ item.textPlural }}</span>
+          </div>
+        </a>
+      </li>
+      <!-- Error case -->
+      <li ng-show="error" class="no-highlight">
+        <p>There was an issue loading the information, click "See all" for more details</p>
+      </li>
+      <!-- Over limit case -->
+      <li ng-show="actionItems.length > itemsLimit" class="no-highlight">
+        <p>Showing {{ itemsLimit }} of {{ actionItems.length }}</p>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- LAUNCH BUTTON -->
+<launch-button data-href="{{widget.url}}"
+               data-target="{{ widget.target ? widget.target : '_self' }}"
+               data-button-text="{{ config.launchText ? config.launchText : 'See all' }}"
+               data-aria-label="{{ config.launchText ? config.launchText : 'Launch ' + widget.title }}"></launch-button>
