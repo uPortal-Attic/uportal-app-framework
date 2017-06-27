@@ -87,6 +87,18 @@ define(['angular', 'require'], function(angular, require) {
     };
   })
 
+  .directive('actionItems', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config',
+      },
+      templateUrl: require.toUrl('./partials/type__action-items.html'),
+      controller: 'ActionItemsController',
+    };
+  })
+
   .directive('weatherWidget', function() {
     return {
       restrict: 'E',

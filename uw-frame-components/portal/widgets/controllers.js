@@ -267,6 +267,12 @@ define(['angular'], function(angular) {
     initializeRssWidget();
   }])
 
+  // ACTION ITEMS widget type
+  .controller('ActionItemsController', [
+    '$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
+      $log.log('Loaded an action items widget');
+  }])
+
 
   // CUSTOM & GENERIC widget types
   .controller('CustomWidgetController', [
