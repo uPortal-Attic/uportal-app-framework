@@ -2,6 +2,7 @@
 
 ## Who are the committers?
 
++ [Christian Murphy][Christian Murphy committer election record] ( @ChristianMurphy )
 + Andrew Petro ( @apetro )
 + Doug Reed ( @Doug-Reed )
 + Dave Sibley ( @davidmsibley )
@@ -63,3 +64,5 @@ Apache Software Foundation on
 + [Decision making](https://community.apache.org/committers/decisionMaking.html)
 + [Adding new Committers](https://community.apache.org/newcommitter.html)
 + [Voting](https://community.apache.org/committers/voting.html)
+
+[Christian Murphy committer election record]: https://groups.google.com/a/apereo.org/d/msg/uportal-dev/qcl7cyVWCDU/Z_mUyIXBAQAJ
