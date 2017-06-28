@@ -100,11 +100,29 @@ define(['angular'], function(angular) {
         });
     };
 
+
+    /**
+     * Get the quantity of items needing attention
+     * for an action-item widget
+     * @param url The url provided in widgetConfig
+     * @returns Number The number of items needing attention
+     */
+    var getActionItemQuantity = function(url) {
+      return $http.get(url)
+        .then(function(result) {
+          return result.data;
+        })
+        .catch(function(error) {
+          $log.error('Couldn\'t get action item quantity: ' + error);
+        });
+    };
+
     return {
       getSingleWidgetData: getSingleWidgetData,
+      getErrorPage: getErrorPage,
       getWidgetJson: getWidgetJson,
       getRssAsJson: getRssAsJson,
-      getErrorPage: getErrorPage,
+      getActionItemQuantity: getActionItemQuantity,
     };
   }]);
 });

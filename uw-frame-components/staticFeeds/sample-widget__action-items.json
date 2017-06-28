@@ -1,0 +1,54 @@
+{
+  "entry": {
+    "canAdd": false,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Action Items",
+      "description": "See how many items need your attention",
+      "url": "http://www.google.com",
+      "iconUrl": null,
+      "mdIcon": "face",
+      "fname": "action-items-demo",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetURL": "example/path/to/single-item-feed",
+      "widgetType": "action-items",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "launchText": "See all",
+        "actionItems": [
+          {
+            "textSingular": "item needs your attention",
+            "textPlural": "items need your attention",
+            "feedUrl": "example/path/to/individual-item-feed",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "leave request needs your approval",
+            "textPlural": "leave requests need your approval",
+            "feedUrl": "example/path/to/individual-item-feed",
+            "actionUrl": "http://www.google.com"
+          }
+        ]
+      },
+      "staticContent": "",
+      "pithyStaticContent": null,
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "Action Items",
+    "fname": "action-items-demo",
+    "rating": 5.0,
+    "lifecycleState": "PUBLISHED",
+    "renderUrl": "http://www.google.com",
+    "maxUrl": "http://www.google.com",
+    "shortUrl": null,
+    "userRated": 45,
+    "mdIcon": "face",
+    "description": "See how many items need your attention",
+    "name": "Action Items",
+    "id": "222",
+    "type": "Portlet",
+    "target": null
+  }
+}
