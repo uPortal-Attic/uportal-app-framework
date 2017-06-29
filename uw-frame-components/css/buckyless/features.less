@@ -1,39 +1,29 @@
 .features-feed {
-  padding:10px 20px 20px;
-  h5 {
-    font-size:14px;
-    color:#999;
-    margin-bottom:0;
-  }
   .feature-item {
-    margin-bottom: 80px;
-  }
-  img {
-    border: 1px solid @grayscale3;
-    border-radius: 3px;
-  }
+    margin-bottom: 30px;
 
-  .image-div {
-    width:90%;
-    display: block;
-    padding: 0 12px;
-    img {
-      max-width: 600px;
-      @media (max-width: @xs) {
-        width : 90%;
-      }
+    p.date {
+      color: rgba(0,0,0,0.7);
+      margin-bottom:0;
     }
-  }
-  .images-div {
-    width: 90%;
-    padding: 0 6px;
-    img {
-      display: inline-block;
-      max-width: 400px;
-      vertical-align: top;
-      margin: 6px;
-      @media (max-width: @xs) {
-        width : 90%;
+
+    h3.md-title {
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .feature-content {
+      margin-bottom: 12px;
+
+      .feature-images {
+        img {
+          border-radius: 3px;
+          max-width: 100%;
+          margin: 12px 16px 16px 0;
+          @media (min-width: @sm) {
+            max-width: 800px;
+          }
+        }
       }
     }
   }
@@ -59,13 +49,12 @@
     }
   }
 }
-portal-header md-toolbar .md-toolbar-tools bucky-announcement {
+portal-header md-toolbar .md-toolbar-tools mascot-announcement {
+  margin-right: 20px;
+
   .md-menu.announcement-creeper {
-    margin-right: 20px;
-    overflow: hidden;
     max-height: 48px;
     position: relative;
-    top: 8px;
     img {
       transition: @mascot-transition;
       position: relative;
@@ -82,6 +71,7 @@ portal-header md-toolbar .md-toolbar-tools bucky-announcement {
       }
     }
     .mascot-button {
+      overflow: visible;
       &:hover {
         background-color: transparent;
       }

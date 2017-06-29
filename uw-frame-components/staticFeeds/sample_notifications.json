@@ -12,14 +12,14 @@
 	  {
 		"id"     : 3,
 		"groups" : ["Everyone"],
-		"title"  : "Checkout these cool buttons ->.",
+		"title"  : "Check out these cool buttons",
 		"actionURL" : "http://www.google.com",
 		"actionAlt" : "Google",
 		"dismissable" : true,
 		"priority" : true,
 		"actionButtons" : [
 		  {"label" : "Feedback", "url" : "/web/exclusive/feedback", "action" : "", "target" : ""},
-		  {"label" : "Return To Old", "url" : "https://my.wisconsin.edu",  "action" : "", "target" : "_blank"}
+		  {"label" : "Return to old", "url" : "https://my.wisconsin.edu",  "action" : "", "target" : "_blank"}
 		]
 	  },
       {

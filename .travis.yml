@@ -1,19 +1,34 @@
 language: java
-jdk:
-  - oraclejdk7
-  - openjdk7
-  - oraclejdk8
+
 sudo: false
+
+matrix:
+  fast_finish: true
+  include:
+    - os: linux
+      dist: trusty
+      jdk: oraclejdk8
+    - os: linux
+      dist: trusty
+      jdk: openjdk7
+    - os: osx
+      osx_image: xcode8.3
+
+addons:
+  chrome: stable
+
 before_install:
   - nvm i node
   - npm install
+
 script :
   - npm run build-static
   - npm test
   - npm run lint-js
   - cd uw-frame-java/
   - mvn clean install
+
 cache:
   directories:
     - $HOME/.m2
-    - node_modules
+    - $HOME/.npm
