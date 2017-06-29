@@ -269,10 +269,25 @@ define(['angular'], function(angular) {
 
   // ACTION ITEMS widget type
   .controller('ActionItemsController', [
-    '$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
+    '$scope', '$log', '$window', 'widgetService',
+    function($scope, $log, $window, widgetService) {
+    // Scope functions
     /**
-     *
-     * @param item
+     * Navigate to the url provided by the action item
+     * @param url A path provided by the action item
+     */
+    $scope.goToAction = function(url) {
+      // Go there if the url exists
+      if (url) {
+        $window.location.href = url;
+      }
+    };
+
+    // Local functions
+    /**
+     * Gets the quantity for the provided item from its feedUrl, then
+     * builds a new actionItem object to add to scope.
+     * @param item Object for a single action item
      */
     var assembleActionItemsList = function(item) {
       // Get number from provided url
@@ -285,17 +300,9 @@ define(['angular'], function(angular) {
               textSingular: item.textSingular,
               textPlural: item.textPlural,
               actionUrl: item.actionUrl,
-              quantity: data,
+              quantity: data.quantity,
             });
           }
-
-          // Add an action item to scope array
-          $scope.actionItems.push({
-            textSingular: item.textSingular,
-            textPlural: item.textPlural,
-            actionUrl: item.actionUrl,
-            quantity: 5,
-          });
 
           return data;
         })
@@ -309,7 +316,8 @@ define(['angular'], function(angular) {
     };
 
     /**
-     *
+     * Make sure each action item in widgetConfig has the necessary fields
+     * configured and passes on for assembly if so.
      */
     var checkActionItemsConfigs = function() {
       // For each entry in actionItems, get the number of items
@@ -334,14 +342,15 @@ define(['angular'], function(angular) {
     };
 
     /**
-     *
+     * Initialize bindable members and kick off error checking and
+     * scope assembly.
      */
     var initializeActionItems = function() {
       // Initialize bindable members
       $scope.actionItems = [];
       $scope.loading = true;
       $scope.error = false;
-      $scope.itemsLimit = 4;
+      $scope.itemsLimit = 3;
 
       // Make sure we got a widget and necessary config
       if ($scope.widget && $scope.config.actionItems
@@ -359,7 +368,6 @@ define(['angular'], function(angular) {
 
     initializeActionItems();
   }])
-
 
   // CUSTOM & GENERIC widget types
   .controller('CustomWidgetController', [

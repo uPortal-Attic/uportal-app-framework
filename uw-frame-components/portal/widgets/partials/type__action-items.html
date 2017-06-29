@@ -1,38 +1,31 @@
 <div class="widget-body action-items">
-
-  <div ng-show="actionItems.length == 0" layout="row" layout-align="center center">
+  <!-- No action items to display -->
+  <div layout="row" layout-align="center center" ng-show="actionItems.length == 0">
     <!-- Loading case -->
-    <loading-gif data-object="actionItems" data-empty="isEmpty"></loading-gif>
+    <loading-gif data-object="actionItems" ng-show="loading"></loading-gif>
 
     <!-- Error case -->
-    <div ng-show="error" class="no-highlight">
-      <p>There was an issue loading the information. Click See all for more info.</p>
+    <div class="error" layout="row" layout-align="start center" ng-show="error">
+      <div><md-icon class="md-warn">warning</md-icon></div>
+      <span>There was an issue loading the information. Click See all for more info.</span>
     </div>
   </div>
 
-  <!-- Has single action item type to display -->
-  <div ng-show="actionItems.length == 1">
-
-  </div>
-  <!-- Has multiple action item types to display -->
-  <div ng-show="actionItems.length > 1">
-    <ul class="widget-list">
-      <li ng-repeat="item in actionItems | limitTo:itemsLimit" layout="row">
-        <div flex="30">
-          <md-button class="md-icon-button md-accent" ng-href="{{ item.actionUrl }}" target="_blank" rel="noopener noreferrer">
-            {{ item.quantity }}
-          </md-button>
+  <!-- Has action items to display -->
+  <div ng-show="actionItems.length > 0">
+    <md-list class="widget-list md-2-line">
+      <md-list-item ng-repeat="item in actionItems | limitTo:itemsLimit" ng-click="goToAction(item.actionUrl)">
+        <div class="action-item__quantity" md-colors="{background:'primary'}">
+          <span>{{ item.quantity }}</span>
         </div>
-        <div flex="70">
-          <span ng-if="item.quantity == 1">{{ item.textSingular }}</span>
-          <span ng-if="item.quantity != 1">{{ item.textPlural }}</span>
+        <div class="md-list-item-text">
+          <p ng-if="item.quantity == 1">{{ item.textSingular }}</p>
+          <p ng-if="item.quantity != 1">{{ item.textPlural }}</p>
         </div>
-      </li>
-      <!-- Over limit case -->
-      <li ng-show="actionItems.length > itemsLimit" class="no-highlight">
-        <p>Showing {{ itemsLimit }} of {{ actionItems.length }}</p>
-      </li>
-    </ul>
+      </md-list-item>
+    </md-list>
+    <!-- Over limit case -->
+    <p ng-show="actionItems.length > itemsLimit" class="action-item__showing">Showing {{ itemsLimit }} of {{ actionItems.length }}</p>
   </div>
 
 </div>

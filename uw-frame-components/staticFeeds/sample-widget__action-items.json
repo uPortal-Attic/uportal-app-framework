@@ -11,21 +11,33 @@
       "fname": "action-items-demo",
       "lifecycleState": "PUBLISHED",
       "target": null,
-      "widgetURL": "example/path/to/single-item-feed",
+      "widgetURL": null,
       "widgetType": "action-items",
       "widgetTemplate": null,
       "widgetConfig": {
         "launchText": "See all",
         "actionItems": [
           {
-            "textSingular": "item needs your attention",
-            "textPlural": "items need your attention",
+            "textSingular": "item needs your attention.",
+            "textPlural": "items need your attention.",
             "feedUrl": "example/path/to/individual-item-feed",
             "actionUrl": "http://www.google.com"
           },
           {
-            "textSingular": "leave request needs your approval",
-            "textPlural": "leave requests need your approval",
+            "textSingular": "leave request needs your approval.",
+            "textPlural": "leave requests need your approval.",
+            "feedUrl": "example/path/to/individual-item-feed",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "pull request needs your review.",
+            "textPlural": "pull requests need your review.",
+            "feedUrl": "example/path/to/individual-item-feed",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "you will never see me.",
+            "textPlural": "you will never see me.",
             "feedUrl": "example/path/to/individual-item-feed",
             "actionUrl": "http://www.google.com"
           }
