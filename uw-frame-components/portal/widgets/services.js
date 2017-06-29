@@ -113,7 +113,8 @@ define(['angular'], function(angular) {
           return result.data;
         })
         .catch(function(error) {
-          $log.error('Couldn\'t get action item quantity: ' + error);
+          $log.warn('Couldn\'t get action item quantity.');
+          $log.error(error);
         });
     };
 
