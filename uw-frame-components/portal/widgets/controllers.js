@@ -308,7 +308,7 @@ define(['angular'], function(angular) {
         })
         .catch(function(error) {
           // Log a service failure error
-          $log.warn('Problem getting action item data from feed url');
+          $log.warn('Problem getting action item data from: ' + item.feedUrl);
           $log.error(error);
           $scope.error = true;
           $scope.loading = false;
@@ -324,6 +324,7 @@ define(['angular'], function(angular) {
       for (var i = 0; i < $scope.config.actionItems.length; i++) {
         // Make sure the current item has required fields configured
         if ($scope.config.actionItems[i].textSingular
+          && $scope.config.actionItems[i].textPlural
           && $scope.config.actionItems[i].actionUrl
           && $scope.config.actionItems[i].feedUrl) {
           // Pass current item to function to call widgetService
