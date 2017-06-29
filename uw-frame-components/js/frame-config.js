@@ -12,6 +12,7 @@ define(['angular'], function(angular) {
             'name': 'default',
             'portalSkinKey': 'default',
             'crest': '',
+            'group': 'default',
             'title': 'uPortal',
             'subtitle': null,
             'ariaLabelTitle': 'uPortal',
