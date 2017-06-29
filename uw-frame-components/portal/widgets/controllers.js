@@ -267,6 +267,108 @@ define(['angular'], function(angular) {
     initializeRssWidget();
   }])
 
+  // ACTION ITEMS widget type
+  .controller('ActionItemsController', [
+    '$scope', '$log', '$window', 'widgetService',
+    function($scope, $log, $window, widgetService) {
+    // Scope functions
+    /**
+     * Navigate to the url provided by the action item
+     * @param url A path provided by the action item
+     */
+    $scope.goToAction = function(url) {
+      // Go there if the url exists
+      if (url) {
+        $window.location.href = url;
+      }
+    };
+
+    // Local functions
+    /**
+     * Gets the quantity for the provided item from its feedUrl, then
+     * builds a new actionItem object to add to scope.
+     * @param item Object for a single action item
+     */
+    var assembleActionItemsList = function(item) {
+      // Get number from provided url
+      widgetService.getActionItemQuantity(item.feedUrl)
+        .then(function(data) {
+          // Make sure we got a something back
+          if (data) {
+            // Add an action item to scope array
+            $scope.actionItems.push({
+              textSingular: item.textSingular,
+              textPlural: item.textPlural,
+              actionUrl: item.actionUrl,
+              quantity: data.quantity,
+            });
+          }
+
+          return data;
+        })
+        .catch(function(error) {
+          // Log a service failure error
+          $log.warn('Problem getting action item data from: ' + item.feedUrl);
+          $log.error(error);
+          $scope.error = true;
+          $scope.loading = false;
+        });
+    };
+
+    /**
+     * Make sure each action item in widgetConfig has the necessary fields
+     * configured and passes on for assembly if so.
+     */
+    var checkActionItemsConfigs = function() {
+      // For each entry in actionItems, get the number of items
+      for (var i = 0; i < $scope.config.actionItems.length; i++) {
+        // Make sure the current item has required fields configured
+        if ($scope.config.actionItems[i].textSingular
+          && $scope.config.actionItems[i].textPlural
+          && $scope.config.actionItems[i].actionUrl
+          && $scope.config.actionItems[i].feedUrl) {
+          // Pass current item to function to call widgetService
+          assembleActionItemsList($scope.config.actionItems[i]);
+        } else {
+          // Log a missing-config error
+          $log.warn('An action item was missing one or '
+            + 'more required configuration options');
+        }
+
+        // If this is the last time through the loop, turn off loading spinner
+        if (i === $scope.config.actionItems.length - 1) {
+          $scope.loading = false;
+        }
+      }
+    };
+
+    /**
+     * Initialize bindable members and kick off error checking and
+     * scope assembly.
+     */
+    var initializeActionItems = function() {
+      // Initialize bindable members
+      $scope.actionItems = [];
+      $scope.loading = true;
+      $scope.error = false;
+      $scope.itemsLimit = 3;
+
+      // Make sure we got a widget and necessary config
+      if ($scope.widget && $scope.config.actionItems
+        && $scope.config.actionItems.length != 0) {
+        // Hand off to dedicated function
+        checkActionItemsConfigs();
+      } else {
+        // Action items empty or we're missing something else
+        $log.warn('Action items widget has broken configuration');
+        // Display error on widget
+        $scope.error = true;
+        $scope.loading = false;
+      }
+    };
+
+    initializeActionItems();
+  }])
 
   // CUSTOM & GENERIC widget types
   .controller('CustomWidgetController', [
