@@ -6,7 +6,7 @@ define(['angular'], function(angular) {
          * THOU SHALT INCREMENT THIS VERSION NUMBER
          * IF THOU CHANGEST ANY OF THE THEMES BELOW
          */
-        'themeVersion': 8,
+        'themeVersion': 9,
         'themes': [
           {
             'name': 'default',
@@ -25,6 +25,7 @@ define(['angular'], function(angular) {
             'name': 'uw-madison',
             'portalSkinKey': 'uwMadison',
             'crest': 'img/uw-madison-crest.png',
+            'avatar': 'img/buckyavatar.jpg',
             'title': 'MyUW',
             'subtitle': null,
             'ariaLabelTitle': 'My U W',
@@ -1067,6 +1068,12 @@ define(['angular'], function(angular) {
             'id': 'disableGroupAnnouncementFiltering',
             'title': 'Disable Announcement Filtering',
             'description': 'This flag disables announcement group filtering ' +
+              'if you have it enabled (page refresh required)',
+          },
+          {
+            'id': 'optInAvatar',
+            'title': 'Allow Use Of My Photo',
+            'description': 'This flag allows use of your photograph ' +
               'if you have it enabled (page refresh required)',
           },
         ]);
