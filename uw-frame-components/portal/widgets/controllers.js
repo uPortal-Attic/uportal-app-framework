@@ -513,7 +513,10 @@ define(['angular'], function(angular) {
         $scope.loading = false;
 
         // If we got some data, populate widget content
-        if (data) {
+        if (
+          data && 2 === data.length && data[0] && data[1] &&
+          (!data[0].errors || (data[0].errors && 0 >= data[0].errors.length))
+        ) {
           // Set local variables
           var allTheWeathers = data[0];
           var myPref = data[1];
