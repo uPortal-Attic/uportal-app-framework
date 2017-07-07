@@ -45,7 +45,7 @@
           </md-button>
           <small>Requires page refresh to take effect.</small>
         </div>
-      <div ng-hide="optAvatar"layout-align-xs="center start" layout="column" layout-align="start center" layout-gt-xs="row">
+      <div ng-show="!optAvatar" layout-align-xs="center start" layout="column" layout-align="start center" layout-gt-xs="row">
           <md-button class="md-accent md-raised" ng-click="avatarOptIn()">
             Use My Photo
           </md-button>
