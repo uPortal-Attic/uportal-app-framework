@@ -52,12 +52,13 @@ define(['angular'], function(angular) {
       }
     });
   }])
-
-  .controller('PortalUserSettingsController', [
-    '$scope', '$q', '$window', '$localStorage', '$log', '$sessionStorage',
-    'KV_KEYS', 'NOTIFICATION', 'FEATURES', 'keyValueService',
-    function(
-      $scope, $q, $window, $localStorage, $log, $sessionStorage,
+    .controller('PortalUserSettingsController', [
+      '$scope', '$q', '$window', '$localStorage',
+      '$log', '$sessionStorage', '$rootScope',
+      'KV_KEYS', 'NOTIFICATION', 'FEATURES', 'keyValueService',
+      function(
+      $scope, $q, $window, $localStorage,
+      $log, $sessionStorage, $rootScope,
       KV_KEYS, NOTIFICATION, FEATURES, keyValueService
     ) {
       var init = function() {
@@ -93,6 +94,16 @@ define(['angular'], function(angular) {
         }).catch(function() {
           $log.warn('could not reset key');
         });
+      };
+
+      $scope.avatarOptOut = function() {
+        $rootScope.optAvatar = false;
+        $sessionStorage.optAvatar = false;
+      };
+
+      $scope.avatarOptIn = function() {
+        $rootScope.optAvatar = true;
+        $sessionStorage.optAvatar = true;
       };
 
       init();

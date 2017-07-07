@@ -7,7 +7,7 @@ define(['angular', 'require'], function(angular, require) {
     '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
     '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService',
     function($localStorage, $sessionStorage, $scope, $rootScope, $document,
-      $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
+    $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
@@ -81,8 +81,10 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Username */
   .controller('SessionCheckController',
-  ['$log', '$scope', 'mainService', 'NAMES', 'FOOTER_URLS', '$rootScope',
-  function($log, $scope, mainService, NAMES, FOOTER_URLS, $rootScope) {
+  ['$log', '$scope', 'mainService', 'NAMES',
+  'FOOTER_URLS', '$sessionStorage', '$rootScope',
+  function($log, $scope, mainService, NAMES,
+  FOOTER_URLS, $sessionStorage, $rootScope) {
     var vm = this;
     vm.user = [];
     vm.firstLetter = '';
@@ -100,12 +102,18 @@ define(['angular', 'require'], function(angular, require) {
         $rootScope.GuestMode = true;
       } else {
         // Get first letter of first name or display name
-        var username =
-          vm.user.firstName ? vm.user.firstName : vm.user.displayName;
-        if (username === '' || !angular.isString(username)) {
-          vm.firstLetter = '?';
+        if ($sessionStorage.optAvatar) {
+          $rootScope.optAvatar=true;
+          vm.firstLetter = 'PIC';
         } else {
-          vm.firstLetter = username.substring(0, 1);
+          $rootScope.optAvatar=false;
+          var username =
+            vm.user.firstName ? vm.user.firstName : vm.user.displayName;
+          if (username === '' || !angular.isString(username)) {
+            vm.firstLetter = '?';
+          } else {
+            vm.firstLetter = username.substring(0, 1);
+          }
         }
       }
       return result;
