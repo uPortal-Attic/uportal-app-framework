@@ -97,12 +97,10 @@ define(['angular'], function(angular) {
       };
 
       $scope.avatarOptOut = function() {
-        $rootScope.optAvatar=false;
         $sessionStorage.optAvatar = false;
       };
 
       $scope.avatarOptIn = function() {
-       $rootScope.optAvatar = true;
         $sessionStorage.optAvatar = true;
       };
 

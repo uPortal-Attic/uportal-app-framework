@@ -4,12 +4,10 @@ define(['angular', 'require'], function(angular, require) {
   return angular.module('portal.main.controllers', [])
 
   .controller('PortalMainController', [
-    '$localStorage', '$sessionStorage', '$scope', '$rootScope',
-    '$document', 'keyValueService', '$location',
-    'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService',
-    function($localStorage, $sessionStorage, $scope, $rootScope,
-    $document, keyValueService, $location,
-    NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
+    '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
+    '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService',
+    function($localStorage, $sessionStorage, $scope, $rootScope, $document,
+    $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
@@ -39,6 +37,7 @@ define(['angular', 'require'], function(angular, require) {
       $scope.APP_FLAGS=APP_FLAGS;
       $scope.MISC_URLS=MISC_URLS;
       $scope.THEMES = THEMES.themes;
+
       if(NAMES.title) {
         setTitle();
       }
@@ -82,9 +81,9 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Username */
   .controller('SessionCheckController',
-  ['$log', '$scope', 'mainService', 'NAMES', 
+  ['$log', '$scope', 'mainService', 'NAMES',
   'FOOTER_URLS', '$sessionStorage', '$rootScope',
-  function($log, $scope, mainService, NAMES, 
+  function($log, $scope, mainService, NAMES,
   FOOTER_URLS, $sessionStorage, $rootScope) {
     var vm = this;
     vm.user = [];
