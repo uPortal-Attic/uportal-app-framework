@@ -53,6 +53,18 @@ define(['angular'], function(angular) {
     });
   }])
 
+  .controller('AvatarPermissionsController', [
+    '$scope','keyValueService', 'KV_KEYS',
+    function($scope, keyValueService, KV_KEYS
+    ){
+      var init = function() {
+        $scope.kvEnabled = keyValueService.isKVStoreActivated();
+        $scope.KV_KEYS = KV_KEYS;
+
+      };
+    }
+  ])
+
   .controller('PortalUserSettingsController', [
     '$scope', '$q', '$window', '$localStorage', '$log', '$sessionStorage',
     'KV_KEYS', 'NOTIFICATION', 'FEATURES', 'keyValueService',

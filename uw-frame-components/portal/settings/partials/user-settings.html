@@ -39,6 +39,16 @@
           <small>Click to reset your portal layout.</small>
         </div>
       </div>
+      <div ng-show="optInAvatar" layout="column" layout-gt-xs="row">
+          <md-button class="md-accent md-raised" ng-click="alert('out');">
+            Do Not Use My Photo
+          </md-button>
+        </div>
+        <div ng-hide="optInAvatar" layout="column" layout-gt-xs="row">
+          <md-button class="md-accent md-raised" ng-click="alert('in');">
+            Use My Photo
+          </md-button>
+        </div>
     </div>
   </md-content>
 </frame-page>
