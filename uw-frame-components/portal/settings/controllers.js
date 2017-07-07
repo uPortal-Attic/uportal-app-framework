@@ -52,24 +52,13 @@ define(['angular'], function(angular) {
       }
     });
   }])
-
-  .controller('AvatarPermissionsController', [
-    '$scope','keyValueService', 'KV_KEYS',
-    function($scope, keyValueService, KV_KEYS
-    ){
-      var init = function() {
-        $scope.kvEnabled = keyValueService.isKVStoreActivated();
-        $scope.KV_KEYS = KV_KEYS;
-
-      };
-    }
-  ])
-
-  .controller('PortalUserSettingsController', [
-    '$scope', '$q', '$window', '$localStorage', '$log', '$sessionStorage',
-    'KV_KEYS', 'NOTIFICATION', 'FEATURES', 'keyValueService',
-    function(
-      $scope, $q, $window, $localStorage, $log, $sessionStorage,
+    .controller('PortalUserSettingsController', [
+      '$scope', '$q', '$window', '$localStorage',
+      '$log', '$sessionStorage', '$rootScope',
+      'KV_KEYS', 'NOTIFICATION', 'FEATURES', 'keyValueService',
+      function(
+      $scope, $q, $window, $localStorage,
+      $log, $sessionStorage, $rootScope,
       KV_KEYS, NOTIFICATION, FEATURES, keyValueService
     ) {
       var init = function() {
@@ -105,6 +94,16 @@ define(['angular'], function(angular) {
         }).catch(function() {
           $log.warn('could not reset key');
         });
+      };
+
+      $scope.avatarOptOut = function() {
+        keyValueService.setValue('optAvatar', false);
+        $rootScope.optAvatar = false;
+      };
+
+      $scope.avatarOptIn = function() {
+        keyValueService.setValue('optAvatar', true);
+        $rootScope.optAvatar = true;
       };
 
       init();

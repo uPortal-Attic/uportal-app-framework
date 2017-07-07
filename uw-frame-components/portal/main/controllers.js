@@ -4,10 +4,12 @@ define(['angular', 'require'], function(angular, require) {
   return angular.module('portal.main.controllers', [])
 
   .controller('PortalMainController', [
-    '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
-    '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService',
-    function($localStorage, $sessionStorage, $scope, $rootScope, $document,
-      $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
+    '$localStorage', '$sessionStorage', '$scope', '$rootScope',
+    '$document', 'keyValueService', '$location',
+    'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService',
+    function($localStorage, $sessionStorage, $scope, $rootScope,
+    $document, keyValueService, $location,
+    NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
@@ -37,6 +39,9 @@ define(['angular', 'require'], function(angular, require) {
       $scope.APP_FLAGS=APP_FLAGS;
       $scope.MISC_URLS=MISC_URLS;
       $scope.THEMES = THEMES.themes;
+
+      $rootScope.optAvatar =
+      keyValueService.getValue('optAvatar').valueOf().toString();
 
       if(NAMES.title) {
         setTitle();
@@ -100,12 +105,16 @@ define(['angular', 'require'], function(angular, require) {
         $rootScope.GuestMode = true;
       } else {
         // Get first letter of first name or display name
-        var username =
-          vm.user.firstName ? vm.user.firstName : vm.user.displayName;
-        if (username === '' || !angular.isString(username)) {
-          vm.firstLetter = '?';
+        if ($rootScope.optAvatar) {
+          vm.firstLetter = 'PIC';
         } else {
-          vm.firstLetter = username.substring(0, 1);
+          var username =
+            vm.user.firstName ? vm.user.firstName : vm.user.displayName;
+          if (username === '' || !angular.isString(username)) {
+            vm.firstLetter = '?';
+          } else {
+            vm.firstLetter = username.substring(0, 1);
+          }
         }
       }
       return result;
