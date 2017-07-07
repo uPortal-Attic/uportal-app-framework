@@ -81,8 +81,10 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Username */
   .controller('SessionCheckController',
-  ['$log', '$scope', 'mainService', 'NAMES', 'FOOTER_URLS', '$rootScope',
-  function($log, $scope, mainService, NAMES, FOOTER_URLS, $rootScope) {
+  ['$log', '$scope', 'mainService', 'NAMES',
+  'FOOTER_URLS', '$rootScope', '$localStorage',
+  function($log, $scope, mainService, NAMES,
+    FOOTER_URLS, $rootScope, $localStorage) {
     var vm = this;
     vm.user = [];
     vm.firstLetter = '';
@@ -99,13 +101,20 @@ define(['angular', 'require'], function(angular, require) {
       ) {
         $rootScope.GuestMode = true;
       } else {
-        // Get first letter of first name or display name
-        var username =
-          vm.user.firstName ? vm.user.firstName : vm.user.displayName;
-        if (username === '' || !angular.isString(username)) {
-          vm.firstLetter = '?';
+        // Check for avatar picture
+        if($scope.portal.theme.avatar!=null && $localStorage.optInAvatar) {
+          $rootScope.showAvatar=true;
         } else {
-          vm.firstLetter = username.substring(0, 1);
+          $rootScope.showAvatar=false;
+          // If there's no avatar picture, populate firstLetter field.
+          // Get first letter of first name or display name
+          var username =
+            vm.user.firstName ? vm.user.firstName : vm.user.displayName;
+          if (username === '' || !angular.isString(username)) {
+            vm.firstLetter = '?';
+          } else {
+            vm.firstLetter = username.substring(0, 1);
+          }
         }
       }
       return result;
