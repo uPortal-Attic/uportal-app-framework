@@ -8,6 +8,7 @@ define(['angular'], function(angular) {
             'loginOnLoad': false,
             'showUserSettingsPage': false,
             'debug': false,
+            'optAvatar': false,
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,

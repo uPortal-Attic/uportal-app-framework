@@ -97,13 +97,13 @@ define(['angular'], function(angular) {
       };
 
       $scope.avatarOptOut = function() {
-        keyValueService.setValue('optAvatar', false);
-        $rootScope.optAvatar = false;
+        $rootScope.optAvatar=false;
+        $sessionStorage.optAvatar = false;
       };
 
       $scope.avatarOptIn = function() {
-        keyValueService.setValue('optAvatar', true);
-        $rootScope.optAvatar = true;
+       $rootScope.optAvatar = true;
+        $sessionStorage.optAvatar = true;
       };
 
       init();
