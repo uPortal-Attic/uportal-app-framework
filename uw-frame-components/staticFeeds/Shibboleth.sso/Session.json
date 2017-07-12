@@ -24,6 +24,24 @@
       "values": [
         "bucky"
       ]
+    },
+    {
+      "name": "displayName",
+      "values": [
+        "Bucky Badger"
+      ]
+    },
+    {
+      "name": "givenName",
+      "values": [
+        "Bucky Badger"
+      ]
+    },
+    {
+      "name": "wiscEduStudentID",
+      "values": [
+        "9876543210"
+      ]
     }
   ]
 }

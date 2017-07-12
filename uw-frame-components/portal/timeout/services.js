@@ -11,8 +11,9 @@ define(['angular', 'jquery'], function(angular, $) {
     * getTimeout() - Gets the shib session, but returns just the timeout
                      and the time of that timeout.
     **/
-    .factory('PortalShibbolethService', ['$http', 'miscService', 'SERVICE_LOC',
-        function($http, miscService, SERVICE_LOC) {
+    .factory('portalShibbolethService', ['$http', '$log',
+      'miscService', 'SERVICE_LOC',
+        function($http, $log, miscService, SERVICE_LOC) {
           var onError = function(response) {
             miscService.redirectUser(response.status, 'Shibboleth Service');
             return response.data;
@@ -63,10 +64,31 @@ define(['angular', 'jquery'], function(angular, $) {
             }
           }
 
+          /**
+           * Gets the user's shibboleth attributes
+           * @returns [attributes] An array of Shib attribute objects
+           */
+          function getUserAttributes() {
+            return $http.get(SERVICE_LOC.shibbolethSessionURL, {cache: true})
+              .then(function(result) {
+                if (result.data) {
+                  return result.data.attributes;
+                } else {
+                  return result;
+                }
+              })
+              .catch(function(error) {
+                $log.warn('Could\'t get Shibboleth session info');
+                $log.error(error);
+                miscService.redirectUser(status, 'Get User Info');
+              });
+          }
+
           return {
             getSession: getSession,
             getTimeout: getTimeout,
             shibServiceActivated: shibServiceActivated,
+            getUserAttributes: getUserAttributes,
           };
         }]);
 });

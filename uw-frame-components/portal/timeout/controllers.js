@@ -4,18 +4,18 @@ define(['angular'], function(angular) {
   return angular.module('portal.timeout.controllers', [])
   .controller('PortalTimeoutController', [
     '$sessionStorage', '$log', '$location', '$timeout',
-    '$mdDialog', '$window', 'MISC_URLS', 'PortalShibbolethService',
+    '$mdDialog', '$window', 'MISC_URLS', 'portalShibbolethService',
   function(
     $sessionStorage, $log, $location, $timeout,
-    $mdDialog, $window, MISC_URLS, PortalShibbolethService
+    $mdDialog, $window, MISC_URLS, portalShibbolethService
   ) {
     /**
      * initialize the controller
      */
     function init() {
-      if(PortalShibbolethService.shibServiceActivated()) {
+      if(portalShibbolethService.shibServiceActivated()) {
         // initialize timeout and dialog
-        PortalShibbolethService.getTimeout().then(
+        portalShibbolethService.getTimeout().then(
           function(timeoutData) {
             if(timeoutData && timeoutData.expirationMills) {
               $timeout(triggerDialog, timeoutData.expirationMills);

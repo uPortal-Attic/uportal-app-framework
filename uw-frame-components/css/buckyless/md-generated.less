@@ -70,6 +70,31 @@ md-menu-content.top-bar-menu-content {
     }
   }
 
+  &.username-menu-content {
+    .md-2-line {
+      .display-name {
+        font-weight: 600;
+        margin: 0;
+      }
+      .campus-id {
+        margin: 0;
+        font-size: 12px;
+        color: @grayscale8;
+        white-space: nowrap;
+      }
+    }
+    md-menu-item.top-bar-menu-item {
+      max-width: none;
+      >a {
+        height: auto;
+        margin: 0;
+      }
+      &:hover {
+        background-color: @grayscale1;
+      }
+    }
+  }
+
   md-menu-item {
     a.link__see-all {
       max-width: 110px;
@@ -91,7 +116,7 @@ md-menu-content.top-bar-menu-content {
       height: auto;
       max-width: 275px;
       padding: 0;
-      background-color: #f5f5f5;
+      background-color: @grayscale1;
       border-bottom: 1px solid @grayscale2;
 
       &:hover {

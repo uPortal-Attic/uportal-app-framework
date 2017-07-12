@@ -81,39 +81,60 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Username */
   .controller('SessionCheckController',
-  ['$log', '$scope', 'mainService', 'NAMES',
+  ['$log', '$scope', 'mainService', 'portalShibbolethService', 'NAMES',
   'FOOTER_URLS', '$sessionStorage', '$rootScope',
-  function($log, $scope, mainService, NAMES,
+  function($log, $scope, mainService, portalShibbolethService, NAMES,
   FOOTER_URLS, $sessionStorage, $rootScope) {
     var vm = this;
     vm.user = [];
+    vm.username = '';
+    vm.campusId = '';
     vm.firstLetter = '';
 
     $scope.FOOTER_URLS = FOOTER_URLS;
     $scope.usernameOptionOpen = false;
 
+    // Get the user's attributes from Shibboleth
+    portalShibbolethService.getUserAttributes()
+      .then(function(result) {
+        angular.forEach(result, function(key) {
+          // Set username
+          if (key.name === 'displayName') {
+            var username = key.values[0];
+            if (username === '' || !angular.isString(username)) {
+              vm.username = '?';
+              vm.firstLetter = '?';
+            } else {
+              vm.username = username;
+              vm.firstLetter = username.substring(0, 1);
+            }
+          }
+          // Set campus ID
+          if (key.name === 'wiscEduStudentID') {
+            vm.campusId = key.values[0];
+          }
+        });
+        return result;
+      })
+      .catch(function(error) {
+        $log.warn('Couldn\'t get user\'s session info from Shibboleth');
+        $log.error(error);
+      });
+
+    // Check if user is guest and if avatar is enabled
     mainService.getUser().then(function(result) {
       vm.user = result;
       // Check if is guest
-      if (
-        NAMES.guestUserName && vm.user &&
-        vm.user.userName === NAMES.guestUserName
-      ) {
+      if (NAMES.guestUserName && vm.user
+        && vm.user.userName === NAMES.guestUserName) {
         $rootScope.GuestMode = true;
       } else {
         // Get first letter of first name or display name
         if ($sessionStorage.optAvatar) {
-          $rootScope.optAvatar=true;
+          $rootScope.optAvatar = true;
           vm.firstLetter = 'PIC';
         } else {
-          $rootScope.optAvatar=false;
-          var username =
-            vm.user.firstName ? vm.user.firstName : vm.user.displayName;
-          if (username === '' || !angular.isString(username)) {
-            vm.firstLetter = '?';
-          } else {
-            vm.firstLetter = username.substring(0, 1);
-          }
+          $rootScope.optAvatar = false;
         }
       }
       return result;
