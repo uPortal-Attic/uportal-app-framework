@@ -51,8 +51,8 @@
       </a>
     </div>
 
-    <!-- SEARCH BUTTON XS-ONLY -->
-    <div layout="row" layout-align="end center" flex-xs="60" hide-gt-xs>
+    <!-- SEARCH BUTTON AND USERNAME MENU XS-ONLY -->
+    <div layout="row" layout-align="end center" flex-xs="60" class="top-bar-controls-xs" hide-gt-xs>
       <md-button class="md-icon-button" aria-label="Toggle {{portal.theme.title}} search" ng-click="toggleSearch()">
         <md-icon ng-if="!searchExpanded">search</md-icon>
         <md-icon ng-if="searchExpanded">close</md-icon>
@@ -61,6 +61,7 @@
           <span ng-if="searchExpanded">Close search</span>
         </md-tooltip>
       </md-button>
+      <username layout="row" layout-align="start center"></username>
     </div>
 
 
