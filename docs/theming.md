@@ -4,7 +4,7 @@ The theming system is pretty straightforward. You can have your own skin in uw-f
 encourage you to contribute back your theme to this project so you don't have to manage an independent fork of uw-frame.
 
 For a step-by-step exercise in setting up a theme, see [`skinning.md`](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/docs/theming.md).
- 
+
 ## Configuring a theme
 
 ### 1. Add an entry to the THEME constant
@@ -23,6 +23,7 @@ var example = {
   'crestalt': 'UW Crest',
   'group': 'UW-Madison',
   'mascotImg': 'img/bucky.gif',
+  'profileUrl': '/profile/emergencyInfo',
   'footerLinks': [
     {
       'url': '/web/static/myuw-help',
@@ -53,6 +54,7 @@ var example = {
 + `crestalt`: The crest alt text. This should be the name of your frame app (i.e. "MyUW Portal").
 + `group`: Groups this app should be enabled for automatically. Not sure? Ask the MyUW dev team: <myuw-infra@office365.wisc.edu>.
 + `mascotImg` (optional): See documentation about the mascot for announcements [here](announcements.md).
++ `profileUrl` (optional): Specify a URL for a "Profile" app/page, where users can view and/or update their personal information.
 + `footerLinks`: An array of links which appear in the footer -- typically contains links to the campus help desk and feedback portal.
 + `materialTheme`: [object or string] See the *Material Theme* section below.
 
