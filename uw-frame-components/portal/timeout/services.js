@@ -39,6 +39,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
           /**
            * Retrieves the session from shibboleth
+           * @returns {*|Function|any|Promise}
            */
           function getSession() {
             return $http.get(SERVICE_LOC.shibbolethSessionURL)
@@ -48,6 +49,7 @@ define(['angular', 'jquery'], function(angular, $) {
           /**
            * Retrieves the timeout for the current session
            * from shibboleth
+           * @returns {*}
            */
           function getTimeout() {
             return getSession().then(onGetTimeoutSuccess);
@@ -55,13 +57,10 @@ define(['angular', 'jquery'], function(angular, $) {
 
           /**
            * Checks whether the shibboleth endpoint is configured
+           * @returns {boolean}
            */
           function shibServiceActivated() {
-            if (SERVICE_LOC.shibbolethSessionURL) {
-              return true;
-            } else {
-              return false;
-            }
+            return SERVICE_LOC.shibbolethSessionURL ? true : false;
           }
 
           /**

@@ -93,7 +93,9 @@ define(['angular', 'require'], function(angular, require) {
     vm.profileUrl = $sessionStorage.portal.theme.profileUrl ?
       $sessionStorage.portal.theme.profileUrl : '';
 
-    // Listen for theme changes and update profileUrl accordingly
+    /**
+     * Listen for theme changes and update profileUrl accordingly
+     */
     $scope.$on('themeChanged', function(event, data) {
       vm.profileUrl = data.profileUrl ? data.profileUrl : '';
     });
