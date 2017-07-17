@@ -16,12 +16,18 @@ With gratitude to the many [contributors to this project](contributors.md).
 + [Adding dependencies](injecting-dependencies.md)
 + [Material theme](theming.md)
 
+## Widgets
+
++ [Using existing widgets](widgets.md)
++ [Creating widgets](make-a-widget.md)
++ [Widget creator tool](https://test.my.wisc.edu/widget-creator/home) (available in test tier only)
++ [Entity file contribution guide](https://git.doit.wisc.edu/myuw-overlay/entities/blob/master/CONTRIBUTING.md) (UW-Madison only)
+
 ## Features
 
 + [Frame-specific directives](directives.md)
 + [Notifications](notifications.md)
 + [Announcements](announcements.md)
-+ [Widgets](widgets.md)
 + [Access and permission management](coarse-grain-access.md)
 + [Beta settings](beta-settings.md)
 + [Material design](material.md)
@@ -29,6 +35,7 @@ With gratitude to the many [contributors to this project](contributors.md).
 ## Best Practices
 
 + [Text and typography](text-guidelines.md)
++ [Widget launch buttons](widget-launch-button.md)
 + [Buttons](buttons.md)
 + [Tables](tables.md)
 
