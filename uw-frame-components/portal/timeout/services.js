@@ -39,7 +39,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
           /**
            * Retrieves the session from shibboleth
-           * @returns {*|Function|any|Promise}
+           * @return {*|Function|any|Promise}
            */
           function getSession() {
             return $http.get(SERVICE_LOC.shibbolethSessionURL)
@@ -49,7 +49,7 @@ define(['angular', 'jquery'], function(angular, $) {
           /**
            * Retrieves the timeout for the current session
            * from shibboleth
-           * @returns {*}
+           * @return {*}
            */
           function getTimeout() {
             return getSession().then(onGetTimeoutSuccess);
@@ -57,7 +57,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
           /**
            * Checks whether the shibboleth endpoint is configured
-           * @returns {boolean}
+           * @return {boolean}
            */
           function shibServiceActivated() {
             return SERVICE_LOC.shibbolethSessionURL ? true : false;
@@ -65,7 +65,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
           /**
            * Gets the user's shibboleth attributes
-           * @returns [attributes] An array of Shib attribute objects
+           * @return {*} An array of Shib attribute objects
            */
           function getUserAttributes() {
             return $http.get(SERVICE_LOC.shibbolethSessionURL, {cache: true})
