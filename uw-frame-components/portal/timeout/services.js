@@ -57,7 +57,7 @@ define(['angular', 'jquery'], function(angular, $) {
            * Checks whether the shibboleth endpoint is configured
            */
           function shibServiceActivated() {
-            if(SERVICE_LOC.shibbolethSessionURL) {
+            if (SERVICE_LOC.shibbolethSessionURL) {
               return true;
             } else {
               return false;

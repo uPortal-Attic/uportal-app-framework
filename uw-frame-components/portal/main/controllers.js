@@ -82,38 +82,52 @@ define(['angular', 'require'], function(angular, require) {
   /* Username */
   .controller('SessionCheckController',
   ['$log', '$scope', 'mainService', 'portalShibbolethService', 'NAMES',
-  'FOOTER_URLS', '$sessionStorage', '$rootScope',
+  'APP_FLAGS', '$sessionStorage', '$rootScope',
   function($log, $scope, mainService, portalShibbolethService, NAMES,
-  FOOTER_URLS, $sessionStorage, $rootScope) {
+           APP_FLAGS, $sessionStorage, $rootScope) {
     var vm = this;
     vm.user = [];
     vm.username = '';
     vm.campusId = '';
     vm.firstLetter = '';
+    vm.profileUrl = $sessionStorage.portal.theme.profileUrl ?
+      $sessionStorage.portal.theme.profileUrl : '';
 
-    $scope.FOOTER_URLS = FOOTER_URLS;
-    $scope.usernameOptionOpen = false;
+    // Listen for theme changes and update profileUrl accordingly
+    $scope.$on('themeChanged', function(event, data) {
+      vm.profileUrl = data.profileUrl ? data.profileUrl : '';
+    });
 
     // Get the user's attributes from Shibboleth
     portalShibbolethService.getUserAttributes()
       .then(function(result) {
+        var displayName = '';
+        var givenName = '';
         angular.forEach(result, function(key) {
           // Set username
           if (key.name === 'displayName') {
-            var username = key.values[0];
-            if (username === '' || !angular.isString(username)) {
-              vm.username = '?';
-              vm.firstLetter = '?';
-            } else {
-              vm.username = username;
-              vm.firstLetter = username.substring(0, 1);
-            }
+            displayName = key.values[0];
+          }
+          // Set fall-back username
+          if (key.name === 'givenName') {
+            givenName = key.values[0];
           }
           // Set campus ID
-          if (key.name === 'wiscEduStudentID') {
+          if (key.name === 'wiscEduStudentID' && APP_FLAGS.showCampusId) {
             vm.campusId = key.values[0];
           }
         });
+        // Determine which username to use
+        if (displayName != '' && angular.isString(displayName)) {
+          vm.username = displayName;
+          vm.firstLetter = displayName.substring(0, 1);
+        } else if (givenName != '' && angular.isString(givenName)) {
+          vm.username = givenName;
+          vm.firstLetter = givenName.substring(0, 1);
+        } else {
+          vm.username = '?';
+          vm.firstLetter = '?';
+        }
         return result;
       })
       .catch(function(error) {
@@ -144,33 +158,33 @@ define(['angular', 'require'], function(angular, require) {
   }])
 
   /* Header */
-  .controller('PortalHeaderController', [
-    '$rootScope', '$scope', '$location', 'NAMES',
-    'APP_FLAGS', 'MISC_URLS', 'notificationsService',
-    function($rootScope, $scope, $location, NAMES,
-      APP_FLAGS, MISC_URLS, notificationsService
-    ) {
-    var vm = this;
-    vm.navbarCollapsed = true;
-    vm.showLogout = true;
-    $scope.showSearch = false;
-    $scope.showSearchFocus = false;
-    $scope.APP_FLAGS = APP_FLAGS;
-    $scope.MISC_URLS = MISC_URLS;
+  .controller('PortalHeaderController', ['$rootScope', '$scope', '$location',
+    'NAMES', 'APP_FLAGS', 'MISC_URLS', 'notificationsService',
+    function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS,
+             notificationsService) {
+      var vm = this;
+      vm.navbarCollapsed = true;
+      vm.showLogout = true;
+      $scope.showSearch = false;
+      $scope.showSearchFocus = false;
+      $scope.APP_FLAGS = APP_FLAGS;
+      $scope.MISC_URLS = MISC_URLS;
 
-    vm.toggleSearch = function() {
+      vm.toggleSearch = function() {
         $scope.showSearch = !$scope.showSearch;
         $scope.showSearchFocus = !$scope.showSearchFocus;
         vm.navbarCollapsed = true;
-    };
-    vm.toggleMenu = function() {
-      $scope.showSearch = false;
-      vm.navbarCollapsed = !vm.navbarCollapsed;
-    };
+      };
+      vm.toggleMenu = function() {
+        $scope.showSearch = false;
+        vm.navbarCollapsed = !vm.navbarCollapsed;
+      };
   }])
 
   /* Footer */
-  .controller('PortalFooterController', ['$scope', function($scope) {
+  .controller('PortalFooterController', ['$scope', 'FOOTER_URLS',
+    function($scope, FOOTER_URLS) {
       $scope.date = new Date();
+      $scope.FOOTER_URLS = FOOTER_URLS;
   }]);
 });

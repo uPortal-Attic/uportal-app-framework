@@ -28,10 +28,10 @@ define(['angular'], function(angular) {
     })
 
   .controller('PortalBetaSettingsController', [
-    '$sessionStorage', '$scope', '$mdTheming', 'portalSkinService',
-    'THEMES', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES',
+    '$sessionStorage', '$scope', '$rootScope', '$mdTheming',
+    'portalSkinService', 'THEMES', 'APP_BETA_FEATURES', 'FRAME_BETA_FEATURES',
     function(
-      $sessionStorage, $scope, $mdTheming, portalSkinService,
+      $sessionStorage, $scope, $rootScope, $mdTheming, portalSkinService,
       THEMES, APP_BETA_FEATURES, FRAME_BETA_FEATURES
     ) {
     $scope.options = FRAME_BETA_FEATURES.concat(APP_BETA_FEATURES);
@@ -49,6 +49,8 @@ define(['angular'], function(angular) {
         if($scope.portal.theme && $scope.portal.theme.portalSkinKey) {
           portalSkinService.setPortalSkin($scope.portal.theme.portalSkinKey);
         }
+        // Tell scope the theme changed
+        $rootScope.$broadcast('themeChanged', $scope.portal.theme);
       }
     });
   }])
