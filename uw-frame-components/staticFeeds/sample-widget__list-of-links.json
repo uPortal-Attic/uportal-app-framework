@@ -15,21 +15,8 @@
       "widgetType": "list-of-links",
       "widgetTemplate": null,
       "widgetConfig": {
-        "launchText": "Launch talent development",
-        "links": [
-          {
-            "title": "All courses and events",
-            "href": "https://www.ohrd.wisc.edu/home/",
-            "icon": "fa-at",
-            "target": "_blank"
-          },
-          {
-            "title": "My transcript",
-            "href": "https://www.ohrd.wisc.edu/ohrdcatalogportal/LearningTranscript/tabid/57/Default.aspx?ctl=login",
-            "icon": "mail_outline",
-            "target": "_blank"
-          }
-        ]
+        "getLinksURL": "localhost:1066",
+        "launchText": "Launch talent development"     
       },
       "staticContent": "\n            <div>\n                <p><a href='https://www.ohrd.wisc.edu/Catalog/Default.aspx' target='_blank'>Search for talent development opportunities</a></p>\n            </div>        \n            \n        ",
       "pithyStaticContent": null,
