@@ -6,7 +6,7 @@ define(['angular'], function(angular) {
          * THOU SHALT INCREMENT THIS VERSION NUMBER
          * IF THOU CHANGEST ANY OF THE THEMES BELOW
          */
-        'themeVersion': 8,
+        'themeVersion': 9,
         'themes': [
           {
             'name': 'default',
@@ -32,6 +32,7 @@ define(['angular'], function(angular) {
             'crestalt': 'UW Crest',
             'group': 'UW-Madison',
             'mascotImg': 'img/bucky.gif',
+            'profileUrl': null,
             'footerLinks': [{'url': '/web/static/myuw-help',
                              'target': '_blank',
                              'title': 'Help',

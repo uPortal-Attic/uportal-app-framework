@@ -8,6 +8,7 @@ define(['angular'], function(angular) {
             'loginOnLoad': false,
             'showUserSettingsPage': false,
             'debug': false,
+            'campusIdAttribute': null,
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,
@@ -16,7 +17,7 @@ define(['angular'], function(angular) {
             'loginSilentURL': '/portal/Login?silent=true',
             'notificationsURL': 'staticFeeds/notifications.json',
             'sessionInfo': 'staticFeeds/session.json',
-            'shibbolethSessionURL': null, // '/Shibboleth.sso/Session.json'
+            'shibbolethSessionURL': 'staticFeeds/Shibboleth.sso/Session.json',
             'portalLayoutRestEndpoint': null, // '/portal/api/layout',
             'widgetApi': {
               'entry': '/portal/api/marketplace/entry/', // 'staticFeeds/'
