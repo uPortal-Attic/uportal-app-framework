@@ -92,7 +92,7 @@ define(['angular', 'require'], function(angular, require) {
     vm.firstLetter = '';
     vm.profileUrl = $sessionStorage.portal.theme.profileUrl ?
       $sessionStorage.portal.theme.profileUrl : '';
-
+    vm.campusIdAttribute = APP_FLAGS.campusIdAttribute;
     /**
      * Listen for theme changes and update profileUrl accordingly
      */
@@ -115,7 +115,7 @@ define(['angular', 'require'], function(angular, require) {
             givenName = key.values[0];
           }
           // Set campus ID
-          if (key.name === 'wiscEduStudentID' && APP_FLAGS.showCampusId) {
+          if (vm.campusIdAttribute && key.name === vm.campusIdAttribute) {
             vm.campusId = key.values[0];
           }
         });

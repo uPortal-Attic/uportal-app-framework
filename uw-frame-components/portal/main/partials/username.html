@@ -19,7 +19,7 @@
     <md-menu-item class="md-2-line">
       <div class="md-list-item-text">
         <p class="display-name">{{ sessionCtrl.username }}</p>
-        <p class="campus-id" ng-if="sessionCtrl.campusId != ''">Campus ID: {{ sessionCtrl.campusId }}</p>
+        <p class="campus-id" ng-if="sessionCtrl.campusId">Campus ID: {{ sessionCtrl.campusId }}</p>
       </div>
       <a ng-if="sessionCtrl.profileUrl != ''" ng-href="{{ sessionCtrl.profileUrl }}" ng-click="pushGAEvent('Top Bar', 'Click Link', 'Profile');" aria-label="see your profile information" class="link__see-all md-secondary">
         Profile

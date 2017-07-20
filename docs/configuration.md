@@ -14,7 +14,7 @@ Your application can overwrite any constant listed below by adding it to the `js
 + `gaSearchParam` : Default set to 'q'. This is the param that is tacked on to your search result page. Google later strips it in Google Analytics.
 + `showUserSettingsPage` : If set, this will add a `settings` link to the user drop down which will point at `/user-settings`. Default is `false`. _as of 2.2.2_
 + `shibbolethSessionURL` : Default is `null`. When set to a proper string (like `'/Shibboleth.sso/Session.json'`) it then adds a timeout alert notifying users the session is no longer valid. The action of the pop-up is to forward them on to the `MISC_URLS.loginURL`. _as of 2.6.2_
-+ `showCampusId` : Default is false. Set to true if you want users to be able to see their campus ID (i.e. UW-Madison's wiscEduStudentID Shibboleth attribute) in the username menu.
++ `campusIdAttribute` : Default is `null`. Provide a Shibboleth attribute for campus ID (i.e. UW-Madison's `wiscEduStudentID` attribute) if you want users to see it in the username menu.
 
 ### SERVICE_LOC
 

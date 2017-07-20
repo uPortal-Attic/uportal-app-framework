@@ -8,7 +8,7 @@ define(['angular'], function(angular) {
             'loginOnLoad': false,
             'showUserSettingsPage': false,
             'debug': false,
-            'showCampusId': false,
+            'campusIdAttribute': null,
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,

@@ -32,7 +32,7 @@ define(['angular'], function(angular) {
             'crestalt': 'UW Crest',
             'group': 'UW-Madison',
             'mascotImg': 'img/bucky.gif',
-            'profileUrl': '/profile/emergencyInfo',
+            'profileUrl': null,
             'footerLinks': [{'url': '/web/static/myuw-help',
                              'target': '_blank',
                              'title': 'Help',
