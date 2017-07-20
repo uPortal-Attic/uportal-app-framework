@@ -1,5 +1,7 @@
 # uPortal-app-framework
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/UW-Madison-DoIT/uw-frame.svg)](https://greenkeeper.io/)
+
 [![Gitter](https://badges.gitter.im/UW-Madison-DoIT/uw-frame.svg)](https://gitter.im/UW-Madison-DoIT/uw-frame?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)
 [![Dependency Status](https://dependencyci.com/github/UW-Madison-DoIT/uw-frame/badge)](https://dependencyci.com/github/UW-Madison-DoIT/uw-frame)
