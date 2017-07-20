@@ -137,6 +137,7 @@ Follow these steps for each of the predefined widget types described in this doc
     }]]>
   </value>
 </portlet-preference>
+```
 
 #### Configuring your list of links from a URL
 
@@ -145,7 +146,7 @@ Follow these steps for each of the predefined widget types described in this doc
 2. In widgetConfig, add the following:
    "getLinksURL": "true"
 3. Point the widget's widgetURL property to the location of the feed. 
-```
+
 
 #### Additional information
 
