@@ -11,11 +11,11 @@
       "fname": "my-professional-development",
       "lifecycleState": "PUBLISHED",
       "target": null,
-      "widgetURL": null,
+      "widgetURL": "staticFeeds/list-of-links-via-url.json",
       "widgetType": "list-of-links",
       "widgetTemplate": null,
       "widgetConfig": {
-        "getLinksURL": "localhost:1066",
+        "getLinksURL": "true",
         "launchText": "Launch talent development"     
       },
       "staticContent": "\n            <div>\n                <p><a href='https://www.ohrd.wisc.edu/Catalog/Default.aspx' target='_blank'>Search for talent development opportunities</a></p>\n            </div>        \n            \n        ",
