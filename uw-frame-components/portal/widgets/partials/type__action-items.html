@@ -15,7 +15,7 @@
   <div ng-show="actionItems.length > 0">
     <md-list class="widget-list md-2-line">
       <md-list-item ng-repeat="item in actionItems | limitTo:itemsLimit" ng-click="goToAction(item.actionUrl)" aria-label="click to take action">
-        <div class="action-item__quantity" md-colors="{background:'primary'}">
+        <div class="action-item__quantity">
           <span>{{ item.quantity }}</span>
         </div>
         <div class="md-list-item-text">
