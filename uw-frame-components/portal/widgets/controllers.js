@@ -22,8 +22,6 @@ define(['angular'], function(angular) {
       // Check for types that need handling
       switch(widget.widgetType) {
         case 'list-of-links':
-          // If the list of links only has one link and it's the
-          // same as the launch button url, display a basic widget
           if (widget.widgetConfig.getLinksURL) {
             widgetService.getWidgetJson(widget).then(
               function(links) {
@@ -36,6 +34,8 @@ define(['angular'], function(angular) {
               });
             return 'list-of-links';
           }
+          // If the list of links only has one link and it's the
+          // same as the launch button url, display a basic widget
           if (widget.widgetConfig.links.length === 1 && widget.altMaxUrl &&
               widget.widgetConfig.links[0].href === widget.url) {
             return 'basic';
