@@ -11,7 +11,7 @@
       "fname": "my-professional-development",
       "lifecycleState": "PUBLISHED",
       "target": null,
-      "widgetURL": "staticFeeds/list-of-links-via-url.json",
+      "widgetURL": "/aries/proxy/listoflinks",
       "widgetType": "list-of-links",
       "widgetTemplate": null,
       "widgetConfig": {
