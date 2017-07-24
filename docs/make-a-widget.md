@@ -20,7 +20,7 @@ The barebones widget provides an app title, a large icon, and a launch button wi
 ### Sample entity file
 
 This code block includes most of the fields needed to configure a widget, but there are additional XML tags (`<portlet-definition>`) you'll need
-to create one from scratch. [See the full entity file](./assets/examples/example-entity.xml) for a complete example.
+to create one from scratch. [See the full entity file](./assets/examples/example-entity.xml) for a complete example. Widgets are app directorty entries, so see also [documentation about the app directory].
 
 ```xml
 <title>Enrollment</title>
@@ -425,3 +425,4 @@ Read more about the [launch button text guidance](widget-launch-button.md).
 
 
 [rssToJson]: https://github.com/UW-Madison-DoIT/rssToJson
+[documentation about the app directory]: http://uw-madison-doit.github.io/angularjs-portal/app-directory.html
