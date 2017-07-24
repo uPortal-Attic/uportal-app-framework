@@ -141,11 +141,11 @@ Follow these steps for each of the predefined widget types described in this doc
 
 #### Configuring your list of links from a URL
 
-* Rather than hardcode your links into a portlet preference, you can point to a URL and get your links dynamically. 
+* Rather than hardcode your links into a portlet preference, you can point to a URL and get your links dynamically.
 1. Omit the "links" entry in the widgetConfig JSON.
 2. In widgetConfig, add the following:
    "getLinksURL": "true"
-3. Point the widget's widgetURL property to the location of the feed. 
+3. Point the widget's widgetURL property to the location of the feed.
 
 
 #### Additional information
