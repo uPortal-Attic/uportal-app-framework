@@ -148,7 +148,7 @@ Follow these steps for each of the predefined widget types described in this doc
 3. Point the widget's widgetURL property to the location of the feed.
 
 
-#### Additional information
+#### Guidance
 
 * `launchText` is optional. Omitting `launchText` suppresses the launch button at the bottom of the list-of-links widget. This is appropriate
 when there's nothing more to launch, that is, when the list-of-links widget simply presents all the intended links and that's all there is to it.
@@ -248,7 +248,7 @@ This provides a more usable click surface, a simpler and cleaner user experience
 * **showdate**: T/F show each feed item's published date. The date format is "M/d/yy" (localizable) due to space consideration.
 * **showShowing**: T/F Show the "Showing \[x] out of \[y]" message (to communicate that there is more to see). Set this to true if your feed has frequent updates.
 
-#### Additional information
+#### Guidance
 
 Note the addition required value in the entity file:
 
@@ -301,7 +301,7 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 * **feedUrl**: The URL to fetch the *JSON representation* of the quantity of items needing attention.
 * **actionUrl**: The URL where action can be taken for this specific item. If no such URL exists, use the same URL as you use for the "See all" launch button.
 
-#### Additional information
+#### Guidance
 
 If there are multiple action item types to display, the widget will display the first 3 in the list. If there are more than 3, it will display a note that says "Showing 3 of [x]".
 
