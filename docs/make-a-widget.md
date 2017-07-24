@@ -1,6 +1,6 @@
 # Widget types and configuration
 
-Widgets are designed to be flexible - users can accomplish or access a single task or piece of information, or they can access
+Widgets are designed to be flexible - users can accomplish a single task or access a single piece of information, or they can access
 a collection of related things that will help them accomplish their task.
 
 Widgets can:
