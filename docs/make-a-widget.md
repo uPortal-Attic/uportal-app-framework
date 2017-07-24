@@ -1,12 +1,12 @@
 # Widget types and configuration
 
-Widgets are designed to be flexible - users can accomplish or access a single task or piece of information, or they can access
+Widgets are designed to be flexible - users can accomplish a single task or access a single piece of information, or they can access
 a collection of related things that will help them accomplish their task.
 
 Widgets can:
 
-* Provide users with real-time, continuous info about their account (e.g. list of pay statements in the Payroll Information widget, Wiscard balance in the Wiscard widget)
-* Provide users with a snapshot of information that may impact their decision to take an action (e.g. adding money to my Wiscard)
+* Provide real-time, continuous info about accounts (e.g. list of pay statements in the Payroll Information widget, Wiscard balance in the Wiscard widget)
+* Provide snapshots of information that may impact decisions to take action (e.g. adding money to my Wiscard)
 * Support periodic user action (e.g. viewing pay statements)
 * Allow users to quickly access pieces of the app to complete key or regular tasks (e.g. Course Services, My Professional Development, Course Guide)
 * Provide users with at-a-glance information that represents the main use for the widget (e.g. Weather)
@@ -20,7 +20,7 @@ The barebones widget provides an app title, a large icon, and a launch button wi
 ### Sample entity file
 
 This code block includes most of the fields needed to configure a widget, but there are additional XML tags (`<portlet-definition>`) you'll need
-to create one from scratch. [See the full entity file](./assets/examples/example-entity.xml) for a complete example.
+to create one from scratch. [See the full entity file](./assets/examples/example-entity.xml) for a complete example. Widgets are app directorty entries, so see also [documentation about the app directory].
 
 ```xml
 <title>Enrollment</title>
@@ -141,20 +141,21 @@ Follow these steps for each of the predefined widget types described in this doc
 
 #### Configuring your list of links from a URL
 
-* Rather than hardcode your links into a portlet preference, you can point to a URL and get your links dynamically. 
+* Rather than hardcode your links into a portlet preference, you can point to a URL and get your links dynamically.
 1. Omit the "links" entry in the widgetConfig JSON.
 2. In widgetConfig, add the following:
    "getLinksURL": "true"
-3. Point the widget's widgetURL property to the location of the feed. 
+3. Point the widget's widgetURL property to the location of the feed.
 
 
-#### Additional information
+#### Guidance
 
 * `launchText` is optional. Omitting `launchText` suppresses the launch button at the bottom of the list-of-links widget. This is appropriate
 when there's nothing more to launch, that is, when the list-of-links widget simply presents all the intended links and that's all there is to it.
 * Avoid using a `list-of-links` widget when you only need to display one link. Instead, use the name and `alternativeMaximizedLink` of [the app directory entry](app-directory.md) to represent the link.
 This provides a more usable click surface, a simpler and cleaner user experience, and achieves better consistency with other just-a-link widgets in MyUW.
 * The length of your list of links will affect the widget's appearance. If you have more than 4 links, they will be displayed in a more traditional-style list, rather than with the `<circle-button>` directive.
+* Use sentence case in the titles of the links.
 
 ### Search with links
 
@@ -204,6 +205,10 @@ This provides a more usable click surface, a simpler and cleaner user experience
 </portlet-preference>
 ```
 
+#### Guidance
+
++ Use sentence case in the titles of the links.
+
 ### RSS widget
 
 ![rss widget](./img/rss.png)
@@ -248,9 +253,9 @@ This provides a more usable click surface, a simpler and cleaner user experience
 * **showdate**: T/F show each feed item's published date. The date format is "M/d/yy" (localizable) due to space consideration.
 * **showShowing**: T/F Show the "Showing \[x] out of \[y]" message (to communicate that there is more to see). Set this to true if your feed has frequent updates.
 
-#### Additional information
+#### Guidance
 
-Note the addition required value in the entity file:
+Note the additional required value in the entity file:
 
 * **widgetUrl**: The URL of the *JSON representation of the* RSS feed you want to display
 
@@ -301,7 +306,7 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 * **feedUrl**: The URL to fetch the *JSON representation* of the quantity of items needing attention.
 * **actionUrl**: The URL where action can be taken for this specific item. If no such URL exists, use the same URL as you use for the "See all" launch button.
 
-#### Additional information
+#### Guidance
 
 If there are multiple action item types to display, the widget will display the first 3 in the list. If there are more than 3, it will display a note that says "Showing 3 of [x]".
 
@@ -399,7 +404,7 @@ By doing just this we were able to generate:
 
 ### Launch button text
 If you provide a `widgetConfig` with any widget type with a value for `launchText`, it will replace the text of the
-launch button with the provided value, even for non-widgets.
+launch button with the provided value, even for non-widgets. Use sentence case in launch button text.
 
 ### Maintenance mode
 If your widget/application depends on a service that is currently experiencing an outage or planned maintenance, you can
@@ -425,3 +430,4 @@ Read more about the [launch button text guidance](widget-launch-button.md).
 
 
 [rssToJson]: https://github.com/UW-Madison-DoIT/rssToJson
+[documentation about the app directory]: http://uw-madison-doit.github.io/angularjs-portal/app-directory.html
