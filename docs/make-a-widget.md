@@ -5,8 +5,8 @@ a collection of related things that will help them accomplish their task.
 
 Widgets can:
 
-* Provide users with real-time, continuous info about their account (e.g. list of pay statements in the Payroll Information widget, Wiscard balance in the Wiscard widget)
-* Provide users with a snapshot of information that may impact their decision to take an action (e.g. adding money to my Wiscard)
+* Provide real-time, continuous info about accounts (e.g. list of pay statements in the Payroll Information widget, Wiscard balance in the Wiscard widget)
+* Provide snapshots of information that may impact decisions to take action (e.g. adding money to my Wiscard)
 * Support periodic user action (e.g. viewing pay statements)
 * Allow users to quickly access pieces of the app to complete key or regular tasks (e.g. Course Services, My Professional Development, Course Guide)
 * Provide users with at-a-glance information that represents the main use for the widget (e.g. Weather)
