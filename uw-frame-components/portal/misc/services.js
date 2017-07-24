@@ -171,7 +171,7 @@ define(['angular', 'jquery'], function(angular, $) {
         'label': label,
         'value': (value || label),
       });
-			$log.log(
+      $log.log(
         'ga event logged action: ' + action +
         ', category: ' + category + ', label: ' + label);
     };

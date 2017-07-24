@@ -46,8 +46,8 @@ define([
     try {
         angular.module('angulartics.google.analytics');
     } catch (e) {
-			angular.module('angulartics.google.analytics', []);
-		}
+      angular.module('angulartics.google.analytics', []);
+    }
 
     return angular.module('portal', [
         'app-config',

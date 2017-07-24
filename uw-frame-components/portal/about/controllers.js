@@ -2,7 +2,7 @@
 
 define(['angular', 'require'], function(angular, require) {
   return angular.module('portal.about.controllers', [])
-	.controller('PortalAboutController', [
+  .controller('PortalAboutController', [
     '$log', '$scope', 'portalAboutService', 'SERVICE_LOC',
     function($log, $scope, portalAboutService, SERVICE_LOC) {
     portalAboutService.getFrameDetails()

@@ -73,15 +73,15 @@ define(['angular'], function(angular) {
         }
       };
 
-			/**
-			 * Track clicks on "Notifications" links in mobile menu and top bar
-			 * @param category
-			 * @param action
-			 * @param label
-			 */
-			$scope.pushGAEvent = function(category, action, label) {
-				miscService.pushGAEvent(category, action, label);
-			};
+      /**
+       * Track clicks on "Notifications" links in mobile menu and top bar
+       * @param category
+       * @param action
+       * @param label
+       */
+      $scope.pushGAEvent = function(category, action, label) {
+        miscService.pushGAEvent(category, action, label);
+      };
 
       // /////////////////
       // LOCAL METHODS //
