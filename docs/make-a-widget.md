@@ -255,7 +255,7 @@ This provides a more usable click surface, a simpler and cleaner user experience
 
 #### Guidance
 
-Note the addition required value in the entity file:
+Note the additional required value in the entity file:
 
 * **widgetUrl**: The URL of the *JSON representation of the* RSS feed you want to display
 
