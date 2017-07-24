@@ -155,6 +155,7 @@ when there's nothing more to launch, that is, when the list-of-links widget simp
 * Avoid using a `list-of-links` widget when you only need to display one link. Instead, use the name and `alternativeMaximizedLink` of [the app directory entry](app-directory.md) to represent the link.
 This provides a more usable click surface, a simpler and cleaner user experience, and achieves better consistency with other just-a-link widgets in MyUW.
 * The length of your list of links will affect the widget's appearance. If you have more than 4 links, they will be displayed in a more traditional-style list, rather than with the `<circle-button>` directive.
+* Use sentence case in the titles of the links.
 
 ### Search with links
 
@@ -203,6 +204,10 @@ This provides a more usable click surface, a simpler and cleaner user experience
   </value>
 </portlet-preference>
 ```
+
+#### Guidance
+
++ Use sentence case in the titles of the links.
 
 ### RSS widget
 
@@ -399,7 +404,7 @@ By doing just this we were able to generate:
 
 ### Launch button text
 If you provide a `widgetConfig` with any widget type with a value for `launchText`, it will replace the text of the
-launch button with the provided value, even for non-widgets.
+launch button with the provided value, even for non-widgets. Use sentence case in launch button text.
 
 ### Maintenance mode
 If your widget/application depends on a service that is currently experiencing an outage or planned maintenance, you can
