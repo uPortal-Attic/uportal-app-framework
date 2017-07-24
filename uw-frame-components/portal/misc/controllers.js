@@ -8,7 +8,7 @@ define(['angular'], function(angular) {
     '$log', '$scope', '$timeout', 'PortalAddToHomeService',
     function($log, $scope, $timeout, PortalAddToHomeService) {
     $scope.addToHome = function() {
-      if(!$scope.inHome && PortalAddToHomeService.canAddToHome($scope.fname)) {
+      if (!$scope.inHome && PortalAddToHomeService.canAddToHome($scope.fname)) {
         $scope.savingAddToHome = true;
         $timeout(function() {
           $scope.actionLinkIconTemp = $scope.actionLinkIcon;
@@ -42,14 +42,14 @@ define(['angular'], function(angular) {
       // default it to being in your home to avoid service loading lag
       $scope.inHome = true;
 
-      if(PortalAddToHomeService.canAddToHome()) {
-        if($scope.fname) {
+      if (PortalAddToHomeService.canAddToHome()) {
+        if ($scope.fname) {
           // check if in home layout
           checkInHome($scope.fname);
         } else {
           $scope.$watch('fname', function() {
             // must be using 2 way binding, add a watch on the fname
-            if($scope.fname) {
+            if ($scope.fname) {
               checkInHome($scope.fname);
             }
           });

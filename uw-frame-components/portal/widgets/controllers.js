@@ -20,7 +20,7 @@ define(['angular'], function(angular) {
      */
     var widgetType = function widgetType(widget) {
       // Check for types that need handling
-      switch(widget.widgetType) {
+      switch (widget.widgetType) {
         case 'list-of-links':
           // If the list of links only has one link and it's the
           // same as the launch button url, display a basic widget
@@ -470,7 +470,7 @@ define(['angular'], function(angular) {
       var value = {};
 
       // Switch temperature based on which unit is next
-      switch(userPreference) {
+      switch (userPreference) {
         case 'F':
           convertKelvinToFahrenheit();
           $scope.currentUnits = 'F';

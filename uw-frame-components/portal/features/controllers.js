@@ -146,7 +146,7 @@ define(['angular', 'require'], function(angular, require) {
       };
 
       var setMascot = function() {
-        if($rootScope.portal && $rootScope.portal.theme) {
+        if ($rootScope.portal && $rootScope.portal.theme) {
           $scope.mascotImage =
             $rootScope.portal.theme.mascotImg || 'img/robot-taco.gif';
         } else {
@@ -176,7 +176,7 @@ define(['angular', 'require'], function(angular, require) {
           // Get announcements
           portalFeaturesService.getUnseenAnnouncements()
             .then(function(unseenAnnouncements) {
-              if(!$rootScope.GuestMode) {
+              if (!$rootScope.GuestMode) {
                 $scope.announcements = unseenAnnouncements;
               }
               return unseenAnnouncements;

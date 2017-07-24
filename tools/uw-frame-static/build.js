@@ -103,7 +103,7 @@ function writeCss(srcPath, theme, styles) {
     },
     function(error, css) {
       // Log errors
-      if(error) throw error;
+      if (error) throw error;
       // Auto-prefix css
       return postcss([autoprefixer])
       .process(css)

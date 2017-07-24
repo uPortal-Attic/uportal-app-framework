@@ -25,7 +25,7 @@ define(['angular'], function(angular) {
              APP_FLAGS) {
       // scope functions
       $scope.onSelect = function(portlet) {
-          if(APP_FLAGS.isWeb) {
+          if (APP_FLAGS.isWeb) {
               $location.path('apps/search/'+ portlet.name);
               $scope.showSearch = false;
               $scope.showSearchFocus = false;
@@ -36,8 +36,8 @@ define(['angular'], function(angular) {
       };
 
       $scope.submit = function() {
-        if($scope.initialFilter != '') {
-          if(APP_FLAGS.isWeb) {
+        if ($scope.initialFilter != '') {
+          if (APP_FLAGS.isWeb) {
               $location.path('apps/search/'+ $scope.initialFilter);
               $scope.showSearch = false;
               $scope.showSearchFocus = false;
@@ -64,7 +64,7 @@ define(['angular'], function(angular) {
         $scope.filterMatches = [];
         $scope.searchExpanded = false;
         $scope.portletListLoading = true;
-        if($localStorage && $localStorage.typeaheadSearch) {
+        if ($localStorage && $localStorage.typeaheadSearch) {
             // TODO : Add in search for somewhere for frame
             $scope.$watch('initialFilter', function(newVal, oldVal) {
                 if (!newVal || !$scope.portlets) {
@@ -78,7 +78,7 @@ define(['angular'], function(angular) {
 
         $scope.searchService = PortalSearchService;
         $scope.$watch('searchService.getQuery()', function(newVal, oldVal) {
-          if(!newVal) {
+          if (!newVal) {
             return;
           }
           $scope.initialFilter = newVal;

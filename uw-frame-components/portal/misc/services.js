@@ -31,17 +31,17 @@ define(['angular', 'jquery'], function(angular, $) {
       array, groups, arrayGroupFieldName, groupsNameFieldName
     ) {
       // validation/setup
-      if(!arrayGroupFieldName) {
+      if (!arrayGroupFieldName) {
         arrayGroupFieldName = 'group';
       }
-      if(!groupsNameFieldName) {
+      if (!groupsNameFieldName) {
         groupsNameFieldName = 'name';
       }
-      if(
+      if (
         !array || array.length === 0 || !groups ||
         groups.length === 0 || !angular.isArray(array)
       ) {
-        if(!angular.isArray(array)) {
+        if (!angular.isArray(array)) {
           $log.warn(
             'PortalGroupService.filterArrayByGroups ' +
             'was called, but not an array');
@@ -52,13 +52,13 @@ define(['angular', 'jquery'], function(angular, $) {
       var returnArray = [];
       // filtering magic
       $.each(array, function(index, cur) { // for each object
-        if(angular.isArray(cur[arrayGroupFieldName])) {
+        if (angular.isArray(cur[arrayGroupFieldName])) {
           $.each(cur[arrayGroupFieldName], // for each group for that object
             function(index, group) {
             var inGroup = $.grep(groups, function(e) {
               return e[groupsNameFieldName] === group;
             }).length; // intersect, then get length
-            if(inGroup > 0) {// are they in that group?
+            if (inGroup > 0) {// are they in that group?
               returnArray.push(cur); // they should get this object
               return false; // break;
             }
@@ -68,7 +68,7 @@ define(['angular', 'jquery'], function(angular, $) {
           var inGroup = $.grep(groups, function(e) {
             return e[groupsNameFieldName] === cur[arrayGroupFieldName];
           }).length; // intersect, then get length
-          if(inGroup > 0) {
+          if (inGroup > 0) {
             returnArray.push(cur);
           }
         }
@@ -77,7 +77,7 @@ define(['angular', 'jquery'], function(angular, $) {
     };
 
     var groupsServiceEnabled = function() {
-      if(SERVICE_LOC.groupURL) {
+      if (SERVICE_LOC.groupURL) {
         return true;
       } else {
         return false;
@@ -106,7 +106,7 @@ define(['angular', 'jquery'], function(angular, $) {
       return $http.get(MISC_URLS.addToHomeURLS.layoutURL)
       .then(function(result) {
         var layout = result.data.layout;
-        if(layout) {
+        if (layout) {
           var theFname = (fname ? fname : NAMES.fname);
           var filteredLayout = filterFilter(layout, {fname: theFname});
           return filteredLayout && filteredLayout.length > 0;
@@ -143,9 +143,9 @@ define(['angular', 'jquery'], function(angular, $) {
      Setup MISC_URLS.loginURL in js/app-config.js to have redirects happen
     **/
     var redirectUser = function(status, caller) {
-      if(status === 0 || status === 302) {
+      if (status === 0 || status === 302) {
         $log.log('redirect happening due to ' + status);
-        if(MISC_URLS.loginURL) {
+        if (MISC_URLS.loginURL) {
           $window.location.replace(MISC_URLS.loginURL);
         } else {
           $log.warn('MISC_URLS.loginURL was not set, cannot redirect');

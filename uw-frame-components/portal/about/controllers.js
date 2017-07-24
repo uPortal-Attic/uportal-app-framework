@@ -14,7 +14,7 @@ define(['angular', 'require'], function(angular, require) {
       });
 
     $scope.appInfo = null;
-    if(SERVICE_LOC.aboutURL) {
+    if (SERVICE_LOC.aboutURL) {
       portalAboutService.getDetails(SERVICE_LOC.aboutURL)
         .then(function(result) {
           $scope.appInfo = result;

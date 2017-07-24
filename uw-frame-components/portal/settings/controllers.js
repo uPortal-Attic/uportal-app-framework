@@ -36,7 +36,7 @@ define(['angular'], function(angular) {
     ) {
     $scope.options = FRAME_BETA_FEATURES.concat(APP_BETA_FEATURES);
     $scope.$watch('portal.theme', function(newValue, oldValue) {
-      if($scope.portal.theme) {
+      if ($scope.portal.theme) {
         $sessionStorage.portal.theme = $scope.portal.theme;
         $sessionStorage.portal.theme.themeVersion = THEMES.themeVersion;
         $mdTheming.generateTheme($sessionStorage.portal.theme.name, null);
@@ -46,7 +46,7 @@ define(['angular'], function(angular) {
           palette: $scope.portal.theme.name + '-primary',
           hue: '500',
         });
-        if($scope.portal.theme && $scope.portal.theme.portalSkinKey) {
+        if ($scope.portal.theme && $scope.portal.theme.portalSkinKey) {
           portalSkinService.setPortalSkin($scope.portal.theme.portalSkinKey);
         }
         // Tell scope the theme changed
@@ -73,7 +73,7 @@ define(['angular'], function(angular) {
       $scope.resetAnnouncements = function() {
         delete $sessionStorage.seenAnnouncmentIds;
         delete $sessionStorage.seenPopupIds;
-        if(keyValueService.isKVStoreActivated()) {
+        if (keyValueService.isKVStoreActivated()) {
           $scope.loadingResetAnnouncements = true;
           $q.all([keyValueService.deleteValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS),
                   keyValueService.deleteValue(KV_KEYS.VIEWED_POPUP_IDS)])

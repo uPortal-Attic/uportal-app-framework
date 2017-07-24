@@ -36,13 +36,13 @@ define(['angular'], function(angular) {
         dismissedNotificationIds.push(notification.id);
 
         // Call service to save changes if k/v store enabled
-        if(SERVICE_LOC.kvURL) {
+        if (SERVICE_LOC.kvURL) {
           notificationsService
             .setDismissedNotifications(dismissedNotificationIds);
         }
 
         // Clear priority notification flags if it was a priority notification
-        if(fromPriority) {
+        if (fromPriority) {
           clearPriorityNotificationFlags();
         }
       };
@@ -63,11 +63,11 @@ define(['angular'], function(angular) {
         // Remove the corresponding entry from
         // local array of dismissed notification IDs
         var index = dismissedNotificationIds.indexOf(notification.id);
-        if(index !== -1) {
+        if (index !== -1) {
           dismissedNotificationIds.splice(index, 1);
         }
         // Call service to save changes if k/v store enabled
-        if(SERVICE_LOC.kvURL) {
+        if (SERVICE_LOC.kvURL) {
           notificationsService
             .setDismissedNotifications(dismissedNotificationIds);
         }
@@ -124,7 +124,7 @@ define(['angular'], function(angular) {
           dismissedNotificationIds.push(value.id);
         });
 
-        if($location.url().indexOf('notifications') === -1) {
+        if ($location.url().indexOf('notifications') === -1) {
           configurePriorityNotificationScope($scope.notifications);
         } else {
           clearPriorityNotificationFlags();
@@ -165,12 +165,12 @@ define(['angular'], function(angular) {
           && $scope.priorityNotifications.length > 0
         ) {
           $scope.hasPriorityNotifications = true;
-          if($scope.headerCtrl) {
+          if ($scope.headerCtrl) {
             $scope.headerCtrl.hasPriorityNotifications = true;
           }
         } else {
           $scope.hasPriorityNotifications = false;
-          if($scope.headerCtrl) {
+          if ($scope.headerCtrl) {
             $scope.headerCtrl.hasPriorityNotifications = false;
           }
         }
@@ -183,10 +183,10 @@ define(['angular'], function(angular) {
       var clearPriorityNotificationFlags = function(duringOnEvent) {
         $scope.priorityNotifications = [];
         $scope.hasPriorityNotifications = false;
-        if($scope.headerCtrl) {
+        if ($scope.headerCtrl) {
           $scope.headerCtrl.hasPriorityNotifications = false;
         }
-        if(!duringOnEvent) {
+        if (!duringOnEvent) {
           $rootScope.$broadcast('portalShutdownPriorityNotifications',
             {disable: true});
         }
@@ -206,7 +206,7 @@ define(['angular'], function(angular) {
         $scope.notificationsEnabled = NOTIFICATION.enabled;
 
         // Get notifications (dismissed vs. non-dismissed is handled in service)
-        if(NOTIFICATION.enabled && !$rootScope.GuestMode) {
+        if (NOTIFICATION.enabled && !$rootScope.GuestMode) {
           getNotifications();
         }
 
