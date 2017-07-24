@@ -69,7 +69,7 @@ point uw-frame to your desired feed.
 **Attribute breakdown**
 
 - **id**: A unique number to identify the notification. This is used for tracking dismissed/un-dismissed state as well as the sort order on the notifications page.
-- **groups**: An attribute to optionally show notifications only to specific groups (ex. Manifest groups, uPortal groups). **Must contain at least one value**. Using the "Everyone" group will make
+- **groups**: An attribute to optionally show notifications only to specific groups (i.e. uPortal groups). **Must contain at least one value**. Using the "Everyone" group will make
 your notification visible to all users. Contact your portal development team for more information about group filtering.
 - **title**: The text to be displayed as the notification's main content. **Best practices:**
     - Be concise! Try to limit your notification's title to ~140 characters. Shorter titles improve click-through and are less likely to cause display issues on smaller screens.
