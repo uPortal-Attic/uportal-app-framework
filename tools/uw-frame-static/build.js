@@ -79,7 +79,6 @@ copy(
   if (error) throw error;
 });
 
-
 /**
  * Process the .less styles into css, auto-prefix the css,
  * then write to a .css file
@@ -101,12 +100,12 @@ function writeCss(srcPath, theme, styles) {
       filename: path.resolve(srcPath),
       compress: true,
     },
-    function(error, css) {
+    function(error, rendered) {
       // Log errors
       if (error) throw error;
       // Auto-prefix css
       return postcss([autoprefixer])
-      .process(css)
+      .process(rendered.css)
       .then(function(result) {
         result.warnings().forEach(function(warn) {
           console.warn(warn.toString());
