@@ -54,14 +54,14 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
   };
 
   var allPaths;
-  if(myAppConfig.paths) {
+  if (myAppConfig.paths) {
     allPaths = extend(framePaths, myAppConfig.paths);
   } else {
     allPaths = framePaths;
   }
 
   var allShims;
-  if(myAppConfig.shims) {
+  if (myAppConfig.shims) {
     allShims = extend(frameShims, myAppConfig.shims);
   } else {
     allShims = frameShims;

@@ -21,7 +21,7 @@ define(['angular-mocks', 'portal'], function() {
           URLS.group = SERVICE_LOC.groupURL;
           URLS.feature = FEATURES.serviceURL;
           loginSilentURL = APP_FLAGS.loginOnLoad;
-          if(loginSilentURL) {
+          if (loginSilentURL) {
             httpBackend.whenGET(loginSilentURL)
             .respond({'status': 'success', 'username': 'admin'});
           }
@@ -33,7 +33,9 @@ define(['angular-mocks', 'portal'], function() {
           var groups = [];
           // test
           var results = service.filterArrayByGroups(array, groups);
+
           expect(results).toBeTruthy();
+
           expect(results.length).toEqual(0);
         });
 
@@ -48,7 +50,9 @@ define(['angular-mocks', 'portal'], function() {
           var groups = [{name: 'in'}];
           // test
           var results = service.filterArrayByGroups(array, groups);
+
           expect(results).toBeTruthy();
+
           expect(results.length).toEqual(2);
         });
 
@@ -64,8 +68,10 @@ define(['angular-mocks', 'portal'], function() {
           // test
           var results =
             service.filterArrayByGroups(array, groups, null, 'title');
-          expect(results).toBeTruthy();
-          expect(results.length).toEqual(2);
+
+            expect(results).toBeTruthy();
+
+            expect(results.length).toEqual(2);
         });
 
         it('should properly handle filtering ' +
@@ -79,7 +85,9 @@ define(['angular-mocks', 'portal'], function() {
           var groups = [{name: 'in'}];
           // test
           var results = service.filterArrayByGroups(array, groups, 'theGroup');
+
           expect(results).toBeTruthy();
+
           expect(results.length).toEqual(2);
         });
     });

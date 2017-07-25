@@ -17,9 +17,9 @@ define(['angular', 'require'], function(angular, require) {
      */
     function setTitle() {
       var frameTitle = '';
-      if($rootScope.portal && $rootScope.portal.theme) {
+      if ($rootScope.portal && $rootScope.portal.theme) {
         frameTitle = $rootScope.portal.theme.title;
-        if(frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
+        if (frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
           frameTitle = ' | ' + frameTitle;
         } else {
           // since frame title equals the title in NAMES lets not duplicate it
@@ -38,13 +38,13 @@ define(['angular', 'require'], function(angular, require) {
       $scope.MISC_URLS=MISC_URLS;
       $scope.THEMES = THEMES.themes;
 
-      if(NAMES.title) {
+      if (NAMES.title) {
         setTitle();
       }
       // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
       // eslint-disable-next-line angular/on-watch
       $rootScope.$watch('portal.theme', function(newValue, oldValue) {
-        if(newValue && newValue !== oldValue) {
+        if (newValue && newValue !== oldValue) {
           setTitle();
         }
       });

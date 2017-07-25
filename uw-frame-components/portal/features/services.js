@@ -32,7 +32,7 @@ define(['angular'], function(angular) {
     var featuresPromise;
     var filteredFeaturesPromise;
     var getFeatures = function() {
-      if(!featuresPromise) {
+      if (!featuresPromise) {
         featuresPromise = $http.get(FEATURES.serviceURL, {cache: true})
            .then(function(results, status) { // success function
               return results.data;

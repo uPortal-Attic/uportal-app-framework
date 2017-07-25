@@ -19,7 +19,7 @@ define(['angular', 'require'], function(angular, require) {
         templateUrl: require.toUrl('./partials/loading-gif.html'),
         link: function(scope, elm, attrs) {
           scope.isLoading = function() {
-            if(angular.isUndefined(attrs.empty)) {
+            if (angular.isUndefined(attrs.empty)) {
               attrs.empty = false;
             }
             return (!scope[attrs.object] || scope[attrs.object].length == 0)
@@ -27,11 +27,11 @@ define(['angular', 'require'], function(angular, require) {
           };
 
           scope.$watch(scope.isLoading, function(v) {
-            if(v) {
+            if (v) {
               elm.show();
-            }else{
+            } else {
               elm.hide();
-              if(!attrs.reuse) {
+              if (!attrs.reuse) {
                 elm.css('margin', '0');
                 // remove content of div, so if it shows again later
                 // it doesn't make the page look funky
@@ -51,9 +51,9 @@ define(['angular', 'require'], function(angular, require) {
                 };
 
                 scope.$watch(scope.isLoading, function(v) {
-                    if(v) {
+                    if (v) {
                         elm.show();
-                    }else{
+                    } else {
                         elm.hide();
                         elm.css('margin', '0');
                         // remove content of div, so if it shows again later
@@ -70,9 +70,9 @@ define(['angular', 'require'], function(angular, require) {
             restrict: 'A',
             link: function(scope, elm, attrs) {
                 scope.$watch(scope.isLoading, function(v) {
-                    if(v) {
+                    if (v) {
                         elm.hide();
-                    }else{
+                    } else {
                         elm.show();
                     }
                 });
@@ -105,7 +105,7 @@ define(['angular', 'require'], function(angular, require) {
         return {
           link: function(scope, element, attrs) {
             scope.$watch(attrs.focusMe, function(value) {
-              if(value === true) {
+              if (value === true) {
                 $log.log('value=', value);
                 $timeout(function() {
                   element[0].focus();

@@ -156,7 +156,7 @@ define(['angular', 'jquery'], function(angular, $) {
               $log.warn('Error retrieving data for notification');
             }
           ));
-        }else{
+        } else {
           filteredNotifications.push(notification);
         }
       });

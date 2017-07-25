@@ -22,7 +22,7 @@ define(['angular'], function(angular) {
     .filter('trimMiddle', function() {
         return function(input, maxlen) {
             maxlen = maxlen || 20;
-            if(input && input.length > maxlen) {
+            if (input && input.length > maxlen) {
               return input.substring(0, Math.floor(maxlen/2)-3) + ' ... ' +
                 input.substring(input.length - (Math.floor(maxlen/2)-4),
                   input.length);

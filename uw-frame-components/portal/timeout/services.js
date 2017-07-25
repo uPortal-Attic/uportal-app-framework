@@ -24,7 +24,7 @@ define(['angular', 'jquery'], function(angular, $) {
           };
 
           var onGetTimeoutSuccess = function(session) {
-            if(session && angular.isObject(session)) {
+            if (session && angular.isObject(session)) {
               var timeout = {};
               timeout.expirationMinutes = session.expiration;
               var now = new Date();

@@ -13,15 +13,15 @@ define(['angular'], function(angular) {
      * initialize the controller
      */
     function init() {
-      if(portalShibbolethService.shibServiceActivated()) {
+      if (portalShibbolethService.shibServiceActivated()) {
         // initialize timeout and dialog
         portalShibbolethService.getTimeout().then(
           function(timeoutData) {
-            if(timeoutData && timeoutData.expirationMills) {
+            if (timeoutData && timeoutData.expirationMills) {
               $timeout(triggerDialog, timeoutData.expirationMills);
             } else {
               $log.info('Timeout data could not be found');
-              if($sessionStorage.portal
+              if ($sessionStorage.portal
                   && $sessionStorage.portal.username
                   && $sessionStorage.portal.username !== 'guest') {
                 // we know its not a guest session

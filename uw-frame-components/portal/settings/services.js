@@ -9,7 +9,7 @@ define(['angular', 'jquery'], function(angular, $) {
            * Sets the skin on the backend layout manager
            */
           function setPortalSkin(skinKey) {
-            if(SERVICE_LOC.portalLayoutRestEndpoint) {
+            if (SERVICE_LOC.portalLayoutRestEndpoint) {
               var params = {
                 'action': 'chooseSkin',
                 'skinName': skinKey,
