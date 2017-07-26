@@ -100,12 +100,12 @@ function writeCss(srcPath, theme, styles) {
       filename: path.resolve(srcPath),
       compress: true,
     },
-    function(error, rendered) {
+    function(error, css) {
       // Log errors
       if (error) throw error;
       // Auto-prefix css
       return postcss([autoprefixer])
-      .process(rendered.css)
+      .process(css)
       .then(function(result) {
         result.warnings().forEach(function(warn) {
           console.warn(warn.toString());
