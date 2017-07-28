@@ -10,15 +10,15 @@ define(['angular', 'jquery'], function(angular, $) {
            */
           function setPortalSkin(skinKey) {
             if (SERVICE_LOC.portalLayoutRestEndpoint) {
-              var params = {
+              var parameters = {
                 'action': 'chooseSkin',
                 'skinName': skinKey,
               };
-              return $http.post(
-                SERVICE_LOC.portalLayoutRestEndpoint,
-                {
-                  'params': params,
-                });
+              return $http({
+                url: SERVICE_LOC.portalLayoutRestEndpoint,
+                method: 'POST',
+                params: parameters,
+              });
             } else {
               return $q.resolve();
             }
