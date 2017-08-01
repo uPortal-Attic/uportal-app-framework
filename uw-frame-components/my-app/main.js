@@ -7,9 +7,10 @@ define(['angular',
     'portal/features/route',
     'portal/about/route',
     'portal/widgets/routes',
+    'portal/messages/routes',
   ], function(
       angular, $, portal, main, settings,
-      notifications, features, about, widgets
+      notifications, features, about, widgets, messages
     ) {
     return angular.module('my-app', ['portal'])
     .config(['$routeProvider', '$locationProvider',
@@ -18,8 +19,8 @@ define(['angular',
         $routeProvider
         .when('/settings', settings.betaSettings)
         .when('/user-settings', settings.userSettings)
-        .when('/notifications', notifications)
-        .when('/features', features)
+        .when('/notifications', messages.notifications)
+        .when('/features', messages.features)
         .when('/about', about)
         .when('/access-denied', main.accessDenied)
         .when('/server-error', main.serverError)
