@@ -1,0 +1,78 @@
+{
+  "messages": [
+    {
+      "id": 0,
+      "messageType": ["notification"],
+      "title": "This is a notification. Part of how you know it's a notification is because it doesn't have a description!",
+      "titleShort": null,
+      "description": null,
+      "descriptionShort": null,
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": ["UW-Madison"],
+        "dataUrl": "",
+        "dataObject": "",
+        "dataArrayFilter": {}
+      },
+      "actionButton": {
+        "label": "Take action",
+        "url": "www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": 2,
+      "messageType": ["popupAnnouncement"],
+      "title": "Welcome to the new MyUW!",
+      "titleShort": null,
+      "description": "MyUW has been redesigned to better serve you everyone who calls UW-Madison home.",
+      "descriptionShort": null,
+      "goLiveDate": "2017-08-01T09:30",
+      "expireDate": "2017-08-15",
+      "featureImageUrl": "img/the-cow.png",
+      "priority": null,
+      "audienceFilter": {
+        "groups": ["Everyone"],
+        "dataUrl": "",
+        "dataObject": "",
+        "dataArrayFilter": {}
+      },
+      "actionButton": null,
+      "moreInfoButton": {
+        "label": "See what's changed",
+        "url": "www.wisc.edu"
+      },
+      "confirmButton": {
+        "label": "Got it!"
+      }
+    },
+    {
+      "id": 1,
+      "messageType": ["mascotAnnouncement"],
+      "title": "This is a mascot announcement's long title",
+      "titleShort": "This is a short title",
+      "description": "This is the long description for a mascot announcement. It should only appear on /features if there's a feature image url",
+      "descriptionShort": "This is a short description",
+      "goLiveDate": "2017-08-01T09:30",
+      "expireDate": "2017-08-15",
+      "featureImageUrl": "img/features/bucky-announcement.png",
+      "priority": null,
+      "audienceFilter": {
+        "groups": ["UW-Madison"],
+        "dataUrl": "",
+        "dataObject": "",
+        "dataArrayFilter": {}
+      },
+      "actionButton": null,
+      "moreInfoButton": {
+        "label": "Learn more",
+        "url": "www.wisc.edu"
+      },
+      "confirmButton": null
+    }
+  ]
+}
