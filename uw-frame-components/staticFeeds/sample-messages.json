@@ -26,7 +26,7 @@
     },
     {
       "id": 2,
-      "messageType": ["popupAnnouncement"],
+      "messageType": ["popupFeature"],
       "title": "Welcome to the new MyUW!",
       "titleShort": null,
       "description": "MyUW has been redesigned to better serve you everyone who calls UW-Madison home.",
@@ -52,11 +52,35 @@
     },
     {
       "id": 1,
-      "messageType": ["mascotAnnouncement"],
+      "messageType": ["mascotFeature"],
       "title": "This is a mascot announcement's long title",
       "titleShort": "This is a short title",
       "description": "This is the long description for a mascot announcement. It should only appear on /features if there's a feature image url",
       "descriptionShort": "This is a short description",
+      "goLiveDate": "2017-08-01T09:30",
+      "expireDate": "2017-08-15",
+      "featureImageUrl": "img/features/bucky-announcement.png",
+      "priority": null,
+      "audienceFilter": {
+        "groups": ["UW-Madison"],
+        "dataUrl": "",
+        "dataObject": "",
+        "dataArrayFilter": {}
+      },
+      "actionButton": null,
+      "moreInfoButton": {
+        "label": "Learn more",
+        "url": "www.wisc.edu"
+      },
+      "confirmButton": null
+    },
+    {
+      "id": 3,
+      "messageType": "mascotFeature",
+      "title": "This is a single-type message",
+      "titleShort": "Single-type message",
+      "description": "A single-type message means the messageType attribute had a string value instead of an array",
+      "descriptionShort": "Woot",
       "goLiveDate": "2017-08-01T09:30",
       "expireDate": "2017-08-15",
       "featureImageUrl": "img/features/bucky-announcement.png",

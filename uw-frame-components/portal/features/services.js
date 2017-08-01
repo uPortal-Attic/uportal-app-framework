@@ -9,7 +9,7 @@ define(['angular'], function(angular) {
     '$q',
     'miscService',
     'keyValueService',
-    'PortalGroupService',
+    'portalGroupService',
     '$log',
     '$localStorage',
     '$sessionStorage',
@@ -21,7 +21,7 @@ define(['angular'], function(angular) {
       $q,
       miscService,
       keyValueService,
-      PortalGroupService,
+      portalGroupService,
       $log,
       $localStorage,
       $sessionStorage,
@@ -41,7 +41,7 @@ define(['angular'], function(angular) {
            });
       }
       if (FEATURES.groupFiltering &&
-        PortalGroupService.groupsServiceEnabled &&
+        portalGroupService.groupsServiceEnabled &&
         !$localStorage.disableGroupAnnouncementFiltering) {
         if (filteredFeaturesPromise) {
           // cache shortcut
@@ -50,7 +50,7 @@ define(['angular'], function(angular) {
         var successFn = function(results) {
           var array = results[0];
           var groups = results[1];
-          return PortalGroupService.filterArrayByGroups(
+          return portalGroupService.filterArrayByGroups(
             array, groups, 'groups');
         };
         var errorFn = function(reason) {
@@ -59,7 +59,7 @@ define(['angular'], function(angular) {
 
         filteredFeaturesPromise = $q
           .all([featuresPromise,
-            PortalGroupService.getGroups(),
+            portalGroupService.getGroups(),
           ])
           .then(successFn, errorFn);
 

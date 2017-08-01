@@ -4,9 +4,9 @@ define(['angular', 'jquery'], function(angular, $) {
   return angular.module('portal.notifications.services', [])
 
   .factory('notificationsService', [
-    '$q', '$http', '$log', '$filter', 'miscService', 'PortalGroupService',
+    '$q', '$http', '$log', '$filter', 'miscService', 'portalGroupService',
     'keyValueService', 'SERVICE_LOC', 'KV_KEYS',
-    function($q, $http, $log, $filter, miscService, PortalGroupService,
+    function($q, $http, $log, $filter, miscService, portalGroupService,
       keyValueService, SERVICE_LOC, KV_KEYS) {
     // LOCAL VARIABLES
     var dismissedPromise;
@@ -86,7 +86,7 @@ define(['angular', 'jquery'], function(angular, $) {
      *         an array filtered by groups. Or an empty array if they have none
     **/
     function filterNotificationsByGroup(arrayOfNotifications) {
-      return PortalGroupService.getGroups().then(
+      return portalGroupService.getGroups().then(
         function(groups) {
           var notificationsByGroup = [];
           angular.forEach(arrayOfNotifications,

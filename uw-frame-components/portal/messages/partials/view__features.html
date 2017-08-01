@@ -1,1 +1,34 @@
-THIS IS THE FEATURES VIEW
+<frame-page app-title="{{NAMES.title}} - New features" app-icon="new_releases" white-background='true'>
+  <md-content class="features-feed" layout-padding>
+
+    <!-- NO FEATURES -->
+    <div ng-if="vm.features.length === 0" layout="row" layout-align="center center"> <!--empty case -->
+      <p>No features listed at this time, please check back later.</p>
+    </div>
+
+    <!-- DISPLAY FEATURES -->
+    <div class="feature-item" ng-repeat="feature in vm.features | orderBy: '-id'">
+      <p class="date">{{ feature.goLiveDate | date:mediumDate }}</p>
+      <h3 class="md-title">{{ feature.title }}</h3>
+
+      <div class="feature-content" layout="column" layout-align-xs="start none">
+        <div class="feature-text">
+          <p class="description">{{ feature.description }}</p>
+          <p ng-if="feature.moreInfoButton"><a ng-href="feature.moreInfoButton.url">{{ feature.moreInfoButton.label }}</a></p>
+        </div>
+        <div class="feature-images" ng-if="feature.featureImageUrl" layout-gt-xs="row" layout-xs="column" layout-align="start start">
+          <img ng-src="{{ feature.featureImageUrl }}">
+        </div>
+      </div>
+
+      <md-divider></md-divider>
+    </div>
+
+    <!-- REQUEST FEEDBACK -->
+    <div layout="column" layout-align="center center" ng-show="MISC_URLS.feedbackURL">
+      <h4 class="md-title">Have a feature you'd like to see in {{NAMES.title}}?</h4>
+      <md-button class="md-primary md-raised" ng-href="{{MISC_URLS.feedbackURL}}">Send us feedback</md-button>
+    </div>
+
+  </md-content>
+</frame-page>

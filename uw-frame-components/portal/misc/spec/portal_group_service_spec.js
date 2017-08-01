@@ -2,7 +2,7 @@
 /* eslint-env node */
 /* global inject */
 define(['angular-mocks', 'portal'], function() {
-    describe('PortalGroupService', function() {
+    describe('portalGroupService', function() {
         var service;
         var httpBackend;
         var URLS = {};
@@ -13,10 +13,10 @@ define(['angular-mocks', 'portal'], function() {
         });
 
         beforeEach(inject(function(
-          _PortalGroupService_, _$httpBackend_,
+          _portalGroupService_, _$httpBackend_,
           SERVICE_LOC, FEATURES, APP_FLAGS
         ) {
-          service = _PortalGroupService_;
+          service = _portalGroupService_;
           httpBackend = _$httpBackend_;
           URLS.group = SERVICE_LOC.groupURL;
           URLS.feature = FEATURES.serviceURL;

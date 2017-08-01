@@ -3,7 +3,7 @@
 define(['angular', 'jquery'], function(angular, $) {
   return angular.module('portal.misc.services', [])
 
-  .factory('PortalGroupService', function(
+  .factory('portalGroupService', function(
       $http, $log, miscService, SERVICE_LOC
     ) {
     var getGroups = function() {
@@ -43,7 +43,7 @@ define(['angular', 'jquery'], function(angular, $) {
       ) {
         if (!angular.isArray(array)) {
           $log.warn(
-            'PortalGroupService.filterArrayByGroups ' +
+            'portalGroupService.filterArrayByGroups ' +
             'was called, but not an array');
         }
         return array;

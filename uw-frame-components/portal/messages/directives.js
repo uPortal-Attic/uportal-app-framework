@@ -11,5 +11,5 @@ define(['angular', 'require'], function(angular, require) {
         },
         templateUrl: require.toUrl('./partials/notifications-bell.html'),
       };
-    })
+    });
 });
