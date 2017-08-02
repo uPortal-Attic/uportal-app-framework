@@ -25,28 +25,27 @@ define(['angular'], function(angular) {
                SERVICE_LOC,
                FEATURES,
                KV_KEYS) {
-
-        /////////////////////
+        // //////////////////
         // Local variables //
-        /////////////////////
-        var promises;
+        // //////////////////
+        // var promises;
 
-        ///////////////////
+        // ////////////////
         // Local methods //
-        ///////////////////
+        // ////////////////
 
-        /////////////////////
+        // //////////////////
         // Exposed methods //
-        /////////////////////
+        // //////////////////
 
         /**
          * @typedef {Object} Message
          * @property {number} id
-         * @property {array] messageType
          * @property {string} title
          * @property {string} titleShort
          * @property {string} description
          * @property {string} descriptionShort
+         * @property {string} announcementInfoUrl
          * @property {string} goLiveDate
          * @property {string} expireDate
          * @property {string} featureImageUrl
@@ -55,7 +54,6 @@ define(['angular'], function(angular) {
          * @property {Object} moreInfoButton
          * @property {Object} confirmButton
          */
-
 
         var getAllMessages = function() {
           return $http.get(SERVICE_LOC.messagesURL)
@@ -67,7 +65,11 @@ define(['angular'], function(angular) {
             });
         };
 
-        var getFilteredMessages = function() {
+        var getMessagesByGroup = function() {
+
+        };
+
+        var getMessagesByData = function() {
 
         };
 
@@ -75,15 +77,53 @@ define(['angular'], function(angular) {
 
         };
 
+        var getSeenMessageIds = function() {
+          if (!keyValueService.isKVStoreActivated()) {
+            return $q.resolve([]);
+          }
+          // return keyValueService.getValue(KV_KEYS.SEEN_MESSAGE_IDS)
+          //   .then(function(data) {
+          //     if (data && angular.isString(data.value)) {
+          //       // If data exists and is a string, check for emptiness
+          //       if (data.value) {
+          //         // If string contains things, return parsed JSON
+          //         return angular.fromJson(data.value);
+          //       } else {
+          //         // If it's empty, return empty array
+          //         return [];
+          //       }
+          //     } else if (data && angular.isArray(data)) {
+          //       // If data exists but it's just JSON, return the data
+          //       return data;
+          //     } else {
+          //       // If nothing exists, return empty array
+          //       return [];
+          //     }
+          //   })
+          //   .catch(function(error) {
+          //     $log.error('Could not get seen message IDs');
+          //     $log.error(error);
+          //     return [];
+          //   });
+          return [2,3];
+        };
+
         var setMessageSeen = function() {
 
         };
 
+        var setSeenMessages = function(ids) {
+          keyValueService.setValue(KV_KEYS.SEEN_MESSAGE_IDS, ids);
+        };
+
         return {
           getAllMessages: getAllMessages,
-          getFilteredMessages: getFilteredMessages,
+          getMessagesByGroup: getMessagesByGroup,
+          getMessagesByData: getMessagesByData,
           getUnseenMessages: getUnseenMessages,
-          setMessageSeen: setMessageSeen
+          getSeenMessageIds: getSeenMessageIds,
+          setMessageSeen: setMessageSeen,
+          setSeenMessages: setSeenMessages,
         };
     }]);
 });

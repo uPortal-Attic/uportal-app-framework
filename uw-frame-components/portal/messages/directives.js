@@ -10,6 +10,8 @@ define(['angular', 'require'], function(angular, require) {
           headerCtrl: '=headerCtrl',
         },
         templateUrl: require.toUrl('./partials/notifications-bell.html'),
+        controller: 'NotificationsController',
+        controllerAs: 'vm'
       };
     });
 });
