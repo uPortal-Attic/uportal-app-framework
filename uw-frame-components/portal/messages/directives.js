@@ -11,7 +11,7 @@ define(['angular', 'require'], function(angular, require) {
         },
         templateUrl: require.toUrl('./partials/notifications-bell.html'),
         controller: 'NotificationsController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
       };
     });
 });

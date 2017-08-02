@@ -1,0 +1,20 @@
+<!-- NOTIFICATION CONTENT -->
+<a class="md-list-item-text"
+   ng-href="notification.actionButton.url"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="{{ notification.actionButton.label }}"
+   layout="row"
+   layout-align="start center"
+   layout-xs="column"
+   layout-align-xs="center start">
+  <span><md-icon ng-if="notification.priority">priority_high</md-icon> {{ notification.title }}</span>
+  <div ng-if="notification.moreInfoButton" class="notification-buttons" layout-xs="column" layout-align-xs="center start">
+    <md-button class="md-raised md-default"
+               ng-href="notification.moreInfoButton.url"
+               target="_blank"
+               rel="noopener noreferrer">
+      {{ notification.moreInfoButton.label }}
+    </md-button>
+  </div>
+</a>

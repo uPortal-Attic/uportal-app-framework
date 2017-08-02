@@ -105,7 +105,7 @@ define(['angular'], function(angular) {
           //     $log.error(error);
           //     return [];
           //   });
-          return [2,3];
+          return [2, 3];
         };
 
         var setMessageSeen = function() {

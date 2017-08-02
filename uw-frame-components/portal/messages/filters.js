@@ -6,7 +6,7 @@ define(['angular'], function(angular) {
       return function(messages, seenMessageIds) {
         var separatedMessages = {
           seen: [],
-          unseen: []
+          unseen: [],
         };
         // Split messages in separate arrays
         // based on whether the id matches a seen id
@@ -28,6 +28,6 @@ define(['angular'], function(angular) {
           }
         });
         return messages;
-      }
-    })
+      };
+    });
 });

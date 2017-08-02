@@ -2,8 +2,8 @@
 
 define(['angular'], function(angular) {
   return angular.module('portal.messages.controllers', [])
-    .controller('NotificationsController', ['$q', '$log', '$scope', '$rootScope',
-      '$location', '$localStorage', '$filter', 'NOTIFICATION',
+    .controller('NotificationsController', ['$q', '$log', '$scope',
+      '$rootScope', '$location', '$localStorage', '$filter', 'NOTIFICATION',
       'SERVICE_LOC', 'miscService', 'messagesService',
       function($q, $log, $scope, $rootScope, $location, $localStorage, $filter,
                NOTIFICATION, SERVICE_LOC, miscService, messagesService) {
@@ -16,13 +16,16 @@ define(['angular'], function(angular) {
         var dismissedNotificationIds = [];
 
         var promiseFilteredNotifications = {
-          filteredByGroup:messagesService.getMessagesByGroup(allNotifications),
-          filteredByData:messagesService.getMessagesByData(allNotifications),
-          seenMessageIds:messagesService.getSeenMessageIds()
+          filteredByGroup:
+            messagesService.getMessagesByGroup(allNotifications),
+          filteredByData:
+            messagesService.getMessagesByData(allNotifications),
+          seenMessageIds:
+            messagesService.getSeenMessageIds(),
         };
 
         var promiseAllNotifications = {
-          seenMessageIds:messagesService.getSeenMessageIds()
+          seenMessageIds: messagesService.getSeenMessageIds(),
         };
 
         // ////////////////
@@ -38,31 +41,34 @@ define(['angular'], function(angular) {
                   result.messages,
                   {announcementInfoUrl: null}
                 );
-
-                // Check for group filtering
-                if (NOTIFICATION.groupFiltering &&
-                  !$localStorage.disableGroupFilteringForNotifications) {
-                  // Call filtered notifications promises, then pass on to
-                  // the completion function
-                  $q.all(promiseFilteredNotifications)
-                    .then(getNotificationsSuccess)
-                    .catch(getNotificationsFailure);
-                } else {
-                  // Call all notifications promises, then pass on to
-                  // completion function
-                  $q.all(promiseAllNotifications)
-                    .then(getNotificationsSuccess)
-                    .catch(getNotificationsFailure);
-                }
               }
+              filterNotifications();
+              return true;
             })
             .catch(function(error) {
 
             });
         };
 
-        var getNotificationsSuccess = function(result) {
-          console.log(result);
+        var filterNotifications = function() {
+          // Check for group filtering
+          if (NOTIFICATION.groupFiltering &&
+            !$localStorage.disableGroupFilteringForNotifications) {
+            // Call filtered notifications promises, then pass on to
+            // the completion function
+            $q.all(promiseFilteredNotifications)
+              .then(filterNotificationsSuccess)
+              .catch(filterNotificationsFailure);
+          } else {
+            // Call all notifications promises, then pass on to
+            // completion function
+            $q.all(promiseAllNotifications)
+              .then(filterNotificationsSuccess)
+              .catch(filterNotificationsFailure);
+          }
+        };
+
+        var filterNotificationsSuccess = function(result) {
           // Use $filter to separate seen/unseen
           if (result.seenMessageIds && result.seenMessageIds.length > 0) {
             separatedNotifications = $filter('filterSeenAndUnseen')(
@@ -98,7 +104,7 @@ define(['angular'], function(angular) {
             + 'notifications';
         };
 
-        var getNotificationsFailure = function(error) {
+        var filterNotificationsFailure = function(error) {
           $log.warn('Problem getting messages from messagesService');
         };
 
@@ -182,7 +188,8 @@ define(['angular'], function(angular) {
 
           // Remove the corresponding entry from
           // local array of dismissed notification IDs
-          if (dismissedNotificationIds.indexOf(notification.id) !== -1) {
+          var index = dismissedNotificationIds.indexOf(notification.id);
+          if (index !== -1) {
             dismissedNotificationIds.splice(index, 1);
           }
           // Call service to save changes if k/v store enabled
