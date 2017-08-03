@@ -254,13 +254,15 @@ define(['angular'], function(angular) {
     .controller('AnnouncementsController', ['$q', '$log', '$filter',
       '$sessionStorage', '$scope', '$rootScope', '$document', '$sanitize',
       '$mdDialog', 'miscService', 'messagesService', 'MESSAGES',
-      function($q, $log, $filter, $sessionStorage, $scope, $rootScope, $document,
-               $sanitize, $mdDialog, miscService, messagesService, MESSAGES) {
+      function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
+               $document, $sanitize, $mdDialog, miscService, messagesService,
+               MESSAGES) {
         // //////////////////
         // Local variables //
         // //////////////////
         var vm = this;
         var allAnnouncements = [];
+        var separatedAnnouncements = {};
         var seenAnnouncementIds = [];
         var popups = [];
 
@@ -330,20 +332,34 @@ define(['angular'], function(angular) {
          */
         var filterAnnouncementsSuccess = function(result) {
           // Separate seen and unseen
-
-          // Configure various scope junk
+          if (result.seenMessageIds && result.seenMessageIds.length > 0) {
+            separatedAnnouncements = $filter('filterSeenAndUnseen')(
+              allAnnouncements,
+              result.seenMessageIds
+            )
+            // Set local seenAnnouncementsIds (used for tracking seen
+            // messages in the K/V store and sessionStorage
+            angular.forEach(separatedAnnouncements.seen, function(value) {
+              seenAnnouncementIds.push(value.id);
+            });
+          } else {
+            separatedAnnouncements = {
+              seen: [],
+              unseen: allAnnouncements,
+            };
+          }
 
           // If directive mode need mascot, set it, otherwise
           // configure popups
           if (vm.mode === 'mascot' || vm.mode === 'mobile-menu') {
             // Set scope announcements
-            vm.announcements = allAnnouncements;
+            vm.announcements = separatedAnnouncements.unseen;
             // Set the mascot image
             setMascot();
           } else {
             // Filter out low priority announcements
             popups = $filter('filter')(
-              allAnnouncements,
+              separatedAnnouncements.unseen,
               {priority: 'high'}
             );
             configurePopups();
@@ -376,7 +392,8 @@ define(['angular'], function(angular) {
             // Display the latest popup announcement
             var displayPopup = function() {
               $mdDialog.show({
-                templateUrl: 'portal/messages/partials/announcement-popup-template.html',
+                templateUrl:
+                  'portal/messages/partials/announcement-popup-template.html',
                 parent: angular.element(document).find('div.my-uw')[0],
                 clickOutsideToClose: true,
                 openFrom: 'left',
@@ -391,7 +408,11 @@ define(['angular'], function(angular) {
               })
               .then(function(action) {
                 // If dialog is closed by clicking "continue" button
-                miscService.pushGAEvent('popup', action, $scope.latestAnnouncement.id);
+                miscService.pushGAEvent(
+                  'popup',
+                  action,
+                  $scope.latestAnnouncement.id
+                );
                 messagesService.setMessageSeen($scope.latestAnnouncement.id);
                 return action;
               })

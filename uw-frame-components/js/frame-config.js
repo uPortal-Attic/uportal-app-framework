@@ -1050,7 +1050,7 @@ define(['angular'], function(angular) {
         })
         .constant('KV_KEYS', {
           'VIEWED_NOTIFICATION_IDS': 'viewednotificationids',
-          'VIEWED_ANNOUNCEMENT_IDS': 'viewedannouncementids'
+          'VIEWED_ANNOUNCEMENT_IDS': 'viewedannouncementids',
         })
         .constant('FRAME_BETA_FEATURES', [
           {

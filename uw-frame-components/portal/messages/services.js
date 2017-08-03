@@ -101,7 +101,7 @@ define(['angular'], function(angular) {
           //     $log.error(error);
           //     return [];
           //   });
-          return [];
+          return [2,3];
         };
 
         var setNotificationsSeen = function(ids) {
