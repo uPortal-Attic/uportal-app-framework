@@ -80,7 +80,7 @@
   <a ng-if="vm.notificationsEnabled && directiveMode === 'bell' && vm.notifications.length === 0"
      class="notification-desktop"
      ng-click="vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');"
-     ng-href="vm.notificationsUrl">
+     ng-href="{{ vm.notificationsUrl }}">
     <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
     <div class="notification-badge" aria-label="{{ status }}" ng-class="{ 'notification-badge-empty' : vm.notifications.length === 0 }">
       <md-icon>notifications</md-icon>

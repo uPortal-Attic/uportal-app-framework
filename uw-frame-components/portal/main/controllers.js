@@ -161,9 +161,9 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Header */
   .controller('PortalHeaderController', ['$rootScope', '$scope', '$location',
-    'NAMES', 'APP_FLAGS', 'MISC_URLS', 'notificationsService',
+    'NAMES', 'APP_FLAGS', 'MISC_URLS', 'messagesService',
     function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS,
-             notificationsService) {
+             messagesService) {
       var vm = this;
       vm.navbarCollapsed = true;
       vm.showLogout = true;

@@ -57,17 +57,16 @@ define(['angular'], function(angular) {
     .controller('PortalUserSettingsController', [
       '$scope', '$q', '$window', '$localStorage',
       '$log', '$sessionStorage', '$rootScope',
-      'KV_KEYS', 'NOTIFICATION', 'FEATURES', 'keyValueService',
+      'KV_KEYS', 'MESSAGES', 'keyValueService',
       function(
       $scope, $q, $window, $localStorage,
       $log, $sessionStorage, $rootScope,
-      KV_KEYS, NOTIFICATION, FEATURES, keyValueService
+      KV_KEYS, MESSAGES, keyValueService
     ) {
       var init = function() {
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
         $scope.KV_KEYS = KV_KEYS;
-        $scope.NOTIFICATION = NOTIFICATION;
-        $scope.FEATURES = FEATURES;
+        $scope.MESSAGES = MESSAGES;
       };
 
       $scope.resetAnnouncements = function() {
@@ -75,8 +74,7 @@ define(['angular'], function(angular) {
         delete $sessionStorage.seenPopupIds;
         if (keyValueService.isKVStoreActivated()) {
           $scope.loadingResetAnnouncements = true;
-          $q.all([keyValueService.deleteValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS),
-                  keyValueService.deleteValue(KV_KEYS.VIEWED_POPUP_IDS)])
+          keyValueService.deleteValue(KV_KEYS.VIEWED_MESSAGE_IDS)
             .then(function() {
               $window.location.reload();
               $scope.loadingResetAnnouncements = false;

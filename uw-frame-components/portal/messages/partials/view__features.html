@@ -2,22 +2,22 @@
   <md-content class="features-feed" layout-padding>
 
     <!-- NO FEATURES -->
-    <div ng-if="vm.features.length === 0" layout="row" layout-align="center center"> <!--empty case -->
+    <div ng-if="vm.announcement.length === 0" layout="row" layout-align="center center"> <!--empty case -->
       <p>No features listed at this time, please check back later.</p>
     </div>
 
     <!-- DISPLAY FEATURES -->
-    <div class="feature-item" ng-repeat="feature in vm.features | orderBy: '-id'">
-      <p class="date">{{ feature.goLiveDate | date:mediumDate }}</p>
-      <h3 class="md-title">{{ feature.title }}</h3>
+    <div class="feature-item" ng-repeat="announcement in vm.announcements | orderBy: '-id'">
+      <p class="date">{{ announcement.goLiveDate | date:mediumDate }}</p>
+      <h3 class="md-title">{{ announcement.title }}</h3>
 
       <div class="feature-content" layout="column" layout-align-xs="start none">
         <div class="feature-text">
-          <p class="description">{{ feature.description }}</p>
-          <p ng-if="feature.moreInfoButton"><a ng-href="feature.moreInfoButton.url">{{ feature.moreInfoButton.label }}</a></p>
+          <p class="description">{{ announcement.description }}</p>
+          <p ng-if="announcement.moreInfoButton"><a ng-href="announcement.moreInfoButton.url">{{ announcement.moreInfoButton.label }}</a></p>
         </div>
-        <div class="feature-images" ng-if="feature.featureImageUrl" layout-gt-xs="row" layout-xs="column" layout-align="start start">
-          <img ng-src="{{ feature.featureImageUrl }}">
+        <div class="feature-images" ng-if="announcement.featureImageUrl" layout-gt-xs="row" layout-xs="column" layout-align="start start">
+          <img ng-src="{{ announcement.featureImageUrl }}">
         </div>
       </div>
 

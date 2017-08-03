@@ -34,15 +34,11 @@ define(['angular'], function(angular) {
         .value('SEARCH', {
             'searchURL': '/web/apps/search/',
         })
-        .value('FEATURES', {
-            'enabled': false,
+        .value('MESSAGES', {
+            'announcementsEnabled': true,
+            'notificationsEnabled': true,
             'groupFiltering': false,
-            'serviceURL': 'staticFeeds/features.json',
-        })
-        .value('NOTIFICATION', {
-            'enabled': true,
-            'groupFiltering': true,
-            'notificationFullURL': '/notifications',
+            'notificationsPageURL': '/notifications',
         })
         .value('MISC_URLS', {
             'feedbackURL': 'https://my.wisc.edu/portal/p/feedback',

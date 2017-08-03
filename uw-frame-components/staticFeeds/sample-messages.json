@@ -2,11 +2,11 @@
   "messages": [
     {
       "id": 0,
-      "title": "This is a notification. Part of how you know it's a notification is because it doesn't have an announcement URL!",
+      "title": "This is a notification. You know it's a notification because that's it's messageType",
       "titleShort": null,
       "description": null,
       "descriptionShort": null,
-      "announcementInfoUrl": null,
+      "messageType": "notification",
       "goLiveDate": null,
       "expireDate": null,
       "featureImageUrl": null,
@@ -30,7 +30,7 @@
       "titleShort": null,
       "description": null,
       "descriptionShort": null,
-      "announcementInfoUrl": null,
+      "messageType": "notification",
       "goLiveDate": null,
       "expireDate": null,
       "featureImageUrl": null,
@@ -54,7 +54,7 @@
       "titleShort": "This is a short title",
       "description": "This is the long description for a mascot announcement. It is lower priority than a popup.",
       "descriptionShort": "This is a short description",
-      "announcementInfoUrl": "/features",
+      "messageType": "announcement",
       "goLiveDate": "2017-08-01T09:30",
       "expireDate": "2017-08-15",
       "featureImageUrl": "img/features/bucky-announcement.png",
@@ -66,7 +66,10 @@
         "dataArrayFilter": {}
       },
       "actionButton": null,
-      "moreInfoButton": null,
+      "moreInfoButton": {
+        "label": "Read more",
+        "url": "/features"
+      },
       "confirmButton": null
     },
     {
@@ -75,7 +78,7 @@
       "titleShort": "Popup message",
       "description": "A popup message is a high priority message about MyUW",
       "descriptionShort": "Woot",
-      "announcementInfoUrl": "/features",
+      "messageType": "announcement",
       "goLiveDate": "2017-08-01T09:30",
       "expireDate": "2017-08-15",
       "featureImageUrl": "img/the-cow.png",
@@ -87,8 +90,13 @@
         "dataArrayFilter": {}
       },
       "actionButton": null,
-      "moreInfoButton": null,
-      "confirmButton": null
+      "moreInfoButton": {
+        "label": "Read more",
+        "url": "/features"
+      },
+      "confirmButton": {
+        "label": "Got it!"
+      }
     }
   ]
 }

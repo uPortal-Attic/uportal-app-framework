@@ -1049,9 +1049,8 @@ define(['angular'], function(angular) {
             'aboutFrame': 'staticFeeds/about-frame.json',
         })
         .constant('KV_KEYS', {
-          'VIEWED_ANNOUNCEMENT_IDS': 'viewedannouncementids',
-          'VIEWED_POPUP_IDS': 'viewedpopupids',
-          'DISMISSED_NOTIFICATION_IDS': 'notification:dismiss',
+          'VIEWED_NOTIFICATION_IDS': 'viewednotificationids',
+          'VIEWED_ANNOUNCEMENT_IDS': 'viewedannouncementids'
         })
         .constant('FRAME_BETA_FEATURES', [
           {

@@ -1,0 +1,52 @@
+<!-- DESKTOP MASCOT ANNOUNCEMENTS -->
+<md-menu class="mascot-menu announcement-creeper"
+         ng-if="mode === 'mascot' && vm.announcements && vm.announcements.length > 0"
+         ng-class="{ 'announcement-hover' : vm.hover, 'announcement-active' : vm.active }"
+         md-offset="-200 0"
+         md-position-mode="target bottom">
+  <md-button class="mascot-button"
+             ng-click="vm.toggleActive();vm.toggleHover();$mdOpenMenu($event);"
+             ng-mouseenter="vm.toggleHover()"
+             ng-mouseleave="vm.toggleHover()"
+             aria-label="Click to see what's new"
+             md-no-ink
+             md-menu-origin>
+    <img ng-src="{{ vm.mascotImage }}"
+         ng-click="pushGAEvent('feature', 'toggle-bucky', 'na');">
+    <md-tooltip ng-if="!vm.active" md-direction="bottom" class="top-bar-tooltip" md-delay="500">
+      Click to see what's new ({{ vm.announcements.length }})
+    </md-tooltip>
+  </md-button>
+  <md-menu-content class="top-bar-menu-content">
+    <md-menu-item layout="row" layout-align="space-between center">
+      <span>Announcements</span>
+      <a href="features" ng-click="vm.markAllAnnouncementsSeen()" aria-label="see all announcements" class="link__see-all">
+        See all ({{ vm.announcements.length }})
+      </a>
+    </md-menu-item>
+    <md-menu-item ng-repeat="announcement in vm.announcements | orderBy:'-id' | limitTo:3"
+                  class="top-bar-menu-item">
+      <div class="menu-item-content" layout="row" layout-align="space-between start">
+        <div layout="column" layout-align="center start" flex="80">
+          <span class="menu-item-title">{{ announcement.titleShort }}</span>
+          <span>{{ announcement.descriptionShort }}</span>
+        </div>
+        <md-button class="md-icon-button button__mark-seen" ng-click="markAnnouncementSeen(announcement.id, false);" md-prevent-menu-close="md-prevent-menu-close" aria-label="mark this announcement seen" flex="20">
+          <md-icon>clear</md-icon>
+        </md-button>
+      </div>
+    </md-menu-item>
+  </md-menu-content>
+</md-menu>
+
+<!-- MOBILE MENU ANNOUNCEMENTS -->
+<div ng-if="mode === 'mobile-menu' && vm.announcements && vm.announcements.length > 0" class="mobile">
+  <md-menu-item>
+    <md-button class="md-default" href="features"
+               ng-click="vm.markAllAnnouncementsSeen()"
+               layout="row" layout-align="start center">
+      <md-icon>new_releases</md-icon>
+      <span>What's new ({{ vm.announcements.length }})</span>
+    </md-button>
+  </md-menu-item>
+</div>

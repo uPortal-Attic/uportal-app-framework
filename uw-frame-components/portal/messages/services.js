@@ -12,7 +12,7 @@ define(['angular'], function(angular) {
       'miscService',
       'keyValueService',
       'SERVICE_LOC',
-      'FEATURES',
+      'MESSAGES',
       'KV_KEYS',
       function($http,
                $log,
@@ -23,7 +23,7 @@ define(['angular'], function(angular) {
                miscService,
                keyValueService,
                SERVICE_LOC,
-               FEATURES,
+               MESSAGES,
                KV_KEYS) {
         // //////////////////
         // Local variables //
@@ -45,7 +45,7 @@ define(['angular'], function(angular) {
          * @property {string} titleShort
          * @property {string} description
          * @property {string} descriptionShort
-         * @property {string} announcementInfoUrl
+         * @property {string} messageType
          * @property {string} goLiveDate
          * @property {string} expireDate
          * @property {string} featureImageUrl
@@ -70,10 +70,6 @@ define(['angular'], function(angular) {
         };
 
         var getMessagesByData = function() {
-
-        };
-
-        var getUnseenMessages = function() {
 
         };
 
@@ -105,25 +101,24 @@ define(['angular'], function(angular) {
           //     $log.error(error);
           //     return [];
           //   });
-          return [2, 3];
+          return [];
         };
 
-        var setMessageSeen = function() {
-
+        var setNotificationsSeen = function(ids) {
+          keyValueService.setValue(KV_KEYS.VIEWED_NOTIFICATION_IDS, ids);
         };
 
-        var setSeenMessages = function(ids) {
-          keyValueService.setValue(KV_KEYS.SEEN_MESSAGE_IDS, ids);
+        var setAnnouncementsSeen = function(ids) {
+          keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, ids);
         };
 
         return {
           getAllMessages: getAllMessages,
           getMessagesByGroup: getMessagesByGroup,
           getMessagesByData: getMessagesByData,
-          getUnseenMessages: getUnseenMessages,
           getSeenMessageIds: getSeenMessageIds,
-          setMessageSeen: setMessageSeen,
-          setSeenMessages: setSeenMessages,
+          setNotificationsSeen: setNotificationsSeen,
+          setAnnouncementsSeen: setAnnouncementsSeen,
         };
     }]);
 });

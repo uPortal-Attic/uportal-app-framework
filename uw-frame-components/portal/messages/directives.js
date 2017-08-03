@@ -13,5 +13,25 @@ define(['angular', 'require'], function(angular, require) {
         controller: 'NotificationsController',
         controllerAs: 'vm',
       };
+    })
+
+    .directive('notificationsListItem', function() {
+      return {
+        restrict: 'E',
+        templateUrl: require.toUrl('./partials/notifications-list-item.html'),
+      };
+    })
+
+    .directive('mascotAnnouncement', function() {
+      return {
+        restrict: 'E',
+        templateUrl: require.toUrl('./partials/announcement-mascot.html'),
+        scope: {
+          mode: '@',
+          headerCtrl: '=headerCtrl',
+        },
+        controller: 'AnnouncementsController',
+        controllerAs: 'vm',
+      };
     });
 });
