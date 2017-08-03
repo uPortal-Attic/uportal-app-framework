@@ -83,10 +83,21 @@ define(['angular'], function(angular) {
          * @param result
          */
         var filterNotificationsSuccess = function(result) {
+          // Check for filtered notifications
+          var filteredNotifications = [];
+          if (result.filteredByGroup && result.filteredByData) {
+            // Combine the two filtered arrays into one (no dupes)
+
+            // Set filtered announcements to the combined result
+            filteredNotifications = allNotifications;
+          } else {
+            filteredNotifications = allNotifications;
+          }
+
           // Use $filter to separate seen/unseen
           if (result.seenMessageIds && result.seenMessageIds.length > 0) {
             separatedNotifications = $filter('filterSeenAndUnseen')(
-              allNotifications,
+              filteredNotifications,
               result.seenMessageIds
             );
             // Set scope notifications and dismissed notifications
@@ -98,18 +109,18 @@ define(['angular'], function(angular) {
             angular.forEach(vm.dismissedNotifications, function(value) {
               dismissedNotificationIds.push(value.id);
             });
-
-            // If user is anywhere other than the notifications page,
-            // check for priority notifications and set them in scope
-            if ($location.url().indexOf('notifications') === -1) {
-              configurePriorityNotificationsScope();
-            } else {
-              clearPriorityNotificationsFlags();
-            }
           } else {
             // If there aren't any seen notification IDs, just set all
             // notifications
             vm.notifications = allNotifications;
+          }
+
+          // If user is anywhere other than the notifications page,
+          // check for priority notifications and set them in scope
+          if ($location.url().indexOf('notifications') === -1) {
+            configurePriorityNotificationsScope();
+          } else {
+            clearPriorityNotificationsFlags();
           }
 
           // Set aria-label in notifications bell
@@ -331,12 +342,21 @@ define(['angular'], function(angular) {
          * @param result
          */
         var filterAnnouncementsSuccess = function(result) {
+          var filteredAnnouncements = [];
+          // Check for filtered messages
+          if (result.filteredByGroup && result.filteredByGroup.length > 0) {
+            // Set filtered announcements to the result
+            filteredAnnouncements = result.filteredByGroup;
+          } else {
+            filteredAnnouncements = allAnnouncements;
+          }
+
           // Separate seen and unseen
           if (result.seenMessageIds && result.seenMessageIds.length > 0) {
             separatedAnnouncements = $filter('filterSeenAndUnseen')(
-              allAnnouncements,
+              filteredAnnouncements,
               result.seenMessageIds
-            )
+            );
             // Set local seenAnnouncementsIds (used for tracking seen
             // messages in the K/V store and sessionStorage
             angular.forEach(separatedAnnouncements.seen, function(value) {
@@ -345,7 +365,7 @@ define(['angular'], function(angular) {
           } else {
             separatedAnnouncements = {
               seen: [],
-              unseen: allAnnouncements,
+              unseen: filteredAnnouncements,
             };
           }
 
