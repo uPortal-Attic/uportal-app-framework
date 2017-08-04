@@ -87,14 +87,16 @@ define(['angular'], function(angular) {
                     if (!added) {
                       // Check for matches against the groups returned
                       // by portalGroupService
-                      var inGroup = $.grep(groups, function(group) {
-                        return group.name === messageGroup;
-                      }).length;
-                      if (inGroup > 0) {
-                        // If user is in this group, he should see this notification
-                        messagesByGroup.push(message);
-                        added = true;
-                      }
+
+                      // var inGroup = $.grep(groups, function(group) {
+                      //   return group.name === messageGroup;
+                      // }).length;
+                      // if (inGroup > 0) {
+                      //   // If user is in this group, he should see this
+                      //   // notification
+                      //   messagesByGroup.push(message);
+                      //   added = true;
+                      // }
                     }
                 });
               });
@@ -141,7 +143,10 @@ define(['angular'], function(angular) {
                     if (!angular.isArray(objectToFind)) {
                       return;
                     }
-                    if ($filter('filter')(objectToFind, arrayFilter).length > 0) {
+                    if ($filter('filter')(
+                        objectToFind,
+                        arrayFilter
+                      ).length > 0) {
                       return message;
                     }
                   } else if (objectToFind) {

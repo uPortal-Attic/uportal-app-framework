@@ -35,6 +35,6 @@ define(['angular'], function(angular) {
         return array1.filter(function(element) {
           return array2.indexOf(element) != -1;
         });
-      }
+      };
     });
 });

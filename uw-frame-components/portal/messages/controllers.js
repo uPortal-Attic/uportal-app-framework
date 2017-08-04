@@ -91,7 +91,7 @@ define(['angular'], function(angular) {
               result.filteredByGroup,
               result.filteredByData
             );
-            configureNotificationsScope(filteredNotifications, result)
+            configureNotificationsScope(filteredNotifications, result);
           } else {
             filteredNotifications = allNotifications;
             configureNotificationsScope(filteredNotifications, result);
