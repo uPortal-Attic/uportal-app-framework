@@ -37,7 +37,7 @@ define(['angular'], function(angular) {
         .value('MESSAGES', {
             'announcementsEnabled': true,
             'notificationsEnabled': true,
-            'groupFiltering': false,
+            'groupFiltering': true,
             'notificationsPageURL': '/notifications',
         })
         .value('MISC_URLS', {

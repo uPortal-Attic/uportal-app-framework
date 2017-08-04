@@ -29,5 +29,12 @@ define(['angular'], function(angular) {
         });
         return messages;
       };
+    })
+    .filter('filterForCommonElements', function() {
+      return function(array1, array2) {
+        return array1.filter(function(element) {
+          return array2.indexOf(element) != -1;
+        });
+      }
     });
 });

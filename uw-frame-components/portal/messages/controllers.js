@@ -62,8 +62,8 @@ define(['angular'], function(angular) {
          */
         var filterNotifications = function() {
           // Check for group filtering
-          if (MESSAGES.groupFiltering &&
-            !$localStorage.disableGroupFilteringForNotifications) {
+          // && !$localStorage.disableGroupFilteringForNotifications
+          if (MESSAGES.groupFiltering) {
             // Call filtered notifications promises, then pass on to
             // the completion function
             $q.all(promiseFilteredNotifications)
@@ -87,17 +87,36 @@ define(['angular'], function(angular) {
           var filteredNotifications = [];
           if (result.filteredByGroup && result.filteredByData) {
             // Combine the two filtered arrays into one (no dupes)
-
-            // Set filtered announcements to the combined result
-            filteredNotifications = allNotifications;
+            filteredNotifications = $filter('filterForCommonElements')(
+              result.filteredByGroup,
+              result.filteredByData
+            );
+            configureNotificationsScope(filteredNotifications, result)
           } else {
             filteredNotifications = allNotifications;
+            configureNotificationsScope(filteredNotifications, result);
           }
+        };
 
+        /**
+         * Handle errors that occur while resolving promises to
+         * get notifications
+         * @param error
+         */
+        var filterNotificationsFailure = function(error) {
+          $log.warn('Problem getting messages from messagesService');
+        };
+
+        /**
+         * Separate seen and unseen notifications, then set scope variables
+         * @param notifications
+         * @param result
+         */
+        var configureNotificationsScope = function(notifications, result) {
           // Use $filter to separate seen/unseen
           if (result.seenMessageIds && result.seenMessageIds.length > 0) {
             separatedNotifications = $filter('filterSeenAndUnseen')(
-              filteredNotifications,
+              notifications,
               result.seenMessageIds
             );
             // Set scope notifications and dismissed notifications
@@ -127,15 +146,6 @@ define(['angular'], function(angular) {
           vm.status = 'You have '
             + (vm.notifications.length === 0 ? 'no ' : '')
             + 'notifications';
-        };
-
-        /**
-         * Handle errors that occur while resolving promises to
-         * get notifications
-         * @param error
-         */
-        var filterNotificationsFailure = function(error) {
-          $log.warn('Problem getting messages from messagesService');
         };
 
         /**

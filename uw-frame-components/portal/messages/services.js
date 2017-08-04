@@ -55,6 +55,10 @@ define(['angular'], function(angular) {
          * @property {Object} confirmButton
          */
 
+        /**
+         * Get everything at the messages service endpoint
+         * @returns {Array} An array of message objects
+         */
         var getAllMessages = function() {
           return $http.get(SERVICE_LOC.messagesURL)
             .then(function(response) {
@@ -65,12 +69,105 @@ define(['angular'], function(angular) {
             });
         };
 
-        var getMessagesByGroup = function() {
-
+        /**
+         * Filter the array of messages based on each message's groups
+         * attribute
+         * @param messages An array of message objects
+         * @returns {Array} A filtered array of messages
+         */
+        var getMessagesByGroup = function(messages) {
+          return portalGroupService.getGroups()
+            .then(function(groups) {
+              var messagesByGroup = [];
+              angular.forEach(messages, function(message) {
+                var added = false;
+                // For each group for the current notification
+                angular.forEach(message.audienceFilter.groups,
+                  function(messageGroup) {
+                    if (!added) {
+                      // Check for matches against the groups returned
+                      // by portalGroupService
+                      var inGroup = $.grep(groups, function(group) {
+                        return group.name === messageGroup;
+                      }).length;
+                      if (inGroup > 0) {
+                        // If user is in this group, he should see this notification
+                        messagesByGroup.push(message);
+                        added = true;
+                      }
+                    }
+                });
+              });
+              return messagesByGroup;
+            })
+            .catch(function(error) {
+              $log.warn('Problem getting groups from portalGroupService');
+              miscService.redirectUser(
+                error.status, 'Unable to retrieve groups');
+            });
         };
 
-        var getMessagesByData = function() {
+        /**
+         * Filter the array of messages based on if
+         * data was requested before showing
+         * @param messages An array of message objects
+         * @returns {filteredMessages[]} an array of messages that
+         *   includes only non-data messages and messages that requested
+         *   data and had data
+         */
+        var getMessagesByData = function(messages) {
+          // Initialize method variables
+          var promises = [];
+          var filteredMessages = [];
 
+          angular.forEach(messages, function(message) {
+            if (message.audienceFilter.dataUrl) {
+              // If the message has a dataUrl, add it to promises array
+              promises.push($http.get(message.audienceFilter.dataUrl)
+                .then(function(result) {
+                  var objectToFind = result.data;
+                  // If dataObject specified, try to use it
+                  if (result && message.audienceFilter.dataObject) {
+                    objectToFind =
+                      objectToFind[message.audienceFilter.dataObject];
+                  }
+                  // If dataArrayFilter specified, then use it to filter
+                  if (objectToFind && message.audienceFilter.dataArrayFilter) {
+                    var arrayFilter = angular.fromJson(
+                      message.audienceFilter.dataArrayFilter
+                    );
+                    // If you try to do an array filter on a non-array,
+                    // return blank
+                    if (!angular.isArray(objectToFind)) {
+                      return;
+                    }
+                    if ($filter('filter')(objectToFind, arrayFilter).length > 0) {
+                      return message;
+                    }
+                  } else if (objectToFind) {
+                    return message;
+                  }
+                  return message;
+                }).catch(function(error) {
+                  $log.warn('Error retrieving data for notification');
+                  $log.error(error);
+                }
+              ));
+            } else {
+              filteredMessages.push(message);
+            }
+          });
+
+          // Once all the promises are prepared, run 'em
+          return $q.all(promises)
+            .then(function(result) {
+              angular.forEach(result, function(message) {
+                if (message) {
+                  filteredMessages.push(message);
+                }
+              });
+              return filteredMessages;
+            });
         };
 
         var getSeenMessageIds = function() {

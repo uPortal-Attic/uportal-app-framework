@@ -2,7 +2,7 @@
   "messages": [
     {
       "id": 0,
-      "title": "This is a notification. You know it's a notification because that's it's messageType",
+      "title": "This is a notification. You know it's a notification because that's its messageType",
       "titleShort": null,
       "description": null,
       "descriptionShort": null,
@@ -31,7 +31,7 @@
       "description": null,
       "descriptionShort": null,
       "messageType": "notification",
-      "goLiveDate": null,
+      "goLiveDate": "2017-08-03",
       "expireDate": null,
       "featureImageUrl": null,
       "priority": "high",
