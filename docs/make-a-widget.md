@@ -20,7 +20,7 @@ The barebones widget provides an app title, a large icon, and a launch button wi
 ### Sample entity file
 
 This code block includes most of the fields needed to configure a widget, but there are additional XML tags (`<portlet-definition>`) you'll need
-to create one from scratch. [See the full entity file](./assets/examples/example-entity.xml) for a complete example. Widgets are app directorty entries, so see also [documentation about the app directory].
+to create one from scratch. Widgets are app directory entries, so see also [documentation about the app directory][].
 
 ```xml
 <title>Enrollment</title>
@@ -152,7 +152,7 @@ Follow these steps for each of the predefined widget types described in this doc
 
 * `launchText` is optional. Omitting `launchText` suppresses the launch button at the bottom of the list-of-links widget. This is appropriate
 when there's nothing more to launch, that is, when the list-of-links widget simply presents all the intended links and that's all there is to it.
-* Avoid using a `list-of-links` widget when you only need to display one link. Instead, use the name and `alternativeMaximizedLink` of [the app directory entry](app-directory.md) to represent the link.
+* Avoid using a `list-of-links` widget when you only need to display one link. Instead, use the name and `alternativeMaximizedLink` of [the app directory entry](https://uw-madison-doit.github.io/angularjs-portal/app-directory) to represent the link.
 This provides a more usable click surface, a simpler and cleaner user experience, and achieves better consistency with other just-a-link widgets in MyUW.
 * The length of your list of links will affect the widget's appearance. If you have more than 4 links, they will be displayed in a more traditional-style list, rather than with the `<circle-button>` directive.
 * Use sentence case in the titles of the links.
@@ -308,7 +308,7 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 
 #### Guidance
 
-If there are multiple action item types to display, the widget will display the first 3 in the list. If there are more than 3, it will display a note that says "Showing 3 of [x]".
+If there are multiple action item types to display, the widget will display the first 3 in the list. If there are more than 3, it will display a note that says "Showing 3 of \[x]".
 
 The endpoint used for **feedUrl** should return a simple JSON object containing a "quantity" key with a number for a value. For example:
 

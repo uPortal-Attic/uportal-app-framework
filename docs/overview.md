@@ -16,8 +16,7 @@ development by handling things like:
 
 See the [configuration doc](configuration.md) to learn how to configure these features.
 
-<img src="img/frame-overview.png" alt="frame overview">
-
+![frame overview](img/frame-overview.png)
 
 In addition to the features pictured above, frame provides:
 

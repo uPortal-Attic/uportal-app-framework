@@ -57,8 +57,8 @@ If clicked again while in this state, the mascot will slide back down to the ini
 
 ### Announcements Exercise
 
-To try announcements, switch the [announcements enabled to true](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js#L36)
-and the [group filtering flag to true](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js#L37).
+To try announcements, switch the [announcements enabled to true](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js)
+and the [group filtering flag to true](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js).
 
 Next, add a sample announcement
 
@@ -77,10 +77,10 @@ try adding this announcement to the sample feed
     "isBuckyAnnouncement" : true,
     "buckyAnnouncement" : {
       "shortTitle" : "Check out a sample announcement",
-      "shortDesc" : "This is a sample announcment",
+      "shortDesc" : "This is a sample announcement",
       "endDate" : "2017-08-31"
     }
   }
 ```
 
-Try making it a pop up feature too.  
+Try making it a pop up feature too.
