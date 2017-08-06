@@ -2,33 +2,43 @@
 
 a {
   transition: @link-hover-transition;
+
   &:not(.md-button):not(.btn):not(.launch-app-button):not(.full-width) {
     text-decoration: none;
+
     &:hover {
       text-decoration: underline;
     }
   }
 }
-h1,h2,h3 {
+
+h1,
+h2,
+h3 {
   font-weight: 200;
 }
+
 p {
   font-weight: 400;
 }
+
 ul {
   list-style-type: none;
-  -webkit-padding-start: 0px;
+  -webkit-padding-start: 0;
   padding-left: 0;
 }
+
 div:focus,
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none !important;
+  outline: none !important;
 }
+
 .md-tab {
   text-transform: none;
+
   .badge {
     display: inline-block;
     min-width: 10px;
@@ -43,6 +53,7 @@ button:focus {
     background-color: #999;
     border-radius: 10px;
   }
+
   &.md-active {
     .badge {
       background-color: @color1;

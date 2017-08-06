@@ -1,8 +1,11 @@
 portal-header {
   display: block;
+
   a {
     &:not(.md-button):not(.btn):not(.launch-app-button):not(.full-width) {
-      &:hover, &:focus, &:active {
+      &:hover,
+      &:focus,
+      &:active {
         text-decoration: none;
       }
     }
@@ -11,7 +14,7 @@ portal-header {
   md-toolbar {
     min-height: 56px;
     position: fixed;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
     z-index: 98;
     top: 0;
     overflow-y: hidden;
@@ -47,12 +50,13 @@ portal-header {
         .avatar__default {
           margin-right: 12px;
         }
+
         .md-icon-button {
           margin-right: 0;
         }
       }
 
-      @media (max-width:@xs) {
+      @media (max-width: @xs) {
         padding-right: 0;
       }
     }
@@ -68,7 +72,7 @@ portal-header {
     }
   }
 
-  @media (max-width:@xs) {
+  @media (max-width: @xs) {
     .search-xs {
       width: 100%;
       position: absolute;
@@ -76,7 +80,7 @@ portal-header {
       z-index: 98;
       overflow: hidden;
       transition: @search-transition;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0, 0, 0, 0.4);
 
       &:not(.search-expanded) {
         height: 0;
