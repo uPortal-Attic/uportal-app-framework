@@ -3,18 +3,21 @@ footer {
   width: 100%;
   background-color: @footer-background-color;
   color: @footer-text-color;
-  font-size : 12px;
+  font-size: 12px;
   min-height: 10vh;
+
   a {
     color: @footer-text-color;
     text-decoration: underline;
+
     &:hover {
       color: lighten(@footer-text-color, 20%);
       text-decoration: underline;
     }
   }
+
   .links-separated > span {
-    &:before {
+    &::before {
       content: '\f111';
       font-family: 'FontAwesome';
       display: inline-block;
@@ -23,15 +26,18 @@ footer {
       position: relative;
       margin: 0 4px;
     }
-    &:first-child:before {
+
+    &:first-child::before {
       display: none;
     }
   }
+
   .copyright p {
     display: inline;
   }
+
   .footer-links {
     line-height: 1.5em;
-    padding-top : 1em;
+    padding-top: 1em;
   }
 }

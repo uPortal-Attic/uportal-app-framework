@@ -2,8 +2,10 @@
 .notifications {
   padding-left: 0;
   padding-right: 0;
+
   .notifications-list {
     padding: 0;
+
     .notification-item {
       color: #333;
       font-weight: 400;
@@ -11,57 +13,69 @@
       padding: 0 16px;
       transition: @background-transition;
       border-bottom: 1px solid @grayscale3;
+
       &.priority {
         .fa.fa-exclamation-triangle {
           padding-right: 5px;
           color: @color1;
         }
       }
+
       &:hover {
-        background-color: rgba(0,0,0,0.12);
+        background-color: rgba(0, 0, 0, 0.12);
       }
+
       notifications-list-item {
         width: 100%;
       }
+
       .notification-buttons {
         display: flex;
         margin: 0 8px;
+
         .md-button {
           @media (min-width: @xs) {
             margin: 0 8px;
           }
         }
       }
+
       a:not(.md-button):not(.btn):not(.launch-app-button) {
         &:hover {
           text-decoration: none;
         }
       }
+
       .md-list-item-text {
         width: 90%;
         padding: 16px 0;
+
         @media (max-width: @xs) {
           width: 80%;
         }
       }
+
       .md-secondary {
         color: @grayscale7;
         transition: @link-hover-transition;
+
         &:hover {
           color: @grayscale9;
         }
       }
     }
+
     @media (max-width: @sm) {
       margin-right: 0;
     }
   }
-  li.read {
-    padding:8px 10px;
-  }
-  li.read:hover {
-    cursor:pointer;
 
+  li.read {
+    padding: 8px 10px;
+  }
+
+  li.read:hover {
+    cursor: pointer;
   }
 
   .notification-badge {
@@ -74,7 +88,7 @@
     color: @white;
 
     &.notification-badge-empty {
-      color : lighten(@color1, 30%);
+      color: lighten(@color1, 30%);
     }
 
     /* MOBILE BELL ON TOP OF HAMBURGER */
@@ -83,13 +97,14 @@
       background-color: #fff;
       width: 18px;
       height: 18px;
-      margin: 0 0 0;
+      margin: 0;
       border-radius: 50%;
       padding: 0;
       color: @color1;
       z-index: 98;
       top: 0;
       right: 26px;
+
       > .material-icons {
         color: @color1;
         font-size: 16px;
@@ -103,6 +118,7 @@
         left: 0;
       }
     }
+
     .number-of-nots {
       color: @color1;
       font-weight: 400;
@@ -112,6 +128,7 @@
       line-height: 40px;
       left: 14px;
     }
+
     .more-than-10-nots {
       left: 13px;
       font-size: small;
@@ -133,7 +150,7 @@
       }
 
       &:hover {
-        color:#ccc;
+        color: #ccc;
       }
     }
   }
@@ -151,42 +168,49 @@
   align-items: center;
   border: 1px solid @black;
   top: 0;
+
   .notification-message {
-    font-size:15px;
+    font-size: 15px;
   }
+
   p {
     margin-bottom: 0;
   }
 }
 
 .priority-xs .priority-notifications {
-  min-height:40px;
+  min-height: 40px;
   position: relative;
   top: 0;
-  margin:0px -15px;
-  padding:12px 20px;
+  margin: 0 -15px;
+  padding: 12px 20px;
   background-color: @grayscale2;
+
   .notification-message {
-    font-size:13px;
+    font-size: 13px;
   }
 }
 
 .priority-gt-xs .priority-notifications,
 .priority-xs .priority-notifications {
   .notification-message {
-    color:@black;
-    text-align:center;
+    color: @black;
+    text-align: center;
     display: block;
-    margin-bottom:0;
+    margin-bottom: 0;
+
     a {
       color: @link-color;
     }
   }
+
   a.notification-message {
     color: @link-color;
   }
+
   .notification-buttons {
     margin-left: 26px;
+
     .md-button {
       text-transform: none;
       min-height: 0;
@@ -194,14 +218,17 @@
       line-height: 26px;
     }
   }
+
   .dismiss-priority {
     position: fixed;
     right: 0;
+
     .md-button {
       min-height: 0;
       max-height: 30px;
       width: 30px;
       padding: 0;
+
       .md-icon {
         font-size: 22px;
       }
@@ -209,8 +236,8 @@
   }
 }
 
-
 // New Stuff Div
+
 /*
   TODO: determine whether any of this is still needed
 */
@@ -218,35 +245,39 @@
 // News Mockups
 
 .news-article-title {
-  font-weight:200;
-  position:absolute;
-  bottom:28px;
-  right:15px;
-  color:#333;
-  padding:0;
-  margin:0;
-  font-size:1.8em;
+  font-weight: 200;
+  position: absolute;
+  bottom: 28px;
+  right: 15px;
+  color: #333;
+  padding: 0;
+  margin: 0;
+  font-size: 1.8em;
 }
+
 .news-article-description {
-  position:absolute;
-  bottom:8px;
-  right:15px;
-  color:#333;
-  margin:0;
-  padding:0;
+  position: absolute;
+  bottom: 8px;
+  right: 15px;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
+
 .news-section-title {
-  font-size:0.7em;
-  position:absolute;
-  bottom:53px;
-  right:5px;
-  color:#333;
-  margin:0;
-  padding:0;
+  font-size: 0.7em;
+  position: absolute;
+  bottom: 53px;
+  right: 5px;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
+
 .news-article a {
-  color:@color1;
+  color: @color1;
 }
+
 .page-h1 {
   font-size: 2.3em;
   color: @color1;
