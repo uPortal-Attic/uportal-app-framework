@@ -3,8 +3,8 @@
     margin-bottom: 30px;
 
     p.date {
-      color: rgba(0,0,0,0.7);
-      margin-bottom:0;
+      color: rgba(0, 0, 0, 0.7);
+      margin-bottom: 0;
     }
 
     h3.md-title {
@@ -20,6 +20,7 @@
           border-radius: 3px;
           max-width: 100%;
           margin: 12px 16px 16px 0;
+
           @media (min-width: @sm) {
             max-width: 800px;
           }
@@ -30,62 +31,76 @@
 }
 
 .features-popup {
-  padding:30px;
+  padding: 30px;
+
   p {
-    margin:10px 0;
+    margin: 10px 0;
+
     a {
-      color:@color1;
+      color: @color1;
     }
   }
+
   img {
-    width:100%;
+    width: 100%;
   }
+
   @media (max-width: @xs) {
     img {
-      display:none;
+      display: none;
     }
+
     h1 {
       font-size: 24px;
     }
   }
 }
+
 portal-header md-toolbar .md-toolbar-tools mascot-announcement {
   margin-right: 20px;
 
   .md-menu.announcement-creeper {
     max-height: 48px;
     position: relative;
+
     img {
       transition: @mascot-transition;
       position: relative;
       top: 26px;
     }
+
     &.announcement-hover {
       img {
         top: 22px;
       }
     }
+
     &.announcement-active {
       img {
         top: 0;
       }
     }
+
     .mascot-button {
       overflow: visible;
+
       &:hover {
         background-color: transparent;
       }
     }
+
     .mascot-menu-origin {
       height: 0;
       width: 0;
       position: relative;
       left: 0;
     }
+
     @media (max-width: @sm) {
       margin-right: 0;
     }
   }
+
   img:focus {
     outline: none;
   }

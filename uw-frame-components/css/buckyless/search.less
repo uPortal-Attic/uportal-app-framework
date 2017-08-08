@@ -1,35 +1,43 @@
 /* SEARCH BAR */
 search {
   width: 100%;
+
   form {
     height: 36px;
     max-width: 90%;
+
     .myuw-search {
-      background: rgba(255,255,255,0.3);
+      background: rgba(255, 255, 255, 0.3);
       margin: 0;
       padding: 0;
+
       ::-webkit-input-placeholder {
         color: @white;
         font-weight: 400;
       }
+
       :-moz-placeholder {
         color: @white;
         font-weight: 400;
       }
+
       ::-moz-placeholder {
         color: @white;
         font-weight: 400;
       }
+
       :-ms-input-placeholder {
         color: @white;
         font-weight: 400;
       }
+
       .md-icon-button {
         margin: 0;
         padding: 0;
         height: 36px;
         width: 36px;
       }
+
       .md-input {
         float: none;
         border-bottom: none;
@@ -39,6 +47,7 @@ search {
         font-size: 16px;
         position: relative;
       }
+
       &.md-input-focused {
         .md-input {
           border-bottom: none;
@@ -46,16 +55,20 @@ search {
           position: relative;
         }
       }
+
       @media (max-width: @xs) {
         ::-webkit-input-placeholder {
           color: @grayscale6;
         }
+
         :-moz-placeholder {
           color: @grayscale6;
         }
+
         ::-moz-placeholder {
           color: @grayscale6;
         }
+
         :-ms-input-placeholder {
           color: @grayscale6;
         }
