@@ -43,20 +43,20 @@ var example = {
 
 + `name`: The system id of the theme. Make sure its unique.
 + `crest`: The relative URL to the crest image. **Crest image recommendations:**
-    - **Height**: Crest image height should be either `56px` or `112px`. Crest images will be set to a max-height of 56px via CSS, but
-      images with a height of 112px will look better on high resolution displays.
-    - **Width**: Ideally, your crest image should be square. In the case of crests that are wider than they are tall, the images
-      should be no wider than 1.5x their height. This means the maximum dimensions of your crest image should be either `56 x 84px` or `112 x 168px`.
-      Wider images will cause display problems on some screen sizes.
+  - **Height**: Crest image height should be either `56px` or `112px`. Crest images will be set to a max-height of 56px via CSS, but
+    images with a height of 112px will look better on high resolution displays.
+  - **Width**: Ideally, your crest image should be square. In the case of crests that are wider than they are tall, the images
+    should be no wider than 1.5x their height. This means the maximum dimensions of your crest image should be either `56 x 84px` or `112 x 168px`.
+    Wider images will cause display problems on some screen sizes.
 + `title`: The title that will be show in the upper left.
 + `subtitle` (optional): A subtitle that is shown as subtext for the app (e.g. "beta"). Subtitles should be no longer than 15 characters.
 + `ariaLabelTitle`: The aria label put in place of the theme title
 + `crestalt`: The crest alt text. This should be the name of your frame app (i.e. "MyUW Portal").
-+ `group`: Groups this app should be enabled for automatically. Not sure? Ask the MyUW dev team: <myuw-infra@office365.wisc.edu>.
++ `group`: Groups this app should be enabled for automatically. Not sure? Ask the MyUW dev team: <mailto:myuw-infra@office365.wisc.edu>.
 + `mascotImg` (optional): See documentation about the mascot for announcements [here](announcements.md).
 + `profileUrl` (optional): Specify a URL for a "Profile" app/page, where users can view and/or update their personal information.
 + `footerLinks`: An array of links which appear in the footer -- typically contains links to the campus help desk and feedback portal.
-+ `materialTheme`: [object or string] See the *Material Theme* section below.
++ `materialTheme`: \[object or string] See the *Material Theme* section below.
 
 
 ### 2. Add a theme.less file
@@ -97,9 +97,9 @@ will be full of color variable declarations. Here is an example of that:
 @input-border-focus: @color3;
 ```
 
-  - `@color1` is your primary brand color. In uw-madison's case, this is Badger Red, but for UW-Milwaukee this is Black.
-  - `@color2` is a slightly lighter. For simplicity you can just use the lighten function in less, or you can specify a color.
-  - `@color3` is your accent color. If you're using a material theme, this should be the base (500) color of your accent palette.
+- `@color1` is your primary brand color. In uw-madison's case, this is Badger Red, but for UW-Milwaukee this is Black.
+- `@color2` is a slightly lighter. For simplicity you can just use the lighten function in less, or you can specify a color.
+- `@color3` is your accent color. If you're using a material theme, this should be the base (500) color of your accent palette.
 
 ### 4. Set a default theme
 
@@ -204,15 +204,15 @@ If you are defining a custom material theme, follow these guidelines when choosi
  to help you create palettes, or you can define them yourself.
 + Your `primary` palette should be based on your brand's primary color. For UW-Madison, this color is [c5050c](http://www.color-hex.com/color/c5050c).
 	**Primary palette usage in uw-frame:**
-    - Top bar background color
-    - Any compatible angular material component with the "md-primary" class
+  - Top bar background color
+  - Any compatible angular material component with the "md-primary" class
 + Your `accent` palette should be based on a color that plays well with your primary color, but is distinct. For UW-Madison, this is [0479A8](http://www.color-hex.com/color/0479a8).
 	**Accent palette usage in uw-frame:**
-    - Some link colors
-    - Any compatible angular material component with the "md-accent" class
+  - Some link colors
+  - Any compatible angular material component with the "md-accent" class
 + Your `warn` palette should be based on a color that is complementary to your primary color, but is distinct and eye-catching.
 	**Warn palette usage in uw-frame:**
-    - As yet unused. Add the "md-warn" class to any compatible angular material component to use this palette
+  - As yet unused. Add the "md-warn" class to any compatible angular material component to use this palette
 
 Generally, you should avoid using an excessively light or dark color as the base color for any palette. In some cases, like UW-Milwaukee's black and yellow, this is unavoidable. If you *must* use a
 very light or dark color, use good judgment when selecting whether to use it for the primary palette or accent palette. In UW-Milwaukee's case, it is better to use black as the

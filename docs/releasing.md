@@ -92,7 +92,6 @@ You don't have to do anything special to release the documentation. GitHub pages
 [uw-frame milestones]: https://github.com/UW-Madison-DoIT/uw-frame/milestones
 [uw-frame access on npm]: https://www.npmjs.com/package/uw-frame/access
 [central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
-[uw-frame-release-docs-version Jenkins job]: https://tools.my.wisc.edu/jenkins/view/Misc./job/uw-frame-release-docs-version/
 [uw-frame releases]: https://github.com/UW-Madison-DoIT/uw-frame/releases
 [MyUW Developer Group]: https://groups.google.com/forum/#!forum/myuw-developers
 [adopted Apache rules]: https://github.com/UW-Madison-DoIT/uw-frame/blob/master/committers.md#rules

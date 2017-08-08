@@ -72,16 +72,16 @@ point uw-frame to your desired feed.
 - **groups**: An attribute to optionally show notifications only to specific groups (i.e. uPortal groups). **Must contain at least one value**. Using the "Everyone" group will make
 your notification visible to all users. Contact your portal development team for more information about group filtering.
 - **title**: The text to be displayed as the notification's main content. **Best practices:**
-    - Be concise! Try to limit your notification's title to ~140 characters. Shorter titles improve click-through and are less likely to cause display issues on smaller screens.
-    - Use general language and avoid pronouns for broadly visible notifications that don't pertain to specific users' needs (ex. "City of Madison - Declared Snow Emergency").
-    - Use the word "You" when the group filtering for a notification is somewhat specific (i.e. Users with unactivated accounts).
+  - Be concise! Try to limit your notification's title to ~140 characters. Shorter titles improve click-through and are less likely to cause display issues on smaller screens.
+  - Use general language and avoid pronouns for broadly visible notifications that don't pertain to specific users' needs (ex. "City of Madison - Declared Snow Emergency").
+  - Use the word "You" when the group filtering for a notification is somewhat specific (i.e. Users with unactivated accounts).
 - **actionURL**: A URL where users can get more information or respond to calls to action.
 - **actionAlt** (*optional*): Applies an aria-label to the notification title. Use this if vision-impaired users might need additional context to understand your notification.
 - **dismissable**: Set to true if users should be able to dismiss the notification from their list. This also works for dismissing priority notifications from their fixed position above the top bar.
 This should almost always be true.
     - **Example "false" use case**: In some cases, following through on a notification's call to action could result in that notification going away on its own. For example, you may have a notification only visible to a group called
     "Users - Account Activation Required," which calls on those users to activate their accounts. Upon following through, a user would be removed from that group and the notification would be no longer visible. In this example, the call
-     to action is reasonably important, and the notification should stick around until the user takes the desired action.
+    to action is reasonably important, and the notification should stick around until the user takes the desired action.
 - **priority**: Set to true if the notification is of critical importance. The visibility of the notification will be amplified throughout the UI. **This feature should be used sparingly.**
 - **dataURL** (*optional*) : Will retrieve the data from the dataURL.  If data exists, will show notification to user, if data does not exist, will not show notification.  Only supports JSON.  You would use this feature if you want to only show the notification if the user has data.  For example, only show user if they have a certain document.
 - **dataObject** (*optional*) : Will only be looked at if `dataURL` is present, otherwise ignored.  Used as an optional further refinement from dataURL, if you want the notification to show only if the specific object is in the data.
@@ -149,7 +149,7 @@ the file will look similar to this
     ]
 }
 ```
-2. [Start frame](quickstart.md)
+2.  [Start frame](quickstart.md)
 
-3. Try changing some of the options like making it a priority notification
+3.  Try changing some of the options like making it a priority notification
 or undismissable
