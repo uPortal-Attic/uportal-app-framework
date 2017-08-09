@@ -19,7 +19,7 @@ define(['angular-mocks', 'portal'], function() {
           service = _portalGroupService_;
           httpBackend = _$httpBackend_;
           URLS.group = SERVICE_LOC.groupURL;
-          URLS.feature = FEATURES.serviceURL;
+          URLS.feature = SERVICE_LOC.messagesURL;
           loginSilentURL = APP_FLAGS.loginOnLoad;
           if (loginSilentURL) {
             httpBackend.whenGET(loginSilentURL)
