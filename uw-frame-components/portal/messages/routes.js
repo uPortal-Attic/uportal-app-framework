@@ -4,7 +4,7 @@ define(['require'], function(require) {
       templateUrl: require.toUrl('./partials/view__notifications.html'),
       controller: 'MessagesController',
     },
-    'features': {
+    'announcements': {
       templateUrl: require.toUrl('./partials/view__features.html'),
       controller: 'FeaturesPageController',
       controllerAs: 'vm',
