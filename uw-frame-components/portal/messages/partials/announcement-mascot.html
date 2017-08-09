@@ -31,7 +31,7 @@
           <span class="menu-item-title">{{ announcement.titleShort }}</span>
           <span>{{ announcement.descriptionShort }}</span>
         </div>
-        <md-button class="md-icon-button button__mark-seen" ng-click="markAnnouncementSeen(announcement.id, false);" md-prevent-menu-close="md-prevent-menu-close" aria-label="mark this announcement seen" flex="20">
+        <md-button class="md-icon-button button__mark-seen" ng-click="vm.markSingleAnnouncementSeen(announcement.id);" md-prevent-menu-close="md-prevent-menu-close" aria-label="mark this announcement seen" flex="20">
           <md-icon>clear</md-icon>
         </md-button>
       </div>

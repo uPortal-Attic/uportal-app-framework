@@ -19,9 +19,12 @@
       },
       "actionButton": {
         "label": "Take action",
-        "url": "www.google.com"
+        "url": "http://www.google.com"
       },
-      "moreInfoButton": null,
+      "moreInfoButton": {
+        "label": "More info",
+        "url": "http://www.google.com"
+      },
       "confirmButton": null
     },
     {
@@ -41,10 +44,7 @@
         "dataObject": "",
         "dataArrayFilter": {}
       },
-      "actionButton": {
-        "label": "Take action",
-        "url": "www.google.com"
-      },
+      "actionButton": null,
       "moreInfoButton": null,
       "confirmButton": null
     },

@@ -1,5 +1,5 @@
-<frame-page app-title="Notifications" app-icon='fa-bell' white-background='true'>
-  <div class="portlet-body notifications">
+<frame-page app-title="Notifications" app-icon="notifications" white-background="true">
+  <div class="notifications" ng-controller="NotificationsController as vm">
     <md-tabs md-dynamic-height md-border-bottom>
       <!-- UNSEEN NOTIFICATIONS -->
       <md-tab ng-if="vm.notifications.length > 0">

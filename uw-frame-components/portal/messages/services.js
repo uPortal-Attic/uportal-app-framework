@@ -6,6 +6,7 @@ define(['angular'], function(angular) {
       '$http',
       '$log',
       '$localStorage',
+      '$sessionStorage',
       '$q',
       '$filter',
       'portalGroupService',
@@ -17,6 +18,7 @@ define(['angular'], function(angular) {
       function($http,
                $log,
                $localStorage,
+               $sessionStorage,
                $q,
                $filter,
                portalGroupService,
@@ -25,15 +27,6 @@ define(['angular'], function(angular) {
                SERVICE_LOC,
                MESSAGES,
                KV_KEYS) {
-        // //////////////////
-        // Local variables //
-        // //////////////////
-        // var promises;
-
-        // ////////////////
-        // Local methods //
-        // ////////////////
-
         // //////////////////
         // Exposed methods //
         // //////////////////
@@ -87,16 +80,16 @@ define(['angular'], function(angular) {
                     if (!added) {
                       // Check for matches against the groups returned
                       // by portalGroupService
-
-                      // var inGroup = $.grep(groups, function(group) {
-                      //   return group.name === messageGroup;
-                      // }).length;
-                      // if (inGroup > 0) {
-                      //   // If user is in this group, he should see this
-                      //   // notification
-                      //   messagesByGroup.push(message);
-                      //   added = true;
-                      // }
+                      var intersectedGroups = $filter('filter')(
+                        groups,
+                        {name: messageGroup}
+                      );
+                      if (intersectedGroups.length > 0) {
+                        // If user is in this group, he should see this
+                        // notification
+                        messagesByGroup.push(message);
+                        added = true;
+                      }
                     }
                 });
               });
@@ -175,43 +168,61 @@ define(['angular'], function(angular) {
             });
         };
 
+        /**
+         *
+         * @returns {*}
+         */
         var getSeenMessageIds = function() {
+          // If K/V store isn't turned on, don't proceed
           if (!keyValueService.isKVStoreActivated()) {
             return $q.resolve([]);
           }
-          // return keyValueService.getValue(KV_KEYS.SEEN_MESSAGE_IDS)
-          //   .then(function(data) {
-          //     if (data && angular.isString(data.value)) {
-          //       // If data exists and is a string, check for emptiness
-          //       if (data.value) {
-          //         // If string contains things, return parsed JSON
-          //         return angular.fromJson(data.value);
-          //       } else {
-          //         // If it's empty, return empty array
-          //         return [];
-          //       }
-          //     } else if (data && angular.isArray(data)) {
-          //       // If data exists but it's just JSON, return the data
-          //       return data;
-          //     } else {
-          //       // If nothing exists, return empty array
-          //       return [];
-          //     }
-          //   })
-          //   .catch(function(error) {
-          //     $log.error('Could not get seen message IDs');
-          //     $log.error(error);
-          //     return [];
-          //   });
-          return [2, 3];
+          // If sessionStorage already has values, return them
+          if ($sessionStorage.seenMessageIds) {
+            return $q.resolve($sessionStorage.seenMessageIds);
+          }
+          return keyValueService.getValue(KV_KEYS.VIEWED_MESSAGE_IDS)
+            .then(function(result) {
+              if (result && angular.isArray(result)) {
+                $sessionStorage.seenMessageIds = result;
+                return $sessionStorage.seenMessageIds;
+              }
+              return result;
+            })
+            .catch(function(error) {
+              $log.error('Could not get seen message IDs');
+              $log.error(error);
+              return [];
+            });
         };
 
-        var setNotificationsSeen = function(ids) {
-          keyValueService.setValue(KV_KEYS.VIEWED_NOTIFICATION_IDS, ids);
-        };
-
-        var setAnnouncementsSeen = function(ids) {
-          keyValueService.setValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS, ids);
+        /**
+         *
+         * @param ids
+         * @returns {*}
+         */
+        var setMessagesSeen = function(ids) {
+          var seenIds = [];
+          // If K/V store isn't activated, don't proceed
+          if (!keyValueService.isKVStoreActivated()) {
+            return $q.resolve($sessionStorage.seenMessageIds);
+          }
+          if ($sessionStorage.seenMessageIds) {
+            // If 'getSeenMessageIds' has ever been called,
+            // this block should fire
+            seenIds = $sessionStorage.seenMessageIds;
+          }
+          // Add any IDs that don't already exist in the array
+          // of seen IDs
+          angular.forEach(ids, function(id) {
+            if (seenIds.indexOf(id) === -1) {
+              seenIds.push(id);
+            }
+          });
+          return keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS, seenIds)
+            .then(function() {
+              return seenIds;
+            });
         };
 
         return {
@@ -219,8 +230,7 @@ define(['angular'], function(angular) {
           getMessagesByGroup: getMessagesByGroup,
           getMessagesByData: getMessagesByData,
           getSeenMessageIds: getSeenMessageIds,
-          setNotificationsSeen: setNotificationsSeen,
-          setAnnouncementsSeen: setAnnouncementsSeen,
+          setMessagesSeen: setMessagesSeen,
         };
     }]);
 });

@@ -2,6 +2,24 @@
 
 define(['angular'], function(angular) {
   return angular.module('portal.messages.filters', [])
+    .filter('separateMessageTypes', ['$filter', function($filter) {
+      return function(messages) {
+        var separatedMessages = {
+          notifications: [],
+          announcements: [],
+        };
+        separatedMessages.announcements = $filter('filter')(
+          messages,
+          {messageType: 'announcement'}
+        );
+        separatedMessages.notifications = $filter('filter')(
+          messages,
+          {messageType: 'notification'}
+        );
+        return separatedMessages;
+      };
+    }])
+
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {
