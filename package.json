@@ -5,8 +5,10 @@
   "scripts": {
     "test": "karma start uw-frame-components/karma.conf.js --single-run",
     "build-static": "node tools/uw-frame-static/build.js",
+    "lint-css": "stylelint --syntax less uw-frame-components/css/**/*.less",
     "dev-lint-js": "onchange uw-frame-components/** -i -- eslint --quiet --ext js --ext json --ext md --format html --output-file uw-frame-static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern uw-frame-components/js/ga.js --ignore-pattern uw-frame-components/js/sortable.js",
     "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern uw-frame-components/js/ga.js --ignore-pattern uw-frame-components/js/sortable.js",
+    "lint-md": "remark . --frail --ignore-path .gitignore",
     "precommit": "eslint-git-changes",
     "postbuild-static": "htmlprocessor uw-frame-static/index.html -o uw-frame-static/target/index.html",
     "prestatic": "npm run build-static",
@@ -90,8 +92,14 @@
     "onchange": "^3.0.2",
     "postcss": "^6.0.8",
     "recursive-copy": "^2.0.5",
+    "remark-cli": "^4.0.0",
+    "remark-preset-lint-consistent": "^2.0.0",
+    "remark-preset-lint-recommended": "^3.0.0",
+    "remark-validate-links": "^6.1.0",
     "requirejs": "^2.2.0",
     "rimraf": "^2.5.4",
+    "stylelint": "^8.0.0",
+    "stylelint-config-standard": "^17.0.0",
     "superstatic": "^4.0.0"
   },
   "dependencies": {
@@ -146,5 +154,25 @@
       "rest-spread-spacing": "off",
       "yield-star-spacing": "off"
     }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "selector-type-no-unknown": null
+    }
+  },
+  "remarkConfig": {
+    "settings": {
+      "ignoreName": ".gitignore"
+    },
+    "plugins": [
+      "preset-lint-recommended",
+      "preset-lint-consistent",
+      "validate-links",
+      [
+        "remark-lint-list-item-indent",
+        "mixed"
+      ]
+    ]
   }
 }

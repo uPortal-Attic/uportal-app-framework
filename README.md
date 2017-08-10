@@ -48,7 +48,7 @@ In your existing Maven war project, add the following dependency:
 
 (uw-frame-java is [available in The Central Repository](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22edu.wisc.my.apps%22%20AND%20a%3A%22uw-frame%22).)
 
-Start by creating the folder 'src/main/webapp/my-app' within your Maven war project, and copy [uw-frame's main.js](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/src/main/webapp/my-app/main.js) in to it.
+Start by creating the folder 'src/main/webapp/my-app' within your Maven war project, and copy [uw-frame's main.js](uw-frame-components/my-app/main.js) in to it.
 uw-frame includes [RequireJS](http://requirejs.org/) to help you load any additional JavaScript assets you wish, you'll do that in this file.
 
 See [my-app-seed](https://github.com/UW-Madison-DoIT/my-app-seed) for a great starter app using this frame.

@@ -5,31 +5,40 @@
 md-menu-content {
   a {
     color: @black;
-    &:hover, &:active, &:focus {
+
+    &:hover,
+    &:active,
+    &:focus {
       color: @black;
       text-decoration: none;
     }
   }
+
   md-menu-item {
     color: @black;
+
     .md-button {
       font-weight: 400;
+
       &:hover {
         background-color: transparent;
       }
     }
+
     .myuw-search {
-      margin: 10px 0 0 0;
+      margin: 10px 0 0;
       padding: 0;
+
       .md-icon-button {
         margin: 0;
         padding: 0;
         height: 36px;
         width: 36px;
       }
+
       .md-input {
-        display:inline-block;
-        width:80%;
+        display: inline-block;
+        width: 80%;
       }
     }
   }
@@ -38,13 +47,15 @@ md-menu-content {
 md-dialog {
   background: @white;
 }
+
 .md-open-menu-container.md-whiteframe-z2 {
   box-shadow: none;
 
   > md-menu-content {
-    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
   }
 }
+
 md-menu-content.top-bar-menu-content {
   min-width: 275px;
   padding: 0;
@@ -80,6 +91,7 @@ md-menu-content.top-bar-menu-content {
         font-weight: 600;
         margin: 0;
       }
+
       .campus-id {
         margin: 0;
         font-size: 12px;
@@ -87,12 +99,15 @@ md-menu-content.top-bar-menu-content {
         white-space: nowrap;
       }
     }
+
     md-menu-item.top-bar-menu-item {
       max-width: none;
+
       > a {
         height: auto;
         margin: 0;
       }
+
       &:hover {
         background-color: @grayscale1;
       }
@@ -133,7 +148,6 @@ md-menu-content.top-bar-menu-content {
         .menu-item-title {
           font-weight: 600;
         }
-
       }
 
       .md-icon-button.button__mark-seen {
@@ -163,6 +177,7 @@ md-menu-content.top-bar-menu-content {
 md-tooltip {
   &.widget-action-tooltip {
     max-width: 250px;
+
     .md-content {
       background: rgba(0, 0, 0, 0.85);
       white-space: normal;
@@ -170,6 +185,7 @@ md-tooltip {
       line-height: 18px;
       font-size: 12px;
       padding: 4px 8px;
+
       @media (max-width: @xs) {
         line-height: 20px;
         padding: 4px 8px;

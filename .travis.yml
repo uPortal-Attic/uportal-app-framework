@@ -28,6 +28,8 @@ script :
   - npm run build-static
   - npm test
   - npm run lint-js
+  - npm run lint-css
+  - npm run lint-md
   - cd uw-frame-java/
   - mvn clean install
 
