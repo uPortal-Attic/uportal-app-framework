@@ -90,7 +90,8 @@ define(['angular', 'require'], function(angular, require) {
     vm.username = '';
     vm.campusId = '';
     vm.firstLetter = '';
-    vm.profileUrl = $sessionStorage.portal.theme.profileUrl ?
+    vm.profileUrl = ($sessionStorage.portal.theme
+      && $sessionStorage.portal.theme.profileUrl) ?
       $sessionStorage.portal.theme.profileUrl : '';
     vm.campusIdAttribute = APP_FLAGS.campusIdAttribute;
     /**
