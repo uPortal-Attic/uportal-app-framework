@@ -14,7 +14,7 @@ define(['angular-mocks', 'portal'], function() {
 
         beforeEach(inject(function(
           _portalGroupService_, _$httpBackend_,
-          SERVICE_LOC, FEATURES, APP_FLAGS
+          SERVICE_LOC, MESSAGES, APP_FLAGS
         ) {
           service = _portalGroupService_;
           httpBackend = _$httpBackend_;
