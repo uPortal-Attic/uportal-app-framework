@@ -9,25 +9,15 @@
         <small>Reset various features to their default states.</small>
       </h4>
       <div ng-if="kvEnabled" layout="column" layout-align="center start">
-        <!-- RESET ANNOUNCEMENTS -->
-        <div layout-xs="column" layout-align-xs="center start" layout="row" layout-align="start center" ng-if="MESSAGES.announcementsEnabled">
+        <!-- RESET MESSAGES -->
+        <div layout-xs="column" layout-align-xs="center start" layout="row" layout-align="start center" ng-if="MESSAGES.announcementsEnabled || MESSAGES.notificationsEnabled">
           <md-button class="md-primary md-raised"
-                     ng-click="resetAnnouncements()"
+                     ng-click="resetMessages()"
                      aria-label="reset seen announcements">
-            Reset announcements
-            <i class="fa fa-spin fa-circle-o" ng-if="loadingResetAnnouncements"></i>
+            Reset in-app messages
+            <i class="fa fa-spin fa-circle-o" ng-if="loadingResetMessages"></i>
           </md-button>
-          <small>Click to see previously-dismissed mascot and popup announcements.</small>
-        </div>
-        <!-- RESET NOTIFICATIONS -->
-        <div layout-xs="column" layout-align-xs="center start"  layout="row" layout-align="start center" ng-if="MESSAGES.notificationsEnabled">
-          <md-button class="md-accent md-raised"
-                     ng-click="resetKey(KV_KEYS.VIEWED_MESSAGE_IDS,'VIEWED_MESSAGE_IDS')"
-                     aria-label="reset dismissed notifications">
-            Reset notifications
-            <i class="fa fa-spin fa-circle-o" ng-if='VIEWED_MESSAGE_IDS'></i>
-          </md-button>
-          <small>Click to see previously-dismissed notifications.</small>
+          <small>Click to see previously-dismissed notifications, mascot announcements, and popup announcements.</small>
         </div>
         <!-- RESET LAYOUT -->
         <div layout-xs="column" layout-align-xs="center start"  layout="row" layout-align="start center" ng-if="MISC_URLS.resetLayoutURL">

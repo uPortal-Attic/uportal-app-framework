@@ -69,18 +69,17 @@ define(['angular'], function(angular) {
         $scope.MESSAGES = MESSAGES;
       };
 
-      $scope.resetAnnouncements = function() {
-        delete $sessionStorage.seenAnnouncmentIds;
-        delete $sessionStorage.seenPopupIds;
+      $scope.resetMessages = function() {
+        delete $sessionStorage.seenMessageIds;
         if (keyValueService.isKVStoreActivated()) {
-          $scope.loadingResetAnnouncements = true;
+          $scope.loadingResetMessages = true;
           keyValueService.deleteValue(KV_KEYS.VIEWED_MESSAGE_IDS)
             .then(function() {
               $window.location.reload();
-              $scope.loadingResetAnnouncements = false;
+              $scope.loadingResetMessages = false;
               return false;
             }).catch(function() {
-              $log.warn('could not reset announcements');
+              $log.warn('could not reset in-app messages');
             });
         }
       };
