@@ -169,7 +169,7 @@ define(['angular'], function(angular) {
         };
 
         /**
-         *
+         * Get list of seen message IDs from K/V store or session storage
          * @returns {*}
          */
         var getSeenMessageIds = function() {
@@ -197,7 +197,7 @@ define(['angular'], function(angular) {
         };
 
         /**
-         *
+         * Set list of seen IDs in K/V store and session storage
          * @param ids
          * @returns {*}
          */
@@ -222,6 +222,10 @@ define(['angular'], function(angular) {
           return keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS, seenIds)
             .then(function() {
               return seenIds;
+            })
+            .catch(function(error) {
+              $log.warn('Problem setting seen message IDs in storage');
+              return error;
             });
         };
 

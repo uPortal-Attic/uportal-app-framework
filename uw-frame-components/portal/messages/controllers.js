@@ -13,14 +13,7 @@ define(['angular'], function(angular) {
         // Local variables //
         // //////////////////
         var allMessages = [];
-
-        // Promises to run if filtering is turned on
-        var promiseFilteredMessages = {
-          filteredByGroup:
-            messagesService.getMessagesByGroup(allMessages),
-          filteredByData:
-            messagesService.getMessagesByData(allMessages),
-        };
+        var promiseFilteredMessages = {};
 
         // ////////////////
         // Local methods //
@@ -36,10 +29,11 @@ define(['angular'], function(angular) {
                 allMessages = result.messages;
               }
               filterMessages();
-              return result;
+              return allMessages;
             })
             .catch(function(error) {
-              // HANDLE ERRORS
+              $log.warn('Problem getting all messages for messages controller');
+              return error;
             });
         };
 
@@ -48,9 +42,16 @@ define(['angular'], function(angular) {
          * by group and data, then execute the relevant promises
          */
         var filterMessages = function() {
-          // Check for group filtering
-          // && !$localStorage.disableGroupFilteringForNotifications
-          if (MESSAGES.groupFiltering) {
+          // Check for group filtering on app level and beta settings level
+          if (MESSAGES.groupFiltering
+            && !$localStorage.disableGroupFilteringForMessages) {
+            // Define promises to run if filtering is turned on
+            promiseFilteredMessages = {
+              filteredByGroup:
+                messagesService.getMessagesByGroup(allMessages),
+              filteredByData:
+                messagesService.getMessagesByData(allMessages),
+            };
             // Call filtered notifications promises, then pass on to
             // the completion function
             $q.all(promiseFilteredMessages)
@@ -173,8 +174,9 @@ define(['angular'], function(angular) {
          * @param result
          */
         var getSeenMessageIdsSuccess = function(result) {
-          // Use $filter to separate seen/unseen
-          if (result.seenMessageIds && result.seenMessageIds.length > 0) {
+          if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
+            && result.seenMessageIds.length > 0) {
+            // Separate seen and unseen
             separatedNotifications = $filter('filterSeenAndUnseen')(
               allNotifications,
               result.seenMessageIds
@@ -213,7 +215,8 @@ define(['angular'], function(angular) {
          * @param error
          */
         var getSeenMessageIdsFailure = function(error) {
-          // Handle errors
+          $log.warn('Couldn\'t get seen message IDs for notifications ' +
+            ' controller.');
         };
 
         /**
@@ -365,7 +368,7 @@ define(['angular'], function(angular) {
         // Local methods //
         // ////////////////
         /**
-         *
+         * Inherit announcements from parent controller messages
          */
         var configureAnnouncementsScope = function() {
           if ($scope.$parent.messages.announcements) {
@@ -383,8 +386,9 @@ define(['angular'], function(angular) {
          * @param result Data returned by promises
          */
         var getSeenMessageIdsSuccess = function(result) {
-          // Separate seen and unseen
-          if (result.seenMessageIds && result.seenMessageIds.length > 0) {
+          if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
+            && result.seenMessageIds.length > 0) {
+            // Separate seen and unseen
             separatedAnnouncements = $filter('filterSeenAndUnseen')(
               allAnnouncements,
               result.seenMessageIds
@@ -504,7 +508,8 @@ define(['angular'], function(angular) {
         // Scope methods //
         // ////////////////
         /**
-         *
+         * Remove dismissed announcement from scope announcements,
+         * then update storage
          * @param id
          */
         vm.markSingleAnnouncementSeen = function(id) {

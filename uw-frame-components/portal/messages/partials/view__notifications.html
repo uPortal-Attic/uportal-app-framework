@@ -1,5 +1,9 @@
 <frame-page app-title="Notifications" app-icon="notifications" white-background="true">
   <div class="notifications" ng-controller="NotificationsController as vm">
+    <!-- EMPTY CASE -->
+    <div ng-if="vm.notifications.length == 0 && vm.dismissedNotifications.length == 0" layout-padding>
+      You have no notifications to view at this time.
+    </div>
     <md-tabs md-dynamic-height md-border-bottom>
       <!-- UNSEEN NOTIFICATIONS -->
       <md-tab ng-if="vm.notifications.length > 0">
