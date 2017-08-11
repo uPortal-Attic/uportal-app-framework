@@ -99,8 +99,7 @@ define(['angular'], function(angular) {
           $scope.hasMessages = false;
           $scope.messages = {};
 
-          if (!$rootScope.GuestMode && (MESSAGES.notificationsEnabled
-            || MESSAGES.announcementsEnabled)) {
+          if (!$rootScope.GuestMode) {
             getMessages();
           }
         };
@@ -134,7 +133,6 @@ define(['angular'], function(angular) {
         vm.dismissedNotifications = [];
         vm.priorityNotifications = [];
         vm.notificationsUrl = MESSAGES.notificationsPageURL;
-        vm.notificationsEnabled = MESSAGES.notificationsEnabled;
         vm.status = 'View notifications';
 
         // //////////////////
@@ -147,7 +145,7 @@ define(['angular'], function(angular) {
         $scope.$watch('$parent.hasMessages', function(hasMessages) {
           // If the parent scope has messages and notifications are enabled,
           // complete initialization
-          if (hasMessages && vm.notificationsEnabled) {
+          if (hasMessages) {
             configureNotificationsScope();
           }
         });
@@ -360,7 +358,7 @@ define(['angular'], function(angular) {
         $scope.$watch('$parent.hasMessages', function(hasMessages) {
           // If the parent scope has messages and announcements are enabled,
           // complete initialization
-          if (hasMessages && MESSAGES.announcementsEnabled) {
+          if (hasMessages) {
             configureAnnouncementsScope();
           }
         });
@@ -559,14 +557,12 @@ define(['angular'], function(angular) {
         });
       }])
 
-    .controller('FeaturesPageController', ['$log', '$filter', '$scope',
-      'messagesService', 'MESSAGES', 'MISC_URLS',
-      function($log, $filter, $scope, messagesService, MESSAGES, MISC_URLS) {
+    .controller('FeaturesPageController', ['$scope', 'MISC_URLS',
+      function($scope, MISC_URLS) {
         var vm = this;
 
         vm.announcements = [];
         vm.MISC_URLS = MISC_URLS;
-        vm.announcementsEnabled = MESSAGES.announcementsEnabled;
 
         // //////////////////
         // Event listeners //
@@ -578,7 +574,7 @@ define(['angular'], function(angular) {
         $scope.$watch('$parent.hasMessages', function(hasMessages) {
           // If the parent scope has messages and notifications are enabled,
           // complete initialization
-          if (hasMessages && vm.announcementsEnabled) {
+          if (hasMessages) {
             if ($scope.$parent.messages.announcements) {
               vm.announcements = $scope.$parent.messages.announcements;
             }

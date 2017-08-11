@@ -34,8 +34,6 @@ define(['angular'], function(angular) {
             'searchURL': '/web/apps/search/',
         })
         .value('MESSAGES', {
-            'announcementsEnabled': true,
-            'notificationsEnabled': true,
             'groupFiltering': true,
             'notificationsPageURL': '/notifications',
         })

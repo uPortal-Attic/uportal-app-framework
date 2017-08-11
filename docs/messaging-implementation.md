@@ -41,7 +41,7 @@ point uw-frame to your desired feed.
 
 **Attribute breakdown**
 
-- **id**: A unique number to identify the message. This is used for tracking seen/unseen messages, dimissed notifications, and the sort order on the notifications page.
+- **id**: A unique string to identify the message. This is used for tracking seen/unseen messages, dimissed notifications, and the sort order on the notifications page.
 - **title**: The text to be displayed as the message's main content -- used in all message types. **Best practices:**
   - Be concise! Try to limit your message's title to ~140 characters. Shorter titles improve click-through and are less likely to cause display issues on smaller screens.
   - Use general language and avoid pronouns for broadly visible messages that may not pertain to specific users' needs (ex. "City of Madison - Declared Snow Emergency").
@@ -55,8 +55,7 @@ point uw-frame to your desired feed.
 - **featureImageUrl**: *(optional)* Used by popup announcements and announcements on the Features page.
 - **priority**: Set to "high" if you want the message to be displayed with higher visibility (i.e. As a priority notification or popup announcement, respectively).
 - **audienceFilter**: A group of attributes related to filtering messages based on a user's group or whether the user has pertinent data at a given URL.
-  - **groups**: An attribute to optionally show messages only to specific groups (i.e. uPortal groups). **Must contain at least one value**.
-    Using the "Everyone" group will make your message visible to all users. Contact your portal development team for more information about group filtering.
+  - **groups**: An attribute to optionally show messages only to specific groups (i.e. uPortal groups). If null or empty array, the message will be shown to everyone. Contact your portal development team for more information about group filtering.
   - **dataUrl**: *(optional)* The message will retrieve data from the dataUrl. If data exists, it will show this message to the user. Only supports JSON.
     You would use this feature if you want to only show the message if the specific user has data. For example: Only show user if they have a certain document.
   - **dataObject**: *(optional)* Will only be looked at if `dataUrl` is present, otherwise ignored. Used as an optional further refinement from dataUrl, if you want the notification to show only if the specific object is in the data.
@@ -113,7 +112,7 @@ You can use this example JSON:
     "featureImageUrl": null,
     "priority": null,
     "audienceFilter": {
-        "groups": ["Everyone"],
+        "groups": [],
         "dataUrl": null,
         "dataObject": null,
         "dataArrayFilter": null
@@ -147,7 +146,7 @@ Next, add a sample announcement. Try adding this announcement to the sample feed
     "featureImageUrl": null,
     "priority": null,
     "audienceFilter": {
-        "groups": ["Everyone"],
+        "groups": null,
         "dataUrl": null,
         "dataObject": null,
         "dataArrayFilter": null

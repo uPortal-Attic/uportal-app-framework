@@ -38,8 +38,6 @@ Your application can overwrite any constant listed below by adding it to the `js
 
 ### MESSAGES
 
-+ `announcementsEnabled` : True by default. Set to false if you don't want any announcements (mascot menu or popups) displayed in your app.
-+ `notificationsEnabled` : True by default. Set to false if you don't want any notifications (top bar bell, notifactions page, etc.) displayed in your app.
 + `groupFiltering` : True by default -- enables group filtered notifications and announcements. Must have `SERVICE_LOC.groupURL` set for this to work properly.
 + `notificationsPageURL` : The URL for the full notifications view (i.e. Where the "See all" link should go).
 

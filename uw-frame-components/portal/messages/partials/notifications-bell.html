@@ -1,12 +1,12 @@
 <div class="notifications">
   <!-- Mobile bell in hamburger -->
   <div class="notification-badge notification-badge-mobile" aria-label="{{ status }}"
-       ng-if="vm.notificationsEnabled && directiveMode === 'mobile-bell' && vm.notifications.length !== 0">
+       ng-if="directiveMode === 'mobile-bell' && vm.notifications.length !== 0">
     <md-icon>notifications</md-icon>
   </div>
 
   <!-- MOBILE MENU ROW -->
-  <md-menu-item ng-if="vm.notificationsEnabled && directiveMode === 'mobile-menu'">
+  <md-menu-item ng-if="directiveMode === 'mobile-menu'">
     <md-button title="click to view notifications"
                class="md-default"
                ng-href="{{ vm.notificationsUrl }}"
@@ -20,7 +20,7 @@
   <!-- DESKTOP NOTIFICATION BELL -->
   <!-- MENU: IF THERE ARE NEW NOTIFICATIONS TO VIEW -->
   <md-menu class="notifications-menu"
-           ng-if="vm.notificationsEnabled && directiveMode === 'bell' && vm.notifications.length > 0"
+           ng-if="directiveMode === 'bell' && vm.notifications.length > 0"
            md-offset="-200 0"
            md-position-mode="target bottom">
     <md-button ng-click="$mdOpenMenu($event)"
@@ -75,7 +75,7 @@
   </md-menu>
 
   <!-- LINK: IF THERE ARE NO NEW NOTIFICATIONS -->
-  <a ng-if="vm.notificationsEnabled && directiveMode === 'bell' && vm.notifications.length === 0"
+  <a ng-if="directiveMode === 'bell' && vm.notifications.length === 0"
      class="notification-desktop"
      ng-click="vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');"
      ng-href="{{ vm.notificationsUrl }}">
@@ -86,7 +86,7 @@
   </a>
 
   <!-- PRIORITY NOTIFICATIONS (FIXED-TOP) -->
-  <div class="priority-notifications" ng-if="vm.notificationsEnabled && (directiveMode === 'priority')" ng-repeat="priority in vm.priorityNotifications | limitTo: 1">
+  <div class="priority-notifications" ng-if="directiveMode === 'priority'" ng-repeat="priority in vm.priorityNotifications | limitTo: 1">
     <div ng-if="vm.priorityNotifications.length == 1" layout="row" layout-align="center center" layout-fill>
       <a ng-href="{{ priority.actionButton.url }}" alt="{{ priority.actionButton.label }}" class="notification-message">{{ priority.title }}</a>
       <div layout="row" layout-align="center center" ng-if="priority.moreInfoButton" class="notification-buttons">

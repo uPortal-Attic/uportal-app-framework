@@ -57,16 +57,15 @@ define(['angular'], function(angular) {
     .controller('PortalUserSettingsController', [
       '$scope', '$q', '$window', '$localStorage',
       '$log', '$sessionStorage', '$rootScope',
-      'KV_KEYS', 'MESSAGES', 'keyValueService',
+      'KV_KEYS', 'keyValueService',
       function(
       $scope, $q, $window, $localStorage,
       $log, $sessionStorage, $rootScope,
-      KV_KEYS, MESSAGES, keyValueService
+      KV_KEYS, keyValueService
     ) {
       var init = function() {
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
         $scope.KV_KEYS = KV_KEYS;
-        $scope.MESSAGES = MESSAGES;
       };
 
       $scope.resetMessages = function() {
