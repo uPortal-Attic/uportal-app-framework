@@ -12,7 +12,7 @@ point uw-frame to your desired feed.
 {
     "messages": [
         {
-            "id": 1,
+            "id": "sample-unactivated-services-notification",
             "title": "You need to modify your NetID account to activate essential UW Services.",
             "titleShort": null,
             "description": "Because this message's messageType is 'notification', this field is not actually needed.",
@@ -101,7 +101,7 @@ You can use this example JSON:
 
 ```json
 {
-    "id": 1,
+    "id": "sample-notification-uw-frame-docs",
     "title": "Learn how to create a notification",
     "titleShort": null,
     "description": null,
@@ -132,7 +132,7 @@ Try adding this announcement to the sample feed:
 
 ```json
 {
-    "id": 4,
+    "id": "sample-announcement-uw-frame-docs",
     "title": "My first feature announcement",
     "titleShort": "First announcement",
     "description": null,
