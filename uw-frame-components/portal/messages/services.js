@@ -74,24 +74,33 @@ define(['angular'], function(angular) {
               var messagesByGroup = [];
               angular.forEach(messages, function(message) {
                 var added = false;
-                // For each group for the current notification
-                angular.forEach(message.audienceFilter.groups,
-                  function(messageGroup) {
-                    if (!added) {
-                      // Check for matches against the groups returned
-                      // by portalGroupService
-                      var intersectedGroups = $filter('filter')(
-                        groups,
-                        {name: messageGroup}
-                      );
-                      if (intersectedGroups.length > 0) {
-                        // If user is in this group, he should see this
-                        // notification
-                        messagesByGroup.push(message);
-                        added = true;
+                // If the message's groups array has groups,
+                // check for matches against portal groups
+                if (message.audienceFilter.groups.length > 0) {
+                  // For each group for the current message
+                  angular.forEach(message.audienceFilter.groups,
+                    function(messageGroup) {
+                      if (!added) {
+                        // Check for matches against the groups returned
+                        // by portalGroupService
+                        var intersectedGroups = $filter('filter')(
+                          groups,
+                          {name: messageGroup}
+                        );
+                        if (intersectedGroups.length > 0) {
+                          // If user is in this group, he should see this
+                          // notification
+                          messagesByGroup.push(message);
+                          added = true;
+                        }
                       }
-                    }
-                });
+                    });
+                } else {
+                  // If the message's groups array is empty or null,
+                  // show it to everyone
+                  messagesByGroup.push(message);
+                  added = true;
+                }
               });
               return messagesByGroup;
             })

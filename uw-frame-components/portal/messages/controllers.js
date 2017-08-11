@@ -206,8 +206,9 @@ define(['angular'], function(angular) {
 
           // Set aria-label in notifications bell
           vm.status = 'You have '
-            + (vm.notifications.length === 0 ? 'no ' : '')
-            + 'notifications';
+            + (vm.notifications.length === 0
+              ? 'no' : vm.notifications.length)
+            + ' notifications';
         };
 
         /**
@@ -357,7 +358,7 @@ define(['angular'], function(angular) {
          * things dependent on messages
          */
         $scope.$watch('$parent.hasMessages', function(hasMessages) {
-          // If the parent scope has messages and notifications are enabled,
+          // If the parent scope has messages and announcements are enabled,
           // complete initialization
           if (hasMessages && MESSAGES.announcementsEnabled) {
             configureAnnouncementsScope();

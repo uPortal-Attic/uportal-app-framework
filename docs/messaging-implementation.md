@@ -43,9 +43,9 @@ point uw-frame to your desired feed.
 
 - **id**: A unique number to identify the message. This is used for tracking seen/unseen messages, dimissed notifications, and the sort order on the notifications page.
 - **title**: The text to be displayed as the message's main content -- used in all message types. **Best practices:**
-    - Be concise! Try to limit your message's title to ~140 characters. Shorter titles improve click-through and are less likely to cause display issues on smaller screens.
-    - Use general language and avoid pronouns for broadly visible messages that may not pertain to specific users' needs (ex. "City of Madison - Declared Snow Emergency").
-    - Use the word "You" when the group- or data-filtering for a message is somewhat specific (i.e. Users with unactivated accounts).
+  - Be concise! Try to limit your message's title to ~140 characters. Shorter titles improve click-through and are less likely to cause display issues on smaller screens.
+  - Use general language and avoid pronouns for broadly visible messages that may not pertain to specific users' needs (ex. "City of Madison - Declared Snow Emergency").
+  - Use the word "You" when the group- or data-filtering for a message is somewhat specific (i.e. Users with unactivated accounts).
 - **titleShort**: A shorter version of the message title used by the mascot announcer menu. *Required if the `messageType` is "announcement".*
 - **description**: Information about an announcement -- appears on the "Features" page and in the popup announcement.
 - **descriptionShort**: Brief information about an announcement -- appears in the mascot announcer menu. *Required if the `messageType` is "announcement".*
@@ -55,15 +55,15 @@ point uw-frame to your desired feed.
 - **featureImageUrl**: *(optional)* Used by popup announcements and announcements on the Features page.
 - **priority**: Set to "high" if you want the message to be displayed with higher visibility (i.e. As a priority notification or popup announcement, respectively).
 - **audienceFilter**: A group of attributes related to filtering messages based on a user's group or whether the user has pertinent data at a given URL.
-    - **groups**: An attribute to optionally show messages only to specific groups (i.e. uPortal groups). **Must contain at least one value**.
+  - **groups**: An attribute to optionally show messages only to specific groups (i.e. uPortal groups). **Must contain at least one value**.
     Using the "Everyone" group will make your message visible to all users. Contact your portal development team for more information about group filtering.
-    - **dataUrl**: *(optional)* The message will retrieve data from the dataUrl. If data exists, it will show this message to the user. Only supports JSON.
+  - **dataUrl**: *(optional)* The message will retrieve data from the dataUrl. If data exists, it will show this message to the user. Only supports JSON.
     You would use this feature if you want to only show the message if the specific user has data. For example: Only show user if they have a certain document.
-    - **dataObject**: *(optional)* Will only be looked at if `dataUrl` is present, otherwise ignored. Used as an optional further refinement from dataUrl, if you want the notification to show only if the specific object is in the data.
-    - **dataArrayFIlter**: Will only be looked at if `dataUrl` is present, otherwise ignored. Used as an optional further refinement from dataUrl. If your object return is an array, you can filter on the array. Does support multiple filtering criteria as shown in the example. If used in conjunction with `dataObject`, will filter to `dataObject` first.  [AngularJS array filtering documentation] (https://docs.angularjs.org/api/ng/filter/filter)
+  - **dataObject**: *(optional)* Will only be looked at if `dataUrl` is present, otherwise ignored. Used as an optional further refinement from dataUrl, if you want the notification to show only if the specific object is in the data.
+  - **dataArrayFIlter**: Will only be looked at if `dataUrl` is present, otherwise ignored. Used as an optional further refinement from dataUrl. If your object return is an array, you can filter on the array. Does support multiple filtering criteria as shown in the example. If used in conjunction with `dataObject`, will filter to `dataObject` first.  [AngularJS array filtering documentation] (https://docs.angularjs.org/api/ng/filter/filter)
 - **actionButton**: Used to display a call to action button and to provide the URL for a notification when clicked. **Required if the `messageType` is "notification".
-    - **label**: The button's text
-    - **url**: The URL to go to when clicked
+  - **label**: The button's text
+  - **url**: The URL to go to when clicked
 - **moreInfoButton**: Used to display a button link to a place where the user can read more, see more, or interact with the subject of the message. Uses the same format as `actionButton`.
 - **confirmButton**: Used to display a confirmation button on popup announcements. Uses the same format as `actionButton`. **Required for `messageType` "announcement" with `priority` "high".**
 
@@ -129,8 +129,8 @@ You can use this example JSON:
 
 ### Announcements
 
-To try announcements, switch the [announcements enabled to true](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js#L37)
-and the [group filtering flag to true](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js#L39).
+To try announcements, switch the [announcements enabled to true (line #37)](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js)
+and the [group filtering flag to true (line #39)](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js).
 
 Next, add a sample announcement. Try adding this announcement to the sample feed:
 

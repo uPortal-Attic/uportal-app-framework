@@ -20,6 +20,7 @@ npm-debug.log
 \.DS_Store
 docs/_site
 docs/\.ruby-version
+docs/bower_components
 Gemfile.lock
 nbproject/
 uw-frame-components/coverage
