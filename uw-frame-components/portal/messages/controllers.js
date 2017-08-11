@@ -273,7 +273,7 @@ define(['angular'], function(angular) {
 
           // Call service to save changes if k/v store enabled
           if (SERVICE_LOC.kvURL) {
-            messagesService.seMessagesSeen(dismissedNotificationIds);
+            messagesService.setMessagesSeen(dismissedNotificationIds);
           }
 
           // Clear priority notification flags if it was a priority
