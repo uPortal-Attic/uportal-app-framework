@@ -38,7 +38,6 @@ Your application can overwrite any constant listed below by adding it to the `js
 
 ### MESSAGES
 
-+ `groupFiltering` : True by default -- enables group filtered notifications and announcements. Must have `SERVICE_LOC.groupURL` set for this to work properly.
 + `notificationsPageURL` : The URL for the full notifications view (i.e. Where the "See all" link should go).
 
 ### MISC_URLS

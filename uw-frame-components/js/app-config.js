@@ -34,7 +34,6 @@ define(['angular'], function(angular) {
             'searchURL': '/web/apps/search/',
         })
         .value('MESSAGES', {
-            'groupFiltering': true,
             'notificationsPageURL': '/notifications',
         })
         .value('MISC_URLS', {

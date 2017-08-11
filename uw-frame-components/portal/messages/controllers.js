@@ -5,9 +5,9 @@ define(['angular'], function(angular) {
 
     .controller('MessagesController', ['$q', '$log', '$scope', '$rootScope',
       '$location', '$localStorage', '$sessionStorage', '$filter', '$mdDialog',
-      'MESSAGES', 'SERVICE_LOC', 'miscService', 'messagesService',
+      'SERVICE_LOC', 'miscService', 'messagesService',
       function($q, $log, $scope, $rootScope, $location, $localStorage,
-               $sessionStorage, $filter, $mdDialog, MESSAGES, SERVICE_LOC,
+               $sessionStorage, $filter, $mdDialog, SERVICE_LOC,
                miscService, messagesService) {
         // //////////////////
         // Local variables //
@@ -42,9 +42,8 @@ define(['angular'], function(angular) {
          * by group and data, then execute the relevant promises
          */
         var filterMessages = function() {
-          // Check for group filtering on app level and beta settings level
-          if (MESSAGES.groupFiltering
-            && !$localStorage.disableGroupFilteringForMessages) {
+          // Check if group filtering has been disabled
+          if (!$localStorage.disableGroupFilteringForMessages) {
             // Define promises to run if filtering is turned on
             promiseFilteredMessages = {
               filteredByGroup:
@@ -322,10 +321,9 @@ define(['angular'], function(angular) {
 
     .controller('AnnouncementsController', ['$q', '$log', '$filter',
       '$sessionStorage', '$scope', '$rootScope', '$document', '$sanitize',
-      '$mdDialog', 'miscService', 'messagesService', 'MESSAGES',
+      '$mdDialog', 'miscService', 'messagesService',
       function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
-               $document, $sanitize, $mdDialog, miscService, messagesService,
-               MESSAGES) {
+               $document, $sanitize, $mdDialog, miscService, messagesService) {
         // //////////////////
         // Local variables //
         // //////////////////
