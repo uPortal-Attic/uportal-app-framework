@@ -36,7 +36,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
       // public functions
       var isKVStoreActivated = function() {
-        return SERVICE_LOC.kvURL;
+        return !!SERVICE_LOC.kvURL;
       };
 
       var getValue = function(key) {
