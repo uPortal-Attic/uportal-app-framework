@@ -128,10 +128,7 @@ You can use this example JSON:
 
 ### Announcements
 
-To try announcements, switch the [announcements enabled to true (line #37)](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js)
-and the [group filtering flag to true (line #39)](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/app-config.js).
-
-Next, add a sample announcement. Try adding this announcement to the sample feed:
+Try adding this announcement to the sample feed:
 
 ```json
 {
