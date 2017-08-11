@@ -42,7 +42,7 @@
         </a>
       </md-menu-item>
       <!-- SHOW UP TO 3 NEW NOTIFICATIONS -->
-      <md-menu-item ng-repeat="notification in vm.notifications | orderBy:['-priority', '-id'] | limitTo:3"
+      <md-menu-item ng-repeat="notification in vm.notifications track by notification.id | orderBy:'priority' | limitTo:3"
                     class="top-bar-menu-item">
         <!-- NOTIFICATION CONTENT -->
         <div class="menu-item-content" layout="row" layout-align="space-between center">

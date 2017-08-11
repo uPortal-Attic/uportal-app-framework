@@ -14,7 +14,7 @@
           <md-content>
             <md-list class="notifications-list" flex>
               <md-list-item class="secondary-button-padding notification-item"
-                            ng-repeat="notification in vm.notifications | orderBy:['-priority', '-id']"
+                            ng-repeat="notification in vm.notifications track by notification.id | orderBy:'priority"
                             ng-class="{ priority: notification.priority === 'high' }"
                             layout="row"
                             layout-align="start center">
