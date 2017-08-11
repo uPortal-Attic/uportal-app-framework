@@ -559,33 +559,30 @@ define(['angular'], function(angular) {
         });
       }])
 
-    .controller('FeaturesPageController', ['$log', '$filter',
+    .controller('FeaturesPageController', ['$log', '$filter', '$scope',
       'messagesService', 'MESSAGES', 'MISC_URLS',
-      function($log, $filter, messagesService, MESSAGES, MISC_URLS) {
+      function($log, $filter, $scope, messagesService, MESSAGES, MISC_URLS) {
         var vm = this;
 
         vm.announcements = [];
         vm.MISC_URLS = MISC_URLS;
+        vm.announcementsEnabled = MESSAGES.announcementsEnabled;
 
-        if (MESSAGES.announcementsEnabled) {
-          // Check if group filtering is enabled
-
-          // If filtering is off, get all messages
-          messagesService.getAllMessages()
-            .then(function(result) {
-              if (result.messages && result.messages.length > 0) {
-                // Filter out notification messages using angular's built-in
-                // 'filter'
-                vm.announcements = $filter('filter')(
-                  result.messages,
-                  {messageType: 'announcement'}
-                );
-              }
-              return vm.announcements;
-            })
-            .catch(function(error) {
-              $log.warn('Could not get features');
-            });
-        }
+        // //////////////////
+        // Event listeners //
+        // //////////////////
+        /**
+         * When the parent controller has messages, initialize
+         * things dependent on messages
+         */
+        $scope.$watch('$parent.hasMessages', function(hasMessages) {
+          // If the parent scope has messages and notifications are enabled,
+          // complete initialization
+          if (hasMessages && vm.announcementsEnabled) {
+            if ($scope.$parent.messages.announcements) {
+              vm.announcements = $scope.$parent.messages.announcements;
+            }
+          }
+        });
     }]);
 });

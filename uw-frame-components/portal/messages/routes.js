@@ -6,8 +6,7 @@ define(['require'], function(require) {
     },
     'announcements': {
       templateUrl: require.toUrl('./partials/view__features.html'),
-      controller: 'FeaturesPageController',
-      controllerAs: 'vm',
+      controller: 'MessagesController',
     },
   };
 });
