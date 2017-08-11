@@ -7,7 +7,7 @@
     </div>
 
     <!-- DISPLAY FEATURES -->
-    <div class="feature-item" ng-repeat="announcement in vm.announcements track by announcement.id | orderBy: ['-goLiveDate', 'priority']">
+    <div class="feature-item" ng-repeat="announcement in vm.announcements | orderBy:['-goLiveDate']">
       <p class="date">{{ announcement.goLiveDate | date:mediumDate }}</p>
       <h3 class="md-title">{{ announcement.title }}</h3>
 

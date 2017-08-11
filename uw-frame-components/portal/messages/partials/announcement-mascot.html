@@ -24,7 +24,7 @@
         See all ({{ vm.announcements.length }})
       </a>
     </md-menu-item>
-    <md-menu-item ng-repeat="announcement in vm.announcements track by announcement.id | orderBy:orderBy: ['-goLiveDate', 'priority'] | limitTo:3"
+    <md-menu-item ng-repeat="announcement in vm.announcements | orderBy:['-goLiveDate'] | limitTo:3"
                   class="top-bar-menu-item">
       <div class="menu-item-content" layout="row" layout-align="space-between start">
         <div layout="column" layout-align="center start" flex="80">
