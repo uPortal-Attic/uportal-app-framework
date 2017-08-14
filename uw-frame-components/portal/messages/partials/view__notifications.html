@@ -1,18 +1,21 @@
-<frame-page app-title="Notifications" app-icon='fa-bell' white-background='true'>
-<div  ng-controller="PortalNotificationController as notificationCtrl">
-	<div class="portlet-body notifications">
+<frame-page app-title="Notifications" app-icon="notifications" white-background="true">
+  <div class="notifications" ng-controller="NotificationsController as vm">
+    <!-- EMPTY CASE -->
+    <div ng-if="vm.notifications.length == 0 && vm.dismissedNotifications.length == 0" layout-padding>
+      You have no notifications to view at this time.
+    </div>
     <md-tabs md-dynamic-height md-border-bottom>
       <!-- UNSEEN NOTIFICATIONS -->
-      <md-tab ng-if="notifications.length > 0">
+      <md-tab ng-if="vm.notifications.length > 0">
         <md-tab-label>
-          New&nbsp;&nbsp;<span class="badge">{{ notifications.length }}</span>
+          New&nbsp;&nbsp;<span class="badge">{{ vm.notifications.length }}</span>
         </md-tab-label>
         <md-tab-body>
           <md-content>
             <md-list class="notifications-list" flex>
               <md-list-item class="secondary-button-padding notification-item"
-                            ng-class="{ priority: notification.priority }"
-                            ng-repeat="notification in notifications | orderBy:['-priority', '-id']"
+                            ng-repeat="notification in vm.notifications | orderBy:'priority'"
+                            ng-class="{ priority: notification.priority === 'high' }"
                             layout="row"
                             layout-align="start center">
 
@@ -20,10 +23,10 @@
 
                 <!-- DISMISS BUTTON -->
                 <md-button class="md-icon-button md-secondary"
-                           ng-click="dismissNotification(notification)"
-                           ng-hide="!notification.dismissable"
+                           ng-click="vm.dismissNotification(notification)"
                            aria-label="dismiss this notification">
                   <md-icon>clear</md-icon>
+                  <md-tooltip md-delay="500">Dismiss notification</md-tooltip>
                 </md-button>
               </md-list-item>
             </md-list>
@@ -31,16 +34,16 @@
         </md-tab-body>
       </md-tab>
       <!-- DISMISSED NOTIFICATIONS TAB -->
-      <md-tab ng-if="dismissedNotifications.length > 0">
+      <md-tab ng-if="vm.dismissedNotifications.length > 0">
         <md-tab-label>
-          Dismissed&nbsp;&nbsp;<span class="badge">{{ dismissedNotifications.length }}</span>
+          Dismissed&nbsp;&nbsp;<span class="badge">{{ vm.dismissedNotifications.length }}</span>
         </md-tab-label>
         <md-tab-body>
           <md-content>
             <md-list class="notifications-list" flex>
               <md-list-item class="secondary-button-padding notification-item"
-                            ng-repeat="notification in dismissedNotifications | orderBy:['-priority', '-id']"
-                            ng-class="{ priority: notification.priority }"
+                            ng-repeat="notification in vm.dismissedNotifications | orderBy:['-priority', '-id']"
+                            ng-class="{ priority: notification.priority === 'high' }"
                             layout="row"
                             layout-align="start center">
 
@@ -48,15 +51,11 @@
 
                 <!-- RESTORE BUTTON -->
                 <md-button class="md-icon-button md-secondary"
-                           ng-click="restoreNotification(notification)"
+                           ng-click="vm.restoreNotification(notification)"
                            aria-label="restore this notification">
-                  <i class='fa fa-undo'></i>
+                  <md-icon>undo</md-icon>
+                  <md-tooltip md-delay="500">Restore notification</md-tooltip>
                 </md-button>
-              </md-list-item>
-
-              <!-- IF NO NOTIFICATIONS -->
-              <md-list-item class="notification-item read" ng-show="dismissedNotifications.length === 0">
-                No dismissed notifications
               </md-list-item>
             </md-list>
           </md-content>
@@ -64,5 +63,4 @@
       </md-tab>
     </md-tabs>
   </div>
-</div>
 </frame-page>

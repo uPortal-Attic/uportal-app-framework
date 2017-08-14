@@ -15,7 +15,7 @@ define(['angular'], function(angular) {
             'groupURL': '/portal/api/groups',
             'kvURL': '/storage',
             'loginSilentURL': '/portal/Login?silent=true',
-            'notificationsURL': 'staticFeeds/notifications.json',
+            'messagesURL': 'staticFeeds/sample-messages.json',
             'sessionInfo': 'staticFeeds/session.json',
             'shibbolethSessionURL': 'staticFeeds/Shibboleth.sso/Session.json',
             'portalLayoutRestEndpoint': null, // '/portal/api/layout',
@@ -33,15 +33,8 @@ define(['angular'], function(angular) {
         .value('SEARCH', {
             'searchURL': '/web/apps/search/',
         })
-        .value('FEATURES', {
-            'enabled': false,
-            'groupFiltering': false,
-            'serviceURL': 'staticFeeds/features.json',
-        })
-        .value('NOTIFICATION', {
-            'enabled': true,
-            'groupFiltering': true,
-            'notificationFullURL': '/notifications',
+        .value('MESSAGES', {
+            'notificationsPageURL': '/notifications',
         })
         .value('MISC_URLS', {
             'feedbackURL': 'https://my.wisc.edu/portal/p/feedback',

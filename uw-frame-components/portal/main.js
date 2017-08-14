@@ -12,6 +12,10 @@ define([
     'ngMaterial',
     './about/controllers',
     './about/services',
+    './messages/controllers',
+    './messages/directives',
+    './messages/filters',
+    './messages/services',
     './main/controllers',
     './main/directives',
     './main/services',
@@ -19,9 +23,6 @@ define([
     './misc/directives',
     './misc/filters',
     './misc/services',
-    './notifications/controllers',
-    './notifications/directives',
-    './notifications/services',
     './search/controllers',
     './search/directives',
     './search/services',
@@ -29,9 +30,6 @@ define([
     './settings/directives',
     './settings/services',
     './storage/services',
-    './features/controllers',
-    './features/directives',
-    './features/services',
     './timeout/controllers',
     './timeout/services',
     './widgets/controllers',
@@ -63,13 +61,14 @@ define([
         'portal.main.controllers',
         'portal.main.directives',
         'portal.main.services',
+        'portal.messages.controllers',
+        'portal.messages.directives',
+        'portal.messages.filters',
+        'portal.messages.services',
         'portal.misc.controllers',
         'portal.misc.directives',
         'portal.misc.filters',
         'portal.misc.services',
-        'portal.notifications.controllers ',
-        'portal.notifications.directives',
-        'portal.notifications.services',
         'portal.search.controllers',
         'portal.search.directives',
         'portal.search.services',
@@ -77,9 +76,6 @@ define([
         'portal.settings.directives',
         'portal.settings.services',
         'portal.storage.services',
-        'portal.features.controllers',
-        'portal.features.directives',
-        'portal.features.services',
         'portal.timeout.controllers',
         'portal.timeout.services',
         'portal.widgets.controllers',
@@ -186,8 +182,7 @@ define([
                      SERVICE_LOC,
                      NAMES,
                      SEARCH,
-                     FEATURES,
-                     NOTIFICATION,
+                     MESSAGES,
                      MISC_URLS,
                      FOOTER_URLS,
                      APP_BETA_FEATURES) {
@@ -376,13 +371,13 @@ define([
       // List of config. VERY IMPORTANT THAT THE CONFIGS has a
       // corresponding configsName in the same index
       var configs = [
-        APP_FLAGS, SERVICE_LOC, NAMES, SEARCH, FEATURES,
-        NOTIFICATION, MISC_URLS, FOOTER_URLS, APP_BETA_FEATURES,
+        APP_FLAGS, SERVICE_LOC, NAMES, SEARCH, MESSAGES,
+        MISC_URLS, FOOTER_URLS, APP_BETA_FEATURES,
       ];
       // TODO: make better
       var configsName = [
-        'APP_FLAGS', 'SERVICE_LOC', 'NAMES', 'SEARCH', 'FEATURES',
-        'NOTIFICATION', 'MISC_URLS', 'FOOTER_URLS', 'APP_BETA_FEATURES',
+        'APP_FLAGS', 'SERVICE_LOC', 'NAMES', 'SEARCH', 'MESSAGES',
+        'MISC_URLS', 'FOOTER_URLS', 'APP_BETA_FEATURES',
       ];
 
       var configureAppConfig = function() {

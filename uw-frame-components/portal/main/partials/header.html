@@ -1,12 +1,12 @@
-<notification-bell mode="priority" class="priority-gt-xs" hide-xs></notification-bell>
-<span ng-controller="PortalPopupController"></span>
-<md-toolbar md-scroll-shrink class="md-primary" tabindex="0">
+<md-toolbar md-scroll-shrink class="md-primary" tabindex="0" ng-controller="MessagesController">
+  <notifications-bell mode="priority" class="priority-gt-xs" hide-xs></notifications-bell>
+  <span ng-controller="AnnouncementsController" controllerAs="vm"></span>
   <div class="md-toolbar-tools"  role="banner">
     <div layout="row" flex-gt-xs="30" flex-xs="40" layout-align="start center">
       <!-- MOBILE MENU -->
       <md-menu md-position-mode="target target" md-offset="0 56" hide-gt-xs>
         <md-button aria-label="toggle mobile menu" hide-gt-xs ng-click="$mdOpenMenu($event)" layout="row" layout-align="center center">
-          <notification-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notification-bell>
+          <notifications-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notifications-bell>
           <i class="fa fa-bars" style='font-size: 1.5em;'></i>
           <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Main menu</md-tooltip>
         </md-button>
@@ -14,7 +14,7 @@
           <!-- Mascot announcement -->
           <mascot-announcement mode="mobile-menu" header-ctrl="headerCtrl"></mascot-announcement>
           <!-- Notifications -->
-          <notification-bell mode="mobile-menu" header-ctrl="headerCtrl" ng-if="!GuestMode"></notification-bell>
+          <notifications-bell mode="mobile-menu" header-ctrl="headerCtrl" ng-if="!GuestMode"></notifications-bell>
           <!-- Home link -->
           <md-menu-item>
             <md-button class="md-default" ng-if="APP_FLAGS.isWeb" ng-href="/web" ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Home');">
@@ -74,7 +74,7 @@
     <!-- COLLAPSIBLE MENU SM+ -->
     <div layout="row" layout-align="end center" flex-gt-xs="30" hide-xs>
       <mascot-announcement mode="mascot"></mascot-announcement>
-      <notification-bell mode="bell" ng-if="!GuestMode"></notification-bell>
+      <notifications-bell mode="bell" ng-if="!GuestMode"></notifications-bell>
       <username layout="row" layout-align="start center"></username>
     </div>
   </div>
