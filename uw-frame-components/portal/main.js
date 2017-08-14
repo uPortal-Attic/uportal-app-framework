@@ -179,6 +179,7 @@ define([
                      OVERRIDE,
                      filterFilter,
                      APP_FLAGS,
+                     APP_OPTIONS,
                      SERVICE_LOC,
                      NAMES,
                      SEARCH,
@@ -371,13 +372,13 @@ define([
       // List of config. VERY IMPORTANT THAT THE CONFIGS has a
       // corresponding configsName in the same index
       var configs = [
-        APP_FLAGS, SERVICE_LOC, NAMES, SEARCH, MESSAGES,
+        APP_FLAGS, APP_OPTIONS, SERVICE_LOC, NAMES, SEARCH, MESSAGES,
         MISC_URLS, FOOTER_URLS, APP_BETA_FEATURES,
       ];
       // TODO: make better
       var configsName = [
-        'APP_FLAGS', 'SERVICE_LOC', 'NAMES', 'SEARCH', 'MESSAGES',
-        'MISC_URLS', 'FOOTER_URLS', 'APP_BETA_FEATURES',
+        'APP_FLAGS', 'APP_OPTIONS', 'SERVICE_LOC', 'NAMES', 'SEARCH',
+        'MESSAGES', 'MISC_URLS', 'FOOTER_URLS', 'APP_BETA_FEATURES',
       ];
 
       var configureAppConfig = function() {
