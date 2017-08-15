@@ -16,6 +16,10 @@ Your application can overwrite any constant listed below by adding it to the `js
 + `shibbolethSessionURL` : Default is `null`. When set to a proper string (like `'/Shibboleth.sso/Session.json'`) it then adds a timeout alert notifying users the session is no longer valid. The action of the pop-up is to forward them on to the `MISC_URLS.loginURL`. _as of 2.6.2_
 + `campusIdAttribute` : Default is `null`. Provide a session attribute for campus ID (i.e. UW-Madison's `wiscEduStudentID` attribute) if you want users to see it in the username menu. _This is currently unimplemented._
 
+### APP_OPTIONS
+
++ `optionsTemplateURL` : A path to the HTML template for app-specific options (appears on the right-hand side of the [app-header](directives.md)). See the [app options doc](app-options.md) to learn how to use this feature.
+
 ### SERVICE_LOC
 
 + `aboutURL` : If your application has some data that it would like to show in `/about` in addition to the frame information, provide that here.

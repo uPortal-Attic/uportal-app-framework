@@ -2,7 +2,7 @@
 
 ## App header
 
-`app-header` directive should be used for all pages in a frame based page. You can either utilize the frame-page directive, or just this directive with custom code.
+`app-header` directive should be used for all pages in a frame based app. You can either utilize the frame-page directive, or just this directive with custom code.
 
 There is also a directive called `app-header-two-way-bind`. This has all the same features as `app-header` except all the scope attributes are passed in via `=` instead of `@`. This provides 2 way binding for your header. Research angular directives for more details.
 
@@ -12,13 +12,8 @@ There is also a directive called `app-header-two-way-bind`. This has all the sam
 <app-header
   app-title="Hello World"
   app-icon="email"
-  app-action-link-url="/go/to/this/url/when/you/click/me"
-  app-action-link-icon="fa-globe"
-  app-action-link-text="add hello world to home"
-  app-option-template="HeyWorldOptionTemplate.html"
   app-fname="hey-world-fname"
-  app-add-to-home="false"
-  app-single-option="false"
+  app-show-add-to-home="false"
 ></app-header>
 ```
 
@@ -26,17 +21,10 @@ There is also a directive called `app-header-two-way-bind`. This has all the sam
 
 All params are prefixed with `app-`.
 
-* **title**: The title that will be displayed in the header
+* **title**: The title that will be displayed in the app header
 * **icon**: The icon to use as a prefix to the app title. You can use Font Awesome (i.e. "fa-envelope") or Material Icons (i.e. "email").
-* **action-link-url**: A URL that you want to goto when the action is clicked (alt to add to home feature)
-* **action-link-text**: The text for the action link
-* **action-link-icon**: The fa icon for prefixing the action-link-text. `fa-plus` by default. (e.g.: fa-plus)
-* **single-option**: If set to true, will assume there is only one option in the **option-template** and will display
-that option directly on the app-header, instead of inside a dropdown menu.
-* **add-to-home**: If set to true, will use the add to home controller instead of the action-link-url. False by default.
-* **fname**: if provided, it'll use that in the add to home feature. if not, it'll try to use NAMES.fname constant.
-* **option-template**: the name of the template to inject in the options dropdown. See `/portal/main/partials/example-page.html` for
-examples of single- and many-option templates.
+* **show-add-to-home**: If set to true, will include the add-to-home directive and its controller in the app header (used for apps that are part of the portal ecosystem).
+* **fname**: If provided, it will be used in the add-to-home feature. If not, it'll try to use NAMES.fname constant.
 
 ## Frame page
 
@@ -50,26 +38,21 @@ Frame page is basically the app header directive but with a transclude for the b
 <frame-page
   app-title="Hello World"
   app-icon="school"
-  app-action-link-url="/portal/web/layout?action=addPortlet&tabName=UW%20Bucky%20Home&fname=helloWorld"
-  app-action-link-icon="fa-globe"
-  app-action-link-text="add hello world to home"
-  app-option-template="HeyWorldOptionTemplate.html"
   app-fname="hey-world-fname"
-  app-add-to-home='false'
-  white-background='true'
+  app-show-add-to-home="false"
+  white-background="true"
 >
 This part is included via ng-transclude
 </frame-page>
 ```
 
-### Options
-
-* **app-icon**: Supports Font Awesome and Material Icons
-* **white-background**: A boolean when set to true with give you a white background with 98% width, with a 1% `left-margin`.
-
-### Params :
+### Params
 
 _See `app-header`_
+
+### Options
+
+* **white-background**: A boolean when set to true with give you a white background with 98% width, with a 1% `left-margin`.
 
 ## Circle button
 

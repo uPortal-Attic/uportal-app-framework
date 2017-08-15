@@ -10,6 +10,9 @@ define(['angular'], function(angular) {
             'debug': false,
             'campusIdAttribute': null,
         })
+        .value('APP_OPTIONS', {
+            'optionsTemplateURL': 'portal/misc/partials/example-options.html',
+        })
         .value('SERVICE_LOC', {
             'aboutURL': null,
             'groupURL': '/portal/api/groups',
