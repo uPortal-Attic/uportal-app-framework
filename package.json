@@ -86,7 +86,6 @@
     "karma-jasmine": "^1.1.0",
     "karma-jasmine-html-reporter": "0.2.2",
     "karma-requirejs": "1.1.0",
-    "less": "2.7.2",
     "lodash": "^4.0.0",
     "mkdirp": "^0.5.1",
     "onchange": "^3.0.2",
@@ -105,7 +104,8 @@
   "dependencies": {
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.3",
-    "normalize.less": "^1.0.0"
+    "normalize.less": "^1.0.0",
+    "less": "2.7.2"
   },
   "eslintConfig": {
     "root": true,
