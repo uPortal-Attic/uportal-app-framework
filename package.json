@@ -100,7 +100,7 @@
     "rimraf": "^2.5.4",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
-    "superstatic": "^4.0.0"
+    "superstatic": "~4.1.0"
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
