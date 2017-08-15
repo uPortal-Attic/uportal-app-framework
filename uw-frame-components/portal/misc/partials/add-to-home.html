@@ -4,7 +4,7 @@
   <md-button class="md-default link-div" aria-label="add to home" hide-xs hide-sm ng-click="addToHome()" ng-if="!successfullyAdded && !addToHomeFailed && !savingAddToHome">
     <md-icon ng-hide="savingAddToHome">add</md-icon> Add to home
   </md-button>
-  <md-button class="md-default link-div" aria-label="adding to home" hide-xs hide-sm ng-click="addToHome()" ng-if="!successfullyAdded && !addToHomeFailed && savingAddToHome">
+  <md-button class="md-default link-div" aria-label="adding to home" hide-xs hide-sm ng-click="addToHome()" ng-if="!successfullyAdded && !addToHomeFailed && savingAddToHome" ng-disabled="true">
     <i class="fa fa-fw fa-spin fa-circle-o-notch" ng-show="savingAddToHome"></i> Adding...
   </md-button>
   <md-button class="md-default link-div" aria-label="added to home" hide-xs hide-sm ng-click="addToHome()" ng-if="successfullyAdded" ng-disabled="true">
