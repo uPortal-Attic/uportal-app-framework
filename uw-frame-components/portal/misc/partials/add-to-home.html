@@ -3,29 +3,35 @@
   <!-- Button for medium+ screens -->
   <md-button class="md-default link-div" aria-label="add to home" hide-xs hide-sm ng-hide="inHome" ng-click="addToHome()">
     <span ng-if="!successfullyAdded || !addToHomeFailed">
-      <i class="fa fa-fw fa-plus" ng-class="{ 'fa-spin' : savingAddToHome }"></i> Add to home
+      <md-icon ng-hide="savingAddToHome">add</md-icon>
+      <i class="fa fa-fw fa-spin" ng-show="savingAddToHome"></i>
+      Add to home
     </span>
     <span ng-show="successfullyAdded">
-      <i class="fa fa-fw fa-check-square"></i> Added to home
+      <md-icon>check</md-icon> Added to home
     </span>
     <span ng-show="addToHomeFailed">
-      <i class="fa fa-fw fa-exclamation-triangle"></i> Add to home failed
+      <md-icon>error</md-icon> Add to home failed
     </span>
   </md-button>
 
   <!-- Button for small and xs screens -->
   <md-button class="md-default link-div" aria-label="add to home" hide-gt-sm ng-hide="inHome" ng-click="addToHome()">
     <span ng-if="!successfullyAdded || !addToHomeFailed">
-      <i class="fa fa-fw fa-plus" ng-class="{ 'fa-spin' : savingAddToHome }"></i>
+      <md-icon ng-hide="savingAddToHome">add</md-icon>
+      <i class="fa fa-fw fa-spin" ng-show="savingAddToHome"></i>
+      <span class="aria-only">Add to home</span>
     </span>
     <span ng-show="successfullyAdded">
-      <i class="fa fa-fw fa-check-square"></i>
+      <md-icon>check</md-icon>
+      <span class="aria-only">Added to home</span>
     </span>
     <span ng-show="addToHomeFailed">
-      <i class="fa fa-fw fa-exclamation-triangle"></i>
+      <md-icon>error</md-icon>
+      <span class="aria-only">Add to home failed</span>
     </span>
-    <md-tooltip ng-if="!successfullyAdded || !addToHomeFailed">Add to home</md-tooltip>
-    <md-tooltip ng-if="successfullyAdded && !addToHomeFailed">Added to home</md-tooltip>
-    <md-tooltip ng-if="addToHomeFailed && !successfullyAdded">Add to home failed</md-tooltip>
+    <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500" ng-if="!successfullyAdded || !addToHomeFailed">Add to home</md-tooltip>
+    <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500" ng-if="successfullyAdded && !addToHomeFailed">Added to home</md-tooltip>
+    <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500" ng-if="addToHomeFailed && !successfullyAdded">Add to home failed</md-tooltip>
   </md-button>
 </div>
