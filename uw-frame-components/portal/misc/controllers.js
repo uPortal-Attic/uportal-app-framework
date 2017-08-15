@@ -11,16 +11,11 @@ define(['angular'], function(angular) {
           if (!$scope.inHome
             && PortalAddToHomeService.canAddToHome($scope.fname)) {
             $scope.savingAddToHome = true;
-            $timeout(function() {
-              $scope.actionLinkIconTemp = $scope.actionLinkIcon;
-              $scope.actionLinkIcon = 'fa-circle-o-notch';
-            }, 500);
             PortalAddToHomeService.addToHome($scope.fname).then(
               function() {
                 // success
                 $scope.inHome = true;
                 $scope.successfullyAdded = true;
-                $scope.actionLinkIcon = $scope.actionLinkIconTemp;
                 return true;
               }).catch(function() {
                 // failed

@@ -20,7 +20,7 @@ At minimum, you should do this on "xs" screen sizes.
 
 Use Angular Material's [show-xs, hide-xs, etc. directives](https://material.angularjs.org/latest/layout/options) to craft responsive app options.
 
-**4. Space will be further limited if show-add-to-home is "true"**
+**3. Space will be further limited if show-add-to-home is "true"**
 
 You can read about this attribute in the [directives doc](directives.md). Be mindful of the extra space the button occupies. On "xs" screens, it appears as an icon button with a tooltip. On larger screens,
 it's a regular `md-button` that says "Add to home".
