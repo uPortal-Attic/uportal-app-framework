@@ -18,7 +18,7 @@ Your application can overwrite any constant listed below by adding it to the `js
 
 ### APP_OPTIONS
 
-+ `optionsTemplateURL` : A path to the HTML template for app-specific options (appears on the right-hand side of the [app-header](directives.md))
++ `optionsTemplateURL` : A path to the HTML template for app-specific options (appears on the right-hand side of the [app-header](directives.md)). See the [app options doc](app-options.md) to learn how to use this feature.
 
 ### SERVICE_LOC
 

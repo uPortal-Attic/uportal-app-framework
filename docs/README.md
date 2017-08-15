@@ -26,6 +26,7 @@ With gratitude to the many [contributors to this project](contributors.md).
 ## Features
 
 + [Frame-specific directives](directives.md)
++ [Custom app options](app-options.md)
 + [In-app messaging (user-facing content)](messaging.md)
 + [In-app messaging (technical implementation)](messaging-implementation.md)
 + [Access and permission management](coarse-grain-access.md)
