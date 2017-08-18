@@ -30,9 +30,9 @@ define(['angular'], function(angular) {
         // based on whether the id matches a seen id
         angular.forEach(messages, function(message) {
           if (seenMessageIds.indexOf(message.id) != -1) {
-            separatedMessages.unseen.push(message);
-          } else {
             separatedMessages.seen.push(message);
+          } else {
+            separatedMessages.unseen.push(message);
           }
         });
         return separatedMessages;

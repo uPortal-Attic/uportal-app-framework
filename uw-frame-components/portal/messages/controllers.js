@@ -119,6 +119,7 @@ define(['angular'], function(angular) {
         var allNotifications = [];
         var separatedNotifications = {};
         var dismissedNotificationIds = [];
+        var allSeenMessageIds = [];
 
         // Promise to get seen message IDs
         var promiseSeenMessageIds = {
@@ -173,6 +174,9 @@ define(['angular'], function(angular) {
         var getSeenMessageIdsSuccess = function(result) {
           if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
             && result.seenMessageIds.length > 0) {
+            // Save all seenMessageIds for later
+            allSeenMessageIds = result.seenMessageIds;
+
             // Separate seen and unseen
             separatedNotifications = $filter('filterSeenAndUnseen')(
               allNotifications,
@@ -272,7 +276,8 @@ define(['angular'], function(angular) {
 
           // Call service to save changes if k/v store enabled
           if (SERVICE_LOC.kvURL) {
-            messagesService.setMessagesSeen(dismissedNotificationIds);
+            messagesService.setMessagesSeen(allSeenMessageIds,
+              dismissedNotificationIds, 'dismiss');
           }
 
           // Clear priority notification flags if it was a priority
@@ -304,7 +309,8 @@ define(['angular'], function(angular) {
           }
           // Call service to save changes if k/v store enabled
           if (SERVICE_LOC.kvURL) {
-            messagesService.setMessagesSeen(dismissedNotificationIds);
+            messagesService.setMessagesSeen(allSeenMessageIds,
+              dismissedNotificationIds, 'restore');
           }
         };
 
@@ -332,6 +338,7 @@ define(['angular'], function(angular) {
         var separatedAnnouncements = {};
         var seenAnnouncementIds = [];
         var popups = [];
+        var allSeenMessageIds = [];
 
         // Promise to get seen message IDs
         var promiseSeenMessageIds = {
@@ -385,6 +392,9 @@ define(['angular'], function(angular) {
         var getSeenMessageIdsSuccess = function(result) {
           if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
             && result.seenMessageIds.length > 0) {
+            // Save all seenMessageIds for later
+            allSeenMessageIds = result.seenMessageIds;
+
             // Separate seen and unseen
             separatedAnnouncements = $filter('filterSeenAndUnseen')(
               allAnnouncements,
@@ -467,7 +477,8 @@ define(['angular'], function(angular) {
                   $scope.latestAnnouncement.id
                 );
                 seenAnnouncementIds.push($scope.latestAnnouncement.id);
-                messagesService.setMessagesSeen(seenAnnouncementIds);
+                messagesService.setMessagesSeen(allSeenMessageIds,
+                  seenAnnouncementIds, 'dismiss');
                 return action;
               })
               .catch(function() {
@@ -475,7 +486,8 @@ define(['angular'], function(angular) {
                 miscService.pushGAEvent(
                   'popup', 'dismissed', $scope.latestAnnouncement.id);
                 seenAnnouncementIds.push($scope.latestAnnouncement.id);
-                messagesService.setMessagesSeen(seenAnnouncementIds);
+                messagesService.setMessagesSeen(allSeenMessageIds,
+                  seenAnnouncementIds, 'dismiss');
               });
             };
             displayPopup();
@@ -518,7 +530,8 @@ define(['angular'], function(angular) {
           // Add to seenAnnouncementsIds
           seenAnnouncementIds.push(id);
           // Call service to save results
-          messagesService.setMessagesSeen(seenAnnouncementIds);
+          messagesService.setMessagesSeen(allSeenMessageIds,
+            seenAnnouncementIds, 'dismiss');
         };
 
         /**
@@ -529,7 +542,8 @@ define(['angular'], function(angular) {
           angular.forEach(separatedAnnouncements.unseen, function(value) {
             seenAnnouncementIds.push(value.id);
           });
-          messagesService.setMessagesSeen(seenAnnouncementIds);
+          messagesService.setMessagesSeen(allSeenMessageIds,
+            seenAnnouncementIds, 'dismiss');
         };
 
         /**

@@ -186,51 +186,56 @@ define(['angular'], function(angular) {
           if (!keyValueService.isKVStoreActivated()) {
             return $q.resolve([]);
           }
-          // If sessionStorage already has values, return them
-          if ($sessionStorage.seenMessageIds) {
-            return $q.resolve($sessionStorage.seenMessageIds);
-          }
+
           return keyValueService.getValue(KV_KEYS.VIEWED_MESSAGE_IDS)
             .then(function(result) {
               if (result && angular.isArray(result)) {
-                $sessionStorage.seenMessageIds = result;
-                return $sessionStorage.seenMessageIds;
+                return result;
               }
-              return result;
+              return $q.reject(result);
             })
             .catch(function(error) {
-              $log.error('Could not get seen message IDs');
-              $log.error(error);
               return [];
             });
         };
 
         /**
          * Set list of seen IDs in K/V store and session storage
-         * @param ids
+         * @param originalSeenIds The ids when the controller initialized
+         * @param alteredSeenIds The ids following action in the controller
+         * @param action The action to take (restore or dismiss)
          * @returns {*}
          */
-        var setMessagesSeen = function(ids) {
-          var seenIds = [];
+        var setMessagesSeen = function(originalSeenIds,
+                                       alteredSeenIds,
+                                       action) {
           // If K/V store isn't activated, don't proceed
           if (!keyValueService.isKVStoreActivated()) {
             return $q.resolve($sessionStorage.seenMessageIds);
           }
-          if ($sessionStorage.seenMessageIds) {
-            // If 'getSeenMessageIds' has ever been called,
-            // this block should fire
-            seenIds = $sessionStorage.seenMessageIds;
+
+          // Update stored IDs based on the action taken
+          if (action === 'restore') {
+            // If original array has values no longer present
+            // in updated array, remove them
+            //
+            angular.forEach(originalSeenIds, function(id, index) {
+              if (alteredSeenIds.indexOf(id) == -1) {
+                originalSeenIds.splice(index, 1);
+              }
+            });
+          } else if (action === 'dismiss') {
+            // Add any IDs in the updated array to the original array
+            angular.forEach(alteredSeenIds, function(id) {
+              if (originalSeenIds.indexOf(id) == -1) {
+                originalSeenIds.push(id);
+              }
+            });
           }
-          // Add any IDs that don't already exist in the array
-          // of seen IDs
-          angular.forEach(ids, function(id) {
-            if (seenIds.indexOf(id) === -1) {
-              seenIds.push(id);
-            }
-          });
-          return keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS, seenIds)
+          return keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS,
+            originalSeenIds)
             .then(function() {
-              return seenIds;
+              return originalSeenIds;
             })
             .catch(function(error) {
               $log.warn('Problem setting seen message IDs in storage');
