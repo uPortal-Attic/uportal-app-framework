@@ -71,6 +71,32 @@
         "url": "/features"
       },
       "confirmButton": null
+    },
+    {
+      "id": "sample-uw-frame-filtered-popup-announcement",
+      "title": "This is a filtered popup",
+      "titleShort": "Filtered popup",
+      "description": "This popup message should not appear to anyone unless group filtering is disabled (via beta settings).",
+      "descriptionShort": "You must have disabled group filtering!",
+      "messageType": "announcement",
+      "goLiveDate": "2017-08-01T09:30",
+      "expireDate": "2017-08-15",
+      "featureImageUrl": "img/the-cow.png",
+      "priority": "high",
+      "audienceFilter": {
+        "groups": ["Nonexistent-Group"],
+        "dataUrl": "",
+        "dataObject": "",
+        "dataArrayFilter": {}
+      },
+      "actionButton": null,
+      "moreInfoButton": {
+        "label": "Read more",
+        "url": "/features"
+      },
+      "confirmButton": {
+        "label": "Got it!"
+      }
     }
   ]
 }
