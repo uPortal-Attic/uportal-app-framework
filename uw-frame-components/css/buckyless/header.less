@@ -1,5 +1,11 @@
 portal-header {
   display: block;
+  position: fixed;
+  width: 100%;
+  z-index: 80;
+  top: 0;
+  overflow-y: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
 
   a {
     &:not(.md-button):not(.btn):not(.launch-app-button):not(.full-width) {
@@ -13,16 +19,12 @@ portal-header {
 
   md-toolbar {
     min-height: 56px;
-    position: fixed;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
-    z-index: 98;
-    top: 0;
-    overflow-y: hidden;
 
     .md-toolbar-tools {
       padding-left: 0;
       height: 56px;
       max-height: 56px;
+      overflow-y: hidden;
 
       .title-link {
         h1 {
@@ -62,13 +64,9 @@ portal-header {
     }
   }
 
-  &.has-priority-nots {
-    @media (min-width: @xs) {
-      padding-top: 46px;
-
-      md-toolbar {
-        top: 46px;
-      }
+  @media (min-width: @xs) {
+    &.has-priority-nots + .page-content {
+      padding-top: 102px;
     }
   }
 
@@ -77,9 +75,9 @@ portal-header {
       width: 100%;
       position: absolute;
       top: 56px;
-      z-index: 98;
+      z-index: 80;
       overflow: hidden;
-      transition: @search-transition;
+      transition: @transition-height;
       background: rgba(0, 0, 0, 0.4);
 
       &:not(.search-expanded) {

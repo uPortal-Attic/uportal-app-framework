@@ -57,7 +57,7 @@
 
       .md-secondary {
         color: @grayscale7;
-        transition: @link-hover-transition;
+        transition: @transition-color;
 
         &:hover {
           color: @grayscale9;
@@ -101,7 +101,7 @@
       border-radius: 50%;
       padding: 0;
       color: @color1;
-      z-index: 98;
+      z-index: 80;
       top: 0;
       right: 26px;
 
@@ -123,7 +123,7 @@
       color: @color1;
       font-weight: 400;
       font-size: 20px;
-      z-index: 98;
+      z-index: 80;
       position: absolute;
       line-height: 40px;
       left: 14px;
@@ -139,7 +139,7 @@
   .notification-desktop {
     .notification-badge {
       position: relative;
-      transition: @link-hover-transition;
+      transition: @transition-color;
 
       .material-icons {
         width: 40px;
@@ -160,52 +160,41 @@
 .priority-gt-xs .priority-notifications {
   height: 46px;
   width: 100%;
-  background-color: @grayscale2;
-  z-index: 98;
-  position: fixed;
+  z-index: 80;
+  padding: 4px 4px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid @black;
   top: 0;
+  transition: @transition-all;
 
-  .notification-message {
-    font-size: 15px;
+  &.animate-hide {
+    opacity: 0;
+    height: 0;
   }
 
-  p {
-    margin-bottom: 0;
+  .priority-bubble {
+    box-shadow: @box-shadow-4;
+    background-color: @grayscale2;
+    border-radius: 6px;
   }
-}
 
-.priority-xs .priority-notifications {
-  min-height: 40px;
-  position: relative;
-  top: 0;
-  margin: 0 -15px;
-  padding: 12px 20px;
-  background-color: @grayscale2;
-
-  .notification-message {
-    font-size: 13px;
-  }
-}
-
-.priority-gt-xs .priority-notifications,
-.priority-xs .priority-notifications {
   .notification-message {
     color: @black;
+    padding: 4px 26px;
+    font-size: 14px;
+    line-height: 1;
     text-align: center;
     display: block;
     margin-bottom: 0;
-
-    a {
-      color: @link-color;
-    }
   }
 
   a.notification-message {
     color: @link-color;
+  }
+
+  p {
+    margin-bottom: 0;
   }
 
   .notification-buttons {
@@ -229,8 +218,9 @@
       width: 30px;
       padding: 0;
 
-      .md-icon {
+      .material-icons {
         font-size: 22px;
+        color: @grayscale10;
       }
     }
   }
