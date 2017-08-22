@@ -15,7 +15,7 @@ portal-header {
     min-height: 56px;
     position: fixed;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
-    z-index: 98;
+    z-index: 80;
     top: 0;
     overflow-y: hidden;
 
@@ -65,10 +65,6 @@ portal-header {
   &.has-priority-nots {
     @media (min-width: @xs) {
       padding-top: 46px;
-
-      md-toolbar {
-        top: 46px;
-      }
     }
   }
 
@@ -77,7 +73,7 @@ portal-header {
       width: 100%;
       position: absolute;
       top: 56px;
-      z-index: 98;
+      z-index: 80;
       overflow: hidden;
       transition: @search-transition;
       background: rgba(0, 0, 0, 0.4);

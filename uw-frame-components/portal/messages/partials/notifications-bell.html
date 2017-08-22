@@ -87,7 +87,7 @@
 
   <!-- PRIORITY NOTIFICATIONS (FIXED-TOP) -->
   <div class="priority-notifications" ng-if="directiveMode === 'priority'" ng-repeat="priority in vm.priorityNotifications | limitTo: 1">
-    <div ng-if="vm.priorityNotifications.length == 1" layout="row" layout-align="center center" layout-fill>
+    <div class="priority-bubble" ng-if="vm.priorityNotifications.length == 1" layout="row" layout-align="center center" layout-fill>
       <a ng-href="{{ priority.actionButton.url }}" alt="{{ priority.actionButton.label }}" class="notification-message">{{ priority.title }}</a>
       <div layout="row" layout-align="center center" ng-if="priority.moreInfoButton" class="notification-buttons">
         <md-button class="md-raised md-default"
