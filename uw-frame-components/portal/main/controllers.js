@@ -109,7 +109,7 @@ define(['angular', 'require'], function(angular, require) {
 
       if (vm.user.firstName || vm.user.displayName) {
         vm.username = vm.user.firstName ?
-          vm.user.firstName : vm.user.displayName;
+          vm.user.firstName.toLowerCase() : vm.user.displayName.toLowerCase();
       }
       vm.firstLetter = vm.username.substring(0, 1);
 
