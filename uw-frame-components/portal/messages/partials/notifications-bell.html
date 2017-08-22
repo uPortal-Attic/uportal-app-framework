@@ -86,8 +86,13 @@
   </a>
 
   <!-- PRIORITY NOTIFICATIONS (FIXED-TOP) -->
-  <div class="priority-notifications" ng-if="directiveMode === 'priority'" ng-repeat="priority in vm.priorityNotifications | limitTo: 1">
-    <div class="priority-bubble" ng-if="vm.priorityNotifications.length == 1" layout="row" layout-align="center center" layout-fill>
+  <div class="priority-notifications"
+       ng-class="{ 'animate-hide': vm.priorityNotifications.length === 0 }"
+       ng-if="directiveMode === 'priority'">
+    <div class="priority-bubble"
+         ng-if="vm.priorityNotifications.length == 1"
+         ng-repeat="priority in vm.priorityNotifications | limitTo: 1"
+         layout="row" layout-align="center center" layout-fill>
       <a ng-href="{{ priority.actionButton.url }}" alt="{{ priority.actionButton.label }}" class="notification-message">{{ priority.title }}</a>
       <div layout="row" layout-align="center center" ng-if="priority.moreInfoButton" class="notification-buttons">
         <md-button class="md-raised md-default"
@@ -105,9 +110,11 @@
         </md-button>
       </div>
     </div>
-    <p ng-if="vm.priorityNotifications.length > 1" class="notification-message">
-      You have {{ vm.priorityNotifications.length }} important notifications. <a href="notifications">View your notifications.</a>
-    </p>
+    <div class="priority-bubble" ng-if="vm.priorityNotifications.length > 1" layout="row" layout-align="center center" layout-fill>
+      <p class="notification-message">
+        You have {{ vm.priorityNotifications.length }} important notifications. <a href="notifications">View your notifications.</a>
+      </p>
+    </div>
   </div>
 
 </div>

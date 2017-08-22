@@ -161,11 +161,17 @@
   height: 46px;
   width: 100%;
   z-index: 80;
-  padding: 4px;
+  padding: 4px 4px 0 4px;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
+  transition: @transition-all;
+
+  &.animate-hide {
+    opacity: 0;
+    height: 0;
+  }
 
   .priority-bubble {
     box-shadow: @box-shadow-4;
@@ -174,44 +180,21 @@
   }
 
   .notification-message {
+    color: @black;
     padding: 4px 26px;
     font-size: 14px;
     line-height: 1;
-  }
-
-  p {
-    margin-bottom: 0;
-  }
-}
-
-.priority-xs .priority-notifications {
-  min-height: 40px;
-  position: relative;
-  top: 0;
-  margin: 0 -15px;
-  padding: 12px 20px;
-  background-color: @grayscale2;
-
-  .notification-message {
-    font-size: 13px;
-  }
-}
-
-.priority-gt-xs .priority-notifications,
-.priority-xs .priority-notifications {
-  .notification-message {
-    color: @black;
     text-align: center;
     display: block;
     margin-bottom: 0;
-
-    a {
-      color: @link-color;
-    }
   }
 
   a.notification-message {
     color: @link-color;
+  }
+
+  p {
+    margin-bottom: 0;
   }
 
   .notification-buttons {
