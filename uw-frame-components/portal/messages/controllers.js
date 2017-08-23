@@ -134,6 +134,7 @@ define(['angular'], function(angular) {
         vm.priorityNotifications = [];
         vm.notificationsUrl = MESSAGES.notificationsPageURL;
         vm.status = 'View notifications';
+        vm.isLoading = true;
 
         // //////////////////
         // Event listeners //
@@ -210,6 +211,8 @@ define(['angular'], function(angular) {
             + (vm.notifications.length === 0
               ? 'no' : vm.notifications.length)
             + ' notifications';
+
+          vm.isLoading = false;
         };
 
         /**
