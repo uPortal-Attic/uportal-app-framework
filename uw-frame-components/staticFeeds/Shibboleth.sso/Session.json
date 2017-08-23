@@ -1,5 +1,5 @@
 {
-  "expiration": 10,
+  "expiration": 480,
   "client_address": "127.0.0.1",
   "protocol": "urn:oasis:names:tc:SAML:2.0:protocol",
   "identity_provider": "https://logintest.wisc.edu/idp/shibboleth",
