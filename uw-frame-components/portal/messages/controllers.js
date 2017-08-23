@@ -267,7 +267,6 @@ define(['angular'], function(angular) {
             vm.notifications,
             notification.id
           );
-
           // Add notification to dismissed array
           vm.dismissedNotifications.push(notification);
 
