@@ -17,25 +17,48 @@
       Click to see what's new ({{ vm.announcements.length }})
     </md-tooltip>
   </md-button>
-  <md-menu-content class="top-bar-menu-content">
+  <md-menu-content class="top-bar-menu-content mascot-menu">
     <md-menu-item layout="row" layout-align="space-between center">
       <span>Announcements</span>
       <a href="features" ng-click="vm.markAllAnnouncementsSeen()" aria-label="see all announcements" class="link__see-all">
         See all ({{ vm.announcements.length }})
       </a>
     </md-menu-item>
-    <md-menu-item ng-repeat="announcement in vm.announcements | orderBy:['-goLiveDate'] | limitTo:3"
-                  class="top-bar-menu-item">
-      <div class="menu-item-content" layout="row" layout-align="space-between start">
-        <div layout="column" layout-align="center start" flex="80">
-          <span class="menu-item-title">{{ announcement.titleShort }}</span>
-          <span>{{ announcement.descriptionShort }}</span>
+    <div ng-show="vm.announcements.length > 0">
+      <md-menu-item ng-repeat="announcement in vm.announcements | orderBy:['-goLiveDate'] | limitTo:3"
+                    class="top-bar-menu-item">
+        <div class="menu-item-content" layout="row" layout-align="space-between start">
+          <div layout="column" layout-align="center start" flex="80">
+            <span class="menu-item-title">{{ announcement.titleShort }}</span>
+            <span>{{ announcement.descriptionShort }}</span>
+            <div ng-if="announcement.moreInfoButton || announcement.actionButton" class="compact-buttons">
+              <md-button class="md-raised md-accent"
+                         ng-if="announcement.actionButton"
+                         ng-href="{{ announcement.actionButton.url }}"
+                         target="_blank"
+                         rel="noopener noreferrer">
+                {{ announcement.actionButton.label }}
+              </md-button>
+              <md-button class="md-default"
+                         ng-if="announcement.moreInfoButton"
+                         ng-href="{{ announcement.moreInfoButton.url }}"
+                         target="_blank"
+                         rel="noopener noreferrer">
+                {{ announcement.moreInfoButton.label }}
+              </md-button>
+            </div>
+          </div>
+
+          <md-button class="md-icon-button button__mark-seen"
+                     ng-click="vm.markSingleAnnouncementSeen(announcement.id);"
+                     md-prevent-menu-close="md-prevent-menu-close"
+                     aria-label="mark this announcement seen"
+                     flex="20">
+            <md-icon>clear</md-icon>
+          </md-button>
         </div>
-        <md-button class="md-icon-button button__mark-seen" ng-click="vm.markSingleAnnouncementSeen(announcement.id);" md-prevent-menu-close="md-prevent-menu-close" aria-label="mark this announcement seen" flex="20">
-          <md-icon>clear</md-icon>
-        </md-button>
-      </div>
-    </md-menu-item>
+      </md-menu-item>
+    </div>
   </md-menu-content>
 </md-menu>
 

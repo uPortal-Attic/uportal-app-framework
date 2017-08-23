@@ -54,14 +54,21 @@
           <!-- NOTIFICATION CONTENT -->
           <div class="menu-item-content" layout="row" layout-align="space-between center">
             <div flex="80" layout="column" layout-align="center start">
-              <a ng-href="{{ notification.actionButton.url ? notification.actionButton.url : vm.notificationsUrl }}">
-                <md-icon ng-if="notification.priority">priority_high</md-icon>
+              <div layout="row" layout-align="start center">
+                <md-icon flex="16" ng-if="notification.priority">priority_high</md-icon>
                 <span> {{ notification.title }}</span>
-              </a>
+              </div>
 
-              <div ng-if="notification.moreInfoButton" class="notification-buttons">
+              <div ng-if="notification.moreInfoButton || notification.actionButton" class="compact-buttons">
                 <md-button class="md-raised md-accent"
-                           ng-if="notification.moreInfoButton"
+                           ng-show="notification.actionButton"
+                           ng-href="{{ notification.actionButton.url }}"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                  {{ notification.actionButton.label }}
+                </md-button>
+                <md-button class="md-default"
+                           ng-show="notification.moreInfoButton"
                            ng-href="{{ notification.moreInfoButton.url }}"
                            target="_blank"
                            rel="noopener noreferrer">
@@ -92,7 +99,7 @@
          ng-repeat="priority in vm.priorityNotifications | limitTo: 1"
          layout="row" layout-align="center center" layout-fill>
       <a ng-href="{{ priority.actionButton.url }}" alt="{{ priority.actionButton.label }}" class="notification-message">{{ priority.title }}</a>
-      <div layout="row" layout-align="center center" ng-if="priority.moreInfoButton" class="notification-buttons">
+      <div layout="row" layout-align="center center" ng-if="priority.moreInfoButton" class="compact-buttons">
         <md-button class="md-raised md-default"
                    ng-href="priority.moreInfoButton.url"
                    target="_blank"

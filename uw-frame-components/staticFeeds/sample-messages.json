@@ -89,7 +89,10 @@
         "dataObject": "",
         "dataArrayFilter": {}
       },
-      "actionButton": null,
+      "actionButton": {
+        "label": "Add to home",
+        "url": "/"
+      },
       "moreInfoButton": {
         "label": "Read more",
         "url": "/features"
