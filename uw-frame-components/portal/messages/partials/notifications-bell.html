@@ -54,9 +54,12 @@
           <!-- NOTIFICATION CONTENT -->
           <div class="menu-item-content" layout="row" layout-align="space-between center">
             <div flex="80" layout="column" layout-align="center start">
-              <div layout="row" layout-align="start center">
-                <md-icon flex="16" ng-if="notification.priority">priority_high</md-icon>
-                <span> {{ notification.title }}</span>
+              <!-- REGULAR MESSAGE -->
+              <span ng-if="!notification.priority">{{ notification.title }}</span>
+              <!-- PRIORITY MESSAGE -->
+              <div layout="row" layout-align="start center" ng-if="notification.priority">
+                <md-icon flex="10">priority_high</md-icon>
+                <span flex="90"> {{ notification.title }}</span>
               </div>
 
               <div ng-if="notification.moreInfoButton || notification.actionButton" class="compact-buttons">
