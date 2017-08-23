@@ -212,6 +212,7 @@ define(['angular'], function(angular) {
               ? 'no' : vm.notifications.length)
             + ' notifications';
 
+          // Stop loading spinner
           vm.isLoading = false;
         };
 
@@ -222,6 +223,8 @@ define(['angular'], function(angular) {
         var getSeenMessageIdsFailure = function(error) {
           $log.warn('Couldn\'t get seen message IDs for notifications ' +
             ' controller.');
+          // Stop loading spinner
+          vm.isLoading = false;
         };
 
         /**
