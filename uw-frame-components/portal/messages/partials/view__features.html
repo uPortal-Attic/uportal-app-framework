@@ -14,7 +14,13 @@
       <div class="feature-content" layout="column" layout-align-xs="start none">
         <div class="feature-text">
           <p class="description">{{ announcement.description }}</p>
-          <p ng-if="announcement.moreInfoButton"><a ng-href="announcement.moreInfoButton.url">{{ announcement.moreInfoButton.label }}</a></p>
+          <div ng-if="announcement.moreInfoButton || announcement.actionButton" layout="row" layout-align="start center">
+            <md-button class="md-accent md-raised"
+                       ng-if="announcement.actionButton"
+                       ng-href="announcement.actionButton.url">{{ announcement.actionButton.label }}</md-button>
+            <md-button ng-if="announcement.moreInfoButton"
+                       ng-href="announcement.moreInfoButton.url">{{ announcement.moreInfoButton.label }}</md-button>
+          </div>
         </div>
         <div class="feature-images" ng-if="announcement.featureImageUrl" layout-gt-xs="row" layout-xs="column" layout-align="start start">
           <img ng-src="{{ announcement.featureImageUrl }}">
