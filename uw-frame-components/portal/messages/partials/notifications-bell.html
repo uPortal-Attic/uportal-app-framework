@@ -101,8 +101,8 @@
          ng-if="vm.priorityNotifications.length == 1"
          ng-repeat="priority in vm.priorityNotifications | limitTo: 1"
          layout="row" layout-align="center center" layout-fill>
-      <span class="notification-message">{{ priority.title }}</span>
-      <div layout="row" layout-align="center center" ng-if="priority.moreInfoButton || priority.actionButton" class="compact-buttons">
+      <div flex layout="row" layout-align="center center" ng-if="priority.moreInfoButton || priority.actionButton" class="compact-buttons">
+        <span class="notification-message">{{ priority.title }}</span>
         <md-button class="md-raised md-accent"
                    ng-if="priority.actionButton"
                    ng-href="priority.actionButton.url"
@@ -118,7 +118,7 @@
           {{ priority.moreInfoButton.label }}
         </md-button>
       </div>
-      <div class="dismiss-priority" hide-xs>
+      <div class="dismiss-priority">
         <md-button class="md-icon-button"
                    ng-click="vm.dismissNotification(priority, true)"
                    aria-label="Dismiss this notification">
