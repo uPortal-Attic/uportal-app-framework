@@ -63,6 +63,7 @@ point uw-frame to your desired feed.
 - **actionButton**: Used to display a call to action button and to provide the URL for a notification when clicked. **Required if the `messageType` is "notification".
   - **label**: The button's text
   - **url**: The URL to go to when clicked
+  -- For an "Add To Home" action button, where the user is asked to add a widget to their home layout, the url is formatted: "addToHome/{fName}"
 - **moreInfoButton**: Used to display a button link to a place where the user can read more, see more, or interact with the subject of the message. Uses the same format as `actionButton`.
 - **confirmButton**: Used to display a confirmation button on popup announcements. Uses the same format as `actionButton`. **Required for `messageType` "announcement" with `priority` "high".**
 
