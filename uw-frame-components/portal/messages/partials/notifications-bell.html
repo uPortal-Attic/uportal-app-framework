@@ -101,9 +101,17 @@
          ng-if="vm.priorityNotifications.length == 1"
          ng-repeat="priority in vm.priorityNotifications | limitTo: 1"
          layout="row" layout-align="center center" layout-fill>
-      <a ng-href="{{ priority.actionButton.url }}" alt="{{ priority.actionButton.label }}" class="notification-message">{{ priority.title }}</a>
-      <div layout="row" layout-align="center center" ng-if="priority.moreInfoButton" class="compact-buttons">
-        <md-button class="md-raised md-default"
+      <span class="notification-message">{{ priority.title }}</span>
+      <div layout="row" layout-align="center center" ng-if="priority.moreInfoButton || priority.actionButton" class="compact-buttons">
+        <md-button class="md-raised md-accent"
+                   ng-if="priority.actionButton"
+                   ng-href="priority.actionButton.url"
+                   target="_blank"
+                   rel="noopener noreferrer">
+          {{ priority.actionButton.label }}
+        </md-button>
+        <md-button class="md-raised"
+                   ng-if="priority.moreInfoButton"
                    ng-href="priority.moreInfoButton.url"
                    target="_blank"
                    rel="noopener noreferrer">

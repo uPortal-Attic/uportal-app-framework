@@ -183,6 +183,18 @@
     box-shadow: @box-shadow-4;
     background-color: @grayscale2;
     border-radius: 6px;
+
+    .compact-buttons {
+      .md-button:not([disabled]) {
+        text-transform: none;
+        line-height: 28px;
+        min-width: 60px;
+        min-height: 28px;
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 0;
+      }
+    }
   }
 
   .notification-message {
@@ -193,10 +205,6 @@
     text-align: center;
     display: block;
     margin-bottom: 0;
-  }
-
-  a.notification-message {
-    color: @link-color;
   }
 
   p {
