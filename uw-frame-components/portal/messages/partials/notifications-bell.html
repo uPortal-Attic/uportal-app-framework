@@ -58,7 +58,7 @@
               <span ng-if="!notification.priority">{{ notification.title }}</span>
               <!-- PRIORITY MESSAGE -->
               <div layout="row" layout-align="start center" ng-if="notification.priority">
-                <md-icon flex="10">priority_high</md-icon>
+                <md-icon aria-label="important:" flex="10">priority_high</md-icon>
                 <span flex="90"> {{ notification.title }}</span>
               </div>
 
@@ -120,7 +120,7 @@
     </div>
     <div class="priority-bubble" ng-if="vm.priorityNotifications.length > 1" layout="row" layout-align="center center" layout-fill>
       <p class="notification-message">
-        You have {{ vm.priorityNotifications.length }} important notifications. <a href="notifications">View your notifications.</a>
+        You have {{ vm.priorityNotifications.length }} important notifications. <a ng-href="{{ vm.notificationsUrl }}">View your notifications.</a>
       </p>
     </div>
   </div>
