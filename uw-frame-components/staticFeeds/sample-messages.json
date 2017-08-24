@@ -39,7 +39,7 @@
       "featureImageUrl": null,
       "priority": "high",
       "audienceFilter": {
-        "groups": ["fjdkslafd"],
+        "groups": [""],
         "dataUrl": "",
         "dataObject": "",
         "dataArrayFilter": {}
@@ -65,7 +65,10 @@
         "dataObject": "",
         "dataArrayFilter": {}
       },
-      "actionButton": null,
+      "actionButton": {
+        "label": "Add to home",
+        "url": "addToHome/time-and-absence"
+      },
       "moreInfoButton": {
         "label": "Read more",
         "url": "/features"
