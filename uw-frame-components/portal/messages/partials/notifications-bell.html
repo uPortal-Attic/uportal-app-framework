@@ -127,9 +127,10 @@
       </div>
     </div>
     <div class="priority-bubble" ng-if="vm.priorityNotifications.length > 1" layout="row" layout-align="center center" layout-fill>
-      <p class="notification-message">
-        You have {{ vm.priorityNotifications.length }} important notifications. <a ng-href="{{ vm.notificationsUrl }}">View your notifications.</a>
-      </p>
+      <span class="notification-message">You have {{ vm.priorityNotifications.length }} important notifications.</span>
+      <div class="compact-buttons">
+        <md-button class="md-raised md-accent" ng-href="{{ vm.notificationsUrl }}">Go to notifications</md-button>
+      </div>
     </div>
   </div>
 

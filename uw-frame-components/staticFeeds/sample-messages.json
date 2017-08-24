@@ -10,7 +10,7 @@
       "goLiveDate": null,
       "expireDate": null,
       "featureImageUrl": null,
-      "priority": "high",
+      "priority": null,
       "audienceFilter": {
         "groups": [],
         "dataUrl": "",
@@ -37,7 +37,7 @@
       "goLiveDate": "2017-08-03",
       "expireDate": null,
       "featureImageUrl": null,
-      "priority": null,
+      "priority": "high",
       "audienceFilter": {
         "groups": ["fjdkslafd"],
         "dataUrl": "",
