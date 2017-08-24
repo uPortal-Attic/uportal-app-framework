@@ -61,25 +61,33 @@ md-menu-content.top-bar-menu-content {
   padding: 0;
   position: relative;
 
-  &.notifications-menu {
+  &.notifications-menu,
+  &.mascot-menu {
     min-width: 400px;
 
     md-menu-item {
       &.top-bar-menu-item {
         max-width: 505px;
 
-        .notification-buttons {
-          .md-button.md-raised:not([disabled]) {
+        .compact-buttons {
+          .md-button:not([disabled]) {
             text-transform: none;
             line-height: 28px;
             min-width: 60px;
             min-height: 28px;
             font-size: 12px;
-
-            &:first-child {
-              margin-left: 0;
-            }
+            font-weight: 500;
+            margin-left: 0;
           }
+        }
+
+        &.notifications-empty {
+          min-height: 140px;
+          color: @grayscale8;
+        }
+
+        @media (min-width: @xs) {
+          width: 505px;
         }
       }
     }
@@ -145,6 +153,7 @@ md-menu-content.top-bar-menu-content {
 
       .menu-item-content {
         padding: 8px 0 8px 16px;
+        cursor: default;
 
         .menu-item-title {
           font-weight: 600;

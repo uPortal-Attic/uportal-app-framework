@@ -11,8 +11,8 @@
   <md-dialog-content>
     <div class="md-dialog-content features-popup" layout="column" layout-align="center center">
       <img ng-src="{{ latestAnnouncement.featureImageUrl }}" aria-describedby="featureContent" hide-xs>
-      <p id="featureContent" class="sr-only" hide-xs>{{ latestAnnouncement.description }}</p>
-      <p hide-gt-xs>{{ latestAnnouncement.description }}</p>
+      <p id="featureContent" class="sr-only">{{ latestAnnouncement.description }}</p>
+      <p>{{ latestAnnouncement.description }}</p>
     </div>
   </md-dialog-content>
   <md-dialog-actions>
@@ -22,6 +22,12 @@
                ng-href="{{ latestAnnouncement.moreInfoButton.url }}">
       {{ latestAnnouncement.moreInfoButton.label }}
     </md-button>
-    <md-button class="md-primary" ng-click="closeDialog('closed')">{{ latestAnnouncement.confirmButton.label }}</md-button>
+    <md-button class="md-primary"
+               ng-if="latestAnnouncement.actionButton"
+               ng-click="closeDialog('closed')"
+               ng-href="{{ latestAnnouncement.actionButton.url }}">
+      {{ latestAnnouncement.actionButton.label }}
+    </md-button>
+    <md-button class="md-primary md-raised" ng-click="closeDialog('closed')">{{ latestAnnouncement.confirmButton.label }}</md-button>
   </md-dialog-actions>
 </md-dialog>

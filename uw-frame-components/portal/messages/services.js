@@ -87,7 +87,7 @@ define(['angular'], function(angular) {
                           groups,
                           {name: messageGroup}
                         );
-                        if (intersectedGroups.length > 0) {
+                        if (intersectedGroups && intersectedGroups.length > 0) {
                           // If user is in this group, he should see this
                           // notification
                           messagesByGroup.push(message);

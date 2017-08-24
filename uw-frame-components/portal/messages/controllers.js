@@ -134,6 +134,7 @@ define(['angular'], function(angular) {
         vm.priorityNotifications = [];
         vm.notificationsUrl = MESSAGES.notificationsPageURL;
         vm.status = 'View notifications';
+        vm.isLoading = true;
 
         // //////////////////
         // Event listeners //
@@ -210,6 +211,9 @@ define(['angular'], function(angular) {
             + (vm.notifications.length === 0
               ? 'no' : vm.notifications.length)
             + ' notifications';
+
+          // Stop loading spinner
+          vm.isLoading = false;
         };
 
         /**
@@ -219,6 +223,8 @@ define(['angular'], function(angular) {
         var getSeenMessageIdsFailure = function(error) {
           $log.warn('Couldn\'t get seen message IDs for notifications ' +
             ' controller.');
+          // Stop loading spinner
+          vm.isLoading = false;
         };
 
         /**
@@ -267,7 +273,6 @@ define(['angular'], function(angular) {
             vm.notifications,
             notification.id
           );
-
           // Add notification to dismissed array
           vm.dismissedNotifications.push(notification);
 
