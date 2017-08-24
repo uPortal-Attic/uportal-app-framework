@@ -15,18 +15,16 @@
     </div>
   </md-dialog-content>
   <md-dialog-actions>
-    <md-button class="md-default"
-               ng-if="latestAnnouncement.moreInfoButton"
+    <md-button ng-if="latestAnnouncement.moreInfoButton"
                ng-click="closeDialog('closed')"
                ng-href="{{ latestAnnouncement.moreInfoButton.url }}">
       {{ latestAnnouncement.moreInfoButton.label }}
     </md-button>
-    <md-button class="md-primary"
-               ng-if="latestAnnouncement.actionButton"
+    <md-button ng-if="latestAnnouncement.actionButton"
                ng-click="closeDialog('closed')"
                ng-href="{{ latestAnnouncement.actionButton.url }}">
       {{ latestAnnouncement.actionButton.label }}
     </md-button>
-    <md-button class="md-primary md-raised" ng-click="closeDialog('closed')">{{ latestAnnouncement.confirmButton.label }}</md-button>
+    <md-button class="md-accent md-raised" ng-click="closeDialog('closed')">{{ latestAnnouncement.confirmButton.label }}</md-button>
   </md-dialog-actions>
 </md-dialog>

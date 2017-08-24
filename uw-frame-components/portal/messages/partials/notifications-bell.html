@@ -101,16 +101,24 @@
          ng-if="vm.priorityNotifications.length == 1"
          ng-repeat="priority in vm.priorityNotifications | limitTo: 1"
          layout="row" layout-align="center center" layout-fill>
-      <a ng-href="{{ priority.actionButton.url }}" alt="{{ priority.actionButton.label }}" class="notification-message">{{ priority.title }}</a>
-      <div layout="row" layout-align="center center" ng-if="priority.moreInfoButton" class="compact-buttons">
-        <md-button class="md-raised md-default"
+      <div flex layout="row" layout-align="center center" class="compact-buttons">
+        <span class="notification-message">{{ priority.title }}</span>
+        <md-button class="md-raised md-accent"
+                   ng-if="priority.actionButton"
+                   ng-href="priority.actionButton.url"
+                   target="_blank"
+                   rel="noopener noreferrer">
+          {{ priority.actionButton.label }}
+        </md-button>
+        <md-button class="md-raised"
+                   ng-if="priority.moreInfoButton"
                    ng-href="priority.moreInfoButton.url"
                    target="_blank"
                    rel="noopener noreferrer">
           {{ priority.moreInfoButton.label }}
         </md-button>
       </div>
-      <div class="dismiss-priority" hide-xs>
+      <div class="dismiss-priority">
         <md-button class="md-icon-button"
                    ng-click="vm.dismissNotification(priority, true)"
                    aria-label="Dismiss this notification">
@@ -119,9 +127,10 @@
       </div>
     </div>
     <div class="priority-bubble" ng-if="vm.priorityNotifications.length > 1" layout="row" layout-align="center center" layout-fill>
-      <p class="notification-message">
-        You have {{ vm.priorityNotifications.length }} important notifications. <a ng-href="{{ vm.notificationsUrl }}">View your notifications.</a>
-      </p>
+      <span class="notification-message">You have {{ vm.priorityNotifications.length }} important notifications.</span>
+      <div class="compact-buttons">
+        <md-button class="md-raised md-accent" ng-href="{{ vm.notificationsUrl }}">Go to notifications</md-button>
+      </div>
     </div>
   </div>
 
