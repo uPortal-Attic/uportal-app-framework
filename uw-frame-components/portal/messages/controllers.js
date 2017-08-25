@@ -332,9 +332,11 @@ define(['angular'], function(angular) {
 
     .controller('AnnouncementsController', ['$q', '$log', '$filter',
       '$sessionStorage', '$scope', '$rootScope', '$document', '$sanitize',
-      '$mdDialog', 'miscService', 'messagesService', 'MISC_URLS',
+      '$mdDialog', 'miscService',
+      'messagesService', 'MISC_URLS',
       function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
-               $document, $sanitize, $mdDialog, miscService, messagesService, MISC_URLS) {
+               $document, $sanitize, $mdDialog, miscService,
+               messagesService, MISC_URLS) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -416,13 +418,13 @@ define(['angular'], function(angular) {
               unseen: allAnnouncements,
             };
 
-            var resolvedURLs = $filter('addToHome')(
+            // Action buttons with an "addToHome" url
+            // have their URLs resolved in this filter
+            $filter('addToHome')(
               separatedAnnouncements.unseen,
               MISC_URLS
             );
           }
-
-          
 
           // If directive mode need mascot, set it, otherwise
           // configure popups
