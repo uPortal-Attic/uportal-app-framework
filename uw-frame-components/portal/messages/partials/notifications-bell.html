@@ -1,0 +1,137 @@
+<div class="notifications">
+  <!-- MOBILE BELL -->
+  <div class="notification-badge notification-badge-mobile" aria-label="{{ status }}"
+       ng-show="directiveMode === 'mobile-bell' && vm.notifications.length !== 0">
+    <md-icon>notifications</md-icon>
+  </div>
+
+  <!-- MOBILE MENU ROW -->
+  <md-menu-item ng-show="directiveMode === 'mobile-menu'">
+    <md-button title="click to view notifications"
+               class="md-default"
+               ng-href="{{ vm.notificationsUrl }}"
+               ng-click="vm.pushGAEvent('Mobile Menu', 'Click Link', 'Notifications');"
+               layout="row" layout-align="start center">
+      <span><md-icon>notifications</md-icon></span>
+      <span>Notifications ({{ vm.notifications.length }})</span>
+    </md-button>
+  </md-menu-item>
+
+  <!-- DESKTOP NOTIFICATION BELL -->
+  <md-menu class="notifications-menu"
+           ng-show="directiveMode === 'bell'"
+           md-offset="-200 0"
+           md-position-mode="target bottom">
+    <md-button ng-click="$mdOpenMenu($event);vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell')"
+               class="notification-desktop"
+               md-no-ink
+               md-menu-origin>
+      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
+      <div class="notification-badge" aria-label="{{ vm.status }}" ng-class="{ 'notification-badge-empty' : vm.notifications.length === 0 }">
+        <span class="number-of-nots" ng-show="vm.notifications.length > 0 && !vm.isLoading"
+              ng-class="{ 'more-than-10-nots' : (vm.notifications.length > 9) }">{{ vm.notifications.length }}</span>
+        <md-icon>notifications</md-icon>
+        <md-progress-circular md-mode="indeterminate" ng-show="vm.isLoading" md-diameter="15px" class="md-primary"></md-progress-circular>
+      </div>
+    </md-button>
+    <md-menu-content class="top-bar-menu-content notifications-menu">
+      <md-menu-item layout="row" layout-align="space-between center">
+        <span>Notifications</span>
+        <a ng-href="{{ vm.notificationsUrl }}" ng-click="vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');" aria-label="see all notifications" class="link__see-all">
+          See all <span ng-if="vm.notifications.length > 0">({{ vm.notifications.length }})</span>
+        </a>
+      </md-menu-item>
+      <!-- EMPTY STATE -->
+      <md-menu-item ng-show="vm.notifications.length === 0" class="top-bar-menu-item notifications-empty">
+        <div class="menu-item-content" layout="row" layout-align="center center">
+          All caught up!
+        </div>
+      </md-menu-item>
+      <!-- SHOW UP TO 3 NEW NOTIFICATIONS -->
+      <div ng-show="vm.notifications.length > 0">
+        <md-menu-item ng-repeat="notification in vm.notifications | orderBy:'priority' | limitTo:3"
+                      class="top-bar-menu-item">
+          <!-- NOTIFICATION CONTENT -->
+          <div class="menu-item-content" layout="row" layout-align="space-between center">
+            <div flex="80" layout="column" layout-align="center start">
+              <!-- REGULAR MESSAGE -->
+              <span ng-if="!notification.priority">{{ notification.title }}</span>
+              <!-- PRIORITY MESSAGE -->
+              <div layout="row" layout-align="start center" ng-if="notification.priority">
+                <md-icon aria-label="important:" flex="10">priority_high</md-icon>
+                <span flex="90"> {{ notification.title }}</span>
+              </div>
+
+              <div ng-if="notification.moreInfoButton || notification.actionButton" class="compact-buttons">
+                <md-button class="md-raised md-accent"
+                           ng-show="notification.actionButton"
+                           ng-href="{{ notification.actionButton.url }}"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                  {{ notification.actionButton.label }}
+                </md-button>
+                <md-button class="md-default"
+                           ng-show="notification.moreInfoButton"
+                           ng-href="{{ notification.moreInfoButton.url }}"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                  {{ notification.moreInfoButton.label }}
+                </md-button>
+              </div>
+            </div>
+            <!-- DISMISS BUTTON -->
+            <md-button class="md-icon-button button__mark-seen"
+                       ng-click="vm.dismissNotification(notification)"
+                       aria-label="dismiss this notification"
+                       md-prevent-menu-close="md-prevent-menu-close"
+                       flex="20">
+              <md-icon>clear</md-icon>
+            </md-button>
+          </div>
+        </md-menu-item>
+      </div>
+    </md-menu-content>
+  </md-menu>
+
+  <!-- PRIORITY NOTIFICATIONS (FIXED-TOP) -->
+  <div class="priority-notifications"
+       ng-class="{ 'animate-hide': vm.priorityNotifications.length === 0 }"
+       ng-if="directiveMode === 'priority'">
+    <div class="priority-bubble"
+         ng-if="vm.priorityNotifications.length == 1"
+         ng-repeat="priority in vm.priorityNotifications | limitTo: 1"
+         layout="row" layout-align="center center" layout-fill>
+      <div flex layout="row" layout-align="center center" class="compact-buttons">
+        <span class="notification-message">{{ priority.title }}</span>
+        <md-button class="md-raised md-accent"
+                   ng-if="priority.actionButton"
+                   ng-href="priority.actionButton.url"
+                   target="_blank"
+                   rel="noopener noreferrer">
+          {{ priority.actionButton.label }}
+        </md-button>
+        <md-button class="md-raised"
+                   ng-if="priority.moreInfoButton"
+                   ng-href="priority.moreInfoButton.url"
+                   target="_blank"
+                   rel="noopener noreferrer">
+          {{ priority.moreInfoButton.label }}
+        </md-button>
+      </div>
+      <div class="dismiss-priority">
+        <md-button class="md-icon-button"
+                   ng-click="vm.dismissNotification(priority, true)"
+                   aria-label="Dismiss this notification">
+          <md-icon>close</md-icon>
+        </md-button>
+      </div>
+    </div>
+    <div class="priority-bubble" ng-if="vm.priorityNotifications.length > 1" layout="row" layout-align="center center" layout-fill>
+      <span class="notification-message">You have {{ vm.priorityNotifications.length }} important notifications.</span>
+      <div class="compact-buttons">
+        <md-button class="md-raised md-accent" ng-href="{{ vm.notificationsUrl }}">Go to notifications</md-button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -81,16 +81,18 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Username */
   .controller('SessionCheckController',
-  ['$log', '$scope', 'mainService', 'portalShibbolethService', 'NAMES',
+  ['$log', '$scope', 'mainService', 'NAMES',
   'APP_FLAGS', '$sessionStorage', '$rootScope',
-  function($log, $scope, mainService, portalShibbolethService, NAMES,
+  function($log, $scope, mainService, NAMES,
            APP_FLAGS, $sessionStorage, $rootScope) {
     var vm = this;
     vm.user = [];
-    vm.username = '';
+    vm.username = '?';
     vm.campusId = '';
-    vm.firstLetter = '';
-    vm.profileUrl = $sessionStorage.portal.theme.profileUrl ?
+    vm.firstLetter = '?';
+    vm.optAvatar = $sessionStorage.optAvatar;
+    vm.profileUrl = ($sessionStorage.portal.theme
+      && $sessionStorage.portal.theme.profileUrl) ?
       $sessionStorage.portal.theme.profileUrl : '';
     vm.campusIdAttribute = APP_FLAGS.campusIdAttribute;
     /**
@@ -100,59 +102,23 @@ define(['angular', 'require'], function(angular, require) {
       vm.profileUrl = data.profileUrl ? data.profileUrl : '';
     });
 
-    // Get the user's attributes from Shibboleth
-    portalShibbolethService.getUserAttributes()
-      .then(function(result) {
-        var displayName = '';
-        var givenName = '';
-        angular.forEach(result, function(key) {
-          // Set username
-          if (key.name === 'displayName') {
-            displayName = key.values[0];
-          }
-          // Set fall-back username
-          if (key.name === 'givenName') {
-            givenName = key.values[0];
-          }
-          // Set campus ID
-          if (vm.campusIdAttribute && key.name === vm.campusIdAttribute) {
-            vm.campusId = key.values[0];
-          }
-        });
-        // Determine which username to use
-        if (displayName != '' && angular.isString(displayName)) {
-          vm.username = displayName;
-          vm.firstLetter = displayName.substring(0, 1);
-        } else if (givenName != '' && angular.isString(givenName)) {
-          vm.username = givenName;
-          vm.firstLetter = givenName.substring(0, 1);
-        } else {
-          vm.username = '?';
-          vm.firstLetter = '?';
-        }
-        return result;
-      })
-      .catch(function(error) {
-        $log.warn('Couldn\'t get user\'s session info from Shibboleth');
-        $log.error(error);
-      });
-
     // Check if user is guest and if avatar is enabled
     mainService.getUser().then(function(result) {
       vm.user = result;
-      // Check if is guest
-      if (NAMES.guestUserName && vm.user
-        && vm.user.userName === NAMES.guestUserName) {
-        $rootScope.GuestMode = true;
-      } else {
-        // Get first letter of first name or display name
-        if ($sessionStorage.optAvatar) {
-          $rootScope.optAvatar = true;
-          vm.firstLetter = 'PIC';
-        } else {
-          $rootScope.optAvatar = false;
-        }
+      $rootScope.GuestMode = (vm.user.userName === NAMES.guestUserName);
+
+      if (vm.user.firstName || vm.user.displayName) {
+        vm.username = vm.user.firstName ?
+          vm.user.firstName.toLowerCase() : vm.user.displayName.toLowerCase();
       }
+      vm.firstLetter = vm.username.substring(0, 1);
+
+      // This is a placeholder until a campusId source is added.
+      // Set campus ID
+      if (vm.campusIdAttribute && vm.user[vm.campusIdAttribute]) {
+        vm.campusId = vm.user[vm.campusIdAttribute];
+      }
+
       return result;
     }).catch(function() {
       $log.warn('could not get user');
@@ -161,9 +127,9 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Header */
   .controller('PortalHeaderController', ['$rootScope', '$scope', '$location',
-    'NAMES', 'APP_FLAGS', 'MISC_URLS', 'notificationsService',
-    function($rootScope, $scope, $location, NAMES, APP_FLAGS, MISC_URLS,
-             notificationsService) {
+    'APP_FLAGS', 'MISC_URLS', 'messagesService',
+    function($rootScope, $scope, $location, APP_FLAGS, MISC_URLS,
+             messagesService) {
       var vm = this;
       vm.navbarCollapsed = true;
       vm.showLogout = true;

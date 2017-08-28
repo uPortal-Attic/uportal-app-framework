@@ -1049,9 +1049,7 @@ define(['angular'], function(angular) {
             'aboutFrame': 'staticFeeds/about-frame.json',
         })
         .constant('KV_KEYS', {
-          'VIEWED_ANNOUNCEMENT_IDS': 'viewedannouncementids',
-          'VIEWED_POPUP_IDS': 'viewedpopupids',
-          'DISMISSED_NOTIFICATION_IDS': 'notification:dismiss',
+          'VIEWED_MESSAGE_IDS': 'viewedmessageids',
         })
         .constant('FRAME_BETA_FEATURES', [
           {
@@ -1060,16 +1058,10 @@ define(['angular'], function(angular) {
             'description': 'Shows/Hides the Beta Settings',
           },
           {
-            'id': 'disableGroupFilteringForNotifications',
-            'title': 'Disable Notification Filter',
-            'description': 'This flag disables notification group filtering ' +
-              'if you have it enabled. (page refresh required)',
-          },
-          {
-            'id': 'disableGroupAnnouncementFiltering',
-            'title': 'Disable Announcement Filtering',
-            'description': 'This flag disables announcement group filtering ' +
-              'if you have it enabled (page refresh required)',
+            'id': 'disableGroupFilteringForMessages',
+            'title': 'Disable Group Filter',
+            'description': 'This flag disables group filtering or in-app ' +
+              'messages if you have it enabled. (page refresh required)',
           },
         ]);
 });

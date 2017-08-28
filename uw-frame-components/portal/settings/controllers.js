@@ -57,32 +57,28 @@ define(['angular'], function(angular) {
     .controller('PortalUserSettingsController', [
       '$scope', '$q', '$window', '$localStorage',
       '$log', '$sessionStorage', '$rootScope',
-      'KV_KEYS', 'NOTIFICATION', 'FEATURES', 'keyValueService',
+      'KV_KEYS', 'keyValueService',
       function(
       $scope, $q, $window, $localStorage,
       $log, $sessionStorage, $rootScope,
-      KV_KEYS, NOTIFICATION, FEATURES, keyValueService
+      KV_KEYS, keyValueService
     ) {
       var init = function() {
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
         $scope.KV_KEYS = KV_KEYS;
-        $scope.NOTIFICATION = NOTIFICATION;
-        $scope.FEATURES = FEATURES;
       };
 
-      $scope.resetAnnouncements = function() {
-        delete $sessionStorage.seenAnnouncmentIds;
-        delete $sessionStorage.seenPopupIds;
+      $scope.resetMessages = function() {
+        delete $sessionStorage.seenMessageIds;
         if (keyValueService.isKVStoreActivated()) {
-          $scope.loadingResetAnnouncements = true;
-          $q.all([keyValueService.deleteValue(KV_KEYS.VIEWED_ANNOUNCEMENT_IDS),
-                  keyValueService.deleteValue(KV_KEYS.VIEWED_POPUP_IDS)])
+          $scope.loadingResetMessages = true;
+          keyValueService.deleteValue(KV_KEYS.VIEWED_MESSAGE_IDS)
             .then(function() {
               $window.location.reload();
-              $scope.loadingResetAnnouncements = false;
+              $scope.loadingResetMessages = false;
               return false;
             }).catch(function() {
-              $log.warn('could not reset announcements');
+              $log.warn('could not reset in-app messages');
             });
         }
       };

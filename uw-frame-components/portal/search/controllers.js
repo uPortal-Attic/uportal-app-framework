@@ -63,6 +63,7 @@ define(['angular'], function(angular) {
         $scope.initialFilter = '';
         $scope.filterMatches = [];
         $scope.searchExpanded = false;
+        $scope.showSearchFocus = false;
         $scope.portletListLoading = true;
         if ($localStorage && $localStorage.typeaheadSearch) {
             // TODO : Add in search for somewhere for frame

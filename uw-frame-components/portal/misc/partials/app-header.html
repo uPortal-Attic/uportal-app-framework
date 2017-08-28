@@ -1,40 +1,14 @@
 <md-subheader role="toolbar" class="app-header">
-  <h1 flex="50" flex-xs="85" class="app-title">
+  <h1 flex="50" flex-xs="75" class="app-title">
     <i ng-if="icon.indexOf('fa-') > -1" class="fa {{::icon}}" aria-hidden="true"></i>
     <md-icon ng-if="icon.indexOf('fa-') <= -1" aria-label="">{{ ::icon }}</md-icon>
     {{::title}}
   </h1>
 
-  <div flex="50" flex-xs="15" class="header-links">
+  <div flex="50" flex-xs="25" class="header-links" ng-controller="AppHeaderOptionsController as vm">
+    <div ng-if="vm.optionsTemplate" ng-include="vm.optionsTemplate"></div>
 
-    <!-- OPTIONS MENU WITH MULTIPLE OPTIONS -->
-    <md-menu ng-if="optionTemplate && !isSingleOption">
-      <md-button aria-label="Open options menu" class="md-primary link-div" ng-click="$mdOpenMenu($event)">
-        <span layout="row" layout-align="center center"><md-icon>settings</md-icon></span>
-      </md-button>
-      <md-menu-content width="4">
-        <add-to-home hide-gt-sm></add-to-home>
-        <div ng-include="optionTemplate"></div>
-      </md-menu-content>
-    </md-menu>
-
-    <!-- SINGLE-OPTION MENU -->
-    <div class="link-div" ng-if="optionTemplate && isSingleOption" hide-xs hide-sm>
-      <div ng-include="optionTemplate"></div>
-    </div>
-    <md-menu ng-if="optionTemplate && isSingleOption" hide-gt-sm>
-      <md-button aria-label="Open options menu" class="md-primary link-div" ng-click="$mdOpenMenu($event)">
-        <span layout="row" layout-align="center center"><md-icon>settings</md-icon></span>
-      </md-button>
-      <md-menu-content width="4">
-        <add-to-home hide-gt-sm></add-to-home>
-        <md-menu-item>
-          <div ng-include="optionTemplate"></div>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
-
-    <!-- ADD TO HOME BUTTON (HIDDEN XS) -->
-    <add-to-home hide-xs hide-sm></add-to-home>
+     <!--ADD TO HOME BUTTON (HIDDEN XS) -->
+    <add-to-home ng-if="showAddToHome"></add-to-home>
   </div>
 </md-subheader>

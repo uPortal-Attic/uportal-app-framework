@@ -1,42 +1,33 @@
-<!-- ADD MORE TO HOME BUTTON -->
-<div ng-if='actionLinkUrl && !addToHome'>
-  <md-button class="md-primary link-div" ng-href="{{actionLinkUrl}}" hide-sm hide-xs>
-    <span><i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}</span>
+<!-- ADD TO HOME BUTTON -->
+<div ng-controller="AddToHomeController" class="animate-add-to-home" ng-hide="inHome">
+  <!-- Buttons for medium+ screens -->
+  <md-button class="md-default link-div" aria-label="add to home" hide-xs hide-sm ng-click="addToHome()" ng-if="!successfullyAdded && !addToHomeFailed && !savingAddToHome">
+    <md-icon ng-hide="savingAddToHome">add</md-icon> Add to home
   </md-button>
-  <md-menu-item hide-gt-sm>
-    <md-button class="md-primary link-div" ng-href="{{actionLinkUrl}}">
-      <span><i class="fa fa-fw {{actionLinkIcon}}"></i> {{actionLinkText}}</span>
-    </md-button>
-  </md-menu-item>
-</div>
-
-<!-- ADD -THIS- TO HOME BUTTON -->
-<div ng-controller="AddToHomeController" ng-if="addToHome">
-  <!-- Button for medium+ screens -->
-  <md-button class="md-default link-div" aria-label="add to home" hide-xs hide-sm ng-hide='inHome' ng-click='addToHome()'>
-    <span ng-if="!successfullyAdded || !addToHomeFailed">
-      <i class="fa fa-fw {{actionLinkIcon}}" ng-class="{ 'fa-spin' : savingAddToHome, 'fa-plus' : !actionLinkIcon}"></i> {{actionLinkText}}
-    </span>
-    <span ng-show='successfullyAdded'>
-      <i class="fa fa-fw fa-check-square"></i> {{actionLinkText}} Saved
-    </span>
-    <span ng-show='addToHomeFailed'>
-      <i class="fa fa-fw fa-exclamation-triangle"></i> {{actionLinkText}} Failed
-    </span>
+  <md-button class="md-default link-div" aria-label="adding to home" hide-xs hide-sm ng-click="addToHome()" ng-if="!successfullyAdded && !addToHomeFailed && savingAddToHome" ng-disabled="true">
+    <i class="fa fa-fw fa-spin fa-circle-o-notch" ng-show="savingAddToHome"></i> Adding...
+  </md-button>
+  <md-button class="md-default link-div" aria-label="added to home" hide-xs hide-sm ng-click="addToHome()" ng-if="successfullyAdded" ng-disabled="true">
+    <md-icon>check</md-icon> Added to home
+  </md-button>
+  <md-button class="md-default link-div" aria-label="add to home failed" hide-xs hide-sm ng-click="addToHome()" ng-if="addToHomeFailed" ng-disabled="true">
+    <md-icon>error</md-icon> Add to home failed
   </md-button>
 
   <!-- Button for small and xs screens -->
-  <md-menu-item hide-gt-sm>
-    <md-button class="md-default link-div" aria-label="add to home" ng-click="addToHome()" ng-hide="inHome">
-    <span ng-if="!successfullyAdded || !addToHomeFailed">
-      <i class="fa fa-fw {{actionLinkIcon}}" ng-class="{ 'fa-spin' : savingAddToHome, 'fa-plus' : !actionLinkIcon}"></i> {{actionLinkText}}
-    </span>
-    <span ng-show="successfullyAdded">
-      <i class="fa fa-fw fa-check-square"></i> {{actionLinkText}} Saved
-    </span>
-    <span ng-show="addToHomeFailed">
-      <i class="fa fa-fw fa-exclamation-triangle"></i> {{actionLinkText}} Failed
-    </span>
-    </md-button>
-  </md-menu-item>
+  <md-button class="md-default link-div" aria-label="add to home" hide-gt-sm ng-click="addToHome()" ng-if="!successfullyAdded && !addToHomeFailed && !savingAddToHome">
+    <md-icon ng-hide="savingAddToHome">add</md-icon>
+    <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500" >Add to home</md-tooltip>
+  </md-button>
+  <md-button class="md-default link-div" aria-label="adding to home" hide-gt-sm ng-click="addToHome()" ng-if="!successfullyAdded && !addToHomeFailed && savingAddToHome">
+    <i class="fa fa-fw fa-spin" ng-show="savingAddToHome"></i> Adding...
+  </md-button>
+  <md-button class="md-default link-div" aria-label="added to home" hide-gt-sm ng-click="addToHome()" ng-if="successfullyAdded" ng-disabled="true">
+    <md-icon>check</md-icon> Added to home
+    <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Added to home</md-tooltip>
+  </md-button>
+  <md-button class="md-default link-div" aria-label="add to home failed" hide-gt-sm ng-click="addToHome()" ng-if="addToHomeFailed" ng-disabled="true">
+    <md-icon>error</md-icon> Add to home failed
+    <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Add to home failed</md-tooltip>
+  </md-button>
 </div>

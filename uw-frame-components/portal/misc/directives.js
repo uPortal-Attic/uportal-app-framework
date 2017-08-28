@@ -147,13 +147,8 @@ define(['angular', 'require'], function(angular, require) {
         scope: {
           title: '@appTitle',
           icon: '@appIcon',
-          actionLinkUrl: '@appActionLinkUrl',
-          actionLinkIcon: '@appActionLinkIcon',
-          actionLinkText: '@appActionLinkText',
-          addToHome: '=appAddToHome',
           fname: '@appFname',
-          optionTemplate: '@appOptionTemplate',
-          isSingleOption: '@appSingleOption',
+          showAddToHome: '@appShowAddToHome',
         },
         templateUrl: require.toUrl('./partials/app-header.html'),
       };
@@ -165,13 +160,8 @@ define(['angular', 'require'], function(angular, require) {
         scope: {
           title: '=appTitle',
           icon: '=appIcon',
-          actionLinkUrl: '=appActionLinkUrl',
-          actionLinkIcon: '=appActionLinkIcon',
-          actionLinkText: '=appActionLinkText',
-          addToHome: '=appAddToHome',
           fname: '=appFname',
-          optionTemplate: '=appOptionTemplate',
-          isSingleOption: '=appSingleOption',
+          showAddToHome: '=appShowAddToHome',
         },
         templateUrl: require.toUrl('./partials/app-header.html'),
       };
@@ -192,13 +182,8 @@ define(['angular', 'require'], function(angular, require) {
           scope: {
             appTitle: '@appTitle',
             appIcon: '@appIcon',
-            appActionLinkUrl: '@appActionLinkUrl',
-            appActionLinkIcon: '@appActionLinkIcon',
-            appActionLinkText: '@appActionLinkText',
-            appAddToHome: '=appAddToHome',
             appFname: '=appFname',
-            appOptionTemplate: '@appOptionTemplate',
-            appSingleOption: '@appSingleOption',
+            appShowAddToHome: '=appShowAddToHome',
             whiteBackground: '=',
           },
       };

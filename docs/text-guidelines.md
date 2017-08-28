@@ -21,9 +21,9 @@ Defer to the typography specs provided by [Google Material](https://material.goo
 ## Frame notifications
 
 * `title` attribute:
-    * Limit to ~140 characters
-    * Use general language and avoid pronouns for broadly visible notifications that don't pertain to specific users' needs
-    * Use the word "You" when the notification pertains to a specific group of users
+  * Limit to ~140 characters
+  * Use general language and avoid pronouns for broadly visible notifications that don't pertain to specific users' needs
+  * Use the word "You" when the notification pertains to a specific group of users
 * `label` attribute  of action buttons should be 2-3 words at most
 
 See the [notifications documentation](notifications.md) for detailed information.

@@ -1,0 +1,40 @@
+<frame-page app-title="{{NAMES.title}} - New features" app-icon="new_releases" white-background="true">
+  <md-content class="features-feed" layout-padding ng-controller="FeaturesPageController as vm">
+
+    <!-- NO FEATURES -->
+    <div ng-if="vm.announcement.length === 0" layout="row" layout-align="center center"> <!--empty case -->
+      <p>No features listed at this time, please check back later.</p>
+    </div>
+
+    <!-- DISPLAY FEATURES -->
+    <div class="feature-item" ng-repeat="announcement in vm.announcements | orderBy:['-goLiveDate']">
+      <p class="date">{{ announcement.goLiveDate | date:mediumDate }}</p>
+      <h3 class="md-title">{{ announcement.title }}</h3>
+
+      <div class="feature-content" layout="column" layout-align-xs="start none">
+        <div class="feature-text">
+          <p class="description">{{ announcement.description }}</p>
+          <div ng-if="announcement.moreInfoButton || announcement.actionButton" layout="row" layout-align="start center">
+            <md-button class="md-accent md-raised"
+                       ng-if="announcement.actionButton"
+                       ng-href="announcement.actionButton.url">{{ announcement.actionButton.label }}</md-button>
+            <md-button ng-if="announcement.moreInfoButton"
+                       ng-href="announcement.moreInfoButton.url">{{ announcement.moreInfoButton.label }}</md-button>
+          </div>
+        </div>
+        <div class="feature-images" ng-if="announcement.featureImageUrl" layout-gt-xs="row" layout-xs="column" layout-align="start start">
+          <img ng-src="{{ announcement.featureImageUrl }}">
+        </div>
+      </div>
+
+      <md-divider></md-divider>
+    </div>
+
+    <!-- REQUEST FEEDBACK -->
+    <div layout="column" layout-align="center center" ng-show="MISC_URLS.feedbackURL">
+      <h4 class="md-title">Have a feature you'd like to see in {{NAMES.title}}?</h4>
+      <md-button class="md-primary md-raised" ng-href="{{MISC_URLS.feedbackURL}}">Send us feedback</md-button>
+    </div>
+
+  </md-content>
+</frame-page>

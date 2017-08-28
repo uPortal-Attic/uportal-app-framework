@@ -14,13 +14,17 @@ Your application can overwrite any constant listed below by adding it to the `js
 + `gaSearchParam` : Default set to 'q'. This is the param that is tacked on to your search result page. Google later strips it in Google Analytics.
 + `showUserSettingsPage` : If set, this will add a `settings` link to the user drop down which will point at `/user-settings`. Default is `false`. _as of 2.2.2_
 + `shibbolethSessionURL` : Default is `null`. When set to a proper string (like `'/Shibboleth.sso/Session.json'`) it then adds a timeout alert notifying users the session is no longer valid. The action of the pop-up is to forward them on to the `MISC_URLS.loginURL`. _as of 2.6.2_
-+ `campusIdAttribute` : Default is `null`. Provide a Shibboleth attribute for campus ID (i.e. UW-Madison's `wiscEduStudentID` attribute) if you want users to see it in the username menu.
++ `campusIdAttribute` : Default is `null`. Provide a session attribute for campus ID (i.e. UW-Madison's `wiscEduStudentID` attribute) if you want users to see it in the username menu. _This is currently unimplemented._
+
+### APP_OPTIONS
+
++ `optionsTemplateURL` : A path to the HTML template for app-specific options (appears on the right-hand side of the [app-header](directives.md)). See the [app options doc](app-options.md) to learn how to use this feature.
 
 ### SERVICE_LOC
 
 + `aboutURL` : If your application has some data that it would like to show in `/about` in addition to the frame information, provide that here.
 + `sessionInfo` : This is where the frame gets data about the user that is logged in. For an example of the expected output, see [this.](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/staticFeeds/session.json)
-+ `notificationsURL` : This is an end point of which you can have notifications. See [this](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/staticFeeds/sample_notifications.json) for the example.
++ `messagesURL` : This is an end point to a feed of messages. See [this](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/staticFeeds/sample-messages.json) for the example file.
 + `kvURL` : This is the key value service. The key value service is a way to store information in a key/value store. The store should support GET and PUT on the same URL, where the URL includes the key. If you want this but not sure where to start, we wrote [a microservice called KeyValueStore](https://github.com/UW-Madison-DoIT/KeyValueStore) that you can use. You can also use the MyUW version under the storage context, but please contact MyUW devs before using for your application.
 + `groupURL` : This is a service which you can use to get group information. Currently this only used for notifications. See [this](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/staticFeeds/groups.json) for an example.
 + `loginSilentURL` : See `APP_FLAGS.loginOnLoad` for usage.
@@ -36,17 +40,9 @@ Your application can overwrite any constant listed below by adding it to the `js
 
 + `searchURL` : The URL that you want the search to go to when you search something in the site header. Suggested default should be `https://my.wisc.edu/web/apps/search/`
 
-### FEATURES
+### MESSAGES
 
-+ `enabled` : This boolean will enable the features page, Bucky announcements, and the modal popup. Make sure to configure `FEATURES.serviceURL` if you set this to true.
-+ `serviceURL` : This feed provides announcements about your application. See [this](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/staticFeeds/features.json) for an example.
-
-### NOTIFICATION
-
-+ `groupFiltering` : If set to `true`, you will get filtered features based on the `feature.groups` attribute and the group service list. Requires the `SERVICE_LOC.groupURL` to be configured. Note the `feature.groups` attribute can be a `String` or an `Array`.
-+ `enabled` : a boolean that turns on/off the bell in the header.
-+ `groupFiltering` : Enabled group filtered notifications. Must have `groupURL` set for this to work properly
-+ `notificationFullURL` : The URL for the notifications full page.
++ `notificationsPageURL` : The URL for the full notifications view (i.e. Where the "See all" link should go).
 
 ### MISC_URLS
 

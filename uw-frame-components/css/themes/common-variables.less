@@ -1,23 +1,23 @@
 /* ==========================================================================
    Variables
    ========================================================================== */
-@white: #FFFFFF;
-@black: #000000;
+@white: #fff;
+@black: #000;
 
 /*
  * Grayscale colors. 1 is lightest, 10 is darkest.
  */
 
-@grayscale1: #F5F5F5;
-@grayscale2: #E5E5E5;
-@grayscale3: #D8D8D8;
-@grayscale4: #CCCCCC;
-@grayscale5: #ADADAD;
-@grayscale6: #999999;
-@grayscale7: #8C8C8C;
+@grayscale1: #f5f5f5;
+@grayscale2: #e5e5e5;
+@grayscale3: #d8d8d8;
+@grayscale4: #ccc;
+@grayscale5: #adadad;
+@grayscale6: #999;
+@grayscale7: #8c8c8c;
 @grayscale8: #696969;
 @grayscale9: #404040;
-@grayscale10: #333333;
+@grayscale10: #333;
 
 /* Media queries */
 @xs: 600px;
@@ -25,8 +25,12 @@
 @md: 1280px;
 @lg: 1920px;
 
-
-@border: 1px solid @grayscale3;
+/* Shadow depths */
+@box-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+@box-shadow-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+@box-shadow-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+@box-shadow-4: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+@box-shadow-5: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 
 /* Footer */
 @footer-background-color: #404040;
@@ -35,13 +39,14 @@
 /*
   Transitions
 */
-@background-transition: background-color .4s cubic-bezier(.25,.8,.25,1);
-@link-hover-transition: color .4s cubic-bezier(.25,.8,.25,1);
-@search-transition: height .4s cubic-bezier(.25,.8,.25,1);
-@mascot-transition: all .4s cubic-bezier(.25,.8,.25,1);
-@opacity-transition: opacity .4s cubic-bezier(.25,.8,.25,1);
+@background-transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+@transition-height: height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+@transition-opacity: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+@transition-all: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+@transition-color: color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
 /* Custom mix-ins */
- .border (@color: @grayscale3, @size: 1px) {
-        border: @size solid @color;
+.border (@color: @grayscale3, @size: 1px) {
+  border: @size solid @color;
 }
+@border: 1px solid @grayscale3;
