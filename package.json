@@ -3,6 +3,8 @@
   "version": "5.0.0",
   "description": "MyUW's frame project for creating angular based microservices.",
   "scripts": {
+    "commitmsg": "commitlint -e",
+    "cz": "git-cz",
     "test": "karma start uw-frame-components/karma.conf.js --single-run",
     "build-static": "node tools/uw-frame-static/build.js",
     "lint-css": "stylelint --syntax less uw-frame-components/css/**/*.less",
@@ -60,8 +62,12 @@
   },
   "homepage": "https://github.com/UW-Madison-DoIT/uw-frame",
   "devDependencies": {
+    "@commitlint/cli": "^3.0.4",
+    "@commitlint/config-angular": "^3.0.4",
     "autoprefixer": "^7.1.2",
+    "commitizen": "^2.9.6",
     "concurrently": "^3.1.0",
+    "cz-conventional-changelog": "^2.0.0",
     "eslint": "^4.2.0",
     "eslint-config-angular": "^0.5.0",
     "eslint-config-google": "^0.9.1",
@@ -174,5 +180,10 @@
         "mixed"
       ]
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
