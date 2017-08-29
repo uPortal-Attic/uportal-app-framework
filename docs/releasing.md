@@ -82,6 +82,14 @@ You don't have to do anything special to release the documentation. GitHub pages
 * Title the release `x.y.z`, optionally `x.y.z - pithy summary`
 * Add release notes, linking pull requests included in this release, linking the newly released documentation, and especially articulating anything interesting about the upgrade path to this release for frame-based app developers.
 
+### Updating JIRA issues
+
+In the `MUMUP` JIRA project, find the last unreleased patch version. If the
+current release is a major or minor update, rename the version accordingly.
+Apply that version as a `Fix Version` to the JIRA tickets resolved since the
+last release. When all tickets have been added, `Release` the version and
+create the next patch version.
+
 ### Communicating
 
 * Announce the release on the [MyUW Developer Group][]
