@@ -84,6 +84,10 @@ You don't have to do anything special to release the documentation. GitHub pages
 
 ### Updating JIRA issues
 
+UW-Madison uses a private JIRA instance tracking work on this project. If the
+Release Engineer does not have access to the instance, enlist one of the
+[the uPortal-app-framework Committers][] on [uportal-dev@][] to perform this.
+
 In the `MUMUP` JIRA project, find the last unreleased patch version. If the
 current release is a major or minor update, rename the version accordingly.
 Apply that version as a `Fix Version` to the JIRA tickets resolved since the
