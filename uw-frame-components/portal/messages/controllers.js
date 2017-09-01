@@ -417,6 +417,12 @@ define(['angular'], function(angular) {
               seen: [],
               unseen: allAnnouncements,
             };
+
+
+             $filter('addToHome')(
+               separatedAnnouncements.unseen,
+               MISC_URLS, PortalAddToHomeService
+             );
           }
 
           // If directive mode need mascot, set it, otherwise
@@ -548,7 +554,7 @@ define(['angular'], function(angular) {
               actionType = 'addToHome';
           }
 
-          if (actionType == 'addToHome'){1
+          if (actionType == 'addToHome') {
             var slash = url.lastIndexOf('/') +1;
             var fName = url.substr(slash);
             PortalAddToHomeService.addToHome(fName);
