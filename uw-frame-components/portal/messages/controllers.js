@@ -334,9 +334,11 @@ define(['angular'], function(angular) {
       '$sessionStorage', '$scope', '$rootScope', '$document', '$sanitize',
       '$mdDialog', 'miscService',
       'messagesService', 'PortalAddToHomeService', 'MISC_URLS',
+      'layoutService',
       function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
                $document, $sanitize, $mdDialog, miscService,
-               messagesService, PortalAddToHomeService, MISC_URLS) {
+               messagesService, PortalAddToHomeService, MISC_URLS, 
+               layoutService) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -421,7 +423,7 @@ define(['angular'], function(angular) {
 
              $filter('addToHome')(
                separatedAnnouncements.unseen,
-               MISC_URLS, PortalAddToHomeService
+               MISC_URLS, layoutService
              );
           }
 
@@ -557,7 +559,8 @@ define(['angular'], function(angular) {
           if (actionType == addToHome) {
             var slash = url.lastIndexOf('/') + 1;
             var fName = url.substr(slash);
-            PortalAddToHomeService.addToHome(fName);
+            var portlet = layoutService.getApp(fName);
+           return layoutService.addToHome(portlet);
           }
         };
 
