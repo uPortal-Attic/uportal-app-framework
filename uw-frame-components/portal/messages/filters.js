@@ -32,10 +32,6 @@ define(['angular'], function(angular) {
                 if (PortalAddToHomeService.inHome(fName)) {
                   message.actionButton.label = 'Added To Home';
                 }
-
-//              var resolvedURL =
-//                MISC_URLS.addToHomeURLS.addToHomeActionURL + fName;
-//              message.actionButton.url = resolvedURL;
              }
             }
           });
