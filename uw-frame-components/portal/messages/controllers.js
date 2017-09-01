@@ -333,10 +333,10 @@ define(['angular'], function(angular) {
     .controller('AnnouncementsController', ['$q', '$log', '$filter',
       '$sessionStorage', '$scope', '$rootScope', '$document', '$sanitize',
       '$mdDialog', 'miscService',
-      'messagesService', 'MISC_URLS',
+      'messagesService', 'PortalAddToHomeService', 'MISC_URLS',
       function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
                $document, $sanitize, $mdDialog, miscService,
-               messagesService, MISC_URLS) {
+               messagesService, PortalAddToHomeService, MISC_URLS) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -418,12 +418,11 @@ define(['angular'], function(angular) {
               unseen: allAnnouncements,
             };
 
-            // Action buttons with an "addToHome" url
-            // have their URLs resolved in this filter
-            $filter('addToHome')(
-              separatedAnnouncements.unseen,
-              MISC_URLS
-            );
+
+             $filter('addToHome')(
+               separatedAnnouncements.unseen,
+               MISC_URLS, PortalAddToHomeService
+             );
           }
 
           // If directive mode need mascot, set it, otherwise
@@ -546,6 +545,20 @@ define(['angular'], function(angular) {
           // Call service to save results
           messagesService.setMessagesSeen(allSeenMessageIds,
             seenAnnouncementIds, 'dismiss');
+        };
+
+        vm.takeButtonAction = function(url) {
+          var actionType = 'other';
+          var addToHome = 'addToHome';
+          if (url.indexOf(addToHome) !== -1) {
+              actionType = addToHome;
+          }
+
+          if (actionType == addToHome) {
+            var slash = url.lastIndexOf('/') + 1;
+            var fName = url.substr(slash);
+            PortalAddToHomeService.addToHome(fName);
+          }
         };
 
         /**
