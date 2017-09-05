@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Messages Enhancements
 * Adds actionbutton and more info button to features page and priority notifications (#504)
-* Adds 'addToHome' functionality directly from mascot annoucement (#506)  (#512)
+* Adds 'addToHome' functionality directly from mascot announcement (#506)  (#512)
 * Fixes bug with notification urls not being resolved correctly (#507)
 
 ### Code Maintenance and Enhancements
