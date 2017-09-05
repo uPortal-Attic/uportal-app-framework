@@ -192,7 +192,9 @@ Fixes a bug where text in a static portlet was hard to read (#380)
 
 Adds back in UW-Lacrosse theming
 
-## 3.1.2 - \[Yanked]
+## 3.1.2 - 2017-03-09 \[Yanked]
+
+Unreleased due to issues pushing to Maven Central.
 
 ## [3.1.1][] - 2017-03-02
 
@@ -249,7 +251,9 @@ Supporting links:
 - [Documentation for this version specifically](http://uw-madison-doit.github.io/uw-frame/v3.0.2/).
 - [Release announcement on myuw-developers group](https://groups.google.com/d/topic/myuw-developers/tKOWjo8r96c/discussion)
 
-## 3.0.1 - \[YANKED]
+## 3.0.1 - 2016-11-28 \[YANKED]
+
+Unreleased due to issues pushing to Maven Central.
 
 ## [3.0.0][] - 2016-11-28
 
