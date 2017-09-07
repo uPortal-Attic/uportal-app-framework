@@ -19,25 +19,27 @@ define(['angular'], function(angular) {
         return separatedMessages;
       };
     }])
-    .filter('addToHome', function() {
-      return function(messages, MISC_URLS, layoutService, 
-        PortalAddToHomeService) {
-        angular.forEach(messages, function(message) {
-          if (message.actionButton) {
-            var url = message.actionButton.url;
-            var addToHome = 'addToHome';
+ //   .filter('addToHome', function () {
+ //     return function (messages, MISC_URLS, layoutService,
+ //       PortalAddToHomeService) {
+ //       angular.forEach(messages, function (message) {
+ //         if (message.actionButton) {
+ //           var url = message.actionButton.url;
+ //           var addToHome = 'addToHome';
 
-             if (url.indexOf(addToHome) !== -1) {
-                var slash = url.lastIndexOf('/') + 1;
-                var fName = url.substr(slash);
-                if (PortalAddToHomeService.inHome(fName)) {
-                  message.actionButton.label = 'Added To Home';
-                }
-             }
-            }
-          });
-        };
-      })
+//            if (url.indexOf(addToHome) !== -1) {
+//              var slash = url.lastIndexOf('/') + 1;
+//              var fName = url.substr(slash);
+//              var inHome = PortalAddToHomeService.inHome(fName)
+//                .then(function (data) {
+//                  if (data) {
+//                    message.actionButton.label = "Added To Home";
+//                  }
+//                });
+//            }
+//          }
+//        }
+//    )
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {

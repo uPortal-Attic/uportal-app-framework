@@ -337,7 +337,7 @@ define(['angular'], function(angular) {
       'layoutService', 'marketplaceService',
       function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
                $document, $sanitize, $mdDialog, miscService,
-               messagesService, PortalAddToHomeService, MISC_URLS, 
+               messagesService, PortalAddToHomeService, MISC_URLS,
                layoutService, marketplaceService) {
         // //////////////////
         // Local variables //
@@ -546,7 +546,8 @@ define(['angular'], function(angular) {
             seenAnnouncementIds, 'dismiss');
         };
 
-        vm.takeButtonAction = function(url) {
+        vm.takeButtonAction = function(actionButton) {
+          var url = actionButton.url;
           var actionType = 'other';
           var addToHome = 'addToHome';
           if (url.indexOf(addToHome) !== -1) {
@@ -564,22 +565,14 @@ define(['angular'], function(angular) {
               if (data.layout && data.layout.length == 0) {
                 $scope.layoutEmpty = true;
               }
+              actionButton.label='Added To Home';
+              actionButton.disabled = 'true';
               return data;
             }).catch(function() {
               $log.warn('Could not getLayout');
             });
           }
         };
-
-        vm.getPortlet = function(fName) {
-          marketplaceService.getPortlet(fName).then(function(data) {
-            $scope.portlet = data;
-            return data;
-          }).catch(function() {
-            $scope.error = 'no portlet for ' + fName;
-          });
-        };
-
 
         /**
          * Add all IDs of unseen announcements to the seenAnnouncements
