@@ -131,6 +131,7 @@
           <releaseProfiles>release</releaseProfiles>
           <goals>deploy</goals>
           <localCheckout>true</localCheckout>
+          <scmCommentPrefix>chore(release): </scmCommentPrefix>
           <tagNameFormat>uw-frame-maven-@{project.version}</tagNameFormat>
           <pushChanges>false</pushChanges>
         </configuration>
@@ -193,7 +194,7 @@
             <id>copy-components</id>
             <phase>compile</phase>
             <goals><goal>copy-resources</goal></goals>
-            <configuration>              
+            <configuration>
               <outputDirectory>${basedir}/target/frame/</outputDirectory>
               <resources>
                 <resource>
@@ -207,7 +208,7 @@
                 <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
                 <nonFilteredFileExtension>eot</nonFilteredFileExtension>
                 <nonFilteredFileExtension>otf</nonFilteredFileExtension>
-              </nonFilteredFileExtensions>          
+              </nonFilteredFileExtensions>
             </configuration>
           </execution>
           <execution>
