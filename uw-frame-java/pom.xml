@@ -1,5 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
+  <parent>
+    <groupId>org.jasig.parent</groupId>
+    <artifactId>jasig-parent</artifactId>
+    <version>41</version>
+  </parent>
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.wisc.my.apps</groupId>
   <artifactId>uw-frame</artifactId>
@@ -38,6 +44,7 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <webapp.target.directory>${project.build.directory}/${project.build.finalName}</webapp.target.directory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.license.plugin.ver>3.0</maven.license.plugin.ver>
   </properties>
 
   <distributionManagement>
@@ -439,6 +446,35 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.mycila</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <version>${maven.license.plugin.ver}</version>
+        <configuration>
+        <basedir>${project.basedir}/../</basedir>
+        <header>${jasig-short-license-url}</header>
+          <strictCheck>true</strictCheck>
+          <excludes>
+            <exclude>LICENSE</exclude>
+            <exclude>NOTICE</exclude>
+            <exclude>**/node_modules/**</exclude>
+            <exclude>**/uw-frame-components/staticFeeds/keyvalue/**</exclude>
+            <exclude>**/docs/_site/**</exclude>
+            <exclude>**/docs/bower_components/**</exclude>
+            <exclude>**/*.json</exclude>
+            <exclude>**/*.lock</exclude>
+            <exclude>**/uw-frame-components/js/ga.js</exclude>
+            <exclude>**/uw-frame-components/js/sortable.js</exclude>
+            <exclude>.gitignore</exclude>
+          </excludes>
+          <mapping>
+            <less>JAVADOC_STYLE</less>
+            <scss>JAVADOC_STYLE</scss>
+            <Gemfile>SCRIPT_STYLE</Gemfile>
+            <Dockerfile_http_server>SCRIPT_STYLE</Dockerfile_http_server>
+          </mapping>
+        </configuration>
       </plugin>
     </plugins>
   </build>
