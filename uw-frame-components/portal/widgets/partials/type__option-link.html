@@ -2,7 +2,7 @@
 
   <!-- OPTION-LINK ICON -->
   <div class="option-link-icon">
-    <a href="{{ widget.selectedUrl }}" target="_self" rel="noopener noreferrer">
+    <a href="{{ widget.selectedUrl }}" target="{{ widget.selectedUrl | urlToTarget }}" rel="noopener noreferrer">
       <widget-icon></widget-icon>
     </a>
   </div>
@@ -44,6 +44,6 @@
 
 <!-- LAUNCH BUTTON -->
 <launch-button data-href="{{ widget.selectedUrl }}"
-               data-target="{{ widget.target ? widget.target : '_self' }}"
+               data-target="{{ widget.selectedUrl | urlToTarget }}"
                data-button-text="{{ config.launchText ? config.launchText : 'Launch full app' }}"
                data-aria-label="{{ config.launchText ? config.launchText : 'Launch ' + widget.title }}"></launch-button>

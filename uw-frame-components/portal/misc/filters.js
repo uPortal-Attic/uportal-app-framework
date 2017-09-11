@@ -65,6 +65,15 @@ define(['angular'], function(angular) {
         return filtered;
       };
     })
+    .filter('urlToTarget', function() {
+      return function(url) {
+        var result = '_self';
+        if (url && -1 < url.indexOf('//')) {
+          result = '_blank';
+        }
+        return result;
+      };
+    })
 
     /* WARNING: THIS FILTER IS DANGEROUS.
        You should only filter to trusted status HTML that you are
