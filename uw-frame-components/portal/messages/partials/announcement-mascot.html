@@ -27,7 +27,7 @@
     <div ng-show="vm.announcements.length > 0">
       <md-menu-item ng-repeat="announcement in vm.announcements | orderBy:['-goLiveDate'] | limitTo:3"
                     class="top-bar-menu-item">
-        <div class="menu-item-content" layout="row" layout-align="space-between start">
+        <div class="menu-item-content" layout="row" layout-align="space-between center">
           <div layout="column" layout-align="center start" flex="80">
             <span class="menu-item-title">{{ announcement.titleShort }}</span>
             <span>{{ announcement.descriptionShort }}</span>
@@ -35,6 +35,7 @@
               <md-button class="md-raised md-accent"
                          ng-if="announcement.actionButton"
                          ng-click="vm.takeButtonAction(announcement.actionButton.url)"
+                         ng-disabled="announcement.actionButton.disabled"
                          target="_blank"
                          rel="noopener noreferrer">
                 {{ announcement.actionButton.label }}
@@ -50,6 +51,7 @@
           </div>
 
           <md-button class="md-icon-button button__mark-seen"
+                     ng-hide="announcement.notDismissible"
                      ng-click="vm.markSingleAnnouncementSeen(announcement.id);"
                      md-prevent-menu-close="md-prevent-menu-close"
                      aria-label="mark this announcement seen"
