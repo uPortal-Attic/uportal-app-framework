@@ -334,9 +334,11 @@ define(['angular'], function(angular) {
       '$sessionStorage', '$scope', '$rootScope', '$document', '$sanitize',
       '$mdDialog', 'miscService',
       'messagesService', 'PortalAddToHomeService', 'MISC_URLS',
+      'layoutService', 'marketplaceService',
       function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
                $document, $sanitize, $mdDialog, miscService,
-               messagesService, PortalAddToHomeService, MISC_URLS) {
+               messagesService, PortalAddToHomeService, MISC_URLS,
+               layoutService, marketplaceService) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -417,14 +419,11 @@ define(['angular'], function(angular) {
               seen: [],
               unseen: allAnnouncements,
             };
-
-
-             $filter('addToHome')(
-               separatedAnnouncements.unseen,
-               MISC_URLS, PortalAddToHomeService
-             );
           }
-
+          $filter('addToHome')(
+             separatedAnnouncements.unseen,
+             MISC_URLS, layoutService, PortalAddToHomeService
+          );
           // If directive mode need mascot, set it, otherwise
           // configure popups
           if (vm.mode === 'mascot' || vm.mode === 'mobile-menu') {
@@ -547,7 +546,8 @@ define(['angular'], function(angular) {
             seenAnnouncementIds, 'dismiss');
         };
 
-        vm.takeButtonAction = function(url) {
+        vm.takeButtonAction = function(actionButton) {
+          var url = actionButton.url;
           var actionType = 'other';
           var addToHome = 'addToHome';
           if (url.indexOf(addToHome) !== -1) {
@@ -557,7 +557,20 @@ define(['angular'], function(angular) {
           if (actionType == addToHome) {
             var slash = url.lastIndexOf('/') + 1;
             var fName = url.substr(slash);
-            PortalAddToHomeService.addToHome(fName);
+            layoutService.addToHomeWithFname(fName);
+            $rootScope.layout = null;
+            $sessionStorage.layout = null;
+            layoutService.getLayout().then(function(data) {
+              $rootScope.layout = data.layout;
+              if (data.layout && data.layout.length == 0) {
+                $scope.layoutEmpty = true;
+              }
+              actionButton.label='Added To Home';
+              actionButton.disabled = 'true';
+              return data;
+            }).catch(function() {
+              $log.warn('Could not getLayout');
+            });
           }
         };
 

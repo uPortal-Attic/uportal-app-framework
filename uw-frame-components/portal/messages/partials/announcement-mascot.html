@@ -34,7 +34,8 @@
             <div ng-if="announcement.moreInfoButton || announcement.actionButton" class="compact-buttons">
               <md-button class="md-raised md-accent"
                          ng-if="announcement.actionButton"
-                         ng-click="vm.takeButtonAction(announcement.actionButton.url)"
+                         ng-click="vm.takeButtonAction(announcement.actionButton)"
+                         ng-disabled="announcement.actionButton.disabled"
                          target="_blank"
                          rel="noopener noreferrer">
                 {{ announcement.actionButton.label }}
