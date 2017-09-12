@@ -81,6 +81,7 @@
             </div>
             <!-- DISMISS BUTTON -->
             <md-button class="md-icon-button button__mark-seen"
+                       ng-hide="notification.notDismissible"
                        ng-click="vm.dismissNotification(notification)"
                        aria-label="dismiss this notification"
                        md-prevent-menu-close="md-prevent-menu-close"
@@ -120,6 +121,7 @@
       </div>
       <div class="dismiss-priority">
         <md-button class="md-icon-button"
+                   ng-hide="priority.notDismissible"
                    ng-click="vm.dismissNotification(priority, true)"
                    aria-label="Dismiss this notification">
           <md-icon>close</md-icon>
