@@ -68,7 +68,7 @@ define(['angular'], function(angular) {
     .filter('urlToTarget', function() {
       return function(url) {
         var result = '_self';
-        if (url && -1 < url.indexOf('//')) {
+        if (url && url.indexOf('//') > -1) {
           result = '_blank';
         }
         return result;
