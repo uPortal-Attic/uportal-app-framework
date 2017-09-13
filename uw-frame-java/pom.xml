@@ -485,6 +485,8 @@
             <exclude>**/docs/bower_components/**</exclude>
             <exclude>**/*.json</exclude>
             <exclude>**/*.lock</exclude>
+            <exclude>**/uw-frame-components/coverage/**</exclude>
+            <exclude>**/uw-frame-components/test_out/**</exclude>
             <exclude>**/uw-frame-components/js/ga.js</exclude>
             <exclude>**/uw-frame-components/js/sortable.js</exclude>
             <exclude>.gitignore</exclude>
