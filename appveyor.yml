@@ -35,6 +35,7 @@ test_script:
   - npm run lint-css
   - npm run lint-md
   - cd uw-frame-java/
+  - mvn license:check
   - mvn clean install
 cache:
   - node_modules
