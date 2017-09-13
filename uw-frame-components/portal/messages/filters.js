@@ -48,7 +48,8 @@ define(['angular'], function(angular) {
                 var slash = url.lastIndexOf('/') + 1;
                 var fName = url.substr(slash);
                 if (PortalAddToHomeService.inHome(fName)) {
-                  message.actionButton.label = 'Added To Home';
+                  message.actionButton.label = 'Added to home';
+                  message.actionButton.disabled = true;
                 }
              }
             }

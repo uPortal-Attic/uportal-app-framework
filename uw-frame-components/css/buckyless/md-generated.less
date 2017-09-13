@@ -89,7 +89,8 @@ md-menu-content.top-bar-menu-content {
         max-width: 505px;
 
         .compact-buttons {
-          .md-button:not([disabled]) {
+          .md-button:not([disabled]),
+          .md-button:disabled {
             text-transform: none;
             line-height: 28px;
             min-width: 60px;
@@ -174,8 +175,22 @@ md-menu-content.top-bar-menu-content {
         padding: 8px 0 8px 16px;
         cursor: default;
 
-        .menu-item-title {
-          font-weight: 600;
+        .menu-item-description {
+          color: @grayscale8;
+        }
+
+        .menu-item__high-priority {
+          color: @grayscale8;
+          font-size: 12px;
+
+          .material-icons {
+            min-height: 16px;
+            min-width: 16px;
+            height: 16px;
+            width: 16px;
+            font-size: 16px;
+            line-height: 14px;
+          }
         }
       }
 

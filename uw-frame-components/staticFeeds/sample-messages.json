@@ -38,13 +38,17 @@
       "expireDate": null,
       "featureImageUrl": null,
       "priority": "high",
+      "dismissible": false,
       "audienceFilter": {
         "groups": [""],
         "dataUrl": "",
         "dataObject": "",
         "dataArrayFilter": {}
       },
-      "actionButton": null,
+      "actionButton": {
+        "label": "Take action",
+        "url": "http://www.google.com"
+      },
       "moreInfoButton": null,
       "confirmButton": null
     },
