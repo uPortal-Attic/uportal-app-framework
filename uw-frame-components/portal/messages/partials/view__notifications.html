@@ -23,7 +23,7 @@
 
                 <!-- DISMISS BUTTON -->
                 <md-button class="md-icon-button md-secondary"
-                           ng-hide="notification.notDismissible"
+                           ng-hide="notification.isSticky"
                            ng-click="vm.dismissNotification(notification)"
                            aria-label="dismiss this notification">
                   <md-icon>clear</md-icon>

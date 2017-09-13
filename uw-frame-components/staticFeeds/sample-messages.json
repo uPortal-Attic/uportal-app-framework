@@ -38,7 +38,7 @@
       "expireDate": null,
       "featureImageUrl": null,
       "priority": "high",
-      "notDismissible": true,
+      "isSticky": true,
       "audienceFilter": {
         "groups": [""],
         "dataUrl": "",
@@ -63,7 +63,7 @@
       "expireDate": "2017-08-15",
       "featureImageUrl": "img/features/bucky-announcement.png",
       "priority": null,
-      "notDismissible": false,
+      "isSticky": false,
       "audienceFilter": {
         "groups": ["UW-Madison"],
         "dataUrl": "",
@@ -91,7 +91,7 @@
       "expireDate": "2017-08-15",
       "featureImageUrl": "img/the-cow.png",
       "priority": "high",
-      "notDismissible": false,
+      "isSticky": false,
       "audienceFilter": {
         "groups": ["Nonexistent-Group"],
         "dataUrl": "",

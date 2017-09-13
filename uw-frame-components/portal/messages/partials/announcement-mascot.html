@@ -51,7 +51,7 @@
           </div>
 
           <md-button class="md-icon-button button__mark-seen"
-                     ng-hide="announcement.notDismissible"
+                     ng-hide="announcement.isSticky"
                      ng-click="vm.markSingleAnnouncementSeen(announcement.id);"
                      md-prevent-menu-close="md-prevent-menu-close"
                      aria-label="mark this announcement seen"

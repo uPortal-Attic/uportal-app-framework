@@ -56,7 +56,7 @@
             <div flex="80" layout="column" layout-align="center start">
               <!-- PRIORITY MESSAGE -->
               <div class="menu-item__high-priority" ng-if="notification.priority">
-                <md-icon class="md-warn" aria-label="important:">priority_high</md-icon>
+                <md-icon class="md-warn" aria-hidden="true">priority_high</md-icon>
                 <span>High priority</span>
               </div>
               <!-- REGULAR MESSAGE -->
@@ -81,7 +81,7 @@
             </div>
             <!-- DISMISS BUTTON -->
             <md-button class="md-icon-button button__mark-seen"
-                       ng-hide="notification.notDismissible"
+                       ng-hide="notification.isSticky"
                        ng-click="vm.dismissNotification(notification)"
                        aria-label="dismiss this notification"
                        md-prevent-menu-close="md-prevent-menu-close"
@@ -121,7 +121,7 @@
       </div>
       <div class="dismiss-priority">
         <md-button class="md-icon-button"
-                   ng-hide="priority.notDismissible"
+                   ng-hide="priority.isSticky"
                    ng-click="vm.dismissNotification(priority, true)"
                    aria-label="Dismiss this notification">
           <md-icon>close</md-icon>
