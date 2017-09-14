@@ -57,10 +57,12 @@ define(['angular'], function(angular) {
         // If date is upcoming, get return days until
         // If date has past, return -1
         if (today < relativeDate) {
-          return Math.round(Math.abs((today.getTime() - relativeDate.getTime())/(oneDay)));
+          return Math.round(Math.abs(
+            (today.getTime() - relativeDate.getTime())/(oneDay)
+          ));
         } else if (today > relativeDate) {
           return -1;
         }
-      }
+      };
     });
 });

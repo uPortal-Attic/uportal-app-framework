@@ -9,7 +9,7 @@
       <p><md-button class="md-raised md-accent" ng-href="config.enrollLink">Enroll now</md-button></p>
     </div>
     <div ng-switch-when="lastDay" layout="column" layout-align="center center">
-      <p><md-icon class="md-warn" aria-label="warning:">warning</md-icon>Today is the last day to change benefits.</p>
+      <span class="abe__last-day"><md-icon class="md-warn" aria-label="warning:">warning</md-icon>Today is the last day to change benefits.</span>
       <p><md-button class="md-raised md-accent" ng-href="config.enrollLink">Enroll now</md-button></p>
     </div>
     <p ng-switch-when="ended">Ended {{ enrollEndDate | date:mediumDate }}</p>

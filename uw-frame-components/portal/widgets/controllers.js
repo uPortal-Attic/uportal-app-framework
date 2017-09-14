@@ -403,7 +403,6 @@ define(['angular'], function(angular) {
   // VARIABLE CONTENT widget type
   .controller('VariableContentController', [
     '$scope', '$filter', '$log', function($scope, $filter, $log) {
-
     /**
      * Display provided custom template
      *   - provisional: Check if it's the annual benefits enrollment
@@ -432,12 +431,12 @@ define(['angular'], function(angular) {
       $scope.enrollEndDate = (new Date).getFullYear() + '-'
         + $scope.config.enrollmentPeriodEndDate;
 
-      // Check if we're in enrollment period
-      // Check if enrollment period hasn't started yet
-      // Check if enrollment period ended
-      if ($filter('filterDateRange')($scope.enrollStartDate, $scope.enrollEndDate)) {
+      // Check today's relationship to enrollment period
+      if ($filter('filterDateRange')(
+        $scope.enrollStartDate, $scope.enrollEndDate)) {
         // Calculate countdown
-        $scope.daysLeft = $filter('filterDifferenceFromDate')($scope.enrollEndDate);
+        $scope.daysLeft = $filter('filterDifferenceFromDate')(
+          $scope.enrollEndDate);
         // If countdown is down to 1, then it's the last day
         if ($scope.daysLeft === 1) {
           $scope.enrollmentPeriodStatus = 'lastDay';
@@ -445,11 +444,11 @@ define(['angular'], function(angular) {
           $scope.enrollmentPeriodStatus = 'ongoing';
         }
       // Determine whether enrollment period is upcoming or already over
-      } else if ($filter('filterDifferenceFromDate')($scope.enrollStartDate) > 0) {
-        console.log('days until: ');
-        console.log($filter('filterDifferenceFromDate')($scope.enrollStartDate));
+      } else if ($filter('filterDifferenceFromDate')(
+        $scope.enrollStartDate) > 0) {
         $scope.enrollmentPeriodStatus = 'upcoming';
-      } else if ($filter('filterDifferenceFromDate')($scope.enrollEndDate) === -1) {
+      } else if ($filter('filterDifferenceFromDate')(
+        $scope.enrollEndDate) === -1) {
         $scope.enrollmentPeriodStatus = 'ended';
       }
 
@@ -472,21 +471,25 @@ define(['angular'], function(angular) {
           endDate = (new Date).getFullYear() + '-' + endDate;
           if ($filter('filterDateRange')(startDate, endDate)) {
             // If current date is within active range, show variable content
-            displayVariableContent($scope.widget.widgetTemplate, startDate, endDate);
+            displayVariableContent(
+              $scope.widget.widgetTemplate,
+              startDate,
+              endDate);
           }
         } else if ($filter('filterDateRange')(startDate, endDate)) {
           // If current date is within active range, show variable content
-          displayVariableContent($scope.widget.widgetTemplate,  startDate, endDate);
+          displayVariableContent(
+            $scope.widget.widgetTemplate,
+            startDate,
+            endDate);
         }
       });
-
     } else {
       $scope.showBasicContent = true;
       $log.warn($scope.widget.fname +
         ' said it has variable content, but was missing either a '
           + 'custom template or active date ranges.');
     }
-
   }])
 
   // CUSTOM & GENERIC widget types
