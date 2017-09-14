@@ -318,6 +318,65 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
   }
 ```
 
+### Variable content widget
+
+![benefits enrollment widget](./img/benefits-enrollment-widget.png)
+
+```xml
+<name>widgetType</name>
+<value>variable-content-widget</value>
+```
+
+#### When to use
+
+* You want to display custom content during a defined period of time, and a basic widget the rest of the time.
+
+*Note: This is an experimental widget type and is subject to change dramatically*
+
+#### Additional entity file configuration
+
+```xml
+<portlet-preference>
+    <name>widgetType</name>
+    <value>variable-content-widget</value>
+</portlet-preference>
+<portlet-preference>
+    <name>widgetConfig</name>
+    <value>
+      <![CDATA[{
+        "activeDateRanges": [
+          {
+            "isAnnual": true,
+            "startDate": "09-11",
+            "endDate": "09-18"
+          },
+          {
+            "isAnnual": false,
+            "startDate": "2017-03-11T9:30",
+            "endDate": "2017-03-12"
+          }
+        ]
+      }]]>
+    </value>
+</portlet-preference>
+<portlet-preference>
+    <name>widgetTemplate</name>
+    <value>[CUSTOM WIDGET TEMPLATE]</value>
+</portlet-preference>
+```
+
+#### About entity file values
+
+* **activeDateRanges**: An array that must include at least ONE date range object. Each object in this array must have the following three values:
+* **isAnnual**: Set to true if this is an annually occurring window of time.
+* **startDate**: The date to begin showing custom content. Accepts a simple ISO date, including time (if desired). If `isAnnual` is set to true, DO NOT include the year.
+* **endDate**: The date to end showing custom content. Accepts a simple ISO date, including time (if desired). If `isAnnual` is set to true, DO NOT include the year.
+
+#### Guidance
+
++ This widget type requires you to provide a custom widget template. See the "widgetTemplate" section under "Custom widgets" below for an example.
++ If `isAnnual` is set to true, DO NOT include the year portion of the date for that object's startDate and endDate attributes.
+
 ## Custom widgets
 Using a JSON service is a great way to have user-focused content in your widgets. Here are the steps you have to take to create your custom JSON-backed widget:
 
