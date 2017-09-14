@@ -29,7 +29,7 @@ define(['angular'], function(angular) {
             'campusIdAttribute': null,
         })
         .value('APP_OPTIONS', {
-            'optionsTemplateURL': 'portal/misc/partials/example-options.html',
+            'optionsTemplateURL': null,
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,
