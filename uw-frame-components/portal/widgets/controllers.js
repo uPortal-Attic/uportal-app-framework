@@ -400,6 +400,95 @@ define(['angular'], function(angular) {
     initializeActionItems();
   }])
 
+  // VARIABLE CONTENT widget type
+  .controller('VariableContentController', [
+    '$scope', '$filter', '$log', function($scope, $filter, $log) {
+
+    /**
+     * Display provided custom template
+     *   - provisional: Check if it's the annual benefits enrollment
+     *   widget and display markup specific to that widget instead
+     * @param template The provided custom angular/HTML template
+     * @param start The day/time this content became active
+     * @param end The date/time this content will go away
+     */
+    var displayVariableContent = function(template, start, end) {
+      $scope.startDate = start;
+      $scope.endDate = end;
+      if ($scope.widget.fname === 'university-staff-benefits-statement') {
+        configureAnnualBenefitsEnrollmentContent();
+      } else {
+        $scope.template = template;
+      }
+    };
+
+    /**
+     *
+     */
+    var configureAnnualBenefitsEnrollmentContent = function() {
+      // Set enrollment period dates for current year
+      $scope.enrollStartDate = (new Date).getFullYear() + '-'
+        + $scope.config.enrollmentPeriodStartDate;
+      $scope.enrollEndDate = (new Date).getFullYear() + '-'
+        + $scope.config.enrollmentPeriodEndDate;
+
+      // Check if we're in enrollment period
+      // Check if enrollment period hasn't started yet
+      // Check if enrollment period ended
+      if ($filter('filterDateRange')($scope.enrollStartDate, $scope.enrollEndDate)) {
+        // Calculate countdown
+        $scope.daysLeft = $filter('filterDifferenceFromDate')($scope.enrollEndDate);
+        // If countdown is down to 1, then it's the last day
+        if ($scope.daysLeft === 1) {
+          $scope.enrollmentPeriodStatus = 'lastDay';
+        } else {
+          $scope.enrollmentPeriodStatus = 'ongoing';
+        }
+      // Determine whether enrollment period is upcoming or already over
+      } else if ($filter('filterDifferenceFromDate')($scope.enrollStartDate) > 0) {
+        console.log('days until: ');
+        console.log($filter('filterDifferenceFromDate')($scope.enrollStartDate));
+        $scope.enrollmentPeriodStatus = 'upcoming';
+      } else if ($filter('filterDifferenceFromDate')($scope.enrollEndDate) === -1) {
+        $scope.enrollmentPeriodStatus = 'ended';
+      }
+
+      $scope.showAnnualBenefitsEnrollmentContent = true;
+    };
+
+    // Initialize widget if we received a custom HTML template
+    // and active date ranges, otherwise display basic widget and log a warning
+    if ($scope.widget.widgetTemplate
+      && $scope.config.activeDateRanges.length > 0) {
+      // Check if today falls within any of the provided date ranges
+      angular.forEach($scope.config.activeDateRanges, function(value, index) {
+        var startDate = value.startDate;
+        var endDate = value.endDate;
+
+        // If date range is annual, not for a specific year,
+        // use current year in range
+        if (value.isAnnual) {
+          startDate = (new Date).getFullYear() + '-' + startDate;
+          endDate = (new Date).getFullYear() + '-' + endDate;
+          if ($filter('filterDateRange')(startDate, endDate)) {
+            // If current date is within active range, show variable content
+            displayVariableContent($scope.widget.widgetTemplate, startDate, endDate);
+          }
+        } else if ($filter('filterDateRange')(startDate, endDate)) {
+          // If current date is within active range, show variable content
+          displayVariableContent($scope.widget.widgetTemplate,  startDate, endDate);
+        }
+      });
+
+    } else {
+      $scope.showBasicContent = true;
+      $log.warn($scope.widget.fname +
+        ' said it has variable content, but was missing either a '
+          + 'custom template or active date ranges.');
+    }
+
+  }])
+
   // CUSTOM & GENERIC widget types
   .controller('CustomWidgetController', [
     '$scope', '$log', 'widgetService', function($scope, $log, widgetService) {

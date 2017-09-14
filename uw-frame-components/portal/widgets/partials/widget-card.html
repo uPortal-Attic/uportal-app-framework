@@ -54,6 +54,10 @@
 
     <div ng-switch="widgetType" class="widget-type-container">
 
+      <div ng-switch-when="variable-content-widget">
+        <variable-content app="widget" config="widget.widgetConfig"></variable-content>
+      </div>
+
       <div ng-switch-when="option-link">
         <option-link app="widget" config="widget.widgetConfig"></option-link>
       </div>
