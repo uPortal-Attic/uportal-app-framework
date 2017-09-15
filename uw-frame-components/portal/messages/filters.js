@@ -49,17 +49,17 @@ define(['angular'], function(angular) {
               var fName = url.substr(slash);
               PortalAddToHomeService.inHome(fName).then(function(result, text) {
                 if (result) {
-                  message.actionButton.label = 'Added To Home';
+                  message.actionButton.label = 'On your home';
                   message.actionButton.disabled = true;
                   return true;
                 } else {
-                  message.actionButton.label = 'Add To Home';
+                  message.actionButton.label = 'Add to home';
                   message.actionButton.disabled = null;
-                  return true;
+                  return false;
                 }
               })
-              .catch(function(text) {
-                message.actionButton.label = 'Add To Home';
+              .catch(function() {
+                message.actionButton.label = 'Add to home';
                 message.actionButton.disabled = null;
                 return false;
               });

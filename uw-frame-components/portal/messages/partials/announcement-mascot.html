@@ -54,6 +54,7 @@
           <div ng-if="announcement.moreInfoButton || announcement.actionButton" class="compact-buttons">
             <md-button class="md-raised md-accent"
                        ng-if="announcement.actionButton"
+                       aria-label="{{announcement.titleShort}}"
                        ng-disabled="announcement.actionButton.disabled"
                        ng-click="vm.takeButtonAction(announcement.actionButton)"
                        target="_blank"
@@ -62,6 +63,7 @@
             </md-button>
             <md-button class="md-default"
                        ng-if="announcement.moreInfoButton"
+                       aria-label="{{announcement.titleShort}}"
                        ng-href="{{ announcement.moreInfoButton.url }}"
                        target="_blank"
                        rel="noopener noreferrer">
