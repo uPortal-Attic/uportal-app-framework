@@ -45,30 +45,32 @@
       </a>
     </md-menu-item>
     <div ng-show="vm.announcements.length > 0">
-      <md-menu-item ng-repeat="announcement in vm.announcements | orderBy:['-goLiveDate'] | limitTo:3"
-                    class="top-bar-menu-item">
-        <div class="menu-item-content" layout="row" layout-align="space-between center">
-          <div layout="column" layout-align="center start" flex="80">
-            <span>{{ announcement.titleShort }}</span>
-            <span class="menu-item-description">{{ announcement.descriptionShort }}</span>
-            <div ng-if="announcement.moreInfoButton || announcement.actionButton" class="compact-buttons">
-              <md-button class="md-raised md-accent"
-                         ng-if="announcement.actionButton"
-                         ng-click="vm.takeButtonAction(announcement.actionButton.url)"
-                         ng-disabled="announcement.actionButton.disabled"
-                         target="_blank"
-                         rel="noopener noreferrer">
-                {{ announcement.actionButton.label }}
-              </md-button>
-              <md-button class="md-default"
-                         ng-if="announcement.moreInfoButton"
-                         ng-href="{{ announcement.moreInfoButton.url }}"
-                         target="_blank"
-                         rel="noopener noreferrer">
-                {{ announcement.moreInfoButton.label }}
-              </md-button>
-            </div>
+    <md-menu-item ng-repeat="announcement in vm.announcements | orderBy:['-goLiveDate'] | limitTo:3"
+                  class="top-bar-menu-item">
+      <div class="menu-item-content" layout="row" layout-align="space-between center">
+        <div layout="column" layout-align="center start" flex="80">
+          <span>{{ announcement.titleShort }}</span>
+          <span class="menu-item-description">{{ announcement.descriptionShort }}</span>
+          <div ng-if="announcement.moreInfoButton || announcement.actionButton" class="compact-buttons">
+            <md-button class="md-raised md-accent"
+                       ng-if="announcement.actionButton"
+                       aria-label="{{announcement.titleShort}}"
+                       ng-disabled="announcement.actionButton.disabled"
+                       ng-click="vm.takeButtonAction(announcement.actionButton)"
+                       target="_blank"
+                       rel="noopener noreferrer">
+              {{ announcement.actionButton.label }}
+            </md-button>
+            <md-button class="md-default"
+                       ng-if="announcement.moreInfoButton"
+                       aria-label="{{announcement.titleShort}}"
+                       ng-href="{{ announcement.moreInfoButton.url }}"
+                       target="_blank"
+                       rel="noopener noreferrer">
+              {{ announcement.moreInfoButton.label }}
+            </md-button>
           </div>
+        </div>
 
           <md-button class="md-icon-button button__mark-seen"
                      ng-hide="announcement.isSticky"

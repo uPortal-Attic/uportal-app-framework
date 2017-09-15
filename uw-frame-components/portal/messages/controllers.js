@@ -435,13 +435,13 @@ define(['angular'], function(angular) {
               seen: [],
               unseen: allAnnouncements,
             };
-
-
-             $filter('addToHome')(
-               separatedAnnouncements.unseen,
-               MISC_URLS, PortalAddToHomeService
-             );
           }
+
+          $filter('addToHome')(
+            separatedAnnouncements.unseen,
+            MISC_URLS, PortalAddToHomeService
+          );
+
 
           // If directive mode need mascot, set it, otherwise
           // configure popups
@@ -565,7 +565,8 @@ define(['angular'], function(angular) {
             seenAnnouncementIds, 'dismiss');
         };
 
-        vm.takeButtonAction = function(url) {
+        vm.takeButtonAction = function(actionButton) {
+          var url = actionButton.url;
           var actionType = 'other';
           var addToHome = 'addToHome';
           if (url.indexOf(addToHome) !== -1) {
@@ -575,7 +576,9 @@ define(['angular'], function(angular) {
           if (actionType == addToHome) {
             var slash = url.lastIndexOf('/') + 1;
             var fName = url.substr(slash);
-            PortalAddToHomeService.addToHome(fName);
+            $rootScope.addPortletToHome(fName);
+            actionButton.label = 'On your home';
+            actionButton.disabled = true;
           }
         };
 
