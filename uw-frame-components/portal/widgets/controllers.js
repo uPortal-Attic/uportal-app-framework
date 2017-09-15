@@ -404,91 +404,140 @@ define(['angular'], function(angular) {
   .controller('VariableContentController', [
     '$scope', '$filter', '$log', function($scope, $filter, $log) {
     /**
-     * Display provided custom template
-     *   - provisional: Check if it's the annual benefits enrollment
-     *   widget and display markup specific to that widget instead
-     * @param template The provided custom angular/HTML template
+     * Display variable content with provided configuration
+     * @param callToAction The provided configuration for a call to action
      * @param start The day/time this content became active
      * @param end The date/time this content will go away
+     * @param hasPaddedDates indicates there is content to show outside
+     *    active date range
      */
-    var displayVariableContent = function(template, start, end) {
-      $scope.startDate = start;
-      $scope.endDate = end;
-      if ($scope.widget.fname === 'university-staff-benefits-statement') {
-        configureAnnualBenefitsEnrollmentContent();
-      } else {
-        $scope.template = template;
-      }
-    };
+    var displayVariableContent = function(callToAction, start,
+                                          end, hasPaddedDates) {
+      $scope.activePeriodStartDate = '';
+      $scope.activePeriodEndDate = '';
+      $scope.daysLeft = 0;
+      $scope.templateStatus = '';
+      $scope.callToAction = callToAction;
 
-    /**
-     *
-     */
-    var configureAnnualBenefitsEnrollmentContent = function() {
-      // Set enrollment period dates for current year
-      $scope.enrollStartDate = (new Date).getFullYear() + '-'
-        + $scope.config.enrollmentPeriodStartDate;
-      $scope.enrollEndDate = (new Date).getFullYear() + '-'
-        + $scope.config.enrollmentPeriodEndDate;
-
-      // Check today's relationship to enrollment period
-      if ($filter('filterDateRange')(
-        $scope.enrollStartDate, $scope.enrollEndDate)) {
-        // Calculate countdown
-        $scope.daysLeft = $filter('filterDifferenceFromDate')(
-          $scope.enrollEndDate);
-        // If countdown is down to 1, then it's the last day
-        if ($scope.daysLeft === 1) {
-          $scope.enrollmentPeriodStatus = 'lastDay';
-        } else {
-          $scope.enrollmentPeriodStatus = 'ongoing';
-        }
-      // Determine whether enrollment period is upcoming or already over
-      } else if ($filter('filterDifferenceFromDate')(
-        $scope.enrollStartDate) > 0) {
-        $scope.enrollmentPeriodStatus = 'upcoming';
-      } else if ($filter('filterDifferenceFromDate')(
-        $scope.enrollEndDate) === -1) {
-        $scope.enrollmentPeriodStatus = 'ended';
-      }
-
-      $scope.showAnnualBenefitsEnrollmentContent = true;
-    };
-
-    // Initialize widget if we received a custom HTML template
-    // and active date ranges, otherwise display basic widget and log a warning
-    if ($scope.widget.widgetTemplate
-      && $scope.config.activeDateRanges.length > 0) {
-      // Check if today falls within any of the provided date ranges
-      angular.forEach($scope.config.activeDateRanges, function(value, index) {
-        var startDate = value.startDate;
-        var endDate = value.endDate;
-
-        // If date range is annual, not for a specific year,
-        // use current year in range
-        if (value.isAnnual) {
-          startDate = (new Date).getFullYear() + '-' + startDate;
-          endDate = (new Date).getFullYear() + '-' + endDate;
-          if ($filter('filterDateRange')(startDate, endDate)) {
-            // If current date is within active range, show variable content
-            displayVariableContent(
-              $scope.widget.widgetTemplate,
-              startDate,
-              endDate);
+      // Check for padded dates
+      if (hasPaddedDates.start || hasPaddedDates.end) {
+        if (hasPaddedDates.start) {
+          // Set active period start date
+          if (callToAction.activeDateRange.takeActionStartDate) {
+            $scope.activePeriodStartDate = $filter('filterForDateWithYear')(
+              callToAction.activeDateRange.takeActionStartDate);
+          } else {
+            $scope.activePeriodStartDate = start;
           }
-        } else if ($filter('filterDateRange')(startDate, endDate)) {
-          // If current date is within active range, show variable content
-          displayVariableContent(
-            $scope.widget.widgetTemplate,
-            startDate,
-            endDate);
+        }
+        if (hasPaddedDates.end) {
+          // Set active period end date
+          if (callToAction.activeDateRange.takeActionEndDate) {
+            $scope.activePeriodEndDate = $filter('filterForDateWithYear')(
+              callToAction.activeDateRange.takeActionEndDate);
+          } else {
+            $scope.activePeriodEndDate = end;
+          }
+        }
+      } else {
+        $scope.activePeriodStartDate = start;
+      }
+
+      // Check today's relationship to active range, then
+      // calculate countdown for active period dates
+      if ($filter('filterDateRange')($scope.activePeriodStartDate,
+          $scope.activePeriodEndDate)) {
+        $scope.daysLeft = $filter('filterDifferenceFromDate')(
+          $scope.activePeriodEndDate);
+        // If there's one day left, it's the last day!
+        if ($scope.daysLeft === 1) {
+          $scope.templateStatus = 'lastDay';
+        } else {
+          $scope.templateStatus = 'ongoing';
+        }
+      } else if ($filter('filterDifferenceFromDate')(
+        $scope.activePeriodStartDate) > 0) {
+        $scope.templateStature = 'upcoming';
+      } else if ($filter('filterDifferenceFromDate')(
+        $scope.activePeriodEndDate) === -1) {
+        $scope.templateStatus = 'ended';
+      }
+
+      $scope.showTimeSensitiveContent = true;
+    };
+
+    var evaluateCallsToAction = function(callsToAction) {
+      // Check if today falls within any of the provided date ranges
+      angular.forEach(callsToAction, function(value, index) {
+        var templateSwitchOnDate = '';
+        var templateSwitchOffDate = '';
+        var hasPaddedDates = {
+          start: false,
+          end: false,
+        };
+        // Check if active date range provided
+        if (value.activeDateRange) {
+          // Check for a start date
+          if (value.activeDateRange.templateLiveDate) {
+            // Use go live date if provided
+            templateSwitchOnDate = $filter('filterForDateWithYear')(
+              value.activeDateRange.templateLiveDate);
+            hasPaddedDates.start = true;
+          } else if (value.activeDateRange.takeActionStartDate) {
+            // Fall back on takeActionStartDate if needed
+            templateSwitchOnDate = $filter('filterForDateWithYear')(
+              value.activeDateRange.takeActionStartDate);
+          } else {
+            $log.log($scope.widget.fname +
+              ' said it has variable content, but was missing a '
+              + ' start date.');
+            showBasicWidget();
+          }
+
+          // Check for an end date
+          if (value.activeDateRange.templateRetireDate) {
+            // Use retire date if provided
+            templateSwitchOffDate = $filter('filterForDateWithYear')(
+              value.activeDateRange.templateRetireDate);
+            hasPaddedDates.end = true;
+          } else if (value.activeDateRange.takeActionStartDate) {
+            // Fall back on takeActionEndDate if needed
+            templateSwitchOffDate = $filter('filterForDateWithYear')(
+              value.activeDateRange.takeActionEndDate);
+          } else {
+            $log.log($scope.widget.fname +
+              ' said it has variable content, but was missing an '
+              + ' end date.');
+            showBasicWidget();
+          }
+
+          // Check if today is within provided range
+          if ($filter('filterDateRange')(
+            templateSwitchOnDate, templateSwitchOffDate)) {
+            // Current date is within range, so show variable content
+            displayVariableContent(value, templateSwitchOnDate,
+              templateSwitchOffDate, hasPaddedDates);
+          }
+        } else {
+          $log.log($scope.widget.fname +
+            ' said it has variable content, but was missing an '
+            + 'active date range.');
+          showBasicWidget();
         }
       });
-    } else {
+    };
+
+    var showBasicWidget = function() {
       $scope.showBasicContent = true;
-      $log.warn($scope.widget.fname +
-        ' said it has variable content, but was missing either a '
-          + 'custom template or active date ranges.');
+    };
+
+    // Initialize widget if it received time-sensitive content
+    if ($scope.config.callsToAction.length > 0) {
+      evaluateCallsToAction($scope.config.callsToAction);
+    } else {
+      $log.log($scope.widget.fname +
+        ' said it has variable content, but was missing calls to action.');
+      showBasicWidget();
     }
   }])
 

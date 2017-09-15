@@ -64,5 +64,20 @@ define(['angular'], function(angular) {
           return -1;
         }
       };
+    })
+    .filter('filterForDateWithYear', function() {
+      return function(date) {
+        var validWithYear = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
+        var validDayAndMonth = /(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/;
+        if (date.match(validWithYear)) {
+          // If date string includes year already, return it
+          return date;
+        } else if (date.match(validDayAndMonth)) {
+          // If date string doesn't include year, add it then return
+          return (new Date).getFullYear() + '-' + date;
+        } else {
+          return -1;
+        }
+      };
     });
 });
