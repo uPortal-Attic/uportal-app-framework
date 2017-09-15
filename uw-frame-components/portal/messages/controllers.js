@@ -435,13 +435,13 @@ define(['angular'], function(angular) {
               seen: [],
               unseen: allAnnouncements,
             };
-
-
-             $filter('addToHome')(
-               separatedAnnouncements.unseen,
-               MISC_URLS, PortalAddToHomeService
-             );
           }
+
+          $filter('addToHome')(
+            separatedAnnouncements.unseen,
+            MISC_URLS, PortalAddToHomeService
+          );
+
 
           // If directive mode need mascot, set it, otherwise
           // configure popups
@@ -578,6 +578,7 @@ define(['angular'], function(angular) {
             var fName = url.substr(slash);
             $rootScope.addPortletToHome(fName);
             actionButton.label = 'Added To Home';
+            actionButton.disabled = true;
           }
         };
 
