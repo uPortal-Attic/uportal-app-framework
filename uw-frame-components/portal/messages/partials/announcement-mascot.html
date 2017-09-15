@@ -31,17 +31,17 @@
              aria-label="Click to see what's new"
              md-no-ink
              md-menu-origin>
-     <img ng-src="{{ vm.mascotImage }}"
-          ng-click="pushGAEvent('feature', 'toggle-bucky', 'na');">
-     <md-tooltip ng-if="!vm.active" md-direction="bottom" class="top-bar-tooltip" md-delay="500">
-       Click to see what's new ({{ vm.announcements.length }})
-     </md-tooltip>
+    <img ng-src="{{ vm.mascotImage }}"
+         ng-click="pushGAEvent('feature', 'toggle-bucky', 'na');">
+    <md-tooltip ng-if="!vm.active" md-direction="bottom" class="top-bar-tooltip" md-delay="500">
+      Click to see what's new ({{ vm.announcements.length }})
+    </md-tooltip>
   </md-button>
   <md-menu-content class="top-bar-menu-content mascot-menu">
     <md-menu-item layout="row" layout-align="space-between center">
       <span>Announcements</span>
       <a href="features" ng-click="vm.markAllAnnouncementsSeen()" aria-label="see all announcements" class="link__see-all">
-         See all ({{ vm.announcements.length }})
+        See all ({{ vm.announcements.length }})
       </a>
     </md-menu-item>
     <div ng-show="vm.announcements.length > 0">
@@ -70,17 +70,17 @@
           </div>
         </div>
 
-        <md-button class="md-icon-button button__mark-seen"
-                   ng-hide="announcement.isSticky"
-                   ng-click="vm.markSingleAnnouncementSeen(announcement.id);"
-                   md-prevent-menu-close="md-prevent-menu-close"
-                   aria-label="mark this announcement seen"
-                   flex="20">
-          <md-icon>clear</md-icon>
-        </md-button>
-      </div>
-    </md-menu-item>
-  </div>
+          <md-button class="md-icon-button button__mark-seen"
+                     ng-hide="announcement.isSticky"
+                     ng-click="vm.markSingleAnnouncementSeen(announcement.id);"
+                     md-prevent-menu-close="md-prevent-menu-close"
+                     aria-label="mark this announcement seen"
+                     flex="20">
+            <md-icon>clear</md-icon>
+          </md-button>
+        </div>
+      </md-menu-item>
+    </div>
   </md-menu-content>
 </md-menu>
 
