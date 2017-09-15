@@ -16,6 +16,7 @@ matrix:
 
 addons:
   chrome: stable
+  firefox: latest
 
 before_install:
   - nvm i node
