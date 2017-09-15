@@ -485,6 +485,7 @@
             <exclude>**/docs/bower_components/**</exclude>
             <exclude>**/*.json</exclude>
             <exclude>**/*.lock</exclude>
+            <exclude>**/docs/**/*.scss</exclude>
             <exclude>**/uw-frame-components/coverage/**</exclude>
             <exclude>**/uw-frame-components/test_out/**</exclude>
             <exclude>**/uw-frame-components/js/ga.js</exclude>
@@ -493,7 +494,6 @@
           </excludes>
           <mapping>
             <less>JAVADOC_STYLE</less>
-            <scss>JAVADOC_STYLE</scss>
             <Gemfile>SCRIPT_STYLE</Gemfile>
             <Dockerfile_http_server>SCRIPT_STYLE</Dockerfile_http_server>
           </mapping>
