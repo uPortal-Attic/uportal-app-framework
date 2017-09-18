@@ -1,0 +1,424 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Benefit Information",
+      "description": "Summary information about your current benefit enrollments and links to your WRS Statement of Benefits.",
+      "url": "/portal/p/university-staff-benefits-statement/render.uP",
+      "iconUrl": null,
+      "faIcon": "fa-umbrella",
+      "mdIcon": null,
+      "fname": "university-staff-benefits-statement",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetURL": null,
+      "widgetType": "time-sensitive-content",
+      "widgetConfig": {
+        "callsToAction": [
+          {
+            "activeDateRange": {
+              "templateLiveDate": "09-09",
+              "takeActionStartDate": "09-11",
+              "takeActionEndDate": "09-20T12:00",
+              "templateRetireDate": "09-22T10:00"
+            },
+            "actionName": "Annual benefits enrollment",
+            "daysLeftMessage": "to change benefits",
+            "lastDayMessage": "Today is the last day to enroll!",
+            "actionButton": {
+              "url": "https://www.hrs.wisconsin.edu/psp/hrs-fd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL",
+              "label": "Enroll now"
+            },
+            "learnMoreUrl": "https://www.wisconsin.edu/abe/",
+            "feedbackUrl": ""
+          },
+          {
+            "activeDateRange": {
+              "templateLiveDate": "2017-03-09",
+              "takeActionStartDate": null,
+              "takeActionEndDate": null,
+              "templateRetireDate": "2017-03-19"
+            },
+            "actionName": "Some other HR call to action",
+            "actionButton": {
+              "url": "https://www.google.com",
+              "label": "Do the thing"
+            },
+            "learnMoreUrl": "www.google.com",
+            "feedbackUrl": "www.google.com"
+          }
+        ]
+      },
+      "staticContent": null,
+      "pithyStaticContent": null,
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "Benefit Information",
+    "categories": [
+      "Employee benefits",
+      "Work"
+    ],
+    "relatedPortlets": [
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "UW System Career Opportunities",
+          "description": "Links to unclassified and classified career opportunities throughout the UW System",
+          "url": "/portal/p/hrs-career-opportunities/render.uP",
+          "iconUrl": null,
+          "faIcon": "fa-coffee",
+          "mdIcon": null,
+          "fname": "hrs-career-opportunities",
+          "lifecycleState": "PUBLISHED",
+          "target": null,
+          "widgetURL": null,
+          "widgetType": null,
+          "widgetTemplate": null,
+          "widgetConfig": null,
+          "staticContent": "\n          <div data-role=\"content\">\n            <div style=\"text-align: right;\" data-role=\"content\">\n              <p>\n                <a href=\"https://kb.wisc.edu/hrs/page.php?id=21544\" target=\"_blank\">Help</a>\n              </p>\n            </div>\n            <p>\n              Information about job opportunities at all UW institutions is available on \n              <a href=\"https://www.wisconsin.edu/information-for-uw-employees/\" target=\"_blank\">\n                UW System Administration’s Employment Resources website</a>.\n                Specific information about job opportunities at each of the UW \n                institutions can be at viewed at\n                <a href=\"https://www.wisconsin.edu/ohrwd/careers/\" target=\"_blank\">\n                    <strong>Careers at UW</strong>\n                </a>\n                by selecting the particular institution of interest.\n            </p>\n          </div>\n        ",
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "title": "UW System Career Opportunities",
+        "categories": [
+          "Work"
+        ],
+        "relatedPortlets": null,
+        "rating": 1.2,
+        "fname": "hrs-career-opportunities",
+        "portletWebAppName": "/SimpleContentPortlet",
+        "shortUrl": null,
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "/portal/p/hrs-career-opportunities/render.uP",
+        "lifecycleState": "PUBLISHED",
+        "maxUrl": "/portal/p/hrs-career-opportunities/render.uP",
+        "marketplaceScreenshots": [],
+        "userRated": 10,
+        "faIcon": "fa-coffee",
+        "keywords": [
+          "unclassified",
+          "classified",
+          "opportunities",
+          "employment",
+          "job",
+          "application",
+          "positions",
+          "career",
+          "wisc jobs",
+          "wisc",
+          "work record"
+        ],
+        "portletName": "advanced-cms",
+        "name": "UW System Career Opportunities",
+        "id": "156",
+        "type": "Portlet",
+        "target": null,
+        "description": "Links to unclassified and classified career opportunities throughout the UW System"
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "Payroll Information",
+          "description": "View earnings and tax statements, and update tax information and direct deposit.",
+          "url": "/portal/p/earnings-statement/render.uP",
+          "iconUrl": null,
+          "faIcon": "fa-money",
+          "mdIcon": null,
+          "fname": "earnings-statement",
+          "lifecycleState": "PUBLISHED",
+          "target": null,
+          "widgetURL": "/portal/p/earnings-statement/max/earningStatements.resource.uP",
+          "widgetType": "generic",
+          "widgetTemplate": "\n    <div style='margin : 0 10px 0 10px;'>\n       <loading-gif data-object='content' data-empty='isEmpty'></loading-gif>\n       <ul class='widget-list'>\n          <li ng-repeat='item in content.report |orderBy: [\"-paid.substring(6)\",\"-paid.substring(0,2)\",\"-paid.substring(3,5)\"] | limitTo:3' class='center'><a href='/portal/p/earnings-statement/max/earning_statement.pdf.resource.uP?pP_docId={{item.docId}}' target='_blank'> {{item.paid}} Earnings Statement</a></li>\n       </ul>\n       <div ng-if='isEmpty' style='padding: 10px; font-size: 14px;'><i class='fa fa-exclamation-triangle fa-3x pull-left' style='color: #b70101;'></i><span style='color: #898989;'>We had a problem finding your statements (or you don't have any).</span></div>\n       <div style='background-color: #EAEAEA; border-radius:4px;padding:10px; margin-top:10px;'>\n          <span class='bold display-block left' style='text-align: left; padding-left: 10px; font-size: 14px;'>Launch payroll to find:</span>\n          <ul style='text-align: left;list-style-type: disc; font-size: 12px;     margin-left: 40px;'>\n             <li>Earnings statements</li>\n             <li>Tax statements (W-2, 1095-C, etc.)</li>\n             <li>W-4 and direct deposit forms</li>\n          </ul>\n       </div>\n    </div>\n        <a class='btn btn-default launch-app-button' href='/portal/p/earnings-statement'>See all payroll information</a>\n        ",
+          "widgetConfig": {
+            "evalString": "!$scope.content.report || $scope.content.report.length === 0"
+          },
+          "staticContent": null,
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "title": "Payroll Information",
+        "categories": [
+          "Work",
+          "Payroll and taxes"
+        ],
+        "relatedPortlets": null,
+        "rating": 2.0661157024793386,
+        "fname": "earnings-statement",
+        "portletWebAppName": "/HRSPortlets",
+        "shortUrl": null,
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "/portal/p/earnings-statement/render.uP",
+        "lifecycleState": "PUBLISHED",
+        "maxUrl": "/portal/p/earnings-statement/render.uP",
+        "marketplaceScreenshots": [],
+        "userRated": 121,
+        "faIcon": "fa-money",
+        "keywords": [
+          "work record",
+          "earning statements",
+          "tax",
+          "statements",
+          "earning",
+          "W2",
+          "1042-S",
+          "direct deposit",
+          "deposit",
+          "pay check",
+          "fellowship letter",
+          "W2-C",
+          "W2 C",
+          "1042S",
+          "update W4"
+        ],
+        "portletName": "PayrollInformation",
+        "name": "Payroll Information",
+        "id": "68",
+        "type": "Portlet",
+        "target": null,
+        "description": "View earnings and tax statements, and update tax information and direct deposit."
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "CareerLocker",
+          "description": "Career development resource that includes helpful career information, exploration and planning tools, resume and cover letter programs, and an ePortfolio.",
+          "url": "/portal/p/wiscareers/render.uP",
+          "iconUrl": null,
+          "faIcon": "fa-briefcase",
+          "mdIcon": null,
+          "fname": "wiscareers",
+          "lifecycleState": "PUBLISHED",
+          "target": null,
+          "widgetURL": null,
+          "widgetType": null,
+          "widgetTemplate": null,
+          "widgetConfig": null,
+          "staticContent": null,
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "title": "CareerLocker",
+        "categories": [
+          "Work"
+        ],
+        "relatedPortlets": null,
+        "rating": 3.4,
+        "fname": "wiscareers",
+        "portletWebAppName": "/WebProxyPortlet",
+        "shortUrl": null,
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "/portal/p/wiscareers/render.uP",
+        "lifecycleState": "PUBLISHED",
+        "maxUrl": "/portal/p/wiscareers/render.uP",
+        "marketplaceScreenshots": [],
+        "userRated": 10,
+        "faIcon": "fa-briefcase",
+        "keywords": [
+          "career",
+          "locker",
+          "career locker",
+          "education",
+          "work record",
+          "wisccareers",
+          "wisc careers",
+          "wiscareers"
+        ],
+        "portletName": "AuthenticatedWebProxy",
+        "name": "CareerLocker",
+        "id": "80",
+        "type": "Portlet",
+        "target": null,
+        "description": "Career development resource that includes helpful career information, exploration and planning tools, resume and cover letter programs, and an ePortfolio."
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "HR, Payroll and Benefits News",
+          "description": "News and announcements about University of Wisconsin HR, Payroll, and Benefit topics.",
+          "url": "/portal/p/hr-payroll-benefits-news/render.uP",
+          "iconUrl": null,
+          "faIcon": "fa-newspaper-o",
+          "mdIcon": null,
+          "fname": "hr-payroll-benefits-news",
+          "lifecycleState": "PUBLISHED",
+          "target": null,
+          "widgetURL": "/rss-to-json/rssTransform/payroll-benefits-news",
+          "widgetType": "rss",
+          "widgetTemplate": null,
+          "widgetConfig": {
+            "lim": 4
+          },
+          "staticContent": null,
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "title": "HR, Payroll and Benefits News",
+        "categories": [
+          "News",
+          "Work"
+        ],
+        "relatedPortlets": null,
+        "rating": 3.3333333333333335,
+        "fname": "hr-payroll-benefits-news",
+        "portletWebAppName": "/WebProxyPortlet",
+        "shortUrl": null,
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "/portal/p/hr-payroll-benefits-news/render.uP",
+        "lifecycleState": "PUBLISHED",
+        "maxUrl": "/portal/p/hr-payroll-benefits-news/render.uP",
+        "marketplaceScreenshots": [],
+        "userRated": 3,
+        "faIcon": "fa-newspaper-o",
+        "keywords": [
+          "HR",
+          "benefit",
+          "payroll",
+          "news",
+          "work record"
+        ],
+        "portletName": "AuthenticatedWebProxy",
+        "name": "UW-Madison HR, Payroll and Benefits News",
+        "id": "64",
+        "type": "Portlet",
+        "target": null,
+        "description": "News and announcements about University of Wisconsin HR, Payroll, and Benefit topics."
+      },
+      {
+        "canAdd": false,
+        "layoutObject": {
+          "nodeId": "-1",
+          "title": "Make A Difference",
+          "description": "Ways you can help!",
+          "url": "/portal/p/make-a-difference/render.uP",
+          "iconUrl": null,
+          "faIcon": "fa-globe",
+          "mdIcon": null,
+          "fname": "make-a-difference",
+          "lifecycleState": "PUBLISHED",
+          "target": null,
+          "widgetURL": null,
+          "widgetType": null,
+          "widgetTemplate": null,
+          "widgetConfig": null,
+          "staticContent": "\n          <div  data-role='content'>\n            <ul data-role='listview'>\n              <li><a href='http://www.uwgreatpeople.org/facultyStaffGiving' target='_blank'>Faculty/Staff Great People Scholarship Initiative</a></li>\n              <li><a href='http://www.uwgreatpeople.org' target='_blank'>Great People Scholarship</a></li>\n              <li><a href='http://www.supportuw.org/how-to-give/' target='_blank'>Make a Gift to UW-Madison</a></li>\n              <li><a href='http://giving.wi.gov/' target='_blank'>Partners in Giving</a></li>\n            </ul>\n          </div>\n\n",
+          "pithyStaticContent": null,
+          "altMaxUrl": true,
+          "renderOnWeb": false
+        },
+        "title": "Make A Difference",
+        "categories": [
+          "Work"
+        ],
+        "relatedPortlets": null,
+        "rating": 0.0,
+        "fname": "make-a-difference",
+        "portletWebAppName": "/SimpleContentPortlet",
+        "shortUrl": null,
+        "portletReleaseNotes": {
+          "releaseDate": null,
+          "initialReleaseDate": null,
+          "releaseNotes": null
+        },
+        "renderUrl": "/portal/p/make-a-difference/render.uP",
+        "lifecycleState": "PUBLISHED",
+        "maxUrl": "/portal/p/make-a-difference/render.uP",
+        "marketplaceScreenshots": [],
+        "userRated": 0,
+        "faIcon": "fa-globe",
+        "keywords": [
+          "make a gift",
+          "gift",
+          "giving",
+          "great people",
+          "scholarship",
+          "foundation",
+          "UW Foundation",
+          "partners in giving",
+          "partners",
+          "charities"
+        ],
+        "portletName": "cms",
+        "name": "Make A Difference",
+        "id": "67",
+        "type": "Portlet",
+        "target": null,
+        "description": "Ways you can help!"
+      }
+    ],
+    "rating": 2.051282051282051,
+    "fname": "university-staff-benefits-statement",
+    "portletWebAppName": "/HRSPortlets",
+    "shortUrl": null,
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "/portal/p/university-staff-benefits-statement/render.uP",
+    "lifecycleState": "PUBLISHED",
+    "maxUrl": "/portal/p/university-staff-benefits-statement/render.uP",
+    "marketplaceScreenshots": [],
+    "userRated": 39,
+    "faIcon": "fa-umbrella",
+    "keywords": [
+      "benefit summary",
+      "dependents",
+      "statements",
+      "ETF",
+      "enrollment confirmation",
+      "confirmation",
+      "enrollment",
+      "staff",
+      "faculty",
+      "coverage",
+      "work record",
+      "eBenefits",
+      "benefits enrollment",
+      "open enrollment",
+      "benefits",
+      "work record",
+      "retirement",
+      "etf",
+      "ebenefits",
+      "open enrollment",
+      "wrs",
+      "work",
+      "ohr",
+      "enrollment",
+      "HRS"
+    ],
+    "portletName": "BenefitInformation",
+    "name": "Benefit Information",
+    "id": "127",
+    "type": "Portlet",
+    "target": null,
+    "description": "Summary information about your current benefit enrollments and links to your WRS Statement of Benefits."
+  }
+}

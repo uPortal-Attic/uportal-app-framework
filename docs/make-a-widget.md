@@ -318,64 +318,103 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
   }
 ```
 
-### Variable content widget
+### Time-sensitive content widget
 
 ![benefits enrollment widget](./img/benefits-enrollment-widget.png)
 
 ```xml
 <name>widgetType</name>
-<value>variable-content-widget</value>
+<value>time-sensitive-content</value>
 ```
 
 #### When to use
 
-* You want to display custom content during a defined period of time, and a basic widget the rest of the time.
+* You want to display a call to action during a defined period of time, and a basic widget the rest of the time.
 
-*Note: This is an experimental widget type and is subject to change dramatically*
+*Note: This is an experimental widget type and is subject to change*
 
 #### Additional entity file configuration
 
 ```xml
 <portlet-preference>
     <name>widgetType</name>
-    <value>variable-content-widget</value>
+    <value>time-sensitive-content</value>
 </portlet-preference>
 <portlet-preference>
     <name>widgetConfig</name>
     <value>
       <![CDATA[{
-        "activeDateRanges": [
+        "callsToAction": [
           {
-            "isAnnual": true,
-            "startDate": "09-11",
-            "endDate": "09-18"
-          },
-          {
-            "isAnnual": false,
-            "startDate": "2017-03-11T9:30",
-            "endDate": "2017-03-12"
-          }
-        ]
+            "activeDateRange": {
+              "templateLiveDate": "09-09",
+              "takeActionStartDate": "09-11",
+              "takeActionEndDate": "09-18T12:00",
+              "templateRetireDate": "09-20T10:00"
+             },
+             "actionName": "Annual benefits enrollment",
+             "daysLeftMessage": "to change benefits",
+             "lastDayMessage": "Today is the last day to enroll!",
+             "actionButton": {
+               "url": "https://www.hrs.wisconsin.edu/psp/hrs-fd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL",
+               "label": "Enroll now"
+             },
+             "learnMoreUrl": "https://www.wisconsin.edu/abe/",
+             "feedbackUrl": ""
+           },
+           {
+             "activeDateRange": {
+               "templateLiveDate": "2017-03-09",
+               "takeActionStartDate": null,
+               "takeActionEndDate": null,
+               "templateRetireDate": "2017-03-19"
+             },
+             "actionName": "Some other call to action",
+             "actionButton": {
+               "url": "https://www.google.com",
+               "label": "Do the thing"
+             },
+             "learnMoreUrl": "www.google.com",
+             "feedbackUrl": "www.google.com"
+           }
+         ]
       }]]>
     </value>
-</portlet-preference>
-<portlet-preference>
-    <name>widgetTemplate</name>
-    <value>[CUSTOM WIDGET TEMPLATE]</value>
 </portlet-preference>
 ```
 
 #### About entity file values
 
-* **activeDateRanges**: An array that must include at least ONE date range object. Each object in this array must have the following three values:
-* **isAnnual**: Set to true if this is an annually occurring window of time.
-* **startDate**: The date to begin showing custom content. Accepts a simple ISO date, including time (if desired). If `isAnnual` is set to true, DO NOT include the year.
-* **endDate**: The date to end showing custom content. Accepts a simple ISO date, including time (if desired). If `isAnnual` is set to true, DO NOT include the year.
+* **callsToAction**: The containing array for one or more objects with attributes related to making a call to action.
+* **activeDateRange**: An object used to determine when to switch to the time-sensitive content, with the following attributes:
+    * **templateLiveDate**: The date when the widget should switch from basic content to time-sensitive content. See "Guidance" heading below for suggested formats and options.
+    * **takeActionStartDate**: *(optional)* The date when action can be taken. Provide a value if you want the widget to communicate when taking action will be possible (e.g. "Begins September 11th, 2018"). See "Guidance" heading below for suggested formats and options.
+    * **takeActionEndDate**: *(optional)* The date when the action can no longer be taken. Provide a value if you want the widget to communicate when the action stopped being available (e.d "Ended September 20th, 2018"). See "Guidance" heading below for suggested formats and options.
+    * **templateRetireDate**: The date when the widget should switch back to displaying basic content. See "Guidance" heading below for suggested formats and options.
+* **actionName**: The name of the action users can take (e.g. "Annual benefits enrollment").
+* **daysLeftMessage**: *(optional)* The language to display during the countdown of remaining days. The widget will always display "[x] days left". Provide a value if you want to add text after the default text (e.g. A `daysLeftMessage` with the value "to change benefits" would result in the message: "[x] days left to change benefits").
+* **lastDayMessage**: *(optional)* A special message to display on the last day that taking action is possible. If no value is provided, the widget will show "1 day left" on the last day.
+* **actionButton**: An object to configure how the action button appears, with the following required attributes:
+    * **url**: The url where a user can take action
+    * **label**: The text the button should display
+* **learnMoreUrl**: *(optional)* Provide a url if you want the widget to display a link for users to get more information.
+* **feedbackUrl**: *(optional)* Provide a url if you want the widget to display a link where users can give feedback about the taking action.
 
 #### Guidance
 
-+ This widget type requires you to provide a custom widget template. See the "widgetTemplate" section under "Custom widgets" below for an example.
-+ If `isAnnual` is set to true, DO NOT include the year portion of the date for that object's startDate and endDate attributes.
+##### Date formatting
+
+Provided dates **MUST** match one of the following formats:
++ `'YYYY-MM-DD'` (ex. '2017-09-18'): Use this format if the call to action doesn't happen on the same date every year and if the time of day is unknown or unimportant
++ `'MM-DD'` (ex. '09-18'): Use this format if the date for this action is the same every year
++ `'...THH:MM'` (ex. 09-18T10:00): Append the time in hours and minutes if you want to set a specific time of day
+
+##### How to configure the active date range
+
++ If you want your widget to warn users that they'll be able to take an action in the near future, you must provide dates for both `templateLiveDate` and `takeActionStartDate`. The former date must be *BEFORE* the latter one. If you only want the template to switch content when users can take action, you only need to provide `templateLiveDate`. During the days between the two dates, the widget will display "Begins [takeActionStartDate]".
++ Similarly, if you want the widget to tell users that a period to take action recently ended, you must provide dates for both `takeActionEndDate` (the date when taking the action stopped being possible) and `templateRetireDate` (the date the widget should go back to showing basic content). The former date must be *BEFORE* the latter one. During the days between the two dates, the widget will display "Ended [takeActionEndDate]".
++ If you only want the widget to show time-sensitive content when that content is actionable, you only have to provide dates for `templateLiveDate` and `templateRetireDate`. During the days between the two dates, the widget will display a countdown of days remaining to take action.
+
 
 ## Custom widgets
 Using a JSON service is a great way to have user-focused content in your widgets. Here are the steps you have to take to create your custom JSON-backed widget:
