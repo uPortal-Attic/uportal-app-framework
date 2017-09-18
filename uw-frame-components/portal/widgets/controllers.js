@@ -401,17 +401,17 @@ define(['angular'], function(angular) {
   }])
 
   // VARIABLE CONTENT widget type
-  .controller('VariableContentController', [
+  .controller('TimeSensitiveContentController', [
     '$scope', '$filter', '$log', function($scope, $filter, $log) {
     /**
-     * Display variable content with provided configuration
+     * Display time-sensitive content with provided configuration
      * @param callToAction The provided configuration for a call to action
      * @param start The day/time this content became active
      * @param end The date/time this content will go away
      * @param hasPaddedDates indicates there is content to show outside
      *    active date range
      */
-    var displayVariableContent = function(callToAction, start,
+    var displayTimeSensitiveContent = function(callToAction, start,
                                           end, hasPaddedDates) {
       $scope.activePeriodStartDate = '';
       $scope.activePeriodEndDate = '';
@@ -443,21 +443,24 @@ define(['angular'], function(angular) {
         $scope.activePeriodStartDate = start;
       }
 
-      // Check today's relationship to active range, then
-      // calculate countdown for active period dates
+      // If today is inside the given date range, check for last day
       if ($filter('filterDateRange')($scope.activePeriodStartDate,
           $scope.activePeriodEndDate)) {
         $scope.daysLeft = $filter('filterDifferenceFromDate')(
           $scope.activePeriodEndDate);
-        // If there's one day left, it's the last day!
-        if ($scope.daysLeft === 1) {
+        // If there's 1 or 0 days left, and filter didn't return -1,
+        // It's the last day!
+        if ($scope.daysLeft === 1 || $scope.daysLeft === 0) {
           $scope.templateStatus = 'lastDay';
         } else {
           $scope.templateStatus = 'ongoing';
         }
+      // If there's more than 0 days between now and the start date,
+      // the active period hasn't started yet
       } else if ($filter('filterDifferenceFromDate')(
         $scope.activePeriodStartDate) > 0) {
         $scope.templateStature = 'upcoming';
+      // If filter returns -1, the period has ended
       } else if ($filter('filterDifferenceFromDate')(
         $scope.activePeriodEndDate) === -1) {
         $scope.templateStatus = 'ended';
@@ -515,7 +518,7 @@ define(['angular'], function(angular) {
           if ($filter('filterDateRange')(
             templateSwitchOnDate, templateSwitchOffDate)) {
             // Current date is within range, so show variable content
-            displayVariableContent(value, templateSwitchOnDate,
+            displayTimeSensitiveContent(value, templateSwitchOnDate,
               templateSwitchOffDate, hasPaddedDates);
           }
         } else {

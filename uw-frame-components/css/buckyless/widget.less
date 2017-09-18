@@ -144,14 +144,14 @@
   }
 
   // VARIABLE CONTENT WIDGET
-  variable-content {
+  time-sensitive {
     .widget-body {
-      .vc__title,
-      .vc__days-left {
+      .tsc__title,
+      .tsc__days-left {
         font-weight: 500;
       }
 
-      .vc__last-day {
+      .tsc__last-day {
         text-align: center;
         padding: 6px;
         margin-top: 6px;
@@ -159,6 +159,16 @@
         .material-icons {
           font-size: 18px;
           line-height: 20px;
+        }
+      }
+
+      .tsc__extra-buttons {
+        width: 100%;
+        padding: 0 20px;
+        margin-top: 18px;
+
+        > a {
+          margin: 0 12px;
         }
       }
     }

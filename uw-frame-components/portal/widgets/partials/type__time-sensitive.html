@@ -21,24 +21,25 @@
 <!-- A.B.E. CONTENT -->
 <div class="widget-body" ng-if="showTimeSensitiveContent" layout="column" layout-align="center center">
   <!-- Annual benefits enrollment -->
-  <span class="vc__title">{{ callToAction.actionName }}</span>
-  <div ng-switch="templateStatus" class="vc__status">
+  <span class="tsc__title">{{ callToAction.actionName }}</span>
+  <div ng-switch="templateStatus" class="tsc__status">
     <p ng-switch-when="upcoming">Begins {{ activePeriodStartDate | date:mediumDate }}</p>
     <div ng-switch-when="ongoing" layout="column" layout-align="center center">
-      <p><span class="vc__days-left">{{ daysLeft }}</span> days left</p>
-      <p><md-button class="md-raised md-accent" ng-href="callToAction.actionButton.url">{{ callToAction.actionButton.label }}</md-button></p>
+      <p><span class="tsc__days-left">{{ daysLeft }}</span> day<span ng-if="daysLeft > 1">s</span> left</p>
+      <p><md-button class="md-raised md-accent" ng-href="{{ callToAction.actionButton.url }}">{{ callToAction.actionButton.label }}</md-button></p>
     </div>
     <div ng-switch-when="lastDay" layout="column" layout-align="center center">
-      <span class="abe__last-day"><md-icon class="md-warn" aria-label="warning:">warning</md-icon>Today is the last day!</span>
-      <p><md-button class="md-raised md-accent" ng-href="callToAction.actionButton.url">{{ callToAction.actionButton.label }}</md-button></p>
+      <p ng-if="callToAction.lastDayMessage"><span class="tsc__last-day"><md-icon class="md-warn" aria-label="warning:">warning</md-icon> {{ callToAction.lastDayMessage }}</span></p>
+      <p ng-if="!callToAction.lastDayMessage"><span class="tsc__days-left">{{ daysLeft }}</span> day<span ng-if="daysLeft > 1">s</span> left</p>
+      <p><md-button class="md-raised md-accent" ng-href="{{ callToAction.actionButton.url }}">{{ callToAction.actionButton.label }}</md-button></p>
     </div>
     <p ng-switch-when="ended">Ended {{ activePeriodEndDate | date:mediumDate }}</p>
   </div>
   <!-- Learn more link -->
   <!-- Give feedback link -->
-  <div layout="row" layout-align="space-between center">
-    <a ng-if="callToAction.learnMoreUrl" ng-href="callToAction.learnMoreUrl" target="_blank" rel="noreferrer noopener">Learn more</a>
-    <a ng-if="callToAction.feedbackUrl" ng-href="callToAction.feedbackUrl" target="_blank" rel="noreferrer noopener">Give feedback</a>
+  <div class="tsc__extra-buttons" layout="row" layout-align="center center">
+    <a ng-if="callToAction.learnMoreUrl" ng-href="{{ callToAction.learnMoreUrl }}" target="_blank" rel="noreferrer noopener">Learn more</a>
+    <a ng-if="callToAction.feedbackUrl" ng-href="{{ callToAction.feedbackUrl }}" target="_blank" rel="noreferrer noopener">Give feedback</a>
   </div>
 </div>
 

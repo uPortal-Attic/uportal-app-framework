@@ -52,20 +52,18 @@ define(['angular', 'require'], function(angular, require) {
   })
 
   /**
-   * Widget type that alternates between basic and custom content, depending on
-   * a defined variable. Notes:
-   *   - Depends on widgetTemplate existing in entity file (assigned to
-   *   $scope.template in the controller, for use in content-item directive)
+   * Widget type that alternates between basic appearance and time-sensitive
+   * content with a countdown
    */
-  .directive('variableContent', function() {
+  .directive('timeSensitive', function() {
     return {
       restrict: 'E',
       scope: {
         widget: '=app',
         config: '=config',
       },
-      templateUrl: require.toUrl('./partials/type__variable-content.html'),
-      controller: 'VariableContentController',
+      templateUrl: require.toUrl('./partials/type__time-sensitive.html'),
+      controller: 'TimeSensitiveContentController',
     };
   })
 

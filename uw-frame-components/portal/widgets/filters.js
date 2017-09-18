@@ -38,7 +38,7 @@ define(['angular'], function(angular) {
         return today >= rangeStart && today < rangeEnd;
       };
     })
-    .filter('filterDifferenceFromDate', function() {
+    .filter('filterDifferenceFromDate', ['$filter', function($filter) {
       return function(date) {
         var oneDay = 1000 * 60 * 60 * 24;
         var today = new Date();
@@ -64,7 +64,7 @@ define(['angular'], function(angular) {
           return -1;
         }
       };
-    })
+    }])
     .filter('filterForDateWithYear', function() {
       return function(date) {
         var validWithYear = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
