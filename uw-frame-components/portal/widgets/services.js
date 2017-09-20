@@ -118,6 +118,21 @@ define(['angular'], function(angular) {
         });
     };
 
+        /**
+     * Get an RSS feed from the provided url as json
+     * @param url
+     * @returns {*}
+     */
+    var getFilteredRssAsJson = function(url, filters) {
+      return $http.get(url, {cache: true})
+        .then(function(result) {
+          return result.data;
+        })
+        .catch(function(error) {
+          $log.error('Couldn\'t get rss as JSON: ' + error);
+        });
+    };
+
 
     /**
      * Get the quantity of items needing attention
@@ -141,6 +156,7 @@ define(['angular'], function(angular) {
       getErrorPage: getErrorPage,
       getWidgetJson: getWidgetJson,
       getRssAsJson: getRssAsJson,
+      getFilteredRssAsJson: getFilteredRssAsJson,
       getActionItemQuantity: getActionItemQuantity,
     };
   }]);
