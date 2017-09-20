@@ -6,6 +6,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [5.2.0][] - 2017-09-20
+
+### Messages Enhancements
+* Notifications may be non-dismissible (#521)
+* Add widget from mascot announcement (#526)
+
+### Widget Enhancements
+* Option-link widget evaluates target (#519)
+
+### Configuration Change
+* Default menu options to be null (#514)
+
+### Maintenance
+* Shore up licencing (#515) (#523) (#527)
+* Add a changelog (#513)
+* Release using Conventional Commits (#516)
+
 ## [5.1.0][] - 2017-09-01
 
 ### Messages Enhancements
@@ -277,7 +294,8 @@ break compatibility with some older components.  If you used any angular-ui-boot
 - Added ability to have a name for the default theme (#336)
 - Fixed format for announcement end date (#332)
 
-[Unreleased]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v5.1.0...HEAD
+[Unreleased]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v5.2.0...HEAD
+[5.2.0]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v5.1.0...v5.2.0
 [5.1.0]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v5.0.0...v5.1.0
 [5.0.0]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v4.1.0...v5.0.0
 [4.1.0]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v4.0.3...v4.1.0
