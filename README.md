@@ -30,7 +30,7 @@ Questions? [Get in touch][uportal-user@].
 
 This package includes the `uPortal-home` header, settings, footer, and some reusable components :
 
-![uw-frame screenshot](uw-frame-screenshot.png "UW Frame")
+![uw-frame screenshot](docs/uw-frame-screenshot.png "UW Frame")
 
 Learn more about the reusable components on our [docs page](http://uw-madison-doit.github.io/uw-frame/)
 
