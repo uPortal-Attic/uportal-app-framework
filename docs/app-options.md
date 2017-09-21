@@ -56,7 +56,7 @@ In this case, we've opted to include a settings menu with the gear icon on all s
 
 ### 2. Configure the path to the template
 
-Add the following to [override.js](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/override.js):
+Add the following to [override.js](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/components/js/override.js):
 
 ```js
 define(['angular'], function(angular) {
