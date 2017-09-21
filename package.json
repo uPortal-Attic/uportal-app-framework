@@ -1,6 +1,6 @@
 {
   "name": "uw-frame",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "description": "MyUW's frame project for creating angular based microservices.",
   "scripts": {
     "commitmsg": "commitlint -e",
