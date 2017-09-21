@@ -12,7 +12,7 @@ Release authorization, or the delegation of release authority to one or more rel
 
 ### Labeling pull requests
 
-Look at the [closed pull requests][uw-frame closed pull requests] that were done since the last release. There should be labels on pull requests communicating what kind of release it's appropriate to include them in: major, minor, or patch (x.y.z respectively). (See [Semantic Versioning][], especially if you're adding missing change-type labels on those closed pull requests.)
+Look at the [closed pull requests][uportal-app-framework closed pull requests] that were done since the last release. There should be labels on pull requests communicating what kind of release it's appropriate to include them in: major, minor, or patch (x.y.z respectively). (See [Semantic Versioning][], especially if you're adding missing change-type labels on those closed pull requests.)
 
 ### Determining the release version from those labels
 
@@ -22,10 +22,10 @@ Now that you have a version you need to update that in a few places.
 
 ### Milestone in GitHub
 
-+ [Create a milestone][uw-frame milestones] named for the version you're cutting, if it does not yet exist.
-+ If using an existing milestone, ensure nothing is currently erroneously marked with that milestone, e.g. open pull requests or issues that someone hoped might be resolved for this version but alas were not. You can examine this by simply [clicking the milestone's name][uw-frame milestones] to view the milestone.
-+ Mark the [pull requests that merged to `master`][uw-frame closed pull requests] since the previous release with that milestone.
-+ [Close the milestone][uw-frame milestones].
++ [Create a milestone][uportal-app-framework milestones] named for the version you're cutting, if it does not yet exist.
++ If using an existing milestone, ensure nothing is currently erroneously marked with that milestone, e.g. open pull requests or issues that someone hoped might be resolved for this version but alas were not. You can examine this by simply [clicking the milestone's name][uportal-app-framework milestones] to view the milestone.
++ Mark the [pull requests that merged to `master`][uportal-app-framework closed pull requests] since the previous release with that milestone.
++ [Close the milestone][uportal-app-framework milestones].
 
 Tada! The pull requests in this release now say the version they released in right on them. And there's a handy milestone that rolls up all the pull requests in this version.
 
@@ -38,7 +38,7 @@ Before cutting the release, do what you can to square away the documentation for
 ### Node release
 
 + Update the npm package by running `npm version <update_type>` where <update_type> is based on the selection above: patch, minor, or major. This will: change the version in `package.json`, commit that (locally), and make a tag in the format `vx.y.z`. Read more about that [on npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages#updating-the-package).
-+ Deploy npm package to the world; `npm publish`. (if you don't have [publish rights][uw-frame access on npm] contact authors)
++ Deploy npm package to the world; `npm publish`. (if you don't have [publish rights][uportal-app-framework access on npm] contact authors)
 + Push git changes to the github via `git push origin master` and `git push origin <tag>`
 
 ### Java release
@@ -54,7 +54,7 @@ _Iff it went well_
 
 ```sh
 git push origin master
-git push origin uw-frame-maven-<version>
+git push origin uportal-app-framework-maven-<version>
 ```
 
 + Release maven artifacts from [central staging repository][central Maven staging repository]
@@ -65,8 +65,8 @@ Deploy a new version to `docker.doit.wisc.edu` (note the version below x.y.z sho
 
 ```
 git checkout vx.y.z
-docker build -t docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z .
-docker push docker.doit.wisc.edu/myuw/uw-frame-superstatic:x.y.z
+docker build -t docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:x.y.z .
+docker push docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:x.y.z
 ```
 
 ### Documentation release
@@ -75,8 +75,8 @@ You don't have to do anything special to release the documentation. GitHub pages
 
 ### Release notes
 
-* There should now be a couple tags above the `Latest release` on [the GitHub releases page][uw-frame releases]
-* Click into the top one ( `uw-frame-maven-x.y.z`)
+* There should now be a couple tags above the `Latest release` on [the GitHub releases page][uportal-app-framework releases]
+* Click into the top one ( `uportal-app-framework-maven-x.y.z`)
 * Edit tag
 * Title the release `x.y.z`, optionally `x.y.z - pithy summary`
 * Add release notes, linking pull requests included in this release, linking the newly released documentation, and especially articulating anything interesting about the upgrade path to this release for frame-based app developers.
@@ -100,11 +100,11 @@ create the next patch version.
 
 
 [Semantic Versioning]: http://semver.org/
-[uw-frame closed pull requests]: https://github.com/UW-Madison-DoIT/uw-frame/pulls?q=is%3Apr+is%3Aclosed
-[uw-frame milestones]: https://github.com/UW-Madison-DoIT/uw-frame/milestones
-[uw-frame access on npm]: https://www.npmjs.com/package/uw-frame/access
+[uportal-app-framework closed pull requests]: https://github.com/UW-Madison-DoIT/uw-frame/pulls?q=is%3Apr+is%3Aclosed
+[uportal-app-framework milestones]: https://github.com/UW-Madison-DoIT/uw-frame/milestones
+[uportal-app-framework access on npm]: https://www.npmjs.com/package/uw-frame/access
 [central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
-[uw-frame releases]: https://github.com/UW-Madison-DoIT/uw-frame/releases
+[uportal-app-framework releases]: https://github.com/UW-Madison-DoIT/uw-frame/releases
 [MyUW Developer Group]: https://groups.google.com/forum/#!forum/myuw-developers
 [adopted Apache rules]: https://github.com/UW-Madison-DoIT/uw-frame/blob/master/committers.md#rules
 [Apache Release Policy re Release Approval]: http://www.apache.org/legal/release-policy.html#release-approval

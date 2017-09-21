@@ -1,4 +1,4 @@
-# Getting started quickly with uw-frame
+# Getting started quickly with uportal-app-framework
 
 ## Requirements
 
@@ -9,7 +9,7 @@
 
 ## Quick start
 
-Run a local instance of `uw-frame` in a matter of minutes in 3 easy steps.
+Run a local instance of `uportal-app-framework` in a matter of minutes in 3 easy steps.
 
 ### 1. Clone
 
@@ -40,22 +40,22 @@ npm run static:dev
 Open a web browser and go to the location specified in the build output.
 
 
-## Writing an application using uw-frame
+## Writing an application using uportal-app-framework
 
 ### Java
-To begin writing a Java-based uw-frame application, checkout the [my-app-seed](https://github.com/UW-Madison-DoIT/my-app-seed) project.
+To begin writing a Java-based uportal-app-framework application, checkout the [my-app-seed](https://github.com/UW-Madison-DoIT/my-app-seed) project.
 
-This project is a wonderful starting point that will get you up and running quickly. If you only want to run uw-frame using the Java module,
-run `npm run jetty` and it'll boot up an embedded jetty container with uw-frame.
+This project is a wonderful starting point that will get you up and running quickly. If you only want to run uportal-app-framework using the Java module,
+run `npm run jetty` and it'll boot up an embedded jetty container with uportal-app-framework.
 
-### UW-Frame Static
+### uportal-app-framework Static
 Use static when you want a simple front end that connects to an independent API in some other application.
 
 There are a couple ways you can create a static frame application.
 
 #### One way: the Node package
 
-Use the [npm package](https://www.npmjs.com/package/uw-frame). See the [widget creator](https://github.com/UW-Madison-DoIT/myuw-smart-widget-creator) app for an example that uses the package.
+Use the [npm package](https://www.npmjs.com/package/uw-frame). See the [widget creator](https://github.com/UW-Madison-DoIT/widget-creator) app for an example that uses the package.
 
 #### Another way: the Docker container
 

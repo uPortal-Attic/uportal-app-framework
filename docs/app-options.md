@@ -75,5 +75,5 @@ define(['angular'], function(angular) {
 
 + *The path is evaluated in AppHeaderOptionsController (portal/misc/controllers.js)*
 + *The path must lead to a file in your project directory (for now). In a perfect world, this controller would be more robust
-and would accept a service to retrieve template HTML from a provided endpoint. Go to [uw-frame on GitHub](https://github.com/UW-Madison-DoIT/uw-frame) to open
+and would accept a service to retrieve template HTML from a provided endpoint. Go to [uportal-app-framework on GitHub](https://github.com/UW-Madison-DoIT/uw-frame) to open
 an issue or pull request to make this happen!*

@@ -1,8 +1,8 @@
 {
   "messages": [
     {
-      "id": "sample-uw-frame-basic-notification",
-      "title": "This is a sample basic notification living in uw-frame. It should appear to everyone, even when group filtering is enabled.",
+      "id": "sample-uportal-app-framework-basic-notification",
+      "title": "This is a sample basic notification living in uportal-app-framework. It should appear to everyone, even when group filtering is enabled.",
       "titleShort": null,
       "description": null,
       "descriptionShort": null,
@@ -28,7 +28,7 @@
       "confirmButton": null
     },
     {
-      "id": "sample-uw-frame-madison-priority-notification",
+      "id": "sample-uportal-app-framework-madison-priority-notification",
       "title": "This is a high priority notification. It should only appear if group filtering is disabled in /settings",
       "titleShort": null,
       "description": null,
@@ -53,7 +53,7 @@
       "confirmButton": null
     },
     {
-      "id": "sample-uw-frame-madison-mascot-announcement",
+      "id": "sample-uportal-app-framework-madison-mascot-announcement",
       "title": "This is a mascot announcement's long title",
       "titleShort": "This is a UW-Madison mascot announcement",
       "description": "This mascot announcement should appear to the UW-Madison group only (unless group filtering is disabled).",
@@ -80,7 +80,7 @@
       "confirmButton": null
     },
     {
-      "id": "sample-uw-frame-filtered-popup-announcement",
+      "id": "sample-uportal-app-framework-filtered-popup-announcement",
       "title": "This is a filtered popup",
       "titleShort": "Filtered popup",
       "description": "This popup message should not appear to anyone unless group filtering is disabled (via beta settings).",

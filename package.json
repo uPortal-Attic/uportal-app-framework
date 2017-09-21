@@ -1,32 +1,32 @@
 {
-  "name": "uw-frame",
+  "name": "uportal-app-framework",
   "version": "5.2.1",
   "description": "MyUW's frame project for creating angular based microservices.",
   "scripts": {
     "commitmsg": "commitlint -e",
     "cz": "git-cz",
-    "test": "karma start uw-frame-components/karma.conf.js --single-run",
-    "build-static": "node tools/uw-frame-static/build.js",
-    "lint-css": "stylelint --syntax less uw-frame-components/css/**/*.less",
-    "dev-lint-js": "onchange uw-frame-components/** -i -- eslint --quiet --ext js --ext json --ext md --format html --output-file uw-frame-static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern uw-frame-components/js/ga.js --ignore-pattern uw-frame-components/js/sortable.js",
-    "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern uw-frame-components/js/ga.js --ignore-pattern uw-frame-components/js/sortable.js",
+    "test": "karma start components/karma.conf.js --single-run",
+    "build-static": "node tools/static/build.js",
+    "lint-css": "stylelint --syntax less components/css/**/*.less",
+    "dev-lint-js": "onchange components/** -i -- eslint --quiet --ext js --ext json --ext md --format html --output-file static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern components/js/ga.js --ignore-pattern components/js/sortable.js",
+    "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern components/js/ga.js --ignore-pattern components/js/sortable.js",
     "lint-md": "remark . --frail --ignore-path .gitignore",
     "precommit": "eslint-git-changes",
-    "postbuild-static": "htmlprocessor uw-frame-static/index.html -o uw-frame-static/target/index.html",
+    "postbuild-static": "htmlprocessor static/index.html -o static/target/index.html",
     "prestatic": "npm run build-static",
-    "static": "cd uw-frame-static/target && superstatic",
-    "static:watch": "onchange uw-frame-components/** -i -- npm run build-static",
+    "static": "cd static/target && superstatic",
+    "static:watch": "onchange components/** -i -- npm run build-static",
     "static:dev": "npm run build-static -s && concurrently -k \"npm run static -s\" \"npm run static:watch -s\"",
-    "docker": "docker run -d --name frame -p 8009:8009 docker.doit.wisc.edu/myuw/uw-frame-superstatic:latest",
-    "build-docker": "docker build -t docker.doit.wisc.edu/myuw/uw-frame-superstatic .",
+    "docker": "docker run -d --name frame -p 8009:8009 docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:latest",
+    "build-docker": "docker build -t docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic .",
     "stop-docker": "docker stop frame; docker rm frame;",
-    "clean": "npm run clean-uw-frame-static; npm run clean-test",
-    "clean-test": "rm -rf uw-frame-components/test_out uw-frame-components/coverage",
-    "clean-uw-frame-static": "rm -rf uw-frame-static/target"
+    "clean": "npm run clean-static; npm run clean-test",
+    "clean-test": "rm -rf components/test_out components/coverage",
+    "clean-static": "rm -rf static/target"
   },
   "files": [
-    "uw-frame-components",
-    "uw-frame-static"
+    "components",
+    "static"
   ],
   "license": "Apache-2.0",
   "repository": {
@@ -34,8 +34,10 @@
     "url": "https://github.com/UW-Madison-DoIT/uw-frame.git"
   },
   "keywords": [
-    "uw-frame",
-    "UW-Madison",
+    "uportal-app-framework",
+    "uPortal",
+    "app-framework",
+    "framework",
     "frame",
     "angularjs"
   ],
@@ -47,7 +49,8 @@
       "name": "Doug Reed"
     },
     {
-      "name": "David Sibley"
+      "name": "David M Sibley",
+      "email": "sibley@wisc.edu"
     },
     {
       "name": "Zeke Witter",

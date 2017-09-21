@@ -1,12 +1,12 @@
-# Using Google Analytics in uw-frame
+# Using Google Analytics in uportal-app-framework
 
 ## Introduction
 
-[www.google.com/analytics](https://www.google.com/analytics) (GA for short) is a great (and free) way to see how many people are hitting your site. By default uw-frame disables GA. However, if you follow the config setup below, you will get reporting.
+[www.google.com/analytics](https://www.google.com/analytics) (GA for short) is a great (and free) way to see how many people are hitting your site. By default uportal-app-framework disables GA. However, if you follow the config setup below, you will get reporting.
 
 ## Basic configuration
 
-Add in a `/js/config.js` file that will overwrite the `uw-frame-components/js/config.js`.
+Add in a `/js/config.js` file that will overwrite the `components/js/config.js`.
 
 <!-- eslint-disable no-unused-vars -->
 ```javascript
@@ -16,7 +16,7 @@ var config = {
 ```
 
 ## Site search
-GA has a great feature called site search. It collects information about what people are searching for on your site. To configure it in uw-frame is a couple steps.
+GA has a great feature called site search. It collects information about what people are searching for on your site. To configure it in uportal-app-framework is a couple steps.
 
 1) Follow steps in [the GA docs](https://support.google.com/analytics/answer/1012264?hl=en) titled "Set up Site Search". The Query Parameter field is q by default. To overwrite that see step 4.
 

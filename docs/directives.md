@@ -1,4 +1,4 @@
-# AngularJS directives in uw-frame
+# AngularJS directives in uportal-app-framework
 
 ## App header
 

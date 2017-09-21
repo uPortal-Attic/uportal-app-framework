@@ -2,7 +2,7 @@
 
 All forms of in-app messages (notifications, mascot announcements, popup announcements, etc.) share a single data model. They depend on a
 JSON feed containing certain attributes and flags. See the [configuraton](configuration.md) doc for information about how to
-point uw-frame to your desired feed.
+point uportal-app-framework to your desired feed.
 
 ## Example message
 
@@ -96,7 +96,7 @@ The image itself should have the following characteristics:
 Follow these steps to create a notification.
 
 1. Add a JSON message to
-[uw-frame-components/staticFeeds/notifications.json](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/staticFeeds/notifications.json)
+[components/staticFeeds/notifications.json](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/components/staticFeeds/notifications.json)
 2. [Start frame](quickstart.md)
 3. Try changing some of the options like making the priority "high".
 
@@ -104,7 +104,7 @@ You can use this example JSON:
 
 ```json
 {
-    "id": "sample-notification-uw-frame-docs",
+    "id": "sample-notification-uportal-app-framework-docs",
     "title": "Learn how to create a notification",
     "titleShort": null,
     "description": null,
@@ -135,7 +135,7 @@ Try adding this announcement to the sample feed:
 
 ```json
 {
-    "id": "sample-announcement-uw-frame-docs",
+    "id": "sample-announcement-uportal-app-framework-docs",
     "title": "My first feature announcement",
     "titleShort": "First announcement",
     "description": null,

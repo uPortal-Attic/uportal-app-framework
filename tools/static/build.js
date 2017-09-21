@@ -31,7 +31,7 @@ const copyOptions = {
   overwrite: true,
 };
 
-mkdirp('uw-frame-static/target/css/themes/', function(error) {
+mkdirp('static/target/css/themes/', function(error) {
   if (error) throw error;
 });
 
@@ -46,7 +46,7 @@ const themes = ['default', 'uw-madison', 'uw-system', 'uw-river-falls',
 for (let i = 0; i < themes.length; i++) {
   // Capture theme name and src path in constants to pass to less rendering
   const themeName = themes[i];
-  const src = 'uw-frame-components/css/themes/' + themes[i] + '.less';
+  const src = 'components/css/themes/' + themes[i] + '.less';
 
   // Read input .less file
   fs.readFile(src, function(error, data) {
@@ -58,8 +58,8 @@ for (let i = 0; i < themes.length; i++) {
 }
 
 copy(
-  'uw-frame-components/',
-  'uw-frame-static/target',
+  'components/',
+  'static/target',
   copyOptions
 ).catch(function(error, results) {
   if (error) throw error;
@@ -67,7 +67,7 @@ copy(
 
 copy(
   'node_modules/bootstrap/',
-  'uw-frame-static/target/css/themes/node_modules/bootstrap/',
+  'static/target/css/themes/node_modules/bootstrap/',
   copyOptions
 ).catch(function(error) {
   if (error) throw error;
@@ -75,7 +75,7 @@ copy(
 
 copy(
   'node_modules/font-awesome/',
-  'uw-frame-static/target/css/themes/node_modules/font-awesome/',
+  'static/target/css/themes/node_modules/font-awesome/',
   copyOptions
 ).catch(function(error) {
   if (error) throw error;
@@ -83,15 +83,15 @@ copy(
 
 copy(
   'node_modules/normalize.less',
-  'uw-frame-static/target/css/themes/node_modules/normalize.less',
+  'static/target/css/themes/node_modules/normalize.less',
   copyOptions
 ).catch(function(error) {
   if (error) throw error;
 });
 
 copy(
-  'uw-frame-static/superstatic.json',
-  'uw-frame-static/target/superstatic.json',
+  'static/superstatic.json',
+  'static/target/superstatic.json',
   copyOptions
 ).catch(function(error, results) {
   if (error) throw error;
@@ -106,14 +106,14 @@ copy(
  */
 function writeCss(srcPath, theme, styles) {
   // Output file path for the theme
-  const output = 'uw-frame-static/target/css/themes/' + theme + '.css';
+  const output = 'static/target/css/themes/' + theme + '.css';
   // Render .less styles
   less.render(styles,
     {
       paths: [
-        path.resolve('uw-frame-components/css/angular.less'),
-        path.resolve('uw-frame-components/css/themes/common-variables.less'),
-        path.resolve('uw-frame-components/css/themes/'+theme+'-variables.less'),
+        path.resolve('components/css/angular.less'),
+        path.resolve('components/css/themes/common-variables.less'),
+        path.resolve('components/css/themes/'+theme+'-variables.less'),
       ],
       filename: path.resolve(srcPath),
       compress: true,

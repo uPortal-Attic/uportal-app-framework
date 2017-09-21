@@ -1,6 +1,6 @@
 # Adding dependencies to your frame-based app
 
-Suppose you want to inject `ngMarked` (does not ship in `uw-frame` out of the box) into your `uw-frame`-based app.
+Suppose you want to inject `ngMarked` (does not ship in `uportal-app-framework` out of the box) into your `uportal-app-framework` app.
 
 Add it to the RequireJS configuration for `my-app`, which is merged into the base frame configuration at build time.
 
@@ -29,7 +29,7 @@ define([], function() {
 ```
 
 It just returns an object with paths and shims with the relative path (webapp being the working directory here) to the artifacts.
-To learn more about how `app-config.js`works, check out [/config.js](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/config.js) in uw-frame's source code. It takes the returned object from `app-config.js` and merges it in with the frame configuration.
+To learn more about how `app-config.js`works, check out [/config.js](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/components/config.js) in uportal-app-framework's source code. It takes the returned object from `app-config.js` and merges it in with the frame configuration.
 
 ## Injecting the angular module into your app
 

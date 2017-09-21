@@ -1,6 +1,6 @@
 # Tables
 
-(This documentation is deprecated in that a future version of `uw-frame` will remove Bootstrap.)
+(This documentation is deprecated in that a future version of `uportal-app-framework` will remove Bootstrap.)
 
 MyUW tables add little to the tables provided by Bootstrap. All tables should be given a class of .table. Prefer responsive
 tables (achieved by surrounding your `<table>` element with a `div` with a `class` of `.table-responsive`).
