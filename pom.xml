@@ -27,20 +27,20 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>edu.wisc.my.apps</groupId>
-  <artifactId>uw-frame</artifactId>
+  <groupId>org.apereo.uportal</groupId>
+  <artifactId>uportal-app-framework</artifactId>
   <packaging>war</packaging>
-  <version>5.2.2-SNAPSHOT</version>
-  <name>uw-frame</name>
-  <description>Frame for UW AngularJS applications</description>
-  <url>https://github.com/UW-Madison-DoIT/uw-frame</url>
+  <version>6.0.0-SNAPSHOT</version>
+  <name>uPortal Application Framework</name>
+  <description>App Framework for uPortal</description>
+  <url>https://github.com/uPortal-Project/uportal-app-framework</url>
 
   <developers>
     <developer>
         <email>uportal-dev@apereo.org</email>
-        <organization>UW-Madison</organization>
-        <url>https://github.com/UW-Madison-DoIT/uw-frame</url>
-        <name>MyUW Dev Team</name>
+        <organization>Apereo uPortal Developers</organization>
+        <url>https://github.com/uPortal-project/uportal-app-framework</url>
+        <name>Apereo uPortal Developers</name>
     </developer>
   </developers>
 
@@ -59,28 +59,12 @@
   </scm>
 
   <properties>
-    <spring.version>4.1.5.RELEASE</spring.version>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <webapp.target.directory>${project.build.directory}/${project.build.finalName}</webapp.target.directory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.license.plugin.ver>3.0</maven.license.plugin.ver>
   </properties>
-
-  <distributionManagement>
-    <!--
-      TODO: rely on oss-parent for these:
-      https://github.com/sonatype/oss-parents/blob/master/oss-parent/pom.xml#L47
-    -->
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-  </distributionManagement>
 
   <dependencyManagement>
     <dependencies>

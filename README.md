@@ -4,7 +4,7 @@ Questions? [Get in touch][uportal-user@].
 
 <!-- current project status -->
 [![npm version](https://badge.fury.io/js/uw-frame.svg)](https://badge.fury.io/js/uw-frame)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/edu.wisc.my.apps/uw-frame/badge.svg)](https://maven-badges.herokuapp.com/maven-central/edu.wisc.my.apps/uw-frame)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uw-frame/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uw-frame)
 [![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)
 [![Coverage Status](https://coveralls.io/repos/UW-Madison-DoIT/uw-frame/badge.svg?branch=master&service=github)](https://coveralls.io/github/UW-Madison-DoIT/uw-frame?branch=master)
 [![dependencies Status](https://david-dm.org/UW-Madison-DoIT/uw-frame/status.svg)](https://david-dm.org/UW-Madison-DoIT/uw-frame)
@@ -55,14 +55,14 @@ In your existing Maven war project, add the following dependency:
 
 ```xml
 <dependency>
-  <groupId>edu.wisc.my.apps</groupId>
+  <groupId>org.apereo.uportal</groupId>
   <artifactId>uw-frame</artifactId>
   <version>x.y.z</version>
   <type>war</type>
 </dependency>
 ```
 
-(uw-frame is [available in The Central Repository](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22edu.wisc.my.apps%22%20AND%20a%3A%22uw-frame%22).)
+(uw-frame is [available in The Central Repository](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.apereo.uportal%22%20AND%20a%3A%22uw-frame%22).)
 
 Start by creating the folder 'src/main/webapp/my-app' within your Maven war project, and copy [uw-frame's main.js](uw-frame-components/my-app/main.js) in to it.
 uw-frame includes [RequireJS](http://requirejs.org/) to help you load any additional JavaScript assets you wish, you'll do that in this file.
