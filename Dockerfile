@@ -18,22 +18,22 @@
 #
 
 FROM node:5.7.1-slim
-MAINTAINER Tim Levett <tim.levett@wisc.edu>
+MAINTAINER uPortal Developers <uportal-dev@apereo.org>
 RUN npm install -g superstatic
 
 RUN apt-get update && apt-get install -y bzip2 && apt-get install -y git
 
 # Add frame
 COPY tools /build/tools
-COPY uw-frame-components /build/uw-frame-components
-COPY uw-frame-static /build/uw-frame-static
+COPY components /build/components
+COPY static /build/static
 COPY package.json /build/
 
 # build frame
 WORKDIR /build
 RUN npm install
 RUN npm run build-static
-RUN cp -r /build/uw-frame-static/target /data
+RUN cp -r /build/static/target /data
 
 WORKDIR /data
 

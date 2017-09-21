@@ -52,6 +52,7 @@
   </licenses>
 
   <scm>
+    <!-- TODO update these when the new repo locations exist -->
     <connection>scm:git:git@github.com:UW-Madison-DoIT/uw-frame.git</connection>
     <developerConnection>scm:git:git@github.com:UW-Madison-DoIT/uw-frame.git</developerConnection>
     <url>https://github.com/UW-Madison-DoIT/uw-frame</url>
@@ -116,7 +117,7 @@
         <configuration>
           <webApp>
             <baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
-              <resourcesAsCSV>src/main/webapp,${webapp.target.directory},uw-frame-components</resourcesAsCSV>
+              <resourcesAsCSV>src/main/webapp,${webapp.target.directory},components</resourcesAsCSV>
             </baseResource>
           </webApp>
         </configuration>
@@ -132,7 +133,7 @@
           <goals>deploy</goals>
           <localCheckout>true</localCheckout>
           <scmCommentPrefix>chore(release): </scmCommentPrefix>
-          <tagNameFormat>uw-frame-maven-@{project.version}</tagNameFormat>
+          <tagNameFormat>uportal-app-framework-maven-@{project.version}</tagNameFormat>
           <pushChanges>false</pushChanges>
         </configuration>
       </plugin>
@@ -198,7 +199,7 @@
               <outputDirectory>${basedir}/target/frame/</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${basedir}/uw-frame-static/target/</directory>
+                  <directory>${basedir}/static/target/</directory>
                   <filtering>true</filtering>
                 </resource>
               </resources>
@@ -453,22 +454,21 @@
             <exclude>LICENSE</exclude>
             <exclude>NOTICE</exclude>
             <exclude>**/node_modules/**</exclude>
-            <exclude>**/uw-frame-components/staticFeeds/keyvalue/**</exclude>
+            <exclude>**/components/staticFeeds/keyvalue/**</exclude>
             <exclude>**/docs/_site/**</exclude>
             <exclude>**/docs/bower_components/**</exclude>
             <exclude>**/*.json</exclude>
             <exclude>**/*.lock</exclude>
             <exclude>**/docs/**/*.scss</exclude>
-            <exclude>**/uw-frame-components/coverage/**</exclude>
-            <exclude>**/uw-frame-components/test_out/**</exclude>
-            <exclude>**/uw-frame-components/js/ga.js</exclude>
-            <exclude>**/uw-frame-components/js/sortable.js</exclude>
+            <exclude>**/components/coverage/**</exclude>
+            <exclude>**/components/test_out/**</exclude>
+            <exclude>**/components/js/ga.js</exclude>
+            <exclude>**/components/js/sortable.js</exclude>
             <exclude>.gitignore</exclude>
           </excludes>
           <mapping>
             <less>JAVADOC_STYLE</less>
             <Gemfile>SCRIPT_STYLE</Gemfile>
-            <Dockerfile_http_server>SCRIPT_STYLE</Dockerfile_http_server>
           </mapping>
         </configuration>
       </plugin>

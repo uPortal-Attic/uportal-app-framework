@@ -1,6 +1,6 @@
-# Widgets in uw-frame
+# Widgets in uportal-app-framework
 
-It's possible for uw-frame apps to pull in the markup and configuration for widgets in the MyUW "marketplace" of apps.
+It's possible for uportal-app-framework apps to pull in the markup and configuration for widgets in the MyUW "marketplace" of apps.
 
 You can experiment with widgets in the [Widget Creator][] (currently available in test tier only).
 
@@ -8,7 +8,7 @@ You can experiment with widgets in the [Widget Creator][] (currently available i
 
 ## Fetching MyUW app widget
 
-If you're a uw-frame developer and you want to include, for example, the Wiscard Balance widget in your app, you can do so by
+If you're a uportal-app-framework developer and you want to include, for example, the Wiscard Balance widget in your app, you can do so by
 using the `widget` directive, like so:
 
 

@@ -1,4 +1,4 @@
-[uw-frame](https://github.com/UW-Madison-DoIT/uw-frame) is a framework for building web applications that look and feel like they belong in an [AngularJS-portal][] portal (such as [MyUW][]). It includes the portal header, settings, footer, and some reusable components,
+[uportal-app-framework](https://github.com/UW-Madison-DoIT/uw-frame) is a framework for building web applications that look and feel like they belong in an [AngularJS-portal][] portal (such as [MyUW][]). It includes the portal header, settings, footer, and some reusable components,
 as well as the configuration options and dependencies you need to get your app up and running quickly.
 
 With gratitude to the many [contributors to this project](contributors.md).
@@ -7,7 +7,7 @@ With gratitude to the many [contributors to this project](contributors.md).
 ## Getting Started
 
 + [How to run locally and how to make a uPortal Framework Application](quickstart.md)
-+ [What is uw-frame?](overview.md)
++ [What is uportal-app-framework?](overview.md)
 
 ## Configuration
 
@@ -20,7 +20,7 @@ With gratitude to the many [contributors to this project](contributors.md).
 
 + [Using existing widgets](widgets.md)
 + [Creating widgets](make-a-widget.md)
-+ [Widget creator tool](https://test.my.wisc.edu/widget-creator/home) (available in test tier only)
++ [Widget creator tool](https://test.my.wisc.edu/widget-creator/home)
 + [Entity file contribution guide](https://git.doit.wisc.edu/myuw-overlay/entities/blob/master/CONTRIBUTING.md) (UW-Madison only)
 
 ## Features

@@ -1,4 +1,4 @@
-# Contributing to `uw-frame`
+# Contributing to `uportal-app-framework`
 
 ## Code of conduct
 
@@ -6,7 +6,7 @@ The [Apereo Welcoming Policy][] applies. Cf. [CODE_OF_CONDUCT.md][]
 
 ## Contributor License Agreements
 
-As an [incubating, aspiring Apereo product][AngularJS-portal website on incubating], `uw-frame` requires contributors and contributions to comply with [Apereo inbound intellectual property licensing practices][].
+As an [incubating, aspiring Apereo product][AngularJS-portal website on incubating], `uportal-app-framework` requires contributors and contributions to comply with [Apereo inbound intellectual property licensing practices][].
 
 The short version:
 

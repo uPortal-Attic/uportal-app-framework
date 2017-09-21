@@ -3,8 +3,8 @@
 Questions? [Get in touch][uportal-user@].
 
 <!-- current project status -->
-[![npm version](https://badge.fury.io/js/uw-frame.svg)](https://badge.fury.io/js/uw-frame)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uw-frame/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uw-frame)
+[![npm version](https://badge.fury.io/js/uportal-app-framework.svg)](https://badge.fury.io/js/uportal-app-framework)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework)
 [![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)
 [![Coverage Status](https://coveralls.io/repos/UW-Madison-DoIT/uw-frame/badge.svg?branch=master&service=github)](https://coveralls.io/github/UW-Madison-DoIT/uw-frame?branch=master)
 [![dependencies Status](https://david-dm.org/UW-Madison-DoIT/uw-frame/status.svg)](https://david-dm.org/UW-Madison-DoIT/uw-frame)
@@ -47,29 +47,29 @@ Learn more about the reusable components on our [docs page](http://uw-madison-do
 
 ## Quickstart
 
-uw-frame provides the primary HTML page at the root of the context that hosts your AngularJS single page application. In order to introduce your own content, uw-frame's extension point is 'my-app/main.js'.
+uportal-app-framework provides the primary HTML page at the root of the context that hosts your AngularJS single page application. In order to introduce your own content, uportal-app-framework's extension point is 'my-app/main.js'.
 
-### Getting Started with uw-frame
+### Getting Started with uportal-app-framework
 
 In your existing Maven war project, add the following dependency:
 
 ```xml
 <dependency>
   <groupId>org.apereo.uportal</groupId>
-  <artifactId>uw-frame</artifactId>
+  <artifactId>uportal-app-framework</artifactId>
   <version>x.y.z</version>
   <type>war</type>
 </dependency>
 ```
 
-(uw-frame is [available in The Central Repository](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.apereo.uportal%22%20AND%20a%3A%22uw-frame%22).)
+(uportal-app-framework is [available in The Central Repository](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.apereo.uportal%22%20AND%20a%3A%22uportal-app-framework%22).)
 
-Start by creating the folder 'src/main/webapp/my-app' within your Maven war project, and copy [uw-frame's main.js](uw-frame-components/my-app/main.js) in to it.
-uw-frame includes [RequireJS](http://requirejs.org/) to help you load any additional JavaScript assets you wish, you'll do that in this file.
+Start by creating the folder 'src/main/webapp/my-app' within your Maven war project, and copy [uportal-app-framework's main.js](components/my-app/main.js) in to it.
+uportal-app-framework includes [RequireJS](http://requirejs.org/) to help you load any additional JavaScript assets you wish, you'll do that in this file.
 
 See [my-app-seed](https://github.com/UW-Madison-DoIT/my-app-seed) for a great starter app using this frame.
 
-### Getting Started with uw-frame-static
+### Getting Started with static
 
 This gives you the basic frame in a static content type way. Just add your files to the proper directory and you should be all set. This module is still a work in progress. Note it only works right now as the root context (if you want to change, update the index.html). This module is mostly used for development on the frame itself.
 

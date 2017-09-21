@@ -1,7 +1,7 @@
 # Theming
 
-The theming system is pretty straightforward. You can have your own skin in uw-frame with minimal effort. We highly
-encourage you to contribute back your theme to this project so you don't have to manage an independent fork of uw-frame.
+The theming system is pretty straightforward. You can have your own skin in uportal-app-framework with minimal effort. We highly
+encourage you to contribute back your theme to this project so you don't have to manage an independent fork of uportal-app-framework.
 
 For a step-by-step exercise in setting up a theme, see [`skinning.md`](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/docs/theming.md).
 
@@ -61,7 +61,7 @@ var example = {
 
 ### 2. Add a theme.less file
 
-Add in a `<theme-name>.less` file in the folder `/uw-frame-components/css/themes` that looks like this:
+Add in a `<theme-name>.less` file in the folder `/components/css/themes` that looks like this:
 
 **uw-madison.less**:
 
@@ -203,15 +203,15 @@ If you are defining a custom material theme, follow these guidelines when choosi
 + Each palette should consists of hues/shades of a single base color (the '500' color). You can use a [material palette generator](https://angular-md-color.com/#/)
  to help you create palettes, or you can define them yourself.
 + Your `primary` palette should be based on your brand's primary color. For UW-Madison, this color is [c5050c](http://www.color-hex.com/color/c5050c).
-	**Primary palette usage in uw-frame:**
+	**Primary palette usage in uportal-app-framework:**
   - Top bar background color
   - Any compatible angular material component with the "md-primary" class
 + Your `accent` palette should be based on a color that plays well with your primary color, but is distinct. For UW-Madison, this is [0479A8](http://www.color-hex.com/color/0479a8).
-	**Accent palette usage in uw-frame:**
+	**Accent palette usage in uportal-app-framework:**
   - Some link colors
   - Any compatible angular material component with the "md-accent" class
 + Your `warn` palette should be based on a color that is complementary to your primary color, but is distinct and eye-catching.
-	**Warn palette usage in uw-frame:**
+	**Warn palette usage in uportal-app-framework:**
   - As yet unused. Add the "md-warn" class to any compatible angular material component to use this palette
 
 Generally, you should avoid using an excessively light or dark color as the base color for any palette. In some cases, like UW-Milwaukee's black and yellow, this is unavoidable. If you *must* use a

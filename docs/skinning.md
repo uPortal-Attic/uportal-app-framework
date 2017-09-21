@@ -8,7 +8,7 @@ _A code editor._
 
 For a more in-depth discussion of theming, see <https://github.com/UW-Madison-DoIT/uw-frame/blob/master/docs/theming.md>
 
-1.  Locate and open the frame-config.js file in your uw-frame-components/js/ directory.
+1.  Locate and open the frame-config.js file in your `components/js/` directory.
 
 2.  Increment the themeVersion in line 9.
 
@@ -59,7 +59,7 @@ For a more in-depth discussion of theming, see <https://github.com/UW-Madison-Do
     * ariaLabelTitle: The aria label of your title.
     * crestAlt: Used to place a small bit of text (e.g. "Beta") next to your school's crest.
 
-4.  In the \/uw-frame-components/css/themes directory, add a <theme-name>.less file. The theme name corresponds to the name attribute you assigned in the step above.
+4.  In the \/components/css/themes directory, add a <theme-name>.less file. The theme name corresponds to the name attribute you assigned in the step above.
 
     Add the following imports:
 
@@ -71,7 +71,7 @@ For a more in-depth discussion of theming, see <https://github.com/UW-Madison-Do
 
 
 
-5.  Also in the /uw-frame-components/css/themes directory, add a <theme-name>-variables.less file. Copy and paste the following code into the file. These are the colors for UW-Madison. Feel free to use a color picker, such as <http://www.designskilz.com/colors> to generate your own colors, and experiment with the palette.
+5.  Also in the /components/css/themes directory, add a <theme-name>-variables.less file. Copy and paste the following code into the file. These are the colors for UW-Madison. Feel free to use a color picker, such as <http://www.designskilz.com/colors> to generate your own colors, and experiment with the palette.
 
     ```sass
     /* MyUW-Madison colors */
@@ -98,7 +98,7 @@ For a more in-depth discussion of theming, see <https://github.com/UW-Madison-Do
 
 6.  Make your theme the default:
 
-    In uw-frame-components/js, update the override.js with the following code.
+    In components/js, update the override.js with the following code.
 
     ```javascript
     define(['angular'], function(angular) {
@@ -115,7 +115,7 @@ For a more in-depth discussion of theming, see <https://github.com/UW-Madison-Do
     ```
 
 
-7.  In your tools/uw-frame-static/build.js file, add your theme's name to the array of themes.
+7.  In your tools/static/build.js file, add your theme's name to the array of themes.
 
 8.  run
     ```sass
