@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [5.2.1][] - 2017-09-21
+* Add time-sensitive-content widget type (#524)
+
 ## [5.2.0][] - 2017-09-20
 
 ### Messages Enhancements
@@ -294,7 +297,8 @@ break compatibility with some older components.  If you used any angular-ui-boot
 - Added ability to have a name for the default theme (#336)
 - Fixed format for announcement end date (#332)
 
-[Unreleased]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v5.2.0...HEAD
+[Unreleased]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v5.2.1...HEAD
+[5.2.1]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v5.2.0...v5.2.1
 [5.2.0]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v5.1.0...v5.2.0
 [5.1.0]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v5.0.0...v5.1.0
 [5.0.0]: https://github.com/UW-Madison-DoIT/uw-frame/compare/v4.1.0...v5.0.0
