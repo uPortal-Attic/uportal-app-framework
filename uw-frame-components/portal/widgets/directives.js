@@ -22,8 +22,8 @@ define(['angular', 'require'], function(angular, require) {
   return angular.module('portal.widgets.directives', [])
 
   /**
-   Just the widget card -- gets the widget type from the scope
-   **/
+   * Just the widget card -- gets the widget type from scope
+   */
   .directive('widget', function() {
     return {
       restrict: 'E',
@@ -37,8 +37,8 @@ define(['angular', 'require'], function(angular, require) {
   })
 
   /**
-  Just the widget card -- gets the widget type from the scope
-  **/
+   * Just the widget card -- gets the widget type from the scope
+   */
   .directive('compactWidget', function() {
     return {
       restrict: 'E',
@@ -48,6 +48,22 @@ define(['angular', 'require'], function(angular, require) {
       },
       templateUrl: require.toUrl('./partials/compact-widget-card.html'),
       controller: 'WidgetCardController',
+    };
+  })
+
+  /**
+   * Widget type that alternates between basic appearance and time-sensitive
+   * content with a countdown
+   */
+  .directive('timeSensitive', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config',
+      },
+      templateUrl: require.toUrl('./partials/type__time-sensitive.html'),
+      controller: 'TimeSensitiveContentController',
     };
   })
 

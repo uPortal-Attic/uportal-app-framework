@@ -54,6 +54,10 @@
 
     <div ng-switch="widgetType" class="widget-type-container">
 
+      <div ng-switch-when="time-sensitive-content">
+        <time-sensitive app="widget" config="widget.widgetConfig"></time-sensitive>
+      </div>
+
       <div ng-switch-when="option-link">
         <option-link app="widget" config="widget.widgetConfig"></option-link>
       </div>

@@ -1,0 +1,81 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Benefit Information",
+      "description": "Summary information about your current benefit enrollments and links to your WRS Statement of Benefits.",
+      "url": "/portal/p/university-staff-benefits-statement/render.uP",
+      "iconUrl": null,
+      "faIcon": "fa-umbrella",
+      "mdIcon": null,
+      "fname": "university-staff-benefits-statement",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetURL": null,
+      "widgetType": "time-sensitive-content",
+      "widgetConfig": {
+        "callsToAction": [
+          {
+            "activeDateRange": {
+              "templateLiveDate": "09-09",
+              "takeActionStartDate": "09-11",
+              "takeActionEndDate": "09-20T12:00",
+              "templateRetireDate": "09-22T10:00"
+            },
+            "actionName": "Annual benefits enrollment",
+            "daysLeftMessage": "to change benefits",
+            "lastDayMessage": "Today is the last day to enroll!",
+            "actionButton": {
+              "url": "https://www.hrs.wisconsin.edu/psp/hrs-fd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL",
+              "label": "Enroll now"
+            },
+            "learnMoreUrl": "https://www.wisconsin.edu/abe/",
+            "feedbackUrl": ""
+          },
+          {
+            "activeDateRange": {
+              "templateLiveDate": "2017-03-09",
+              "takeActionStartDate": null,
+              "takeActionEndDate": null,
+              "templateRetireDate": "2017-03-19"
+            },
+            "actionName": "Some other HR call to action",
+            "actionButton": {
+              "url": "https://www.google.com",
+              "label": "Do the thing"
+            },
+            "learnMoreUrl": "www.google.com",
+            "feedbackUrl": "www.google.com"
+          }
+        ]
+      },
+      "staticContent": null,
+      "pithyStaticContent": null,
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "Benefit Information",
+    "rating": 2.051282051282051,
+    "fname": "university-staff-benefits-statement",
+    "portletWebAppName": "/HRSPortlets",
+    "shortUrl": null,
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "/portal/p/university-staff-benefits-statement/render.uP",
+    "lifecycleState": "PUBLISHED",
+    "maxUrl": "/portal/p/university-staff-benefits-statement/render.uP",
+    "marketplaceScreenshots": [],
+    "userRated": 39,
+    "faIcon": "fa-umbrella",
+    "portletName": "BenefitInformation",
+    "name": "Benefit Information",
+    "id": "127",
+    "type": "Portlet",
+    "target": null,
+    "description": "Summary information about your current benefit enrollments and links to your WRS Statement of Benefits."
+  }
+}

@@ -400,6 +400,150 @@ define(['angular'], function(angular) {
     initializeActionItems();
   }])
 
+  // VARIABLE CONTENT widget type
+  .controller('TimeSensitiveContentController', [
+    '$scope', '$filter', '$log', function($scope, $filter, $log) {
+    /**
+     * Display time-sensitive content with provided configuration
+     * @param callToAction The provided configuration for a call to action
+     * @param start The day/time this content became active
+     * @param end The date/time this content will go away
+     * @param hasPaddedDates indicates there is content to show outside
+     *    active date range
+     */
+    var displayTimeSensitiveContent = function(callToAction, start,
+                                          end, hasPaddedDates) {
+      $scope.activePeriodStartDate = '';
+      $scope.activePeriodEndDate = '';
+      $scope.daysLeft = 0;
+      $scope.templateStatus = '';
+      $scope.callToAction = callToAction;
+
+      // Check for padded dates
+      if (hasPaddedDates.start || hasPaddedDates.end) {
+        if (hasPaddedDates.start) {
+          // Set active period start date
+          if (callToAction.activeDateRange.takeActionStartDate) {
+            $scope.activePeriodStartDate = $filter('filterForDateWithYear')(
+              callToAction.activeDateRange.takeActionStartDate);
+          } else {
+            $scope.activePeriodStartDate = start;
+          }
+        }
+        if (hasPaddedDates.end) {
+          // Set active period end date
+          if (callToAction.activeDateRange.takeActionEndDate) {
+            $scope.activePeriodEndDate = $filter('filterForDateWithYear')(
+              callToAction.activeDateRange.takeActionEndDate);
+          } else {
+            $scope.activePeriodEndDate = end;
+          }
+        }
+      } else {
+        $scope.activePeriodStartDate = start;
+      }
+
+      // If today is inside the given date range, check for last day
+      if ($filter('filterDateRange')($scope.activePeriodStartDate,
+          $scope.activePeriodEndDate)) {
+        $scope.daysLeft = $filter('filterDifferenceFromDate')(
+          $scope.activePeriodEndDate);
+        // If there's 1 or 0 days left, and filter didn't return -1,
+        // It's the last day!
+        if ($scope.daysLeft === 1 || $scope.daysLeft === 0) {
+          $scope.templateStatus = 'lastDay';
+        } else {
+          $scope.templateStatus = 'ongoing';
+        }
+      // If there's more than 0 days between now and the start date,
+      // the active period hasn't started yet
+      } else if ($filter('filterDifferenceFromDate')(
+        $scope.activePeriodStartDate) > 0) {
+        $scope.templateStature = 'upcoming';
+      // If filter returns -1, the period has ended
+      } else if ($filter('filterDifferenceFromDate')(
+        $scope.activePeriodEndDate) === -1) {
+        $scope.templateStatus = 'ended';
+      }
+
+      $scope.showTimeSensitiveContent = true;
+    };
+
+    var evaluateCallsToAction = function(callsToAction) {
+      // Check if today falls within any of the provided date ranges
+      angular.forEach(callsToAction, function(value, index) {
+        var templateSwitchOnDate = '';
+        var templateSwitchOffDate = '';
+        var hasPaddedDates = {
+          start: false,
+          end: false,
+        };
+        // Check if active date range provided
+        if (value.activeDateRange) {
+          // Check for a start date
+          if (value.activeDateRange.templateLiveDate) {
+            // Use go live date if provided
+            templateSwitchOnDate = $filter('filterForDateWithYear')(
+              value.activeDateRange.templateLiveDate);
+            hasPaddedDates.start = true;
+          } else if (value.activeDateRange.takeActionStartDate) {
+            // Fall back on takeActionStartDate if needed
+            templateSwitchOnDate = $filter('filterForDateWithYear')(
+              value.activeDateRange.takeActionStartDate);
+          } else {
+            $log.log($scope.widget.fname +
+              ' said it has variable content, but was missing a '
+              + ' start date.');
+            showBasicWidget();
+          }
+
+          // Check for an end date
+          if (value.activeDateRange.templateRetireDate) {
+            // Use retire date if provided
+            templateSwitchOffDate = $filter('filterForDateWithYear')(
+              value.activeDateRange.templateRetireDate);
+            hasPaddedDates.end = true;
+          } else if (value.activeDateRange.takeActionStartDate) {
+            // Fall back on takeActionEndDate if needed
+            templateSwitchOffDate = $filter('filterForDateWithYear')(
+              value.activeDateRange.takeActionEndDate);
+          } else {
+            $log.log($scope.widget.fname +
+              ' said it has variable content, but was missing an '
+              + ' end date.');
+            showBasicWidget();
+          }
+
+          // Check if today is within provided range
+          if ($filter('filterDateRange')(
+            templateSwitchOnDate, templateSwitchOffDate)) {
+            // Current date is within range, so show variable content
+            displayTimeSensitiveContent(value, templateSwitchOnDate,
+              templateSwitchOffDate, hasPaddedDates);
+          }
+        } else {
+          $log.log($scope.widget.fname +
+            ' said it has variable content, but was missing an '
+            + 'active date range.');
+          showBasicWidget();
+        }
+      });
+    };
+
+    var showBasicWidget = function() {
+      $scope.showBasicContent = true;
+    };
+
+    // Initialize widget if it received time-sensitive content
+    if ($scope.config.callsToAction.length > 0) {
+      evaluateCallsToAction($scope.config.callsToAction);
+    } else {
+      $log.log($scope.widget.fname +
+        ' said it has variable content, but was missing calls to action.');
+      showBasicWidget();
+    }
+  }])
+
   // CUSTOM & GENERIC widget types
   .controller('CustomWidgetController', [
     '$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
