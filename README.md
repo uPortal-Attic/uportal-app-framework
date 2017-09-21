@@ -49,7 +49,7 @@ Learn more about the reusable components on our [docs page](http://uw-madison-do
 
 uw-frame provides the primary HTML page at the root of the context that hosts your AngularJS single page application. In order to introduce your own content, uw-frame's extension point is 'my-app/main.js'.
 
-### Getting Started with uw-frame-java
+### Getting Started with uw-frame
 
 In your existing Maven war project, add the following dependency:
 
@@ -62,7 +62,7 @@ In your existing Maven war project, add the following dependency:
 </dependency>
 ```
 
-(uw-frame-java is [available in The Central Repository](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22edu.wisc.my.apps%22%20AND%20a%3A%22uw-frame%22).)
+(uw-frame is [available in The Central Repository](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22edu.wisc.my.apps%22%20AND%20a%3A%22uw-frame%22).)
 
 Start by creating the folder 'src/main/webapp/my-app' within your Maven war project, and copy [uw-frame's main.js](uw-frame-components/my-app/main.js) in to it.
 uw-frame includes [RequireJS](http://requirejs.org/) to help you load any additional JavaScript assets you wish, you'll do that in this file.
@@ -94,7 +94,7 @@ npm run static:dev
 ### Maven
 
 You can also create a artifact using maven.  There's a pom.xml file in the
-uw-frame-java directory.  The maven build will use the normal npm build and
+root directory.  The maven build will use the normal npm build and
 bundle into a deliverable war file.
 
 ## Running the documentation

@@ -4,8 +4,8 @@
 
 * [Node.js](https://nodejs.org/en/)
 * [npm](https://www.npmjs.com/)
-* JDK 7,8 (for `uw-frame-java`)
-* [Maven](http://maven.apache.org) (for `uw-frame-java`)
+* JDK 7,8
+* [Maven](http://maven.apache.org)
 
 ## Quick start
 

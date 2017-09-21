@@ -117,7 +117,7 @@ For a more in-depth discussion of theming, see <https://github.com/UW-Madison-Do
 
 7.  In your tools/uw-frame-static/build.js file, add your theme's name to the array of themes.
 
-8.  From a command line, navigate to your uw-frame-java directory, and run
+8.  run
     ```sass
     mvn clean package
     ```
