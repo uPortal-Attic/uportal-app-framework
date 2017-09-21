@@ -37,7 +37,6 @@ test_script:
   - mvn license:check
   - mvn clean install
 cache:
-  - node_modules
   - '%APPDATA%\npm-cache'
   - C:\Users\appveyor\.m2\ -> pom.xml
 
