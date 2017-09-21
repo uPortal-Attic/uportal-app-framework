@@ -387,16 +387,16 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
 
 * **callsToAction**: The containing array for one or more objects with attributes related to making a call to action.
 * **activeDateRange**: An object used to determine when to switch to the time-sensitive content, with the following attributes:
-    * **templateLiveDate**: The date when the widget should switch from basic content to time-sensitive content. See "Guidance" heading below for suggested formats and options.
-    * **takeActionStartDate**: *(optional)* The date when action can be taken. Provide a value if you want the widget to communicate when taking action will be possible (e.g. "Begins September 11th, 2018"). See "Guidance" heading below for suggested formats and options.
-    * **takeActionEndDate**: *(optional)* The date when the action can no longer be taken. Provide a value if you want the widget to communicate when the action stopped being available (e.d "Ended September 20th, 2018"). See "Guidance" heading below for suggested formats and options.
-    * **templateRetireDate**: The date when the widget should switch back to displaying basic content. See "Guidance" heading below for suggested formats and options.
+  * **templateLiveDate**: The date when the widget should switch from basic content to time-sensitive content. See "Guidance" heading below for suggested formats and options.
+  * **takeActionStartDate**: *(optional)* The date when action can be taken. Provide a value if you want the widget to communicate when taking action will be possible (e.g. "Begins September 11th, 2018"). See "Guidance" heading below for suggested formats and options.
+  * **takeActionEndDate**: *(optional)* The date when the action can no longer be taken. Provide a value if you want the widget to communicate when the action stopped being available (e.d "Ended September 20th, 2018"). See "Guidance" heading below for suggested formats and options.
+  * **templateRetireDate**: The date when the widget should switch back to displaying basic content. See "Guidance" heading below for suggested formats and options.
 * **actionName**: The name of the action users can take (e.g. "Annual benefits enrollment").
-* **daysLeftMessage**: *(optional)* The language to display during the countdown of remaining days. The widget will always display "[x] days left". Provide a value if you want to add text after the default text (e.g. A `daysLeftMessage` with the value "to change benefits" would result in the message: "[x] days left to change benefits").
+* **daysLeftMessage**: *(optional)* The language to display during the countdown of remaining days. The widget will always display "# days left". Provide a value if you want to add text after the default text (e.g. A `daysLeftMessage` with the value "to change benefits" would result in the message: "# days left to change benefits").
 * **lastDayMessage**: *(optional)* A special message to display on the last day that taking action is possible. If no value is provided, the widget will show "1 day left" on the last day.
 * **actionButton**: An object to configure how the action button appears, with the following required attributes:
-    * **url**: The url where a user can take action
-    * **label**: The text the button should display
+  * **url**: The url where a user can take action
+  * **label**: The text the button should display
 * **learnMoreUrl**: *(optional)* Provide a url if you want the widget to display a link for users to get more information.
 * **feedbackUrl**: *(optional)* Provide a url if you want the widget to display a link where users can give feedback about the taking action.
 
@@ -411,8 +411,8 @@ Provided dates **MUST** match one of the following formats:
 
 ##### How to configure the active date range
 
-+ If you want your widget to warn users that they'll be able to take an action in the near future, you must provide dates for both `templateLiveDate` and `takeActionStartDate`. The former date must be *BEFORE* the latter one. If you only want the template to switch content when users can take action, you only need to provide `templateLiveDate`. During the days between the two dates, the widget will display "Begins [takeActionStartDate]".
-+ Similarly, if you want the widget to tell users that a period to take action recently ended, you must provide dates for both `takeActionEndDate` (the date when taking the action stopped being possible) and `templateRetireDate` (the date the widget should go back to showing basic content). The former date must be *BEFORE* the latter one. During the days between the two dates, the widget will display "Ended [takeActionEndDate]".
++ If you want your widget to warn users that they'll be able to take an action in the near future, you must provide dates for both `templateLiveDate` and `takeActionStartDate`. The former date must be *BEFORE* the latter one. If you only want the template to switch content when users can take action, you only need to provide `templateLiveDate`. During the days between the two dates, the widget will display "Begins `takeActionStartDate`".
++ Similarly, if you want the widget to tell users that a period to take action recently ended, you must provide dates for both `takeActionEndDate` (the date when taking the action stopped being possible) and `templateRetireDate` (the date the widget should go back to showing basic content). The former date must be *BEFORE* the latter one. During the days between the two dates, the widget will display "Ended `takeActionEndDate`".
 + If you only want the widget to show time-sensitive content when that content is actionable, you only have to provide dates for `templateLiveDate` and `templateRetireDate`. During the days between the two dates, the widget will display a countdown of days remaining to take action.
 
 
