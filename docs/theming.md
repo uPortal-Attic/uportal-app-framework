@@ -9,7 +9,7 @@ For a step-by-step exercise in setting up a theme, see [`skinning.md`](https://g
 
 ### 1. Add an entry to the THEME constant
 
-Configure your entry in the `THEME` constant located in [`frame-config.js`](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/uw-frame-components/js/frame-config.js).
+Configure your entry in the `THEME` constant located in [`frame-config.js`](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/components/js/frame-config.js).
 It should look something like :
 
 <!-- eslint-disable no-unused-vars -->
