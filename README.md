@@ -14,6 +14,7 @@ Questions? [Get in touch][uportal-user@].
 [![Greenkeeper badge](https://badges.greenkeeper.io/UW-Madison-DoIT/uw-frame.svg)](https://greenkeeper.io/)
 [![Time to PR close](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/pr)](http://issuestats.com/github/uw-madison-doit/uw-frame)
 [![Time to issue close](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/issue)](http://issuestats.com/github/uw-madison-doit/uw-frame)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FUW-Madison-DoIT%2Fuw-frame.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FUW-Madison-DoIT%2Fuw-frame?ref=badge_shield)
 
 <!-- standards used in project -->
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
@@ -110,3 +111,7 @@ bundle exec jekyll serve
 You may need to install the Jekyll bundler on your machine. See [Jekyll's quick-start guide](https://jekyllrb.com/docs/quickstart/) for instructions.
 
 [uportal-user@]: https://groups.google.com/a/apereo.org/forum/#!forum/uportal-user
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FUW-Madison-DoIT%2Fuw-frame.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FUW-Madison-DoIT%2Fuw-frame?ref=badge_large)
