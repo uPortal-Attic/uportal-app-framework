@@ -1,7 +1,7 @@
 {
-  "name": "uportal-app-framework",
+  "name": "@uportal/uportal-app-framework",
   "version": "5.2.1",
-  "description": "MyUW's frame project for creating angular based microservices.",
+  "description": "Application Framework for uPortal",
   "scripts": {
     "commitmsg": "commitlint -e",
     "cz": "git-cz",
