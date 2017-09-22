@@ -3,7 +3,7 @@
 Questions? [Get in touch][uportal-user@].
 
 <!-- current project status -->
-[![npm version](https://badge.fury.io/js/uportal-app-framework.svg)](https://badge.fury.io/js/uportal-app-framework)
+[![npm version](https://badge.fury.io/js/%40uportal%2Fuportal-app-framework.svg)](https://badge.fury.io/js/%40uportal%2Fuportal-app-framework)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework)
 [![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)
 [![Coverage Status](https://coveralls.io/repos/UW-Madison-DoIT/uw-frame/badge.svg?branch=master&service=github)](https://coveralls.io/github/UW-Madison-DoIT/uw-frame?branch=master)
