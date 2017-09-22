@@ -459,14 +459,21 @@ define(['angular'], function(angular) {
       // the active period hasn't started yet
       } else if ($filter('filterDifferenceFromDate')(
         $scope.activePeriodStartDate) > 0) {
-        $scope.templateStature = 'upcoming';
+        $scope.templateStatus = 'upcoming';
       // If filter returns -1, the period has ended
       } else if ($filter('filterDifferenceFromDate')(
         $scope.activePeriodEndDate) === -1) {
         $scope.templateStatus = 'ended';
       }
 
-      $scope.showTimeSensitiveContent = true;
+      // If we somehow ended up with an unset template status,
+      // don't show time sensitive content
+      if ($scope.templateStatus === '') {
+        $log.log('Date range didn\'t meet any of the criteria for '
+          + 'showing time-sensitive content');
+      } else {
+        $scope.showTimeSensitiveContent = true;
+      }
     };
 
     var evaluateCallsToAction = function(callsToAction) {
