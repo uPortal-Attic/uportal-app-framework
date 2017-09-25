@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [6.0.1][] - 2017-09-25
+* Cleaning up project name relicts (#538, #539, #540, #541, #542)
+* Fix typo in time-sensitive widget (#537)
+
 ## [6.0.0][] - 2017-09-22
 * Renaming project to uportal-app-framework
 
