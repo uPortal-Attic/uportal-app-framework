@@ -3,17 +3,17 @@
 Questions? [Get in touch][uportal-user@].
 
 <!-- current project status -->
-[![npm version](https://badge.fury.io/js/%40uportal%2Fuportal-app-framework.svg)](https://badge.fury.io/js/%40uportal%2Fuportal-app-framework)
+[![npm version](https://badge.fury.io/js/%40uportal%2Fapp-framework.svg)](https://badge.fury.io/js/%40uportal%2Fuportal-app-framework)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework)
-[![Build Status](https://travis-ci.org/UW-Madison-DoIT/uw-frame.svg)](https://travis-ci.org/UW-Madison-DoIT/uw-frame)
-[![Coverage Status](https://coveralls.io/repos/UW-Madison-DoIT/uw-frame/badge.svg?branch=master&service=github)](https://coveralls.io/github/UW-Madison-DoIT/uw-frame?branch=master)
-[![dependencies Status](https://david-dm.org/UW-Madison-DoIT/uw-frame/status.svg)](https://david-dm.org/UW-Madison-DoIT/uw-frame)
-[![devDependencies Status](https://david-dm.org/UW-Madison-DoIT/uw-frame/dev-status.svg)](https://david-dm.org/UW-Madison-DoIT/uw-frame?type=dev)
-[![Dependency Status](https://dependencyci.com/github/UW-Madison-DoIT/uw-frame/badge)](https://dependencyci.com/github/UW-Madison-DoIT/uw-frame)
-[![bitHound Overall Score](https://www.bithound.io/github/UW-Madison-DoIT/uw-frame/badges/score.svg)](https://www.bithound.io/github/UW-Madison-DoIT/uw-frame)
-[![Greenkeeper badge](https://badges.greenkeeper.io/UW-Madison-DoIT/uw-frame.svg)](https://greenkeeper.io/)
-[![Time to PR close](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/pr)](http://issuestats.com/github/uw-madison-doit/uw-frame)
-[![Time to issue close](http://issuestats.com/github/uw-madison-doit/uw-frame/badge/issue)](http://issuestats.com/github/uw-madison-doit/uw-frame)
+[![Build Status](https://travis-ci.org/uPortal-Project/uportal-app-framework.svg)](https://travis-ci.org/uPortal-Project/uportal-app-framework)
+[![Coverage Status](https://coveralls.io/repos/uPortal-Project/uportal-app-framework/badge.svg?branch=master&service=github)](https://coveralls.io/github/uPortal-Project/uportal-app-framework?branch=master)
+[![dependencies Status](https://david-dm.org/uPortal-Project/uportal-app-framework/status.svg)](https://david-dm.org/uPortal-Project/uportal-app-framework)
+[![devDependencies Status](https://david-dm.org/uPortal-Project/uportal-app-framework/dev-status.svg)](https://david-dm.org/uPortal-Project/uportal-app-framework?type=dev)
+[![Dependency Status](https://dependencyci.com/github/uPortal-Project/uportal-app-framework/badge)](https://dependencyci.com/github/uPortal-Project/uportal-app-framework)
+[![bitHound Overall Score](https://www.bithound.io/github/uPortal-Project/uportal-app-framework/badges/score.svg)](https://www.bithound.io/github/uPortal-Project/uportal-app-framework)
+[![Greenkeeper badge](https://badges.greenkeeper.io/uPortal-Project/uportal-app-framework.svg)](https://greenkeeper.io/)
+[![Time to PR close](http://issuestats.com/github/uPortal-Project/uportal-app-framework/badge/pr)](http://issuestats.com/github/uPortal-Project/uportal-app-framework)
+[![Time to issue close](http://issuestats.com/github/uPortal-Project/uportal-app-framework/badge/issue)](http://issuestats.com/github/uPortal-Project/uportal-app-framework)
 
 <!-- standards used in project -->
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
@@ -32,7 +32,7 @@ This package includes the `uPortal-home` header, settings, footer, and some reus
 
 ![uw-frame screenshot](docs/uw-frame-screenshot.png "UW Frame")
 
-Learn more about the reusable components on our [docs page](http://uw-madison-doit.github.io/uw-frame/)
+Learn more about the reusable components on our [docs page](http://uportal-project.github.io/uportal-app-framework/)
 
 `uPortal-app-framework` is somewhere in the process of renaming from its old `uw-frame` name.
 

@@ -1,4 +1,4 @@
-[uportal-app-framework](https://github.com/UW-Madison-DoIT/uw-frame) is a framework for building web applications that look and feel like they belong in an [AngularJS-portal][] portal (such as [MyUW][]). It includes the portal header, settings, footer, and some reusable components,
+[uportal-app-framework](https://github.com/uPortal-Project/uportal-app-framework) is a framework for building web applications that look and feel like they belong in an [AngularJS-portal][] portal (such as [MyUW][]). It includes the portal header, settings, footer, and some reusable components,
 as well as the configuration options and dependencies you need to get your app up and running quickly.
 
 With gratitude to the many [contributors to this project](contributors.md).
