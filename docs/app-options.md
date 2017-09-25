@@ -41,10 +41,10 @@ See the example code below:
   </md-button>
   <md-menu-content width="4">
     <md-menu-item>
-      <md-button class="md-default" href="http://uw-madison-doit.github.io/uw-frame/latest/#/md/directives">See Documentation</md-button>
+      <md-button class="md-default" href="http://uportal-project.github.io/uportal-app-framework/directives.html">See Documentation</md-button>
     </md-menu-item>
     <md-menu-item>
-      <md-button class="md-default" href="https://www.github.com/uw-madison-doit/uw-frame"><span><i class="fa fa-github"></i> Checkout Repo</span></md-button>
+      <md-button class="md-default" href="https://github.com/uPortal-Project/uportal-app-framework"><span><i class="fa fa-github"></i> Checkout Repo</span></md-button>
     </md-menu-item>
   </md-menu-content>
 </md-menu>
@@ -56,7 +56,7 @@ In this case, we've opted to include a settings menu with the gear icon on all s
 
 ### 2. Configure the path to the template
 
-Add the following to [override.js](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/components/js/override.js):
+Add the following to [override.js](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/js/override.js):
 
 ```js
 define(['angular'], function(angular) {
@@ -75,5 +75,5 @@ define(['angular'], function(angular) {
 
 + *The path is evaluated in AppHeaderOptionsController (portal/misc/controllers.js)*
 + *The path must lead to a file in your project directory (for now). In a perfect world, this controller would be more robust
-and would accept a service to retrieve template HTML from a provided endpoint. Go to [uportal-app-framework on GitHub](https://github.com/UW-Madison-DoIT/uw-frame) to open
+and would accept a service to retrieve template HTML from a provided endpoint. Go to [uportal-app-framework on GitHub](https://github.com/uPortal-Project/uportal-app-framework) to open
 an issue or pull request to make this happen!*

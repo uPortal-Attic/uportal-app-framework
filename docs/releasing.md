@@ -71,7 +71,7 @@ docker push docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:x.y.z
 
 ### Documentation release
 
-You don't have to do anything special to release the documentation. GitHub pages will run Jekyll on the `docs` folder of the latest commit in the `master` branch, continually deploying the latest documentation to [the live documentation website](http://uw-madison-doit.github.io/uw-frame/).
+You don't have to do anything special to release the documentation. GitHub pages will run Jekyll on the `docs` folder of the latest commit in the `master` branch, continually deploying the latest documentation to [the live documentation website](http://uportal-project.github.io/uportal-app-framework/).
 
 ### Release notes
 
@@ -100,13 +100,13 @@ create the next patch version.
 
 
 [Semantic Versioning]: http://semver.org/
-[uportal-app-framework closed pull requests]: https://github.com/UW-Madison-DoIT/uw-frame/pulls?q=is%3Apr+is%3Aclosed
-[uportal-app-framework milestones]: https://github.com/UW-Madison-DoIT/uw-frame/milestones
-[uportal-app-framework access on npm]: https://www.npmjs.com/package/uw-frame/access
+[uportal-app-framework closed pull requests]: https://github.com/uPortal-Project/uportal-app-framework/pulls?q=is%3Apr+is%3Aclosed
+[uportal-app-framework milestones]: https://github.com/uPortal-Project/uportal-app-framework/milestones
+[uportal-app-framework access on npm]: https://www.npmjs.com/package/@uportal/app-framework/access
 [central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
-[uportal-app-framework releases]: https://github.com/UW-Madison-DoIT/uw-frame/releases
+[uportal-app-framework releases]: https://github.com/uPortal-Project/uportal-app-framework/releases
 [MyUW Developer Group]: https://groups.google.com/forum/#!forum/myuw-developers
-[adopted Apache rules]: https://github.com/UW-Madison-DoIT/uw-frame/blob/master/committers.md#rules
+[adopted Apache rules]: https://github.com/uPortal-Project/uportal-app-framework/blob/master/committers.md#rules
 [Apache Release Policy re Release Approval]: http://www.apache.org/legal/release-policy.html#release-approval
-[the uPortal-app-framework Committers]: https://github.com/UW-Madison-DoIT/uw-frame/blob/master/committers.md#who-are-the-committers
+[the uPortal-app-framework Committers]: https://github.com/uPortal-Project/uportal-app-framework/blob/master/committers.md#who-are-the-committers
 [uportal-dev@]: https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev
