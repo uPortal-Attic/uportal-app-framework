@@ -304,7 +304,8 @@ break compatibility with some older components.  If you used any angular-ui-boot
 - Added ability to have a name for the default theme (#336)
 - Fixed format for announcement end date (#332)
 
-[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.0...HEAD
+[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.1...HEAD
+[6.0.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v5.2.1...v6.0.0
 [5.2.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v5.2.0...v5.2.1
 [5.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v5.1.0...v5.2.0
