@@ -6,7 +6,7 @@ _A working uPortal-app-framework application._
 
 _A code editor._
 
-For a more in-depth discussion of theming, see <https://github.com/UW-Madison-DoIT/uw-frame/blob/master/docs/theming.md>
+For a more in-depth discussion of theming, see [theming](theming.md)
 
 1.  Locate and open the frame-config.js file in your `components/js/` directory.
 

@@ -52,11 +52,9 @@
   </licenses>
 
   <scm>
-    <!-- TODO update these when the new repo locations exist -->
-    <connection>scm:git:git@github.com:UW-Madison-DoIT/uw-frame.git</connection>
-    <developerConnection>scm:git:git@github.com:UW-Madison-DoIT/uw-frame.git</developerConnection>
-    <url>https://github.com/UW-Madison-DoIT/uw-frame</url>
-    <tag>HEAD</tag>
+    <connection>scm:git:git@github.com:uPortal-Project/uportal-app-framework.git</connection>
+    <developerConnection>scm:git:git@github.com:uPortal-Project/uportal-app-framework.git</developerConnection>
+    <url>https://github.com/uPortal-project/uportal-app-framework</url>
   </scm>
 
   <properties>

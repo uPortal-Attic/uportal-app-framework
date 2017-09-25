@@ -16,10 +16,10 @@ Run a local instance of `uportal-app-framework` in a matter of minutes in 3 easy
 Clone the repo:
 
 ```shell
-git clone git@github.com:UW-Madison-DoIT/uw-frame.git
+git clone git@github.com:uPortal-Project/uportal-app-framework.git
 ```
 
-To use a specific release, checkout its [tag](https://github.com/UW-Madison-DoIT/uw-frame/releases):
+To use a specific release, checkout its [tag](https://github.com/uPortal-Project/uportal-app-framework/releases):
 
 ```shell
 git checkout <tag>
@@ -55,7 +55,7 @@ There are a couple ways you can create a static frame application.
 
 #### One way: the Node package
 
-Use the [npm package](https://www.npmjs.com/package/uw-frame). See the [widget creator](https://github.com/UW-Madison-DoIT/widget-creator) app for an example that uses the package.
+Use the [npm package](https://www.npmjs.com/package/@uportal/app-framework). See the [widget creator](https://github.com/UW-Madison-DoIT/widget-creator) app for an example that uses the package.
 
 #### Another way: the Docker container
 
@@ -71,4 +71,4 @@ FROM myuw/frame
 COPY ./someapp /data/my-app
 ```
 
-See the [Dockerfile](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/Dockerfile) for specifics.
+See the [Dockerfile](https://github.com/uPortal-Project/uportal-app-framework/blob/master/Dockerfile) for specifics.

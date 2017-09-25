@@ -1,5 +1,5 @@
 {
-  "name": "@uportal/uportal-app-framework",
+  "name": "@uportal/app-framework",
   "version": "6.0.0",
   "description": "Application Framework for uPortal",
   "scripts": {
@@ -31,7 +31,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/UW-Madison-DoIT/uw-frame.git"
+    "url": "https://github.com/uPortal-Project/uportal-app-framework.git"
   },
   "keywords": [
     "uportal-app-framework",
@@ -61,9 +61,9 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/UW-Madison-DoIT/uw-frame/issues"
+    "url": "https://github.com/uPortal-Project/uportal-app-framework/issues"
   },
-  "homepage": "https://github.com/UW-Madison-DoIT/uw-frame",
+  "homepage": "https://github.com/uPortal-Project/uportal-app-framework",
   "devDependencies": {
     "@commitlint/cli": "^3.0.4",
     "@commitlint/config-angular": "^3.0.4",
