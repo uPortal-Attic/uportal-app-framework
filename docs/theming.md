@@ -3,13 +3,13 @@
 The theming system is pretty straightforward. You can have your own skin in uportal-app-framework with minimal effort. We highly
 encourage you to contribute back your theme to this project so you don't have to manage an independent fork of uportal-app-framework.
 
-For a step-by-step exercise in setting up a theme, see [`skinning.md`](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/docs/theming.md).
+For a step-by-step exercise in setting up a theme, see [`skinning.md`](skinning.md).
 
 ## Configuring a theme
 
 ### 1. Add an entry to the THEME constant
 
-Configure your entry in the `THEME` constant located in [`frame-config.js`](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/components/js/frame-config.js).
+Configure your entry in the `THEME` constant located in [`frame-config.js`](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/js/frame-config.js).
 It should look something like :
 
 <!-- eslint-disable no-unused-vars -->
@@ -52,7 +52,7 @@ var example = {
 + `subtitle` (optional): A subtitle that is shown as subtext for the app (e.g. "beta"). Subtitles should be no longer than 15 characters.
 + `ariaLabelTitle`: The aria label put in place of the theme title
 + `crestalt`: The crest alt text. This should be the name of your frame app (i.e. "MyUW Portal").
-+ `group`: Groups this app should be enabled for automatically. Not sure? Ask the MyUW dev team: <mailto:myuw-infra@office365.wisc.edu>.
++ `group`: Groups this app should be enabled for automatically. Not sure? Ask the dev list: <https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev>.
 + `mascotImg` (optional): See documentation about the mascot for announcements [here](announcements.md).
 + `profileUrl` (optional): Specify a URL for a "Profile" app/page, where users can view and/or update their personal information.
 + `footerLinks`: An array of links which appear in the footer -- typically contains links to the campus help desk and feedback portal.

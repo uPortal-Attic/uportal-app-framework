@@ -29,7 +29,7 @@ define([], function() {
 ```
 
 It just returns an object with paths and shims with the relative path (webapp being the working directory here) to the artifacts.
-To learn more about how `app-config.js`works, check out [/config.js](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/components/config.js) in uportal-app-framework's source code. It takes the returned object from `app-config.js` and merges it in with the frame configuration.
+To learn more about how `app-config.js`works, check out [/config.js](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/config.js) in uportal-app-framework's source code. It takes the returned object from `app-config.js` and merges it in with the frame configuration.
 
 ## Injecting the angular module into your app
 

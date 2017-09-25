@@ -23,10 +23,10 @@ Your application can overwrite any constant listed below by adding it to the `js
 ### SERVICE_LOC
 
 + `aboutURL` : If your application has some data that it would like to show in `/about` in addition to the frame information, provide that here.
-+ `sessionInfo` : This is where the frame gets data about the user that is logged in. For an example of the expected output, see [this.](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/components/staticFeeds/session.json)
-+ `messagesURL` : This is an end point to a feed of messages. See [this](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/components/staticFeeds/sample-messages.json) for the example file.
++ `sessionInfo` : This is where the frame gets data about the user that is logged in. For an example of the expected output, see [this.](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/session.json)
++ `messagesURL` : This is an end point to a feed of messages. See [this](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/sample-messages.json) for the example file.
 + `kvURL` : This is the key value service. The key value service is a way to store information in a key/value store. The store should support GET and PUT on the same URL, where the URL includes the key. If you want this but not sure where to start, we wrote [a microservice called KeyValueStore](https://github.com/UW-Madison-DoIT/KeyValueStore) that you can use. You can also use the MyUW version under the storage context, but please contact MyUW devs before using for your application.
-+ `groupURL` : This is a service which you can use to get group information. Currently this only used for notifications. See [this](https://github.com/UW-Madison-DoIT/uw-frame/blob/master/components/staticFeeds/groups.json) for an example.
++ `groupURL` : This is a service which you can use to get group information. Currently this only used for notifications. See [this](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/groups.json) for an example.
 + `loginSilentURL` : See `APP_FLAGS.loginOnLoad` for usage.
 + `portalLayoutRestEndpoint` : If set and you change your skin in beta settings, it will also set the skin in uPortal. e.g.: `'/portal/api/layout'`
 
@@ -108,4 +108,4 @@ In version 2.2.1 we added the option to add key/value pairs to existing categori
 application has additional `APP_FLAGS` or `SERVICE_LOC` but you don't want to create another value service just for that. However, if you have
 a lot of these it may be wise just to create an app specific value service.
 
-If you have questions please [ask the MyUW team](mailto:myuw-infra@office365.wisc.edu).
+If you have questions please [ask the development list](https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev).
