@@ -34,8 +34,6 @@ This package includes the `uPortal-home` header, settings, footer, and some reus
 
 Learn more about the reusable components on our [docs page](http://uportal-project.github.io/uportal-app-framework/)
 
-`uPortal-app-framework` is somewhere in the process of renaming from its old `uw-frame` name.
-
 ## Requirements
 
 * [node](https://nodejs.org/en/)
