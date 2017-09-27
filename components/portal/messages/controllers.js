@@ -573,6 +573,8 @@ define(['angular'], function(angular) {
               actionType = addToHome;
           }
 
+          miscService.pushGAEvent('mascot', actionType, actionButton.url);
+
           if (actionType == addToHome) {
             var slash = url.lastIndexOf('/') + 1;
             var fName = url.substr(slash);
