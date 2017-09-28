@@ -64,7 +64,7 @@
             <md-button class="md-default"
                        ng-if="announcement.moreInfoButton"
                        aria-label="{{announcement.titleShort}}"
-                       ng-click="pushGAEvent('feature', 'more info', {{announcement.id}});"
+                       ng-click="vm.moreInfoButton(announcement.moreInfoButton)""
                        ng-href="{{ announcement.moreInfoButton.url }}"
                        target="_blank"
                        rel="noopener noreferrer">

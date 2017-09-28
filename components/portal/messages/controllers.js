@@ -563,6 +563,11 @@ define(['angular'], function(angular) {
           // Call service to save results
           messagesService.setMessagesSeen(allSeenMessageIds,
             seenAnnouncementIds, 'dismiss');
+          miscService.pushGAEvent('mascot', 'dismissed', id);
+        };
+
+        vm.moreInfoButton = function(actionButton) {
+          miscService.pushGAEvent('mascot', 'more info', actionButton.url);
         };
 
         vm.takeButtonAction = function(actionButton) {
