@@ -103,7 +103,7 @@ While we're proud of what we've accomplished in this major release, we hope to r
 * [Adds a feature exercise](https://github.com/uPortal-Project/uportal-app-framework/pull/455)
 * [Acknowledge Apereo Welcoming Policy](https://github.com/uPortal-Project/uportal-app-framework/pull/461)
 * [Add Christian Murphy as committer](https://github.com/uPortal-Project/uportal-app-framework/pull/464)
-* [Move widget documentation from angularjs-portal](https://github.com/uPortal-Project/uportal-app-framework/pull/471)
+* [Move widget documentation from uportal-home](https://github.com/uPortal-Project/uportal-app-framework/pull/471)
 * [MUMUP-2932 Adds missing png files to docs](https://github.com/uPortal-Project/uportal-app-framework/pull/476)
 * [Remove Manifest group reference](https://github.com/uPortal-Project/uportal-app-framework/pull/477)
 * [Guide towards sentence case](https://github.com/uPortal-Project/uportal-app-framework/pull/478)
@@ -237,7 +237,7 @@ Adjusts link colors for themes #377
 [Fixes documentation bugs](https://github.com/uPortal-Project/uportal-app-framework/pull/363)
 [Normalizes headings in releasing.md](https://github.com/uPortal-Project/uportal-app-framework/pull/364)
 [Continues documentation cleanup](https://github.com/uPortal-Project/uportal-app-framework/pull/366)
-[Normalizes Jekyll theme to match angularjs-portal Jekyll Theme](https://github.com/uPortal-Project/uportal-app-framework/pull/368)
+[Normalizes Jekyll theme to match uportal-home Jekyll Theme](https://github.com/uPortal-Project/uportal-app-framework/pull/368)
 [Fixes documentation link bugs](https://github.com/uPortal-Project/uportal-app-framework/pull/369)
 
 ### Continue support of Windows build environments

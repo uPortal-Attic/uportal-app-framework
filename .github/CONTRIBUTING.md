@@ -6,7 +6,7 @@ The [Apereo Welcoming Policy][] applies. Cf. [CODE_OF_CONDUCT.md][]
 
 ## Contributor License Agreements
 
-As an [incubating, aspiring Apereo product][AngularJS-portal website on incubating], `uportal-app-framework` requires contributors and contributions to comply with [Apereo inbound intellectual property licensing practices][].
+As an [incubating, aspiring Apereo product][uportal-home website on incubating], `uportal-app-framework` requires contributors and contributions to comply with [Apereo inbound intellectual property licensing practices][].
 
 The short version:
 
@@ -22,7 +22,7 @@ The long version:
 
 *Please* provide feedback about how these practices impact your ability to contribute. You might voice that feedback on the [Apereo licensing discussion Google Group][] or in any other way in which you are comfortable.
 
-[AngularJS-portal website on incubating]: http://uw-madison-doit.github.io/angularjs-portal/apereo-incubation.html
+[uportal-home website on incubating]: http://uportal-project.github.io/uportal-home/apereo-incubation.html
 [Apereo inbound intellectual property licensing practices]: https://www.apereo.org/licensing/practices
 [Apereo Individual Contributor License Agreement]: https://www.apereo.org/sites/default/files/Licensing%20Agreements/apereo-icla.pdf
 [Apereo Corporate Contributor License Agreement]: https://www.apereo.org/sites/default/files/Licensing%20Agreements/apereo-ccla.pdf
