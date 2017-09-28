@@ -103,7 +103,7 @@ Displays a launch button for portal widgets that fits their width and visual sty
 * **href**: Where you want them to go
 * **target**: Open in new window, new tab, or the same window
 * **button-text**: Launch app text (e.g. "Launch App," "Go to \[your site]," etc. See our
-[launch-button best practices](http://uw-madison-doit.github.io/angularjs-portal/latest/#/md/widget-launch-button) to
+[launch-button best practices](http://uportal-project.github.io/uportal-home/latest/#/md/widget-launch-button) to
 learn how to make this text useful to your users.
 * **aria-label**: (optional) Text for screen readers. Use this to clarify the context of the launch button, if necessary (e.g. "Launch Time and Absence app within MyUW")
 
