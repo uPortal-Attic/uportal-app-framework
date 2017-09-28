@@ -3,7 +3,7 @@
 Questions? [Get in touch][uportal-user@].
 
 <!-- current project status -->
-[![npm version](https://badge.fury.io/js/%40uportal%2Fapp-framework.svg)](https://badge.fury.io/js/%40uportal%2Fuportal-app-framework)
+[![npm version](https://badge.fury.io/js/%40uportal%2Fapp-framework.svg)](https://badge.fury.io/js/%40uportal%2Fapp-framework)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework)
 [![Build Status](https://travis-ci.org/uPortal-Project/uportal-app-framework.svg)](https://travis-ci.org/uPortal-Project/uportal-app-framework)
 [![Coverage Status](https://coveralls.io/repos/uPortal-Project/uportal-app-framework/badge.svg?branch=master&service=github)](https://coveralls.io/github/uPortal-Project/uportal-app-framework?branch=master)
@@ -30,7 +30,7 @@ Questions? [Get in touch][uportal-user@].
 
 This package includes the `uPortal-home` header, settings, footer, and some reusable components :
 
-![uw-frame screenshot](docs/uw-frame-screenshot.png "UW Frame")
+![uPortal app framework screenshot](docs/img/uportal-app-framework-screenshot.png "uPortal app framework")
 
 Learn more about the reusable components on our [docs page](http://uportal-project.github.io/uportal-app-framework/)
 
