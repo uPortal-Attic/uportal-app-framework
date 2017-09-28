@@ -86,6 +86,7 @@
                 <md-button class="md-raised md-accent"
                            ng-show="notification.actionButton"
                            ng-href="{{ notification.actionButton.url }}"
+                           ng-click="vm.pushGAEvent('Notification', 'Action button bell', notification.id);""
                            target="_blank"
                            rel="noopener noreferrer">
                   {{ notification.actionButton.label }}

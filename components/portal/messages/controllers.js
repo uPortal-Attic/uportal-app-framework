@@ -563,6 +563,11 @@ define(['angular'], function(angular) {
           // Call service to save results
           messagesService.setMessagesSeen(allSeenMessageIds,
             seenAnnouncementIds, 'dismiss');
+          miscService.pushGAEvent('mascot', 'dismissed', id);
+        };
+
+        vm.moreInfoButton = function(actionButton) {
+          miscService.pushGAEvent('mascot', 'more info', actionButton.url);
         };
 
         vm.takeButtonAction = function(actionButton) {
@@ -572,6 +577,8 @@ define(['angular'], function(angular) {
           if (url.indexOf(addToHome) !== -1) {
               actionType = addToHome;
           }
+
+          miscService.pushGAEvent('mascot', actionType, actionButton.url);
 
           if (actionType == addToHome) {
             var slash = url.lastIndexOf('/') + 1;
