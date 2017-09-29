@@ -127,14 +127,14 @@
         <span class="notification-message">{{ priority.title }}</span>
         <md-button class="md-raised md-accent"
                    ng-if="priority.actionButton"
-                   ng-href="priority.actionButton.url"
+                   ng-href="{{ priority.actionButton.url }}"
                    target="_blank"
                    rel="noopener noreferrer">
           {{ priority.actionButton.label }}
         </md-button>
         <md-button class="md-raised"
                    ng-if="priority.moreInfoButton"
-                   ng-href="priority.moreInfoButton.url"
+                   ng-href="{{ priority.moreInfoButton.url }}"
                    target="_blank"
                    rel="noopener noreferrer">
           {{ priority.moreInfoButton.label }}
