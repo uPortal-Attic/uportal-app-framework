@@ -172,7 +172,7 @@ define(['angular'], function(angular) {
                   } else if (objectToFind) {
                     return message;
                   }
-                  return message;
+                  return;
                 }).catch(function(error) {
                   $log.warn('Error retrieving data for notification');
                   $log.error(error);
