@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [6.0.2][] - 2017-09-29
+* Properly bind URLs in priority notifications (#553)
+* Eliminate gap between top bar on mobile (#552)
+* Add Google Analytics events to notifications (#550)
+* renaming angularjs-portal to uportal-home (#549)
+* correct references uportal app framework (#548)
+
 ## [6.0.1][] - 2017-09-25
 * Cleaning up project name relicts (#538, #539, #540, #541, #542)
 * Fix typo in time-sensitive widget (#537)
@@ -304,7 +311,8 @@ break compatibility with some older components.  If you used any angular-ui-boot
 - Added ability to have a name for the default theme (#336)
 - Fixed format for announcement end date (#332)
 
-[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.1...HEAD
+[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.2...HEAD
+[6.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v5.2.1...v6.0.0
 [5.2.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v5.2.0...v5.2.1
