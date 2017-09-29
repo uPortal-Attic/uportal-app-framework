@@ -49,7 +49,10 @@
         "label": "Take action",
         "url": "http://www.google.com"
       },
-      "moreInfoButton": null,
+      "moreInfoButton": {
+        "label": "More info",
+        "url": "http://www.google.com"
+      },
       "confirmButton": null
     },
     {
