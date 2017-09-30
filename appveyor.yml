@@ -30,14 +30,15 @@ install:
   - npm install
 test_script:
   - npm run build-static
-  - npm test
+  # TODO use FirefoxHeadless when Windows support lands
+  # TODO test with Edge when AppVeyor includes it
+  - npm test -- --browsers ChromeHeadless,Firefox,IE
   - npm run lint-js
   - npm run lint-css
   - npm run lint-md
   - mvn license:check
   - mvn clean install
 cache:
-  - node_modules
   - '%APPDATA%\npm-cache'
   - C:\Users\appveyor\.m2\ -> pom.xml
 
