@@ -33,22 +33,23 @@
         <md-tab-body>
           <md-content>
             <md-list class="notifications-list" flex>
-              <md-list-item class="secondary-button-padding notification-item"
+              <md-list-item class="notification-item"
                             ng-repeat="notification in vm.notifications | orderBy:'priority'"
-                            ng-class="{ priority: notification.priority === 'high' }"
                             layout="row"
                             layout-align="start center">
 
                 <notifications-list-item></notifications-list-item>
 
                 <!-- DISMISS BUTTON -->
-                <md-button class="md-icon-button md-secondary"
-                           ng-hide="notification.dismissible === false"
-                           ng-click="vm.dismissNotification(notification)"
-                           aria-label="dismiss this notification">
-                  <md-icon>clear</md-icon>
-                  <md-tooltip md-delay="500">Dismiss notification</md-tooltip>
-                </md-button>
+                <div class="notifications-list__action">
+                  <md-button class="md-icon-button"
+                             ng-hide="notification.dismissible === false"
+                             ng-click="vm.dismissNotification(notification)"
+                             aria-label="dismiss this notification">
+                    <md-icon>clear</md-icon>
+                    <md-tooltip md-delay="500">Dismiss notification</md-tooltip>
+                  </md-button>
+                </div>
               </md-list-item>
             </md-list>
           </md-content>
@@ -62,21 +63,22 @@
         <md-tab-body>
           <md-content>
             <md-list class="notifications-list" flex>
-              <md-list-item class="secondary-button-padding notification-item"
+              <md-list-item class="notification-item"
                             ng-repeat="notification in vm.dismissedNotifications | orderBy:['-priority', '-id']"
-                            ng-class="{ priority: notification.priority === 'high' }"
                             layout="row"
                             layout-align="start center">
 
                 <notifications-list-item></notifications-list-item>
 
                 <!-- RESTORE BUTTON -->
-                <md-button class="md-icon-button md-secondary"
-                           ng-click="vm.restoreNotification(notification)"
-                           aria-label="restore this notification">
-                  <md-icon>undo</md-icon>
-                  <md-tooltip md-delay="500">Restore notification</md-tooltip>
-                </md-button>
+                <div class="notification-list__action">
+                  <md-button class="md-icon-button"
+                             ng-click="vm.restoreNotification(notification)"
+                             aria-label="restore this notification">
+                    <md-icon>undo</md-icon>
+                    <md-tooltip md-delay="500">Restore notification</md-tooltip>
+                  </md-button>
+                </div>
               </md-list-item>
             </md-list>
           </md-content>
