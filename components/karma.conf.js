@@ -40,11 +40,23 @@ module.exports = function(config) {
 
         frameworks: ['jasmine', 'requirejs'],
 
+        // TODO: remove this after official support is added
+        customLaunchers: {
+            FirefoxHeadless: {
+                base: 'Firefox',
+                flags: ['-headless'],
+            },
+        },
+
         browsers: ['ChromeHeadless'], // or 'Chrome'
 
         plugins: [
             'karma-htmlfile-reporter',
             'karma-chrome-launcher',
+            'karma-edge-launcher',
+            'karma-firefox-launcher',
+            'karma-ie-launcher',
+            'karma-safari-launcher',
             'karma-jasmine',
             'karma-requirejs',
             'karma-coverage',
