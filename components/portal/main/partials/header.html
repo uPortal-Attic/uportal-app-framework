@@ -73,7 +73,7 @@
 
     <!-- SEARCH BUTTON AND USERNAME MENU XS-ONLY -->
     <div layout="row" layout-align="end center" flex-xs="60" class="top-bar-controls-xs" hide-gt-xs>
-      <search ng-show="APP_FLAGS.showSearch" mode="mobile-search" layout="row" layout-align="end center" hide-gt-xs></search>
+      <search ng-if="APP_FLAGS.showSearch" mode="mobile-search" layout="row" layout-align="end center" hide-gt-xs></search>
       <username layout="row" layout-align="start center"></username>
     </div>
 
