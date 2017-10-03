@@ -24,12 +24,12 @@ define(['angular'], function(angular) {
          * THOU SHALT INCREMENT THIS VERSION NUMBER
          * IF THOU CHANGEST ANY OF THE THEMES BELOW
          */
-        'themeVersion': 9,
+        'themeVersion': 10,
         'themes': [
           {
             'name': 'default',
             'portalSkinKey': 'default',
-            'group': 'default',
+            'group': 'uPortal',
             'crest': 'img/apereo-logo.png',
             'title': 'uPortal',
             'subtitle': null,
