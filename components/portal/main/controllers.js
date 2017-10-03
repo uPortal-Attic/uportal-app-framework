@@ -151,20 +151,9 @@ define(['angular', 'require'], function(angular, require) {
       var vm = this;
       vm.navbarCollapsed = true;
       vm.showLogout = true;
-      $scope.showSearch = false;
-      $scope.showSearchFocus = false;
+
       $scope.APP_FLAGS = APP_FLAGS;
       $scope.MISC_URLS = MISC_URLS;
-
-      vm.toggleSearch = function() {
-        $scope.showSearch = !$scope.showSearch;
-        $scope.showSearchFocus = !$scope.showSearchFocus;
-        vm.navbarCollapsed = true;
-      };
-      vm.toggleMenu = function() {
-        $scope.showSearch = false;
-        vm.navbarCollapsed = !vm.navbarCollapsed;
-      };
   }])
 
   /* Footer */
