@@ -20,7 +20,7 @@
 -->
 <div class="my-uw" md-theme="{{ portal.theme.name || 'default' }}" tabindex="0" aria-live="polite" aria-atomic="false">
   <div class="my-uw-body">
-    <portal-header ng-class="{'has-priority-nots': headerCtrl.hasPriorityNotifications}" ng-controller="PortalHeaderController as headerCtrl"></portal-header>
+    <portal-header ng-class="{'has-priority-nots': mainCtrl.hasPriorityNotifications}" ng-controller="PortalHeaderController as headerCtrl"></portal-header>
 
     <div class="page-content" layout="column" tabindex="0">
       <div role="main" class="region-main" class="no-padding">
@@ -29,6 +29,8 @@
     </div>
 
   </div>
-
+  <!-- MAIN MENU -->
+  <main-menu main-ctrl="mainCtrl"></main-menu>
+  <!-- FOOTER -->
   <site-footer class="my-uw" tabindex="0"></site-footer>
 </div>

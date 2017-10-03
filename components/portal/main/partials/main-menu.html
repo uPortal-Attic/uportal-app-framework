@@ -1,0 +1,27 @@
+<md-sidenav class="md-sidenav-left main-menu__sidenav"
+            md-component-id="main-menu"
+            md-is-locked-option="false"
+            md-whiteframe="4">
+  <div class="main-menu__mobile-bar" layout="row" layout-align="end center">
+    <md-button href="features" ng-show="mainCtrl.hasUnseenAnnouncements" ng-click="mainCtrl.hasUnseenAnnouncements = false;vm.closeMainMenu();" aria-label="view all announcements">
+      <span><md-icon>new_releases</md-icon></span>
+      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">New features</md-tooltip>
+    </md-button>
+    <md-button ng-href="{{ vm.notificationsPageUrl }}" ng-click="vm.closeMainMenu();" aria-label="view all notifications">
+      <span><md-icon>notifications</md-icon></span>
+      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
+    </md-button>
+    <username></username>
+  </div>
+  <md-menu-content>
+    <md-subheader class="md-primary" ng-if="vm.appName != ''">{{ vm.appName }}</md-subheader>
+    <md-menu-item ng-repeat="item in vm.menuItems">
+      <md-button ng-if="item.url" ng-href="{{ item.url }}" ng-click="vm.closeMainMenu();" layout="row" layout-align="start center">
+          <span ng-if="item.icon">
+            <md-icon>{{ item.icon }}</md-icon>
+          </span>
+        <span>{{ item.label }}</span>
+      </md-button>
+    </md-menu-item>
+  </md-menu-content>
+</md-sidenav>

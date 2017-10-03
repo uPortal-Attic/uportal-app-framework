@@ -145,9 +145,9 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Header */
   .controller('PortalHeaderController', ['$rootScope', '$scope', '$location',
-    'APP_FLAGS', 'MISC_URLS', 'messagesService',
-    function($rootScope, $scope, $location, APP_FLAGS, MISC_URLS,
-             messagesService) {
+    '$mdSidenav', 'APP_FLAGS', 'MISC_URLS',
+    function($rootScope, $scope, $location, $mdSidenav,
+             APP_FLAGS, MISC_URLS) {
       var vm = this;
       vm.navbarCollapsed = true;
       vm.showLogout = true;
@@ -165,6 +165,52 @@ define(['angular', 'require'], function(angular, require) {
         $scope.showSearch = false;
         vm.navbarCollapsed = !vm.navbarCollapsed;
       };
+  }])
+
+  /* Side navigation controller */
+  .controller('MainMenuController', ['$rootScope', '$scope', '$mdSidenav',
+    'APP_OPTIONS', 'MESSAGES', 'NAMES',
+    function($rootScope, $scope, $mdSidenav, APP_OPTIONS, MESSAGES, NAMES) {
+      var vm = this;
+
+      // Scope variables
+      vm.menuItems = [];
+      vm.appName = '';
+      vm.notificationsPageUrl = '';
+
+      // ////////////////
+      // Scope methods //
+      // ////////////////
+      vm.isMenuOpen = function() {
+        return $mdSidenav('main-menu').isOpen();
+      };
+
+      vm.closeMainMenu = function() {
+        if (vm.isMenuOpen()) {
+          $mdSidenav('main-menu').close();
+        }
+      };
+
+      vm.showMainMenu = function() {
+        $mdSidenav('main-menu').toggle();
+      };
+
+      // ////////////////
+      // Local methods //
+      // ////////////////
+      var init = function() {
+        if (APP_OPTIONS.appMenuItems && APP_OPTIONS.appMenuItems.length > 0) {
+          vm.menuItems = APP_OPTIONS.appMenuItems;
+        }
+        if (NAMES.title) {
+          vm.appName = NAMES.title;
+        }
+        if (MESSAGES.notificationsPageURL) {
+          vm.notificationsPageUrl = MESSAGES.notificationsPageURL;
+        }
+      };
+
+      init();
   }])
 
   /* Footer */

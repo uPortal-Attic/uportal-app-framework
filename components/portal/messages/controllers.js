@@ -450,6 +450,12 @@ define(['angular'], function(angular) {
             vm.announcements = separatedAnnouncements.unseen;
             // Set the mascot image
             setMascot();
+            // Set PortalMainController variable so main menu knows there
+            // are unseen announcements
+            if ($scope.headerCtrl) {
+              $scope.headerCtrl.hasUnseenAnnouncements =
+                vm.announcements.length > 0;
+            }
           } else {
             // Filter out low priority announcements
             popups = $filter('filter')(
@@ -558,6 +564,11 @@ define(['angular'], function(angular) {
             vm.announcements,
             id
           );
+          // Notify up the chain so main menu knows about it
+          if ($scope.headerCtrl) {
+            $scope.headerCtrl.hasUnseenAnnouncements =
+              vm.announcements.length > 0;
+          }
           // Add to seenAnnouncementsIds
           seenAnnouncementIds.push(id);
           // Call service to save results
