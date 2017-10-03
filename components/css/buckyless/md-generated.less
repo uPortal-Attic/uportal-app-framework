@@ -253,6 +253,16 @@ main-menu {
     .md-button {
       min-width: 48px;
       margin: 0 8px 0 0;
+
+      .main-menu__high-priority {
+        position: absolute;
+        top: 0;
+        left: 4px;
+
+        .material-icons {
+          font-size: 16px;
+        }
+      }
     }
 
     .username-menu {
@@ -287,6 +297,11 @@ main-menu {
   md-sidenav.main-menu__sidenav {
     @media (max-width: @xs) {
       z-index: 80;
+    }
+    @media (min-width: @xs) {
+      &.has-priority-notifications {
+        padding-top: 48px;
+      }
     }
   }
 }

@@ -1,4 +1,5 @@
 <md-sidenav class="md-sidenav-left main-menu__sidenav"
+            ng-class="{ 'has-priority-notifications' : mainCtrl.hasPriorityNotifications }"
             md-component-id="main-menu"
             md-is-locked-option="false"
             md-whiteframe="4">
@@ -7,7 +8,16 @@
       <span><md-icon>new_releases</md-icon></span>
       <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">New features</md-tooltip>
     </md-button>
-    <md-button ng-href="{{ vm.notificationsPageUrl }}" ng-click="vm.closeMainMenu();" aria-label="view all notifications">
+    <!-- Regular notifications button -->
+    <md-button ng-href="{{ vm.notificationsPageUrl }}" ng-click="vm.closeMainMenu();" aria-label="view all notifications"  ng-if="!mainCtrl.hasPriorityNotifications">
+      <span><md-icon>notifications</md-icon></span>
+      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
+    </md-button>
+    <!-- High priority notifications button -->
+    <md-button ng-href="{{ vm.notificationsPageUrl }}" ng-click="vm.closeMainMenu();" aria-label="you have important notifications"  ng-if="mainCtrl.hasPriorityNotifications">
+      <span class="main-menu__high-priority">
+        <md-icon class="md-warn">error</md-icon>
+      </span>
       <span><md-icon>notifications</md-icon></span>
       <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
     </md-button>
