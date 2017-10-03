@@ -33,7 +33,7 @@ Tada! The pull requests in this release now say the version they released in rig
 
 ### Finalize documentation
 
-Before cutting the release, do what you can to square away the documentation for the release. Add the pull requests from the milestone to the [CHANGELOG](../CHANGELOG.md).
+Before cutting the release, do what you can to square away the documentation for the release. Add the pull requests from the milestone to the [CHANGELOG][].
 
 ### Java release
 
@@ -56,7 +56,7 @@ git push origin uportal-app-framework-maven-<version>
 
 ### Node release
 
-+ Update the npm package by running `npm version <update_type>` where <update_type> is based on the selection above: patch, minor, or major. This will: change the version in `package.json`, commit that (locally), and make a tag in the format `vx.y.z`. Read more about that [on npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages#updating-the-package).
++ Update the npm package by running `npm version <update_type>` where <update_type> is based on the selection above: patch, minor, or major. This will: change the version in `package.json`, commit that (locally), and make a tag in the format `vx.y.z`. [Read more about publishing on npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages#updating-the-package).
 + Deploy npm package to the world; `npm publish`. (if you don't have [publish rights][uportal-app-framework access on npm] contact authors)
 + Push git changes to the github via `git push origin master` and `git push origin <tag>`
 
@@ -80,7 +80,7 @@ docker push docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:x.y.z
 
 ### Update My App Seed
 
-[My App Seed][my-app-seed] is a template for developers to use when creating new frame apps. When cutting a release, be sure to update the [pom.xml][my-app-seed pom] so future adopters can start developing using the latest code.
+[My App Seed][my-app-seed] is a template for developers to use when creating new frame apps. When cutting a release, be sure to update the [my-app-seed pom][] so future adopters can start developing using the latest code.
 
 ### Updating JIRA issues
 
@@ -103,6 +103,7 @@ create the next patch version.
 [Semantic Versioning]: http://semver.org/
 [uportal-app-framework closed pull requests]: https://github.com/uPortal-Project/uportal-app-framework/pulls?q=is%3Apr+is%3Aclosed
 [uportal-app-framework milestones]: https://github.com/uPortal-Project/uportal-app-framework/milestones
+[CHANGELOG]: ../CHANGELOG.md
 [uportal-app-framework access on npm]: https://www.npmjs.com/package/@uportal/app-framework/access
 [central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
 [uportal-app-framework releases]: https://github.com/uPortal-Project/uportal-app-framework/releases
