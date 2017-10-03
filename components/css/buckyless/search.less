@@ -93,5 +93,54 @@ search {
         }
       }
     }
+
+    &.myuw-search__mobile {
+      height: 56px;
+      max-width: 100%;
+      width: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 6px 4px;
+      z-index: 80;
+
+      .md-button {
+        min-height: 44px;
+        min-width: 40px;
+
+        &.search-submit-xs {
+          position: absolute;
+          left: 0;
+        }
+
+        &.search-close-xs {
+          position: absolute;
+          right: 0;
+        }
+
+        .material-icons {
+          color: @black;
+        }
+      }
+
+      md-input-container {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: @white;
+        border-radius: 5px;
+
+        input.md-input {
+          margin: 0 40px;
+          height: 44px;
+        }
+
+        &.md-input-focused {
+          input.md-input {
+            border-color: transparent;
+          }
+        }
+      }
+    }
   }
 }
