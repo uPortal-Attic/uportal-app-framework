@@ -73,17 +73,9 @@
 
     <!-- SEARCH BUTTON AND USERNAME MENU XS-ONLY -->
     <div layout="row" layout-align="end center" flex-xs="60" class="top-bar-controls-xs" hide-gt-xs>
-      <md-button class="md-icon-button" aria-label="Toggle {{portal.theme.title}} search" ng-click="toggleSearch()">
-        <md-icon ng-if="!searchExpanded">search</md-icon>
-        <md-icon ng-if="searchExpanded">close</md-icon>
-        <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">
-          <span ng-if="!searchExpanded">Search</span>
-          <span ng-if="searchExpanded">Close search</span>
-        </md-tooltip>
-      </md-button>
+      <search ng-show="APP_FLAGS.showSearch" mode="mobile-search" layout="row" layout-align="end center" hide-gt-xs></search>
       <username layout="row" layout-align="start center"></username>
     </div>
-
 
     <!-- SEARCH BAR SM+ -->
     <div layout="row" flex-gt-xs="40" layout-align="center center" hide-xs>
@@ -99,7 +91,3 @@
     </div>
   </div>
 </md-toolbar>
-<!-- SEARCH BAR XS-ONLY -->
-<div class="search-xs" ng-class="{ 'search-expanded' : searchExpanded }" hide-gt-xs>
-  <search ng-show="APP_FLAGS.showSearch"></search>
-</div>
