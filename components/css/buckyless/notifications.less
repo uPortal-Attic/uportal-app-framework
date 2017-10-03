@@ -37,33 +37,48 @@
         background-color: rgba(0, 0, 0, 0.12);
       }
 
+      .notifications-list__action {
+        min-width: 60px;
+        text-align: right;
+      }
+
       notifications-list-item {
         width: 100%;
-      }
 
-      .notification-buttons {
-        display: flex;
-        margin: 0 8px;
+        .md-list-item-text {
+          padding: 16px 0;
 
-        .md-button {
-          @media (min-width: @xs) {
-            margin: 0 8px;
+          .notification__priority-message {
+            color: @grayscale8;
+            font-size: 12px;
+            margin-bottom: 6px;
+
+            .material-icons {
+              min-height: 18px;
+              min-width: 18px;
+              height: 18px;
+              width: 18px;
+              font-size: 18px;
+              line-height: 16px;
+              margin-left: -5px;
+            }
           }
-        }
-      }
 
-      a:not(.md-button):not(.btn):not(.launch-app-button) {
-        &:hover {
-          text-decoration: none;
-        }
-      }
+          .notification-buttons {
+            margin: 0 8px;
 
-      .md-list-item-text {
-        width: 90%;
-        padding: 16px 0;
+            @media (max-width: @xs) {
+              margin: 12px 0 0;
 
-        @media (max-width: @xs) {
-          width: 80%;
+              .md-button {
+                margin: 6px 16px 0 0;
+              }
+            }
+          }
+
+          @media (max-width: @xs) {
+            width: 90%;
+          }
         }
       }
 
