@@ -166,6 +166,7 @@ define(['angular', 'require'], function(angular, require) {
       vm.menuItems = [];
       vm.appName = '';
       vm.notificationsPageUrl = '';
+      vm.hideMainMenu = false;
 
       // ////////////////
       // Scope methods //
@@ -194,6 +195,8 @@ define(['angular', 'require'], function(angular, require) {
         } else if (APP_OPTIONS.appMenuItems
           && APP_OPTIONS.appMenuItems.length > 0) {
           vm.menuItems = APP_OPTIONS.appMenuItems;
+        } else {
+          vm.hideMainMenu = true;
         }
         // Set mobile menu header values
         if (NAMES.title) {
