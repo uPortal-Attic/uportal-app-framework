@@ -168,26 +168,33 @@ define(['angular', 'require'], function(angular, require) {
       vm.notificationsPageUrl = '';
       vm.hideMainMenu = false;
 
-      // ////////////////
-      // Scope methods //
-      // ////////////////
+      /**
+       * Check if the side nav menu is open
+       * @returns boolean
+       */
       vm.isMenuOpen = function() {
         return $mdSidenav('main-menu').isOpen();
       };
 
+      /**
+       * Close the side navigation menu (used in ng-click)
+       */
       vm.closeMainMenu = function() {
         if (vm.isMenuOpen()) {
           $mdSidenav('main-menu').close();
         }
       };
 
+      /**
+       * Toggle the side navigation menu
+       */
       vm.showMainMenu = function() {
         $mdSidenav('main-menu').toggle();
       };
 
-      // ////////////////
-      // Local methods //
-      // ////////////////
+      /**
+       * Check for menu configuration in app config
+       */
       var init = function() {
         // Use either custom template or defined menu items
         if (APP_OPTIONS.appMenuTemplateURL) {
