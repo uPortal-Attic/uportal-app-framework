@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [6.0.3][] - 2017-09-29
+* fix(messages): return nothing on filter fail (#554)
+
 ## [6.0.2][] - 2017-09-29
 * Properly bind URLs in priority notifications (#553)
 * Eliminate gap between top bar on mobile (#552)
