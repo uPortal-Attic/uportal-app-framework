@@ -188,9 +188,14 @@ define(['angular', 'require'], function(angular, require) {
       // Local methods //
       // ////////////////
       var init = function() {
-        if (APP_OPTIONS.appMenuItems && APP_OPTIONS.appMenuItems.length > 0) {
+        // Use either custom template or defined menu items
+        if (APP_OPTIONS.appMenuTemplateURL) {
+          vm.appMenuTemplate = require.toUrl(APP_OPTIONS.appMenuTemplateURL);
+        } else if (APP_OPTIONS.appMenuItems
+          && APP_OPTIONS.appMenuItems.length > 0) {
           vm.menuItems = APP_OPTIONS.appMenuItems;
         }
+        // Set mobile menu header values
         if (NAMES.title) {
           vm.appName = NAMES.title;
         }

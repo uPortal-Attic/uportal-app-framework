@@ -30,6 +30,7 @@ define(['angular'], function(angular) {
         })
         .value('APP_OPTIONS', {
             'optionsTemplateURL': null,
+            'appMenuTemplateURL': null,
             'appMenuItems': [],
         })
         .value('SERVICE_LOC', {

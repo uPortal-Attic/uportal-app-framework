@@ -22,16 +22,12 @@ define(['angular'], function(angular) {
     .constant('OVERRIDE', {
       'APP_OPTIONS': {
         'optionsTemplateURL': 'portal/misc/partials/example-options.html',
+        'appMenuTemplateURL': 'portal/misc/partials/example-menu.html',
         'appMenuItems': [
           {
             'label': 'MyUW home',
             'icon': 'home',
             'url': '/web',
-          },
-          {
-            'label': 'About',
-            'icon': 'help',
-            'url': '/about',
           },
         ],
       },
