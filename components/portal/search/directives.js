@@ -29,6 +29,7 @@ define(['angular', 'require'], function(angular, require) {
         directiveMode: '@mode',
       },
       controller: 'PortalSearchController',
+      controllerAs: 'vm',
     };
   }]);
 });
