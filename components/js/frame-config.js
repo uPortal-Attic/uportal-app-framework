@@ -41,7 +41,7 @@ define(['angular'], function(angular) {
              },
           },
           {
-            'name': 'uw-madison',
+            'name': 'uwMadison',
             'portalSkinKey': 'uwMadison',
             'crest': 'img/uw-madison-crest.png',
             'title': 'MyUW',
@@ -120,7 +120,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-river-falls',
+            'name': 'uwRiverFalls',
             'portalSkinKey': 'uwRiverFalls',
             'crest': 'img/uwrf-logo.png',
             'title': 'MyUW',
@@ -179,7 +179,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-stevens-point',
+            'name': 'uwStevensPoint',
             'portalSkinKey': 'uwStevensPoint',
             'crest': 'img/uwsp-logo-52.png',
             'title': 'MyUW',
@@ -234,7 +234,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-milwaukee',
+            'name': 'uwMilwaukee',
             'portalSkinKey': 'uwMilwaukee',
             'crest': 'img/uwm-logo-52.png',
             'title': 'MyUW',
@@ -288,7 +288,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-whitewater',
+            'name': 'uwWhitewater',
             'portalSkinKey': 'uwWhitewater',
             'crest': 'img/uww-logo-52.png',
             'title': 'MyUW',
@@ -342,7 +342,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-stout',
+            'name': 'uwStout',
             'portalSkinKey': 'uwStout',
             'crest': 'img/uws-logo-52.png',
             'title': 'MyUW',
@@ -396,7 +396,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-oshkosh',
+            'name': 'uwOshkosh',
             'portalSkinKey': 'uwOshkosh',
             'crest': 'img/uw-oshkosh-2016.png',
             'title': 'MyUW',
@@ -468,7 +468,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-greenbay',
+            'name': 'uwGreenbay',
             'portalSkinKey': 'uwGreenBay',
             'crest': 'img/UWGB-logo-52.png',
             'title': 'MyUW',
@@ -540,7 +540,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-lacrosse',
+            'name': 'uwLaCrosse',
             'portalSkinKey': 'uwLaCrosse',
             'crest': 'img/uwl-round-56.jpg',
             'title': 'MyUW',
@@ -612,7 +612,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-parkside',
+            'name': 'uwParkside',
             'portalSkinKey': 'uwParkside',
             'crest': 'img/uw-parkside-logo-56.png',
             'title': 'MyUW',
@@ -684,7 +684,7 @@ define(['angular'], function(angular) {
               },
           },
           {
-            'name': 'uw-platteville',
+            'name': 'uwPlatteville',
             'portalSkinKey': 'uwPlatteville',
             'crest': 'img/uwp-logo-56.png',
             'title': 'MyUW',
@@ -756,7 +756,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-superior',
+            'name': 'uwSuperior',
             'portalSkinKey': 'uwSuperior',
             'crest': 'img/uw-superior-logo-112.jpg',
             'title': 'MyUW',
@@ -810,7 +810,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-eau-claire',
+            'name': 'uwEauClaire',
             'portalSkinKey': 'uwEauClaire',
             'crest': 'img/uw-eauclaire-logo-52.png',
             'title': 'MyUW',
@@ -883,7 +883,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-extension',
+            'name': 'uwExtension',
             'portalSkinKey': 'uwExtension',
             'crest': 'img/uwex-logo-white-52.png',
             'title': 'MyUW',
@@ -937,7 +937,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-colleges',
+            'name': 'uwColleges',
             'portalSkinKey': 'uwColleges',
             'crest': 'img/uw-colleges-56.png',
             'title': 'MyUW',
@@ -991,7 +991,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uw-system',
+            'name': 'uwSystem',
             'portalSkinKey': 'uwSystemAdministration',
             'crest': 'img/uw-system-logo-112.png',
             'title': 'MyUW',
