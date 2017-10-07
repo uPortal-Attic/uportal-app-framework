@@ -37,8 +37,6 @@ script :
   - mvn license:check
   - mvn clean install
 
-after_script: greenkeeper-lockfile-upload
-
 cache:
   directories:
     - $HOME/.m2
