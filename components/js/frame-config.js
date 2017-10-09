@@ -24,11 +24,11 @@ define(['angular'], function(angular) {
          * THOU SHALT INCREMENT THIS VERSION NUMBER
          * IF THOU CHANGEST ANY OF THE THEMES BELOW
          */
-        'themeVersion': 10,
+        'themeVersion': 11,
         'themes': [
           {
-            'name': 'default',
-            'portalSkinKey': 'default',
+            'name': 'uPortal',
+            'portalSkinKey': 'uPortal',
             'group': 'uPortal',
             'crest': 'img/apereo-logo.png',
             'title': 'uPortal',
@@ -468,7 +468,7 @@ define(['angular'], function(angular) {
             },
           },
           {
-            'name': 'uwGreenbay',
+            'name': 'uwGreenBay',
             'portalSkinKey': 'uwGreenBay',
             'crest': 'img/UWGB-logo-52.png',
             'title': 'MyUW',

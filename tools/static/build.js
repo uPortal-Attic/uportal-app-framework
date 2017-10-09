@@ -36,10 +36,10 @@ mkdirp('static/target/css/themes/', function(error) {
 });
 
 
-const themes = ['default', 'uwMadison', 'uwSystem', 'uwRiverFalls',
+const themes = ['uPortal', 'uwMadison', 'uwSystem', 'uwRiverFalls',
   'uwStevensPoint', 'uwMilwaukee', 'uwWhitewater', 'uwStout',
   'uwSuperior', 'uwPlatteville', 'uwParkside', 'uwOshkosh',
-  'uwGreenbay', 'uwLaCrosse', 'uwEauClaire', 'uwExtension',
+  'uwGreenBay', 'uwLaCrosse', 'uwEauClaire', 'uwExtension',
   'uwColleges'];
 
 // Render less and write to .css file for each theme

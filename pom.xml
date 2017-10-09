@@ -236,14 +236,14 @@
         <version>1.0.1</version>
         <executions>
           <execution>
-            <id>rename-default-file</id>
+            <id>rename-uPortal-file</id>
             <phase>compile</phase>
             <goals>
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/default.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/default.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uPortal.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uPortal.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -362,8 +362,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uwGreenbay.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uwGreenbay.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwGreenBay.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwGreenBay.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
