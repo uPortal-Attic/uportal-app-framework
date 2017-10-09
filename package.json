@@ -1,6 +1,6 @@
 {
   "name": "@uportal/app-framework",
-  "version": "6.0.3",
+  "version": "6.0.4",
   "description": "Application Framework for uPortal",
   "scripts": {
     "commitmsg": "commitlint -e",
