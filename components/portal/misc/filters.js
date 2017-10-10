@@ -98,7 +98,8 @@ define(['angular'], function(angular) {
     .filter('targetToRel', function() {
       return function(target) {
         var result = '';
-        if (target === TARGET_BLANK) {
+        if (target &&
+            target.trim().toUpperCase() === TARGET_BLANK.toUpperCase()) {
           result = REL_BLANK_FIX;
         }
         return result;
