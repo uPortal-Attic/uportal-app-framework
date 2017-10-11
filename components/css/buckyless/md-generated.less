@@ -296,13 +296,42 @@ main-menu {
   }
 
   md-sidenav.main-menu__sidenav {
+    .links-separated {
+      display: block;
+      padding: 12px 15px 12px 24px;
+      bottom: 0;
+      position: absolute;
+      width: 320px;
+
+      a {
+        color: @grayscale6;
+        cursor: pointer;
+        font-size: 12px;
+        padding: 2px 5px;
+        text-decoration: none;
+        white-space: nowrap;
+
+        &:hover {
+          color: @black;
+        }
+      }
+
+      @media (max-width: @xs) {
+        width: calc(100% - 56px);
+        min-width: calc(100% - 56px);
+        max-width: calc(100% - 56px);
+      }
+    }
+
     @media (max-width: @xs) {
       z-index: 80;
     }
 
     @media (min-width: @xs) {
+      padding-top: 56px;
+
       &.has-priority-notifications {
-        padding-top: 48px;
+        padding-top: 102px;
       }
     }
   }

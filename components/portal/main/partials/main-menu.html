@@ -23,7 +23,7 @@
             md-component-id="main-menu"
             md-is-locked-option="false"
             md-whiteframe="4">
-  <div class="main-menu__mobile-bar" layout="row" layout-align="end center">
+  <div class="main-menu__mobile-bar" layout="row" layout-align="end center" hide-gt-xs>
     <md-button href="features" ng-show="mainCtrl.hasUnseenAnnouncements" ng-click="mainCtrl.hasUnseenAnnouncements = false;vm.closeMainMenu();" aria-label="view all announcements">
       <span><md-icon>new_releases</md-icon></span>
       <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">New features</md-tooltip>
@@ -56,4 +56,9 @@
       </md-button>
     </md-menu-item>
   </md-menu-content>
+  <!-- Footer links -->
+  <md-divider></md-divider>
+  <div class="links-separated">
+    <a ng-repeat="link in vm.footerLinks" ng-href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer">{{ link.title }}</a>
+  </div>
 </md-sidenav>

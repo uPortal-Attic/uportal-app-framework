@@ -158,8 +158,9 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Side navigation controller */
   .controller('MainMenuController', ['$rootScope', '$scope', '$mdSidenav',
-    'APP_OPTIONS', 'MESSAGES', 'NAMES',
-    function($rootScope, $scope, $mdSidenav, APP_OPTIONS, MESSAGES, NAMES) {
+    '$window', 'APP_OPTIONS', 'FOOTER_URLS', 'MESSAGES', 'NAMES',
+    function($rootScope, $scope, $mdSidenav, $window, APP_OPTIONS,
+             FOOTER_URLS, MESSAGES, NAMES) {
       var vm = this;
 
       // Scope variables
@@ -167,10 +168,18 @@ define(['angular', 'require'], function(angular, require) {
       vm.appName = '';
       vm.notificationsPageUrl = '';
       vm.hideMainMenu = false;
+      vm.footerLinks = FOOTER_URLS;
+
+      // Close side nav on scroll to avoid awkward UI
+      $window.onscroll = function() {
+        if (vm.isMenuOpen()) {
+          vm.closeMainMenu();
+        }
+      };
 
       /**
        * Check if the side nav menu is open
-       * @returns boolean
+       * @return Boolean
        */
       vm.isMenuOpen = function() {
         return $mdSidenav('main-menu').isOpen();
@@ -211,6 +220,11 @@ define(['angular', 'require'], function(angular, require) {
         }
         if (MESSAGES.notificationsPageURL) {
           vm.notificationsPageUrl = MESSAGES.notificationsPageURL;
+        }
+        if ($rootScope.portal && $rootScope.portal.theme
+          && $rootScope.portal.theme.footerLinks) {
+          vm.footerLinks =
+            vm.footerLinks.concat($rootScope.portal.theme.footerLinks);
         }
       };
 

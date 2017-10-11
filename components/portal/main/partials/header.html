@@ -27,6 +27,7 @@
       <md-button class="menu-toggle" ng-controller="MainMenuController as vm" ng-click="vm.showMainMenu()" ng-class="{ 'hide-gt-xs' : vm.hideMainMenu }">
         <md-icon>menu</md-icon>
         <md-tooltip md-direction="bottom" md-delay="500" class="top-bar-tooltip">Menu</md-tooltip>
+        <notifications-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notifications-bell>
       </md-button>
 
       <!-- MyUW APP ICON AND TITLE -->
