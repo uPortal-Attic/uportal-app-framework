@@ -28,7 +28,7 @@ define(['angular'], function(angular) {
         'themes': [
           {
             'name': 'uPortal',
-            'portalSkinKey': 'uPortal',
+            'portalSkinKey': 'default',
             'group': 'uPortal',
             'crest': 'img/apereo-logo.png',
             'title': 'uPortal',
