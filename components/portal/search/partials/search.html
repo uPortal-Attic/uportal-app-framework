@@ -19,7 +19,7 @@
 
 -->
 <!-- Mobile search -->
-<form name="searchForm" class="myuw-search__mobile" ng-submit="vm.submit()" ng-if="directiveMode === 'mobile-search' && vm.searchExpanded">
+<form name="searchForm" class="myuw-search__mobile" ng-class="{ 'search-expanded' : vm.searchExpanded }" ng-submit="vm.submit()" ng-if="directiveMode === 'mobile-search'">
   <md-input-container class="md-block" md-no-float layout="row" layout-align="start center">
     <!-- submit xs-only-->
     <md-button class="md-icon-button search-submit-xs" ng-click="vm.submit()" aria-label="submit search" flex="10">
