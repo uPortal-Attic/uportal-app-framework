@@ -153,6 +153,8 @@ define(['angular'], function(angular) {
         vm.notificationsUrl = MESSAGES.notificationsPageURL;
         vm.status = 'View notifications';
         vm.isLoading = true;
+        vm.isNotificationsPage =
+          ($location.path() == MESSAGES.notificationsPageURL);
 
         // //////////////////
         // Event listeners //
