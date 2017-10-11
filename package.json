@@ -1,6 +1,6 @@
 {
   "name": "@uportal/app-framework",
-  "version": "6.0.3",
+  "version": "6.0.4",
   "description": "Application Framework for uPortal",
   "scripts": {
     "commitmsg": "commitlint -e",
@@ -65,7 +65,7 @@
   },
   "homepage": "https://github.com/uPortal-Project/uportal-app-framework",
   "devDependencies": {
-    "@commitlint/cli": "^3.0.4",
+    "@commitlint/cli": "^4.0.0",
     "@commitlint/config-angular": "^3.0.4",
     "autoprefixer": "^7.1.2",
     "commitizen": "^2.9.6",
@@ -76,7 +76,7 @@
     "eslint-config-google": "^0.9.1",
     "eslint-git-changes": "^2.0.0",
     "eslint-plugin-angular": "^3.0.0",
-    "eslint-plugin-compat": "^1.0.2",
+    "eslint-plugin-compat": "^2.0.1",
     "eslint-plugin-jasmine": "^2.2.0",
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-markdown": "^1.0.0-beta.4",

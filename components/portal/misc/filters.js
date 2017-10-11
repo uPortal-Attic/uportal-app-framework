@@ -20,6 +20,9 @@
 
 define(['angular'], function(angular) {
     var DEFAULT_TRUNCATE_LENGTH = 160;
+    var TARGET_SELF = '_self';
+    var TARGET_BLANK = '_blank';
+    var REL_BLANK_FIX = 'noopener noreferrer';
     return angular.module('portal.misc.filters', [])
 
     .filter('truncate', function() {
@@ -85,9 +88,19 @@ define(['angular'], function(angular) {
     })
     .filter('urlToTarget', function() {
       return function(url) {
-        var result = '_self';
+        var result = TARGET_SELF;
         if (url && url.indexOf('//') > -1) {
-          result = '_blank';
+          result = TARGET_BLANK;
+        }
+        return result;
+      };
+    })
+    .filter('targetToRel', function() {
+      return function(target) {
+        var result = '';
+        if (target &&
+            target.trim().toUpperCase() === TARGET_BLANK.toUpperCase()) {
+          result = REL_BLANK_FIX;
         }
         return result;
       };

@@ -19,50 +19,49 @@
 
 -->
 <!-- Mobile search -->
-<form name="searchForm" class="myuw-search__mobile" ng-submid="submit()" ng-if="directiveMode === 'mobile-search' && searchExpanded">
+<form name="searchForm" class="myuw-search__mobile" ng-class="{ 'search-expanded' : vm.searchExpanded }" ng-submit="vm.submit()" ng-if="directiveMode === 'mobile-search'">
   <md-input-container class="md-block" md-no-float layout="row" layout-align="start center">
     <!-- submit xs-only-->
-    <md-button class="md-icon-button search-submit-xs" ng-click="submit()" aria-label="submit search" flex="10">
+    <md-button class="md-icon-button search-submit-xs" ng-click="vm.submit()" aria-label="submit search" flex="10">
       <md-icon>search</md-icon>
       <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Submit</md-tooltip>
     </md-button>
     <input type="search"
            name="initialFilter"
            placeholder="Search {{portal.theme.title}}"
-           ng-model="initialFilter"
+           ng-model="vm.initialFilter"
            flex="80">
     <!-- close search xs-only-->
-    <md-button class="md-icon-button search-close-xs" ng-click="toggleSearch()" aria-label="close search bar" flex="10">
+    <md-button class="md-icon-button search-close-xs" ng-click="vm.toggleSearch()" aria-label="close search bar" flex="10">
       <md-icon>close</md-icon>
       <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Close</md-tooltip>
     </md-button>
   </md-input-container>
 </form>
-<md-button ng-if="directiveMode === 'mobile-search'" class="md-icon-button" aria-label="Open {{portal.theme.title}} search" ng-click="toggleSearch()">
+<md-button ng-if="directiveMode === 'mobile-search'" class="md-icon-button" aria-label="Open {{portal.theme.title}} search" ng-click="vm.toggleSearch()">
   <md-icon>search</md-icon>
   <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">
     <span>Search</span>
   </md-tooltip>
 </md-button>
 <!-- Desktop search -->
-<form name="searchForm" ng-submit="submit()" ng-if="directiveMode != 'mobile-search'">
+<form name="searchForm" ng-submit="vm.submit()" ng-if="directiveMode !== 'mobile-search'">
   <md-input-container class="md-block myuw-search" md-no-float layout="row" layout-align="start center">
     <!-- submit xs+ -->
-    <md-button class="md-icon-button" ng-click="submit()" aria-label="submit search" hide-xs>
+    <md-button class="md-icon-button" ng-click="vm.submit()" aria-label="submit search" hide-xs>
       <md-icon>search</md-icon>
       <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Search</md-tooltip>
     </md-button>
     <!-- submit xs-only-->
-    <md-button class="md-icon-button search-submit-xs md-accent" ng-click="submit()" aria-label="submit search" hide-gt-xs>
+    <md-button class="md-icon-button search-submit-xs md-accent" ng-click="vm.submit()" aria-label="submit search" hide-gt-xs>
       <md-icon>search</md-icon>
       <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Submit</md-tooltip>
     </md-button>
     <input type="search"
            name="initialFilter"
            placeholder="Search {{portal.theme.title}}"
-           ng-model="initialFilter"
+           ng-model="vm.initialFilter"
            aria-label="Search bar enter the app you are looking for"
-           focus-me="showSearchFocus"
            autocomplete="off">
   </md-input-container>
 </form>
