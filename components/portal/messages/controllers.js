@@ -42,11 +42,13 @@ define(['angular'], function(angular) {
         var getMessages = function() {
           messagesService.getAllMessages()
             .then(function(result) {
-              // Ensure messages exist and check for group filtering
-              if (result.messages && result.messages.length > 0) {
-                allMessages = result.messages;
+              if (result) {
+                // Ensure messages exist and check for group filtering
+                if (result.messages && result.messages.length > 0) {
+                  allMessages = result.messages;
+                }
+                filterMessages();
               }
-              filterMessages();
               return allMessages;
             })
             .catch(function(error) {
