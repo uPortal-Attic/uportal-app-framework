@@ -179,9 +179,9 @@ define(['angular'], function(angular) {
          */
         var isNotificationsPage = function() {
           if (MESSAGES.notificationsPageURL.indexOf('/web') != -1) {
-            var portalNotificationsUrl = '/web' + MESSAGES.notificationsPageURL;
+            var portalNotificationsPath = '/web' + $location.path();
             vm.isNotificationsPage =
-              $location.path() === portalNotificationsUrl;
+              portalNotificationsPath === MESSAGES.notificationsPageURL;
           } else {
             vm.isNotificationsPage =
               $location.path() === MESSAGES.notificationsPageURL;
