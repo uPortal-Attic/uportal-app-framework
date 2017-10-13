@@ -73,10 +73,15 @@ define(['angular'], function(angular) {
         var getAllMessages = function() {
           return $http.get(SERVICE_LOC.messagesURL)
             .then(function(response) {
-              return response.data;
+              if (angular.isArray(response.data)) {
+                return response.data;
+              } else {
+                return [];
+              }
             })
             .catch(function(error) {
               miscService.redirectUser(error.status, 'Get all messages');
+              return [];
             });
         };
 
