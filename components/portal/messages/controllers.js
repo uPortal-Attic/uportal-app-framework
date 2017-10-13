@@ -125,10 +125,10 @@ define(['angular'], function(angular) {
       },
     ])
 
-    .controller('NotificationsController', ['$q', '$log', '$scope', '$browser',
+    .controller('NotificationsController', ['$q', '$log', '$scope',
       '$rootScope', '$location', '$localStorage', '$filter', 'MESSAGES',
       'SERVICE_LOC', 'miscService', 'messagesService',
-      function($q, $log, $scope, $browser, $rootScope, $location, $localStorage,
+      function($q, $log, $scope, $rootScope, $location, $localStorage,
                $filter, MESSAGES, SERVICE_LOC, miscService, messagesService) {
         // //////////////////
         // Local variables //
