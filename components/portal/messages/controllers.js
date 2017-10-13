@@ -43,8 +43,8 @@ define(['angular'], function(angular) {
           messagesService.getAllMessages()
             .then(function(result) {
               // Ensure messages exist and check for group filtering
-              if (result.messages && result.messages.length > 0) {
-                allMessages = result.messages;
+              if (result.length > 0) {
+                allMessages = result;
               }
               filterMessages();
               return allMessages;
@@ -125,11 +125,11 @@ define(['angular'], function(angular) {
       },
     ])
 
-    .controller('NotificationsController', ['$q', '$log', '$scope',
+    .controller('NotificationsController', ['$q', '$log', '$scope', '$window',
       '$rootScope', '$location', '$localStorage', '$filter', 'MESSAGES',
       'SERVICE_LOC', 'miscService', 'messagesService',
-      function($q, $log, $scope, $rootScope, $location, $localStorage, $filter,
-               MESSAGES, SERVICE_LOC, miscService, messagesService) {
+      function($q, $log, $scope, $window, $rootScope, $location, $localStorage,
+               $filter, MESSAGES, SERVICE_LOC, miscService, messagesService) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -153,8 +153,7 @@ define(['angular'], function(angular) {
         vm.notificationsUrl = MESSAGES.notificationsPageURL;
         vm.status = 'View notifications';
         vm.isLoading = true;
-        vm.isNotificationsPage =
-          ($location.path() == MESSAGES.notificationsPageURL);
+        vm.isNotificationsPage = false;
 
         // //////////////////
         // Event listeners //
@@ -167,6 +166,7 @@ define(['angular'], function(angular) {
           // If the parent scope has messages and notifications are enabled,
           // complete initialization
           if (hasMessages) {
+            isNotificationsPage();
             configureNotificationsScope();
           }
         });
@@ -174,6 +174,14 @@ define(['angular'], function(angular) {
         // ////////////////
         // Local methods //
         // ////////////////
+        /**
+         * Check if user is viewing notifications page
+         */
+        var isNotificationsPage = function() {
+          vm.isNotificationsPage =
+            $window.location.pathname === MESSAGES.notificationsPageURL;
+        };
+
         /**
          * Get notifications from parent scope, then pass them on
          * for filtering by seen/unseen
