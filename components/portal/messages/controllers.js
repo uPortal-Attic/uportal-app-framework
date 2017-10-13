@@ -125,10 +125,10 @@ define(['angular'], function(angular) {
       },
     ])
 
-    .controller('NotificationsController', ['$q', '$log', '$scope',
+    .controller('NotificationsController', ['$q', '$log', '$scope', '$window',
       '$rootScope', '$location', '$localStorage', '$filter', 'MESSAGES',
       'SERVICE_LOC', 'miscService', 'messagesService',
-      function($q, $log, $scope, $rootScope, $location, $localStorage,
+      function($q, $log, $scope, $window, $rootScope, $location, $localStorage,
                $filter, MESSAGES, SERVICE_LOC, miscService, messagesService) {
         // //////////////////
         // Local variables //
@@ -178,14 +178,8 @@ define(['angular'], function(angular) {
          * Check if user is viewing notifications page
          */
         var isNotificationsPage = function() {
-          if (MESSAGES.notificationsPageURL.indexOf('/web') != -1) {
-            var portalNotificationsPath = '/web' + $location.path();
-            vm.isNotificationsPage =
-              portalNotificationsPath === MESSAGES.notificationsPageURL;
-          } else {
-            vm.isNotificationsPage =
-              $location.path() === MESSAGES.notificationsPageURL;
-          }
+          vm.isNotificationsPage =
+            $window.location.pathname === MESSAGES.notificationsPageURL;
         };
 
         /**
