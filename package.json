@@ -7,11 +7,12 @@
     "cz": "git-cz",
     "test": "karma start components/karma.conf.js --single-run",
     "build-static": "node tools/static/build.js",
+    "format": "prettier --write **/*.{js,json,less}",
     "lint-css": "stylelint --syntax less components/css/**/*.less",
     "dev-lint-js": "onchange components/** -i -- eslint --quiet --ext js --ext json --ext md --format html --output-file static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern components/js/ga.js",
     "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern components/js/ga.js",
     "lint-md": "remark . --frail --ignore-path .gitignore",
-    "precommit": "eslint-git-changes",
+    "precommit": "lint-staged",
     "postbuild-static": "htmlprocessor static/index.html -o static/target/index.html",
     "prestatic": "npm run build-static",
     "static": "cd static/target && superstatic",
@@ -73,13 +74,13 @@
     "cz-conventional-changelog": "^2.0.0",
     "eslint": "^4.2.0",
     "eslint-config-angular": "^0.5.0",
-    "eslint-config-google": "^0.9.1",
-    "eslint-git-changes": "^2.0.0",
+    "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-angular": "^3.0.0",
     "eslint-plugin-compat": "^2.0.1",
     "eslint-plugin-jasmine": "^2.2.0",
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-markdown": "^1.0.0-beta.4",
+    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-requirejs": "^3.1.1",
     "graceful-fs": "^4.0.0",
@@ -100,10 +101,12 @@
     "karma-requirejs": "1.1.0",
     "karma-safari-launcher": "^1.0.0",
     "less": "2.7.2",
+    "lint-staged": "^4.2.3",
     "lodash": "^4.0.0",
     "mkdirp": "^0.5.1",
     "onchange": "^3.0.2",
     "postcss": "^6.0.8",
+    "prettier": "1.7.4",
     "recursive-copy": "^2.0.5",
     "remark-cli": "^4.0.0",
     "remark-preset-lint-consistent": "^2.0.0",
@@ -112,6 +115,7 @@
     "requirejs": "^2.2.0",
     "rimraf": "^2.5.4",
     "stylelint": "^8.0.0",
+    "stylelint-config-prettier": "^1.0.2",
     "stylelint-config-standard": "^17.0.0",
     "superstatic": "~5.0.0"
   },
@@ -119,6 +123,12 @@
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.3",
     "normalize.less": "^1.0.0"
+  },
+  "lint-staged": {
+    "*.{js,json,less}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "root": true,
@@ -131,23 +141,24 @@
       "amd": true
     },
     "plugins": [
-      "angular",
       "compat",
       "jasmine",
       "json",
       "markdown",
+      "prettier",
       "promise",
       "requirejs"
     ],
     "extends": [
       "eslint:recommended",
-      "google",
+      "prettier",
       "angular",
       "plugin:jasmine/recommended",
       "plugin:promise/recommended",
       "plugin:requirejs/recommended"
     ],
     "rules": {
+      "prettier/prettier": "error",
       "angular/di": [
         "warn",
         "array"
@@ -169,7 +180,10 @@
     }
   },
   "stylelint": {
-    "extends": "stylelint-config-standard",
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-prettier"
+    ],
     "rules": {
       "selector-type-no-unknown": null
     }
