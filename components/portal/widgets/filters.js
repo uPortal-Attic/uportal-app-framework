@@ -40,8 +40,7 @@ define(["angular"], function(angular) {
       };
     })
     .filter("filterDifferenceFromDate", [
-      "$filter",
-      function($filter) {
+      function() {
         return function(date) {
           var oneDay = 1000 * 60 * 60 * 24;
           var today = new Date();

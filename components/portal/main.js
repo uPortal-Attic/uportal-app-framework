@@ -60,7 +60,7 @@ define(
     "ui-gravatar",
     "angulartics-google-analytics"
   ],
-  function(angular, require) {
+  function(angular) {
     // Define a stub in case this angular module is undefined, i.e. was blocked
     try {
       angular.module("angulartics.google.analytics");
@@ -329,7 +329,7 @@ define(
                   loadingCompleteSequence();
                   return result;
                 })
-                .catch(function(reason) {
+                .catch(function() {
                   if (APP_FLAGS.debug) {
                     $log.error(
                       "We got a error back from groupURL, setting theme to default"
@@ -399,7 +399,7 @@ define(
         var searchRouteParameterInit = function() {
           // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
           // eslint-disable-next-line angular/on-watch
-          $rootScope.$on("$routeChangeStart", function(event, next, current) {
+          $rootScope.$on("$routeChangeStart", function(event, next) {
             if (next && next.searchParam) {
               var paramToTackOn = APP_FLAGS.gaSearchParam || "q";
               var searchValue = next.params[next.searchParam];
@@ -504,7 +504,7 @@ define(
                 }
                 return result;
               })
-              .catch(function(reason) {
+              .catch(function() {
                 // continue with theme loading so they don't get stuck on loading
                 themeLoading();
               });

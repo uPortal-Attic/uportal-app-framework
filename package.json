@@ -9,8 +9,6 @@
     "build-static": "node tools/static/build.js",
     "format": "prettier --write **/*.{js,json,less}",
     "lint-css": "stylelint --syntax less components/css/**/*.less",
-    "dev-lint-js":
-      "onchange components/** -i -- eslint --quiet --ext js --ext json --ext md --format html --output-file static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern components/js/ga.js",
     "lint-js":
       "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern components/js/ga.js",
     "lint-md": "remark . --frail --ignore-path .gitignore",
@@ -161,19 +159,7 @@
       "prettier/prettier": "error",
       "angular/di": ["warn", "array"],
       "angular/controller-as": "off",
-      "compat/compat": "error",
-      "arrow-parens": "off",
-      "constructor-super": "off",
-      "generator-star-spacing": "off",
-      "no-new-symbol": "off",
-      "no-this-before-super": "off",
-      "no-invalid-this": "off",
-      "no-var": "off",
-      "prefer-rest-params": "off",
-      "prefer-spread": "off",
-      "valid-jsdoc": "warn",
-      "rest-spread-spacing": "off",
-      "yield-star-spacing": "off"
+      "compat/compat": "error"
     }
   },
   "stylelint": {

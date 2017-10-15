@@ -539,7 +539,7 @@ define(["angular"], function(angular) {
 
           var evaluateCallsToAction = function(callsToAction) {
             // Check if today falls within any of the provided date ranges
-            angular.forEach(callsToAction, function(value, index) {
+            angular.forEach(callsToAction, function(value) {
               var templateSwitchOnDate = "";
               var templateSwitchOffDate = "";
               var hasPaddedDates = {

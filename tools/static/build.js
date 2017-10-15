@@ -70,10 +70,7 @@ for (let i = 0; i < themes.length; i++) {
   });
 }
 
-copy("components/", "static/target", copyOptions).catch(function(
-  error,
-  results
-) {
+copy("components/", "static/target", copyOptions).catch(function(error) {
   if (error) throw error;
 });
 
@@ -105,7 +102,7 @@ copy(
   "static/superstatic.json",
   "static/target/superstatic.json",
   copyOptions
-).catch(function(error, results) {
+).catch(function(error) {
   if (error) throw error;
 });
 

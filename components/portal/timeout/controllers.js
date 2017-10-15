@@ -81,10 +81,13 @@ define(["angular"], function(angular) {
               "Please click below to login, or close this window to logout.",
             ok: "Login"
           });
-          $mdDialog.show(alert).finally(function() {
-            alert = undefined;
-            $window.location.replace(MISC_URLS.loginURL);
-          });
+          $mdDialog
+            .show(alert)
+            .finally(function() {
+              alert = undefined;
+              $window.location.replace(MISC_URLS.loginURL);
+            })
+            .catch($log.error);
         }
 
         init();

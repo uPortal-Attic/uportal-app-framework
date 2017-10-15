@@ -41,7 +41,7 @@ define(["angular"], function(angular) {
         FRAME_BETA_FEATURES
       ) {
         $scope.options = FRAME_BETA_FEATURES.concat(APP_BETA_FEATURES);
-        $scope.$watch("portal.theme", function(newValue, oldValue) {
+        $scope.$watch("portal.theme", function() {
           if ($scope.portal.theme) {
             $sessionStorage.portal.theme = $scope.portal.theme;
             $sessionStorage.portal.theme.themeVersion = THEMES.themeVersion;

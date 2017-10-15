@@ -69,7 +69,7 @@ define(["angular", "require"], function(angular, require) {
         function($http) {
           return {
             restrict: "A",
-            link: function(scope, elm, attrs) {
+            link: function(scope, elm) {
               scope.isLoading = function() {
                 return $http.pendingRequests.length > 0;
               };
@@ -90,11 +90,10 @@ define(["angular", "require"], function(angular, require) {
         }
       ])
       .directive("hideWhileLoading", [
-        "$http",
-        function($http) {
+        function() {
           return {
             restrict: "A",
-            link: function(scope, elm, attrs) {
+            link: function(scope, elm) {
               scope.$watch(scope.isLoading, function(v) {
                 if (v) {
                   elm.hide();
@@ -106,7 +105,7 @@ define(["angular", "require"], function(angular, require) {
           };
         }
       ])
-      .directive("selectOnPageLoad", function($timeout) {
+      .directive("selectOnPageLoad", function() {
         return {
           restrict: "A",
           link: function(scope, element) {
@@ -218,7 +217,7 @@ define(["angular", "require"], function(angular, require) {
      *  - template: the template to display (can have angular markup)
      */
       .directive("contentItem", function($compile) {
-        var linker = function(scope, element, attrs) {
+        var linker = function(scope, element) {
           element.html(scope.template).show();
           $compile(element.contents())(scope);
         };

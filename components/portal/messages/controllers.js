@@ -124,9 +124,8 @@ define(["angular"], function(angular) {
         /**
          * Handle errors that occur while resolving promises to
          * get notifications
-         * @param error
          */
-        var filterMessagesFailure = function(error) {
+        var filterMessagesFailure = function() {
           $log.warn("Problem getting messages from messagesService");
         };
 
@@ -294,7 +293,7 @@ define(["angular"], function(angular) {
          * Handle errors getting seen message IDs
          * @param error
          */
-        var getSeenMessageIdsFailure = function(error) {
+        var getSeenMessageIdsFailure = function() {
           $log.warn(
             "Couldn't get seen message IDs for notifications " + " controller."
           );
@@ -550,9 +549,8 @@ define(["angular"], function(angular) {
 
         /**
          * Handle errors encountered while resolving promises
-         * @param error
          */
-        var getSeenMessageIdsFailure = function(error) {
+        var getSeenMessageIdsFailure = function() {
           // HANDLE ERRORS
         };
 

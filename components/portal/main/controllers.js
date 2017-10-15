@@ -18,7 +18,7 @@
  */
 "use strict";
 
-define(["angular", "require"], function(angular, require) {
+define(["angular"], function(angular) {
   return (angular
       .module("portal.main.controllers", [])
       .controller("PortalMainController", [
@@ -191,15 +191,7 @@ define(["angular", "require"], function(angular, require) {
         "$location",
         "APP_FLAGS",
         "MISC_URLS",
-        "messagesService",
-        function(
-          $rootScope,
-          $scope,
-          $location,
-          APP_FLAGS,
-          MISC_URLS,
-          messagesService
-        ) {
+        function($rootScope, $scope, $location, APP_FLAGS, MISC_URLS) {
           var vm = this;
           vm.navbarCollapsed = true;
           vm.showLogout = true;

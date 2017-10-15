@@ -233,7 +233,7 @@ define(["angular"], function(angular) {
               }
               return $q.reject(result);
             })
-            .catch(function(error) {
+            .catch(function() {
               return [];
             });
         };

@@ -18,7 +18,7 @@
  */
 "use strict";
 
-define(["angular", "jquery"], function(angular, $) {
+define(["angular"], function(angular) {
   return angular
     .module("portal.settings.services", [])
     .factory("portalSkinService", [

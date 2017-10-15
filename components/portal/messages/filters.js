@@ -50,7 +50,7 @@ define(["angular"], function(angular) {
               var slash = url.lastIndexOf("/") + 1;
               var fName = url.substr(slash);
               PortalAddToHomeService.inHome(fName)
-                .then(function(result, text) {
+                .then(function(result) {
                   if (result) {
                     message.actionButton.label = "On your home";
                     message.actionButton.disabled = true;

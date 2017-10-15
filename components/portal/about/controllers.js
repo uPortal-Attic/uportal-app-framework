@@ -18,7 +18,7 @@
  */
 "use strict";
 
-define(["angular", "require"], function(angular, require) {
+define(["angular"], function(angular) {
   return angular
     .module("portal.about.controllers", [])
     .controller("PortalAboutController", [
