@@ -69,7 +69,8 @@ define(['angular'], function(angular) {
         .finally(function() {
           alert = undefined;
           $window.location.replace(MISC_URLS.loginURL);
-        });
+        })
+        .catch($log.error);
     }
 
     init();
