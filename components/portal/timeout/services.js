@@ -16,12 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-'use strict';
+"use strict";
 
-define(['angular', 'jquery'], function(angular, $) {
-    return angular.module('portal.timeout.services', [])
-
-    /**
+define(["angular", "jquery"], function(angular, $) {
+  return (angular
+      .module("portal.timeout.services", [])
+      /**
     Shibboleth Service
 
     Public Methods
@@ -29,11 +29,14 @@ define(['angular', 'jquery'], function(angular, $) {
     * getTimeout() - Gets the shib session, but returns just the timeout
                      and the time of that timeout.
     **/
-    .factory('portalShibbolethService', ['$http', '$log',
-      'miscService', 'SERVICE_LOC',
+      .factory("portalShibbolethService", [
+        "$http",
+        "$log",
+        "miscService",
+        "SERVICE_LOC",
         function($http, $log, miscService, SERVICE_LOC) {
           var onError = function(response) {
-            miscService.redirectUser(response.status, 'Shibboleth Service');
+            miscService.redirectUser(response.status, "Shibboleth Service");
             return response.data;
           };
 
@@ -46,8 +49,9 @@ define(['angular', 'jquery'], function(angular, $) {
               var timeout = {};
               timeout.expirationMinutes = session.expiration;
               var now = new Date();
-              timeout.expirationTime =
-                now.setMinutes(now.getMinutes() + session.expiration);
+              timeout.expirationTime = now.setMinutes(
+                now.getMinutes() + session.expiration
+              );
               timeout.expirationMills = session.expiration * 60000;
               return timeout;
             } else {
@@ -60,8 +64,9 @@ define(['angular', 'jquery'], function(angular, $) {
            * @return {*|Function|any|Promise}
            */
           function getSession() {
-            return $http.get(SERVICE_LOC.shibbolethSessionURL)
-                        .then(onGetSessionSuccess, onError);
+            return $http
+              .get(SERVICE_LOC.shibbolethSessionURL)
+              .then(onGetSessionSuccess, onError);
           }
 
           /**
@@ -86,7 +91,8 @@ define(['angular', 'jquery'], function(angular, $) {
            * @return {*} An array of Shib attribute objects
            */
           function getUserAttributes() {
-            return $http.get(SERVICE_LOC.shibbolethSessionURL, {cache: true})
+            return $http
+              .get(SERVICE_LOC.shibbolethSessionURL, { cache: true })
               .then(function(result) {
                 if (result.data) {
                   return result.data.attributes;
@@ -95,9 +101,9 @@ define(['angular', 'jquery'], function(angular, $) {
                 }
               })
               .catch(function(error) {
-                $log.warn('Could\'t get Shibboleth session info');
+                $log.warn("Could't get Shibboleth session info");
                 $log.error(error);
-                miscService.redirectUser(status, 'Get User Info');
+                miscService.redirectUser(status, "Get User Info");
               });
           }
 
@@ -105,7 +111,8 @@ define(['angular', 'jquery'], function(angular, $) {
             getSession: getSession,
             getTimeout: getTimeout,
             shibServiceActivated: shibServiceActivated,
-            getUserAttributes: getUserAttributes,
+            getUserAttributes: getUserAttributes
           };
-        }]);
+        }
+      ]) );
 });

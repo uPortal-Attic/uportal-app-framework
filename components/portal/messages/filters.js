@@ -16,63 +16,66 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-'use strict';
+"use strict";
 
-define(['angular'], function(angular) {
-  return angular.module('portal.messages.filters', [])
-    .filter('separateMessageTypes', ['$filter', function($filter) {
-      return function(messages) {
-        var separatedMessages = {
-          notifications: [],
-          announcements: [],
+define(["angular"], function(angular) {
+  return angular
+    .module("portal.messages.filters", [])
+    .filter("separateMessageTypes", [
+      "$filter",
+      function($filter) {
+        return function(messages) {
+          var separatedMessages = {
+            notifications: [],
+            announcements: []
+          };
+          separatedMessages.announcements = $filter("filter")(messages, {
+            messageType: "announcement"
+          });
+          separatedMessages.notifications = $filter("filter")(messages, {
+            messageType: "notification"
+          });
+          return separatedMessages;
         };
-        separatedMessages.announcements = $filter('filter')(
-          messages,
-          {messageType: 'announcement'}
-        );
-        separatedMessages.notifications = $filter('filter')(
-          messages,
-          {messageType: 'notification'}
-        );
-        return separatedMessages;
-      };
-    }])
-    .filter('addToHome', function() {
+      }
+    ])
+    .filter("addToHome", function() {
       return function(messages, MISC_URLS, PortalAddToHomeService) {
         angular.forEach(messages, function(message) {
-        if (message.actionButton) {
-          var url = message.actionButton.url;
-          var addToHome = 'addToHome';
+          if (message.actionButton) {
+            var url = message.actionButton.url;
+            var addToHome = "addToHome";
 
             if (url.indexOf(addToHome) !== -1) {
-              var slash = url.lastIndexOf('/') + 1;
+              var slash = url.lastIndexOf("/") + 1;
               var fName = url.substr(slash);
-              PortalAddToHomeService.inHome(fName).then(function(result, text) {
-                if (result) {
-                  message.actionButton.label = 'On your home';
-                  message.actionButton.disabled = true;
-                  return true;
-                } else {
-                  message.actionButton.label = 'Add to home';
+              PortalAddToHomeService.inHome(fName)
+                .then(function(result, text) {
+                  if (result) {
+                    message.actionButton.label = "On your home";
+                    message.actionButton.disabled = true;
+                    return true;
+                  } else {
+                    message.actionButton.label = "Add to home";
+                    message.actionButton.disabled = null;
+                    return false;
+                  }
+                })
+                .catch(function() {
+                  message.actionButton.label = "Add to home";
                   message.actionButton.disabled = null;
                   return false;
-                }
-              })
-              .catch(function() {
-                message.actionButton.label = 'Add to home';
-                message.actionButton.disabled = null;
-                return false;
-              });
+                });
             }
           }
         });
       };
     })
-    .filter('filterSeenAndUnseen', function() {
+    .filter("filterSeenAndUnseen", function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {
           seen: [],
-          unseen: [],
+          unseen: []
         };
         // Split messages in separate arrays
         // based on whether the id matches a seen id
@@ -86,7 +89,7 @@ define(['angular'], function(angular) {
         return separatedMessages;
       };
     })
-    .filter('filterOutMessageWithId', function() {
+    .filter("filterOutMessageWithId", function() {
       return function(messages, idToFilterOut) {
         angular.forEach(messages, function(value, key) {
           if (value.id === idToFilterOut) {
@@ -96,7 +99,7 @@ define(['angular'], function(angular) {
         return messages;
       };
     })
-    .filter('filterForCommonElements', function() {
+    .filter("filterForCommonElements", function() {
       return function(array1, array2) {
         return array1.filter(function(element) {
           return array2.indexOf(element) != -1;

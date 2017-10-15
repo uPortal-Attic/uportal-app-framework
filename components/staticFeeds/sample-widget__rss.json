@@ -22,23 +22,16 @@
         "dateFormat": "MM-dd-yyyy",
         "showShowing": true
       },
-      "staticContent": "\n            \n                Click <a href=\"https://www.uwrf.edu/News/\">here</a> to access the UWRF News.\n            \n        ",
+      "staticContent":
+        "\n            \n                Click <a href=\"https://www.uwrf.edu/News/\">here</a> to access the UWRF News.\n            \n        ",
       "pithyStaticContent": null,
       "altMaxUrl": true,
       "renderOnWeb": false
     },
-    "categories": [
-      "News"
-    ],
+    "categories": ["News"],
     "portletName": "advanced-cms",
     "title": "UWRF News",
-    "keywords": [
-      "widget",
-      "news",
-      "river falls",
-      "falls",
-      "UW-River Falls"
-    ],
+    "keywords": ["widget", "news", "river falls", "falls", "UW-River Falls"],
     "fname": "uwrf-news-feed",
     "rating": 0.0,
     "lifecycleState": "PUBLISHED",
@@ -78,16 +71,10 @@
           "altMaxUrl": true,
           "renderOnWeb": false
         },
-        "categories": [
-          "News"
-        ],
+        "categories": ["News"],
         "portletName": "XMLTransformPortlet",
         "title": "News About MyUW",
-        "keywords": [
-          "MyUW",
-          "news",
-          "MyUW-Madison"
-        ],
+        "keywords": ["MyUW", "news", "MyUW-Madison"],
         "fname": "myuw-news",
         "rating": 0.0,
         "lifecycleState": "EXPIRED",
@@ -126,14 +113,13 @@
           "widgetType": null,
           "widgetTemplate": null,
           "widgetConfig": null,
-          "staticContent": "\n          <style>\n            .classic-beta-transition {\n              font-family:'Helvetica Neue','Helvetica',sans-serif;\n              font-weight:200;\n            }\n            .classic-beta-transition h3 {\n              font-size:1.5em;\n              margin:5px 0px;\n            }\n            .center {\n              text-align:center;\n            }\n            #beta-button-div {\n              text-align:center;\n              margin-bottom:10px;\n            }\n            #beta-button {\n              width:180px;\n              height:40px;\n              margin:10px 0px;\n              background-color:#b70101;\n              border:none;\n              border-radius:4px;\n\n            }\n            #beta-button:hover {\n              background-color:#990000;\n            }\n            #beta-button a {\n              color:#fff !important;\n            }\n            #beta-button a:hover {\n              text-decoration:none;\n            }\n          </style>\n          <div data-role=\"content\" class=\"classic-beta-transition\">\n            <h3 class=\"center\">My UW is getting a facelift!</h3>\n            <div id=\"beta-button-div\">\n              <button class=\"btn btn-primary\" id=\"beta-button\"><a href=\"/portal/Login?profile=bucky\">Try the Beta Version</a></button>\n            </div>\n            <h4 class=\"center\">Share Your Feedback</h4>\n            <p class=\"center\">In the coming months, we&#39;ll continue to roll out enhancements but we want to hear from you!&nbsp; <a href=\"http://redesign.my.wisc.edu/contact/\">Send us your ideas, feedback and questions</a>.</p>\n          </div>\n",
+          "staticContent":
+            "\n          <style>\n            .classic-beta-transition {\n              font-family:'Helvetica Neue','Helvetica',sans-serif;\n              font-weight:200;\n            }\n            .classic-beta-transition h3 {\n              font-size:1.5em;\n              margin:5px 0px;\n            }\n            .center {\n              text-align:center;\n            }\n            #beta-button-div {\n              text-align:center;\n              margin-bottom:10px;\n            }\n            #beta-button {\n              width:180px;\n              height:40px;\n              margin:10px 0px;\n              background-color:#b70101;\n              border:none;\n              border-radius:4px;\n\n            }\n            #beta-button:hover {\n              background-color:#990000;\n            }\n            #beta-button a {\n              color:#fff !important;\n            }\n            #beta-button a:hover {\n              text-decoration:none;\n            }\n          </style>\n          <div data-role=\"content\" class=\"classic-beta-transition\">\n            <h3 class=\"center\">My UW is getting a facelift!</h3>\n            <div id=\"beta-button-div\">\n              <button class=\"btn btn-primary\" id=\"beta-button\"><a href=\"/portal/Login?profile=bucky\">Try the Beta Version</a></button>\n            </div>\n            <h4 class=\"center\">Share Your Feedback</h4>\n            <p class=\"center\">In the coming months, we&#39;ll continue to roll out enhancements but we want to hear from you!&nbsp; <a href=\"http://redesign.my.wisc.edu/contact/\">Send us your ideas, feedback and questions</a>.</p>\n          </div>\n",
           "pithyStaticContent": null,
           "altMaxUrl": true,
           "renderOnWeb": false
         },
-        "categories": [
-          "News"
-        ],
+        "categories": ["News"],
         "portletName": "advanced-cms",
         "title": "Responsive MyUW",
         "keywords": null,
@@ -164,7 +150,8 @@
         "layoutObject": {
           "nodeId": "-1",
           "title": "HR, Payroll and Benefits News",
-          "description": "News and announcements about University of Wisconsin HR, Payroll, and Benefit topics.",
+          "description":
+            "News and announcements about University of Wisconsin HR, Payroll, and Benefit topics.",
           "url": "/portal/p/hr-payroll-benefits-news/render.uP",
           "iconUrl": null,
           "faIcon": "fa-newspaper-o",
@@ -182,19 +169,10 @@
           "altMaxUrl": true,
           "renderOnWeb": false
         },
-        "categories": [
-          "News",
-          "Work"
-        ],
+        "categories": ["News", "Work"],
         "portletName": "AuthenticatedWebProxy",
         "title": "HR, Payroll and Benefits News",
-        "keywords": [
-          "HR",
-          "benefit",
-          "payroll",
-          "news",
-          "work record"
-        ],
+        "keywords": ["HR", "benefit", "payroll", "news", "work record"],
         "fname": "hr-payroll-benefits-news",
         "rating": 0.0,
         "lifecycleState": "PUBLISHED",
@@ -211,7 +189,8 @@
         "userRated": 0,
         "faIcon": "fa-newspaper-o",
         "relatedPortlets": null,
-        "description": "News and announcements about University of Wisconsin HR, Payroll, and Benefit topics.",
+        "description":
+          "News and announcements about University of Wisconsin HR, Payroll, and Benefit topics.",
         "name": "UW-Madison HR, Payroll and Benefits News",
         "id": "80",
         "type": "Portlet",
@@ -222,7 +201,8 @@
         "layoutObject": {
           "nodeId": "-1",
           "title": "DoIT Help Desk Notices",
-          "description": "Computing support news and notices from the Help Desk.",
+          "description":
+            "Computing support news and notices from the Help Desk.",
           "url": "/portal/p/doit-help-desk-notices/render.uP",
           "iconUrl": null,
           "faIcon": "fa-bullhorn",
@@ -240,9 +220,7 @@
           "altMaxUrl": true,
           "renderOnWeb": false
         },
-        "categories": [
-          "News"
-        ],
+        "categories": ["News"],
         "portletName": "XMLTransformPortlet",
         "title": "DoIT Help Desk Notices",
         "keywords": null,
@@ -284,14 +262,13 @@
           "widgetType": null,
           "widgetTemplate": null,
           "widgetConfig": null,
-          "staticContent": "<div data-role=\"content\">\n    <h3>\n        My UW is now more mobile friendly!</h3>\n    <h4>\n        Desktop vs. Mobile</h4>\n    <ul>\n        <li>\n            Most, but not all, content is available in the mobile view. <a href=\"https://kb.wisc.edu/myuw/page.php?id=26743\" target=\"_blank\">Learn more</a>.</li>\n        <li>\n            Can&#39;t locate something in the mobile view? Use the &quot;Switch to Full Site&quot; link at the bottom of any page.</li>\n        <li>\n            Want to check out the mobile version from your desktop? Use the &quot;Switch to Mobile Site&quot; link at the bottom of any page.</li>\n    </ul>\n    <h4>\n        Share Your Feedback</h4>\n    <p>\n        In the coming months, we&#39;ll continue to roll out enhancements but we want to hear from you!&nbsp; <a href=\"http://my.wisc.edu/portal/p/feedback\">Send us your ideas, feedback and questions</a>.</p>\n</div>\n<p>\n    &nbsp;</p>\n<p>\n    &nbsp;</p>\n<p>\n    &nbsp;</p>\n",
+          "staticContent":
+            "<div data-role=\"content\">\n    <h3>\n        My UW is now more mobile friendly!</h3>\n    <h4>\n        Desktop vs. Mobile</h4>\n    <ul>\n        <li>\n            Most, but not all, content is available in the mobile view. <a href=\"https://kb.wisc.edu/myuw/page.php?id=26743\" target=\"_blank\">Learn more</a>.</li>\n        <li>\n            Can&#39;t locate something in the mobile view? Use the &quot;Switch to Full Site&quot; link at the bottom of any page.</li>\n        <li>\n            Want to check out the mobile version from your desktop? Use the &quot;Switch to Mobile Site&quot; link at the bottom of any page.</li>\n    </ul>\n    <h4>\n        Share Your Feedback</h4>\n    <p>\n        In the coming months, we&#39;ll continue to roll out enhancements but we want to hear from you!&nbsp; <a href=\"http://my.wisc.edu/portal/p/feedback\">Send us your ideas, feedback and questions</a>.</p>\n</div>\n<p>\n    &nbsp;</p>\n<p>\n    &nbsp;</p>\n<p>\n    &nbsp;</p>\n",
           "pithyStaticContent": null,
           "altMaxUrl": true,
           "renderOnWeb": false
         },
-        "categories": [
-          "News"
-        ],
+        "categories": ["News"],
         "portletName": "advanced-cms",
         "title": "New! Mobile MyUW",
         "keywords": null,

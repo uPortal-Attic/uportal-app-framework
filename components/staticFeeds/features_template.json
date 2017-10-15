@@ -5,12 +5,12 @@
     "description": "",
     "img": "img/myuw-welcome.png",
     "learnMoreURL": "",
-    "groups" : ["UW-Madison"],
+    "groups": ["UW-Madison"],
     "goLiveYear": 2015,
     "goLiveMonth": 6,
     "goLiveDay": 11,
-    "isPopup" : false,
-    "isBuckyAnnouncement" : false,
+    "isPopup": false,
+    "isBuckyAnnouncement": false,
     "popup": {
       "enabled": false,
       "startYear": 2015,
@@ -21,10 +21,10 @@
       "endDay": 25,
       "buttonText": "Continue to MyUW"
     },
-    "buckyAnnouncement" : {
-      "shortTitle" : "",
-      "shoreDesc" : "",
-      "endDate" : ""
+    "buckyAnnouncement": {
+      "shortTitle": "",
+      "shoreDesc": "",
+      "endDate": ""
     }
   }
 ]

@@ -4,7 +4,8 @@
     "layoutObject": {
       "nodeId": "-1",
       "title": "Research Project Resource Guide",
-      "description": "Find on and off campus resources available for each phase and step of your research project.",
+      "description":
+        "Find on and off campus resources available for each phase and step of your research project.",
       "url": "https://rprg.wisc.edu/",
       "iconUrl": null,
       "faIcon": "fa-gears",
@@ -34,22 +35,16 @@
           }
         ]
       },
-      "staticContent": "\n            \n                Access the \n                <a href=\"https://rprg.wisc.edu/\">Research Project Resource Guide</a>.\n            \n        ",
+      "staticContent":
+        "\n            \n                Access the \n                <a href=\"https://rprg.wisc.edu/\">Research Project Resource Guide</a>.\n            \n        ",
       "pithyStaticContent": null,
       "altMaxUrl": true,
       "renderOnWeb": false
     },
     "title": "Research Project Resource Guide",
-    "categories": [
-      "Faculty services",
-      "Researcher services",
-      "Research"
-    ],
+    "categories": ["Faculty services", "Researcher services", "Research"],
     "portletName": "advanced-cms",
-    "keywords": [
-      "rprg",
-      "search"
-    ],
+    "keywords": ["rprg", "search"],
     "fname": "rprg",
     "lifecycleState": "PUBLISHED",
     "rating": 5.0,
@@ -59,7 +54,8 @@
         "layoutObject": {
           "nodeId": "-1",
           "title": "Classes I Teach Map",
-          "description": "View a map of the buildings in which the classes you teach meet.",
+          "description":
+            "View a map of the buildings in which the classes you teach meet.",
           "url": "/portal/p/taught-classes-map/render.uP",
           "iconUrl": null,
           "faIcon": "fa-map-marker",
@@ -76,9 +72,7 @@
           "renderOnWeb": false
         },
         "title": "Classes I Teach Map",
-        "categories": [
-          "Faculty services"
-        ],
+        "categories": ["Faculty services"],
         "portletName": "Classes I Teach Map",
         "keywords": [
           "map",
@@ -104,7 +98,8 @@
         "userRated": 0,
         "portletWebAppName": "/classes-map-portlet",
         "faIcon": "fa-map-marker",
-        "description": "View a map of the buildings in which the classes you teach meet.",
+        "description":
+          "View a map of the buildings in which the classes you teach meet.",
         "name": "Classes I Teach Map",
         "id": "110",
         "type": "Portlet",
@@ -115,7 +110,8 @@
         "layoutObject": {
           "nodeId": "-1",
           "title": "Faculty Center",
-          "description": "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information.",
+          "description":
+            "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information.",
           "url": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
           "iconUrl": null,
           "faIcon": "fa-graduation-cap",
@@ -132,9 +128,7 @@
           "renderOnWeb": false
         },
         "title": "Faculty Center",
-        "categories": [
-          "Faculty services"
-        ],
+        "categories": ["Faculty services"],
         "portletName": "BasicIsisLink",
         "keywords": [
           "roster",
@@ -155,14 +149,17 @@
           "initialReleaseDate": null,
           "releaseNotes": null
         },
-        "renderUrl": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
-        "maxUrl": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
+        "renderUrl":
+          "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
+        "maxUrl":
+          "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
         "shortUrl": null,
         "marketplaceScreenshots": [],
         "userRated": 2,
         "portletWebAppName": "/ISISPortlets",
         "faIcon": "fa-graduation-cap",
-        "description": "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information.",
+        "description":
+          "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information.",
         "name": "Faculty Center",
         "id": "55",
         "type": "Portlet",
@@ -173,7 +170,8 @@
         "layoutObject": {
           "nodeId": "-1",
           "title": "Research Facilities and Tools - Administrator",
-          "description": "Create, edit, and manage all descriptions for the Research Facilities and Tools module.",
+          "description":
+            "Create, edit, and manage all descriptions for the Research Facilities and Tools module.",
           "url": "/portal/p/rcat_admin/render.uP",
           "iconUrl": null,
           "faIcon": "fa-flask",
@@ -190,9 +188,7 @@
           "renderOnWeb": false
         },
         "title": "Research Facilities and Tools - Administrator",
-        "categories": [
-          "Researcher services"
-        ],
+        "categories": ["Researcher services"],
         "portletName": "RCATPortlet",
         "keywords": null,
         "fname": "rcat_admin",
@@ -211,7 +207,8 @@
         "userRated": 0,
         "portletWebAppName": "/RCATPortlet",
         "faIcon": "fa-flask",
-        "description": "Create, edit, and manage all descriptions for the Research Facilities and Tools module.",
+        "description":
+          "Create, edit, and manage all descriptions for the Research Facilities and Tools module.",
         "name": "Research Facilities and Tools - Administrator",
         "id": "154",
         "type": "Portlet",
@@ -222,7 +219,8 @@
         "layoutObject": {
           "nodeId": "-1",
           "title": "Research Tab Messages",
-          "description": "This module provides information about the status of modules and services on the Reserach tab.",
+          "description":
+            "This module provides information about the status of modules and services on the Reserach tab.",
           "url": "/portal/p/research-tab-messages/render.uP",
           "iconUrl": null,
           "faIcon": null,
@@ -239,9 +237,7 @@
           "renderOnWeb": false
         },
         "title": "Research Tab Messages",
-        "categories": [
-          "Research"
-        ],
+        "categories": ["Research"],
         "portletName": "EastNotesPortlet",
         "keywords": null,
         "fname": "research-tab-messages",
@@ -260,7 +256,8 @@
         "userRated": 0,
         "portletWebAppName": "/EastNotesPortlet",
         "faIcon": null,
-        "description": "This module provides information about the status of modules and services on the Reserach tab.",
+        "description":
+          "This module provides information about the status of modules and services on the Reserach tab.",
         "name": "Research Tab Messages",
         "id": "150",
         "type": "Portlet",
@@ -271,7 +268,8 @@
         "layoutObject": {
           "nodeId": "-1",
           "title": "PI Financials Tool",
-          "description": "View financial information about sponsored projects and gifts.",
+          "description":
+            "View financial information about sponsored projects and gifts.",
           "url": "https://pi.wisc.edu",
           "iconUrl": null,
           "faIcon": "fa-table",
@@ -282,15 +280,14 @@
           "widgetType": null,
           "widgetTemplate": null,
           "widgetConfig": null,
-          "staticContent": "\n            \n              <a href=\"https://pi.wisc.edu\" target=\"_blank\">\n                Launch PI Financials</a>.\n            \n        ",
+          "staticContent":
+            "\n            \n              <a href=\"https://pi.wisc.edu\" target=\"_blank\">\n                Launch PI Financials</a>.\n            \n        ",
           "pithyStaticContent": null,
           "altMaxUrl": true,
           "renderOnWeb": false
         },
         "title": "PI Financials Tool",
-        "categories": [
-          "Researcher services"
-        ],
+        "categories": ["Researcher services"],
         "portletName": "cms",
         "keywords": [
           "PI",
@@ -320,7 +317,8 @@
         "userRated": 0,
         "portletWebAppName": "/SimpleContentPortlet",
         "faIcon": "fa-table",
-        "description": "View financial information about sponsored projects and gifts.",
+        "description":
+          "View financial information about sponsored projects and gifts.",
         "name": "PI Financials Tool",
         "id": "77",
         "type": "Portlet",
@@ -339,7 +337,8 @@
     "userRated": 2,
     "portletWebAppName": "/SimpleContentPortlet",
     "faIcon": "fa-gears",
-    "description": "Find on and off campus resources available for each phase and step of your research project.",
+    "description":
+      "Find on and off campus resources available for each phase and step of your research project.",
     "name": "Research Project Resource Guide",
     "id": "5296",
     "type": "Portlet",

@@ -4,7 +4,8 @@
     "layoutObject": {
       "nodeId": "-1",
       "title": "Learning and Talent Development",
-      "description": "View professional development opportunities for faculty and staff on the UW-Madison campus.",
+      "description":
+        "View professional development opportunities for faculty and staff on the UW-Madison campus.",
       "url": "https://www.ohrd.wisc.edu/Catalog/Default.aspx",
       "iconUrl": null,
       "faIcon": "fa-briefcase",
@@ -16,16 +17,15 @@
       "widgetTemplate": null,
       "widgetConfig": {
         "getLinksURL": "true",
-        "launchText": "Launch talent development"     
+        "launchText": "Launch talent development"
       },
-      "staticContent": "\n            <div>\n                <p><a href='https://www.ohrd.wisc.edu/Catalog/Default.aspx' target='_blank'>Search for talent development opportunities</a></p>\n            </div>        \n            \n        ",
+      "staticContent":
+        "\n            <div>\n                <p><a href='https://www.ohrd.wisc.edu/Catalog/Default.aspx' target='_blank'>Search for talent development opportunities</a></p>\n            </div>        \n            \n        ",
       "pithyStaticContent": null,
       "altMaxUrl": true,
       "renderOnWeb": false
     },
-    "categories": [
-      "Work"
-    ],
+    "categories": ["Work"],
     "portletName": "cms",
     "title": "Learning and Talent Development",
     "keywords": [
@@ -55,7 +55,8 @@
     "marketplaceScreenshots": [],
     "userRated": 0,
     "faIcon": "fa-briefcase",
-    "description": "View professional development opportunities for faculty and staff on the UW-Madison campus.",
+    "description":
+      "View professional development opportunities for faculty and staff on the UW-Madison campus.",
     "name": "Learning and Talent Development",
     "id": "76",
     "type": "Portlet",

@@ -16,17 +16,38 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-'use strict';
+"use strict";
 
-define(['angular'], function(angular) {
-  return angular.module('portal.messages.controllers', [])
-
-    .controller('MessagesController', ['$q', '$log', '$scope', '$rootScope',
-      '$location', '$localStorage', '$sessionStorage', '$filter', '$mdDialog',
-      'SERVICE_LOC', 'miscService', 'messagesService',
-      function($q, $log, $scope, $rootScope, $location, $localStorage,
-               $sessionStorage, $filter, $mdDialog, SERVICE_LOC,
-               miscService, messagesService) {
+define(["angular"], function(angular) {
+  return angular
+    .module("portal.messages.controllers", [])
+    .controller("MessagesController", [
+      "$q",
+      "$log",
+      "$scope",
+      "$rootScope",
+      "$location",
+      "$localStorage",
+      "$sessionStorage",
+      "$filter",
+      "$mdDialog",
+      "SERVICE_LOC",
+      "miscService",
+      "messagesService",
+      function(
+        $q,
+        $log,
+        $scope,
+        $rootScope,
+        $location,
+        $localStorage,
+        $sessionStorage,
+        $filter,
+        $mdDialog,
+        SERVICE_LOC,
+        miscService,
+        messagesService
+      ) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -40,7 +61,8 @@ define(['angular'], function(angular) {
          * Get all messages, then pass result on for filtering
          */
         var getMessages = function() {
-          messagesService.getAllMessages()
+          messagesService
+            .getAllMessages()
             .then(function(result) {
               // Ensure messages exist and check for group filtering
               if (result.length > 0) {
@@ -50,7 +72,7 @@ define(['angular'], function(angular) {
               return allMessages;
             })
             .catch(function(error) {
-              $log.warn('Problem getting all messages for messages controller');
+              $log.warn("Problem getting all messages for messages controller");
               return error;
             });
         };
@@ -64,19 +86,18 @@ define(['angular'], function(angular) {
           if (!$localStorage.disableGroupFilteringForMessages) {
             // Define promises to run if filtering is turned on
             promiseFilteredMessages = {
-              filteredByGroup:
-                messagesService.getMessagesByGroup(allMessages),
-              filteredByData:
-                messagesService.getMessagesByData(allMessages),
+              filteredByGroup: messagesService.getMessagesByGroup(allMessages),
+              filteredByData: messagesService.getMessagesByData(allMessages)
             };
             // Call filtered notifications promises, then pass on to
             // the completion function
-            $q.all(promiseFilteredMessages)
+            $q
+              .all(promiseFilteredMessages)
               .then(filterMessagesSuccess)
               .catch(filterMessagesFailure);
           } else {
             // Separate all messages by their types
-            $scope.messages = $filter('separateMessageTypes')(allMessages);
+            $scope.messages = $filter("separateMessageTypes")(allMessages);
             // Change hasMessages so child controllers can pick up on it
             $scope.hasMessages = true;
           }
@@ -91,11 +112,11 @@ define(['angular'], function(angular) {
           var filteredMessages = [];
           if (result.filteredByGroup && result.filteredByData) {
             // Combine the two filtered arrays into one (no dupes)
-            filteredMessages = $filter('filterForCommonElements')(
+            filteredMessages = $filter("filterForCommonElements")(
               result.filteredByGroup,
               result.filteredByData
             );
-            $scope.messages = $filter('separateMessageTypes')(filteredMessages);
+            $scope.messages = $filter("separateMessageTypes")(filteredMessages);
             $scope.hasMessages = true;
           }
         };
@@ -106,7 +127,7 @@ define(['angular'], function(angular) {
          * @param error
          */
         var filterMessagesFailure = function(error) {
-          $log.warn('Problem getting messages from messagesService');
+          $log.warn("Problem getting messages from messagesService");
         };
 
         /**
@@ -122,14 +143,35 @@ define(['angular'], function(angular) {
         };
 
         init();
-      },
+      }
     ])
-
-    .controller('NotificationsController', ['$q', '$log', '$scope', '$window',
-      '$rootScope', '$location', '$localStorage', '$filter', 'MESSAGES',
-      'SERVICE_LOC', 'miscService', 'messagesService',
-      function($q, $log, $scope, $window, $rootScope, $location, $localStorage,
-               $filter, MESSAGES, SERVICE_LOC, miscService, messagesService) {
+    .controller("NotificationsController", [
+      "$q",
+      "$log",
+      "$scope",
+      "$window",
+      "$rootScope",
+      "$location",
+      "$localStorage",
+      "$filter",
+      "MESSAGES",
+      "SERVICE_LOC",
+      "miscService",
+      "messagesService",
+      function(
+        $q,
+        $log,
+        $scope,
+        $window,
+        $rootScope,
+        $location,
+        $localStorage,
+        $filter,
+        MESSAGES,
+        SERVICE_LOC,
+        miscService,
+        messagesService
+      ) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -141,7 +183,7 @@ define(['angular'], function(angular) {
 
         // Promise to get seen message IDs
         var promiseSeenMessageIds = {
-          seenMessageIds: messagesService.getSeenMessageIds(),
+          seenMessageIds: messagesService.getSeenMessageIds()
         };
 
         // ///////////////////
@@ -151,7 +193,7 @@ define(['angular'], function(angular) {
         vm.dismissedNotifications = [];
         vm.priorityNotifications = [];
         vm.notificationsUrl = MESSAGES.notificationsPageURL;
-        vm.status = 'View notifications';
+        vm.status = "View notifications";
         vm.isLoading = true;
         vm.isNotificationsPage = false;
 
@@ -162,7 +204,7 @@ define(['angular'], function(angular) {
          * When the parent controller has messages, initialize
          * things dependent on messages
          */
-        $scope.$watch('$parent.hasMessages', function(hasMessages) {
+        $scope.$watch("$parent.hasMessages", function(hasMessages) {
           // If the parent scope has messages and notifications are enabled,
           // complete initialization
           if (hasMessages) {
@@ -190,7 +232,8 @@ define(['angular'], function(angular) {
           if ($scope.$parent.messages.notifications) {
             allNotifications = $scope.$parent.messages.notifications;
             // Get seen message IDs, then configure scope
-            $q.all(promiseSeenMessageIds)
+            $q
+              .all(promiseSeenMessageIds)
               .then(getSeenMessageIdsSuccess)
               .catch(getSeenMessageIdsFailure);
           }
@@ -201,13 +244,16 @@ define(['angular'], function(angular) {
          * @param result
          */
         var getSeenMessageIdsSuccess = function(result) {
-          if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
-            && result.seenMessageIds.length > 0) {
+          if (
+            result.seenMessageIds &&
+            angular.isArray(result.seenMessageIds) &&
+            result.seenMessageIds.length > 0
+          ) {
             // Save all seenMessageIds for later
             allSeenMessageIds = result.seenMessageIds;
 
             // Separate seen and unseen
-            separatedNotifications = $filter('filterSeenAndUnseen')(
+            separatedNotifications = $filter("filterSeenAndUnseen")(
               allNotifications,
               result.seenMessageIds
             );
@@ -228,17 +274,17 @@ define(['angular'], function(angular) {
 
           // If user is anywhere other than the notifications page,
           // check for priority notifications and set them in scope
-          if ($location.url().indexOf('notifications') === -1) {
+          if ($location.url().indexOf("notifications") === -1) {
             configurePriorityNotificationsScope();
           } else {
             clearPriorityNotificationsFlags();
           }
 
           // Set aria-label in notifications bell
-          vm.status = 'You have '
-            + (vm.notifications.length === 0
-              ? 'no' : vm.notifications.length)
-            + ' notifications';
+          vm.status =
+            "You have " +
+            (vm.notifications.length === 0 ? "no" : vm.notifications.length) +
+            " notifications";
 
           // Stop loading spinner
           vm.isLoading = false;
@@ -249,8 +295,9 @@ define(['angular'], function(angular) {
          * @param error
          */
         var getSeenMessageIdsFailure = function(error) {
-          $log.warn('Couldn\'t get seen message IDs for notifications ' +
-            ' controller.');
+          $log.warn(
+            "Couldn't get seen message IDs for notifications " + " controller."
+          );
           // Stop loading spinner
           vm.isLoading = false;
         };
@@ -260,15 +307,14 @@ define(['angular'], function(angular) {
          */
         var configurePriorityNotificationsScope = function() {
           // Use angular's built-in filter to grab priority notifications
-          vm.priorityNotifications = $filter('filter')(
-            vm.notifications,
-            {priority: 'high'}
-          );
+          vm.priorityNotifications = $filter("filter")(vm.notifications, {
+            priority: "high"
+          });
           // If priority notifications exist and the view has a
           // headerController in scope (from directive), set necessary flags
           if ($scope.headerCtrl) {
-            $scope.headerCtrl.hasPriorityNotifications
-              = vm.priorityNotifications.length > 0;
+            $scope.headerCtrl.hasPriorityNotifications =
+              vm.priorityNotifications.length > 0;
           }
         };
 
@@ -279,12 +325,13 @@ define(['angular'], function(angular) {
         var clearPriorityNotificationsFlags = function(duringWatchedEvent) {
           vm.priorityNotifications = [];
           if ($scope.headerCtrl) {
-            $scope.headerCtrl.hasPriorityNotifications
-              = vm.priorityNotifications.length > 0;
+            $scope.headerCtrl.hasPriorityNotifications =
+              vm.priorityNotifications.length > 0;
           }
           if (!duringWatchedEvent) {
-            $rootScope.$broadcast('portalShutdownPriorityNotifications',
-              {disable: true});
+            $rootScope.$broadcast("portalShutdownPriorityNotifications", {
+              disable: true
+            });
           }
         };
 
@@ -297,7 +344,7 @@ define(['angular'], function(angular) {
          * @param isHighPriority
          */
         vm.dismissNotification = function(notification, isHighPriority) {
-          vm.notifications = $filter('filterOutMessageWithId')(
+          vm.notifications = $filter("filterOutMessageWithId")(
             vm.notifications,
             notification.id
           );
@@ -309,8 +356,11 @@ define(['angular'], function(angular) {
 
           // Call service to save changes if k/v store enabled
           if (SERVICE_LOC.kvURL) {
-            messagesService.setMessagesSeen(allSeenMessageIds,
-              dismissedNotificationIds, 'dismiss');
+            messagesService.setMessagesSeen(
+              allSeenMessageIds,
+              dismissedNotificationIds,
+              "dismiss"
+            );
           }
 
           // Clear priority notification flags if it was a priority
@@ -326,7 +376,7 @@ define(['angular'], function(angular) {
          */
         vm.restoreNotification = function(notification) {
           // Remove notification from dismissed array
-          vm.dismissedNotifications = $filter('filterOutMessageWithId')(
+          vm.dismissedNotifications = $filter("filterOutMessageWithId")(
             vm.dismissedNotifications,
             notification.id
           );
@@ -342,8 +392,11 @@ define(['angular'], function(angular) {
           }
           // Call service to save changes if k/v store enabled
           if (SERVICE_LOC.kvURL) {
-            messagesService.setMessagesSeen(allSeenMessageIds,
-              dismissedNotificationIds, 'restore');
+            messagesService.setMessagesSeen(
+              allSeenMessageIds,
+              dismissedNotificationIds,
+              "restore"
+            );
           }
         };
 
@@ -356,15 +409,37 @@ define(['angular'], function(angular) {
         vm.pushGAEvent = function(category, action, label) {
           miscService.pushGAEvent(category, action, label);
         };
-    }])
-
-    .controller('AnnouncementsController', ['$q', '$log', '$filter',
-      '$sessionStorage', '$scope', '$rootScope', '$document', '$sanitize',
-      '$mdDialog', 'miscService',
-      'messagesService', 'PortalAddToHomeService', 'MISC_URLS',
-      function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
-               $document, $sanitize, $mdDialog, miscService,
-               messagesService, PortalAddToHomeService, MISC_URLS) {
+      }
+    ])
+    .controller("AnnouncementsController", [
+      "$q",
+      "$log",
+      "$filter",
+      "$sessionStorage",
+      "$scope",
+      "$rootScope",
+      "$document",
+      "$sanitize",
+      "$mdDialog",
+      "miscService",
+      "messagesService",
+      "PortalAddToHomeService",
+      "MISC_URLS",
+      function(
+        $q,
+        $log,
+        $filter,
+        $sessionStorage,
+        $scope,
+        $rootScope,
+        $document,
+        $sanitize,
+        $mdDialog,
+        miscService,
+        messagesService,
+        PortalAddToHomeService,
+        MISC_URLS
+      ) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -377,7 +452,7 @@ define(['angular'], function(angular) {
 
         // Promise to get seen message IDs
         var promiseSeenMessageIds = {
-          seenMessageIds: messagesService.getSeenMessageIds(),
+          seenMessageIds: messagesService.getSeenMessageIds()
         };
 
         // ///////////////////
@@ -395,7 +470,7 @@ define(['angular'], function(angular) {
          * When the parent controller has messages, initialize
          * things dependent on messages
          */
-        $scope.$watch('$parent.hasMessages', function(hasMessages) {
+        $scope.$watch("$parent.hasMessages", function(hasMessages) {
           // If the parent scope has messages and announcements are enabled,
           // complete initialization
           if (hasMessages) {
@@ -413,7 +488,8 @@ define(['angular'], function(angular) {
           if ($scope.$parent.messages.announcements) {
             allAnnouncements = $scope.$parent.messages.announcements;
             // Get seen message IDs, then configure scope
-            $q.all(promiseSeenMessageIds)
+            $q
+              .all(promiseSeenMessageIds)
               .then(getSeenMessageIdsSuccess)
               .catch(getSeenMessageIdsFailure);
           }
@@ -425,13 +501,16 @@ define(['angular'], function(angular) {
          * @param result Data returned by promises
          */
         var getSeenMessageIdsSuccess = function(result) {
-          if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
-            && result.seenMessageIds.length > 0) {
+          if (
+            result.seenMessageIds &&
+            angular.isArray(result.seenMessageIds) &&
+            result.seenMessageIds.length > 0
+          ) {
             // Save all seenMessageIds for later
             allSeenMessageIds = result.seenMessageIds;
 
             // Separate seen and unseen
-            separatedAnnouncements = $filter('filterSeenAndUnseen')(
+            separatedAnnouncements = $filter("filterSeenAndUnseen")(
               allAnnouncements,
               result.seenMessageIds
             );
@@ -443,29 +522,28 @@ define(['angular'], function(angular) {
           } else {
             separatedAnnouncements = {
               seen: [],
-              unseen: allAnnouncements,
+              unseen: allAnnouncements
             };
           }
 
-          $filter('addToHome')(
+          $filter("addToHome")(
             separatedAnnouncements.unseen,
-            MISC_URLS, PortalAddToHomeService
+            MISC_URLS,
+            PortalAddToHomeService
           );
-
 
           // If directive mode need mascot, set it, otherwise
           // configure popups
-          if (vm.mode === 'mascot' || vm.mode === 'mobile-menu') {
+          if (vm.mode === "mascot" || vm.mode === "mobile-menu") {
             // Set scope announcements
             vm.announcements = separatedAnnouncements.unseen;
             // Set the mascot image
             setMascot();
           } else {
             // Filter out low priority announcements
-            popups = $filter('filter')(
-              separatedAnnouncements.unseen,
-              {priority: 'high'}
-            );
+            popups = $filter("filter")(separatedAnnouncements.unseen, {
+              priority: "high"
+            });
             configurePopups();
           }
         };
@@ -484,10 +562,10 @@ define(['angular'], function(angular) {
         var configurePopups = function() {
           // If they exist, put them in order by date, then id
           if (popups.length != 0) {
-            var orderedPopups = $filter('orderBy')(
-              popups,
-              ['goLiveDate', 'id']
-            );
+            var orderedPopups = $filter("orderBy")(popups, [
+              "goLiveDate",
+              "id"
+            ]);
 
             // Set the latest announcement as a scope variable
             // so it can be passed to the dialog
@@ -495,41 +573,51 @@ define(['angular'], function(angular) {
 
             // Display the latest popup announcement
             var displayPopup = function() {
-              $mdDialog.show({
-                templateUrl:
-                  'portal/messages/partials/announcement-popup-template.html',
-                parent: angular.element(document).find('div.my-uw')[0],
-                clickOutsideToClose: true,
-                openFrom: 'left',
-                closeTo: 'right',
-                preserveScope: true,
-                scope: $scope,
-                controller: function DialogController($scope, $mdDialog) {
-                  $scope.closeDialog = function(action) {
-                    $mdDialog.hide(action);
-                  };
-                },
-              })
-              .then(function(action) {
-                // If dialog is closed by clicking "continue" button
-                miscService.pushGAEvent(
-                  'popup',
-                  action,
-                  $scope.latestAnnouncement.id
-                );
-                seenAnnouncementIds.push($scope.latestAnnouncement.id);
-                messagesService.setMessagesSeen(allSeenMessageIds,
-                  seenAnnouncementIds, 'dismiss');
-                return action;
-              })
-              .catch(function() {
-                // If popup is closed by clicking outside or pressing escape
-                miscService.pushGAEvent(
-                  'popup', 'dismissed', $scope.latestAnnouncement.id);
-                seenAnnouncementIds.push($scope.latestAnnouncement.id);
-                messagesService.setMessagesSeen(allSeenMessageIds,
-                  seenAnnouncementIds, 'dismiss');
-              });
+              $mdDialog
+                .show({
+                  templateUrl:
+                    "portal/messages/partials/announcement-popup-template.html",
+                  parent: angular.element(document).find("div.my-uw")[0],
+                  clickOutsideToClose: true,
+                  openFrom: "left",
+                  closeTo: "right",
+                  preserveScope: true,
+                  scope: $scope,
+                  controller: function DialogController($scope, $mdDialog) {
+                    $scope.closeDialog = function(action) {
+                      $mdDialog.hide(action);
+                    };
+                  }
+                })
+                .then(function(action) {
+                  // If dialog is closed by clicking "continue" button
+                  miscService.pushGAEvent(
+                    "popup",
+                    action,
+                    $scope.latestAnnouncement.id
+                  );
+                  seenAnnouncementIds.push($scope.latestAnnouncement.id);
+                  messagesService.setMessagesSeen(
+                    allSeenMessageIds,
+                    seenAnnouncementIds,
+                    "dismiss"
+                  );
+                  return action;
+                })
+                .catch(function() {
+                  // If popup is closed by clicking outside or pressing escape
+                  miscService.pushGAEvent(
+                    "popup",
+                    "dismissed",
+                    $scope.latestAnnouncement.id
+                  );
+                  seenAnnouncementIds.push($scope.latestAnnouncement.id);
+                  messagesService.setMessagesSeen(
+                    allSeenMessageIds,
+                    seenAnnouncementIds,
+                    "dismiss"
+                  );
+                });
             };
             displayPopup();
           }
@@ -541,15 +629,15 @@ define(['angular'], function(angular) {
         var setMascot = function() {
           if ($rootScope.portal && $rootScope.portal.theme) {
             vm.mascotImage =
-              $rootScope.portal.theme.mascotImg || 'img/robot-taco.gif';
+              $rootScope.portal.theme.mascotImg || "img/robot-taco.gif";
           } else {
-            vm.mascotImage = 'img/robot-taco.gif';
+            vm.mascotImage = "img/robot-taco.gif";
           }
           // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
           // eslint-disable-next-line angular/on-watch
-          $rootScope.$watch('portal.theme', function(newVal, oldVal) {
+          $rootScope.$watch("portal.theme", function(newVal, oldVal) {
             if (newVal !== oldVal) {
-              vm.mascotImage = newVal.mascotImg || 'img/robot-taco.gif';
+              vm.mascotImage = newVal.mascotImg || "img/robot-taco.gif";
             }
           });
         };
@@ -564,37 +652,40 @@ define(['angular'], function(angular) {
          */
         vm.markSingleAnnouncementSeen = function(id) {
           // Use $filter to filter out by ID
-          vm.announcements = $filter('filterOutMessageWithId')(
+          vm.announcements = $filter("filterOutMessageWithId")(
             vm.announcements,
             id
           );
           // Add to seenAnnouncementsIds
           seenAnnouncementIds.push(id);
           // Call service to save results
-          messagesService.setMessagesSeen(allSeenMessageIds,
-            seenAnnouncementIds, 'dismiss');
-          miscService.pushGAEvent('mascot', 'dismissed', id);
+          messagesService.setMessagesSeen(
+            allSeenMessageIds,
+            seenAnnouncementIds,
+            "dismiss"
+          );
+          miscService.pushGAEvent("mascot", "dismissed", id);
         };
 
         vm.moreInfoButton = function(actionButton) {
-          miscService.pushGAEvent('mascot', 'more info', actionButton.url);
+          miscService.pushGAEvent("mascot", "more info", actionButton.url);
         };
 
         vm.takeButtonAction = function(actionButton) {
           var url = actionButton.url;
-          var actionType = 'other';
-          var addToHome = 'addToHome';
+          var actionType = "other";
+          var addToHome = "addToHome";
           if (url.indexOf(addToHome) !== -1) {
-              actionType = addToHome;
+            actionType = addToHome;
           }
 
-          miscService.pushGAEvent('mascot', actionType, actionButton.url);
+          miscService.pushGAEvent("mascot", actionType, actionButton.url);
 
           if (actionType == addToHome) {
-            var slash = url.lastIndexOf('/') + 1;
+            var slash = url.lastIndexOf("/") + 1;
             var fName = url.substr(slash);
             $rootScope.addPortletToHome(fName);
-            actionButton.label = 'On your home';
+            actionButton.label = "On your home";
             actionButton.disabled = true;
           }
         };
@@ -607,8 +698,11 @@ define(['angular'], function(angular) {
           angular.forEach(separatedAnnouncements.unseen, function(value) {
             seenAnnouncementIds.push(value.id);
           });
-          messagesService.setMessagesSeen(allSeenMessageIds,
-            seenAnnouncementIds, 'dismiss');
+          messagesService.setMessagesSeen(
+            allSeenMessageIds,
+            seenAnnouncementIds,
+            "dismiss"
+          );
         };
 
         /**
@@ -628,13 +722,15 @@ define(['angular'], function(angular) {
         /**
          * Reset mascot when menu is closed
          */
-        $scope.$on('$mdMenuClose', function() {
+        $scope.$on("$mdMenuClose", function() {
           vm.hover = false;
           vm.active = false;
         });
-      }])
-
-    .controller('FeaturesPageController', ['$scope', 'MISC_URLS',
+      }
+    ])
+    .controller("FeaturesPageController", [
+      "$scope",
+      "MISC_URLS",
       function($scope, MISC_URLS) {
         var vm = this;
 
@@ -648,7 +744,7 @@ define(['angular'], function(angular) {
          * When the parent controller has messages, initialize
          * things dependent on messages
          */
-        $scope.$watch('$parent.hasMessages', function(hasMessages) {
+        $scope.$watch("$parent.hasMessages", function(hasMessages) {
           // If the parent scope has messages and notifications are enabled,
           // complete initialization
           if (hasMessages) {
@@ -657,5 +753,6 @@ define(['angular'], function(angular) {
             }
           }
         });
-    }]);
+      }
+    ]);
 });

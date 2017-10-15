@@ -1,19 +1,19 @@
 {
-    "result": "ok",
-    "content": {
-        "links": [
-            {
-                "icon": "fa-at",
-                "href": "https://www.google.com",
-                "title": "THIS IS GOOGLE",
-                "target": "_blank"
-            },
-            {
-                "icon": "mail_outline",
-                "href": "http://www.lonelyplanet.com",
-                "title": "Go Places",
-                "target": "_blank"
-            }
-        ]
-    }
+  "result": "ok",
+  "content": {
+    "links": [
+      {
+        "icon": "fa-at",
+        "href": "https://www.google.com",
+        "title": "THIS IS GOOGLE",
+        "target": "_blank"
+      },
+      {
+        "icon": "mail_outline",
+        "href": "http://www.lonelyplanet.com",
+        "title": "Go Places",
+        "target": "_blank"
+      }
+    ]
+  }
 }

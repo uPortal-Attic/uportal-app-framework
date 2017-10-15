@@ -16,30 +16,30 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-'use strict';
+"use strict";
 
-define(['angular'], function(angular) {
-  return angular.module('portal.search.services', [])
+define(["angular"], function(angular) {
+  return angular
+    .module("portal.search.services", [])
+    .factory("PortalSearchService", function() {
+      var query;
 
-  .factory('PortalSearchService', function() {
-    var query;
+      var getQuery = function() {
+        return query;
+      };
 
-    var getQuery = function() {
-      return query;
-    };
+      var resetQuery = function() {
+        query = undefined;
+      };
 
-    var resetQuery = function() {
-      query = undefined;
-    };
+      var setQuery = function(q) {
+        query = q;
+      };
 
-    var setQuery = function(q) {
-      query = q;
-    };
-
-    return {
-      setQuery: setQuery,
-      getQuery: getQuery,
-      resetQuery: resetQuery,
-    };
-  });
+      return {
+        setQuery: setQuery,
+        getQuery: getQuery,
+        resetQuery: resetQuery
+      };
+    });
 });

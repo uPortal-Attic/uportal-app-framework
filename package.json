@@ -9,26 +9,29 @@
     "build-static": "node tools/static/build.js",
     "format": "prettier --write **/*.{js,json,less}",
     "lint-css": "stylelint --syntax less components/css/**/*.less",
-    "dev-lint-js": "onchange components/** -i -- eslint --quiet --ext js --ext json --ext md --format html --output-file static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern components/js/ga.js",
-    "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern components/js/ga.js",
+    "dev-lint-js":
+      "onchange components/** -i -- eslint --quiet --ext js --ext json --ext md --format html --output-file static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern components/js/ga.js",
+    "lint-js":
+      "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern components/js/ga.js",
     "lint-md": "remark . --frail --ignore-path .gitignore",
     "precommit": "lint-staged",
-    "postbuild-static": "htmlprocessor static/index.html -o static/target/index.html",
+    "postbuild-static":
+      "htmlprocessor static/index.html -o static/target/index.html",
     "prestatic": "npm run build-static",
     "static": "cd static/target && superstatic",
     "static:watch": "onchange components/** -i -- npm run build-static",
-    "static:dev": "npm run build-static -s && concurrently -k \"npm run static -s\" \"npm run static:watch -s\"",
-    "docker": "docker run -d --name frame -p 8009:8009 docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:latest",
-    "build-docker": "docker build -t docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic .",
+    "static:dev":
+      "npm run build-static -s && concurrently -k \"npm run static -s\" \"npm run static:watch -s\"",
+    "docker":
+      "docker run -d --name frame -p 8009:8009 docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:latest",
+    "build-docker":
+      "docker build -t docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic .",
     "stop-docker": "docker stop frame; docker rm frame;",
     "clean": "npm run clean-static; npm run clean-test",
     "clean-test": "rm -rf components/test_out components/coverage",
     "clean-static": "rm -rf static/target"
   },
-  "files": [
-    "components",
-    "static"
-  ],
+  "files": ["components", "static"],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -125,10 +128,7 @@
     "normalize.less": "^1.0.0"
   },
   "lint-staged": {
-    "*.{js,json,less}": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.{js,json,less}": ["prettier --write", "git add"]
   },
   "eslintConfig": {
     "root": true,
@@ -159,10 +159,7 @@
     ],
     "rules": {
       "prettier/prettier": "error",
-      "angular/di": [
-        "warn",
-        "array"
-      ],
+      "angular/di": ["warn", "array"],
       "angular/controller-as": "off",
       "compat/compat": "error",
       "arrow-parens": "off",
@@ -180,10 +177,7 @@
     }
   },
   "stylelint": {
-    "extends": [
-      "stylelint-config-standard",
-      "stylelint-config-prettier"
-    ],
+    "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
     "rules": {
       "selector-type-no-unknown": null
     }
@@ -196,10 +190,7 @@
       "preset-lint-recommended",
       "preset-lint-consistent",
       "validate-links",
-      [
-        "remark-lint-list-item-indent",
-        "mixed"
-      ]
+      ["remark-lint-list-item-indent", "mixed"]
     ]
   },
   "config": {

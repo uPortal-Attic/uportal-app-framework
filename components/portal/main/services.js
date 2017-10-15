@@ -16,17 +16,25 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-'use strict';
+"use strict";
 
-define(['angular'], function(angular) {
-  return angular.module('portal.main.services', [])
-
-  .factory('mainService', [
-    '$http', '$log', '$sessionStorage',
-    'miscService', 'SERVICE_LOC', 'APP_FLAGS',
-    function($http, $log, $sessionStorage,
-             miscService, SERVICE_LOC, APP_FLAGS) {
-      var prom = $http.get(SERVICE_LOC.sessionInfo, {cache: true});
+define(["angular"], function(angular) {
+  return angular.module("portal.main.services", []).factory("mainService", [
+    "$http",
+    "$log",
+    "$sessionStorage",
+    "miscService",
+    "SERVICE_LOC",
+    "APP_FLAGS",
+    function(
+      $http,
+      $log,
+      $sessionStorage,
+      miscService,
+      SERVICE_LOC,
+      APP_FLAGS
+    ) {
+      var prom = $http.get(SERVICE_LOC.sessionInfo, { cache: true });
       var userPromise;
 
       var getUser = function() {
@@ -35,34 +43,43 @@ define(['angular'], function(angular) {
         }
 
         userPromise = prom
-          .then(function(result, status) { // success function
+          .then(function(result, status) {
+            // success function
             var person = result.data.person;
             if (APP_FLAGS.loginOnLoad) {
               // quick check to make sure you are who your browser says you are
               if (
-                $sessionStorage.portal && $sessionStorage.portal.username &&
+                $sessionStorage.portal &&
+                $sessionStorage.portal.username &&
                 person.userName !== $sessionStorage.portal.username &&
                 person.originalUsername !== $sessionStorage.portal.username
               ) {
-                $log.warn('Thought they were '
-                  + $sessionStorage.portal.username
-                  + ' but session sent back '
-                  + person.userName +'. Redirect!');
+                $log.warn(
+                  "Thought they were " +
+                    $sessionStorage.portal.username +
+                    " but session sent back " +
+                    person.userName +
+                    ". Redirect!"
+                );
                 delete $sessionStorage.portal;
                 miscService.redirectUser(
-                  302, 'Wrong User than populated in session storage.');
+                  302,
+                  "Wrong User than populated in session storage."
+                );
               }
             }
             return person;
           })
-          .catch(function(data, status) { // failure function
-            miscService.redirectUser(status, 'Get User Info');
+          .catch(function(data, status) {
+            // failure function
+            miscService.redirectUser(status, "Get User Info");
           });
         return userPromise;
-    };
+      };
 
-    return {
-      getUser: getUser,
-    };
-  }]);
+      return {
+        getUser: getUser
+      };
+    }
+  ]);
 });
