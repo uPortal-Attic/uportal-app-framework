@@ -462,7 +462,6 @@
             <exclude>**/components/coverage/**</exclude>
             <exclude>**/components/test_out/**</exclude>
             <exclude>**/components/js/ga.js</exclude>
-            <exclude>**/components/js/sortable.js</exclude>
             <exclude>.gitignore</exclude>
           </excludes>
           <mapping>
