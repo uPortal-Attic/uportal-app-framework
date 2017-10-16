@@ -58,7 +58,7 @@
     <md-menu-content class="top-bar-menu-content notifications-menu">
       <md-menu-item layout="row" layout-align="space-between center">
         <span>Notifications</span>
-        <a ng-href="{{ vm.notificationsUrl }}" ng-click="vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');" aria-label="see all notifications" class="link__see-all">
+        <a ng-href="{{ vm.notificationsUrl }}" ng-click="vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');vm.isNotificationsPage = true;" aria-label="see all notifications" class="link__see-all">
           See all <span ng-if="vm.notifications.length > 0">({{ vm.notifications.length }})</span>
         </a>
       </md-menu-item>

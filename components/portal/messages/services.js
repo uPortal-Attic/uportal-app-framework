@@ -73,8 +73,9 @@ define(['angular'], function(angular) {
         var getAllMessages = function() {
           return $http.get(SERVICE_LOC.messagesURL)
             .then(function(response) {
-              if (angular.isArray(response.data)) {
-                return response.data;
+              if (response.data && response.data.messages
+                && angular.isArray(response.data.messages)) {
+                return response.data.messages;
               } else {
                 return [];
               }
