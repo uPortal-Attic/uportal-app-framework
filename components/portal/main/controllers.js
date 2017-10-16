@@ -145,15 +145,90 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Header */
   .controller('PortalHeaderController', ['$rootScope', '$scope', '$location',
-    'APP_FLAGS', 'MISC_URLS', 'messagesService',
-    function($rootScope, $scope, $location, APP_FLAGS, MISC_URLS,
-             messagesService) {
+    '$mdSidenav', 'APP_FLAGS', 'MISC_URLS',
+    function($rootScope, $scope, $location, $mdSidenav,
+             APP_FLAGS, MISC_URLS) {
       var vm = this;
       vm.navbarCollapsed = true;
       vm.showLogout = true;
 
       $scope.APP_FLAGS = APP_FLAGS;
       $scope.MISC_URLS = MISC_URLS;
+  }])
+
+  /* Side navigation controller */
+  .controller('MainMenuController', ['$rootScope', '$scope', '$mdSidenav',
+    '$window', 'APP_OPTIONS', 'FOOTER_URLS', 'MESSAGES', 'NAMES',
+    function($rootScope, $scope, $mdSidenav, $window, APP_OPTIONS,
+             FOOTER_URLS, MESSAGES, NAMES) {
+      var vm = this;
+
+      // Scope variables
+      vm.menuItems = [];
+      vm.appName = '';
+      vm.notificationsPageUrl = '';
+      vm.hideMainMenu = false;
+      vm.footerLinks = FOOTER_URLS;
+
+      // Close side nav on scroll to avoid awkward UI
+      $window.onscroll = function() {
+        if (vm.isMenuOpen()) {
+          vm.closeMainMenu();
+        }
+      };
+
+      /**
+       * Check if the side nav menu is open
+       * @return Boolean
+       */
+      vm.isMenuOpen = function() {
+        return $mdSidenav('main-menu').isOpen();
+      };
+
+      /**
+       * Close the side navigation menu (used in ng-click)
+       */
+      vm.closeMainMenu = function() {
+        if (vm.isMenuOpen()) {
+          $mdSidenav('main-menu').close();
+        }
+      };
+
+      /**
+       * Toggle the side navigation menu
+       */
+      vm.showMainMenu = function() {
+        $mdSidenav('main-menu').toggle();
+      };
+
+      /**
+       * Check for menu configuration in app config
+       */
+      var init = function() {
+        // Use either custom template or defined menu items
+        if (APP_OPTIONS.appMenuTemplateURL) {
+          vm.appMenuTemplate = require.toUrl(APP_OPTIONS.appMenuTemplateURL);
+        } else if (APP_OPTIONS.appMenuItems
+          && APP_OPTIONS.appMenuItems.length > 0) {
+          vm.menuItems = APP_OPTIONS.appMenuItems;
+        } else {
+          vm.hideMainMenu = true;
+        }
+        // Set mobile menu header values
+        if (NAMES.title) {
+          vm.appName = NAMES.title;
+        }
+        if (MESSAGES.notificationsPageURL) {
+          vm.notificationsPageUrl = MESSAGES.notificationsPageURL;
+        }
+        if ($rootScope.portal && $rootScope.portal.theme
+          && $rootScope.portal.theme.footerLinks) {
+          vm.footerLinks =
+            vm.footerLinks.concat($rootScope.portal.theme.footerLinks);
+        }
+      };
+
+      init();
   }])
 
   /* Footer */

@@ -19,39 +19,16 @@
 
 -->
 <md-toolbar md-scroll-shrink class="md-primary" tabindex="0" ng-controller="MessagesController">
-  <notifications-bell mode="priority" class="priority-gt-xs" header-ctrl="headerCtrl" hide-xs></notifications-bell>
+  <notifications-bell mode="priority" class="priority-gt-xs" header-ctrl="mainCtrl" hide-xs></notifications-bell>
   <span ng-controller="AnnouncementsController" controllerAs="vm"></span>
   <div class="md-toolbar-tools"  role="banner">
     <div layout="row" flex-gt-xs="30" flex-xs="40" layout-align="start center">
-      <!-- MOBILE MENU -->
-      <md-menu md-position-mode="target target" md-offset="0 56" hide-gt-xs>
-        <md-button aria-label="toggle mobile menu" hide-gt-xs ng-click="$mdOpenMenu($event)" layout="row" layout-align="center center">
-          <notifications-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notifications-bell>
-          <i class="fa fa-bars" style='font-size: 1.5em;'></i>
-          <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Main menu</md-tooltip>
-        </md-button>
-        <md-menu-content width="5" class="mobile-menu">
-          <!-- Mascot announcement -->
-          <mascot-announcement mode="mobile-menu" header-ctrl="headerCtrl"></mascot-announcement>
-          <!-- Notifications -->
-          <notifications-bell mode="mobile-menu" header-ctrl="headerCtrl" ng-if="!GuestMode"></notifications-bell>
-          <!-- Home link -->
-          <md-menu-item>
-            <md-button class="md-default" ng-if="APP_FLAGS.isWeb" ng-href="/web" ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Home');">
-              <md-icon>home</md-icon> Home
-            </md-button>
-            <md-button class="md-default" ng-if='!APP_FLAGS.isWeb' ng-href="/" target="_self" ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Home');">
-              <md-icon>home</md-icon> Home
-            </md-button>
-          </md-menu-item>
-          <!-- Log out link -->
-          <md-menu-item>
-            <md-button class="md-default" ng-href="{{MISC_URLS.logoutURL}}" target="_self" ng-click="pushGAEvent('Mobile Menu', 'Click Link', 'Log out');">
-              <md-icon>exit_to_app</md-icon> Log out
-            </md-button>
-          </md-menu-item>
-        </md-menu-content>
-      </md-menu>
+      <!-- MAIN MENU TOGGLE -->
+      <md-button class="menu-toggle" ng-controller="MainMenuController as vm" ng-click="vm.showMainMenu()" ng-class="{ 'hide-gt-xs' : vm.hideMainMenu }">
+        <md-icon>menu</md-icon>
+        <md-tooltip md-direction="bottom" md-delay="500" class="top-bar-tooltip">Menu</md-tooltip>
+        <notifications-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notifications-bell>
+      </md-button>
 
       <!-- MyUW APP ICON AND TITLE -->
       <a ng-href="{{MISC_URLS.rootURL}}"
@@ -60,10 +37,6 @@
          aria-label="{{portal.theme.ariaLabelTitle}}"
          layout="row"
          layout-align="start center">
-        <img ng-src="{{portal.theme.crest}}"
-             class="crest"
-             alt="{{portal.theme.crestalt}}"
-             hide-sm hide-xs>
         <h1 class="md-title" layout="row">
           <span>{{portal.theme.title}}</span>
           <span class="beta-logo" ng-if="portal.theme.subtitle">{{portal.theme.subtitle}}</span>
@@ -71,10 +44,9 @@
       </a>
     </div>
 
-    <!-- SEARCH BUTTON AND USERNAME MENU XS-ONLY -->
+    <!-- SEARCH BUTTON XS-ONLY -->
     <div layout="row" layout-align="end center" flex-xs="60" class="top-bar-controls-xs" hide-gt-xs>
-      <search ng-if="APP_FLAGS.showSearch" mode="mobile-search" layout="row" layout-align="end center" hide-gt-xs></search>
-      <username layout="row" layout-align="start center"></username>
+      <search ng-show="APP_FLAGS.showSearch" mode="mobile-search" layout="row" layout-align="end center" hide-gt-xs></search>
     </div>
 
     <!-- SEARCH BAR SM+ -->
@@ -85,9 +57,10 @@
 
     <!-- COLLAPSIBLE MENU SM+ -->
     <div layout="row" layout-align="end center" flex-gt-xs="30" hide-xs>
-      <mascot-announcement mode="mascot"></mascot-announcement>
+      <mascot-announcement mode="mascot" header-ctrl="mainCtrl"></mascot-announcement>
       <notifications-bell mode="bell" ng-if="!GuestMode"></notifications-bell>
       <username layout="row" layout-align="start center"></username>
     </div>
   </div>
 </md-toolbar>
+
