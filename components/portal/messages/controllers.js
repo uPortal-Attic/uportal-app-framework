@@ -43,8 +43,10 @@ define(['angular'], function(angular) {
           messagesService.getAllMessages()
             .then(function(result) {
               // Ensure messages exist and check for group filtering
-              if (result.length > 0) {
+              if (angular.isArray(result) && result.length > 0) {
                 allMessages = result;
+              } else if (angular.isString(result)) {
+                $scope.messagesError = result;
               }
               filterMessages();
               return allMessages;
@@ -166,6 +168,10 @@ define(['angular'], function(angular) {
           // If the parent scope has messages and notifications are enabled,
           // complete initialization
           if (hasMessages) {
+            // Check if messages service failed
+            if ($scope.$parent.messagesError) {
+              vm.messagesError = $scope.$parent.messagesError;
+            }
             isNotificationsPage();
             configureNotificationsScope();
           }

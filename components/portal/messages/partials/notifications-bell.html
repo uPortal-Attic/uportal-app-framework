@@ -63,9 +63,10 @@
         </a>
       </md-menu-item>
       <!-- EMPTY STATE -->
-      <md-menu-item ng-show="vm.notifications.length === 0" class="top-bar-menu-item notifications-empty">
+      <md-menu-item ng-show="vm.notifications.length === 0 || vm.messagesError" class="top-bar-menu-item notifications-empty">
         <div class="menu-item-content" layout="row" layout-align="center center">
-          All caught up!
+          <span ng-if="!vm.messagesError">All caught up!</span>
+          <span ng-if="vm.messagesError"><md-icon class="md-warn">warning</md-icon> {{ vm.messagesError }}</span>
         </div>
       </md-menu-item>
       <!-- SHOW UP TO 3 NEW NOTIFICATIONS -->
