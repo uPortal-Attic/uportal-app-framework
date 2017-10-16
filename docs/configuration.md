@@ -19,6 +19,8 @@ Your application can overwrite any constant listed below by adding it to the `js
 ### APP_OPTIONS
 
 + `optionsTemplateURL` : A path to the HTML template for app-specific options (appears on the right-hand side of the [app-header](directives.md)). See the [app options doc](app-options.md) to learn how to use this feature.
++ `appMenuTemplateURL` : A path to the HTML template for app-specific menu items (appears in the side navigation menu that is triggered when clicking the top bar hamburger icon button). See the [app navigation doc](configurable-menu.md) to learn how to use this feature.
++ `appMenuItems` : An array of menu item objects used for a simple custom menu (with links that have a text label, icon, and url). See the [app navigation doc](configurable-menu.md) to learn how to use this feature.
 
 ### SERVICE_LOC
 
@@ -78,8 +80,14 @@ Each object in this array has 3 fields:
 define(['angular'], function(angular) {
   return angular.module('override', [])
   .constant('OVERRIDE', {
-    'FEATURES': {
-      'enabled': true,
+    'APP_OPTIONS': {
+      'appMenuItems': [
+        {
+          'label': 'MyUW home',
+          'icon': 'home',
+          'url': '/web',
+        },
+      ],
     },
     'APP_FLAG': {
       'loginOnLoad': true,
@@ -97,12 +105,12 @@ define(['angular'], function(angular) {
 
 Alright, lot going on here so lets take a walk through this.
 
-+ `Lines 1-4` include the the requirejs wrapper, setup for the angular module (pulled in during the /portal/main.js execution),
++ `Lines 1-3` include the the requirejs wrapper, setup for the angular module (pulled in during the /portal/main.js execution),
 and definition of the "OVERRIDE" constant. These lines should not change.
-+ `Line 5` is an example override for the `enabled` attribute in the `FEATURES` category. By default its set to false, but
-with this config it will now be true.
-+ `Line 6` is an example of changing more than one config in a single category.
-+ `Lines 7-11` are overriding an array config category. This will append to the default values. In this case it'll add a footer url for google.
++ `Lines 4-12` are an example override for the `appMenuItems` attribute in the `APP_OPTIONS` category. By default its set to null, but
+with this config it will now include an item to add to the app's [configurable menu](configurable-menu.md).
++ `Line 14-16` is an example of changing more than one config in a single category.
++ `Lines 17-21` are overriding an array config category. This will append to the default values. In this case it'll add a footer url for google.
 
 In version 2.2.1 we added the option to add key/value pairs to existing categories (e.g.: `APP_FLAGS`). This can be helpful if your
 application has additional `APP_FLAGS` or `SERVICE_LOC` but you don't want to create another value service just for that. However, if you have
