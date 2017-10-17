@@ -45,6 +45,8 @@ define(['angular'], function(angular) {
                SERVICE_LOC,
                MESSAGES,
                KV_KEYS) {
+        // Service messages
+        var GET_MESSAGES_FAILED = 'Could not get notifications at this time.';
         // //////////////////
         // Exposed methods //
         // //////////////////
@@ -61,6 +63,7 @@ define(['angular'], function(angular) {
          * @property {string} expireDate
          * @property {string} featureImageUrl
          * @property {string} priority
+         * @property {Boolean} dismissible
          * @property {Object} actionButton
          * @property {Object} moreInfoButton
          * @property {Object} confirmButton
@@ -73,10 +76,16 @@ define(['angular'], function(angular) {
         var getAllMessages = function() {
           return $http.get(SERVICE_LOC.messagesURL)
             .then(function(response) {
-              return response.data;
+              if (response.data && response.data.messages
+                && angular.isArray(response.data.messages)) {
+                return response.data.messages;
+              } else {
+                return GET_MESSAGES_FAILED;
+              }
             })
             .catch(function(error) {
               miscService.redirectUser(error.status, 'Get all messages');
+              return GET_MESSAGES_FAILED;
             });
         };
 

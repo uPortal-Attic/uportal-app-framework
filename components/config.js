@@ -50,7 +50,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'app-config': 'js/app-config',
       'frame-config': 'js/frame-config',
       'override': 'js/override',
-      'sortable': 'js/sortable',
+      'sortable': 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.17.2/sortable.min',
   };
 
   var frameShims = {
@@ -69,6 +69,10 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       },
       'ui-bootstrap': {deps: ['angular']},
       'ui-gravatar': {deps: ['angular']},
+      'sortable': {
+        deps: ['angular', 'jquery-ui'],
+        exports: 'sortable',
+      },
   };
 
   var allPaths;

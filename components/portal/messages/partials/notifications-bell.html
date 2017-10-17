@@ -21,7 +21,7 @@
 <div class="notifications">
   <!-- MOBILE BELL -->
   <div class="notification-badge notification-badge-mobile" aria-label="{{ status }}"
-       ng-show="directiveMode === 'mobile-bell' && vm.notifications.length !== 0">
+       ng-show="directiveMode === 'mobile-bell' && vm.notifications.length !== 0 && !vm.isNotificationsPage">
     <md-icon>notifications</md-icon>
   </div>
 
@@ -33,13 +33,14 @@
                ng-click="vm.pushGAEvent('Mobile Menu', 'Click Link', 'Notifications');"
                layout="row" layout-align="start center">
       <span><md-icon>notifications</md-icon></span>
-      <span>Notifications ({{ vm.notifications.length }})</span>
+      <span>Notifications </span>
+      <span ng-show="!vm.isNotificationsPage">({{ vm.notifications.length }})</span>
     </md-button>
   </md-menu-item>
 
   <!-- DESKTOP NOTIFICATION BELL -->
   <md-menu class="notifications-menu"
-           ng-show="directiveMode === 'bell'"
+           ng-show="directiveMode === 'bell' && !vm.isNotificationsPage"
            md-offset="-200 0"
            md-position-mode="target bottom">
     <md-button ng-click="$mdOpenMenu($event);vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell')"
@@ -57,14 +58,15 @@
     <md-menu-content class="top-bar-menu-content notifications-menu">
       <md-menu-item layout="row" layout-align="space-between center">
         <span>Notifications</span>
-        <a ng-href="{{ vm.notificationsUrl }}" ng-click="vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');" aria-label="see all notifications" class="link__see-all">
+        <a ng-href="{{ vm.notificationsUrl }}" ng-click="vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');vm.isNotificationsPage = true;" aria-label="see all notifications" class="link__see-all">
           See all <span ng-if="vm.notifications.length > 0">({{ vm.notifications.length }})</span>
         </a>
       </md-menu-item>
       <!-- EMPTY STATE -->
-      <md-menu-item ng-show="vm.notifications.length === 0" class="top-bar-menu-item notifications-empty">
+      <md-menu-item ng-show="vm.notifications.length === 0 || vm.messagesError" class="top-bar-menu-item notifications-empty">
         <div class="menu-item-content" layout="row" layout-align="center center">
-          All caught up!
+          <span ng-if="!vm.messagesError">All caught up!</span>
+          <span ng-if="vm.messagesError"><md-icon class="md-warn">warning</md-icon> {{ vm.messagesError }}</span>
         </div>
       </md-menu-item>
       <!-- SHOW UP TO 3 NEW NOTIFICATIONS -->

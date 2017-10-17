@@ -30,7 +30,7 @@
   <groupId>org.apereo.uportal</groupId>
   <artifactId>uportal-app-framework</artifactId>
   <packaging>war</packaging>
-  <version>6.0.4-SNAPSHOT</version>
+  <version>6.0.5-SNAPSHOT</version>
   <name>uPortal Application Framework</name>
   <description>App Framework for uPortal</description>
   <url>https://github.com/uPortal-Project/uportal-app-framework</url>
@@ -236,14 +236,14 @@
         <version>1.0.1</version>
         <executions>
           <execution>
-            <id>rename-default-file</id>
+            <id>rename-uPortal-file</id>
             <phase>compile</phase>
             <goals>
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/default.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/default.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uPortal.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uPortal.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -254,8 +254,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-madison.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-madison.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwMadison.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwMadison.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -266,8 +266,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-system.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-system.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwSystem.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwSystem.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -278,8 +278,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-river-falls.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-river-falls.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwRiverFalls.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwRiverFalls.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -290,8 +290,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-stevens-point.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-stevens-point.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwStevensPoint.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwStevensPoint.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -302,8 +302,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-milwaukee.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-milwaukee.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwMilwaukee.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwMilwaukee.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -314,8 +314,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-lacrosse.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-lacrosse.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwLaCrosse.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwLaCrosse.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -326,8 +326,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-whitewater.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-whitewater.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwWhitewater.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwWhitewater.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -338,8 +338,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-stout.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-stout.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwStout.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwStout.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -350,8 +350,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-oshkosh.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-oshkosh.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwOshkosh.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwOshkosh.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -362,8 +362,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-greenbay.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-greenbay.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwGreenBay.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwGreenBay.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -374,8 +374,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-superior.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-superior.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwSuperior.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwSuperior.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -386,8 +386,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-platteville.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-platteville.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwPlatteville.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwPlatteville.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -398,8 +398,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-parkside.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-parkside.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwParkside.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwParkside.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -410,8 +410,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-eau-claire.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-eau-claire.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwEauClaire.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwEauClaire.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -422,8 +422,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-extension.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-extension.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwExtension.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwExtension.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -434,8 +434,8 @@
               <goal>rename</goal>
             </goals>
             <configuration>
-              <sourceFile>${webapp.target.directory}/css/themes/uw-colleges.css</sourceFile>
-              <destinationFile>${webapp.target.directory}/css/themes/uw-colleges.${project.version}.css</destinationFile>
+              <sourceFile>${webapp.target.directory}/css/themes/uwColleges.css</sourceFile>
+              <destinationFile>${webapp.target.directory}/css/themes/uwColleges.${project.version}.css</destinationFile>
               <filtering>true</filtering>
             </configuration>
           </execution>
@@ -462,7 +462,6 @@
             <exclude>**/components/coverage/**</exclude>
             <exclude>**/components/test_out/**</exclude>
             <exclude>**/components/js/ga.js</exclude>
-            <exclude>**/components/js/sortable.js</exclude>
             <exclude>.gitignore</exclude>
           </excludes>
           <mapping>

@@ -43,8 +43,10 @@ define(['angular'], function(angular) {
           messagesService.getAllMessages()
             .then(function(result) {
               // Ensure messages exist and check for group filtering
-              if (result.messages && result.messages.length > 0) {
-                allMessages = result.messages;
+              if (angular.isArray(result) && result.length > 0) {
+                allMessages = result;
+              } else if (angular.isString(result)) {
+                $scope.messagesError = result;
               }
               filterMessages();
               return allMessages;
@@ -125,11 +127,11 @@ define(['angular'], function(angular) {
       },
     ])
 
-    .controller('NotificationsController', ['$q', '$log', '$scope',
+    .controller('NotificationsController', ['$q', '$log', '$scope', '$window',
       '$rootScope', '$location', '$localStorage', '$filter', 'MESSAGES',
       'SERVICE_LOC', 'miscService', 'messagesService',
-      function($q, $log, $scope, $rootScope, $location, $localStorage, $filter,
-               MESSAGES, SERVICE_LOC, miscService, messagesService) {
+      function($q, $log, $scope, $window, $rootScope, $location, $localStorage,
+               $filter, MESSAGES, SERVICE_LOC, miscService, messagesService) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -153,6 +155,7 @@ define(['angular'], function(angular) {
         vm.notificationsUrl = MESSAGES.notificationsPageURL;
         vm.status = 'View notifications';
         vm.isLoading = true;
+        vm.isNotificationsPage = false;
 
         // //////////////////
         // Event listeners //
@@ -165,6 +168,11 @@ define(['angular'], function(angular) {
           // If the parent scope has messages and notifications are enabled,
           // complete initialization
           if (hasMessages) {
+            // Check if messages service failed
+            if ($scope.$parent.messagesError) {
+              vm.messagesError = $scope.$parent.messagesError;
+            }
+            isNotificationsPage();
             configureNotificationsScope();
           }
         });
@@ -172,6 +180,14 @@ define(['angular'], function(angular) {
         // ////////////////
         // Local methods //
         // ////////////////
+        /**
+         * Check if user is viewing notifications page
+         */
+        var isNotificationsPage = function() {
+          vm.isNotificationsPage =
+            $window.location.pathname === MESSAGES.notificationsPageURL;
+        };
+
         /**
          * Get notifications from parent scope, then pass them on
          * for filtering by seen/unseen
@@ -450,6 +466,12 @@ define(['angular'], function(angular) {
             vm.announcements = separatedAnnouncements.unseen;
             // Set the mascot image
             setMascot();
+            // Set PortalMainController variable so main menu knows there
+            // are unseen announcements
+            if ($scope.headerCtrl) {
+              $scope.headerCtrl.hasUnseenAnnouncements =
+                vm.announcements.length > 0;
+            }
           } else {
             // Filter out low priority announcements
             popups = $filter('filter')(
@@ -558,6 +580,11 @@ define(['angular'], function(angular) {
             vm.announcements,
             id
           );
+          // Notify up the chain so main menu knows about it
+          if ($scope.headerCtrl) {
+            $scope.headerCtrl.hasUnseenAnnouncements =
+              vm.announcements.length > 0;
+          }
           // Add to seenAnnouncementsIds
           seenAnnouncementIds.push(id);
           // Call service to save results

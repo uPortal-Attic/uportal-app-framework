@@ -30,6 +30,8 @@ define(['angular'], function(angular) {
         })
         .value('APP_OPTIONS', {
             'optionsTemplateURL': null,
+            'appMenuTemplateURL': null,
+            'appMenuItems': [],
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,
@@ -81,7 +83,7 @@ define(['angular'], function(angular) {
         ])
         .value('APP_BETA_FEATURES', [
           {
-            'id': 'toogleSomething',
+            'id': 'toggleSomething',
             'title': 'Sample Toggle',
             'description':
               'This is just an example of a toggle. ' +

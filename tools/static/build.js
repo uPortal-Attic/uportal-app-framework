@@ -36,11 +36,11 @@ mkdirp('static/target/css/themes/', function(error) {
 });
 
 
-const themes = ['default', 'uw-madison', 'uw-system', 'uw-river-falls',
-  'uw-stevens-point', 'uw-milwaukee', 'uw-whitewater', 'uw-stout',
-  'uw-superior', 'uw-platteville', 'uw-parkside', 'uw-oshkosh',
-  'uw-greenbay', 'uw-lacrosse', 'uw-eau-claire', 'uw-extension',
-  'uw-colleges'];
+const themes = ['uPortal', 'uwMadison', 'uwSystem', 'uwRiverFalls',
+  'uwStevensPoint', 'uwMilwaukee', 'uwWhitewater', 'uwStout',
+  'uwSuperior', 'uwPlatteville', 'uwParkside', 'uwOshkosh',
+  'uwGreenBay', 'uwLaCrosse', 'uwEauClaire', 'uwExtension',
+  'uwColleges'];
 
 // Render less and write to .css file for each theme
 for (let i = 0; i < themes.length; i++) {

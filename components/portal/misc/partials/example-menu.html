@@ -18,19 +18,19 @@
     under the License.
 
 -->
-<div class="my-uw" md-theme="{{ portal.theme.name || 'default' }}" tabindex="0" aria-live="polite" aria-atomic="false">
-  <div class="my-uw-body">
-    <portal-header ng-class="{'has-priority-nots': mainCtrl.hasPriorityNotifications}" ng-controller="PortalHeaderController as headerCtrl"></portal-header>
-
-    <div class="page-content" layout="column" tabindex="0">
-      <div role="main" class="region-main" class="no-padding">
-        <div ng-class="routeClass" ng-view role="application" aria-labelledby="app-title"></div>
-      </div>
-    </div>
-
-  </div>
-  <!-- MAIN MENU -->
-  <main-menu main-ctrl="mainCtrl"></main-menu>
-  <!-- FOOTER -->
-  <site-footer class="my-uw" tabindex="0"></site-footer>
-</div>
+<md-menu-item>
+  <md-button href="/web" ng-click="vm.closeMainMenu();" layout="row" layout-align="start center">
+          <span>
+            <md-icon>home</md-icon>
+          </span>
+    <span>MyUW Home</span>
+  </md-button>
+</md-menu-item>
+<md-menu-item>
+  <md-button href="/about" ng-click="vm.closeMainMenu();" layout="row" layout-align="start center">
+          <span>
+            <md-icon>help</md-icon>
+          </span>
+    <span>About</span>
+  </md-button>
+</md-menu-item>
