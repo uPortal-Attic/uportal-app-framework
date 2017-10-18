@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return (angular
-      .module("portal.storage.services", [])
+      .module('portal.storage.services', [])
       /**
     Key Value Service
 
@@ -40,10 +40,10 @@ define(["angular"], function(angular) {
         - value : object
       - isKVStoreActivated()
     **/
-      .factory("keyValueService", [
-        "$http",
-        "miscService",
-        "SERVICE_LOC",
+      .factory('keyValueService', [
+        '$http',
+        'miscService',
+        'SERVICE_LOC',
         function($http, miscService, SERVICE_LOC) {
           // private functions
           var successFn = function(response) {
@@ -51,7 +51,7 @@ define(["angular"], function(angular) {
           };
 
           var errorFn = function(response) {
-            miscService.redirectUser(response.status, "Key Value Service");
+            miscService.redirectUser(response.status, 'Key Value Service');
             return response.data;
           };
 
@@ -62,19 +62,19 @@ define(["angular"], function(angular) {
 
           var getValue = function(key) {
             return $http
-              .get(SERVICE_LOC.kvURL + "/" + key)
+              .get(SERVICE_LOC.kvURL + '/' + key)
               .then(successFn, errorFn);
           };
 
           var setValue = function(key, value) {
             return $http
-              .put(SERVICE_LOC.kvURL + "/" + key, value)
+              .put(SERVICE_LOC.kvURL + '/' + key, value)
               .then(successFn, errorFn);
           };
 
           var deleteValue = function(key) {
             return $http
-              .delete(SERVICE_LOC.kvURL + "/" + key)
+              .delete(SERVICE_LOC.kvURL + '/' + key)
               .then(successFn, errorFn);
           };
 

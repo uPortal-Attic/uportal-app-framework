@@ -17,4 +17,4 @@
  * under the License.
  */
 /* eslint-env node */
-module.exports = { extends: ["@commitlint/config-angular"] };
+module.exports = { extends: ['@commitlint/config-angular'] };

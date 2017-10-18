@@ -16,23 +16,23 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return (angular
-      .module("portal.main.controllers", [])
-      .controller("PortalMainController", [
-        "$localStorage",
-        "$sessionStorage",
-        "$scope",
-        "$rootScope",
-        "$document",
-        "$location",
-        "NAMES",
-        "MISC_URLS",
-        "APP_FLAGS",
-        "THEMES",
-        "miscService",
+      .module('portal.main.controllers', [])
+      .controller('PortalMainController', [
+        '$localStorage',
+        '$sessionStorage',
+        '$scope',
+        '$rootScope',
+        '$document',
+        '$location',
+        'NAMES',
+        'MISC_URLS',
+        'APP_FLAGS',
+        'THEMES',
+        'miscService',
         function(
           $localStorage,
           $sessionStorage,
@@ -47,21 +47,21 @@ define(["angular"], function(angular) {
           miscService
         ) {
           var defaults = {
-            layoutMode: "list" // other option is 'widgets
+            layoutMode: 'list' // other option is 'widgets
           };
 
           /**
      * set the frame title using theme
      */
           function setTitle() {
-            var frameTitle = "";
+            var frameTitle = '';
             if ($rootScope.portal && $rootScope.portal.theme) {
               frameTitle = $rootScope.portal.theme.title;
               if (frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
-                frameTitle = " | " + frameTitle;
+                frameTitle = ' | ' + frameTitle;
               } else {
                 // since frame title equals the title in NAMES lets not duplicate it
-                frameTitle = "";
+                frameTitle = '';
               }
             }
             $document[0].title = NAMES.title + frameTitle;
@@ -81,7 +81,7 @@ define(["angular"], function(angular) {
             }
             // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
             // eslint-disable-next-line angular/on-watch
-            $rootScope.$watch("portal.theme", function(newValue, oldValue) {
+            $rootScope.$watch('portal.theme', function(newValue, oldValue) {
               if (newValue && newValue !== oldValue) {
                 setTitle();
               }
@@ -89,9 +89,9 @@ define(["angular"], function(angular) {
 
             // class for ng-view
             $scope.routeClass =
-              "route" +
+              'route' +
               angular.lowercase(
-                $location.path().replace(new RegExp("/", "g"), "-")
+                $location.path().replace(new RegExp('/', 'g'), '-')
               );
           };
 
@@ -121,14 +121,14 @@ define(["angular"], function(angular) {
         }
       ])
       /* Username */
-      .controller("SessionCheckController", [
-        "$log",
-        "$scope",
-        "mainService",
-        "NAMES",
-        "APP_FLAGS",
-        "$sessionStorage",
-        "$rootScope",
+      .controller('SessionCheckController', [
+        '$log',
+        '$scope',
+        'mainService',
+        'NAMES',
+        'APP_FLAGS',
+        '$sessionStorage',
+        '$rootScope',
         function(
           $log,
           $scope,
@@ -140,21 +140,21 @@ define(["angular"], function(angular) {
         ) {
           var vm = this;
           vm.user = [];
-          vm.username = "?";
-          vm.campusId = "";
-          vm.firstLetter = "?";
+          vm.username = '?';
+          vm.campusId = '';
+          vm.firstLetter = '?';
           vm.optAvatar = $sessionStorage.optAvatar;
           vm.profileUrl =
             $sessionStorage.portal.theme &&
             $sessionStorage.portal.theme.profileUrl
               ? $sessionStorage.portal.theme.profileUrl
-              : "";
+              : '';
           vm.campusIdAttribute = APP_FLAGS.campusIdAttribute;
           /**
      * Listen for theme changes and update profileUrl accordingly
      */
-          $scope.$on("themeChanged", function(event, data) {
-            vm.profileUrl = data.profileUrl ? data.profileUrl : "";
+          $scope.$on('themeChanged', function(event, data) {
+            vm.profileUrl = data.profileUrl ? data.profileUrl : '';
           });
 
           // Check if user is guest and if avatar is enabled
@@ -180,17 +180,17 @@ define(["angular"], function(angular) {
               return result;
             })
             .catch(function() {
-              $log.warn("could not get user");
+              $log.warn('could not get user');
             });
         }
       ])
       /* Header */
-      .controller("PortalHeaderController", [
-        "$rootScope",
-        "$scope",
-        "$location",
-        "APP_FLAGS",
-        "MISC_URLS",
+      .controller('PortalHeaderController', [
+        '$rootScope',
+        '$scope',
+        '$location',
+        'APP_FLAGS',
+        'MISC_URLS',
         function($rootScope, $scope, $location, APP_FLAGS, MISC_URLS) {
           var vm = this;
           vm.navbarCollapsed = true;
@@ -201,9 +201,9 @@ define(["angular"], function(angular) {
         }
       ])
       /* Footer */
-      .controller("PortalFooterController", [
-        "$scope",
-        "FOOTER_URLS",
+      .controller('PortalFooterController', [
+        '$scope',
+        'FOOTER_URLS',
         function($scope, FOOTER_URLS) {
           $scope.date = new Date();
           $scope.FOOTER_URLS = FOOTER_URLS;

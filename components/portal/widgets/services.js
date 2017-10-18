@@ -16,15 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return angular
-    .module("portal.widgets.services", [])
-    .factory("widgetService", [
-      "$http",
-      "$log",
-      "SERVICE_LOC",
+    .module('portal.widgets.services', [])
+    .factory('widgetService', [
+      '$http',
+      '$log',
+      'SERVICE_LOC',
       function($http, $log, SERVICE_LOC) {
         /**
      * Get the a single app's full entity file as JSON
@@ -36,7 +36,7 @@ define(["angular"], function(angular) {
           var entrySuffix = angular.isUndefined(
             SERVICE_LOC.widgetApi.entrySuffix
           )
-            ? ".json"
+            ? '.json'
             : SERVICE_LOC.widgetApi.entrySuffix;
           return $http
             .get(SERVICE_LOC.widgetApi.entry + fname + entrySuffix)
@@ -47,7 +47,7 @@ define(["angular"], function(angular) {
               return undefined;
             })
             .catch(function(error) {
-              $log.warn("Error getting marketplace entry for " + fname);
+              $log.warn('Error getting marketplace entry for ' + fname);
               $log.error(error);
               return getErrorPage(fname);
             });
@@ -62,21 +62,21 @@ define(["angular"], function(angular) {
         var getErrorPage = function(fname) {
           return {
             title: fname,
-            mdIcon: "help",
-            widgetType: "generic",
+            mdIcon: 'help',
+            widgetType: 'generic',
             widgetConfig: {
               additionalText:
-                "Please contact your help desk if you " +
-                "feel you should be able to access this content"
+                'Please contact your help desk if you ' +
+                'feel you should be able to access this content'
             },
             widgetTemplate:
               "<div class='overlay__maintenance-mode'>" +
               "<div class='maintenance-content'>" +
               "<p><md-icon class='md-warn'>warning</md-icon></p>" +
-              "<p>You do not have permission to access this content. " +
-              "If you feel this is an error, please contact your help desk.</p>" +
-              "</div>" +
-              "</div>"
+              '<p>You do not have permission to access this content. ' +
+              'If you feel this is an error, please contact your help desk.</p>' +
+              '</div>' +
+              '</div>'
           };
         };
 

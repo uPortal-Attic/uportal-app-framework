@@ -16,16 +16,16 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return angular
-    .module("portal.settings.services", [])
-    .factory("portalSkinService", [
-      "$q",
-      "$http",
-      "miscService",
-      "SERVICE_LOC",
+    .module('portal.settings.services', [])
+    .factory('portalSkinService', [
+      '$q',
+      '$http',
+      'miscService',
+      'SERVICE_LOC',
       function($q, $http, miscService, SERVICE_LOC) {
         /**
            * Sets the skin on the backend layout manager
@@ -33,12 +33,12 @@ define(["angular"], function(angular) {
         function setPortalSkin(skinKey) {
           if (SERVICE_LOC.portalLayoutRestEndpoint) {
             var parameters = {
-              action: "chooseSkin",
+              action: 'chooseSkin',
               skinName: skinKey
             };
             return $http({
               url: SERVICE_LOC.portalLayoutRestEndpoint,
-              method: "POST",
+              method: 'POST',
               params: parameters
             });
           } else {

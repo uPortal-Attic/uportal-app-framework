@@ -16,123 +16,123 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular", "require"], function(angular, require) {
+define(['angular', 'require'], function(angular, require) {
   return (angular
-      .module("portal.widgets.directives", [])
+      .module('portal.widgets.directives', [])
       /**
    * Just the widget card -- gets the widget type from scope
    */
-      .directive("widget", function() {
+      .directive('widget', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           transclude: true,
           scope: {
-            fname: "@"
+            fname: '@'
           },
-          templateUrl: require.toUrl("./partials/widget-card.html"),
-          controller: "WidgetCardController"
+          templateUrl: require.toUrl('./partials/widget-card.html'),
+          controller: 'WidgetCardController'
         };
       })
       /**
    * Just the widget card -- gets the widget type from the scope
    */
-      .directive("compactWidget", function() {
+      .directive('compactWidget', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           transclude: true,
           scope: {
-            fname: "@"
+            fname: '@'
           },
-          templateUrl: require.toUrl("./partials/compact-widget-card.html"),
-          controller: "WidgetCardController"
+          templateUrl: require.toUrl('./partials/compact-widget-card.html'),
+          controller: 'WidgetCardController'
         };
       })
       /**
    * Widget type that alternates between basic appearance and time-sensitive
    * content with a countdown
    */
-      .directive("timeSensitive", function() {
+      .directive('timeSensitive', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           scope: {
-            widget: "=app",
-            config: "=config"
+            widget: '=app',
+            config: '=config'
           },
-          templateUrl: require.toUrl("./partials/type__time-sensitive.html"),
-          controller: "TimeSensitiveContentController"
+          templateUrl: require.toUrl('./partials/type__time-sensitive.html'),
+          controller: 'TimeSensitiveContentController'
         };
       })
-      .directive("widgetIcon", function() {
+      .directive('widgetIcon', function() {
         return {
-          restrict: "E",
-          templateUrl: require.toUrl("./partials/widget-icon.html")
+          restrict: 'E',
+          templateUrl: require.toUrl('./partials/widget-icon.html')
         };
       })
-      .directive("optionLink", function() {
+      .directive('optionLink', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           scope: {
-            widget: "=app",
-            config: "=config"
+            widget: '=app',
+            config: '=config'
           },
-          templateUrl: require.toUrl("./partials/type__option-link.html"),
-          controller: "OptionLinkController"
+          templateUrl: require.toUrl('./partials/type__option-link.html'),
+          controller: 'OptionLinkController'
         };
       })
-      .directive("listOfLinks", function() {
+      .directive('listOfLinks', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           scope: {
-            widget: "=app",
-            config: "=config"
+            widget: '=app',
+            config: '=config'
           },
-          templateUrl: require.toUrl("./partials/type__list-of-links.html")
+          templateUrl: require.toUrl('./partials/type__list-of-links.html')
         };
       })
-      .directive("searchWithLinks", function() {
+      .directive('searchWithLinks', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           scope: {
-            widget: "=app",
-            config: "=config"
+            widget: '=app',
+            config: '=config'
           },
-          templateUrl: require.toUrl("./partials/type__search-with-links.html"),
-          controller: "SearchWithLinksController"
+          templateUrl: require.toUrl('./partials/type__search-with-links.html'),
+          controller: 'SearchWithLinksController'
         };
       })
-      .directive("rssWidget", function() {
+      .directive('rssWidget', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           scope: {
-            widget: "=app",
-            config: "=config"
+            widget: '=app',
+            config: '=config'
           },
-          templateUrl: require.toUrl("./partials/type__rss.html"),
-          controller: "RssWidgetController"
+          templateUrl: require.toUrl('./partials/type__rss.html'),
+          controller: 'RssWidgetController'
         };
       })
-      .directive("actionItems", function() {
+      .directive('actionItems', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           scope: {
-            widget: "=app",
-            config: "=config"
+            widget: '=app',
+            config: '=config'
           },
-          templateUrl: require.toUrl("./partials/type__action-items.html"),
-          controller: "ActionItemsController"
+          templateUrl: require.toUrl('./partials/type__action-items.html'),
+          controller: 'ActionItemsController'
         };
       })
-      .directive("weatherWidget", function() {
+      .directive('weatherWidget', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           scope: {
-            widget: "=app",
-            config: "=config"
+            widget: '=app',
+            config: '=config'
           },
-          templateUrl: require.toUrl("./partials/type__weather.html"),
-          controller: "WeatherWidgetController"
+          templateUrl: require.toUrl('./partials/type__weather.html'),
+          controller: 'WeatherWidgetController'
         };
       }) );
 });

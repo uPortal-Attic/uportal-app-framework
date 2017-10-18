@@ -16,17 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return (angular
-      .module("portal.misc.controllers", [])
+      .module('portal.misc.controllers', [])
       /* AddToHomeController */
-      .controller("AddToHomeController", [
-        "$log",
-        "$scope",
-        "$timeout",
-        "PortalAddToHomeService",
+      .controller('AddToHomeController', [
+        '$log',
+        '$scope',
+        '$timeout',
+        'PortalAddToHomeService',
         function($log, $scope, $timeout, PortalAddToHomeService) {
           $scope.addToHome = function() {
             if (
@@ -55,7 +55,7 @@ define(["angular"], function(angular) {
                 return data;
               })
               .catch(function() {
-                $log.warn("could not check inHome for " + fname);
+                $log.warn('could not check inHome for ' + fname);
               });
           };
 
@@ -68,7 +68,7 @@ define(["angular"], function(angular) {
                 // check if in home layout
                 checkInHome($scope.fname);
               } else {
-                $scope.$watch("fname", function() {
+                $scope.$watch('fname', function() {
                   // must be using 2 way binding, add a watch on the fname
                   if ($scope.fname) {
                     checkInHome($scope.fname);
@@ -81,8 +81,8 @@ define(["angular"], function(angular) {
           init();
         }
       ])
-      .controller("AppHeaderOptionsController", [
-        "APP_OPTIONS",
+      .controller('AppHeaderOptionsController', [
+        'APP_OPTIONS',
         function(APP_OPTIONS) {
           var vm = this;
 

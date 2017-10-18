@@ -16,19 +16,19 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return angular
-    .module("portal.widgets.filters", [])
-    .filter("filterDateRange", function() {
+    .module('portal.widgets.filters', [])
+    .filter('filterDateRange', function() {
       return function(start, end) {
         var today = new Date();
         var rangeStart = new Date(start);
-        var rangeEnd = "";
+        var rangeEnd = '';
 
         // Check if time is provided
-        if (end.indexOf("T") >= 0) {
+        if (end.indexOf('T') >= 0) {
           rangeEnd = new Date(end);
         } else {
           // Have to compensate for lack of time by adding a day
@@ -39,15 +39,15 @@ define(["angular"], function(angular) {
         return today >= rangeStart && today < rangeEnd;
       };
     })
-    .filter("filterDifferenceFromDate", [
+    .filter('filterDifferenceFromDate', [
       function() {
         return function(date) {
           var oneDay = 1000 * 60 * 60 * 24;
           var today = new Date();
-          var relativeDate = "";
+          var relativeDate = '';
 
           // Check if time is provided
-          if (date.indexOf("T") >= 0) {
+          if (date.indexOf('T') >= 0) {
             relativeDate = new Date(date);
           } else {
             // Have to compensate for lack of time by adding a day
@@ -68,7 +68,7 @@ define(["angular"], function(angular) {
         };
       }
     ])
-    .filter("filterForDateWithYear", function() {
+    .filter('filterForDateWithYear', function() {
       return function(date) {
         var validWithYear = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
         var validDayAndMonth = /(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/;
@@ -77,7 +77,7 @@ define(["angular"], function(angular) {
           return date;
         } else if (date.match(validDayAndMonth)) {
           // If date string doesn't include year, add it then return
-          return new Date().getFullYear() + "-" + date;
+          return new Date().getFullYear() + '-' + date;
         } else {
           return -1;
         }

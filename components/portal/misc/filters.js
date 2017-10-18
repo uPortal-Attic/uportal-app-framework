@@ -16,36 +16,36 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   var DEFAULT_TRUNCATE_LENGTH = 160;
-  var TARGET_SELF = "_self";
-  var TARGET_BLANK = "_blank";
-  var REL_BLANK_FIX = "noopener noreferrer";
+  var TARGET_SELF = '_self';
+  var TARGET_BLANK = '_blank';
+  var REL_BLANK_FIX = 'noopener noreferrer';
   return (angular
-      .module("portal.misc.filters", [])
-      .filter("truncate", function() {
+      .module('portal.misc.filters', [])
+      .filter('truncate', function() {
         return function(input, maxlen, useEllipsis) {
           maxlen = maxlen || DEFAULT_TRUNCATE_LENGTH;
           useEllipsis = angular.isDefined(useEllipsis) ? !!useEllipsis : true;
 
           if (input && input.length > maxlen) {
             return useEllipsis
-              ? input.substring(0, maxlen - 3) + "..."
+              ? input.substring(0, maxlen - 3) + '...'
               : input.substring(0, maxlen);
           }
 
           return input;
         };
       })
-      .filter("trimMiddle", function() {
+      .filter('trimMiddle', function() {
         return function(input, maxlen) {
           maxlen = maxlen || 20;
           if (input && input.length > maxlen) {
             return (
               input.substring(0, Math.floor(maxlen / 2) - 3) +
-              " ... " +
+              ' ... ' +
               input.substring(
                 input.length - (Math.floor(maxlen / 2) - 4),
                 input.length
@@ -56,7 +56,7 @@ define(["angular"], function(angular) {
           }
         };
       })
-      .filter("showApplicable", function() {
+      .filter('showApplicable', function() {
         return function(portlets, showAll) {
           var filteredPortlets = [];
           if (showAll === true) {
@@ -72,9 +72,9 @@ define(["angular"], function(angular) {
           }
         };
       })
-      .filter("showCategory", function() {
+      .filter('showCategory', function() {
         return function(portlets, category) {
-          if (category === "") {
+          if (category === '') {
             return portlets;
           }
           var filtered = [];
@@ -89,18 +89,18 @@ define(["angular"], function(angular) {
           return filtered;
         };
       })
-      .filter("urlToTarget", function() {
+      .filter('urlToTarget', function() {
         return function(url) {
           var result = TARGET_SELF;
-          if (url && url.indexOf("//") > -1) {
+          if (url && url.indexOf('//') > -1) {
             result = TARGET_BLANK;
           }
           return result;
         };
       })
-      .filter("targetToRel", function() {
+      .filter('targetToRel', function() {
         return function(target) {
-          var result = "";
+          var result = '';
           if (
             target &&
             target.trim().toUpperCase() === TARGET_BLANK.toUpperCase()
@@ -119,8 +119,8 @@ define(["angular"], function(angular) {
        If you don't understand what this filter does, no worries,
        but then you really shouldn't be using it! :)
      */
-      .filter("to_trusted", [
-        "$sce",
+      .filter('to_trusted', [
+        '$sce',
         function($sce) {
           return function(text) {
             return $sce.trustAsHtml(text);

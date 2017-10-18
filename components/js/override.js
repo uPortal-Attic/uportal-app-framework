@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   /* Keep in sync with docs/markdown/configuration.md*/
-  return angular.module("override", []).constant("OVERRIDE", {
+  return angular.module('override', []).constant('OVERRIDE', {
     APP_OPTIONS: {
-      optionsTemplateURL: "portal/misc/partials/example-options.html"
+      optionsTemplateURL: 'portal/misc/partials/example-options.html'
     }
   });
 });

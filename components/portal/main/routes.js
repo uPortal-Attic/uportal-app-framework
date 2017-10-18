@@ -16,26 +16,26 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-define(["require"], function(require) {
+define(['require'], function(require) {
   return {
     main: {
-      templateUrl: require.toUrl("./partials/example-page.html")
+      templateUrl: require.toUrl('./partials/example-page.html')
     },
 
     accessDenied: {
-      templateUrl: require.toUrl("./partials/access-denied.html")
+      templateUrl: require.toUrl('./partials/access-denied.html')
     },
 
     serverError: {
-      templateUrl: require.toUrl("./partials/server-error.html")
+      templateUrl: require.toUrl('./partials/server-error.html')
     },
 
     fileNotFound: {
-      templateUrl: require.toUrl("./partials/file-not-found.html")
+      templateUrl: require.toUrl('./partials/file-not-found.html')
     },
 
     storageError: {
-      templateUrl: require.toUrl("./partials/sorry-safari.html")
+      templateUrl: require.toUrl('./partials/sorry-safari.html')
     }
   };
 });

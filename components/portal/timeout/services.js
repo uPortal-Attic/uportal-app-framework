@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return (angular
-      .module("portal.timeout.services", [])
+      .module('portal.timeout.services', [])
       /**
     Shibboleth Service
 
@@ -29,14 +29,14 @@ define(["angular"], function(angular) {
     * getTimeout() - Gets the shib session, but returns just the timeout
                      and the time of that timeout.
     **/
-      .factory("portalShibbolethService", [
-        "$http",
-        "$log",
-        "miscService",
-        "SERVICE_LOC",
+      .factory('portalShibbolethService', [
+        '$http',
+        '$log',
+        'miscService',
+        'SERVICE_LOC',
         function($http, $log, miscService, SERVICE_LOC) {
           var onError = function(response) {
-            miscService.redirectUser(response.status, "Shibboleth Service");
+            miscService.redirectUser(response.status, 'Shibboleth Service');
             return response.data;
           };
 
@@ -103,7 +103,7 @@ define(["angular"], function(angular) {
               .catch(function(error) {
                 $log.warn("Could't get Shibboleth session info");
                 $log.error(error);
-                miscService.redirectUser(status, "Get User Info");
+                miscService.redirectUser(status, 'Get User Info');
               });
           }
 

@@ -16,50 +16,50 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 /* eslint-env node */
 /* eslint-disable angular/log, no-console */
-const less = require("less");
-const path = require("path");
-const fs = require("fs");
-const autoprefixer = require("autoprefixer");
-const postcss = require("postcss");
+const less = require('less');
+const path = require('path');
+const fs = require('fs');
+const autoprefixer = require('autoprefixer');
+const postcss = require('postcss');
 
-const mkdirp = require("mkdirp");
-const copy = require("recursive-copy");
+const mkdirp = require('mkdirp');
+const copy = require('recursive-copy');
 const copyOptions = {
   overwrite: true
 };
 
-mkdirp("static/target/css/themes/", function(error) {
+mkdirp('static/target/css/themes/', function(error) {
   if (error) throw error;
 });
 
 const themes = [
-  "uPortal",
-  "uwMadison",
-  "uwSystem",
-  "uwRiverFalls",
-  "uwStevensPoint",
-  "uwMilwaukee",
-  "uwWhitewater",
-  "uwStout",
-  "uwSuperior",
-  "uwPlatteville",
-  "uwParkside",
-  "uwOshkosh",
-  "uwGreenBay",
-  "uwLaCrosse",
-  "uwEauClaire",
-  "uwExtension",
-  "uwColleges"
+  'uPortal',
+  'uwMadison',
+  'uwSystem',
+  'uwRiverFalls',
+  'uwStevensPoint',
+  'uwMilwaukee',
+  'uwWhitewater',
+  'uwStout',
+  'uwSuperior',
+  'uwPlatteville',
+  'uwParkside',
+  'uwOshkosh',
+  'uwGreenBay',
+  'uwLaCrosse',
+  'uwEauClaire',
+  'uwExtension',
+  'uwColleges'
 ];
 
 // Render less and write to .css file for each theme
 for (let i = 0; i < themes.length; i++) {
   // Capture theme name and src path in constants to pass to less rendering
   const themeName = themes[i];
-  const src = "components/css/themes/" + themes[i] + ".less";
+  const src = 'components/css/themes/' + themes[i] + '.less';
 
   // Read input .less file
   fs.readFile(src, function(error, data) {
@@ -70,37 +70,37 @@ for (let i = 0; i < themes.length; i++) {
   });
 }
 
-copy("components/", "static/target", copyOptions).catch(function(error) {
+copy('components/', 'static/target', copyOptions).catch(function(error) {
   if (error) throw error;
 });
 
 copy(
-  "node_modules/bootstrap/",
-  "static/target/css/themes/node_modules/bootstrap/",
+  'node_modules/bootstrap/',
+  'static/target/css/themes/node_modules/bootstrap/',
   copyOptions
 ).catch(function(error) {
   if (error) throw error;
 });
 
 copy(
-  "node_modules/font-awesome/",
-  "static/target/css/themes/node_modules/font-awesome/",
+  'node_modules/font-awesome/',
+  'static/target/css/themes/node_modules/font-awesome/',
   copyOptions
 ).catch(function(error) {
   if (error) throw error;
 });
 
 copy(
-  "node_modules/normalize.less",
-  "static/target/css/themes/node_modules/normalize.less",
+  'node_modules/normalize.less',
+  'static/target/css/themes/node_modules/normalize.less',
   copyOptions
 ).catch(function(error) {
   if (error) throw error;
 });
 
 copy(
-  "static/superstatic.json",
-  "static/target/superstatic.json",
+  'static/superstatic.json',
+  'static/target/superstatic.json',
   copyOptions
 ).catch(function(error) {
   if (error) throw error;
@@ -115,15 +115,15 @@ copy(
  */
 function writeCss(srcPath, theme, styles) {
   // Output file path for the theme
-  const output = "static/target/css/themes/" + theme + ".css";
+  const output = 'static/target/css/themes/' + theme + '.css';
   // Render .less styles
   less.render(
     styles,
     {
       paths: [
-        path.resolve("components/css/angular.less"),
-        path.resolve("components/css/themes/common-variables.less"),
-        path.resolve("components/css/themes/" + theme + "-variables.less")
+        path.resolve('components/css/angular.less'),
+        path.resolve('components/css/themes/common-variables.less'),
+        path.resolve('components/css/themes/' + theme + '-variables.less')
       ],
       filename: path.resolve(srcPath),
       compress: true

@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular", "require"], function(angular, require) {
+define(['angular', 'require'], function(angular, require) {
   return (angular
-      .module("portal.misc.directives", [])
+      .module('portal.misc.directives', [])
       /**
      * Loading gif - show loading gif when the
      * length of array is 0 and empty is not set
@@ -31,11 +31,11 @@ define(["angular", "require"], function(angular, require) {
      *   reuse  : (optional) set to true, it won't
      *    destroy the loading gif, just hide it
      */
-      .directive("loadingGif", [
+      .directive('loadingGif', [
         function() {
           return {
-            restrict: "E",
-            templateUrl: require.toUrl("./partials/loading-gif.html"),
+            restrict: 'E',
+            templateUrl: require.toUrl('./partials/loading-gif.html'),
             link: function(scope, elm, attrs) {
               scope.isLoading = function() {
                 if (angular.isUndefined(attrs.empty)) {
@@ -53,10 +53,10 @@ define(["angular", "require"], function(angular, require) {
                 } else {
                   elm.hide();
                   if (!attrs.reuse) {
-                    elm.css("margin", "0");
+                    elm.css('margin', '0');
                     // remove content of div, so if it shows again later
                     // it doesn't make the page look funky
-                    elm.html("");
+                    elm.html('');
                   }
                 }
               });
@@ -64,11 +64,11 @@ define(["angular", "require"], function(angular, require) {
           };
         }
       ])
-      .directive("loading", [
-        "$http",
+      .directive('loading', [
+        '$http',
         function($http) {
           return {
-            restrict: "A",
+            restrict: 'A',
             link: function(scope, elm) {
               scope.isLoading = function() {
                 return $http.pendingRequests.length > 0;
@@ -79,20 +79,20 @@ define(["angular", "require"], function(angular, require) {
                   elm.show();
                 } else {
                   elm.hide();
-                  elm.css("margin", "0");
+                  elm.css('margin', '0');
                   // remove content of div, so if it shows again later
                   // it doesn't make the page look funky
-                  elm.html("");
+                  elm.html('');
                 }
               });
             }
           };
         }
       ])
-      .directive("hideWhileLoading", [
+      .directive('hideWhileLoading', [
         function() {
           return {
-            restrict: "A",
+            restrict: 'A',
             link: function(scope, elm) {
               scope.$watch(scope.isLoading, function(v) {
                 if (v) {
@@ -105,9 +105,9 @@ define(["angular", "require"], function(angular, require) {
           };
         }
       ])
-      .directive("selectOnPageLoad", function() {
+      .directive('selectOnPageLoad', function() {
         return {
-          restrict: "A",
+          restrict: 'A',
           link: function(scope, element) {
             // wait until intial value is there, select it,
             // then clear the watch so doesn't keep doing it
@@ -125,12 +125,12 @@ define(["angular", "require"], function(angular, require) {
           }
         };
       })
-      .directive("focusMe", function($log, $timeout) {
+      .directive('focusMe', function($log, $timeout) {
         return {
           link: function(scope, element, attrs) {
             scope.$watch(attrs.focusMe, function(value) {
               if (value === true) {
-                $log.log("value=", value);
+                $log.log('value=', value);
                 $timeout(function() {
                   element[0].focus();
                   scope[attrs.focusMe] = false;
@@ -164,28 +164,28 @@ define(["angular", "require"], function(angular, require) {
      *
      * See ./partials/app-header.html.
      */
-      .directive("appHeader", function() {
+      .directive('appHeader', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           scope: {
-            title: "@appTitle",
-            icon: "@appIcon",
-            fname: "@appFname",
-            showAddToHome: "@appShowAddToHome"
+            title: '@appTitle',
+            icon: '@appIcon',
+            fname: '@appFname',
+            showAddToHome: '@appShowAddToHome'
           },
-          templateUrl: require.toUrl("./partials/app-header.html")
+          templateUrl: require.toUrl('./partials/app-header.html')
         };
       })
-      .directive("appHeaderTwoWayBind", function() {
+      .directive('appHeaderTwoWayBind', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           scope: {
-            title: "=appTitle",
-            icon: "=appIcon",
-            fname: "=appFname",
-            showAddToHome: "=appShowAddToHome"
+            title: '=appTitle',
+            icon: '=appIcon',
+            fname: '=appFname',
+            showAddToHome: '=appShowAddToHome'
           },
-          templateUrl: require.toUrl("./partials/app-header.html")
+          templateUrl: require.toUrl('./partials/app-header.html')
         };
       })
       /**
@@ -195,17 +195,17 @@ define(["angular", "require"], function(angular, require) {
     Optional: whiteBackground :
       Adds in classes that do a white background with a border
     */
-      .directive("framePage", function() {
+      .directive('framePage', function() {
         return {
-          restrict: "E",
-          templateUrl: require.toUrl("./partials/frame-page.html"),
+          restrict: 'E',
+          templateUrl: require.toUrl('./partials/frame-page.html'),
           transclude: true,
           scope: {
-            appTitle: "@appTitle",
-            appIcon: "@appIcon",
-            appFname: "=appFname",
-            appShowAddToHome: "=appShowAddToHome",
-            whiteBackground: "="
+            appTitle: '@appTitle',
+            appIcon: '@appIcon',
+            appFname: '=appFname',
+            appShowAddToHome: '=appShowAddToHome',
+            whiteBackground: '='
           }
         };
       })
@@ -216,14 +216,14 @@ define(["angular", "require"], function(angular, require) {
      * Params:
      *  - template: the template to display (can have angular markup)
      */
-      .directive("contentItem", function($compile) {
+      .directive('contentItem', function($compile) {
         var linker = function(scope, element) {
           element.html(scope.template).show();
           $compile(element.contents())(scope);
         };
 
         return {
-          restrict: "E",
+          restrict: 'E',
           link: linker
         };
       })
@@ -244,19 +244,19 @@ define(["angular", "require"], function(angular, require) {
      * - title : (optional) title that is displayed under the circle
      * - truncLen : (optional) length to truncate the title
      */
-      .directive("circleButton", function() {
+      .directive('circleButton', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           scope: {
-            href: "@href",
-            target: "@target",
-            faIcon: "@faIcon",
-            mdIcon: "@mdIcon",
-            cbDisabled: "=disabled",
-            title: "@title",
-            trunclen: "@trunclen"
+            href: '@href',
+            target: '@target',
+            faIcon: '@faIcon',
+            mdIcon: '@mdIcon',
+            cbDisabled: '=disabled',
+            title: '@title',
+            trunclen: '@trunclen'
           },
-          templateUrl: require.toUrl("./partials/circle-button.html")
+          templateUrl: require.toUrl('./partials/circle-button.html')
         };
       })
       /**
@@ -273,22 +273,22 @@ define(["angular", "require"], function(angular, require) {
    * - aria-label: (optional) text to provide additional
    *    context for screen readers, if necessary
    */
-      .directive("launchButton", function() {
+      .directive('launchButton', function() {
         return {
-          restrict: "E",
+          restrict: 'E',
           scope: {
-            href: "@href",
-            target: "@target",
-            buttonText: "@buttonText",
-            ariaLabel: "@ariaLabel"
+            href: '@href',
+            target: '@target',
+            buttonText: '@buttonText',
+            ariaLabel: '@ariaLabel'
           },
-          templateUrl: require.toUrl("./partials/launch-button.html")
+          templateUrl: require.toUrl('./partials/launch-button.html')
         };
       })
-      .directive("addToHome", function() {
+      .directive('addToHome', function() {
         return {
-          restrict: "E",
-          templateUrl: require.toUrl("./partials/add-to-home.html")
+          restrict: 'E',
+          templateUrl: require.toUrl('./partials/add-to-home.html')
         };
       }) );
 });

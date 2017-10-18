@@ -16,20 +16,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return angular
-    .module("portal.settings.controllers", [])
-    .controller("PortalBetaSettingsController", [
-      "$sessionStorage",
-      "$scope",
-      "$rootScope",
-      "$mdTheming",
-      "portalSkinService",
-      "THEMES",
-      "APP_BETA_FEATURES",
-      "FRAME_BETA_FEATURES",
+    .module('portal.settings.controllers', [])
+    .controller('PortalBetaSettingsController', [
+      '$sessionStorage',
+      '$scope',
+      '$rootScope',
+      '$mdTheming',
+      'portalSkinService',
+      'THEMES',
+      'APP_BETA_FEATURES',
+      'FRAME_BETA_FEATURES',
       function(
         $sessionStorage,
         $scope,
@@ -41,7 +41,7 @@ define(["angular"], function(angular) {
         FRAME_BETA_FEATURES
       ) {
         $scope.options = FRAME_BETA_FEATURES.concat(APP_BETA_FEATURES);
-        $scope.$watch("portal.theme", function() {
+        $scope.$watch('portal.theme', function() {
           if ($scope.portal.theme) {
             $sessionStorage.portal.theme = $scope.portal.theme;
             $sessionStorage.portal.theme.themeVersion = THEMES.themeVersion;
@@ -49,8 +49,8 @@ define(["angular"], function(angular) {
             // Set browser color
             $mdTheming.setBrowserColor({
               theme: $sessionStorage.portal.theme.name,
-              palette: $scope.portal.theme.name + "-primary",
-              hue: "500"
+              palette: $scope.portal.theme.name + '-primary',
+              hue: '500'
             });
             if ($scope.portal.theme && $scope.portal.theme.portalSkinKey) {
               portalSkinService.setPortalSkin(
@@ -58,21 +58,21 @@ define(["angular"], function(angular) {
               );
             }
             // Tell scope the theme changed
-            $rootScope.$broadcast("themeChanged", $scope.portal.theme);
+            $rootScope.$broadcast('themeChanged', $scope.portal.theme);
           }
         });
       }
     ])
-    .controller("PortalUserSettingsController", [
-      "$scope",
-      "$q",
-      "$window",
-      "$localStorage",
-      "$log",
-      "$sessionStorage",
-      "$rootScope",
-      "KV_KEYS",
-      "keyValueService",
+    .controller('PortalUserSettingsController', [
+      '$scope',
+      '$q',
+      '$window',
+      '$localStorage',
+      '$log',
+      '$sessionStorage',
+      '$rootScope',
+      'KV_KEYS',
+      'keyValueService',
       function(
         $scope,
         $q,
@@ -101,7 +101,7 @@ define(["angular"], function(angular) {
                 return false;
               })
               .catch(function() {
-                $log.warn("could not reset in-app messages");
+                $log.warn('could not reset in-app messages');
               });
           }
         };
@@ -116,7 +116,7 @@ define(["angular"], function(angular) {
               return false;
             })
             .catch(function() {
-              $log.warn("could not reset key");
+              $log.warn('could not reset key');
             });
         };
 

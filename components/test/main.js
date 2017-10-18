@@ -21,11 +21,11 @@
 // This will be run from the context of karma,
 // so using absolute path from karma's '/base'
 // eslint-disable-next-line requirejs/no-js-extension
-require(["/base/config.js"], function(config) {
+require(['/base/config.js'], function(config) {
   // Add additional config for Karma testing
   // Karma serves files under "/base", which
   // is the basePath from the karma config file
-  config.baseUrl = "/base";
+  config.baseUrl = '/base';
   config.callback = window.__karma__.start;
   config.deps = getAllTestFiles();
   // eslint-disable-next-line angular/module-getter
@@ -39,7 +39,7 @@ require(["/base/config.js"], function(config) {
     var TEST_REGEXP = /(spec|test)\.js$/i;
     var EXCLUDE_REGEXP = /.*bower_components|node_modules.*/;
     var pathToModule = function(path) {
-      return path.replace(/^\/base\//, "").replace(/\.js$/, "");
+      return path.replace(/^\/base\//, '').replace(/\.js$/, '');
     };
     Object.keys(window.__karma__.files).forEach(function(file) {
       if (TEST_REGEXP.test(file)) {

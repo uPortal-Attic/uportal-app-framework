@@ -16,18 +16,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 /* eslint-env node */
 /* global inject */
-define(["angular-mocks", "portal"], function() {
-  describe("portalGroupService", function() {
+define(['angular-mocks', 'portal'], function() {
+  describe('portalGroupService', function() {
     var service;
     var httpBackend;
     var URLS = {};
     var loginSilentURL;
 
     beforeEach(function() {
-      module("portal");
+      module('portal');
     });
 
     beforeEach(
@@ -46,12 +46,12 @@ define(["angular-mocks", "portal"], function() {
         if (loginSilentURL) {
           httpBackend
             .whenGET(loginSilentURL)
-            .respond({ status: "success", username: "admin" });
+            .respond({ status: 'success', username: 'admin' });
         }
       })
     );
 
-    it("should properly handle filtering nothing", function() {
+    it('should properly handle filtering nothing', function() {
       // setup
       var array = [];
       var groups = [];
@@ -64,16 +64,16 @@ define(["angular-mocks", "portal"], function() {
     });
 
     it(
-      "should properly handle filtering with a string " +
-        "or an array with default attribute of group",
+      'should properly handle filtering with a string ' +
+        'or an array with default attribute of group',
       function() {
         // setup
         var array = [
-          { title: "in crowd", group: "in" },
-          { title: "out crowd", group: ["out"] },
-          { title: "everyone", group: ["in", "out"] }
+          { title: 'in crowd', group: 'in' },
+          { title: 'out crowd', group: ['out'] },
+          { title: 'everyone', group: ['in', 'out'] }
         ];
-        var groups = [{ name: "in" }];
+        var groups = [{ name: 'in' }];
         // test
         var results = service.filterArrayByGroups(array, groups);
 
@@ -84,18 +84,18 @@ define(["angular-mocks", "portal"], function() {
     );
 
     it(
-      "should properly handle filtering " +
-        "with an alternate group field name",
+      'should properly handle filtering ' +
+        'with an alternate group field name',
       function() {
         // setup
         var array = [
-          { title: "in crowd", group: "in" },
-          { title: "out crowd", group: ["out"] },
-          { title: "everyone", group: ["in", "out"] }
+          { title: 'in crowd', group: 'in' },
+          { title: 'out crowd', group: ['out'] },
+          { title: 'everyone', group: ['in', 'out'] }
         ];
-        var groups = [{ title: "in" }]; // uPortal inside joke
+        var groups = [{ title: 'in' }]; // uPortal inside joke
         // test
-        var results = service.filterArrayByGroups(array, groups, null, "title");
+        var results = service.filterArrayByGroups(array, groups, null, 'title');
 
         expect(results).toBeTruthy();
 
@@ -104,18 +104,18 @@ define(["angular-mocks", "portal"], function() {
     );
 
     it(
-      "should properly handle filtering " +
-        "with an alternate array field name",
+      'should properly handle filtering ' +
+        'with an alternate array field name',
       function() {
         // setup
         var array = [
-          { title: "in crowd", theGroup: "in" },
-          { title: "out crowd", theGroup: ["out"] },
-          { title: "everyone", theGroup: ["in", "out"] }
+          { title: 'in crowd', theGroup: 'in' },
+          { title: 'out crowd', theGroup: ['out'] },
+          { title: 'everyone', theGroup: ['in', 'out'] }
         ];
-        var groups = [{ name: "in" }];
+        var groups = [{ name: 'in' }];
         // test
-        var results = service.filterArrayByGroups(array, groups, "theGroup");
+        var results = service.filterArrayByGroups(array, groups, 'theGroup');
 
         expect(results).toBeTruthy();
 

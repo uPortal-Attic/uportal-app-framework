@@ -16,15 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-define(["require"], function(require) {
+define(['require'], function(require) {
   return {
     betaSettings: {
-      templateUrl: require.toUrl("./partials/settings.html"),
-      controller: "PortalBetaSettingsController"
+      templateUrl: require.toUrl('./partials/settings.html'),
+      controller: 'PortalBetaSettingsController'
     },
     userSettings: {
-      templateUrl: require.toUrl("./partials/user-settings.html"),
-      controller: "PortalUserSettingsController"
+      templateUrl: require.toUrl('./partials/user-settings.html'),
+      controller: 'PortalUserSettingsController'
     }
   };
 });

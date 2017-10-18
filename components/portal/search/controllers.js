@@ -16,25 +16,25 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return angular
-    .module("portal.search.controllers", [])
-    .controller("PortalSearchController", [
-      "PortalSearchService",
-      "$location",
-      "$window",
-      "SEARCH",
-      "APP_FLAGS",
+    .module('portal.search.controllers', [])
+    .controller('PortalSearchController', [
+      'PortalSearchService',
+      '$location',
+      '$window',
+      'SEARCH',
+      'APP_FLAGS',
       function(PortalSearchService, $location, $window, SEARCH, APP_FLAGS) {
         var vm = this;
         // scope functions
 
         vm.submit = function() {
-          if (vm.initialFilter != "") {
+          if (vm.initialFilter != '') {
             if (APP_FLAGS.isWeb) {
-              $location.path("apps/search/" + vm.initialFilter);
+              $location.path('apps/search/' + vm.initialFilter);
             } else {
               // frame app redirect
               $window.location = SEARCH.searchURL + vm.initialFilter;
@@ -48,7 +48,7 @@ define(["angular"], function(angular) {
 
         // init function
         var init = function() {
-          vm.initialFilter = "";
+          vm.initialFilter = '';
           vm.searchExpanded = false;
         };
         init();

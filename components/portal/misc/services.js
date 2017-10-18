@@ -16,12 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular", "jquery"], function(angular, $) {
+define(['angular', 'jquery'], function(angular, $) {
   return angular
-    .module("portal.misc.services", [])
-    .factory("portalGroupService", function(
+    .module('portal.misc.services', [])
+    .factory('portalGroupService', function(
       $http,
       $log,
       miscService,
@@ -34,7 +34,7 @@ define(["angular", "jquery"], function(angular, $) {
             return result.data.groups;
           })
           .catch(function(reason) {
-            miscService.redirectUser(reason.status, "group json feed call");
+            miscService.redirectUser(reason.status, 'group json feed call');
           });
         return groupPromise;
       };
@@ -58,10 +58,10 @@ define(["angular", "jquery"], function(angular, $) {
       ) {
         // validation/setup
         if (!arrayGroupFieldName) {
-          arrayGroupFieldName = "group";
+          arrayGroupFieldName = 'group';
         }
         if (!groupsNameFieldName) {
-          groupsNameFieldName = "name";
+          groupsNameFieldName = 'name';
         }
         if (
           !array ||
@@ -72,8 +72,8 @@ define(["angular", "jquery"], function(angular, $) {
         ) {
           if (!angular.isArray(array)) {
             $log.warn(
-              "portalGroupService.filterArrayByGroups " +
-                "was called, but not an array"
+              'portalGroupService.filterArrayByGroups ' +
+                'was called, but not an array'
             );
           }
           return array;
@@ -124,7 +124,7 @@ define(["angular", "jquery"], function(angular, $) {
         groupsServiceEnabled: groupsServiceEnabled
       };
     })
-    .factory("PortalAddToHomeService", function(
+    .factory('PortalAddToHomeService', function(
       $http,
       $log,
       filterFilter,
@@ -157,7 +157,7 @@ define(["angular", "jquery"], function(angular, $) {
           function() {
             // failed
             $log.warn(
-              "could not reach portal server to get layout, portal down?"
+              'could not reach portal server to get layout, portal down?'
             );
             return true; // it is in the layout by default since portal is down
           }
@@ -177,7 +177,7 @@ define(["angular", "jquery"], function(angular, $) {
         addToHome: addToHome
       };
     })
-    .factory("miscService", function(
+    .factory('miscService', function(
       $analytics,
       $http,
       $window,
@@ -193,17 +193,17 @@ define(["angular", "jquery"], function(angular, $) {
     **/
       var redirectUser = function(status, caller) {
         if (status === 0 || status === 302) {
-          $log.log("redirect happening due to " + status);
+          $log.log('redirect happening due to ' + status);
           if (MISC_URLS.loginURL) {
             $window.location.replace(MISC_URLS.loginURL);
           } else {
-            $log.warn("MISC_URLS.loginURL was not set, cannot redirect");
+            $log.warn('MISC_URLS.loginURL was not set, cannot redirect');
           }
         } else {
           $log.warn(
-            "Strange behavior from " +
+            'Strange behavior from ' +
               caller +
-              ". Returned status code : " +
+              '. Returned status code : ' +
               status
           );
         }
@@ -224,11 +224,11 @@ define(["angular", "jquery"], function(angular, $) {
           value: value || label
         });
         $log.log(
-          "ga event logged action: " +
+          'ga event logged action: ' +
             action +
-            ", category: " +
+            ', category: ' +
             category +
-            ", label: " +
+            ', label: ' +
             label
         );
       };

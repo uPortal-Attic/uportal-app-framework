@@ -16,24 +16,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return angular
-    .module("portal.messages.services", [])
-    .factory("messagesService", [
-      "$http",
-      "$log",
-      "$localStorage",
-      "$sessionStorage",
-      "$q",
-      "$filter",
-      "portalGroupService",
-      "miscService",
-      "keyValueService",
-      "SERVICE_LOC",
-      "MESSAGES",
-      "KV_KEYS",
+    .module('portal.messages.services', [])
+    .factory('messagesService', [
+      '$http',
+      '$log',
+      '$localStorage',
+      '$sessionStorage',
+      '$q',
+      '$filter',
+      'portalGroupService',
+      'miscService',
+      'keyValueService',
+      'SERVICE_LOC',
+      'MESSAGES',
+      'KV_KEYS',
       function(
         $http,
         $log,
@@ -88,7 +88,7 @@ define(["angular"], function(angular) {
               }
             })
             .catch(function(error) {
-              miscService.redirectUser(error.status, "Get all messages");
+              miscService.redirectUser(error.status, 'Get all messages');
               return [];
             });
         };
@@ -116,7 +116,7 @@ define(["angular"], function(angular) {
                     if (!added) {
                       // Check for matches against the groups returned
                       // by portalGroupService
-                      var intersectedGroups = $filter("filter")(groups, {
+                      var intersectedGroups = $filter('filter')(groups, {
                         name: messageGroup
                       });
                       if (intersectedGroups && intersectedGroups.length > 0) {
@@ -137,10 +137,10 @@ define(["angular"], function(angular) {
               return messagesByGroup;
             })
             .catch(function(error) {
-              $log.warn("Problem getting groups from portalGroupService");
+              $log.warn('Problem getting groups from portalGroupService');
               miscService.redirectUser(
                 error.status,
-                "Unable to retrieve groups"
+                'Unable to retrieve groups'
               );
             });
         };
@@ -185,7 +185,7 @@ define(["angular"], function(angular) {
                         return;
                       }
                       if (
-                        $filter("filter")(objectToFind, arrayFilter).length > 0
+                        $filter('filter')(objectToFind, arrayFilter).length > 0
                       ) {
                         return message;
                       }
@@ -195,7 +195,7 @@ define(["angular"], function(angular) {
                     return;
                   })
                   .catch(function(error) {
-                    $log.warn("Error retrieving data for notification");
+                    $log.warn('Error retrieving data for notification');
                     $log.error(error);
                   })
               );
@@ -256,7 +256,7 @@ define(["angular"], function(angular) {
           }
 
           // Update stored IDs based on the action taken
-          if (action === "restore") {
+          if (action === 'restore') {
             // If original array has values no longer present
             // in updated array, remove them
             //
@@ -265,7 +265,7 @@ define(["angular"], function(angular) {
                 originalSeenIds.splice(index, 1);
               }
             });
-          } else if (action === "dismiss") {
+          } else if (action === 'dismiss') {
             // Add any IDs in the updated array to the original array
             angular.forEach(alteredSeenIds, function(id) {
               if (originalSeenIds.indexOf(id) == -1) {
@@ -279,7 +279,7 @@ define(["angular"], function(angular) {
               return originalSeenIds;
             })
             .catch(function(error) {
-              $log.warn("Problem setting seen message IDs in storage");
+              $log.warn('Problem setting seen message IDs in storage');
               return error;
             });
         };

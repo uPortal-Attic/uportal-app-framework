@@ -16,39 +16,39 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular", "require"], function(angular, require) {
+define(['angular', 'require'], function(angular, require) {
   return angular
-    .module("portal.messages.directives", [])
-    .directive("notificationsBell", function() {
+    .module('portal.messages.directives', [])
+    .directive('notificationsBell', function() {
       return {
-        restrict: "E",
+        restrict: 'E',
         scope: {
-          directiveMode: "@mode",
-          headerCtrl: "=headerCtrl"
+          directiveMode: '@mode',
+          headerCtrl: '=headerCtrl'
         },
-        templateUrl: require.toUrl("./partials/notifications-bell.html"),
-        controller: "NotificationsController",
-        controllerAs: "vm"
+        templateUrl: require.toUrl('./partials/notifications-bell.html'),
+        controller: 'NotificationsController',
+        controllerAs: 'vm'
       };
     })
-    .directive("notificationsListItem", function() {
+    .directive('notificationsListItem', function() {
       return {
-        restrict: "E",
-        templateUrl: require.toUrl("./partials/notifications-list-item.html")
+        restrict: 'E',
+        templateUrl: require.toUrl('./partials/notifications-list-item.html')
       };
     })
-    .directive("mascotAnnouncement", function() {
+    .directive('mascotAnnouncement', function() {
       return {
-        restrict: "E",
-        templateUrl: require.toUrl("./partials/announcement-mascot.html"),
+        restrict: 'E',
+        templateUrl: require.toUrl('./partials/announcement-mascot.html'),
         scope: {
-          mode: "@",
-          headerCtrl: "=headerCtrl"
+          mode: '@',
+          headerCtrl: '=headerCtrl'
         },
-        controller: "AnnouncementsController",
-        controllerAs: "vm"
+        controller: 'AnnouncementsController',
+        controllerAs: 'vm'
       };
     });
 });

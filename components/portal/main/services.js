@@ -16,16 +16,16 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
-  return angular.module("portal.main.services", []).factory("mainService", [
-    "$http",
-    "$log",
-    "$sessionStorage",
-    "miscService",
-    "SERVICE_LOC",
-    "APP_FLAGS",
+define(['angular'], function(angular) {
+  return angular.module('portal.main.services', []).factory('mainService', [
+    '$http',
+    '$log',
+    '$sessionStorage',
+    'miscService',
+    'SERVICE_LOC',
+    'APP_FLAGS',
     function(
       $http,
       $log,
@@ -55,16 +55,16 @@ define(["angular"], function(angular) {
                 person.originalUsername !== $sessionStorage.portal.username
               ) {
                 $log.warn(
-                  "Thought they were " +
+                  'Thought they were ' +
                     $sessionStorage.portal.username +
-                    " but session sent back " +
+                    ' but session sent back ' +
                     person.userName +
-                    ". Redirect!"
+                    '. Redirect!'
                 );
                 delete $sessionStorage.portal;
                 miscService.redirectUser(
                   302,
-                  "Wrong User than populated in session storage."
+                  'Wrong User than populated in session storage.'
                 );
               }
             }
@@ -72,7 +72,7 @@ define(["angular"], function(angular) {
           })
           .catch(function(data, status) {
             // failure function
-            miscService.redirectUser(status, "Get User Info");
+            miscService.redirectUser(status, 'Get User Info');
           });
         return userPromise;
       };

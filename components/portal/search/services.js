@@ -16,12 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return angular
-    .module("portal.search.services", [])
-    .factory("PortalSearchService", function() {
+    .module('portal.search.services', [])
+    .factory('PortalSearchService', function() {
       var query;
 
       var getQuery = function() {

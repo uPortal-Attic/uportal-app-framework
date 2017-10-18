@@ -16,15 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return angular
-    .module("portal.about.services", [])
-    .factory("portalAboutService", [
-      "$http",
-      "miscService",
-      "FRAME_URLS",
+    .module('portal.about.services', [])
+    .factory('portalAboutService', [
+      '$http',
+      'miscService',
+      'FRAME_URLS',
       function($http, miscService, FRAME_URLS) {
         /**
     * Gets frame information from generated about-frame.json

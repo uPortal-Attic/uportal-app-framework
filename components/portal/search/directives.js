@@ -16,19 +16,19 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular", "require"], function(angular, require) {
-  return angular.module("portal.search.directives", []).directive("search", [
+define(['angular', 'require'], function(angular, require) {
+  return angular.module('portal.search.directives', []).directive('search', [
     function() {
       return {
-        restrict: "E",
-        templateUrl: require.toUrl("./partials/search.html"),
+        restrict: 'E',
+        templateUrl: require.toUrl('./partials/search.html'),
         scope: {
-          directiveMode: "@mode"
+          directiveMode: '@mode'
         },
-        controller: "PortalSearchController",
-        controllerAs: "vm"
+        controller: 'PortalSearchController',
+        controllerAs: 'vm'
       };
     }
   ]);

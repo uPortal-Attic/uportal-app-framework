@@ -16,21 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return (angular
-      .module("portal.widgets.controllers", [])
+      .module('portal.widgets.controllers', [])
       /**
    * Base widget controller (for /partials/widget-card.html).
    * First point of access for all widget types -- determines
    * the type and sets launch button url for un-typed (basic) widgets.
    */
-      .controller("WidgetCardController", [
-        "$scope",
-        "$log",
-        "$localStorage",
-        "widgetService",
+      .controller('WidgetCardController', [
+        '$scope',
+        '$log',
+        '$localStorage',
+        'widgetService',
         function($scope, $log, $localStorage, widgetService) {
           /**
      * Check for widget types that require extra configuration
@@ -42,7 +42,7 @@ define(["angular"], function(angular) {
           var widgetType = function widgetType(widget) {
             // Check for types that need handling
             switch (widget.widgetType) {
-              case "list-of-links":
+              case 'list-of-links':
                 if (widget.widgetConfig.getLinksURL) {
                   widgetService
                     .getWidgetJson(widget)
@@ -52,11 +52,11 @@ define(["angular"], function(angular) {
                     })
                     .catch(function(error) {
                       $log.warn(
-                        "List of links widget " + widget.fname + " failed."
+                        'List of links widget ' + widget.fname + ' failed.'
                       );
                       $log.error(error);
                     });
-                  return "list-of-links";
+                  return 'list-of-links';
                 }
                 // If the list of links only has one link and it's the
                 // same as the launch button url, display a basic widget
@@ -65,16 +65,16 @@ define(["angular"], function(angular) {
                   widget.altMaxUrl &&
                   widget.widgetConfig.links[0].href === widget.url
                 ) {
-                  return "basic";
+                  return 'basic';
                 } else {
-                  return "list-of-links";
+                  return 'list-of-links';
                 }
-              case "generic":
+              case 'generic':
                 // DEPRECATED: Backwards compatibility. Use 'custom' instead.
-                return "custom";
+                return 'custom';
               case null:
                 // If widgetType doesn't exist, show a basic widget
-                return "basic";
+                return 'basic';
               default:
                 return widget.widgetType;
             }
@@ -87,7 +87,7 @@ define(["angular"], function(angular) {
           $scope.initializeWidget = function(fname) {
             // Initialize scope variables
             $scope.widget = {};
-            $scope.widgetType = "";
+            $scope.widgetType = '';
 
             if (fname) {
               // Get widget data for provided app (fname)
@@ -122,9 +122,9 @@ define(["angular"], function(angular) {
             // Check for static content or exclusive mode portlets (rare)
             if (widget.altMaxUrl == false) {
               if (widget.staticContent != null) {
-                return "static/" + widget.fname;
+                return 'static/' + widget.fname;
               } else if (widget.renderOnWeb || $localStorage.webPortletRender) {
-                return "exclusive/" + widget.fname;
+                return 'exclusive/' + widget.fname;
               }
             }
             return widget.url;
@@ -135,10 +135,10 @@ define(["angular"], function(angular) {
         }
       ])
       // OPTION LINK widget type
-      .controller("OptionLinkController", [
-        "$scope",
-        "$log",
-        "widgetService",
+      .controller('OptionLinkController', [
+        '$scope',
+        '$log',
+        'widgetService',
         function($scope, $log, widgetService) {
           /**
      * Set up default configuration if no config exists
@@ -146,9 +146,9 @@ define(["angular"], function(angular) {
           var configInit = function() {
             $scope.config = {
               singleElement: false,
-              arrayName: "array",
-              value: "value",
-              display: "display"
+              arrayName: 'array',
+              value: 'value',
+              display: 'display'
             };
           };
 
@@ -187,7 +187,7 @@ define(["angular"], function(angular) {
                   return data;
                 })
                 .catch(function() {
-                  $log.warn("could not getWidgetJson");
+                  $log.warn('could not getWidgetJson');
                 });
             }
           };
@@ -202,19 +202,19 @@ define(["angular"], function(angular) {
         }
       ])
       // SEARCH WITH LINKS widget type
-      .controller("SearchWithLinksController", [
-        "$scope",
-        "$sce",
+      .controller('SearchWithLinksController', [
+        '$scope',
+        '$sce',
         function($scope, $sce) {
           // Have faith our entity files aren't trying to bamboozle us
           $scope.secureURL = $sce.trustAsResourceUrl($scope.config.actionURL);
         }
       ])
       // RSS widget type
-      .controller("RssWidgetController", [
-        "$scope",
-        "$log",
-        "widgetService",
+      .controller('RssWidgetController', [
+        '$scope',
+        '$log',
+        'widgetService',
         function($scope, $log, widgetService) {
           /**
      * Turn the provided date string into an actual
@@ -287,7 +287,7 @@ define(["angular"], function(angular) {
                   $scope.loading = false;
 
                   // Check for errors or emptiness and update display as needed
-                  if ($scope.data.status !== "ok") {
+                  if ($scope.data.status !== 'ok') {
                     $scope.error = true;
                     $scope.loading = false;
                   } else {
@@ -324,11 +324,11 @@ define(["angular"], function(angular) {
         }
       ])
       // ACTION ITEMS widget type
-      .controller("ActionItemsController", [
-        "$scope",
-        "$log",
-        "$window",
-        "widgetService",
+      .controller('ActionItemsController', [
+        '$scope',
+        '$log',
+        '$window',
+        'widgetService',
         function($scope, $log, $window, widgetService) {
           // Scope functions
           /**
@@ -369,7 +369,7 @@ define(["angular"], function(angular) {
               .catch(function(error) {
                 // Log a service failure error
                 $log.warn(
-                  "Problem getting action item data from: " + item.feedUrl
+                  'Problem getting action item data from: ' + item.feedUrl
                 );
                 $log.error(error);
                 $scope.error = true;
@@ -396,8 +396,8 @@ define(["angular"], function(angular) {
               } else {
                 // Log a missing-config error
                 $log.warn(
-                  "An action item was missing one or " +
-                    "more required configuration options"
+                  'An action item was missing one or ' +
+                    'more required configuration options'
                 );
               }
 
@@ -429,7 +429,7 @@ define(["angular"], function(angular) {
               checkActionItemsConfigs();
             } else {
               // Action items empty or we're missing something else
-              $log.warn("Action items widget has broken configuration");
+              $log.warn('Action items widget has broken configuration');
               // Display error on widget
               $scope.error = true;
               $scope.loading = false;
@@ -440,10 +440,10 @@ define(["angular"], function(angular) {
         }
       ])
       // VARIABLE CONTENT widget type
-      .controller("TimeSensitiveContentController", [
-        "$scope",
-        "$filter",
-        "$log",
+      .controller('TimeSensitiveContentController', [
+        '$scope',
+        '$filter',
+        '$log',
         function($scope, $filter, $log) {
           /**
      * Display time-sensitive content with provided configuration
@@ -459,10 +459,10 @@ define(["angular"], function(angular) {
             end,
             hasPaddedDates
           ) {
-            $scope.activePeriodStartDate = "";
-            $scope.activePeriodEndDate = "";
+            $scope.activePeriodStartDate = '';
+            $scope.activePeriodEndDate = '';
             $scope.daysLeft = 0;
-            $scope.templateStatus = "";
+            $scope.templateStatus = '';
             $scope.callToAction = callToAction;
 
             // Check for padded dates
@@ -471,7 +471,7 @@ define(["angular"], function(angular) {
                 // Set active period start date
                 if (callToAction.activeDateRange.takeActionStartDate) {
                   $scope.activePeriodStartDate = $filter(
-                    "filterForDateWithYear"
+                    'filterForDateWithYear'
                   )(callToAction.activeDateRange.takeActionStartDate);
                 } else {
                   $scope.activePeriodStartDate = start;
@@ -480,7 +480,7 @@ define(["angular"], function(angular) {
               if (hasPaddedDates.end) {
                 // Set active period end date
                 if (callToAction.activeDateRange.takeActionEndDate) {
-                  $scope.activePeriodEndDate = $filter("filterForDateWithYear")(
+                  $scope.activePeriodEndDate = $filter('filterForDateWithYear')(
                     callToAction.activeDateRange.takeActionEndDate
                   );
                 } else {
@@ -493,44 +493,44 @@ define(["angular"], function(angular) {
 
             // If today is inside the given date range, check for last day
             if (
-              $filter("filterDateRange")(
+              $filter('filterDateRange')(
                 $scope.activePeriodStartDate,
                 $scope.activePeriodEndDate
               )
             ) {
-              $scope.daysLeft = $filter("filterDifferenceFromDate")(
+              $scope.daysLeft = $filter('filterDifferenceFromDate')(
                 $scope.activePeriodEndDate
               );
               // If there's 1 or 0 days left, and filter didn't return -1,
               // It's the last day!
               if ($scope.daysLeft === 1 || $scope.daysLeft === 0) {
-                $scope.templateStatus = "lastDay";
+                $scope.templateStatus = 'lastDay';
               } else {
-                $scope.templateStatus = "ongoing";
+                $scope.templateStatus = 'ongoing';
               }
               // If there's more than 0 days between now and the start date,
               // the active period hasn't started yet
             } else if (
-              $filter("filterDifferenceFromDate")(
+              $filter('filterDifferenceFromDate')(
                 $scope.activePeriodStartDate
               ) > 0
             ) {
-              $scope.templateStatus = "upcoming";
+              $scope.templateStatus = 'upcoming';
               // If filter returns -1, the period has ended
             } else if (
-              $filter("filterDifferenceFromDate")(
+              $filter('filterDifferenceFromDate')(
                 $scope.activePeriodEndDate
               ) === -1
             ) {
-              $scope.templateStatus = "ended";
+              $scope.templateStatus = 'ended';
             }
 
             // If we somehow ended up with an unset template status,
             // don't show time sensitive content
-            if ($scope.templateStatus === "") {
+            if ($scope.templateStatus === '') {
               $log.log(
                 "Date range didn't meet any of the criteria for " +
-                  "showing time-sensitive content"
+                  'showing time-sensitive content'
               );
             } else {
               $scope.showTimeSensitiveContent = true;
@@ -540,8 +540,8 @@ define(["angular"], function(angular) {
           var evaluateCallsToAction = function(callsToAction) {
             // Check if today falls within any of the provided date ranges
             angular.forEach(callsToAction, function(value) {
-              var templateSwitchOnDate = "";
-              var templateSwitchOffDate = "";
+              var templateSwitchOnDate = '';
+              var templateSwitchOffDate = '';
               var hasPaddedDates = {
                 start: false,
                 end: false
@@ -551,20 +551,20 @@ define(["angular"], function(angular) {
                 // Check for a start date
                 if (value.activeDateRange.templateLiveDate) {
                   // Use go live date if provided
-                  templateSwitchOnDate = $filter("filterForDateWithYear")(
+                  templateSwitchOnDate = $filter('filterForDateWithYear')(
                     value.activeDateRange.templateLiveDate
                   );
                   hasPaddedDates.start = true;
                 } else if (value.activeDateRange.takeActionStartDate) {
                   // Fall back on takeActionStartDate if needed
-                  templateSwitchOnDate = $filter("filterForDateWithYear")(
+                  templateSwitchOnDate = $filter('filterForDateWithYear')(
                     value.activeDateRange.takeActionStartDate
                   );
                 } else {
                   $log.log(
                     $scope.widget.fname +
-                      " said it has variable content, but was missing a " +
-                      " start date."
+                      ' said it has variable content, but was missing a ' +
+                      ' start date.'
                   );
                   showBasicWidget();
                 }
@@ -572,27 +572,27 @@ define(["angular"], function(angular) {
                 // Check for an end date
                 if (value.activeDateRange.templateRetireDate) {
                   // Use retire date if provided
-                  templateSwitchOffDate = $filter("filterForDateWithYear")(
+                  templateSwitchOffDate = $filter('filterForDateWithYear')(
                     value.activeDateRange.templateRetireDate
                   );
                   hasPaddedDates.end = true;
                 } else if (value.activeDateRange.takeActionStartDate) {
                   // Fall back on takeActionEndDate if needed
-                  templateSwitchOffDate = $filter("filterForDateWithYear")(
+                  templateSwitchOffDate = $filter('filterForDateWithYear')(
                     value.activeDateRange.takeActionEndDate
                   );
                 } else {
                   $log.log(
                     $scope.widget.fname +
-                      " said it has variable content, but was missing an " +
-                      " end date."
+                      ' said it has variable content, but was missing an ' +
+                      ' end date.'
                   );
                   showBasicWidget();
                 }
 
                 // Check if today is within provided range
                 if (
-                  $filter("filterDateRange")(
+                  $filter('filterDateRange')(
                     templateSwitchOnDate,
                     templateSwitchOffDate
                   )
@@ -608,8 +608,8 @@ define(["angular"], function(angular) {
               } else {
                 $log.log(
                   $scope.widget.fname +
-                    " said it has variable content, but was missing an " +
-                    "active date range."
+                    ' said it has variable content, but was missing an ' +
+                    'active date range.'
                 );
                 showBasicWidget();
               }
@@ -626,17 +626,17 @@ define(["angular"], function(angular) {
           } else {
             $log.log(
               $scope.widget.fname +
-                " said it has variable content, but was missing calls to action."
+                ' said it has variable content, but was missing calls to action.'
             );
             showBasicWidget();
           }
         }
       ])
       // CUSTOM & GENERIC widget types
-      .controller("CustomWidgetController", [
-        "$scope",
-        "$log",
-        "widgetService",
+      .controller('CustomWidgetController', [
+        '$scope',
+        '$log',
+        'widgetService',
         function($scope, $log, widgetService) {
           /**
      * Fetch additional widget data
@@ -668,7 +668,7 @@ define(["angular"], function(angular) {
                     }
                   } else {
                     $log.warn(
-                      "Got nothing back from widget fetch from: " +
+                      'Got nothing back from widget fetch from: ' +
                         $scope.widget.widgetURL
                     );
                     $scope.isEmpty = true;
@@ -733,15 +733,15 @@ define(["angular"], function(angular) {
         }
       ])
       // WEATHER widget type
-      .controller("WeatherWidgetController", [
-        "$scope",
-        "$log",
-        "$q",
-        "widgetService",
-        "keyValueService",
+      .controller('WeatherWidgetController', [
+        '$scope',
+        '$log',
+        '$q',
+        'widgetService',
+        'keyValueService',
         function($scope, $log, $q, widgetService, keyValueService) {
           // Local variables
-          var fetchKey = "userWeatherPreference";
+          var fetchKey = 'userWeatherPreference';
 
           /**
      * Change temperature unit of measurement
@@ -752,25 +752,25 @@ define(["angular"], function(angular) {
 
             // Switch temperature based on which unit is next
             switch (userPreference) {
-              case "F":
+              case 'F':
                 convertKelvinToFahrenheit();
-                $scope.currentUnits = "F";
-                $scope.nextUnits = "C";
+                $scope.currentUnits = 'F';
+                $scope.nextUnits = 'C';
                 break;
-              case "C":
+              case 'C':
                 convertFahrenheitToCelsius();
-                $scope.currentUnits = "C";
-                $scope.nextUnits = "K";
+                $scope.currentUnits = 'C';
+                $scope.nextUnits = 'K';
                 break;
-              case "K":
+              case 'K':
                 convertCelsiusToKelvin();
-                $scope.currentUnits = "K";
-                $scope.nextUnits = "F";
+                $scope.currentUnits = 'K';
+                $scope.nextUnits = 'F';
                 break;
               default:
                 convertCelsiusToKelvin();
-                $scope.currentUnits = "K";
-                $scope.nextUnits = "F";
+                $scope.currentUnits = 'K';
+                $scope.nextUnits = 'F';
             }
 
             // Set user preference
@@ -813,16 +813,16 @@ define(["angular"], function(angular) {
                   if (allTheWeathers) {
                     $scope.weatherData = allTheWeathers.weathers;
                   }
-                  $scope.currentUnits = "F";
-                  $scope.nextUnits = "C";
+                  $scope.currentUnits = 'F';
+                  $scope.nextUnits = 'C';
 
                   // If the user doesn't have a preference, default to Fahrenheit
                   if (
                     userPreference === null ||
-                    userPreference === "" ||
+                    userPreference === '' ||
                     angular.isUndefined(userPreference)
                   ) {
-                    userPreference = "F";
+                    userPreference = 'F';
                   }
 
                   // Cycle units until we match with the user's preference
@@ -939,11 +939,11 @@ define(["angular"], function(angular) {
           if ($scope.widget.widgetURL) {
             $scope.loading = true;
             $scope.weatherData = [];
-            $scope.currentUnits = "F";
-            $scope.nextUnits = "C";
+            $scope.currentUnits = 'F';
+            $scope.nextUnits = 'C';
             populateWidgetContent();
           } else {
-            $log.warn("WeatherWidgetController did not receive a widgetURL");
+            $log.warn('WeatherWidgetController did not receive a widgetURL');
           }
         }
       ]) );

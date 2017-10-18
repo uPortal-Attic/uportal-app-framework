@@ -16,16 +16,16 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-"use strict";
+'use strict';
 
-define(["angular"], function(angular) {
+define(['angular'], function(angular) {
   return angular
-    .module("portal.about.controllers", [])
-    .controller("PortalAboutController", [
-      "$log",
-      "$scope",
-      "portalAboutService",
-      "SERVICE_LOC",
+    .module('portal.about.controllers', [])
+    .controller('PortalAboutController', [
+      '$log',
+      '$scope',
+      'portalAboutService',
+      'SERVICE_LOC',
       function($log, $scope, portalAboutService, SERVICE_LOC) {
         portalAboutService
           .getFrameDetails()
@@ -34,7 +34,7 @@ define(["angular"], function(angular) {
             return result;
           })
           .catch(function() {
-            $log.warn("issue getting frame details");
+            $log.warn('issue getting frame details');
           });
 
         $scope.appInfo = null;
@@ -46,7 +46,7 @@ define(["angular"], function(angular) {
               return result;
             })
             .catch(function() {
-              $log.warn("issue getting frame info");
+              $log.warn('issue getting frame info');
             });
         }
       }
