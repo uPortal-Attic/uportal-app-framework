@@ -5,6 +5,24 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
+### Added
+* Add filter to determine rel attribute on anchors (#569)
+* Add configurable side navigation (#561)
+### Changed
+* Refactor theme names (#568)
+* Update to version 4.2.0 of config-angular (#578)
+* Pull UI Sortable from CDN (#579)
+### Deprecated
+### Removed
+### Fixed
+* Fix mismatch in portal theme key (#570)
+* Hides notification bell when on notification page (#572)
+* Update release documentation (#557)
+* Fix app hangs when promise returns undefined (#575)
+* Fix bug where notification bell still showed on notification page (#576)
+* Add error message when notifications fail (#577)
+* Fix spacing error if no configurable side navigation is used (#583)
+### Security
 
 ## [6.0.3][] - 2017-09-29
 * fix(messages): return nothing on filter fail (#554)
