@@ -5,15 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
+
+## [6.1.0][] - 2017-10-18
+
 ### Added
 * Add filter to determine rel attribute on anchors (#569)
 * Add configurable side navigation (#561)
+
 ### Changed
 * Refactor theme names (#568)
 * Update to version 4.2.0 of config-angular (#578)
 * Pull UI Sortable from CDN (#579)
-### Deprecated
-### Removed
+
 ### Fixed
 * Fix mismatch in portal theme key (#570)
 * Hides notification bell when on notification page (#572)
@@ -22,7 +25,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Fix bug where notification bell still showed on notification page (#576)
 * Add error message when notifications fail (#577)
 * Fix spacing error if no configurable side navigation is used (#583)
-### Security
 
 ## [6.0.3][] - 2017-09-29
 * fix(messages): return nothing on filter fail (#554)
@@ -332,7 +334,8 @@ break compatibility with some older components.  If you used any angular-ui-boot
 - Added ability to have a name for the default theme (#336)
 - Fixed format for announcement end date (#332)
 
-[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.3...HEAD
+[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.1.0...HEAD
+[6.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.3...v6.1.0
 [6.0.3]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.0...v6.0.1
