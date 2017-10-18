@@ -25,7 +25,8 @@ define(['angular', 'require'], function(angular, require) {
       return {
         restrict: 'E',
         templateUrl: require.toUrl('./partials/body.html'),
-        controller: 'PortalMainController'
+        controller: 'PortalMainController',
+        controllerAs: 'mainCtrl'
       };
     })
     .directive('portalHeader', function() {
@@ -34,10 +35,15 @@ define(['angular', 'require'], function(angular, require) {
         templateUrl: require.toUrl('./partials/header.html')
       };
     })
-    .directive('sideBarMenu', function() {
+    .directive('mainMenu', function() {
       return {
         restrict: 'E',
-        templateUrl: require.toUrl('./partials/sidebar-left.html')
+        templateUrl: require.toUrl('./partials/main-menu.html'),
+        scope: {
+          mainCtrl: '=mainCtrl'
+        },
+        controller: 'MainMenuController',
+        controllerAs: 'vm'
       };
     })
     .directive('username', function() {

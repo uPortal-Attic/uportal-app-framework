@@ -30,7 +30,9 @@ define(['angular'], function(angular) {
       campusIdAttribute: null
     })
     .value('APP_OPTIONS', {
-      optionsTemplateURL: null
+      optionsTemplateURL: null,
+      appMenuTemplateURL: null,
+      appMenuItems: []
     })
     .value('SERVICE_LOC', {
       aboutURL: null,
@@ -82,7 +84,7 @@ define(['angular'], function(angular) {
     ])
     .value('APP_BETA_FEATURES', [
       {
-        id: 'toogleSomething',
+        id: 'toggleSomething',
         title: 'Sample Toggle',
         description:
           'This is just an example of a toggle. ' +

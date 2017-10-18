@@ -65,8 +65,10 @@ define(['angular'], function(angular) {
             .getAllMessages()
             .then(function(result) {
               // Ensure messages exist and check for group filtering
-              if (result.length > 0) {
+              if (angular.isArray(result) && result.length > 0) {
                 allMessages = result;
+              } else if (angular.isString(result)) {
+                $scope.messagesError = result;
               }
               filterMessages();
               return allMessages;
@@ -207,6 +209,10 @@ define(['angular'], function(angular) {
           // If the parent scope has messages and notifications are enabled,
           // complete initialization
           if (hasMessages) {
+            // Check if messages service failed
+            if ($scope.$parent.messagesError) {
+              vm.messagesError = $scope.$parent.messagesError;
+            }
             isNotificationsPage();
             configureNotificationsScope();
           }
@@ -538,6 +544,12 @@ define(['angular'], function(angular) {
             vm.announcements = separatedAnnouncements.unseen;
             // Set the mascot image
             setMascot();
+            // Set PortalMainController variable so main menu knows there
+            // are unseen announcements
+            if ($scope.headerCtrl) {
+              $scope.headerCtrl.hasUnseenAnnouncements =
+                vm.announcements.length > 0;
+            }
           } else {
             // Filter out low priority announcements
             popups = $filter('filter')(separatedAnnouncements.unseen, {
@@ -654,6 +666,11 @@ define(['angular'], function(angular) {
             vm.announcements,
             id
           );
+          // Notify up the chain so main menu knows about it
+          if ($scope.headerCtrl) {
+            $scope.headerCtrl.hasUnseenAnnouncements =
+              vm.announcements.length > 0;
+          }
           // Add to seenAnnouncementsIds
           seenAnnouncementIds.push(id);
           // Call service to save results

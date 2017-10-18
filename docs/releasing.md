@@ -33,13 +33,7 @@ Tada! The pull requests in this release now say the version they released in rig
 
 ### Finalize documentation
 
-Before cutting the release, do what you can to square away the documentation for the release. The documentation is in the `docs` folder right in the codebase and they'll be tagged and available for download with the code, so it's better to square it away before tagging and releasing rather than having errata not included with the release.
-
-### Node release
-
-+ Update the npm package by running `npm version <update_type>` where <update_type> is based on the selection above: patch, minor, or major. This will: change the version in `package.json`, commit that (locally), and make a tag in the format `vx.y.z`. Read more about that [on npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages#updating-the-package).
-+ Deploy npm package to the world; `npm publish`. (if you don't have [publish rights][uportal-app-framework access on npm] contact authors)
-+ Push git changes to the github via `git push origin master` and `git push origin <tag>`
+Before cutting the release, do what you can to square away the documentation for the release. Add the pull requests from the milestone to the [CHANGELOG][].
 
 ### Java release
 
@@ -59,6 +53,13 @@ git push origin uportal-app-framework-maven-<version>
 
 + Release maven artifacts from [central staging repository][central Maven staging repository]
 
+
+### Node release
+
++ Update the npm package by running `npm version <update_type>` where <update_type> is based on the selection above: patch, minor, or major. This will: change the version in `package.json`, commit that (locally), and make a tag in the format `vx.y.z`. [Read more about publishing on npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages#updating-the-package).
++ Deploy npm package to the world; `npm publish`. (if you don't have [publish rights][uportal-app-framework access on npm] contact authors)
++ Push git changes to the github via `git push origin master` and `git push origin <tag>`
+
 ### Docker release
 
 Deploy a new version to `docker.doit.wisc.edu` (note the version below x.y.z should be the release version)
@@ -69,10 +70,6 @@ docker build -t docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:x.y.
 docker push docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:x.y.z
 ```
 
-### Documentation release
-
-You don't have to do anything special to release the documentation. GitHub pages will run Jekyll on the `docs` folder of the latest commit in the `master` branch, continually deploying the latest documentation to [the live documentation website](http://uportal-project.github.io/uportal-app-framework/).
-
 ### Release notes
 
 * There should now be a couple tags above the `Latest release` on [the GitHub releases page][uportal-app-framework releases]
@@ -80,6 +77,10 @@ You don't have to do anything special to release the documentation. GitHub pages
 * Edit tag
 * Title the release `x.y.z`, optionally `x.y.z - pithy summary`
 * Add release notes, linking pull requests included in this release, linking the newly released documentation, and especially articulating anything interesting about the upgrade path to this release for frame-based app developers.
+
+### Update My App Seed
+
+[My App Seed][my-app-seed] is a template for developers to use when creating new frame apps. When cutting a release, be sure to update the [my-app-seed pom][] so future adopters can start developing using the latest code.
 
 ### Updating JIRA issues
 
@@ -102,6 +103,7 @@ create the next patch version.
 [Semantic Versioning]: http://semver.org/
 [uportal-app-framework closed pull requests]: https://github.com/uPortal-Project/uportal-app-framework/pulls?q=is%3Apr+is%3Aclosed
 [uportal-app-framework milestones]: https://github.com/uPortal-Project/uportal-app-framework/milestones
+[CHANGELOG]: ../CHANGELOG.md
 [uportal-app-framework access on npm]: https://www.npmjs.com/package/@uportal/app-framework/access
 [central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
 [uportal-app-framework releases]: https://github.com/uPortal-Project/uportal-app-framework/releases
@@ -110,3 +112,5 @@ create the next patch version.
 [Apache Release Policy re Release Approval]: http://www.apache.org/legal/release-policy.html#release-approval
 [the uPortal-app-framework Committers]: https://github.com/uPortal-Project/uportal-app-framework/blob/master/committers.md#who-are-the-committers
 [uportal-dev@]: https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev
+[my-app-seed]: https://github.com/UW-Madison-DoIT/my-app-seed
+[my-app-seed pom]: https://github.com/UW-Madison-DoIT/my-app-seed/blob/master/pom.xml

@@ -48,6 +48,8 @@ define(['angular'], function(angular) {
         MESSAGES,
         KV_KEYS
       ) {
+        // Service messages
+        var GET_MESSAGES_FAILED = 'Could not get notifications at this time.';
         // //////////////////
         // Exposed methods //
         // //////////////////
@@ -64,6 +66,7 @@ define(['angular'], function(angular) {
          * @property {string} expireDate
          * @property {string} featureImageUrl
          * @property {string} priority
+         * @property {Boolean} dismissible
          * @property {Object} actionButton
          * @property {Object} moreInfoButton
          * @property {Object} confirmButton
@@ -84,12 +87,12 @@ define(['angular'], function(angular) {
               ) {
                 return response.data.messages;
               } else {
-                return [];
+                return GET_MESSAGES_FAILED;
               }
             })
             .catch(function(error) {
               miscService.redirectUser(error.status, 'Get all messages');
-              return [];
+              return GET_MESSAGES_FAILED;
             });
         };
 
@@ -233,7 +236,7 @@ define(['angular'], function(angular) {
               }
               return $q.reject(result);
             })
-            .catch(function() {
+            .catch(function(error) {
               return [];
             });
         };

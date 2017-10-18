@@ -1,0 +1,64 @@
+<!--
+
+    Licensed to Apereo under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Apereo licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License.  You may obtain a
+    copy of the License at the following location:
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<md-sidenav class="md-sidenav-left main-menu__sidenav"
+            ng-class="{ 'has-priority-notifications' : mainCtrl.hasPriorityNotifications }"
+            md-component-id="main-menu"
+            md-is-locked-option="false"
+            md-whiteframe="4">
+  <div class="main-menu__mobile-bar" layout="row" layout-align="end center" hide-gt-xs>
+    <md-button href="features" ng-show="mainCtrl.hasUnseenAnnouncements" ng-click="mainCtrl.hasUnseenAnnouncements = false;vm.closeMainMenu();" aria-label="view all announcements">
+      <span><md-icon>new_releases</md-icon></span>
+      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">New features</md-tooltip>
+    </md-button>
+    <!-- Regular notifications button -->
+    <md-button ng-href="{{ vm.notificationsPageUrl }}" ng-click="vm.closeMainMenu();" aria-label="view all notifications"  ng-if="!mainCtrl.hasPriorityNotifications">
+      <span><md-icon>notifications</md-icon></span>
+      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
+    </md-button>
+    <!-- High priority notifications button -->
+    <md-button ng-href="{{ vm.notificationsPageUrl }}" ng-click="vm.closeMainMenu();" aria-label="you have important notifications"  ng-if="mainCtrl.hasPriorityNotifications">
+      <span class="main-menu__high-priority">
+        <md-icon class="md-warn">error</md-icon>
+      </span>
+      <span><md-icon>notifications</md-icon></span>
+      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
+    </md-button>
+    <username></username>
+  </div>
+  <md-menu-content>
+    <md-subheader class="md-primary" ng-if="vm.appName != ''">{{ vm.appName }}</md-subheader>
+    <!-- App-specific content -->
+    <div ng-if="vm.appMenuTemplate" ng-include="vm.appMenuTemplate"></div>
+    <md-menu-item ng-if="!vm.appMenuTemplate" ng-repeat="item in vm.menuItems">
+      <md-button ng-if="item.url" ng-href="{{ item.url }}" ng-click="vm.closeMainMenu();" layout="row" layout-align="start center">
+          <span ng-if="item.icon">
+            <md-icon>{{ item.icon }}</md-icon>
+          </span>
+        <span>{{ item.label }}</span>
+      </md-button>
+    </md-menu-item>
+  </md-menu-content>
+  <!-- Footer links -->
+  <md-divider></md-divider>
+  <div class="links-separated">
+    <a ng-repeat="link in vm.footerLinks" ng-href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer">{{ link.title }}</a>
+  </div>
+</md-sidenav>
