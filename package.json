@@ -125,6 +125,9 @@
     "font-awesome": "^4.6.3",
     "normalize.less": "^1.0.0"
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "lint-staged": {
     "*.{js,json,less}": ["prettier --write", "git add"]
   },
