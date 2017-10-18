@@ -44,19 +44,6 @@ portal-header {
       max-height: 56px;
       overflow-y: hidden;
 
-      .title-link {
-        h1 {
-          @media (min-width: @xs) and (max-width: @sm) {
-            margin-left: 16px;
-          }
-        }
-
-        img {
-          height: 56px;
-          margin-right: 8px;
-        }
-      }
-
       .md-menu {
         > .md-button {
           min-width: 48px;
@@ -67,6 +54,20 @@ portal-header {
       .menu-toggle.md-button {
         min-width: 48px;
         margin: 0;
+
+        ~ .title-link h1 {
+          @media (min-width: @xs) {
+            margin-left: 0;
+          }
+        }
+
+        &.hide-gt-xs {
+          ~ .title-link h1 {
+            @media (min-width: @xs) {
+              margin-left: 16px;
+            }
+          }
+        }
       }
 
       .top-bar-controls-xs {
