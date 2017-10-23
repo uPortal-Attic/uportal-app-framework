@@ -35,18 +35,9 @@ footer {
   }
 
   .links-separated > span {
-    &::before {
-      content: '\f111';
-      font-family: 'FontAwesome';
-      display: inline-block;
-      font-size: 8px;
-      bottom: 1px;
-      position: relative;
-      margin: 0 4px;
-    }
-
-    &:first-child::before {
-      display: none;
+    &:not(:last-child)::after {
+      content: '\23FA';
+      margin-right: 4px;
     }
   }
 
