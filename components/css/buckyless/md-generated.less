@@ -317,21 +317,21 @@ main-menu {
       }
 
       @media (max-width: @xs) {
-        width: calc(100% - 56px);
-        min-width: calc(100% - 56px);
-        max-width: calc(100% - 56px);
+        width: ~"calc(100% - 56px)";
+        min-width: ~"calc(100% - 56px)";
+        max-width: ~"calc(100% - 56px)";
       }
     }
 
     @media (max-width: @xs) {
       z-index: 80;
     }
+  }
 
-    @media (min-width: @xs) {
-      padding-top: 56px;
-
-      &.has-priority-notifications {
-        padding-top: 102px;
+  &.push-content {
+    md-backdrop.md-sidenav-backdrop {
+      @media (min-width: @sm) {
+        display: none;
       }
     }
   }

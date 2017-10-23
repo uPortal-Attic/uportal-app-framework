@@ -41,9 +41,6 @@ define(['angular', 'require'], function(angular, require) {
     return {
       restrict: 'E',
       templateUrl: require.toUrl('./partials/main-menu.html'),
-      scope: {
-        mainCtrl: '=mainCtrl',
-      },
       controller: 'MainMenuController',
       controllerAs: 'vm',
     };

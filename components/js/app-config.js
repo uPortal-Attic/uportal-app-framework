@@ -32,6 +32,7 @@ define(['angular'], function(angular) {
             'optionsTemplateURL': null,
             'appMenuTemplateURL': null,
             'appMenuItems': [],
+            'enablePageLevelSidenav': false,
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,
@@ -49,7 +50,8 @@ define(['angular'], function(angular) {
             },
         })
         .value('NAMES', {
-            'title': 'MyUW', // you can name your app whatever you want
+          // you can name your app whatever you want
+            'title': 'Frame app',
             'guestUserName': 'guest',
             'fname': 'sample-fname',
         })

@@ -23,9 +23,10 @@ define(['angular', 'require'], function(angular, require) {
 
   .controller('PortalMainController', [
     '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
-    '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService',
+    '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS',
+    'APP_OPTIONS', 'THEMES', 'miscService',
     function($localStorage, $sessionStorage, $scope, $rootScope, $document,
-    $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
+    $location, NAMES, MISC_URLS, APP_FLAGS, APP_OPTIONS, THEMES, miscService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
@@ -39,6 +40,7 @@ define(['angular', 'require'], function(angular, require) {
         frameTitle = $rootScope.portal.theme.title;
         if (frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
           frameTitle = ' | ' + frameTitle;
+          $rootScope.appName = NAMES.title;
         } else {
           // since frame title equals the title in NAMES lets not duplicate it
           frameTitle = '';
@@ -55,6 +57,7 @@ define(['angular', 'require'], function(angular, require) {
       $scope.APP_FLAGS=APP_FLAGS;
       $scope.MISC_URLS=MISC_URLS;
       $scope.THEMES = THEMES.themes;
+      $scope.APP_OPTIONS = APP_OPTIONS;
 
       if (NAMES.title) {
         setTitle();
@@ -145,9 +148,9 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Header */
   .controller('PortalHeaderController', ['$rootScope', '$scope', '$location',
-    '$mdSidenav', 'APP_FLAGS', 'MISC_URLS',
+    '$mdSidenav', 'APP_FLAGS', 'MISC_URLS', 'NAMES',
     function($rootScope, $scope, $location, $mdSidenav,
-             APP_FLAGS, MISC_URLS) {
+             APP_FLAGS, MISC_URLS, NAMES) {
       var vm = this;
       vm.navbarCollapsed = true;
       vm.showLogout = true;
@@ -169,6 +172,8 @@ define(['angular', 'require'], function(angular, require) {
       vm.notificationsPageUrl = '';
       vm.hideMainMenu = false;
       vm.footerLinks = FOOTER_URLS;
+      vm.pushContent = false;
+      vm.enablePushContent = false;
 
       // Close side nav on scroll to avoid awkward UI
       $window.onscroll = function() {
@@ -226,6 +231,7 @@ define(['angular', 'require'], function(angular, require) {
           vm.footerLinks =
             vm.footerLinks.concat($rootScope.portal.theme.footerLinks);
         }
+        vm.enablePushContent = APP_OPTIONS.enablePushContent;
       };
 
       init();

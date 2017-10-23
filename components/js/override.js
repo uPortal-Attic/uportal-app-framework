@@ -21,7 +21,6 @@ define(['angular'], function(angular) {
   return angular.module('override', [])
     .constant('OVERRIDE', {
       'APP_OPTIONS': {
-        'optionsTemplateURL': 'portal/misc/partials/example-options.html',
         'appMenuTemplateURL': 'portal/misc/partials/example-menu.html',
         'appMenuItems': [
           {
@@ -30,6 +29,7 @@ define(['angular'], function(angular) {
             'url': '/web',
           },
         ],
+        'enablePushContent': true,
       },
     });
 });
