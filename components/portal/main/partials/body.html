@@ -22,9 +22,9 @@
   <div class="my-uw-body">
     <portal-header ng-class="{'has-priority-nots': mainCtrl.hasPriorityNotifications}" ng-controller="PortalHeaderController as headerCtrl"></portal-header>
 
-    <div class="page-content" layout="column" tabindex="0">
+    <div class="page-content" layout="column" tabindex="0" role="main">
       <div role="main" class="region-main" class="no-padding">
-        <div ng-class="routeClass" ng-view role="application" aria-labelledby="app-title"></div>
+        <ng-view role="application" aria-label="{{ NAMES.title }}"></ng-view>
       </div>
 
       <!-- FOOTER -->

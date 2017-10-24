@@ -161,8 +161,8 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Side navigation controller */
   .controller('MainMenuController', ['$rootScope', '$scope', '$mdSidenav',
-    '$window', 'APP_OPTIONS', 'FOOTER_URLS', 'MESSAGES', 'NAMES',
-    function($rootScope, $scope, $mdSidenav, $window, APP_OPTIONS,
+    '$mdMedia', '$window', 'APP_OPTIONS', 'FOOTER_URLS', 'MESSAGES', 'NAMES',
+    function($rootScope, $scope, $mdSidenav, $mdMedia, $window, APP_OPTIONS,
              FOOTER_URLS, MESSAGES, NAMES) {
       var vm = this;
 
@@ -173,11 +173,11 @@ define(['angular', 'require'], function(angular, require) {
       vm.hideMainMenu = false;
       vm.footerLinks = FOOTER_URLS;
       vm.pushContent = false;
-      vm.enablePushContent = false;
+      vm.openMenuByDefault = false;
 
       // Close side nav on scroll to avoid awkward UI
       $window.onscroll = function() {
-        if (vm.isMenuOpen()) {
+        if (vm.isMenuOpen() && !$mdMedia('gt-sm')) {
           vm.closeMainMenu();
         }
       };
@@ -231,7 +231,8 @@ define(['angular', 'require'], function(angular, require) {
           vm.footerLinks =
             vm.footerLinks.concat($rootScope.portal.theme.footerLinks);
         }
-        vm.enablePushContent = APP_OPTIONS.enablePushContent;
+        vm.openMenuByDefault =
+          APP_OPTIONS.enablePushContent && $mdMedia('gt-sm');
       };
 
       init();

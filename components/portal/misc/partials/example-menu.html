@@ -18,17 +18,21 @@
     under the License.
 
 -->
+<style>
+  i.fa-github {
+    margin:auto 16px auto 0;
+    font-size:24px;
+    height:24px;
+    width:24px;
+    color:rgba(0,0,0,0.54);
+  }
+</style>
 <md-menu-item>
   <md-button href="/web" ng-click="vm.closeMainMenu();" layout="row" layout-align="start center">
-          <span>
-            <md-icon>home</md-icon>
-          </span>
+    <span>
+      <md-icon>home</md-icon>
+    </span>
     <span>MyUW Home</span>
-  </md-button>
-</md-menu-item>
-<md-menu-item>
-  <md-button href="http://uportal-project.github.io/uportal-app-framework/directives.html" ng-click="vm.closeMainMenu();">
-    See Documentation
   </md-button>
 </md-menu-item>
 <md-menu-item>
@@ -39,9 +43,14 @@
 </md-menu-item>
 <md-menu-item>
   <md-button href="/about" ng-click="vm.closeMainMenu();" layout="row" layout-align="start center">
-          <span>
-            <md-icon>help</md-icon>
-          </span>
+    <span>
+      <md-icon>help</md-icon>
+    </span>
     <span>About</span>
+  </md-button>
+</md-menu-item>
+<md-menu-item>
+  <md-button href="http://uportal-project.github.io/uportal-app-framework/directives.html" ng-click="vm.closeMainMenu();">
+    See Documentation
   </md-button>
 </md-menu-item>

@@ -192,7 +192,7 @@ define(['angular', 'require'], function(angular, require) {
     Optional: whiteBackground :
       Adds in classes that do a white background with a border
     */
-    .directive('framePage', function() {
+    .directive('framePage', ['APP_OPTIONS', function(APP_OPTIONS) {
       return {
           restrict: 'E',
           templateUrl: require.toUrl('./partials/frame-page.html'),
@@ -204,8 +204,13 @@ define(['angular', 'require'], function(angular, require) {
             appShowAddToHome: '=appShowAddToHome',
             whiteBackground: '=',
           },
+          link: function(scope) {
+            if (APP_OPTIONS) {
+              scope.menuPushContent = APP_OPTIONS.enablePushContent;
+            }
+          },
       };
-    })
+    }])
 
     /**
      * content-item is a directive that

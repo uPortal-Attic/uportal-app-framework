@@ -16,46 +16,48 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-footer {
-  text-align: center;
-  width: 100%;
-  background-color: @footer-background-color;
-  color: @footer-text-color;
-  font-size: 12px;
-  min-height: 100px;
-
-  a {
+site-footer {
+  footer {
+    text-align: center;
+    background-color: @footer-background-color;
     color: @footer-text-color;
-    text-decoration: underline;
+    font-size: 12px;
+    min-height: 100px;
 
-    &:hover {
-      color: lighten(@footer-text-color, 20%);
+    a {
+      color: @footer-text-color;
       text-decoration: underline;
+
+      &:hover {
+        color: lighten(@footer-text-color, 20%);
+        text-decoration: underline;
+      }
+    }
+
+    .links-separated > span {
+      &::before {
+        content: '\f111';
+        font-family: 'FontAwesome';
+        display: inline-block;
+        font-size: 8px;
+        bottom: 1px;
+        position: relative;
+        margin: 0 4px;
+      }
+
+      &:first-child::before {
+        display: none;
+      }
+    }
+
+    .copyright p {
+      display: inline;
+    }
+
+    .footer-links {
+      line-height: 1.5em;
+      padding-top: 1em;
     }
   }
 
-  .links-separated > span {
-    &::before {
-      content: '\f111';
-      font-family: 'FontAwesome';
-      display: inline-block;
-      font-size: 8px;
-      bottom: 1px;
-      position: relative;
-      margin: 0 4px;
-    }
-
-    &:first-child::before {
-      display: none;
-    }
-  }
-
-  .copyright p {
-    display: inline;
-  }
-
-  .footer-links {
-    line-height: 1.5em;
-    padding-top: 1em;
-  }
 }

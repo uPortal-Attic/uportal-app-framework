@@ -20,57 +20,47 @@
 /* Portlet and Frame Content Styling */
 
 .my-uw-body {
-  min-height: 100%;
-  height: 100%;
+  min-height: 100vh;
+  display: flex;
 
   .page-content {
     background-color: @grayscale4;
     transition: padding 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    padding: 60px 0 0;
-    height: 100%;
+    margin: 60px 0 0;
+    flex: auto;
+    display: flex;
+    flex-direction: column;
 
     .white-page {
       background-color: @white;
-      margin-left: 1%;
-      width: 98%;
-      box-shadow: 0 0 2px 0 #222;
-      float: left;
     }
 
     .region-main {
-      padding-left: 0;
-      padding-right: 0;
-      height: 100%;
       position: relative;
+      flex: auto;
+      height: 100%;
     }
 
     @media (max-width: @xs) {
-      padding-top: 56px;
+      margin-top: 56px;
       height: auto;
     }
   }
 }
 
-/* PORTLET STYLES */
-.portlet-frame {
+/* Frame page styles for on-page side navigation */
+frame-page {
+  .wrapper__frame-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 
-  .portlet-body {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-
-  .portlet-footer {
-    border-top: 1px solid @color1;
-    text-align: center;
-
-    ul {
-      margin: 0;
-      padding: 0;
-    }
-
-    li {
-      display: inline-block;
-      padding: 8px 10px 6px;
+    .wrapper__push-content {
+      flex: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
     }
   }
 }
