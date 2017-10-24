@@ -32,7 +32,7 @@ define(['angular'], function(angular) {
             'optionsTemplateURL': null,
             'appMenuTemplateURL': null,
             'appMenuItems': [],
-            'enablePageLevelSidenav': false,
+            'enablePushContent': false,
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,
