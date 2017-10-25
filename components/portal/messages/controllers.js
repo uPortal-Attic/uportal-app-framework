@@ -19,14 +19,35 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  return angular.module('portal.messages.controllers', [])
-
-    .controller('MessagesController', ['$q', '$log', '$scope', '$rootScope',
-      '$location', '$localStorage', '$sessionStorage', '$filter', '$mdDialog',
-      'SERVICE_LOC', 'miscService', 'messagesService',
-      function($q, $log, $scope, $rootScope, $location, $localStorage,
-               $sessionStorage, $filter, $mdDialog, SERVICE_LOC,
-               miscService, messagesService) {
+  return angular
+    .module('portal.messages.controllers', [])
+    .controller('MessagesController', [
+      '$q',
+      '$log',
+      '$scope',
+      '$rootScope',
+      '$location',
+      '$localStorage',
+      '$sessionStorage',
+      '$filter',
+      '$mdDialog',
+      'SERVICE_LOC',
+      'miscService',
+      'messagesService',
+      function(
+        $q,
+        $log,
+        $scope,
+        $rootScope,
+        $location,
+        $localStorage,
+        $sessionStorage,
+        $filter,
+        $mdDialog,
+        SERVICE_LOC,
+        miscService,
+        messagesService
+      ) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -40,7 +61,8 @@ define(['angular'], function(angular) {
          * Get all messages, then pass result on for filtering
          */
         var getMessages = function() {
-          messagesService.getAllMessages()
+          messagesService
+            .getAllMessages()
             .then(function(result) {
               // Ensure messages exist and check for group filtering
               if (angular.isArray(result) && result.length > 0) {
@@ -66,14 +88,13 @@ define(['angular'], function(angular) {
           if (!$localStorage.disableGroupFilteringForMessages) {
             // Define promises to run if filtering is turned on
             promiseFilteredMessages = {
-              filteredByGroup:
-                messagesService.getMessagesByGroup(allMessages),
-              filteredByData:
-                messagesService.getMessagesByData(allMessages),
+              filteredByGroup: messagesService.getMessagesByGroup(allMessages),
+              filteredByData: messagesService.getMessagesByData(allMessages)
             };
             // Call filtered notifications promises, then pass on to
             // the completion function
-            $q.all(promiseFilteredMessages)
+            $q
+              .all(promiseFilteredMessages)
               .then(filterMessagesSuccess)
               .catch(filterMessagesFailure);
           } else {
@@ -105,9 +126,8 @@ define(['angular'], function(angular) {
         /**
          * Handle errors that occur while resolving promises to
          * get notifications
-         * @param error
          */
-        var filterMessagesFailure = function(error) {
+        var filterMessagesFailure = function() {
           $log.warn('Problem getting messages from messagesService');
         };
 
@@ -124,14 +144,35 @@ define(['angular'], function(angular) {
         };
 
         init();
-      },
+      }
     ])
-
-    .controller('NotificationsController', ['$q', '$log', '$scope', '$window',
-      '$rootScope', '$location', '$localStorage', '$filter', 'MESSAGES',
-      'SERVICE_LOC', 'miscService', 'messagesService',
-      function($q, $log, $scope, $window, $rootScope, $location, $localStorage,
-               $filter, MESSAGES, SERVICE_LOC, miscService, messagesService) {
+    .controller('NotificationsController', [
+      '$q',
+      '$log',
+      '$scope',
+      '$window',
+      '$rootScope',
+      '$location',
+      '$localStorage',
+      '$filter',
+      'MESSAGES',
+      'SERVICE_LOC',
+      'miscService',
+      'messagesService',
+      function(
+        $q,
+        $log,
+        $scope,
+        $window,
+        $rootScope,
+        $location,
+        $localStorage,
+        $filter,
+        MESSAGES,
+        SERVICE_LOC,
+        miscService,
+        messagesService
+      ) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -143,7 +184,7 @@ define(['angular'], function(angular) {
 
         // Promise to get seen message IDs
         var promiseSeenMessageIds = {
-          seenMessageIds: messagesService.getSeenMessageIds(),
+          seenMessageIds: messagesService.getSeenMessageIds()
         };
 
         // ///////////////////
@@ -196,7 +237,8 @@ define(['angular'], function(angular) {
           if ($scope.$parent.messages.notifications) {
             allNotifications = $scope.$parent.messages.notifications;
             // Get seen message IDs, then configure scope
-            $q.all(promiseSeenMessageIds)
+            $q
+              .all(promiseSeenMessageIds)
               .then(getSeenMessageIdsSuccess)
               .catch(getSeenMessageIdsFailure);
           }
@@ -207,8 +249,11 @@ define(['angular'], function(angular) {
          * @param result
          */
         var getSeenMessageIdsSuccess = function(result) {
-          if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
-            && result.seenMessageIds.length > 0) {
+          if (
+            result.seenMessageIds &&
+            angular.isArray(result.seenMessageIds) &&
+            result.seenMessageIds.length > 0
+          ) {
             // Save all seenMessageIds for later
             allSeenMessageIds = result.seenMessageIds;
 
@@ -241,10 +286,10 @@ define(['angular'], function(angular) {
           }
 
           // Set aria-label in notifications bell
-          vm.status = 'You have '
-            + (vm.notifications.length === 0
-              ? 'no' : vm.notifications.length)
-            + ' notifications';
+          vm.status =
+            'You have ' +
+            (vm.notifications.length === 0 ? 'no' : vm.notifications.length) +
+            ' notifications';
 
           // Stop loading spinner
           vm.isLoading = false;
@@ -254,9 +299,10 @@ define(['angular'], function(angular) {
          * Handle errors getting seen message IDs
          * @param error
          */
-        var getSeenMessageIdsFailure = function(error) {
-          $log.warn('Couldn\'t get seen message IDs for notifications ' +
-            ' controller.');
+        var getSeenMessageIdsFailure = function() {
+          $log.warn(
+            "Couldn't get seen message IDs for notifications " + ' controller.'
+          );
           // Stop loading spinner
           vm.isLoading = false;
         };
@@ -266,15 +312,14 @@ define(['angular'], function(angular) {
          */
         var configurePriorityNotificationsScope = function() {
           // Use angular's built-in filter to grab priority notifications
-          vm.priorityNotifications = $filter('filter')(
-            vm.notifications,
-            {priority: 'high'}
-          );
+          vm.priorityNotifications = $filter('filter')(vm.notifications, {
+            priority: 'high'
+          });
           // If priority notifications exist and the view has a
           // headerController in scope (from directive), set necessary flags
           if ($scope.headerCtrl) {
-            $scope.headerCtrl.hasPriorityNotifications
-              = vm.priorityNotifications.length > 0;
+            $scope.headerCtrl.hasPriorityNotifications =
+              vm.priorityNotifications.length > 0;
           }
         };
 
@@ -285,12 +330,13 @@ define(['angular'], function(angular) {
         var clearPriorityNotificationsFlags = function(duringWatchedEvent) {
           vm.priorityNotifications = [];
           if ($scope.headerCtrl) {
-            $scope.headerCtrl.hasPriorityNotifications
-              = vm.priorityNotifications.length > 0;
+            $scope.headerCtrl.hasPriorityNotifications =
+              vm.priorityNotifications.length > 0;
           }
           if (!duringWatchedEvent) {
-            $rootScope.$broadcast('portalShutdownPriorityNotifications',
-              {disable: true});
+            $rootScope.$broadcast('portalShutdownPriorityNotifications', {
+              disable: true
+            });
           }
         };
 
@@ -315,8 +361,11 @@ define(['angular'], function(angular) {
 
           // Call service to save changes if k/v store enabled
           if (SERVICE_LOC.kvURL) {
-            messagesService.setMessagesSeen(allSeenMessageIds,
-              dismissedNotificationIds, 'dismiss');
+            messagesService.setMessagesSeen(
+              allSeenMessageIds,
+              dismissedNotificationIds,
+              'dismiss'
+            );
           }
 
           // Clear priority notification flags if it was a priority
@@ -348,8 +397,11 @@ define(['angular'], function(angular) {
           }
           // Call service to save changes if k/v store enabled
           if (SERVICE_LOC.kvURL) {
-            messagesService.setMessagesSeen(allSeenMessageIds,
-              dismissedNotificationIds, 'restore');
+            messagesService.setMessagesSeen(
+              allSeenMessageIds,
+              dismissedNotificationIds,
+              'restore'
+            );
           }
         };
 
@@ -362,15 +414,37 @@ define(['angular'], function(angular) {
         vm.pushGAEvent = function(category, action, label) {
           miscService.pushGAEvent(category, action, label);
         };
-    }])
-
-    .controller('AnnouncementsController', ['$q', '$log', '$filter',
-      '$sessionStorage', '$scope', '$rootScope', '$document', '$sanitize',
-      '$mdDialog', 'miscService',
-      'messagesService', 'PortalAddToHomeService', 'MISC_URLS',
-      function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
-               $document, $sanitize, $mdDialog, miscService,
-               messagesService, PortalAddToHomeService, MISC_URLS) {
+      }
+    ])
+    .controller('AnnouncementsController', [
+      '$q',
+      '$log',
+      '$filter',
+      '$sessionStorage',
+      '$scope',
+      '$rootScope',
+      '$document',
+      '$sanitize',
+      '$mdDialog',
+      'miscService',
+      'messagesService',
+      'PortalAddToHomeService',
+      'MISC_URLS',
+      function(
+        $q,
+        $log,
+        $filter,
+        $sessionStorage,
+        $scope,
+        $rootScope,
+        $document,
+        $sanitize,
+        $mdDialog,
+        miscService,
+        messagesService,
+        PortalAddToHomeService,
+        MISC_URLS
+      ) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -383,7 +457,7 @@ define(['angular'], function(angular) {
 
         // Promise to get seen message IDs
         var promiseSeenMessageIds = {
-          seenMessageIds: messagesService.getSeenMessageIds(),
+          seenMessageIds: messagesService.getSeenMessageIds()
         };
 
         // ///////////////////
@@ -419,7 +493,8 @@ define(['angular'], function(angular) {
           if ($scope.$parent.messages.announcements) {
             allAnnouncements = $scope.$parent.messages.announcements;
             // Get seen message IDs, then configure scope
-            $q.all(promiseSeenMessageIds)
+            $q
+              .all(promiseSeenMessageIds)
               .then(getSeenMessageIdsSuccess)
               .catch(getSeenMessageIdsFailure);
           }
@@ -431,8 +506,11 @@ define(['angular'], function(angular) {
          * @param result Data returned by promises
          */
         var getSeenMessageIdsSuccess = function(result) {
-          if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
-            && result.seenMessageIds.length > 0) {
+          if (
+            result.seenMessageIds &&
+            angular.isArray(result.seenMessageIds) &&
+            result.seenMessageIds.length > 0
+          ) {
             // Save all seenMessageIds for later
             allSeenMessageIds = result.seenMessageIds;
 
@@ -449,15 +527,15 @@ define(['angular'], function(angular) {
           } else {
             separatedAnnouncements = {
               seen: [],
-              unseen: allAnnouncements,
+              unseen: allAnnouncements
             };
           }
 
           $filter('addToHome')(
             separatedAnnouncements.unseen,
-            MISC_URLS, PortalAddToHomeService
+            MISC_URLS,
+            PortalAddToHomeService
           );
-
 
           // If directive mode need mascot, set it, otherwise
           // configure popups
@@ -474,19 +552,17 @@ define(['angular'], function(angular) {
             }
           } else {
             // Filter out low priority announcements
-            popups = $filter('filter')(
-              separatedAnnouncements.unseen,
-              {priority: 'high'}
-            );
+            popups = $filter('filter')(separatedAnnouncements.unseen, {
+              priority: 'high'
+            });
             configurePopups();
           }
         };
 
         /**
          * Handle errors encountered while resolving promises
-         * @param error
          */
-        var getSeenMessageIdsFailure = function(error) {
+        var getSeenMessageIdsFailure = function() {
           // HANDLE ERRORS
         };
 
@@ -496,10 +572,10 @@ define(['angular'], function(angular) {
         var configurePopups = function() {
           // If they exist, put them in order by date, then id
           if (popups.length != 0) {
-            var orderedPopups = $filter('orderBy')(
-              popups,
-              ['goLiveDate', 'id']
-            );
+            var orderedPopups = $filter('orderBy')(popups, [
+              'goLiveDate',
+              'id'
+            ]);
 
             // Set the latest announcement as a scope variable
             // so it can be passed to the dialog
@@ -507,41 +583,51 @@ define(['angular'], function(angular) {
 
             // Display the latest popup announcement
             var displayPopup = function() {
-              $mdDialog.show({
-                templateUrl:
-                  'portal/messages/partials/announcement-popup-template.html',
-                parent: angular.element(document).find('div.my-uw')[0],
-                clickOutsideToClose: true,
-                openFrom: 'left',
-                closeTo: 'right',
-                preserveScope: true,
-                scope: $scope,
-                controller: function DialogController($scope, $mdDialog) {
-                  $scope.closeDialog = function(action) {
-                    $mdDialog.hide(action);
-                  };
-                },
-              })
-              .then(function(action) {
-                // If dialog is closed by clicking "continue" button
-                miscService.pushGAEvent(
-                  'popup',
-                  action,
-                  $scope.latestAnnouncement.id
-                );
-                seenAnnouncementIds.push($scope.latestAnnouncement.id);
-                messagesService.setMessagesSeen(allSeenMessageIds,
-                  seenAnnouncementIds, 'dismiss');
-                return action;
-              })
-              .catch(function() {
-                // If popup is closed by clicking outside or pressing escape
-                miscService.pushGAEvent(
-                  'popup', 'dismissed', $scope.latestAnnouncement.id);
-                seenAnnouncementIds.push($scope.latestAnnouncement.id);
-                messagesService.setMessagesSeen(allSeenMessageIds,
-                  seenAnnouncementIds, 'dismiss');
-              });
+              $mdDialog
+                .show({
+                  templateUrl:
+                    'portal/messages/partials/announcement-popup-template.html',
+                  parent: angular.element(document).find('div.my-uw')[0],
+                  clickOutsideToClose: true,
+                  openFrom: 'left',
+                  closeTo: 'right',
+                  preserveScope: true,
+                  scope: $scope,
+                  controller: function DialogController($scope, $mdDialog) {
+                    $scope.closeDialog = function(action) {
+                      $mdDialog.hide(action);
+                    };
+                  }
+                })
+                .then(function(action) {
+                  // If dialog is closed by clicking "continue" button
+                  miscService.pushGAEvent(
+                    'popup',
+                    action,
+                    $scope.latestAnnouncement.id
+                  );
+                  seenAnnouncementIds.push($scope.latestAnnouncement.id);
+                  messagesService.setMessagesSeen(
+                    allSeenMessageIds,
+                    seenAnnouncementIds,
+                    'dismiss'
+                  );
+                  return action;
+                })
+                .catch(function() {
+                  // If popup is closed by clicking outside or pressing escape
+                  miscService.pushGAEvent(
+                    'popup',
+                    'dismissed',
+                    $scope.latestAnnouncement.id
+                  );
+                  seenAnnouncementIds.push($scope.latestAnnouncement.id);
+                  messagesService.setMessagesSeen(
+                    allSeenMessageIds,
+                    seenAnnouncementIds,
+                    'dismiss'
+                  );
+                });
             };
             displayPopup();
           }
@@ -588,8 +674,11 @@ define(['angular'], function(angular) {
           // Add to seenAnnouncementsIds
           seenAnnouncementIds.push(id);
           // Call service to save results
-          messagesService.setMessagesSeen(allSeenMessageIds,
-            seenAnnouncementIds, 'dismiss');
+          messagesService.setMessagesSeen(
+            allSeenMessageIds,
+            seenAnnouncementIds,
+            'dismiss'
+          );
           miscService.pushGAEvent('mascot', 'dismissed', id);
         };
 
@@ -602,7 +691,7 @@ define(['angular'], function(angular) {
           var actionType = 'other';
           var addToHome = 'addToHome';
           if (url.indexOf(addToHome) !== -1) {
-              actionType = addToHome;
+            actionType = addToHome;
           }
 
           miscService.pushGAEvent('mascot', actionType, actionButton.url);
@@ -624,8 +713,11 @@ define(['angular'], function(angular) {
           angular.forEach(separatedAnnouncements.unseen, function(value) {
             seenAnnouncementIds.push(value.id);
           });
-          messagesService.setMessagesSeen(allSeenMessageIds,
-            seenAnnouncementIds, 'dismiss');
+          messagesService.setMessagesSeen(
+            allSeenMessageIds,
+            seenAnnouncementIds,
+            'dismiss'
+          );
         };
 
         /**
@@ -649,9 +741,11 @@ define(['angular'], function(angular) {
           vm.hover = false;
           vm.active = false;
         });
-      }])
-
-    .controller('FeaturesPageController', ['$scope', 'MISC_URLS',
+      }
+    ])
+    .controller('FeaturesPageController', [
+      '$scope',
+      'MISC_URLS',
       function($scope, MISC_URLS) {
         var vm = this;
 
@@ -674,5 +768,6 @@ define(['angular'], function(angular) {
             }
           }
         });
-    }]);
+      }
+    ]);
 });

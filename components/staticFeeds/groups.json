@@ -1,7 +1,7 @@
-{"groups" :
-    [
-      { "name" : "Portal Administrators"},
-      { "name" : "UW-Madison"},
-      { "name" : "Everyone"}
-    ]
+{
+  "groups": [
+    { "name": "Portal Administrators" },
+    { "name": "UW-Madison" },
+    { "name": "Everyone" }
+  ]
 }

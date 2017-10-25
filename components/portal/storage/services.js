@@ -18,10 +18,10 @@
  */
 'use strict';
 
-define(['angular', 'jquery'], function(angular, $) {
-    return angular.module('portal.storage.services', [])
-
-    /**
+define(['angular'], function(angular) {
+  return (angular
+      .module('portal.storage.services', [])
+      /**
     Key Value Service
 
     This is your basic key->value store for angular. This goes really well with
@@ -40,43 +40,50 @@ define(['angular', 'jquery'], function(angular, $) {
         - value : object
       - isKVStoreActivated()
     **/
-    .factory('keyValueService', ['$http', 'miscService', 'SERVICE_LOC',
+      .factory('keyValueService', [
+        '$http',
+        'miscService',
+        'SERVICE_LOC',
         function($http, miscService, SERVICE_LOC) {
-      // private functions
-      var successFn = function(response) {
-        return response.data;
-      };
+          // private functions
+          var successFn = function(response) {
+            return response.data;
+          };
 
-      var errorFn = function(response) {
-        miscService.redirectUser(response.status, 'Key Value Service');
-        return response.data;
-      };
+          var errorFn = function(response) {
+            miscService.redirectUser(response.status, 'Key Value Service');
+            return response.data;
+          };
 
-      // public functions
-      var isKVStoreActivated = function() {
-        return !!SERVICE_LOC.kvURL;
-      };
+          // public functions
+          var isKVStoreActivated = function() {
+            return !!SERVICE_LOC.kvURL;
+          };
 
-      var getValue = function(key) {
-        return $http.get(SERVICE_LOC.kvURL + '/'+key)
-                  .then(successFn, errorFn);
-      };
+          var getValue = function(key) {
+            return $http
+              .get(SERVICE_LOC.kvURL + '/' + key)
+              .then(successFn, errorFn);
+          };
 
-      var setValue = function(key, value) {
-        return $http.put(SERVICE_LOC.kvURL + '/'+ key, value)
-                  .then(successFn, errorFn);
-      };
+          var setValue = function(key, value) {
+            return $http
+              .put(SERVICE_LOC.kvURL + '/' + key, value)
+              .then(successFn, errorFn);
+          };
 
-      var deleteValue = function(key) {
-        return $http.delete(SERVICE_LOC.kvURL + '/'+ key)
-                  .then(successFn, errorFn);
-      };
+          var deleteValue = function(key) {
+            return $http
+              .delete(SERVICE_LOC.kvURL + '/' + key)
+              .then(successFn, errorFn);
+          };
 
-      return {
-        setValue: setValue,
-        deleteValue: deleteValue,
-        getValue: getValue,
-        isKVStoreActivated: isKVStoreActivated,
-      };
-    }]);
+          return {
+            setValue: setValue,
+            deleteValue: deleteValue,
+            getValue: getValue,
+            isKVStoreActivated: isKVStoreActivated
+          };
+        }
+      ]) );
 });

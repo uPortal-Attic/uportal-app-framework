@@ -18,13 +18,13 @@
  */
 define(['require'], function(require) {
   return {
-    'notifications': {
+    notifications: {
       templateUrl: require.toUrl('./partials/view__notifications.html'),
-      controller: 'MessagesController',
+      controller: 'MessagesController'
     },
-    'announcements': {
+    announcements: {
       templateUrl: require.toUrl('./partials/view__features.html'),
-      controller: 'MessagesController',
-    },
+      controller: 'MessagesController'
+    }
   };
 });

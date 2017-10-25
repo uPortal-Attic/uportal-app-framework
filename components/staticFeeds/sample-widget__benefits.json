@@ -4,7 +4,8 @@
     "layoutObject": {
       "nodeId": "-1",
       "title": "Benefit Information",
-      "description": "Summary information about your current benefit enrollments and links to your WRS Statement of Benefits.",
+      "description":
+        "Summary information about your current benefit enrollments and links to your WRS Statement of Benefits.",
       "url": "/portal/p/university-staff-benefits-statement/render.uP",
       "iconUrl": null,
       "faIcon": "fa-umbrella",
@@ -27,7 +28,8 @@
             "daysLeftMessage": "to change benefits",
             "lastDayMessage": "Today is the last day to enroll!",
             "actionButton": {
-              "url": "https://www.hrs.wisconsin.edu/psp/hrs-fd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL",
+              "url":
+                "https://www.hrs.wisconsin.edu/psp/hrs-fd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL",
               "label": "Enroll now"
             },
             "learnMoreUrl": "https://www.wisconsin.edu/abe/",
@@ -76,6 +78,7 @@
     "id": "127",
     "type": "Portlet",
     "target": null,
-    "description": "Summary information about your current benefit enrollments and links to your WRS Statement of Benefits."
+    "description":
+      "Summary information about your current benefit enrollments and links to your WRS Statement of Benefits."
   }
 }

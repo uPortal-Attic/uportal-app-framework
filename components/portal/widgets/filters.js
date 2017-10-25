@@ -19,7 +19,8 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  return angular.module('portal.widgets.filters', [])
+  return angular
+    .module('portal.widgets.filters', [])
     .filter('filterDateRange', function() {
       return function(start, end) {
         var today = new Date();
@@ -38,33 +39,35 @@ define(['angular'], function(angular) {
         return today >= rangeStart && today < rangeEnd;
       };
     })
-    .filter('filterDifferenceFromDate', ['$filter', function($filter) {
-      return function(date) {
-        var oneDay = 1000 * 60 * 60 * 24;
-        var today = new Date();
-        var relativeDate = '';
+    .filter('filterDifferenceFromDate', [
+      function() {
+        return function(date) {
+          var oneDay = 1000 * 60 * 60 * 24;
+          var today = new Date();
+          var relativeDate = '';
 
-        // Check if time is provided
-        if (date.indexOf('T') >= 0) {
-          relativeDate = new Date(date);
-        } else {
-          // Have to compensate for lack of time by adding a day
-          var relativeDateInitial = new Date(date);
-          relativeDate = new Date(relativeDateInitial.getTime());
-          relativeDate.setDate(relativeDate.getDate() + 1);
-        }
+          // Check if time is provided
+          if (date.indexOf('T') >= 0) {
+            relativeDate = new Date(date);
+          } else {
+            // Have to compensate for lack of time by adding a day
+            var relativeDateInitial = new Date(date);
+            relativeDate = new Date(relativeDateInitial.getTime());
+            relativeDate.setDate(relativeDate.getDate() + 1);
+          }
 
-        // If date is upcoming, get return days until
-        // If date has past, return -1
-        if (today < relativeDate) {
-          return Math.round(Math.abs(
-            (today.getTime() - relativeDate.getTime())/(oneDay)
-          ));
-        } else if (today > relativeDate) {
-          return -1;
-        }
-      };
-    }])
+          // If date is upcoming, get return days until
+          // If date has past, return -1
+          if (today < relativeDate) {
+            return Math.round(
+              Math.abs((today.getTime() - relativeDate.getTime()) / oneDay)
+            );
+          } else if (today > relativeDate) {
+            return -1;
+          }
+        };
+      }
+    ])
     .filter('filterForDateWithYear', function() {
       return function(date) {
         var validWithYear = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
@@ -74,7 +77,7 @@ define(['angular'], function(angular) {
           return date;
         } else if (date.match(validDayAndMonth)) {
           // If date string doesn't include year, add it then return
-          return (new Date).getFullYear() + '-' + date;
+          return new Date().getFullYear() + '-' + date;
         } else {
           return -1;
         }

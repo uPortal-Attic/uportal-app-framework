@@ -19,41 +19,39 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  return angular.module('portal.search.controllers', [])
-  .controller('PortalSearchController', [
-    'PortalSearchService',
-    '$location',
-    '$window',
-    'SEARCH',
-    'APP_FLAGS',
-    function(PortalSearchService,
-             $location,
-             $window,
-             SEARCH,
-             APP_FLAGS) {
-      var vm = this;
-      // scope functions
+  return angular
+    .module('portal.search.controllers', [])
+    .controller('PortalSearchController', [
+      'PortalSearchService',
+      '$location',
+      '$window',
+      'SEARCH',
+      'APP_FLAGS',
+      function(PortalSearchService, $location, $window, SEARCH, APP_FLAGS) {
+        var vm = this;
+        // scope functions
 
-      vm.submit = function() {
-        if (vm.initialFilter != '') {
-          if (APP_FLAGS.isWeb) {
-              $location.path('apps/search/'+ vm.initialFilter);
-          } else {
+        vm.submit = function() {
+          if (vm.initialFilter != '') {
+            if (APP_FLAGS.isWeb) {
+              $location.path('apps/search/' + vm.initialFilter);
+            } else {
               // frame app redirect
               $window.location = SEARCH.searchURL + vm.initialFilter;
+            }
           }
-        }
-      };
+        };
 
-      vm.toggleSearch = function() {
-        vm.searchExpanded = !vm.searchExpanded;
-      };
+        vm.toggleSearch = function() {
+          vm.searchExpanded = !vm.searchExpanded;
+        };
 
-      // init function
-      var init = function() {
-        vm.initialFilter = '';
-        vm.searchExpanded = false;
-      };
-      init();
-    }]);
+        // init function
+        var init = function() {
+          vm.initialFilter = '';
+          vm.searchExpanded = false;
+        };
+        init();
+      }
+    ]);
 });

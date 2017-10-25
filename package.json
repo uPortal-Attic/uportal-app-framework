@@ -7,27 +7,29 @@
     "cz": "git-cz",
     "test": "karma start components/karma.conf.js --single-run",
     "build-static": "node tools/static/build.js",
+    "format": "prettier --write **/*.{js,json,less}",
     "lint-css": "stylelint --syntax less components/css/**/*.less",
-    "dev-lint-js": "onchange components/** -i -- eslint --quiet --ext js --ext json --ext md --format html --output-file static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern components/js/ga.js",
-    "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern components/js/ga.js",
+    "lint-js":
+      "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern components/js/ga.js",
     "lint-md": "remark . --frail --ignore-path .gitignore",
-    "precommit": "eslint-git-changes",
-    "postbuild-static": "htmlprocessor static/index.html -o static/target/index.html",
+    "precommit": "lint-staged",
+    "postbuild-static":
+      "htmlprocessor static/index.html -o static/target/index.html",
     "prestatic": "npm run build-static",
     "static": "cd static/target && superstatic",
     "static:watch": "onchange components/** -i -- npm run build-static",
-    "static:dev": "npm run build-static -s && concurrently -k \"npm run static -s\" \"npm run static:watch -s\"",
-    "docker": "docker run -d --name frame -p 8009:8009 docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:latest",
-    "build-docker": "docker build -t docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic .",
+    "static:dev":
+      "npm run build-static -s && concurrently -k \"npm run static -s\" \"npm run static:watch -s\"",
+    "docker":
+      "docker run -d --name frame -p 8009:8009 docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:latest",
+    "build-docker":
+      "docker build -t docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic .",
     "stop-docker": "docker stop frame; docker rm frame;",
     "clean": "npm run clean-static; npm run clean-test",
     "clean-test": "rm -rf components/test_out components/coverage",
     "clean-static": "rm -rf static/target"
   },
-  "files": [
-    "components",
-    "static"
-  ],
+  "files": ["components", "static"],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -73,13 +75,13 @@
     "cz-conventional-changelog": "^2.0.0",
     "eslint": "^4.2.0",
     "eslint-config-angular": "^0.5.0",
-    "eslint-config-google": "^0.9.1",
-    "eslint-git-changes": "^2.0.0",
+    "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-angular": "^3.0.0",
     "eslint-plugin-compat": "^2.0.1",
     "eslint-plugin-jasmine": "^2.2.0",
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-markdown": "^1.0.0-beta.4",
+    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-requirejs": "^3.1.1",
     "graceful-fs": "^4.0.0",
@@ -100,10 +102,12 @@
     "karma-requirejs": "1.1.0",
     "karma-safari-launcher": "^1.0.0",
     "less": "2.7.2",
+    "lint-staged": "^4.2.3",
     "lodash": "^4.0.0",
     "mkdirp": "^0.5.1",
     "onchange": "^3.0.2",
     "postcss": "^6.0.8",
+    "prettier": "1.7.4",
     "recursive-copy": "^2.0.5",
     "remark-cli": "^4.0.0",
     "remark-preset-lint-consistent": "^2.0.0",
@@ -112,6 +116,7 @@
     "requirejs": "^2.2.0",
     "rimraf": "^2.5.4",
     "stylelint": "^8.0.0",
+    "stylelint-config-prettier": "^1.0.2",
     "stylelint-config-standard": "^17.0.0",
     "superstatic": "~5.0.0"
   },
@@ -119,6 +124,12 @@
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.3",
     "normalize.less": "^1.0.0"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.{js,json,less}": ["prettier --write", "git add"]
   },
   "eslintConfig": {
     "root": true,
@@ -131,45 +142,31 @@
       "amd": true
     },
     "plugins": [
-      "angular",
       "compat",
       "jasmine",
       "json",
       "markdown",
+      "prettier",
       "promise",
       "requirejs"
     ],
     "extends": [
       "eslint:recommended",
-      "google",
+      "prettier",
       "angular",
       "plugin:jasmine/recommended",
       "plugin:promise/recommended",
       "plugin:requirejs/recommended"
     ],
     "rules": {
-      "angular/di": [
-        "warn",
-        "array"
-      ],
+      "prettier/prettier": "error",
+      "angular/di": ["warn", "array"],
       "angular/controller-as": "off",
-      "compat/compat": "error",
-      "arrow-parens": "off",
-      "constructor-super": "off",
-      "generator-star-spacing": "off",
-      "no-new-symbol": "off",
-      "no-this-before-super": "off",
-      "no-invalid-this": "off",
-      "no-var": "off",
-      "prefer-rest-params": "off",
-      "prefer-spread": "off",
-      "valid-jsdoc": "warn",
-      "rest-spread-spacing": "off",
-      "yield-star-spacing": "off"
+      "compat/compat": "error"
     }
   },
   "stylelint": {
-    "extends": "stylelint-config-standard",
+    "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
     "rules": {
       "selector-type-no-unknown": null
     }
@@ -182,10 +179,7 @@
       "preset-lint-recommended",
       "preset-lint-consistent",
       "validate-links",
-      [
-        "remark-lint-list-item-indent",
-        "mixed"
-      ]
+      ["remark-lint-list-item-indent", "mixed"]
     ]
   },
   "config": {

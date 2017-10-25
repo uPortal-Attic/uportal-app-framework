@@ -8,9 +8,7 @@
   "attributes": [
     {
       "name": "eppn",
-      "values": [
-        "bucky@wisc.edu"
-      ]
+      "values": ["bucky@wisc.edu"]
     },
     {
       "name": "isMemberOf",
@@ -21,27 +19,19 @@
     },
     {
       "name": "uid",
-      "values": [
-        "bucky"
-      ]
+      "values": ["bucky"]
     },
     {
       "name": "displayName",
-      "values": [
-        "Bucky B."
-      ]
+      "values": ["Bucky B."]
     },
     {
       "name": "givenName",
-      "values": [
-        "Bucky Badger"
-      ]
+      "values": ["Bucky Badger"]
     },
     {
       "name": "wiscEduStudentID",
-      "values": [
-        "9876543210"
-      ]
+      "values": ["9876543210"]
     }
   ]
 }

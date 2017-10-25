@@ -4,7 +4,8 @@
     "layoutObject": {
       "nodeId": "-1",
       "title": "Faculty Center",
-      "description": "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information.",
+      "description":
+        "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information.",
       "url": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
       "iconUrl": null,
       "faIcon": "fa-graduation-cap",
@@ -47,14 +48,13 @@
     },
     "renderUrl": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
     "title": "Faculty Center",
-    "categories": [
-      "Faculty services"
-    ],
+    "categories": ["Faculty services"],
     "portletName": "BasicIsisLink",
     "name": "Faculty Center",
     "id": "55",
     "type": "Portlet",
     "target": "_blank",
-    "description": "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information."
+    "description":
+      "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information."
   }
 }

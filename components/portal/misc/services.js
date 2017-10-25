@@ -19,22 +19,27 @@
 'use strict';
 
 define(['angular', 'jquery'], function(angular, $) {
-  return angular.module('portal.misc.services', [])
-
-  .factory('portalGroupService', function(
-      $http, $log, miscService, SERVICE_LOC
+  return angular
+    .module('portal.misc.services', [])
+    .factory('portalGroupService', function(
+      $http,
+      $log,
+      miscService,
+      SERVICE_LOC
     ) {
-    var getGroups = function() {
-      var groupPromise = $http.get(SERVICE_LOC.groupURL, {cache: true})
-      .then(function(result) {
-        return result.data.groups;
-      }).catch(function(reason) {
-        miscService.redirectUser(reason.status, 'group json feed call');
-      });
-      return groupPromise;
-    };
+      var getGroups = function() {
+        var groupPromise = $http
+          .get(SERVICE_LOC.groupURL, { cache: true })
+          .then(function(result) {
+            return result.data.groups;
+          })
+          .catch(function(reason) {
+            miscService.redirectUser(reason.status, 'group json feed call');
+          });
+        return groupPromise;
+      };
 
-    /**
+      /**
     * Filter the array given the groups, with an optional groupFieldName
     * @param array: an array of objects to be filteredLayout
     * @param groups: The array of groups
@@ -45,137 +50,166 @@ define(['angular', 'jquery'], function(angular, $) {
     *        The field on the group object that is the group's name.
     *        @default 'name'
     */
-    var filterArrayByGroups = function(
-      array, groups, arrayGroupFieldName, groupsNameFieldName
-    ) {
-      // validation/setup
-      if (!arrayGroupFieldName) {
-        arrayGroupFieldName = 'group';
-      }
-      if (!groupsNameFieldName) {
-        groupsNameFieldName = 'name';
-      }
-      if (
-        !array || array.length === 0 || !groups ||
-        groups.length === 0 || !angular.isArray(array)
+      var filterArrayByGroups = function(
+        array,
+        groups,
+        arrayGroupFieldName,
+        groupsNameFieldName
       ) {
-        if (!angular.isArray(array)) {
-          $log.warn(
-            'portalGroupService.filterArrayByGroups ' +
-            'was called, but not an array');
+        // validation/setup
+        if (!arrayGroupFieldName) {
+          arrayGroupFieldName = 'group';
         }
-        return array;
-      }
-
-      var returnArray = [];
-      // filtering magic
-      $.each(array, function(index, cur) { // for each object
-        if (angular.isArray(cur[arrayGroupFieldName])) {
-          $.each(cur[arrayGroupFieldName], // for each group for that object
-            function(index, group) {
-            var inGroup = $.grep(groups, function(e) {
-              return e[groupsNameFieldName] === group;
-            }).length; // intersect, then get length
-            if (inGroup > 0) {// are they in that group?
-              returnArray.push(cur); // they should get this object
-              return false; // break;
-            }
-          });
-        } else {
-          // single filter then
-          var inGroup = $.grep(groups, function(e) {
-            return e[groupsNameFieldName] === cur[arrayGroupFieldName];
-          }).length; // intersect, then get length
-          if (inGroup > 0) {
-            returnArray.push(cur);
+        if (!groupsNameFieldName) {
+          groupsNameFieldName = 'name';
+        }
+        if (
+          !array ||
+          array.length === 0 ||
+          !groups ||
+          groups.length === 0 ||
+          !angular.isArray(array)
+        ) {
+          if (!angular.isArray(array)) {
+            $log.warn(
+              'portalGroupService.filterArrayByGroups ' +
+                'was called, but not an array'
+            );
           }
+          return array;
         }
-      });
-      return returnArray;
-    };
 
-    var groupsServiceEnabled = function() {
-      if (SERVICE_LOC.groupURL) {
-        return true;
-      } else {
-        return false;
-      }
-    };
+        var returnArray = [];
+        // filtering magic
+        $.each(array, function(index, cur) {
+          // for each object
+          if (angular.isArray(cur[arrayGroupFieldName])) {
+            $.each(
+              cur[arrayGroupFieldName], // for each group for that object
+              function(index, group) {
+                var inGroup = $.grep(groups, function(e) {
+                  return e[groupsNameFieldName] === group;
+                }).length; // intersect, then get length
+                if (inGroup > 0) {
+                  // are they in that group?
+                  returnArray.push(cur); // they should get this object
+                  return false; // break;
+                }
+              }
+            );
+          } else {
+            // single filter then
+            var inGroup = $.grep(groups, function(e) {
+              return e[groupsNameFieldName] === cur[arrayGroupFieldName];
+            }).length; // intersect, then get length
+            if (inGroup > 0) {
+              returnArray.push(cur);
+            }
+          }
+        });
+        return returnArray;
+      };
 
-    return {
-      getGroups: getGroups,
-      filterArrayByGroups: filterArrayByGroups,
-      groupsServiceEnabled: groupsServiceEnabled,
-    };
-  })
-
-  .factory('PortalAddToHomeService',
-  function($http, $log, filterFilter, NAMES, MISC_URLS) {
-    var canAddToHome = function() {
-      if (MISC_URLS.addToHomeURLS
-        && MISC_URLS.addToHomeURLS.addToHomeActionURL) {
-        return true;
-      } else {
-        return false;
-      }
-    };
-
-    var inHome = function(fname) {
-      return $http.get(MISC_URLS.addToHomeURLS.layoutURL)
-      .then(function(result) {
-        var layout = result.data.layout;
-        if (layout) {
-          var theFname = (fname ? fname : NAMES.fname);
-          var filteredLayout = filterFilter(layout, {fname: theFname});
-          return filteredLayout && filteredLayout.length > 0;
+      var groupsServiceEnabled = function() {
+        if (SERVICE_LOC.groupURL) {
+          return true;
         } else {
           return false;
         }
-      }, function() {
-        // failed
-        $log.warn('could not reach portal server to get layout, portal down?');
-        return true; // it is in the layout by default since portal is down
-      });
-    };
+      };
 
-    var addToHome = function(fname) {
-      return $http.post(
-        MISC_URLS.addToHomeURLS.addToHomeActionURL +
-        (fname ? fname : NAMES.fname)
-      );
-    };
+      return {
+        getGroups: getGroups,
+        filterArrayByGroups: filterArrayByGroups,
+        groupsServiceEnabled: groupsServiceEnabled
+      };
+    })
+    .factory('PortalAddToHomeService', function(
+      $http,
+      $log,
+      filterFilter,
+      NAMES,
+      MISC_URLS
+    ) {
+      var canAddToHome = function() {
+        if (
+          MISC_URLS.addToHomeURLS &&
+          MISC_URLS.addToHomeURLS.addToHomeActionURL
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      };
 
-    return {
-      canAddToHome: canAddToHome,
-      inHome: inHome,
-      addToHome: addToHome,
-    };
-  })
+      var inHome = function(fname) {
+        return $http.get(MISC_URLS.addToHomeURLS.layoutURL).then(
+          function(result) {
+            var layout = result.data.layout;
+            if (layout) {
+              var theFname = fname ? fname : NAMES.fname;
+              var filteredLayout = filterFilter(layout, { fname: theFname });
+              return filteredLayout && filteredLayout.length > 0;
+            } else {
+              return false;
+            }
+          },
+          function() {
+            // failed
+            $log.warn(
+              'could not reach portal server to get layout, portal down?'
+            );
+            return true; // it is in the layout by default since portal is down
+          }
+        );
+      };
 
-  .factory('miscService',
-  function($analytics, $http, $window, $location, $log, MISC_URLS) {
-    /**
+      var addToHome = function(fname) {
+        return $http.post(
+          MISC_URLS.addToHomeURLS.addToHomeActionURL +
+            (fname ? fname : NAMES.fname)
+        );
+      };
+
+      return {
+        canAddToHome: canAddToHome,
+        inHome: inHome,
+        addToHome: addToHome
+      };
+    })
+    .factory('miscService', function(
+      $analytics,
+      $http,
+      $window,
+      $location,
+      $log,
+      MISC_URLS
+    ) {
+      /**
      Used to redirect users to login screen
      iff result code is 0 (yay shib) or 302
 
      Setup MISC_URLS.loginURL in js/app-config.js to have redirects happen
     **/
-    var redirectUser = function(status, caller) {
-      if (status === 0 || status === 302) {
-        $log.log('redirect happening due to ' + status);
-        if (MISC_URLS.loginURL) {
-          $window.location.replace(MISC_URLS.loginURL);
+      var redirectUser = function(status, caller) {
+        if (status === 0 || status === 302) {
+          $log.log('redirect happening due to ' + status);
+          if (MISC_URLS.loginURL) {
+            $window.location.replace(MISC_URLS.loginURL);
+          } else {
+            $log.warn('MISC_URLS.loginURL was not set, cannot redirect');
+          }
         } else {
-          $log.warn('MISC_URLS.loginURL was not set, cannot redirect');
+          $log.warn(
+            'Strange behavior from ' +
+              caller +
+              '. Returned status code : ' +
+              status
+          );
         }
-      } else {
-        $log.warn(
-          'Strange behavior from ' + caller +
-          '. Returned status code : ' + status);
-      }
-    };
+      };
 
-    /**
+      /**
      Google Analytics event push
      - category : e.g.: beta header
      - action   : e.g.: beta buttons
@@ -183,20 +217,25 @@ define(['angular', 'jquery'], function(angular, $) {
 
      See https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide for more info
     **/
-    var pushGAEvent = function(category, action, label, value) {
-      $analytics.eventTrack(action, {
-        'category': category,
-        'label': label,
-        'value': (value || label),
-      });
-      $log.log(
-        'ga event logged action: ' + action +
-        ', category: ' + category + ', label: ' + label);
-    };
+      var pushGAEvent = function(category, action, label, value) {
+        $analytics.eventTrack(action, {
+          category: category,
+          label: label,
+          value: value || label
+        });
+        $log.log(
+          'ga event logged action: ' +
+            action +
+            ', category: ' +
+            category +
+            ', label: ' +
+            label
+        );
+      };
 
-    return {
-      redirectUser: redirectUser,
-      pushGAEvent: pushGAEvent,
-    };
-  });
+      return {
+        redirectUser: redirectUser,
+        pushGAEvent: pushGAEvent
+      };
+    });
 });

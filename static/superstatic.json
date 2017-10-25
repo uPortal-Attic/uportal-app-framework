@@ -1,14 +1,20 @@
 {
-  "rewrites" : [
-    {"source":"/settings", "destination" : "index.html"},
-    {"source":"/user-settings", "destination" : "index.html"},
-    {"source":"/notifications", "destination" : "index.html"},
-    {"source":"/features", "destination" : "index.html"},
-    {"source":"/about", "destination" : "index.html"},
-    {"source":"/server-error", "destination" : "index.html"},
-    {"source":"/access-denied", "destination" : "index.html"},
-    {"source":"/web", "destination" : "index.html"},
-    {"source":"/portal/web/*", "destination" : "/staticFeeds/emptyArray.json"},
-    {"source":"/portal/Login", "destination" : "/staticFeeds/loginsuccess.json"}
+  "rewrites": [
+    { "source": "/settings", "destination": "index.html" },
+    { "source": "/user-settings", "destination": "index.html" },
+    { "source": "/notifications", "destination": "index.html" },
+    { "source": "/features", "destination": "index.html" },
+    { "source": "/about", "destination": "index.html" },
+    { "source": "/server-error", "destination": "index.html" },
+    { "source": "/access-denied", "destination": "index.html" },
+    { "source": "/web", "destination": "index.html" },
+    {
+      "source": "/portal/web/*",
+      "destination": "/staticFeeds/emptyArray.json"
+    },
+    {
+      "source": "/portal/Login",
+      "destination": "/staticFeeds/loginsuccess.json"
+    }
   ]
 }

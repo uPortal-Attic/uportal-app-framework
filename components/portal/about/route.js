@@ -17,7 +17,7 @@
  * under the License.
  */
 define(['require'], function(require) {
-    return {
-      templateUrl: require.toUrl('./partials/about.html'),
-    };
+  return {
+    templateUrl: require.toUrl('./partials/about.html')
+  };
 });
