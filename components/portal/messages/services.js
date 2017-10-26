@@ -63,6 +63,7 @@ define(['angular'], function(angular) {
          * @property {string} expireDate
          * @property {string} featureImageUrl
          * @property {string} priority
+         * @property {Boolean} recurrence
          * @property {Boolean} dismissible
          * @property {Object} actionButton
          * @property {Object} moreInfoButton
