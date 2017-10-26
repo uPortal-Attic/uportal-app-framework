@@ -29,7 +29,7 @@ define(['angular'], function(angular) {
             'url': '/web',
           },
         ],
-        'enablePushContent': true,
+        'enablePushContentMenu': true,
       },
     });
 });

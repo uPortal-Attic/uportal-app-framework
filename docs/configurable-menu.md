@@ -4,9 +4,11 @@ When developing an app with uPortal-app-framework, you can use the configurable 
 The main menu is opened by the hamburger icon in the top left corner of the app. On medium and large screens, the menu includes only the content you've
 configured. On mobile, the menu includes a top bar with portal-wide components like the notifications bell, username menu, and new features button.
 
-If you don't configure the menu, the hamburger icon and side navigation will only be displayed on small screens.
+If you don't configure the menu, the hamburger icon and side navigation will not be displayed, and the portal-wide content will be displayed in the top bar on small screens.
 
 Basic configuration occurs in your app's `override.js` file. See the [configuration doc](configuration.md) for an example.
+
+**Important:** Side navigation depends on the `<frame-page>` directive. Use the `<frame-page>` directive as the outermost containing element for your app view(s). See the [frame-page.html](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/portal/misc/partials/frame-page.html) file to understand how this is constructed.
 
 ## How to use
 

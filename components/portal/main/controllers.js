@@ -40,7 +40,6 @@ define(['angular', 'require'], function(angular, require) {
         frameTitle = $rootScope.portal.theme.title;
         if (frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
           frameTitle = ' | ' + frameTitle;
-          $rootScope.appName = NAMES.title;
         } else {
           // since frame title equals the title in NAMES lets not duplicate it
           frameTitle = '';
@@ -148,9 +147,9 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Header */
   .controller('PortalHeaderController', ['$rootScope', '$scope', '$location',
-    '$mdSidenav', 'APP_FLAGS', 'MISC_URLS', 'NAMES',
+    '$mdSidenav', 'APP_FLAGS', 'MISC_URLS',
     function($rootScope, $scope, $location, $mdSidenav,
-             APP_FLAGS, MISC_URLS, NAMES) {
+             APP_FLAGS, MISC_URLS) {
       var vm = this;
       vm.navbarCollapsed = true;
       vm.showLogout = true;
@@ -172,7 +171,6 @@ define(['angular', 'require'], function(angular, require) {
       vm.notificationsPageUrl = '';
       vm.hideMainMenu = false;
       vm.footerLinks = FOOTER_URLS;
-      vm.pushContent = false;
       vm.openMenuByDefault = false;
 
       // Close side nav on scroll to avoid awkward UI
@@ -232,7 +230,7 @@ define(['angular', 'require'], function(angular, require) {
             vm.footerLinks.concat($rootScope.portal.theme.footerLinks);
         }
         vm.openMenuByDefault =
-          APP_OPTIONS.enablePushContent && $mdMedia('gt-sm');
+          APP_OPTIONS.enablePushContentMenu && $mdMedia('gt-sm');
       };
 
       init();

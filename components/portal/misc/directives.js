@@ -206,7 +206,7 @@ define(['angular', 'require'], function(angular, require) {
           },
           link: function(scope) {
             if (APP_OPTIONS) {
-              scope.menuPushContent = APP_OPTIONS.enablePushContent;
+              scope.menuPushContent = APP_OPTIONS.enablePushContentMenu;
             }
           },
       };

@@ -28,6 +28,8 @@ Your application can overwrite any constant listed below by adding it to the **j
   - Set to true if you want the side navigation to be open upon page load and appear as part of the page content. The side nav will push content when it is opened and give up the space when closed.
   - See the [app navigation doc](configurable-menu.md) to learn how to use this feature
 
+**Important:** Side navigation (appMenuTemplateURL/appMenuItems) depends on the `<frame-page>` directive. Use the `<frame-page>` directive as the outermost containing element for your app view(s). If you configure a menu and don't use the frame-page directive, you will have a hamburger button that does nothing when clicked. See the [frame-page.html](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/portal/misc/partials/frame-page.html) file to understand how this is constructed.
+
 ### SERVICE_LOC
 
 + **aboutURL**: If your application has some data that it would like to show in **/about** in addition to the frame information, provide that here.
