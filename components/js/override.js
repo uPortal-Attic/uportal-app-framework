@@ -29,7 +29,6 @@ define(['angular'], function(angular) {
             'url': '/web',
           },
         ],
-        'enablePushContentMenu': true,
       },
     });
 });
