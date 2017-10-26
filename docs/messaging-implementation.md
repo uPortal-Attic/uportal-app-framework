@@ -22,6 +22,7 @@ point uportal-app-framework to your desired feed.
             "expireDate": "2017-08-02",
             "featureImageUrl": null,
             "priority": "high",
+            "recurrence": true,
             "dismissible": false,
             "audienceFilter": {
                 "groups": ["Users - Service Activation Required"],
@@ -55,6 +56,7 @@ point uportal-app-framework to your desired feed.
 - **expireDate**: *(optional)* Accepts a simple ISO date, including time (as pictured). This is used to stop displaying a message at a certain day/time.
 - **featureImageUrl**: *(optional)* Used by popup announcements and announcements on the Features page.
 - **priority**: Set to "high" if you want the message to be displayed with higher visibility (i.e. As a priority notification or popup announcement, respectively).
+- **recurrence**:*(experimental, optional)* If true, even if a notification is dismissed, it will continue to reoccur in the user's home at the start of every session until the user is no longer a member of the targeted group. For example, if a user is a member of students-with-outstanding-parking-tickets, that user will be confronted with the notification at every login until they pay the fine.
 - **dismissible**: *(experimental, optional)* Set to false if you want to disallow users from dismissing a notification. This should only be used for truly critical messages. If the attribute is set to true or not set at all, the notification will be dismissible.
 - **audienceFilter**: A group of attributes related to filtering messages based on a user's group or whether the user has pertinent data at a given URL.
   - **groups**: An attribute to optionally show messages only to specific groups (i.e. uPortal groups). If null or empty array, the message will be shown to everyone. Contact your portal development team for more information about group filtering.

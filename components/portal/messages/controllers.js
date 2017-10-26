@@ -217,6 +217,15 @@ define(['angular'], function(angular) {
               allNotifications,
               result.seenMessageIds
             );
+            angular.forEach(separatedNotifications.seen, function(message) {
+              if (message.recurrence) {
+                var index = separatedNotifications.seen
+                  .indexOf(message);
+                separatedNotifications.unseen.push(message);
+                separatedNotifications.seen.splice(index, 1);
+              }
+            });
+
             // Set scope notifications and dismissed notifications
             vm.notifications = separatedNotifications.unseen;
             vm.dismissedNotifications = separatedNotifications.seen;
