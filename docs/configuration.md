@@ -22,7 +22,7 @@ Your application can overwrite any constant listed below by adding it to the **j
 + **appMenuTemplateURL**: A path to the HTML template for app-specific menu items (appears in the side navigation menu that is triggered when clicking the top bar hamburger icon button). See the [app navigation doc](configurable-menu.md) to learn how to use this feature.
 + **appMenuItems**: An array of menu item objects used for a simple custom menu (with links that have a text label, icon, and url). See the [app navigation doc](configurable-menu.md) to learn how to use this feature.
 + **enablePageLevelSidenav**:
-  - *EXPERIMENTAL*
+  - _CAUTION_
   - False by default
   - Only affects medium and large screens
   - Set to true if you want the side navigation to be open upon page load and appear as part of the page content. The side nav will push content when it is opened and give up the space when closed.
@@ -48,7 +48,7 @@ Your application can overwrite any constant listed below by adding it to the **j
 
 ### SEARCH
 
-+ **searchURL**: The URL that you want the search to go to when you search something in the site header. Suggested default should be **https://my.wisc.edu/web/apps/search/**
++ **searchURL**: The URL that you want the search to go to when you search something in the site header. Suggested default should be **<https://my.wisc.edu/web/apps/search/>**
 
 ### MESSAGES
 

@@ -41,7 +41,7 @@ In your `override.js` file, add an array of menu item objects to the **appMenuIt
 
 - **appMenuItems**: An array of menu item objects. This is where the app will look to fill in the menu items.
 - **label**: The text displayed for this menu item.
-- **icon**: *(optional)* An material icon to enhance the appearance and context of the menu item. See [material icons](https://material.io/icons/) to see the icons available.
+- **icon**: _(optional)_ An material icon to enhance the appearance and context of the menu item. See [material icons](https://material.io/icons/) to see the icons available.
 - **url**: The value that should be in the `href` attribute for this menu item.
 
 The app will first check to see if you're using the complex configuration. If not, it will look for this simple configuration.
