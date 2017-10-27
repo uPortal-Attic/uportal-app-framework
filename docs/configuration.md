@@ -1,78 +1,87 @@
 # Configuring the frame
 
-Your application can overwrite any constant listed below by adding it to the `js/override.js` file. You only need to add what you want different than what is in `js/app-config.js`.
+Your application can overwrite any constant listed below by adding it to the **js/override.js** file. You only need to add what you want different than what is in **js/app-config.js**.
 
 ## Configuration options
 
 ### APP_FLAGS
 
-+ `defaultTheme` : This is the default theme you want (see /js/frame-config.js for the array list of themes). Provide an array index number to just have simple selection, set it to the string `'group'` to enable group selection, or set it to any one of the themes names (e.g.: `'uw-greenbay'`). If you do group selection make sure you set the `SERVICE_LOC.groupURL`.
-+ `showSearch` : This boolean hides/shows the search bar at the top.
-+ `isWeb` : This boolean is a shortcut flag for the MyUW project. Majority of applications should set this to false.
-+ `loginOnLoad` : A optional boolean flag that when set to `true` it will fire a login event during the loading sequence. `SERVICE_LOC.loginSilentURL` must be set.
-+ `loginDurationMills` : number of milliseconds a login session is valid for. Default set to 4 hours (14400000).
-+ `gaSearchParam` : Default set to 'q'. This is the param that is tacked on to your search result page. Google later strips it in Google Analytics.
-+ `showUserSettingsPage` : If set, this will add a `settings` link to the user drop down which will point at `/user-settings`. Default is `false`. _as of 2.2.2_
-+ `shibbolethSessionURL` : Default is `null`. When set to a proper string (like `'/Shibboleth.sso/Session.json'`) it then adds a timeout alert notifying users the session is no longer valid. The action of the pop-up is to forward them on to the `MISC_URLS.loginURL`. _as of 2.6.2_
-+ `campusIdAttribute` : Default is `null`. Provide a session attribute for campus ID (i.e. UW-Madison's `wiscEduStudentID` attribute) if you want users to see it in the username menu. _This is currently unimplemented._
++ **defaultTheme**: This is the default theme you want (see /js/frame-config.js for the array list of themes). Provide an array index number to just have simple selection, set it to the string **'group'** to enable group selection, or set it to any one of the themes names (e.g.: **'uw-greenbay'**). If you do group selection make sure you set the **SERVICE_LOC.groupURL**.
++ **showSearch**: This boolean hides/shows the search bar at the top.
++ **isWeb**: This boolean is a shortcut flag for the MyUW project. Majority of applications should set this to false.
++ **loginOnLoad**: A optional boolean flag that when set to **true** it will fire a login event during the loading sequence. **SERVICE_LOC.loginSilentURL** must be set.
++ **loginDurationMills**: number of milliseconds a login session is valid for. Default set to 4 hours (14400000).
++ **gaSearchParam**: Default set to 'q'. This is the param that is tacked on to your search result page. Google later strips it in Google Analytics.
++ **showUserSettingsPage**: If set, this will add a **settings** link to the user drop down which will point at **/user-settings**. Default is **false**. _as of 2.2.2_
++ **shibbolethSessionURL**: Default is **null**. When set to a proper string (like **'/Shibboleth.sso/Session.json'**) it then adds a timeout alert notifying users the session is no longer valid. The action of the pop-up is to forward them on to the **MISC_URLS.loginURL**. _as of 2.6.2_
++ **campusIdAttribute**: Default is **null**. Provide a session attribute for campus ID (i.e. UW-Madison's **wiscEduStudentID** attribute) if you want users to see it in the username menu. _This is currently unimplemented._
 
 ### APP_OPTIONS
 
-+ `optionsTemplateURL` : A path to the HTML template for app-specific options (appears on the right-hand side of the [app-header](directives.md)). See the [app options doc](app-options.md) to learn how to use this feature.
-+ `appMenuTemplateURL` : A path to the HTML template for app-specific menu items (appears in the side navigation menu that is triggered when clicking the top bar hamburger icon button). See the [app navigation doc](configurable-menu.md) to learn how to use this feature.
-+ `appMenuItems` : An array of menu item objects used for a simple custom menu (with links that have a text label, icon, and url). See the [app navigation doc](configurable-menu.md) to learn how to use this feature.
++ **optionsTemplateURL**: A path to the HTML template for app-specific options (appears on the right-hand side of the [app-header](directives.md)). See the [app options doc](app-options.md) to learn how to use this feature.
++ **appMenuTemplateURL**: A path to the HTML template for app-specific menu items (appears in the side navigation menu that is triggered when clicking the top bar hamburger icon button). See the [app navigation doc](configurable-menu.md) to learn how to use this feature.
++ **appMenuItems**: An array of menu item objects used for a simple custom menu (with links that have a text label, icon, and url). See the [app navigation doc](configurable-menu.md) to learn how to use this feature.
++ **enablePageLevelSidenav**:
+  - _CAUTION_
+  - False by default
+  - Only affects medium and large screens
+  - Set to true if you want the side navigation to be open upon page load and appear as part of the page content. The side nav will push content when it is opened and give up the space when closed.
+  - See the [app navigation doc](configurable-menu.md) to learn how to use this feature
+
+**Important:** Side navigation (appMenuTemplateURL/appMenuItems) depends on the `<frame-page>` directive. Use the `<frame-page>` directive as the outermost containing element for your app view(s). If you configure a menu and don't use the frame-page directive, you will have a hamburger button that does nothing when clicked. See the [frame-page.html](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/portal/misc/partials/frame-page.html) file to understand how this is constructed.
 
 ### SERVICE_LOC
 
-+ `aboutURL` : If your application has some data that it would like to show in `/about` in addition to the frame information, provide that here.
-+ `sessionInfo` : This is where the frame gets data about the user that is logged in. For an example of the expected output, see [this.](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/session.json)
-+ `messagesURL` : This is an end point to a feed of messages. See [this](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/sample-messages.json) for the example file.
-+ `kvURL` : This is the key value service. The key value service is a way to store information in a key/value store. The store should support GET and PUT on the same URL, where the URL includes the key. If you want this but not sure where to start, we wrote [a microservice called KeyValueStore](https://github.com/UW-Madison-DoIT/KeyValueStore) that you can use. You can also use the MyUW version under the storage context, but please contact MyUW devs before using for your application.
-+ `groupURL` : This is a service which you can use to get group information. Currently this only used for notifications. See [this](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/groups.json) for an example.
-+ `loginSilentURL` : See `APP_FLAGS.loginOnLoad` for usage.
-+ `portalLayoutRestEndpoint` : If set and you change your skin in beta settings, it will also set the skin in uPortal. e.g.: `'/portal/api/layout'`
++ **aboutURL**: If your application has some data that it would like to show in **/about** in addition to the frame information, provide that here.
++ **sessionInfo**: This is where the frame gets data about the user that is logged in. For an example of the expected output, see [this.](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/session.json)
++ **messagesURL**: This is an end point to a feed of messages. See [this](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/sample-messages.json) for the example file.
++ **kvURL**: This is the key value service. The key value service is a way to store information in a key/value store. The store should support GET and PUT on the same URL, where the URL includes the key. If you want this but not sure where to start, we wrote [a microservice called KeyValueStore](https://github.com/UW-Madison-DoIT/KeyValueStore) that you can use. You can also use the MyUW version under the storage context, but please contact MyUW devs before using for your application.
++ **groupURL**: This is a service which you can use to get group information. Currently this only used for notifications. See [this](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/groups.json) for an example.
++ **loginSilentURL**: See **APP_FLAGS.loginOnLoad** for usage.
++ **portalLayoutRestEndpoint**: If set and you change your skin in beta settings, it will also set the skin in uPortal. e.g.: **'/portal/api/layout'**
 
 ### NAMES
 
-+ `title` : Your application's name
-+ `guestUserName` : the name of your guest user. This is used on the return of `SERVICE_LOC.sessionInfo`. If the name provided here matches the userName field in the person object, then guest mode is enabled.
-+ `fname` : Used to document what functional name your application is. This is the fname of the app in uPortal. This is used for the app-header "add to home" feature. If you are unsure of your fname and would like to use the add to home feature in the app-header directive, contact a MyUW developer.
++ **title**: Your application's name
++ **guestUserName**: the name of your guest user. This is used on the return of **SERVICE_LOC.sessionInfo**. If the name provided here matches the userName field in the person object, then guest mode is enabled.
++ **fname**: Used to document what functional name your application is. This is the fname of the app in uPortal. This is used for the app-header "add to home" feature. If you are unsure of your fname and would like to use the add to home feature in the app-header directive, contact a MyUW developer.
 
 ### SEARCH
 
-+ `searchURL` : The URL that you want the search to go to when you search something in the site header. Suggested default should be `https://my.wisc.edu/web/apps/search/`
++ **searchURL**: The URL that you want the search to go to when you search something in the site header. Suggested default should be **<https://my.wisc.edu/web/apps/search/>**
 
 ### MESSAGES
 
-+ `notificationsPageURL` : The URL for the full notifications view (i.e. Where the "See all" link should go).
++ **notificationsPageURL**: The URL for the full notifications view (i.e. Where the "See all" link should go).
 
 ### MISC_URLS
 
-+ `feedbackURL` : A link to a feedback form
-+ `helpdeskURL` : Link to your helpdesk page
-+ `loginURL` : How a user would login. Used for guestMode, and for stale sessions when they hit a service.
-+ `logoutURL` : The sign out link
-+ `myuwHome` : The home page for MyUW
-+ `rootURL` : The root URL used for what happens when they click the crest.
-+ `addToHomeURLS` : An object with two fields. `layoutURL` and `addToHomeActionURL`. This is used for the add to home feature in the app-header directive.
++ **feedbackURL**: A link to a feedback form
++ **helpdeskURL**: Link to your helpdesk page
++ **loginURL**: How a user would login. Used for guestMode, and for stale sessions when they hit a service.
++ **logoutURL**: The sign out link
++ **myuwHome**: The home page for MyUW
++ **rootURL**: The root URL used for what happens when they click the crest.
++ **addToHomeURLS**: An object with two fields. **layoutURL** and **addToHomeActionURL**. This is used for the add to home feature in the app-header directive.
 
 ### FOOTER_URLS
 
 An array that consists of object that have 3 elements. These links show up in the footer (hence the name).
-+ `url` : The hyperlink of the footer
-+ `target` : optional, but can be things like `_blank`
-+ `title` : The hover text and the body of the anchor tag.
++ **url**: The hyperlink of the footer
++ **target**: optional, but can be things like **_blank**
++ **title**: The hover text and the body of the anchor tag.
 
 ### APP_BETA_FEATURES
 
-An array of features that you want to show up in `/settings`.
+An array of features that you want to show up in **/settings**.
 
 ![settings option](img/settings-option.png)
 
 Each object in this array has 3 fields:
-+ `id` : the id that will be stored in localStorage
-+ `title` : The text next to the toggle switch on the settings page
-+ `description` : The description under the toggle switch to describe what this toggle does.
+
++ **id**: the id that will be stored in localStorage
++ **title**: The text next to the toggle switch on the settings page
++ **description**: The description under the toggle switch to describe what this toggle does.
 
 ## Example override.js file
 
@@ -105,15 +114,15 @@ define(['angular'], function(angular) {
 
 Alright, lot going on here so lets take a walk through this.
 
-+ `Lines 1-3` include the the requirejs wrapper, setup for the angular module (pulled in during the /portal/main.js execution),
++ **Lines 1-3** include the the requirejs wrapper, setup for the angular module (pulled in during the /portal/main.js execution),
 and definition of the "OVERRIDE" constant. These lines should not change.
-+ `Lines 4-12` are an example override for the `appMenuItems` attribute in the `APP_OPTIONS` category. By default its set to null, but
++ **Lines 4-12** are an example override for the **appMenuItems** attribute in the **APP_OPTIONS** category. By default its set to null, but
 with this config it will now include an item to add to the app's [configurable menu](configurable-menu.md).
-+ `Line 14-16` is an example of changing more than one config in a single category.
-+ `Lines 17-21` are overriding an array config category. This will append to the default values. In this case it'll add a footer url for google.
++ **Line 14-16** is an example of changing more than one config in a single category.
++ **Lines 17-21** are overriding an array config category. This will append to the default values. In this case it'll add a footer url for google.
 
-In version 2.2.1 we added the option to add key/value pairs to existing categories (e.g.: `APP_FLAGS`). This can be helpful if your
-application has additional `APP_FLAGS` or `SERVICE_LOC` but you don't want to create another value service just for that. However, if you have
+In version 2.2.1 we added the option to add key/value pairs to existing categories (e.g.: **APP_FLAGS**). This can be helpful if your
+application has additional **APP_FLAGS** or **SERVICE_LOC** but you don't want to create another value service just for that. However, if you have
 a lot of these it may be wise just to create an app specific value service.
 
 If you have questions please [ask the development list](https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev).

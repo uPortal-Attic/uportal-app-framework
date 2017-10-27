@@ -18,10 +18,11 @@
     under the License.
 
 -->
-<frame-page app-title="Frame app home"
-            app-icon="home"
+<frame-page app-title="Frame app"
+            app-icon="widgets"
             app-show-add-to-home="true"
             app-fname="example-page-fname"
+            app-has-page-level-sidenav="true"
             white-background="false">
   <style>
     md-card {
@@ -30,7 +31,7 @@
       background-color: #f3f3f3;
     }
   </style>
-  <md-content style="background-color:transparent;max-width:820px;margin:0 auto;" layout-padding>
+  <div style="max-width:820px;margin:0 auto;" layout-padding>
     <p layout="row" layout-align="center center">This is just the default example page. Below are easy access links so you don't have to type the specific page you are working on.</p>
 
     <md-grid-list md-cols-gt-sm="4" md-cols="1" md-cols-sm="3"
@@ -159,5 +160,5 @@
 
     </md-grid-list>
 
-  </md-content>
+  </div>
 </frame-page>

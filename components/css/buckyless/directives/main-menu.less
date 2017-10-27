@@ -1,0 +1,163 @@
+/**
+ * Licensed to Apereo under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work
+ * for additional information regarding copyright ownership.
+ * Apereo licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file
+ * except in compliance with the License.  You may obtain a
+ * copy of the License at the following location:
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+main-menu {
+  .main-menu__mobile-bar {
+    background: @grayscale2;
+    min-height: 56px;
+
+    .md-button {
+      min-width: 48px;
+      margin: 0 8px 0 0;
+
+      .main-menu__high-priority {
+        position: absolute;
+        top: 0;
+        left: 4px;
+
+        .material-icons {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .username-menu {
+      .md-button.avatar__default {
+        display: inline-block;
+        outline: none;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        min-width: initial;
+        padding: 4px;
+        text-transform: uppercase;
+
+        > span {
+          color: @grayscale2;
+          background-color: @color1;
+          border-radius: 50%;
+          display: block;
+          margin: 0;
+          overflow: hidden;
+          position: relative;
+          height: 32px;
+          width: 32px;
+          z-index: 0;
+          line-height: 32px;
+          font-size: 18px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  md-sidenav.main-menu__sidenav {
+    width: 300px;
+    display: flex;
+
+    md-menu-content {
+      height: ~"calc(100vh - 100%)";
+      max-height: none;
+      flex: 1 0 auto;
+    }
+
+    .links-separated {
+      flex: 0 0 auto;
+      display: block;
+      padding: 12px 15px 12px 24px;
+      width: 300px;
+
+      a {
+        color: @grayscale6;
+        cursor: pointer;
+        font-size: 12px;
+        padding: 2px 5px;
+        text-decoration: none;
+        white-space: nowrap;
+
+        &:hover {
+          color: @black;
+        }
+      }
+
+      @media (max-width: @xs) {
+        width: ~"calc(100% - 56px)";
+        min-width: ~"calc(100% - 56px)";
+        max-width: ~"calc(100% - 56px)";
+      }
+    }
+
+    @media (max-width: @xs) {
+      z-index: 80;
+      position: fixed;
+    }
+  }
+
+  &.push-content {
+    md-backdrop.md-sidenav-backdrop {
+      @media (min-width: @sm) {
+        display: none;
+      }
+    }
+  }
+}
+
+frame-page .wrapper__frame-page {
+  &.frame-page__push-content {
+    @media (min-width: @sm) {
+      .wrapper__push-content {
+        position: relative;
+
+        .content-wrapper__push-content {
+          flex: inherit;
+          transition: @transition-all;
+          margin-left: 0;
+        }
+
+        main-menu.push-content {
+          flex: initial;
+          width: 0;
+          max-width: 300px;
+
+          &.main-menu__open {
+            ~ .content-wrapper__push-content {
+              margin-left: 300px;
+            }
+          }
+
+          md-sidenav.main-menu__sidenav {
+            background: transparent;
+            box-shadow: none;
+
+            md-menu-content {
+              padding-top: 0;
+
+              .subheader__app-name {
+                display: none;
+              }
+            }
+
+            .links-separated a {
+              color: @grayscale9;
+            }
+          }
+        }
+      }
+    }
+  }
+}

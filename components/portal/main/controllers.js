@@ -23,9 +23,10 @@ define(['angular', 'require'], function(angular, require) {
 
   .controller('PortalMainController', [
     '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
-    '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS', 'THEMES', 'miscService',
+    '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS',
+    'APP_OPTIONS', 'THEMES', 'miscService',
     function($localStorage, $sessionStorage, $scope, $rootScope, $document,
-    $location, NAMES, MISC_URLS, APP_FLAGS, THEMES, miscService) {
+    $location, NAMES, MISC_URLS, APP_FLAGS, APP_OPTIONS, THEMES, miscService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
@@ -55,6 +56,7 @@ define(['angular', 'require'], function(angular, require) {
       $scope.APP_FLAGS=APP_FLAGS;
       $scope.MISC_URLS=MISC_URLS;
       $scope.THEMES = THEMES.themes;
+      $scope.APP_OPTIONS = APP_OPTIONS;
 
       if (NAMES.title) {
         setTitle();
@@ -158,8 +160,8 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Side navigation controller */
   .controller('MainMenuController', ['$rootScope', '$scope', '$mdSidenav',
-    '$window', 'APP_OPTIONS', 'FOOTER_URLS', 'MESSAGES', 'NAMES',
-    function($rootScope, $scope, $mdSidenav, $window, APP_OPTIONS,
+    '$mdMedia', '$window', 'APP_OPTIONS', 'FOOTER_URLS', 'MESSAGES', 'NAMES',
+    function($rootScope, $scope, $mdSidenav, $mdMedia, $window, APP_OPTIONS,
              FOOTER_URLS, MESSAGES, NAMES) {
       var vm = this;
 
@@ -169,10 +171,11 @@ define(['angular', 'require'], function(angular, require) {
       vm.notificationsPageUrl = '';
       vm.hideMainMenu = false;
       vm.footerLinks = FOOTER_URLS;
+      vm.openMenuByDefault = false;
 
       // Close side nav on scroll to avoid awkward UI
       $window.onscroll = function() {
-        if (vm.isMenuOpen()) {
+        if (vm.isMenuOpen() && !$mdMedia('gt-sm')) {
           vm.closeMainMenu();
         }
       };
@@ -226,6 +229,8 @@ define(['angular', 'require'], function(angular, require) {
           vm.footerLinks =
             vm.footerLinks.concat($rootScope.portal.theme.footerLinks);
         }
+        vm.openMenuByDefault =
+          APP_OPTIONS.enablePushContentMenu && $mdMedia('gt-sm');
       };
 
       init();

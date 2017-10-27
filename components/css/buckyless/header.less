@@ -51,6 +51,24 @@ portal-header {
         }
       }
 
+      .title-link h1.has-app-name {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+
+        .portal-title {
+          display: flex;
+          font-size: 14px;
+        }
+
+        .app-name {
+          font-weight: bold;
+          font-size: 18px;
+          display: flex;
+        }
+      }
+
       .menu-toggle.md-button {
         min-width: 48px;
         margin: 0;
@@ -88,7 +106,7 @@ portal-header {
 
   @media (min-width: @xs) {
     &.has-priority-nots + .page-content {
-      padding-top: 102px;
+      margin-top: 102px;
     }
   }
 

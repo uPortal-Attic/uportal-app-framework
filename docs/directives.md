@@ -1,12 +1,42 @@
 # AngularJS directives in uportal-app-framework
 
+## Frame page
+
+Frame page should be used for all pages in a uportal-app-framework application. It comes with much of the rest of the framework's skeleton built in, including the app-header and main-menu directives. You should use it as the outermost element for
+each of your application's main views.
+
+**Example page**: see `/portal/main/partials/example-page.html`
+
+### Template:
+
+```html
+<frame-page
+  app-title="Hello World"
+  app-icon="school"
+  app-fname="hey-world-fname"
+  app-show-add-to-home="false"
+  white-background="true">
+  <!-- includes app-header -->
+  <!-- includes main-menu -->
+  <!-- includes your content via ng-transclude -->
+</frame-page>
+```
+
+### Params
+
+_See `app-header`_
+
+### Options
+
+* **white-background**: A boolean when set to true with give you a white background.
+
 ## App header
 
-`app-header` directive should be used for all pages in a frame based app. You can either utilize the frame-page directive, or just this directive with custom code.
+If you don't want to use the frame page directive, you can still utilize the app-header as you would any other directive. It should be included in all pages of your app.
 
 There is also a directive called `app-header-two-way-bind`. This has all the same features as `app-header` except all the scope attributes are passed in via `=` instead of `@`. This provides 2 way binding for your header. Research angular directives for more details.
 
-### Template :
+### Template:
 
 ```html
 <app-header
@@ -17,7 +47,7 @@ There is also a directive called `app-header-two-way-bind`. This has all the sam
 ></app-header>
 ```
 
-### Params :
+### Params:
 
 All params are prefixed with `app-`.
 
@@ -26,39 +56,25 @@ All params are prefixed with `app-`.
 * **show-add-to-home**: If set to true, will include the add-to-home directive and its controller in the app header (used for apps that are part of the portal ecosystem).
 * **fname**: If provided, it will be used in the add-to-home feature. If not, it'll try to use NAMES.fname constant.
 
-## Frame page
+## Main menu
 
-Frame page is basically the app header directive but with a transclude for the body. It **Inherits** all of the app-header directive parameters.
+Makes the side navigation menu available. If you have [configured](configuration.md) either the `appMenuTemplateURL` or `appMenuItems` option, you need to include this directive on every page where you want navigation. For this reason, using the frame-page directive for all your pages is recommended.
 
-**Example page**: see `/portal/main/partials/example-page.html`
+If you really want to build things your way, you can include the main menu by placing it in HTML as a sibling of your main content container. See the [app navigation doc](configurable-menu.md) for more information about using this feature.
 
-### Template :
+_**Note**: If you choose to go this route, the `enablePageLevelSidenav` experimental configuration will not work for you._
+
+### Template:
 
 ```html
-<frame-page
-  app-title="Hello World"
-  app-icon="school"
-  app-fname="hey-world-fname"
-  app-show-add-to-home="false"
-  white-background="true"
->
-This part is included via ng-transclude
-</frame-page>
+<main-menu></main-menu>
 ```
-
-### Params
-
-_See `app-header`_
-
-### Options
-
-* **white-background**: A boolean when set to true with give you a white background with 98% width, with a 1% `left-margin`.
 
 ## Circle button
 
 Displays a flat, circular icon-button with a fa-icon in the middle, and a title below.
 
-### Template :
+### Template:
 
 ```html
 <circle-button
@@ -87,7 +103,7 @@ Displays a flat, circular icon-button with a fa-icon in the middle, and a title 
 
 Displays a launch button for portal widgets that fits their width and visual style
 
-### Template :
+### Template:
 
 ```html
 <launch-button
