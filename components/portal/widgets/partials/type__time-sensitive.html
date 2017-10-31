@@ -19,7 +19,7 @@
 
 -->
 <!-- TIME-SENSITIVE CONTENT -->
-<div class="widget-body" ng-if="showTimeSensitiveContent" layout="column" layout-align="center center">
+<div class="widget-body" ng-if="callToAction" layout="column" layout-align="center center">
   <span class="tsc__title">{{ callToAction.actionName }}</span>
   <div ng-switch="templateStatus" class="tsc__status">
     <!-- Take action period upcoming -->
@@ -53,7 +53,7 @@
 </div>
 
 <!-- BASIC CONTENT -->
-<a ng-if="showBasicContent" tabindex="-1" ng-href="{{ widget.url }}" target="{{ widget.target ? widget.target : '_self' }}" class="basic-widget" rel="noopener noreferrer">
+<a ng-if="!callToAction" tabindex="-1" ng-href="{{ widget.url }}" target="{{ widget.target ? widget.target : '_self' }}" class="basic-widget" rel="noopener noreferrer">
   <div class="widget-icon-container" layout="column" layout-align="center center">
     <widget-icon></widget-icon>
   </div>

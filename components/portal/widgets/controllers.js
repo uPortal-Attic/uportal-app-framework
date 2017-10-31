@@ -403,152 +403,133 @@ define(['angular'], function(angular) {
   // VARIABLE CONTENT widget type
   .controller('TimeSensitiveContentController', [
     '$scope', '$filter', '$log', function($scope, $filter, $log) {
-    /**
-     * Display time-sensitive content with provided configuration
-     * @param callToAction The provided configuration for a call to action
-     * @param start The day/time this content became active
-     * @param end The date/time this content will go away
-     * @param hasPaddedDates indicates there is content to show outside
-     *    active date range
-     */
-    var displayTimeSensitiveContent = function(callToAction, start,
-                                          end, hasPaddedDates) {
-      $scope.activePeriodStartDate = '';
-      $scope.activePeriodEndDate = '';
-      $scope.daysLeft = 0;
-      $scope.templateStatus = '';
-      $scope.callToAction = callToAction;
+    var init = function() {
+      var callsToAction = [];
 
-      // Check for padded dates
-      if (hasPaddedDates.start || hasPaddedDates.end) {
-        if (hasPaddedDates.start) {
-          // Set active period start date
-          if (callToAction.activeDateRange.takeActionStartDate) {
-            $scope.activePeriodStartDate = $filter('filterForDateWithYear')(
-              callToAction.activeDateRange.takeActionStartDate);
-          } else {
-            $scope.activePeriodStartDate = start;
-          }
-        }
-        if (hasPaddedDates.end) {
-          // Set active period end date
-          if (callToAction.activeDateRange.takeActionEndDate) {
-            $scope.activePeriodEndDate = $filter('filterForDateWithYear')(
-              callToAction.activeDateRange.takeActionEndDate);
-          } else {
-            $scope.activePeriodEndDate = end;
-          }
-        }
-      } else {
-        $scope.activePeriodStartDate = start;
+      if ($scope.config.callsToAction
+        && angular.isArray($scope.config.callsToAction)
+        && $scope.config.callsToAction.length > 0) {
+          callsToAction = $scope.config.callsToAction;
       }
 
-      // If today is inside the given date range, check for last day
-      if ($filter('filterDateRange')($scope.activePeriodStartDate,
-          $scope.activePeriodEndDate)) {
-        $scope.daysLeft = $filter('filterDifferenceFromDate')(
-          $scope.activePeriodEndDate);
-        // If there's 1 or 0 days left, and filter didn't return -1,
-        // It's the last day!
-        if ($scope.daysLeft === 1 || $scope.daysLeft === 0) {
-          $scope.templateStatus = 'lastDay';
-        } else {
-          $scope.templateStatus = 'ongoing';
-        }
-      // If there's more than 0 days between now and the start date,
-      // the active period hasn't started yet
-      } else if ($filter('filterDifferenceFromDate')(
-        $scope.activePeriodStartDate) > 0) {
-        $scope.templateStatus = 'upcoming';
-      // If filter returns -1, the period has ended
-      } else if ($filter('filterDifferenceFromDate')(
-        $scope.activePeriodEndDate) === -1) {
-        $scope.templateStatus = 'ended';
-      }
-
-      // If we somehow ended up with an unset template status,
-      // don't show time sensitive content
-      if ($scope.templateStatus === '') {
-        $log.log('Date range didn\'t meet any of the criteria for '
-          + 'showing time-sensitive content');
-      } else {
-        $scope.showTimeSensitiveContent = true;
+      var now = new Date();
+      var templateIndex = indexWithinTemplateRange(now, callsToAction);
+      if (-1 < templateIndex) {
+        displayTimeSensitiveContent(callsToAction[templateIndex]);
       }
     };
 
-    var evaluateCallsToAction = function(callsToAction) {
+    var resolveDate = function(str, defaultEndOfDay) {
+      var result = null;
+      if (str) {
+        var dateStr =
+          $filter('filterForDateWithYear')(str);
+        if (dateStr) {
+          if (dateStr.indexOf('T') < 0) {
+            if (defaultEndOfDay) {
+              dateStr += 'T23:59:59';
+            } else {
+              dateStr += 'T00:00:00';
+            }
+          }
+          result = new Date(dateStr);
+        }
+      }
+      return result;
+    };
+
+    var indexWithinTemplateRange = function(now, callsToAction) {
+      var result = -1;
       // Check if today falls within any of the provided date ranges
-      angular.forEach(callsToAction, function(value, index) {
-        var templateSwitchOnDate = '';
-        var templateSwitchOffDate = '';
-        var hasPaddedDates = {
-          start: false,
-          end: false,
-        };
-        // Check if active date range provided
-        if (value.activeDateRange) {
-          // Check for a start date
-          if (value.activeDateRange.templateLiveDate) {
-            // Use go live date if provided
-            templateSwitchOnDate = $filter('filterForDateWithYear')(
-              value.activeDateRange.templateLiveDate);
-            hasPaddedDates.start = true;
-          } else if (value.activeDateRange.takeActionStartDate) {
-            // Fall back on takeActionStartDate if needed
-            templateSwitchOnDate = $filter('filterForDateWithYear')(
-              value.activeDateRange.takeActionStartDate);
-          } else {
-            $log.log($scope.widget.fname +
-              ' said it has variable content, but was missing a '
-              + ' start date.');
-            showBasicWidget();
+      angular.forEach(callsToAction, function(callToAction, index) {
+        if (result === -1) { // We haven't found a call to action
+          var startDate =
+            resolveDate(callToAction.activeDateRange.templateLiveDate);
+          var endDate =
+            resolveDate(callToAction.activeDateRange.templateRetireDate, true);
+          if (startDate && startDate < now // Template started
+            && (!endDate || endDate > now)) { // Template has not ended
+            result = index;
           }
-
-          // Check for an end date
-          if (value.activeDateRange.templateRetireDate) {
-            // Use retire date if provided
-            templateSwitchOffDate = $filter('filterForDateWithYear')(
-              value.activeDateRange.templateRetireDate);
-            hasPaddedDates.end = true;
-          } else if (value.activeDateRange.takeActionStartDate) {
-            // Fall back on takeActionEndDate if needed
-            templateSwitchOffDate = $filter('filterForDateWithYear')(
-              value.activeDateRange.takeActionEndDate);
-          } else {
-            $log.log($scope.widget.fname +
-              ' said it has variable content, but was missing an '
-              + ' end date.');
-            showBasicWidget();
-          }
-
-          // Check if today is within provided range
-          if ($filter('filterDateRange')(
-            templateSwitchOnDate, templateSwitchOffDate)) {
-            // Current date is within range, so show variable content
-            displayTimeSensitiveContent(value, templateSwitchOnDate,
-              templateSwitchOffDate, hasPaddedDates);
-          }
-        } else {
-          $log.log($scope.widget.fname +
-            ' said it has variable content, but was missing an '
-            + 'active date range.');
-          showBasicWidget();
         }
       });
+      return result;
     };
 
-    var showBasicWidget = function() {
-      $scope.showBasicContent = true;
+    var resolveTemplateStatus = function(now, actionStart, actionEnd) {
+      var result = '';
+      var statuses = [
+        {
+          name: 'upcoming',
+          check: function() {
+            return now < actionStart && now < actionEnd;
+          },
+        }, {
+          name: 'ongoing',
+          check: function() {
+            return now > actionStart && now < actionEnd;
+          },
+        }, {
+          name: 'lastDay',
+          check: function() {
+            return now > actionStart && now < actionEnd
+              && 1 === resolveDaysLeft(now, actionEnd);
+          },
+        }, {
+          name: 'ended',
+          check: function() {
+            return now > actionStart && now > actionEnd;
+          },
+        },
+      ];
+
+      if (now && actionStart && actionEnd) {
+        angular.forEach(statuses, function(status) {
+          if (status.check()) {
+            result = status.name;
+          }
+        });
+      }
+
+      return result;
     };
 
-    // Initialize widget if it received time-sensitive content
-    if ($scope.config.callsToAction.length > 0) {
-      evaluateCallsToAction($scope.config.callsToAction);
-    } else {
-      $log.log($scope.widget.fname +
-        ' said it has variable content, but was missing calls to action.');
-      showBasicWidget();
-    }
+    var resolveDaysLeft = function(now, actionEnd) {
+      var result = -1;
+      var oneDay = 1000 * 60 * 60 * 24;
+
+      if (now && actionEnd && now < actionEnd) {
+        var difference = actionEnd.getTime() - now.getTime();
+        result = Math.ceil((1.0 * difference) / oneDay);
+      }
+
+      return result;
+    };
+
+    /**
+     * Display time-sensitive content with provided configuration
+     * @param config The provided configuration for a call to action
+     */
+    var displayTimeSensitiveContent = function(config) {
+      var dates = config.activeDateRange;
+      var now = new Date();
+      var actionStart = resolveDate(dates.takeActionStartDate);
+      var actionEnd = resolveDate(dates.takeActionEndDate, true);
+
+      $scope.templateStatus =
+        resolveTemplateStatus(now, actionStart, actionEnd);
+      $scope.daysLeft = resolveDaysLeft(now, actionEnd);
+      if (actionStart) {
+        $scope.activePeriodStartDate = actionStart.getTime();
+      }
+      if (actionEnd) {
+        $scope.activePeriodEndDate = actionEnd.getTime();
+      }
+
+      $scope.callToAction = config;
+    };
+
+    init();
   }])
 
   // CUSTOM & GENERIC widget types
