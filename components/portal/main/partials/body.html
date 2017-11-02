@@ -19,12 +19,15 @@
 
 -->
 <div class="my-uw" md-theme="{{ portal.theme.name || 'default' }}" tabindex="0" aria-live="polite" aria-atomic="false">
+  <div class="skip-to-content">
+    <a href="#main-content">Skip to main content</a>
+  </div>
   <div class="my-uw-body">
     <portal-header ng-class="{'has-priority-nots': mainCtrl.hasPriorityNotifications}" ng-controller="PortalHeaderController as headerCtrl"></portal-header>
 
     <div class="page-content" layout="column" tabindex="0" role="main">
       <div role="main" class="region-main" class="no-padding">
-        <ng-view role="application" aria-label="{{ NAMES.title }}"></ng-view>
+        <ng-view id="main-content" role="application" aria-label="{{ NAMES.title }}"></ng-view>
       </div>
 
       <!-- FOOTER -->

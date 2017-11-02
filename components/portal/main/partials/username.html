@@ -19,9 +19,9 @@
 
 -->
 <!-- GUEST MODE ONLY -->
-<md-button ng-href="{{MISC_URLS.myuwHome}}"
+<md-button ng-href="{{ MISC_URLS.myuwHome }}"
            ng-show="GuestMode"
-           aria-label="Log in to {{portal.theme.title}}"
+           aria-label="Log in to {{ portal.theme.title }}"
            target="_self"
            class="md-default">
   Log In
@@ -32,7 +32,7 @@
   <md-button aria-label="open options menu"
              class="avatar__default"
              ng-click="$mdOpenMenu($event)">
-    <span>{{sessionCtrl.firstLetter}}</span>
+    <span>{{ sessionCtrl.firstLetter }}</span>
     <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Options</md-tooltip>
   </md-button>
   <md-menu-content width="5" class="top-bar-menu-content username-menu-content">
@@ -45,14 +45,27 @@
         Profile
       </a>
     </md-menu-item>
-    <md-menu-item ng-if="$storage.showSettings" class="top-bar-menu-item">
-      <md-button class="md-default" aria-label="change beta settings" tabindex="-1" ng-href="settings" title="Settings">Beta settings</md-button>
-    </md-menu-item>
     <md-menu-item ng-if="APP_FLAGS.showUserSettingsPage" class="top-bar-menu-item">
-      <md-button class="md-default" aria-label="change user settings" tabindex="-1" ng-href="user-settings" title="Settings">Settings</md-button>
+      <md-button class="md-default"
+                 aria-label="change user settings"
+                 ng-href="user-settings"
+                 ng-attr-md-autofocus="{{ sessionCtrl.usernameMenuFocus == 'user-settings' ? '' : undefined }}"
+                 title="Settings">Settings</md-button>
+    </md-menu-item>
+    <md-menu-item ng-if="$storage.showSettings" class="top-bar-menu-item">
+      <md-button class="md-default"
+                 aria-label="change beta settings"
+                 ng-href="settings"
+                 ng-attr-md-autofocus="{{ sessionCtrl.usernameMenuFocus == 'beta-settings' ? '' : undefined }}"
+                 title="Settings">Beta settings</md-button>
     </md-menu-item>
     <md-menu-item class="top-bar-menu-item">
-      <md-button class="md-default" aria-label="log out" tabindex="-1" ng-href="{{MISC_URLS.logoutURL}}" title="Log Out" target="_self">Log out</md-button>
+      <md-button class="md-default"
+                 aria-label="log out"
+                 ng-href="{{ MISC_URLS.logoutURL }}"
+                 ng-attr-md-autofocus="{{ sessionCtrl.usernameMenuFocus == 'log-out' ? '' : undefined }}"
+                 title="Log Out"
+                 target="_self">Log out</md-button>
     </md-menu-item>
   </md-menu-content>
 </md-menu>

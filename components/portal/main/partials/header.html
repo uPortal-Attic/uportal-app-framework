@@ -31,30 +31,30 @@
       </md-button>
 
       <!-- MyUW APP ICON AND TITLE -->
-      <a ng-href="{{MISC_URLS.rootURL}}"
+      <a ng-href="{{ MISC_URLS.rootURL }}"
          class="title-link"
          target="_self"
-         aria-label="{{portal.theme.ariaLabelTitle}}"
+         aria-label="{{ portal.theme.ariaLabelTitle }}"
          layout="row"
          layout-align="start center">
         <h1 class="md-title" layout="row">
-          <span>{{portal.theme.title}}</span>
+          <span>{{ portal.theme.title }}</span>
         </h1>
       </a>
     </div>
 
-    <!-- SEARCH BUTTON XS-ONLY -->
+    <!-- SEARCH BUTTON (XS-ONLY) -->
     <div layout="row" layout-align="end center" flex-xs="60" class="top-bar-controls-xs" hide-gt-xs>
       <search ng-show="APP_FLAGS.showSearch" mode="mobile-search" layout="row" layout-align="end center" hide-gt-xs></search>
     </div>
 
-    <!-- SEARCH BAR SM+ -->
+    <!-- SEARCH BAR (SM+) -->
     <div layout="row" flex-gt-xs="40" layout-align="center center" hide-xs>
       <search ng-show="APP_FLAGS.showSearch"></search>
     </div>
     <span flex></span>
 
-    <!-- COLLAPSIBLE MENU SM+ -->
+    <!-- TOP BAR BUTTONS (SM+) -->
     <div layout="row" layout-align="end center" flex-gt-xs="30" hide-xs>
       <mascot-announcement mode="mascot" header-ctrl="mainCtrl"></mascot-announcement>
       <notifications-bell mode="bell" ng-if="!GuestMode"></notifications-bell>
