@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-main-menu {
+main-menu:not(.push-content) {
   .main-menu__mobile-bar {
     background: @grayscale2;
     min-height: 56px;
@@ -66,6 +66,10 @@ main-menu {
     }
   }
 
+  md-backdrop {
+    position: fixed;
+  }
+
   md-sidenav.main-menu__sidenav:not(.md-closed) {
     width: 300px;
     display: flex;
@@ -99,6 +103,15 @@ main-menu {
         width: ~"calc(100% - 56px)";
         min-width: ~"calc(100% - 56px)";
         max-width: ~"calc(100% - 56px)";
+      }
+    }
+
+    @media (min-width: @xs) {
+      position: fixed;
+      top: 60px;
+
+      &.has-priority-notifications {
+        top: 102px;
       }
     }
 

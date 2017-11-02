@@ -164,6 +164,12 @@ define(['angular', 'require'], function(angular, require) {
       var vm = this;
       vm.navbarCollapsed = true;
       vm.showLogout = true;
+      vm.hasPriorityNotifications = false;
+
+      $scope.$on('priorityNotifications',
+        function(event, hasPriorityNotifications) {
+          vm.hasPriorityNotifications = hasPriorityNotifications;
+      });
 
       $scope.APP_FLAGS = APP_FLAGS;
       $scope.MISC_URLS = MISC_URLS;
@@ -183,13 +189,18 @@ define(['angular', 'require'], function(angular, require) {
       vm.hideMainMenu = false;
       vm.footerLinks = FOOTER_URLS;
       vm.openMenuByDefault = false;
+      vm.hasPriorityNotifications = false;
+      vm.hasUnseenAnnouncements = false;
 
-      // Close side nav on scroll to avoid awkward UI
-      $window.onscroll = function() {
-        if (vm.isMenuOpen() && !$mdMedia('gt-sm')) {
-          vm.closeMainMenu();
-        }
-      };
+      $scope.$on('priorityNotifications',
+        function(event, hasPriorityNotifications) {
+          vm.hasPriorityNotifications = hasPriorityNotifications;
+      });
+
+      $scope.$on('unseenAnnouncements',
+        function(event, hasUnseenAnnouncements) {
+          vm.hasUnseenAnnouncements = hasUnseenAnnouncements;
+      });
 
       /**
        * Check if the side nav menu is open
