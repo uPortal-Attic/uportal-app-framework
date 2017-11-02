@@ -508,7 +508,8 @@ define(['angular', 'moment'], function(angular, moment) {
     };
 
     var resolveDaysLeft = function(now, actionEnd) {
-      return moment(actionEnd).diff(now, 'days');
+      // round dates up, rather than the default which rounds down
+      return Math.ceil(moment(actionEnd).diff(now, 'days', true));
     };
 
     /**
