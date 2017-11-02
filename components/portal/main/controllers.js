@@ -102,19 +102,30 @@ define(['angular', 'require'], function(angular, require) {
   /* Username */
   .controller('SessionCheckController',
   ['$log', '$scope', 'mainService', 'NAMES',
-  'APP_FLAGS', '$sessionStorage', '$rootScope',
+  'APP_FLAGS', '$sessionStorage', '$localStorage', '$rootScope',
   function($log, $scope, mainService, NAMES,
-           APP_FLAGS, $sessionStorage, $rootScope) {
+           APP_FLAGS, $sessionStorage, $localStorage, $rootScope) {
     var vm = this;
     vm.user = [];
     vm.username = '?';
     vm.campusId = '';
     vm.firstLetter = '?';
+    vm.usernameMenuFocus = '';
     vm.optAvatar = $sessionStorage.optAvatar;
     vm.profileUrl = ($sessionStorage.portal.theme
       && $sessionStorage.portal.theme.profileUrl) ?
       $sessionStorage.portal.theme.profileUrl : '';
     vm.campusIdAttribute = APP_FLAGS.campusIdAttribute;
+
+    // Tell username menu which element to focus upon opening (accessibility)
+    if (APP_FLAGS.showUserSettingsPage) {
+      vm.usernameMenuFocus = 'user-settings';
+    } else if ($localStorage.showSettings) {
+      vm.usernameMenuFocus = 'beta-settings';
+    } else {
+      vm.usernameMenuFocus = 'log-out';
+    }
+
     /**
      * Listen for theme changes and update profileUrl accordingly
      */

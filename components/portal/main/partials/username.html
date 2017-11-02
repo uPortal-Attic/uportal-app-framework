@@ -48,22 +48,22 @@
     <md-menu-item ng-if="APP_FLAGS.showUserSettingsPage" class="top-bar-menu-item">
       <md-button class="md-default"
                  aria-label="change user settings"
-                 tabindex="-1"
                  ng-href="user-settings"
+                 ng-attr-md-autofocus="{{ sessionCtrl.usernameMenuFocus == 'user-settings' ? '' : undefined }}"
                  title="Settings">Settings</md-button>
     </md-menu-item>
     <md-menu-item ng-if="$storage.showSettings" class="top-bar-menu-item">
       <md-button class="md-default"
                  aria-label="change beta settings"
-                 tabindex="-1"
                  ng-href="settings"
+                 ng-attr-md-autofocus="{{ sessionCtrl.usernameMenuFocus == 'beta-settings' ? '' : undefined }}"
                  title="Settings">Beta settings</md-button>
     </md-menu-item>
     <md-menu-item class="top-bar-menu-item">
       <md-button class="md-default"
                  aria-label="log out"
-                 tabindex="-1"
-                 ng-href="{{MISC_URLS.logoutURL}}"
+                 ng-href="{{ MISC_URLS.logoutURL }}"
+                 ng-attr-md-autofocus="{{ sessionCtrl.usernameMenuFocus == 'log-out' ? '' : undefined }}"
                  title="Log Out"
                  target="_self">Log out</md-button>
     </md-menu-item>
