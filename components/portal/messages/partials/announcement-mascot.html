@@ -40,21 +40,21 @@
   <md-menu-content class="top-bar-menu-content mascot-menu">
     <md-menu-item layout="row" layout-align="space-between center">
       <span>Announcements</span>
-      <a href="features" ng-click="vm.markAllAnnouncementsSeen()" aria-label="see all announcements" class="link__see-all">
+      <a md-autofocus href="features" ng-click="vm.markAllAnnouncementsSeen()" aria-label="see all announcements" class="link__see-all">
         See all ({{ vm.announcements.length }})
       </a>
     </md-menu-item>
+    <!-- SHOW ANNOUNCEMENTS -->
     <div ng-show="vm.announcements.length > 0">
     <md-menu-item ng-repeat="announcement in vm.announcements | orderBy:['-goLiveDate'] | limitTo:3"
                   class="top-bar-menu-item">
       <div class="menu-item-content" layout="row" layout-align="space-between center">
-        <div layout="column" layout-align="center start" flex="80">
+        <div layout="column" layout-align="center start" flex="80" tabindex="0">
           <span>{{ announcement.titleShort }}</span>
           <span class="menu-item-description">{{ announcement.descriptionShort }}</span>
           <div ng-if="announcement.moreInfoButton || announcement.actionButton" class="compact-buttons">
             <md-button class="md-raised md-accent"
                        ng-if="announcement.actionButton"
-                       aria-label="{{announcement.titleShort}}"
                        ng-disabled="announcement.actionButton.disabled"
                        ng-click="vm.takeButtonAction(announcement.actionButton)"
                        target="_blank"
@@ -63,8 +63,7 @@
             </md-button>
             <md-button class="md-default"
                        ng-if="announcement.moreInfoButton"
-                       aria-label="{{announcement.titleShort}}"
-                       ng-click="vm.moreInfoButton(announcement.moreInfoButton)""
+                       ng-click="vm.moreInfoButton(announcement.moreInfoButton)"
                        ng-href="{{ announcement.moreInfoButton.url }}"
                        target="_blank"
                        rel="noopener noreferrer">
