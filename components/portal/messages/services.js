@@ -27,6 +27,7 @@ define(['angular'], function(angular) {
       '$sessionStorage',
       '$q',
       '$filter',
+      '$rootScope',
       'portalGroupService',
       'miscService',
       'keyValueService',
@@ -39,6 +40,7 @@ define(['angular'], function(angular) {
                $sessionStorage,
                $q,
                $filter,
+               $rootScope,
                portalGroupService,
                miscService,
                keyValueService,
@@ -271,12 +273,30 @@ define(['angular'], function(angular) {
             });
         };
 
+        /**
+         * Inform listeners that presence of priority notifications has changed
+         * @param hasPriority
+         */
+        var broadcastPriorityNotifications = function(hasPriority) {
+          $rootScope.$broadcast('priorityNotifications', hasPriority);
+        };
+
+        /**
+         * Inform listeners that presence of unseen announcements has changed
+         * @param hasUnseen
+         */
+        var broadcastUnseenAnnouncements = function(hasUnseen) {
+          $rootScope.$broadcast('unseenAnnouncements', hasUnseen);
+        };
+
         return {
           getAllMessages: getAllMessages,
           getMessagesByGroup: getMessagesByGroup,
           getMessagesByData: getMessagesByData,
           getSeenMessageIds: getSeenMessageIds,
           setMessagesSeen: setMessagesSeen,
+          broadcastPriorityNotifications: broadcastPriorityNotifications,
+          broadcastUnseenAnnouncements: broadcastUnseenAnnouncements,
         };
     }]);
 });

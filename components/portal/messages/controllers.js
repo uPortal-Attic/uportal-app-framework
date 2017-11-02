@@ -279,12 +279,10 @@ define(['angular'], function(angular) {
             vm.notifications,
             {priority: 'high'}
           );
-          // If priority notifications exist and the view has a
-          // headerController in scope (from directive), set necessary flags
-          if ($scope.headerCtrl) {
-            $scope.headerCtrl.hasPriorityNotifications
-              = vm.priorityNotifications.length > 0;
-          }
+          // If priority notifications exist, update service
+          messagesService.broadcastPriorityNotifications(
+            vm.priorityNotifications.length > 0
+          );
         };
 
         /**
@@ -293,10 +291,11 @@ define(['angular'], function(angular) {
          */
         var clearPriorityNotificationsFlags = function(duringWatchedEvent) {
           vm.priorityNotifications = [];
-          if ($scope.headerCtrl) {
-            $scope.headerCtrl.hasPriorityNotifications
-              = vm.priorityNotifications.length > 0;
-          }
+
+          messagesService.broadcastPriorityNotifications(
+            vm.priorityNotifications.length > 0
+          );
+
           if (!duringWatchedEvent) {
             $rootScope.$broadcast('portalShutdownPriorityNotifications',
               {disable: true});
@@ -475,12 +474,11 @@ define(['angular'], function(angular) {
             vm.announcements = separatedAnnouncements.unseen;
             // Set the mascot image
             setMascot();
-            // Set PortalMainController variable so main menu knows there
-            // are unseen announcements
-            if ($scope.headerCtrl) {
-              $scope.headerCtrl.hasUnseenAnnouncements =
-                vm.announcements.length > 0;
-            }
+
+            // Update service so it knows about unseen announcements
+            messagesService.broadcastUnseenAnnouncements(
+              vm.announcements.length > 0
+            );
           } else {
             // Filter out low priority announcements
             popups = $filter('filter')(
@@ -590,10 +588,9 @@ define(['angular'], function(angular) {
             id
           );
           // Notify up the chain so main menu knows about it
-          if ($scope.headerCtrl) {
-            $scope.headerCtrl.hasUnseenAnnouncements =
-              vm.announcements.length > 0;
-          }
+          messagesService.broadcastUnseenAnnouncements(
+            vm.announcements.length > 0
+          );
           // Add to seenAnnouncementsIds
           seenAnnouncementIds.push(id);
           // Call service to save results
