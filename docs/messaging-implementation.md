@@ -98,7 +98,7 @@ The image itself should have the following characteristics:
 Follow these steps to create a notification.
 
 1. Add a JSON message to
-[components/staticFeeds/sample_messages.json](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/sample_messages.json)
+[components/staticFeeds/sample-messages.json](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/sample-messages.json)
 2. [Start frame](quickstart.md)
 3. Try changing some of the options like making the priority "high".
 
