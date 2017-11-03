@@ -19,12 +19,12 @@
 
 -->
 <md-toolbar md-scroll-shrink class="md-primary" tabindex="0" ng-controller="MessagesController">
-  <notifications-bell mode="priority" class="priority-gt-xs" header-ctrl="mainCtrl" hide-xs></notifications-bell>
+  <notifications-bell mode="priority" class="priority-gt-xs" hide-xs></notifications-bell>
   <span ng-controller="AnnouncementsController" controllerAs="vm"></span>
   <div class="md-toolbar-tools"  role="banner">
     <div layout="row" flex-gt-xs="30" flex-xs="40" layout-align="start center">
       <!-- MAIN MENU TOGGLE -->
-      <md-button class="menu-toggle" ng-controller="MainMenuController as vm" ng-click="vm.showMainMenu()" ng-class="{ 'hide-gt-xs' : vm.hideMainMenu }">
+      <md-button class="menu-toggle" ng-controller="MenuToggleController as vm" ng-click="vm.showMainMenu()" ng-class="{ 'hide-gt-xs' : vm.hideMainMenu }">
         <md-icon>menu</md-icon>
         <md-tooltip md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Menu</md-tooltip>
         <notifications-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notifications-bell>
@@ -56,7 +56,7 @@
 
     <!-- TOP BAR BUTTONS (SM+) -->
     <div layout="row" layout-align="end center" flex-gt-xs="30" hide-xs>
-      <mascot-announcement mode="mascot" header-ctrl="mainCtrl"></mascot-announcement>
+      <mascot-announcement mode="mascot"></mascot-announcement>
       <notifications-bell mode="bell" ng-if="!GuestMode"></notifications-bell>
       <username layout="row" layout-align="start center"></username>
     </div>

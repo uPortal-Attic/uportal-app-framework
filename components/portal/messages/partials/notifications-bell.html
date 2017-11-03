@@ -22,7 +22,7 @@
 
   <!-- MOBILE BELL -->
   <div class="notification-badge notification-badge-mobile" aria-label="{{ status }}"
-       ng-show="directiveMode === 'mobile-bell' && vm.notifications.length !== 0 && !vm.isNotificationsPage">
+       ng-show="directiveMode === 'mobile-bell' && vm.notifications.length !== 0 && !vm.isNotificationsPage()">
     <md-icon>notifications</md-icon>
   </div>
 
@@ -35,13 +35,13 @@
                layout="row" layout-align="start center">
       <span><md-icon>notifications</md-icon></span>
       <span>Notifications </span>
-      <span ng-show="!vm.isNotificationsPage">({{ vm.notifications.length }})</span>
+      <span ng-show="!vm.isNotificationsPage()">({{ vm.notifications.length }})</span>
     </md-button>
   </md-menu-item>
 
   <!-- DESKTOP NOTIFICATION BELL -->
   <md-menu class="notifications-menu"
-           ng-show="directiveMode === 'bell' && !vm.isNotificationsPage"
+           ng-show="directiveMode === 'bell' && !vm.isNotificationsPage()"
            md-offset="-200 0"
            md-position-mode="target bottom">
     <md-button ng-click="$mdOpenMenu($event);vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell')"
@@ -59,7 +59,7 @@
     <md-menu-content class="top-bar-menu-content notifications-menu">
       <md-menu-item layout="row" layout-align="space-between center">
         <span>Notifications</span>
-        <a md-autofocus ng-href="{{ vm.notificationsUrl }}" ng-click="vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');vm.isNotificationsPage = true;" aria-label="see all notifications" class="link__see-all">
+        <a md-autofocus ng-href="{{ vm.notificationsUrl }}" ng-click="vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');vm.isNotificationsPage();" aria-label="see all notifications" class="link__see-all">
           See all <span ng-if="vm.notifications.length > 0">({{ vm.notifications.length }})</span>
         </a>
       </md-menu-item>
@@ -120,8 +120,8 @@
 
   <!-- PRIORITY NOTIFICATIONS (FIXED-TOP) -->
   <div class="priority-notifications"
-       ng-class="{ 'animate-hide': vm.priorityNotifications.length === 0 }"
-       ng-if="directiveMode === 'priority'">
+       ng-class="{ 'animate-hide': vm.priorityNotifications.length === 0 || vm.isNotificationsPage() }"
+       ng-if="directiveMode === 'priority' && !vm.isNotificationsPage()">
     <div class="priority-bubble"
          ng-if="vm.priorityNotifications.length == 1"
          ng-repeat="priority in vm.priorityNotifications | limitTo: 1"

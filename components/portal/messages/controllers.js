@@ -23,15 +23,17 @@ define(['angular'], function(angular) {
 
     .controller('MessagesController', ['$q', '$log', '$scope', '$rootScope',
       '$location', '$localStorage', '$sessionStorage', '$filter', '$mdDialog',
-      'SERVICE_LOC', 'miscService', 'messagesService',
+      'APP_FLAGS', 'MISC_URLS', 'SERVICE_LOC', 'miscService', 'messagesService',
       function($q, $log, $scope, $rootScope, $location, $localStorage,
-               $sessionStorage, $filter, $mdDialog, SERVICE_LOC,
-               miscService, messagesService) {
+               $sessionStorage, $filter, $mdDialog, APP_FLAGS, MISC_URLS,
+               SERVICE_LOC, miscService, messagesService) {
         // //////////////////
         // Local variables //
         // //////////////////
         var allMessages = [];
         var promiseFilteredMessages = {};
+        $scope.APP_FLAGS = APP_FLAGS;
+        $scope.MISC_URLS = MISC_URLS;
 
         // ////////////////
         // Local methods //
@@ -155,7 +157,6 @@ define(['angular'], function(angular) {
         vm.notificationsUrl = MESSAGES.notificationsPageURL;
         vm.status = 'View notifications';
         vm.isLoading = true;
-        vm.isNotificationsPage = false;
 
         // //////////////////
         // Event listeners //
@@ -172,7 +173,6 @@ define(['angular'], function(angular) {
             if ($scope.$parent.messagesError) {
               vm.messagesError = $scope.$parent.messagesError;
             }
-            isNotificationsPage();
             configureNotificationsScope();
           }
         });
@@ -180,14 +180,6 @@ define(['angular'], function(angular) {
         // ////////////////
         // Local methods //
         // ////////////////
-        /**
-         * Check if user is viewing notifications page
-         */
-        var isNotificationsPage = function() {
-          vm.isNotificationsPage =
-            $window.location.pathname === MESSAGES.notificationsPageURL;
-        };
-
         /**
          * Get notifications from parent scope, then pass them on
          * for filtering by seen/unseen
@@ -241,13 +233,8 @@ define(['angular'], function(angular) {
             vm.notifications = allNotifications;
           }
 
-          // If user is anywhere other than the notifications page,
-          // check for priority notifications and set them in scope
-          if ($location.url().indexOf('notifications') === -1) {
-            configurePriorityNotificationsScope();
-          } else {
-            clearPriorityNotificationsFlags();
-          }
+          // Configure priority notifications scope
+          configurePriorityNotificationsScope();
 
           // Set aria-label in notifications bell
           vm.status = 'You have '
@@ -279,33 +266,32 @@ define(['angular'], function(angular) {
             vm.notifications,
             {priority: 'high'}
           );
-          // If priority notifications exist and the view has a
-          // headerController in scope (from directive), set necessary flags
-          if ($scope.headerCtrl) {
-            $scope.headerCtrl.hasPriorityNotifications
-              = vm.priorityNotifications.length > 0;
-          }
+          // If priority notifications exist, notify listeners
+          messagesService.broadcastPriorityFlag(
+            vm.priorityNotifications.length > 0
+          );
         };
 
         /**
          * Alerts the UI that there are no priority notifications to show
          * @param duringWatchedEvent
          */
-        var clearPriorityNotificationsFlags = function(duringWatchedEvent) {
+        var clearPriorityNotificationsFlags = function() {
           vm.priorityNotifications = [];
-          if ($scope.headerCtrl) {
-            $scope.headerCtrl.hasPriorityNotifications
-              = vm.priorityNotifications.length > 0;
-          }
-          if (!duringWatchedEvent) {
-            $rootScope.$broadcast('portalShutdownPriorityNotifications',
-              {disable: true});
-          }
+          // Notify listeners that priority notifications are gone
+          messagesService.broadcastPriorityFlag(false);
         };
 
         // ////////////////
         // Scope methods //
         // ////////////////
+        /**
+         * Check if user is viewing notifications page
+         */
+        vm.isNotificationsPage = function() {
+          return $window.location.pathname === MESSAGES.notificationsPageURL;
+        };
+
         /**
          * On-click event to mark a notification as "seen"
          * @param notification
@@ -338,8 +324,9 @@ define(['angular'], function(angular) {
         /**
          * On-click event to mark a notification as "unseen"
          * @param notification
+         * @param isHighPriority
          */
-        vm.restoreNotification = function(notification) {
+        vm.restoreNotification = function(notification, isHighPriority) {
           // Remove notification from dismissed array
           vm.dismissedNotifications = $filter('filterOutMessageWithId')(
             vm.dismissedNotifications,
@@ -359,6 +346,11 @@ define(['angular'], function(angular) {
           if (SERVICE_LOC.kvURL) {
             messagesService.setMessagesSeen(allSeenMessageIds,
               dismissedNotificationIds, 'restore');
+          }
+
+          // Reconfigure priority scope if a priority notification was restored
+          if (isHighPriority) {
+            configurePriorityNotificationsScope();
           }
         };
 
@@ -475,12 +467,10 @@ define(['angular'], function(angular) {
             vm.announcements = separatedAnnouncements.unseen;
             // Set the mascot image
             setMascot();
-            // Set PortalMainController variable so main menu knows there
-            // are unseen announcements
-            if ($scope.headerCtrl) {
-              $scope.headerCtrl.hasUnseenAnnouncements =
-                vm.announcements.length > 0;
-            }
+            // Notify listeners if there are unseen announcements
+            messagesService.broadcastAnnouncementFlag(
+              vm.announcements.length > 0
+            );
           } else {
             // Filter out low priority announcements
             popups = $filter('filter')(
@@ -590,10 +580,9 @@ define(['angular'], function(angular) {
             id
           );
           // Notify up the chain so main menu knows about it
-          if ($scope.headerCtrl) {
-            $scope.headerCtrl.hasUnseenAnnouncements =
-              vm.announcements.length > 0;
-          }
+          messagesService.broadcastAnnouncementFlag(
+            vm.announcements.length > 0
+          );
           // Add to seenAnnouncementsIds
           seenAnnouncementIds.push(id);
           // Call service to save results
@@ -660,12 +649,18 @@ define(['angular'], function(angular) {
         });
       }])
 
-    .controller('FeaturesPageController', ['$scope', 'MISC_URLS',
-      function($scope, MISC_URLS) {
+    .controller('FeaturesPageController', ['$scope', '$q',
+      '$log', 'messagesService', 'MISC_URLS',
+      function($scope, $q, $log, messagesService, MISC_URLS) {
         var vm = this;
 
         vm.announcements = [];
         vm.MISC_URLS = MISC_URLS;
+
+        // Promise to get seen message IDs
+        var promiseSeenMessageIds = {
+          seenMessageIds: messagesService.getSeenMessageIds(),
+        };
 
         // //////////////////
         // Event listeners //
@@ -680,8 +675,42 @@ define(['angular'], function(angular) {
           if (hasMessages) {
             if ($scope.$parent.messages.announcements) {
               vm.announcements = $scope.$parent.messages.announcements;
+
+              // Notify service there are no more announcements to see
+              messagesService.broadcastAnnouncementFlag(false);
+
+              $q.all(promiseSeenMessageIds)
+                .then(getSeenMessageIdsSuccess)
+                .catch(function() {
+                  $log.log('Problem getting seen IDs on features page');
+                });
             }
           }
         });
+
+        /**
+         * Get seen message IDs, then mark all announcements seen
+         * @param result Data returned by promises
+         */
+        var getSeenMessageIdsSuccess = function(result) {
+          var originalSeenMessageIds = [];
+          var newSeenMessageIds = [];
+
+          // Set already-seen messages if any exist
+          if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
+            && result.seenMessageIds.length > 0) {
+            // Save all seenMessageIds for later
+            originalSeenMessageIds = result.seenMessageIds;
+          }
+
+          // Add IDs of all announcements to seen array
+          angular.forEach(vm.announcements, function(value) {
+            newSeenMessageIds.push(value.id);
+          });
+
+          // Mark all announcements seen
+          messagesService.setMessagesSeen(originalSeenMessageIds,
+            newSeenMessageIds, 'dismiss');
+        };
     }]);
 });

@@ -21,7 +21,7 @@ Your application can overwrite any constant listed below by adding it to the **j
 + **optionsTemplateURL**: A path to the HTML template for app-specific options (appears on the right-hand side of the [app-header](directives.md)). See the [app options doc](app-options.md) to learn how to use this feature.
 + **appMenuTemplateURL**: A path to the HTML template for app-specific menu items (appears in the side navigation menu that is triggered when clicking the top bar hamburger icon button). See the [app navigation doc](configurable-menu.md) to learn how to use this feature.
 + **appMenuItems**: An array of menu item objects used for a simple custom menu (with links that have a text label, icon, and url). See the [app navigation doc](configurable-menu.md) to learn how to use this feature.
-+ **enablePageLevelSidenav**:
++ **enablePushContentMenu**:
   - _CAUTION_
   - False by default
   - Only affects medium and large screens
