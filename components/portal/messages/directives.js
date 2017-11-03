@@ -25,7 +25,6 @@ define(['angular', 'require'], function(angular, require) {
         restrict: 'E',
         scope: {
           directiveMode: '@mode',
-          headerCtrl: '=headerCtrl',
         },
         templateUrl: require.toUrl('./partials/notifications-bell.html'),
         controller: 'NotificationsController',
@@ -46,7 +45,6 @@ define(['angular', 'require'], function(angular, require) {
         templateUrl: require.toUrl('./partials/announcement-mascot.html'),
         scope: {
           mode: '@',
-          headerCtrl: '=headerCtrl',
         },
         controller: 'AnnouncementsController',
         controllerAs: 'vm',

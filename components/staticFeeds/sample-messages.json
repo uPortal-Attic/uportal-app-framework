@@ -38,7 +38,7 @@
       "expireDate": null,
       "featureImageUrl": null,
       "priority": "high",
-      "dismissible": false,
+      "dismissible": true,
       "audienceFilter": {
         "groups": [""],
         "dataUrl": "",
@@ -92,7 +92,7 @@
       "goLiveDate": "2017-08-01T09:30",
       "expireDate": "2017-08-15",
       "featureImageUrl": "img/the-cow.png",
-      "priority": "high",
+      "priority": null,
       "audienceFilter": {
         "groups": ["Nonexistent-Group"],
         "dataUrl": "",

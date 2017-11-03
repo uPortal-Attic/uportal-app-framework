@@ -18,8 +18,7 @@
  */
 portal-header {
   display: block;
-  position: fixed;
-  width: 100%;
+  position: sticky;
   z-index: 80;
   top: 0;
   overflow-y: hidden;
@@ -101,12 +100,6 @@ portal-header {
       @media (max-width: @xs) {
         padding-right: 0;
       }
-    }
-  }
-
-  @media (min-width: @xs) {
-    &.has-priority-nots + .page-content {
-      margin-top: 102px;
     }
   }
 

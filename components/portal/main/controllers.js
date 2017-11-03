@@ -156,24 +156,23 @@ define(['angular', 'require'], function(angular, require) {
     });
   }])
 
-  /* Header */
-  .controller('PortalHeaderController', ['$rootScope', '$scope', '$location',
-    '$mdSidenav', 'APP_FLAGS', 'MISC_URLS',
-    function($rootScope, $scope, $location, $mdSidenav,
-             APP_FLAGS, MISC_URLS) {
-      var vm = this;
-      vm.navbarCollapsed = true;
-      vm.showLogout = true;
-
-      $scope.APP_FLAGS = APP_FLAGS;
-      $scope.MISC_URLS = MISC_URLS;
+  /* Main menu toggle controller */
+  .controller('MenuToggleController', ['$mdSidenav', function($mdSidenav) {
+    var vm = this;
+    /**
+     * Toggle the side navigation menu
+     */
+    vm.showMainMenu = function() {
+      $mdSidenav('main-menu').toggle();
+    };
   }])
 
   /* Side navigation controller */
   .controller('MainMenuController', ['$rootScope', '$scope', '$mdSidenav',
-    '$mdMedia', '$window', 'APP_OPTIONS', 'FOOTER_URLS', 'MESSAGES', 'NAMES',
-    function($rootScope, $scope, $mdSidenav, $mdMedia, $window, APP_OPTIONS,
-             FOOTER_URLS, MESSAGES, NAMES) {
+    '$mdMedia', '$window', '$localStorage', 'APP_OPTIONS', 'FOOTER_URLS',
+    'MESSAGES', 'NAMES',
+    function($rootScope, $scope, $mdSidenav, $mdMedia, $window, $localStorage,
+             APP_OPTIONS, FOOTER_URLS, MESSAGES, NAMES) {
       var vm = this;
 
       // Scope variables
@@ -183,6 +182,18 @@ define(['angular', 'require'], function(angular, require) {
       vm.hideMainMenu = false;
       vm.footerLinks = FOOTER_URLS;
       vm.openMenuByDefault = false;
+
+      $scope.$on('HAS_PRIORITY_NOTIFICATIONS', function(event, data) {
+        if (angular.isDefined(data.hasNotifications)) {
+          vm.hasPriorityNotifications = data.hasNotifications;
+        }
+      });
+
+      $scope.$on('HAS_UNSEEN_ANNOUNCEMENTS', function(event, data) {
+        if (angular.isDefined(data.hasNotifications)) {
+          vm.hasUnseenAnnouncements = data.hasAnnouncements;
+        }
+      });
 
       // Close side nav on scroll to avoid awkward UI
       $window.onscroll = function() {
@@ -209,13 +220,6 @@ define(['angular', 'require'], function(angular, require) {
       };
 
       /**
-       * Toggle the side navigation menu
-       */
-      vm.showMainMenu = function() {
-        $mdSidenav('main-menu').toggle();
-      };
-
-      /**
        * Check for menu configuration in app config
        */
       var init = function() {
@@ -235,13 +239,18 @@ define(['angular', 'require'], function(angular, require) {
         if (MESSAGES.notificationsPageURL) {
           vm.notificationsPageUrl = MESSAGES.notificationsPageURL;
         }
+        // Add footer links
         if ($rootScope.portal && $rootScope.portal.theme
           && $rootScope.portal.theme.footerLinks) {
           vm.footerLinks =
             vm.footerLinks.concat($rootScope.portal.theme.footerLinks);
         }
+        // Check if push content is set
         vm.openMenuByDefault =
           APP_OPTIONS.enablePushContentMenu && $mdMedia('gt-sm');
+        // Set flags for notifications/announcements
+        vm.hasPriorityNotifications = $localStorage.hasPriorityNotifications;
+        vm.hasUnseenAnnouncements = $localStorage.hasUnseenAnnouncements;
       };
 
       init();
