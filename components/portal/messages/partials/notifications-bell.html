@@ -26,25 +26,12 @@
     <md-icon>notifications</md-icon>
   </div>
 
-  <!-- MOBILE MENU ROW -->
-  <md-menu-item ng-show="directiveMode === 'mobile-menu'">
-    <md-button title="click to view notifications"
-               class="md-default"
-               ng-href="{{ vm.notificationsUrl }}"
-               ng-click="vm.pushGAEvent('Mobile Menu', 'Click Link', 'Notifications');"
-               layout="row" layout-align="start center">
-      <span><md-icon>notifications</md-icon></span>
-      <span>Notifications </span>
-      <span ng-show="!vm.isNotificationsPage()">({{ vm.notifications.length }})</span>
-    </md-button>
-  </md-menu-item>
-
   <!-- DESKTOP NOTIFICATION BELL -->
   <md-menu class="notifications-menu"
            ng-show="directiveMode === 'bell' && !vm.isNotificationsPage()"
            md-offset="-200 0"
            md-position-mode="target bottom">
-    <md-button ng-click="$mdOpenMenu($event);vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell')"
+    <md-button ng-click="$mdOpenMenu($event);vm.trackRenderedNotifications()"
                class="notification-desktop"
                md-no-ink
                md-menu-origin>
@@ -59,7 +46,7 @@
     <md-menu-content class="top-bar-menu-content notifications-menu">
       <md-menu-item layout="row" layout-align="space-between center">
         <span>Notifications</span>
-        <a md-autofocus ng-href="{{ vm.notificationsUrl }}" ng-click="vm.pushGAEvent('Top Bar', 'Click Link', 'Notification Bell');vm.isNotificationsPage();" aria-label="see all notifications" class="link__see-all">
+        <a md-autofocus ng-href="{{ vm.notificationsUrl }}" ng-click="vm.pushGAEvent('Notification bell menu', 'Click link', 'See all');vm.isNotificationsPage();" aria-label="see all notifications" class="link__see-all">
           See all <span ng-if="vm.notifications.length > 0">({{ vm.notifications.length }})</span>
         </a>
       </md-menu-item>
@@ -72,7 +59,7 @@
       </md-menu-item>
       <!-- SHOW UP TO 3 NEW NOTIFICATIONS -->
       <div ng-show="vm.notifications.length > 0">
-        <md-menu-item ng-repeat="notification in vm.notifications | orderBy:'priority' | limitTo:3"
+        <md-menu-item ng-repeat="notification in vm.notifications | orderBy:'priority' | limitTo:vm.renderLimit"
                       class="top-bar-menu-item">
           <!-- NOTIFICATION CONTENT -->
           <div class="menu-item-content" layout="row" layout-align="space-between center">
@@ -89,7 +76,7 @@
                 <md-button class="md-raised md-accent"
                            ng-show="notification.actionButton"
                            ng-href="{{ notification.actionButton.url }}"
-                           ng-click="vm.pushGAEvent('Notification', 'Action button bell', notification.id);""
+                           ng-click="vm.pushGAEvent('Notification menu item', 'Click action button', notification.id);"
                            target="_blank"
                            rel="noopener noreferrer">
                   {{ notification.actionButton.label }}
@@ -97,6 +84,7 @@
                 <md-button class="md-default"
                            ng-show="notification.moreInfoButton"
                            ng-href="{{ notification.moreInfoButton.url }}"
+                           ng-click="vm.pushGAEvent('Notification menu item', 'Click more info', notification.id);"
                            target="_blank"
                            rel="noopener noreferrer">
                   {{ notification.moreInfoButton.label }}
@@ -106,7 +94,7 @@
             <!-- DISMISS BUTTON -->
             <md-button class="md-icon-button button__mark-seen"
                        ng-hide="notification.dismissible === false"
-                       ng-click="vm.dismissNotification(notification)"
+                       ng-click="vm.dismissNotification(notification);vm.pushGAEvent('Notification menu item', 'Dismiss', notification.id)"
                        aria-label="dismiss this notification"
                        md-prevent-menu-close="md-prevent-menu-close"
                        flex="20">
@@ -146,7 +134,7 @@
       <div class="dismiss-priority">
         <md-button class="md-icon-button"
                    ng-hide="priority.dismissible === false"
-                   ng-click="vm.dismissNotification(priority, true)"
+                   ng-click="vm.dismissNotification(priority, true);vm.pushGAEvent('Priority notification', 'Dismiss', priority.id)"
                    aria-label="Dismiss this notification">
           <md-icon>close</md-icon>
         </md-button>

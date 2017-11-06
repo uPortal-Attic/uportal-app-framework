@@ -170,9 +170,9 @@ define(['angular', 'require'], function(angular, require) {
   /* Side navigation controller */
   .controller('MainMenuController', ['$rootScope', '$scope', '$mdSidenav',
     '$mdMedia', '$window', '$localStorage', 'APP_OPTIONS', 'FOOTER_URLS',
-    'MESSAGES', 'NAMES',
+    'MESSAGES', 'NAMES', 'miscService',
     function($rootScope, $scope, $mdSidenav, $mdMedia, $window, $localStorage,
-             APP_OPTIONS, FOOTER_URLS, MESSAGES, NAMES) {
+             APP_OPTIONS, FOOTER_URLS, MESSAGES, NAMES, miscService) {
       var vm = this;
 
       // Scope variables
@@ -217,6 +217,16 @@ define(['angular', 'require'], function(angular, require) {
         if (vm.isMenuOpen()) {
           $mdSidenav('main-menu').close();
         }
+      };
+
+      /**
+       * Track clicks on "Notifications" bell in mobile side nav
+       * @param category Context of the event
+       * @param action Action taken
+       * @param label Label/data pertinent to event
+       */
+      vm.pushGAEvent = function(category, action, label) {
+        miscService.pushGAEvent(category, action, label);
       };
 
       /**
