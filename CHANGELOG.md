@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+* Recommend title case rather than sentence case for links in list-of-links widgets
+
 ## [6.1.0][] - 2017-10-18
 
 ### Added
