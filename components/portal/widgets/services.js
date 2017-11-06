@@ -26,8 +26,8 @@ define(['angular'], function(angular) {
     function($http, $log, SERVICE_LOC) {
     /**
      * Get the a single app's full entity file as JSON
-     * @param fname The app's fname value (<fname> in entity files)
-     * @returns {*}
+     * @param {string} fname - The app's fname value (<fname> in entity files)
+     * @return {*}
      */
     var getSingleWidgetData = function getSingleWidgetData(fname) {
       // configuration backwards compatibility
@@ -51,7 +51,7 @@ define(['angular'], function(angular) {
     /**
      * Display error message if a user doesn't have
      * permission to see/use the requested widget
-     * @param fname
+     * @param {string} fname
      * @return {Object} Special error-case widget configuration
      */
     var getErrorPage = function(fname) {
@@ -77,7 +77,7 @@ define(['angular'], function(angular) {
      * Get additional values/configuration not provided
      * by the widget's basic configuration.
      * Used by Option Link and Custom widgets
-     * @param widget
+     * @param {Object} widget
      * @return {*}
      */
     var getWidgetJson = function(widget) {
@@ -105,8 +105,8 @@ define(['angular'], function(angular) {
 
     /**
      * Get an RSS feed from the provided url as json
-     * @param url
-     * @returns {*}
+     * @param {string} url
+     * @return {*}
      */
     var getRssAsJson = function(url) {
       return $http.get(url, {cache: true})
@@ -122,8 +122,8 @@ define(['angular'], function(angular) {
     /**
      * Get the quantity of items needing attention
      * for an action-item widget
-     * @param url The url provided in widgetConfig
-     * @returns Number The number of items needing attention
+     * @param {string} url - The url provided in widgetConfig
+     * @return {number} The number of items needing attention
      */
     var getActionItemQuantity = function(url) {
       return $http.get(url)

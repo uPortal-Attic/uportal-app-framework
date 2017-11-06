@@ -100,9 +100,9 @@ copy(
 /**
  * Process the .less styles into css, auto-prefix the css,
  * then write to a .css file
- * @param srcPath String for the input .less file path
- * @param theme String for the name of the theme
- * @param styles String read from the input less file
+ * @param {string} srcPath - for the input .less file path
+ * @param {string} theme - for the name of the theme
+ * @param {string} styles - read from the input less file
  */
 function writeCss(srcPath, theme, styles) {
   // Output file path for the theme

@@ -74,7 +74,7 @@ define(['angular'], function(angular) {
 
         /**
          * Get everything at the messages service endpoint
-         * @returns {Array} An array of message objects
+         * @return {Array} An array of message objects
          */
         var getAllMessages = function() {
           return $http.get(SERVICE_LOC.messagesURL)
@@ -95,8 +95,8 @@ define(['angular'], function(angular) {
         /**
          * Filter the array of messages based on each message's groups
          * attribute
-         * @param messages An array of message objects
-         * @returns {Array} A filtered array of messages
+         * @param {Array} messages - An array of message objects
+         * @return {Array} A filtered array of messages
          */
         var getMessagesByGroup = function(messages) {
           return portalGroupService.getGroups()
@@ -144,8 +144,8 @@ define(['angular'], function(angular) {
         /**
          * Filter the array of messages based on if
          * data was requested before showing
-         * @param messages An array of message objects
-         * @returns {filteredMessages[]} an array of messages that
+         * @param {Array} messages An array of message objects
+         * @return {filteredMessages[]} an array of messages that
          *   includes only non-data messages and messages that requested
          *   data and had data
          */
@@ -209,7 +209,7 @@ define(['angular'], function(angular) {
 
         /**
          * Get list of seen message IDs from K/V store or session storage
-         * @returns {*}
+         * @return {*}
          */
         var getSeenMessageIds = function() {
           // If K/V store isn't turned on, don't proceed
@@ -231,10 +231,12 @@ define(['angular'], function(angular) {
 
         /**
          * Set list of seen IDs in K/V store and session storage
-         * @param originalSeenIds The ids when the controller initialized
-         * @param alteredSeenIds The ids following action in the controller
-         * @param action The action to take (restore or dismiss)
-         * @returns {*}
+         * @param {Array} originalSeenIds - The ids when the
+         *    controller initialized
+         * @param {Array} alteredSeenIds - The ids following action in
+         *    the controller
+         * @param {string} action - The action to take (restore or dismiss)
+         * @return {*}
          */
         var setMessagesSeen = function(originalSeenIds,
                                        alteredSeenIds,
@@ -275,7 +277,7 @@ define(['angular'], function(angular) {
 
         /**
          * Notify listeners that priority notifications flag has changed
-         * @param hasNotifications
+         * @param {boolean} hasNotifications
          */
         var broadcastPriorityFlag = function(hasNotifications) {
           $rootScope.$broadcast('HAS_PRIORITY_NOTIFICATIONS',
@@ -288,7 +290,7 @@ define(['angular'], function(angular) {
 
         /**
          * Notify listeners that unseen announcements flag has changed
-         * @param hasAnnouncements
+         * @param {boolean} hasAnnouncements
          */
         var broadcastAnnouncementFlag = function(hasAnnouncements) {
           $rootScope.$broadcast('HAS_UNSEEN_ANNOUNCEMENTS',

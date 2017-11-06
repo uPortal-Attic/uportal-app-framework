@@ -28,12 +28,18 @@
       <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">New features</md-tooltip>
     </md-button>
     <!-- Regular notifications button -->
-    <md-button ng-href="{{ vm.notificationsPageUrl }}" ng-click="vm.closeMainMenu();" aria-label="view all notifications"  ng-if="!vm.hasPriorityNotifications">
+    <md-button ng-href="{{ vm.notificationsPageUrl }}"
+               ng-click="vm.pushGAEvent('Sidenav notifications bell (normal state)', 'Click link', 'Normal state');vm.closeMainMenu();"
+               aria-label="view all notifications"
+               ng-if="!vm.hasPriorityNotifications">
       <span><md-icon>notifications</md-icon></span>
       <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
     </md-button>
     <!-- High priority notifications button -->
-    <md-button ng-href="{{ vm.notificationsPageUrl }}" ng-click="vm.closeMainMenu();" aria-label="you have important notifications"  ng-if="vm.hasPriorityNotifications">
+    <md-button ng-href="{{ vm.notificationsPageUrl }}"
+               ng-click="vm.pushGAEvent('Sidenav notifications bell', 'Click link', 'High priority state');vm.closeMainMenu();"
+               aria-label="you have important notifications"
+               ng-if="vm.hasPriorityNotifications">
       <span class="main-menu__high-priority">
         <md-icon class="md-warn">error</md-icon>
       </span>

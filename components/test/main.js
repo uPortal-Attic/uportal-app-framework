@@ -33,6 +33,7 @@ require(['/base/config.js'], function(config) {
 
     /**
      * Find all test files by filename convention
+     * @return {Object} allTestFiles
      */
     function getAllTestFiles() {
         var allTestFiles = [];

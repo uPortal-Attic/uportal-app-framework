@@ -25,6 +25,8 @@ define(['angular', 'jquery'], function(angular, $) {
         function($q, $http, miscService, SERVICE_LOC) {
           /**
            * Sets the skin on the backend layout manager
+           * @param {string} skinKey
+           * @return {*}
            */
           function setPortalSkin(skinKey) {
             if (SERVICE_LOC.portalLayoutRestEndpoint) {
