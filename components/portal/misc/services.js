@@ -35,15 +35,14 @@ define(['angular', 'jquery'], function(angular, $) {
     };
 
     /**
-    * Filter the array given the groups, with an optional groupFieldName
-    * @param array: an array of objects to be filteredLayout
-    * @param groups: The array of groups
-    * @param arrayGroupFieldName:
-    *        The field in the array to filter upon.
-    *        @default 'group'.
-    * @param groupsNameFieldName:
-    *        The field on the group object that is the group's name.
-    *        @default 'name'
+     * Filter the array given the groups, with an optional groupFieldName
+     * @param {Array} array - an array of objects to be filteredLayout
+     * @param {Array} groups - The array of groups
+     * @param {string} [arrayGroupFieldName=group] - The field in the array
+     *    to filter upon.
+     * @param {string} [groupsNameFieldName=name] - The field on the group
+     *     object that is the group's name.
+     * @return {*}
     */
     var filterArrayByGroups = function(
       array, groups, arrayGroupFieldName, groupsNameFieldName
@@ -155,10 +154,11 @@ define(['angular', 'jquery'], function(angular, $) {
   .factory('miscService',
   function($analytics, $http, $window, $location, $log, MISC_URLS) {
     /**
-     Used to redirect users to login screen
-     iff result code is 0 (yay shib) or 302
-
-     Setup MISC_URLS.loginURL in js/app-config.js to have redirects happen
+     * Used to redirect users to login screen
+     *    if result code is 0 (yay shib) or 302
+     *    Setup MISC_URLS.loginURL in js/app-config.js to have redirects happen
+     * @param {number} status
+     * @param {string} caller
     **/
     var redirectUser = function(status, caller) {
       if (status === 0 || status === 302) {
@@ -176,13 +176,13 @@ define(['angular', 'jquery'], function(angular, $) {
     };
 
     /**
-     Google Analytics event push
-     - category : e.g.: beta header
-     - action   : e.g.: beta buttons
-     - label    : e.g.: back to classic
-
-     See https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide for more info
-    **/
+     * Google Analytics event push
+     * See https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide for more info
+     * @param {string} category - Context of the event
+     * @param {string} action - Action taken
+     * @param {string} label - Label/data pertinent to event
+     * @param {string} value
+     */
     var pushGAEvent = function(category, action, label, value) {
       $analytics.eventTrack(action, {
         'category': category,

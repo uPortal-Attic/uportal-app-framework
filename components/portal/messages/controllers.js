@@ -88,7 +88,7 @@ define(['angular'], function(angular) {
 
         /**
          * Separate the message types in scope for child controllers
-         * @param result Object
+         * @param {Object} result
          */
         var filterMessagesSuccess = function(result) {
           // Check for filtered notifications
@@ -107,7 +107,7 @@ define(['angular'], function(angular) {
         /**
          * Handle errors that occur while resolving promises to
          * get notifications
-         * @param error {Object}
+         * @param {Object} error
          */
         var filterMessagesFailure = function(error) {
           $log.warn('Problem getting messages from messagesService');
@@ -198,7 +198,7 @@ define(['angular'], function(angular) {
 
         /**
          * Separate seen and unseen notifications, then set scope variables
-         * @param result {Object}
+         * @param {Object} result
          */
         var getSeenMessageIdsSuccess = function(result) {
           if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
@@ -250,7 +250,7 @@ define(['angular'], function(angular) {
 
         /**
          * Handle errors getting seen message IDs
-         * @param error {Object}
+         * @param {Object} error
          */
         var getSeenMessageIdsFailure = function(error) {
           $log.warn('Couldn\'t get seen message IDs for notifications ' +
@@ -297,7 +297,7 @@ define(['angular'], function(angular) {
         // ////////////////
         /**
          * Check if user is viewing notifications page
-         * @return boolean
+         * @return {boolean}
          */
         vm.isNotificationsPage = function() {
           return $window.location.pathname === MESSAGES.notificationsPageURL;
@@ -305,8 +305,8 @@ define(['angular'], function(angular) {
 
         /**
          * On-click event to mark a notification as "seen"
-         * @param notification {Object}
-         * @param isHighPriority {boolean}
+         * @param {Object} notification
+         * @param {boolean} isHighPriority
          */
         vm.dismissNotification = function(notification, isHighPriority) {
           vm.notifications = $filter('filterOutMessageWithId')(
@@ -334,8 +334,8 @@ define(['angular'], function(angular) {
 
         /**
          * On-click event to mark a notification as "unseen"
-         * @param notification {Object}
-         * @param isHighPriority {boolean}
+         * @param {Object} notification
+         * @param {boolean} isHighPriority
          */
         vm.restoreNotification = function(notification, isHighPriority) {
           // Remove notification from dismissed array
@@ -392,9 +392,9 @@ define(['angular'], function(angular) {
 
         /**
          * Track clicks on "Notifications" links in mobile menu and top bar
-         * @param category {string} Context of the event
-         * @param action {string} Action taken
-         * @param label {string} Label/data pertinent to event
+         * @param {string} category - Context of the event
+         * @param {string} action - Action taken
+         * @param {string} label - Label/data pertinent to event
          */
         vm.pushGAEvent = function(category, action, label) {
           miscService.pushGAEvent(category, action, label);
@@ -465,7 +465,7 @@ define(['angular'], function(angular) {
         /**
          * Separate seen and unseen, then set mascot image or get popups
          * depending on directive mode.
-         * @param result {Object} Data returned by promises
+         * @param {Object} result - Data returned by promises
          */
         var getSeenMessageIdsSuccess = function(result) {
           if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
@@ -519,7 +519,7 @@ define(['angular'], function(angular) {
 
         /**
          * Handle errors encountered while resolving promises
-         * @param error {Object}
+         * @param {Object} error
          */
         var getSeenMessageIdsFailure = function(error) {
           // HANDLE ERRORS
@@ -607,7 +607,7 @@ define(['angular'], function(angular) {
         /**
          * Remove dismissed announcement from scope announcements,
          * then update storage
-         * @param id {string}
+         * @param {string} id
          */
         vm.markSingleAnnouncementSeen = function(id) {
           // Use $filter to filter out by ID
@@ -726,7 +726,7 @@ define(['angular'], function(angular) {
 
         /**
          * Get seen message IDs, then mark all announcements seen
-         * @param result {Object} Data returned by promises
+         * @param {Object} result - Data returned by promises
          */
         var getSeenMessageIdsSuccess = function(result) {
           var originalSeenMessageIds = [];

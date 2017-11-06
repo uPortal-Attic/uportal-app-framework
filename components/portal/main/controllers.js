@@ -204,7 +204,7 @@ define(['angular', 'require'], function(angular, require) {
 
       /**
        * Check if the side nav menu is open
-       * @return Boolean
+       * @return {boolean}
        */
       vm.isMenuOpen = function() {
         return $mdSidenav('main-menu').isOpen();
@@ -221,9 +221,9 @@ define(['angular', 'require'], function(angular, require) {
 
       /**
        * Track clicks on "Notifications" bell in mobile side nav
-       * @param category Context of the event
-       * @param action Action taken
-       * @param label Label/data pertinent to event
+       * @param {string} category - Context of the event
+       * @param {string} action - Action taken
+       * @param {string} label - Label/data pertinent to event
        */
       vm.pushGAEvent = function(category, action, label) {
         miscService.pushGAEvent(category, action, label);
