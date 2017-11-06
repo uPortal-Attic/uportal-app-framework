@@ -88,7 +88,7 @@ define(['angular'], function(angular) {
 
         /**
          * Separate the message types in scope for child controllers
-         * @param result {*}
+         * @param result Object
          */
         var filterMessagesSuccess = function(result) {
           // Check for filtered notifications
