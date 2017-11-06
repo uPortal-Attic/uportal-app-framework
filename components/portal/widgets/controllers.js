@@ -33,8 +33,8 @@ define(['angular'], function(angular) {
      * Check for widget types that require extra configuration
      * (including null/undefined case), default to provided
      * widget type.
-     * @param widget The widget object provided by widgetService
-     * @returns {*} A string for the widget type
+     * @param {Object} widget - The widget object provided by widgetService
+     * @return {*} - A string for the widget type
      */
     var widgetType = function widgetType(widget) {
       // Check for types that need handling
@@ -74,6 +74,7 @@ define(['angular'], function(angular) {
     /**
      * Initial widget setup -- gets data for a single widget
      * from the provided fname attribute
+     * @param {string} fname
      */
     $scope.initializeWidget = function(fname) {
       // Initialize scope variables
@@ -103,7 +104,7 @@ define(['angular'], function(angular) {
     /**
      * Set the launch button url for static content,
      * exclusive mode, and basic widgets
-     * @returns {*}
+     * @return {*}
      */
     $scope.renderUrl = function renderUrl() {
       var widget = $scope.widget;
@@ -196,8 +197,8 @@ define(['angular'], function(angular) {
     /**
      * Turn the provided date string into an actual
      * Date so it can be filtered into something prettier.
-     * @param dateString A hideously ugly date string
-     * @returns {*} A Date object or null
+     * @param {string} dateString - A hideously ugly date string
+     * @return {*} A Date object or null
      */
     $scope.getPrettyDate = function(dateString) {
       // Create a new date if a date string was provided, otherwise return null
@@ -206,8 +207,8 @@ define(['angular'], function(angular) {
 
     /**
      * Remove leading/trailing spaces from RSS titles
-     * @param title The RSS title
-     * @returns String The trimmed title
+     * @param {string} title - The RSS title
+     * @return {string} The trimmed title
      */
     $scope.trim = function(title) {
       return title.trim();
@@ -304,7 +305,7 @@ define(['angular'], function(angular) {
     // Scope functions
     /**
      * Navigate to the url provided by the action item
-     * @param url A path provided by the action item
+     * @param {string} url - A path provided by the action item
      */
     $scope.goToAction = function(url) {
       // Go there if the url exists
@@ -317,7 +318,7 @@ define(['angular'], function(angular) {
     /**
      * Gets the quantity for the provided item from its feedUrl, then
      * builds a new actionItem object to add to scope.
-     * @param item Object for a single action item
+     * @param {Object} item - Object for a single action item
      */
     var assembleActionItemsList = function(item) {
       // Get number from provided url
@@ -508,7 +509,7 @@ define(['angular'], function(angular) {
 
     /**
      * Display time-sensitive content with provided configuration
-     * @param config The provided configuration for a call to action
+     * @param {*} config - The provided configuration for a call to action
      */
     var displayTimeSensitiveContent = function(config) {
       var dates = config.activeDateRange;
@@ -577,7 +578,7 @@ define(['angular'], function(angular) {
      * @param {Object} object The array entry to search through
      * @param {Array<String>} strings
      *        The string values to test against each entry
-     * @returns {Array<Object>} An array containing only the desired
+     * @return {Array<Object>} An array containing only the desired
      */
     $scope.filteredArray = function(array, object, strings) {
       if (array && object && strings) {
@@ -595,7 +596,7 @@ define(['angular'], function(angular) {
 
     /**
      * Initialize scope variables before getting widget content
-     * @param template The provided custom HTML template
+     * @param {string} template - The provided custom HTML template
      */
     var initializeCustomWidget = function(template) {
       $scope.content = [];

@@ -24,14 +24,17 @@ define(['angular'], function(angular) {
     '$http', 'miscService', 'FRAME_URLS',
     function($http, miscService, FRAME_URLS) {
     /**
-    * Gets frame information from generated about-frame.json
+     * Gets frame information from generated about-frame.json
+     * @return {*}
     **/
     var getFrameDetails = function() {
       return getDetails(FRAME_URLS.aboutFrame);
     };
 
     /**
-    * Get information
+     * Get information
+     * @param {string} URL
+     * @return {*}
     **/
     var getDetails = function(URL) {
       return $http.get(URL, {cache: true})

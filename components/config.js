@@ -20,7 +20,9 @@
 // eslint-disable-next-line requirejs/no-js-extension
 define(['./my-app/app-config.js'], function(myAppConfig) {
   /**
-   * taken from https://plainjs.com/javascript/utilities/merge-two-javascript-objects-19/
+   * Taken from https://plainjs.com/javascript/utilities/merge-two-javascript-objects-19/
+   * @param {Object} obj
+   * @param {string} src
    */
   function extend(obj, src) {
     Object.keys(src).forEach(function(key) {
