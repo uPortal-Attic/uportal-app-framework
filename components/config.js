@@ -53,6 +53,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'frame-config': 'js/frame-config',
       'override': 'js/override',
       'sortable': 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.17.2/sortable.min',
+      'moment': 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min',
   };
 
   var frameShims = {
@@ -75,6 +76,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
         deps: ['angular', 'jquery-ui'],
         exports: 'sortable',
       },
+      'moment': {exports: 'moment'},
   };
 
   var allPaths;
