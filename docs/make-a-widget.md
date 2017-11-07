@@ -188,7 +188,7 @@ This provides a more usable click surface, a simpler and cleaner user experience
       "launchText":"Go to resource guide",
       "links":[
         {
-          "title":"Get started",
+          "title":"Get Started",
           "href":"https://rprg.wisc.edu/phases/initiate/",
           "icon":"fa-map-o",
           "target":"_blank"
@@ -207,7 +207,7 @@ This provides a more usable click surface, a simpler and cleaner user experience
 
 #### Guidance
 
-+ Use sentence case in the titles of the links.
++ Use title case in the titles of the links.
 
 ### RSS widget
 
