@@ -460,7 +460,13 @@ define(['angular', 'moment'], function(angular, moment) {
     };
 
     var resolveTemplateStatus = function(now, actionStart, actionEnd) {
-      if (!now || !actionStart || !actionEnd) {
+      if (
+        !(
+          moment(now).isValid()
+          && moment(actionStart).isValid()
+          && moment(actionEnd).isValid()
+        )
+      ) {
         throw new TypeError('now, actionStart, and actionEnd must all be set');
       }
 
