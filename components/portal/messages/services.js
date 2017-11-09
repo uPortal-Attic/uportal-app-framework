@@ -83,13 +83,13 @@ define(['angular'], function(angular) {
               if (response.data && response.data.messages
                 && angular.isArray(response.data.messages)) {
                 resolveRemotelyTitledMessages(response.data.messages)
-                .then(function (result) {
+                .then(function(result) {
                   return result;
                 })
-                .catch(function(error){
+                .catch(function(error) {
                   $log.error;
                   return response.data.messages;
-                })
+                });
               } else {
                 return GET_MESSAGES_FAILED;
               }
@@ -116,11 +116,10 @@ define(['angular'], function(angular) {
             angular.forEach(titleUrls, function(message) {
               resolveMessageTitle(message)
               .then(function(result) {
-                  if(result && result.length>0){
+                  if (result && result.length>0) {
                       message.title = result;
                       messagesWithTitles.push(message);
-                  } 
-                  
+                  }
                   return result;
               })
               .catch(function(error) {
@@ -195,6 +194,49 @@ define(['angular'], function(angular) {
               $log.warn('Problem getting groups from portalGroupService');
               miscService.redirectUser(
                 error.status, 'Unable to retrieve groups');
+            });
+        };
+
+        var getTitledMessages = function(messages) {
+           // Initialize method variables
+          var promises = [];
+          var filteredMessages = [];
+
+          angular.forEach(messages, function(message) {
+            if(message.titleUrl) {
+              promises.push($http.get(message.titleUrl)
+                .then(function(result) {
+                  var titleObject = result.data;
+                  if(titleObject.result && titleObject.result.length > 0) {
+                     var fromApi = titleObject.result[0];
+                     if(fromApi.full) {
+                       message.title = fromApi.full;
+                     } else {
+                       message.title = fromApi;
+                     }
+                  } else {
+                    // If there is an empty array, then the user should
+                    // never see this notification. 
+                    var index = messages.indexOf(message);
+                    if (index > -1) {
+                      messages.splice(index, 1);
+                    }
+                  }
+                }).catch(function(error){
+                  $log.warn('Error retrieving title for notification');
+                  $log.error(error);
+                })
+            }
+          })
+          // Once all the promises are prepared, run 'em
+          return $q.all(promises)
+            .then(function(result) {
+              angular.forEach(result, function(message) {
+                if (message) {
+                  filteredMessages.push(message);
+                }
+              });
+              return filteredMessages;
             });
         };
 
