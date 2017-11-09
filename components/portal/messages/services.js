@@ -58,6 +58,7 @@ define(['angular'], function(angular) {
          * @property {number} id
          * @property {string} title
          * @property {string} titleShort
+         * @property {string} titleUrl
          * @property {string} description
          * @property {string} descriptionShort
          * @property {string} messageType
@@ -81,6 +82,7 @@ define(['angular'], function(angular) {
             .then(function(response) {
               if (response.data && response.data.messages
                 && angular.isArray(response.data.messages)) {
+                resolveRemotelyTitledMessages(response.data.messages);
                 return response.data.messages;
               } else {
                 return GET_MESSAGES_FAILED;
@@ -90,6 +92,42 @@ define(['angular'], function(angular) {
               miscService.redirectUser(error.status, 'Get all messages');
               return GET_MESSAGES_FAILED;
             });
+        };
+
+        var resolveRemotelyTitledMessages = function(messages) {
+          var titleUrls = [];
+          angular.forEach(messages, function(message) {
+            if (message.titleUrl) {
+              titleUrls.push(message);
+            }
+          });
+          if (titleUrls.length > 0) {
+            angular.forEach(titleUrls, function(message) {
+              resolveMessageTitle(message)
+              .then(function(result) {
+                  message.title = result.data;
+                  return result;
+              })
+              .catch(function(error) {
+                message.title = error.status + ' error retrieving notification message.';
+                $log.error(error);
+                return null;
+              });
+            });
+          }
+        };
+
+        var resolveMessageTitle = function(message) {
+          return $http.get(message.titleUrl, {cache: true})
+          .then(function(result) {
+            var data = result.data;
+            return data;
+          })
+          .catch(function(error) {
+            message.title = error.status + ' error retrieving notification message.';
+            $log.error(error);
+            return null;
+          });
         };
 
         /**
@@ -155,6 +193,14 @@ define(['angular'], function(angular) {
           var filteredMessages = [];
 
           angular.forEach(messages, function(message) {
+            if (message.titleUrl) {
+              promises.push($http.get(message.titleUrl)
+                .then(function(result) {
+                  var subTitle = result;
+                  message.title = subTitle;
+                  return message;
+                }));
+            }
             if (message.audienceFilter.dataUrl) {
               // If the message has a dataUrl, add it to promises array
               promises.push($http.get(message.audienceFilter.dataUrl)
@@ -307,6 +353,7 @@ define(['angular'], function(angular) {
           getMessagesByData: getMessagesByData,
           getSeenMessageIds: getSeenMessageIds,
           setMessagesSeen: setMessagesSeen,
+          resolveRemotelyTitledMessages: resolveRemotelyTitledMessages,
           broadcastPriorityFlag: broadcastPriorityFlag,
           broadcastAnnouncementFlag: broadcastAnnouncementFlag,
         };
