@@ -82,11 +82,18 @@ define(['angular'], function(angular) {
             .then(function(response) {
               if (response.data && response.data.messages
                 && angular.isArray(response.data.messages)) {
-                resolveRemotelyTitledMessages(response.data.messages);
-                return response.data.messages;
+                resolveRemotelyTitledMessages(response.data.messages)
+                .then(function (result) {
+                  return result;
+                })
+                .catch(function(error){
+                  $log.error;
+                  return response.data.messages;
+                })
               } else {
                 return GET_MESSAGES_FAILED;
               }
+              return response.data.messages;
             })
             .catch(function(error) {
               miscService.redirectUser(error.status, 'Get all messages');
@@ -96,23 +103,34 @@ define(['angular'], function(angular) {
 
         var resolveRemotelyTitledMessages = function(messages) {
           var titleUrls = [];
+          var messagesToReturn = [];
           angular.forEach(messages, function(message) {
             if (message.titleUrl) {
               titleUrls.push(message);
+            } else {
+              messagesToReturn.push(message);
             }
           });
           if (titleUrls.length > 0) {
+            var messagesWithTitles = [];
             angular.forEach(titleUrls, function(message) {
               resolveMessageTitle(message)
               .then(function(result) {
-                  message.title = result.data;
+                  if(result && result.length>0){
+                      message.title = result;
+                      messagesWithTitles.push(message);
+                  } 
+                  
                   return result;
               })
               .catch(function(error) {
-                message.title = error.status + ' error retrieving notification message.';
+                message.title = error.status
+                  + ' error retrieving notification message.';
                 $log.error(error);
                 return null;
               });
+              messagesToReturn.push(messagesWithTitles);
+              return messagesToReturn;
             });
           }
         };
@@ -124,7 +142,8 @@ define(['angular'], function(angular) {
             return data;
           })
           .catch(function(error) {
-            message.title = error.status + ' error retrieving notification message.';
+            message.title = error.status
+              + ' error retrieving notification message.';
             $log.error(error);
             return null;
           });
