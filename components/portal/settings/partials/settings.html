@@ -29,7 +29,7 @@
           <setting-option></setting-option>
         </div>
       </div>
-      <!-- Theme selector and "danger zone" -->
+      <!-- Theme selector and convenient tool for clearing browser state -->
       <div layout="column" flex-gt-sm="40">
         <h4 class="md-subhead">Theme Selector</h4>
         <md-input-container>
@@ -37,8 +37,8 @@
             <md-option ng-repeat="item in THEMES" ng-value="item">{{ item.name }}</md-option>
           </md-select>
         </md-input-container>
-        <h4 class="md-subhead">Danger Zone<br>
-          <small>Clean the slate by clearing the session storage and resetting to defaults.</small>
+        <h4 class="md-subhead">Reset In-Browser State<br>
+          <small>Clear in-browser session storage and local storage. This is perfectly safe and may cause some changes to take effect faster.</small>
         </h4>
         <div layout="column" layout-gt-xs="row">
           <md-button class="md-primary md-raised" ng-click="resetAll()">

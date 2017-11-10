@@ -39,7 +39,7 @@
           <md-content>
             <md-list class="notifications-list" flex>
               <md-list-item class="notification-item"
-                            ng-repeat="notification in vm.notifications | orderBy:'priority'"
+                            ng-repeat="notification in vm.notifications | orderBy:'priority' track by $index"
                             layout="row"
                             layout-align="start center">
 
@@ -69,7 +69,7 @@
           <md-content>
             <md-list class="notifications-list" flex>
               <md-list-item class="notification-item"
-                            ng-repeat="notification in vm.dismissedNotifications | orderBy:['-priority', '-id']"
+                            ng-repeat="notification in vm.dismissedNotifications | orderBy:['-priority', '-id']  track by $index"
                             layout="row"
                             layout-align="start center">
 

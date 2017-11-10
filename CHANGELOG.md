@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * Recommend title case rather than sentence case for links in list-of-links and search-with-links widgets
 
+### Fixed
+
+* Clarify safety of `/settings` tooling to reset in-browser state. (#600)
+
 ## [6.1.0][] - 2017-10-18
 
 ### Added

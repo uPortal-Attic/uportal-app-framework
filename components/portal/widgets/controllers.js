@@ -18,7 +18,7 @@
  */
 'use strict';
 
-define(['angular'], function(angular) {
+define(['angular', 'moment'], function(angular, moment) {
   return angular.module('portal.widgets.controllers', [])
 
   /**
@@ -415,32 +415,35 @@ define(['angular'], function(angular) {
 
       var now = new Date();
       var templateIndex = indexWithinTemplateRange(now, callsToAction);
-      if (-1 < templateIndex) {
+      if (templateIndex > -1) {
         displayTimeSensitiveContent(callsToAction[templateIndex]);
       }
     };
 
     var resolveDate = function(str, defaultEndOfDay) {
-      var result = null;
-      if (str) {
-        var dateStr =
-          $filter('filterForDateWithYear')(str);
-        if (dateStr) {
-          if (dateStr.indexOf('T') < 0) {
-            if (defaultEndOfDay) {
-              dateStr += 'T23:59:59';
-            } else {
-              dateStr += 'T00:00:00';
-            }
-          }
-          result = new Date(dateStr);
+      // if it is valid ISO 8601 pass through
+      var fullISODate = moment(str, moment.ISO_8601, true);
+      if (fullISODate.isValid()) {
+        return fullISODate.toDate();
+      }
+
+      // if it is a partial ISO string, fill in missing fields
+      var partialISODate = moment(str, ['YYYY-MM-DD', 'MM-DD'], true);
+      if (partialISODate.isValid()) {
+        if (defaultEndOfDay) {
+          return partialISODate.endOf('day').toDate();
+        } else {
+          return partialISODate.startOf('day').toDate();
         }
       }
-      return result;
+
+      // this is not a valid date
+      return moment.invalid().toDate();
     };
 
     var indexWithinTemplateRange = function(now, callsToAction) {
       var result = -1;
+      // TODO: refactor as Array.prototype.findIndex when IE support is dropped
       // Check if today falls within any of the provided date ranges
       angular.forEach(callsToAction, function(callToAction, index) {
         if (result === -1) { // We haven't found a call to action
@@ -448,8 +451,7 @@ define(['angular'], function(angular) {
             resolveDate(callToAction.activeDateRange.templateLiveDate);
           var endDate =
             resolveDate(callToAction.activeDateRange.templateRetireDate, true);
-          if (startDate && startDate < now // Template started
-            && (!endDate || endDate > now)) { // Template has not ended
+          if (moment().isBetween(startDate, endDate)) {
             result = index;
           }
         }
@@ -458,53 +460,62 @@ define(['angular'], function(angular) {
     };
 
     var resolveTemplateStatus = function(now, actionStart, actionEnd) {
-      var result = '';
+      if (
+        !(
+          moment(now).isValid()
+          && moment(actionStart).isValid()
+          && moment(actionEnd).isValid()
+        )
+      ) {
+        throw new TypeError('now, actionStart, and actionEnd must all be set');
+      }
+
+      if (moment(actionStart).isAfter(actionEnd)) {
+        throw new RangeError('actionStart must be before actionEnd');
+      }
+
       var statuses = [
         {
           name: 'upcoming',
           check: function() {
-            return now < actionStart && now < actionEnd;
+            return moment(now).isBefore(actionStart);
           },
-        }, {
+        },
+        {
           name: 'ongoing',
           check: function() {
-            return now > actionStart && now < actionEnd;
+            return moment(now).isBetween(actionStart, actionEnd);
           },
-        }, {
+        },
+         {
           name: 'lastDay',
           check: function() {
-            return now > actionStart && now < actionEnd
+            return moment(now).isBetween(actionStart, actionEnd)
               && 1 === resolveDaysLeft(now, actionEnd);
           },
-        }, {
+        },
+        {
           name: 'ended',
           check: function() {
-            return now > actionStart && now > actionEnd;
+            return moment(now).isAfter(actionEnd);
           },
         },
       ];
 
-      if (now && actionStart && actionEnd) {
-        angular.forEach(statuses, function(status) {
-          if (status.check()) {
-            result = status.name;
-          }
-        });
-      }
+      var result = '';
+      // TODO: rewrite as Array.prototype.find when IE support is dropped
+      angular.forEach(statuses, function(status) {
+        if (status.check()) {
+          result = status.name;
+        }
+      });
 
       return result;
     };
 
     var resolveDaysLeft = function(now, actionEnd) {
-      var result = -1;
-      var oneDay = 1000 * 60 * 60 * 24;
-
-      if (now && actionEnd && now < actionEnd) {
-        var difference = actionEnd.getTime() - now.getTime();
-        result = Math.ceil((1.0 * difference) / oneDay);
-      }
-
-      return result;
+      // round dates up, rather than the default which rounds down
+      return Math.ceil(moment(actionEnd).diff(now, 'days', true));
     };
 
     /**
