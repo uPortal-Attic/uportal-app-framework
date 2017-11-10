@@ -197,38 +197,43 @@ define(['angular'], function(angular) {
             });
         };
 
-        var getTitledMessages = function(messages) {
-           // Initialize method variables
+        var getMessagesByTitle = function(messages) {
           var promises = [];
           var filteredMessages = [];
-
+          var toBeDiscarded = [];
+          
           angular.forEach(messages, function(message) {
-            if(message.titleUrl) {
+            if (message.titleUrl) {
               promises.push($http.get(message.titleUrl)
                 .then(function(result) {
-                  var titleObject = result.data;
-                  if(titleObject.result && titleObject.result.length > 0) {
-                     var fromApi = titleObject.result[0];
-                     if(fromApi.full) {
-                       message.title = fromApi.full;
+                  if(result.data){
+                     var titleObject = result.data;
+                     if(titleObject.result && titleObject.result.length > 0) {
+                       var fromApi = titleObject.result[0];
+                       if(fromApi.full) {
+                         message.title = fromApi.full;
+                       } else {
+                         message.title = fromApi;
+                       }
+                       filteredMessages.push(message);
                      } else {
-                       message.title = fromApi;
+                       //There is no data to display to the user, 
+                       //either due to an error - or the owner of this
+                       //notification has nothing to display to this user.
+                       //Either way, we discard this notification. 
+
+                       toBeDiscarded.push(message);
                      }
-                  } else {
-                    // If there is an empty array, then the user should
-                    // never see this notification. 
-                    var index = messages.indexOf(message);
-                    if (index > -1) {
-                      messages.splice(index, 1);
-                    }
                   }
-                }).catch(function(error){
-                  $log.warn('Error retrieving title for notification');
-                  $log.error(error);
+                  message.title = titleObject;
+                  return message;
+                }).catch(function (error) {
+                  $log.warn(error);
+                  toBeDiscarded.push(message);
                 })
-            }
-          })
-          // Once all the promises are prepared, run 'em
+              )}
+        });
+         // Once all the promises are prepared, run 'em
           return $q.all(promises)
             .then(function(result) {
               angular.forEach(result, function(message) {
@@ -237,7 +242,7 @@ define(['angular'], function(angular) {
                 }
               });
               return filteredMessages;
-            });
+             });
         };
 
         /**
@@ -253,15 +258,7 @@ define(['angular'], function(angular) {
           var promises = [];
           var filteredMessages = [];
 
-          angular.forEach(messages, function(message) {
-            if (message.titleUrl) {
-              promises.push($http.get(message.titleUrl)
-                .then(function(result) {
-                  var subTitle = result;
-                  message.title = subTitle;
-                  return message;
-                }));
-            }
+         
             if (message.audienceFilter.dataUrl) {
               // If the message has a dataUrl, add it to promises array
               promises.push($http.get(message.audienceFilter.dataUrl)
@@ -412,6 +409,7 @@ define(['angular'], function(angular) {
           getAllMessages: getAllMessages,
           getMessagesByGroup: getMessagesByGroup,
           getMessagesByData: getMessagesByData,
+          getMessagesByTitle: getMessagesByTitle,
           getSeenMessageIds: getSeenMessageIds,
           setMessagesSeen: setMessagesSeen,
           resolveRemotelyTitledMessages: resolveRemotelyTitledMessages,

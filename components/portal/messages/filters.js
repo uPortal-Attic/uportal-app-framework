@@ -37,6 +37,22 @@ define(['angular'], function(angular) {
         return separatedMessages;
       };
     }])
+    .filter('titleUrl', function() {
+      return function(messages) {
+        var titularMessages = {
+          withTitleUrl: [],
+          withoutTitleUrl: [],
+        };
+        angular.forEach(messages, function(message) {
+        if (message.titleUrl) {
+          withTitleUrl.push(message);
+        } else {
+          withoutTitleUrl.push(message);
+        }
+        });
+        return titularMessages;
+      };
+    })
     .filter('addToHome', function() {
       return function(messages, MISC_URLS, PortalAddToHomeService) {
         angular.forEach(messages, function(message) {
