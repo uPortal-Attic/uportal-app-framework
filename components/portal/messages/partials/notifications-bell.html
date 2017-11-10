@@ -59,7 +59,7 @@
       </md-menu-item>
       <!-- SHOW UP TO 3 NEW NOTIFICATIONS -->
       <div ng-show="vm.notifications.length > 0">
-        <md-menu-item ng-repeat="notification in vm.notifications | orderBy:'priority' | limitTo:vm.renderLimit"
+        <md-menu-item ng-repeat="notification in vm.notifications | orderBy:'priority' | limitTo:vm.renderLimit track by $index"
                       class="top-bar-menu-item">
           <!-- NOTIFICATION CONTENT -->
           <div class="menu-item-content" layout="row" layout-align="space-between center">
