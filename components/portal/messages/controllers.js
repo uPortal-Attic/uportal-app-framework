@@ -102,7 +102,7 @@ define(['angular'], function(angular) {
               result.filteredByGroup,
               result.filteredByData
             );
-            reFilteredMessages = $filter('filterForCommonElements')(
+            var reFilteredMessages = $filter('filterForCommonElements')(
               filteredMessages,
               result.filteredByTitle
             );
