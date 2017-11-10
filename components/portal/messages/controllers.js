@@ -72,6 +72,8 @@ define(['angular'], function(angular) {
                 messagesService.getMessagesByGroup(allMessages),
               filteredByData:
                 messagesService.getMessagesByData(allMessages),
+              filteredByTitle:
+                messagesService.getMessagesByTitle(allMessages),
             };
             // Call filtered notifications promises, then pass on to
             // the completion function
@@ -93,13 +95,19 @@ define(['angular'], function(angular) {
         var filterMessagesSuccess = function(result) {
           // Check for filtered notifications
           var filteredMessages = [];
-          if (result.filteredByGroup && result.filteredByData) {
-            // Combine the two filtered arrays into one (no dupes)
+          if (result.filteredByGroup && result.filteredByData
+            && result.filteredByTitle) {
+            // Combine the three filtered arrays into one (no dupes)
             filteredMessages = $filter('filterForCommonElements')(
               result.filteredByGroup,
               result.filteredByData
             );
-            $scope.messages = $filter('separateMessageTypes')(filteredMessages);
+            var reFilteredMessages = $filter('filterForCommonElements')(
+              result.filteredByTitle,
+              filteredMessages
+            );
+            $scope.messages =
+              $filter('separateMessageTypes')(reFilteredMessages);
             $scope.hasMessages = true;
           }
         };
