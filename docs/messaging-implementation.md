@@ -51,9 +51,13 @@ point uportal-app-framework to your desired feed.
   - Use the word "You" when the group- or data-filtering for a message is somewhat specific (i.e. Users with unactivated accounts).
 - **titleShort**: A shorter version of the message title used by the mascot announcer menu. *Required if the `messageType` is "announcement".*
 - **titleUrl**: *(experimental, optional)* A url which, when called successfully, will supply the title text for this notification. If the url returns an error, null, or empty array - the notification does not display. The response object should be in the following format:
-```json {"result":["title text"]}```
+```json
+{"result":["title text"]}
+```
 For messages of optional length, the api response should look like:
-```json {"result":["short": "Concise title text", "full": "Verbose title text"]}```
+```json 
+{"result":["short": "Concise title text", "full": "Verbose title text"]}
+```
 - **description**: Information about an announcement -- appears on the "Features" page and in the popup announcement.
 - **descriptionShort**: Brief information about an announcement -- appears in the mascot announcer menu. *Required if the `messageType` is "announcement".*
 - **messageType**: Accepts either "notification" or "announcement" -- used to distinguish between the two broader categories.
