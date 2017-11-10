@@ -325,6 +325,7 @@ define(['angular'], function(angular) {
                        // Either way, we discard this notification. 
 
                        toBeDiscarded.push(message);
+                       return null;
                      }
                   }
                   return message;
