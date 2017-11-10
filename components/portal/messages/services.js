@@ -327,7 +327,6 @@ define(['angular'], function(angular) {
                        toBeDiscarded.push(message);
                      }
                   }
-                  message.title = titleObject;
                   return message;
                 }).catch(function(error) {
                   $log.warn(error);
