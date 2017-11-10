@@ -95,7 +95,7 @@ define(['angular'], function(angular) {
         var filterMessagesSuccess = function(result) {
           // Check for filtered notifications
           var filteredMessages = [];
-          if (result.filteredByGroup && result.filteredByData 
+          if (result.filteredByGroup && result.filteredByData
             && result.filteredByTitle) {
             // Combine the three filtered arrays into one (no dupes)
             filteredMessages = $filter('filterForCommonElements')(
@@ -103,10 +103,11 @@ define(['angular'], function(angular) {
               result.filteredByData
             );
             var reFilteredMessages = $filter('filterForCommonElements')(
-              filteredMessages,
-              result.filteredByTitle
+              result.filteredByTitle,
+              filteredMessages
             );
-            $scope.messages = $filter('separateMessageTypes')(reFilteredMessages);
+            $scope.messages =
+              $filter('separateMessageTypes')(reFilteredMessages);
             $scope.hasMessages = true;
           }
         };
