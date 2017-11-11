@@ -9,7 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+* Improves top bar accessibility (#594)
+* Fix the `search-with-links` widget type (#585)
+* Fix footer link style to avoid off-by-one-pixel misalignment (#586)
+* Fix separator character between footer links (#587, #590)
 * Clarify safety of `/settings` tooling to reset in-browser state. (#600)
+* Fix notification rendering robustness against duplicate ids (#602, #603)
 
 ### Docs
 
