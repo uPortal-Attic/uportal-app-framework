@@ -6,11 +6,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
-* Recommend title case rather than sentence case for links in list-of-links widgets
 
 ### Fixed
 
 * Clarify safety of `/settings` tooling to reset in-browser state. (#600)
+
+### Docs
+
+* Recommend Title Case not Sentence case for link labels in `list-of-links`
+widgets (#588)
+
+This is controversial and may be reversed in a future release as the
+relationship with Material Design is clarified.
 
 ## [6.1.0][] - 2017-10-18
 
