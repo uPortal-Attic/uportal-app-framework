@@ -24,6 +24,24 @@ widgets (#588)
 This is controversial and may be reversed in a future release as the
 relationship with Material Design is clarified.
 
+### Refactor
+
+* Use `moment.js` in `time-sensitive-content` widget type (#593)
+
+### Build engineering
+
+* Now runs `commitlint` on `travis-ci`, removing `precommit` hook that
+previously verified commit messages locally. (#581)
+* Now sets Java 8 rather than 7 as source and target version (#591)
+
+Note that this project only incidentally uses Java and Maven. In the future
+this front-end product may not use Java at all. (Server-side services uPortal
+app framework relies upon might still use Java, of course.)
+
+### Code style
+
+* Fix a bunch of JSDoc warnings (#598)
+
 ## [6.1.0][] - 2017-10-18
 
 ### Added
