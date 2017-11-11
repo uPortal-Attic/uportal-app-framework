@@ -4,8 +4,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased][]
+## [Unreleased][] (7.0.0?)
 
+### BREAKING CHANGE
+
+The new side navigation feature in this release will likely break apps
+upgrading to this version of the framework from previous versions, in ways that
+are hard to predict. (#588).
+
+Examples of the kinds of downstream changes required:
+
+* uPortal-home [change to use `<frame-page>` in some views][uPortal-home #739] and [in a couple other views][uPortal-home #742]
+
+### Features
+
+* Add on-page side navigation feature (#588)
+* Add more Google Analytics around notifications (#598). Events for
+  * rendering priority (banner across the top) notification
+  * dismissing priority notification
+  * rendering notification by opening the bell menu
+  * clicks on mobile side-nav notification bell, with and without priority
+indicator
+  * dismissing notification from the bell menu
+  * dismissing or restoring notification from notifications page
+* Support dynamic notification text sourced from JSON web service (#601)
 
 ### Fixed
 
@@ -392,3 +414,7 @@ break compatibility with some older components.  If you used any angular-ui-boot
 [3.0.3]: https://github.com/uPortal-Project/uportal-app-framework/compare/v3.0.2...v3.0.3
 [3.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v3.0.0...v3.0.2
 [3.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v2.9.0...v3.0.0
+
+
+[uPortal-home #739]: https://github.com/uPortal-Project/uportal-home/pull/739
+[uPortal-home #742]: https://github.com/uPortal-Project/uportal-home/pull/742
