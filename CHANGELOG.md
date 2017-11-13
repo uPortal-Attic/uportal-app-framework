@@ -20,13 +20,13 @@ Examples of the kinds of downstream changes required:
 
 * Add on-page side navigation feature (#588)
 * Add more Google Analytics around notifications (#598). Events for
-  * rendering priority (banner across the top) notification
-  * dismissing priority notification
-  * rendering notification by opening the bell menu
-  * clicks on mobile side-nav notification bell, with and without priority
+    * rendering priority (banner across the top) notification
+    * dismissing priority notification
+    * rendering notification by opening the bell menu
+    * clicks on mobile side-nav notification bell, with and without priority
 indicator
-  * dismissing notification from the bell menu
-  * dismissing or restoring notification from notifications page
+    * dismissing notification from the bell menu
+    * dismissing or restoring notification from notifications page
 * Support dynamic notification text sourced from JSON web service (#601)
 
 ### Fixed
