@@ -123,6 +123,47 @@ define(['angular', 'moment'], function(angular, moment) {
       $scope.initializeWidget($scope.fname);
   }])
 
+    // External Message Controller
+  .controller('WidgetExternalMessageController', [
+    '$scope', '$log', 'widgetService',
+    function($scope, $log, widgetService) {
+      var widget = $scope.widget;
+      widgetService.getWidgetExternalMessage(widget).then(function(data) {
+        // Determine the message text
+        var messageText = data;
+        if (widget.widgetExtneralMessageTextObjectLocation) {
+          if (angular.isArray(widget.widgetExtneralMessageTextObjectLocation)) {
+            angular.forEach(widget.widgetExtneralMessageTextObjectLocation,
+              function(value, key) {
+                messageText = messageText[value];
+            });
+          } else {
+            $log.warn('widgetExtneralMessageTextObject for ' + widget.fname +
+                ' must be an array');
+          }
+        }
+        $scope.widget.externalMessageText = messageText;
+
+        // Determine the learn more link if configured
+        if (widget.widgetExternalMessageLearnMoreUrl) {
+          if (angular.isArray(widget.widgetExternalMessageLearnMoreUrl)) {
+            var learnMoreUrl = data;
+            angular.forEach(widget.widgetExternalMessageLearnMoreUrl,
+              function(value, key) {
+                learnMoreUrl = learnMoreUrl[value];
+            });
+            $scope.widget.externalMessageLearnMoreUrl = learnMoreUrl;
+          } else {
+            $log.warn('widgetExternalMessageLearnMoreUrl must be an array');
+          }
+        }
+        return data;
+      }).catch(function() {
+        $log.warn('Could not get external widget message for ' + widget.fname);
+      });
+    },
+  ])
+
   // OPTION LINK widget type
   .controller('OptionLinkController', [
     '$scope', '$log', 'widgetService',

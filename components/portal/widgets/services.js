@@ -74,6 +74,25 @@ define(['angular'], function(angular) {
     };
 
     /**
+     * Get widget message text via an external source
+     * widgetMessageUrl has to be present otherwise null
+     * will be returned
+     * @param {Object} widget
+     * @return {String} message text
+     */
+    var getWidgetExternalMessage = function(widget) {
+      return $http.get(widget.widgetExternalMessageUrl, {cache: true})
+        .then(function(result) {
+          return result.data;
+        })
+        .catch(function(error) {
+          $log.warn('Could not retrieve widget external message for: '
+            + widget.fname);
+          return null;
+        });
+    };
+
+    /**
      * Get additional values/configuration not provided
      * by the widget's basic configuration.
      * Used by Option Link and Custom widgets
@@ -142,6 +161,7 @@ define(['angular'], function(angular) {
       getWidgetJson: getWidgetJson,
       getRssAsJson: getRssAsJson,
       getActionItemQuantity: getActionItemQuantity,
+      getWidgetExternalMessage: getWidgetExternalMessage,
     };
   }]);
 });
