@@ -4,82 +4,134 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased][]
+## [Unreleased][] (7.0.0?)
 
-* Recommend title case rather than sentence case for links in list-of-links widgets
+### BREAKING CHANGE
+
+The new side navigation feature in this release will likely break apps
+upgrading to this version of the framework from previous versions, in ways that
+are hard to predict. (#588).
+
+Examples of the kinds of downstream changes required:
+
++ uPortal-home [change to use `<frame-page>` in some views][uPortal-home #739] and [in a couple other views][uPortal-home #742]
+
+### Features
+
++ Add on-page side navigation feature (#588)
++ Add more Google Analytics around notifications (#598). Events for
+    + rendering priority (banner across the top) notification
+    + dismissing priority notification
+    + rendering notification by opening the bell menu
+    + clicks on mobile side-nav notification bell, with and without priority
+indicator
+    + dismissing notification from the bell menu
+    + dismissing or restoring notification from notifications page
++ Support dynamic notification text sourced from JSON web service (#601)
 
 ### Fixed
 
-* Clarify safety of `/settings` tooling to reset in-browser state. (#600)
++ Improves top bar accessibility (#594)
++ Fix the `search-with-links` widget type (#585)
++ Fix footer link style to avoid off-by-one-pixel misalignment (#586)
++ Fix separator character between footer links (#587, #590)
++ Clarify safety of `/settings` tooling to reset in-browser state. (#600)
++ Fix notification rendering robustness against duplicate ids (#602, #603)
+
+### Docs
+
++ Recommend Title Case not Sentence case for link labels in `list-of-links`
+widgets (#588)
+
+This is controversial and may be reversed in a future release as the
+relationship with Material Design is clarified.
+
+### Refactor
+
++ Use `moment.js` in `time-sensitive-content` widget type (#593)
+
+### Build engineering
+
++ Now runs `commitlint` on `travis-ci`, removing `precommit` hook that
+previously verified commit messages locally. (#581)
++ Now sets Java 8 rather than 7 as source and target version (#591)
+
+Note that this project only incidentally uses Java and Maven. In the future
+this front-end product may not use Java at all. (Server-side services uPortal
+app framework relies upon might still use Java, of course.)
+
+### Code style
+
++ Fix a bunch of JSDoc warnings (#598)
 
 ## [6.1.0][] - 2017-10-18
 
 ### Added
-* Add filter to determine rel attribute on anchors (#569)
-* Add configurable side navigation (#561)
++ Add filter to determine rel attribute on anchors (#569)
++ Add configurable side navigation (#561)
 
 ### Changed
-* Refactor theme names (#568)
-* Update to version 4.2.0 of config-angular (#578)
-* Pull UI Sortable from CDN (#579)
++ Refactor theme names (#568)
++ Update to version 4.2.0 of config-angular (#578)
++ Pull UI Sortable from CDN (#579)
 
 ### Fixed
-* Fix mismatch in portal theme key (#570)
-* Hides notification bell when on notification page (#572)
-* Update release documentation (#557)
-* Fix app hangs when promise returns undefined (#575)
-* Fix bug where notification bell still showed on notification page (#576)
-* Add error message when notifications fail (#577)
-* Fix spacing error if no configurable side navigation is used (#583)
++ Fix mismatch in portal theme key (#570)
++ Hides notification bell when on notification page (#572)
++ Update release documentation (#557)
++ Fix app hangs when promise returns undefined (#575)
++ Fix bug where notification bell still showed on notification page (#576)
++ Add error message when notifications fail (#577)
++ Fix spacing error if no configurable side navigation is used (#583)
 
 ## [6.0.3][] - 2017-09-29
-* fix(messages): return nothing on filter fail (#554)
++ fix(messages): return nothing on filter fail (#554)
 
 ## [6.0.2][] - 2017-09-29
-* Properly bind URLs in priority notifications (#553)
-* Eliminate gap between top bar on mobile (#552)
-* Add Google Analytics events to notifications (#550)
-* renaming angularjs-portal to uportal-home (#549)
-* correct references uportal app framework (#548)
++ Properly bind URLs in priority notifications (#553)
++ Eliminate gap between top bar on mobile (#552)
++ Add Google Analytics events to notifications (#550)
++ renaming angularjs-portal to uportal-home (#549)
++ correct references uportal app framework (#548)
 
 ## [6.0.1][] - 2017-09-25
-* Cleaning up project name relicts (#538, #539, #540, #541, #542)
-* Fix typo in time-sensitive widget (#537)
++ Cleaning up project name relicts (#538, #539, #540, #541, #542)
++ Fix typo in time-sensitive widget (#537)
 
 ## [6.0.0][] - 2017-09-22
-* Renaming project to uportal-app-framework
++ Renaming project to uportal-app-framework
 
 ## [5.2.1][] - 2017-09-21
-* Add time-sensitive-content widget type (#524)
++ Add time-sensitive-content widget type (#524)
 
 ## [5.2.0][] - 2017-09-20
 
 ### Messages Enhancements
-* Notifications may be non-dismissible (#521)
-* Add widget from mascot announcement (#526)
++ Notifications may be non-dismissible (#521)
++ Add widget from mascot announcement (#526)
 
 ### Widget Enhancements
-* Option-link widget evaluates target (#519)
++ Option-link widget evaluates target (#519)
 
 ### Configuration Change
-* Default menu options to be null (#514)
++ Default menu options to be null (#514)
 
 ### Maintenance
-* Shore up licencing (#515) (#523) (#527)
-* Add a changelog (#513)
-* Release using Conventional Commits (#516)
++ Shore up licencing (#515) (#523) (#527)
++ Add a changelog (#513)
++ Release using Conventional Commits (#516)
 
 ## [5.1.0][] - 2017-09-01
 
 ### Messages Enhancements
-* Adds actionbutton and more info button to features page and priority notifications (#504)
-* Adds 'addToHome' functionality directly from mascot announcement (#506)  (#512)
-* Fixes bug with notification urls not being resolved correctly (#507)
++ Adds actionbutton and more info button to features page and priority notifications (#504)
++ Adds 'addToHome' functionality directly from mascot announcement (#506)  (#512)
++ Fixes bug with notification urls not being resolved correctly (#507)
 
 ### Code Maintenance and Enhancements
-* Updates karma to latest version (#511)
-* Adopts Conventional Commits (#487)
-* Adds additional project status badges (#510)
++ Updates karma to latest version (#511)
++ Adopts Conventional Commits (#487)
++ Adds additional project status badges (#510)
 
 ## [5.0.0][] - 2017-08-24
 
@@ -95,90 +147,90 @@ While we're proud of what we've accomplished in this major release, we hope to r
 
 ### Major Enhancements
 #### Messages!
-* [Simplify disparate forms of in-app messaging](https://github.com/uPortal-Project/uportal-app-framework/pull/484)
++ [Simplify disparate forms of in-app messaging](https://github.com/uPortal-Project/uportal-app-framework/pull/484)
 
 ### Minor Enhancements
 #### Widget Types
-* [Action Items widget type](https://github.com/uPortal-Project/uportal-app-framework/pull/465)
-* [Add URL capability to list of links type](https://github.com/uPortal-Project/uportal-app-framework/pull/473)
++ [Action Items widget type](https://github.com/uPortal-Project/uportal-app-framework/pull/465)
++ [Add URL capability to list of links type](https://github.com/uPortal-Project/uportal-app-framework/pull/473)
 
 #### UI Enhancements
-* [Add tooltips to header buttons a la Google apps](https://github.com/uPortal-Project/uportal-app-framework/pull/445)
-* [Improve usability for screen readers](https://github.com/uPortal-Project/uportal-app-framework/pull/448)
-* [Frame works withu portal master](https://github.com/uPortal-Project/uportal-app-framework/pull/451)
-* [Improve mascot announcements](https://github.com/uPortal-Project/uportal-app-framework/pull/456)
-* [Notifications](https://github.com/uPortal-Project/uportal-app-framework/pull/458)
-* [Improve appearance of features page](https://github.com/uPortal-Project/uportal-app-framework/pull/459)
-* [Show number of notifications/announcements in see all link](https://github.com/uPortal-Project/uportal-app-framework/pull/460)
-* [Opt out av](https://github.com/uPortal-Project/uportal-app-framework/pull/469)
-* [Display campus ID in username menu](https://github.com/uPortal-Project/uportal-app-framework/pull/470)
-* [Refactor app-header options](https://github.com/uPortal-Project/uportal-app-framework/pull/490)
-* [Speed up notifications bell (and other improvements)](https://github.com/uPortal-Project/uportal-app-framework/pull/502)
++ [Add tooltips to header buttons a la Google apps](https://github.com/uPortal-Project/uportal-app-framework/pull/445)
++ [Improve usability for screen readers](https://github.com/uPortal-Project/uportal-app-framework/pull/448)
++ [Frame works withu portal master](https://github.com/uPortal-Project/uportal-app-framework/pull/451)
++ [Improve mascot announcements](https://github.com/uPortal-Project/uportal-app-framework/pull/456)
++ [Notifications](https://github.com/uPortal-Project/uportal-app-framework/pull/458)
++ [Improve appearance of features page](https://github.com/uPortal-Project/uportal-app-framework/pull/459)
++ [Show number of notifications/announcements in see all link](https://github.com/uPortal-Project/uportal-app-framework/pull/460)
++ [Opt out av](https://github.com/uPortal-Project/uportal-app-framework/pull/469)
++ [Display campus ID in username menu](https://github.com/uPortal-Project/uportal-app-framework/pull/470)
++ [Refactor app-header options](https://github.com/uPortal-Project/uportal-app-framework/pull/490)
++ [Speed up notifications bell (and other improvements)](https://github.com/uPortal-Project/uportal-app-framework/pull/502)
 
 #### Configuration Changes
-* [pulling string into configuration](https://github.com/uPortal-Project/uportal-app-framework/pull/443)
-* [Enables notifications to work in static frame](https://github.com/uPortal-Project/uportal-app-framework/pull/453)
-* [Sets uPortal default theme as default](https://github.com/uPortal-Project/uportal-app-framework/pull/466)
-* [Uses aries proxy](https://github.com/uPortal-Project/uportal-app-framework/pull/475)
-* [MUMUP-2699 Adds ability for portal skin switching](https://github.com/uPortal-Project/uportal-app-framework/pull/483)
-* [MUMUP-2990 Use portal session rather than Shibboleth](https://github.com/uPortal-Project/uportal-app-framework/pull/491)
++ [pulling string into configuration](https://github.com/uPortal-Project/uportal-app-framework/pull/443)
++ [Enables notifications to work in static frame](https://github.com/uPortal-Project/uportal-app-framework/pull/453)
++ [Sets uPortal default theme as default](https://github.com/uPortal-Project/uportal-app-framework/pull/466)
++ [Uses aries proxy](https://github.com/uPortal-Project/uportal-app-framework/pull/475)
++ [MUMUP-2699 Adds ability for portal skin switching](https://github.com/uPortal-Project/uportal-app-framework/pull/483)
++ [MUMUP-2990 Use portal session rather than Shibboleth](https://github.com/uPortal-Project/uportal-app-framework/pull/491)
 
 
 ### Patch Enhancements
 #### Content Changes
-* [making the widget init function accessible via scope](https://github.com/uPortal-Project/uportal-app-framework/pull/444)
-* [Use sentence case in tooltips.](https://github.com/uPortal-Project/uportal-app-framework/pull/446)
-* [Animate priority notifications [nice-to-have]](https://github.com/uPortal-Project/uportal-app-framework/pull/499)
++ [making the widget init function accessible via scope](https://github.com/uPortal-Project/uportal-app-framework/pull/444)
++ [Use sentence case in tooltips.](https://github.com/uPortal-Project/uportal-app-framework/pull/446)
++ [Animate priority notifications [nice-to-have]](https://github.com/uPortal-Project/uportal-app-framework/pull/499)
 
 #### Documentation Improvements
-* [Documentation Syntax Highlighting](https://github.com/uPortal-Project/uportal-app-framework/pull/431)
-* [Adds skinning exercise to docs folder](https://github.com/uPortal-Project/uportal-app-framework/pull/447)
-* [Fixes skinning.md lint errors](https://github.com/uPortal-Project/uportal-app-framework/pull/449)
-* [Expands the quickstart link text from the main README](https://github.com/uPortal-Project/uportal-app-framework/pull/452)
-* [Adds a notification user exercise](https://github.com/uPortal-Project/uportal-app-framework/pull/454)
-* [Adds a feature exercise](https://github.com/uPortal-Project/uportal-app-framework/pull/455)
-* [Acknowledge Apereo Welcoming Policy](https://github.com/uPortal-Project/uportal-app-framework/pull/461)
-* [Add Christian Murphy as committer](https://github.com/uPortal-Project/uportal-app-framework/pull/464)
-* [Move widget documentation from uportal-home](https://github.com/uPortal-Project/uportal-app-framework/pull/471)
-* [MUMUP-2932 Adds missing png files to docs](https://github.com/uPortal-Project/uportal-app-framework/pull/476)
-* [Remove Manifest group reference](https://github.com/uPortal-Project/uportal-app-framework/pull/477)
-* [Guide towards sentence case](https://github.com/uPortal-Project/uportal-app-framework/pull/478)
-* [docs(github): Add SUPPORT.md to guide questions to the mailing list](https://github.com/uPortal-Project/uportal-app-framework/pull/479)
-* [Acknowledge bundled dependencies and add NOTICE file](https://github.com/uPortal-Project/uportal-app-framework/pull/489)
++ [Documentation Syntax Highlighting](https://github.com/uPortal-Project/uportal-app-framework/pull/431)
++ [Adds skinning exercise to docs folder](https://github.com/uPortal-Project/uportal-app-framework/pull/447)
++ [Fixes skinning.md lint errors](https://github.com/uPortal-Project/uportal-app-framework/pull/449)
++ [Expands the quickstart link text from the main README](https://github.com/uPortal-Project/uportal-app-framework/pull/452)
++ [Adds a notification user exercise](https://github.com/uPortal-Project/uportal-app-framework/pull/454)
++ [Adds a feature exercise](https://github.com/uPortal-Project/uportal-app-framework/pull/455)
++ [Acknowledge Apereo Welcoming Policy](https://github.com/uPortal-Project/uportal-app-framework/pull/461)
++ [Add Christian Murphy as committer](https://github.com/uPortal-Project/uportal-app-framework/pull/464)
++ [Move widget documentation from uportal-home](https://github.com/uPortal-Project/uportal-app-framework/pull/471)
++ [MUMUP-2932 Adds missing png files to docs](https://github.com/uPortal-Project/uportal-app-framework/pull/476)
++ [Remove Manifest group reference](https://github.com/uPortal-Project/uportal-app-framework/pull/477)
++ [Guide towards sentence case](https://github.com/uPortal-Project/uportal-app-framework/pull/478)
++ [docs(github): Add SUPPORT.md to guide questions to the mailing list](https://github.com/uPortal-Project/uportal-app-framework/pull/479)
++ [Acknowledge bundled dependencies and add NOTICE file](https://github.com/uPortal-Project/uportal-app-framework/pull/489)
 
 #### Bug Fixes
-* [Fix md-menu forcing scroll when priority notifications visible](https://github.com/uPortal-Project/uportal-app-framework/pull/428)
-* [Portal feature service flatten nested promises](https://github.com/uPortal-Project/uportal-app-framework/pull/438)
-* [fixing errors and not returning reasons](https://github.com/uPortal-Project/uportal-app-framework/pull/442)
-* [Announcement bug fix](https://github.com/uPortal-Project/uportal-app-framework/pull/450)
-* [Reverts groups url back to previous default state](https://github.com/uPortal-Project/uportal-app-framework/pull/457)
-* [error checking weather data response](https://github.com/uPortal-Project/uportal-app-framework/pull/468)
-* [using css for action-items, md-colors didn't work well with themes](https://github.com/uPortal-Project/uportal-app-framework/pull/472)
-* [Lower z-index of maintenance mode overlay](https://github.com/uPortal-Project/uportal-app-framework/pull/482)
-* [Fix sticky priority notifications](https://github.com/uPortal-Project/uportal-app-framework/pull/496)
-* [Fix dismiss/restore message state not persisting](https://github.com/uPortal-Project/uportal-app-framework/pull/497)
-* [upping the expiration on the mock session to be 8 hours](https://github.com/uPortal-Project/uportal-app-framework/pull/501)
++ [Fix md-menu forcing scroll when priority notifications visible](https://github.com/uPortal-Project/uportal-app-framework/pull/428)
++ [Portal feature service flatten nested promises](https://github.com/uPortal-Project/uportal-app-framework/pull/438)
++ [fixing errors and not returning reasons](https://github.com/uPortal-Project/uportal-app-framework/pull/442)
++ [Announcement bug fix](https://github.com/uPortal-Project/uportal-app-framework/pull/450)
++ [Reverts groups url back to previous default state](https://github.com/uPortal-Project/uportal-app-framework/pull/457)
++ [error checking weather data response](https://github.com/uPortal-Project/uportal-app-framework/pull/468)
++ [using css for action-items, md-colors didn't work well with themes](https://github.com/uPortal-Project/uportal-app-framework/pull/472)
++ [Lower z-index of maintenance mode overlay](https://github.com/uPortal-Project/uportal-app-framework/pull/482)
++ [Fix sticky priority notifications](https://github.com/uPortal-Project/uportal-app-framework/pull/496)
++ [Fix dismiss/restore message state not persisting](https://github.com/uPortal-Project/uportal-app-framework/pull/497)
++ [upping the expiration on the mock session to be 8 hours](https://github.com/uPortal-Project/uportal-app-framework/pull/501)
 
 #### Dependency Management
-* [Remove less-1.6.2.js from source](https://github.com/uPortal-Project/uportal-app-framework/pull/439)
-* [Update dependencies to enable Greenkeeper](https://github.com/uPortal-Project/uportal-app-framework/pull/474)
-* [fix: Use only 4.1.x version of superstatic not 4.x](https://github.com/uPortal-Project/uportal-app-framework/pull/493)
-* [Update superstatic to the latest version](https://github.com/uPortal-Project/uportal-app-framework/pull/498)
-* [Update remark-validate-links to the latest version](https://github.com/uPortal-Project/uportal-app-framework/pull/500)
++ [Remove less-1.6.2.js from source](https://github.com/uPortal-Project/uportal-app-framework/pull/439)
++ [Update dependencies to enable Greenkeeper](https://github.com/uPortal-Project/uportal-app-framework/pull/474)
++ [fix: Use only 4.1.x version of superstatic not 4.x](https://github.com/uPortal-Project/uportal-app-framework/pull/493)
++ [Update superstatic to the latest version](https://github.com/uPortal-Project/uportal-app-framework/pull/498)
++ [Update remark-validate-links to the latest version](https://github.com/uPortal-Project/uportal-app-framework/pull/500)
 
 #### Continuous Integration
-* [Fixing trivial ESLint checks](https://github.com/uPortal-Project/uportal-app-framework/pull/429)
-* [ESLint Refactor Integration](https://github.com/uPortal-Project/uportal-app-framework/pull/430)
-* [Eslint promise rule fixes](https://github.com/uPortal-Project/uportal-app-framework/pull/432)
-* [fixing eslint angular/typecheck rules](https://github.com/uPortal-Project/uportal-app-framework/pull/434)
-* [ESLint fix angular/no-private-call](https://github.com/uPortal-Project/uportal-app-framework/pull/435)
-* [ESLint angular/module rules](https://github.com/uPortal-Project/uportal-app-framework/pull/436)
-* [fixing eslint max-len](https://github.com/uPortal-Project/uportal-app-framework/pull/440)
-* [Test on headless Chrome](https://github.com/uPortal-Project/uportal-app-framework/pull/462)
-* [Add macOS environment to Travis CI](https://github.com/uPortal-Project/uportal-app-framework/pull/463)
-* [fix(ci): Update Travis CI script so greenkeeper works with the lockfile](https://github.com/uPortal-Project/uportal-app-framework/pull/480)
-* [style(less): Add Stylelint](https://github.com/uPortal-Project/uportal-app-framework/pull/485)
-* [style(md): Add Remarklint](https://github.com/uPortal-Project/uportal-app-framework/pull/486)
++ [Fixing trivial ESLint checks](https://github.com/uPortal-Project/uportal-app-framework/pull/429)
++ [ESLint Refactor Integration](https://github.com/uPortal-Project/uportal-app-framework/pull/430)
++ [Eslint promise rule fixes](https://github.com/uPortal-Project/uportal-app-framework/pull/432)
++ [fixing eslint angular/typecheck rules](https://github.com/uPortal-Project/uportal-app-framework/pull/434)
++ [ESLint fix angular/no-private-call](https://github.com/uPortal-Project/uportal-app-framework/pull/435)
++ [ESLint angular/module rules](https://github.com/uPortal-Project/uportal-app-framework/pull/436)
++ [fixing eslint max-len](https://github.com/uPortal-Project/uportal-app-framework/pull/440)
++ [Test on headless Chrome](https://github.com/uPortal-Project/uportal-app-framework/pull/462)
++ [Add macOS environment to Travis CI](https://github.com/uPortal-Project/uportal-app-framework/pull/463)
++ [fix(ci): Update Travis CI script so greenkeeper works with the lockfile](https://github.com/uPortal-Project/uportal-app-framework/pull/480)
++ [style(less): Add Stylelint](https://github.com/uPortal-Project/uportal-app-framework/pull/485)
++ [style(md): Add Remarklint](https://github.com/uPortal-Project/uportal-app-framework/pull/486)
 
 ## [4.1.0][] - 2017-05-04
 
@@ -243,9 +295,9 @@ This release adds a widget directive to the app-framework, adds personalized not
 [Fixes bug in personalized notifications](https://github.com/uPortal-Project/uportal-app-framework/pull/387)
 
 ### How to Upgrade from version 3.X
-* Change your dependency to version 4.0.0
-* If you were consuming notifications within the app, the [notification service api changed from `getNotificationsByGroups` to `getFilteredNotifications`](https://github.com/uPortal-Project/uportal-app-framework/pull/386/files#diff-9a244329b1c0f99008f0fb506d3b9c64L159).  This will not be a concern for most (if not all) applications.
-* If you had previously named services and directives in your MyUW app with the word widget in the name, you may run into some naming conflicts due to the new Widget directives and services being added.  [See the code for more details](https://github.com/uPortal-Project/uportal-app-framework/pull/385/files).  This will not be a concern for most applications.
++ Change your dependency to version 4.0.0
++ If you were consuming notifications within the app, the [notification service api changed from `getNotificationsByGroups` to `getFilteredNotifications`](https://github.com/uPortal-Project/uportal-app-framework/pull/386/files#diff-9a244329b1c0f99008f0fb506d3b9c64L159).  This will not be a concern for most (if not all) applications.
++ If you had previously named services and directives in your MyUW app with the word widget in the name, you may run into some naming conflicts due to the new Widget directives and services being added.  [See the code for more details](https://github.com/uPortal-Project/uportal-app-framework/pull/385/files).  This will not be a concern for most applications.
 
 ## [3.1.4][] - 2017-03-20
 
@@ -362,3 +414,7 @@ break compatibility with some older components.  If you used any angular-ui-boot
 [3.0.3]: https://github.com/uPortal-Project/uportal-app-framework/compare/v3.0.2...v3.0.3
 [3.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v3.0.0...v3.0.2
 [3.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v2.9.0...v3.0.0
+
+
+[uPortal-home #739]: https://github.com/uPortal-Project/uportal-home/pull/739
+[uPortal-home #742]: https://github.com/uPortal-Project/uportal-home/pull/742
