@@ -34,6 +34,7 @@ define(['angular'], function(angular) {
         var promiseFilteredMessages = {};
         $scope.APP_FLAGS = APP_FLAGS;
         $scope.MISC_URLS = MISC_URLS;
+        $scope.showMessagesFeatures = true;
 
         // ////////////////
         // Local methods //
@@ -128,8 +129,16 @@ define(['angular'], function(angular) {
           $scope.hasMessages = false;
           $scope.messages = {};
 
-          if (!$rootScope.GuestMode) {
+          if (!$rootScope.GuestMode && SERVICE_LOC.messagesURL
+            && SERVICE_LOC.messagesURL !== '') {
             getMessages();
+          } else {
+            // Messages features aren't configured properly, possibly
+            // on purpose. Communicate this and hide features.
+            $scope.showMessagesFeatures = false;
+            $scope.messagesError = 'SERVICE_LOC.messageURL is not configured ' +
+              '-- hiding messages features.';
+            $scope.hasMessages = true;
           }
         };
 
@@ -167,6 +176,7 @@ define(['angular'], function(angular) {
         vm.status = 'View notifications';
         vm.isLoading = true;
         vm.renderLimit = 3;
+        vm.showMessagesFeatures = true;
 
         // //////////////////
         // Event listeners //
@@ -183,7 +193,14 @@ define(['angular'], function(angular) {
             if ($scope.$parent.messagesError) {
               vm.messagesError = $scope.$parent.messagesError;
             }
-            configureNotificationsScope();
+            // If messages config is set up, configure scope
+            // Else hide messages features
+            if (angular.equals($scope.$parent.showMessagesFeatures, true)) {
+              configureNotificationsScope();
+            } else {
+              vm.showMessagesFeatures = false;
+              vm.isLoading = false;
+            }
           }
         });
 
@@ -438,6 +455,7 @@ define(['angular'], function(angular) {
         vm.active = false;
         vm.mode = $scope.mode;
         vm.announcements = [];
+        vm.showMessagesFeatures = true;
 
         // //////////////////
         // Event listeners //
@@ -447,10 +465,15 @@ define(['angular'], function(angular) {
          * things dependent on messages
          */
         $scope.$watch('$parent.hasMessages', function(hasMessages) {
-          // If the parent scope has messages and announcements are enabled,
+          // If the parent scope has messages and messages config is set up,
           // complete initialization
           if (hasMessages) {
-            configureAnnouncementsScope();
+            if (angular.equals($scope.$parent.showMessagesFeatures, true)) {
+              configureAnnouncementsScope();
+            } else {
+              vm.showMessagesFeatures = false;
+              vm.isLoading = false;
+            }
           }
         });
 

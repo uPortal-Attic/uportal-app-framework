@@ -170,9 +170,10 @@ define(['angular', 'require'], function(angular, require) {
   /* Side navigation controller */
   .controller('MainMenuController', ['$rootScope', '$scope', '$mdSidenav',
     '$mdMedia', '$window', '$localStorage', 'APP_OPTIONS', 'FOOTER_URLS',
-    'MESSAGES', 'NAMES', 'miscService',
+    'MESSAGES', 'NAMES', 'SERVICE_LOC', 'miscService',
     function($rootScope, $scope, $mdSidenav, $mdMedia, $window, $localStorage,
-             APP_OPTIONS, FOOTER_URLS, MESSAGES, NAMES, miscService) {
+             APP_OPTIONS, FOOTER_URLS, MESSAGES, NAMES, SERVICE_LOC,
+             miscService) {
       var vm = this;
 
       // Scope variables
@@ -182,6 +183,7 @@ define(['angular', 'require'], function(angular, require) {
       vm.hideMainMenu = false;
       vm.footerLinks = FOOTER_URLS;
       vm.openMenuByDefault = false;
+      vm.showMessagesFeatures = true;
 
       $scope.$on('HAS_PRIORITY_NOTIFICATIONS', function(event, data) {
         if (angular.isDefined(data.hasNotifications)) {
@@ -230,9 +232,10 @@ define(['angular', 'require'], function(angular, require) {
       };
 
       /**
-       * Check for menu configuration in app config
+       * Configure menu template, mobile menu top bar,
+       * menu footer, and push content mode
        */
-      var init = function() {
+      var configureMainMenu = function() {
         // Use either custom template or defined menu items
         if (APP_OPTIONS.appMenuTemplateURL) {
           vm.appMenuTemplate = require.toUrl(APP_OPTIONS.appMenuTemplateURL);
@@ -258,9 +261,30 @@ define(['angular', 'require'], function(angular, require) {
         // Check if push content is set
         vm.openMenuByDefault =
           APP_OPTIONS.enablePushContentMenu && $mdMedia('gt-sm');
-        // Set flags for notifications/announcements
-        vm.hasPriorityNotifications = $localStorage.hasPriorityNotifications;
-        vm.hasUnseenAnnouncements = $localStorage.hasUnseenAnnouncements;
+      };
+
+      /**
+       * Configure notifications/announcements features in main menu
+       * if messages configuration is properly set up
+       */
+      var configureMessagesFeatures = function() {
+        // If messages config is properly set up, set directive scope,
+        // otherwise hide messages features
+        if (SERVICE_LOC.messagesURL && SERVICE_LOC.messagesURL !== '') {
+          // Set flags for notifications/announcements
+          vm.hasPriorityNotifications = $localStorage.hasPriorityNotifications;
+          vm.hasUnseenAnnouncements = $localStorage.hasUnseenAnnouncements;
+        } else {
+          vm.showMessagesFeatures = false;
+        }
+      };
+
+      /**
+       * Check for menu configuration in app config
+       */
+      var init = function() {
+        configureMainMenu();
+        configureMessagesFeatures();
       };
 
       init();
