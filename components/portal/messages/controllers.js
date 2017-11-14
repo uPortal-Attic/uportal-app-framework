@@ -129,7 +129,7 @@ define(['angular'], function(angular) {
           $scope.messages = {};
 
           if (!$rootScope.GuestMode && SERVICE_LOC.messagesURL
-            && SERVICE_LOC.messagesURL != '') {
+            && SERVICE_LOC.messagesURL !== '') {
             getMessages();
           } else {
             // Messages features aren't configured properly, possibly

@@ -232,9 +232,10 @@ define(['angular', 'require'], function(angular, require) {
       };
 
       /**
-       * Check for menu configuration in app config
+       * Configure menu template, mobile menu top bar,
+       * menu footer, and push content mode
        */
-      var init = function() {
+      var configureMainMenu = function() {
         // Use either custom template or defined menu items
         if (APP_OPTIONS.appMenuTemplateURL) {
           vm.appMenuTemplate = require.toUrl(APP_OPTIONS.appMenuTemplateURL);
@@ -260,16 +261,30 @@ define(['angular', 'require'], function(angular, require) {
         // Check if push content is set
         vm.openMenuByDefault =
           APP_OPTIONS.enablePushContentMenu && $mdMedia('gt-sm');
+      };
 
+      /**
+       * Configure notifications/announcements features in main menu
+       * if messages configuration is properly set up
+       */
+      var configureMessagesFeatures = function() {
         // If messages config is properly set up, set directive scope,
         // otherwise hide messages features
-        if (SERVICE_LOC.messagesURL && SERVICE_LOC.messagesURL != '') {
+        if (SERVICE_LOC.messagesURL && SERVICE_LOC.messagesURL !== '') {
           // Set flags for notifications/announcements
           vm.hasPriorityNotifications = $localStorage.hasPriorityNotifications;
           vm.hasUnseenAnnouncements = $localStorage.hasUnseenAnnouncements;
         } else {
           vm.hideMessagesFeatures = true;
         }
+      };
+
+      /**
+       * Check for menu configuration in app config
+       */
+      var init = function() {
+        configureMainMenu();
+        configureMessagesFeatures();
       };
 
       init();
