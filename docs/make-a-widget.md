@@ -122,13 +122,13 @@ Follow these steps for each of the predefined widget types described in this doc
       "launchText":"Launch talent development",
       "links": [
         {
-          "title":"All Courses and Events",
+          "title":"All courses and events",
           "href":"https://www.ohrd.wisc.edu/home/",
           "icon":"fa-at",
           "target":"_blank"
         },
         {
-          "title":"My Transcript",
+          "title":"My transcript",
           "href":"https://www.ohrd.wisc.edu/ohrdcatalogportal/LearningTranscript/tabid/57/Default.aspx?ctl=login",
           "icon":"fa-envelope-o",
           "target":"_blank"
@@ -155,7 +155,7 @@ when there's nothing more to launch, that is, when the list-of-links widget simp
 * Avoid using a `list-of-links` widget when you only need to display one link. Instead, use the name and `alternativeMaximizedLink` of [the app directory entry](http://uportal-project.github.io/uportal-home/app-directory) to represent the link.
 This provides a more usable click surface, a simpler and cleaner user experience, and achieves better consistency with other just-a-link widgets in MyUW.
 * The length of your list of links will affect the widget's appearance. If you have more than 4 links, they will be displayed in a more traditional-style list, rather than with the `<circle-button>` directive.
-* Use title case in the titles of the links.
+* Use sentence case in the titles of the links.
 
 ### Search with links
 
