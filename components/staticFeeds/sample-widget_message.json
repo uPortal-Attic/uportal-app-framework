@@ -1,0 +1,10 @@
+{
+  "mesg": "Success",
+  "result": [
+    {
+      "longMessage": "Your account will be deactivated soon after some time.",
+      "shortMessage": "Your account will be deactivated soon"
+    }
+  ],
+ "learnMoreUrl": "https://www.google.com"
+}
