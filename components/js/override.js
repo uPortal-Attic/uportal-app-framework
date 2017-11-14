@@ -22,13 +22,10 @@ define(['angular'], function(angular) {
     .constant('OVERRIDE', {
       'APP_OPTIONS': {
         'appMenuTemplateURL': 'portal/misc/partials/example-menu.html',
-        'appMenuItems': [
-          {
-            'label': 'MyUW home',
-            'icon': 'home',
-            'url': '/web',
-          },
-        ],
+        'enablePushContentMenu': true,
+      },
+      'SERVICE_LOC': {
+        'messagesURL': 'staticFeeds/sample-messages.json',
       },
     });
 });

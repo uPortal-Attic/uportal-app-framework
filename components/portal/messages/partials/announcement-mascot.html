@@ -23,7 +23,8 @@
          ng-if="mode === 'mascot' && vm.announcements && vm.announcements.length > 0"
          ng-class="{ 'announcement-hover' : vm.hover, 'announcement-active' : vm.active }"
          md-offset="-200 0"
-         md-position-mode="target bottom">
+         md-position-mode="target bottom"
+         ng-hide="vm.hideMessagesFeatures">
   <md-button class="mascot-button"
              ng-click="vm.toggleActive();vm.toggleHover();$mdOpenMenu($event);"
              ng-mouseenter="vm.toggleHover()"
@@ -87,7 +88,7 @@
 </md-menu>
 
 <!-- MOBILE MENU ANNOUNCEMENTS -->
-<div ng-if="mode === 'mobile-menu' && vm.announcements && vm.announcements.length > 0" class="mobile">
+<div ng-if="mode === 'mobile-menu' && vm.announcements && vm.announcements.length > 0" class="mobile" ng-hide="vm.hideMessagesFeatures">
   <md-menu-item>
     <md-button class="md-default" href="features"
                ng-click="vm.markAllAnnouncementsSeen()"
