@@ -38,14 +38,6 @@ indicator
 + Clarify safety of `/settings` tooling to reset in-browser state. (#600)
 + Fix notification rendering robustness against duplicate ids (#602, #603)
 
-### Docs
-
-+ Recommend Title Case not Sentence case for link labels in `list-of-links`
-widgets (#588)
-
-This is controversial and may be reversed in a future release as the
-relationship with Material Design is clarified.
-
 ### Refactor
 
 + Use `moment.js` in `time-sensitive-content` widget type (#593)
