@@ -1,0 +1,16 @@
+<div class="overlay__widget-mode">
+  <div class="overlay-content">
+    <p>{{ widget.externalMessageText }}</p>
+    <md-button ng-if="widget.externalMessageLearnMoreUrl" 
+      class="md-accent md-raised" id="overlay-learn-more-button" 
+      ng-href={{widget.externalMessageLearnMoreUrl}} aria-label=
+      "Learn more about the important message concerning {{widget.fname}}"
+      target="_blank" rel="noopener noreferrer">
+        Learn more
+    </md-button>
+    <md-button class="md-primary md-raised" id="overlay-continue-button" 
+      aria-label= "Continue to the {{widget.fname}} widget">
+        Continue
+    </md-button>
+  </div>
+</div>

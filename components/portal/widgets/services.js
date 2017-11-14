@@ -63,8 +63,8 @@ define(['angular'], function(angular) {
           additionalText: 'Please contact your help desk if you ' +
             'feel you should be able to access this content',
         },
-        widgetTemplate: '<div class=\'overlay__maintenance-mode\'>' +
-        '<div class=\'maintenance-content\'>' +
+        widgetTemplate: '<div class=\'overlay__widget-mode\'>' +
+        '<div class=\'overlay-content\'>' +
         '<p><md-icon class=\'md-warn\'>warning</md-icon></p>' +
         '<p>You do not have permission to access this content. ' +
         'If you feel this is an error, please contact your help desk.</p>' +
