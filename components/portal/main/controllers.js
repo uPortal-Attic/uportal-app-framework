@@ -183,7 +183,7 @@ define(['angular', 'require'], function(angular, require) {
       vm.hideMainMenu = false;
       vm.footerLinks = FOOTER_URLS;
       vm.openMenuByDefault = false;
-      vm.hideMessagesFeatures = false;
+      vm.showMessagesFeatures = true;
 
       $scope.$on('HAS_PRIORITY_NOTIFICATIONS', function(event, data) {
         if (angular.isDefined(data.hasNotifications)) {
@@ -275,7 +275,7 @@ define(['angular', 'require'], function(angular, require) {
           vm.hasPriorityNotifications = $localStorage.hasPriorityNotifications;
           vm.hasUnseenAnnouncements = $localStorage.hasUnseenAnnouncements;
         } else {
-          vm.hideMessagesFeatures = true;
+          vm.showMessagesFeatures = false;
         }
       };
 

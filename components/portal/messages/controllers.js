@@ -34,6 +34,7 @@ define(['angular'], function(angular) {
         var promiseFilteredMessages = {};
         $scope.APP_FLAGS = APP_FLAGS;
         $scope.MISC_URLS = MISC_URLS;
+        $scope.showMessagesFeatures = true;
 
         // ////////////////
         // Local methods //
@@ -134,7 +135,7 @@ define(['angular'], function(angular) {
           } else {
             // Messages features aren't configured properly, possibly
             // on purpose. Communicate this and hide features.
-            $scope.hideMessagesContent = true;
+            $scope.showMessagesFeatures = false;
             $scope.messagesError = 'SERVICE_LOC.messageURL is not configured ' +
               '-- hiding messages features.';
             $scope.hasMessages = true;
@@ -175,7 +176,7 @@ define(['angular'], function(angular) {
         vm.status = 'View notifications';
         vm.isLoading = true;
         vm.renderLimit = 3;
-        vm.hideNotificationsFeatures = false;
+        vm.showMessagesFeatures = true;
 
         // //////////////////
         // Event listeners //
@@ -192,13 +193,12 @@ define(['angular'], function(angular) {
             if ($scope.$parent.messagesError) {
               vm.messagesError = $scope.$parent.messagesError;
             }
-
             // If messages config is set up, configure scope
             // Else hide messages features
-            if (!$scope.$parent.hideMessagesContent) {
+            if (angular.equals($scope.$parent.showMessagesFeatures, true)) {
               configureNotificationsScope();
             } else {
-              vm.hideMessagesFeatures = true;
+              vm.showMessagesFeatures = false;
               vm.isLoading = false;
             }
           }
@@ -455,6 +455,7 @@ define(['angular'], function(angular) {
         vm.active = false;
         vm.mode = $scope.mode;
         vm.announcements = [];
+        vm.showMessagesFeatures = true;
 
         // //////////////////
         // Event listeners //
@@ -467,10 +468,10 @@ define(['angular'], function(angular) {
           // If the parent scope has messages and messages config is set up,
           // complete initialization
           if (hasMessages) {
-            if (!$scope.$parent.hideMessagesContent) {
+            if (angular.equals($scope.$parent.showMessagesFeatures, true)) {
               configureAnnouncementsScope();
             } else {
-              vm.hideMessagesFeatures = true;
+              vm.showMessagesFeatures = false;
               vm.isLoading = false;
             }
           }

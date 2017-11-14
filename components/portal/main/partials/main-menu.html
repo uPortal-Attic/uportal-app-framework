@@ -24,7 +24,7 @@
             md-whiteframe="4">
   <div class="main-menu__mobile-bar" layout="row" layout-align="end center" hide-gt-xs>
     <md-button href="features"
-               ng-if="vm.hasUnseenAnnouncements && !vm.hideMessagesFeatures"
+               ng-if="vm.hasUnseenAnnouncements && vm.showMessagesFeatures"
                ng-click="vm.closeMainMenu();"
                aria-label="view all announcements">
       <span><md-icon>new_releases</md-icon></span>
@@ -34,7 +34,7 @@
     <md-button ng-href="{{ vm.notificationsPageUrl }}"
                ng-click="vm.pushGAEvent('Sidenav notifications bell (normal state)', 'Click link', 'Normal state');vm.closeMainMenu();"
                aria-label="view all notifications"
-               ng-if="!vm.hasPriorityNotifications && !vm.hideMessagesFeatures">
+               ng-if="!vm.hasPriorityNotifications && vm.showMessagesFeatures">
       <span><md-icon>notifications</md-icon></span>
       <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
     </md-button>
@@ -42,7 +42,7 @@
     <md-button ng-href="{{ vm.notificationsPageUrl }}"
                ng-click="vm.pushGAEvent('Sidenav notifications bell', 'Click link', 'High priority state');vm.closeMainMenu();"
                aria-label="you have important notifications"
-               ng-if="vm.hasPriorityNotifications && !vm.hideMessagesFeatures">
+               ng-if="vm.hasPriorityNotifications && vm.showMessagesFeatures">
       <span class="main-menu__high-priority">
         <md-icon class="md-warn">error</md-icon>
       </span>
