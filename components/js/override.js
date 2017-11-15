@@ -27,5 +27,8 @@ define(['angular'], function(angular) {
       'SERVICE_LOC': {
         // 'messagesURL': 'staticFeeds/sample-messages.json',
       },
+      'MESSAGES': {
+        // 'notificationsPageURL': '/notifications',
+      },
     });
 });
