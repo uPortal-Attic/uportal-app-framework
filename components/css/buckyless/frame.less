@@ -57,17 +57,26 @@
 
     .region-main {
       position: relative;
+      display: flex;
       flex: auto;
-      height: 100%;
+
+      ng-view#main-content {
+        display: flex;
+        flex: inherit;
+      }
     }
   }
 }
 
 /* Frame page styles for on-page side navigation */
 frame-page {
+  display: flex;
+  flex: inherit;
+
   .wrapper__frame-page {
     height: 100%;
     display: flex;
+    flex: inherit;
     flex-direction: column;
 
     .wrapper__push-content {

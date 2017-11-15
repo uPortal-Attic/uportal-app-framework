@@ -8,6 +8,8 @@ For example, clicking on the main button of a widget could:
 * Launch an application outside of the portal, or
 * Launch a website outside of the portal
 
+See the [launch-button directive documentation](directives.md#launch-button).
+
 ## Suggested button text
 
 To maintain consistent labeling, which is important to user experience, **we strongly suggest widgets use one of the following labels** for
@@ -18,6 +20,8 @@ the launch button's `data-button-text` attribute:
 * **Launch full app**: (Default) Best for task-based applications -- can also be used for any applications that open within the portal and do not meet the criteria of other labels
 
 ## Launch buttons and accessibility
+
+_Note: This only applies if you are creating a custom widget. Predefined widget types already include accessibility features._
 
 To ensure launch buttons are accessible to vision-impaired users and other screen reader users, use the `data-aria-label`
 to provide additional context that is not communicated by the button's text alone. Aria-labels should be short and should include
