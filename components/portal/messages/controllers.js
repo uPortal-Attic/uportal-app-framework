@@ -66,8 +66,17 @@ define(['angular'], function(angular) {
          */
         var filterMessages = function() {
           // Check if group filtering has been disabled
-          if (!$localStorage.disableGroupFilteringForMessages) {
+          if ($localStorage.disableGroupFilteringForMessages) {
             // Define promises to run if filtering is turned on
+            promiseFilteredMessages = {
+              filteredByGroup:
+                messagesService.getAllMessages(),
+              filteredByData:
+                messagesService.getMessagesByData(allMessages),
+              filteredByTitle:
+                messagesService.getMessagesByTitle(allMessages),
+            };
+          } else {
             promiseFilteredMessages = {
               filteredByGroup:
                 messagesService.getMessagesByGroup(allMessages),
@@ -76,17 +85,17 @@ define(['angular'], function(angular) {
               filteredByTitle:
                 messagesService.getMessagesByTitle(allMessages),
             };
+          }
             // Call filtered notifications promises, then pass on to
             // the completion function
             $q.all(promiseFilteredMessages)
               .then(filterMessagesSuccess)
               .catch(filterMessagesFailure);
-          } else {
+         
             // Separate all messages by their types
             $scope.messages = $filter('separateMessageTypes')(allMessages);
             // Change hasMessages so child controllers can pick up on it
             $scope.hasMessages = true;
-          }
         };
 
         /**
