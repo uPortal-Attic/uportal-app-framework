@@ -25,7 +25,7 @@ define(['angular'], function(angular) {
         'enablePushContentMenu': true,
       },
       'SERVICE_LOC': {
-        'messagesURL': 'staticFeeds/sample-messages.json',
+        // 'messagesURL': 'staticFeeds/sample-messages.json',
       },
       'MESSAGES': {
         // 'notificationsPageURL': '/notifications',
