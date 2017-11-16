@@ -18,9 +18,10 @@
     under the License.
 
 -->
-<div class="overlay__widget-mode">
+<div class="overlay__widget-mode" 
+  ng-hide="message_acknowledged">
   <div class="overlay-content">
-    <p>{{ widget.externalMessageText }}</p>
+    <p>{{ widget.externalMessageText | limitTo:225}}</p>
     <md-button ng-if="widget.externalMessageLearnMoreUrl" 
       class="md-accent md-raised" id="overlay-learn-more-button" 
       ng-href={{widget.externalMessageLearnMoreUrl}} aria-label=
@@ -29,7 +30,8 @@
         Learn more
     </md-button>
     <md-button class="md-primary md-raised" id="overlay-continue-button" 
-      aria-label= "Continue to the {{widget.fname}} widget">
+      aria-label= "Continue to the {{widget.fname}} widget" 
+        ng-click="message_acknowledged = true">
         Continue
     </md-button>
   </div>
