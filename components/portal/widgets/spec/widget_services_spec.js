@@ -28,26 +28,19 @@ define(['angular-mocks', 'portal'], function() {
     var extneralMessageTextObjectLocation = ['result', 0, 'shortMessage'];
     var externalLearnMoreUrlLocation = ['learnMoreUrl'];
     var externalLearnMoreUrl = 'https://apereo.org';
-    var widget = {
-      'fname': 'widget',
-      'widgetExternalMessageUrl': externalMessageUrl,
-      'widgetExtneralMessageTextObjectLocation':
-        extneralMessageTextObjectLocation,
-      'widgetExternalMessageLearnMoreUrl':
-        externalLearnMoreUrlLocation,
-    };
+
     var externalMessageText =
       'Your account will be deactivated soon after some time.';
     var externalMessageResponseObjectSuccess = {
-        'mesg': 'Success',
-        'result': [
-          {
-            'longMessage': externalMessageText,
-            'shortMessage': externalMessageText,
-          },
-        ],
-       'learnMoreUrl': externalLearnMoreUrl,
-      };
+      'mesg': 'Success',
+      'result': [
+        {
+          'longMessage': externalMessageText,
+          'shortMessage': externalMessageText,
+        },
+      ],
+      'learnMoreUrl': externalLearnMoreUrl,
+    };
 
     beforeEach(function() {
       module('portal');
@@ -60,14 +53,103 @@ define(['angular-mocks', 'portal'], function() {
 
    describe('WidgetExternalMessageService', function() {
      it('If configured properly, should return message and url', function() {
+       var widget = {
+         'fname': 'widget',
+         'widgetExternalMessageUrl': externalMessageUrl,
+         'widgetExtneralMessageTextObjectLocation':
+           extneralMessageTextObjectLocation,
+         'widgetExternalMessageLearnMoreUrl':
+           externalLearnMoreUrlLocation,
+       };
+
        httpBackend.whenGET(externalMessageUrl).respond(
            externalMessageResponseObjectSuccess);
+
        widgetService.getWidgetExternalMessage(widget).then(function(result) {
          expect(result.messageText).toEqual(externalMessageText);
          expect(result.learnMoreUrl).toEqual(externalLearnMoreUrl);
        });
        httpBackend.flush();
      });
+
+     it('If extneralMessageTextObjectLocation points to a non-existent '+
+         'location, shoud return an empty object', function() {
+       var widget = {
+         'fname': 'widget',
+         'widgetExternalMessageUrl': externalMessageUrl,
+         'widgetExtneralMessageTextObjectLocation':
+           ['foo'],
+         'widgetExternalMessageLearnMoreUrl':
+           externalLearnMoreUrlLocation,
+       };
+
+       httpBackend.whenGET(externalMessageUrl).respond(
+           externalMessageResponseObjectSuccess);
+
+       widgetService.getWidgetExternalMessage(widget).then(function(result) {
+         expect(result.messageText).toBeUndefined();
+         expect(result.learnMoreUrl).toEqual(externalLearnMoreUrl);
+       });
+       httpBackend.flush();
+     });
+
+     it('If external message text object is not present, '+
+       'text should be undefined', function() {
+       var widget = {
+         'fname': 'widget',
+         'widgetExternalMessageUrl': externalMessageUrl,
+         'widgetExtneralMessageTextObjectLocation':
+           extneralMessageTextObjectLocation,
+         'widgetExternalMessageLearnMoreUrl':
+           externalLearnMoreUrlLocation,
+       };
+
+       httpBackend.whenGET(externalMessageUrl).respond(
+         {
+           'mesg': 'Success',
+           'result': [
+             {
+               'longMessage': externalMessageText,
+             },
+           ],
+           'learnMoreUrl': externalLearnMoreUrl,
+         });
+
+       widgetService.getWidgetExternalMessage(widget).then(function(result) {
+         expect(result.messageText).toBeUndefined();
+         expect(result.learnMoreUrl).toEqual(externalLearnMoreUrl);
+       });
+       httpBackend.flush();
+     });
+
+     it('If learn more url is present, '+
+         'learn more url should be undefined', function() {
+         var widget = {
+           'fname': 'widget',
+           'widgetExternalMessageUrl': externalMessageUrl,
+           'widgetExtneralMessageTextObjectLocation':
+             extneralMessageTextObjectLocation,
+           'widgetExternalMessageLearnMoreUrl':
+             externalLearnMoreUrlLocation,
+         };
+
+         httpBackend.whenGET(externalMessageUrl).respond(
+           {
+             'mesg': 'Success',
+             'result': [
+               {
+                 'longMessage': externalMessageText,
+               },
+             ],
+             'learnMoreUrl': externalLearnMoreUrl,
+           });
+
+         widgetService.getWidgetExternalMessage(widget).then(function(result) {
+           expect(result.messageText).toBeUndefined();
+           expect(result.learnMoreUrl).toEqual(externalLearnMoreUrl);
+         });
+         httpBackend.flush();
+       });
    });
   });
 });
