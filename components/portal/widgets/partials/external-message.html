@@ -19,7 +19,7 @@
 
 -->
 <div class="overlay__widget-mode" 
-  ng-hide="message_acknowledged">
+  ng-hide="message_acknowledged || !widget.externalMessageText.trim()">
   <div class="overlay-content">
     <p>{{ widget.externalMessageText | limitTo:225}}</p>
     <md-button ng-if="widget.externalMessageLearnMoreUrl" 

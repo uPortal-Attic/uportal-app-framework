@@ -25,6 +25,12 @@ define(['angular'], function(angular) {
     '$http', '$log', 'SERVICE_LOC',
     function($http, $log, SERVICE_LOC) {
     /**
+     * @typedef {Object} ExternalMessage
+     * @property {string} messageText
+     * @property {string} learnMoreUrl
+    */
+
+    /**
      * Get the a single app's full entity file as JSON
      * @param {string} fname - The app's fname value (<fname> in entity files)
      * @return {*}
@@ -74,19 +80,42 @@ define(['angular'], function(angular) {
     };
 
     /**
-     * Get widget message text via an external source
-     * widgetMessageUrl has to be present otherwise null
-     * will be returned
+     * Retrieve the widget external messaging if widget.widgetExternalMessageUrl
+     * is configured, otherwise will return null.
      * @param {Object} widget
-     * @return {String} message text
+     * @return {ExternalMessage} message text
      */
     var getWidgetExternalMessage = function(widget) {
+      var externalMessage = {};
       return $http.get(widget.widgetExternalMessageUrl, {cache: true})
         .then(function(result) {
-          return result.data;
+          if (widget.widgetExtneralMessageTextObjectLocation &&
+            angular.isArray(widget.widgetExtneralMessageTextObjectLocation)) {
+            var messageText = result.data;
+            angular.forEach(widget.widgetExtneralMessageTextObjectLocation,
+              function(value, key) {
+                messageText = messageText[value];
+            });
+            externalMessage.messageText = messageText;
+          } else {
+            $log.warn('Could not parse external message text for ' +
+              widget.fname);
+          }
+
+          // Determine the learn more link if configured
+          if (widget.widgetExternalMessageLearnMoreUrl &&
+            angular.isArray(widget.widgetExternalMessageLearnMoreUrl)) {
+            var learnMoreUrl = result.data;
+            angular.forEach(widget.widgetExternalMessageLearnMoreUrl,
+              function(value, key) {
+              learnMoreUrl = learnMoreUrl[value];
+            });
+            externalMessage.learnMoreUrl = learnMoreUrl;
+          }
+          return externalMessage;
         })
         .catch(function(error) {
-          $log.warn('Could not retrieve widget external message for: '
+          $log.warn('Could not retrieve external message for: '
             + widget.fname);
           return null;
         });

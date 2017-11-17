@@ -3,8 +3,8 @@
   "result": [
     {
       "longMessage": "Your account will be deactivated soon after some time.",
-      "shortMessage": "Your account will be deactivated soon."
+      "shortMessage": "Your account will be deactivated soon after some time."
     }
   ],
- "learnMoreUrl": "https://www.google.com"
+ "learnMoreUrl": "https://apereo.org"
 }
