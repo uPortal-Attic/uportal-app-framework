@@ -20,36 +20,33 @@
 -->
 <frame-page app-title="Demo Widgets"
             app-icon="settings"
-            white-background="true"
             class="demo-widgets-page">
-
-  <md-content layout-padding>
-    <!--
+  <!--
       LOCAL DEMO
       - Must set SERVICE_LOC->widgetApi.entry in app-config.js to: "staticFeeds/"
     -->
-    <p>To make these widgets appear without error state, open js/app-config.js, find the <code>SERVICE_LOC</code> value, and change <code>widgetApi.entry</code> to point to "staticFeeds/"</p>
-    <div layout="row" layout-align="center center">
-      <div flex-xs="100" style="max-width:310px">
-        <widget fname="sample-widget__benefits"></widget>
-      </div>
-      <!--<div flex-xs="100" style="max-width:310px">-->
-        <!--<widget fname="sample-widget__custom"></widget>-->
-      <!--</div>-->
-      <!--<div flex-xs="100" style="max-width:310px">-->
-        <!--<widget fname="sample-widget__rss"></widget>-->
-      <!--</div>-->
+  <p>To make these widgets appear without error state, open js/app-config.js, find the <code>SERVICE_LOC</code> value, and change <code>widgetApi.entry</code> to point to "staticFeeds/"</p>
+  <div layout="row" layout-align="center center" style="flex-wrap:wrap;">
+    <div flex-xs="100" style="max-width:310px">
+      <widget fname="sample-widget__benefits"></widget>
     </div>
+    <div flex-xs="100" style="max-width:310px">
+      <widget fname="sample-widget__custom"></widget>
+    </div>
+    <div flex-xs="100" style="max-width:310px">
+      <widget fname="sample-widget__rss"></widget>
+    </div>
+  </div>
     <!--<div layout="row" layout-align="center center">-->
-      <!--<div flex-xs="100" style="max-width:310px">-->
-        <!--<widget fname="sample-widget__list-of-links"></widget>-->
-      <!--</div>-->
-      <!--<div flex-xs="100" style="max-width:310px">-->
-        <!--<widget fname="sample-widget__action-items"></widget>-->
-      <!--</div>-->
-      <!--<div flex-xs="100" style="max-width:310px">-->
-        <!--<widget fname="sample-widget__basic"></widget>-->
-      <!--</div>-->
+    <!--<div flex-xs="100" style="max-width:310px">-->
+    <!--<widget fname="sample-widget__list-of-links"></widget>-->
     <!--</div>-->
-  </md-content>
+    <!--<div flex-xs="100" style="max-width:310px">-->
+    <!--<widget fname="sample-widget__action-items"></widget>-->
+    <!--</div>-->
+    <!--<div flex-xs="100" style="max-width:310px">-->
+    <!--<widget fname="sample-widget__basic"></widget>-->
+    <!--</div>-->
+    <!--</div>-->
+
 </frame-page>

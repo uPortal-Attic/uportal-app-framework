@@ -83,6 +83,7 @@ The above attributes are all you need to configure a basic widget!
 Widget types provide a predefined standard template that can do a lot more than a basic widget while saving you the trouble of creating a custom design.
 
 + It is less development effort to compose configuration and data for an existing widget type than to develop a novel widget.
++ All defined types come with built-in accessibility features to ensure that screen reader users get the best experience possible.
 + Widget types are maintained as part of the uportal-home product, so usages of these types will less often need developer attention to keep them looking up-to-date and working well.
 + Widget types separate configuration (widgetConfig) and data (backing JSON web service) from the implementation of the markup for the widget (widget type).
 + Widget types are more amenable to automated unit testing than are ad-hoc custom widgets.
@@ -415,6 +416,33 @@ Provided dates **MUST** match one of the following formats:
 + Similarly, if you want the widget to tell users that a period to take action recently ended, you must provide dates for both `takeActionEndDate` (the date when taking the action stopped being possible) and `templateRetireDate` (the date the widget should go back to showing basic content). The former date must be *BEFORE* the latter one. During the days between the two dates, the widget will display "Ended `takeActionEndDate`".
 + If you only want the widget to show time-sensitive content when that content is actionable, you only have to provide dates for `templateLiveDate` and `templateRetireDate`. During the days between the two dates, the widget will display a countdown of days remaining to take action.
 
+## Other Configuration
+
+### Launch button text
+If you provide a `widgetConfig` with any defined widget type (i.e. not a custom widget) with a value for `launchText`, it will replace the text of the
+launch button with the provided value, even for non-widgets. Use sentence case in launch button text.
+
+Read more about the [launch button best practices](widget-launch-button.md).
+
+### Maintenance mode
+If your widget/application depends on a service that is currently experiencing an outage or planned maintenance, you can
+add the `maintenanceMode` attribute to your `widgetConfig` with a value of "true." Widgets in maintenance mode will display
+a message communicating that the app is unavailable and the widget will be disabled (unclickable). To turn maintenance mode off,
+simply set the attributes value to "false" or remove it from your `widgetConfig` altogether.
+
+Example:
+
+```xml
+<portlet-preference>
+  <name>widgetConfig</name>
+  <value>
+    <![CDATA[{
+      'launchText' : 'See all the Weather',
+      'maintenanceMode' : true
+    }]]>
+  </value>
+</portlet-preference>
+```
 
 ## Custom widgets
 Using a JSON service is a great way to have user-focused content in your widgets. Here are the steps you have to take to create your custom JSON-backed widget:
@@ -475,11 +503,23 @@ This is where the template goes. We suggest using a CDATA tag here.
           </ul>
         </div>
       </div>
-      <a class='btn btn-default launch-app-button' href='/portal/p/earnings-statement'>See all payroll information</a>
+      <launch-button data-href='/portal/p/earnings-statement'
+                     data-target='_self'
+                     data-button-text='Launch full app'
+                     data-aria-label='Launch payroll information'></launch-button>
     ]]>
   </value>
 </portlet-preference>
 ```
+
+#### Accessibility guidance
+
+Creating a custom widget means you'll miss out on built-in accessibility features, like aria-labels for screen reader users. We recommend using the `<launch-button>` directive for
+you widget launch button, and providing a simple but meaningful value for the `data-aria-label` attribute.
+
+Read more about the [launch button best practices](widget-launch-button.md).
+
+*Note: If you do not use the launch-button directive, please give your launch button a class of "launch-app-button" to ensure it matches other widgets.*
 
 ### 4. widgetConfig
 
@@ -497,34 +537,6 @@ Currently we only use the evalString to evaluate emptiness. We may add more in t
 By doing just this we were able to generate:
 
 ![custom widget](./img/custom-widget.png)
-
-## Other Configuration
-
-### Launch button text
-If you provide a `widgetConfig` with any widget type with a value for `launchText`, it will replace the text of the
-launch button with the provided value, even for non-widgets. Use sentence case in launch button text.
-
-### Maintenance mode
-If your widget/application depends on a service that is currently experiencing an outage or planned maintenance, you can
-add the `maintenanceMode` attribute to your `widgetConfig` with a value of "true." Widgets in maintenance mode will display
-a message communicating that the app is unavailable and the widget will be disabled (unclickable). To turn maintenance mode off,
-simply set the attributes value to "false" or remove it from your `widgetConfig` altogether.
-
-Example:
-
-```xml
-<portlet-preference>
-  <name>widgetConfig</name>
-  <value>
-    <![CDATA[{
-      'launchText' : 'See all the Weather',
-      'maintenanceMode' : true
-    }]]>
-  </value>
-</portlet-preference>
-```
-
-Read more about the [launch button text guidance](widget-launch-button.md).
 
 
 [rssToJson]: https://github.com/UW-Madison-DoIT/rssToJson

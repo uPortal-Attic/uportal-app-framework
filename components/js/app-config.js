@@ -59,7 +59,7 @@ define(['angular'], function(angular) {
             'searchURL': '/web/apps/search/',
         })
         .value('MESSAGES', {
-            'notificationsPageURL': '/notifications',
+            'notificationsPageURL': '/web/notifications',
         })
         .value('MISC_URLS', {
             'feedbackURL': 'https://my.wisc.edu/portal/p/feedback',

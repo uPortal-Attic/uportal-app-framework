@@ -86,16 +86,15 @@ define(['angular'], function(angular) {
                 messagesService.getMessagesByTitle(allMessages),
             };
           }
-            // Call filtered notifications promises, then pass on to
-            // the completion function
-            $q.all(promiseFilteredMessages)
-              .then(filterMessagesSuccess)
-              .catch(filterMessagesFailure);
-         
-            // Separate all messages by their types
-            $scope.messages = $filter('separateMessageTypes')(allMessages);
-            // Change hasMessages so child controllers can pick up on it
-            $scope.hasMessages = true;
+          // Call filtered notifications promises, then pass on to
+          // the completion function
+          $q.all(promiseFilteredMessages)
+            .then(filterMessagesSuccess)
+            .catch(filterMessagesFailure);
+          // Separate all messages by their types
+          $scope.messages = $filter('separateMessageTypes')(allMessages);
+          // Change hasMessages so child controllers can pick up on it
+          $scope.hasMessages = true;
         };
 
         /**
