@@ -73,7 +73,7 @@ define(['angular-mocks', 'portal'], function() {
      });
 
      it('If extneralMessageTextObjectLocation points to a non-existent '+
-         'location, shoud return an empty object', function() {
+         'location, message should be undefined', function() {
        var widget = {
          'fname': 'widget',
          'widgetExternalMessageUrl': externalMessageUrl,
@@ -122,7 +122,7 @@ define(['angular-mocks', 'portal'], function() {
        httpBackend.flush();
      });
 
-     it('If learn more url is present, '+
+     it('If learn more url is not present, '+
          'learn more url should be undefined', function() {
          var widget = {
            'fname': 'widget',
@@ -139,14 +139,104 @@ define(['angular-mocks', 'portal'], function() {
              'result': [
                {
                  'longMessage': externalMessageText,
+                 'shortMessage': externalMessageText,
                },
              ],
-             'learnMoreUrl': externalLearnMoreUrl,
            });
 
          widgetService.getWidgetExternalMessage(widget).then(function(result) {
-           expect(result.messageText).toBeUndefined();
-           expect(result.learnMoreUrl).toEqual(externalLearnMoreUrl);
+           expect(result.messageText).toEqual(externalMessageText);
+           expect(result.learnMoreUrl).toBeUndefined();
+         });
+         httpBackend.flush();
+       });
+
+     it('If extneralMessageLearnMoreObjectLocation points to a non-existent, '+
+         'location should be undefined', function() {
+       var widget = {
+         'fname': 'widget',
+         'widgetExternalMessageUrl': externalMessageUrl,
+         'widgetExtneralMessageTextObjectLocation':
+           extneralMessageTextObjectLocation,
+         'widgetExternalMessageLearnMoreUrl':
+           ['bar'],
+       };
+
+       httpBackend.whenGET(externalMessageUrl).respond(
+           externalMessageResponseObjectSuccess);
+
+       widgetService.getWidgetExternalMessage(widget).then(function(result) {
+         expect(result.messageText).toEqual(externalMessageText);
+         expect(result.learnMoreUrl).toBeUndefined();
+       });
+       httpBackend.flush();
+     });
+
+     it('If message text or learn more url are blank or empty string, should '+
+         'still return empty string.', function() {
+       var widget = {
+           'fname': 'widget',
+           'widgetExternalMessageUrl': externalMessageUrl,
+           'widgetExtneralMessageTextObjectLocation':
+             extneralMessageTextObjectLocation,
+           'widgetExternalMessageLearnMoreUrl':
+             externalLearnMoreUrlLocation,
+         };
+
+       httpBackend.whenGET(externalMessageUrl).respond(
+         {
+           'mesg': 'Success',
+           'result': [
+             {
+               'longMessage': externalMessageText,
+               'shortMessage': '',
+             },
+           ],
+           'learnMoreUrl': '     ',
+         });
+
+       widgetService.getWidgetExternalMessage(widget).then(function(result) {
+         expect(result.messageText.trim()).toEqual('');
+         expect(result.learnMoreUrl.trim()).toEqual('');
+       });
+       httpBackend.flush();
+     });
+
+     it('If learn more url is not configured, learn more url should be '+
+       'undefined.', function() {
+       var widget = {
+           'fname': 'widget',
+           'widgetExternalMessageUrl': externalMessageUrl,
+           'widgetExtneralMessageTextObjectLocation':
+             extneralMessageTextObjectLocation,
+         };
+
+       httpBackend.whenGET(externalMessageUrl).respond(
+         externalMessageResponseObjectSuccess);
+
+       widgetService.getWidgetExternalMessage(widget).then(function(result) {
+         expect(result.messageText).toEqual(externalMessageText);
+         expect(result.learnMoreUrl).toBeUndefined();
+       });
+       httpBackend.flush();
+     });
+
+     it('If learn more url is configured, but not external message, '+
+         'everything should be undefined.', function() {
+         var widget = {
+           'fname': 'widget',
+           'widgetExtneralMessageTextObjectLocation':
+             extneralMessageTextObjectLocation,
+           'widgetExternalMessageLearnMoreUrl':
+             externalLearnMoreUrlLocation,
+         };
+
+         httpBackend.whenGET(externalMessageUrl).respond(
+           externalMessageResponseObjectSuccess);
+
+         widgetService.getWidgetExternalMessage(widget).then(function(result) {
+           expect(result).toBeUndefined();
+           expect(result).toBeUndefined();
          });
          httpBackend.flush();
        });
