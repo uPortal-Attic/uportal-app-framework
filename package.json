@@ -65,7 +65,7 @@
   "homepage": "https://github.com/uPortal-Project/uportal-app-framework",
   "devDependencies": {
     "@commitlint/cli": "^5.0.0",
-    "@commitlint/config-angular": "^4.2.0",
+    "@commitlint/config-angular": "^5.0.0",
     "autoprefixer": "^7.1.2",
     "commitizen": "^2.9.6",
     "concurrently": "^3.1.0",
