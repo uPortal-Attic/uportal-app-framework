@@ -53,7 +53,7 @@
     <username></username>
   </div>
   <md-menu-content>
-    <md-subheader class="md-primary subheader__app-name" ng-if="vm.appName != ''">{{ vm.appName }}</md-subheader>
+    <md-subheader class="subheader__app-name" ng-if="vm.appName != ''">{{ vm.appName }} menu</md-subheader>
     <!-- App-specific content -->
     <div ng-if="vm.appMenuTemplate" ng-include="vm.appMenuTemplate"></div>
     <md-menu-item ng-if="!vm.appMenuTemplate" ng-repeat="item in vm.menuItems">
