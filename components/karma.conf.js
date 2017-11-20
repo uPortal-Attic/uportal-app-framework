@@ -50,11 +50,6 @@ module.exports = function(config) {
 
         browsers: ['ChromeHeadless'], // or 'Chrome'
 
-        logLevel: config.LOG_DEBUG,
-        client: {
-          captureConsole: true,
-        },
-
         plugins: [
             'karma-htmlfile-reporter',
             'karma-chrome-launcher',

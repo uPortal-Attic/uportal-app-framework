@@ -24,23 +24,6 @@ define(['angular-mocks', 'portal'], function() {
   describe('WidgetService', function() {
     var widgetService;
     var httpBackend;
-    var externalMessageUrl = 'externalMessageUrl';
-    var extneralMessageTextObjectLocation = ['result', 0, 'shortMessage'];
-    var externalLearnMoreUrlLocation = ['learnMoreUrl'];
-    var externalLearnMoreUrl = 'https://apereo.org';
-
-    var externalMessageText =
-      'Your account will be deactivated soon after some time.';
-    var externalMessageResponseObjectSuccess = {
-      'mesg': 'Success',
-      'result': [
-        {
-          'longMessage': externalMessageText,
-          'shortMessage': externalMessageText,
-        },
-      ],
-      'learnMoreUrl': externalLearnMoreUrl,
-    };
 
     beforeEach(function() {
       module('portal');
@@ -52,6 +35,24 @@ define(['angular-mocks', 'portal'], function() {
     }));
 
    describe('WidgetExternalMessageService', function() {
+     var externalMessageUrl = 'externalMessageUrl';
+     var extneralMessageTextObjectLocation = ['result', 0, 'shortMessage'];
+     var externalLearnMoreUrlLocation = ['learnMoreUrl'];
+     var externalLearnMoreUrl = 'https://apereo.org';
+
+     var externalMessageText =
+       'Your account will be deactivated soon after some time.';
+     var externalMessageResponseObjectSuccess = {
+       'mesg': 'Success',
+       'result': [
+         {
+           'longMessage': externalMessageText,
+           'shortMessage': externalMessageText,
+         },
+       ],
+       'learnMoreUrl': externalLearnMoreUrl,
+     };
+
      it('If configured properly, should return message and url', function() {
        var widget = {
          'fname': 'widget',
@@ -220,26 +221,6 @@ define(['angular-mocks', 'portal'], function() {
        });
        httpBackend.flush();
      });
-
-     it('If learn more url is configured, but not external message, '+
-         'everything should be undefined.', function() {
-         var widget = {
-           'fname': 'widget',
-           'widgetExtneralMessageTextObjectLocation':
-             extneralMessageTextObjectLocation,
-           'widgetExternalMessageLearnMoreUrl':
-             externalLearnMoreUrlLocation,
-         };
-
-         httpBackend.whenGET(externalMessageUrl).respond(
-           externalMessageResponseObjectSuccess);
-
-         widgetService.getWidgetExternalMessage(widget).then(function(result) {
-           expect(result).toBeUndefined();
-           expect(result).toBeUndefined();
-         });
-         httpBackend.flush();
-       });
    });
   });
 });
