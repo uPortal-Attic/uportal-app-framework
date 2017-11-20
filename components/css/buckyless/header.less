@@ -50,39 +50,17 @@ portal-header {
         }
       }
 
-      .title-link h1.has-app-name {
-        display: flex;
-        justify-content: center;
-        align-items: start;
-        flex-direction: column;
-
-        .portal-title {
-          display: flex;
-          font-size: 14px;
-        }
-
-        .app-name {
-          font-weight: bold;
-          font-size: 18px;
-          display: flex;
-        }
+      .title-link h1 {
+        margin-left: 16px;
       }
 
-      .menu-toggle.md-button {
+      .menu-toggle.md-button.menu-margin {
         min-width: 48px;
         margin: 0;
 
         ~ .title-link h1 {
           @media (min-width: @xs) {
             margin-left: 0;
-          }
-        }
-
-        &.hide-gt-xs {
-          ~ .title-link h1 {
-            @media (min-width: @xs) {
-              margin-left: 16px;
-            }
           }
         }
       }

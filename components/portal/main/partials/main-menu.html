@@ -21,7 +21,8 @@
 <md-sidenav class="md-sidenav-left main-menu__sidenav"
             md-component-id="main-menu"
             md-is-open="vm.openMenuByDefault"
-            md-whiteframe="4">
+            md-whiteframe="4"
+            ng-hide="vm.hideMainMenu">
   <div class="main-menu__mobile-bar" layout="row" layout-align="end center" hide-gt-xs>
     <md-button href="features"
                ng-if="vm.hasUnseenAnnouncements && vm.showMessagesFeatures"
