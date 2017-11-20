@@ -85,6 +85,9 @@ app framework relies upon might still use Java, of course.)
 + Fix bug where notification bell still showed on notification page (#576)
 + Add error message when notifications fail (#577)
 + Fix spacing error if no configurable side navigation is used (#583)
++ Allow unbroken experience when opting-out of portal-wide notifications (#611)
++ Fix accessibility bug where screen reader/keyboard navigation couldn't access notifications/announcements (#613)
++ Clarify that side navigation subheader is not a link (#617)
 
 ## [6.0.3][] - 2017-09-29
 + fix(messages): return nothing on filter fail (#554)
