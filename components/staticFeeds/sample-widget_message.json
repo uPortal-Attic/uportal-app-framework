@@ -2,7 +2,7 @@
   "mesg": "Success",
   "result": [
     {
-      "message": "Your account will be deactivated at the end of this month due to policy."
+      "message": "This is an important message that includes a learn more link for more information."
     }
   ],
  "learnMoreUrl": "https://goo.gl/hi4xAo"
