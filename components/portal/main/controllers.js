@@ -157,14 +157,32 @@ define(['angular', 'require'], function(angular, require) {
   }])
 
   /* Main menu toggle controller */
-  .controller('MenuToggleController', ['$mdSidenav', function($mdSidenav) {
-    var vm = this;
-    /**
-     * Toggle the side navigation menu
-     */
-    vm.showMainMenu = function() {
-      $mdSidenav('main-menu').toggle();
-    };
+  .controller('MenuToggleController', ['$mdSidenav', 'APP_OPTIONS',
+    function($mdSidenav, APP_OPTIONS) {
+      var vm = this;
+
+      vm.isMenuConfigured = true;
+
+      /**
+       * Toggle the side navigation menu
+       */
+      vm.showMainMenu = function() {
+        $mdSidenav('main-menu').toggle();
+      };
+
+      /**
+       * Hide main menu toggle if minimum configuration requirements
+       * are unmet
+       */
+      var init = function() {
+        if (APP_OPTIONS.appMenuItems.length == 0
+          && (angular.isUndefined(APP_OPTIONS.appMenuTemplateURL)
+          || APP_OPTIONS.appMenuTemplateURL == null)) {
+          vm.isMenuConfigured = false;
+        }
+      };
+
+      init();
   }])
 
   /* Side navigation controller */
@@ -260,7 +278,8 @@ define(['angular', 'require'], function(angular, require) {
         }
         // Check if push content is set
         vm.openMenuByDefault =
-          APP_OPTIONS.enablePushContentMenu && $mdMedia('gt-sm');
+          APP_OPTIONS.enablePushContentMenu
+          && $mdMedia('gt-sm') && !vm.hideMainMenu;
       };
 
       /**

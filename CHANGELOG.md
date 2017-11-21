@@ -6,19 +6,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][] (7.0.0?)
 
-### BREAKING CHANGE
+### BREAKING CHANGES
 
-The new side navigation feature in this release will likely break apps
-upgrading to this version of the framework from previous versions, in ways that
-are hard to predict. (#588).
+Updates to the side navigation feature in this release introduce a hard dependency on the `<frame-page>` directive for unbroken menu experience (#588). **If you're upgrading from 6.1.0**
+and you have already configured side navigation (by setting values for either `appMenuTemplateURL` or `appMenuItems` in your override.js file), you will need to ensure that every main
+view in your app uses the `<frame-page>` directive as its outermost container element. If you don't want to use the side navigation and you have not previously configured side navigation,
+you should not be affected by this change.
+
+There are also CSS changes to the layout container elements that precede the `<ng-view>` element (where your app's on-page content is pulled in) to prefer a flex-based layout (#588).
+This may affect you if:
+
++ You have a lot of elements that have a defined `min-width` property
++ You're already using flex positioning but are not using `flex-wrap` on containers with a lot of content
++ You have many elements with `position: absolute` (may experience a minor shift in placement)
 
 Examples of the kinds of downstream changes required:
 
-+ uPortal-home [change to use `<frame-page>` in some views][uPortal-home #739] and [in a couple other views][uPortal-home #742]
++ uPortal-home [change to use `<frame-page>` in some views][uPortal-home #739] and [in the rest of the views][uPortal-home #742]
 
 ### Features
 
 + Add on-page side navigation feature (#588)
+  + To use: Set `APP_OPTIONS.enablePushContentMenu` to true in your override.js file
 + Add more Google Analytics around notifications (#598). Events for
     + rendering priority (banner across the top) notification
     + dismissing priority notification
@@ -61,6 +70,7 @@ app framework relies upon might still use Java, of course.)
 ### Added
 + Add filter to determine rel attribute on anchors (#569)
 + Add configurable side navigation (#561)
+  - See [uportal-app-framework documentation][Sidenav-documentation] of this new feature
 
 ### Changed
 + Refactor theme names (#568)
@@ -75,6 +85,9 @@ app framework relies upon might still use Java, of course.)
 + Fix bug where notification bell still showed on notification page (#576)
 + Add error message when notifications fail (#577)
 + Fix spacing error if no configurable side navigation is used (#583)
++ Allow unbroken experience when opting-out of portal-wide notifications (#611)
++ Fix accessibility bug where screen reader/keyboard navigation couldn't access notifications/announcements (#613)
++ Clarify that side navigation subheader is not a link (#617)
 
 ## [6.0.3][] - 2017-09-29
 + fix(messages): return nothing on filter fail (#554)
@@ -87,7 +100,7 @@ app framework relies upon might still use Java, of course.)
 + correct references uportal app framework (#548)
 
 ## [6.0.1][] - 2017-09-25
-+ Cleaning up project name relicts (#538, #539, #540, #541, #542)
++ Cleaning up project name relics (#538, #539, #540, #541, #542)
 + Fix typo in time-sensitive widget (#537)
 
 ## [6.0.0][] - 2017-09-22
@@ -410,3 +423,4 @@ break compatibility with some older components.  If you used any angular-ui-boot
 
 [uPortal-home #739]: https://github.com/uPortal-Project/uportal-home/pull/739
 [uPortal-home #742]: https://github.com/uPortal-Project/uportal-home/pull/742
+[Sidenav-documentation]: http://uportal-project.github.io/uportal-app-framework/configurable-menu.html

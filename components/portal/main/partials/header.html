@@ -24,7 +24,12 @@
   <div class="md-toolbar-tools"  role="banner">
     <div layout="row" flex-gt-xs="30" flex-xs="40" layout-align="start center">
       <!-- MAIN MENU TOGGLE -->
-      <md-button class="menu-toggle" ng-controller="MenuToggleController as vm" ng-click="vm.showMainMenu()" ng-class="{ 'hide-gt-xs' : vm.hideMainMenu }">
+      <md-button class="menu-toggle"
+                 ng-controller="MenuToggleController as vm"
+                 ng-click="vm.showMainMenu()"
+                 ng-class="{ 'menu-margin' : vm.isMenuConfigured }"
+                 ng-show="vm.isMenuConfigured"
+                 ng-cloak>
         <md-icon>menu</md-icon>
         <md-tooltip md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Menu</md-tooltip>
         <notifications-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notifications-bell>
