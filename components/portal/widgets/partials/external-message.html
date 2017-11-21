@@ -22,17 +22,19 @@
   ng-hide="message_acknowledged || !widget.externalMessageText.trim()">
   <div class="overlay-content">
     <p>{{ widget.externalMessageText | limitTo:225}}</p>
-    <md-button ng-if="widget.externalMessageLearnMoreUrl" 
-      class="md-accent md-raised" id="overlay-learn-more-button" 
-      ng-href={{widget.externalMessageLearnMoreUrl}} aria-label=
-      "Learn more about the important message concerning {{widget.fname}}"
-      target="_blank" rel="noopener noreferrer">
-        Learn more
-    </md-button>
-    <md-button class="md-default md-raised" id="overlay-continue-button" 
-      aria-label= "Continue to the {{widget.fname}} widget" 
-        ng-click="message_acknowledged = true">
-        Continue
-    </md-button>
+    <div layout="row" layout-align="end center">
+        <md-button ng-if="widget.externalMessageLearnMoreUrl"
+          class="md-accent" id="overlay-learn-more-button"
+          ng-href={{widget.externalMessageLearnMoreUrl}} aria-label=
+          "Learn more about the important message concerning {{widget.fname}}"
+          target="_blank" rel="noopener noreferrer">
+            Learn more
+        </md-button>
+        <md-button class="md-accent" id="overlay-continue-button"
+          aria-label= "Continue to the {{widget.fname}} widget"
+            ng-click="message_acknowledged = true">
+            Continue
+        </md-button>
+    </div>
   </div>
 </div>
