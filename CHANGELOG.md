@@ -23,6 +23,7 @@ This may affect you if:
 Examples of the kinds of downstream changes required:
 
 + uPortal-home [change to use `<frame-page>` in some views][uPortal-home #739] and [in the rest of the views][uPortal-home #742]
++ uPortal-home had to further adjust [to accommodate flex-based layout][uPortal-home #747]
 
 ### Features
 
@@ -423,4 +424,5 @@ break compatibility with some older components.  If you used any angular-ui-boot
 
 [uPortal-home #739]: https://github.com/uPortal-Project/uportal-home/pull/739
 [uPortal-home #742]: https://github.com/uPortal-Project/uportal-home/pull/742
+[uPortal-home #747]: https://github.com/uPortal-Project/uportal-home/pull/747
 [Sidenav-documentation]: http://uportal-project.github.io/uportal-app-framework/configurable-menu.html
