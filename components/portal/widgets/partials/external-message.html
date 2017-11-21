@@ -26,12 +26,12 @@
         <md-button ng-if="widget.externalMessageLearnMoreUrl"
           class="md-accent" id="overlay-learn-more-button"
           ng-href={{widget.externalMessageLearnMoreUrl}} aria-label=
-          "Learn more about the important message concerning {{widget.fname}}"
+          "Learn more about the important message concerning {{widget.title}}"
           target="_blank" rel="noopener noreferrer">
             Learn more
         </md-button>
         <md-button class="md-accent" id="overlay-continue-button"
-          aria-label= "Continue to the {{widget.fname}} widget"
+          aria-label= "Continue to {{widget.title}}"
             ng-click="message_acknowledged = true">
             Continue
         </md-button>

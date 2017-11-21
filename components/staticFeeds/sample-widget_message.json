@@ -2,8 +2,7 @@
   "mesg": "Success",
   "result": [
     {
-      "longMessage": "Your account will be deactivated soon after some time.",
-      "shortMessage": "Your account will be deactivated at the end of this month due to policy."
+      "message": "Your account will be deactivated at the end of this month due to policy."
     }
   ],
  "learnMoreUrl": "https://goo.gl/hi4xAo"
