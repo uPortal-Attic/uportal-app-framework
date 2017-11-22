@@ -1,8 +1,10 @@
 # In-app messaging (technical implementation)
 
-All forms of in-app messages (notifications, mascot announcements, popup announcements, etc.) share a single data model. They depend on a
+Notifications and Announcements (notifications, mascot announcements, popup announcements, etc.) share a single data model. They depend on a
 JSON feed containing certain attributes and flags. See the [configuraton](configuration.md) doc for information about how to
 point uportal-app-framework to your desired feed.
+
+Widget messaging is based on JSON input configured in a [widget's configuration](make-a-widget.md).
 
 ## Example message
 
@@ -99,6 +101,46 @@ The image itself should have the following characteristics:
 + E. Transparent background
 
 *Note: The mascot image can be an animated gif, but animations should be limited to e.g. blinking eyes to achieve subtle presence without excessive distraction.*
+
+## Configuring a widget message
+
+Configuration is done by two required items and one optional.  Required is a url
+where to find a JSON object and an array representing where in the object the
+message can be found.  Optional is an array representing where in the object the
+learn more url can be found.
+The url to find the JSON object can be both external and internal to the app's
+configuration.
+
+Example JSON object
+```json
+{
+  "status": "Success",
+  "result": [
+    {
+      "message": "This is an important message that includes an optional learn more link for more information."
+    }
+  ],
+ "learnMoreUrl": "https://apereo.org"
+}
+```
+
+Example widget configuration
+```xml
+<portlet-preference>
+    <name>widgetExternalMessageUrl</name>
+    <value>locationToFindJSONObject</value>
+</portlet-preference>
+<portlet-preference>
+    <name>widgetExtneralMessageTextObjectLocation</name>
+    <value>["result", 0, "message"]</value>
+</portlet-preference>
+<portlet-preference>
+    <name>widgetURL</name>
+    <value>["learnMoreUrl"]</value>
+</portlet-preference>
+
+```
+
 
 ## Exercises
 

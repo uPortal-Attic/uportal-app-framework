@@ -1,0 +1,40 @@
+<!--
+
+    Licensed to Apereo under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Apereo licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License.  You may obtain a
+    copy of the License at the following location:
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<div class="overlay__widget-mode" 
+  ng-hide="message_acknowledged || !widget.externalMessageText.trim()">
+  <div class="overlay-content">
+    <p>{{ widget.externalMessageText | limitTo:225}}</p>
+    <div layout="row" layout-align="end center">
+        <md-button ng-if="widget.externalMessageLearnMoreUrl"
+          class="md-accent" id="overlay-learn-more-button"
+          ng-href={{widget.externalMessageLearnMoreUrl}} aria-label=
+          "Learn more about the important message concerning {{widget.title}}"
+          target="_blank" rel="noopener noreferrer">
+            Learn more
+        </md-button>
+        <md-button class="md-accent" id="overlay-continue-button"
+          aria-label= "Continue to {{widget.title}}"
+            ng-click="message_acknowledged = true">
+            Continue
+        </md-button>
+    </div>
+  </div>
+</div>

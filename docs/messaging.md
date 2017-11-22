@@ -1,7 +1,7 @@
 # In-app messaging (user-facing content)
 
-This application supports a variety of forms of in-app messaging, all of which a common data model and features. We categorize these types of messages under
-two broader categories: Notifications and Announcements. Both types are discoverable in more than one way, and both allow for varying degrees of importance ("priority").
+This application supports a variety of forms of in-app messaging. We categorize these types of messages under
+three broader categories: Notifications, Announcements, and Widget Messaging.
 
 ## Notifications
 
@@ -65,5 +65,13 @@ brings the user to the Features page, where there's a more detailed view of all 
 Announcements that are designated "high priority" will appear in the mascot announcer's menu, but will also be displayed in the form of a modal upon loading the app. Users can dismiss the modal
 by clicking elsewhere on the screen or clicking a configurable "confirm" button.
 
+## Widget messaging
+
+Widget messaging can be used to give the user a message in a way that interrupts
+a user's interaction with a widget.  A dialog appears over the widget allowing
+the user to continue after reading the message.  An optional `Learn more` button
+ is an opportunity to link to a learn more page.
+
+![widget messaging](./img/notifications/widget-overlay-messaging.png)
 
 

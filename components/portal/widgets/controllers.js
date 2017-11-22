@@ -123,6 +123,27 @@ define(['angular', 'moment'], function(angular, moment) {
       $scope.initializeWidget($scope.fname);
   }])
 
+    // External Message Controller
+  .controller('WidgetExternalMessageController', [
+    '$scope', '$log', 'widgetService',
+    function($scope, $log, widgetService) {
+      var widget = $scope.widget;
+      widgetService.getWidgetExternalMessage(widget).then(
+        function(externalMessage) {
+        if (externalMessage && externalMessage.messageText) {
+          $scope.widget.externalMessageText = externalMessage.messageText;
+          if (externalMessage.learnMoreUrl) {
+            $scope.widget.externalMessageLearnMoreUrl =
+              externalMessage.learnMoreUrl;
+          }
+        }
+        return externalMessage;
+      }).catch(function() {
+        $log.warn('Could not get external widget message for ' + widget.fname);
+      });
+    },
+  ])
+
   // OPTION LINK widget type
   .controller('OptionLinkController', [
     '$scope', '$log', 'widgetService',

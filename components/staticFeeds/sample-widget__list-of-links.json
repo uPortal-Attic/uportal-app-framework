@@ -11,13 +11,16 @@
       "fname": "my-professional-development",
       "lifecycleState": "PUBLISHED",
       "target": null,
-      "widgetURL": "/aries/proxy/listoflinks",
+      "widgetURL": "/staticFeeds/list-of-links-via-url.json",
       "widgetType": "list-of-links",
       "widgetTemplate": null,
       "widgetConfig": {
         "getLinksURL": "true",
-        "launchText": "Launch talent development"     
+        "launchText": "Launch talent development"
       },
+      "widgetExternalMessageUrl": "/staticFeeds/sample-widget_message.json",
+      "widgetExtneralMessageTextObjectLocation": ["result", 0, "message"],
+      "widgetExternalMessageLearnMoreUrl": ["learnMoreUrl"],
       "staticContent": "\n            <div>\n                <p><a href='https://www.ohrd.wisc.edu/Catalog/Default.aspx' target='_blank'>Search for talent development opportunities</a></p>\n            </div>        \n            \n        ",
       "pithyStaticContent": null,
       "altMaxUrl": true,

@@ -52,6 +52,20 @@ define(['angular', 'require'], function(angular, require) {
   })
 
   /**
+   * Show an external message
+   */
+  .directive('externalWidgetMessage', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+      },
+      templateUrl: require.toUrl('./partials/external-message.html'),
+      controller: 'WidgetExternalMessageController',
+    };
+  })
+
+  /**
    * Widget type that alternates between basic appearance and time-sensitive
    * content with a countdown
    */

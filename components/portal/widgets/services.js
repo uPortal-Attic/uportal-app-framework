@@ -25,6 +25,12 @@ define(['angular'], function(angular) {
     '$http', '$log', 'SERVICE_LOC',
     function($http, $log, SERVICE_LOC) {
     /**
+     * @typedef {Object} ExternalMessage
+     * @property {string} messageText
+     * @property {string} learnMoreUrl
+    */
+
+    /**
      * Get the a single app's full entity file as JSON
      * @param {string} fname - The app's fname value (<fname> in entity files)
      * @return {*}
@@ -63,14 +69,56 @@ define(['angular'], function(angular) {
           additionalText: 'Please contact your help desk if you ' +
             'feel you should be able to access this content',
         },
-        widgetTemplate: '<div class=\'overlay__maintenance-mode\'>' +
-        '<div class=\'maintenance-content\'>' +
+        widgetTemplate: '<div class=\'overlay__widget-mode\'>' +
+        '<div class=\'overlay-content\'>' +
         '<p><md-icon class=\'md-warn\'>warning</md-icon></p>' +
         '<p>You do not have permission to access this content. ' +
         'If you feel this is an error, please contact your help desk.</p>' +
         '</div>' +
         '</div>',
       };
+    };
+
+    /**
+     * Retrieve the widget external messaging if widget.widgetExternalMessageUrl
+     * is configured, otherwise will return null.
+     * @param {Object} widget
+     * @return {ExternalMessage} message text
+     */
+    var getWidgetExternalMessage = function(widget) {
+      var externalMessage = {};
+      return $http.get(widget.widgetExternalMessageUrl, {cache: true})
+        .then(function(result) {
+          if (widget.widgetExtneralMessageTextObjectLocation &&
+            angular.isArray(widget.widgetExtneralMessageTextObjectLocation)) {
+            var messageText = result.data;
+            angular.forEach(widget.widgetExtneralMessageTextObjectLocation,
+              function(value, key) {
+                messageText = messageText[value];
+            });
+            externalMessage.messageText = messageText;
+          } else {
+            $log.warn('Could not parse external message text for ' +
+              widget.fname);
+          }
+
+          // Determine the learn more link if configured
+          if (widget.widgetExternalMessageLearnMoreUrl &&
+            angular.isArray(widget.widgetExternalMessageLearnMoreUrl)) {
+            var learnMoreUrl = result.data;
+            angular.forEach(widget.widgetExternalMessageLearnMoreUrl,
+              function(value, key) {
+              learnMoreUrl = learnMoreUrl[value];
+            });
+            externalMessage.learnMoreUrl = learnMoreUrl;
+          }
+          return externalMessage;
+        })
+        .catch(function(error) {
+          $log.warn('Could not retrieve external message for: '
+            + widget.fname);
+          return null;
+        });
     };
 
     /**
@@ -142,6 +190,7 @@ define(['angular'], function(angular) {
       getWidgetJson: getWidgetJson,
       getRssAsJson: getRssAsJson,
       getActionItemQuantity: getActionItemQuantity,
+      getWidgetExternalMessage: getWidgetExternalMessage,
     };
   }]);
 });
