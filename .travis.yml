@@ -22,24 +22,22 @@ addons:
   firefox: latest
 
 before_install:
-  - git fetch --unshallow # needed for commitlint
   - nvm i node
   - npm install
-  - npm install -g greenkeeper-lockfile@1
 
-before_script: greenkeeper-lockfile-update
+before_script: npx greenkeeper-lockfile-update
 
 script :
   - npm run build-static
   - npm test -- --browsers $BROWSERS
-  - bash tools/lint-commits.sh # script lint commit messages, handles commits from forks and same repo
+  - npm run lint-commit-ci
   - npm run lint-js
   - npm run lint-css
   - npm run lint-md
   - mvn license:check
   - mvn clean install
 
-after_script: greenkeeper-lockfile-upload
+after_script: npx greenkeeper-lockfile-upload
 
 cache:
   directories:
