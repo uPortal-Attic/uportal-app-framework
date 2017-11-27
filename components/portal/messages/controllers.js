@@ -64,7 +64,8 @@ define(['angular'], function(angular) {
          * by group and data, then execute the relevant promises
          */
         var filterMessages = function() {
-          var groupFiltersEnabled = !$localStorage.disableGroupFilteringForMessages;
+          var groupFiltersEnabled =
+            !$localStorage.disableGroupFilteringForMessages;
           if (groupFiltersEnabled) {
             promiseFilteredMessages = {
               filteredByGroup:
