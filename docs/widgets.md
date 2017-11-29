@@ -1,6 +1,6 @@
 # Widgets in uportal-app-framework
 
-It's possible for uportal-app-framework apps to pull in the markup and configuration for widgets in the MyUW "marketplace" of apps.
+It's possible for uportal-app-framework apps to pull in the markup and configuration for widgets in the MyUW directory of apps.
 
 You can experiment with widgets in the [Widget Creator][] (currently available in test tier only).
 

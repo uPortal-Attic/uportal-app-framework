@@ -61,7 +61,7 @@ to create one from scratch. Widgets are app directory entries, so see also [docu
 * **desc**: Description of the app (visible when hovering the widget's "info" icon
 * **mdIcon** parameter: The widget's icon
 * **alternativeMaximizedLink** parameter: An optional parameter to use if your widget links to an external URL
-* **keywords** portlet-preference: A list of keywords to expose your widget when users search the portal marketplace
+* **keywords** portlet-preference: A list of keywords to expose your widget when users search the app directory
 * **content** portlet-preference: A required snippet of static content. If your widget has an alternativeMaximizedLink, this content will never be visible, but it's still required.
 
 The above attributes are all you need to configure a basic widget!
