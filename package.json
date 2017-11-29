@@ -6,11 +6,15 @@
     "cz": "git-cz",
     "test": "karma start components/karma.conf.js --single-run",
     "build-static": "node tools/static/build.js",
+    "lint-all": "npm run lint-js && npm run lint-md && npm run lint-commit && npm run lint-css",
+    "lint-staged": "lint-staged",
     "lint-css": "stylelint --syntax less components/css/**/*.less",
     "dev-lint-js": "onchange components/** -i -- eslint --quiet --ext js --ext json --ext md --format html --output-file static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern components/js/ga.js",
     "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern components/js/ga.js",
     "lint-md": "remark . --frail --ignore-path .gitignore",
-    "precommit": "eslint-git-changes",
+    "lint-commit": "commitlint --from HEAD~1",
+    "lint-commit-ci": "commitlint-travis",
+    "precommit": "lint-staged",
     "postbuild-static": "htmlprocessor static/index.html -o static/target/index.html",
     "prestatic": "npm run build-static",
     "static": "cd static/target && superstatic",
@@ -64,8 +68,9 @@
   },
   "homepage": "https://github.com/uPortal-Project/uportal-app-framework",
   "devDependencies": {
-    "@commitlint/cli": "^5.0.0",
-    "@commitlint/config-angular": "^5.0.0",
+    "@commitlint/cli": "^5.1.1",
+    "@commitlint/config-angular": "^5.1.1",
+    "@commitlint/travis-cli": "^5.1.1",
     "autoprefixer": "^7.1.2",
     "commitizen": "^2.9.6",
     "concurrently": "^3.1.0",
@@ -73,7 +78,6 @@
     "eslint": "^4.2.0",
     "eslint-config-angular": "^0.5.0",
     "eslint-config-google": "^0.9.1",
-    "eslint-git-changes": "^2.0.0",
     "eslint-plugin-angular": "^3.0.0",
     "eslint-plugin-compat": "^2.0.1",
     "eslint-plugin-jasmine": "^2.2.0",
@@ -82,6 +86,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-requirejs": "^3.1.1",
     "graceful-fs": "^4.0.0",
+    "greenkeeper-lockfile": "^1.12.0",
     "htmlprocessor": "^0.2.4",
     "husky": "^0.14.3",
     "jasmine-core": "^2.3.4",
@@ -99,6 +104,7 @@
     "karma-requirejs": "1.1.0",
     "karma-safari-launcher": "^1.0.0",
     "less": "2.7.2",
+    "lint-staged": "^5.0.0",
     "lodash": "^4.0.0",
     "mkdirp": "^0.5.1",
     "onchange": "^3.0.2",
@@ -191,5 +197,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "*.{js,json,md}": "eslint --ext js --ext json --ext md",
+    "*.md": "remark --frail",
+    "*.less": "stylelint --syntax less"
   }
 }
