@@ -48,7 +48,7 @@ define(['angular'], function(angular) {
           return undefined;
         })
         .catch(function(error) {
-          $log.warn('Error getting marketplace entry for ' + fname);
+          $log.warn('Error getting app directory entry for ' + fname);
           $log.error(error);
           return getErrorPage(fname);
         });
