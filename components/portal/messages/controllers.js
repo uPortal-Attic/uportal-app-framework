@@ -59,43 +59,36 @@ define(['angular'], function(angular) {
               return error;
             });
         };
-
         /**
          * Determine whether or not messages need to be filtered
          * by group and data, then execute the relevant promises
          */
         var filterMessages = function() {
-          // Check if group filtering has been disabled
-          if ($localStorage.disableGroupFilteringForMessages) {
-            // Define promises to run if filtering is turned on
-            promiseFilteredMessages = {
-              filteredByGroup:
-                messagesService.getAllMessages(),
-              filteredByData:
-                messagesService.getMessagesByData(allMessages),
-              filteredByTitle:
-                messagesService.getMessagesByTitle(allMessages),
-            };
-          } else {
+          var groupFiltersEnabled =
+            !$localStorage.disableGroupFilteringForMessages;
+          if (groupFiltersEnabled) {
             promiseFilteredMessages = {
               filteredByGroup:
                 messagesService.getMessagesByGroup(allMessages),
               filteredByData:
                 messagesService.getMessagesByData(allMessages),
-              filteredByTitle:
-                messagesService.getMessagesByTitle(allMessages),
             };
           }
-          // Call filtered notifications promises, then pass on to
-          // the completion function
-          $q.all(promiseFilteredMessages)
-            .then(filterMessagesSuccess)
-            .catch(filterMessagesFailure);
-          // Separate all messages by their types
-          $scope.messages = $filter('separateMessageTypes')(allMessages);
-          // Change hasMessages so child controllers can pick up on it
-          $scope.hasMessages = true;
-        };
+
+          if (!groupFiltersEnabled) {
+            promiseFilteredMessages = {
+              filteredByGroup: allMessages,
+              filteredByData:
+                messagesService.getMessagesByData(allMessages),
+            };
+          }
+            // Call filtered notifications promises, then pass on to
+            // the completion function
+            $q.all(promiseFilteredMessages)
+              .then(filterMessagesSuccess)
+              .catch(filterMessagesFailure);
+          };
+
 
         /**
          * Separate the message types in scope for child controllers
@@ -104,19 +97,14 @@ define(['angular'], function(angular) {
         var filterMessagesSuccess = function(result) {
           // Check for filtered notifications
           var filteredMessages = [];
-          if (result.filteredByGroup && result.filteredByData
-            && result.filteredByTitle) {
-            // Combine the three filtered arrays into one (no dupes)
+          if (result.filteredByGroup && result.filteredByData) {
+            // Combine the two filtered arrays into one (no dupes)
             filteredMessages = $filter('filterForCommonElements')(
               result.filteredByGroup,
               result.filteredByData
             );
-            var reFilteredMessages = $filter('filterForCommonElements')(
-              result.filteredByTitle,
-              filteredMessages
-            );
             $scope.messages =
-              $filter('separateMessageTypes')(reFilteredMessages);
+              $filter('separateMessageTypes')(filteredMessages);
             $scope.hasMessages = true;
           }
         };
