@@ -24,7 +24,7 @@ Examples of the kinds of downstream changes required:
 
 + uPortal-home [change to use `<frame-page>` in some views][uPortal-home #739] and [in the rest of the views][uPortal-home #742]
 + uPortal-home had to further adjust [to accommodate flex-based layout][uPortal-home #747]
-+ uPortal-home [updated the marketplace details page with plain CSS][uPortal-home #750] to cope with this change
++ uPortal-home [updated the app directory entry details page with plain CSS][uPortal-home #750] to cope with this change
 
 ### Features
 
