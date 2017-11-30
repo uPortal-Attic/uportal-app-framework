@@ -1,6 +1,6 @@
 {
   "name": "@uportal/app-framework",
-  "version": "6.1.0",
+  "version": "7.0.0",
   "description": "Application Framework for uPortal",
   "scripts": {
     "cz": "git-cz",
