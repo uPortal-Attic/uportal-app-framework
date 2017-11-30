@@ -8,28 +8,42 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### BREAKING CHANGES
 
-Updates to the side navigation feature in this release introduce a hard dependency on the `<frame-page>` directive for unbroken menu experience (#588). **If you're upgrading from 6.1.0**
-and you have already configured side navigation (by setting values for either `appMenuTemplateURL` or `appMenuItems` in your override.js file), you will need to ensure that every main
-view in your app uses the `<frame-page>` directive as its outermost container element. If you don't want to use the side navigation and you have not previously configured side navigation,
+Updates to the side navigation feature in this release introduce a hard
+dependency on the `<frame-page>` directive for unbroken menu experience (#588).
+**If you're upgrading from 6.1.0**
+and you have already configured side navigation (by setting values for either
+`appMenuTemplateURL` or `appMenuItems` in your override.js file), you will need
+to ensure that every main
+view in your app uses the `<frame-page>` directive as its outermost container
+element. If you don't want to use the side navigation and you have not
+previously configured side navigation,
 you should not be affected by this change.
 
-There are also CSS changes to the layout container elements that precede the `<ng-view>` element (where your app's on-page content is pulled in) to prefer a flex-based layout (#588).
+There are also CSS changes to the layout container elements that precede the
+`<ng-view>` element (where your app's on-page content is pulled in) to prefer a
+flex-based layout (#588).
 This may affect you if:
 
 + You have a lot of elements that have a defined `min-width` property
-+ You're already using flex positioning but are not using `flex-wrap` on containers with a lot of content
-+ You have many elements with `position: absolute` (may experience a minor shift in placement)
++ You're already using flex positioning but are not using `flex-wrap` on
+containers with a lot of content
++ You have many elements with `position: absolute` (may experience a minor
+shift in placement)
 
 Examples of the kinds of downstream changes required:
 
-+ uPortal-home [change to use `<frame-page>` in some views][uPortal-home #739] and [in the rest of the views][uPortal-home #742]
-+ uPortal-home had to further adjust [to accommodate flex-based layout][uPortal-home #747]
-+ uPortal-home [updated the app directory entry details page with plain CSS][uPortal-home #750] to cope with this change
++ uPortal-home [change to use `<frame-page>` in some views][uPortal-home #739]
+and [in the rest of the views][uPortal-home #742]
++ uPortal-home had to further adjust [to accommodate flex-based
+layout][uPortal-home #747]
++ uPortal-home [updated the app directory entry details page with plain
+CSS][uPortal-home #750] to cope with this change
 
 ### Features
 
 + Add on-page side navigation feature (#588)
-  + To use: Set `APP_OPTIONS.enablePushContentMenu` to true in your override.js file
+    + To use: Set `APP_OPTIONS.enablePushContentMenu` to true in your
+override.js file
 + Add more Google Analytics around notifications (#598). Events for
     + rendering priority (banner across the top) notification
     + dismissing priority notification
@@ -72,7 +86,8 @@ app framework relies upon might still use Java, of course.)
 ### Added
 + Add filter to determine rel attribute on anchors (#569)
 + Add configurable side navigation (#561)
-  - See [uportal-app-framework documentation][Sidenav-documentation] of this new feature
+    - See [uportal-app-framework documentation][Sidenav-documentation] of this
+new feature
 
 ### Changed
 + Refactor theme names (#568)
@@ -88,7 +103,8 @@ app framework relies upon might still use Java, of course.)
 + Add error message when notifications fail (#577)
 + Fix spacing error if no configurable side navigation is used (#583)
 + Allow unbroken experience when opting-out of portal-wide notifications (#611)
-+ Fix accessibility bug where screen reader/keyboard navigation couldn't access notifications/announcements (#613)
++ Fix accessibility bug where screen reader/keyboard navigation couldn't access
+notifications/announcements (#613)
 + Clarify that side navigation subheader is not a link (#617)
 
 ## [6.0.3][] - 2017-09-29
@@ -131,8 +147,10 @@ app framework relies upon might still use Java, of course.)
 ## [5.1.0][] - 2017-09-01
 
 ### Messages Enhancements
-+ Adds actionbutton and more info button to features page and priority notifications (#504)
-+ Adds 'addToHome' functionality directly from mascot announcement (#506)  (#512)
++ Adds actionbutton and more info button to features page and priority
+notifications (#504)
++ Adds 'addToHome' functionality directly from mascot announcement (#506)
+(#512)
 + Fixes bug with notification urls not being resolved correctly (#507)
 
 ### Code Maintenance and Enhancements
