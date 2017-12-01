@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased][] (7.0.0?)
+## [Unreleased][]
+
+## [7.0.0][] - 2017-11-30
 
 ### BREAKING CHANGES
 
@@ -417,7 +419,8 @@ break compatibility with some older components.  If you used any angular-ui-boot
 - Added ability to have a name for the default theme (#336)
 - Fixed format for announcement end date (#332)
 
-[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.1.0...HEAD
+[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v7.0.0...HEAD
+[7.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.1.0...v7.0.0
 [6.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.3...v6.1.0
 [6.0.3]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.1...v6.0.2
