@@ -3,6 +3,7 @@
   "version": "7.0.0",
   "description": "Application Framework for uPortal",
   "scripts": {
+    "commitmsg": "commitlint -e",
     "cz": "git-cz",
     "test": "karma start components/karma.conf.js --single-run",
     "build-static": "node tools/static/build.js",
