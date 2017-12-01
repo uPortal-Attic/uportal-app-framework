@@ -6,7 +6,7 @@
 
 ## Code of conduct
 
-The [Apereo Welcoming Policy][] applies. Cf. [CODE_OF_CONDUCT.md][]
+The [Apereo Welcoming Policy][] applies. Cf. [code of conduct][].
 
 ## Contributor License Agreements
 
@@ -51,7 +51,6 @@ configuration on this point, e.g. via [Husky][].
 [Apereo website on Contributor License Agreement]: https://www.apereo.org/licensing/agreements
 [Apereo licensing discussion Google Group]: https://groups.google.com/a/apereo.org/forum/#!forum/licensing-discuss
 [Apereo CLA roster]: http://licensing.apereo.org/completed-clas
-[CODE_OF_CONDUCT.md]: ../CODE_OF_CONDUCT.md
 [Apereo Welcoming Policy]: https://www.apereo.org/content/apereo-welcoming-policy
 [Conventional Commits]: https://conventionalcommits.org/
 [Husky]: https://github.com/typicode/husky
