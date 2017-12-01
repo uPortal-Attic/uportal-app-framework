@@ -22,6 +22,23 @@ The long version:
 
 *Please* provide feedback about how these practices impact your ability to contribute. You might voice that feedback on the [Apereo licensing discussion Google Group][] or in any other way in which you are comfortable.
 
+## Conventional Commits
+
+This project uses [Conventional Commits][].
+
+Conventional Commits compliance is not a hard requirement to contribute. Do
+what you can. If necessary commit message style can be further worked up at the
+Pull Request / code review layer. Non-compliant commit messages will be flagged
+by continuous integration (e.g. Travis-CI) on pull requests.
+
+You can locally lint (check for style compliance) your most recent commit message by `npm run lint-commit`.
+
+You can locally lint your commit messages via a pre-commit hook by
+
+1. Setting `"commitmsg": "commitlint -e",` in your local `package.json`
+2. Having a `.git/commit-msg` script that honors the `package.json`
+configuration on this point, e.g. via [Husky][].
+
 [uportal-home website on incubating]: http://uportal-project.github.io/uportal-home/apereo-incubation.html
 [Apereo inbound intellectual property licensing practices]: https://www.apereo.org/licensing/practices
 [Apereo Individual Contributor License Agreement]: https://www.apereo.org/sites/default/files/Licensing%20Agreements/apereo-icla.pdf
@@ -32,3 +49,5 @@ The long version:
 [Apereo CLA roster]: http://licensing.apereo.org/completed-clas
 [CODE_OF_CONDUCT.md]: ../CODE_OF_CONDUCT.md
 [Apereo Welcoming Policy]: https://www.apereo.org/content/apereo-welcoming-policy
+[Conventional Commits]: https://conventionalcommits.org/
+[Husky]: https://github.com/typicode/husky
