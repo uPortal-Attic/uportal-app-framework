@@ -1,7 +1,7 @@
 # Contributing to `uportal-app-framework`
 
-+ Be an ICLA signatory. (Comply with Apereo licensing policy).
 + Be kind. (Uphold the [code of conduct][]).
++ Be an ICLA signatory. (Comply with [Apereo licensing policy][Apereo website on licensing]).
 + Try to compose commit messages implementing [Conventional Commits][].
 
 ## Code of conduct
