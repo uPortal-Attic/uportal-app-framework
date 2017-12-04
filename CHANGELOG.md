@@ -25,7 +25,7 @@ view in the app must use the `<frame-page>` directive as its outermost container
 element. Applications that have not previously configured side navigation and do not begin using side navigation with this upgrade should not be affected by this change.
 
 There are also CSS changes to the layout container elements that precede the
-`<ng-view>` element (where your app's on-page content is pulled in) to prefer a
+`<ng-view>` element (where the app's on-page content is pulled in) to prefer a
 flex-based layout (#588).
 
 This may affect an application if:
@@ -379,7 +379,7 @@ Adjusts link colors for themes #377
 
 ## [3.0.3][] - 2016-12-20
 
-Patch release. Simply bump your app's dependency declaration from `uw-frame` `3.0.2` to `3.0.3` to adopt this release.
+Patch release. Simply bump the app's dependency declaration from `uw-frame` `3.0.2` to `3.0.3` to adopt this release.
 - Fixes Google Analytics usage ( #353 )
 - Documents source code whitespace conventions ( #356 )
 - Improves [documentation about releasing `uw-frame` itself](http://uportal-project.github.io/uportal-app-framework/v3.0.3/#/md/releasing) ( #355 )
