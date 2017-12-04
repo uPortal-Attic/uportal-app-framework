@@ -200,7 +200,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,md}": "eslint --ext js --ext json --ext md",
+    "*.{js,json,md}": "eslint --ext js --ext json --ext md --ignore-pattern docs/",
     "*.md": "remark --frail",
     "*.less": "stylelint --syntax less"
   }
