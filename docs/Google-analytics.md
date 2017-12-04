@@ -16,11 +16,11 @@ var config = {
 ```
 
 ## Site search
-GA has a great feature called site search. It collects information about what people are searching for on your site. To configure it in uportal-app-framework is a couple steps.
+GA has a great feature called site search. It collects information about what people are searching for within a site. To configure it in uportal-app-framework is a couple steps.
 
 1) Follow steps in [the GA docs](https://support.google.com/analytics/answer/1012264?hl=en) titled "Set up Site Search". The Query Parameter field is q by default. To overwrite that see step 4.
 
-2) When setting up your route for your search result page pass the search term in as a path variable
+2) When setting up the route for the search result page pass the search term in as a path variable
 e.g.:
 
 <!-- eslint-disable no-undef, semi -->
