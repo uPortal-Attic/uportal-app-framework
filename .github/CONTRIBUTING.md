@@ -37,11 +37,7 @@ by continuous integration (e.g. Travis-CI) on pull requests.
 
 You can locally lint (check for style compliance) your most recent commit message by `npm run lint-commit`.
 
-You can locally lint your commit messages via a pre-commit hook by
-
-1. Setting `"commitmsg": "commitlint -e",` in your local `package.json`
-2. Having a `.git/commit-msg` script that honors the `package.json`
-configuration on this point, e.g. via [Husky][].
+You can locally lint your commit messages via a pre-commit hook by running `npm run add-hooks`.
 
 [uportal-home website on incubating]: http://uportal-project.github.io/uportal-home/apereo-incubation.html
 [Apereo inbound intellectual property licensing practices]: https://www.apereo.org/licensing/practices
@@ -53,5 +49,4 @@ configuration on this point, e.g. via [Husky][].
 [Apereo CLA roster]: http://licensing.apereo.org/completed-clas
 [Apereo Welcoming Policy]: https://www.apereo.org/content/apereo-welcoming-policy
 [Conventional Commits]: https://conventionalcommits.org/
-[Husky]: https://github.com/typicode/husky
 [code of conduct]: ../CODE_OF_CONDUCT.md

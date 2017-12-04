@@ -3,7 +3,9 @@
   "version": "7.0.0",
   "description": "Application Framework for uPortal",
   "scripts": {
+    "commitmsg": "commitlint -e",
     "cz": "git-cz",
+    "add-hooks": "npm install husky --no-save",
     "test": "karma start components/karma.conf.js --single-run",
     "build-static": "node tools/static/build.js",
     "lint-all": "npm run lint-js && npm run lint-md && npm run lint-commit && npm run lint-css",
@@ -88,7 +90,6 @@
     "graceful-fs": "^4.0.0",
     "greenkeeper-lockfile": "^1.12.0",
     "htmlprocessor": "^0.2.4",
-    "husky": "^0.14.3",
     "jasmine-core": "^2.3.4",
     "karma": "1.7.1",
     "karma-chrome-launcher": "2.2.0",
