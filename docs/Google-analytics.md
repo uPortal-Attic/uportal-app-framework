@@ -2,7 +2,7 @@
 
 ## Introduction
 
-[www.google.com/analytics](https://www.google.com/analytics) (GA for short) is a great (and free) way to see how many people are hitting your site. By default uportal-app-framework disables GA. However, if you follow the config setup below, you will get reporting.
+[www.google.com/analytics](https://www.google.com/analytics) (GA for short) is a great (and free) way to analyze traffic to a web application. By default uportal-app-framework disables GA.
 
 ## Basic configuration
 
