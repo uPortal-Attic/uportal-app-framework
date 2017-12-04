@@ -1,12 +1,12 @@
 # Contributing to `uportal-app-framework`
 
-+ Be kind. (Uphold the [Code of conduct][CODE_OF_CONDUCT.md]).
++ Be kind. (Uphold the [code of conduct][]).
 + Be an ICLA signatory. (Comply with [Apereo licensing policy][Apereo website on licensing]).
 + Try to compose commit messages implementing [Conventional Commits][].
 
 ## Code of conduct
 
-The [Apereo Welcoming Policy][] applies. Cf. [CODE_OF_CONDUCT.md][]
+The [Apereo Welcoming Policy][] applies. Cf. [code of conduct][].
 
 ## Contributor License Agreements
 
@@ -47,6 +47,6 @@ You can locally lint your commit messages via a pre-commit hook by running `npm 
 [Apereo website on Contributor License Agreement]: https://www.apereo.org/licensing/agreements
 [Apereo licensing discussion Google Group]: https://groups.google.com/a/apereo.org/forum/#!forum/licensing-discuss
 [Apereo CLA roster]: http://licensing.apereo.org/completed-clas
-[CODE_OF_CONDUCT.md]: ../CODE_OF_CONDUCT.md
 [Apereo Welcoming Policy]: https://www.apereo.org/content/apereo-welcoming-policy
 [Conventional Commits]: https://conventionalcommits.org/
+[code of conduct]: ../CODE_OF_CONDUCT.md
