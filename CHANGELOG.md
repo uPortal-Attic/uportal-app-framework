@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+### Documentation
+
++ Notes adopting Conventional Commits message style in `CONTRIBUTING.md`, with
+tips for easing compliance. (#634)
+
 ## [7.0.0][] - 2017-11-30
 
 ### BREAKING CHANGES
