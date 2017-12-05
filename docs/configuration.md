@@ -1,24 +1,24 @@
 # Configuring the frame
 
-An application can overwrite any constant listed below by adding it to the
-**js/override.js** file. **override.js** need only contain what is different
+Applications can overwrite any constant listed below by adding it to
+**js/override.js**. **override.js** need only contain what is different
 ("overridden") from **js/app-config.js**.
 
 ## Configuration options
 
 ### APP_FLAGS
 
-+ **defaultTheme**: This is the default theme you want (see /js/frame-config.js
++ **defaultTheme**: Sets the default theme (see /js/frame-config.js
 for the array list of themes). Provide an array index number to just have
 simple selection, set it to the string **'group'** to enable group selection,
-or set it to any one of the themes names (e.g.: **'uw-greenbay'**). If you do
-group selection make sure you set the **SERVICE_LOC.groupURL**.
+or set it to any one of the themes names (e.g.: **'uw-greenbay'**). Group
+selection requires a valid value for **SERVICE_LOC.groupURL** so that groups
+are available.
 + **showSearch**: This boolean hides/shows the search bar at the top.
-+ **isWeb**: This boolean is a shortcut flag for the MyUW project. Majority of
-applications should set this to false.
-+ **loginOnLoad**: A optional boolean flag that when set to **true** it will
-fire a login event during the loading sequence. **SERVICE_LOC.loginSilentURL**
-must be set.
++ **isWeb**: A flag for special handling for the `uPortal-home` app. Other apps
+should set this to `false`.
++ **loginOnLoad**: When **true** fires a login event during the loading
+sequence. **SERVICE_LOC.loginSilentURL** must be set.
 + **loginDurationMills**: number of milliseconds a login session is valid for.
 Default set to 4 hours (14400000).
 + **gaSearchParam**: Default set to 'q'. This is the param that is tacked on to
@@ -44,18 +44,17 @@ see their ID in the username menu. _This is currently unimplemented._
 items (appears in the side navigation menu that is triggered when clicking the
 top bar hamburger icon button). See the [app navigation
 doc](configurable-menu.md) to learn how to use this feature.
-+ **appMenuItems**: An array of menu item objects used for a simple custom menu
++ **appMenuItems**: An array of menu items to populate a  simple custom menu
 (with links that have a text label, icon, and url). See the [app navigation
-doc](configurable-menu.md) to learn how to use this feature.
+doc](configurable-menu.md).
 + **enablePushContentMenu**:
     - _CAUTION_
     - False by default
     - Only affects medium and large screens
     - Set to true to open side navigation upon page load as part of the page
-content. The side nav will push content when it is opened and give up the space
+content. The side nav will push content when open and give up the space
 when closed
-    - See the [app navigation doc](configurable-menu.md) to learn how to use
-this feature
+    - See the [app navigation doc](configurable-menu.md)
 
 **Important:** Side navigation (appMenuTemplateURL/appMenuItems) depends on the
 `<frame-page>` directive. Use the `<frame-page>` directive as the outermost
@@ -67,15 +66,14 @@ this is constructed.
 ### SERVICE_LOC
 
 + **aboutURL**: Additional data to show in **/about**.
-+ **sessionInfo**: This is where the frame gets data about the user that is
-logged in. For an example of the expected output, see
++ **sessionInfo**: Where the frame gets data about the logged in user. For an example of the expected output, see
 [this.](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/session.json)
-+ **messagesURL**: This is an end point to a feed of messages. See
++ **messagesURL**: An end point to a feed of messages. See
 [this](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/sample-messages.json) for the example file. Messages at the
 end point must match the data model displayed in the example.
     - _Note: Setting this attribute to `null` or an empty string turns off
 inclusion of the portal-wide messages in the app._
-+ **kvURL**: This is the key value service. The key value service is a way to
++ **kvURL**: This is the key value service, a way to
 store information in a key/value store. The store should support GET and PUT on
 the same URL, where the URL includes the key. [A microservice called
 KeyValueStore](https://github.com/UW-Madison-DoIT/KeyValueStore) implements a
@@ -87,8 +85,8 @@ technology.
 by the portal. Currently this only used for notifications.
 [Example](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/groups.json).
 + **loginSilentURL**: See **APP_FLAGS.loginOnLoad** for usage.
-+ **portalLayoutRestEndpoint**: If set and you change your skin in beta
-settings, it will also set the skin in uPortal. e.g.: **'/portal/api/layout'**
++ **portalLayoutRestEndpoint**: If set, selecting a skin in beta settings will
+also set the skin in the user's uPortal profile. e.g.: **'/portal/api/layout'**
 
 ### NAMES
 
@@ -134,7 +132,7 @@ the footer (hence the name).
 
 ### APP_BETA_FEATURES
 
-An array of features that you want to show up in **/settings**.
+An array of features for inclusion in beta **/settings**.
 
 ![settings option](img/settings-option.png)
 
@@ -174,7 +172,7 @@ define(['angular'], function(angular) {
 
 ```
 
-Alright, lot going on here so lets take a walk through this.
+Explanation:
 
 + **Lines 1-3** include the the requirejs wrapper, setup for the angular module
 (pulled in during the /portal/main.js execution),
