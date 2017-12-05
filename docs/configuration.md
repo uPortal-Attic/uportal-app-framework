@@ -14,7 +14,8 @@ An application can overwrite any constant listed below by adding it to the **js/
 + **gaSearchParam**: Default set to 'q'. This is the param that is tacked on to the search result page. Google later strips it in Google Analytics.
 + **showUserSettingsPage**: If set, this will add a **settings** link to the user drop down which will point at **/user-settings**. Default is **false**. _as of 2.2.2_
 + **shibbolethSessionURL**: Default is **null**. When set to a proper string (like **'/Shibboleth.sso/Session.json'**) it then adds a timeout alert notifying users the session is no longer valid. The action of the pop-up is to forward them on to the **MISC_URLS.loginURL**. _as of 2.6.2_
-+ **campusIdAttribute**: Default is **null**. Provide a session attribute for campus ID (i.e. UW-Madison's **wiscEduStudentID** attribute) if you want users to see it in the username menu. _This is currently unimplemented._
++ **campusIdAttribute**: Default is **null**. Provide a session attribute for campus ID (i.e. UW-Madison's **wiscEduStudentID** attribute) so that users can see their ID in the username menu. _This is currently unimplemented._
+
 
 ### APP_OPTIONS
 
@@ -25,7 +26,7 @@ An application can overwrite any constant listed below by adding it to the **js/
   - _CAUTION_
   - False by default
   - Only affects medium and large screens
-  - Set to true if you want the side navigation to be open upon page load and appear as part of the page content. The side nav will push content when it is opened and give up the space when closed.
+  - Set to true to open side navigation upon page load as part of the page content. The side nav will push content when it is opened and give up the space when closed
   - See the [app navigation doc](configurable-menu.md) to learn how to use this feature
 
 **Important:** Side navigation (appMenuTemplateURL/appMenuItems) depends on the `<frame-page>` directive. Use the `<frame-page>` directive as the outermost containing element for app view(s). A menu that doesn't use the frame-page directive yields a hamburger button that does nothing when clicked. See the [frame-page.html](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/portal/misc/partials/frame-page.html) file to understand how this is constructed.
@@ -35,8 +36,9 @@ An application can overwrite any constant listed below by adding it to the **js/
 + **aboutURL**: Additional data to show in **/about**.
 + **sessionInfo**: This is where the frame gets data about the user that is logged in. For an example of the expected output, see [this.](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/session.json)
 + **messagesURL**: This is an end point to a feed of messages. See [this](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/sample-messages.json) for the example file. Messages at the end point must match the data model displayed in the example.
-  - _Note: If you don't want to leverage messages features, set this attribute to `null` or an empty string._
-+ **kvURL**: This is the key value service. The key value service is a way to store information in a key/value store. The store should support GET and PUT on the same URL, where the URL includes the key. If you want this but not sure where to start, we wrote [a microservice called KeyValueStore](https://github.com/UW-Madison-DoIT/KeyValueStore) that you can use. You can also use the MyUW version under the storage context, but please contact MyUW devs before using for your application.
+    - _Note: Setting this attribute to `null` or an empty string turns off
+inclusion of the portal-wide messages in the app._
++ **kvURL**: This is the key value service. The key value service is a way to store information in a key/value store. The store should support GET and PUT on the same URL, where the URL includes the key. [A microservice called KeyValueStore](https://github.com/UW-Madison-DoIT/KeyValueStore) implements a back-end for this service. MyUW does and other portals may provide a shared instance of this service as infrastructure, or as a microservice it's available for multiple deployment, or as a simple JSON API it can be realized using other technology.
 + **groupURL**: Service for reading the user's group memberships as understood by the portal. Currently this only used for notifications. [Example](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/groups.json).
 + **loginSilentURL**: See **APP_FLAGS.loginOnLoad** for usage.
 + **portalLayoutRestEndpoint**: If set and you change your skin in beta settings, it will also set the skin in uPortal. e.g.: **'/portal/api/layout'**
@@ -49,7 +51,7 @@ An application can overwrite any constant listed below by adding it to the **js/
 
 ### SEARCH
 
-+ **searchURL**: The URL that you want the search to go to when you search something in the site header. Suggested default should be **<https://my.wisc.edu/web/apps/search/>**
++ **searchURL**: Where the user goes when launching a search via the header search bar. In MyUW, use `/web/apps/search/` to launch searches into uPortal-home portal-wide search.
 
 ### MESSAGES
 
