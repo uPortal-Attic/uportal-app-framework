@@ -59,24 +59,23 @@ when closed
 **Important:** Side navigation (appMenuTemplateURL/appMenuItems) depends on the
 `<frame-page>` directive. Use the `<frame-page>` directive as the outermost
 containing element for app view(s). A menu that doesn't use the frame-page
-directive yields a hamburger button that does nothing when clicked. See the
-[frame-page.html](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/portal/misc/partials/frame-page.html) file to understand how
+directive yields a hamburger button that does nothing when clicked. See
+[frame-page.html][] to understand how
 this is constructed.
 
 ### SERVICE_LOC
 
 + **aboutURL**: Additional data to show in **/about**.
-+ **sessionInfo**: Where the frame gets data about the logged in user. For an example of the expected output, see
-[this.](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/session.json)
-+ **messagesURL**: An end point to a feed of messages. See
-[this](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/sample-messages.json) for the example file. Messages at the
++ **sessionInfo**: Where the frame gets data about the logged in user. [Example][session.json].
++ **messagesURL**: An end point to a feed of messages.
+[Example][sample-messages.json]. Messages at the
 end point must match the data model displayed in the example.
     - _Note: Setting this attribute to `null` or an empty string turns off
 inclusion of the portal-wide messages in the app._
 + **kvURL**: This is the key value service, a way to
 store information in a key/value store. The store should support GET and PUT on
 the same URL, where the URL includes the key. [A microservice called
-KeyValueStore](https://github.com/UW-Madison-DoIT/KeyValueStore) implements a
+KeyValueStore][KeyValueStore] implements a
 back-end for this service. MyUW does and other portals may provide a shared
 instance of this service as infrastructure, or as a microservice it's available
 for multiple deployment, or as a simple JSON API it can be realized using other
@@ -192,7 +191,13 @@ application has a few additional **APP_FLAGS** or **SERVICE_LOC**, as it may
 avoid requiring an additional values service for these few additional values.
 
 Questions about using `uPortal-app-framework`? [Ask on the user
-list](https://groups.google.com/a/apereo.org/forum/#!forum/uportal-user).
+list][uportal-user@].
 Collaborating on developing `uPortal-app-framework`? Discuss on [the
-development
-list](https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev).
+development list][uportal-dev@].
+
+[KeyValueStore]: https://github.com/UW-Madison-DoIT/KeyValueStore
+[uportal-dev@]: https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev
+[uportal-user@]: https://groups.google.com/a/apereo.org/forum/#!forum/uportal-user
+[sample-messages.json]: https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/sample-messages.json
+[session.json]: https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/session.json
+[frame-page.html]: https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/portal/misc/partials/frame-page.html
