@@ -127,4 +127,4 @@ with this config it will now include an item to add to the app's [configurable m
 In version 2.2.1 uPortal-app-framework added the option to add key/value pairs to existing categories (e.g.: **APP_FLAGS**). This can be helpful if the
 application has a few additional **APP_FLAGS** or **SERVICE_LOC**, as it may avoid requiring an additional values service for these few additional values.
 
-If you have questions please [ask the development list](https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev).
+Questions about using `uPortal-app-framework`? [Ask on the user list](https://groups.google.com/a/apereo.org/forum/#!forum/uportal-user). Collaborating on developing `uPortal-app-framework`? Discuss on [the development list](https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev).
