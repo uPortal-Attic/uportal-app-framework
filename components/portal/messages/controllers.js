@@ -177,6 +177,17 @@ define(['angular'], function(angular) {
         // //////////////////
         // Event listeners //
         // //////////////////
+
+        /**
+         * For a change to the notifications, such as
+         * a dismissal, ensure that all instances of the 
+         * controller are notified. 
+         */
+        $rootScope.$on('notificationChange', function() {
+          configureNotificationsScope();
+          configurePriorityNotificationsScope();
+        })
+
         /**
          * When the parent controller has messages, initialize
          * things dependent on messages
