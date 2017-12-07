@@ -267,6 +267,7 @@ define(['angular'], function(angular) {
           return keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS,
             originalSeenIds)
             .then(function() {
+              $rootScope.$emit('notificationChange');
               return originalSeenIds;
             })
             .catch(function(error) {
