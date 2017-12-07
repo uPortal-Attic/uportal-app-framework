@@ -179,9 +179,9 @@ define(['angular'], function(angular) {
         // //////////////////
 
         /**
-         * For a change to the notifications, such as
-         * a dismissal, ensure that all instances of the 
-         * controller are notified. 
+         * Process event where notifications have changed, 
+         * i.e. a dismissal, and ensure that all instances of the 
+         * controller are updated. 
          */
         $rootScope.$on('notificationChange', function() {
           configureNotificationsScope();
