@@ -205,11 +205,17 @@ define(['angular'], function(angular) {
             // Else hide messages features
             if (angular.equals($scope.$parent.showMessagesFeatures, true)) {
               configureNotificationsScope();
+              checkForChangesInOtherInstances();
             } else {
               vm.showMessagesFeatures = false;
               vm.isLoading = false;
             }
           }
+        });
+
+        var checkForChangesInOtherInstances = $rootScope.$watch(
+          'priorityNotificationCount', function() {
+            configurePriorityNotificationsScope();
         });
 
         // ////////////////
@@ -296,11 +302,18 @@ define(['angular'], function(angular) {
          * Alert the UI to show priority notifications if they exist
          */
         var configurePriorityNotificationsScope = function() {
+          var howManyPriorities = $rootScope.priorityNotificationCount;
           // Use angular's built-in filter to grab priority notifications
           vm.priorityNotifications = $filter('filter')(
             vm.notifications,
             {priority: 'high'}
           );
+
+          if (vm.priorityNotifications.length != howManyPriorities) {
+              $rootScope.priorityNotificationCount
+                  = vm.priorityNotifications.length;
+            }
+
           // If priority notifications exist, notify listeners
           messagesService.broadcastPriorityFlag(
             vm.priorityNotifications.length > 0
@@ -363,6 +376,7 @@ define(['angular'], function(angular) {
           if (isHighPriority) {
             clearPriorityNotificationsFlags();
           }
+          configurePriorityNotificationsScope();
         };
 
         /**
