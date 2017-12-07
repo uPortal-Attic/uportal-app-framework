@@ -179,14 +179,15 @@ define(['angular'], function(angular) {
         // //////////////////
 
         /**
-         * Process event where notifications have changed, 
-         * i.e. a dismissal, and ensure that all instances of the 
-         * controller are updated. 
+         * Process event where notifications have changed,
+         * i.e. a dismissal, and ensure that all instances of the
+         * controller are updated.
          */
-        $rootScope.$on('notificationChange', function() {
-          configureNotificationsScope();
-          configurePriorityNotificationsScope();
-        })
+        var notificationChange = $rootScope.$on('notificationChange', 
+          function() {
+            configureNotificationsScope();
+            configurePriorityNotificationsScope();
+          });
 
         /**
          * When the parent controller has messages, initialize
