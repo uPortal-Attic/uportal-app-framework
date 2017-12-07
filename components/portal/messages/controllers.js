@@ -183,7 +183,7 @@ define(['angular'], function(angular) {
          * i.e. a dismissal, and ensure that all instances of the
          * controller are updated.
          */
-        var notificationChange = $rootScope.$on('notificationChange', 
+        var notificationChange = $rootScope.$on('notificationChange',
           function() {
             configureNotificationsScope();
             configurePriorityNotificationsScope();
@@ -391,11 +391,7 @@ define(['angular'], function(angular) {
             messagesService.setMessagesSeen(allSeenMessageIds,
               dismissedNotificationIds, 'restore');
           }
-
-          // Reconfigure priority scope if a priority notification was restored
-          if (isHighPriority) {
-            configurePriorityNotificationsScope();
-          }
+          notificationChange();
         };
 
         /**
