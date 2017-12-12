@@ -68,6 +68,40 @@ define(['angular'], function(angular) {
         });
       };
     })
+     .filter('filterMessagesWithInvalidDates', function() {
+      var retVal = [];
+      return function(messages) {
+          var thePresent = Date.now();
+          angular.forEach(messages, function(message) {
+            if (message.expireDate || message.goLiveDate) {
+              var addToRetVal = true;
+              if (message.goLiveDate) {
+                var goDate = new Date(message.goLiveDate);
+                var goTime = goDate.getTime();
+                if (thePresent < goTime) {
+                  addToRetVal = false;
+                }
+              }
+
+              if (message.expireDate) {
+                var stopDate = new Date(message.expireDate);
+                var stopTime = stopDate.getTime();
+                if(thePresent > stopTime) {
+                  addToRetVal = false;
+                }
+              }
+              
+              if(addToRetVal) {
+                retVal.push(message);
+              }
+
+            } else {
+                retVal.push(message);
+            }
+          })
+          return retVal;
+      }
+    })
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {

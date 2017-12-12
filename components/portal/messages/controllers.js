@@ -103,8 +103,10 @@ define(['angular'], function(angular) {
               result.filteredByGroup,
               result.filteredByData
             );
+            var dateFilteredMessages =
+              $filter('filterMessagesWithInvalidDates')(filteredMessages);
             $scope.messages =
-              $filter('separateMessageTypes')(filteredMessages);
+              $filter('separateMessageTypes')(dateFilteredMessages);
             $scope.hasMessages = true;
           }
         };
