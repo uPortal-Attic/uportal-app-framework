@@ -175,6 +175,7 @@ define(['angular'], function(angular) {
         vm.isLoading = true;
         vm.renderLimit = 3;
         vm.showMessagesFeatures = true;
+        vm.titleLengthLimit = 140;
 
         // //////////////////
         // Event listeners //

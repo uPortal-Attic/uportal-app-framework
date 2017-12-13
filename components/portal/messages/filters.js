@@ -127,5 +127,10 @@ define(['angular', 'moment'], function(angular, moment) {
           return array2.indexOf(element) != -1;
         });
       };
+    })
+    .filter('trim', function() {
+      return function(input) {
+        return input.trim();
+      }
     });
 });

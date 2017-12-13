@@ -235,11 +235,15 @@
   .notification-message {
     color: @black;
     padding: 4px 26px;
-    font-size: 14px;
+    font-size: 0;
     line-height: 1;
     text-align: center;
     display: block;
     margin-bottom: 0;
+
+    > span {
+      font-size: 14px;
+    }
   }
 
   p {
