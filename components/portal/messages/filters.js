@@ -130,7 +130,10 @@ define(['angular', 'moment'], function(angular, moment) {
             // Has neither date defined, so don't filter it
             return message;
           }
-        });
+        })
+    .filter('trim', function() {
+      return function(input) {
+        return input.trim();
       };
     });
 });

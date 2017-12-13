@@ -47,7 +47,7 @@ Widget messaging is based on JSON input configured in a [widget's configuration]
 
 - **id**: A unique string to identify the message. This is used for tracking seen/unseen messages, dimissed notifications, and the sort order on the notifications page.
 - **title**: The text to be displayed as the message's main content -- used in all message types. **Best practices:**
-  - Be concise! Try to limit your message's title to ~140 characters. Shorter titles improve click-through and are less likely to cause display issues on smaller screens.
+  - Be concise! Try to limit your message's title to ~140 characters. Shorter titles improve click-through and are less likely to cause display issues on smaller screens. *Note: Titles longer than 140 characters will be truncated (with ellipsis) to ensure consistent appearance.*
   - Use general language and avoid pronouns for broadly visible messages that may not pertain to specific users' needs (ex. "City of Madison - Declared Snow Emergency").
   - Use the word "You" when the group- or data-filtering for a message is somewhat specific (i.e. Users with unactivated accounts).
 - **titleShort**: A shorter version of the message title used by the mascot announcer menu. *Required if the `messageType` is "announcement".*
