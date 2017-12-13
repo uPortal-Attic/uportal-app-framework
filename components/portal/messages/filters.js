@@ -68,7 +68,7 @@ define(['angular', 'moment'], function(angular, moment) {
         });
       };
     })
-    .filter('filterMessagesWithInvalidDates', function() {
+    .filter('filterByDate', function() {
       return function(messages) {
           var thePresent = moment.now();
           return messages.filter(function(message) {
