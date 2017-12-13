@@ -115,12 +115,12 @@ define(['angular', 'moment'], function(angular, moment) {
               if (now.isBetween(message.goLiveDate, message.expireDate)) {
                 return message;
               }
-            // If goLive defined, check after
+              // If goLive defined, check after
             } else if (message.goLiveDate) {
               if (now.isAfter(message.goLiveDate)) {
                 return message;
               }
-            // If expire defined, check before
+              // If expire defined, check before
             } else if (message.expireDate) {
               if (now.isBefore(message.expireDate)) {
                 return message;
@@ -130,7 +130,9 @@ define(['angular', 'moment'], function(angular, moment) {
             // Has neither date defined, so don't filter it
             return message;
           }
-        })
+        });
+      };
+    })
     .filter('trim', function() {
       return function(input) {
         return input.trim();
