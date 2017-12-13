@@ -68,6 +68,6 @@
   <!-- Footer links -->
   <md-divider></md-divider>
   <div class="links-separated">
-    <a ng-repeat="link in vm.footerLinks" ng-href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer">{{ link.title }}</a>
+    <a ng-repeat="link in vm.footerLinks" ng-href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer" ng-click="vm.pushGAEvent('sidenav-footer-link', link.title, link.url)">{{ link.title }}</a>
   </div>
 </md-sidenav>
