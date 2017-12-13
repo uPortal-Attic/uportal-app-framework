@@ -40,7 +40,6 @@ define(['angular',
         .when('/about', about)
         .when('/access-denied', main.accessDenied)
         .when('/server-error', main.serverError)
-        .when('/sorry-safari', main.storageError)
         .when('/demo-widgets', widgets.demoWidgets)
         .when('/', main.main)
         .otherwise('/');

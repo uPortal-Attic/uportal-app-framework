@@ -222,15 +222,14 @@ define([
       // tests if localStorage is working. If not, we redirect the user to
       // a new URL with an explanation of the error and a link to go back
       // to MyUW home.
-      if (angular.isObject(localStorage)) {
-        try {
+      try {
+        if (angular.isObject(localStorage)) {
           localStorage.setItem('localStorage', 1);
           localStorage.removeItem('localStorage');
-        } catch (e) {
-          Storage.prototype._setItem = Storage.prototype.setItem;
-          Storage.prototype.setItem = function() {};
-          $location.path('/sorry-safari');
         }
+      } catch (e) {
+        Storage.prototype._setItem = Storage.prototype.setItem;
+        Storage.prototype.setItem = function() {};
       }
 
       var generateTheme = function(name) {
