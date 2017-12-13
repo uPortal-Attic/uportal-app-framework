@@ -131,6 +131,6 @@ define(['angular', 'moment'], function(angular, moment) {
     .filter('trim', function() {
       return function(input) {
         return input.trim();
-      }
+      };
     });
 });
