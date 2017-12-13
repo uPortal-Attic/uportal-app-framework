@@ -96,16 +96,14 @@ define(['angular'], function(angular) {
          */
         var filterMessagesSuccess = function(result) {
           // Check for filtered notifications
-          var filteredMessages = [];
           if (result.filteredByGroup && result.filteredByData) {
             // Combine the two filtered arrays into one (no dupes)
-            filteredMessages = $filter('filterForCommonElements')(
+            var combinedMessages = $filter('filterForCommonElements')(
               result.filteredByGroup,
               result.filteredByData
             );
-            $scope.messages =
-              $filter('separateMessageTypes')(filteredMessages);
-            $scope.hasMessages = true;
+            // Filter out messages that don't fall within intended date ranges
+            filterMessagesByDate(combinedMessages);
           }
         };
 
@@ -116,6 +114,26 @@ define(['angular'], function(angular) {
          */
         var filterMessagesFailure = function(error) {
           $log.warn('Problem getting messages from messagesService');
+        };
+
+        /**
+         * Filter out messages that don't fall within intended date
+         * ranges (if ranges were provided).
+         * @param {Array} messages
+         */
+        var filterMessagesByDate = function(messages) {
+          var filteredMessages = $filter('filterByDates')(messages);
+          notifyChildControllers(filteredMessages);
+        };
+
+        /**
+         * Update $scope messages to notify downstream watchers
+         * @param {Array} messages
+         */
+        var notifyChildControllers = function(messages) {
+          $scope.messages =
+            $filter('separateMessageTypes')(messages);
+          $scope.hasMessages = true;
         };
 
         /**

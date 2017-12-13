@@ -18,7 +18,7 @@
  */
 'use strict';
 
-define(['angular'], function(angular) {
+define(['angular', 'moment'], function(angular, moment) {
   return angular.module('portal.messages.filters', [])
     .filter('separateMessageTypes', ['$filter', function($filter) {
       return function(messages) {
@@ -100,6 +100,36 @@ define(['angular'], function(angular) {
       return function(array1, array2) {
         return array1.filter(function(element) {
           return array2.indexOf(element) != -1;
+        });
+      };
+    })
+    .filter('filterByDates', function() {
+      return function(messages) {
+        // Get current date/time
+        var now = moment();
+        // Filter messages based on date/time
+        return messages.filter(function(message) {
+          if (message.goLiveDate || message.expireDate) {
+            // If both dates are defined, check between
+            if (message.goLiveDate && message.expireDate) {
+              if (now.isBetween(message.goLiveDate, message.expireDate)) {
+                return message;
+              }
+            // If goLive defined, check after
+            } else if (message.goLiveDate) {
+              if (now.isAfter(message.goLiveDate)) {
+                return message;
+              }
+            // If expire defined, check before
+            } else if (message.expireDate) {
+              if (now.isBefore(message.expireDate)) {
+                return message;
+              }
+            }
+          } else {
+            // Has neither date defined, so don't filter it
+            return message;
+          }
         });
       };
     });

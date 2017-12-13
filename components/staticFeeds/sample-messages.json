@@ -7,8 +7,35 @@
       "description": null,
       "descriptionShort": null,
       "messageType": "notification",
-      "goLiveDate": null,
-      "expireDate": null,
+      "goLiveDate": "2017-12-13",
+      "expireDate": "2018-01-13",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [],
+        "dataUrl": "",
+        "dataObject": "",
+        "dataArrayFilter": {}
+      },
+      "actionButton": {
+        "label": "Take action",
+        "url": "http://www.google.com"
+      },
+      "moreInfoButton": {
+        "label": "More info",
+        "url": "http://www.google.com"
+      },
+      "confirmButton": null
+    },
+    {
+      "id": "sample-uportal-app-framework-expired-notification",
+      "title": "This notification expired in the past, so should not be displayed.",
+      "titleShort": null,
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2017-07-01",
+      "expireDate": "2017-08-01",
       "featureImageUrl": null,
       "priority": null,
       "audienceFilter": {
@@ -34,7 +61,7 @@
       "description": null,
       "descriptionShort": null,
       "messageType": "notification",
-      "goLiveDate": "2017-08-03",
+      "goLiveDate": null,
       "expireDate": null,
       "featureImageUrl": null,
       "priority": "high",
@@ -63,7 +90,7 @@
       "descriptionShort": "This is a short description",
       "messageType": "announcement",
       "goLiveDate": "2017-08-01T09:30",
-      "expireDate": "2017-08-15",
+      "expireDate": null,
       "featureImageUrl": "img/features/bucky-announcement.png",
       "priority": null,
       "audienceFilter": {
@@ -83,16 +110,16 @@
       "confirmButton": null
     },
     {
-      "id": "sample-uportal-app-framework-filtered-popup-announcement",
-      "title": "This is a filtered popup",
-      "titleShort": "Filtered popup",
-      "description": "This popup message should not appear to anyone unless group filtering is disabled (via beta settings).",
+      "id": "sample-uportal-app-framework-filtered-announcement",
+      "title": "This is a filtered announcement",
+      "titleShort": "Filtered announcement",
+      "description": "This message should not appear to anyone unless group filtering is disabled (via beta settings).",
       "descriptionShort": "You must have disabled group filtering!",
       "messageType": "announcement",
-      "goLiveDate": "2017-08-01T09:30",
-      "expireDate": "2017-08-15",
+      "goLiveDate": null,
+      "expireDate": "2018-02-15",
       "featureImageUrl": "img/the-cow.png",
-      "priority": null,
+      "priority": "high",
       "audienceFilter": {
         "groups": ["Nonexistent-Group"],
         "dataUrl": "",
