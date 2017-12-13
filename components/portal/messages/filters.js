@@ -18,7 +18,7 @@
  */
 'use strict';
 
-define(['angular'], function(angular) {
+define(['angular', 'moment'], function(angular, moment) {
   return angular.module('portal.messages.filters', [])
     .filter('separateMessageTypes', ['$filter', function($filter) {
       return function(messages) {
@@ -68,40 +68,31 @@ define(['angular'], function(angular) {
         });
       };
     })
-     .filter('filterMessagesWithInvalidDates', function() {
-      var retVal = [];
+    .filter('filterMessagesWithInvalidDates', function() {
       return function(messages) {
-          var thePresent = Date.now();
-          angular.forEach(messages, function(message) {
-            if (message.expireDate || message.goLiveDate) {
-              var addToRetVal = true;
-              if (message.goLiveDate) {
-                var goDate = new Date(message.goLiveDate);
-                var goTime = goDate.getTime();
-                if (thePresent < goTime) {
-                  addToRetVal = false;
-                }
-              }
-
-              if (message.expireDate) {
-                var stopDate = new Date(message.expireDate);
-                var stopTime = stopDate.getTime();
-                if(thePresent > stopTime) {
-                  addToRetVal = false;
-                }
-              }
-              
-              if(addToRetVal) {
-                retVal.push(message);
-              }
-
-            } else {
-                retVal.push(message);
+          var thePresent = moment.now();
+          return messages.filter(function(message) {
+            var goDate = moment(message.goLiveDate);
+            var stopDate = moment(message.expireDate);
+            // If neither date is populated, message is valid.
+            if (!goDate.isValid() && !stopDate.isValid()) {
+              return message;
             }
-          })
-          return retVal;
-      }
-    })
+            if (goDate.isValid() && stopDate.isValid()) {
+              if (goDate.isBefore(thePresent)
+                && stopDate.isAfter(thePresent)) {
+                return message;
+              }
+            }
+            if (goDate.isValid() && goDate.isBefore(thePresent)) {
+              return message;
+            }
+            if (stopDate.isValid() && stopDate.isAfter(thePresent)) {
+              return message;
+            }
+          });
+        };
+      })
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {
