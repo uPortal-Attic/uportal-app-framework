@@ -106,6 +106,6 @@ define(['angular'], function(angular) {
     .filter('trim', function() {
       return function(input) {
         return input.trim();
-      }
+      };
     });
 });
