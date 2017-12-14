@@ -126,6 +126,9 @@
     "font-awesome": "^4.6.3",
     "normalize.less": "^1.0.0"
   },
+  "engines": {
+    "npm": ">=5.6.0"
+  },
   "eslintConfig": {
     "root": true,
     "parserOptions": {
