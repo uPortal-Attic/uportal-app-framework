@@ -46,7 +46,6 @@
       <url-pattern>/about</url-pattern>
       <url-pattern>/access-denied</url-pattern>
       <url-pattern>/server-error</url-pattern>
-      <url-pattern>/sorry-safari</url-pattern>
       <url-pattern>/demo-widgets</url-pattern>
   </servlet-mapping>
 </web-app>
