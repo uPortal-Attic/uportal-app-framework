@@ -126,6 +126,9 @@
     "font-awesome": "^4.6.3",
     "normalize.less": "^1.0.0"
   },
+  "engines": {
+    "npm": ">=5.6.0"
+  },
   "eslintConfig": {
     "root": true,
     "parserOptions": {
@@ -200,7 +203,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,md}": "eslint --ext js --ext json --ext md",
+    "*.{js,json,md}": "eslint --ext js --ext json --ext md --ignore-pattern docs/",
     "*.md": "remark --frail",
     "*.less": "stylelint --syntax less"
   }

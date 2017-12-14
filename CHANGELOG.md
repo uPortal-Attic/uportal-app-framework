@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 + Notes adopting Conventional Commits message style in `CONTRIBUTING.md`, with
 tips for easing compliance. (#634)
 
+### Build
+
++ Suppresses `eslint` on `docs/` when linting staged changes. (#636)
+
 ## [7.0.0][] - 2017-11-30
 
 ### BREAKING CHANGES

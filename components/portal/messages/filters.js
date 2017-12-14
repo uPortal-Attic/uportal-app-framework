@@ -18,7 +18,7 @@
  */
 'use strict';
 
-define(['angular'], function(angular) {
+define(['angular', 'moment'], function(angular, moment) {
   return angular.module('portal.messages.filters', [])
     .filter('separateMessageTypes', ['$filter', function($filter) {
       return function(messages) {
@@ -68,6 +68,31 @@ define(['angular'], function(angular) {
         });
       };
     })
+    .filter('filterByDate', function() {
+      return function(messages) {
+          var thePresent = moment.now();
+          return messages.filter(function(message) {
+            var goDate = moment(message.goLiveDate);
+            var stopDate = moment(message.expireDate);
+            // If neither date is populated, message is valid.
+            if (!goDate.isValid() && !stopDate.isValid()) {
+              return message;
+            }
+            if (goDate.isValid() && stopDate.isValid()) {
+              if (goDate.isBefore(thePresent)
+                && stopDate.isAfter(thePresent)) {
+                return message;
+              }
+            }
+            if (goDate.isValid() && goDate.isBefore(thePresent)) {
+              return message;
+            }
+            if (stopDate.isValid() && stopDate.isAfter(thePresent)) {
+              return message;
+            }
+          });
+        };
+      })
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {
@@ -101,6 +126,11 @@ define(['angular'], function(angular) {
         return array1.filter(function(element) {
           return array2.indexOf(element) != -1;
         });
+      };
+    })
+    .filter('trim', function() {
+      return function(input) {
+        return input.trim();
       };
     });
 });

@@ -103,8 +103,10 @@ define(['angular'], function(angular) {
               result.filteredByGroup,
               result.filteredByData
             );
+            var dateFilteredMessages =
+              $filter('filterByDate')(filteredMessages);
             $scope.messages =
-              $filter('separateMessageTypes')(filteredMessages);
+              $filter('separateMessageTypes')(dateFilteredMessages);
             $scope.hasMessages = true;
           }
         };
@@ -173,10 +175,23 @@ define(['angular'], function(angular) {
         vm.isLoading = true;
         vm.renderLimit = 3;
         vm.showMessagesFeatures = true;
+        vm.titleLengthLimit = 140;
 
         // //////////////////
         // Event listeners //
         // //////////////////
+
+        /**
+         * Process event where notifications have changed,
+         * i.e. a dismissal, and ensure that all instances of the
+         * controller are updated.
+         */
+        var notificationChange = $rootScope.$on('notificationChange',
+          function() {
+            configureNotificationsScope();
+            configurePriorityNotificationsScope();
+          });
+
         /**
          * When the parent controller has messages, initialize
          * things dependent on messages
@@ -379,11 +394,7 @@ define(['angular'], function(angular) {
             messagesService.setMessagesSeen(allSeenMessageIds,
               dismissedNotificationIds, 'restore');
           }
-
-          // Reconfigure priority scope if a priority notification was restored
-          if (isHighPriority) {
-            configurePriorityNotificationsScope();
-          }
+          notificationChange();
         };
 
         /**

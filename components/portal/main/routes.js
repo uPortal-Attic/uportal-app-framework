@@ -33,9 +33,5 @@ define(['require'], function(require) {
       fileNotFound: {
         templateUrl: require.toUrl('./partials/file-not-found.html'),
       },
-
-      storageError: {
-        templateUrl: require.toUrl('./partials/sorry-safari.html'),
-      },
     };
 });
