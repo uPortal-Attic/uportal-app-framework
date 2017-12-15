@@ -1,27 +1,44 @@
 # Main Menu
 
-When developing an app with uPortal-app-framework, you can use the configurable side navigation for in-app navigation and app-wide functionality.
-The main menu is opened by the hamburger icon in the top left corner of the app. On medium and large screens, the menu includes only the content you've
-configured. On mobile, the menu includes a top bar with portal-wide components like the notifications bell, username menu, and new features button.
+uPortal-app-framework applications can use the configurable side navigation for
+in-app navigation and app-wide functionality.
 
-If you don't configure the menu, the hamburger icon and side navigation will not be displayed, and the portal-wide content will be displayed in the top bar on small screens.
+Users open the main menu using the hamburger icon in the top left corner of the
+app. On medium and large screens, the menu includes only the content configured
+for this specific application. On mobile, the menu includes a top bar with
+portal-wide components like the notifications bell, username menu, and new
+features button.
 
-Basic configuration occurs in your app's `override.js` file. See the [configuration doc](configuration.md) for an example.
+Applications that do not configure the menu will not display the hamburger icon
+and side navigation and will display the portal-wide content in the top bar on
+small screens.
 
-**Important:** Side navigation depends on the `<frame-page>` directive. Use the `<frame-page>` directive as the outermost containing element for your app view(s). See the [frame-page.html](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/portal/misc/partials/frame-page.html) file to understand how this is constructed.
+Basic configuration occurs in `override.js`. See the [configuration
+doc](configuration.md) for an example.
+
+**Important:** Side navigation depends on the `<frame-page>` directive. Use the
+`<frame-page>` directive as the outermost containing element for app view(s).
+See the [frame-page partial][] to understand how this is constructed.
 
 ## How to use
 
-There are two levels of complexity you can use when configuring the contents of your menu.
+Two levels of complexity are available for configuring the menu contents.
 
-1. [Simple](#simple-configuration): Menu options that have a text label, a url, and an optional material icon (i.e. basic links)
-2. [Custom template](#custom-menu-template): Varied menu options, some of which may be tied to an angular controller and affect functionality of the app (e.g. a theme-switching toggle)
+1. [Simple](#simple-configuration): Menu options with a text label, a url,
+and an optional material icon (i.e. basic links)
+2. [Custom template](#custom-menu-template): Varied menu options, some of which
+may be tied to an angular controller and affect functionality of the app (e.g.
+a theme-switching toggle)
 
-You can also try the _**experimental**_ [push-content feature](#push-content-navigation) if you want the side navigation to be open upon page load and appear as part of the page content. The side nav will push content when it is opened and give up the space when closed.
+Thirdly, there is an _**experimental**_ [push-content
+feature](#push-content-navigation) to default the side navigation to open upon
+page load and appear as part of the page content. The side nav will push
+content when opened and give up the space when closed.
 
 ## Simple configuration
 
-In your `override.js` file, add an array of menu item objects to the **appMenuItems** attribute using the format in the following example.
+In `override.js` file, add an array of menu item objects to the
+**appMenuItems** attribute using this format.
 
 ```js
 .constant('OVERRIDE', {
@@ -44,13 +61,15 @@ In your `override.js` file, add an array of menu item objects to the **appMenuIt
 - **icon**: _(optional)_ An material icon to enhance the appearance and context of the menu item. See [material icons](https://material.io/icons/) to see the icons available.
 - **url**: The value that should be in the `href` attribute for this menu item.
 
-The app will first check to see if you're using the complex configuration. If not, it will look for this simple configuration.
+When both the complex and simple configuration approaches are present, the
+complex configuration controls.
+
 
 ## Custom menu template
 
-1. Create an HTML template for the menu items somewhere in your project
-2. Add the path to that template as the value to the **appMenuTemplateURL** key in your `override.js` file
-3. Hook up your custom `ng-controller` or whatever other functionality you want out of the menu
+1. Create an HTML template for the menu items somewhere in the project
+2. Add the path to that template as the value to the **appMenuTemplateURL** key in `override.js`
+3. Hook up a custom `ng-controller` or whatever other functionality the menu should actuate
 
 Example `override.js` file:
 
@@ -64,8 +83,12 @@ Example `override.js` file:
 
 #### Best practices
 
-The HTML from your template will be injected into a `<md-menu-content>` element from the AngularJS Material library. Therefore, you should follow the [AngularJS material guidelines](https://material.angularjs.org/latest/demo/menu) for constructing an md-menu.
-Specifically, the hierarchy of menu items in your custom template should look like this:
+The HTML from the template will be injected into a `<md-menu-content>` element
+from the AngularJS Material library. Therefore, follow the [AngularJS Material
+guidelines][] for constructing an `md-menu`.
+
+Specifically, the hierarchy of menu items in the custom template should look
+like this:
 
 ```html
 <md-menu-item>
@@ -75,15 +98,24 @@ Specifically, the hierarchy of menu items in your custom template should look li
 </md-menu-item>
 ```
 
-This will ensure that your menu items look great and perform consistently.
+This will ensure that menu items look great and perform consistently.
 
-Additionally, each of your buttons should call `vm.closeMainMenu()` on click (in addition to anything else you want those buttons to do on click). This function looks to the parent controller within uPortal-app-framework and closes the menu when the item is clicked.
-This means that any angular controller you connect to your menu items should not use `vm` if using angular's `controllerAs` syntax.
+Additionally, each of the buttons should call `vm.closeMainMenu()` on click (in
+addition to anything else those buttons do on click). This function looks to
+the parent controller within uPortal-app-framework and closes the menu when the
+item is clicked.
+This means that any Angular controller connected to menu items should not use
+`vm` if using angular's `controllerAs` syntax.
 
-Alternatively, you can access the `closeMainMenu()` function in your custom controller by calling `$scope.$parent.closeMainMenu()`.
+Alternatively, access the `closeMainMenu()` function in the custom controller
+by calling `$scope.$parent.closeMainMenu()`.
 
-This is the easiest way to configure your menu to ensure it looks and behaves in a way that is consistent with other frame apps.
-You're free to add custom content with custom CSS in whatever form you like, with the caveat that your choices may not be supported by future improvements to this framework.
+This is the easiest way to configure the menu to ensure it behaves consistently
+with other frame apps.
+
+Menu content presentation is customizable with custom CSS, but introducing
+custom CSS will add friction on upgrades in porting forward that custom CSS.
+
 
 **Full example menu template:**
 
@@ -101,10 +133,16 @@ You're free to add custom content with custom CSS in whatever form you like, wit
 
 [![push content navigation example](./img/push-content-nav.png)](img/push-content-nav.png)
 
-1. In your `override.js` file, set **APP_OPTIONS.enablePushContent** to true
-2. Use the `<frame-page>` directive as the outermost containing element for your app view(s). See the [frame-page.html](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/portal/misc/partials/frame-page.html) file to understand how this is constructed.
-3. Be aware that the content within your `<frame-page>` is a child of flex-positioned HTML elements. You may need to write custom CSS to ensure this performs the way you want.
-4. Be aware that this is an experimental feature. If you encounter difficulty using this feature, feel free to open a new issue on the [uportal-app-framework project](https://github.com/uPortal-Project/uportal-app-framework/issues)
+1. In `override.js`, set **APP_OPTIONS.enablePushContent** to true
+2. Use the `<frame-page>` directive as the outermost containing element for
+app view(s). See the [frame-page partial][] to understand how this is
+constructed.
+3. Be aware that the content within `<frame-page>` is a child of
+flex-positioned HTML elements. Custom CSS may be needed to nuance the way this
+content presents.
+4. Be aware that this is an experimental feature. Please raise [issue
+reports](https://github.com/uPortal-Project/uportal-app-framework/issues) as
+you encounter problems.
 
 Example `override.js` file:
 
@@ -116,3 +154,6 @@ Example `override.js` file:
   },
 });
 ```
+
+[frame-page partial]: https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/portal/misc/partials/frame-page.html
+[AngularJS Material guidelines]: https://material.angularjs.org/latest/demo/menu

@@ -21,25 +21,23 @@ tips for easing compliance. (#634)
 
 Updates to the side navigation feature in this release introduce a hard
 dependency on the `<frame-page>` directive for unbroken menu experience (#588).
-**If you're upgrading from 6.1.0**
-and you have already configured side navigation (by setting values for either
-`appMenuTemplateURL` or `appMenuItems` in your override.js file), you will need
-to ensure that every main
-view in your app uses the `<frame-page>` directive as its outermost container
-element. If you don't want to use the side navigation and you have not
-previously configured side navigation,
-you should not be affected by this change.
+
+**If upgrading from 6.1.0**
+and the application already configures side navigation (by setting values for either
+`appMenuTemplateURL` or `appMenuItems` in `override.js`), every main
+view in the app must use the `<frame-page>` directive as its outermost container
+element. Applications that have not previously configured side navigation and do not begin using side navigation with this upgrade should not be affected by this change.
 
 There are also CSS changes to the layout container elements that precede the
-`<ng-view>` element (where your app's on-page content is pulled in) to prefer a
+`<ng-view>` element (where the app's on-page content is pulled in) to prefer a
 flex-based layout (#588).
-This may affect you if:
 
-+ You have a lot of elements that have a defined `min-width` property
-+ You're already using flex positioning but are not using `flex-wrap` on
+This may affect an application if:
+
++ It has a lot of elements with a defined `min-width` property
++ It is already using flex positioning but is not using `flex-wrap` on
 containers with a lot of content
-+ You have many elements with `position: absolute` (may experience a minor
-shift in placement)
++ It has many elements with `position: absolute` (may experience a minor
 
 Examples of the kinds of downstream changes required:
 
@@ -331,9 +329,11 @@ This release adds a widget directive to the app-framework, adds personalized not
 [Fixes bug in personalized notifications](https://github.com/uPortal-Project/uportal-app-framework/pull/387)
 
 ### How to Upgrade from version 3.X
-+ Change your dependency to version 4.0.0
-+ If you were consuming notifications within the app, the [notification service api changed from `getNotificationsByGroups` to `getFilteredNotifications`](https://github.com/uPortal-Project/uportal-app-framework/pull/386/files#diff-9a244329b1c0f99008f0fb506d3b9c64L159).  This will not be a concern for most (if not all) applications.
-+ If you had previously named services and directives in your MyUW app with the word widget in the name, you may run into some naming conflicts due to the new Widget directives and services being added.  [See the code for more details](https://github.com/uPortal-Project/uportal-app-framework/pull/385/files).  This will not be a concern for most applications.
+
++ Change dependency to version 4.0.0
++ For upgrading application consuming notifications programmatically: the [notification service api changed from `getNotificationsByGroups` to `getFilteredNotifications`](https://github.com/uPortal-Project/uportal-app-framework/pull/386/files#diff-9a244329b1c0f99008f0fb506d3b9c64L159).  This will not be a concern for most (if not all) applications.
++ If the app had previously named services and directives with the word "widget" in the name, naming conflicts may arise due to the new Widget directives and services being added.  [See the code for more details](https://github.com/uPortal-Project/uportal-app-framework/pull/385/files).  This will not be a concern for most applications.
+
 
 ## [3.1.4][] - 2017-03-20
 
@@ -383,7 +383,7 @@ Adjusts link colors for themes #377
 
 ## [3.0.3][] - 2016-12-20
 
-Patch release. Simply bump your app's dependency declaration from `uw-frame` `3.0.2` to `3.0.3` to adopt this release.
+Patch release. Simply bump the app's dependency declaration from `uw-frame` `3.0.2` to `3.0.3` to adopt this release.
 - Fixes Google Analytics usage ( #353 )
 - Documents source code whitespace conventions ( #356 )
 - Improves [documentation about releasing `uw-frame` itself](http://uportal-project.github.io/uportal-app-framework/v3.0.3/#/md/releasing) ( #355 )
@@ -411,8 +411,8 @@ Unreleased due to issues pushing to Maven Central.
 ### Major Version Upgrade
 - Upgrade angular-ui-bootstrap and angular libraries (#350) from 0.13.4 to 2.2.0
 
-The angular-ui-bootstrap upgrade moves up 2 major versions and does
-break compatibility with some older components.  If you used any angular-ui-bootstrap components, you'll need to prefix them with "uib-".  See angular-ui-bootstrap [Migration Guide for Prefixes](https://github.com/angular-ui/bootstrap/wiki/Migration-guide-for-prefixes) for more information.
+The `angular-ui-bootstrap` upgrade moves up 2 major versions and does
+break compatibility with some older components.  If the app used any `angular-ui-bootstrap` components, it will need to begin prefixing them with `uib-`.  See `angular-ui-bootstrap` [Migration Guide for Prefixes](https://github.com/angular-ui/bootstrap/wiki/Migration-guide-for-prefixes).
 
 ### Build changes
 - Add postcss/autoprefixer to uw-frame build (#345)
