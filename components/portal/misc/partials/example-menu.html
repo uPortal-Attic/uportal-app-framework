@@ -36,21 +36,32 @@
   </md-button>
 </md-menu-item>
 <md-menu-item>
-  <md-button href="https://github.com/uPortal-Project/uportal-app-framework" ng-click="vm.closeMainMenu();">
-    <i class="fa fa-github"></i>
-    <span>Checkout Repo</span>
+  <md-button href="#" ng-click="vm.closeMainMenu();">
+    <md-icon>add</md-icon>
+    <span>Add apps to home</span>
   </md-button>
 </md-menu-item>
+<md-menu-item>
+    <md-button href="/notifications" ng-click="vm.closeMainMenu();" layout="row" layout-align="start center">
+      <span>
+        <md-icon>notifications</md-icon>
+      </span>
+      <span>Notifications</span>
+    </md-button>
+  </md-menu-item>
+<md-menu-item>
+    <md-button href="/user-settings" ng-click="vm.closeMainMenu();" layout="row" layout-align="start center">
+      <span>
+        <md-icon>settings</md-icon>
+      </span>
+      <span>Settings</span>
+    </md-button>
+  </md-menu-item>
 <md-menu-item>
   <md-button href="/about" ng-click="vm.closeMainMenu();" layout="row" layout-align="start center">
     <span>
       <md-icon>help</md-icon>
     </span>
     <span>About</span>
-  </md-button>
-</md-menu-item>
-<md-menu-item>
-  <md-button href="http://uportal-project.github.io/uportal-app-framework/directives.html" ng-click="vm.closeMainMenu();">
-    See Documentation
   </md-button>
 </md-menu-item>

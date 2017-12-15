@@ -20,8 +20,10 @@
 -->
 <frame-page app-title="User Settings"
             app-icon="fa-gears"
+            white-background="true"
             class="user-settings-page">
-  <md-content layout-padding>
+  <md-content layout-padding style="padding:6px 24px;">
+    <h1>Settings</h1>
     <div layout="column">
       <p ng-hide="kvEnabled">No settings for you to set at this time.</p>
       <h4 class="md-subhead" ng-if="kvEnabled">Reset Zone<br>

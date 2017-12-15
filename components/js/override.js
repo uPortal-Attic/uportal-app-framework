@@ -21,14 +21,14 @@ define(['angular'], function(angular) {
   return angular.module('override', [])
     .constant('OVERRIDE', {
       'APP_OPTIONS': {
-        // 'appMenuTemplateURL': 'portal/misc/partials/example-menu.html',
+        'appMenuTemplateURL': 'portal/misc/partials/example-menu.html',
         // 'enablePushContentMenu': true,
       },
       'SERVICE_LOC': {
-        // 'messagesURL': 'staticFeeds/sample-messages.json',
+        'messagesURL': 'staticFeeds/sample-messages.json',
       },
       'MESSAGES': {
-        // 'notificationsPageURL': '/notifications',
+        'notificationsPageURL': '/notifications',
       },
     });
 });

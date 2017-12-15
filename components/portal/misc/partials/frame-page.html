@@ -19,11 +19,6 @@
 
 -->
 <div class="wrapper__frame-page" ng-class="{ 'frame-page__push-content' : menuPushContent }">
-  <app-header
-  app-title="{{appTitle}}"
-  app-icon="{{appIcon}}"
-  app-show-add-to-home="{{appShowAddToHome}}"
-  app-fname="{{appFname}}"></app-header>
   <div role="main" class="wrapper__push-content" ng-class="{ 'white-page' : whiteBackground }">
     <main-menu ng-class="{ 'push-content' : menuPushContent, 'main-menu__open' : vm.isMenuOpen(), 'has-priority-notifications' : vm.hasPriorityNotifications }"></main-menu>
     <div class="content-wrapper__push-content" ng-if="menuPushContent">
