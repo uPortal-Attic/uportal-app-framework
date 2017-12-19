@@ -14,7 +14,7 @@ This page will serve as a resource for Material documentation, and how MyUW uses
 + **[Cards](https://material.angularjs.org/latest/demo/card)**: Used for MyUW widgets, Note there are many parts to a card, including title, media, actions, and content. Use the Angular Material documentation to guide you.
 + **[Toolbar](https://material.angularjs.org/latest/demo/toolbar)**: Used for the MyUW header.
 + **[Menu](https://material.angularjs.org/latest/demo/menu)**: Used for MyUW's username, options, and mobile menus.
-+ **[Dialog](https://material.angularjs.org/latest/demo/dialog)**: Used for feature announcements and app ratings in MyUW.
++ **[Dialog](https://material.angularjs.org/latest/demo/dialog)**: Used sparingly for feature announcements in MyUW.
 + **[Input](https://material.angularjs.org/latest/demo/input)**: Bootstrap input components are being phased out in favor of Material input directives throughout MyUW.
 + **[Loading icon](https://material.angularjs.org/latest/demo/progressCircular)**: Use the Material Progress Circular directive for loading screens in MyUW. This can be colored according to the school's material theme.
 + **[Radio Buttons](https://material.angularjs.org/latest/demo/radioButton)**, **[Selects](https://material.angularjs.org/latest/demo/select)**, **[Checkboxes](https://material.angularjs.org/latest/demo/checkbox)**, and **[Switches](https://material.angularjs.org/latest/demo/switch)**: Material's input components are fantastic and should be used throughout MyUW.

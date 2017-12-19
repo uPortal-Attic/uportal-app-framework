@@ -2,7 +2,8 @@
 At a glance notes for upgrading apps between major versions.
 
 # 6.x.x to 7.x.x
-- Wrap routed views in the `<frame-page>` directive.
+- Wrap routed views in a `<frame-page>` directive.
+    - remove extraneous `<app-header>` directives.
 - Remove `app-options-template` attribute from existing `<frame-page>` directives. Replace with a partial in `overrides.js`:
     - from
       ```html
