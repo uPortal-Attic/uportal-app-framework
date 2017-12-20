@@ -2,7 +2,7 @@ Buttons in uportal-app-framework leverage [Angular Material buttons](https://mat
 Google Material design practices and come with built-in UX enhancements. Use the `<md-button>` directive to create a material button.
 
 #### All buttons should have the following attributes:
-+ The text should be sentence-case (e.g. "Reset announcements")
++ The text should be sentence-case (e.g. "Learn more")
 + It should include an `aria-label` attribute that describes the action for screen readers
 + It should have either an `ng-click` or `ng-href` attribute for buttons and links, respectively
 + It should include a class for the desired color palette (i.e. `md-primary`, `md-accent`, `md-warn`, or `md-default`)

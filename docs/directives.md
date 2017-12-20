@@ -5,8 +5,6 @@
 Frame page should be used for all pages in a uportal-app-framework application. It comes with much of the rest of the framework's skeleton built in, including the app-header and main-menu directives. You should use it as the outermost element for
 each of your application's main views.
 
-**Example page**: see `/portal/main/partials/example-page.html`
-
 ### Template:
 
 ```html
@@ -24,37 +22,11 @@ each of your application's main views.
 
 ### Params
 
-_See `app-header`_
-
-### Options
-
+* **app-title**: The title that will be displayed in the app header
+* **app-icon**: The icon to use as a prefix to the app title. You can use Font Awesome (i.e. "fa-envelope") or Material Icons (i.e. "email").
+* **app-show-add-to-home**: If set to true, will include the add-to-home directive and its controller in the app header (used for apps that are part of the portal ecosystem).
+* **app-fname**: If provided, it will be used in the add-to-home feature. If not, it'll try to use NAMES.fname constant.
 * **white-background**: A boolean when set to true with give you a white background.
-
-## App header
-
-If you don't want to use the frame page directive, you can still utilize the app-header as you would any other directive. It should be included in all pages of your app.
-
-There is also a directive called `app-header-two-way-bind`. This has all the same features as `app-header` except all the scope attributes are passed in via `=` instead of `@`. This provides 2 way binding for your header. Research angular directives for more details.
-
-### Template:
-
-```html
-<app-header
-  app-title="Hello World"
-  app-icon="email"
-  app-fname="hey-world-fname"
-  app-show-add-to-home="false"
-></app-header>
-```
-
-### Params:
-
-All params are prefixed with `app-`.
-
-* **title**: The title that will be displayed in the app header
-* **icon**: The icon to use as a prefix to the app title. You can use Font Awesome (i.e. "fa-envelope") or Material Icons (i.e. "email").
-* **show-add-to-home**: If set to true, will include the add-to-home directive and its controller in the app header (used for apps that are part of the portal ecosystem).
-* **fname**: If provided, it will be used in the add-to-home feature. If not, it'll try to use NAMES.fname constant.
 
 ## Main menu
 

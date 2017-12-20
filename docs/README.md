@@ -43,8 +43,10 @@ With gratitude to the many [contributors to this project](contributors.md).
 
 ## Administration
 
++ [Major version upgrade guide](upgrading.md)
 + [Release management](releasing.md)
-+ [Frame versions with docs and release notes](versions.md)
++ [Frame versions with docs and release notes][CHANGELOG]
 
 [uportal-home]: https://github.com/uPortal-Project/uportal-home
 [MyUW]: https://it.wisc.edu/services/myuw/
+[CHANGELOG]: https://github.com/uPortal-Project/uportal-app-framework/blob/master/CHANGELOG.md
