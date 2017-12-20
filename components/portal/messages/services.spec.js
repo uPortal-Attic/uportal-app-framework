@@ -65,6 +65,8 @@ define(['angular-mocks', 'portal'], function() {
                 'groups': [
                   'Everyone',
                 ],
+              },
+              'data': {
                 'dataUrl': testingDataUrl,
                 'dataObject': 'id',
                 'dataMessageTitle': [
@@ -119,6 +121,8 @@ define(['angular-mocks', 'portal'], function() {
                 'groups': [
                   'Everyone',
                 ],
+              },
+              'data': {
                 'dataObject': 'id',
                 'dataMessageTitle': [
                   'title',
@@ -162,6 +166,8 @@ define(['angular-mocks', 'portal'], function() {
                 'groups': [
                   'Everyone',
                 ],
+              },
+              'data': {
                 'dataUrl': testingDataUrl,
                 'dataObject': 'id',
                 'dataMessageMoreInfoUrl': [
@@ -221,6 +227,8 @@ define(['angular-mocks', 'portal'], function() {
                 'groups': [
                   'Everyone',
                 ],
+              },
+              'data': {
                 'dataUrl': testingDataUrl,
                 'dataObject': 'id',
                 'dataMessageMoreInfoUrl': [
@@ -275,6 +283,8 @@ define(['angular-mocks', 'portal'], function() {
                 'groups': [
                   'Everyone',
                 ],
+              },
+              'data': {
                 'dataObject': 'id',
                 'dataMessageMoreInfoUrl': ['Learn More', 'url'],
               },
@@ -319,6 +329,8 @@ define(['angular-mocks', 'portal'], function() {
                   'groups': [
                     'Everyone',
                   ],
+                },
+                'data': {
                   'dataUrl': testingDataUrl,
                 },
               },
@@ -358,6 +370,8 @@ define(['angular-mocks', 'portal'], function() {
                   'groups': [
                     'Everyone',
                   ],
+                },
+                'data': {
                   'dataUrl': testingDataUrl,
                 },
               },
@@ -397,6 +411,8 @@ define(['angular-mocks', 'portal'], function() {
                   'groups': [
                     'Everyone',
                   ],
+                },
+                'data': {
                   'dataUrl': testingDataUrl,
                   'dataObject': 'developers',
                 },
@@ -444,6 +460,8 @@ define(['angular-mocks', 'portal'], function() {
                   'groups': [
                     'Everyone',
                   ],
+                },
+                'data': {
                   'dataUrl': testingDataUrl,
                   'dataObject': 'data',
                 },
@@ -491,6 +509,8 @@ define(['angular-mocks', 'portal'], function() {
                   'groups': [
                     'Everyone',
                   ],
+                },
+                'data': {
                   'dataObject': 'data',
                 },
               },
@@ -530,6 +550,8 @@ define(['angular-mocks', 'portal'], function() {
                   'groups': [
                     'Everyone',
                   ],
+                },
+                'data': {
                   'dataUrl': testingDataUrl,
                   'dataObject': 'developers',
                   'dataArrayFilter': {
@@ -583,6 +605,8 @@ define(['angular-mocks', 'portal'], function() {
                   'groups': [
                     'Everyone',
                   ],
+                },
+                'data': {
                   'dataUrl': testingDataUrl,
                   'dataObject': 'developers',
                   'dataArrayFilter': {
@@ -639,6 +663,8 @@ define(['angular-mocks', 'portal'], function() {
                   'groups': [
                     'Everyone',
                   ],
+                },
+                'data': {
                   'dataUrl': testingDataUrl,
                   'dataObject': 'developers',
                   'dataArrayFilter': {
@@ -695,6 +721,8 @@ define(['angular-mocks', 'portal'], function() {
                   'groups': [
                     'Everyone',
                   ],
+                },
+                'data': {
                   'dataUrl': testingDataUrl,
                   'dataArrayFilter': {
                     'name': 'baz',
@@ -748,6 +776,8 @@ define(['angular-mocks', 'portal'], function() {
                   'groups': [
                     'Everyone',
                   ],
+                },
+                'data': {
                   'dataUrl': testingDataUrl,
                   'dataObject': 'id',
                 },
