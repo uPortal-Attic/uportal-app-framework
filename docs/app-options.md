@@ -1,6 +1,6 @@
 # App options
 
-Apps using the `<app-header>` or `<frame-page>` [directives](directives.md) can specify custom app-specific options to appear in the app header, as pictured below.
+Apps using the `<frame-page>` [directive](directives.md) can specify custom app-specific options to appear in the app header, as pictured below.
 
 ![./img/app-header-options.png](img/app-header-options.png)
 
