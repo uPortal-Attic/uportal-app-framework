@@ -279,5 +279,480 @@ define(['angular-mocks', 'portal'], function() {
       });
       httpBackend.flush();
     });
+
+    it('message should not appear if dataURL is'+
+        'present but incorrect', function() {
+        httpBackend.whenGET(messagesUrl).respond(
+          {
+            'messages': [
+              {
+                'id': 1,
+                'title': 'message 1',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                },
+              },
+              {
+                'id': 2,
+                'title': 'message 2',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                  'dataUrl': testingDataUrl,
+                },
+              },
+            ],
+          }
+        );
+        httpBackend.whenGET(testingDataUrl).respond(400, {});
+        messagesService.getAllMessages().then(function(allMessages) {
+          expect(allMessages).toBeTruthy();
+          expect(allMessages.length).toEqual(2);
+          return messagesService.getMessagesByData(allMessages);
+        }).then(function(dataMessages) {
+          expect(dataMessages).toBeTruthy();
+          expect(dataMessages.length).toEqual(1);
+        });
+        httpBackend.flush();
+      });
+
+      it('message should appear if dataURL is present'+
+        'and returns data', function() {
+        httpBackend.whenGET(messagesUrl).respond(
+          {
+            'messages': [
+              {
+                'id': 1,
+                'title': 'message 1',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                },
+              },
+              {
+                'id': 2,
+                'title': 'message 2',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                  'dataUrl': testingDataUrl,
+                },
+              },
+            ],
+          }
+        );
+        httpBackend.whenGET(testingDataUrl).respond(200, 'foo');
+        messagesService.getAllMessages().then(function(allMessages) {
+          expect(allMessages).toBeTruthy();
+          expect(allMessages.length).toEqual(2);
+          return messagesService.getMessagesByData(allMessages);
+        }).then(function(dataMessages) {
+          expect(dataMessages).toBeTruthy();
+          expect(dataMessages.length).toEqual(2);
+        });
+        httpBackend.flush();
+      });
+
+      it('message should appear if dataURL is present and returns data ' +
+        'specifically asked for by dataObject', function() {
+        httpBackend.whenGET(messagesUrl).respond(
+          {'messages':
+            [
+              {
+                'id': 1,
+                'title': 'message 1',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                },
+              },
+              {
+                'id': 2,
+                'title': 'message 2',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                  'dataUrl': testingDataUrl,
+                  'dataObject': 'developers',
+                },
+              },
+            ],
+          }
+        );
+        httpBackend.whenGET(testingDataUrl).respond(200,
+          {
+            'developers': [
+              'foo',
+              'bar',
+            ],
+          }
+        );
+        messagesService.getAllMessages().then(function(allMessages) {
+          expect(allMessages).toBeTruthy();
+          expect(allMessages.length).toEqual(2);
+          return messagesService.getMessagesByData(allMessages);
+        }).then(function(dataMessages) {
+          expect(dataMessages).toBeTruthy();
+          expect(dataMessages.length).toEqual(2);
+        });
+        httpBackend.flush();
+      });
+
+      it('message should not appear if dataURL is present and cannot'+
+        'return data specifically asked for by dataObject', function() {
+        httpBackend.whenGET(messagesUrl).respond(
+          {'messages':
+            [
+              {
+                'id': 1,
+                'title': 'message 1',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                },
+              },
+              {
+                'id': 2,
+                'title': 'message 2',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                  'dataUrl': testingDataUrl,
+                  'dataObject': 'data',
+                },
+              },
+            ],
+          }
+        );
+        httpBackend.whenGET(testingDataUrl).respond(200,
+          {
+            'developers': [
+              'foo',
+              'bar',
+            ],
+          }
+        );
+        messagesService.getAllMessages().then(function(allMessages) {
+          expect(allMessages).toBeTruthy();
+          expect(allMessages.length).toEqual(2);
+          return messagesService.getMessagesByData(allMessages);
+        }).then(function(dataMessages) {
+          expect(dataMessages).toBeTruthy();
+          expect(dataMessages.length).toEqual(1);
+        });
+        httpBackend.flush();
+      });
+
+      it('message should appear if dataURL is not present and dataObject'+
+        'is mistakenly present', function() {
+        httpBackend.whenGET(messagesUrl).respond(
+          {'messages':
+            [
+              {
+                'id': 1,
+                'title': 'message 1',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                },
+              },
+              {
+                'id': 2,
+                'title': 'message 2',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                  'dataObject': 'data',
+                },
+              },
+            ],
+          }
+        );
+        messagesService.getAllMessages().then(function(allMessages) {
+          expect(allMessages).toBeTruthy();
+          expect(allMessages.length).toEqual(2);
+          return messagesService.getMessagesByData(allMessages);
+        }).then(function(dataMessages) {
+          expect(dataMessages).toBeTruthy();
+          expect(dataMessages.length).toEqual(2);
+        });
+        httpBackend.flush();
+      });
+
+      it('message should appear if dataURL is present and'+
+        'return data specifically asked for by dataArray'+
+        'and searched by object', function() {
+        httpBackend.whenGET(messagesUrl).respond(
+          {'messages':
+            [
+              {
+                'id': 1,
+                'title': 'message 1',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                },
+              },
+              {
+                'id': 2,
+                'title': 'message 2',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                  'dataUrl': testingDataUrl,
+                  'dataObject': 'developers',
+                  'dataArrayFilter': {
+                    'name': 'baz',
+                  },
+                },
+              },
+            ],
+          }
+        );
+        httpBackend.whenGET(testingDataUrl).respond(200,
+          {
+            'developers': [
+              {'name': 'foo'},
+              {'name': 'bar'},
+              {'name': 'baz'},
+            ],
+            'fruit': ['apples, oranges'],
+          }
+        );
+        messagesService.getAllMessages().then(function(allMessages) {
+          expect(allMessages).toBeTruthy();
+          expect(allMessages.length).toEqual(2);
+          return messagesService.getMessagesByData(allMessages);
+        }).then(function(dataMessages) {
+          expect(dataMessages).toBeTruthy();
+          expect(dataMessages.length).toEqual(2);
+        });
+        httpBackend.flush();
+      });
+
+      it('message should appear if dataURL is present and returns data'+
+        'specifically asked for by dataArray with two filters and searched'+
+        'by object', function() {
+        httpBackend.whenGET(messagesUrl).respond(
+          {'messages':
+            [
+              {
+                'id': 1,
+                'title': 'message 1',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                },
+              },
+              {
+                'id': 2,
+                'title': 'message 2',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                  'dataUrl': testingDataUrl,
+                  'dataObject': 'developers',
+                  'dataArrayFilter': {
+                    'name': 'foo',
+                    'id': 4,
+                  },
+                },
+              },
+            ],
+          }
+        );
+        httpBackend.whenGET(testingDataUrl).respond(200,
+          {
+          'developers': [
+              {'name': 'foo', 'id': 4},
+              {'name': 'baz'},
+              {'name': 'bar'},
+            ],
+            'fruit': [
+              'apples, oranges',
+            ],
+          }
+        );
+        messagesService.getAllMessages().then(function(allMessages) {
+          expect(allMessages).toBeTruthy();
+          expect(allMessages.length).toEqual(2);
+          return messagesService.getMessagesByData(allMessages);
+        }).then(function(dataMessages) {
+          expect(dataMessages).toBeTruthy();
+          expect(dataMessages.length).toEqual(2);
+        });
+        httpBackend.flush();
+      });
+
+      it('message should not appear if dataURL is present and returns data'+
+        'specifically asked for by dataArray with two filters and searched by'+
+        'object when filter does not match', function() {
+        httpBackend.whenGET(messagesUrl).respond(
+          {'messages':
+            [
+              {
+                'id': 1,
+                'title': 'message 1',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                },
+              },
+              {
+                'id': 2,
+                'title': 'message 2',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                  'dataUrl': testingDataUrl,
+                  'dataObject': 'developers',
+                  'dataArrayFilter': {
+                    'name': 'foo',
+                    'id': 3,
+                  },
+                },
+              },
+            ],
+          }
+        );
+        httpBackend.whenGET(testingDataUrl).respond(200,
+          {
+            'developers': [
+              {'name': 'foo', 'id': 4},
+              {'name': 'bar'},
+              {'name': 'baz'},
+            ],
+            'fruit': [
+              'apples, oranges',
+            ],
+          }
+        );
+        messagesService.getAllMessages().then(function(allMessages) {
+          expect(allMessages).toBeTruthy();
+          expect(allMessages.length).toEqual(2);
+          return messagesService.getMessagesByData(allMessages);
+        }).then(function(dataMessages) {
+          expect(dataMessages).toBeTruthy();
+          expect(dataMessages.length).toEqual(1);
+        });
+        httpBackend.flush();
+      });
+
+      it('message should not appear if dataURL is present and attempts to'+
+        'arrayFilter on non-array', function() {
+        httpBackend.whenGET(messagesUrl).respond(
+          {
+            'messages': [
+              {
+                'id': 1,
+                'title': 'message 1',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                },
+              },
+              {
+                'id': 2,
+                'groups': ['Everyone'],
+                'title': 'message 2',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                  'dataUrl': testingDataUrl,
+                  'dataArrayFilter': {
+                    'name': 'baz',
+                  },
+                },
+              },
+            ],
+          }
+        );
+        httpBackend.whenGET(testingDataUrl).respond(200,
+          {
+            'developers': [
+              {'name': 'foo'},
+              {'name': 'bar'},
+              {'name': 'baz'},
+            ],
+            'fruit': [
+              'apples, oranges',
+            ],
+          }
+        );
+        messagesService.getAllMessages().then(function(allMessages) {
+          expect(allMessages).toBeTruthy();
+          expect(allMessages.length).toEqual(2);
+          return messagesService.getMessagesByData(allMessages);
+        }).then(function(dataMessages) {
+          expect(dataMessages).toBeTruthy();
+          expect(dataMessages.length).toEqual(1);
+        });
+        httpBackend.flush();
+      });
+
+      it('message should appear when dataObject is present and'+
+        'not an array', function() {
+        httpBackend.whenGET(messagesUrl).respond(
+          {'messages':
+            [
+              {
+                'id': 1,
+                'title': 'message 1',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                },
+              },
+              {
+                'id': 2,
+                'title': 'message 2',
+                'audienceFilter': {
+                  'groups': [
+                    'Everyone',
+                  ],
+                  'dataUrl': testingDataUrl,
+                  'dataObject': 'id',
+                },
+              },
+            ],
+          }
+        );
+        httpBackend.whenGET(testingDataUrl).respond(200,
+          {
+            'name': 'foo',
+            'id': 'bar',
+            'favorite food': 'baz',
+          }
+        );
+        messagesService.getAllMessages().then(function(allMessages) {
+          expect(allMessages).toBeTruthy();
+          expect(allMessages.length).toEqual(2);
+          return messagesService.getMessagesByData(allMessages);
+        }).then(function(dataMessages) {
+          expect(dataMessages).toBeTruthy();
+          expect(dataMessages.length).toEqual(2);
+        });
+        httpBackend.flush();
+      });
   });
 });
