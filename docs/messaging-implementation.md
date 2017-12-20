@@ -30,13 +30,18 @@ Widget messaging is based on JSON input configured in a [widget's configuration]
                 "groups": ["Users - Service Activation Required"],
                 "dataUrl": "/restProxyURL/unactivatedServices",
                 "dataObject": "services",
-                "dataArrayFilter": {"priority":"essential", "type":"netid"}
+                "dataArrayFilter": {"priority":"essential", "type":"netid"},
+                "dataMessageTitle": ["result", "title"],
+                "dataMessageMoreInfoUrl": ["result", "url"],
             },
             "actionButton": {
                 "label": "Activate services",
                 "url": "my.wisc.edu/go/example/path"
             },
-            "moreInfoButton": null,
+            "moreInfoButton": {
+              "label": "Learn more",
+              "url": "/learnMore"
+            },
             "confirmButton": null
         }
     ]
@@ -66,6 +71,8 @@ Widget messaging is based on JSON input configured in a [widget's configuration]
     You would use this feature if you want to only show the message if the specific user has data. For example: Only show user if they have a certain document.
   - **dataObject**: *(optional)* Will only be looked at if `dataUrl` is present, otherwise ignored. Used as an optional further refinement from dataUrl, if you want the notification to show only if the specific object is in the data.
   - **dataArrayFIlter**: Will only be looked at if `dataUrl` is present, otherwise ignored. Used as an optional further refinement from dataUrl. If your object return is an array, you can filter on the array. Does support multiple filtering criteria as shown in the example. If used in conjunction with `dataObject`, will filter to `dataObject` first.  [AngularJS array filtering documentation] (https://docs.angularjs.org/api/ng/filter/filter)
+  - **dataMessageTitle** Will be used if dataUrl is specified. Used to set the title of the message from the data response from `dataUrl`.  Expects an array for where to find the title in the data response from `dataUrl`.
+  - **dataMessageMoreInfoUrl** Will be used if `dataUrl` is specified and the `more info button` is configured.  Used to set the url of the `more info button`.  Expects an array for where to find the `more info button url` in the data response from `dataUrl`.
 - **actionButton**: Used to display a call to action button and to provide the URL for a notification when clicked. **Required if the `messageType` is "notification".
   - **label**: The button's text
   - **url**: The URL to go to when clicked
