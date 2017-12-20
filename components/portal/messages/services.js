@@ -155,11 +155,39 @@ define(['angular'], function(angular) {
           var filteredMessages = [];
 
           angular.forEach(messages, function(message) {
-            if (message.audienceFilter.dataUrl) {
+            if (message.audienceFilter && message.audienceFilter.dataUrl) {
               // If the message has a dataUrl, add it to promises array
               promises.push($http.get(message.audienceFilter.dataUrl)
                 .then(function(result) {
                   var objectToFind = result.data;
+
+                  // if dataMessageTitle is specified, use it
+                  if (objectToFind && message.audienceFilter.dataMessageTitle &&
+                    angular.isArray(message.audienceFilter.dataMessageTitle)) {
+                    var messageTitle = objectToFind;
+                    var messageTitleLocation =
+                      message.audienceFilter.dataMessageTitle;
+                    angular.forEach(messageTitleLocation, function(value, key) {
+                      messageTitle = messageTitle[value];
+                    });
+                    message.title = messageTitle;
+                  }
+
+                  // if dataMessageLearnMoreUrl is specified, us it
+                  if (objectToFind &&
+                      message.audienceFilter.dataMessageMoreInfoUrl &&
+                      message.moreInfoButton && angular.isArray(
+                    message.audienceFilter.dataMessageMoreInfoUrl)) {
+                    var messageMoreInfoUrl = objectToFind;
+                    var messageMoreInfoUrlLocation =
+                      message.audienceFilter.dataMessageMoreInfoUrl;
+                    angular.forEach(messageMoreInfoUrlLocation,
+                      function(value, key) {
+                      messageMoreInfoUrl = messageMoreInfoUrl[value];
+                    });
+                    message.moreInfoButton.url = messageMoreInfoUrl;
+                  }
+
                   // If dataObject specified, try to use it
                   if (result && message.audienceFilter.dataObject) {
                     objectToFind =
