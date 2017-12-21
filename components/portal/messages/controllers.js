@@ -31,27 +31,30 @@ define(['angular'], function(angular) {
         // Local variables //
         // //////////////////
         var allMessages = [];
-        var promiseFilteredMessages = {};
         $scope.APP_FLAGS = APP_FLAGS;
         $scope.MISC_URLS = MISC_URLS;
         $scope.showMessagesFeatures = true;
+        $scope.seenMessageIds = [];
+        var seenIdOverride = false;
 
         // ////////////////
         // Local methods //
         // ////////////////
         /**
-         * Get all messages, then pass result on for filtering
+         * Get all messages, regardless of validity
+         * Call configureMessages to filter messages to the subset
+         * which are user-appropriate
          */
         var getMessages = function() {
           messagesService.getAllMessages()
             .then(function(result) {
-              // Ensure messages exist and check for group filtering
               if (angular.isArray(result) && result.length > 0) {
                 allMessages = result;
+                configureMessages(allMessages);
               } else if (angular.isString(result)) {
                 $scope.messagesError = result;
               }
-              filterMessages();
+              configureMessages(allMessages);
               return allMessages;
             })
             .catch(function(error) {
@@ -59,65 +62,105 @@ define(['angular'], function(angular) {
               return error;
             });
         };
-        /**
-         * Determine whether or not messages need to be filtered
-         * by group and data, then execute the relevant promises
-         */
-        var filterMessages = function() {
-          var groupFiltersEnabled =
-            !$localStorage.disableGroupFilteringForMessages;
-          if (groupFiltersEnabled) {
-            promiseFilteredMessages = {
-              filteredByGroup:
-                messagesService.getMessagesByGroup(allMessages),
-              filteredByData:
-                messagesService.getMessagesByData(allMessages),
-            };
-          }
 
-          if (!groupFiltersEnabled) {
-            promiseFilteredMessages = {
-              filteredByGroup: allMessages,
-              filteredByData:
-                messagesService.getMessagesByData(allMessages),
-            };
+        // Promise to get seen message IDs
+        var promiseSeenMessageIds = function() {
+          if (seenIdOverride) {
+            // seenIdOverride prevents race condition in calls to the service
+            return $q.resolve($scope.seenMessageIds);
           }
-            // Call filtered notifications promises, then pass on to
-            // the completion function
-            $q.all(promiseFilteredMessages)
-              .then(filterMessagesSuccess)
-              .catch(filterMessagesFailure);
-          };
+          return messagesService.getSeenMessageIds();
+        };
 
+        // Promise to resolve data urls in messages
+        var promiseMessagesByData = function(messages) {
+          return messagesService.getMessagesByData(messages);
+        };
 
-        /**
-         * Separate the message types in scope for child controllers
-         * @param {Object} result
-         */
-        var filterMessagesSuccess = function(result) {
-          // Check for filtered notifications
-          var filteredMessages = [];
-          if (result.filteredByGroup && result.filteredByData) {
-            // Combine the two filtered arrays into one (no dupes)
-            filteredMessages = $filter('filterForCommonElements')(
-              result.filteredByGroup,
-              result.filteredByData
-            );
-            var dateFilteredMessages =
-              $filter('filterByDate')(filteredMessages);
-            $scope.messages =
-              $filter('separateMessageTypes')(dateFilteredMessages);
-            $scope.hasMessages = true;
-          }
+        // Promise to resolve group memberships
+        var promiseMessagesByGroup = function(messages) {
+         return messagesService.getMessagesByGroup(messages);
         };
 
         /**
-         * Handle errors that occur while resolving promises to
-         * get notifications
-         * @param {Object} error
+         * Filters raw messages by group membership and
+         * valid begin/end dates.
+         * Resolves URLs in messages.
+         *
+         * @param {Object} messages
          */
-        var filterMessagesFailure = function(error) {
-          $log.warn('Problem getting messages from messagesService');
+        var configureMessages = function(messages) {
+          $q.all([promiseSeenMessageIds(),
+          promiseMessagesByData(messages),
+          promiseMessagesByGroup(messages)])
+          .then(function(result) {
+            $scope.seenMessageIds = result[0];
+            var dataMessages = result[1];
+            var groupedMessages = result[2];
+            var filteredMessages = $filter('filterForCommonElements')(
+              groupedMessages,
+              dataMessages
+            );
+            var dateFilteredMessages =
+              $filter('filterByDate')(filteredMessages);
+            var userViewedMessages =
+              $filter('filterSeenAndUnseen')(dateFilteredMessages,
+                 $scope.seenMessageIds);
+            $scope.messages = userViewedMessages.unseen;
+            $scope.seenMessages = userViewedMessages.seen;
+            $scope.hasMessages = true;
+            $rootScope.$broadcast('messagesConfigured');
+            return result;
+          })
+            .catch(function(error) {
+              $log.warn(error);
+              $scope.showMessagesFeatures = false;
+            });
+        };
+        var reconfigureMessages = $rootScope.$on('configureMessages',
+          function(event, data) {
+            configureMessages(allMessages);
+          });
+        /**
+         * Marks a single message as seen.
+         *
+         * @param {Object} message
+         */
+        var dismissMessage = $scope.$on('dismissMessage',
+        function(event, message) {
+          messagesService.dismissMessage(message);
+          var index = $scope.seenMessageIds.indexOf(message.id);
+          if (index == -1) {
+            $scope.seenMessageIds.push(message.id);
+            $scope.seenMessages.push(message);
+
+            seenIdOverride = true;
+            configureMessages(allMessages);
+          }
+            $rootScope.$emit('configureMessages');
+        });
+
+        /**
+         * Marks a single message as unseen.
+         *
+         * @param {Object} message
+         */
+        var restoreMessage = $scope.$on('messageRestored',
+          function(event, message) {
+          messagesService.restoreMessage(message)
+          .then(function(result) {
+            configureMessages(allMessages);
+            return true;
+          })
+          .catch(function(error) {
+            handleMessageError(error);
+            return false;
+          });
+        });
+
+        var handleMessageError = function(error) {
+          $log.warn(error);
+          $scope.showMessagesFeatures = false;
         };
 
         /**
@@ -136,7 +179,6 @@ define(['angular'], function(angular) {
             $scope.showMessagesFeatures = false;
             $scope.messagesError = 'SERVICE_LOC.messageURL is not configured ' +
               '-- hiding messages features.';
-            $scope.hasMessages = true;
           }
         };
 
@@ -154,15 +196,6 @@ define(['angular'], function(angular) {
         // Local variables //
         // //////////////////
         var vm = this;
-        var allNotifications = [];
-        var separatedNotifications = {};
-        var dismissedNotificationIds = [];
-        var allSeenMessageIds = [];
-
-        // Promise to get seen message IDs
-        var promiseSeenMessageIds = {
-          seenMessageIds: messagesService.getSeenMessageIds(),
-        };
 
         // ///////////////////
         // Bindable members //
@@ -177,157 +210,73 @@ define(['angular'], function(angular) {
         vm.showMessagesFeatures = true;
         vm.titleLengthLimit = 140;
 
-        // //////////////////
-        // Event listeners //
-        // //////////////////
-
-        /**
-         * Process event where notifications have changed,
-         * i.e. a dismissal, and ensure that all instances of the
-         * controller are updated.
-         */
-        var notificationChange = $rootScope.$on('notificationChange',
-          function() {
-            configureNotificationsScope();
-            configurePriorityNotificationsScope();
-          });
-
-        /**
-         * When the parent controller has messages, initialize
-         * things dependent on messages
-         */
-        $scope.$watch('$parent.hasMessages', function(hasMessages) {
-          // If the parent scope has messages and notifications are enabled,
-          // complete initialization
-          if (hasMessages) {
-            // Check if messages service failed
-            if ($scope.$parent.messagesError) {
-              vm.messagesError = $scope.$parent.messagesError;
-            }
-            // If messages config is set up, configure scope
-            // Else hide messages features
-            if (angular.equals($scope.$parent.showMessagesFeatures, true)) {
-              configureNotificationsScope();
-            } else {
-              vm.showMessagesFeatures = false;
-              vm.isLoading = false;
-            }
-          }
-        });
-
-        // ////////////////
-        // Local methods //
-        // ////////////////
-        /**
-         * Get notifications from parent scope, then pass them on
-         * for filtering by seen/unseen
-         */
-        var configureNotificationsScope = function() {
-          if ($scope.$parent.messages.notifications) {
-            allNotifications = $scope.$parent.messages.notifications;
-            // Get seen message IDs, then configure scope
-            $q.all(promiseSeenMessageIds)
-              .then(getSeenMessageIdsSuccess)
-              .catch(getSeenMessageIdsFailure);
-          }
-        };
-
-        /**
-         * Separate seen and unseen notifications, then set scope variables
-         * @param {Object} result
-         */
-        var getSeenMessageIdsSuccess = function(result) {
-          if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
-            && result.seenMessageIds.length > 0) {
-            // Save all seenMessageIds for later
-            allSeenMessageIds = result.seenMessageIds;
-
-            // Separate seen and unseen
-            separatedNotifications = $filter('filterSeenAndUnseen')(
-              allNotifications,
-              result.seenMessageIds
-            );
-            angular.forEach(separatedNotifications.seen, function(message) {
-              if (message.recurrence) {
-                var index = separatedNotifications.seen
-                  .indexOf(message);
-                separatedNotifications.unseen.push(message);
-                separatedNotifications.seen.splice(index, 1);
-              }
-            });
-
-            // Set scope notifications and dismissed notifications
-            vm.notifications = separatedNotifications.unseen;
-            vm.dismissedNotifications = separatedNotifications.seen;
-
-            // Set local dismissedNotificationIds (used for tracking
-            // dismissed messages in the K/V store
-            angular.forEach(vm.dismissedNotifications, function(value) {
-              dismissedNotificationIds.push(value.id);
-            });
+        var configureNotifications = function() {
+          vm.isLoading = true;
+          var parentMessages = null;
+          if ($scope.$parent.messages) {
+            parentMessages =
+              $filter('separateMessageTypes')($scope.$parent.messages);
           } else {
-            // If there aren't any seen notification IDs, just set all
-            // notifications
-            vm.notifications = allNotifications;
+            parentMessages = [];
+          }
+          vm.notifications = parentMessages.notifications;
+
+          var parentSeenMessages = null;
+          if ($scope.$parent.seenMessages) {
+            parentSeenMessages =
+              $filter('separateMessageTypes')($scope.$parent.seenMessages);
+          } else {
+            parentSeenMessages = [];
           }
 
-          // Configure priority notifications scope
-          configurePriorityNotificationsScope();
-
+          vm.dismissedNotifications = parentSeenMessages.notifications;
+          vm.priorityNotifications = $filter('filter')(
+            vm.notifications,
+            {priority: 'high'}
+          );
+          if ($scope.$parent.messagesError) {
+            notificationError($scope.$parent.messagesError);
+          }
           // Set aria-label in notifications bell
           vm.status = 'You have '
             + (vm.notifications.length === 0
               ? 'no' : vm.notifications.length)
             + ' notifications';
 
-          // Stop loading spinner
-          vm.isLoading = false;
-        };
-
-        /**
-         * Handle errors getting seen message IDs
-         * @param {Object} error
-         */
-        var getSeenMessageIdsFailure = function(error) {
-          $log.warn('Couldn\'t get seen message IDs for notifications ' +
-            ' controller.');
-          // Stop loading spinner
-          vm.isLoading = false;
-        };
-
-        /**
-         * Alert the UI to show priority notifications if they exist
-         */
-        var configurePriorityNotificationsScope = function() {
-          // Use angular's built-in filter to grab priority notifications
-          vm.priorityNotifications = $filter('filter')(
-            vm.notifications,
-            {priority: 'high'}
-          );
-          // If priority notifications exist, notify listeners
-          messagesService.broadcastPriorityFlag(
-            vm.priorityNotifications.length > 0
-          );
-          // If there is only one priority notification, track
-          // rendering in analytics
           if (vm.priorityNotifications.length === 1) {
-            vm.pushGAEvent(
-              'Priority notification',
-              'Render',
-              vm.priorityNotifications[0].id
-            );
+              vm.pushGAEvent(
+                'Priority notification',
+                'Render',
+                vm.priorityNotifications[0].id
+              );
           }
+          // Stop loading spinner
+          vm.isLoading = false;
+      };
+
+        var notificationError = function(error) {
+          vm.messagesError = $scope.$parent.messagesError;
+          if (error) {
+            $log.warn(error);
+          }
+          vm.showMessagesFeatures = false;
+          vm.isLoading = false;
         };
+
+        // //////////////////
+        // Event listeners //
+        // //////////////////
+        // configuremessages with group override
 
         /**
-         * Alerts the UI that there are no priority notifications to show
+         * Process event where notifications have changed,
+         * i.e. a dismissal, and ensure that all instances of the
+         * controller are updated.
          */
-        var clearPriorityNotificationsFlags = function() {
-          vm.priorityNotifications = [];
-          // Notify listeners that priority notifications are gone
-          messagesService.broadcastPriorityFlag(false);
-        };
-
+        var notificationChange = $rootScope.$on('messagesConfigured',
+          function() {
+            configureNotifications();
+          });
         // ////////////////
         // Scope methods //
         // ////////////////
@@ -342,30 +291,20 @@ define(['angular'], function(angular) {
         /**
          * On-click event to mark a notification as "seen"
          * @param {Object} notification
-         * @param {boolean} isHighPriority
          */
-        vm.dismissNotification = function(notification, isHighPriority) {
+        vm.dismissNotification = function(notification) {
+          vm.isLoading = true;
           vm.notifications = $filter('filterOutMessageWithId')(
             vm.notifications,
             notification.id
           );
-          // Add notification to dismissed array
-          vm.dismissedNotifications.push(notification);
-
-          // Add notification's ID to local array of dismissed notification IDs
-          dismissedNotificationIds.push(notification.id);
-
-          // Call service to save changes if k/v store enabled
-          if (SERVICE_LOC.kvURL) {
-            messagesService.setMessagesSeen(allSeenMessageIds,
-              dismissedNotificationIds, 'dismiss');
+          if (notification.priority == 'high') {
+            vm.priorityNotifications = $filter('filterOutMessageWithId')(
+              vm.priorityNotifications,
+              notification.id
+            );
           }
-
-          // Clear priority notification flags if it was a priority
-          // notification
-          if (isHighPriority) {
-            clearPriorityNotificationsFlags();
-          }
+          $scope.$emit('dismissMessage', notification);
         };
 
         /**
@@ -373,7 +312,7 @@ define(['angular'], function(angular) {
          * @param {Object} notification
          * @param {boolean} isHighPriority
          */
-        vm.restoreNotification = function(notification, isHighPriority) {
+        vm.restoreNotification = function(notification) {
           // Remove notification from dismissed array
           vm.dismissedNotifications = $filter('filterOutMessageWithId')(
             vm.dismissedNotifications,
@@ -383,18 +322,7 @@ define(['angular'], function(angular) {
           // Add notification to non-dismissed array
           vm.notifications.push(notification);
 
-          // Remove the corresponding entry from
-          // local array of dismissed notification IDs
-          var index = dismissedNotificationIds.indexOf(notification.id);
-          if (index !== -1) {
-            dismissedNotificationIds.splice(index, 1);
-          }
-          // Call service to save changes if k/v store enabled
-          if (SERVICE_LOC.kvURL) {
-            messagesService.setMessagesSeen(allSeenMessageIds,
-              dismissedNotificationIds, 'restore');
-          }
-          notificationChange();
+          $scope.$emit('messageRestored', notification);
         };
 
         /**
@@ -731,28 +659,20 @@ define(['angular'], function(angular) {
         vm.announcements = [];
         vm.MISC_URLS = MISC_URLS;
 
-        // Promise to get seen message IDs
-        var promiseSeenMessageIds = {
-          seenMessageIds: messagesService.getSeenMessageIds(),
-        };
-
         // //////////////////
         // Event listeners //
         // //////////////////
         /**
          * When the parent controller has messages, initialize
          * things dependent on messages
-         */
         $scope.$watch('$parent.hasMessages', function(hasMessages) {
           // If the parent scope has messages and notifications are enabled,
           // complete initialization
           if (hasMessages) {
             if ($scope.$parent.messages.announcements) {
               vm.announcements = $scope.$parent.messages.announcements;
-
               // Notify service there are no more announcements to see
               messagesService.broadcastAnnouncementFlag(false);
-
               $q.all(promiseSeenMessageIds)
                 .then(getSeenMessageIdsSuccess)
                 .catch(function() {
@@ -761,7 +681,6 @@ define(['angular'], function(angular) {
             }
           }
         });
-
         /**
          * Get seen message IDs, then mark all announcements seen
          * @param {Object} result - Data returned by promises

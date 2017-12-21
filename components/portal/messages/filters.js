@@ -37,7 +37,7 @@ define(['angular', 'moment'], function(angular, moment) {
         return separatedMessages;
       };
     }])
-    .filter('addToHome', function() {
+    .filter('addToHome', ['$filter', function($filter) {
       return function(messages, MISC_URLS, PortalAddToHomeService) {
         angular.forEach(messages, function(message) {
         if (message.actionButton) {
@@ -67,32 +67,68 @@ define(['angular', 'moment'], function(angular, moment) {
           }
         });
       };
-    })
-    .filter('filterByDate', function() {
+    }])
+    .filter('filterByDate', ['$filter', function($filter) {
       return function(messages) {
           var thePresent = moment.now();
           return messages.filter(function(message) {
             var goDate = moment(message.goLiveDate);
             var stopDate = moment(message.expireDate);
+
             // If neither date is populated, message is valid.
             if (!goDate.isValid() && !stopDate.isValid()) {
               return message;
             }
+
+            // If both dates are populated,
+            // check if current date is in range.
             if (goDate.isValid() && stopDate.isValid()) {
               if (goDate.isBefore(thePresent)
                 && stopDate.isAfter(thePresent)) {
                 return message;
               }
             }
-            if (goDate.isValid() && goDate.isBefore(thePresent)) {
+
+            // Check for valid goLiveDate
+            if (goDate.isValid() && !stopDate.isValid() &&
+              goDate.isBefore(thePresent)) {
               return message;
             }
-            if (stopDate.isValid() && stopDate.isAfter(thePresent)) {
+
+            // Check for valid expireDate
+            if (stopDate.isValid() && !goDate.isValid() &&
+             stopDate.isAfter(thePresent)) {
               return message;
             }
           });
         };
-      })
+      }])
+    .filter('filterByGroup', ['$filter', function($filter) {
+      return function(messages, groupsIAmAMemberOf) {
+        var groupMessages = [];
+        angular.forEach(messages, function(message) {
+          // If the message has no groups defined, show it to everyone.
+          if (!message.audienceFilter.groups ||
+            message.audienceFilter.groups.length == 0) {
+             groupMessages.push(message);
+          } else {
+            var added = false;
+            // Iterate through the groups at which the message is tageted
+            // If there's a match with groupsIAmAMemberOf, return it
+            angular.forEach(message.audienceFilter.groups, function(group) {
+              if (!added) {
+                var index = groupsIAmAMemberOf.indexOf(group);
+                if (index > - 1) {
+                  groupMessages.push(message);
+                  added = true;
+                }
+              }
+            });
+          }
+        });
+        return groupMessages;
+      };
+    }])
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {
