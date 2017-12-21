@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+### Features
+
++ Add the ability to set message title via an external data source (#649)
++ Add the ability to set a message more info button url via an external data source (#649)
+
+### Breaking Changes
+
+Moves the data object in messages out of the audience object and into a seperate object.  This will affect installations that have configured a messages.json file.
+
 ### Documentation
 
 + Notes adopting Conventional Commits message style in `CONTRIBUTING.md`, with

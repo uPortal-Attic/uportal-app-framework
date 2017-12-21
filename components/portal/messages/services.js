@@ -155,20 +155,48 @@ define(['angular'], function(angular) {
           var filteredMessages = [];
 
           angular.forEach(messages, function(message) {
-            if (message.audienceFilter.dataUrl) {
+            if (message.data && message.data.dataUrl) {
               // If the message has a dataUrl, add it to promises array
-              promises.push($http.get(message.audienceFilter.dataUrl)
+              promises.push($http.get(message.data.dataUrl)
                 .then(function(result) {
                   var objectToFind = result.data;
+
+                  // if dataMessageTitle is specified, use it
+                  if (objectToFind && message.data.dataMessageTitle &&
+                    angular.isArray(message.data.dataMessageTitle)) {
+                    var messageTitle = objectToFind;
+                    var messageTitleLocation =
+                      message.data.dataMessageTitle;
+                    angular.forEach(messageTitleLocation, function(value, key) {
+                      messageTitle = messageTitle[value];
+                    });
+                    message.title = messageTitle;
+                  }
+
+                  // if dataMessageLearnMoreUrl is specified, us it
+                  if (objectToFind &&
+                      message.data.dataMessageMoreInfoUrl &&
+                      message.moreInfoButton && angular.isArray(
+                    message.data.dataMessageMoreInfoUrl)) {
+                    var messageMoreInfoUrl = objectToFind;
+                    var messageMoreInfoUrlLocation =
+                      message.data.dataMessageMoreInfoUrl;
+                    angular.forEach(messageMoreInfoUrlLocation,
+                      function(value, key) {
+                      messageMoreInfoUrl = messageMoreInfoUrl[value];
+                    });
+                    message.moreInfoButton.url = messageMoreInfoUrl;
+                  }
+
                   // If dataObject specified, try to use it
-                  if (result && message.audienceFilter.dataObject) {
+                  if (result && message.data.dataObject) {
                     objectToFind =
-                      objectToFind[message.audienceFilter.dataObject];
+                      objectToFind[message.data.dataObject];
                   }
                   // If dataArrayFilter specified, then use it to filter
-                  if (objectToFind && message.audienceFilter.dataArrayFilter) {
+                  if (objectToFind && message.data.dataArrayFilter) {
                     var arrayFilter = angular.fromJson(
-                      message.audienceFilter.dataArrayFilter
+                      message.data.dataArrayFilter
                     );
                     // If you try to do an array filter on a non-array,
                     // return blank

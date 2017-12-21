@@ -28,15 +28,22 @@ Widget messaging is based on JSON input configured in a [widget's configuration]
             "dismissible": false,
             "audienceFilter": {
                 "groups": ["Users - Service Activation Required"],
+            },
+            "data": {
                 "dataUrl": "/restProxyURL/unactivatedServices",
                 "dataObject": "services",
-                "dataArrayFilter": {"priority":"essential", "type":"netid"}
+                "dataArrayFilter": {"priority":"essential", "type":"netid"},
+                "dataMessageTitle": ["result", "title"],
+                "dataMessageMoreInfoUrl": ["result", "url"],
             },
             "actionButton": {
                 "label": "Activate services",
                 "url": "my.wisc.edu/go/example/path"
             },
-            "moreInfoButton": null,
+            "moreInfoButton": {
+              "label": "Learn more",
+              "url": "/learnMore"
+            },
             "confirmButton": null
         }
     ]
@@ -60,12 +67,15 @@ Widget messaging is based on JSON input configured in a [widget's configuration]
 - **priority**: Set to "high" if you want the message to be displayed with higher visibility (i.e. As a priority notification or popup announcement, respectively).
 - **recurrence**:*(experimental, optional)* If true, even if a notification is dismissed, it will continue to reoccur in the user's home at the start of every session until the user is no longer a member of the targeted group. For example, if a user is a member of students-with-outstanding-parking-tickets, that user will be confronted with the notification at every login until they pay the fine.
 - **dismissible**: *(experimental, optional)* Set to false if you want to disallow users from dismissing a notification. This should only be used for truly critical messages. If the attribute is set to true or not set at all, the notification will be dismissible.
-- **audienceFilter**: A group of attributes related to filtering messages based on a user's group or whether the user has pertinent data at a given URL.
+- **audienceFilter**: A group of attributes related to filtering messages based on a user's group.
   - **groups**: An attribute to optionally show messages only to specific groups (i.e. uPortal groups). If null or empty array, the message will be shown to everyone. Contact your portal development team for more information about group filtering.
+- **data**: *(optional)* A group of attributes related to external data retrieved by a dataUrl.
   - **dataUrl**: *(optional)* The message will retrieve data from the dataUrl. If data exists, it will show this message to the user. Only supports JSON.
     You would use this feature if you want to only show the message if the specific user has data. For example: Only show user if they have a certain document.
   - **dataObject**: *(optional)* Will only be looked at if `dataUrl` is present, otherwise ignored. Used as an optional further refinement from dataUrl, if you want the notification to show only if the specific object is in the data.
-  - **dataArrayFIlter**: Will only be looked at if `dataUrl` is present, otherwise ignored. Used as an optional further refinement from dataUrl. If your object return is an array, you can filter on the array. Does support multiple filtering criteria as shown in the example. If used in conjunction with `dataObject`, will filter to `dataObject` first.  [AngularJS array filtering documentation] (https://docs.angularjs.org/api/ng/filter/filter)
+  - **dataArrayFilter**: Will only be looked at if `dataUrl` is present, otherwise ignored. Used as an optional further refinement from dataUrl. If your object return is an array, you can filter on the array. Does support multiple filtering criteria as shown in the example. If used in conjunction with `dataObject`, will filter to `dataObject` first.  [AngularJS array filtering documentation] (https://docs.angularjs.org/api/ng/filter/filter)
+  - **dataMessageTitle** Will be used if dataUrl is specified. Used to set the title of the message from the data response from `dataUrl`.  Expects an array for where to find the title in the data response from `dataUrl`.
+  - **dataMessageMoreInfoUrl** Will be used if `dataUrl` is specified and the `more info button` is configured.  Used to set the url of the `more info button`.  Expects an array for where to find the `more info button url` in the data response from `dataUrl`.
 - **actionButton**: Used to display a call to action button and to provide the URL for a notification when clicked. **Required if the `messageType` is "notification".
   - **label**: The button's text
   - **url**: The URL to go to when clicked
@@ -160,9 +170,6 @@ You can use this example JSON:
     "priority": null,
     "audienceFilter": {
         "groups": [],
-        "dataUrl": null,
-        "dataObject": null,
-        "dataArrayFilter": null
     },
     "actionButton": {
         "label": "Take action",
@@ -191,9 +198,6 @@ Try adding this announcement to the sample feed:
     "priority": null,
     "audienceFilter": {
         "groups": null,
-        "dataUrl": null,
-        "dataObject": null,
-        "dataArrayFilter": null
     },
     "actionButton": null,
     "moreInfoButton": {
