@@ -68,7 +68,7 @@ define(['angular', 'moment'], function(angular, moment) {
         });
       };
     })
-    .filter('filterByDate', ['$filter', function($filter) {
+    .filter('filterByDate', function() {
       return function(messages) {
           var thePresent = moment.now();
           return messages.filter(function(message) {
@@ -102,7 +102,7 @@ define(['angular', 'moment'], function(angular, moment) {
             }
           });
         };
-      }])
+      })
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {
