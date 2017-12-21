@@ -51,7 +51,7 @@ define(['angular'], function(angular) {
     .controller('PortalUserSettingsController', [
       '$scope', '$q', '$window', '$localStorage',
       '$log', '$sessionStorage', '$rootScope',
-      'KV_KEYS', 'keyValueService',  'messagesService',
+      'KV_KEYS', 'keyValueService', 'messagesService',
       function(
       $scope, $q, $window, $localStorage,
       $log, $sessionStorage, $rootScope,

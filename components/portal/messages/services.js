@@ -107,7 +107,8 @@ define(['angular'], function(angular) {
               var groupNames = groups.map(function(item) {
                 return item.name;
               });
-              var messagesByGroup = $filter('filterByGroup')(messages, groupNames);
+              var messagesByGroup =
+                $filter('filterByGroup')(messages, groupNames);
               return messagesByGroup;
             })
             .catch(function(error) {
@@ -243,8 +244,16 @@ define(['angular'], function(angular) {
 
         var restoreAllMessages = function() {
           var emptyArray = [];
-           return keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS,
-              emptyArray);
+          keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS,
+            emptyArray)
+            .then(function(result) {
+              $rootScope.$emit('resetMessages');
+              return result;
+            })
+            .catch(function(error) {
+              $log.warn('Error resetting seen ids');
+              return error;
+            });
         };
 
         var restoreMessage = function(message) {

@@ -121,12 +121,13 @@ define(['angular'], function(angular) {
           function(event, data) {
             configureMessages(allMessages);
           });
+
         /**
          * Marks a single message as seen.
          *
          * @param {Object} message
          */
-        var dismissMessage = $scope.$on('dismissMessage',
+        $scope.$on('dismissMessage',
         function(event, message) {
           messagesService.dismissMessage(message);
           var index = $scope.seenMessageIds.indexOf(message.id);
@@ -140,12 +141,16 @@ define(['angular'], function(angular) {
             $rootScope.$emit('configureMessages');
         });
 
+        $scope.$on('resetMessages', function() {
+          getMessages();
+        });
+
         /**
          * Marks a single message as unseen.
          *
          * @param {Object} message
          */
-        var restoreMessage = $scope.$on('messageRestored',
+        $scope.$on('messageRestored',
           function(event, message) {
           messagesService.restoreMessage(message)
           .then(function(result) {
