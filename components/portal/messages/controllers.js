@@ -88,8 +88,8 @@ define(['angular'], function(angular) {
           }
 
           $q.all([promiseSeenMessageIds(),
-            promiseMessagesByData(allMessages),
-            groupPromise])
+                  promiseMessagesByData(allMessages),
+                  groupPromise])
             .then(filterMessagesSuccess)
             .catch(filterMessagesFailure);
           };
