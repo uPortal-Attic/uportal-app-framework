@@ -101,6 +101,9 @@ define(['angular'], function(angular) {
         var getMessagesByGroup = function(messages) {
           return portalGroupService.getGroups()
             .then(function(groups) {
+              if (!groups || !angular.isArray(groups)) {
+                groups = [];
+              }
               var groupNames = groups.map(function(item) {
                 return item.name;
               });
@@ -371,7 +374,7 @@ define(['angular'], function(angular) {
           getMessagesByData: getMessagesByData,
           getSeenMessageIds: getSeenMessageIds,
           dismissMessage: dismissMessage,
-          restoreAllMessages, restoreAllMessages,
+          restoreAllMessages: restoreAllMessages,
           restoreMessage: restoreMessage,
           setMessagesSeen: setMessagesSeen,
           broadcastPriorityFlag: broadcastPriorityFlag,
