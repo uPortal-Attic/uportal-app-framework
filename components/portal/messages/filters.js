@@ -68,31 +68,41 @@ define(['angular', 'moment'], function(angular, moment) {
         });
       };
     })
-    .filter('filterByDate', function() {
+    .filter('filterByDate', ['$filter', function($filter) {
       return function(messages) {
           var thePresent = moment.now();
           return messages.filter(function(message) {
             var goDate = moment(message.goLiveDate);
             var stopDate = moment(message.expireDate);
+
             // If neither date is populated, message is valid.
             if (!goDate.isValid() && !stopDate.isValid()) {
               return message;
             }
+
+            // If both dates are populated,
+            // check if current date is in range.
             if (goDate.isValid() && stopDate.isValid()) {
               if (goDate.isBefore(thePresent)
                 && stopDate.isAfter(thePresent)) {
                 return message;
               }
             }
-            if (goDate.isValid() && goDate.isBefore(thePresent)) {
+
+            // Check for valid goLiveDate
+            if (goDate.isValid() && !stopDate.isValid() &&
+              goDate.isBefore(thePresent)) {
               return message;
             }
-            if (stopDate.isValid() && stopDate.isAfter(thePresent)) {
+
+            // Check for valid expireDate
+            if (stopDate.isValid() && !goDate.isValid() &&
+             stopDate.isAfter(thePresent)) {
               return message;
             }
           });
         };
-      })
+      }])
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {
