@@ -31,7 +31,6 @@ define(['angular'], function(angular) {
         // Local variables //
         // //////////////////
         var allMessages = [];
-        var promiseFilteredMessages = {};
         $scope.APP_FLAGS = APP_FLAGS;
         $scope.MISC_URLS = MISC_URLS;
         $scope.showMessagesFeatures = true;
@@ -110,8 +109,7 @@ define(['angular'], function(angular) {
           );
           var dateFilteredMessages =
             $filter('filterByDate')(filteredMessages);
-          var userViewedMessages =
-            $scope.messages =
+             $scope.messages =
             $filter('separateMessageTypes')(dateFilteredMessages);
           $scope.hasMessages = true;
         };
