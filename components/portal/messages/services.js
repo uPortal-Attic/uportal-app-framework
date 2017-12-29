@@ -101,37 +101,14 @@ define(['angular'], function(angular) {
         var getMessagesByGroup = function(messages) {
           return portalGroupService.getGroups()
             .then(function(groups) {
-              var messagesByGroup = [];
-              angular.forEach(messages, function(message) {
-                var added = false;
-                // If the message's groups array has groups,
-                // check for matches against portal groups
-                if (message.audienceFilter.groups.length > 0) {
-                  // For each group for the current message
-                  angular.forEach(message.audienceFilter.groups,
-                    function(messageGroup) {
-                      if (!added) {
-                        // Check for matches against the groups returned
-                        // by portalGroupService
-                        var intersectedGroups = $filter('filter')(
-                          groups,
-                          {name: messageGroup}
-                        );
-                        if (intersectedGroups && intersectedGroups.length > 0) {
-                          // If user is in this group, he should see this
-                          // notification
-                          messagesByGroup.push(message);
-                          added = true;
-                        }
-                      }
-                    });
-                } else {
-                  // If the message's groups array is empty or null,
-                  // show it to everyone
-                  messagesByGroup.push(message);
-                  added = true;
-                }
+              if (!groups || !angular.isArray(groups)) {
+                groups = [];
+              }
+              var groupNames = groups.map(function(item) {
+                return item.name;
               });
+              var messagesByGroup =
+                $filter('filterByGroup')(messages, groupNames);
               return messagesByGroup;
             })
             .catch(function(error) {
@@ -235,6 +212,76 @@ define(['angular'], function(angular) {
             });
         };
 
+        var dismissMessage = function(message) {
+          var seenIds = [];
+          getSeenMessageIds()
+            .then(function(result) {
+              seenIds = result;
+              var index = seenIds.indexOf(message.id);
+              if (index == -1) {
+                  seenIds.push(message.id);
+                  setKeyValueSeenIDs(seenIds);
+              }
+              return result;
+            })
+            .catch(function(error) {
+                $log.warn(error);
+            });
+            return seenIds;
+        };
+
+        var setKeyValueSeenIDs = function(seenIds) {
+          keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS,
+              seenIds)
+              .then(function() {
+                return seenIds;
+              })
+              .catch(function(error) {
+                $log.warn('Problem setting seen message IDs in storage');
+                return error;
+              });
+        };
+
+        var restoreAllMessages = function() {
+          var emptyArray = [];
+          keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS,
+            emptyArray)
+            .then(function(result) {
+              $rootScope.$emit('resetMessages');
+              return result;
+            })
+            .catch(function(error) {
+              $log.warn('Error resetting seen ids');
+              return error;
+            });
+        };
+
+        var restoreMessage = function(message) {
+          var seenIds = [];
+          getSeenMessageIds()
+            .then(function(result) {
+              seenIds = result;
+              var index = seenIds.indexOf(message.id);
+              if (index > -1) {
+                  seenIds.splice(index, 1);
+              }
+              return seenIds;
+            })
+            .catch(function(error) {
+                $log.warn(error);
+            });
+
+            setKeyValueSeenIDs(seenIds)
+              .then(function() {
+                $rootScope.$emit('notificationChange');
+                return seenIds;
+              })
+              .catch(function(error) {
+                $log.warn('Problem setting seen message IDs in storage');
+                return error;
+              });
+        };
+
         /**
          * Get list of seen message IDs from K/V store or session storage
          * @return {*}
@@ -335,6 +382,9 @@ define(['angular'], function(angular) {
           getMessagesByGroup: getMessagesByGroup,
           getMessagesByData: getMessagesByData,
           getSeenMessageIds: getSeenMessageIds,
+          dismissMessage: dismissMessage,
+          restoreAllMessages: restoreAllMessages,
+          restoreMessage: restoreMessage,
           setMessagesSeen: setMessagesSeen,
           broadcastPriorityFlag: broadcastPriorityFlag,
           broadcastAnnouncementFlag: broadcastAnnouncementFlag,

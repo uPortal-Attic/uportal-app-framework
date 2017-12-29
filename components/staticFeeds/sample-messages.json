@@ -118,6 +118,199 @@
       "confirmButton": {
         "label": "Got it!"
       }
+    },
+
+    {
+      "id": "demo-high-priority-no-group-no-date",
+      "title": "No group. No date. High priority.",
+      "titleShort": "No group. No date. High priority.",
+      "description": "No group. No date. High priority.",
+      "descriptionShort": "No group. No date. High priority.",
+      "messageType": "notification",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+      "groups": [],
+      "dataUrl": null,
+      "dataObject": null,
+      "dataArrayFilter": null
+      },
+      "actionButton": {
+      "label": "Go",
+      "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-low-priority-no-group-no-date",
+      "title": "No group. No date. Low priority.",
+      "titleShort": "No group. No date. Low priority.",
+      "description": "Test no group no date. Low priority.",
+      "descriptionShort": "No group. No date. Low priority.",
+      "messageType": "notification",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+      "groups": [],
+      "dataUrl": null,
+      "dataObject": null,
+      "dataArrayFilter": null
+      },
+      "actionButton": {
+      "label": "Go",
+      "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-low-priority-valid-group-no-date",
+      "title": "Valid group. No date. Low.",
+      "titleShort": "Valid group. No date. Low priority.",
+      "description": "Valid group. No date. Low priority.",
+      "descriptionShort": "Valid group. No date. Low priority.",
+      "messageType": "notification",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+      "groups": ["Portal Administrators"],
+      "dataUrl": null,
+      "dataObject": null,
+      "dataArrayFilter": null
+      },
+      "actionButton": {
+      "label": "Go",
+      "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-high-priority-valid-group-no-date",
+      "title": "Valid group. No date. High priority.",
+      "titleShort": "Valid group. No date. High priority.",
+      "description": "Valid group. No date. High priority.",
+      "descriptionShort": "Valid group. No date. High priority.",
+      "messageType": "notification",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+      "groups": ["Portal Administrators"],
+      "dataUrl": null,
+      "dataObject": null,
+      "dataArrayFilter": null
+      },
+      "actionButton": {
+      "label": "Go",
+      "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-low-priority-valid-group-valid-date",
+      "title": "Valid group. Valid date. Low priority.",
+      "titleShort": "Valid group. Valid date. Low priority.",
+      "description": "Valid group. Valid date. Low priority.",
+      "descriptionShort": "Valid group. Valid date. Low priority.",
+      "messageType": "notification",
+      "goLiveDate": "2016-01-01",
+      "expireDate": "2050-01-01",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+      "groups": ["Portal Administrators"],
+      "dataUrl": null,
+      "dataObject": null,
+      "dataArrayFilter": null
+      },
+      "actionButton": {
+      "label": "Go",
+      "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-high-priority-valid-group-valid-date",
+      "title": "Valid group. Valid date. High priority.",
+      "titleShort": "Valid group. Valid date. High priority.",
+      "description": "Valid group. No date. High priority.",
+      "descriptionShort": "Valid group. Valid date. High priority.",
+      "messageType": "notification",
+      "goLiveDate": "2016-01-01",
+      "expireDate": "2050-01-01",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+      "groups": ["Portal Administrators"],
+      "dataUrl": null,
+      "dataObject": null,
+      "dataArrayFilter": null
+      },
+      "actionButton": {
+      "label": "Go",
+      "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-high-priority-invalid-group-valid-date",
+      "title": "Invalid group. Valid date. High priority.",
+      "titleShort": "Invalid group. Valid date. High priority.",
+      "description": "Invalid group. No date. High priority.",
+      "descriptionShort": "Invalid group. Valid date. High priority.",
+      "messageType": "notification",
+      "goLiveDate": "2016-01-01",
+      "expireDate": "2050-01-01",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+      "groups": ["Not A Real Group"],
+      "dataUrl": null,
+      "dataObject": null,
+      "dataArrayFilter": null
+      },
+      "actionButton": {
+      "label": "Go",
+      "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-high-priority-valid-group-expired-date",
+      "title": "Valid group. Expired date. High priority.",
+      "titleShort": "Valid group. Expired date. High priority.",
+      "description": "Valid group. Expired date. High priority.",
+      "descriptionShort": "Valid group. Expired date. High priority.",
+      "messageType": "notification",
+      "goLiveDate": "2016-01-01",
+      "expireDate": "2016-05-05",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+      "groups": ["Portal Administrators"],
+      "dataUrl": null,
+      "dataObject": null,
+      "dataArrayFilter": null
+      },
+      "actionButton": {
+      "label": "Go",
+      "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
     }
   ]
 }

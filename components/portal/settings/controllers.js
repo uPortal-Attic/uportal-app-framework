@@ -51,11 +51,11 @@ define(['angular'], function(angular) {
     .controller('PortalUserSettingsController', [
       '$scope', '$q', '$window', '$localStorage',
       '$log', '$sessionStorage', '$rootScope',
-      'KV_KEYS', 'keyValueService',
+      'KV_KEYS', 'keyValueService', 'messagesService',
       function(
       $scope, $q, $window, $localStorage,
       $log, $sessionStorage, $rootScope,
-      KV_KEYS, keyValueService
+      KV_KEYS, keyValueService, messagesService
     ) {
       var init = function() {
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
@@ -64,9 +64,8 @@ define(['angular'], function(angular) {
 
       $scope.resetMessages = function() {
         delete $sessionStorage.seenMessageIds;
-        if (keyValueService.isKVStoreActivated()) {
-          $scope.loadingResetMessages = true;
-          keyValueService.deleteValue(KV_KEYS.VIEWED_MESSAGE_IDS)
+        $scope.loadingResetMessages = true;
+        messagesService.restoreAllMessages()
             .then(function() {
               $window.location.reload();
               $scope.loadingResetMessages = false;
@@ -74,7 +73,6 @@ define(['angular'], function(angular) {
             }).catch(function() {
               $log.warn('could not reset in-app messages');
             });
-        }
       };
 
       $scope.resetKey = function(key, loadingKey) {

@@ -103,6 +103,32 @@ define(['angular', 'moment'], function(angular, moment) {
           });
         };
       })
+    .filter('filterByGroup', ['$filter', function($filter) {
+      return function(messages, groupsIAmAMemberOf) {
+        var groupMessages = [];
+        angular.forEach(messages, function(message) {
+          // If the message has no groups defined, show it to everyone.
+          if (!message.audienceFilter.groups ||
+            message.audienceFilter.groups.length == 0) {
+             groupMessages.push(message);
+          } else {
+            var added = false;
+            // Iterate through the groups at which the message is tageted
+            // If there's a match with groupsIAmAMemberOf, return it
+            angular.forEach(message.audienceFilter.groups, function(group) {
+              if (!added) {
+                var index = groupsIAmAMemberOf.indexOf(group);
+                if (index > - 1) {
+                  groupMessages.push(message);
+                  added = true;
+                }
+              }
+            });
+          }
+        });
+        return groupMessages;
+      };
+    }])
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {
