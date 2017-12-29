@@ -54,7 +54,7 @@ define(['angular'], function(angular) {
               } else if (angular.isString(result)) {
                 $scope.messagesError = result;
               }
-              configureMessages(allMessages);
+
               return allMessages;
             })
             .catch(function(error) {
@@ -79,8 +79,29 @@ define(['angular'], function(angular) {
 
         // Promise to resolve group memberships
         var promiseMessagesByGroup = function(messages) {
-         return messagesService.getMessagesByGroup(messages);
+          return messagesService.getMessagesByGroup(messages);
         };
+        /**
+         * Determine whether or not messages need to be filtered
+         * by group and data, then execute the relevant promises
+         * @param {Object} allMessages
+         */
+        var filterMessages = function(allMessages) {
+          var groupFiltersEnabled =
+            !$localStorage.disableGroupFilteringForMessages;
+          var groupPromise = null;
+          if (!groupFiltersEnabled) {
+            groupPromise = $q.resolve(allMessages);
+          } else {
+            groupPromise = promiseMessagesByGroup(allMessages);
+          }
+
+          $q.all([promiseSeenMessageIds(),
+                  promiseMessagesByData(allMessages),
+                  groupPromise])
+            .then(filterMessagesSuccess)
+            .catch(filterMessagesFailure);
+          };
 
         /**
          * Filters raw messages by group membership and

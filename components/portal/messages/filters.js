@@ -37,7 +37,7 @@ define(['angular', 'moment'], function(angular, moment) {
         return separatedMessages;
       };
     }])
-    .filter('addToHome', ['$filter', function($filter) {
+    .filter('addToHome', function() {
       return function(messages, MISC_URLS, PortalAddToHomeService) {
         angular.forEach(messages, function(message) {
         if (message.actionButton) {
@@ -67,8 +67,8 @@ define(['angular', 'moment'], function(angular, moment) {
           }
         });
       };
-    }])
-    .filter('filterByDate', ['$filter', function($filter) {
+    })
+    .filter('filterByDate', function() {
       return function(messages) {
           var thePresent = moment.now();
           return messages.filter(function(message) {
@@ -102,7 +102,7 @@ define(['angular', 'moment'], function(angular, moment) {
             }
           });
         };
-      }])
+      })
     .filter('filterByGroup', ['$filter', function($filter) {
       return function(messages, groupsIAmAMemberOf) {
         var groupMessages = [];
