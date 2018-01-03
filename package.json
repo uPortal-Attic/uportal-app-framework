@@ -4,8 +4,8 @@
   "description": "Application Framework for uPortal",
   "scripts": {
     "commitmsg": "commitlint -e",
-    "cz": "git-cz",
     "add-hooks": "npm install husky --no-save",
+    "commit": "commit",
     "test": "karma start components/karma.conf.js --single-run",
     "build-static": "node tools/static/build.js",
     "lint-all": "npm run lint-js && npm run lint-md && npm run lint-commit && npm run lint-css",
@@ -71,12 +71,10 @@
   "homepage": "https://github.com/uPortal-Project/uportal-app-framework",
   "devDependencies": {
     "@commitlint/cli": "^5.1.1",
-    "@commitlint/config-angular": "^5.1.1",
+    "@commitlint/config-conventional": "^5.1.1",
     "@commitlint/travis-cli": "^5.1.1",
     "autoprefixer": "^7.1.2",
-    "commitizen": "^2.9.6",
     "concurrently": "^3.1.0",
-    "cz-conventional-changelog": "^2.0.0",
     "eslint": "^4.2.0",
     "eslint-config-angular": "^0.5.0",
     "eslint-config-google": "^0.9.1",
@@ -197,14 +195,14 @@
       ]
     ]
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "lint-staged": {
     "*.{js,json,md}": "eslint --ext js --ext json --ext md --ignore-pattern docs/",
     "*.md": "remark --frail",
     "*.less": "stylelint --syntax less"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
