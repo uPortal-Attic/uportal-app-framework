@@ -6,23 +6,52 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
-### Features
+### Breaking changes
 
-+ Add the ability to set message title via an external data source (#649)
-+ Add the ability to set a message more info button url via an external data source (#649)
+### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
+## [8.0.0][] - 2018-01-08
 
 ### Breaking Changes
 
-Moves the data object in messages out of the audience object and into a seperate object.  This will affect installations that have configured a messages.json file.
+Moves the data object in messages out of the audience object and into a seperate
+object.  This will affect installations that have configured a messages.json
+file. (#649)
 
-### Documentation
+### Added
 
-+ Notes adopting Conventional Commits message style in `CONTRIBUTING.md`, with
-tips for easing compliance. (#634)
++ add documention stating intent to use Conventional commits and tips on how to
+comply (#634)
++ track clicks on sidenav footer links (#642)
++ add documentation clarifing major upgrades (#647)
++ add the ability to set message title via an external data source (#649)
++ add the ability to set a message more info button url via an external data
+source (#649)
 
-### Build
+### Changed
 
-+ Suppresses `eslint` on `docs/` when linting staged changes. (#636)
++ leverage commitlint travis helper (#621)
++ update to latest version (6.0.0) of lint-staged (#631)
++ update documentation to read more and state intent more cleary (#632)
++ move some git commit hooks to be optionally installed (#635)
++ suppress `eslint` on `docs/` when linting staged changes (#636)
++ require npm 5.6.0 or higher (#644)
++ resolved appveyor require.js flakiness (#645)
++ update to latest version (2.0) of karma (#652)
+
+### Fixed
+
++ synch priority header with bell (#638)
++ filter messages where today is outside of start and end dates (#639)
++ allow priority notification buttons to display full button text (#640)
++ catch localStorage error with IE (#643)
++ implemented filter messages by date (#650)
 
 ## [7.0.0][] - 2017-11-30
 
@@ -437,7 +466,8 @@ break compatibility with some older components.  If the app used any `angular-ui
 - Added ability to have a name for the default theme (#336)
 - Fixed format for announcement end date (#332)
 
-[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v7.0.0...HEAD
+[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v8.0.0...HEAD
+[8.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v7.0.0...v8.0.0
 [7.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.1.0...v7.0.0
 [6.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.3...v6.1.0
 [6.0.3]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.2...v6.0.3

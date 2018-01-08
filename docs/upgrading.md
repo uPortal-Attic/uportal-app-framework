@@ -1,6 +1,44 @@
 # Upgrading
 At a glance notes for upgrading apps between major versions.
 
+# 7.x.x to 8.x.x
+- move the data name/value pairs from the audience filter into a new `data`
+  object  in messages.json
+  - from
+  ```json
+  {
+    "messages": [
+      {
+        "id": "",
+        "audienceFilter": {
+          "groups": [],
+          "dataUrl": "",
+          "dataObject": "",
+          "dataArrayFilter": {}
+        }
+      }
+    ]
+  }
+  ```
+  - to
+  ```json
+  {
+    "messages": [
+      {
+        "id": "",
+        "audienceFilter": {
+          "groups": []
+        },
+        "data": {
+          "dataUrl": "",
+          "dataObject": "",
+          "dataArrayFilter": {}
+        }
+      }
+    ]
+  }
+  ```
+
 # 6.x.x to 7.x.x
 - Wrap routed views in a `<frame-page>` directive.
   - remove extraneous `<app-header>` directives.
