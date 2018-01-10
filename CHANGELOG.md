@@ -38,7 +38,7 @@ source (#649)
 
 + leverage commitlint travis helper (#621)
 + update to latest version (6.0.0) of lint-staged (#631)
-+ update documentation to read more and state intent more cleary (#632)
++ update documentation to read more and state intent more clearly (#632)
 + move some git commit hooks to be optionally installed (#635)
 + suppress `eslint` on `docs/` when linting staged changes (#636)
 + require npm 5.6.0 or higher (#644)
