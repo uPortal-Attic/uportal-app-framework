@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Breaking Changes
 
-Moves the data object in messages out of the audience object and into a seperate
+Moves the data object in messages out of the audience object and into a separate
 object.  This will affect installations that have configured a messages.json
 file. (#649)
 
