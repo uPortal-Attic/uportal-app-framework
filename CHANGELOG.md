@@ -20,16 +20,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Breaking Changes
 
-Moves the data object in messages out of the audience object and into a seperate
+Moves the data object in messages out of the audience object and into a separate
 object.  This will affect installations that have configured a messages.json
 file. (#649)
 
 ### Added
 
-+ add documention stating intent to use Conventional commits and tips on how to
-comply (#634)
++ add documentation stating intent to use Conventional commits and tips on how
+to comply (#634)
 + track clicks on sidenav footer links (#642)
-+ add documentation clarifing major upgrades (#647)
++ add documentation clarifying major upgrades (#647)
 + add the ability to set message title via an external data source (#649)
 + add the ability to set a message more info button url via an external data
 source (#649)
@@ -38,7 +38,7 @@ source (#649)
 
 + leverage commitlint travis helper (#621)
 + update to latest version (6.0.0) of lint-staged (#631)
-+ update documentation to read more and state intent more cleary (#632)
++ update documentation to read more and state intent more clearly (#632)
 + move some git commit hooks to be optionally installed (#635)
 + suppress `eslint` on `docs/` when linting staged changes (#636)
 + require npm 5.6.0 or higher (#644)
