@@ -70,7 +70,7 @@
   },
   "homepage": "https://github.com/uPortal-Project/uportal-app-framework",
   "devDependencies": {
-    "@commitlint/cli": "^5.1.1",
+    "@commitlint/cli": "^6.0.0",
     "@commitlint/config-conventional": "^5.1.1",
     "@commitlint/travis-cli": "^5.1.1",
     "autoprefixer": "^7.1.2",
