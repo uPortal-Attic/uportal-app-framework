@@ -29,7 +29,7 @@ file. (#649)
 + add documentation stating intent to use Conventional commits and tips on how
 to comply (#634)
 + track clicks on sidenav footer links (#642)
-+ add documentation clarifing major upgrades (#647)
++ add documentation clarifying major upgrades (#647)
 + add the ability to set message title via an external data source (#649)
 + add the ability to set a message more info button url via an external data
 source (#649)
