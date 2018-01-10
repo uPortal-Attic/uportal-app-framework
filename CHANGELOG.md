@@ -26,8 +26,8 @@ file. (#649)
 
 ### Added
 
-+ add documention stating intent to use Conventional commits and tips on how to
-comply (#634)
++ add documentation stating intent to use Conventional commits and tips on how
+to comply (#634)
 + track clicks on sidenav footer links (#642)
 + add documentation clarifing major upgrades (#647)
 + add the ability to set message title via an external data source (#649)
