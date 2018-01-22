@@ -8,7 +8,7 @@ Defer to the typography specs provided by [Google Material](https://material.goo
 
 ### App title
 
-* Your app title (displayed in the app-header directive) should be **30 characters long at most**
+* Your app title (displayed in the app-header directive) should be **40 characters long at most**
 * Avoid the word "your"
 * Avoid the word "my" unless it’s necessary to differentiate it from another app (e.g. an pp with a list of a student’s courses would be titled “My Courses” because a “Courses” app would be a list of all courses at the university)
 * Avoid the word "information" (because there is little that isn't information). This word does not provide any helpful context. For example, instead of "Retirement Information," the title should be "Retirement."
