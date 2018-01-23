@@ -24,8 +24,6 @@ before_install:
   - nvm i node
   - npm install
 
-before_script: npx greenkeeper-lockfile-update
-
 script :
   - npm run build-static
   - npm test -- --browsers $BROWSERS
@@ -35,8 +33,6 @@ script :
   - npm run lint-md
   - mvn license:check
   - mvn clean install
-
-after_script: npx greenkeeper-lockfile-upload
 
 cache:
   directories:
