@@ -25,8 +25,10 @@ define(['angular', 'require'], function(angular, require) {
     '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
     '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS',
     'APP_OPTIONS', 'THEMES', 'miscService',
-    function($localStorage, $sessionStorage, $scope, $rootScope, $document,
-    $location, NAMES, MISC_URLS, APP_FLAGS, APP_OPTIONS, THEMES, miscService) {
+    function(
+      $localStorage, $sessionStorage, $scope, $rootScope, $document,
+      $location, NAMES, MISC_URLS, APP_FLAGS,
+      APP_OPTIONS, THEMES, miscService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
