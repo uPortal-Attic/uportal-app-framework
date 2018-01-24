@@ -24,8 +24,10 @@ define(['angular'], function(angular) {
   .factory('mainService', [
     '$http', '$log', '$sessionStorage',
     'miscService', 'SERVICE_LOC', 'APP_FLAGS', '$rootScope', 'NAMES',
+    '$document',
     function($http, $log, $sessionStorage,
-             miscService, SERVICE_LOC, APP_FLAGS, $rootScope, NAMES) {
+             miscService, SERVICE_LOC, APP_FLAGS, $rootScope, NAMES,
+             $document) {
       var prom = $http.get(SERVICE_LOC.sessionInfo, {cache: true});
       var userPromise;
 
