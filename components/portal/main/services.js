@@ -77,7 +77,7 @@ define(['angular'], function(angular) {
             frameTitle = '';
           }
         }
-        $document[0].title=NAMES.title + frameTitle;
+        $document[0].title = NAMES.title + frameTitle;
       }
 
     return {
