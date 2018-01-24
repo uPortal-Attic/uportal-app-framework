@@ -24,11 +24,11 @@ define(['angular', 'require'], function(angular, require) {
   .controller('PortalMainController', [
     '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
     '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS',
-    'APP_OPTIONS', 'THEMES', 'miscService',
+    'APP_OPTIONS', 'THEMES', 'miscService', 'mainService',
     function(
       $localStorage, $sessionStorage, $scope, $rootScope, $document,
       $location, NAMES, MISC_URLS, APP_FLAGS,
-      APP_OPTIONS, THEMES, miscService) {
+      APP_OPTIONS, THEMES, miscService, mainService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
