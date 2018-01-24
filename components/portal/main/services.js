@@ -63,8 +63,26 @@ define(['angular'], function(angular) {
         return userPromise;
     };
 
+      /**
+       * set the frame title using theme
+       */
+      function setTitle() {
+        var frameTitle = '';
+        if ($rootScope.portal && $rootScope.portal.theme) {
+          frameTitle = $rootScope.portal.theme.title;
+          if (frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
+            frameTitle = ' | ' + frameTitle;
+          } else {
+            // since frame title equals the title in NAMES lets not duplicate it
+            frameTitle = '';
+          }
+        }
+        $document[0].title=NAMES.title + frameTitle;
+      }
+
     return {
       getUser: getUser,
+      setTitle: setTitle,
     };
   }]);
 });
