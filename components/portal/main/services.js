@@ -79,8 +79,10 @@ define(['angular'], function(angular) {
         var windowTitle = ''; // we finally set the window title to this.
         var portalTitle = ''; // the name of the portal if we can determine it
 
-        if ($rootScope.portal && $rootScope.portal.theme) {
-          // there's an active theme: use it to determine the name of the portal
+        if ($rootScope.portal && $rootScope.portal.theme &&
+              $rootScope.portal.theme.title) {
+          // there's an active theme with a title.
+          // consider that title the name of the portal
           portalTitle = $rootScope.portal.theme.title;
 
           if (portalTitle == NAMES.title) {
