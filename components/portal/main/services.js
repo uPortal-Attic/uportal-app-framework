@@ -98,8 +98,8 @@ define(['angular'], function(angular) {
             // so just use e.g. "MyUW"
             windowTitle = NAMES.title;
           } else {
-            // we're setting the title in the context of an app
-            // within the portal rather than in the context of uPortal-home
+            // app title differs from portal title, so include both in
+            // window title to communicate app-in-context-of-portal.
             windowTitle = NAMES.title + ' | ' + portalTitle;
           }
         }
