@@ -74,7 +74,16 @@ define(['angular'], function(angular) {
       }
 
       /**
-       * set the frame title using theme
+       * set the window title
+       *
+       * results in title
+       * NAMES.title | theme.title (in an application), or
+       * theme.title (in the root portal)
+       *
+       * Examples:
+       * "STAR Time Entry | MyUW" , for an app named "STAR Time Entry" in
+       * a portal named "MyUW", or
+       * "MyUW", for uPortal-home in a portal named "MyUW".
        */
       function setTitle() {
         var frameTitle = '';
