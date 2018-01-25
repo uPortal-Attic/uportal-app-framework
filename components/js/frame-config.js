@@ -1077,9 +1077,11 @@ define(['angular'], function(angular) {
           },
           {
             'id': 'disableGroupFilteringForMessages',
-            'title': 'Disable Group Filter',
-            'description': 'This flag disables group filtering or in-app ' +
-              'messages if you have it enabled. (page refresh required)',
+            'title': 'Disable Client-side Message Filtering By Group',
+            'description': 'Disable client-side filtering of portal-wide ' +
+              'messages (e.g. notifications, mascot announcements) by group. ' +
+              'Useful for demoing or testing messages you would not normally ' +
+              'see. (page refresh required)',
           },
         ]);
 });
