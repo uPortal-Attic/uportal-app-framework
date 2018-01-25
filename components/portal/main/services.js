@@ -83,14 +83,14 @@ define(['angular'], function(angular) {
           // there's an active theme: use it to determine the name of the portal
           portalTitle = $rootScope.portal.theme.title;
 
-          if (portalTitle !== NAMES.title) {
-            // we're setting the title in the context of an app
-            // within the portal rather than in the context of uPortal-home
-            windowTitle = NAMES.title + ' | ' + portalTitle;
-          } else {
+          if (portalTitle == NAMES.title) {
             // titles like "MyUW | MyUW" e.g. would be silly,
             // so just use e.g. "MyUW"
             windowTitle = NAMES.title;
+          } else {
+            // we're setting the title in the context of an app
+            // within the portal rather than in the context of uPortal-home
+            windowTitle = NAMES.title + ' | ' + portalTitle;
           }
         }
 
