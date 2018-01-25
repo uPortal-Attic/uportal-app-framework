@@ -78,12 +78,12 @@ define(['angular'], function(angular) {
        *
        * results in title
        * NAMES.title | theme.title (in an application), or
-       * theme.title (in the root portal)
+       * theme.title (if these names are the same, e.g. in the root portal)
        *
        * Examples:
        * "STAR Time Entry | MyUW" , for an app named "STAR Time Entry" in
        * a portal named "MyUW", or
-       * "MyUW", for uPortal-home in a portal named "MyUW".
+       * "MyUW", for a uPortal-home named "MyUW" in a portal named "MyUW".
        */
       function setTitle() {
         var windowTitle = ''; // we finally set the window title to this.
@@ -93,7 +93,7 @@ define(['angular'], function(angular) {
           // there's an active theme: use it to determine the name of the portal
           portalTitle = $rootScope.portal.theme.title;
 
-          if (portalTitle !== NAMES.title && !APP_FLAGS.isWeb) {
+          if (portalTitle !== NAMES.title) {
             // we're setting the title in the context of an app
             // within the portal rather than in the context of uPortal-home
             windowTitle = NAMES.title + ' | ' + portalTitle;
