@@ -77,29 +77,42 @@ define(['angular'], function(angular) {
        */
       function setTitle() {
         var windowTitle = ''; // we finally set the window title to this.
+
+        // first, gather pieces of the desired window title
+
         var portalTitle = ''; // the name of the portal if we can determine it
+        var appTitle = ''; // the name of the app
 
         if ($rootScope.portal && $rootScope.portal.theme &&
               $rootScope.portal.theme.title) {
           // there's an active theme with a title.
           // consider that title the name of the portal
           portalTitle = $rootScope.portal.theme.title;
-
-          if (portalTitle == NAMES.title) {
-            // titles like "MyUW | MyUW" would be silly,
-            // so just use "MyUW", for example.
-            windowTitle = NAMES.title;
-          } else {
-            // app title differs from portal title, so include both in
-            // window title to communicate app-in-context-of-portal.
-            windowTitle = NAMES.title + ' | ' + portalTitle;
-          }
-        } else {
-          // there isn't an active theme with a title
-          // so just use the name of the app
-          windowTitle = NAMES.title;
         }
 
+        appTitle = NAMES.title;
+
+        // assemble the window title from the gathered pieces,
+        // starting from the end of the window title and working back to the
+        // beginning.
+
+        // if the portal has a name, end the window title with that
+        // (if the portal lacks a name, portalTitle is still empty string)
+        windowTitle = portalTitle;
+
+        // if the app name differs from the portal, prepend it.
+        // if it's the same name, omit it to avoid silly redundancy like
+        // "MyUW | MyUW"
+        if (appTitle !== portalTitle) {
+          // if the windowTitle already has content, first add a separator
+          if (windowTitle !== '') {
+            windowTitle = ' | ' + windowTitle;
+          }
+          windowTitle = appTitle + windowTitle;
+        }
+
+
+        // finally, use the built up windowTitle
         $document[0].title = windowTitle;
       }
 
