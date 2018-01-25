@@ -104,6 +104,10 @@ define(['angular'], function(angular) {
             // window title to communicate app-in-context-of-portal.
             windowTitle = NAMES.title + ' | ' + portalTitle;
           }
+        } else {
+          // there isn't an active theme with a title
+          // so just use the name of the app
+          windowTitle = NAMES.title;
         }
 
         $document[0].title = windowTitle;
