@@ -24,29 +24,14 @@ define(['angular', 'require'], function(angular, require) {
   .controller('PortalMainController', [
     '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
     '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS',
-    'APP_OPTIONS', 'THEMES', 'miscService',
-    function($localStorage, $sessionStorage, $scope, $rootScope, $document,
-    $location, NAMES, MISC_URLS, APP_FLAGS, APP_OPTIONS, THEMES, miscService) {
+    'APP_OPTIONS', 'THEMES', 'miscService', 'mainService',
+    function(
+      $localStorage, $sessionStorage, $scope, $rootScope, $document,
+      $location, NAMES, MISC_URLS, APP_FLAGS,
+      APP_OPTIONS, THEMES, miscService, mainService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
-
-    /**
-     * set the frame title using theme
-     */
-    function setTitle() {
-      var frameTitle = '';
-      if ($rootScope.portal && $rootScope.portal.theme) {
-        frameTitle = $rootScope.portal.theme.title;
-        if (frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
-          frameTitle = ' | ' + frameTitle;
-        } else {
-          // since frame title equals the title in NAMES lets not duplicate it
-          frameTitle = '';
-        }
-      }
-      $document[0].title=NAMES.title + frameTitle;
-    }
 
     // =====functions ======
     var init = function() {
@@ -59,13 +44,13 @@ define(['angular', 'require'], function(angular, require) {
       $scope.APP_OPTIONS = APP_OPTIONS;
 
       if (NAMES.title) {
-        setTitle();
+        mainService.setTitle();
       }
       // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
       // eslint-disable-next-line angular/on-watch
       $rootScope.$watch('portal.theme', function(newValue, oldValue) {
         if (newValue && newValue !== oldValue) {
-          setTitle();
+          mainService.setTitle();
         }
       });
 
