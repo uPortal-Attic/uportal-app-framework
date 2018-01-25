@@ -86,8 +86,8 @@ define(['angular'], function(angular) {
           portalTitle = $rootScope.portal.theme.title;
 
           if (portalTitle == NAMES.title) {
-            // titles like "MyUW | MyUW" e.g. would be silly,
-            // so just use e.g. "MyUW"
+            // titles like "MyUW | MyUW" would be silly,
+            // so just use "MyUW", for example.
             windowTitle = NAMES.title;
           } else {
             // app title differs from portal title, so include both in
