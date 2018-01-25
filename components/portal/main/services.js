@@ -86,17 +86,25 @@ define(['angular'], function(angular) {
        * "MyUW", for uPortal-home in a portal named "MyUW".
        */
       function setTitle() {
-        var frameTitle = '';
+        var windowTitle = ''; // we finally set the window title to this.
+        var portalTitle = ''; // the name of the portal if we can determine it
+
         if ($rootScope.portal && $rootScope.portal.theme) {
-          frameTitle = $rootScope.portal.theme.title;
-          if (frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
-            frameTitle = ' | ' + frameTitle;
+          // there's an active theme: use it to determine the name of the portal
+          portalTitle = $rootScope.portal.theme.title;
+
+          if (portalTitle !== NAMES.title && !APP_FLAGS.isWeb) {
+            // we're setting the title in the context of an app
+            // within the portal rather than in the context of uPortal-home
+            windowTitle = NAMES.title + ' | ' + portalTitle;
           } else {
-            // since frame title equals the title in NAMES lets not duplicate it
-            frameTitle = '';
+            // titles like "MyUW | MyUW" e.g. would be silly,
+            // so just use e.g. "MyUW"
+            windowTitle = NAMES.title;
           }
         }
-        $document[0].title = NAMES.title + frameTitle;
+
+        $document[0].title = windowTitle;
       }
 
     return {
