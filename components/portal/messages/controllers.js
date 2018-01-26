@@ -21,19 +21,20 @@
 define(['angular'], function(angular) {
   return angular.module('portal.messages.controllers', [])
 
-    .controller('MessagesController', ['$q', '$log', '$scope', '$rootScope',
-      '$location', '$localStorage', '$sessionStorage', '$filter', '$mdDialog',
-      'APP_FLAGS', 'MISC_URLS', 'SERVICE_LOC', 'miscService', 'messagesService',
+    .controller('MessagesController', [
+      '$q', '$log', '$scope', '$rootScope', '$location', '$localStorage',
+      '$sessionStorage', '$filter', '$mdDialog', 'APP_FLAGS', 'MISC_URLS',
+      'SERVICE_LOC', 'mainService', 'miscService', 'messagesService',
       function($q, $log, $scope, $rootScope, $location, $localStorage,
                $sessionStorage, $filter, $mdDialog, APP_FLAGS, MISC_URLS,
-               SERVICE_LOC, miscService, messagesService) {
+               SERVICE_LOC, mainService, miscService, messagesService) {
         // //////////////////
         // Local variables //
         // //////////////////
         var allMessages = [];
         $scope.APP_FLAGS = APP_FLAGS;
         $scope.MISC_URLS = MISC_URLS;
-        $scope.showMessagesFeatures = true;
+        $scope.showMessagesFeatures = false;
 
         // ////////////////
         // Local methods //
@@ -130,17 +131,15 @@ define(['angular'], function(angular) {
           $scope.hasMessages = false;
           $scope.messages = {};
 
-          if (!$rootScope.GuestMode && SERVICE_LOC.messagesURL
-            && SERVICE_LOC.messagesURL !== '') {
-            getMessages();
-          } else {
-            // Messages features aren't configured properly, possibly
-            // on purpose. Communicate this and hide features.
-            $scope.showMessagesFeatures = false;
-            $scope.messagesError = 'SERVICE_LOC.messageURL is not configured ' +
-              '-- hiding messages features.';
-            $scope.hasMessages = true;
-          }
+          mainService.isGuest().then(function(isGuest) {
+            if (!isGuest && SERVICE_LOC.messagesURL) {
+              $scope.showMessagesFeatures = true;
+              getMessages();
+            }
+            return isGuest;
+          }).catch(function() {
+            $log.warn('Problem checking guestMode');
+          });
         };
 
         init();
