@@ -57,13 +57,14 @@ define(['angular-mocks', 'portal'], function() {
         it('should set title to include page, app, and portal name when '
            + 'all of these are present and non-redundant.', function() {
           // setup
-          NAMES.title = 'STAR';
+          NAMES.title = 'STAR Time Entry';
           $scope.portal.theme.title = 'MyUW';
 
           // test
           service.setTitle('Timesheets');
 
-          expect($document[0].title).toEqual('Timesheets | STAR | MyUW');
+          expect($document[0].title)
+            .toEqual('Timesheets | STAR Time Entry | MyUW');
 
           httpBackend.flush();
         });
@@ -111,13 +112,13 @@ define(['angular-mocks', 'portal'], function() {
         it('should set title to omit page name when it is not provided',
           function() {
           // setup
-          NAMES.title = 'STAR';
+          NAMES.title = 'STAR Time Entry';
           $scope.portal.theme.title = 'MyUW';
 
           // test
           service.setTitle();
 
-          expect($document[0].title).toEqual('STAR | MyUW');
+          expect($document[0].title).toEqual('STAR Time Entry | MyUW');
 
           httpBackend.flush();
         });
