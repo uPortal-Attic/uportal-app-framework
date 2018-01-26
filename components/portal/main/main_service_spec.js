@@ -113,5 +113,35 @@ define(['angular-mocks', 'portal'], function() {
 
           httpBackend.flush();
         });
+
+        it('should set title to Notifications | MyUW '
+        + 'when app name is null and MyUW is portal name '
+        + 'and Notifications is page name', function() {
+          // setup
+          NAMES.title = null;
+          $scope.portal.theme.title = 'MyUW';
+
+          // test
+          service.setTitle('Notifications');
+
+          expect($document[0].title).toEqual('Notifications | MyUW');
+
+          httpBackend.flush();
+        });
+
+        it('should set title to Notifications | MyUW '
+        + 'when app name is empty and MyUW is portal name '
+        + 'and Notifications is page name', function() {
+          // setup
+          NAMES.title = '';
+          $scope.portal.theme.title = 'MyUW';
+
+          // test
+          service.setTitle('Notifications');
+
+          expect($document[0].title).toEqual('Notifications | MyUW');
+
+          httpBackend.flush();
+        });
     });
 });
