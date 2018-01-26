@@ -54,36 +54,6 @@ define(['angular-mocks', 'portal'], function() {
           httpBackend.whenGET(SERVICE_LOC.sessionInfo).respond();
         }));
 
-        it('should set title to MyUW'
-        + 'when MyUW is both portal name and app name '
-        + 'and there is no page name', function() {
-          // setup
-          NAMES.title = 'MyUW';
-          $scope.portal.theme.title = 'MyUW';
-
-          // test
-          service.setTitle();
-
-          expect($document[0].title).toEqual('MyUW');
-
-          httpBackend.flush();
-        });
-
-        it('should set title to STAR | MyUW '
-        + 'when STAR is app name and MyUW is portal name '
-        + 'and there is no page name', function() {
-          // setup
-          NAMES.title = 'STAR';
-          $scope.portal.theme.title = 'MyUW';
-
-          // test
-          service.setTitle();
-
-          expect($document[0].title).toEqual('STAR | MyUW');
-
-          httpBackend.flush();
-        });
-
         it('should set title to Timesheets | STAR | MyUW '
         + 'when STAR is app name and MyUW is portal name '
         + 'and Timesheets is page name', function() {
@@ -140,6 +110,36 @@ define(['angular-mocks', 'portal'], function() {
           service.setTitle('Notifications');
 
           expect($document[0].title).toEqual('Notifications | MyUW');
+
+          httpBackend.flush();
+        });
+
+        it('should set title to STAR | MyUW '
+        + 'when STAR is app name and MyUW is portal name '
+        + 'and there is no page name', function() {
+          // setup
+          NAMES.title = 'STAR';
+          $scope.portal.theme.title = 'MyUW';
+
+          // test
+          service.setTitle();
+
+          expect($document[0].title).toEqual('STAR | MyUW');
+
+          httpBackend.flush();
+        });
+
+        it('should set title to MyUW'
+        + 'when MyUW is both portal name and app name '
+        + 'and there is no page name', function() {
+          // setup
+          NAMES.title = 'MyUW';
+          $scope.portal.theme.title = 'MyUW';
+
+          // test
+          service.setTitle();
+
+          expect($document[0].title).toEqual('MyUW');
 
           httpBackend.flush();
         });
