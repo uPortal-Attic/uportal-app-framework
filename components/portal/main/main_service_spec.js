@@ -123,6 +123,34 @@ define(['angular-mocks', 'portal'], function() {
           httpBackend.flush();
         });
 
+        it('should set title to omit page name when it is null',
+          function() {
+          // setup
+          NAMES.title = 'STAR Time Entry';
+          $scope.portal.theme.title = 'MyUW';
+
+          // test
+          service.setTitle(null);
+
+          expect($document[0].title).toEqual('STAR Time Entry | MyUW');
+
+          httpBackend.flush();
+        });
+
+        it('should set title to omit page name when it is empty string',
+          function() {
+          // setup
+          NAMES.title = 'STAR Time Entry';
+          $scope.portal.theme.title = 'MyUW';
+
+          // test
+          service.setTitle('');
+
+          expect($document[0].title).toEqual('STAR Time Entry | MyUW');
+
+          httpBackend.flush();
+        });
+
         it('should set title to only the portal name when the app name is '
           + 'redundant and the page name is not provided.', function() {
           // setup
@@ -133,6 +161,63 @@ define(['angular-mocks', 'portal'], function() {
           service.setTitle();
 
           expect($document[0].title).toEqual('MyUW');
+
+          httpBackend.flush();
+        });
+
+        it('should set title to only the portal name when redundant with both '
+          + 'the app name and the page name.', function() {
+          // setup
+          NAMES.title = 'MyUW';
+          $scope.portal.theme.title = 'MyUW';
+
+          // test
+          service.setTitle('MyUW');
+
+          expect($document[0].title).toEqual('MyUW');
+
+          httpBackend.flush();
+        });
+
+        it('should set title to only the app name when portal name and page '
+          + 'name are null', function() {
+          // setup
+          NAMES.title = 'STAR Time and Leave';
+          $scope.portal.theme.title = null;
+
+          // test
+          service.setTitle(null);
+
+          expect($document[0].title).toEqual('STAR Time and Leave');
+
+          httpBackend.flush();
+        });
+
+        it('should set title to only the page name when portal name and app '
+          + 'name are null', function() {
+          // setup
+          var priorNamesTitle = NAMES.title;
+          NAMES.title = null;
+          $scope.portal.theme.title = null;
+
+          // test
+          service.setTitle('SomePage');
+
+          expect($document[0].title).toEqual('SomePage');
+
+          httpBackend.flush();
+          NAMES.title = priorNamesTitle; // undo change made by this test
+        });
+
+        it('should gracefully handle missing theme.', function() {
+          // setup
+          NAMES.title = 'SomeApp';
+          $scope.portal.theme = null;
+
+          // test
+          service.setTitle('SomePage');
+
+          expect($document[0].title).toEqual('SomePage | SomeApp');
 
           httpBackend.flush();
         });
