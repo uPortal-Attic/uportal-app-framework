@@ -127,7 +127,7 @@ define(['angular'], function(angular) {
         // if the app name differs from the portal, prepend it.
         // if it's the same name, omit it to avoid silly redundancy like
         // "MyUW | MyUW"
-        if (appTitle !== portalTitle) {
+        if (appTitle && appTitle !== portalTitle) {
           // if the windowTitle already has content, first add a separator
           if (windowTitle !== '') {
             windowTitle = ' | ' + windowTitle;
