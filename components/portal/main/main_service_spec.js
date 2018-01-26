@@ -54,9 +54,8 @@ define(['angular-mocks', 'portal'], function() {
           httpBackend.whenGET(SERVICE_LOC.sessionInfo).respond();
         }));
 
-        it('should set title to Timesheets | STAR | MyUW '
-        + 'when STAR is app name and MyUW is portal name '
-        + 'and Timesheets is page name', function() {
+        it('should set title to include page, app, and portal name when '
+           + 'all of these are present and non-redundant.', function() {
           // setup
           NAMES.title = 'STAR';
           $scope.portal.theme.title = 'MyUW';
@@ -69,9 +68,8 @@ define(['angular-mocks', 'portal'], function() {
           httpBackend.flush();
         });
 
-        it('should set title to Notifications | MyUW '
-        + 'when MyUW is app name and MyUW is portal name '
-        + 'and Notifications is page name', function() {
+        it('should set title to omit app name when redundant with portal name',
+          function() {
           // setup
           NAMES.title = 'MyUW';
           $scope.portal.theme.title = 'MyUW';
@@ -84,9 +82,7 @@ define(['angular-mocks', 'portal'], function() {
           httpBackend.flush();
         });
 
-        it('should set title to Notifications | MyUW '
-        + 'when app name is null and MyUW is portal name '
-        + 'and Notifications is page name', function() {
+        it('should set title to omit app name when null', function() {
           // setup
           NAMES.title = null;
           $scope.portal.theme.title = 'MyUW';
@@ -99,9 +95,7 @@ define(['angular-mocks', 'portal'], function() {
           httpBackend.flush();
         });
 
-        it('should set title to Notifications | MyUW '
-        + 'when app name is empty and MyUW is portal name '
-        + 'and Notifications is page name', function() {
+        it('should set title to omit app name when it is empty', function() {
           // setup
           NAMES.title = '';
           $scope.portal.theme.title = 'MyUW';
@@ -114,9 +108,8 @@ define(['angular-mocks', 'portal'], function() {
           httpBackend.flush();
         });
 
-        it('should set title to STAR | MyUW '
-        + 'when STAR is app name and MyUW is portal name '
-        + 'and there is no page name', function() {
+        it('should set title to omit page name when it is not provided',
+          function() {
           // setup
           NAMES.title = 'STAR';
           $scope.portal.theme.title = 'MyUW';
@@ -129,9 +122,8 @@ define(['angular-mocks', 'portal'], function() {
           httpBackend.flush();
         });
 
-        it('should set title to MyUW'
-        + 'when MyUW is both portal name and app name '
-        + 'and there is no page name', function() {
+        it('should set title to only the portal name when the app name is '
+          + 'redundant and the page name is not provided.', function() {
           // setup
           NAMES.title = 'MyUW';
           $scope.portal.theme.title = 'MyUW';
