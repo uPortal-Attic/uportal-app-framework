@@ -53,7 +53,7 @@ var example = {
 + `ariaLabelTitle`: The aria label put in place of the theme title
 + `crestalt`: The crest alt text. This should be the name of your frame app (i.e. "MyUW Portal").
 + `group`: Groups this app should be enabled for automatically. Not sure? Ask the dev list: <https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev>.
-+ `mascotImg` (optional): See documentation about the mascot for announcements [here](announcements.md).
++ `mascotImg` (optional): See documentation about the mascot for announcements [here](messaging.md).
 + `profileUrl` (optional): Specify a URL for a "Profile" app/page, where users can view and/or update their personal information.
 + `footerLinks`: An array of links which appear in the footer -- typically contains links to the campus help desk and feedback portal.
 + `materialTheme`: \[object or string] See the *Material Theme* section below.

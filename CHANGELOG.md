@@ -6,14 +6,52 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
-### Documentation
+### Breaking changes
 
-+ Notes adopting Conventional Commits message style in `CONTRIBUTING.md`, with
-tips for easing compliance. (#634)
+### Added
 
-### Build
+### Changed
 
-+ Suppresses `eslint` on `docs/` when linting staged changes. (#636)
+### Fixed
+
+### Removed
+
+## [8.0.0][] - 2018-01-08
+
+### Breaking Changes
+
+Moves the data object in messages out of the audience object and into a separate
+object.  This will affect installations that have configured a messages.json
+file. (#649)
+
+### Added
+
++ add documentation stating intent to use Conventional commits and tips on how
+to comply (#634)
++ track clicks on sidenav footer links (#642)
++ add documentation clarifying major upgrades (#647)
++ add the ability to set message title via an external data source (#649)
++ add the ability to set a message more info button url via an external data
+source (#649)
+
+### Changed
+
++ leverage commitlint travis helper (#621)
++ update to latest version (6.0.0) of lint-staged (#631)
++ update documentation to read more and state intent more clearly (#632)
++ move some git commit hooks to be optionally installed (#635)
++ suppress `eslint` on `docs/` when linting staged changes (#636)
++ require npm 5.6.0 or higher (#644)
++ resolved appveyor require.js flakiness (#645)
++ update to latest version (2.0) of karma (#652)
+
+### Fixed
+
++ synch priority header with bell (#638)
++ filter messages where today is outside of start and end dates (#639)
++ allow priority notification buttons to display full button text (#640)
++ catch localStorage error with IE (#643)
++ implemented filter messages by date (#650)
 
 ## [7.0.0][] - 2017-11-30
 
@@ -21,25 +59,23 @@ tips for easing compliance. (#634)
 
 Updates to the side navigation feature in this release introduce a hard
 dependency on the `<frame-page>` directive for unbroken menu experience (#588).
-**If you're upgrading from 6.1.0**
-and you have already configured side navigation (by setting values for either
-`appMenuTemplateURL` or `appMenuItems` in your override.js file), you will need
-to ensure that every main
-view in your app uses the `<frame-page>` directive as its outermost container
-element. If you don't want to use the side navigation and you have not
-previously configured side navigation,
-you should not be affected by this change.
+
+**If upgrading from 6.1.0**
+and the application already configures side navigation (by setting values for either
+`appMenuTemplateURL` or `appMenuItems` in `override.js`), every main
+view in the app must use the `<frame-page>` directive as its outermost container
+element. Applications that have not previously configured side navigation and do not begin using side navigation with this upgrade should not be affected by this change.
 
 There are also CSS changes to the layout container elements that precede the
-`<ng-view>` element (where your app's on-page content is pulled in) to prefer a
+`<ng-view>` element (where the app's on-page content is pulled in) to prefer a
 flex-based layout (#588).
-This may affect you if:
 
-+ You have a lot of elements that have a defined `min-width` property
-+ You're already using flex positioning but are not using `flex-wrap` on
+This may affect an application if:
+
++ It has a lot of elements with a defined `min-width` property
++ It is already using flex positioning but is not using `flex-wrap` on
 containers with a lot of content
-+ You have many elements with `position: absolute` (may experience a minor
-shift in placement)
++ It has many elements with `position: absolute` (may experience a minor
 
 Examples of the kinds of downstream changes required:
 
@@ -331,9 +367,11 @@ This release adds a widget directive to the app-framework, adds personalized not
 [Fixes bug in personalized notifications](https://github.com/uPortal-Project/uportal-app-framework/pull/387)
 
 ### How to Upgrade from version 3.X
-+ Change your dependency to version 4.0.0
-+ If you were consuming notifications within the app, the [notification service api changed from `getNotificationsByGroups` to `getFilteredNotifications`](https://github.com/uPortal-Project/uportal-app-framework/pull/386/files#diff-9a244329b1c0f99008f0fb506d3b9c64L159).  This will not be a concern for most (if not all) applications.
-+ If you had previously named services and directives in your MyUW app with the word widget in the name, you may run into some naming conflicts due to the new Widget directives and services being added.  [See the code for more details](https://github.com/uPortal-Project/uportal-app-framework/pull/385/files).  This will not be a concern for most applications.
+
++ Change dependency to version 4.0.0
++ For upgrading application consuming notifications programmatically: the [notification service api changed from `getNotificationsByGroups` to `getFilteredNotifications`](https://github.com/uPortal-Project/uportal-app-framework/pull/386/files#diff-9a244329b1c0f99008f0fb506d3b9c64L159).  This will not be a concern for most (if not all) applications.
++ If the app had previously named services and directives with the word "widget" in the name, naming conflicts may arise due to the new Widget directives and services being added.  [See the code for more details](https://github.com/uPortal-Project/uportal-app-framework/pull/385/files).  This will not be a concern for most applications.
+
 
 ## [3.1.4][] - 2017-03-20
 
@@ -383,7 +421,7 @@ Adjusts link colors for themes #377
 
 ## [3.0.3][] - 2016-12-20
 
-Patch release. Simply bump your app's dependency declaration from `uw-frame` `3.0.2` to `3.0.3` to adopt this release.
+Patch release. Simply bump the app's dependency declaration from `uw-frame` `3.0.2` to `3.0.3` to adopt this release.
 - Fixes Google Analytics usage ( #353 )
 - Documents source code whitespace conventions ( #356 )
 - Improves [documentation about releasing `uw-frame` itself](http://uportal-project.github.io/uportal-app-framework/v3.0.3/#/md/releasing) ( #355 )
@@ -411,8 +449,8 @@ Unreleased due to issues pushing to Maven Central.
 ### Major Version Upgrade
 - Upgrade angular-ui-bootstrap and angular libraries (#350) from 0.13.4 to 2.2.0
 
-The angular-ui-bootstrap upgrade moves up 2 major versions and does
-break compatibility with some older components.  If you used any angular-ui-bootstrap components, you'll need to prefix them with "uib-".  See angular-ui-bootstrap [Migration Guide for Prefixes](https://github.com/angular-ui/bootstrap/wiki/Migration-guide-for-prefixes) for more information.
+The `angular-ui-bootstrap` upgrade moves up 2 major versions and does
+break compatibility with some older components.  If the app used any `angular-ui-bootstrap` components, it will need to begin prefixing them with `uib-`.  See `angular-ui-bootstrap` [Migration Guide for Prefixes](https://github.com/angular-ui/bootstrap/wiki/Migration-guide-for-prefixes).
 
 ### Build changes
 - Add postcss/autoprefixer to uw-frame build (#345)
@@ -428,7 +466,8 @@ break compatibility with some older components.  If you used any angular-ui-boot
 - Added ability to have a name for the default theme (#336)
 - Fixed format for announcement end date (#332)
 
-[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v7.0.0...HEAD
+[Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v8.0.0...HEAD
+[8.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v7.0.0...v8.0.0
 [7.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.1.0...v7.0.0
 [6.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.3...v6.1.0
 [6.0.3]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.2...v6.0.3

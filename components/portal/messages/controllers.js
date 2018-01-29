@@ -21,20 +21,20 @@
 define(['angular'], function(angular) {
   return angular.module('portal.messages.controllers', [])
 
-    .controller('MessagesController', ['$q', '$log', '$scope', '$rootScope',
-      '$location', '$localStorage', '$sessionStorage', '$filter', '$mdDialog',
-      'APP_FLAGS', 'MISC_URLS', 'SERVICE_LOC', 'miscService', 'messagesService',
+    .controller('MessagesController', [
+      '$q', '$log', '$scope', '$rootScope', '$location', '$localStorage',
+      '$sessionStorage', '$filter', '$mdDialog', 'APP_FLAGS', 'MISC_URLS',
+      'SERVICE_LOC', 'mainService', 'miscService', 'messagesService',
       function($q, $log, $scope, $rootScope, $location, $localStorage,
                $sessionStorage, $filter, $mdDialog, APP_FLAGS, MISC_URLS,
-               SERVICE_LOC, miscService, messagesService) {
+               SERVICE_LOC, mainService, miscService, messagesService) {
         // //////////////////
         // Local variables //
         // //////////////////
         var allMessages = [];
-        var promiseFilteredMessages = {};
         $scope.APP_FLAGS = APP_FLAGS;
         $scope.MISC_URLS = MISC_URLS;
-        $scope.showMessagesFeatures = true;
+        $scope.showMessagesFeatures = false;
 
         // ////////////////
         // Local methods //
@@ -51,7 +51,7 @@ define(['angular'], function(angular) {
               } else if (angular.isString(result)) {
                 $scope.messagesError = result;
               }
-              filterMessages();
+              filterMessages(allMessages);
               return allMessages;
             })
             .catch(function(error) {
@@ -59,34 +59,40 @@ define(['angular'], function(angular) {
               return error;
             });
         };
+        // Promise to get seen message IDs
+        var promiseSeenMessageIds = function() {
+          return messagesService.getSeenMessageIds();
+        };
+
+        // Promise to resolve urls in messages
+        var promiseMessagesByData = function(messages) {
+          return messagesService.getMessagesByData(messages);
+        };
+
+        // Promise to resolve group memberships
+        var promiseMessagesByGroup = function(messages) {
+          return messagesService.getMessagesByGroup(messages);
+        };
         /**
          * Determine whether or not messages need to be filtered
          * by group and data, then execute the relevant promises
+         * @param {Object} allMessages
          */
-        var filterMessages = function() {
+        var filterMessages = function(allMessages) {
           var groupFiltersEnabled =
             !$localStorage.disableGroupFilteringForMessages;
-          if (groupFiltersEnabled) {
-            promiseFilteredMessages = {
-              filteredByGroup:
-                messagesService.getMessagesByGroup(allMessages),
-              filteredByData:
-                messagesService.getMessagesByData(allMessages),
-            };
+          var groupPromise = null;
+          if (!groupFiltersEnabled) {
+            groupPromise = $q.resolve(allMessages);
+          } else {
+            groupPromise = promiseMessagesByGroup(allMessages);
           }
 
-          if (!groupFiltersEnabled) {
-            promiseFilteredMessages = {
-              filteredByGroup: allMessages,
-              filteredByData:
-                messagesService.getMessagesByData(allMessages),
-            };
-          }
-            // Call filtered notifications promises, then pass on to
-            // the completion function
-            $q.all(promiseFilteredMessages)
-              .then(filterMessagesSuccess)
-              .catch(filterMessagesFailure);
+          $q.all([promiseSeenMessageIds(),
+                  promiseMessagesByData(allMessages),
+                  groupPromise])
+            .then(filterMessagesSuccess)
+            .catch(filterMessagesFailure);
           };
 
 
@@ -95,20 +101,18 @@ define(['angular'], function(angular) {
          * @param {Object} result
          */
         var filterMessagesSuccess = function(result) {
-          // Check for filtered notifications
-          var filteredMessages = [];
-          if (result.filteredByGroup && result.filteredByData) {
-            // Combine the two filtered arrays into one (no dupes)
-            filteredMessages = $filter('filterForCommonElements')(
-              result.filteredByGroup,
-              result.filteredByData
-            );
-            var dateFilteredMessages =
-              $filter('filterByDate')(filteredMessages);
+          $scope.seenMessageIds = result[0];
+          var dataMessages = result[1];
+          var groupedMessages = result[2];
+          var filteredMessages = $filter('filterForCommonElements')(
+            groupedMessages,
+            dataMessages
+          );
+          var dateFilteredMessages =
+            $filter('filterByDate')(filteredMessages);
             $scope.messages =
               $filter('separateMessageTypes')(dateFilteredMessages);
-            $scope.hasMessages = true;
-          }
+          $scope.hasMessages = true;
         };
 
         /**
@@ -127,17 +131,15 @@ define(['angular'], function(angular) {
           $scope.hasMessages = false;
           $scope.messages = {};
 
-          if (!$rootScope.GuestMode && SERVICE_LOC.messagesURL
-            && SERVICE_LOC.messagesURL !== '') {
-            getMessages();
-          } else {
-            // Messages features aren't configured properly, possibly
-            // on purpose. Communicate this and hide features.
-            $scope.showMessagesFeatures = false;
-            $scope.messagesError = 'SERVICE_LOC.messageURL is not configured ' +
-              '-- hiding messages features.';
-            $scope.hasMessages = true;
-          }
+          mainService.isGuest().then(function(isGuest) {
+            if (!isGuest && SERVICE_LOC.messagesURL) {
+              $scope.showMessagesFeatures = true;
+              getMessages();
+            }
+            return isGuest;
+          }).catch(function() {
+            $log.warn('Problem checking guestMode');
+          });
         };
 
         init();

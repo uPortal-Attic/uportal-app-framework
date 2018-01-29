@@ -23,9 +23,11 @@ define(['angular'], function(angular) {
 
   .factory('mainService', [
     '$http', '$log', '$sessionStorage',
-    'miscService', 'SERVICE_LOC', 'APP_FLAGS',
+    'miscService', 'SERVICE_LOC', 'APP_FLAGS', '$rootScope', 'NAMES',
+    '$document',
     function($http, $log, $sessionStorage,
-             miscService, SERVICE_LOC, APP_FLAGS) {
+             miscService, SERVICE_LOC, APP_FLAGS, $rootScope, NAMES,
+             $document) {
       var prom = $http.get(SERVICE_LOC.sessionInfo, {cache: true});
       var userPromise;
 
@@ -59,10 +61,39 @@ define(['angular'], function(angular) {
             miscService.redirectUser(status, 'Get User Info');
           });
         return userPromise;
-    };
+      };
+
+      /**
+       * Retreives the user and checks against guestUserName
+       * @return {Promise<Boolean>} Resolves true if user matches guestUserName
+       */
+      function isGuest() {
+        return getUser().then(function(result) {
+          return result.userName === NAMES.guestUserName;
+        });
+      }
+
+      /**
+       * set the frame title using theme
+       */
+      function setTitle() {
+        var frameTitle = '';
+        if ($rootScope.portal && $rootScope.portal.theme) {
+          frameTitle = $rootScope.portal.theme.title;
+          if (frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
+            frameTitle = ' | ' + frameTitle;
+          } else {
+            // since frame title equals the title in NAMES lets not duplicate it
+            frameTitle = '';
+          }
+        }
+        $document[0].title = NAMES.title + frameTitle;
+      }
 
     return {
       getUser: getUser,
+      isGuest: isGuest,
+      setTitle: setTitle,
     };
   }]);
 });

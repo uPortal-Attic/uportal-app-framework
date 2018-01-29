@@ -12,7 +12,9 @@
       "featureImageUrl": null,
       "priority": null,
       "audienceFilter": {
-        "groups": [],
+        "groups": []
+      },
+      "data": {
         "dataUrl": "",
         "dataObject": "",
         "dataArrayFilter": {}
@@ -40,7 +42,9 @@
       "priority": null,
       "dismissible": true,
       "audienceFilter": {
-        "groups": [""],
+        "groups": [""]
+       },
+      "data": {
         "dataUrl": "",
         "dataObject": "",
         "dataArrayFilter": {}
@@ -67,7 +71,9 @@
       "featureImageUrl": "img/features/bucky-announcement.png",
       "priority": null,
       "audienceFilter": {
-        "groups": ["UW-Madison"],
+        "groups": ["UW-Madison"]
+       },
+      "data": {
         "dataUrl": "",
         "dataObject": "",
         "dataArrayFilter": {}
@@ -94,7 +100,9 @@
       "featureImageUrl": "img/the-cow.png",
       "priority": null,
       "audienceFilter": {
-        "groups": ["Nonexistent-Group"],
+        "groups": ["Nonexistent-Group"]
+       },
+      "data": {
         "dataUrl": "",
         "dataObject": "",
         "dataArrayFilter": {}
