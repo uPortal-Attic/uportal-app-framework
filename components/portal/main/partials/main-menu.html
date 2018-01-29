@@ -54,7 +54,7 @@
   </div>
   <md-menu-content>
     <!-- App-specific content/navigation -->
-    <md-subheader class="subheader__app-name" ng-if="vm.appName != ''">{{ vm.appName }} menu</md-subheader>
+    <md-subheader class="subheader__app-name" ng-if="vm.appName != ''">Menu: {{ vm.appName }}</md-subheader>
     <div ng-if="vm.appMenuTemplate" ng-include="vm.appMenuTemplate"></div>
     <md-menu-item ng-if="!vm.appMenuTemplate" ng-repeat="item in vm.menuItems">
       <md-button ng-if="item.url" ng-href="{{ item.url }}" ng-click="vm.closeMainMenu();" layout="row" layout-align="start center">
@@ -65,7 +65,7 @@
       </md-button>
     </md-menu-item>
     <!-- App-options content -->
-    <md-subheader class="subheader__app-name">App options</md-subheader>
+    <md-subheader ng-if="vm.optionsTemplate" class="subheader__app-name">App options</md-subheader>
     <md-menu-item ng-if="vm.optionsTemplate" ng-include="vm.optionsTemplate"></md-menu-item>
   </md-menu-content>
   <!-- Footer links -->
