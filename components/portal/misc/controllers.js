@@ -98,10 +98,6 @@ define(['angular'], function(angular) {
               });
             }
           }
-          // TODO: delete this
-          $timeout(function() {
-            showAddToHomeToast();
-          }, 1500);
         };
 
         init();
