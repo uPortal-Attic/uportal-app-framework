@@ -61,7 +61,17 @@ define(['angular'], function(angular) {
             miscService.redirectUser(status, 'Get User Info');
           });
         return userPromise;
-    };
+      };
+
+      /**
+       * Retreives the user and checks against guestUserName
+       * @return {Promise<Boolean>} Resolves true if user matches guestUserName
+       */
+      function isGuest() {
+        return getUser().then(function(result) {
+          return result.userName === NAMES.guestUserName;
+        });
+      }
 
       /**
        * set the frame title using theme
@@ -82,6 +92,7 @@ define(['angular'], function(angular) {
 
     return {
       getUser: getUser,
+      isGuest: isGuest,
       setTitle: setTitle,
     };
   }]);
