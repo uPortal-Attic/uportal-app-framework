@@ -75,6 +75,27 @@ frame-page {
   flex: inherit;
   max-width: 100%;
 
+  .wrapper__page-title {
+    padding: 8px 18px;
+
+    h1 {
+      font-size: 32px;
+
+      .material-icons {
+        font-size: 28px;
+        bottom: 6px;
+        position: relative;
+        color: @black;
+      }
+
+      .fa {
+        font-size: 28px;
+        position: relative;
+        bottom: 2px;
+      }
+    }
+  }
+
   .wrapper__frame-page {
     max-width: 100%;
     display: flex;
@@ -84,8 +105,7 @@ frame-page {
     .wrapper__push-content {
       flex: auto;
       display: flex;
-      flex-direction: row;
-      align-items: flex-start;
+      flex-direction: column;
       justify-content: center;
 
       ng-transclude {

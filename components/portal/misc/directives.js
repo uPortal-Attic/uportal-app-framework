@@ -136,9 +136,8 @@ define(['angular', 'require'], function(angular, require) {
       })
 
     /**
-    <frame-page> is a directive that is your typical page. Header, body.
-    The header items are routed to the <app-header> (see above)
-    The body of the tag is then the body of the application
+    <frame-page> is a directive that is your typical page. It houses
+     side navigation and the body content.
     Optional: whiteBackground :
       Adds in classes that do a white background with a border
     */
