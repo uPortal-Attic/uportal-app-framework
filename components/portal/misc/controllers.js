@@ -101,15 +101,5 @@ define(['angular'], function(angular) {
         };
 
         init();
-      }])
-
-    .controller('AppHeaderOptionsController', ['APP_OPTIONS',
-      function(APP_OPTIONS) {
-        var vm = this;
-
-        // If an options template is specified, set scope variable
-        if (APP_OPTIONS.optionsTemplateURL) {
-          vm.optionsTemplate = require.toUrl(APP_OPTIONS.optionsTemplateURL);
-        }
-    }]);
+      }]);
 });
