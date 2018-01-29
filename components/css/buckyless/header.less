@@ -25,7 +25,7 @@ portal-header {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
 
   a {
-    &:not(.md-button):not(.btn):not(.launch-app-button):not(.full-width) {
+    &:not(.md-button):not(.btn):not(.launch-app-button):not(.full-width):not(.title-link__small) {
       &:hover,
       &:focus,
       &:active {
@@ -52,6 +52,26 @@ portal-header {
 
       .title-link h1 {
         margin-left: 16px;
+      }
+
+      .title-link__two-lines {
+        a.title-link__small {
+          font-size: 14px;
+          font-weight: 600;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        h1 {
+          font-size: 18px;
+          white-space: nowrap;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
 
       .menu-toggle.md-button.menu-margin {
