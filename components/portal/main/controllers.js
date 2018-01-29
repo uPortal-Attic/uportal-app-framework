@@ -118,10 +118,8 @@ define(['angular', 'require'], function(angular, require) {
       vm.profileUrl = data.profileUrl ? data.profileUrl : '';
     });
 
-    // Check if user is guest and if avatar is enabled
     mainService.getUser().then(function(result) {
       vm.user = result;
-      $rootScope.GuestMode = (vm.user.userName === NAMES.guestUserName);
 
       if (vm.user.firstName || vm.user.displayName) {
         vm.username = vm.user.firstName ?
@@ -138,6 +136,14 @@ define(['angular', 'require'], function(angular, require) {
       return result;
     }).catch(function() {
       $log.warn('could not get user');
+    });
+
+    // DEPRECATED
+    // Don't set GuestMode in rootScope. Remove in next major version.
+    mainService.isGuest().then(function(result) {
+      return $rootScope.GuestMode = result;
+    }).catch(function(err) {
+      $log.warn('could not check guest');
     });
   }])
 
