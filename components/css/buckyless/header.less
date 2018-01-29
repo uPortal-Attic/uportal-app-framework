@@ -67,6 +67,7 @@ portal-header {
         h1 {
           font-size: 18px;
           white-space: nowrap;
+          z-index: @top-bar-nowrap;
 
           &:hover {
             cursor: pointer;
@@ -93,6 +94,11 @@ portal-header {
         .md-icon-button {
           margin-right: 0;
         }
+      }
+
+      .header__search-bar-container {
+        height: 100%;
+        z-index: @top-bar-content;
       }
 
       @media (max-width: @xs) {
