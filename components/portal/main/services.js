@@ -23,11 +23,9 @@ define(['angular'], function(angular) {
 
   .factory('mainService', [
     '$http', '$log', '$sessionStorage',
-    'miscService', 'SERVICE_LOC', 'APP_FLAGS', '$rootScope', 'NAMES',
-    '$document',
+    'miscService', 'SERVICE_LOC', 'APP_FLAGS', 'NAMES',
     function($http, $log, $sessionStorage,
-             miscService, SERVICE_LOC, APP_FLAGS, $rootScope, NAMES,
-             $document) {
+             miscService, SERVICE_LOC, APP_FLAGS, NAMES) {
       var prom = $http.get(SERVICE_LOC.sessionInfo, {cache: true});
       var userPromise;
 
@@ -74,9 +72,9 @@ define(['angular'], function(angular) {
       }
 
       /**
-       * set the window title
+       * Compute the window title
        *
-       * results in title
+       * Returns
        * page-title | app-title | portal-title (in an application), or
        * page-title | portal-title (if the app has same name as the portal), or
        * app-title | portal-title (if page name unknown or redundant)
@@ -99,22 +97,8 @@ define(['angular'], function(angular) {
        * in an app named "MyUW" in a portal named "MyUW"
        * when the page name is unspecified.
        */
-      function setTitle(pageTitle) {
+      function computeWindowTitle(pageTitle, appTitle, portalTitle) {
         var windowTitle = ''; // we finally set the window title to this.
-
-        // first, gather pieces of the desired window title
-
-        var portalTitle = ''; // the name of the portal if we can determine it
-        var appTitle = ''; // the name of the app
-
-        if ($rootScope.portal && $rootScope.portal.theme &&
-              $rootScope.portal.theme.title) {
-          // there's an active theme with a title.
-          // consider that title the name of the portal
-          portalTitle = $rootScope.portal.theme.title;
-        }
-
-        appTitle = NAMES.title;
 
         // assemble the window title from the gathered pieces,
         // starting from the end of the window title and working back to the
@@ -122,14 +106,17 @@ define(['angular'], function(angular) {
 
         // if the portal has a name, end the window title with that
         // (if the portal lacks a name, portalTitle is still empty string)
-        windowTitle = portalTitle;
+
+        if (portalTitle) {
+          windowTitle = portalTitle;
+        }
 
         // if the app name differs from the portal, prepend it.
         // if it's the same name, omit it to avoid silly redundancy like
         // "MyUW | MyUW"
         if (appTitle && appTitle !== portalTitle) {
           // if the windowTitle already has content, first add a separator
-          if (windowTitle !== '') {
+          if (windowTitle) {
             windowTitle = ' | ' + windowTitle;
           }
           windowTitle = appTitle + windowTitle;
@@ -144,14 +131,14 @@ define(['angular'], function(angular) {
           windowTitle = pageTitle + windowTitle;
         }
 
-        // finally, use the built up windowTitle
-        $document[0].title = windowTitle;
+        // finally, return the built up windowTitle
+        return windowTitle;
       }
 
     return {
       getUser: getUser,
       isGuest: isGuest,
-      setTitle: setTitle,
+      computeWindowTitle: computeWindowTitle,
     };
   }]);
 });

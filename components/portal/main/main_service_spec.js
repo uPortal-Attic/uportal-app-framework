@@ -26,24 +26,16 @@ define(['angular-mocks', 'portal'], function() {
         var loginSilentUrl;
         var httpBackend;
 
-        var $document;
-        var $scope;
-        var NAMES;
-
         beforeEach(function() {
           module('portal');
         });
 
         beforeEach(inject(function(
           _mainService_, _$httpBackend_,
-          _$document_, _$rootScope_,
-          SERVICE_LOC, MESSAGES, APP_FLAGS, _NAMES_
+          SERVICE_LOC, MESSAGES, APP_FLAGS
         ) {
-          $scope = _$rootScope_.$new();
           service = _mainService_;
-          $document = _$document_;
           httpBackend = _$httpBackend_;
-          NAMES = _NAMES_;
           loginSilentUrl = APP_FLAGS.loginOnLoad;
 
           if (loginSilentUrl) {
@@ -57,13 +49,15 @@ define(['angular-mocks', 'portal'], function() {
         it('should set title to include page, app, and portal name when '
            + 'all of these are present and non-redundant.', function() {
           // setup
-          NAMES.title = 'STAR Time Entry';
-          $scope.portal.theme.title = 'MyUW';
+          var pageTitle = 'Timesheets';
+          var appTitle = 'STAR Time Entry';
+          var portalTitle = 'MyUW';
 
           // test
-          service.setTitle('Timesheets');
+          var windowTitle =
+            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
 
-          expect($document[0].title)
+          expect(windowTitle)
             .toEqual('Timesheets | STAR Time Entry | MyUW');
 
           httpBackend.flush();
@@ -72,53 +66,45 @@ define(['angular-mocks', 'portal'], function() {
         it('should set title to omit app name when redundant with portal name',
           function() {
           // setup
-          NAMES.title = 'MyUW';
-          $scope.portal.theme.title = 'MyUW';
+          var pageTitle = 'Notifications';
+          var appTitle = 'MyUW';
+          var portalTitle = 'MyUW';
 
           // test
-          service.setTitle('Notifications');
+          var windowTitle =
+            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
 
-          expect($document[0].title).toEqual('Notifications | MyUW');
+          expect(windowTitle).toEqual('Notifications | MyUW');
 
           httpBackend.flush();
         });
 
         it('should set title to omit app name when null', function() {
           // setup
-          NAMES.title = null;
-          $scope.portal.theme.title = 'MyUW';
+          var pageTitle = 'Notifications';
+          var appTitle = null;
+          var portalTitle = 'MyUW';
 
           // test
-          service.setTitle('Notifications');
+          var windowTitle =
+            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
 
-          expect($document[0].title).toEqual('Notifications | MyUW');
+          expect(windowTitle).toEqual('Notifications | MyUW');
 
           httpBackend.flush();
         });
 
         it('should set title to omit app name when it is empty', function() {
           // setup
-          NAMES.title = '';
-          $scope.portal.theme.title = 'MyUW';
+          var pageTitle = 'Notifications';
+          var appTitle = '';
+          var portalTitle = 'MyUW';
 
           // test
-          service.setTitle('Notifications');
+          var windowTitle =
+            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
 
-          expect($document[0].title).toEqual('Notifications | MyUW');
-
-          httpBackend.flush();
-        });
-
-        it('should set title to omit page name when it is not provided',
-          function() {
-          // setup
-          NAMES.title = 'STAR Time Entry';
-          $scope.portal.theme.title = 'MyUW';
-
-          // test
-          service.setTitle();
-
-          expect($document[0].title).toEqual('STAR Time Entry | MyUW');
+          expect(windowTitle).toEqual('Notifications | MyUW');
 
           httpBackend.flush();
         });
@@ -126,13 +112,14 @@ define(['angular-mocks', 'portal'], function() {
         it('should set title to omit page name when it is null',
           function() {
           // setup
-          NAMES.title = 'STAR Time Entry';
-          $scope.portal.theme.title = 'MyUW';
+          var appTitle = 'STAR Time Entry';
+          var portalTitle = 'MyUW';
 
           // test
-          service.setTitle(null);
+          var windowTitle =
+            service.computeWindowTitle(null, appTitle, portalTitle);
 
-          expect($document[0].title).toEqual('STAR Time Entry | MyUW');
+          expect(windowTitle).toEqual('STAR Time Entry | MyUW');
 
           httpBackend.flush();
         });
@@ -140,13 +127,15 @@ define(['angular-mocks', 'portal'], function() {
         it('should set title to omit page name when it is empty string',
           function() {
           // setup
-          NAMES.title = 'STAR Time Entry';
-          $scope.portal.theme.title = 'MyUW';
+          var pageTitle = '';
+          var appTitle = 'STAR Time Entry';
+          var portalTitle = 'MyUW';
 
           // test
-          service.setTitle('');
+          var windowTitle =
+            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
 
-          expect($document[0].title).toEqual('STAR Time Entry | MyUW');
+          expect(windowTitle).toEqual('STAR Time Entry | MyUW');
 
           httpBackend.flush();
         });
@@ -154,13 +143,15 @@ define(['angular-mocks', 'portal'], function() {
         it('should set title to only the portal name when the app name is '
           + 'redundant and the page name is not provided.', function() {
           // setup
-          NAMES.title = 'MyUW';
-          $scope.portal.theme.title = 'MyUW';
+          var pageTitle = '';
+          var appTitle = 'MyUW';
+          var portalTitle = 'MyUW';
 
           // test
-          service.setTitle();
+          var windowTitle =
+            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
 
-          expect($document[0].title).toEqual('MyUW');
+          expect(windowTitle).toEqual('MyUW');
 
           httpBackend.flush();
         });
@@ -168,13 +159,15 @@ define(['angular-mocks', 'portal'], function() {
         it('should set title to only the portal name when redundant with both '
           + 'the app name and the page name.', function() {
           // setup
-          NAMES.title = 'MyUW';
-          $scope.portal.theme.title = 'MyUW';
+          var pageTitle = 'MyUW';
+          var appTitle = 'MyUW';
+          var portalTitle = 'MyUW';
 
           // test
-          service.setTitle('MyUW');
+          var windowTitle =
+            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
 
-          expect($document[0].title).toEqual('MyUW');
+          expect(windowTitle).toEqual('MyUW');
 
           httpBackend.flush();
         });
@@ -182,13 +175,15 @@ define(['angular-mocks', 'portal'], function() {
         it('should set title to only the app name when portal name and page '
           + 'name are null', function() {
           // setup
-          NAMES.title = 'STAR Time and Leave';
-          $scope.portal.theme.title = null;
+          var pageTitle = null;
+          var appTitle = 'STAR Time and Leave';
+          var portalTitle = null;
 
           // test
-          service.setTitle(null);
+          var windowTitle =
+            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
 
-          expect($document[0].title).toEqual('STAR Time and Leave');
+          expect(windowTitle).toEqual('STAR Time and Leave');
 
           httpBackend.flush();
         });
@@ -196,28 +191,30 @@ define(['angular-mocks', 'portal'], function() {
         it('should set title to only the page name when portal name and app '
           + 'name are null', function() {
           // setup
-          var priorNamesTitle = NAMES.title;
-          NAMES.title = null;
-          $scope.portal.theme.title = null;
+          var pageTitle = 'SomePage';
+          var appTitle = null;
+          var portalTitle = null;
 
           // test
-          service.setTitle('SomePage');
+          var windowTitle =
+            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
 
-          expect($document[0].title).toEqual('SomePage');
+          expect(windowTitle).toEqual('SomePage');
 
           httpBackend.flush();
-          NAMES.title = priorNamesTitle; // undo change made by this test
         });
 
         it('should gracefully handle missing theme.', function() {
           // setup
-          NAMES.title = 'SomeApp';
-          $scope.portal.theme = null;
+          var pageTitle = 'SomePage';
+          var appTitle = 'SomeApp';
+          var portalTitle = null;
 
           // test
-          service.setTitle('SomePage');
+          var windowTitle =
+            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
 
-          expect($document[0].title).toEqual('SomePage | SomeApp');
+          expect(windowTitle).toEqual('SomePage | SomeApp');
 
           httpBackend.flush();
         });
