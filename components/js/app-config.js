@@ -44,14 +44,14 @@ define(['angular'], function(angular) {
             'shibbolethSessionURL': 'staticFeeds/Shibboleth.sso/Session.json',
             'portalLayoutRestEndpoint': null, // '/portal/api/layout',
             'widgetApi': {
-              'entry': 'staticFeeds/', // 'staticFeeds/'
+              'entry': '/portal/api/marketplace/entry/', // 'staticFeeds/'
               'entrySuffix': '.json',
               'entries': '/portal/api/marketplace/entries.json',
             },
         })
         .value('NAMES', {
           // you can name your app whatever you want
-            'title': 'MyUW',
+            'title': 'Frame app',
             'guestUserName': 'guest',
             'fname': 'sample-fname',
         })
