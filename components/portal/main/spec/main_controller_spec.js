@@ -21,8 +21,12 @@
 /* global inject */
 define(['angular-mocks', 'portal'], function() {
     describe('PortalMainController', function() {
-        var scope;
+        var $scope;
         var $localStorage;
+        var $document;
+        var mainService;
+        var NAMES;
+
         // eslint-disable-next-line no-unused-vars
         var controller;
 
@@ -30,21 +34,39 @@ define(['angular-mocks', 'portal'], function() {
           module('portal');
         });
 
-        beforeEach(inject(function($rootScope, $controller, _$localStorage_) {
-          scope = $rootScope.$new();
+        beforeEach(inject(function(
+          _$rootScope_, $controller, _$localStorage_, _$document_,
+          _mainService_, _NAMES_) {
+          $scope = _$rootScope_.$new();
           $localStorage = _$localStorage_;
+          $document = _$document_;
+          mainService = _mainService_;
+          NAMES = _NAMES_;
+
+          NAMES.title = 'AppName';
+          $scope.portal.theme.title = 'PortalName';
+
           controller = $controller('PortalMainController', {
             '$localStorage': $localStorage,
-            '$scope': scope,
+            '$scope': $scope,
+            '$rootScope': _$rootScope_,
+            '$document': $document,
+            'mainService': mainService,
+            'NAMES': NAMES,
           });
         }));
 
         it('should set storage in scope', function() {
-            expect(scope.$storage).not.toBeNull();
+            expect($scope.$storage).not.toBeNull();
         });
 
         it('should have an app name defined', function() {
-            expect(scope.NAMES.title).not.toBeNull();
+            expect($scope.NAMES.title).not.toBeNull();
+        });
+
+        it('should set document title to reflect portal name in theme',
+            function() {
+            expect($document[0].title).toEqual('AppName | PortalName');
         });
     });
 });
