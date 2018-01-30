@@ -26,6 +26,7 @@
   </h1>
 
   <div flex="50" flex-xs="35" class="header-links" ng-controller="AppHeaderOptionsController as vm">
+    <div uaf-side-effect="{{vm.updateTitle(title)}}"></div>
     <div ng-if="vm.optionsTemplate" ng-include="vm.optionsTemplate"></div>
 
      <!--ADD TO HOME BUTTON (HIDDEN XS) -->

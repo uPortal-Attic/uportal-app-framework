@@ -74,13 +74,31 @@ define(['angular'], function(angular) {
         init();
       }])
 
-    .controller('AppHeaderOptionsController', ['APP_OPTIONS',
-      function(APP_OPTIONS) {
+    .controller('AppHeaderOptionsController',
+      ['APP_OPTIONS', 'NAMES', 'mainService', '$rootScope', '$document',
+      function(APP_OPTIONS, NAMES, mainService, $rootScope, $document) {
         var vm = this;
 
         // If an options template is specified, set scope variable
         if (APP_OPTIONS.optionsTemplateURL) {
           vm.optionsTemplate = require.toUrl(APP_OPTIONS.optionsTemplateURL);
         }
+
+        vm.updateTitle = function(pageTitle) {
+          var appTitle = NAMES.title;
+
+          var portalTitle = '';
+          if ($rootScope.portal && $rootScope.portal.theme &&
+                $rootScope.portal.theme.title) {
+            // there's an active theme with a title.
+            // consider that title the name of the portal
+            portalTitle = $rootScope.portal.theme.title;
+          }
+
+          var windowTitle =
+            mainService.computeWindowTitle(pageTitle, appTitle, portalTitle);
+
+          $document[0].title = windowTitle;
+        };
     }]);
 });
