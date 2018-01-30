@@ -437,8 +437,8 @@ Example:
   <name>widgetConfig</name>
   <value>
     <![CDATA[{
-      'launchText' : 'See all the Weather',
-      'maintenanceMode' : true
+      "launchText" : "See all the Weather",
+      "maintenanceMode" : true
     }]]>
   </value>
 </portlet-preference>
