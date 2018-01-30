@@ -23,7 +23,7 @@
   app-icon="help"
   white-background="true">
   <md-content ng-controller="PortalAboutController as portalAboutCtrl">
-    <div layout="row" layout-align="center center">
+    <div layout="column" layout-align="center center">
       <h2>Frame Version Information</h2>
       <p class="widget-body" ng-repeat="item in frameInfo">
         <span><b>{{ item.name }}</b></span> :
@@ -32,7 +32,7 @@
         </span>
         <span ng-if="item.name!=='Git Commit ID'">{{ item.value }}</span></p>
     </div>
-    <div layout="row" ng-if="appInfo">
+    <div layout="column" ng-if="appInfo">
       <h2>{{ NAMES.title }} Version Information</h2>
       <div>
         <pre class="widget-body">{{appInfo | json}}</pre>
