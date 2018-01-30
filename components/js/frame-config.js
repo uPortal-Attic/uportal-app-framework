@@ -27,6 +27,20 @@ define(['angular'], function(angular) {
         'themeVersion': 11,
         'themes': [
           {
+            'name': 'uPortal',
+            'portalSkinKey': 'default',
+            'group': 'uPortal',
+            'crest': 'img/apereo-logo.png',
+            'title': 'uPortal',
+            'subtitle': null,
+            'ariaLabelTitle': 'uPortal',
+            'materialTheme': {
+              'primary': 'blue',
+              'accent': 'grey',
+              'warn': 'red',
+            },
+          },
+          {
             'name': 'uwMadison',
             'portalSkinKey': 'uwMadison',
             'crest': 'img/uw-madison-crest.png',
