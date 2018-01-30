@@ -33,6 +33,26 @@ define(['angular', 'require'], function(angular, require) {
       layoutMode: 'list', // other option is 'widgets
     };
 
+    /**
+     * Set Document title.
+     */
+    function updateTitle(pageTitle) {
+      var appTitle = NAMES.title;
+
+      var portalTitle = '';
+      if ($rootScope.portal && $rootScope.portal.theme &&
+            $rootScope.portal.theme.title) {
+        // there's an active theme with a title.
+        // consider that title the name of the portal
+        portalTitle = $rootScope.portal.theme.title;
+      }
+
+      var windowTitle =
+        mainService.computeWindowTitle(pageTitle, appTitle, portalTitle);
+
+      $document[0].title = windowTitle;
+    }
+
     // =====functions ======
     var init = function() {
       $scope.$storage = $localStorage.$default(defaults);
@@ -44,13 +64,13 @@ define(['angular', 'require'], function(angular, require) {
       $scope.APP_OPTIONS = APP_OPTIONS;
 
       if (NAMES.title) {
-        mainService.setTitle();
+        updateTitle();
       }
       // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
       // eslint-disable-next-line angular/on-watch
       $rootScope.$watch('portal.theme', function(newValue, oldValue) {
         if (newValue && newValue !== oldValue) {
-          mainService.setTitle();
+          updateTitle();
         }
       });
 
