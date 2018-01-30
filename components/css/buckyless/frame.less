@@ -79,11 +79,11 @@ frame-page {
     padding: 8px 18px;
 
     h1 {
-      font-size: 32px;
+      font-size: 22px;
 
       .material-icons {
-        font-size: 28px;
-        bottom: 6px;
+        font-size: 24px;
+        bottom: 2px;
         position: relative;
         color: @black;
       }
@@ -93,14 +93,14 @@ frame-page {
         position: relative;
         bottom: 2px;
       }
+    }
 
-      @media (max-width: @xs) {
-        font-size: 22px;
+    @media (min-width: @sm) {
+      font-size: 32px;
 
-        .material-icons {
-          font-size: 24px;
-          bottom: 2px;
-        }
+      .material-icons {
+        font-size: 28px;
+        bottom: 6px;
       }
     }
   }
