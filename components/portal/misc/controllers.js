@@ -50,9 +50,14 @@ define(['angular'], function(angular) {
             scope: $scope,
             preserveScope: true,
             parent: angular.element(document).find('div.add-to-home-parent')[0],
-            toastClass: "my-uw",
-            templateUrl: require.toUrl('portal/misc/partials/toast-add-to-home.html'),
-            controller: function ToastAddToHomeController($scope, $mdToast, PortalAddToHomeService) {
+            toastClass: 'my-uw',
+            templateUrl:
+              require.toUrl('portal/misc/partials/toast-add-to-home.html'),
+            controller: function ToastAddToHomeController(
+              $scope,
+              $mdToast,
+              PortalAddToHomeService
+            ) {
               $scope.addToHome = function() {
                 if (!$scope.inHome
                   && PortalAddToHomeService.canAddToHome($scope.fname)) {
@@ -75,10 +80,10 @@ define(['angular'], function(angular) {
               };
 
               $scope.dismissToast = function() {
-                $mdToast.hide()
+                $mdToast.hide();
               };
             },
-          })
+          });
         };
 
         var init = function() {
