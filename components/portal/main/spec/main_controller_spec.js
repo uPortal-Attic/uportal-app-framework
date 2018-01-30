@@ -66,6 +66,16 @@ define(['angular-mocks', 'portal'], function() {
 
         it('should set document title to reflect portal name in theme',
             function() {
+            // this test is problematic in that it relies on too much
+            // knowledge of what mainService will tell PortalMainController
+            // the window title ought to be. It would be better if this tested
+            // 1. that PortalMainController called mainService with the correct
+            // arguments, and
+            // 2. that PortalMainController set the window title to whatever
+            // mainService told it the title ought to be.
+            // that is, mock mainService both to monitor arguments
+            // PortalMainController calls it with and to fake its response to
+            // see that PortalMainController honors it
             expect($document[0].title).toEqual('AppName | PortalName');
         });
     });
