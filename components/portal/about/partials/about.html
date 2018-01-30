@@ -22,10 +22,10 @@
   app-title="About {{ Names.title }}"
   app-icon="help"
   white-background="true">
-  <md-content ng-controller="PortalAboutController as portalAboutCtrl">
+  <md-content ng-controller="PortalAboutController as portalAboutCtrl" class="about__content">
     <div layout="column" layout-align="center start">
       <h2>Frame Version Information</h2>
-      <p class="widget-body" ng-repeat="item in frameInfo">
+      <p ng-repeat="item in frameInfo">
         <span><b>{{ item.name }}</b></span> :
         <span ng-if="item.name==='Git Commit ID'">
           <a ng-href="https://github.com/uPortal-Project/uportal-app-framework/commit/{{item.value}}" target="_blank" rel="noopener noreferrer">{{ item.value }}</a>
@@ -34,7 +34,7 @@
     </div>
     <div layout="column" layout-align="center start" ng-if="appInfo">
       <h2>{{ NAMES.title }} Version Information</h2>
-      <div>
+      <div class="about__json-container">
         <pre class="widget-body">{{appInfo | json}}</pre>
       </div>
     </div>
