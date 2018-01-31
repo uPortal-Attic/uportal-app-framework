@@ -51,14 +51,14 @@ define(['angular-mocks', 'portal'], function() {
           });
         }));
 
-        it('should expose an updateTitle function',
+        it('should expose an updateWindowTitle function',
             function() {
-               expect(controller.updateTitle).not.toBeNull();
+               expect(controller.updateWindowTitle).not.toBeNull();
         });
 
         it('should set document title reflecting page title',
             function() {
-            controller.updateTitle('SpecificPageName');
+            controller.updateWindowTitle('SpecificPageName');
             // this test is problematic in that it relies on too much
             // knowledge of what mainService will tell
             // AppHeaderOptionsController the window title ought to be. It

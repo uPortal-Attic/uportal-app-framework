@@ -84,7 +84,7 @@ define(['angular'], function(angular) {
           vm.optionsTemplate = require.toUrl(APP_OPTIONS.optionsTemplateURL);
         }
 
-        vm.updateTitle = function(pageTitle) {
+        vm.updateWindowTitle = function(pageTitle) {
           var appTitle = NAMES.title;
 
           var portalTitle = '';

@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 + `mainService` now offers `computeWindowTitle(...)` (#679)
-+ `AppHeaderOptionsController` now offers `updateTitle(...)` (#679)
++ `AppHeaderOptionsController` now offers `updateWindowTitle(...)` (#679)
 
 ### Changed
 
