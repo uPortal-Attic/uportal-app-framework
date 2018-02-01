@@ -150,6 +150,7 @@ define(['angular', 'require'], function(angular, require) {
             appTitle: '@appTitle',
             appIcon: '@appIcon',
             appFname: '=appFname',
+            pageTitle: '@pageTitle',
             appShowAddToHome: '=appShowAddToHome',
             whiteBackground: '=',
           },
