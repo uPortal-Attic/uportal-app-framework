@@ -37,9 +37,10 @@ see their ID in the username menu. _This is currently unimplemented._
 
 ### APP_OPTIONS
 
-+ **optionsTemplateURL**: A path to the HTML template for app-specific options
++ *(DEPRECATED)* **optionsTemplateURL**: ~~A path to the HTML template for app-specific options
 (appears on the right-hand side of the [app-header](directives.md)). See the
-[app options doc](app-options.md) to learn how to use this feature.
+[app options doc](app-options.md) to learn how to use this feature.~~ Existing uses of this option will display 
+the template within the side navigation menu. We recommend moving this markup into the `appMenuTemplateURL` template.
 + **appMenuTemplateURL**: A path to the HTML template for app-specific menu
 items (appears in the side navigation menu that is triggered when clicking the
 top bar hamburger icon button). See the [app navigation
