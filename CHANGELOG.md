@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
++ Label widget cover dismiss button as "OK" rather than "Continue" (#675)
+
 ### Removed
 
 ## [8.0.0][] - 2018-01-08
