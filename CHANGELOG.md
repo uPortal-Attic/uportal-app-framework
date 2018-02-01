@@ -10,9 +10,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
++ `mainService` now offers `computeWindowTitle(...)` (#679)
++ `AppHeaderOptionsController` now offers `updateWindowTitle(...)` (#679)
+
 ### Changed
 
++ `app-header` (and so, `frame-page`) now set Document title (#679)
+
 ### Fixed
+
++ Label widget cover dismiss button as "OK" rather than "Continue" (#675)
 
 ### Removed
 

@@ -29,6 +29,10 @@ each of your application's main views.
 * **app-show-add-to-home**: If set to true, will include the add-to-home directive and its controller in the app header (used for apps that are part of the portal ecosystem).
 * **white-background**: A boolean when set to true with give you a "white" background (rgb(250,250,250)).
 
+### Side effects
+
+`frame-page` has the side effect of setting the document title to reflect its `app-title` attribute, by means of its use of `app-header`.
+
 ## Main menu
 
 Makes the side navigation menu available. If you have [configured](configuration.md) either the `appMenuTemplateURL` or `appMenuItems` option, you need to include this directive on every page where you want navigation. For this reason, using the frame-page directive for all your pages is recommended.
