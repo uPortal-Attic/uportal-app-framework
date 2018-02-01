@@ -142,7 +142,9 @@ define(['angular', 'require'], function(angular, require) {
     Optional: whiteBackground :
       Adds in classes that do a white background with a border
     */
-    .directive('framePage', ['APP_OPTIONS', function(APP_OPTIONS) {
+    .directive('framePage', ['$rootScope', '$document', 'mainService',
+      'APP_OPTIONS', 'NAMES', function($rootScope, $document, mainService,
+                                       APP_OPTIONS, NAMES) {
       return {
           restrict: 'E',
           templateUrl: require.toUrl('./partials/frame-page.html'),
@@ -158,6 +160,25 @@ define(['angular', 'require'], function(angular, require) {
           link: function(scope) {
             if (APP_OPTIONS) {
               scope.menuPushContent = APP_OPTIONS.enablePushContentMenu;
+            }
+
+            var updateDocumentTitle = function(pageTitle) {
+              var portalTitle = '';
+              var appTitle = scope.appTitle ? scope.appTitle : NAMES.title;
+
+              if ($rootScope.portal && $rootScope.portal.theme &&
+                $rootScope.portal.theme.title) {
+                // there's an active theme with a title.
+                // consider that title the name of the portal
+                portalTitle = $rootScope.portal.theme.title;
+              }
+
+              $document[0].title =
+                mainService.computeWindowTitle(pageTitle, appTitle, portalTitle);
+            };
+
+            if (scope.pageTitle) {
+              updateDocumentTitle(scope.pageTitle)
             }
           },
       };
