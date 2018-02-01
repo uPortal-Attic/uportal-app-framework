@@ -37,7 +37,7 @@ define(['angular', 'require'], function(angular, require) {
      * Set Document title.
      * Asks mainService what the document title ought to be and
      * sets the document title to that value.
-     * @param {string} pageTitle - Optional, name of specific page viewed.
+     * @param {string} [pageTitle] - Name of specific page viewed.
      */
     function updateWindowTitle(pageTitle) {
       var appTitle = NAMES.title;
