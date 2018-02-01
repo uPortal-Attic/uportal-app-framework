@@ -81,6 +81,7 @@ define(['angular'], function(angular) {
 
               $scope.dismissToast = function() {
                 $mdToast.hide();
+                PortalAddToHomeService.dismissForSession();
               };
             },
           });
@@ -91,16 +92,20 @@ define(['angular'], function(angular) {
           $scope.inHome = true;
 
           if (PortalAddToHomeService.canAddToHome()) {
-            if ($scope.fname) {
-              // check if in home layout
-              checkInHome($scope.fname);
-            } else {
-              $scope.$watch('fname', function() {
-                // must be using 2 way binding, add a watch on the fname
-                if ($scope.fname) {
-                  checkInHome($scope.fname);
-                }
-              });
+            // Make sure user didn't already dismiss
+            // add to home toast
+            if (!PortalAddToHomeService.isDismissed()) {
+              if ($scope.fname) {
+                // Check if in home layout
+                checkInHome($scope.fname);
+              } else {
+                $scope.$watch('fname', function() {
+                  // Must be using 2 way binding, add a watch on the fname
+                  if ($scope.fname) {
+                    checkInHome($scope.fname);
+                  }
+                });
+              }
             }
           }
         };
