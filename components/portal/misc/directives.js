@@ -140,7 +140,8 @@ define(['angular', 'require'], function(angular, require) {
      * Supports 3 attributes:
      *
      * <ol>
-     * <li>app-title: displayed in an h1 child element</li>
+     * <li>app-title: displayed in an h1 child element
+     *    and reflected in window title</li>
      * <li>app-icon: the font awesome icon you want (e.g.: fa-google) </li>
      * <li>app-action-link-*;
      *    url: the url you want, if not set action link hides.
@@ -156,6 +157,8 @@ define(['angular', 'require'], function(angular, require) {
      *    if not provided it'll use NAMES.fname</li>
 
      * </ol>
+     *
+     *  Side effect: updates window title to reflect app-title.
      *
      * See ./partials/app-header.html.
      */

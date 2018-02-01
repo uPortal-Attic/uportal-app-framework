@@ -22,11 +22,16 @@ each of your application's main views.
 
 ### Params
 
-* **app-title**: The title that will be displayed in the app header
+* **app-title**: Will be displayed in the app header and reflected in document
+title
 * **app-icon**: The icon to use as a prefix to the app title. You can use Font Awesome (i.e. "fa-envelope") or Material Icons (i.e. "email").
 * **app-show-add-to-home**: If set to true, will include the add-to-home directive and its controller in the app header (used for apps that are part of the portal ecosystem).
 * **app-fname**: If provided, it will be used in the add-to-home feature. If not, it'll try to use NAMES.fname constant.
 * **white-background**: A boolean when set to true with give you a white background.
+
+### Side effects
+
+`frame-page` has the side effect of setting the document title to reflect its `app-title` attribute, by means of its use of `app-header`.
 
 ## Main menu
 

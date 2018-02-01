@@ -23,11 +23,9 @@ define(['angular'], function(angular) {
 
   .factory('mainService', [
     '$http', '$log', '$sessionStorage',
-    'miscService', 'SERVICE_LOC', 'APP_FLAGS', '$rootScope', 'NAMES',
-    '$document',
+    'miscService', 'SERVICE_LOC', 'APP_FLAGS', 'NAMES',
     function($http, $log, $sessionStorage,
-             miscService, SERVICE_LOC, APP_FLAGS, $rootScope, NAMES,
-             $document) {
+             miscService, SERVICE_LOC, APP_FLAGS, NAMES) {
       var prom = $http.get(SERVICE_LOC.sessionInfo, {cache: true});
       var userPromise;
 
@@ -74,26 +72,73 @@ define(['angular'], function(angular) {
       }
 
       /**
-       * set the frame title using theme
+       * Compute the window title
+       *
+       * Returns
+       * page-title | app-title | portal-title (in an application), or
+       * page-title | portal-title (if the app has same name as the portal), or
+       * app-title | portal-title (if page name unknown or redundant)
+       * portal-title (if page name unknown or redundant and app name redundant)
+       *
+       * Examples:
+       * "Timesheets | STAR Time Entry | MyUW" ,
+       * for the Timesheets page in an app named "STAR Time Entry" in
+       * a portal named "MyUW", or
+       *
+       * "Notifications | MyUW",
+       * for the notifications page in an app named "MyUW" in
+       * a portal named "MyUW".
+       *
+       * "STAR Time Entry | MyUW"
+       * in an app named "STAR Time Entry" in a portal named "MyUW"
+       * when the page name is unspecified.
+       *
+       * "MyUW"
+       * in an app named "MyUW" in a portal named "MyUW"
+       * when the page name is unspecified.
        */
-      function setTitle() {
-        var frameTitle = '';
-        if ($rootScope.portal && $rootScope.portal.theme) {
-          frameTitle = $rootScope.portal.theme.title;
-          if (frameTitle !== NAMES.title && !APP_FLAGS.isWeb) {
-            frameTitle = ' | ' + frameTitle;
-          } else {
-            // since frame title equals the title in NAMES lets not duplicate it
-            frameTitle = '';
-          }
+      function computeWindowTitle(pageTitle, appTitle, portalTitle) {
+        var windowTitle = ''; // we finally set the window title to this.
+
+        // assemble the window title from the gathered pieces,
+        // starting from the end of the window title and working back to the
+        // beginning.
+
+        // if the portal has a name, end the window title with that
+        // (if the portal lacks a name, portalTitle is still empty string)
+
+        if (portalTitle) {
+          windowTitle = portalTitle;
         }
-        $document[0].title = NAMES.title + frameTitle;
+
+        // if the app name differs from the portal, prepend it.
+        // if it's the same name, omit it to avoid silly redundancy like
+        // "MyUW | MyUW"
+        if (appTitle && appTitle !== portalTitle) {
+          // if the windowTitle already has content, first add a separator
+          if (windowTitle) {
+            windowTitle = ' | ' + windowTitle;
+          }
+          windowTitle = appTitle + windowTitle;
+        }
+
+        // if there's a page name not redundant with the app name, prepend it.
+        if (pageTitle && pageTitle !== '' && pageTitle !== appTitle) {
+          // if the windowTitle already has content, first add a separator
+          if (windowTitle !== '') {
+            windowTitle = ' | ' + windowTitle;
+          }
+          windowTitle = pageTitle + windowTitle;
+        }
+
+        // finally, return the built up windowTitle
+        return windowTitle;
       }
 
     return {
       getUser: getUser,
       isGuest: isGuest,
-      setTitle: setTitle,
+      computeWindowTitle: computeWindowTitle,
     };
   }]);
 });
