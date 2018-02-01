@@ -22,10 +22,10 @@
   <div role="main" class="wrapper__push-content" ng-class="{ 'white-page' : whiteBackground }">
     <main-menu ng-class="{ 'push-content' : menuPushContent, 'main-menu__open' : vm.isMenuOpen(), 'has-priority-notifications' : vm.hasPriorityNotifications }"></main-menu>
     <div class="wrapper__page-title" layout="row" layout-align="space-between center">
-      <h1 class="md-display-1" ng-if="appTitle">
+      <h1 class="md-display-1" ng-if="pageTitle">
         <i ng-if="appIcon.indexOf('fa-') > -1" class="fa {{appIcon}}" aria-hidden="true"></i>
         <md-icon ng-if="appIcon.indexOf('fa-') <= -1" aria-label="">{{ appIcon }}</md-icon>
-        {{ appTitle }}
+        {{ pageTitle }}
       </h1>
       <add-to-home ng-if="appShowAddToHome"></add-to-home>
     </div>
