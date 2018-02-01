@@ -2,7 +2,7 @@
 
 ## Frame page
 
-Frame page should be used for all pages in a uportal-app-framework application. It comes with much of the rest of the framework's skeleton built in, including the app-header and main-menu directives. You should use it as the outermost element for
+Frame page should be used for all pages in a uportal-app-framework application. It comes with much of the rest of the framework's skeleton and CSS layout styles built in, including main-menu directives. You should use it as the outermost element for
 each of your application's main views.
 
 ### Template:
@@ -10,11 +10,11 @@ each of your application's main views.
 ```html
 <frame-page
   app-title="Hello World"
-  app-icon="school"
   app-fname="hey-world-fname"
+  page-title="Hello World"
+  app-icon="school"
   app-show-add-to-home="false"
   white-background="true">
-  <!-- includes app-header -->
   <!-- includes main-menu -->
   <!-- includes your content via ng-transclude -->
 </frame-page>
@@ -22,11 +22,12 @@ each of your application's main views.
 
 ### Params
 
-* **app-title**: The title that will be displayed in the app header
-* **app-icon**: The icon to use as a prefix to the app title. You can use Font Awesome (i.e. "fa-envelope") or Material Icons (i.e. "email").
-* **app-show-add-to-home**: If set to true, will include the add-to-home directive and its controller in the app header (used for apps that are part of the portal ecosystem).
+* **app-title**: Used to set the app title in the HTML `<title>` tag (e.g. `"MyUW | [app-title]"`)
 * **app-fname**: If provided, it will be used in the add-to-home feature. If not, it'll try to use NAMES.fname constant.
-* **white-background**: A boolean when set to true with give you a white background.
+* **page-title**: Generates an `<h1>` tag with the desired title. Using this will ensure all pages have a uniform appearance and accessible title.
+* **app-icon**: The icon to use as a prefix to the page title. You can use Font Awesome (i.e. "fa-envelope") or Material Icons (i.e. "email").
+* **app-show-add-to-home**: If set to true, will include the add-to-home directive and its controller in the app header (used for apps that are part of the portal ecosystem).
+* **white-background**: A boolean when set to true with give you a "white" background (rgb(250,250,250)).
 
 ## Main menu
 
