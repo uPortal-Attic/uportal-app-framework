@@ -23,32 +23,67 @@ define(['angular'], function(angular) {
 
   /* AddToHomeController */
     .controller('AddToHomeController', [
-      '$log', '$scope', '$timeout', 'PortalAddToHomeService',
-      function($log, $scope, $timeout, PortalAddToHomeService) {
-        $scope.addToHome = function() {
-          if (!$scope.inHome
-            && PortalAddToHomeService.canAddToHome($scope.fname)) {
-            $scope.savingAddToHome = true;
-            PortalAddToHomeService.addToHome($scope.fname).then(
-              function() {
-                // success
-                $scope.inHome = true;
-                $scope.successfullyAdded = true;
-                return true;
-              }).catch(function() {
-                // failed
-                $scope.addToHomeFailed = true;
+      '$log', '$scope', '$timeout', '$mdToast', 'PortalAddToHomeService',
+      function($log, $scope, $timeout, $mdToast, PortalAddToHomeService) {
+        var checkInHome = function(fname) {
+          PortalAddToHomeService.inHome(fname)
+            .then(function(data) {
+              $scope.inHome = data;
+
+              // If not in home, show toast to add it
+              if (!$scope.inHome) {
+                $timeout(function() {
+                  showAddToHomeToast();
+                }, 1500);
               }
-            );
-          }
+
+              return data;
+            }).catch(function() {
+              $log.warn('could not check inHome for ' + fname);
+            });
         };
 
-        var checkInHome = function(fname) {
-          PortalAddToHomeService.inHome(fname).then(function(data) {
-            $scope.inHome = data;
-            return data;
-          }).catch(function() {
-            $log.warn('could not check inHome for ' + fname);
+        var showAddToHomeToast = function() {
+          $mdToast.show({
+            position: 'top right',
+            hideDelay: false,
+            scope: $scope,
+            preserveScope: true,
+            parent: angular.element(document).find('div.add-to-home-parent')[0],
+            toastClass: 'my-uw',
+            templateUrl:
+              require.toUrl('portal/misc/partials/toast-add-to-home.html'),
+            controller: function ToastAddToHomeController(
+              $scope,
+              $mdToast,
+              PortalAddToHomeService
+            ) {
+              $scope.addToHome = function() {
+                if (!$scope.inHome
+                  && PortalAddToHomeService.canAddToHome($scope.fname)) {
+                  $scope.savingAddToHome = true;
+                  PortalAddToHomeService.addToHome($scope.fname).then(
+                    function() {
+                      // success
+                      $scope.inHome = true;
+                      $scope.successfullyAdded = true;
+                      $timeout(function() {
+                        $scope.dismissToast();
+                      }, 1000);
+                      return true;
+                    }).catch(function() {
+                      // failed
+                      $scope.addToHomeFailed = true;
+                    }
+                  );
+                }
+              };
+
+              $scope.dismissToast = function() {
+                $mdToast.hide();
+                PortalAddToHomeService.dismissForSession();
+              };
+            },
           });
         };
 
@@ -57,48 +92,24 @@ define(['angular'], function(angular) {
           $scope.inHome = true;
 
           if (PortalAddToHomeService.canAddToHome()) {
-            if ($scope.fname) {
-              // check if in home layout
-              checkInHome($scope.fname);
-            } else {
-              $scope.$watch('fname', function() {
-                // must be using 2 way binding, add a watch on the fname
-                if ($scope.fname) {
-                  checkInHome($scope.fname);
-                }
-              });
+            // Make sure user didn't already dismiss
+            // add to home toast
+            if (!PortalAddToHomeService.isDismissed()) {
+              if ($scope.fname) {
+                // Check if in home layout
+                checkInHome($scope.fname);
+              } else {
+                $scope.$watch('fname', function() {
+                  // Must be using 2 way binding, add a watch on the fname
+                  if ($scope.fname) {
+                    checkInHome($scope.fname);
+                  }
+                });
+              }
             }
           }
         };
 
         init();
-      }])
-
-    .controller('AppHeaderOptionsController',
-      ['APP_OPTIONS', 'NAMES', 'mainService', '$rootScope', '$document',
-      function(APP_OPTIONS, NAMES, mainService, $rootScope, $document) {
-        var vm = this;
-
-        // If an options template is specified, set scope variable
-        if (APP_OPTIONS.optionsTemplateURL) {
-          vm.optionsTemplate = require.toUrl(APP_OPTIONS.optionsTemplateURL);
-        }
-
-        vm.updateWindowTitle = function(pageTitle) {
-          var appTitle = NAMES.title;
-
-          var portalTitle = '';
-          if ($rootScope.portal && $rootScope.portal.theme &&
-                $rootScope.portal.theme.title) {
-            // there's an active theme with a title.
-            // consider that title the name of the portal
-            portalTitle = $rootScope.portal.theme.title;
-          }
-
-          var windowTitle =
-            mainService.computeWindowTitle(pageTitle, appTitle, portalTitle);
-
-          $document[0].title = windowTitle;
-        };
-    }]);
+      }]);
 });

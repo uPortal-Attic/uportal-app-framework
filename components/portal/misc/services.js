@@ -109,7 +109,7 @@ define(['angular', 'jquery'], function(angular, $) {
   })
 
   .factory('PortalAddToHomeService',
-  function($http, $log, filterFilter, NAMES, MISC_URLS) {
+  function($http, $log, $sessionStorage, filterFilter, NAMES, MISC_URLS) {
     var canAddToHome = function() {
       if (MISC_URLS.addToHomeURLS
         && MISC_URLS.addToHomeURLS.addToHomeActionURL) {
@@ -144,10 +144,20 @@ define(['angular', 'jquery'], function(angular, $) {
       );
     };
 
+    var dismissForSession = function() {
+      $sessionStorage.dismissedAddToHome = true;
+    };
+
+    var isDismissed = function() {
+      return $sessionStorage.dismissedAddToHome;
+    };
+
     return {
       canAddToHome: canAddToHome,
       inHome: inHome,
       addToHome: addToHome,
+      dismissForSession: dismissForSession,
+      isDismissed: isDismissed,
     };
   })
 
