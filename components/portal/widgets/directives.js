@@ -24,7 +24,7 @@ define(['angular', 'require'], function(angular, require) {
   /**
    * Just the widget card -- gets the widget type from scope
    */
-  .directive('widget', function() {
+  .directive('widget', ['miscService', function(miscService) {
     return {
       restrict: 'E',
       transclude: true,
@@ -33,13 +33,26 @@ define(['angular', 'require'], function(angular, require) {
       },
       templateUrl: require.toUrl('./partials/widget-card.html'),
       controller: 'WidgetCardController',
+      link: {
+        post: function(scope, element, attrs) {
+          element.on('click', function(event) {
+            var el = event.target;
+            while (el && (!el.tagName || el.tagName.toLowerCase() !== 'a')) {
+              el = el.parentNode;
+            }
+            if (el) {
+              miscService.pushGAEvent(attrs.fname, 'widget click', el.href);
+            }
+          });
+        },
+      },
     };
-  })
+  }])
 
   /**
    * Just the widget card -- gets the widget type from the scope
    */
-  .directive('compactWidget', function() {
+  .directive('compactWidget', ['miscService', function(miscService) {
     return {
       restrict: 'E',
       transclude: true,
@@ -48,8 +61,22 @@ define(['angular', 'require'], function(angular, require) {
       },
       templateUrl: require.toUrl('./partials/compact-widget-card.html'),
       controller: 'WidgetCardController',
+      link: {
+        post: function(scope, element, attrs) {
+          element.on('click', function(event) {
+            var el = event.target;
+            while (el && (!el.tagName || el.tagName.toLowerCase() !== 'a')) {
+              el = el.parentNode;
+            }
+            if (el) {
+              miscService.pushGAEvent(
+                attrs.fname, 'compact widget click', el.href);
+            }
+          });
+        },
+      },
     };
-  })
+  }])
 
   /**
    * Show an external message
