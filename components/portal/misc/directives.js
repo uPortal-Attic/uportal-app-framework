@@ -136,66 +136,15 @@ define(['angular', 'require'], function(angular, require) {
       })
 
     /**
-     * Directive to render the div with the "app-header" class.
-     * Supports 3 attributes:
-     *
-     * <ol>
-     * <li>app-title: displayed in an h1 child element
-     *    and reflected in window title</li>
-     * <li>app-icon: the font awesome icon you want (e.g.: fa-google) </li>
-     * <li>app-action-link-*;
-     *    url: the url you want, if not set action link hides.
-     *    icon: the icon you want for action, default fa-plus.
-     *    text: the text, default "add to home".</li>
-     * <li>app-add-to-home: Replaces action link url
-     *    with a function call to add to portal home</li>
-     * <li>app-option-template :
-     *    The name of the template you want your option drop
-     *    down to use. if not set, option drop down hidden.</li>
-     * <li>app-fname :
-     *    The functional name of the application,
-     *    if not provided it'll use NAMES.fname</li>
-
-     * </ol>
-     *
-     *  Side effect: updates window title to reflect app-title.
-     *
-     * See ./partials/app-header.html.
-     */
-    .directive('appHeader', function() {
-      return {
-        restrict: 'E',
-        scope: {
-          title: '@appTitle',
-          icon: '@appIcon',
-          fname: '@appFname',
-          showAddToHome: '@appShowAddToHome',
-        },
-        templateUrl: require.toUrl('./partials/app-header.html'),
-      };
-    })
-
-    .directive('appHeaderTwoWayBind', function() {
-      return {
-        restrict: 'E',
-        scope: {
-          title: '=appTitle',
-          icon: '=appIcon',
-          fname: '=appFname',
-          showAddToHome: '=appShowAddToHome',
-        },
-        templateUrl: require.toUrl('./partials/app-header.html'),
-      };
-    })
-
-    /**
-    <frame-page> is a directive that is your typical page. Header, body.
-    The header items are routed to the <app-header> (see above)
-    The body of the tag is then the body of the application
+    <frame-page> generates your typical page. It houses
+     side navigation and the body content, as well as optionally
+     setting the document title, page heading, and icon.
     Optional: whiteBackground :
       Adds in classes that do a white background with a border
     */
-    .directive('framePage', ['APP_OPTIONS', function(APP_OPTIONS) {
+    .directive('framePage', ['$rootScope', '$document', 'mainService',
+      'APP_OPTIONS', 'NAMES', function($rootScope, $document, mainService,
+                                       APP_OPTIONS, NAMES) {
       return {
           restrict: 'E',
           templateUrl: require.toUrl('./partials/frame-page.html'),
@@ -204,12 +153,32 @@ define(['angular', 'require'], function(angular, require) {
             appTitle: '@appTitle',
             appIcon: '@appIcon',
             appFname: '=appFname',
+            pageTitle: '@pageTitle',
             appShowAddToHome: '=appShowAddToHome',
             whiteBackground: '=',
           },
           link: function(scope) {
             if (APP_OPTIONS) {
               scope.menuPushContent = APP_OPTIONS.enablePushContentMenu;
+            }
+
+            var updateDocumentTitle = function(pageTitle) {
+              var portalTitle = '';
+              var appTitle = scope.appTitle ? scope.appTitle : NAMES.title;
+
+              if ($rootScope.portal && $rootScope.portal.theme &&
+                $rootScope.portal.theme.title) {
+                // there's an active theme with a title.
+                // consider that title the name of the portal
+                portalTitle = $rootScope.portal.theme.title;
+              }
+
+              $document[0].title =
+                mainService.computeWindowTitle(pageTitle, appTitle, portalTitle);
+            };
+
+            if (scope.pageTitle) {
+              updateDocumentTitle(scope.pageTitle)
             }
           },
       };
