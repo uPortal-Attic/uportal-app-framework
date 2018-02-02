@@ -25,7 +25,7 @@ portal-header {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
 
   a {
-    &:not(.md-button):not(.btn):not(.launch-app-button):not(.full-width) {
+    &:not(.md-button):not(.btn):not(.launch-app-button):not(.full-width):not(.title-link__small) {
       &:hover,
       &:focus,
       &:active {
@@ -54,6 +54,29 @@ portal-header {
         margin-left: 16px;
       }
 
+      .title-link__two-lines {
+        a.title-link__small {
+          margin-left: 16px;
+          font-size: 14px;
+          font-weight: 600;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        h1 {
+          margin-left: 16px;
+          font-size: 18px;
+          white-space: nowrap;
+          z-index: @top-bar-3;
+
+          &:hover {
+            cursor: default;
+          }
+        }
+      }
+
       .menu-toggle.md-button.menu-margin {
         min-width: 48px;
         margin: 0;
@@ -61,6 +84,15 @@ portal-header {
         ~ .title-link h1 {
           @media (min-width: @xs) {
             margin-left: 0;
+          }
+        }
+
+        ~ .title-link__two-lines {
+          @media (min-width: @xs) {
+            h1,
+            a.title-link__small {
+              margin-left: 0;
+            }
           }
         }
       }
@@ -73,6 +105,11 @@ portal-header {
         .md-icon-button {
           margin-right: 0;
         }
+      }
+
+      .header__search-bar-container {
+        height: 100%;
+        z-index: @top-bar-2;
       }
 
       @media (max-width: @xs) {
