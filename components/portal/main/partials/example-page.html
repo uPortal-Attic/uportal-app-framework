@@ -18,147 +18,33 @@
     under the License.
 
 -->
-<frame-page app-title="Frame app"
-            app-icon="widgets"
-            app-show-add-to-home="true"
-            app-fname="example-page-fname"
-            app-has-page-level-sidenav="true"
+<frame-page app-fname="example-page-fname"
             white-background="false">
   <style>
-    md-card {
-      height: 170px;
-      width: 180px;
-      background-color: #f3f3f3;
+    .widget-container {
+      max-width: 310px;
+      width: 290px;
+      margin: 4px 8px;
     }
   </style>
-  <div style="max-width:820px;margin:0 auto;" layout-padding>
-    <p layout="row" layout-align="center center">This is just the default example page. Below are easy access links so you don't have to type the specific page you are working on.</p>
-
-    <md-grid-list md-cols-gt-sm="4" md-cols="1" md-cols-sm="3"
-                  md-row-height="180px"
-                  md-gutter-gt-sm="12px" md-gutter-sm="8px" md-gutter="4px">
-
-      <md-grid-tile>
-        <a href="settings">
-          <md-card layout="column" layout-align="start center">
-            <md-card-header>
-              <md-card-header-text>
-                <span class="md-title">Beta Settings</span>
-              </md-card-header-text>
-            </md-card-header>
-            <md-card-content layout="column" layout-align="center center">
-              <md-icon class='md-48 md-accent'>settings_applications</md-icon>
-            </md-card-content>
-          </md-card>
-        </a>
-      </md-grid-tile>
-
-      <md-grid-tile>
-        <a href="user-settings">
-          <md-card layout="column" layout-align="start center">
-            <md-card-header>
-              <md-card-header-text>
-                <span class="md-title">User Settings</span>
-              </md-card-header-text>
-            </md-card-header>
-            <md-card-content  layout="column" layout-align="center center">
-              <md-icon class='md-48 md-accent'>settings_applications</md-icon>
-            </md-card-content>
-          </md-card>
-        </a>
-      </md-grid-tile>
-
-      <md-grid-tile>
-        <a href="notifications">
-          <md-card layout="column" layout-align="start center">
-            <md-card-header>
-              <md-card-header-text>
-                <span class="md-title">Notifications</span>
-              </md-card-header-text>
-            </md-card-header>
-            <md-card-content>
-              <md-icon class="md-48 md-accent">add_alert</md-icon>
-            </md-card-content>
-          </md-card>
-        </a>
-      </md-grid-tile>
-
-      <md-grid-tile>
-        <a href="server-error">
-          <md-card layout="column" layout-align="start center">
-            <md-card-header>
-              <md-card-header-text>
-                <span class="md-title">Server Error</span>
-              </md-card-header-text>
-            </md-card-header>
-            <md-card-content>
-              <md-icon class="md-48 md-accent">warning</md-icon>
-            </md-card-content>
-          </md-card>
-        </a>
-      </md-grid-tile>
-
-      <md-grid-tile>
-        <a href="access-denied">
-          <md-card layout="column" layout-align="start center">
-            <md-card-header>
-              <md-card-header-text>
-                <span class="md-title">Access Denied</span>
-              </md-card-header-text>
-            </md-card-header>
-            <md-card-content>
-              <md-icon class="md-48 md-accent">warning</md-icon>
-            </md-card-content>
-          </md-card>
-        </a>
-      </md-grid-tile>
-
-      <md-grid-tile>
-        <a href="features">
-          <md-card layout="column" layout-align="start center">
-            <md-card-header>
-              <md-card-header-text>
-                <span class="md-title">Features</span>
-              </md-card-header-text>
-            </md-card-header>
-            <md-card-content>
-              <md-icon class="md-48 md-accent">library_books</md-icon>
-            </md-card-content>
-          </md-card>
-        </a>
-      </md-grid-tile>
-
-      <md-grid-tile>
-        <a href="broken-link">
-          <md-card layout="column" layout-align="start center">
-            <md-card-header>
-              <md-card-header-text>
-                <span class="md-title">404 page</span>
-              </md-card-header-text>
-            </md-card-header>
-            <md-card-content>
-              <md-icon class='md-48 md-accent'>block</md-icon>
-            </md-card-content>
-          </md-card>
-        </a>
-      </md-grid-tile>
-
-      <md-grid-tile>
-        <a href="demo-widgets">
-          <md-card layout="column" layout-align="start center">
-            <md-card-header>
-              <md-card-header-text>
-                <span class="md-title">Demo widgets</span>
-              </md-card-header-text>
-            </md-card-header>
-            <md-card-content>
-              <md-icon class='md-48 md-accent'>settings_applications</md-icon>
-            </md-card-content>
-          </md-card>
-        </a>
-      </md-grid-tile>
-
-    </md-grid-list>
-
-  </div>
+  <div layout="row" layout-align="center start" style="flex-wrap:wrap;padding:18px;">
+      <div flex-xs="100" class="widget-container">
+        <widget fname="sample-widget__benefits"></widget>
+      </div>
+      <div flex-xs="100" class="widget-container">
+        <widget fname="sample-widget__custom"></widget>
+      </div>
+      <div flex-xs="100" class="widget-container">
+        <widget fname="sample-widget__rss"></widget>
+      </div>
+      <div flex-xs="100" class="widget-container">
+        <widget fname="sample-widget__list-of-links"></widget>
+      </div>
+      <div flex-xs="100" class="widget-container">
+        <widget fname="sample-widget__search-with-links"></widget>
+      </div>
+      <div flex-xs="100" class="widget-container">
+        <widget fname="sample-widget__basic"></widget>
+      </div>
+    </div>
 </frame-page>

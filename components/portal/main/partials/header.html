@@ -36,7 +36,9 @@
       </md-button>
 
       <!-- MyUW APP ICON AND TITLE -->
-      <a ng-href="{{ MISC_URLS.rootURL }}"
+      <!-- If in theme home -->
+      <a ng-if="portal.theme.title === NAMES.title"
+         ng-href="{{ MISC_URLS.rootURL }}"
          class="title-link"
          target="_self"
          aria-label="{{ portal.theme.ariaLabelTitle }}"
@@ -46,6 +48,14 @@
           <span>{{ portal.theme.title }}</span>
         </h1>
       </a>
+
+      <!-- If in separate app -->
+      <div ng-if="portal.theme.title != NAMES.title" layout="column" class="title-link__two-lines">
+        <a class="title-link__small" ng-href="{{ MISC_URLS.rootURL }}" target="_self" aria-label="{{ portal.theme.ariaLabelTitle }}">
+          MyUW
+        </a>
+        <h1 class="md-title">{{ NAMES.title }}</h1>
+      </div>
     </div>
 
     <!-- SEARCH BUTTON (XS-ONLY) -->
@@ -54,7 +64,7 @@
     </div>
 
     <!-- SEARCH BAR (SM+) -->
-    <div layout="row" flex-gt-xs="40" layout-align="center center" hide-xs>
+    <div class="header__search-bar-container" md-colors="{ backgroundColor: '{{portal.theme.name}}-primary' }" layout="row" flex-gt-xs="40" layout-align="center center" hide-xs>
       <search ng-show="APP_FLAGS.showSearch"></search>
     </div>
     <span flex></span>

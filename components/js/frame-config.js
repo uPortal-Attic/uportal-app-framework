@@ -38,7 +38,7 @@ define(['angular'], function(angular) {
               'primary': 'blue',
               'accent': 'grey',
               'warn': 'red',
-             },
+            },
           },
           {
             'name': 'uwMadison',
