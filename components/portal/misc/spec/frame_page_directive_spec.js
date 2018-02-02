@@ -17,6 +17,7 @@
  * under the License.
  */
 'use strict';
+/* eslint-disable */
 /* eslint-env node */
 /* global inject */
 define(['angular-mocks', 'portal'], function() {

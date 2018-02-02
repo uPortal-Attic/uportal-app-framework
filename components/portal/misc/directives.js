@@ -174,11 +174,13 @@ define(['angular', 'require'], function(angular, require) {
               }
 
               $document[0].title =
-                mainService.computeWindowTitle(pageTitle, appTitle, portalTitle);
+                mainService.computeWindowTitle(
+                  pageTitle, appTitle, portalTitle
+                );
             };
 
             if (scope.pageTitle) {
-              updateDocumentTitle(scope.pageTitle)
+              updateDocumentTitle(scope.pageTitle);
             }
           },
       };

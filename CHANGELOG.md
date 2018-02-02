@@ -8,10 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Breaking changes
 
-+ Removed `<app-header>` directive. This affects any framework apps using that directive outside of `<frame-page>`. If you 
++   Removed `<app-header>` directive. This affects any framework apps using that directive outside of `<frame-page>`. If you 
 are already using `<frame-page>`, you should get the new treatment without breakage. (#684)
 
-+ With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL` config has been deprecated. If you're currently using this config to set 
++   With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL` config has been deprecated. If you're currently using this config to set 
 a path to app options, your options will be displayed in the side navigation menu. This may require minor layout/appearance adjustments. (#684)
 
 ### Added
