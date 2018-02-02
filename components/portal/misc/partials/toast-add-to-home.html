@@ -1,0 +1,40 @@
+<!--
+
+    Licensed to Apereo under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Apereo licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License.  You may obtain a
+    copy of the License at the following location:
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<md-toast>
+  <div class="md-toast-content">
+    <span class="md-toast-text" flex>Add to home?</span>
+    <div layout="row">
+      <md-button ng-click="addToHome()"
+                 class="md-raised md-accent">
+        <span ng-if="!successfullyAdded && !addToHomeFailed && !savingAddToHome"><md-icon>add</md-icon> Add</span>
+        <span ng-if="!successfullyAdded && !addToHomeFailed && savingAddToHome" ng-disabled="true">
+        <i class="fa fa-fw fa-spin fa-circle-o-notch" ng-show="savingAddToHome"></i>
+      </span>
+        <span ng-if="successfullyAdded" ng-disabled="true"><md-icon>check</md-icon> Added to home</span>
+        <span ng-if="addToHomeFailed" ng-disabled="true"><md-icon>error</md-icon> Add to home failed</span>
+      </md-button>
+      <md-button ng-click="dismissToast()">
+        <md-icon>close</md-icon>
+      </md-button>
+    </div>
+  </div>
+</md-toast>
+
