@@ -136,8 +136,9 @@ define(['angular', 'require'], function(angular, require) {
       })
 
     /**
-    <frame-page> is a directive that is your typical page. It houses
-     side navigation and the body content.
+    <frame-page> generates your typical page. It houses
+     side navigation and the body content, as well as optionally
+     setting the document title, page heading, and icon.
     Optional: whiteBackground :
       Adds in classes that do a white background with a border
     */

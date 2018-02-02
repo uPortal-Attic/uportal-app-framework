@@ -26,7 +26,7 @@ each of your application's main views.
 * **app-fname**: If provided, it will be used in the add-to-home feature. If not, it'll try to use NAMES.fname constant.
 * **page-title**: Generates an `<h1>` tag with the desired title. Using this will ensure all pages have a uniform appearance and accessible title.
 * **app-icon**: The icon to use as a prefix to the page title. You can use Font Awesome (i.e. "fa-envelope") or Material Icons (i.e. "email").
-* **app-show-add-to-home**: If set to true, will include the add-to-home directive and its controller in the app header (used for apps that are part of the portal ecosystem).
+* **app-show-add-to-home**: If set to true, will include the add-to-home toast message in the page (used for apps that are part of the portal ecosystem).
 * **white-background**: A boolean when set to true with give you a "white" background (rgb(250,250,250)).
 
 ### Side effects

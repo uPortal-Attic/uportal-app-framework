@@ -39,7 +39,11 @@ define(['angular', 'require'], function(angular, require) {
      * sets the document title to that value.
      * @param {string} [pageTitle] - Name of specific page viewed.
      */
+<<<<<<< HEAD
     function updateTitle(pageTitle) {
+=======
+    function updateWindowTitle(pageTitle) {
+>>>>>>> 675c2cb644c7fee2a4a8755a75bb2f1cf78512ff
       var appTitle = NAMES.title;
 
       var portalTitle = '';
@@ -67,13 +71,13 @@ define(['angular', 'require'], function(angular, require) {
       $scope.APP_OPTIONS = APP_OPTIONS;
 
       if (NAMES.title) {
-        updateTitle();
+        updateWindowTitle();
       }
       // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
       // eslint-disable-next-line angular/on-watch
       $rootScope.$watch('portal.theme', function(newValue, oldValue) {
         if (newValue && newValue !== oldValue) {
-          updateTitle();
+          updateWindowTitle();
         }
       });
 

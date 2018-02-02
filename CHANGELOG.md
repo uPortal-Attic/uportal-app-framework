@@ -8,14 +8,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Breaking changes
 
++ Removed `<app-header>` directive. This affects any framework apps using that directive outside of `<frame-page>`. If you 
+are already using `<frame-page>`, you should get the new treatment without breakage. (#682)
+
++ With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL` config has been deprecated. If you're currently using this config to set 
+a path to app options, your options will be displayed in the side navigation menu. This may require minor layout/appearance adjustments. (#682)
+
 ### Added
 
 + `mainService` now offers `computeWindowTitle(...)` (#679)
-+ `AppHeaderOptionsController` now offers `updateTitle(...)` (#679)
++ `<frame-page>` directive now offers `page-title` attribute to add a `<h1>` tag with the app icon and title to the page (#682) 
 
 ### Changed
 
-+ `app-header` (and so, `frame-page`) now set Document title (#679)
++ `<frame-page>` existing `app-title` attribute now used to set document title (#682)
++ The `show-add-to-home` attribute on the `<frame-page>` directive now displays a dismissible-for-session toast message prompting users to add the app to their home page, instead of a button. (#682)
 
 ### Fixed
 
@@ -27,7 +34,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Breaking Changes
 
-Moves the data object in messages out of the audience object and into a separate
++ Moves the data object in messages out of the audience object and into a separate
 object.  This will affect installations that have configured a messages.json
 file. (#649)
 
