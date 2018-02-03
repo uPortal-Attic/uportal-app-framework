@@ -23,6 +23,7 @@
     <span class="md-toast-text" flex>Add to home?</span>
     <div layout="row">
       <md-button ng-click="addToHome()"
+                 aria-label="Add this app to home"
                  class="md-raised md-accent">
         <span ng-if="!successfullyAdded && !addToHomeFailed && !savingAddToHome"><md-icon>add</md-icon> Add</span>
         <span ng-if="!successfullyAdded && !addToHomeFailed && savingAddToHome" ng-disabled="true">
@@ -31,7 +32,7 @@
         <span ng-if="successfullyAdded" ng-disabled="true"><md-icon>check</md-icon> Added to home</span>
         <span ng-if="addToHomeFailed" ng-disabled="true"><md-icon>error</md-icon> Add to home failed</span>
       </md-button>
-      <md-button ng-click="dismissToast()">
+      <md-button ng-click="dismissToast()" aria-label="not right now">
         <md-icon>close</md-icon>
       </md-button>
     </div>
