@@ -21,12 +21,16 @@ This may require minor layout/appearance adjustments in the template. (#684)
 ### Added
 
 + `mainService` now offers `computeWindowTitle(...)` (#679)
-+ `<frame-page>` directive now offers `page-title` attribute to add a `<h1>` tag with the app icon and title to the page (#684)
++ `<frame-page>` directive now offers `page-title` attribute to add a `<h1>`
+tag with the app icon and title to the page (#684)
 
 ### Changed
 
-+ `<frame-page>` existing `app-title` attribute now used to set document title (#682)
-+ The `show-add-to-home` attribute on the `<frame-page>` directive now displays a dismissible-for-session toast message prompting users to add the app to their home page, instead of a button. (#684)
++ `<frame-page>` existing `app-title` attribute now used to set document title
+(#682)
++ The `show-add-to-home` attribute on the `<frame-page>` directive now displays
+a dismissible-for-session toast message prompting users to add the app to their
+home page, instead of a button. (#684)
 
 ### Fixed
 
