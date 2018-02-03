@@ -2,15 +2,21 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic
+Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
 ### Breaking changes
 
-+   Removed `<app-header>` directive. This affects any framework apps using that directive outside of `<frame-page>`. `<frame-page>` usages should be unaffected. (#684)
++   Removed `<app-header>` directive. This affects any framework apps using
+that directive outside of `<frame-page>`. `<frame-page>` usages should be
+unaffected. (#684)
 
-+   With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL` config has been deprecated. Apps using an `optionsTemplateURL` will display the template in the side navigation menu. This may require minor layout/appearance adjustments in the template. (#684)
++   With the removal of the `<app-header>`, the
+`APP_OPTIONS.optionsTemplateURL` config has been deprecated. Apps using an
+`optionsTemplateURL` will display the template in the side navigation menu.
+This may require minor layout/appearance adjustments in the template. (#684)
 
 ### Added
 
