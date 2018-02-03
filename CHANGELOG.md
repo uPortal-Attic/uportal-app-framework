@@ -32,8 +32,6 @@ This may require minor layout/appearance adjustments in the template. (#684)
 
 + Label widget cover dismiss button as "OK" rather than "Continue" (#675)
 
-### Removed
-
 ## [8.0.0][] - 2018-01-08
 
 ### Breaking Changes
