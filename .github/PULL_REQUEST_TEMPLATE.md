@@ -2,10 +2,11 @@
 
 ----
 
-Contributor License Agreement adherence:
+PR considerations checklist:
 
 <!-- Place an x in the checkbox for YES. -->
 
+- [ ] Updates `CHANGELOG.md` to reflect this PR's change.
 - [ ] This Contribution is under the terms of Individual [Contributor License Agreements][] (and also Corporate Contributor License Agreements to the extent applicable) appearing in the [Apereo CLA roster][].
 
 [Apereo CLA roster]: http://licensing.apereo.org/completed-clas
