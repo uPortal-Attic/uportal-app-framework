@@ -2,33 +2,39 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic
+Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
 ### Breaking changes
 
-+   Removed `<app-header>` directive. This affects any framework apps using that directive outside of `<frame-page>`. If you 
-are already using `<frame-page>`, you should get the new treatment without breakage. (#684)
++   Removed `<app-header>` directive. This affects any framework apps using
+that directive outside of `<frame-page>`. `<frame-page>` usages should be
+unaffected. (#684)
 
-+   With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL` config has been deprecated. If you're currently using this config to set 
-a path to app options, your options will be displayed in the side navigation menu. This may require minor layout/appearance adjustments. (#684)
++   With the removal of the `<app-header>`, the
+`APP_OPTIONS.optionsTemplateURL` config has been deprecated. Apps using an
+`optionsTemplateURL` will display the template in the side navigation menu.
+This may require minor layout/appearance adjustments in the template. (#684)
 
 ### Added
 
 + `mainService` now offers `computeWindowTitle(...)` (#679)
-+ `<frame-page>` directive now offers `page-title` attribute to add a `<h1>` tag with the app icon and title to the page (#684) 
++ `<frame-page>` directive now offers `page-title` attribute to add a `<h1>`
+tag with the app icon and title to the page (#684)
 
 ### Changed
 
-+ `<frame-page>` existing `app-title` attribute now used to set document title (#682)
-+ The `show-add-to-home` attribute on the `<frame-page>` directive now displays a dismissible-for-session toast message prompting users to add the app to their home page, instead of a button. (#684)
++ `<frame-page>` existing `app-title` attribute now used to set document title
+(#682)
++ The `show-add-to-home` attribute on the `<frame-page>` directive now displays
+a dismissible-for-session toast message prompting users to add the app to their
+home page, instead of a button. (#684)
 
 ### Fixed
 
 + Label widget cover dismiss button as "OK" rather than "Continue" (#675)
-
-### Removed
 
 ## [8.0.0][] - 2018-01-08
 
