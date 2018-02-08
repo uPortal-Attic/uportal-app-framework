@@ -132,7 +132,7 @@ define(['angular'], function(angular) {
           $scope.messages = {};
 
           mainService.isGuest().then(function(isGuest) {
-            if (!isGuest && SERVICE_LOC.messagesURL) {
+            if (!isGuest && SERVICE_LOC.messagesURL.length > 0) {
               $scope.showMessagesFeatures = true;
               getMessages();
             }
@@ -176,7 +176,6 @@ define(['angular'], function(angular) {
         vm.status = 'View notifications';
         vm.isLoading = true;
         vm.renderLimit = 3;
-        vm.showMessagesFeatures = true;
         vm.titleLengthLimit = 140;
 
         // //////////////////
@@ -227,6 +226,7 @@ define(['angular'], function(angular) {
         var configureNotificationsScope = function() {
           if ($scope.$parent.messages.notifications) {
             allNotifications = $scope.$parent.messages.notifications;
+            vm.showMessagesFeatures = true;
             // Get seen message IDs, then configure scope
             $q.all(promiseSeenMessageIds)
               .then(getSeenMessageIdsSuccess)
