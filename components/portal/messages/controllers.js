@@ -438,8 +438,8 @@ define(['angular'], function(angular) {
 
     .controller('AnnouncementsController', ['$q', '$log', '$filter',
       '$sessionStorage', '$scope', '$rootScope', '$document', '$sanitize',
-      '$mdDialog', 'miscService',
-      'messagesService', 'PortalAddToHomeService', 'MISC_URLS', '$window',
+      '$mdDialog', 'miscService', 'messagesService', 
+      'PortalAddToHomeService', 'MISC_URLS', '$window',
       function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
                $document, $sanitize, $mdDialog, miscService,
                messagesService, PortalAddToHomeService, MISC_URLS, $window) {
@@ -689,7 +689,11 @@ define(['angular'], function(angular) {
             actionButton.label = 'On your home';
             actionButton.disabled = true;
           } else {
-            $window.open(actionButton.url, '_blank');
+            var target = '_self';
+            if (actionButton.url && actionButton.url.indexOf('//') > -1) {
+              target = '_blank';
+            }
+            $window.open(actionButton.url, target);
           }
         };
 
