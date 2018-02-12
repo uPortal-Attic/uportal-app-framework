@@ -438,7 +438,7 @@ define(['angular'], function(angular) {
 
     .controller('AnnouncementsController', ['$q', '$log', '$filter',
       '$sessionStorage', '$scope', '$rootScope', '$document', '$sanitize',
-      '$mdDialog', 'miscService', 'messagesService', 
+      '$mdDialog', 'miscService', 'messagesService',
       'PortalAddToHomeService', 'MISC_URLS', '$window',
       function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
                $document, $sanitize, $mdDialog, miscService,
@@ -693,7 +693,7 @@ define(['angular'], function(angular) {
             if (actionButton.url && actionButton.url.indexOf('//') > -1) {
               target = '_blank';
             }
-            $window.open(actionButton.url, target);
+            $window.open(actionButton.url, target, 'rel="noopener noreferrer"');
           }
         };
 
