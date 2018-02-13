@@ -5,6 +5,9 @@
 Frame page should be used for all pages in a uportal-app-framework application. It comes with much of the rest of the framework's skeleton and CSS layout styles built in, including main-menu directives. You should use it as the outermost element for
 each of your application's main views.
 
+`<frame-page>` automatically includes a div with the `skip-to-here` id,
+targeted by the "Skip to main content" link included in the body template.
+
 ### Template:
 
 ```html
