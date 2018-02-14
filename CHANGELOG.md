@@ -37,6 +37,8 @@ logically appropriate spot (#694)
 
 ### Fixed
 
++ "Skip to main content" link now skips more repeated navigation to reach
+closer to the main content.
 + Label widget cover dismiss button as "OK" rather than "Continue" (#675)
 
 ## [8.0.0][] - 2018-01-08

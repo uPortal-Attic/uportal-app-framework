@@ -29,9 +29,13 @@
       </h1>
       <add-to-home ng-if="appShowAddToHome"></add-to-home>
     </div>
-    <div class="content-wrapper__push-content" ng-if="menuPushContent">
+
+    <span id="skip-to-here"></span>
+    <div class="content-wrapper__push-content"
+      ng-if="menuPushContent">
       <ng-transclude></ng-transclude>
     </div>
     <ng-transclude ng-if="!menuPushContent"></ng-transclude>
+
   </div>
 </div>
