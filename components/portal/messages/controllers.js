@@ -438,11 +438,11 @@ define(['angular'], function(angular) {
 
     .controller('AnnouncementsController', ['$q', '$log', '$filter',
       '$sessionStorage', '$scope', '$rootScope', '$document', '$sanitize',
-      '$mdDialog', 'miscService',
-      'messagesService', 'PortalAddToHomeService', 'MISC_URLS',
+      '$mdDialog', 'miscService', 'messagesService',
+      'PortalAddToHomeService', 'MISC_URLS', '$window',
       function($q, $log, $filter, $sessionStorage, $scope, $rootScope,
                $document, $sanitize, $mdDialog, miscService,
-               messagesService, PortalAddToHomeService, MISC_URLS) {
+               messagesService, PortalAddToHomeService, MISC_URLS, $window) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -688,6 +688,12 @@ define(['angular'], function(angular) {
             $rootScope.addPortletToHome(fName);
             actionButton.label = 'On your home';
             actionButton.disabled = true;
+          } else {
+            var target = '_self';
+            if (actionButton.url && actionButton.url.indexOf('//') > -1) {
+              target = '_blank';
+            }
+            $window.open(actionButton.url, target, 'rel="noopener noreferrer"');
           }
         };
 
