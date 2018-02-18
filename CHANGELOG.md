@@ -33,9 +33,12 @@ a dismissible-for-session toast message prompting users to add the app to their
 home page, instead of a button. (#684)
 + `vm.showMessagesFeatures` variable moved out of default and into more 
 logically appropriate spot (#694)
++ External links in mascot announcements now work again. (#697)
 
 ### Fixed
 
++ "Skip to main content" link now skips more repeated navigation to reach
+closer to the main content.
 + Label widget cover dismiss button as "OK" rather than "Continue" (#675)
 
 ## [8.0.0][] - 2018-01-08
