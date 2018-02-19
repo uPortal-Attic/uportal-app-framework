@@ -44,9 +44,9 @@ closer to the main content.
 
 ### Breaking Changes
 
-+ Moves the data object in messages out of the audience object and into a separate
-object.  This will affect installations that have configured a messages.json
-file. (#649)
++ Moves the data object in messages out of the audience object and into a
+separate object.  This will affect installations that have configured a
+messages.json file. (#649)
 
 ### Added
 
@@ -85,10 +85,12 @@ Updates to the side navigation feature in this release introduce a hard
 dependency on the `<frame-page>` directive for unbroken menu experience (#588).
 
 **If upgrading from 6.1.0**
-and the application already configures side navigation (by setting values for either
-`appMenuTemplateURL` or `appMenuItems` in `override.js`), every main
+and the application already configures side navigation (by setting values for
+either `appMenuTemplateURL` or `appMenuItems` in `override.js`), every main
 view in the app must use the `<frame-page>` directive as its outermost container
-element. Applications that have not previously configured side navigation and do not begin using side navigation with this upgrade should not be affected by this change.
+element. Applications that have not previously configured side navigation and
+do not begin using side navigation with this upgrade should not be affected by
+this change.
 
 There are also CSS changes to the layout container elements that precede the
 `<ng-view>` element (where the app's on-page content is pulled in) to prefer a
