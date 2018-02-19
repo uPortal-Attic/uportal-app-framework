@@ -50,8 +50,6 @@ messages.json file. (#649)
 
 ### Added
 
-+ add documentation stating intent to use Conventional commits and tips on how
-to comply (#634)
 + track clicks on sidenav footer links (#642)
 + add documentation clarifying major upgrades (#647)
 + add the ability to set message title via an external data source (#649)
@@ -60,13 +58,7 @@ source (#649)
 
 ### Changed
 
-+ leverage commitlint travis helper (#621)
-+ update to latest version (6.0.0) of lint-staged (#631)
 + update documentation to read more and state intent more clearly (#632)
-+ move some git commit hooks to be optionally installed (#635)
-+ suppress `eslint` on `docs/` when linting staged changes (#636)
-+ require npm 5.6.0 or higher (#644)
-+ resolved appveyor require.js flakiness (#645)
 + update to latest version (2.0) of karma (#652)
 
 ### Fixed
@@ -76,6 +68,17 @@ source (#649)
 + allow priority notification buttons to display full button text (#640)
 + catch localStorage error with IE (#643)
 + implemented filter messages by date (#650)
+
+### Build engineering
+
++ add documentation stating intent to use Conventional commits and tips on how
+to comply (#634)
++ leverage commitlint travis helper (#621)
++ update to latest version (6.0.0) of lint-staged (#631)
++ move some git commit hooks to be optionally installed (#635)
++ suppress `eslint` on `docs/` when linting staged changes (#636)
++ require npm 5.6.0 or higher (#644)
++ resolved appveyor require.js flakiness (#645)
 
 ## [7.0.0][] - 2017-11-30
 
