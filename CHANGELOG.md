@@ -30,7 +30,7 @@ tag with the app icon and title to the page (#684)
 + The `show-add-to-home` attribute on the `<frame-page>` directive now displays
 a dismissible-for-session toast message prompting users to add the app to their
 home page, instead of a button. (#684)
-+ `vm.showMessagesFeatures` variable moved out of default and into more 
++ `vm.showMessagesFeatures` variable moved out of default and into more
 logically appropriate spot (#694)
 
 ### Fixed
@@ -39,6 +39,10 @@ logically appropriate spot (#694)
 + "Skip to main content" link now skips more repeated navigation to reach
 closer to the main content.
 + Label widget cover dismiss button as "OK" rather than "Continue" (#675)
+
+### Build engineering
+
+* Update package lockfile with updated dependencies (#704)
 
 ## [8.0.0][] - 2018-01-08
 
