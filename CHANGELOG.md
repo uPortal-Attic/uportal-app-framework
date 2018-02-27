@@ -37,7 +37,7 @@ logically appropriate spot (#694)
 
 + External links in mascot announcements now work again. (#697)
 + "Skip to main content" link now skips more repeated navigation to reach
-closer to the main content.
+closer to the main content. (#698) (#705)
 + Label widget cover dismiss button as "OK" rather than "Continue" (#675)
 
 ### Build engineering

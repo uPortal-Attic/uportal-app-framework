@@ -123,5 +123,20 @@ define(['angular'], function(angular) {
         };
 
         init();
-      }]);
+      }])
+
+  .controller('SkipToContentController',
+   ['$scope', '$location', '$anchorScroll', '$document',
+   function($scope, $location, $anchorScroll, $document) {
+     /**
+      * Sets URL hash, scrolls, and sets focus to specified element by id
+      * @throws {TypeError} when null argument or when element referenced by
+      * id does not exist
+      */
+     $scope.skipToHere = function(htmlElemementId) {
+       $location.hash(htmlElemementId);
+       $anchorScroll();
+       $document[0].getElementById(htmlElemementId).focus();
+     };
+  }]);
 });
