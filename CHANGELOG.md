@@ -32,6 +32,7 @@ a dismissible-for-session toast message prompting users to add the app to their
 home page, instead of a button. (#684)
 + `vm.showMessagesFeatures` variable moved out of default and into more
 logically appropriate spot (#694)
++ Improved appearance of add-to-home toast message (#706)
 
 ### Fixed
 
