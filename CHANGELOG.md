@@ -26,33 +26,35 @@ tag with the app icon and title to the page (#684)
 
 ### Changed
 
-+ `<frame-page>` existing `app-title` attribute now used to set document title
-(#682)
++ `<frame-page>` sets document title per existing `app-title` attribute (#682)
 + The `show-add-to-home` attribute on the `<frame-page>` directive now displays
 a dismissible-for-session toast message prompting users to add the app to their
 home page, instead of a button. (#684)
-+ `vm.showMessagesFeatures` variable moved out of default and into more 
++ `vm.showMessagesFeatures` variable moved out of default and into more
 logically appropriate spot (#694)
-+ External links in mascot announcements now work again. (#697)
++ Improved appearance of add-to-home toast message (#706)
 
 ### Fixed
 
++ External links in mascot announcements now work again. (#697)
 + "Skip to main content" link now skips more repeated navigation to reach
-closer to the main content.
+closer to the main content. (#698) (#705)
 + Label widget cover dismiss button as "OK" rather than "Continue" (#675)
+
+### Build engineering
+
+* Update package lockfile with updated dependencies (#704)
 
 ## [8.0.0][] - 2018-01-08
 
 ### Breaking Changes
 
-+ Moves the data object in messages out of the audience object and into a separate
-object.  This will affect installations that have configured a messages.json
-file. (#649)
++ Moves the data object in messages out of the audience object and into a
+separate object.  This will affect installations that have configured a
+messages.json file. (#649)
 
 ### Added
 
-+ add documentation stating intent to use Conventional commits and tips on how
-to comply (#634)
 + track clicks on sidenav footer links (#642)
 + add documentation clarifying major upgrades (#647)
 + add the ability to set message title via an external data source (#649)
@@ -61,13 +63,7 @@ source (#649)
 
 ### Changed
 
-+ leverage commitlint travis helper (#621)
-+ update to latest version (6.0.0) of lint-staged (#631)
 + update documentation to read more and state intent more clearly (#632)
-+ move some git commit hooks to be optionally installed (#635)
-+ suppress `eslint` on `docs/` when linting staged changes (#636)
-+ require npm 5.6.0 or higher (#644)
-+ resolved appveyor require.js flakiness (#645)
 + update to latest version (2.0) of karma (#652)
 
 ### Fixed
@@ -78,6 +74,17 @@ source (#649)
 + catch localStorage error with IE (#643)
 + implemented filter messages by date (#650)
 
+### Build engineering
+
++ add documentation stating intent to use Conventional commits and tips on how
+to comply (#634)
++ leverage commitlint travis helper (#621)
++ update to latest version (6.0.0) of lint-staged (#631)
++ move some git commit hooks to be optionally installed (#635)
++ suppress `eslint` on `docs/` when linting staged changes (#636)
++ require npm 5.6.0 or higher (#644)
++ resolved appveyor require.js flakiness (#645)
+
 ## [7.0.0][] - 2017-11-30
 
 ### BREAKING CHANGES
@@ -86,10 +93,12 @@ Updates to the side navigation feature in this release introduce a hard
 dependency on the `<frame-page>` directive for unbroken menu experience (#588).
 
 **If upgrading from 6.1.0**
-and the application already configures side navigation (by setting values for either
-`appMenuTemplateURL` or `appMenuItems` in `override.js`), every main
+and the application already configures side navigation (by setting values for
+either `appMenuTemplateURL` or `appMenuItems` in `override.js`), every main
 view in the app must use the `<frame-page>` directive as its outermost container
-element. Applications that have not previously configured side navigation and do not begin using side navigation with this upgrade should not be affected by this change.
+element. Applications that have not previously configured side navigation and
+do not begin using side navigation with this upgrade should not be affected by
+this change.
 
 There are also CSS changes to the layout container elements that precede the
 `<ng-view>` element (where the app's on-page content is pulled in) to prefer a

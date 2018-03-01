@@ -20,18 +20,18 @@
 -->
 <md-toast>
   <div class="md-toast-content">
-    <span class="md-toast-text" flex>Add to home?</span>
+    <span class="md-toast-text" ng-if="!successfullyAdded && !addToHomeFailed && !savingAddToHome" flex>Add to home?</span>
+    <span class="md-toast-text" ng-if="savingAddToHome && !successfullyAdded && !addToHomeFailed">Adding to home</span>
+    <span class="md-toast-text" ng-if="successfullyAdded"><md-icon>check</md-icon> Added to home</span>
+    <span class="md-toast-text" ng-if="addToHomeFailed"><md-icon>error</md-icon> Add to home failed</span>
     <div layout="row">
       <md-button ng-click="addToHome()"
                  aria-label="Add this app to home"
-                 class="md-raised md-accent">
-        <span ng-if="!successfullyAdded && !addToHomeFailed && !savingAddToHome"><md-icon>add</md-icon> Add</span>
-        <span ng-if="!successfullyAdded && !addToHomeFailed && savingAddToHome" ng-disabled="true">
-        <i class="fa fa-fw fa-spin fa-circle-o-notch" ng-show="savingAddToHome"></i>
-      </span>
-        <span ng-if="successfullyAdded" ng-disabled="true"><md-icon>check</md-icon> Added to home</span>
-        <span ng-if="addToHomeFailed" ng-disabled="true"><md-icon>error</md-icon> Add to home failed</span>
+                 class="md-raised md-accent"
+                 ng-if="!successfullyAdded && !addToHomeFailed && !savingAddToHome">
+        <span>Okay</span>
       </md-button>
+      <md-progress-circular ng-if="savingAddToHome && !successfullyAdded && !addToHomeFailed" md-mode="indeterminate" md-diameter="30px"></md-progress-circular>
       <md-button ng-click="dismissToast()" aria-label="not right now">
         <md-icon>close</md-icon>
       </md-button>
