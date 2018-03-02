@@ -18,11 +18,13 @@
     under the License.
 
 -->
+<div class="main-menu__focus-trap" ng-focus="vm.trapFocus($event, '-bottom')" tabindex="0"></div>
 <md-sidenav class="md-sidenav-left main-menu__sidenav"
             md-component-id="main-menu"
             md-is-open="vm.openMenuByDefault"
             md-whiteframe="4"
             ng-hide="vm.hideMainMenu">
+  <div class="main-menu__focus-anchor-top" tabindex="0" md-autofocus></div>
   <div class="main-menu__mobile-bar" layout="row" layout-align="end center" hide-gt-xs>
     <md-button href="features"
                ng-if="vm.hasUnseenAnnouncements && vm.showMessagesFeatures"
@@ -73,4 +75,6 @@
   <div class="links-separated">
     <a ng-repeat="link in vm.footerLinks" ng-href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer" ng-click="vm.pushGAEvent('sidenav-footer-link', link.title, link.url)">{{ link.title }}</a>
   </div>
+  <div class="main-menu__focus-anchor-bottom" tabindex="0"></div>
 </md-sidenav>
+<div class="main-menu__focus-trap" ng-focus="vm.trapFocus($event, '-top')" tabindex="0"></div>
