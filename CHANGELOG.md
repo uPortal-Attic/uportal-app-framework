@@ -7,6 +7,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
+## [9.0.0][] - 2018-3-7
+
 ### Breaking changes
 
 +   Removed `<app-header>` directive. This affects any framework apps using
@@ -17,6 +19,11 @@ unaffected. (#684)
 `APP_OPTIONS.optionsTemplateURL` config has been deprecated. Apps using an
 `optionsTemplateURL` will display the template in the side navigation menu.
 This may require minor layout/appearance adjustments in the template. (#684)
+
++ To upgrade:
+  ++ If using the "app-title" attribute on frame-page directive, that title will be used as the document title
+  ++ If you want a heading on pages that formerly had the app-header, you'll need to use the "page-title" attribute on frame-page directive (or add your own <h1> tag to their pages wherever/however you want)
+  ++ If you were previously using APP_OPTIONS.optionsTemplateURL to set up app-header options, those options will now appear in the side navigation and may likely need a bit of tweaking if you had a rigid CSS layout.
 
 ### Added
 
@@ -503,6 +510,7 @@ break compatibility with some older components.  If the app used any `angular-ui
 - Fixed format for announcement end date (#332)
 
 [Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v8.0.0...HEAD
+[9.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v8.0.0...v9.0.0
 [8.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v7.0.0...v8.0.0
 [7.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.1.0...v7.0.0
 [6.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.3...v6.1.0
