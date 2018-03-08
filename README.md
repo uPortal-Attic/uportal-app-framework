@@ -2,16 +2,24 @@
 
 Questions? [Get in touch][uportal-user@].
 
-<!-- current project status -->
+<!-- coordinates -->
 [![npm version](https://badge.fury.io/js/%40uportal%2Fapp-framework.svg)](https://badge.fury.io/js/%40uportal%2Fapp-framework)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework)
+<!-- build status -->
 [![Build Status](https://travis-ci.org/uPortal-Project/uportal-app-framework.svg)](https://travis-ci.org/uPortal-Project/uportal-app-framework)
-[![Coverage Status](https://coveralls.io/repos/uPortal-Project/uportal-app-framework/badge.svg?branch=master&service=github)](https://coveralls.io/github/uPortal-Project/uportal-app-framework?branch=master)
+<!-- dependencies statuss -->
 [![dependencies Status](https://david-dm.org/uPortal-Project/uportal-app-framework/status.svg)](https://david-dm.org/uPortal-Project/uportal-app-framework)
 [![devDependencies Status](https://david-dm.org/uPortal-Project/uportal-app-framework/dev-status.svg)](https://david-dm.org/uPortal-Project/uportal-app-framework?type=dev)
 [![Dependency Status](https://dependencyci.com/github/uPortal-Project/uportal-app-framework/badge)](https://dependencyci.com/github/uPortal-Project/uportal-app-framework)
-[![bitHound Overall Score](https://www.bithound.io/github/uPortal-Project/uportal-app-framework/badges/score.svg)](https://www.bithound.io/github/uPortal-Project/uportal-app-framework)
 [![Greenkeeper badge](https://badges.greenkeeper.io/uPortal-Project/uportal-app-framework.svg)](https://greenkeeper.io/)
+
+<!-- test coverage -->
+[![Coverage Status](https://coveralls.io/repos/uPortal-Project/uportal-app-framework/badge.svg?branch=master&service=github)](https://coveralls.io/github/uPortal-Project/uportal-app-framework?branch=master)
+
+<!-- quality indicators -->
+[![bitHound Overall Score](https://www.bithound.io/github/uPortal-Project/uportal-app-framework/badges/score.svg)](https://www.bithound.io/github/uPortal-Project/uportal-app-framework)
+
+<!-- responsiveness indicators -->
 [![Time to PR close](http://issuestats.com/github/uPortal-Project/uportal-app-framework/badge/pr)](http://issuestats.com/github/uPortal-Project/uportal-app-framework)
 [![Time to issue close](http://issuestats.com/github/uPortal-Project/uportal-app-framework/badge/issue)](http://issuestats.com/github/uPortal-Project/uportal-app-framework)
 
