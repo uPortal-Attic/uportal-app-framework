@@ -7,6 +7,10 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
+### Added
+
++ Core Infrastructure Initiative badge (#711)
+
 ## [9.0.0][] - 2018-3-7
 
 ### Breaking changes
