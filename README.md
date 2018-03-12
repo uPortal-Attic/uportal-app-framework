@@ -7,7 +7,7 @@ Questions? [Get in touch][uportal-user@].
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework)
 <!-- build status -->
 [![Build Status](https://travis-ci.org/uPortal-Project/uportal-app-framework.svg)](https://travis-ci.org/uPortal-Project/uportal-app-framework)
-<!-- dependencies statuss -->
+<!-- dependencies status -->
 [![dependencies Status](https://david-dm.org/uPortal-Project/uportal-app-framework/status.svg)](https://david-dm.org/uPortal-Project/uportal-app-framework)
 [![devDependencies Status](https://david-dm.org/uPortal-Project/uportal-app-framework/dev-status.svg)](https://david-dm.org/uPortal-Project/uportal-app-framework?type=dev)
 [![Dependency Status](https://dependencyci.com/github/uPortal-Project/uportal-app-framework/badge)](https://dependencyci.com/github/uPortal-Project/uportal-app-framework)
