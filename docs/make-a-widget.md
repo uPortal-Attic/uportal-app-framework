@@ -156,7 +156,7 @@ content.
 
 Example of how the `widgetURL` should respond (note the `content.links` path):
 
-```
+```json
 {
   "content": {
     "links": [
