@@ -7,6 +7,18 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
+### Added
+
++ Logs the dynamic list-of-links response in some dynamic list-of-links error
+  cases (#715)
++ Core Infrastructure Initiative badge (#711)
+
+### Fixed
+
++ Fixed widget in-app messagge example (#714)
+
+## [9.0.0][] - 2018-3-7
+
 ### Breaking changes
 
 +   Removed `<app-header>` directive. This affects any framework apps using
@@ -18,11 +30,18 @@ unaffected. (#684)
 `optionsTemplateURL` will display the template in the side navigation menu.
 This may require minor layout/appearance adjustments in the template. (#684)
 
++   To upgrade:
+    + If using the "app-title" attribute on frame-page directive, that title will be used as the document title
+    + Pages formerly using `app-header` can use the `page-title` attribute on `frame-page` to achieve a similar within-page `h1` heading as before.
+    + If previously using APP_OPTIONS.optionsTemplateURL to set up app-header options, those options will now appear in the side navigation and may likely need a bit of tweaking if using a rigid CSS layout.
+
 ### Added
 
 + `mainService` now offers `computeWindowTitle(...)` (#679)
 + `<frame-page>` directive now offers `page-title` attribute to add a `<h1>`
 tag with the app icon and title to the page (#684)
++ When side navigation is open, keyboard focus will remain inside the menu and 
+cycle through menu options until it's closed (#707)
 
 ### Changed
 
@@ -30,15 +49,20 @@ tag with the app icon and title to the page (#684)
 + The `show-add-to-home` attribute on the `<frame-page>` directive now displays
 a dismissible-for-session toast message prompting users to add the app to their
 home page, instead of a button. (#684)
-+ `vm.showMessagesFeatures` variable moved out of default and into more 
++ `vm.showMessagesFeatures` variable moved out of default and into more
 logically appropriate spot (#694)
++ Improved appearance of add-to-home toast message (#706)
 
 ### Fixed
 
 + External links in mascot announcements now work again. (#697)
 + "Skip to main content" link now skips more repeated navigation to reach
-closer to the main content.
+closer to the main content. (#698) (#705)
 + Label widget cover dismiss button as "OK" rather than "Continue" (#675)
+
+### Build engineering
+
+* Update package lockfile with updated dependencies (#704)
 
 ## [8.0.0][] - 2018-01-08
 
@@ -496,6 +520,7 @@ break compatibility with some older components.  If the app used any `angular-ui
 - Fixed format for announcement end date (#332)
 
 [Unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v8.0.0...HEAD
+[9.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v8.0.0...v9.0.0
 [8.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v7.0.0...v8.0.0
 [7.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.1.0...v7.0.0
 [6.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.3...v6.1.0
