@@ -136,7 +136,7 @@ Example widget configuration
     <value>["result", 0, "message"]</value>
 </portlet-preference>
 <portlet-preference>
-    <name>widgetURL</name>
+    <name>widgetExternalMessageLearnMoreUrl</name>
     <value>["learnMoreUrl"]</value>
 </portlet-preference>
 

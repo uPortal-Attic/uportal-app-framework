@@ -11,6 +11,10 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 + Core Infrastructure Initiative badge (#711)
 
+### Fixed
+
++ Fixed widget in-app messagge example (#714)
+
 ## [9.0.0][] - 2018-3-7
 
 ### Breaking changes
