@@ -9,6 +9,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Added
 
++ Logs the dynamic list-of-links response in some dynamic list-of-links error
+  cases (#715)
 + Core Infrastructure Initiative badge (#711)
 
 ### Fixed
