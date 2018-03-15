@@ -44,7 +44,7 @@ This may require minor layout/appearance adjustments in the template. (#684)
 + `mainService` now offers `computeWindowTitle(...)` (#679)
 + `<frame-page>` directive now offers `page-title` attribute to add a `<h1>`
 tag with the app icon and title to the page (#684)
-+ When side navigation is open, keyboard focus will remain inside the menu and 
++ When side navigation is open, keyboard focus will remain inside the menu and
 cycle through menu options until it's closed (#707)
 
 ### Changed
