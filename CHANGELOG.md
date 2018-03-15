@@ -20,6 +20,10 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 + Fixed widget in-app messagge example (#714)
 
+### Documentation
+
++ About dynamically sourcing `list-of-links` widget content (#717)
+
 ## [9.0.0][] - 2018-3-7
 
 ### Breaking changes
