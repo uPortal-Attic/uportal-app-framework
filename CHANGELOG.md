@@ -13,6 +13,9 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   cases (#715)
 + Core Infrastructure Initiative badge (#711)
 
+### Changed
++ Replaced jQuery UI sortable with angular-drag-and-drop-lists
+
 ### Fixed
 
 + Fixed widget in-app messagge example (#714)
