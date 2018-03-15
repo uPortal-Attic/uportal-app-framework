@@ -22,6 +22,10 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 * Update stylelint to version 9.1.3 (#718)
 
+### Documentation
+
++ About dynamically sourcing `list-of-links` widget content (#717)
+
 ## [9.0.0][] - 2018-3-7
 
 ### Breaking changes
