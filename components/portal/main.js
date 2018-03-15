@@ -53,7 +53,6 @@ define([
     './widgets/controllers',
     './widgets/directives',
     './widgets/services',
-    'sortable',
     'ui-bootstrap',
     'ui-gravatar',
     'angulartics-google-analytics',
@@ -101,7 +100,6 @@ define([
         'portal.widgets.services',
         'ui.bootstrap',
         'ui.gravatar',
-        'ui.sortable',
         'angulartics',
         'angulartics.google.analytics',
     ])
