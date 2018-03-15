@@ -2,20 +2,29 @@
 
 Questions? [Get in touch][uportal-user@].
 
-<!-- current project status -->
+<!-- coordinates -->
 [![npm version](https://badge.fury.io/js/%40uportal%2Fapp-framework.svg)](https://badge.fury.io/js/%40uportal%2Fapp-framework)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apereo.uportal/uportal-app-framework)
+<!-- build status -->
 [![Build Status](https://travis-ci.org/uPortal-Project/uportal-app-framework.svg)](https://travis-ci.org/uPortal-Project/uportal-app-framework)
-[![Coverage Status](https://coveralls.io/repos/uPortal-Project/uportal-app-framework/badge.svg?branch=master&service=github)](https://coveralls.io/github/uPortal-Project/uportal-app-framework?branch=master)
+<!-- dependencies status -->
 [![dependencies Status](https://david-dm.org/uPortal-Project/uportal-app-framework/status.svg)](https://david-dm.org/uPortal-Project/uportal-app-framework)
 [![devDependencies Status](https://david-dm.org/uPortal-Project/uportal-app-framework/dev-status.svg)](https://david-dm.org/uPortal-Project/uportal-app-framework?type=dev)
 [![Dependency Status](https://dependencyci.com/github/uPortal-Project/uportal-app-framework/badge)](https://dependencyci.com/github/uPortal-Project/uportal-app-framework)
-[![bitHound Overall Score](https://www.bithound.io/github/uPortal-Project/uportal-app-framework/badges/score.svg)](https://www.bithound.io/github/uPortal-Project/uportal-app-framework)
 [![Greenkeeper badge](https://badges.greenkeeper.io/uPortal-Project/uportal-app-framework.svg)](https://greenkeeper.io/)
+
+<!-- test coverage -->
+[![Coverage Status](https://coveralls.io/repos/uPortal-Project/uportal-app-framework/badge.svg?branch=master&service=github)](https://coveralls.io/github/uPortal-Project/uportal-app-framework?branch=master)
+
+<!-- quality indicators -->
+[![bitHound Overall Score](https://www.bithound.io/github/uPortal-Project/uportal-app-framework/badges/score.svg)](https://www.bithound.io/github/uPortal-Project/uportal-app-framework)
+
+<!-- responsiveness indicators -->
 [![Time to PR close](http://issuestats.com/github/uPortal-Project/uportal-app-framework/badge/pr)](http://issuestats.com/github/uPortal-Project/uportal-app-framework)
 [![Time to issue close](http://issuestats.com/github/uPortal-Project/uportal-app-framework/badge/issue)](http://issuestats.com/github/uPortal-Project/uportal-app-framework)
 
-<!-- standards used in project -->
+<!-- standards and practices used in project -->
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1709/badge)](https://bestpractices.coreinfrastructure.org/projects/1709)
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
 [![Keep a Changelog](https://img.shields.io/badge/Keep%20a%20Changelog-1.0.0-brightgreen.svg)](http://keepachangelog.com/en/1.0.0/)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)

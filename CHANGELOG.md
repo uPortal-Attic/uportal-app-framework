@@ -7,6 +7,16 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
+### Added
+
++ Logs the dynamic list-of-links response in some dynamic list-of-links error
+  cases (#715)
++ Core Infrastructure Initiative badge (#711)
+
+### Fixed
+
++ Fixed widget in-app messagge example (#714)
+
 ## [9.0.0][] - 2018-3-7
 
 ### Breaking changes
@@ -21,9 +31,9 @@ unaffected. (#684)
 This may require minor layout/appearance adjustments in the template. (#684)
 
 +   To upgrade:
-      + If using the "app-title" attribute on frame-page directive, that title will be used as the document title
-       + Pages formerly using `app-header` can use the `page-title` attribute on `frame-page` to achieve a similar within-page `h1` heading as before.
-       + If previously using APP_OPTIONS.optionsTemplateURL to set up app-header options, those options will now appear in the side navigation and may likely need a bit of tweaking if using a rigid CSS layout.
+    + If using the "app-title" attribute on frame-page directive, that title will be used as the document title
+    + Pages formerly using `app-header` can use the `page-title` attribute on `frame-page` to achieve a similar within-page `h1` heading as before.
+    + If previously using APP_OPTIONS.optionsTemplateURL to set up app-header options, those options will now appear in the side navigation and may likely need a bit of tweaking if using a rigid CSS layout.
 
 ### Added
 
