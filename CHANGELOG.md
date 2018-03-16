@@ -14,6 +14,9 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   cases (#715)
 * Core Infrastructure Initiative badge (#711)
 
+### Changed
++ Removed jQuery UI sortable dependency (#721)
+
 ### Fixed
 
 * Fixed widget in-app message example (#714)
