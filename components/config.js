@@ -47,7 +47,6 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'ngRoute': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min',
       'ngSanitize': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-sanitize.min',
       'ngStorage': 'https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min',
-      'dndLists': 'https://cdnjs.cloudflare.com/ajax/libs/angular-drag-and-drop-lists/2.1.0/angular-drag-and-drop-lists.min',
       'ui-bootstrap': 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min',
       'ui-gravatar': 'https://cdnjs.cloudflare.com/ajax/libs/angular-gravatar/0.4.2/angular-gravatar.min',
       'app-config': 'js/app-config',
@@ -65,7 +64,6 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'ngRoute': {deps: ['angular']},
       'ngSanitize': {deps: ['angular']},
       'ngStorage': {deps: ['angular']},
-      'dndLists': {deps: ['angular']},
       'ngAria': {deps: ['angular']},
       'ngMaterial': {
         deps: ['angular', 'ngAria', 'angular-animate', 'angular-mocks'],
