@@ -15,7 +15,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 * Core Infrastructure Initiative badge (#711)
 
 ### Changed
-+ Replaced jQuery UI sortable with angular-drag-and-drop-lists
++ Removed jQuery UI sortable dependency (#721)
 
 ### Fixed
 
