@@ -140,14 +140,54 @@ Follow these steps for each of the predefined widget types described in this doc
 </portlet-preference>
 ```
 
-#### Configuring your list of links from a URL
+#### Sourcing list of links content from a URL
 
-* Rather than hardcode your links into a portlet preference, you can point to a URL and get your links dynamically.
+The `list-of-links` content can be stored directly in `widgetConfig`, as above.
+This allows managing this data in the portlet registry as a
+`portlet-preference`.
+
+Alternatively, the portlet publication can declare a URL from which the actual
+links content will be sourced. For dynamic link content:
+
 1. Omit the "links" entry in the widgetConfig JSON.
-2. In widgetConfig, add the following:
-   "getLinksURL": "true"
-3. Point the widget's widgetURL property to the location of the feed.
+2. Instead add `"getLinksURL": "true"` in the widgetConfig JSON.
+3. Configure the `widgetURL` portlet-preference with the location of the dynamic
+content.
 
+Example of how the `widgetURL` should respond (note the `content.links` path):
+
+```json
+{
+  "content": {
+    "links": [
+      {
+        "href": "https://public.predev.my.wisc.edu",
+        "icon": "fa-clock-o",
+        "target": "_blank",
+        "title": "predev"
+      },
+      {
+        "href": "https://public.test.my.wisc.edu",
+        "icon": "fa-calendar-times-o",
+        "target": "_blank",
+        "title": "Test"
+      },
+      {
+        "href": "https://public.qa.my.wisc.edu",
+        "icon": "fa-calendar-times-o",
+        "target": "_blank",
+        "title": "QA"
+      },
+      {
+        "href": "https://public.my.wisc.edu",
+        "icon": "fa-calendar-times-o",
+        "target": "_blank",
+        "title": "Production"
+      }
+    ]
+  }
+}
+```
 
 #### Guidance
 
