@@ -10,28 +10,23 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-* Logs the dynamic list-of-links response in some dynamic list-of-links error
-  cases (#715)
-* Core Infrastructure Initiative badge (#711)
 
 ### Changed
-+ Removed jQuery UI sortable dependency (#721)
+
 
 ### Fixed
 
-* Fixed widget in-app message example (#714)
 
 ### Build engineering
 
-* Update stylelint to version 9.1.3 (#718)
 
 ### Documentation
 
-+ About dynamically sourcing `list-of-links` widget content (#717)
 
-## [9.0.0][] - 2018-3-7
+## [9.0.0][] - 2018-3-21
 
 ### Breaking changes
+*   Removed jQuery UI sortable dependency (#721)
 
 *   Removed `<app-header>` directive. This affects any framework apps using
     that directive outside of `<frame-page>`. `<frame-page>` usages should be
@@ -43,6 +38,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
     This may require minor layout/appearance adjustments in the template. (#684)
 
 *   To upgrade:
+    * Add jQueryUI Sortable to frame app, or refer to [an example of angular-drag-and-drop-lists][uportal-home #795]
     * If using the "app-title" attribute on frame-page directive, that title will be used as the document title
     * Pages formerly using `app-header` can use the `page-title` attribute on `frame-page` to achieve a similar within-page `h1` heading as before.
     * If previously using APP_OPTIONS.optionsTemplateURL to set up app-header options, those options will now appear in the side navigation and may likely need a bit of tweaking if using a rigid CSS layout.
@@ -54,6 +50,9 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   tag with the app icon and title to the page (#684)
 * When side navigation is open, keyboard focus will remain inside the menu and
   cycle through menu options until it's closed (#707)
+* Logs the dynamic list-of-links response in some dynamic list-of-links error
+  cases (#715)
+* Core Infrastructure Initiative badge (#711)
 
 ### Changed
 
@@ -71,10 +70,16 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 * "Skip to main content" link now skips more repeated navigation to reach
   closer to the main content. (#698) (#705)
 * Label widget cover dismiss button as "OK" rather than "Continue" (#675)
+* Fixed widget in-app message example (#714)
 
 ### Build engineering
 
 * Update package lockfile with updated dependencies (#704)
+* Update stylelint to version 9.1.3 (#718)
+
+### Documentation
+
+* About dynamically sourcing `list-of-links` widget content (#717)
 
 ## [8.0.0][] - 2018-01-08
 
@@ -589,4 +594,5 @@ break compatibility with some older components. If the app used any `angular-ui-
 [uportal-home #742]: https://github.com/uPortal-Project/uportal-home/pull/742
 [uportal-home #747]: https://github.com/uPortal-Project/uportal-home/pull/747
 [uportal-home #750]: https://github.com/uPortal-Project/uportal-home/pull/750
+[uportal-home #795]: https://github.com/uPortal-Project/uportal-home/pull/795
 [sidenav-documentation]: http://uportal-project.github.io/uportal-app-framework/configurable-menu.html
