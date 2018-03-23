@@ -22,6 +22,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Documentation
 
+* Adds glossary (#725)
 
 ## [9.0.0][] - 2018-3-21
 
