@@ -9,10 +9,10 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [Unreleased][]
 
 ### Added
-
+* Adds resetters to user-settings page (#724)
 
 ### Changed
-*   Adds resetters to user-settings page (#724)
+
 
 ### Fixed
 
