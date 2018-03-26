@@ -1,14 +1,14 @@
 {
   "entry": {
-    "canAdd": false,
+    "canAdd": true,
     "layoutObject": {
       "nodeId": "-1",
-      "title": "Learning and Talent Development",
-      "description": "View professional development opportunities for faculty and staff on the UW-Madison campus.",
-      "url": "https://www.ohrd.wisc.edu/Catalog/Default.aspx",
+      "title": "List of Links widget type",
+      "description": "Convenient access to up to seven hyperlinks, sourced from widget configuration or from URL",
+      "url": "staticFeeds/list-of-links-via-url.json",
       "iconUrl": null,
       "faIcon": "fa-briefcase",
-      "fname": "my-professional-development",
+      "fname": "list-of-links-type",
       "lifecycleState": "PUBLISHED",
       "target": null,
       "widgetURL": "/staticFeeds/list-of-links-via-url.json",
@@ -16,34 +16,28 @@
       "widgetTemplate": null,
       "widgetConfig": {
         "getLinksURL": "true",
-        "launchText": "Launch talent development"
+        "launchText": "View widget JSON"
       },
       "widgetExternalMessageUrl": "/staticFeeds/sample-widget_message.json",
       "widgetExtneralMessageTextObjectLocation": ["result", 0, "message"],
       "widgetExternalMessageLearnMoreUrl": ["learnMoreUrl"],
-      "staticContent": "\n            <div>\n                <p><a href='https://www.ohrd.wisc.edu/Catalog/Default.aspx' target='_blank'>Search for talent development opportunities</a></p>\n            </div>        \n            \n        ",
-      "pithyStaticContent": null,
+      "staticContent": "<div><p>Static content goes here.</p></div>",
       "altMaxUrl": true,
       "renderOnWeb": false
     },
     "categories": [
-      "Work"
+      "Widget types"
     ],
     "portletName": "cms",
-    "title": "Learning and Talent Development",
+    "title": "List of Links widget type",
     "keywords": [
-      "development",
-      "learning",
-      "opportunities",
-      "transcript",
-      "professional",
-      "faculty",
-      "staff",
-      "work record",
-      "talent",
-      "my professional development"
+      "list",
+      "links",
+      "ordered",
+      "icons",
+      "few"
     ],
-    "fname": "my-professional-development",
+    "fname": "list-of-links-type",
     "rating": 0.0,
     "lifecycleState": "PUBLISHED",
     "portletReleaseNotes": {
@@ -51,15 +45,15 @@
       "initialReleaseDate": null,
       "releaseNotes": null
     },
-    "renderUrl": "https://www.ohrd.wisc.edu/Catalog/Default.aspx",
+    "renderUrl": "https://www.example.edu",
     "portletWebAppName": "/SimpleContentPortlet",
-    "maxUrl": "https://www.ohrd.wisc.edu/Catalog/Default.aspx",
+    "maxUrl": "https://www.example.edu",
     "shortUrl": null,
     "marketplaceScreenshots": [],
     "userRated": 0,
     "faIcon": "fa-briefcase",
-    "description": "View professional development opportunities for faculty and staff on the UW-Madison campus.",
-    "name": "Learning and Talent Development",
+    "description": "Convenient access to up to seven hyperlinks, sourced from widget configuration or from URL",
+    "name": "List of Links widget type",
     "id": "76",
     "type": "Portlet",
     "target": null
