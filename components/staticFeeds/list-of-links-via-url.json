@@ -13,7 +13,13 @@
                 "href": "https://public.my.wisc.edu/widget-creator/",
                 "title": "Make one",
                 "target": "_blank"
-            }
+            },
+            {
+              "icon": "short_text",
+              "href": "https://www.example.edu",
+              "title": "Truncates excessively long titles",
+              "target": "_blank"
+          }
         ]
     }
 }
