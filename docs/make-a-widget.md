@@ -194,6 +194,12 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
         "icon": "fa-calendar-times-o",
         "target": "_blank",
         "title": "Production"
+      },
+      {
+        "href": "https://it.wisc.edu/services/myuw",
+        "icon": "fa-calendar-times-o",
+        "target": "_blank",
+        "title": "Learn more & make contact"
       }
     ]
   }
