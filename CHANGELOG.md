@@ -16,12 +16,13 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Changed
 
 * Out of the box example `list-of-links` widget now more self-documenting 
-  (#727, #729)
+  (#727, #729)  
 
 ### Fixed
 
 * `circle-button` no longer truncates `aria-label` representation of title
   (#727)
+* Message filtering now more precise (#730)
 
 ### Build engineering
 

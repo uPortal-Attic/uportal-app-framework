@@ -113,16 +113,13 @@ define(['angular'], function(angular) {
                       if (!added) {
                         // Check for matches against the groups returned
                         // by portalGroupService
-                        var intersectedGroups = $filter('filter')(
-                          groups,
-                          {name: messageGroup}
-                        );
-                        if (intersectedGroups && intersectedGroups.length > 0) {
-                          // If user is in this group, he should see this
-                          // notification
-                          messagesByGroup.push(message);
-                          added = true;
-                        }
+                        angular.forEach(groups,
+                          function(group) {
+                            if (!added && (group.name === messageGroup)) {
+                              messagesByGroup.push(message);
+                              added = true;
+                            }
+                          });
                       }
                     });
                 } else {
