@@ -8,6 +8,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
+## [9.0.1][] - 2018-3-29
+
 ### Added
 * Adds resetters to user-settings page (#724)
 * `circle-button` now offers tooltip with full title when title is truncated
