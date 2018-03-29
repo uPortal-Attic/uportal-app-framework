@@ -3,17 +3,23 @@
     "content": {
         "links": [
             {
-                "icon": "fa-at",
-                "href": "https://www.google.com",
-                "title": "THIS IS GOOGLE",
+                "icon": "fa-book",
+                "href": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#list-of-links",
+                "title": "Learn more",
                 "target": "_blank"
             },
             {
-                "icon": "mail_outline",
-                "href": "http://www.lonelyplanet.com",
-                "title": "Go Places",
+                "icon": "create",
+                "href": "https://public.my.wisc.edu/widget-creator/",
+                "title": "Make & experiment",
                 "target": "_blank"
-            }
+            },
+            {
+              "icon": "short_text",
+              "href": "https://www.example.edu",
+              "title": "Truncates excessively long titles",
+              "target": "_blank"
+          }
         ]
     }
 }

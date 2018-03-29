@@ -9,19 +9,28 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [Unreleased][]
 
 ### Added
-
+* Adds resetters to user-settings page (#724)
+* `circle-button` now offers tooltip with full title when title is truncated
+  (#727)
 
 ### Changed
 
+* Out of the box example `list-of-links` widget now more self-documenting 
+  (#727, #729)
 
 ### Fixed
 
+* `circle-button` no longer truncates `aria-label` representation of title
+  (#727)
 
 ### Build engineering
 
 
 ### Documentation
 
+* DEPRECATED: Font Awesome icons for `list-of-links` links. Use Material Icons
+  instead. (#727)
+* Modest improvements to `list-of-links` widget type documentation (#727)
 * Adds glossary (#725)
 
 ## [9.0.0][] - 2018-3-21

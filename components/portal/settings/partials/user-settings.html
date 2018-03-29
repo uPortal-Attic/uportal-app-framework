@@ -62,6 +62,14 @@
           </md-button>
           <small>Requires page refresh to take effect.</small>
         </div>
+        <h4 class="md-subhead">Reset In-Browser State<br>
+          <small>Clear in-browser session storage and local storage. This is perfectly safe and may cause some changes to take effect faster.</small>
+        </h4>
+        <div layout="column" layout-gt-xs="row">
+          <md-button class="md-primary md-raised" ng-click="resetAll()">
+            Reset All
+          </md-button>
+        </div>
     </div>
   </md-content>
 </frame-page>

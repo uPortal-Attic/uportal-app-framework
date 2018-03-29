@@ -140,6 +140,17 @@ Follow these steps for each of the predefined widget types described in this doc
 </portlet-preference>
 ```
 
+#### Icons
+
+Preferred: icons are Material Icons, referenced like `invert_colors` (lowercase,
+no prefix, underscores in place of spaces. )
+
+Deprecated: icons can be Font Awesome icons, referenced like `fa-envelope-o`
+(lowercase, `fa-` prefix, dashes as is typical for Font Awesome references).
+
+Using both Material and Font Awesome icons together can yield visual
+misalignment of the link icons.
+
 #### Sourcing list of links content from a URL
 
 The `list-of-links` content can be stored directly in `widgetConfig`, as above.
@@ -183,6 +194,12 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
         "icon": "fa-calendar-times-o",
         "target": "_blank",
         "title": "Production"
+      },
+      {
+        "href": "https://it.wisc.edu/services/myuw",
+        "icon": "fa-calendar-times-o",
+        "target": "_blank",
+        "title": "Learn more & make contact"
       }
     ]
   }
