@@ -8,6 +8,15 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
+## [9.0.2][] - 2018-3-30
+
+This release is to mop up some weirdness which happened with 9.0.1 and get a clean artifact. 
+
+### Changed
+
+* Minor CHANGELOG change
+  (#731)  
+
 ## [9.0.1][] - 2018-3-29
 
 ### Added
@@ -577,7 +586,8 @@ break compatibility with some older components. If the app used any `angular-ui-
 * Added ability to have a name for the default theme (#336)
 * Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.1...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.2...HEAD
+[9.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.1...v9.0.2
 [9.0.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.0...v9.0.1
 [9.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v8.0.0...v9.0.0
 [8.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v7.0.0...v8.0.0
