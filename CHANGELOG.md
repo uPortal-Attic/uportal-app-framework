@@ -10,12 +10,12 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [9.0.2][] - 2018-3-30
 
-This release is to mop up some weirdness which happened with 9.0.1 and get a clean artifact. 
+This release is to mop up some weirdness which happened with 9.0.1 and get a clean artifact.
 
 ### Changed
 
 * Minor CHANGELOG change
-  (#731)  
+  (#731)
 
 ## [9.0.1][] - 2018-3-29
 
@@ -26,8 +26,8 @@ This release is to mop up some weirdness which happened with 9.0.1 and get a cle
 
 ### Changed
 
-* Out of the box example `list-of-links` widget now more self-documenting 
-  (#727, #729)  
+* Out of the box example `list-of-links` widget now more self-documenting
+  (#727, #729)
 
 ### Fixed
 
