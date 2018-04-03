@@ -53,8 +53,7 @@
           target="{{item.target}}" rel="noopener noreferrer">
           {{item.title | truncate:24}}
         </a>
-        <md-tooltip ng-if="item.title.length > 24"
-          md-direction="top">
+        <md-tooltip ng-if="item.title.length > 24">
           {{ item.title }}
         </md-tooltip>
       </li>
