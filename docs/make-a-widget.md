@@ -221,7 +221,8 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 * The length of your list of links will affect the widget's appearance. If you
   have more than 4 links, they will be displayed in a more traditional-style
   list, rather than with the `<circle-button>` directive.
-* Use sentence case in the titles of the links.
+* Use brief sentence-case link titles. `list-of-links` truncates link titles to
+  24 characters.
 
 ### Search with links
 
