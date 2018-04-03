@@ -31,7 +31,7 @@
         <div class="date bold" ng-if="config.showdate" layout="column" layout-align="center end">
           <span>{{ getPrettyDate(item.pubDate) | date:'shortDate' }}</span>
         </div>
-        <md-tooltip ng-if="trim(item.title).length > config.lim">
+        <md-tooltip ng-if="trim(item.title).length > config.titleLim">
           {{ item.title }}
         </md-tooltip>
       </a>
