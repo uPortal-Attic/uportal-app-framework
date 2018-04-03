@@ -8,6 +8,11 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
+### Added
+
+* `list-of-links` now offers tooltip with full title when it truncates any link
+  title, not just those presented via `circle-button`s (#736)
+
 ### Fixed
 
 * `list-of-links` now `aria-label`s links, ensuring a non-truncated version of
