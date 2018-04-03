@@ -208,11 +208,19 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 
 #### Guidance
 
-* `launchText` is optional. Omitting `launchText` suppresses the launch button at the bottom of the list-of-links widget. This is appropriate
-when there's nothing more to launch, that is, when the list-of-links widget simply presents all the intended links and that's all there is to it.
-* Avoid using a `list-of-links` widget when you only need to display one link. Instead, use the name and `alternativeMaximizedLink` of [the app directory entry](http://uportal-project.github.io/uportal-home/app-directory) to represent the link.
-This provides a more usable click surface, a simpler and cleaner user experience, and achieves better consistency with other just-a-link widgets in MyUW.
-* The length of your list of links will affect the widget's appearance. If you have more than 4 links, they will be displayed in a more traditional-style list, rather than with the `<circle-button>` directive.
+* `launchText` is optional. Omitting `launchText` suppresses the launch button
+  at the bottom of the list-of-links widget. This is appropriate when there's
+  nothing more to launch, that is, when the list-of-links widget simply presents
+  all the intended links and that's all there is to it.
+* Avoid using a `list-of-links` widget when you only need to display one link.
+  Instead, use the name and `alternativeMaximizedLink` of
+  [the app directory entry](http://uportal-project.github.io/uportal-home/app-directory)
+  to represent the link. This provides a more usable click surface, a simpler
+  and cleaner user experience, and achieves better consistency with other
+  just-a-link widgets in MyUW.
+* The length of your list of links will affect the widget's appearance. If you
+  have more than 4 links, they will be displayed in a more traditional-style
+  list, rather than with the `<circle-button>` directive.
 * Use sentence case in the titles of the links.
 
 ### Search with links
