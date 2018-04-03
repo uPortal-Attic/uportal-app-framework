@@ -107,7 +107,8 @@ Follow these steps for each of the predefined widget types described in this doc
 
 #### When to use
 
-* You only need your widget to display a list of 2-7 links
+Use `list-of-links` to present 2 to 7 links, dynamically sourced or statically
+configured.
 
 #### Additional entity file configuration
 
