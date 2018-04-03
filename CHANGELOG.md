@@ -8,6 +8,11 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
+### Changed
+
+* RSS widgets now offer tooltip with full title when truncating item titles
+  (#737)
+
 ## [9.0.2][] - 2018-3-30
 
 This release is to mop up some weirdness which happened with 9.0.1 and get a clean artifact.
