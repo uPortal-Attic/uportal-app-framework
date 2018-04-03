@@ -11,6 +11,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Fixed
 
 * `list-of-links` no longer truncates `aria-label` representation of link title
+  (#736)
 
 ## [9.0.2][] - 2018-3-30
 
