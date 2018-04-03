@@ -107,14 +107,14 @@ This release is to mop up some weirdness which happened with 9.0.1 and get a cle
 
 ### Breaking Changes
 
-* Moves the data object in messages out of the audience object and into a
+*   Moves the data object in messages out of the audience object and into a
   separate object. This will affect installations that have configured a
   messages.json file. (#649)
-* Removes a route formerly used to catch a localStorage error (#643)
+*   Removes a route formerly used to catch a localStorage error (#643)
 
-* To upgrade:
-  * If your app's main.js file uses the `'/sorry-safari'` route, remove it
-  * Also remove the corresponding url-pattern from your app's web.xml file 
+*   To upgrade:
+    - If your app's main.js file uses the `'/sorry-safari'` route, remove it
+    - Also remove the corresponding url-pattern from your app's web.xml file 
 
 ### Added
 
