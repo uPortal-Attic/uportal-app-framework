@@ -8,10 +8,12 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
-### Added
+### Changed
 
 * `list-of-links` now offers tooltip with full title when it truncates any link
   title, not just those presented via `circle-button`s (#736)
+* RSS widgets now offer tooltip with full title when truncating item titles
+  (#737)
 
 ### Fixed
 
