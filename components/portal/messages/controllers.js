@@ -89,7 +89,6 @@ define(['angular'], function(angular) {
           }
 
           $q.all([promiseSeenMessageIds(),
-                  promiseMessagesByData(allMessages),
                   groupPromise])
             .then(filterMessagesSuccess)
             .catch(filterMessagesFailure);
@@ -102,16 +101,18 @@ define(['angular'], function(angular) {
          */
         var filterMessagesSuccess = function(result) {
           $scope.seenMessageIds = result[0];
-          var dataMessages = result[1];
-          var groupedMessages = result[2];
-          var filteredMessages = $filter('filterForCommonElements')(
-            groupedMessages,
-            dataMessages
-          );
+          var groupedMessages = result[1];
+
+          $q.all(promiseMessagesByData(groupedMessages))
+            .then(dataMessageSuccess)
+            .catch(filterMessagesFailure);
+        };
+
+        var dataMessageSuccess = function(result) {
           var dateFilteredMessages =
-            $filter('filterByDate')(filteredMessages);
-            $scope.messages =
-              $filter('separateMessageTypes')(dateFilteredMessages);
+          $filter('filterByDate')(result);
+          $scope.messages =
+            $filter('separateMessageTypes')(dateFilteredMessages);
           $scope.hasMessages = true;
         };
 
