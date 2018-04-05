@@ -48,14 +48,9 @@
       <li ng-repeat='item in config.links | limitTo: 7' class="link-icon">
         <i ng-if="item.icon.indexOf('fa-') > -1" class="fa {{item.icon}}"></i>
         <md-icon ng-if="item.icon.indexOf('fa-') <= -1">{{item.icon}}</md-icon>
-        <a aria-label="{{ item.title }}"
-          ng-href="{{item.href}}"
-          target="{{item.target}}" rel="noopener noreferrer">
+        <a ng-href="{{item.href}}" target="{{item.target}}" rel="noopener noreferrer">
           {{item.title | truncate:24}}
         </a>
-        <md-tooltip ng-if="item.title.length > 24">
-          {{ item.title }}
-        </md-tooltip>
       </li>
     </ul>
   </div>
