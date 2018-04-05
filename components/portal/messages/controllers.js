@@ -103,16 +103,16 @@ define(['angular'], function(angular) {
           $scope.seenMessageIds = result[0];
           var groupedMessages = result[1];
 
-          $q.all(promiseMessagesByData(groupedMessages))
+          var dateFilteredMessages =
+            $filter('filterByDate')(groupedMessages);
+          $q.all(promiseMessagesByData(dateFilteredMessages))
             .then(dataMessageSuccess)
             .catch(filterMessagesFailure);
         };
 
         var dataMessageSuccess = function(result) {
-          var dateFilteredMessages =
-          $filter('filterByDate')(result);
           $scope.messages =
-            $filter('separateMessageTypes')(dateFilteredMessages);
+            $filter('separateMessageTypes')(result);
           $scope.hasMessages = true;
         };
 
