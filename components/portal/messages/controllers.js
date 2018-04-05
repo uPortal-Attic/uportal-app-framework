@@ -103,9 +103,9 @@ define(['angular'], function(angular) {
           $scope.seenMessageIds = result[0];
           var groupedMessages = result[1];
 
-          var dateFilteredMessages =
+          var dateFilterMessages =
             $filter('filterByDate')(groupedMessages);
-          $q.all(promiseMessagesByData(dateFilteredMessages))
+          $q.all(promiseMessagesByData(dateFilterMessages))
             .then(dataMessageSuccess)
             .catch(filterMessagesFailure);
         };
