@@ -8,6 +8,11 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
+### Added
+
+* `showAllMessages` beta setting. When true disables all client-side message
+  filtering. Useful for demos and testing. (#742)
+
 ### Changed
 
 * `list-of-links` now offers tooltip with full title when it truncates any link
@@ -21,6 +26,13 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 * `list-of-links` widgets are now `basic` widgets in the zero links edge case (#735)
 * `list-of-links` now `aria-label`s links, ensuring a non-truncated version of
   the link label is available to browsers (#736)
+
+### Deprecated
+
+The `disableGroupFilteringForMessages` beta setting is deprecated. While it
+still works in this release, the new `showAllMessages` beta setting is intended
+to replace it. `disableGroupFilteringForMessages` will have no effect in some
+future release. (#742)
 
 ## [9.0.2][] - 2018-3-30
 
