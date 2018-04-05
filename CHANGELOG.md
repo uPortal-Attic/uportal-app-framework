@@ -14,6 +14,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   title, not just those presented via `circle-button`s (#736)
 * RSS widgets now offer tooltip with full title when truncating item titles
   (#737)
+* Data urls only called when necessary (#741)  
 
 ### Fixed
 
