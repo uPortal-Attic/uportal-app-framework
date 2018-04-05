@@ -11,7 +11,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Added
 
 * `showAllMessages` beta setting. When true disables all client-side message
-  filtering. Useful for demos and testing.
+  filtering. Useful for demos and testing. (#742)
 
 ### Changed
 
@@ -31,7 +31,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 The `disableGroupFilteringForMessages` beta setting is deprecated. While it
 still works in this release, the new `showAllMessages` beta setting is intended
 to replace it. `disableGroupFilteringForMessages` will have no effect in some
-future release.
+future release. (#742)
 
 ## [9.0.2][] - 2018-3-30
 
