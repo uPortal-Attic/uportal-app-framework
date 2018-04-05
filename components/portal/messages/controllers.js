@@ -95,23 +95,24 @@ define(['angular'], function(angular) {
             .catch(filterMessagesFailure);
           };
 
-
-        /**
+         /**
          * Separate the message types in scope for child controllers
          * @param {Object} result
          */
         var filterMessagesSuccess = function(result) {
           $scope.seenMessageIds = result[0];
-          var dataMessages = result[1];
-          var groupedMessages = result[2];
-          var filteredMessages = $filter('filterForCommonElements')(
-            groupedMessages,
-            dataMessages
-          );
-          var dateFilteredMessages =
-            $filter('filterByDate')(filteredMessages);
-            $scope.messages =
-              $filter('separateMessageTypes')(dateFilteredMessages);
+          var groupedMessages = result[1];
+
+          var dateFilterMessages =
+            $filter('filterByDate')(groupedMessages);
+          $q.all(promiseMessagesByData(dateFilterMessages))
+            .then(dataMessageSuccess)
+            .catch(filterMessagesFailure);
+        };
+
+        var dataMessageSuccess = function(result) {
+          $scope.messages =
+            $filter('separateMessageTypes')(result);
           $scope.hasMessages = true;
         };
 
