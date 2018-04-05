@@ -221,7 +221,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
   just-a-link widgets in MyUW.
 * `list-of-links` presents different quantities of links differently. 1 to 4
   links present as `circle-button`s. 5 to 7 links present as a more
-  traditional-style list.
+  traditional-style list. Zero links presents as a basic widget.
 * Use brief sentence-case link titles. `list-of-links` truncates link titles to
   24 characters.
 

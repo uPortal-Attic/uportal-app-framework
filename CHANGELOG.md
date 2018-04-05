@@ -17,6 +17,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+* `list-of-links` widgets are now `basic` widgets in the zero links edge case (#735)
 * `list-of-links` now `aria-label`s links, ensuring a non-truncated version of
   the link label is available to browsers (#736)
 
