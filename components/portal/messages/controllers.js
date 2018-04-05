@@ -51,7 +51,19 @@ define(['angular'], function(angular) {
               } else if (angular.isString(result)) {
                 $scope.messagesError = result;
               }
-              filterMessages(allMessages);
+
+              if ( $localStorage.showAllMessages ) {
+                // simulate the side effect of filterMessages
+                $scope.messages = $filter('separateMessageTypes')(allMessages);
+                $scope.hasMessages = true;
+                $scope.seenMessageIds = messagesService.getSeenMessageIds();
+              } else {
+                filterMessages(allMessages);
+                // side effects:
+                // sets $scope.messages and $scope.hasMessages
+                // and $scope.seenMessageIds
+              }
+
               return allMessages;
             })
             .catch(function(error) {
