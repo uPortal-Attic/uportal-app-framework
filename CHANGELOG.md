@@ -10,6 +10,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+* Only call data urls in messages for those messages which the user is group-enabled to see. (#739)
+
 * RSS widgets now offer tooltip with full title when truncating item titles
   (#737)
 
