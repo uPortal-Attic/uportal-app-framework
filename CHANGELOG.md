@@ -89,7 +89,7 @@ This release is to mop up some weirdness which happened with 9.0.1 and get a cle
   unaffected. (#684)
 * With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL` 
   config has been removed, superseded by a new `APP_OPTIONS.appMenuTemplateURL`.
-  Templates may required minor layout/appearance adjustments for use in the new 
+  Templates may require minor layout/appearance adjustments for use in the new 
   way. (#684)
 
 To upgrade:
