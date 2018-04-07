@@ -33,7 +33,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   release. It had previously been documented as "deprecated" but the 
   backwards-compatibility support didn't work out (#744), so in practice support
   for this feature was already removed as a breaking change for the `9.x` 
-  version series.
+  version series. (#745)
 
 ### Deprecated
 
