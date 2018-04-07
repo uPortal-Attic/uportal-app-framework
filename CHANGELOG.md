@@ -82,25 +82,28 @@ This release is to mop up some weirdness which happened with 9.0.1 and get a cle
 ## [9.0.0][] - 2018-3-21
 
 ### Breaking changes
-*   Removed jQuery UI sortable dependency (#721)
 
-*   Removed `<app-header>` directive. This affects any framework apps using
-    that directive outside of `<frame-page>`. `<frame-page>` usages should be
-    unaffected. (#684)
+* Removed jQuery UI sortable dependency (#721)
+* Removed `<app-header>` directive. This affects any framework apps using that 
+  directive outside of `<frame-page>`. `<frame-page>` usages should be 
+  unaffected. (#684)
+* With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL` 
+  config has been removed, superseded by a new `APP_OPTIONS.appMenuTemplateURL`.
+  Templates may required minor layout/appearance adjustments for use in the new 
+  way. (#684)
 
-*   With the removal of the `<app-header>`, the
-    `APP_OPTIONS.optionsTemplateURL` config has been removed, superseded by a 
-    new `APP_OPTIONS.appMenuTemplateURL`. Templates may required minor 
-    layout/appearance adjustments for use in the new way. (#684)
+To upgrade:
 
-*   To upgrade:
-    * Add jQueryUI Sortable to frame app, or refer to [an example of angular-drag-and-drop-lists][uportal-home #795]
-    * If using the "app-title" attribute on frame-page directive, that title will be used as the document title
-    * Pages formerly using `app-header` can use the `page-title` attribute on `frame-page` to achieve a similar within-page `h1` heading as before.
-    * Port forward `APP_OPTIONS.optionsTemplateURL` usages to 
-      `APP_OPTIONS.appMenuTemplateURL` usages. This content will now appear in 
-      the side navigation and may likely need a bit of tweaking if using a rigid
-      CSS layout.
+* Add jQueryUI Sortable to frame app, or refer to 
+  [an example of angular-drag-and-drop-lists][uportal-home #795]
+* If using the "app-title" attribute on frame-page directive, that title will be
+  used as the document title
+* Pages formerly using `app-header` can use the `page-title` attribute on 
+  `frame-page` to achieve a similar within-page `h1` heading as before.
+* Port forward `APP_OPTIONS.optionsTemplateURL` usages to 
+  `APP_OPTIONS.appMenuTemplateURL` usages. This content will now appear in the 
+  side navigation and may likely need a bit of tweaking if using a rigid
+  CSS layout.
 
 ### Added
 
