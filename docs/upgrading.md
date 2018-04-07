@@ -3,20 +3,27 @@ At a glance notes for upgrading apps between major versions.
 
 # 8.x.x to 9.x.x
 
-With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL`
-config has been deprecated. Apps using an `optionsTemplateURL` will display the
-template in the side navigation menu. This may require minor layout/appearance
-adjustments in the template. (#684)
+The framework will include in the document title the value of the `app-title` 
+attribute, if set, on the `frame-page` directive.
+
+With the removal of the `<app-header>`, support for the
+`APP_OPTIONS.optionsTemplateURL` config has been **removed**.
+
+A similar `appMenuTemplateURL` configuration replaces the removed feature. The
+framework displays the content referenced by `appMenuTemplateURL`, if set and
+not superseded by `appMenuItems`, in the side navigation menu. Templates built 
+for reference by `optionsTemplateURL` may need minor layout/appearance 
+adjustments for suitability for use as `appMenutemplateURL`. (#684)
 
 To upgrade:
 
-+ If using the "app-title" attribute on frame-page directive, that title will
-  be used as the document title
-+ Pages formerly using `app-header` can use the `page-title` attribute on
-  `frame-page` to achieve a similar within-page `h1` heading as before.
-+ If previously using APP_OPTIONS.optionsTemplateURL to set up app-header
-  options, those options will now appear in the side navigation and may likely
-  need a bit of tweaking if using a rigid CSS layout.
++ Update pages that were using `<app-header>` directly to use `<frame-page>`
+  instead. The `page-title` attribute on `frame-page` results in a similar
+  within-page `h1` heading as before.
++ Update applications previously using `APP_OPTIONS.optionsTemplateURL` to use
+  `APP_OPTIONS.appMenuTemplateURL` instead. HTML templates previously used
+  as `optionsTemplateURL` may need a bit of tweaking for suitability for use as 
+  an `appMenuTemplateURL`.
 
 # 7.x.x to 8.x.x
 - move the data name/value pairs from the audience filter into a new `data`
