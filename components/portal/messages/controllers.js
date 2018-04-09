@@ -91,14 +91,9 @@ define(['angular'], function(angular) {
          * @param {Object} allMessages
          */
         var filterMessages = function(allMessages) {
-          var groupFiltersEnabled =
-            !$localStorage.disableGroupFilteringForMessages;
-          var groupPromise = null;
-          if (!groupFiltersEnabled) {
-            groupPromise = $q.resolve(allMessages);
-          } else {
-            groupPromise = promiseMessagesByGroup(allMessages);
-          }
+          var dateFilterMessages =
+            $filter('filterByDate')(allMessages);
+          var groupPromise = promiseMessagesByGroup(dateFilterMessages);
 
           $q.all([promiseSeenMessageIds(),
                   groupPromise])
@@ -114,22 +109,20 @@ define(['angular'], function(angular) {
           $scope.seenMessageIds = result[0];
           var groupedMessages = result[1];
 
-          var dateFilterMessages =
-            $filter('filterByDate')(groupedMessages);
-          $q.all(promiseMessagesByData(dateFilterMessages))
+          var seenAndUnseen = $filter('filterSeenAndUnseen')
+            (result[1], $scope.seenMessageIds);
+ 
+          $q.all(promiseMessagesByData(seenAndUnseen.unseen))
             .then(dataMessageSuccess)
             .catch(filterMessagesFailure);
         };
-
+        
         var dataMessageSuccess = function(result) {
           $scope.messages =
             $filter('separateMessageTypes')(result);
           $scope.hasMessages = true;
         };
 
-        var dateFilterSuccess = function(dateFilterMessages) {
-          
-        }
         /**
          * Handle errors that occur while resolving promises to
          * get notifications
