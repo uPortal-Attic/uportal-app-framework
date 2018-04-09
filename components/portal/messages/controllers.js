@@ -127,6 +127,9 @@ define(['angular'], function(angular) {
           $scope.hasMessages = true;
         };
 
+        var dateFilterSuccess = function(dateFilterMessages) {
+          
+        }
         /**
          * Handle errors that occur while resolving promises to
          * get notifications
