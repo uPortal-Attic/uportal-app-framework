@@ -116,7 +116,7 @@ define(['angular'], function(angular) {
  
           $q.all(promiseMessagesByData(seenAndUnseen.unseen));
         };
-        
+
         var dataMessageSuccess = function(result) {
           $scope.messages =
             $filter('separateMessageTypes')(result);
