@@ -231,7 +231,7 @@ define(['angular'], function(angular) {
               return filteredMessages;
             });
         };
-
+        
         /**
          * Get list of seen message IDs from K/V store or session storage
          * @return {*}

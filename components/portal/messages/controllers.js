@@ -78,7 +78,9 @@ define(['angular'], function(angular) {
 
         // Promise to resolve urls in messages
         var promiseMessagesByData = function(messages) {
-          return messagesService.getMessagesByData(messages);
+          messagesService.getMessagesByData(messages)
+            .then(dataMessageSuccess)
+            .catch(filterMessagesFailure);
         };
 
         // Promise to resolve group memberships
@@ -110,11 +112,9 @@ define(['angular'], function(angular) {
           var groupedMessages = result[1];
 
           var seenAndUnseen = $filter('filterSeenAndUnseen')
-            (result[1], $scope.seenMessageIds);
+            (groupedMessages, $scope.seenMessageIds);
  
-          $q.all(promiseMessagesByData(seenAndUnseen.unseen))
-            .then(dataMessageSuccess)
-            .catch(filterMessagesFailure);
+          $q.all(promiseMessagesByData(seenAndUnseen.unseen));
         };
         
         var dataMessageSuccess = function(result) {
