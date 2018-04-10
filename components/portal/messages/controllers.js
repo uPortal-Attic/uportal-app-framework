@@ -111,9 +111,9 @@ define(['angular'], function(angular) {
           $scope.seenMessageIds = result[0];
           var groupedMessages = result[1];
 
-          var seenAndUnseen = $filter('filterSeenAndUnseen')
-            (groupedMessages, $scope.seenMessageIds);
- 
+          var seenAndUnseen =
+            $filter('filterSeenAndUnseen')(groupedMessages, $scope.seenMessageIds);
+
           $q.all(promiseMessagesByData(seenAndUnseen.unseen));
         };
 
