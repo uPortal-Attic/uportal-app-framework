@@ -78,7 +78,9 @@ define(['angular'], function(angular) {
 
         // Promise to resolve urls in messages
         var promiseMessagesByData = function(messages) {
-          return messagesService.getMessagesByData(messages);
+          messagesService.getMessagesByData(messages)
+            .then(dataMessageSuccess)
+            .catch(filterMessagesFailure);
         };
 
         // Promise to resolve group memberships
@@ -91,14 +93,9 @@ define(['angular'], function(angular) {
          * @param {Object} allMessages
          */
         var filterMessages = function(allMessages) {
-          var groupFiltersEnabled =
-            !$localStorage.disableGroupFilteringForMessages;
-          var groupPromise = null;
-          if (!groupFiltersEnabled) {
-            groupPromise = $q.resolve(allMessages);
-          } else {
-            groupPromise = promiseMessagesByGroup(allMessages);
-          }
+          var dateFilterMessages =
+            $filter('filterByDate')(allMessages);
+          var groupPromise = promiseMessagesByGroup(dateFilterMessages);
 
           $q.all([promiseSeenMessageIds(),
                   groupPromise])
@@ -112,13 +109,12 @@ define(['angular'], function(angular) {
          */
         var filterMessagesSuccess = function(result) {
           $scope.seenMessageIds = result[0];
-          var groupedMessages = result[1];
+          var grpMsg = result[1];
 
-          var dateFilterMessages =
-            $filter('filterByDate')(groupedMessages);
-          $q.all(promiseMessagesByData(dateFilterMessages))
-            .then(dataMessageSuccess)
-            .catch(filterMessagesFailure);
+          var seenAndUnseen =
+            $filter('filterSeenAndUnseen')(grpMsg, $scope.seenMessageIds);
+
+          $q.all(promiseMessagesByData(seenAndUnseen.unseen));
         };
 
         var dataMessageSuccess = function(result) {
