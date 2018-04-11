@@ -29,7 +29,6 @@ define(['angular'], function(angular) {
             'campusIdAttribute': null,
         })
         .value('APP_OPTIONS', {
-            'optionsTemplateURL': null,
             'appMenuTemplateURL': null,
             'appMenuItems': [],
             'enablePushContentMenu': false,
