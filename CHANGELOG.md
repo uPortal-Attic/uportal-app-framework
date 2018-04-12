@@ -19,13 +19,21 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   title, not just those presented via `circle-button`s (#736)
 * RSS widgets now offer tooltip with full title when truncating item titles
   (#737)
-* Data urls only called when necessary (#741)  
+* Data urls only called when necessary (#747)  
 
 ### Fixed
 
 * `list-of-links` widgets are now `basic` widgets in the zero links edge case (#735)
 * `list-of-links` now `aria-label`s links, ensuring a non-truncated version of
   the link label is available to browsers (#736)
+
+### Removed
+
+* Support for `APP_OPTIONS.optionsTemplateURL` configuration is removed in this
+  release. It had previously been documented as "deprecated" but the 
+  backwards-compatibility support didn't work out (#744), so in practice support
+  for this feature was already removed as a breaking change for the `9.x` 
+  version series. (#745)
 
 ### Deprecated
 
@@ -74,22 +82,28 @@ This release is to mop up some weirdness which happened with 9.0.1 and get a cle
 ## [9.0.0][] - 2018-3-21
 
 ### Breaking changes
-*   Removed jQuery UI sortable dependency (#721)
 
-*   Removed `<app-header>` directive. This affects any framework apps using
-    that directive outside of `<frame-page>`. `<frame-page>` usages should be
-    unaffected. (#684)
+* Removed jQuery UI sortable dependency (#721)
+* Removed `<app-header>` directive. This affects any framework apps using that 
+  directive outside of `<frame-page>`. `<frame-page>` usages should be 
+  unaffected. (#684)
+* With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL` 
+  config has been removed, superseded by a new `APP_OPTIONS.appMenuTemplateURL`.
+  Templates may require minor layout/appearance adjustments for use in the new 
+  way. (#684)
 
-*   With the removal of the `<app-header>`, the
-    `APP_OPTIONS.optionsTemplateURL` config has been deprecated. Apps using an
-    `optionsTemplateURL` will display the template in the side navigation menu.
-    This may require minor layout/appearance adjustments in the template. (#684)
+To upgrade:
 
-*   To upgrade:
-    * Add jQueryUI Sortable to frame app, or refer to [an example of angular-drag-and-drop-lists][uportal-home #795]
-    * If using the "app-title" attribute on frame-page directive, that title will be used as the document title
-    * Pages formerly using `app-header` can use the `page-title` attribute on `frame-page` to achieve a similar within-page `h1` heading as before.
-    * If previously using APP_OPTIONS.optionsTemplateURL to set up app-header options, those options will now appear in the side navigation and may likely need a bit of tweaking if using a rigid CSS layout.
+* Add jQueryUI Sortable to frame app, or refer to 
+  [an example of angular-drag-and-drop-lists][uportal-home #795]
+* If using the "app-title" attribute on frame-page directive, that title will be
+  used as the document title
+* Pages formerly using `app-header` can use the `page-title` attribute on 
+  `frame-page` to achieve a similar within-page `h1` heading as before.
+* Port forward `APP_OPTIONS.optionsTemplateURL` usages to 
+  `APP_OPTIONS.appMenuTemplateURL` usages. This content will now appear in the 
+  side navigation and may likely need a bit of tweaking if using a rigid
+  CSS layout.
 
 ### Added
 

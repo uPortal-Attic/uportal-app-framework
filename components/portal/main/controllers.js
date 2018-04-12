@@ -325,17 +325,6 @@ define(['angular', 'require'], function(angular, require) {
           && $mdMedia('gt-sm') && !vm.hideMainMenu;
       };
 
-
-      /**
-       * DEPRECATED
-       * Backwards compatibility for deprecated optionsTemplateURL
-       */
-      var configureAppOptions = function() {
-        if (APP_OPTIONS.optionsTemplateURL) {
-          vm.optionsTemplate = require.toUrl(APP_OPTIONS.optionsTemplateURL);
-        }
-      };
-
       /**
        * Configure notifications/announcements features in main menu
        * if messages configuration is properly set up
@@ -357,7 +346,6 @@ define(['angular', 'require'], function(angular, require) {
        */
       var init = function() {
         configureMainMenu();
-        configureAppOptions();
         configureMessagesFeatures();
       };
 
