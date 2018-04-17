@@ -9,6 +9,15 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [Unreleased][]
 
 ### Added
+### Changed
+### Fixed
+### Removed
+### Deprecated
+
+## [9.1.0][] - 2018-4-17
+
+
+### Added
 
 * `showAllMessages` beta setting. When true disables all client-side message
   filtering. Useful for demos and testing. (#742)
@@ -632,7 +641,8 @@ break compatibility with some older components. If the app used any `angular-ui-
 * Added ability to have a name for the default theme (#336)
 * Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.2...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.1.0...HEAD
+[9.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.2...v9.1.0
 [9.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.1...v9.0.2
 [9.0.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.0...v9.0.1
 [9.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v8.0.0...v9.0.0
