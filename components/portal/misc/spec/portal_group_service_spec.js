@@ -38,11 +38,6 @@ define(['angular-mocks', 'portal'], function() {
           httpBackend = _$httpBackend_;
           URLS.group = SERVICE_LOC.groupURL;
           URLS.feature = SERVICE_LOC.messagesURL;
-          loginSilentURL = APP_FLAGS.loginOnLoad;
-          if (loginSilentURL) {
-            httpBackend.whenGET(loginSilentURL)
-            .respond({'status': 'success', 'username': 'admin'});
-          }
         }));
 
         it('should properly handle filtering nothing', function() {

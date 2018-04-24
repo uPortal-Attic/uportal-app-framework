@@ -434,7 +434,7 @@ define([
         $sessionStorage.portal = $sessionStorage.portal || {};
         configureAppConfig();
 
-        if (APP_FLAGS.loginOnLoad && !lastLoginValid()) {
+        if (!lastLoginValid()) {
           $http.get(SERVICE_LOC.loginSilentURL).then(function(result) {
             if (APP_FLAGS.debug) {
               $log.info(

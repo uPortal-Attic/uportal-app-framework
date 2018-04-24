@@ -37,7 +37,6 @@ define(['angular'], function(angular) {
         userPromise = prom
           .then(function(result, status) { // success function
             var person = result.data.person;
-            if (APP_FLAGS.loginOnLoad) {
               // quick check to make sure you are who your browser says you are
               if (
                 $sessionStorage.portal && $sessionStorage.portal.username &&
@@ -52,7 +51,6 @@ define(['angular'], function(angular) {
                 miscService.redirectUser(
                   302, 'Wrong User than populated in session storage.');
               }
-            }
             return person;
           })
           .catch(function(data, status) { // failure function
