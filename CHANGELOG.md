@@ -9,19 +9,75 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [Unreleased][]
 
 ### Added
+### Changed
+### Fixed
+### Removed
+### Deprecated
+
+## [9.1.0][] - 2018-4-17
+
+
+### Added
+
+* `showAllMessages` beta setting. When true disables all client-side message
+  filtering. Useful for demos and testing. (#742)
+
+### Changed
+
+* `list-of-links` now offers tooltip with full title when it truncates any link
+  title, not just those presented via `circle-button`s (#736)
+* RSS widgets now offer tooltip with full title when truncating item titles
+  (#737)
+* Data urls only called when necessary (#747)  
+
+### Fixed
+
+* `list-of-links` widgets are now `basic` widgets in the zero links edge case (#735)
+* `list-of-links` now `aria-label`s links, ensuring a non-truncated version of
+  the link label is available to browsers (#736)
+
+### Removed
+
+* Support for `APP_OPTIONS.optionsTemplateURL` configuration is removed in this
+  release. It had previously been documented as "deprecated" but the 
+  backwards-compatibility support didn't work out (#744), so in practice support
+  for this feature was already removed as a breaking change for the `9.x` 
+  version series. (#745)
+
+### Deprecated
+
+The `disableGroupFilteringForMessages` beta setting is deprecated. While it
+still works in this release, the new `showAllMessages` beta setting is intended
+to replace it. `disableGroupFilteringForMessages` will have no effect in some
+future release. (#742)
+
+## [9.0.2][] - 2018-3-30
+
+This release is to mop up some weirdness which happened with 9.0.1 and get a clean artifact.
+
+### Changed
+
+* Minor CHANGELOG change
+  (#731)
+* Fix positioning of frame-page title when using on-page side navigation (#738)
+
+## [9.0.1][] - 2018-3-29
+
+### Added
 * Adds resetters to user-settings page (#724)
 * `circle-button` now offers tooltip with full title when title is truncated
   (#727)
 
 ### Changed
 
-* Out of the box example `list-of-links` widget now more self-documenting 
+* Out of the box example `list-of-links` widget now more self-documenting
   (#727, #729)
 
 ### Fixed
 
 * `circle-button` no longer truncates `aria-label` representation of title
   (#727)
+* Message filtering now more precise (#730)
 
 ### Build engineering
 
@@ -36,22 +92,28 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [9.0.0][] - 2018-3-21
 
 ### Breaking changes
-*   Removed jQuery UI sortable dependency (#721)
 
-*   Removed `<app-header>` directive. This affects any framework apps using
-    that directive outside of `<frame-page>`. `<frame-page>` usages should be
-    unaffected. (#684)
+* Removed jQuery UI sortable dependency (#721)
+* Removed `<app-header>` directive. This affects any framework apps using that 
+  directive outside of `<frame-page>`. `<frame-page>` usages should be 
+  unaffected. (#684)
+* With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL` 
+  config has been removed, superseded by a new `APP_OPTIONS.appMenuTemplateURL`.
+  Templates may require minor layout/appearance adjustments for use in the new 
+  way. (#684)
 
-*   With the removal of the `<app-header>`, the
-    `APP_OPTIONS.optionsTemplateURL` config has been deprecated. Apps using an
-    `optionsTemplateURL` will display the template in the side navigation menu.
-    This may require minor layout/appearance adjustments in the template. (#684)
+To upgrade:
 
-*   To upgrade:
-    * Add jQueryUI Sortable to frame app, or refer to [an example of angular-drag-and-drop-lists][uportal-home #795]
-    * If using the "app-title" attribute on frame-page directive, that title will be used as the document title
-    * Pages formerly using `app-header` can use the `page-title` attribute on `frame-page` to achieve a similar within-page `h1` heading as before.
-    * If previously using APP_OPTIONS.optionsTemplateURL to set up app-header options, those options will now appear in the side navigation and may likely need a bit of tweaking if using a rigid CSS layout.
+* Add jQueryUI Sortable to frame app, or refer to 
+  [an example of angular-drag-and-drop-lists][uportal-home #795]
+* If using the "app-title" attribute on frame-page directive, that title will be
+  used as the document title
+* Pages formerly using `app-header` can use the `page-title` attribute on 
+  `frame-page` to achieve a similar within-page `h1` heading as before.
+* Port forward `APP_OPTIONS.optionsTemplateURL` usages to 
+  `APP_OPTIONS.appMenuTemplateURL` usages. This content will now appear in the 
+  side navigation and may likely need a bit of tweaking if using a rigid
+  CSS layout.
 
 ### Added
 
@@ -95,9 +157,14 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Breaking Changes
 
-* Moves the data object in messages out of the audience object and into a
+*   Moves the data object in messages out of the audience object and into a
   separate object. This will affect installations that have configured a
   messages.json file. (#649)
+*   Removes a route formerly used to catch a localStorage error (#643)
+
+*   To upgrade:
+    - If your app's main.js file uses the `'/sorry-safari'` route, remove it
+    - Also remove the corresponding url-pattern from your app's web.xml file 
 
 ### Added
 
@@ -575,7 +642,10 @@ break compatibility with some older components. If the app used any `angular-ui-
 * Added ability to have a name for the default theme (#336)
 * Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v8.0.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.1.0...HEAD
+[9.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.2...v9.1.0
+[9.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.1...v9.0.2
+[9.0.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.0...v9.0.1
 [9.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v8.0.0...v9.0.0
 [8.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v7.0.0...v8.0.0
 [7.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.1.0...v7.0.0

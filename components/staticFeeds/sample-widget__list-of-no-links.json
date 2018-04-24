@@ -1,0 +1,61 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "List of Links widget type with no links",
+      "description": "Demonstrates list-of-links edge case of zero links.",
+      "url": "staticFeeds/list-of-no-links-via-url.json",
+      "iconUrl": null,
+      "faIcon": "fa-briefcase",
+      "fname": "list-of-links-type-zero-links",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetURL": "/staticFeeds/list-of-no-links-via-url.json",
+      "widgetType": "list-of-links",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "getLinksURL": "true",
+        "launchText": "View widget JSON"
+      },
+      "widgetExternalMessageUrl": "/staticFeeds/sample-widget_message.json",
+      "widgetExtneralMessageTextObjectLocation": ["result", 0, "message"],
+      "widgetExternalMessageLearnMoreUrl": ["learnMoreUrl"],
+      "staticContent": "<div><p>Static content goes here.</p></div>",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "categories": [
+      "Widget types",
+      "Edge cases"
+    ],
+    "portletName": "cms",
+    "title": "List of Links widget type with no links",
+    "keywords": [
+      "list",
+      "links",
+      "ordered",
+      "icons",
+      "zero"
+    ],
+    "fname": "list-of-links-type-zero-links",
+    "rating": 0.0,
+    "lifecycleState": "PUBLISHED",
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://www.example.edu",
+    "portletWebAppName": "/SimpleContentPortlet",
+    "maxUrl": "https://www.example.edu",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 0,
+    "faIcon": "fa-briefcase",
+    "description": "Demonstrates list-of-links edge case of zero links.",
+    "id": "37",
+    "type": "Portlet",
+    "target": null
+  }
+}
