@@ -354,17 +354,6 @@ define([
         }
       };
 
-      var lastLoginValid = function() {
-        var portal = $sessionStorage.portal;
-        var timeLapseBetweenLogins = APP_FLAGS.loginDurationMills || 14400000;
-        if (portal && portal.lastAccessed) {
-          if (Date.now() - portal.lastAccessed <= timeLapseBetweenLogins) {
-            return true;
-          }
-        }
-        return false;
-      };
-
       var searchRouteParameterInit = function() {
         // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
         // eslint-disable-next-line angular/on-watch
@@ -433,32 +422,7 @@ define([
         $rootScope.portal = $rootScope.portal || {};
         $sessionStorage.portal = $sessionStorage.portal || {};
         configureAppConfig();
-
-        if (APP_FLAGS.loginOnLoad && !lastLoginValid()) {
-          $http.get(SERVICE_LOC.loginSilentURL).then(function(result) {
-            if (APP_FLAGS.debug) {
-              $log.info(
-                'login returned with ' +
-                (result.data ? result.data.status : null)
-              );
-            }
-            themeLoading();
-            if ('success' === result.data.status) {
-              $sessionStorage.portal.lastAccessed = (new Date).getTime();
-              $sessionStorage.portal.username = result.data.username;
-              if (NAMES.guestUserName &&
-                result.data.username === NAMES.guestUserName) {
-                $rootScope.GuestMode = true;
-              }
-            }
-            return result;
-          }).catch(function(reason) {
-            // continue with theme loading so they don't get stuck on loading
-            themeLoading();
-          });
-        } else {
-          themeLoading();
-        }
+        themeLoading();
       };
       init();
     });
