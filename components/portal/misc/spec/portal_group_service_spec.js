@@ -22,6 +22,7 @@
 define(['angular-mocks', 'portal'], function() {
     describe('portalGroupService', function() {
         var service;
+        var httpBackend;
         var URLS = {};
   
         beforeEach(function() {
@@ -96,6 +97,8 @@ define(['angular-mocks', 'portal'], function() {
           var groups = [{name: 'in'}];
           // test
           var results = service.filterArrayByGroups(array, groups, 'theGroup');
+
+          expect(httpBackend).isNot(null);
 
           expect(results).toBeTruthy();
 
