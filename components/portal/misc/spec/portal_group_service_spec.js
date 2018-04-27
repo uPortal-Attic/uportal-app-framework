@@ -98,7 +98,7 @@ define(['angular-mocks', 'portal'], function() {
           // test
           var results = service.filterArrayByGroups(array, groups, 'theGroup');
 
-          expect(httpBackend).isNot(null);
+          expect(httpBackend).toBeTruthy();
 
           expect(results).toBeTruthy();
 
