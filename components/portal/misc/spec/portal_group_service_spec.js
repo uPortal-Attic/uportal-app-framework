@@ -22,10 +22,8 @@
 define(['angular-mocks', 'portal'], function() {
     describe('portalGroupService', function() {
         var service;
-        var httpBackend;
         var URLS = {};
-        var loginSilentURL;
-
+  
         beforeEach(function() {
           module('portal');
         });
