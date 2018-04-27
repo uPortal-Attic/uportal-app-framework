@@ -354,17 +354,6 @@ define([
         }
       };
 
-      var lastLoginValid = function() {
-        var portal = $sessionStorage.portal;
-        var timeLapseBetweenLogins = APP_FLAGS.loginDurationMills || 14400000;
-        if (portal && portal.lastAccessed) {
-          if (Date.now() - portal.lastAccessed <= timeLapseBetweenLogins) {
-            return true;
-          }
-        }
-        return false;
-      };
-
       var searchRouteParameterInit = function() {
         // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
         // eslint-disable-next-line angular/on-watch
