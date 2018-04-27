@@ -433,32 +433,7 @@ define([
         $rootScope.portal = $rootScope.portal || {};
         $sessionStorage.portal = $sessionStorage.portal || {};
         configureAppConfig();
-
-        if (!lastLoginValid()) {
-          $http.get(SERVICE_LOC.loginSilentURL).then(function(result) {
-            if (APP_FLAGS.debug) {
-              $log.info(
-                'login returned with ' +
-                (result.data ? result.data.status : null)
-              );
-            }
-            themeLoading();
-            if ('success' === result.data.status) {
-              $sessionStorage.portal.lastAccessed = (new Date).getTime();
-              $sessionStorage.portal.username = result.data.username;
-              if (NAMES.guestUserName &&
-                result.data.username === NAMES.guestUserName) {
-                $rootScope.GuestMode = true;
-              }
-            }
-            return result;
-          }).catch(function(reason) {
-            // continue with theme loading so they don't get stuck on loading
-            themeLoading();
-          });
-        } else {
-          themeLoading();
-        }
+        themeLoading();
       };
       init();
     });
