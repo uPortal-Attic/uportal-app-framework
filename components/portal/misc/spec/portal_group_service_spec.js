@@ -24,7 +24,6 @@ define(['angular-mocks', 'portal'], function() {
         var service;
         var httpBackend;
         var URLS = {};
-  
         beforeEach(function() {
           module('portal');
         });
