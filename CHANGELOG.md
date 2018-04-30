@@ -11,6 +11,10 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Added
 ### Changed
 ### Fixed
+
+* When priority notification title is truncated, provide full title as tooltip
+  (#754)
+
 ### Removed
 
 * no loger used LoginOnLoad option removed (#753)
