@@ -117,6 +117,9 @@
       <div class="notification-message">
         <span>{{ priority.title | limitTo: vm.titleLengthLimit | trim }}</span>
         <span ng-if="priority.title.length > vm.titleLengthLimit">...</span>
+        <md-tooltip ng-if="priority.title.length > vm.titleLengthLimit">
+          {{ priority.title }}
+        </md-tooltip>
       </div>
       <div layout="row" class="compact-buttons">
         <md-button class="md-raised md-accent"
