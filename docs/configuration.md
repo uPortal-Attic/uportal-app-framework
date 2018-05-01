@@ -17,8 +17,6 @@ are available.
 + **showSearch**: This boolean hides/shows the search bar at the top.
 + **isWeb**: A flag for special handling for the `uPortal-home` app. Other apps
 should set this to `false`.
-+ **loginOnLoad**: When **true** fires a login event during the loading
-sequence. **SERVICE_LOC.loginSilentURL** must be set.
 + **loginDurationMills**: number of milliseconds a login session is valid for.
 Default set to 4 hours (14400000).
 + **gaSearchParam**: Default set to 'q'. This is the param that is tacked on to
@@ -80,7 +78,6 @@ technology.
 + **groupURL**: Service for reading the user's group memberships as understood
 by the portal. Currently this only used for notifications.
 [Example](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/groups.json).
-+ **loginSilentURL**: See **APP_FLAGS.loginOnLoad** for usage.
 + **portalLayoutRestEndpoint**: If set, selecting a skin in beta settings will
 also set the skin in the user's uPortal profile. e.g.: **'/portal/api/layout'**
 
@@ -155,7 +152,6 @@ define(['angular'], function(angular) {
       ],
     },
     'APP_FLAG': {
-      'loginOnLoad': true,
       'gaSearchParam': 'f',
     },
     'FOOTER_URLS': [{

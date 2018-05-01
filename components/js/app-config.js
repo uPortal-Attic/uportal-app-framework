@@ -23,7 +23,6 @@ define(['angular'], function(angular) {
             'showSearch': true,
             'isWeb': false,
             'defaultTheme': 0,
-            'loginOnLoad': false,
             'showUserSettingsPage': false,
             'debug': false,
             'campusIdAttribute': null,
