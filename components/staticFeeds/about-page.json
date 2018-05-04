@@ -11,6 +11,10 @@
     {
       "url": "https://docs.google.com/a/wisc.edu/forms/d/1h4t8IVveOK-kYQPuZceW9z4ZZiYepUnWD-BE4A58mnE/viewform",
       "text": "Suggest an item for the MyUW app directory"
+    },
+    {
+      "url": "session-info",
+      "text": "Version information"
     }
   ]
 }
