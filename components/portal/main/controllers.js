@@ -162,7 +162,7 @@ define(['angular', 'require'], function(angular, require) {
     });
 
     mainService.isGuest().then(function(result) {
-      return $scope.GuestMode = result;
+      return result;
     }).catch(function(err) {
       $log.warn('could not check guest');
     });
