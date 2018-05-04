@@ -94,6 +94,7 @@ This release is to mop up some weirdness which happened with 9.0.1 and get a cle
 * DEPRECATED: Font Awesome icons for `list-of-links` links. Use Material Icons
   instead. (#727)
 * Modest improvements to `list-of-links` widget type documentation (#727)
+* Adds glossary (#725)
 
 ## [9.0.0][] - 2018-3-21
 
