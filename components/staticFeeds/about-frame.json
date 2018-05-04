@@ -1,5 +1,4 @@
-{
-  "technicalInfo": [
+[
     {
       "name": "Frame Version",
       "value": "${project.version}"
@@ -24,5 +23,4 @@
       "name": "Build Time",
       "value": "${git.build.time}"
     }
-  ]
-}
+]

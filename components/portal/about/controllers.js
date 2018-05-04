@@ -38,11 +38,36 @@ define(['angular', 'require'], function (angular, require) {
               $scope.appInfo = result;
               return result;
             }).catch(function () {
-            $log.warn('issue getting frame info');
+            $log.warn('issue getting app info');
           });
         }
       }])
-    .controller('AboutPageController', ['$log', '$scope', 'SERVICE_LOC', function ($log, $scope, SERVICE_LOC) {
-      // What do we do in the About page controller?
+
+    .controller('AboutPageController', ['$log', '$scope', 'portalAboutService',
+      'SERVICE_LOC', function ($log, $scope, portalAboutService, SERVICE_LOC) {
+      /**
+       * Get 'about' page information to display
+       */
+      var init = function() {
+        $scope.aboutText = [];
+        $scope.aboutLinks = [];
+
+        if (SERVICE_LOC.aboutPageURL) {
+          portalAboutService.getAboutPage(SERVICE_LOC.aboutPageURL)
+            .then(function (result) {
+              if (result.aboutText && result.aboutText.length > 0) {
+                $scope.aboutText = result.aboutText;
+              }
+              if (result.aboutLinks && result.aboutLinks.length > 0) {
+                $scope.aboutLinks = result.aboutLinks;
+              }
+              return result;
+            }).catch(function () {
+            $log.warn('issue getting app info');
+          });
+        }
+      };
+
+      init();
     }]);
 });

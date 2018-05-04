@@ -9,7 +9,12 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [Unreleased][]
 
 ### Added
+* New "session info" page containing the former content of the "About" page (uportal-app-framework version info, app info JSON)
+* App config option `aboutPageURL` to get text and links for "About" page
+ 
 ### Changed
+* "About" page now sources meaningful content from `aboutPageURL`
+
 ### Fixed
 
 * When priority notification title is truncated, provide full title as tooltip

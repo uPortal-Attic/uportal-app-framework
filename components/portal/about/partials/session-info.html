@@ -20,13 +20,13 @@
 -->
 <frame-page
   app-title="Session info"
-  app-icon="help"
   page-title="Session information"
   white-background="true">
-  <md-content ng-controller="SessionInfoController as sessionInfoCtrl" class="about__content">
+  <md-content ng-controller="SessionInfoController as sessionInfoCtrl" class="session-info__content">
+    <p>The information on this page is intended to assist Help Desk personnel while troubleshooting.</p>
     <div layout="column" layout-align="center start">
-      <h2>Frame Version Information</h2>
-      <p ng-repeat="item in frameInfo">
+      <h2>uportal-app-framework</h2>
+      <p class="session-info__item" ng-repeat="item in frameInfo">
         <span><b>{{ item.name }}</b></span> :
         <span ng-if="item.name==='Git Commit ID'">
           <a ng-href="https://github.com/uPortal-Project/uportal-app-framework/commit/{{item.value}}" target="_blank" rel="noopener noreferrer">{{ item.value }}</a>
@@ -34,9 +34,9 @@
         <span ng-if="item.name!=='Git Commit ID'">{{ item.value }}</span></p>
     </div>
     <div layout="column" layout-align="center start" ng-if="appInfo">
-      <h2>{{ NAMES.title }} Version Information</h2>
-      <div class="about__json-container">
-        <pre class="widget-body">{{appInfo | json}}</pre>
+      <h2>{{ NAMES.title }} info</h2>
+      <div class="session-info__json-container">
+        <pre class="widget-body">{{ appInfo | json }}</pre>
       </div>
     </div>
   </md-content>

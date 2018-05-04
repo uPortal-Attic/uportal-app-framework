@@ -23,6 +23,14 @@
   page-title="About {{ NAMES.title }}"
   white-background="true">
   <md-content class="about__content">
-   
+    <p ng-repeat="paragraph in aboutText">{{ paragraph }}</p>
+    <div ng-if="aboutLinks.length > 0">
+      <h2>Useful links:</h2>
+      <ul>
+        <li ng-repeat="link in aboutLinks">
+          <a ng-href="link.url">{{ link.text }}</a>
+        </li>
+      </ul>
+    </div>
   </md-content>
 </frame-page>
