@@ -9,11 +9,12 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [Unreleased][]
 
 ### Added
-* New "session info" page containing the former content of the "About" page (uportal-app-framework version info, app info JSON)
-* App config option `aboutPageURL` to get text and links for "About" page
+
+* New "session info" page containing the former content of the "About" page (uportal-app-framework version info, app info JSON) (#755)
+* App config option `aboutPageURL` to get text and links for "About" page (#755)
  
 ### Changed
-* "About" page now sources meaningful content from `aboutPageURL`
+* "About" page now sources meaningful content from `aboutPageURL` (#755)
 
 ### Fixed
 
