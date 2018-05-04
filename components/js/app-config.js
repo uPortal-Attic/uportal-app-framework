@@ -34,6 +34,7 @@ define(['angular'], function(angular) {
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,
+            'aboutPageURL': null,
             'groupURL': '/portal/api/groups',
             'kvURL': '/storage',
             'loginSilentURL': '/portal/Login?silent=true',

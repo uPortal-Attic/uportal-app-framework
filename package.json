@@ -190,7 +190,7 @@
       "validate-links",
       [
         "remark-lint-list-item-indent",
-        "mixed"
+        false
       ]
     ]
   },

@@ -20,26 +20,54 @@
 
 define(['angular', 'require'], function(angular, require) {
   return angular.module('portal.about.controllers', [])
-  .controller('PortalAboutController', [
-    '$log', '$scope', 'portalAboutService', 'SERVICE_LOC',
-    function($log, $scope, portalAboutService, SERVICE_LOC) {
-    portalAboutService.getFrameDetails()
-      .then(function(result) {
-          $scope.frameInfo = result;
-          return result;
-      }).catch(function() {
-        $log.warn('issue getting frame details');
-      });
-
-    $scope.appInfo = null;
-    if (SERVICE_LOC.aboutURL) {
-      portalAboutService.getDetails(SERVICE_LOC.aboutURL)
-        .then(function(result) {
-          $scope.appInfo = result;
-          return result;
-        }).catch(function() {
-          $log.warn('issue getting frame info');
+    .controller('SessionInfoController', [
+      '$log', '$scope', 'portalAboutService', 'SERVICE_LOC',
+      function($log, $scope, portalAboutService, SERVICE_LOC) {
+        portalAboutService.getFrameDetails()
+          .then(function(result) {
+            $scope.frameInfo = result;
+            return result;
+          }).catch(function() {
+          $log.warn('issue getting frame details');
         });
-    }
-  }]);
+
+        $scope.appInfo = null;
+        if (SERVICE_LOC.aboutURL) {
+          portalAboutService.getDetails(SERVICE_LOC.aboutURL)
+            .then(function(result) {
+              $scope.appInfo = result;
+              return result;
+            }).catch(function() {
+            $log.warn('issue getting app info');
+          });
+        }
+      }])
+
+    .controller('AboutPageController', ['$log', '$scope', 'portalAboutService',
+      'SERVICE_LOC', function($log, $scope, portalAboutService, SERVICE_LOC) {
+      /**
+       * Get 'about' page information to display
+       */
+      var init = function() {
+        $scope.aboutText = [];
+        $scope.aboutLinks = [];
+
+        if (SERVICE_LOC.aboutPageURL) {
+          portalAboutService.getAboutPage(SERVICE_LOC.aboutPageURL)
+            .then(function(result) {
+              if (result.aboutText && result.aboutText.length > 0) {
+                $scope.aboutText = result.aboutText;
+              }
+              if (result.aboutLinks && result.aboutLinks.length > 0) {
+                $scope.aboutLinks = result.aboutLinks;
+              }
+              return result;
+            }).catch(function() {
+            $log.warn('issue getting app info');
+          });
+        }
+      };
+
+      init();
+    }]);
 });
