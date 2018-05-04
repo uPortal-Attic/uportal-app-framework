@@ -161,10 +161,8 @@ define(['angular', 'require'], function(angular, require) {
       $log.warn('could not get user');
     });
 
-    // DEPRECATED
-    // Don't set GuestMode in rootScope. Remove in next major version.
     mainService.isGuest().then(function(result) {
-      return $rootScope.GuestMode = result;
+      return $scope.GuestMode = result;
     }).catch(function(err) {
       $log.warn('could not check guest');
     });
