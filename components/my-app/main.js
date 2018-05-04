@@ -21,7 +21,7 @@ define(['angular',
     'portal',
     'portal/main/routes',
     'portal/settings/routes',
-    'portal/about/route',
+    'portal/about/routes',
     'portal/widgets/routes',
     'portal/messages/routes',
   ], function(
@@ -37,7 +37,8 @@ define(['angular',
         .when('/user-settings', settings.userSettings)
         .when('/notifications', messages.notifications)
         .when('/features', messages.announcements)
-        .when('/about', about)
+        .when('/about', about.about)
+        .when('/session-info', about.sessionInfo)
         .when('/access-denied', main.accessDenied)
         .when('/server-error', main.serverError)
         .when('/demo-widgets', widgets.demoWidgets)

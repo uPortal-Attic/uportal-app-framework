@@ -1,0 +1,43 @@
+<!--
+
+    Licensed to Apereo under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Apereo licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License.  You may obtain a
+    copy of the License at the following location:
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<frame-page
+  app-title="Session info"
+  app-icon="help"
+  page-title="Session information"
+  white-background="true">
+  <md-content ng-controller="SessionInfoController as sessionInfoCtrl" class="about__content">
+    <div layout="column" layout-align="center start">
+      <h2>Frame Version Information</h2>
+      <p ng-repeat="item in frameInfo">
+        <span><b>{{ item.name }}</b></span> :
+        <span ng-if="item.name==='Git Commit ID'">
+          <a ng-href="https://github.com/uPortal-Project/uportal-app-framework/commit/{{item.value}}" target="_blank" rel="noopener noreferrer">{{ item.value }}</a>
+        </span>
+        <span ng-if="item.name!=='Git Commit ID'">{{ item.value }}</span></p>
+    </div>
+    <div layout="column" layout-align="center start" ng-if="appInfo">
+      <h2>{{ NAMES.title }} Version Information</h2>
+      <div class="about__json-container">
+        <pre class="widget-body">{{appInfo | json}}</pre>
+      </div>
+    </div>
+  </md-content>
+</frame-page>
