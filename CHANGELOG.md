@@ -20,6 +20,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 * When priority notification title is truncated, provide full title as tooltip
   (#754)
+* Fix route to newly-added version info page (#758)
 
 ### Removed
 
