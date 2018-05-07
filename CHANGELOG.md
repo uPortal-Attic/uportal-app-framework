@@ -9,7 +9,13 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [Unreleased][]
 
 ### Added
+
+* New "session info" page containing the former content of the "About" page (uportal-app-framework version info, app info JSON) (#755)
+* App config option `aboutPageURL` to get text and links for "About" page (#755)
+ 
 ### Changed
+* "About" page now sources meaningful content from `aboutPageURL` (#755)
+
 ### Fixed
 
 * When priority notification title is truncated, provide full title as tooltip
@@ -94,6 +100,7 @@ This release is to mop up some weirdness which happened with 9.0.1 and get a cle
 * DEPRECATED: Font Awesome icons for `list-of-links` links. Use Material Icons
   instead. (#727)
 * Modest improvements to `list-of-links` widget type documentation (#727)
+* Adds glossary (#725)
 
 ## [9.0.0][] - 2018-3-21
 
