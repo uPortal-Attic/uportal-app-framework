@@ -12,9 +12,11 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 * New "session info" page containing the former content of the "About" page (uportal-app-framework version info, app info JSON) (#755)
 * App config option `aboutPageURL` to get text and links for "About" page (#755)
+* Made Google's Roboto web font available (#761)
  
 ### Changed
 * "About" page now sources meaningful content from `aboutPageURL` (#755)
+* Use Roboto font family (#761)
 * z-index values adjusted from highest (101) to lowest (51) stated values to play nicer with Angular Material (#760)
 
 ### Fixed
