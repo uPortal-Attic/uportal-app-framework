@@ -17,16 +17,18 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Changed
 * "About" page now sources meaningful content from `aboutPageURL` (#755)
 * Use Roboto font family (#761)
+* z-index values adjusted from highest (101) to lowest (51) stated values to play nicer with Angular Material (#760)
 
 ### Fixed
 
 * When priority notification title is truncated, provide full title as tooltip
   (#754)
 * Fix route to newly-added version info page (#758)
-
+* Widgets with overlays can be removed (#760)
+ 
 ### Removed
 
-* no loger used LoginOnLoad option removed (#753)
+* No longer used LoginOnLoad option removed (#753)
 
 ### Deprecated
 
