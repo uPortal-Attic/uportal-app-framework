@@ -26,7 +26,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
  
 ### Removed
 
-* No logger used LoginOnLoad option removed (#753)
+* No longer used LoginOnLoad option removed (#753)
 
 ### Deprecated
 
