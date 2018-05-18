@@ -41,6 +41,6 @@ To direct your app to a JSON source, add the URL to your app's "override.js" fil
 **Attribute breakdown**
 
 - **description**: App description to be used in the description meta tag.
-- **keywords**: App keywords to be used in the description meta tag.
+- **keywords**: App keywords to be used in the keywords meta tag.
 - **aboutText**: An array of strings. Each entry in the array will be displayed as a new paragraph.
 - **aboutLinks**: An array of link objects. Links can have a URL and text to display, and will appear in a list under the "Useful links" heading.
