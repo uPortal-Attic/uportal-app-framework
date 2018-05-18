@@ -25,6 +25,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   (#754)
 * Fix route to newly-added version info page (#758)
 * Widgets with overlays can be removed (#760)
+* Notifications' action buttons now open in new tab (#762)
  
 ### Removed
 
