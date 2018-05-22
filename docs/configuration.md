@@ -61,7 +61,7 @@ this is constructed.
 ### SERVICE_LOC
 
 + **aboutURL**: Additional data to show in **/session-info**.
-+ **aboutPageURL**: Where to get text/link content for the app's "About" page. See [About page](about-page.md) for more information.
++ **aboutPageURL**: A URL to get JSON data about the app. This data is used on the text/link content for the app's "About" page, as well as the app's "description" and "keywords" `<meta>` tags. See [About page](about-page.md) for more information.
 + **sessionInfo**: Where the frame gets data about the logged in user. [Example][session.json].
 + **messagesURL**: An end point to a feed of messages.
 [Example][sample-messages.json]. Messages at the

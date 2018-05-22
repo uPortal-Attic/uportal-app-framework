@@ -43,28 +43,25 @@ define(['angular', 'require'], function(angular, require) {
         }
       }])
 
-    .controller('AboutPageController', ['$log', '$scope', 'portalAboutService',
-      'SERVICE_LOC', function($log, $scope, portalAboutService, SERVICE_LOC) {
+    .controller('AboutPageController', ['$log', '$scope', '$rootScope',
+      function($log, $scope, $rootScope) {
       /**
        * Get 'about' page information to display
        */
       var init = function() {
         $scope.aboutText = [];
         $scope.aboutLinks = [];
-
-        if (SERVICE_LOC.aboutPageURL) {
-          portalAboutService.getAboutPage(SERVICE_LOC.aboutPageURL)
-            .then(function(result) {
-              if (result.aboutText && result.aboutText.length > 0) {
-                $scope.aboutText = result.aboutText;
-              }
-              if (result.aboutLinks && result.aboutLinks.length > 0) {
-                $scope.aboutLinks = result.aboutLinks;
-              }
-              return result;
-            }).catch(function() {
-            $log.warn('issue getting app info');
-          });
+        // If app has an aboutPageURL specified, portal/main.js
+        // should get the data and set the rootScope values
+        if ($rootScope.about) {
+          if ($rootScope.about.aboutText
+            && $rootScope.about.aboutText.length > 0) {
+            $scope.aboutText = $rootScope.about.aboutText;
+          }
+          if ($rootScope.about.aboutLinks
+            && $rootScope.about.aboutLinks.length > 0) {
+            $scope.aboutLinks = $rootScope.about.aboutLinks;
+          }
         }
       };
 
