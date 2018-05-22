@@ -10,6 +10,22 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+
+### Changed
+
+
+### Fixed
+
+
+### Removed
+
+
+### Deprecated
+
+## [9.2.0][] - 2018-5-22
+
+### Added
+
 * New "session info" page containing the former content of the "About" page (uportal-app-framework version info, app info JSON) (#755)
 * App config option `aboutPageURL` to get text and links for "About" page (#755)
 * Made Google's Roboto web font available (#761)
@@ -32,8 +48,6 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Removed
 
 * No longer used LoginOnLoad option removed (#753)
-
-### Deprecated
 
 ## [9.1.0][] - 2018-4-17
 
@@ -663,7 +677,8 @@ break compatibility with some older components. If the app used any `angular-ui-
 * Added ability to have a name for the default theme (#336)
 * Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.1.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.0...HEAD
+[9.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.1.0...v9.2.0
 [9.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.2...v9.1.0
 [9.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.1...v9.0.2
 [9.0.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.0...v9.0.1
