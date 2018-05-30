@@ -27,6 +27,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Added
 
 * New "session info" page containing the former content of the "About" page (uportal-app-framework version info, app info JSON) (#755)
+  * To use: Add the `'portal/help/route'` module in your main.js file (#)
 * App config option `aboutPageURL` to get text and links for "About" page (#755)
 * Made Google's Roboto web font available (#761)
 
