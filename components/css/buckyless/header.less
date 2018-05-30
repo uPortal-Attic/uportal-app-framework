@@ -54,11 +54,12 @@ portal-header {
         margin-left: 16px;
       }
 
-      .title-link__two-lines {
-        a.title-link__small {
-          margin-left: 16px;
-          font-size: 14px;
-          font-weight: 600;
+      .title-link__two-names {
+        align-items: baseline;
+
+        a.title-link__theme-name {
+          margin-left: 18px;
+          font-weight: 500;
 
           &:hover {
             text-decoration: underline;
@@ -66,10 +67,11 @@ portal-header {
         }
 
         h1 {
-          margin-left: 16px;
-          font-size: 18px;
+          margin-left: 6px;
+          font-size: 16px;
           white-space: nowrap;
           z-index: @top-bar-3;
+          line-height: inherit;
 
           &:hover {
             cursor: default;

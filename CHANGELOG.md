@@ -12,6 +12,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 
 ### Changed
+* Per UX guidance: When an app provides a theme name (i.e. "MyUW") and an app name (i.e. "STAR"), the two names now appear inline (#766)
 
 
 ### Fixed
