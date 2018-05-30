@@ -22,7 +22,7 @@ define(['angular',
     'portal/main/routes',
     'portal/settings/routes',
     'portal/about/route',
-    'portal/help/route',
+    'portal/help/routes',
     'portal/messages/routes',
   ], function(
       angular, $, portal, main, settings,
@@ -38,7 +38,7 @@ define(['angular',
         .when('/notifications', messages.notifications)
         .when('/features', messages.announcements)
         .when('/about', about)
-        .when('/session-info', help)
+        .when('/session-info', help.sessionInfo)
         .when('/access-denied', main.accessDenied)
         .when('/server-error', main.serverError)
         .when('/', main.main)

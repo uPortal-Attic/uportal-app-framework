@@ -18,7 +18,9 @@
  */
 define(['require'], function(require) {
   return {
-    templateUrl: require.toUrl('./partials/session-info.html'),
-    controller: 'SessionInfoController',
+    "sessionInfo": {
+      templateUrl: require.toUrl('./partials/session-info.html'),
+      controller: 'SessionInfoController',
+    },
   };
 });
