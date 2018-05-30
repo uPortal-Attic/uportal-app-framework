@@ -10,23 +10,44 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+
+### Changed
+
+
+### Fixed
+
+
+### Removed
+
+
+### Deprecated
+
+## [9.2.0][] - 2018-5-22
+
+### Added
+
 * New "session info" page containing the former content of the "About" page (uportal-app-framework version info, app info JSON) (#755)
 * App config option `aboutPageURL` to get text and links for "About" page (#755)
- 
+* Made Google's Roboto web font available (#761)
+
 ### Changed
 * "About" page now sources meaningful content from `aboutPageURL` (#755)
+* Use Roboto font family (#761)
+* z-index values adjusted from highest (101) to lowest (51) stated values to play nicer with Angular Material (#760)
+* To better support open source commitment and downstream apps, replaced hard-coded MyUW/UW-Madison specific language in meta tags (now sourced from the same JSON file as the app's About page information) (#763) 
+* SVG widget icons use the md-icon directive to scale properly (#764)
 
 ### Fixed
 
 * When priority notification title is truncated, provide full title as tooltip
   (#754)
 * Fix route to newly-added version info page (#758)
+* Widgets with overlays can be removed (#760)
+* Notifications' action buttons now open in new tab (#762)
 
 ### Removed
 
-* no loger used LoginOnLoad option removed (#753)
-
-### Deprecated
+* No longer used LoginOnLoad option removed (#753)
 
 ## [9.1.0][] - 2018-4-17
 
@@ -53,9 +74,9 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Removed
 
 * Support for `APP_OPTIONS.optionsTemplateURL` configuration is removed in this
-  release. It had previously been documented as "deprecated" but the 
+  release. It had previously been documented as "deprecated" but the
   backwards-compatibility support didn't work out (#744), so in practice support
-  for this feature was already removed as a breaking change for the `9.x` 
+  for this feature was already removed as a breaking change for the `9.x`
   version series. (#745)
 
 ### Deprecated
@@ -108,24 +129,24 @@ This release is to mop up some weirdness which happened with 9.0.1 and get a cle
 ### Breaking changes
 
 * Removed jQuery UI sortable dependency (#721)
-* Removed `<app-header>` directive. This affects any framework apps using that 
-  directive outside of `<frame-page>`. `<frame-page>` usages should be 
+* Removed `<app-header>` directive. This affects any framework apps using that
+  directive outside of `<frame-page>`. `<frame-page>` usages should be
   unaffected. (#684)
-* With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL` 
+* With the removal of the `<app-header>`, the `APP_OPTIONS.optionsTemplateURL`
   config has been removed, superseded by a new `APP_OPTIONS.appMenuTemplateURL`.
-  Templates may require minor layout/appearance adjustments for use in the new 
+  Templates may require minor layout/appearance adjustments for use in the new
   way. (#684)
 
 To upgrade:
 
-* Add jQueryUI Sortable to frame app, or refer to 
+* Add jQueryUI Sortable to frame app, or refer to
   [an example of angular-drag-and-drop-lists][uportal-home #795]
 * If using the "app-title" attribute on frame-page directive, that title will be
   used as the document title
-* Pages formerly using `app-header` can use the `page-title` attribute on 
+* Pages formerly using `app-header` can use the `page-title` attribute on
   `frame-page` to achieve a similar within-page `h1` heading as before.
-* Port forward `APP_OPTIONS.optionsTemplateURL` usages to 
-  `APP_OPTIONS.appMenuTemplateURL` usages. This content will now appear in the 
+* Port forward `APP_OPTIONS.optionsTemplateURL` usages to
+  `APP_OPTIONS.appMenuTemplateURL` usages. This content will now appear in the
   side navigation and may likely need a bit of tweaking if using a rigid
   CSS layout.
 
@@ -178,7 +199,7 @@ To upgrade:
 
 *   To upgrade:
     - If your app's main.js file uses the `'/sorry-safari'` route, remove it
-    - Also remove the corresponding url-pattern from your app's web.xml file 
+    - Also remove the corresponding url-pattern from your app's web.xml file
 
 ### Added
 
@@ -656,7 +677,8 @@ break compatibility with some older components. If the app used any `angular-ui-
 * Added ability to have a name for the default theme (#336)
 * Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.1.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.0...HEAD
+[9.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.1.0...v9.2.0
 [9.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.2...v9.1.0
 [9.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.1...v9.0.2
 [9.0.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.0...v9.0.1

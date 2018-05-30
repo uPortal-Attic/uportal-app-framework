@@ -46,25 +46,9 @@ define(['angular'], function(angular) {
         });
     };
 
-      /**
-       * Get info for about page
-       * @param {String} url
-       * @returns {*}
-       */
-    var getAboutPage = function(url) {
-      return $http.get(url, {cache: true})
-        .then(function(result) {
-          return result.data;
-        })
-        .catch(function(error) {
-          miscService.redirectUser(error.status, url);
-        });
-    };
-
     return {
       getFrameDetails: getFrameDetails,
       getDetails: getDetails,
-      getAboutPage: getAboutPage,
     };
   }]);
 });
