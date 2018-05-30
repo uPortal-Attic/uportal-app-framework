@@ -15,6 +15,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 
 ### Fixed
+* Fixed potential upgrade path difficulty by making changes to "/about" and "/session-info" routes backward compatible (#765)
 
 
 ### Removed
