@@ -18,13 +18,7 @@
  */
 define(['require'], function(require) {
   return {
-    'about': {
-      templateUrl: require.toUrl('./partials/about.html'),
-      controller: 'AboutPageController',
-    },
-    'sessionInfo': {
-      templateUrl: require.toUrl('./partials/session-info.html'),
-      controller: 'SessionInfoController',
-    },
+    templateUrl: require.toUrl('./partials/about.html'),
+    controller: 'AboutPageController',
   };
 });
