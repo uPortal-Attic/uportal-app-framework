@@ -12,9 +12,11 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 
 ### Changed
+* Per UX guidance: When an app provides a theme name (i.e. "MyUW") and an app name (i.e. "STAR"), the two names now appear inline (#766)
 
 
 ### Fixed
+* Fixed potential upgrade path difficulty by making changes to "/about" and "/session-info" routes backward compatible (#765)
 
 
 ### Removed
@@ -27,6 +29,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Added
 
 * New "session info" page containing the former content of the "About" page (uportal-app-framework version info, app info JSON) (#755)
+  * To use: Add the `'portal/help/routes'` module in your main.js file (#765)
 * App config option `aboutPageURL` to get text and links for "About" page (#755)
 * Made Google's Roboto web font available (#761)
 
