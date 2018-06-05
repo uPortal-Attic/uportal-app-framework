@@ -76,12 +76,6 @@ define(['angular'], function(angular) {
             },
 
         })
-        .value('FOOTER_URLS', [
-          {'url': '/web/features',
-            'target': '_blank',
-            'title': 'What\'s New',
-          },
-        ])
         .value('APP_BETA_FEATURES', [
           {
             'id': 'toggleSomething',
