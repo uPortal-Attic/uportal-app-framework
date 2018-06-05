@@ -74,14 +74,8 @@ define(['angular'], function(angular) {
                 '/portal/web/layout?tabName=UW Bucky Home' +
                 '&action=addPortlet&fname=',
             },
-
         })
-        .value('FOOTER_URLS', [
-          {'url': '/web/features',
-            'target': '_blank',
-            'title': 'What\'s New',
-          },
-        ])
+        .value('FOOTER_URLS', [])
         .value('APP_BETA_FEATURES', [
           {
             'id': 'toggleSomething',
