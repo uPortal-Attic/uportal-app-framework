@@ -1,0 +1,16 @@
+<md-dialog class="dialog__session-expired" aria-label="session expired">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Session expired</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content class="md-dialog-content">
+    <p>Your session has expired. If you navigate away from this page or close your browser tab or window, you will be logged out.</p>
+    <p>Please click the "Login" button below to login.</p>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+    <md-button aria-label="close dialog and login" ng-click="closeDialog()">
+      LOGIN
+    </md-button>
+  </md-dialog-actions>
+</md-dialog>

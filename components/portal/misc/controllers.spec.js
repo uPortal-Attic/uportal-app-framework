@@ -57,6 +57,7 @@ define(['angular-mocks', 'portal'], function() {
       spyOn($location, 'hash');
       spyOn(elementToFocus[0], 'scrollIntoView');
       scope.skipToHere('focus');
+
       expect(elementToFocus[0].focus).toHaveBeenCalled();
       expect($location.hash).toHaveBeenCalledWith('focus');
       expect(elementNotToFocus[0].focus).not.toHaveBeenCalled();
@@ -65,12 +66,14 @@ define(['angular-mocks', 'portal'], function() {
 
     it('should fail set focus to non existent element', function() {
       spyOn($location, 'hash');
+
       expect(scope.skipToHere.bind('focus')).toThrowError(TypeError);
       expect($location.hash).not.toHaveBeenCalledWith('focus');
     });
 
     it('should fail set focus to an element referenced by null', function() {
       spyOn($location, 'hash');
+
       expect(scope.skipToHere.bind(null)).toThrowError(TypeError);
       expect($location.hash).not.toHaveBeenCalledWith('focus');
     });

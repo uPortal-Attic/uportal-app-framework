@@ -9,7 +9,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [Unreleased][]
 
 ### Added
-
+ 
 
 ### Changed
 * Per UX guidance: When an app provides a theme name (i.e. "MyUW") and an app name (i.e. "STAR"), the two names now appear inline (#766)
@@ -18,6 +18,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 * Fixed potential upgrade path difficulty by making changes to "/about" and "/session-info" routes backward compatible (#765)
+* Increased z-index of all dialogs to highest value (101) to ensure they appear above other content (#771)
+* Added basic `<body>` styles (override Bootstrap values) to ensure Roboto is always preferred (#771)
 
 
 ### Removed
