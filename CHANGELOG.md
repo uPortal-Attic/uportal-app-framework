@@ -12,6 +12,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 
 ### Changed
+* Changes list of links limit to 6 items. (#773)
 
 
 ### Fixed
@@ -49,7 +50,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 * "About" page now sources meaningful content from `aboutPageURL` (#755)
 * Use Roboto font family (#761)
 * z-index values adjusted from highest (101) to lowest (51) stated values to play nicer with Angular Material (#760)
-* To better support open source commitment and downstream apps, replaced hard-coded MyUW/UW-Madison specific language in meta tags (now sourced from the same JSON file as the app's About page information) (#763) 
+* To better support open source commitment and downstream apps, replaced hard-coded MyUW/UW-Madison specific language in meta tags (now sourced from the same JSON file as the app's About page information) (#763)
 * SVG widget icons use the md-icon directive to scale properly (#764)
 
 ### Fixed
@@ -78,7 +79,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   title, not just those presented via `circle-button`s (#736)
 * RSS widgets now offer tooltip with full title when truncating item titles
   (#737)
-* Data urls only called when necessary (#747)  
+* Data urls only called when necessary (#747)
 
 ### Fixed
 
