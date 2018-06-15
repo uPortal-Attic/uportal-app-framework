@@ -107,7 +107,7 @@ Follow these steps for each of the predefined widget types described in this doc
 
 #### When to use
 
-Use `list-of-links` to present 2 to 7 links, dynamically sourced or statically
+Use `list-of-links` to present 2 to 6 links, dynamically sourced or statically
 configured.
 
 #### Additional entity file configuration
@@ -220,7 +220,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
   and cleaner user experience, and achieves better consistency with other
   just-a-link widgets in MyUW.
 * `list-of-links` presents different quantities of links differently. 1 to 4
-  links present as `circle-button`s. 5 to 7 links present as a more
+  links present as `circle-button`s. 5 to 6 links present as a more
   traditional-style list. Zero links presents as a basic widget.
 * Use brief sentence-case link titles. `list-of-links` truncates link titles to
   24 characters.
