@@ -51,7 +51,12 @@ define(['angular'], function(angular) {
        */
       function isGuest() {
         return getUser().then(function(result) {
-          return result.userName === NAMES.guestUserName;
+          var amIAGuest = false;
+          if (result.userName === NAMES.guestUserName) {
+            amIAGuest = true;
+          }
+          $sessionStorage.GuestMode = amIAGuest;
+          return amIAGuest;
         });
       }
 
