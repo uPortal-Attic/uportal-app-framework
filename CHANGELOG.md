@@ -12,17 +12,30 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 
 ### Changed
-* Per UX guidance: When an app provides a theme name (i.e. "MyUW") and an app name (i.e. "STAR"), the two names now appear inline (#766)
+* Changes list of links limit to 6 items. (#773)
 
 
 ### Fixed
-* Fixed potential upgrade path difficulty by making changes to "/about" and "/session-info" routes backward compatible (#765)
 
 
 ### Removed
 
 
 ### Deprecated
+
+
+## [9.2.1][] - 2018-6-8
+
+### Changed
+* Per UX guidance: When an app provides a theme name (i.e. "MyUW") and an app name (i.e. "STAR"), the two names now appear inline (#766)
+* Removed link to Features page ("What's New") from default app configuration (#770)
+
+
+### Fixed
+* Fixed potential upgrade path difficulty by making changes to "/about" and "/session-info" routes backward compatible (#765)
+* Increased z-index of all dialogs to highest value (101) to ensure they appear above other content (#771)
+* Added basic `<body>` styles (override Bootstrap values) to ensure Roboto is always preferred (#771)
+
 
 ## [9.2.0][] - 2018-5-22
 
@@ -37,7 +50,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 * "About" page now sources meaningful content from `aboutPageURL` (#755)
 * Use Roboto font family (#761)
 * z-index values adjusted from highest (101) to lowest (51) stated values to play nicer with Angular Material (#760)
-* To better support open source commitment and downstream apps, replaced hard-coded MyUW/UW-Madison specific language in meta tags (now sourced from the same JSON file as the app's About page information) (#763) 
+* To better support open source commitment and downstream apps, replaced hard-coded MyUW/UW-Madison specific language in meta tags (now sourced from the same JSON file as the app's About page information) (#763)
 * SVG widget icons use the md-icon directive to scale properly (#764)
 
 ### Fixed
@@ -66,7 +79,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   title, not just those presented via `circle-button`s (#736)
 * RSS widgets now offer tooltip with full title when truncating item titles
   (#737)
-* Data urls only called when necessary (#747)  
+* Data urls only called when necessary (#747)
 
 ### Fixed
 
@@ -680,7 +693,8 @@ break compatibility with some older components. If the app used any `angular-ui-
 * Added ability to have a name for the default theme (#336)
 * Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.1...HEAD
+[9.2.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.0...v9.2.1
 [9.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.1.0...v9.2.0
 [9.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.2...v9.1.0
 [9.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.1...v9.0.2
