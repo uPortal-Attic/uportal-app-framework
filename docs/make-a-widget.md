@@ -103,7 +103,7 @@ Follow these steps for each of the predefined widget types described in this doc
 <value>list-of-links</value>
 ```
 
-#### When to use
+#### When to use `list-of-links`
 
 Use `list-of-links` to present 2 to 6 links, dynamically sourced or statically
 configured.
@@ -232,7 +232,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 <value>search-with-links</value>
 ```
 
-#### When to use
+#### When to use `search-with-links`
 
 * Your app has built-in search
 * (optional) and you want to display up to 2 links
@@ -284,7 +284,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 <value>rss</value>
 ```
 
-#### When to use
+#### When to use `rss`
 
 * You want to display an RSS feed right on your MyUW home page
 
@@ -336,7 +336,7 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 <value>action-items</value>
 ```
 
-#### When to use
+#### When to use `action-items`
 
 * You want to display a list of quantity-based items, with quantities that are expected to change. For example, a manager who has to approve time off could see "5 leave requests need your approval".
 
@@ -391,7 +391,7 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
 <value>time-sensitive-content</value>
 ```
 
-#### When to use
+#### When to use `time-sensitve-content`
 
 * You want to display a call to action during a defined period of time, and a basic widget the rest of the time.
 
