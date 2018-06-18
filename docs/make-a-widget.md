@@ -205,7 +205,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 }
 ```
 
-#### Guidance
+#### Guidance about `list-of-links`
 
 * Omitting `launchText` suppresses the launch button
   at the bottom of the list-of-links widget. This is appropriate when there's
@@ -271,7 +271,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 </portlet-preference>
 ```
 
-#### Guidance
+#### Guidance about `search-with-links`
 
 + Use sentence case in the titles of the links.
 
@@ -319,7 +319,7 @@ title.
 * **showdate**: T/F show each feed item's published date. The date format is "M/d/yy" (localizable) due to space consideration.
 * **showShowing**: T/F Show the "Showing \[x] out of \[y]" message (to communicate that there is more to see). Set this to true if your feed has frequent updates.
 
-#### Guidance
+#### Guidance about `rss`
 
 Note the additional required value in the entity file:
 
@@ -370,7 +370,7 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 * **feedUrl**: The URL to fetch the *JSON representation* of the quantity of items needing attention.
 * **actionUrl**: The URL where action can be taken for this specific item. If no such URL exists, use the same URL as you use for the "See all" launch button.
 
-#### Guidance
+#### Guidance about `action-items`
 
 If there are multiple action item types to display, the widget will display the first 3 in the list. If there are more than 3, it will display a note that says "Showing 3 of \[x]".
 
@@ -464,7 +464,7 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
 * **learnMoreUrl**: *(optional)* Provide a url if you want the widget to display a link for users to get more information.
 * **feedbackUrl**: *(optional)* Provide a url if you want the widget to display a link where users can give feedback about the taking action.
 
-#### Guidance
+#### Guidance about `time-sensitive-content`
 
 ##### Date formatting
 
