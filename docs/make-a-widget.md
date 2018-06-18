@@ -54,8 +54,6 @@ to create one from scratch. Widgets are app directory entries, so see also [docu
 </portlet-preference>
 ```
 
-#### About entity file values
-
 * **title**: The widget title
 * **fname**: The technical name of the app entry (lowercase and hyphenated)
 * **desc**: Description of the app (visible when hovering the widget's "info" icon
@@ -314,8 +312,6 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 </portlet-preference>
 ```
 
-#### About entity file values
-
 * **lim**: The number of items to show. Any number greater than 6 will default to 6 (due to space limitations). Use a smaller number for feeds that are infrequently updated.
 * **titleLim**: Limit the length (in characters, including spaces) of feed titles. This number should be between 30 and 60 (depending on whether you're showing dates or not).
 When this limit results in truncation, `rss` adds an `md-tooltip` with the full
@@ -367,8 +363,6 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
     </value>
 </portlet-preference>
 ```
-
-#### About entity file values
 
 * **actionItems**: A simple array of items. Each item should have values for each of the four attributes.
 * **textSingular**: Text to show when there is only 1 item of this type requiring attention.
