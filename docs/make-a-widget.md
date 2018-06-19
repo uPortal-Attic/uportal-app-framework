@@ -108,7 +108,7 @@ Follow these steps for each of the predefined widget types described in this doc
 Use `list-of-links` to present 2 to 6 links, dynamically sourced or statically
 configured.
 
-#### Additional entity file configuration
+#### Additional `list-of-links` entity file configuration
 
 ```xml
 <portlet-preference>
@@ -237,7 +237,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 * Your app has built-in search
 * (optional) and you want to display up to 2 links
 
-#### Additional entity file configuration
+#### Additional `search-with-links` entity file configuration
 
 ```xml
 <portlet-preference>
@@ -288,7 +288,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 
 * You want to display an RSS feed right on your MyUW home page
 
-#### Additional entity file configuration
+#### `rss` widget entity file configuration
 
 ```xml
 <portlet-preference>
@@ -340,7 +340,7 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 
 * You want to display a list of quantity-based items, with quantities that are expected to change. For example, a manager who has to approve time off could see "5 leave requests need your approval".
 
-#### Additional entity file configuration
+#### Additional `action-items` entity file configuration
 
 ```xml
 <portlet-preference>
@@ -397,7 +397,7 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
 
 *Note: This is an experimental widget type and is subject to change*
 
-#### Additional entity file configuration
+#### Additional `time-sensitive-content` entity file configuration
 
 ```xml
 <portlet-preference>
