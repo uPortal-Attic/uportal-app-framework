@@ -223,7 +223,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 * Use brief sentence-case link titles. `list-of-links` truncates link titles to
   24 characters.
 
-### Search with links
+### `search-with-links` widget type
 
 ![search with links widget](./img/search-with-links.png)
 
@@ -275,7 +275,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 
 + Use sentence case in the titles of the links.
 
-### RSS widget
+### `rss` widget type
 
 ![rss widget](./img/rss.png)
 
@@ -327,7 +327,7 @@ Note the additional required value in the entity file:
 
 The [rssToJson][] microservice is a fine way to convert desired RSS feeds into the required JSON representation.
 
-### Action Items List
+### `action-items` widget type
 
 ![action items widget](./img/action-items.png)
 
@@ -382,7 +382,7 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
   }
 ```
 
-### Time-sensitive content widget
+### `time-sensitive-content` widget type
 
 ![benefits enrollment widget](./img/benefits-enrollment-widget.png)
 
