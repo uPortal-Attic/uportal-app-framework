@@ -150,7 +150,7 @@ Deprecated: icons can be Font Awesome icons, referenced like `fa-envelope-o`
 Using both Material and Font Awesome icons together can yield visual
 misalignment of the link icons.
 
-#### Sourcing list of links content from a URL
+#### Sourcing `list-of-links` content from a URL
 
 The `list-of-links` content can be stored directly in `widgetConfig`, as above.
 This allows managing this data in the portlet registry as a
