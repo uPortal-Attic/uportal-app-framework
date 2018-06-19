@@ -17,7 +17,7 @@ The barebones widget provides an app title, a large icon, and a launch button wi
 
 ![basic widget](./img/basic-widget.png)
 
-### Sample entity file
+### Basic widget entity files
 
 This code block includes most of the fields needed to configure a widget, but there are additional XML tags (`<portlet-definition>`) you'll need
 to create one from scratch. Widgets are app directory entries, so see also [documentation about the app directory][].
@@ -139,7 +139,7 @@ configured.
 </portlet-preference>
 ```
 
-#### Icons
+#### `list-of-links` icons
 
 Preferred: icons are Material Icons, referenced like `invert_colors` (lowercase,
 no prefix, underscores in place of spaces. )
@@ -447,7 +447,7 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
 </portlet-preference>
 ```
 
-#### About entity file values
+#### About `time-sensitive-content` entity file values
 
 * **callsToAction**: The containing array for one or more objects with attributes related to making a call to action.
 * **activeDateRange**: An object used to determine when to switch to the time-sensitive content, with the following attributes:
@@ -466,20 +466,20 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
 
 #### Guidance about `time-sensitive-content`
 
-##### Date formatting
+##### Date formatting  in `time-sensitive-content`
 
 Provided dates **MUST** match one of the following formats:
 + `'YYYY-MM-DD'` (ex. '2017-09-18'): Use this format if the call to action doesn't happen on the same date every year and if the time of day is unknown or unimportant
 + `'MM-DD'` (ex. '09-18'): Use this format if the date for this action is the same every year
 + `'...THH:MM'` (ex. 09-18T10:00): Append the time in hours and minutes if you want to set a specific time of day
 
-##### How to configure the active date range
+##### How to configure the active date range in `time-sensitive-content`
 
 + If you want your widget to warn users that they'll be able to take an action in the near future, you must provide dates for both `templateLiveDate` and `takeActionStartDate`. The former date must be *BEFORE* the latter one. If you only want the template to switch content when users can take action, you only need to provide `templateLiveDate`. During the days between the two dates, the widget will display "Begins `takeActionStartDate`".
 + Similarly, if you want the widget to tell users that a period to take action recently ended, you must provide dates for both `takeActionEndDate` (the date when taking the action stopped being possible) and `templateRetireDate` (the date the widget should go back to showing basic content). The former date must be *BEFORE* the latter one. During the days between the two dates, the widget will display "Ended `takeActionEndDate`".
 + If you only want the widget to show time-sensitive content when that content is actionable, you only have to provide dates for `templateLiveDate` and `templateRetireDate`. During the days between the two dates, the widget will display a countdown of days remaining to take action.
 
-## Other Configuration
+## Other configuration common across widget types
 
 ### Launch button text
 If you provide a `widgetConfig` with any defined widget type (i.e. not a custom widget) with a value for `launchText`, it will replace the text of the
