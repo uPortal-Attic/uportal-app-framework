@@ -20,7 +20,7 @@
 -->
 <!-- GUEST MODE ONLY -->
 <md-button ng-href="{{ MISC_URLS.myuwHome }}"
-           ng-show="GuestMode"
+           ng-show="sessionCtrl.guestMode"
            aria-label="Log in to {{ portal.theme.title }}"
            target="_self"
            class="md-default">
@@ -28,7 +28,7 @@
 </md-button>
 
 <!-- NOT GUEST MODE -->
-<md-menu md-position-mode="target-right bottom" ng-controller="SessionCheckController as sessionCtrl" ng-hide="GuestMode" class="username-menu">
+<md-menu md-position-mode="target-right bottom" ng-hide="sessionCtrl.guestMode" class="username-menu">
   <md-button aria-label="open options menu"
              class="avatar__default"
              ng-click="$mdOpenMenu($event)">

@@ -124,7 +124,7 @@ define(['angular', 'require'], function(angular, require) {
       && $sessionStorage.portal.theme.profileUrl) ?
       $sessionStorage.portal.theme.profileUrl : '';
     vm.campusIdAttribute = APP_FLAGS.campusIdAttribute;
-    vm.GuestMode = true;
+    vm.guestMode = true;
 
     // Tell username menu which element to focus upon opening (accessibility)
     if (APP_FLAGS.showUserSettingsPage) {
@@ -163,7 +163,7 @@ define(['angular', 'require'], function(angular, require) {
     });
 
     mainService.isGuest().then(function(result) {
-      return vm.GuestMode = result;
+      return vm.guestMode = result;
     }).catch(function(err) {
       $log.warn('could not check guest');
     });
