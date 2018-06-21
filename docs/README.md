@@ -32,6 +32,7 @@ With gratitude to the many [contributors to this project](contributors.md).
 + [Access and permission management](coarse-grain-access.md)
 + [Beta settings](beta-settings.md)
 + [Material design](material.md)
++ [About page](about-page.md)
 
 ## Best Practices
 
