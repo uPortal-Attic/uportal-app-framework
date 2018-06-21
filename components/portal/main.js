@@ -30,6 +30,7 @@ define([
     'ngMaterial',
     './about/controllers',
     './about/services',
+    './help/controllers',
     './messages/controllers',
     './messages/directives',
     './messages/filters',
@@ -75,6 +76,7 @@ define([
         'ngMaterial',
         'portal.about.controllers',
         'portal.about.services',
+        'portal.help.controllers',
         'portal.main.controllers',
         'portal.main.directives',
         'portal.main.services',
@@ -211,8 +213,10 @@ define([
           $rootScope.portal.loading.hidden = true;
         }, 1500);
 
-        // save theme to session storage so we don't have to do below again
+        // save theme and meta info to session storage so we don't
+        // have to do below again
         $sessionStorage.portal.theme = $rootScope.portal.theme;
+        $sessionStorage.about = $rootScope.about;
       };
 
       // Safari in Private Browsing Mode throws a QuotaExceededError
@@ -416,13 +420,36 @@ define([
         }
       };
 
+      /**
+       * Get app information from aboutPageURL, set
+       * description and keywords tags if they exist
+       */
+      var setMetaTags = function(url) {
+        $http.get(url, {cache: true})
+          .then(function(result) {
+            $rootScope.about = result.data;
+            $sessionStorage.about = result.data;
+            return result.data;
+          })
+          .catch(function(error) {
+            if (APP_FLAGS.debug) {
+              $log.error('Failed to get app meta info');
+            }
+          });
+      };
+
       // loading sequence
       var init = function() {
         searchRouteParameterInit();
         $rootScope.portal = $rootScope.portal || {};
+        $rootScope.about = $rootScope.about || {};
         $sessionStorage.portal = $sessionStorage.portal || {};
+        $sessionStorage.about = $sessionStorage.about || {};
         configureAppConfig();
         themeLoading();
+        if (SERVICE_LOC.aboutPageURL) {
+          setMetaTags(SERVICE_LOC.aboutPageURL);
+        }
       };
       init();
     });

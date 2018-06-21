@@ -18,9 +18,19 @@
     under the License.
 
 -->
-<i ng-if="widget.mdIcon" class="material-icons">{{ widget.mdIcon }}</i>
-<i ng-if="!widget.mdIcon && widget.faIcon && widget.faIcon.indexOf('fa-')===0" class="fa {{ ::widget.faIcon }}"></i>
-<i ng-if="!widget.mdIcon && widget.faIcon && widget.faIcon.indexOf('fa-')!==0" class="{{ ::widget.faIcon }}"></i>
-<img ng-if="!widget.mdIcon && !widget.faIcon && widget.iconUrl && widget.iconUrl.indexOf('.svg') < 0" ng-src="{{widget.iconUrl}}" alt="Widget icon">
-<md-icon ng-if="!widget.mdIcon && !widget.faIcon && widget.iconUrl && widget.iconUrl.indexOf('.svg') >= 0" md-svg-src="{{widget.iconUrl}}" class="material-icons"></md-icon>
-<i ng-if="!widget.mdIcon && !widget.faIcon && !widget.iconUrl" class="fa fa-star"></i>
+<md-dialog class="dialog__session-expired" aria-label="session expired">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Session expired</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content class="md-dialog-content">
+    <p>Your session has expired. If you navigate away from this page or close your browser tab or window, you will be logged out.</p>
+    <p>Please click the "Login" button below to login.</p>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+    <md-button aria-label="close dialog and login" ng-click="closeDialog()">
+      LOGIN
+    </md-button>
+  </md-dialog-actions>
+</md-dialog>
