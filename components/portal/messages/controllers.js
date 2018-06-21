@@ -138,10 +138,10 @@ define(['angular'], function(angular) {
         var init = function() {
           $scope.hasMessages = false;
           $scope.messages = {};
-          $scope.GuestMode = true;
+          $scope.guestMode = true;
 
           mainService.isGuest().then(function(isGuest) {
-            $scope.GuestMode = isGuest;
+            $scope.guestMode = isGuest;
             if (!isGuest && SERVICE_LOC.messagesURL &&
               SERVICE_LOC.messagesURL.length > 0) {
               $scope.showMessagesFeatures = true;
