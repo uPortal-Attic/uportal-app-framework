@@ -1,6 +1,6 @@
 {
   "name": "@uportal/app-framework",
-  "version": "9.1.0",
+  "version": "9.2.0",
   "description": "Application Framework for uPortal",
   "scripts": {
     "commitmsg": "commitlint -e",
@@ -70,9 +70,9 @@
   },
   "homepage": "https://github.com/uPortal-Project/uportal-app-framework",
   "devDependencies": {
-    "@commitlint/cli": "^6.0.2",
-    "@commitlint/config-conventional": "^6.0.2",
-    "@commitlint/travis-cli": "^6.0.2",
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.0",
+    "@commitlint/travis-cli": "^7.0.0",
     "autoprefixer": "^8.0.0",
     "concurrently": "^3.1.0",
     "eslint": "^4.2.0",
@@ -88,7 +88,7 @@
     "graceful-fs": "^4.0.0",
     "htmlprocessor": "^0.2.4",
     "jasmine-core": "^3.0.0",
-    "karma": "2.0.0",
+    "karma": "2.0.2",
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage": "^1.1.1",
     "karma-coveralls": "^1.1.2",
@@ -105,7 +105,7 @@
     "lint-staged": "^7.0.0",
     "lodash": "^4.0.0",
     "mkdirp": "^0.5.1",
-    "onchange": "^3.0.2",
+    "onchange": "^4.0.0",
     "postcss": "^6.0.8",
     "recursive-copy": "^2.0.5",
     "remark-cli": "^5.0.0",
@@ -190,7 +190,7 @@
       "validate-links",
       [
         "remark-lint-list-item-indent",
-        "mixed"
+        false
       ]
     ]
   },

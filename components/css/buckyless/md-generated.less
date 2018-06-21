@@ -63,8 +63,21 @@ md-menu-content {
   }
 }
 
-md-dialog {
-  background: @white;
+div.md-dialog-container {
+  z-index: @dialog-depth-1;
+
+  md-dialog {
+    background: @white;
+  }
+}
+
+body > md-backdrop {
+  background-color: @grayscale10;
+  opacity: 0;
+
+  &.md-dialog-backdrop {
+    z-index: @dialog-depth-2;
+  }
 }
 
 .md-open-menu-container.md-whiteframe-z2 {

@@ -33,7 +33,7 @@ define(['angular'], function(angular) {
 
     /**
      * Get information
-     * @param {string} URL
+     * @param {String} URL
      * @return {*}
     **/
     var getDetails = function(URL) {
