@@ -17,7 +17,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Changed
 * Changes list of links limit to 6 items. (#773)
-* Rmoves rootScope guest mode (#777)
+* Removes rootScope guest mode (#777)
 
 
 ### Fixed
