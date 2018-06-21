@@ -107,7 +107,8 @@ Follow these steps for each of the predefined widget types described in this doc
 
 #### When to use
 
-* You only need your widget to display a list of 2-7 links
+Use `list-of-links` to present 2 to 6 links, dynamically sourced or statically
+configured.
 
 #### Additional entity file configuration
 
@@ -208,12 +209,21 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 
 #### Guidance
 
-* `launchText` is optional. Omitting `launchText` suppresses the launch button at the bottom of the list-of-links widget. This is appropriate
-when there's nothing more to launch, that is, when the list-of-links widget simply presents all the intended links and that's all there is to it.
-* Avoid using a `list-of-links` widget when you only need to display one link. Instead, use the name and `alternativeMaximizedLink` of [the app directory entry](http://uportal-project.github.io/uportal-home/app-directory) to represent the link.
-This provides a more usable click surface, a simpler and cleaner user experience, and achieves better consistency with other just-a-link widgets in MyUW.
-* The length of your list of links will affect the widget's appearance. If you have more than 4 links, they will be displayed in a more traditional-style list, rather than with the `<circle-button>` directive.
-* Use sentence case in the titles of the links.
+* Omitting `launchText` suppresses the launch button
+  at the bottom of the list-of-links widget. This is appropriate when there's
+  nothing more to launch, that is, when the list-of-links widget presents
+  all the intended links and that's all there is to it.
+* Avoid using a `list-of-links` widget to display one link.
+  Instead, use the name and `alternativeMaximizedLink` of
+  [the app directory entry](http://uportal-project.github.io/uportal-home/app-directory)
+  to represent the link. This provides a more usable click surface, a simpler
+  and cleaner user experience, and achieves better consistency with other
+  just-a-link widgets in MyUW.
+* `list-of-links` presents different quantities of links differently. 1 to 4
+  links present as `circle-button`s. 5 to 6 links present as a more
+  traditional-style list. Zero links presents as a basic widget.
+* Use brief sentence-case link titles. `list-of-links` truncates link titles to
+  24 characters.
 
 ### Search with links
 
@@ -308,6 +318,8 @@ This provides a more usable click surface, a simpler and cleaner user experience
 
 * **lim**: The number of items to show. Any number greater than 6 will default to 6 (due to space limitations). Use a smaller number for feeds that are infrequently updated.
 * **titleLim**: Limit the length (in characters, including spaces) of feed titles. This number should be between 30 and 60 (depending on whether you're showing dates or not).
+When this limit results in truncation, `rss` adds an `md-tooltip` with the full
+title.
 * **showdate**: T/F show each feed item's published date. The date format is "M/d/yy" (localizable) due to space consideration.
 * **showShowing**: T/F Show the "Showing \[x] out of \[y]" message (to communicate that there is more to see). Set this to true if your feed has frequent updates.
 

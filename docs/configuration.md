@@ -17,8 +17,6 @@ are available.
 + **showSearch**: This boolean hides/shows the search bar at the top.
 + **isWeb**: A flag for special handling for the `uPortal-home` app. Other apps
 should set this to `false`.
-+ **loginOnLoad**: When **true** fires a login event during the loading
-sequence. **SERVICE_LOC.loginSilentURL** must be set.
 + **loginDurationMills**: number of milliseconds a login session is valid for.
 Default set to 4 hours (14400000).
 + **gaSearchParam**: Default set to 'q'. This is the param that is tacked on to
@@ -37,10 +35,6 @@ see their ID in the username menu. _This is currently unimplemented._
 
 ### APP_OPTIONS
 
-+ _(DEPRECATED)_ **optionsTemplateURL**: ~~A path to the HTML template for app-specific options
-(appears on the right-hand side of the [app-header](directives.md)). See the
-[app options doc](app-options.md) to learn how to use this feature.~~ Existing uses of this option will display 
-the template within the side navigation menu. We recommend moving this markup into the `appMenuTemplateURL` template.
 + **appMenuTemplateURL**: A path to the HTML template for app-specific menu
 items (appears in the side navigation menu that is triggered when clicking the
 top bar hamburger icon button). See the [app navigation
@@ -66,7 +60,8 @@ this is constructed.
 
 ### SERVICE_LOC
 
-+ **aboutURL**: Additional data to show in **/about**.
++ **aboutURL**: Additional data to show in **/session-info**.
++ **aboutPageURL**: A URL to get JSON data about the app. This data is used on the text/link content for the app's "About" page, as well as the app's "description" and "keywords" `<meta>` tags. See [About page](about-page.md) for more information.
 + **sessionInfo**: Where the frame gets data about the logged in user. [Example][session.json].
 + **messagesURL**: An end point to a feed of messages.
 [Example][sample-messages.json]. Messages at the
@@ -84,7 +79,6 @@ technology.
 + **groupURL**: Service for reading the user's group memberships as understood
 by the portal. Currently this only used for notifications.
 [Example](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/groups.json).
-+ **loginSilentURL**: See **APP_FLAGS.loginOnLoad** for usage.
 + **portalLayoutRestEndpoint**: If set, selecting a skin in beta settings will
 also set the skin in the user's uPortal profile. e.g.: **'/portal/api/layout'**
 
@@ -159,7 +153,6 @@ define(['angular'], function(angular) {
       ],
     },
     'APP_FLAG': {
-      'loginOnLoad': true,
       'gaSearchParam': 'f',
     },
     'FOOTER_URLS': [{

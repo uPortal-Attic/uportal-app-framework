@@ -23,19 +23,18 @@ define(['angular'], function(angular) {
             'showSearch': true,
             'isWeb': false,
             'defaultTheme': 0,
-            'loginOnLoad': false,
             'showUserSettingsPage': false,
             'debug': false,
             'campusIdAttribute': null,
         })
         .value('APP_OPTIONS', {
-            'optionsTemplateURL': null,
             'appMenuTemplateURL': null,
             'appMenuItems': [],
             'enablePushContentMenu': false,
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,
+            'aboutPageURL': null,
             'groupURL': '/portal/api/groups',
             'kvURL': '/storage',
             'loginSilentURL': '/portal/Login?silent=true',
@@ -75,14 +74,8 @@ define(['angular'], function(angular) {
                 '/portal/web/layout?tabName=UW Bucky Home' +
                 '&action=addPortlet&fname=',
             },
-
         })
-        .value('FOOTER_URLS', [
-          {'url': '/web/features',
-            'target': '_blank',
-            'title': 'What\'s New',
-          },
-        ])
+        .value('FOOTER_URLS', [])
         .value('APP_BETA_FEATURES', [
           {
             'id': 'toggleSomething',

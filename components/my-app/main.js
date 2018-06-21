@@ -22,11 +22,11 @@ define(['angular',
     'portal/main/routes',
     'portal/settings/routes',
     'portal/about/route',
-    'portal/widgets/routes',
+    'portal/help/routes',
     'portal/messages/routes',
   ], function(
       angular, $, portal, main, settings,
-      about, widgets, messages
+      about, help, messages
     ) {
     return angular.module('my-app', ['portal'])
     .config(['$routeProvider', '$locationProvider',
@@ -38,9 +38,9 @@ define(['angular',
         .when('/notifications', messages.notifications)
         .when('/features', messages.announcements)
         .when('/about', about)
+        .when('/session-info', help.sessionInfo)
         .when('/access-denied', main.accessDenied)
         .when('/server-error', main.serverError)
-        .when('/demo-widgets', widgets.demoWidgets)
         .when('/', main.main)
         .otherwise('/');
     }]);

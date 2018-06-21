@@ -18,8 +18,9 @@
  */
 define(['require'], function(require) {
   return {
-    'demoWidgets': {
-      templateUrl: require.toUrl('./partials/demo-widgets.html'),
+    'sessionInfo': {
+      templateUrl: require.toUrl('./partials/session-info.html'),
+      controller: 'SessionInfoController',
     },
   };
 });
