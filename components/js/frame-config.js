@@ -1078,10 +1078,18 @@ define(['angular'], function(angular) {
           {
             'id': 'disableGroupFilteringForMessages',
             'title': 'Disable Client-side Message Filtering By Group',
+            'description': 'DEPRECATED. ' +
+              'Disable client-side filtering of portal-wide ' +
+              'messages by group. Replaced by the more comprehensive ' +
+              'showAllMessages. (page refresh required)',
+          },
+          {
+            'id': 'showAllMessages',
+            'title': 'Show all messages',
             'description': 'Disable client-side filtering of portal-wide ' +
-              'messages (e.g. notifications, mascot announcements) by group. ' +
-              'Useful for demoing or testing messages you would not normally ' +
-              'see. (page refresh required)',
+              'messages (i.e. notifications, mascot announcements). ' +
+              'Useful for demoing or testing messages you would not ' +
+              'otherwise see. (page refresh required)',
           },
         ]);
 });

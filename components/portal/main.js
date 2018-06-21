@@ -30,6 +30,7 @@ define([
     'ngMaterial',
     './about/controllers',
     './about/services',
+    './help/controllers',
     './messages/controllers',
     './messages/directives',
     './messages/filters',
@@ -53,7 +54,6 @@ define([
     './widgets/controllers',
     './widgets/directives',
     './widgets/services',
-    'sortable',
     'ui-bootstrap',
     'ui-gravatar',
     'angulartics-google-analytics',
@@ -76,6 +76,7 @@ define([
         'ngMaterial',
         'portal.about.controllers',
         'portal.about.services',
+        'portal.help.controllers',
         'portal.main.controllers',
         'portal.main.directives',
         'portal.main.services',
@@ -101,7 +102,6 @@ define([
         'portal.widgets.services',
         'ui.bootstrap',
         'ui.gravatar',
-        'ui.sortable',
         'angulartics',
         'angulartics.google.analytics',
     ])
@@ -213,8 +213,10 @@ define([
           $rootScope.portal.loading.hidden = true;
         }, 1500);
 
-        // save theme to session storage so we don't have to do below again
+        // save theme and meta info to session storage so we don't
+        // have to do below again
         $sessionStorage.portal.theme = $rootScope.portal.theme;
+        $sessionStorage.about = $rootScope.about;
       };
 
       // Safari in Private Browsing Mode throws a QuotaExceededError
@@ -356,17 +358,6 @@ define([
         }
       };
 
-      var lastLoginValid = function() {
-        var portal = $sessionStorage.portal;
-        var timeLapseBetweenLogins = APP_FLAGS.loginDurationMills || 14400000;
-        if (portal && portal.lastAccessed) {
-          if (Date.now() - portal.lastAccessed <= timeLapseBetweenLogins) {
-            return true;
-          }
-        }
-        return false;
-      };
-
       var searchRouteParameterInit = function() {
         // https://github.com/Gillespie59/eslint-plugin-angular/issues/231
         // eslint-disable-next-line angular/on-watch
@@ -429,37 +420,35 @@ define([
         }
       };
 
+      /**
+       * Get app information from aboutPageURL, set
+       * description and keywords tags if they exist
+       */
+      var setMetaTags = function(url) {
+        $http.get(url, {cache: true})
+          .then(function(result) {
+            $rootScope.about = result.data;
+            $sessionStorage.about = result.data;
+            return result.data;
+          })
+          .catch(function(error) {
+            if (APP_FLAGS.debug) {
+              $log.error('Failed to get app meta info');
+            }
+          });
+      };
+
       // loading sequence
       var init = function() {
         searchRouteParameterInit();
         $rootScope.portal = $rootScope.portal || {};
+        $rootScope.about = $rootScope.about || {};
         $sessionStorage.portal = $sessionStorage.portal || {};
+        $sessionStorage.about = $sessionStorage.about || {};
         configureAppConfig();
-
-        if (APP_FLAGS.loginOnLoad && !lastLoginValid()) {
-          $http.get(SERVICE_LOC.loginSilentURL).then(function(result) {
-            if (APP_FLAGS.debug) {
-              $log.info(
-                'login returned with ' +
-                (result.data ? result.data.status : null)
-              );
-            }
-            themeLoading();
-            if ('success' === result.data.status) {
-              $sessionStorage.portal.lastAccessed = (new Date).getTime();
-              $sessionStorage.portal.username = result.data.username;
-              if (NAMES.guestUserName &&
-                result.data.username === NAMES.guestUserName) {
-                $rootScope.GuestMode = true;
-              }
-            }
-            return result;
-          }).catch(function(reason) {
-            // continue with theme loading so they don't get stuck on loading
-            themeLoading();
-          });
-        } else {
-          themeLoading();
+        themeLoading();
+        if (SERVICE_LOC.aboutPageURL) {
+          setMetaTags(SERVICE_LOC.aboutPageURL);
         }
       };
       init();

@@ -36,7 +36,6 @@ define(['angular-mocks', 'portal'], function() {
         ) {
           service = _mainService_;
           httpBackend = _$httpBackend_;
-          loginSilentUrl = APP_FLAGS.loginOnLoad;
 
           if (loginSilentUrl) {
             httpBackend.whenGET(loginSilentUrl)

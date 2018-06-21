@@ -50,8 +50,8 @@
       </a>
 
       <!-- If in separate app -->
-      <div ng-if="portal.theme.title != NAMES.title" layout="column" class="title-link__two-lines">
-        <a class="title-link__small" ng-href="{{ MISC_URLS.rootURL }}" target="_self" aria-label="{{ portal.theme.ariaLabelTitle }}">
+      <div ng-if="portal.theme.title != NAMES.title" layout="row" class="title-link__two-names">
+        <a class="title-link__theme-name" ng-href="{{ MISC_URLS.rootURL }}" target="_self" aria-label="{{ portal.theme.ariaLabelTitle }}">
           {{ portal.theme.title }}
         </a>
         <h1 class="md-title">{{ NAMES.title }}</h1>

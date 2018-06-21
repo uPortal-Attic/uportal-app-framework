@@ -24,8 +24,6 @@ define(['angular-mocks', 'portal'], function() {
         var service;
         var httpBackend;
         var URLS = {};
-        var loginSilentURL;
-
         beforeEach(function() {
           module('portal');
         });
@@ -38,11 +36,6 @@ define(['angular-mocks', 'portal'], function() {
           httpBackend = _$httpBackend_;
           URLS.group = SERVICE_LOC.groupURL;
           URLS.feature = SERVICE_LOC.messagesURL;
-          loginSilentURL = APP_FLAGS.loginOnLoad;
-          if (loginSilentURL) {
-            httpBackend.whenGET(loginSilentURL)
-            .respond({'status': 'success', 'username': 'admin'});
-          }
         }));
 
         it('should properly handle filtering nothing', function() {
@@ -103,6 +96,8 @@ define(['angular-mocks', 'portal'], function() {
           var groups = [{name: 'in'}];
           // test
           var results = service.filterArrayByGroups(array, groups, 'theGroup');
+
+          expect(httpBackend).toBeTruthy();
 
           expect(results).toBeTruthy();
 

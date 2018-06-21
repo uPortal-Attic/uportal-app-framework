@@ -217,19 +217,27 @@ define(['angular', 'require'], function(angular, require) {
       vm.openMenuByDefault = false;
       vm.showMessagesFeatures = true;
 
+      /**
+       * Listen for unseen notifications
+       */
       $scope.$on('HAS_PRIORITY_NOTIFICATIONS', function(event, data) {
         if (angular.isDefined(data.hasNotifications)) {
           vm.hasPriorityNotifications = data.hasNotifications;
         }
       });
 
+      /**
+       * Listen for unseen announcements
+       */
       $scope.$on('HAS_UNSEEN_ANNOUNCEMENTS', function(event, data) {
         if (angular.isDefined(data.hasNotifications)) {
           vm.hasUnseenAnnouncements = data.hasAnnouncements;
         }
       });
 
-      // Close side nav on scroll to avoid awkward UI
+      /**
+       * Close side nav on scroll to avoid awkward interaction
+       */
       $window.onscroll = function() {
         if (vm.isMenuOpen() && !$mdMedia('gt-sm')) {
           vm.closeMainMenu();
@@ -250,6 +258,27 @@ define(['angular', 'require'], function(angular, require) {
       vm.closeMainMenu = function() {
         if (vm.isMenuOpen()) {
           $mdSidenav('main-menu').close();
+        }
+      };
+
+      /**
+       * Intercept focus when it would move outside the side nav,
+       * then reset it to the desired position within the side nav.
+       * @param {object} event
+       * @param {string} position
+       */
+      vm.trapFocus = function(event, position) {
+        var anchor = angular.element('.main-menu__focus-anchor' + position);
+        // Check if screen size is greater than small
+        if ($mdMedia('gt-sm')) {
+          // Don't trap focus if push content is enabled
+          if (!APP_OPTIONS.enablePushContentMenu) {
+            event.preventDefault();
+            anchor.focus();
+          }
+        } else {
+          event.preventDefault();
+          anchor.focus();
         }
       };
 
@@ -296,17 +325,6 @@ define(['angular', 'require'], function(angular, require) {
           && $mdMedia('gt-sm') && !vm.hideMainMenu;
       };
 
-
-      /**
-       * DEPRECATED
-       * Backwards compatibility for deprecated optionsTemplateURL
-       */
-      var configureAppOptions = function() {
-        if (APP_OPTIONS.optionsTemplateURL) {
-          vm.optionsTemplate = require.toUrl(APP_OPTIONS.optionsTemplateURL);
-        }
-      };
-
       /**
        * Configure notifications/announcements features in main menu
        * if messages configuration is properly set up
@@ -328,7 +346,6 @@ define(['angular', 'require'], function(angular, require) {
        */
       var init = function() {
         configureMainMenu();
-        configureAppOptions();
         configureMessagesFeatures();
       };
 

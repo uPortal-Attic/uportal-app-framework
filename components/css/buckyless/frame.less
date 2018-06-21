@@ -26,7 +26,7 @@
   color: @white;
   background: transparent;
   transition: top 1s ease-out, background 1s linear;
-  z-index: 100;
+  z-index: @dialog-depth-2;
 
   &:focus {
     position: absolute;
@@ -43,6 +43,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: @font-family;
 
   .page-content {
     background-color: @grayscale4;

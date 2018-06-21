@@ -43,6 +43,10 @@ define(['angular', 'moment'], function(angular, moment) {
           if (widget.widgetConfig.getLinksURL) {
             widgetService.getWidgetJson(widget).then(
               function(links) {
+                if (!(links.content && links.content.links)) {
+                  $log.warn('Undefined dynamic links content for '
+                  + widget.fname + ': dynamic response was [' + links + ']');
+                }
                 widget.widgetConfig.links = links.content.links;
                 return links.content.links;
               })

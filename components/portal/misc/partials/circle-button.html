@@ -22,10 +22,14 @@
            target="{{cbDisabled ? '' : target}}"
            rel='noopener noreferrer'
            class="md-icon-button md-accent md-raised"
-           aria-label="open {{title | truncate:trunclen}}"
+           aria-label="open {{ title }}"
            ng-disabled="cbDisabled">
   <md-icon ng-if="mdIcon" aria-label="">{{ mdIcon }}</md-icon>
   <i ng-if="faIcon && !mdIcon" class="fa {{ faIcon }}" aria-hidden="true"></i>
+  <md-tooltip ng-if="title.length > trunclen"
+    md-direction="top">
+    {{ title }}
+  </md-tooltip>
 </md-button>
 <p ng-show="title">
   {{title | truncate:trunclen}}

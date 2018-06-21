@@ -51,7 +51,19 @@ define(['angular'], function(angular) {
               } else if (angular.isString(result)) {
                 $scope.messagesError = result;
               }
-              filterMessages(allMessages);
+
+              if ( $localStorage.showAllMessages ) {
+                // simulate the side effect of filterMessages
+                $scope.messages = $filter('separateMessageTypes')(allMessages);
+                $scope.hasMessages = true;
+                $scope.seenMessageIds = messagesService.getSeenMessageIds();
+              } else {
+                filterMessages(allMessages);
+                // side effects:
+                // sets $scope.messages and $scope.hasMessages
+                // and $scope.seenMessageIds
+              }
+
               return allMessages;
             })
             .catch(function(error) {
@@ -66,7 +78,9 @@ define(['angular'], function(angular) {
 
         // Promise to resolve urls in messages
         var promiseMessagesByData = function(messages) {
-          return messagesService.getMessagesByData(messages);
+          messagesService.getMessagesByData(messages)
+            .then(dataMessageSuccess)
+            .catch(filterMessagesFailure);
         };
 
         // Promise to resolve group memberships
@@ -79,39 +93,33 @@ define(['angular'], function(angular) {
          * @param {Object} allMessages
          */
         var filterMessages = function(allMessages) {
-          var groupFiltersEnabled =
-            !$localStorage.disableGroupFilteringForMessages;
-          var groupPromise = null;
-          if (!groupFiltersEnabled) {
-            groupPromise = $q.resolve(allMessages);
-          } else {
-            groupPromise = promiseMessagesByGroup(allMessages);
-          }
+          var dateFilterMessages =
+            $filter('filterByDate')(allMessages);
+          var groupPromise = promiseMessagesByGroup(dateFilterMessages);
 
           $q.all([promiseSeenMessageIds(),
-                  promiseMessagesByData(allMessages),
                   groupPromise])
             .then(filterMessagesSuccess)
             .catch(filterMessagesFailure);
           };
 
-
-        /**
+         /**
          * Separate the message types in scope for child controllers
          * @param {Object} result
          */
         var filterMessagesSuccess = function(result) {
           $scope.seenMessageIds = result[0];
-          var dataMessages = result[1];
-          var groupedMessages = result[2];
-          var filteredMessages = $filter('filterForCommonElements')(
-            groupedMessages,
-            dataMessages
-          );
-          var dateFilteredMessages =
-            $filter('filterByDate')(filteredMessages);
-            $scope.messages =
-              $filter('separateMessageTypes')(dateFilteredMessages);
+          var grpMsg = result[1];
+
+          var seenAndUnseen =
+            $filter('filterSeenAndUnseen')(grpMsg, $scope.seenMessageIds);
+
+          $q.all(promiseMessagesByData(seenAndUnseen.unseen));
+        };
+
+        var dataMessageSuccess = function(result) {
+          $scope.messages =
+            $filter('separateMessageTypes')(result);
           $scope.hasMessages = true;
         };
 

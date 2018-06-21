@@ -52,7 +52,6 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'app-config': 'js/app-config',
       'frame-config': 'js/frame-config',
       'override': 'js/override',
-      'sortable': 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.17.2/sortable.min',
       'moment': 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min',
   };
 
@@ -72,10 +71,6 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       },
       'ui-bootstrap': {deps: ['angular']},
       'ui-gravatar': {deps: ['angular']},
-      'sortable': {
-        deps: ['angular', 'jquery-ui'],
-        exports: 'sortable',
-      },
       'moment': {exports: 'moment'},
   };
 

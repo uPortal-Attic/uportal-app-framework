@@ -37,7 +37,9 @@
     <md-button class="md-raised md-accent"
                ng-href="{{ notification.actionButton.url }}"
                ng-if="notification.actionButton && notification.actionButton.url"
-               ng-click="pushGAEvent('notifications page', 'take action', notification.actionButton.url)">
+               ng-click="pushGAEvent('notifications page', 'take action', notification.actionButton.url)"
+               target="_blank"
+               rel="noopener noreferrer">
       {{ notification.actionButton.label }}
     </md-button>
     <md-button class="md-raised md-default"

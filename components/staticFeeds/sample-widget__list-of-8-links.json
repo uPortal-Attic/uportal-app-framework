@@ -3,15 +3,15 @@
     "canAdd": true,
     "layoutObject": {
       "nodeId": "-1",
-      "title": "List of Links widget type",
-      "description": "Convenient access to up to seven hyperlinks, sourced from widget configuration or from URL",
-      "url": "staticFeeds/list-of-links-via-url.json",
+      "title": "List of (many) Links widget type",
+      "description": "Demonstrates presentation when seven or more links",
+      "url": "staticFeeds/list-of-8-links-via-url.json",
       "iconUrl": null,
       "faIcon": "fa-briefcase",
       "fname": "list-of-links-type",
       "lifecycleState": "PUBLISHED",
       "target": null,
-      "widgetURL": "/staticFeeds/list-of-links-via-url.json",
+      "widgetURL": "/staticFeeds/list-of-8-links-via-url.json",
       "widgetType": "list-of-links",
       "widgetTemplate": null,
       "widgetConfig": {
@@ -29,13 +29,13 @@
       "Widget types"
     ],
     "portletName": "cms",
-    "title": "List of Links widget type",
+    "title": "List of (many) Links widget type",
     "keywords": [
       "list",
       "links",
       "ordered",
       "icons",
-      "few"
+      "many"
     ],
     "fname": "list-of-links-type",
     "rating": 0.0,
@@ -52,9 +52,9 @@
     "marketplaceScreenshots": [],
     "userRated": 0,
     "faIcon": "fa-briefcase",
-    "description": "Convenient access to up to seven hyperlinks, sourced from widget configuration or from URL",
+    "description": "Demonstrates presentation when seven or more links",
     "name": "List of Links widget type",
-    "id": "76",
+    "id": "763",
     "type": "Portlet",
     "target": null
   }

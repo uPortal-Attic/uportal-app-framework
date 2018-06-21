@@ -58,19 +58,21 @@ define(['angular'], function(angular) {
      * Trigger a Session Expired dialog box
      */
     function triggerDialog() {
-      var alert = $mdDialog.alert({
-        title: 'Session Expired',
-        textContent: 'Your session has expired. ' +
-          'Please click below to login, or close this window to logout.',
-        ok: 'Login',
-      });
-      $mdDialog
-        .show( alert )
-        .finally(function() {
-          alert = undefined;
-          $window.location.replace(MISC_URLS.loginURL);
-        })
-        .catch($log.error);
+      $mdDialog.show({
+        templateUrl:
+          'portal/timeout/session-expired.html',
+        parent: angular.element(document).find('div.my-uw')[0],
+        clickOutsideToClose: false,
+        openFrom: 'left',
+        closeTo: 'right',
+        controller: function DialogController($scope, $mdDialog) {
+          $scope.closeDialog = function() {
+            $mdDialog.hide();
+          };
+        },
+      }).finally(function() {
+        $window.location.replace(MISC_URLS.loginURL);
+      }).catch($log.error);
     }
 
     init();
