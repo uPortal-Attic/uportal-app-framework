@@ -8,6 +8,10 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
+### Documentation
+
+* Note in changelog message handling changes needing upgrade coordination (#733)
+
 ### Added
 
 
@@ -114,6 +118,15 @@ This release is to mop up some weirdness which happened with 9.0.1 and get a cle
 
 ## [9.0.1][] - 2018-3-29
 
+BREAKING CHANGE:
+
+This release fixes a bug in client-side filtering of `messages.json`. (#730)
+Apps using this release or later will not have this bug. However, before relying
+upon the previously broken group filtering in a `messages.json` shared across
+multiple uPortal App Framework applications, all participating applications
+would need to be upgraded to this version or later to avoid showing messages to
+audiences for whom they may not have been intended.
+
 ### Added
 * Adds resetters to user-settings page (#724)
 * `circle-button` now offers tooltip with full title when title is truncated
@@ -166,6 +179,11 @@ To upgrade:
   side navigation and may likely need a bit of tweaking if using a rigid
   CSS layout.
 
+Also, this release fixes a bug in presenting mascot announcements. (#697).
+Before relying upon a shared `messages.json` using the fixed mascot announcement
+feature, all apps sourcing those messages will need to be upgraded to this
+version or later to avoid showing users a broken mascot announcement experience.
+
 ### Added
 
 * `mainService` now offers `computeWindowTitle(...)` (#679)
@@ -216,6 +234,20 @@ To upgrade:
 *   To upgrade:
     - If your app's main.js file uses the `'/sorry-safari'` route, remove it
     - Also remove the corresponding url-pattern from your app's web.xml file
+
+When upgrading a shared `messages.json` to use this new structure, all apps
+sourcing that shared `messages.json` will need to be upgraded to this version
+or later of the framework, in a coordinated manner.
+
+Also, this release adds other features for sourcing some message content via
+additional dynamic callback rather than statically in `messages.json`. Before
+relying upon these features all apps sourcing a shared `messages.json` will
+need to be upgraded to this version or later.
+
+This release also fixes message filtering by date. Before relying upon this
+feature all apps participating in a shared `messages.json` will need upgraded
+to this release or later to avoid the not-yet-upgraded apps displaying premature
+or expired messages.
 
 ### Added
 
@@ -283,6 +315,12 @@ Examples of the kinds of downstream changes required:
   layout][uportal-home #747]
 * uPortal-home [updated the app directory entry details page with plain
   CSS][uportal-home #750] to cope with this change
+
+Also, this release adds support for dynamic notification text sourced from a
+JSON web service (#601). Before relying upon this feature in a shared
+`messages.json` all participating apps must be first upgraded to use this
+framework version or later, otherwise they will not reflect the new dynamic
+notification content.
 
 ### Features
 
@@ -353,6 +391,11 @@ app framework relies upon might still use Java, of course.)
 
 ## [6.0.2][] - 2017-09-29
 
+BREAKING CHANGE: This release fixes priority notifications (#553). Before
+relying upon fixed notifications in a shared messages source, all participating
+apps must first be upgraded to this release or later to avoid improperly bound
+URLs in priority notifications as presented in not-yet-upgraded apps.
+
 * Properly bind URLs in priority notifications (#553)
 * Eliminate gap between top bar on mobile (#552)
 * Add Google Analytics events to notifications (#550)
@@ -394,6 +437,12 @@ app framework relies upon might still use Java, of course.)
 * Release using Conventional Commits (#516)
 
 ## [5.1.0][] - 2017-09-01
+
+BREAKING CHANGES: This release adds a feature to mascot announcements for adding
+a widget to home directly from the announcement. Before relying upon this
+feature in a shared messages source, all participating applications must first
+be upgraded to this framework version or later to avoid displaying broken
+announcements in not-yet-upgraded applications.
 
 ### Messages Enhancements
 
