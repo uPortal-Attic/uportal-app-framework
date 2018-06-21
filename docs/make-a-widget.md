@@ -17,7 +17,7 @@ The barebones widget provides an app title, a large icon, and a launch button wi
 
 ![basic widget](./img/basic-widget.png)
 
-### Sample entity file
+### Basic widget entity files
 
 This code block includes most of the fields needed to configure a widget, but there are additional XML tags (`<portlet-definition>`) you'll need
 to create one from scratch. Widgets are app directory entries, so see also [documentation about the app directory][].
@@ -53,8 +53,6 @@ to create one from scratch. Widgets are app directory entries, so see also [docu
   </value>
 </portlet-preference>
 ```
-
-#### About entity file values
 
 * **title**: The widget title
 * **fname**: The technical name of the app entry (lowercase and hyphenated)
@@ -105,12 +103,12 @@ Follow these steps for each of the predefined widget types described in this doc
 <value>list-of-links</value>
 ```
 
-#### When to use
+#### When to use `list-of-links`
 
 Use `list-of-links` to present 2 to 6 links, dynamically sourced or statically
 configured.
 
-#### Additional entity file configuration
+#### Additional `list-of-links` entity file configuration
 
 ```xml
 <portlet-preference>
@@ -141,7 +139,7 @@ configured.
 </portlet-preference>
 ```
 
-#### Icons
+#### `list-of-links` icons
 
 Preferred: icons are Material Icons, referenced like `invert_colors` (lowercase,
 no prefix, underscores in place of spaces. )
@@ -152,7 +150,7 @@ Deprecated: icons can be Font Awesome icons, referenced like `fa-envelope-o`
 Using both Material and Font Awesome icons together can yield visual
 misalignment of the link icons.
 
-#### Sourcing list of links content from a URL
+#### Sourcing `list-of-links` content from a URL
 
 The `list-of-links` content can be stored directly in `widgetConfig`, as above.
 This allows managing this data in the portlet registry as a
@@ -207,7 +205,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 }
 ```
 
-#### Guidance
+#### Guidance about `list-of-links`
 
 * Omitting `launchText` suppresses the launch button
   at the bottom of the list-of-links widget. This is appropriate when there's
@@ -225,7 +223,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 * Use brief sentence-case link titles. `list-of-links` truncates link titles to
   24 characters.
 
-### Search with links
+### `search-with-links` widget type
 
 ![search with links widget](./img/search-with-links.png)
 
@@ -234,12 +232,12 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 <value>search-with-links</value>
 ```
 
-#### When to use
+#### When to use `search-with-links`
 
 * Your app has built-in search
 * (optional) and you want to display up to 2 links
 
-#### Additional entity file configuration
+#### Additional `search-with-links` entity file configuration
 
 ```xml
 <portlet-preference>
@@ -273,11 +271,11 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 </portlet-preference>
 ```
 
-#### Guidance
+#### Guidance about `search-with-links`
 
 + Use sentence case in the titles of the links.
 
-### RSS widget
+### `rss` widget type
 
 ![rss widget](./img/rss.png)
 
@@ -286,11 +284,11 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 <value>rss</value>
 ```
 
-#### When to use
+#### When to use `rss`
 
 * You want to display an RSS feed right on your MyUW home page
 
-#### Additional entity file configuration
+#### `rss` widget entity file configuration
 
 ```xml
 <portlet-preference>
@@ -314,8 +312,6 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 </portlet-preference>
 ```
 
-#### About entity file values
-
 * **lim**: The number of items to show. Any number greater than 6 will default to 6 (due to space limitations). Use a smaller number for feeds that are infrequently updated.
 * **titleLim**: Limit the length (in characters, including spaces) of feed titles. This number should be between 30 and 60 (depending on whether you're showing dates or not).
 When this limit results in truncation, `rss` adds an `md-tooltip` with the full
@@ -323,7 +319,7 @@ title.
 * **showdate**: T/F show each feed item's published date. The date format is "M/d/yy" (localizable) due to space consideration.
 * **showShowing**: T/F Show the "Showing \[x] out of \[y]" message (to communicate that there is more to see). Set this to true if your feed has frequent updates.
 
-#### Guidance
+#### Guidance about `rss`
 
 Note the additional required value in the entity file:
 
@@ -331,7 +327,7 @@ Note the additional required value in the entity file:
 
 The [rssToJson][] microservice is a fine way to convert desired RSS feeds into the required JSON representation.
 
-### Action Items List
+### `action-items` widget type
 
 ![action items widget](./img/action-items.png)
 
@@ -340,11 +336,11 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 <value>action-items</value>
 ```
 
-#### When to use
+#### When to use `action-items`
 
 * You want to display a list of quantity-based items, with quantities that are expected to change. For example, a manager who has to approve time off could see "5 leave requests need your approval".
 
-#### Additional entity file configuration
+#### Additional `action-items` entity file configuration
 
 ```xml
 <portlet-preference>
@@ -368,15 +364,13 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 </portlet-preference>
 ```
 
-#### About entity file values
-
 * **actionItems**: A simple array of items. Each item should have values for each of the four attributes.
 * **textSingular**: Text to show when there is only 1 item of this type requiring attention.
 * **textPlural**: Text to show when there are multiple items of this type requiring attention.
 * **feedUrl**: The URL to fetch the *JSON representation* of the quantity of items needing attention.
 * **actionUrl**: The URL where action can be taken for this specific item. If no such URL exists, use the same URL as you use for the "See all" launch button.
 
-#### Guidance
+#### Guidance about `action-items`
 
 If there are multiple action item types to display, the widget will display the first 3 in the list. If there are more than 3, it will display a note that says "Showing 3 of \[x]".
 
@@ -388,7 +382,7 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
   }
 ```
 
-### Time-sensitive content widget
+### `time-sensitive-content` widget type
 
 ![benefits enrollment widget](./img/benefits-enrollment-widget.png)
 
@@ -397,13 +391,13 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
 <value>time-sensitive-content</value>
 ```
 
-#### When to use
+#### When to use `time-sensitve-content`
 
 * You want to display a call to action during a defined period of time, and a basic widget the rest of the time.
 
 *Note: This is an experimental widget type and is subject to change*
 
-#### Additional entity file configuration
+#### Additional `time-sensitive-content` entity file configuration
 
 ```xml
 <portlet-preference>
@@ -453,7 +447,7 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
 </portlet-preference>
 ```
 
-#### About entity file values
+#### About `time-sensitive-content` entity file values
 
 * **callsToAction**: The containing array for one or more objects with attributes related to making a call to action.
 * **activeDateRange**: An object used to determine when to switch to the time-sensitive content, with the following attributes:
@@ -470,22 +464,22 @@ The endpoint used for **feedUrl** should return a simple JSON object containing 
 * **learnMoreUrl**: *(optional)* Provide a url if you want the widget to display a link for users to get more information.
 * **feedbackUrl**: *(optional)* Provide a url if you want the widget to display a link where users can give feedback about the taking action.
 
-#### Guidance
+#### Guidance about `time-sensitive-content`
 
-##### Date formatting
+##### Date formatting  in `time-sensitive-content`
 
 Provided dates **MUST** match one of the following formats:
 + `'YYYY-MM-DD'` (ex. '2017-09-18'): Use this format if the call to action doesn't happen on the same date every year and if the time of day is unknown or unimportant
 + `'MM-DD'` (ex. '09-18'): Use this format if the date for this action is the same every year
 + `'...THH:MM'` (ex. 09-18T10:00): Append the time in hours and minutes if you want to set a specific time of day
 
-##### How to configure the active date range
+##### How to configure the active date range in `time-sensitive-content`
 
 + If you want your widget to warn users that they'll be able to take an action in the near future, you must provide dates for both `templateLiveDate` and `takeActionStartDate`. The former date must be *BEFORE* the latter one. If you only want the template to switch content when users can take action, you only need to provide `templateLiveDate`. During the days between the two dates, the widget will display "Begins `takeActionStartDate`".
 + Similarly, if you want the widget to tell users that a period to take action recently ended, you must provide dates for both `takeActionEndDate` (the date when taking the action stopped being possible) and `templateRetireDate` (the date the widget should go back to showing basic content). The former date must be *BEFORE* the latter one. During the days between the two dates, the widget will display "Ended `takeActionEndDate`".
 + If you only want the widget to show time-sensitive content when that content is actionable, you only have to provide dates for `templateLiveDate` and `templateRetireDate`. During the days between the two dates, the widget will display a countdown of days remaining to take action.
 
-## Other Configuration
+## Other configuration common across widget types
 
 ### Launch button text
 If you provide a `widgetConfig` with any defined widget type (i.e. not a custom widget) with a value for `launchText`, it will replace the text of the
