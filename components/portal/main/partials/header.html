@@ -19,7 +19,7 @@
 
 -->
 <md-toolbar md-scroll-shrink class="md-primary" tabindex="0" ng-controller="MessagesController">
-  <notifications-bell mode="priority" class="priority-gt-xs" hide-xs></notifications-bell>
+  <notifications-bell mode="priority" class="priority-gt-xs" ng-if="!guestMode" hide-xs></notifications-bell>
   <span ng-controller="AnnouncementsController" controllerAs="vm"></span>
   <div class="md-toolbar-tools"  role="banner">
     <div layout="row" flex-gt-xs="30" flex-xs="40" layout-align="start center">
@@ -32,7 +32,7 @@
                  ng-cloak>
         <md-icon>menu</md-icon>
         <md-tooltip md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Menu</md-tooltip>
-        <notifications-bell mode="mobile-bell" ng-if="!GuestMode" hide-gt-xs></notifications-bell>
+        <notifications-bell mode="mobile-bell" ng-if="!guestMode" hide-gt-xs></notifications-bell>
       </md-button>
 
       <!-- PORTAL TITLE AND APP TITLE -->
@@ -72,9 +72,8 @@
     <!-- TOP BAR BUTTONS (SM+) -->
     <div layout="row" layout-align="end center" flex-gt-xs="30" hide-xs>
       <mascot-announcement mode="mascot"></mascot-announcement>
-      <notifications-bell mode="bell" ng-if="!GuestMode"></notifications-bell>
+      <notifications-bell mode="bell" ng-if="!guestMode"></notifications-bell>
       <username layout="row" layout-align="start center"></username>
     </div>
   </div>
 </md-toolbar>
-
