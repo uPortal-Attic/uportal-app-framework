@@ -51,7 +51,7 @@ define(['angular', 'require'], function(angular, require) {
       restrict: 'E',
       templateUrl: require.toUrl('./partials/username.html'),
       controller: 'SessionCheckController',
-      controllerAs: 'sessionCtrl'
+      controllerAs: 'sessionCtrl',
     };
   })
 
