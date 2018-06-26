@@ -75,7 +75,7 @@
     "@commitlint/travis-cli": "^7.0.0",
     "autoprefixer": "^8.0.0",
     "concurrently": "^3.1.0",
-    "eslint": "^4.2.0",
+    "eslint": "^5.0.0",
     "eslint-config-angular": "^0.5.0",
     "eslint-config-google": "^0.9.1",
     "eslint-plugin-angular": "^3.0.0",
@@ -88,7 +88,7 @@
     "graceful-fs": "^4.0.0",
     "htmlprocessor": "^0.2.4",
     "jasmine-core": "^3.0.0",
-    "karma": "2.0.3",
+    "karma": "2.0.4",
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage": "^1.1.1",
     "karma-coveralls": "^1.1.2",
@@ -177,7 +177,8 @@
   "stylelint": {
     "extends": "stylelint-config-standard",
     "rules": {
-      "selector-type-no-unknown": null
+      "selector-type-no-unknown": null,
+      "no-descending-specificity": null
     }
   },
   "remarkConfig": {
