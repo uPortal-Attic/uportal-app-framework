@@ -177,7 +177,8 @@
   "stylelint": {
     "extends": "stylelint-config-standard",
     "rules": {
-      "selector-type-no-unknown": null
+      "selector-type-no-unknown": null,
+      "no-descending-specificity": null
     }
   },
   "remarkConfig": {
