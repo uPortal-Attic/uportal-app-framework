@@ -21,6 +21,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 
 ### Fixed
+* Dates and titles in RSS widget no longer overlap each other (#780) 
 
 
 ### Removed
