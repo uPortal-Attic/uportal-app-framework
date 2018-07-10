@@ -53,11 +53,12 @@
         <md-icon>more_vert</md-icon>
       </md-button>
       <md-menu-content class="widget-menu" width="4">
-        <md-menu-item class="widget-description" md-autofocus tabindex="1">
+        <md-menu-item class="widget-description" md-autofocus tabindex="1" layout="row" layout-align="start center">
+          <md-icon>info</md-icon>
           <span><b>{{ widget.title }}:</b> {{ widget.description }}</span>
         </md-menu-item>
         <!-- Remove widget button -->
-        <div ng-transclude id="widget-removal"></div>
+        <div ng-transclude id="widget-removal">
       </md-menu-content>
     </md-menu>
   </md-card-header>
