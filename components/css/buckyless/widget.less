@@ -498,24 +498,18 @@
   .widget-action {
     position: absolute;
     display: inline;
-    opacity: 0;
     top: 0;
+    right: 0;
     margin: 0;
-    transition: @transition-opacity;
     z-index: @widget-depth-1;
 
-    &.widget-info {
-      left: 0;
-    }
+    .md-button {
+      margin: 6px;
 
-    .material-icons {
-      font-size: 18px;
-    }
-  }
-
-  &:hover {
-    .widget-action {
-      opacity: 1;
+      .material-icons {
+        font-size: 18px;
+        line-height: 24px;
+      }
     }
   }
 }

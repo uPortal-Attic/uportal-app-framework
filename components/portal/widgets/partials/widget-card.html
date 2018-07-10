@@ -37,22 +37,29 @@
 
   <!-- HEADER -->
   <md-card-header class="widget-header">
-    <!-- Widget description tooltip -->
-    <md-button class="widget-action widget-info md-icon-button" aria-label="{{ widget.title }}: {{ widget.description }}" role="tooltip" ng-hide="widget.lifecycleState === 'MAINTENANCE'">
-      <md-tooltip md-direction="top" class="widget-action-tooltip">
-        {{ widget.description }}
-      </md-tooltip>
-      <md-icon>info</md-icon>
-    </md-button>
-    <!-- Remove widget button -->
-    <div ng-transclude id="widget-removal">
-    </div>
 
-    <md-card-header-text aria-hidden="true">
-      <span class="md-title" style="text-align: center;" tabindex="-1">
+    <md-card-header-text>
+      <span class="md-title" style="text-align: center;">
 	      {{ widget.title }}
       </span>
     </md-card-header-text>
+
+    <!-- Widget contextual menu -->
+    <md-menu class="widget-action" md-position-mode="target-right bottom">
+      <md-button class="md-icon-button" aria-label="open {{ widget.title }} menu" ng-click="$mdOpenMenu($event)">
+        <md-tooltip class="widget-action-tooltip" md-direction="top" role="tooltip">
+          Open {{ widget.title }} menu
+        </md-tooltip>
+        <md-icon>more_vert</md-icon>
+      </md-button>
+      <md-menu-content class="widget-menu" width="4">
+        <md-menu-item class="widget-description" md-autofocus tabindex="1">
+          <span><b>{{ widget.title }}:</b> {{ widget.description }}</span>
+        </md-menu-item>
+        <!-- Remove widget button -->
+        <div ng-transclude id="widget-removal"></div>
+      </md-menu-content>
+    </md-menu>
   </md-card-header>
 
   <!-- BODY -->
