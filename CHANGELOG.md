@@ -19,6 +19,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 * Changes list of links limit to 6 items. (#773)
 * Removes rootScope guest mode (#777)
 * Fixed list of links widget buttons clipping on some screen sizes (#781)
+* Moved widget info (description) and remove button into contextual menu to reduce burden on keyboard users (#785)
 
 
 ### Fixed
