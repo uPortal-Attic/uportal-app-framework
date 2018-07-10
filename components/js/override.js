@@ -25,6 +25,9 @@ define(['angular'], function(angular) {
         // 'enablePushContentMenu': true,
       },
       'SERVICE_LOC': {
+        // 'widgetApi': {
+        //   'entry': 'staticFeeds/',
+        // },
         // 'aboutURL': 'staticFeeds/about-frame.json',
         // 'aboutPageURL': 'staticFeeds/about-page.json'
         // 'messagesURL': 'staticFeeds/sample-messages.json',
