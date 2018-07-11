@@ -32,9 +32,9 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
   }
 
   var framePaths = {
-      'angular': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min',
-      'angular-animate': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min',
-      'angular-mocks': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-mocks',
+      'angular': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min',
+      'angular-animate': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-animate.min',
+      'angular-mocks': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-mocks',
       'angulartics': 'https://cdnjs.cloudflare.com/ajax/libs/angulartics/1.1.0/angulartics.min',
       'angulartics-google-analytics': [
           'https://cdnjs.cloudflare.com/ajax/libs/angulartics-google-analytics/0.2.1/angulartics-ga.min',
@@ -42,10 +42,10 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       ],
       'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min',
       'jquery-ui': 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min',
-      'ngAria': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-aria.min',
+      'ngAria': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-aria.min',
       'ngMaterial': 'https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min',
-      'ngRoute': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min',
-      'ngSanitize': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-sanitize.min',
+      'ngRoute': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min',
+      'ngSanitize': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-sanitize.min',
       'ngStorage': 'https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min',
       'ui-bootstrap': 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min',
       'ui-gravatar': 'https://cdnjs.cloudflare.com/ajax/libs/angular-gravatar/0.4.2/angular-gravatar.min',
