@@ -14,6 +14,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+* new filter `canAdd`, useful for filtering portlets on whether user can or
+  cannot add them to layout (#791)
 
 ### Changed
 * Changes list of links limit to 6 items. (#773)
