@@ -20,10 +20,10 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 * Removes rootScope guest mode (#777)
 * Fixed list of links widget buttons clipping on some screen sizes (#781)
 * Moved widget info (description) and remove button into contextual menu to reduce burden on keyboard users (#786)
-
+* Upgrades Angular to version 1.7.2 (#788)
 
 ### Fixed
-* Dates and titles in RSS widget no longer overlap each other (#780) 
+* Dates and titles in RSS widget no longer overlap each other (#780)
 * Removes unused `id` on the widget-removal div, thereby removing a source of
   HTML element `id` uniqueness constraint violations in the markup. (#787)
 
