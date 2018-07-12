@@ -69,6 +69,18 @@ define(['angular'], function(angular) {
             }
         };
     })
+    .filter('canAdd', function() {
+      // filters to portlets with a .canAdd matching the passed boolean
+      return function(portlets, canAddOrNot) {
+        var filteredPortlets = [];
+        angular.forEach(portlets, function(portlet) {
+          if (portlet.canAdd === canAddOrNot) {
+            filteredPortlets.push(portlet);
+          }
+        });
+        return filteredPortlets;
+      };
+    })
     .filter('showCategory', function() {
       return function(portlets, category) {
         if (category === '') {
