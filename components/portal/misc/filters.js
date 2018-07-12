@@ -55,30 +55,26 @@ define(['angular'], function(angular) {
 
     .filter('showApplicable', function() {
         return function(portlets, showAll) {
-            var filteredPortlets = [];
             if (showAll === true) {
               return portlets;
             }
             if (showAll === false) {
-              angular.forEach(portlets, function(portlet) {
-                if ( portlet.canAdd === true) {
-                  filteredPortlets.push(portlet);
+              return portlets.filter(
+                function(portlet) {
+                  return portlet.canAdd;
                 }
-              });
-              return filteredPortlets;
+              );
             }
         };
     })
     .filter('canAdd', function() {
       // filters to portlets with a .canAdd matching the passed boolean
       return function(portlets, canAddOrNot) {
-        var filteredPortlets = [];
-        angular.forEach(portlets, function(portlet) {
-          if (portlet.canAdd === canAddOrNot) {
-            filteredPortlets.push(portlet);
+        return portlets.filter(
+          function(portlet) {
+            return portlet.canAdd === canAddOrNot;
           }
-        });
-        return filteredPortlets;
+        );
       };
     })
     .filter('showCategory', function() {
