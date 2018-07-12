@@ -79,7 +79,7 @@ define(['angular', 'require'], function(angular, require) {
 
       // class for ng-view
       $scope.routeClass = 'route' +
-        angular.lowercase($location.path().replace(new RegExp('/', 'g'), '-'));
+        $location.path().replace(new RegExp('/', 'g'), '-').toLowerCase();
     };
 
     $scope.resetAll = function() {
