@@ -1,6 +1,20 @@
 # Upgrading
 At a glance notes for upgrading apps between major versions.
 
+# 9.x.x to 10.x.x
+
+The deprecated `$rootScope.GuestMode` has been removed. Replace references with a direct call to `mainService.isGuest()` where possible. If you rely on `GuestMode` within a partial, you can populate a locally scoped variable within the controller, upon initialization.
+```
+$scope.guestMode = true;
+
+mainService.isGuest().then(function(result) {
+  $scope.guestMode = result;
+  return result;
+ }).catch(function() {
+   $log.warn('Problem checking guestMode');
+ });
+ ```
+
 # 8.x.x to 9.x.x
 
 The framework will include in the document title the value of the `app-title` 
