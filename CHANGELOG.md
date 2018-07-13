@@ -765,7 +765,7 @@ break compatibility with some older components. If the app used any `angular-ui-
 * Fixed format for announcement end date (#332)
 
 [unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.0.0...HEAD
-[9.2.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.1...v10.0.0
+[10.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.1...v10.0.0
 [9.2.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.0...v9.2.1
 [9.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.1.0...v9.2.0
 [9.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.2...v9.1.0
