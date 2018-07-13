@@ -8,18 +8,36 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
-### Documentation
-
-* Note in changelog message handling changes needing upgrade coordination (#733)
 
 ### Added
 
+
+### Changed
+
+
+### Fixed
+
+
+### Removed
+
+
+### Deprecated
+
+
+### Documentation
+
+
+## [10.0.0][]
+
+### Removed
+* Removes `$rootScope.GuestMode` (#777)
+
+### Added
 * new filter `canAdd`, useful for filtering portlets on whether user can or
   cannot add them to layout (#791)
 
 ### Changed
 * Changes list of links limit to 6 items. (#773)
-* Removes rootScope guest mode (#777)
 * Fixed list of links widget buttons clipping on some screen sizes (#781)
 * Moved widget info (description) and remove button into contextual menu to reduce burden on keyboard users (#786)
 * Upgrades Angular to version 1.7.2 (#788)
@@ -29,12 +47,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 * Removes unused `id` on the widget-removal div, thereby removing a source of
   HTML element `id` uniqueness constraint violations in the markup. (#787)
 
-
-### Removed
-
-
-### Deprecated
-
+### Documentation
+* Note in changelog message handling changes needing upgrade coordination (#733)
 
 ## [9.2.1][] - 2018-6-8
 
@@ -750,7 +764,8 @@ break compatibility with some older components. If the app used any `angular-ui-
 * Added ability to have a name for the default theme (#336)
 * Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.1...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.0.0...HEAD
+[9.2.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.1...v10.0.0
 [9.2.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.0...v9.2.1
 [9.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.1.0...v9.2.0
 [9.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.2...v9.1.0
