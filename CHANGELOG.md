@@ -41,7 +41,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Changed
 * Changes list of links limit to 6 items. (#773)
 * Fixed list of links widget buttons clipping on some screen sizes (#781)
-* Moved widget info (description) and remove button into contextual menu to reduce burden on keyboard users (#786)
+* Moved widget info (description) and remove button into contextual menu to
+  reduce burden on keyboard users (#786)
 * Upgrades Angular to version 1.7.2 (#788)
 
 ### Fixed
@@ -55,21 +56,27 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [9.2.1][] - 2018-6-8
 
 ### Changed
-* Per UX guidance: When an app provides a theme name (i.e. "MyUW") and an app name (i.e. "STAR"), the two names now appear inline (#766)
-* Removed link to Features page ("What's New") from default app configuration (#770)
+* Per UX guidance: When an app provides a theme name (i.e. "MyUW") and an app
+  name (i.e. "STAR"), the two names now appear inline (#766)
+* Removed link to Features page ("What's New") from default app configuration
+  (#770)
 
 
 ### Fixed
-* Fixed potential upgrade path difficulty by making changes to "/about" and "/session-info" routes backward compatible (#765)
-* Increased z-index of all dialogs to highest value (101) to ensure they appear above other content (#771)
-* Added basic `<body>` styles (override Bootstrap values) to ensure Roboto is always preferred (#771)
+* Fixed potential upgrade path difficulty by making changes to "/about" and
+  "/session-info" routes backward compatible (#765)
+* Increased z-index of all dialogs to highest value (101) to ensure they appear
+  above other content (#771)
+* Added basic `<body>` styles (override Bootstrap values) to ensure Roboto is
+  always preferred (#771)
 
 
 ## [9.2.0][] - 2018-5-22
 
 ### Added
 
-* New "session info" page containing the former content of the "About" page (uportal-app-framework version info, app info JSON) (#755)
+* New "session info" page containing the former content of the "About" page
+  (uportal-app-framework version info, app info JSON) (#755)
   * To use: Add the `'portal/help/routes'` module in your main.js file (#765)
 * App config option `aboutPageURL` to get text and links for "About" page (#755)
 * Made Google's Roboto web font available (#761)
@@ -77,8 +84,11 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Changed
 * "About" page now sources meaningful content from `aboutPageURL` (#755)
 * Use Roboto font family (#761)
-* z-index values adjusted from highest (101) to lowest (51) stated values to play nicer with Angular Material (#760)
-* To better support open source commitment and downstream apps, replaced hard-coded MyUW/UW-Madison specific language in meta tags (now sourced from the same JSON file as the app's About page information) (#763)
+* z-index values adjusted from highest (101) to lowest (51) stated values to
+  play nicer with Angular Material (#760)
+* To better support open source commitment and downstream apps, replaced
+  hard-coded MyUW/UW-Madison specific language in meta tags (now sourced from
+  the same JSON file as the app's About page information) (#763)
 * SVG widget icons use the md-icon directive to scale properly (#764)
 
 ### Fixed
@@ -111,7 +121,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
-* `list-of-links` widgets are now `basic` widgets in the zero links edge case (#735)
+* `list-of-links` widgets are now `basic` widgets in the zero links edge case
+  (#735)
 * `list-of-links` now `aria-label`s links, ensuring a non-truncated version of
   the link label is available to browsers (#736)
 
@@ -132,7 +143,8 @@ future release. (#742)
 
 ## [9.0.2][] - 2018-3-30
 
-This release is to mop up some weirdness which happened with 9.0.1 and get a clean artifact.
+This release is to mop up some weirdness which happened with 9.0.1 and get a
+clean artifact.
 
 ### Changed
 
@@ -223,8 +235,8 @@ version or later to avoid showing users a broken mascot announcement experience.
 
 * `<frame-page>` sets document title per existing `app-title` attribute (#682)
 * The `show-add-to-home` attribute on the `<frame-page>` directive now displays
-  a dismissible-for-session toast message prompting users to add the app to their
-  home page, instead of a button. (#684)
+  a dismissible-for-session toast message prompting users to add the app to
+  their home page, instead of a button. (#684)
 * `vm.showMessagesFeatures` variable moved out of default and into more
   logically appropriate spot (#694)
 * Improved appearance of add-to-home toast message (#706)
@@ -348,10 +360,14 @@ notification content.
 
 ### Features
 
-* Add on-page side navigation feature (#588) + To use: Set `APP_OPTIONS.enablePushContentMenu` to true in your
-  override.js file
-* Add more Google Analytics around notifications (#598). Events for + rendering priority (banner across the top) notification + dismissing priority notification + rendering notification by opening the bell menu + clicks on mobile side-nav notification bell, with and without priority
-  indicator + dismissing notification from the bell menu + dismissing or restoring notification from notifications page
+* Add on-page side navigation feature (#588) + To use: Set
+  `APP_OPTIONS.enablePushContentMenu` to true in your override.js file
+* Add more Google Analytics around notifications (#598). Events for + rendering
+  priority (banner across the top) notification + dismissing priority
+  notification + rendering notification by opening the bell menu + clicks on
+  mobile side-nav notification bell, with and without priority
+  indicator + dismissing notification from the bell menu + dismissing or
+  restoring notification from notifications page
 * Support dynamic notification text sourced from JSON web service (#601)
 
 ### Fixed
@@ -386,8 +402,9 @@ app framework relies upon might still use Java, of course.)
 ### Added
 
 * Add filter to determine rel attribute on anchors (#569)
-* Add configurable side navigation (#561) - See [uportal-app-framework documentation][sidenav-documentation] of this
-  new feature
+* Add configurable side navigation (#561) - See
+  [uportal-app-framework documentation][sidenav-documentation] of this new
+  feature
 
 ### Changed
 
@@ -484,15 +501,25 @@ announcements in not-yet-upgraded applications.
 
 ## [5.0.0][] - 2017-08-24
 
-Version 5.0.0 of uPortal-App-Framework consists of 67 pull requests over more than three months of work.
+Version 5.0.0 of uPortal-App-Framework consists of 67 pull requests over more
+than three months of work.
 
-The major change featured in this release is the consolidation of notifications, features, and announcements into the messages data model. [Documentation for creating messages can be found here.](http://uportal-project.github.io/uportal-app-framework/messaging-implementation.html)
+The major change featured in this release is the consolidation of notifications,
+features, and announcements into the messages data model.
+[Documentation for creating messages can be found here.](http://uportal-project.github.io/uportal-app-framework/messaging-implementation.html)
 
-This release also features a new Action Items widget type, and added functionality to the List of Links widget type. We've added support for a generic uPortal theme, various usability enhancements, and the start of a more personalized avatar space.
+This release also features a new Action Items widget type, and added
+functionality to the List of Links widget type. We've added support for a
+generic uPortal theme, various usability enhancements, and the start of a more
+personalized avatar space.
 
-We've updated our documentation to keep up with our changes as well as welcomed @ChristianMurphy as a new Committer. Christian has been instrumental in upgrading our Continuous Integration process as well as adding a new Dependency Management service to our repository.
+We've updated our documentation to keep up with our changes as well as welcomed
+@ChristianMurphy as a new Committer. Christian has been instrumental in
+upgrading our Continuous Integration process as well as adding a new Dependency
+Management service to our repository.
 
-While we're proud of what we've accomplished in this major release, we hope to return to a faster paced release cycle in the future.
+While we're proud of what we've accomplished in this major release, we hope to
+return to a faster paced release cycle in the future.
 
 ### Major Enhancements
 
@@ -663,7 +690,10 @@ This release adds a widget directive to the app-framework, adds personalized not
 
 * Change dependency to version 4.0.0
 * For upgrading application consuming notifications programmatically: the [notification service api changed from `getNotificationsByGroups` to `getFilteredNotifications`](https://github.com/uPortal-Project/uportal-app-framework/pull/386/files#diff-9a244329b1c0f99008f0fb506d3b9c64L159). This will not be a concern for most (if not all) applications.
-* If the app had previously named services and directives with the word "widget" in the name, naming conflicts may arise due to the new Widget directives and services being added. [See the code for more details](https://github.com/uPortal-Project/uportal-app-framework/pull/385/files). This will not be a concern for most applications.
+* If the app had previously named services and directives with the word "widget"
+  in the name, naming conflicts may arise due to the new Widget directives and
+  services being added. [See the code for more details](https://github.com/uPortal-Project/uportal-app-framework/pull/385/files).
+  This will not be a concern for most applications.
 
 ## [3.1.4][] - 2017-03-20
 
@@ -713,11 +743,13 @@ Adjusts link colors for themes #377
 
 ## [3.0.3][] - 2016-12-20
 
-Patch release. Simply bump the app's dependency declaration from `uw-frame` `3.0.2` to `3.0.3` to adopt this release.
+Patch release. Simply bump the app's dependency declaration from `uw-frame`
+`3.0.2` to `3.0.3` to adopt this release.
 
 * Fixes Google Analytics usage ( #353 )
 * Documents source code whitespace conventions ( #356 )
-* Improves [documentation about releasing `uw-frame` itself](http://uportal-project.github.io/uportal-app-framework/v3.0.3/#/md/releasing) ( #355 )
+* Improves [documentation about releasing `uw-frame` itself](http://uportal-project.github.io/uportal-app-framework/v3.0.3/#/md/releasing)
+  ( #355 )
 
 See also
 
@@ -729,7 +761,8 @@ See also
 Patch release. Trivial upgrade from `v3.0.1` (or even `v3.0.0`).
 
 * Username menu items are no longer redundantly duplicatively labeled ( #351 )
-* Circle buttons now maintain their circular shape even when their label text wraps ( #352 )
+* Circle buttons now maintain their circular shape even when their label text
+  wraps ( #352 )
 
 Supporting links:
 
@@ -747,7 +780,9 @@ Unreleased due to issues pushing to Maven Central.
 * Upgrade angular-ui-bootstrap and angular libraries (#350) from 0.13.4 to 2.2.0
 
 The `angular-ui-bootstrap` upgrade moves up 2 major versions and does
-break compatibility with some older components. If the app used any `angular-ui-bootstrap` components, it will need to begin prefixing them with `uib-`. See `angular-ui-bootstrap` [Migration Guide for Prefixes](https://github.com/angular-ui/bootstrap/wiki/Migration-guide-for-prefixes).
+break compatibility with some older components. If the app used any
+`angular-ui-bootstrap` components, it will need to begin prefixing them with
+`uib-`. See `angular-ui-bootstrap` [Migration Guide for Prefixes](https://github.com/angular-ui/bootstrap/wiki/Migration-guide-for-prefixes).
 
 ### Build changes
 
