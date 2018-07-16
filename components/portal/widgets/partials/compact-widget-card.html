@@ -19,13 +19,24 @@
 
 -->
 <md-card class="list-content" id="widget-id-{{::widget.nodeId}}">
-  <md-button class="widget-action widget-info md-icon-button" aria-label="{{ widget.title }}: {{ widget.description }}" role="tooltip" ng-hide="widget.lifecycleState === 'MAINTENANCE'">
-    <md-tooltip md-direction="top" class="widget-action-tooltip">
-      {{ widget.description }}
-    </md-tooltip>
-    <md-icon>info</md-icon>
-  </md-button>
-  <div ng-transclude></div>
+  <!-- Widget contextual menu -->
+  <md-menu class="widget-action" md-position-mode="target-right bottom">
+    <md-button class="md-icon-button" aria-label="open {{ widget.title }} menu" ng-click="$mdOpenMenu($event)">
+      <md-tooltip class="widget-action-tooltip" md-direction="top" role="tooltip">
+        Open {{ widget.title }} menu
+      </md-tooltip>
+      <md-icon>more_vert</md-icon>
+    </md-button>
+    <md-menu-content class="widget-menu" width="4">
+      <md-menu-item class="widget-description" md-autofocus tabindex="1" layout="row" layout-align="start center">
+        <md-icon>info</md-icon>
+        <span><strong>{{ widget.title }}:</strong> {{ widget.description }}</span>
+      </md-menu-item>
+      <!-- Remove widget button -->
+      <div ng-transclude></div>
+    </md-menu-content>
+  </md-menu>
+  <!-- Widget clickable area -->
   <a aria-labelledby="appTitle_widget.title-{{::widget.nodeId}}" tabindex="0" ng-href="{{widget.url}}" target="{{::widget.target}}" rel="noopener noreferrer">
     <div class="icon-container">
       <widget-icon></widget-icon>
