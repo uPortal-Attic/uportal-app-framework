@@ -27,8 +27,8 @@ define(['angular', 'moment'], function(angular, moment) {
    * the type and sets launch button url for un-typed (basic) widgets.
    */
   .controller('WidgetCardController', [
-    '$scope', '$log', '$localStorage', 'widgetService',
-    function($scope, $log, $localStorage, widgetService) {
+    '$scope', '$log', '$localStorage', '$transclude', 'widgetService',
+    function($scope, $log, $localStorage, $transclude, widgetService) {
     /**
      * Check for widget types that require extra configuration
      * (including null/undefined case), default to provided
@@ -77,13 +77,15 @@ define(['angular', 'moment'], function(angular, moment) {
 
     /**
      * Initial widget setup -- gets data for a single widget
-     * from the provided fname attribute
+     * from the provided fname attribute, makes transcluded content
+     * focusable
      * @param {string} fname
      */
     $scope.initializeWidget = function(fname) {
       // Initialize scope variables
       $scope.widget = {};
       $scope.widgetType = '';
+      $scope.tabindex = '-1';
 
       if (fname) {
         // Get widget data for provided app (fname)
@@ -93,6 +95,10 @@ define(['angular', 'moment'], function(angular, moment) {
           if (data) {
             $scope.widget = data;
             $scope.widgetType = widgetType(data);
+          }
+          // If there's a remove button, make it focusable by keyboard
+          if ($transclude.isSlotFilled('removeButton')) {
+            $scope.tabindex = '1';
           }
           return data;
         })

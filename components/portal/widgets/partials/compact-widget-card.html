@@ -33,7 +33,7 @@
         <span><strong>{{ widget.title }}:</strong> {{ widget.description }}</span>
       </md-menu-item>
       <!-- Remove widget button -->
-      <div ng-transclude></div>
+      <div role="button" tabindex="{{ tabindex }}" ng-transclude="removeButton"></div>
     </md-menu-content>
   </md-menu>
   <!-- Widget clickable area -->
