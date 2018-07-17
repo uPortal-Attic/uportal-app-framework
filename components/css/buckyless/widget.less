@@ -31,6 +31,7 @@
     height: 60px;
     line-height: 1.1;
     align-items: center;
+    padding: 0 40px;
 
     .md-title {
       font-size: 18px;
@@ -502,11 +503,9 @@
     right: 0;
     margin: 0;
     z-index: @widget-depth-1;
-    opacity: 0;
-    transition: @transition-opacity;
 
     .md-button {
-      margin: 6px;
+      margin: 6px 0;
 
       .material-icons {
         font-size: 18px;
@@ -515,12 +514,6 @@
     }
 
     &:focus {
-      opacity: 1;
-    }
-  }
-
-  &:hover {
-    .widget-action {
       opacity: 1;
     }
   }

@@ -16,8 +16,12 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
++ Widget actions are always visible, no longer only on hover (#794)
++ Increased padding on sides of expanded widget titles to accommodate menu button (#794)
 
 ### Fixed
+
++ Fixed display bug in compact widgets. Compact widgets now correctly use the per-widget contextual menu. (#794)
 
 
 ### Removed
