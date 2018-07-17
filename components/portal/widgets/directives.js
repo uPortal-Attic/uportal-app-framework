@@ -36,7 +36,7 @@ define(['angular', 'require'], function(angular, require) {
       templateUrl: require.toUrl('./partials/widget-card.html'),
       controller: 'WidgetCardController',
       link: {
-        post: function(scope, element, attrs, $transclude) {
+        post: function(scope, element, attrs) {
           element.on('click', function(event) {
             var el = event.target;
             while (el && (!el.tagName || el.tagName.toLowerCase() !== 'a')) {
