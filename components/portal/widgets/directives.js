@@ -27,7 +27,9 @@ define(['angular', 'require'], function(angular, require) {
   .directive('widget', ['miscService', function(miscService) {
     return {
       restrict: 'E',
-      transclude: true,
+      transclude: {
+        'removeButton': '?removeButton',
+      },
       scope: {
         fname: '@',
       },
@@ -55,7 +57,9 @@ define(['angular', 'require'], function(angular, require) {
   .directive('compactWidget', ['miscService', function(miscService) {
     return {
       restrict: 'E',
-      transclude: true,
+      transclude: {
+        'removeButton': '?removeButton',
+      },
       scope: {
         fname: '@',
       },
