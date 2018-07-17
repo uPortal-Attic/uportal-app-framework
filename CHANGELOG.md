@@ -13,6 +13,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 + Out of the box example page now includes compact mode widget examples, rather
   than just expanded mode widget examples. (#791)
++ New custom message for maintenance mode. (#798)
 
 ### Changed
 
