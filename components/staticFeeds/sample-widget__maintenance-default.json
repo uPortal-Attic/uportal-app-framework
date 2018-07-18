@@ -1,0 +1,60 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Some App Under Maintenance",
+      "description": "An example of an app in maintenance mode.",
+      "url": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
+      "iconUrl": null,
+      "faIcon": "fa-graduation-cap",
+      "mdIcon": "school",
+      "fname": "maintenance-example-defalt-message",
+      "lifecycleState": "MAINTENANCE",
+      "target": "_blank",
+      "widgetURL": null,
+      "widgetType": null,
+      "widgetTemplate": null,
+      "widgetConfig": null,
+      "staticContent": null,
+      "pithyStaticContent": null,
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "keywords": [
+      "roster",
+      "class roster",
+      "manage grades",
+      "textbook",
+      "schedule",
+      "grades",
+      "advisee information",
+      "advisee"
+    ],
+    "fname": "maintenance-example-defalt-message",
+    "lifecycleState": "MAINTENANCE",
+    "rating": 4.5,
+    "portletWebAppName": "/SISPortlets",
+    "faIcon": "fa-graduation-cap",
+    "maxUrl": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 2,
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
+    "title": "Some App Under Maintenance",
+    "categories": [
+      "Faculty services"
+    ],
+    "portletName": "BasicSisLink",
+    "name": "Some App Under Maintenance",
+    "id": "55",
+    "type": "Portlet",
+    "target": "_blank",
+    "description": "An example of an app in maintenance mode."
+  }
+}
