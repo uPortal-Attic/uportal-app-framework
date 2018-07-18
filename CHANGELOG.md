@@ -13,7 +13,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 + Out of the box example page now includes compact mode widget examples, rather
   than just expanded mode widget examples. (#791)
-+ New custom message for maintenance mode. (#798)
++ New `widgetConfig.maintenanceMessage` for customizing the message a widget
+  shows when in `MAINTENANCE` lifecycle state (#798)
 
 ### Changed
 
