@@ -26,8 +26,13 @@
       <p class="overlay-warning-icon">
         <md-icon class="md-warn">warning</md-icon>
       </p>
-      <ng-show="widget.maintenanceMessage"><p>{{ widget.maintenanceMessage }}</p></ng-show>
-      <ng-hide="widget.maintenanceMessage"><p>This app is undergoing maintenance and is temporarily available.</p></ng-hide>
+      <p ng-if="widget.widgetConfig && widget.widgetConfig.maintenanceMessage">
+        {{ widget.widgetConfig.maintenanceMessage }}
+      </p>
+      <p ng-if="!widget.widgetConfig
+        || !widget.widgetConfig.maintenanceMessage">
+        This app is undergoing maintenance and is temporarily available.
+      </p>
     </div>
   </div>
 
