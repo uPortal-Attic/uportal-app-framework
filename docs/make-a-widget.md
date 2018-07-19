@@ -507,6 +507,25 @@ Example:
 </portlet-preference>
 ```
 
+Widgets in maintenance mode will show a default maintenance message
+
+![widget showing default maintenance message](./img/default-maint-message.png)
+
+unless a custom message is configured in `widgetConfig` as `maintenanceMessage`,
+
+```xml
+<portlet-preference>
+  <name>widgetConfig</name>
+  <value>
+    <![CDATA[{
+      "maintenanceMessage" : "Entropy has claimed this app."
+    }]]>
+  </value>
+</portlet-preference>
+```
+
+![widget showing custom maintenance message](./img/custom-maint-message.png)
+
 ## Custom widgets
 Using a JSON service is a great way to have user-focused content in your widgets. Here are the steps you have to take to create your custom JSON-backed widget:
 
