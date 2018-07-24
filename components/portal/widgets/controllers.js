@@ -83,6 +83,7 @@ define(['angular', 'moment'], function(angular, moment) {
        * @param {object} event The DOM event that called the function
        */
     $scope.triggerRemoveButton = function(event) {
+      event.preventDefault();
       // If user pressed enter key, manually trigger the remove button
       if (event.keyCode === 13) {
         var removeButton =
