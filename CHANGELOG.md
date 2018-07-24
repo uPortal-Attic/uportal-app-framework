@@ -25,6 +25,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 + Fixed display bug in compact widgets. Compact widgets now correctly use the per-widget contextual menu. (#794)
 + Make widget removal button focusable by keyboard when present (#797)
++ Enable keyboard activation of widget removal button, when present (#800)
 
 
 ### Removed
