@@ -27,8 +27,10 @@ define(['angular', 'moment'], function(angular, moment) {
    * the type and sets launch button url for un-typed (basic) widgets.
    */
   .controller('WidgetCardController', [
-    '$scope', '$log', '$localStorage', '$transclude', 'widgetService',
-    function($scope, $log, $localStorage, $transclude, widgetService) {
+    '$scope', '$log', '$localStorage', '$transclude', '$timeout',
+    'widgetService',
+    function($scope, $log, $localStorage, $transclude, $timeout,
+             widgetService) {
     /**
      * Check for widget types that require extra configuration
      * (including null/undefined case), default to provided
@@ -72,6 +74,27 @@ define(['angular', 'moment'], function(angular, moment) {
           return 'basic';
         default:
           return widget.widgetType;
+      }
+    };
+
+      /**
+       * Enable keyboard activation of transcluded remove button
+       * so it plays nice with the aria-role "button"
+       * @param {object} event The DOM event that called the function
+       */
+    $scope.triggerRemoveButton = function(event) {
+      event.preventDefault();
+      // If user pressed enter key, manually trigger the remove button
+      if (event.keyCode === 13) {
+        var removeButton =
+          angular.element(event.target.querySelector('.widget-remove'));
+        // Make sure we correctly targeted a button
+        if (removeButton[0].tagName === 'BUTTON') {
+          // Break current $apply cycle to ensure this fires
+          $timeout(function() {
+            removeButton.triggerHandler('click');
+          }, 0);
+        }
       }
     };
 
