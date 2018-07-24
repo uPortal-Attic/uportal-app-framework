@@ -64,7 +64,7 @@
           <span><strong>{{ widget.title }}:</strong> {{ widget.description }}</span>
         </md-menu-item>
         <!-- Remove widget button -->
-        <div role="button" tabindex="{{ tabindex }}" ng-transclude="removeButton"></div>
+        <div role="button" tabindex="{{ tabindex }}" ng-transclude="removeButton" ng-keyup="triggerRemoveButton($event)"></div>
       </md-menu-content>
     </md-menu>
   </md-card-header>
