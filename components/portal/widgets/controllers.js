@@ -27,8 +27,10 @@ define(['angular', 'moment'], function(angular, moment) {
    * the type and sets launch button url for un-typed (basic) widgets.
    */
   .controller('WidgetCardController', [
-    '$scope', '$log', '$localStorage', '$transclude', '$timeout', 'widgetService',
-    function($scope, $log, $localStorage, $transclude, $timeout, widgetService) {
+    '$scope', '$log', '$localStorage', '$transclude', '$timeout',
+    'widgetService',
+    function($scope, $log, $localStorage, $transclude, $timeout,
+             widgetService) {
     /**
      * Check for widget types that require extra configuration
      * (including null/undefined case), default to provided
@@ -83,7 +85,8 @@ define(['angular', 'moment'], function(angular, moment) {
     $scope.triggerRemoveButton = function(event) {
       // If user pressed enter key, manually trigger the remove button
       if (event.keyCode === 13) {
-        var removeButton = angular.element(event.target.querySelector('.widget-remove'));
+        var removeButton =
+          angular.element(event.target.querySelector('.widget-remove'));
         // Make sure we correctly targeted a button
         if (removeButton[0].tagName === 'BUTTON') {
           // Break current $apply cycle to ensure this fires
@@ -117,7 +120,6 @@ define(['angular', 'moment'], function(angular, moment) {
           }
           // If there's a remove button, make it focusable by keyboard
           if ($transclude.isSlotFilled('removeButton')) {
-            console.log('slot is filled');
             $scope.tabindex = '1';
           }
           return data;
