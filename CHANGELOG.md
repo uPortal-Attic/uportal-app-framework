@@ -14,6 +14,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
++ update modules included in `package.json` and update `package-lock.json` to match (#804)
 
 ### Fixed
 
