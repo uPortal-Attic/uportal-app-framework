@@ -14,11 +14,9 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-+ update modules included in `package.json` and update `package-lock.json` to match (#804)
 
 ### Fixed
 
-+ Fixed compact mode widget removal (#805)
 
 ### Removed
 
@@ -27,6 +25,16 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 
 ### Documentation
+
+## [10.1.1][]
+
+### Changed
+
++ update modules included in `package.json` and update `package-lock.json` to match (#804)
+
+### Fixed
+
++ Fixed compact mode widget removal (#805)
 
 
 ## [10.1.0][]
@@ -823,7 +831,8 @@ break compatibility with some older components. If the app used any
 * Added ability to have a name for the default theme (#336)
 * Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.1...HEAD
+[10.1.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.0...v10.1.1
 [10.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.0.0...v10.1.0
 [10.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.1...v10.0.0
 [9.2.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.0...v9.2.1
