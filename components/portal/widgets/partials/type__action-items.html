@@ -24,10 +24,16 @@
     <!-- Loading case -->
     <loading-gif data-object="actionItems" ng-show="loading"></loading-gif>
 
-    <!-- Error case -->
+    <!-- Error case (endpoint failure) -->
     <div class="error" layout="row" layout-align="start center" ng-show="error">
       <div><md-icon class="md-warn">warning</md-icon></div>
       <span>There was an issue loading the information. Click See all for more info.</span>
+    </div>
+
+    <!-- Error case (non-number quantity for all items) -->
+    <div class="error" layout="row" layout-align="start center" ng-show="errorQuantity">
+      <div><md-icon class="md-warn">warning</md-icon></div>
+      <span>One or more items failed to retrieve quantity data. Click see all for more info.</span>
     </div>
   </div>
 
@@ -43,9 +49,14 @@
           <p ng-if="item.quantity != 1">{{ item.textPlural }}</p>
         </div>
       </md-list-item>
+      <!-- Error case (non-number quantity item) -->
+      <md-list-item ng-show="errorQuantity">
+        <md-icon class="md-warn action-item__error-quantity">warning</md-icon>
+        <p>At least one item failed to retrieve quantity data</p>
+      </md-list-item>
     </md-list>
     <!-- Over limit case -->
-    <p ng-show="actionItems.length > itemsLimit" class="action-item__showing">Showing {{ itemsLimit }} of {{ actionItems.length }}</p>
+    <p ng-show="actionItems.length > itemsLimit" class="action-item__showing">Showing {{ errorQuantity ? itemsLimit + 1 : itemsLimit }} of {{ actionItems.length }}</p>
   </div>
 
 </div>
