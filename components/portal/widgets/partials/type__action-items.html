@@ -27,13 +27,13 @@
     <!-- Error case (endpoint failure) -->
     <div class="error" layout="row" layout-align="start center" ng-show="hasServiceError">
       <div><md-icon class="md-warn">warning</md-icon></div>
-      <span>There was an issue loading the information. Click "{{ launchText }}" for more info.</span>
+      <span>There was an issue loading the information. Click <a href="{{ widget.url }}" target="{{ widget.target ? widget.target : '_self' }}">{{ launchText }}</a> for more info.</span>
     </div>
 
     <!-- Error case (non-number quantity for all items) -->
     <div class="error" layout="row" layout-align="start center" ng-show="hasQuantityError">
       <div><md-icon class="md-warn">warning</md-icon></div>
-      <span>One or more items failed to retrieve quantity data. Click "{{ launchText }}" for more info.</span>
+      <span>One or more items failed to retrieve quantity data. Click <a href="{{ widget.url }}" target="{{ widget.target ? widget.target : '_self' }}">{{ launchText }}</a> for more info.</span>
     </div>
   </div>
 
