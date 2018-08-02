@@ -434,7 +434,8 @@ define(['angular', 'moment'], function(angular, moment) {
         // If this is the last time through the loop, turn off loading spinner
         // and reorder the list by quantity
         if (i === $scope.config.actionItems.length - 1) {
-          $scope.actionItems = $filter('orderBy')($scope.actionItems, 'quantity', true);
+          $scope.actionItems = 
+          $filter('orderBy')($scope.actionItems, 'quantity', true);
           $scope.loading = false;
         }
       }
