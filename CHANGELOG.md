@@ -35,6 +35,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Fixed
 
 + Fixed compact mode widget removal (#805)
++ Action items widget type now fails gracefully when service returns non-number data (#807)
 
 
 ## [10.1.0][]
