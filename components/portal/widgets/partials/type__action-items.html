@@ -25,15 +25,15 @@
     <loading-gif data-object="actionItems" ng-show="loading"></loading-gif>
 
     <!-- Error case (endpoint failure) -->
-    <div class="error" layout="row" layout-align="start center" ng-show="error">
+    <div class="error" layout="row" layout-align="start center" ng-show="hasServiceError">
       <div><md-icon class="md-warn">warning</md-icon></div>
-      <span>There was an issue loading the information. Click See all for more info.</span>
+      <span>There was an issue loading the information. Click "{{ launchText }}" for more info.</span>
     </div>
 
     <!-- Error case (non-number quantity for all items) -->
-    <div class="error" layout="row" layout-align="start center" ng-show="errorQuantity">
+    <div class="error" layout="row" layout-align="start center" ng-show="hasQuantityError">
       <div><md-icon class="md-warn">warning</md-icon></div>
-      <span>One or more items failed to retrieve quantity data. Click see all for more info.</span>
+      <span>One or more items failed to retrieve quantity data. Click "{{ launchText }}" for more info.</span>
     </div>
   </div>
 
@@ -50,7 +50,7 @@
         </div>
       </md-list-item>
       <!-- Error case (non-number quantity item) -->
-      <md-list-item ng-show="errorQuantity">
+      <md-list-item ng-show="hasQuantityError">
         <md-icon class="md-warn action-item__error-quantity">warning</md-icon>
         <p>At least one item failed to retrieve quantity data</p>
       </md-list-item>
@@ -64,5 +64,5 @@
 <!-- LAUNCH BUTTON -->
 <launch-button data-href="{{ widget.url }}"
                data-target="{{ widget.target ? widget.target : '_self' }}"
-               data-button-text="{{ config.launchText ? config.launchText : 'See all' }}"
+               data-button-text="{{ launchText }}"
                data-aria-label="{{ 'Launch ' + widget.title }}"></launch-button>

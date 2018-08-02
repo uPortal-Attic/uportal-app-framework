@@ -385,11 +385,11 @@ define(['angular', 'moment'], function(angular, moment) {
               // Log problem and don't include in list
               $log.warn('Got non-number data from ' + item.feedUrl);
               // Reduce display limit (only once) to make room for error
-              if (!$scope.errorQuantity) {
+              if (!$scope.hasQuantityError) {
                 $scope.itemsLimit -= 1;
               }
               // Show error
-              $scope.errorQuantity = true;
+              $scope.hasQuantityError = true;
             } else {
               // Add an action item to scope array
               $scope.actionItems.push({
@@ -406,7 +406,7 @@ define(['angular', 'moment'], function(angular, moment) {
         .catch(function(error) {
           // Log a service failure error
           $log.warn('Problem getting action item data from: ' + item.feedUrl);
-          $scope.error = true;
+          $scope.hasServiceError = true;
           $scope.loading = false;
         });
     };
@@ -434,7 +434,7 @@ define(['angular', 'moment'], function(angular, moment) {
         // If this is the last time through the loop, turn off loading spinner
         // and reorder the list by quantity
         if (i === $scope.config.actionItems.length - 1) {
-          $scope.actionItems = 
+          $scope.actionItems =
           $filter('orderBy')($scope.actionItems, 'quantity', true);
           $scope.loading = false;
         }
@@ -449,9 +449,11 @@ define(['angular', 'moment'], function(angular, moment) {
       // Initialize bindable members
       $scope.actionItems = [];
       $scope.loading = true;
-      $scope.error = false;
-      $scope.errorQuantity = false;
+      $scope.hasServiceError = false;
+      $scope.hasQuantityError = false;
       $scope.itemsLimit = 3;
+      $scope.launchText =
+        $scope.config.launchText ? $scope.config.launchText : 'See all';
 
       // Make sure we got a widget and necessary config
       if ($scope.widget && $scope.config.actionItems
@@ -462,7 +464,7 @@ define(['angular', 'moment'], function(angular, moment) {
         // Action items empty or we're missing something else
         $log.warn('Action items widget has broken configuration');
         // Display error on widget
-        $scope.error = true;
+        $scope.hasServiceError = true;
         $scope.loading = false;
       }
     };
