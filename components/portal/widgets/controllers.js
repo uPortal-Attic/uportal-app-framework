@@ -354,8 +354,8 @@ define(['angular', 'moment'], function(angular, moment) {
 
   // ACTION ITEMS widget type
   .controller('ActionItemsController', [
-    '$scope', '$log', '$window', 'widgetService',
-    function($scope, $log, $window, widgetService) {
+    '$scope', '$log', '$window', '$filter', 'widgetService',
+    function($scope, $log, $window, $filter, widgetService) {
     // Scope functions
     /**
      * Navigate to the url provided by the action item
@@ -380,13 +380,25 @@ define(['angular', 'moment'], function(angular, moment) {
         .then(function(data) {
           // Make sure we got a something back
           if (data) {
-            // Add an action item to scope array
-            $scope.actionItems.push({
-              textSingular: item.textSingular,
-              textPlural: item.textPlural,
-              actionUrl: item.actionUrl,
-              quantity: data.quantity,
-            });
+            // Make sure quantity is a number
+            if (isNaN(data.quantity)) {
+              // Log problem and don't include in list
+              $log.warn('Got non-number data from ' + item.feedUrl);
+              // Reduce display limit (only once) to make room for error
+              if (!$scope.hasQuantityError) {
+                $scope.itemsLimit -= 1;
+              }
+              // Show error
+              $scope.hasQuantityError = true;
+            } else {
+              // Add an action item to scope array
+              $scope.actionItems.push({
+                textSingular: item.textSingular,
+                textPlural: item.textPlural,
+                actionUrl: item.actionUrl,
+                quantity: data.quantity,
+              });
+            }
           }
 
           return data;
@@ -394,8 +406,7 @@ define(['angular', 'moment'], function(angular, moment) {
         .catch(function(error) {
           // Log a service failure error
           $log.warn('Problem getting action item data from: ' + item.feedUrl);
-          $log.error(error);
-          $scope.error = true;
+          $scope.hasServiceError = true;
           $scope.loading = false;
         });
     };
@@ -421,7 +432,10 @@ define(['angular', 'moment'], function(angular, moment) {
         }
 
         // If this is the last time through the loop, turn off loading spinner
+        // and reorder the list by quantity
         if (i === $scope.config.actionItems.length - 1) {
+          $scope.actionItems =
+          $filter('orderBy')($scope.actionItems, 'quantity', true);
           $scope.loading = false;
         }
       }
@@ -435,8 +449,11 @@ define(['angular', 'moment'], function(angular, moment) {
       // Initialize bindable members
       $scope.actionItems = [];
       $scope.loading = true;
-      $scope.error = false;
+      $scope.hasServiceError = false;
+      $scope.hasQuantityError = false;
       $scope.itemsLimit = 3;
+      $scope.launchText =
+        $scope.config.launchText ? $scope.config.launchText : 'See all';
 
       // Make sure we got a widget and necessary config
       if ($scope.widget && $scope.config.actionItems
@@ -447,7 +464,7 @@ define(['angular', 'moment'], function(angular, moment) {
         // Action items empty or we're missing something else
         $log.warn('Action items widget has broken configuration');
         // Display error on widget
-        $scope.error = true;
+        $scope.hasServiceError = true;
         $scope.loading = false;
       }
     };

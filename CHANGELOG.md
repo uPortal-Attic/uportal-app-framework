@@ -30,11 +30,13 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-+ update modules included in `package.json` and update `package-lock.json` to match (#804)
++ Update modules included in `package.json` and update `package-lock.json` to match (#804)
++ Error states for action items widget link to launch button for better UX (#807)
 
 ### Fixed
 
 + Fixed compact mode widget removal (#805)
++ Action items widget type now fails gracefully when service returns non-number data (#807)
 
 
 ## [10.1.0][]
