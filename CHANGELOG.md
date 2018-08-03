@@ -17,6 +17,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
++ Added `aria-label` describing mascot image (#808)
 
 ### Removed
 
