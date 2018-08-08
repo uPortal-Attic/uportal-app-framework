@@ -21,6 +21,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Removed
 
++ Removes unused photo opt-out on settings page (#811)
 
 ### Deprecated
 
