@@ -14,6 +14,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
++ Leverate `npm ci` to speed continuous integration builds (#812)
 
 ### Fixed
 

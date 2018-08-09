@@ -22,7 +22,7 @@ addons:
 
 before_install:
   - nvm i node
-  - npm install
+  - npm ci
 
 script :
   - npm run build-static
