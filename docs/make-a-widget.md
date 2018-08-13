@@ -125,13 +125,15 @@ configured.
           "title":"All courses and events",
           "href":"https://www.ohrd.wisc.edu/home/",
           "icon":"fa-at",
-          "target":"_blank"
+          "target":"_blank",
+          "rel":"noopener noreferer"
         },
         {
           "title":"My transcript",
           "href":"https://www.ohrd.wisc.edu/ohrdcatalogportal/LearningTranscript/tabid/57/Default.aspx?ctl=login",
           "icon":"fa-envelope-o",
-          "target":"_blank"
+          "target":"_blank",
+          "rel":"noopener noreferer"
         }
       ]
     }]]>
