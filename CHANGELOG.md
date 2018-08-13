@@ -29,6 +29,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Documentation
 
++ Added "rel":"noopener noreferer" to external links (#814)
+
 ## [10.1.1][]
 
 ### Changed

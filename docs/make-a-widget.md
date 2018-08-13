@@ -176,30 +176,35 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
         "href": "https://public.predev.my.wisc.edu",
         "icon": "fa-clock-o",
         "target": "_blank",
+        "rel":"noopener noreferer",
         "title": "predev"
       },
       {
         "href": "https://public.test.my.wisc.edu",
         "icon": "fa-calendar-times-o",
         "target": "_blank",
+        "rel":"noopener noreferer",
         "title": "Test"
       },
       {
         "href": "https://public.qa.my.wisc.edu",
         "icon": "fa-calendar-times-o",
         "target": "_blank",
+        "rel":"noopener noreferer",
         "title": "QA"
       },
       {
         "href": "https://public.my.wisc.edu",
         "icon": "fa-calendar-times-o",
         "target": "_blank",
+        "rel":"noopener noreferer",
         "title": "Production"
       },
       {
         "href": "https://it.wisc.edu/services/myuw",
         "icon": "fa-calendar-times-o",
         "target": "_blank",
+        "rel":"noopener noreferer",
         "title": "Learn more & make contact"
       }
     ]
@@ -259,13 +264,15 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
           "title":"Get started",
           "href":"https://rprg.wisc.edu/phases/initiate/",
           "icon":"fa-map-o",
-          "target":"_blank"
+          "target":"_blank",
+          "rel":"noopener noreferer"
         },
         {
           "title":"Resources",
           "href":"https://rprg.wisc.edu/category/resource/",
           "icon":"fa-th-list",
-          "target":"_blank"
+          "target":"_blank",
+          "rel":"noopener noreferer"
         }
       ]
     }]]>
