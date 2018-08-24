@@ -74,7 +74,7 @@
     "@commitlint/config-conventional": "^7.0.0",
     "@commitlint/travis-cli": "^7.0.0",
     "autoprefixer": "^9.0.0",
-    "concurrently": "^3.1.0",
+    "concurrently": "^4.0.0",
     "eslint": "^5.0.0",
     "eslint-config-angular": "^0.5.0",
     "eslint-config-google": "^0.9.1",
