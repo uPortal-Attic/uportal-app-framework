@@ -83,6 +83,9 @@ Widget messaging is based on JSON input configured in a [widget's configuration]
 - **moreInfoButton**: Used to display a button link to a place where the user can read more, see more, or interact with the subject of the message. Uses the same format as `actionButton`.
 - **confirmButton**: Used to display a confirmation button on popup announcements. Uses the same format as `actionButton`. **Required for `messageType` "announcement" with `priority` "high".**
 
+A given message can have at most one each of the `actionButton`,
+`moreInfoButton`, and `confirmButton` buttons.
+
 ## Configuring the mascot announcer
 
 The `mascotImg` variable in [the theme](theming.md) sets the theme-specific mascot. If `mascotImg` is unset, it defaults to a generic robot mascot.
