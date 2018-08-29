@@ -77,6 +77,7 @@ The above attributes are all you need to configure a basic widget!
 + RSS widget
 + Action items
 + Time-sensitive-content
++ Switch
 
 ## Advantages of widget types
 
@@ -480,6 +481,119 @@ Provided dates **MUST** match one of the following formats:
 + If you want your widget to warn users that they'll be able to take an action in the near future, you must provide dates for both `templateLiveDate` and `takeActionStartDate`. The former date must be *BEFORE* the latter one. If you only want the template to switch content when users can take action, you only need to provide `templateLiveDate`. During the days between the two dates, the widget will display "Begins `takeActionStartDate`".
 + Similarly, if you want the widget to tell users that a period to take action recently ended, you must provide dates for both `takeActionEndDate` (the date when taking the action stopped being possible) and `templateRetireDate` (the date the widget should go back to showing basic content). The former date must be *BEFORE* the latter one. During the days between the two dates, the widget will display "Ended `takeActionEndDate`".
 + If you only want the widget to show time-sensitive content when that content is actionable, you only have to provide dates for `templateLiveDate` and `templateRetireDate`. During the days between the two dates, the widget will display a countdown of days remaining to take action.
+
+### `switch` widget type
+
+```xml
+<portlet-preference>
+  <name>widgetType</name>
+  <value>switch</value>
+</portlet-preference>
+```
+
+### When to use `switch` widget type
+
+Use the `switch` widget type to dynamically switch between other widget types depending upon the value from an expression on the value read from `widgetUrl`.
+
+For example, suppose there's a flag that indicates an employee's benefits enrollment opportunity status. One value indicates an annual open benefits enrollment group opportunity, another indicates an event-driven personal opportunity, etc. The `switch` widget type could present a `time-sensitive-content` widget to employees eligible for the group annual benefit enrollment opportunity and a `custom` widget to employees with a personal event-driven enrollment opportunity and a `basic` widget to employees with neither opportunity.
+
+#### `switch` widget entity file configuration
+
+```xml
+<portlet-preference>
+    <name>widgetType</name>
+    <value>switch</value>
+</portlet-preference>
+<portlet-preference>
+    <name>widgetURL</name>
+    <value>/portal/p/university-staff-benefits-statement/exclusive/enrollmentFlag.resource.uP</value>
+</portlet-preference>
+<portlet-preference>
+    <name>widgetConfig</name>
+    <value>
+      <![CDATA[{
+        "expression": "report.enrollmentFlag",
+        "case-O": {
+          "widgetType": "time-sensitive-content",
+          "widgetConfig": {
+            "callsToAction": [
+              {
+                "activeDateRange": {
+                  "templateLiveDate": "09-09",
+                  "takeActionStartDate": "09-11",
+                  "takeActionEndDate": "09-18T12:00",
+                  "templateRetireDate": "09-20T10:00"
+                },
+                "actionName": "Annual benefits enrollment",
+                "daysLeftMessage": "to change benefits",
+                "lastDayMessage": "Today is the last day to enroll!",
+                "actionButton": {
+                  "url":
+                    "https://www.hrs.wisconsin.edu/psp/hrs-fd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL",
+                  "label": "Enroll now"
+                },
+                "learnMoreUrl": "https://www.wisconsin.edu/abe/",
+                "feedbackUrl": ""
+              },
+              {
+                "activeDateRange": {
+                  "templateLiveDate": "2017-03-09",
+                  "takeActionStartDate": null,
+                  "takeActionEndDate": null,
+                  "templateRetireDate": "2017-03-19"
+                },
+                "actionName": "Some other call to action",
+                "actionButton": {
+                  "url": "https://www.google.com",
+                  "label": "Do the thing"
+                },
+                "learnMoreUrl": "www.google.com",
+                "feedbackUrl": "www.google.com"
+              }
+            ]
+          }
+        },
+        "case-H": {
+          "widgetType": "custom"
+        },
+        "default": {
+          "widgetType": "list-of-links",
+          "widgetConfig": {
+            "links": [
+              {
+                "title":"Health benefits",
+                "href":"https://www.ohrd.wisc.edu/home/",
+                "icon":"fa-at",
+                "target":"_blank"
+              },
+              {
+                "title":"Other benefits",
+                "href":"https://www.ohrd.wisc.edu/ohrdcatalogportal/LearningTranscript/tabid/57/Default.aspx?ctl=login",
+                "icon":"fa-envelope-o",
+                "target":"_blank"
+              }
+            ]
+          }
+        }
+      }]]>
+    </value>
+</portlet-preference>
+```
+
+The keys in `widgetConfig` for a `switch` widget are
+
++ `expression`: the expression to evaluate
++ `case-{value}`: cases, where `{value}` is something the expression might have evaluated to
++ `default`: `switch` will activate this case if the expression did not match any of the value cases. Optional. If not set, defaults to a `basic` widget type with no additional `widgetConfig`.
++ {other keys}: any other keys generally honored in `widgetConfig` are honored, e.g. `launchText`.
+
+For the `default` and `case-{value}` keys, the value of the key is:
+
++ `widgetType`: the type the widget should become. Any value that would have been valid for the `widgetType` `portlet-preference` is valid here. Optional. If not set, defaults to a `basic` widget.
++ `widgetConfig`: the configuration for that widget type. Any value that would have been valid for the `widgetConfig` `portlet-preference` for that widget type is valid here. Overrides {other keys} from the `widgetConfig` for the `switch` widget type. So if `launchText` was set at the `switch` level but then was also set in a specific activated case, the configuration for the case is controlling. Optional. If not set, defaults to no additional widget configuration.
++ `widgetUrl`: the URL to call back for some JSON. What widgets use this JSON for varies by widget type. Optional. If not set, makes no additional callback for dynamic content to feed the activated widget.
+
+When a `switch` widget activates a `custom` type widget, that `custom` widget reads its `widgetTemplate` as per normal. This means that a `switch` widget can meaningfully support activation of at most one `custom` type widget.
 
 ## Other configuration common across widget types
 
