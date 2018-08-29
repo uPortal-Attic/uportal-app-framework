@@ -75,6 +75,8 @@ The above attributes are all you need to configure a basic widget!
 + List of links
 + Search with links
 + RSS widget
++ Action items
++ Time-sensitive-content
 
 ## Advantages of widget types
 
