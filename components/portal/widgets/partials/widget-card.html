@@ -111,7 +111,8 @@
         </div>
       </div>
 
-      <div ng-switch-when="basic">
+      <!-- "basic" widget type-->
+      <div ng-switch-default>
         <a tabindex="-1" ng-href="{{ renderUrl() }}" target="{{ widget.target ? widget.target : '_self' }}" class="basic-widget" rel="noopener noreferrer">
           <div class="widget-icon-container" layout="column" layout-align="center center">
             <widget-icon></widget-icon>
