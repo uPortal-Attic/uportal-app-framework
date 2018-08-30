@@ -11,6 +11,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Added
 
++ New `switch` widget type.
 
 ### Changed
 
