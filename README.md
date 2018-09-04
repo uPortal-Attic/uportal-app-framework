@@ -79,6 +79,13 @@ See [my-app-seed](https://github.com/UW-Madison-DoIT/my-app-seed) for a great st
 
 This gives you the basic frame in a static content type way. Just add your files to the proper directory and you should be all set. This module is still a work in progress. Note it only works right now as the root context (if you want to change, update the index.html). This module is mostly used for development on the frame itself.
 
+In `components/js/app-config.js` set
+
+* `SERVICE_LOC.portalLayoutRestEndpoint` to `/portal/api/layout`, and
+* `SERVICE_LOC.widgetApi.entry` to `staticFeeds/`
+
+to source the mock data for the example the home page showcasing some widgets.
+
 ### Testing
 
 We love tests. We setup karma to run our tests.
