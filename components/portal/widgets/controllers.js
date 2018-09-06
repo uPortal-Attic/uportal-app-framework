@@ -709,8 +709,8 @@ define(['angular', 'moment'], function(angular, moment) {
 
   // SWITCH widget type
   .controller('SwitchWidgetController', [
-    '$scope', '$log', '$parse', 'widgetService',
-    function($scope, $log, $parse, widgetService) {
+    '$scope', '$log', '$parse', '$localStorage', 'widgetService',
+    function($scope, $log, $parse, $localStorage, widgetService) {
       /**
        * Fetch additional widget data
        */
