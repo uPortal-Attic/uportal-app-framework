@@ -154,6 +154,18 @@ define(['angular', 'require'], function(angular, require) {
     };
   })
 
+  .directive('switch', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config',
+      },
+      templateUrl: require.toUrl('./partials/type__switch.html'),
+      controller: 'SwitchWidgetController',
+    };
+  })
+
   .directive('rssWidget', function() {
     return {
       restrict: 'E',

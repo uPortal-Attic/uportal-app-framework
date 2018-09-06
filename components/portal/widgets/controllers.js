@@ -245,6 +245,13 @@ define(['angular', 'moment'], function(angular, moment) {
     $scope.secureURL = $sce.trustAsResourceUrl($scope.config.actionURL);
   }])
 
+  // SWITCH widget type
+  .controller('SwitchController', [
+    '$scope', '$sce', function($scope, $sce) {
+    // Have faith our entity files aren't trying to bamboozle us
+    $scope.secureURL = $sce.trustAsResourceUrl($scope.config.actionURL);
+  }])
+
   // RSS widget type
   .controller('RssWidgetController', [
     '$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
@@ -698,6 +705,138 @@ define(['angular', 'moment'], function(angular, moment) {
       $log.warn($scope.widget.fname +
         ' said it\'s a custom/generic widget, but didn\'t provide a template.');
     }
+  }])
+
+  // SWITCH widget type
+  .controller('SwitchWidgetController', [
+    '$scope', '$log', '$parse', 'widgetService',
+    function($scope, $log, $parse, widgetService) {
+      /**
+       * Fetch additional widget data
+       */
+      var initializeSwitchWidget = function() {
+      $log.warn("Initializing switch widget.");
+      // save widgetConfig as switchConfig so switch can then conditionally
+      // mess with widgetConfig in activating a different widget type
+      $scope.switchConfig = $scope.widget.widgetConfig;
+
+      if ($scope.widget.widgetURL && $scope.switchConfig.expression
+        && $scope.switchConfig.cases) {
+        // Configured with a URL from which to get dynamic JSON,
+        // and an expression to extract from that JSON,
+        // and case(s) to match against,
+        // so load that dynamic JSON, do the parsing and selecting
+        widgetService.getWidgetJson($scope.widget).then(function(data) {
+          // if there's a case matching the returned JSON, activate it
+
+          $log.warn("Switch widget got JSON " + data);
+
+          var parsedExpression = $parse($scope.switchConfig.expression);
+
+          var dynamicValueToMatch = parsedExpression(data);
+
+          // select the first matching case, if any
+
+          function matchesValue(caseToCheck) {
+            return caseToCheck.matchValue === dynamicValueToMatch;
+          }
+
+          var caseToActivate = $scope.switchConfig.cases.find(matchesValue);
+
+          // if none of the cases match, select the otherwise case if configured
+          if (!caseToActivate && $scope.switchConfig &&
+            $scope.switchConfig.caseotherwise) {
+            $log.debug($scope.widget.fname +
+              " switching to otherwise case after no case matched value " +
+              dynamicValueToMatch);
+            caseToActivate = $scope.switchConfig.caseotherwise;
+          }
+
+          // a case was selected for activation, so let's activate it
+          if (caseToActivate) {
+
+            if (caseToActivate.widgetUrl) {
+              // switch the widget URL and re-fetch JSON using that new config
+              $scope.widget.widgetURL = caseToActivate.widgetUrl;
+              $widgetService.getWidgetJson($scope.widget);
+            }
+
+            if (caseToActivate.widgetType) {
+              // switch to the new type
+              $scope.widget.widgetType = caseToActivate.widgetType;
+            } else {
+              $scope.widget.widgetType = "basic";
+            }
+
+            if (caseToActivate.widgetConfig) {
+              // switch to the new config
+              $scope.widget.widgetConfig = caseToActivate.widgetConfig;
+            }
+
+            if ($scope.widget.widgetConfig
+              && !$scope.widget.widgetConfig.launchText
+              && $scope.switchConfig
+              && $scope.switchConfig.launchText) {
+              // honor base launchText if activated case does not have its own
+                $scope.widget.widgetConfig.launchText =
+                  $scope.switchConfig.launchText;
+              }
+
+          } else {
+
+            $log.debug($scope.widget.fname +
+              " did not switch to any case (not even an otherwise case) " +
+              "for activation, so falling back to being a basic widget.");
+
+            $scope.widget.widgetType = "basic";
+            $scope.widget.widgetConfig = "";
+          }
+
+        }).catch(function(error) {
+
+          $log.error($scope.widget.fname +
+            " errored fetching or processing JSON [" + $scope.widget.widgetURL
+            + "] to switch on; falling back on being a basic widget.");
+          $log.error(error);
+
+          $scope.widget.widgetType = "basic";
+          $scope.widget.widgetConfig = "";
+        }).finally(function() {
+          // nothing to do
+        });
+      } else {
+
+        $log.warn($scope.widget.fname + " not configured with " +
+        "URL from which to load JSON [" + $scope.widget.widgetURL + "]," +
+        " expression [" + $scope.switchConfig.expression + "]" +
+        " to parse from that JSON, or cases to match against," +
+        " so falling back on being a basic widget.");
+
+        $scope.widget.widgetType = "basic";
+        $scope.widget.widgetConfig = "";
+      }
+    };
+
+    /**
+     * Set the launch button url for static content,
+     * exclusive mode, and basic widgets
+     * @return {*}
+     */
+    $scope.renderUrl = function renderUrl() {
+      // TODO: refactor. This is a copy-and-paste from WidgetCardController
+      var widget = $scope.widget;
+      // Check for static content or exclusive mode portlets (rare)
+      if (widget.altMaxUrl == false) {
+        if (widget.staticContent != null) {
+          return 'static/' + widget.fname;
+        } else if (widget.renderOnWeb || $localStorage.webPortletRender) {
+          return 'exclusive/' + widget.fname;
+        }
+      }
+      return widget.url;
+    };
+
+    initializeSwitchWidget();
   }])
 
   // WEATHER widget type

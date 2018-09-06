@@ -1,0 +1,81 @@
+<!--
+
+    Licensed to Apereo under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Apereo licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License.  You may obtain a
+    copy of the License at the following location:
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<div ng-switch="widget.widgetType" class="widget-type-container">
+
+  <div ng-switch-when="time-sensitive-content">
+    <time-sensitive app="widget" config="widget.widgetConfig"></time-sensitive>
+  </div>
+
+  <div ng-switch-when="option-link">
+    <option-link app="widget" config="widget.widgetConfig"></option-link>
+  </div>
+
+  <div ng-switch-when="rss">
+    <rss-widget app="widget" config="widget.widgetConfig"></rss-widget>
+  </div>
+
+  <div ng-switch-when="action-items">
+    <action-items app="widget" config="widget.widgetConfig"></action-items>
+  </div>
+
+  <div ng-switch-when="list-of-links">
+    <list-of-links app="widget" config="widget.widgetConfig"></list-of-links>
+  </div>
+
+  <div ng-switch-when="search-with-links">
+    <search-with-links app="widget" config="widget.widgetConfig"></search-with-links>
+  </div>
+
+  <div ng-switch-when="switch">
+    <loading-gif></loading-gif>
+  </div>
+
+  <div ng-switch-when="weather">
+    <weather-widget app="widget" config="widget.widgetConfig"></weather-widget>
+  </div>
+
+  <div ng-switch-when="custom" class="custom-widget">
+    <div ng-controller="CustomWidgetController as customWidgetCtrl">
+      <div ng-if="loading" layout="row" layout-align="center center">
+        <loading-gif data-object="content" data-empty="isEmpty"></loading-gif>
+      </div>
+      <content-item ng-if="!loading"></content-item>
+    </div>
+  </div>
+
+  <!-- "basic" widget type-->
+  <div ng-switch-default>
+    <a tabindex="-1" class="basic-widget" ng-href="{{ renderUrl() }}"
+      target="{{ widget.target ? widget.target : '_self' }}"
+      rel="noopener noreferrer">
+      <div class="widget-icon-container" layout="column" layout-align="center center">
+        <widget-icon></widget-icon>
+      </div>
+    </a>
+    <launch-button data-aria-label="{{ 'Launch ' + widget.title }}"
+      data-href="{{ renderUrl() }}"
+      data-target="{{ widget.target ? widget.target : '_self' }}"
+      data-rel="noopener noreferrer"
+      data-button-text="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch full app' }}">
+    </launch-button>
+  </div>
+
+</div>

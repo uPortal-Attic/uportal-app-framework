@@ -499,6 +499,16 @@ For example, suppose there's a flag that indicates an employee's benefits enroll
 
 #### `switch` widget entity file configuration
 
+In this example, the `switch` reads JSON from a resource URL out of a staff
+benefits information portlet. From that JSON it extracts an enrollment flag.
+Depending upon the enrollment flag, it switches between a `custom` widget
+highlighting the employee's personal benefit enrollment opportunity signalled by
+the `H` value of that flag,
+a `time-sensitive-content` widget that encourages participation in the annual
+benefits enrollment opportunity signalled by the `O` value of that flag,
+or it becomes a `list-of-links` widget linking general information about
+benefits.
+
 ```xml
 <portlet-preference>
     <name>widgetType</name>
@@ -512,51 +522,55 @@ For example, suppose there's a flag that indicates an employee's benefits enroll
     <name>widgetConfig</name>
     <value>
       <![CDATA[{
-        "expression": "report.enrollmentFlag",
-        "case-O": {
-          "widgetType": "time-sensitive-content",
-          "widgetConfig": {
-            "callsToAction": [
-              {
-                "activeDateRange": {
-                  "templateLiveDate": "09-09",
-                  "takeActionStartDate": "09-11",
-                  "takeActionEndDate": "09-18T12:00",
-                  "templateRetireDate": "09-20T10:00"
+        "path": "report[0].enrollmentFlag",
+        "cases": [
+          {
+            "matchValue": "H",
+            "widgetType": "custom"
+          },
+          {
+            "matchValue": "O",
+            "widgetType": "time-sensitive-content",
+            "widgetConfig": {
+              "callsToAction": [
+                {
+                  "activeDateRange": {
+                    "templateLiveDate": "09-09",
+                    "takeActionStartDate": "09-11",
+                    "takeActionEndDate": "09-18T12:00",
+                    "templateRetireDate": "09-20T10:00"
+                  },
+                  "actionName": "Annual benefits enrollment",
+                  "daysLeftMessage": "to change benefits",
+                  "lastDayMessage": "Today is the last day to enroll!",
+                  "actionButton": {
+                    "url":
+                      "https://www.hrs.wisconsin.edu/psp/hrs-fd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL",
+                    "label": "Enroll now"
+                  },
+                  "learnMoreUrl": "https://www.wisconsin.edu/abe/",
+                  "feedbackUrl": ""
                 },
-                "actionName": "Annual benefits enrollment",
-                "daysLeftMessage": "to change benefits",
-                "lastDayMessage": "Today is the last day to enroll!",
-                "actionButton": {
-                  "url":
-                    "https://www.hrs.wisconsin.edu/psp/hrs-fd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL",
-                  "label": "Enroll now"
-                },
-                "learnMoreUrl": "https://www.wisconsin.edu/abe/",
-                "feedbackUrl": ""
-              },
-              {
-                "activeDateRange": {
-                  "templateLiveDate": "2017-03-09",
-                  "takeActionStartDate": null,
-                  "takeActionEndDate": null,
-                  "templateRetireDate": "2017-03-19"
-                },
-                "actionName": "Some other call to action",
-                "actionButton": {
-                  "url": "https://www.google.com",
-                  "label": "Do the thing"
-                },
-                "learnMoreUrl": "www.google.com",
-                "feedbackUrl": "www.google.com"
-              }
-            ]
+                {
+                  "activeDateRange": {
+                    "templateLiveDate": "2017-03-09",
+                    "takeActionStartDate": null,
+                    "takeActionEndDate": null,
+                    "templateRetireDate": "2017-03-19"
+                  },
+                  "actionName": "Some other call to action",
+                  "actionButton": {
+                    "url": "https://www.google.com",
+                    "label": "Do the thing"
+                  },
+                  "learnMoreUrl": "www.google.com",
+                  "feedbackUrl": "www.google.com"
+                }
+              ]
+            }
           }
-        },
-        "case-H": {
-          "widgetType": "custom"
-        },
-        "default": {
+        ],
+        "caseotherwise": {
           "widgetType": "list-of-links",
           "widgetConfig": {
             "links": [
@@ -578,22 +592,64 @@ For example, suppose there's a flag that indicates an employee's benefits enroll
       }]]>
     </value>
 </portlet-preference>
+<portlet-preference>
+  <name>widgetTemplate</name> <!-- used in the `custom` case -->
+  <value>
+    <![CDATA[
+      <div style='margin : 0 10px 0 10px;'>
+        <div style='background-color: #EAEAEA; border-radius:4px;padding:10px; margin-top:10px;'>
+          <span class='bold display-block left' style='text-align: left; padding-left: 10px; font-size: 14px;'>
+            You have a personal event-driven benefit enrollment opportunity.
+            <a
+              href="https://www.hrs.wisconsin.edu/psp/hrs-fd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL"
+              target="_blank" rel="noopener noreferrer">Exercise it.</a>
+          </span>
+        </div>
+      </div>
+      <launch-button
+        data-aria-label='Launch benefit information app'
+        data-href='/web/exclusive/university-staff-benefits-statement'
+        data-target='_self'
+        data-button-text='Launch full app'>
+      </launch-button>
+    ]]>
+  </value>
+</portlet-preference>
 ```
 
 The keys in `widgetConfig` for a `switch` widget are
 
-+ `expression`: the expression to evaluate
-+ `case-{value}`: cases, where `{value}` is something the expression might have evaluated to
-+ `default`: `switch` will activate this case if the expression did not match any of the value cases. Optional. If not set, defaults to a `basic` widget type with no additional `widgetConfig`.
-+ {other keys}: any other keys generally honored in `widgetConfig` are honored, e.g. `launchText`.
++ `expression`: the expression to evaluate on the returned JSON. The result of
+  evaluating the expression should be a value, which value the `switch` widget
+  will attempt to match against the `matchValue` of the cases to find a matching
+  case.
++ `cases`: cases, an array of objects where in each object the key `matchValue`
+  keys to the value that would activate that case
++ `caseotherwise`: `switch` will activate this case if the expression did not
+  match any of the `matchValue`s of the cases in the `cases[]` array. Optional.
+  If not set, defaults to a `basic` widget type with no additional
+  `widgetConfig`.
++ {other keys}: The `launchText` key generally honored in `widgetConfig` is
+  honored here.
 
-For the `default` and `case-{value}` keys, the value of the key is:
+The `caseotherwise` object is
 
-+ `widgetType`: the type the widget should become. Any value that would have been valid for the `widgetType` `portlet-preference` is valid here. Optional. If not set, defaults to a `basic` widget.
-+ `widgetConfig`: the configuration for that widget type. Any value that would have been valid for the `widgetConfig` `portlet-preference` for that widget type is valid here. Overrides {other keys} from the `widgetConfig` for the `switch` widget type. So if `launchText` was set at the `switch` level but then was also set in a specific activated case, the configuration for the case is controlling. Optional. If not set, defaults to no additional widget configuration.
-+ `widgetUrl`: the URL to call back for some JSON. What widgets use this JSON for varies by widget type. Optional. If not set, makes no additional callback for dynamic content to feed the activated widget.
++ `widgetType`: the type the widget should become. Any value that would have
+  been valid for the `widgetType` `portlet-preference` is valid here. Optional.
+  If not set, defaults to a `basic` widget.
++ `widgetConfig`: the configuration for that widget type. Any value that would
+  have been valid for the `widgetConfig` `portlet-preference` for that widget
+  type is valid here. Overrides {other keys} from the `widgetConfig` for the
+  `switch` widget type. So if `launchText` was set at the `switch` level but
+  then was also set in a specific activated case, the configuration for the case
+  is controlling. Optional. If not set, defaults to no additional widget
+  configuration.
++ `widgetUrl`: the URL to call back for some JSON. What widgets use this JSON
+  for varies by widget type. Optional. If not set, makes no additional callback
+  for dynamic content to feed the activated widget.
 
-When a `switch` widget activates a `custom` type widget, that `custom` widget reads its `widgetTemplate` as per normal. This means that a `switch` widget can meaningfully support activation of at most one `custom` type widget.
+When a `switch` widget activates a `custom` type widget, that `custom` widget
+reads its `widgetTemplate` as per normal. This means that a `switch` widget can meaningfully support activation of at most one `custom` type widget.
 
 ## Other configuration common across widget types
 
