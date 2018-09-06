@@ -735,8 +735,12 @@ define(['angular', 'moment'], function(angular, moment) {
 
           var dynamicValueToMatch = parsedExpression(data);
 
-          // select the first matching case, if any
-
+          /**
+           * True when the case under consideration has a matchValue matching
+           * dynamicValueToMatch. Used for finding the relevant case to switch
+           * to, if any.
+           * @param {*} caseToCheck
+           */
           function matchesValue(caseToCheck) {
             return caseToCheck.matchValue === dynamicValueToMatch;
           }
