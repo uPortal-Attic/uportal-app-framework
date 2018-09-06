@@ -754,7 +754,6 @@ define(['angular', 'moment'], function(angular, moment) {
 
           // a case was selected for activation, so let's activate it
           if (caseToActivate) {
-
             if (caseToActivate.widgetUrl) {
               // switch the widget URL and re-fetch JSON using that new config
               $scope.widget.widgetURL = caseToActivate.widgetUrl;
@@ -781,9 +780,7 @@ define(['angular', 'moment'], function(angular, moment) {
                 $scope.widget.widgetConfig.launchText =
                   $scope.switchConfig.launchText;
               }
-
           } else {
-
             $log.debug($scope.widget.fname +
               ' did not switch to any case (not even an otherwise case) ' +
               'for activation, so falling back to being a basic widget.');
@@ -791,9 +788,7 @@ define(['angular', 'moment'], function(angular, moment) {
             $scope.widget.widgetType = 'basic';
             $scope.widget.widgetConfig = '';
           }
-
         }).catch(function(error) {
-
           $log.error($scope.widget.fname +
             ' errored fetching or processing JSON [' + $scope.widget.widgetURL
             + '] to switch on; falling back on being a basic widget.');
@@ -805,7 +800,6 @@ define(['angular', 'moment'], function(angular, moment) {
           // nothing to do
         });
       } else {
-
         $log.warn($scope.widget.fname + ' not configured with ' +
         'URL from which to load JSON [' + $scope.widget.widgetURL + '],' +
         ' expression [' + $scope.switchConfig.expression + ']' +
