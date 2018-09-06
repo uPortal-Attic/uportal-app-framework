@@ -245,13 +245,6 @@ define(['angular', 'moment'], function(angular, moment) {
     $scope.secureURL = $sce.trustAsResourceUrl($scope.config.actionURL);
   }])
 
-  // SWITCH widget type
-  .controller('SwitchController', [
-    '$scope', '$sce', function($scope, $sce) {
-    // Have faith our entity files aren't trying to bamboozle us
-    $scope.secureURL = $sce.trustAsResourceUrl($scope.config.actionURL);
-  }])
-
   // RSS widget type
   .controller('RssWidgetController', [
     '$scope', '$log', 'widgetService', function($scope, $log, widgetService) {
