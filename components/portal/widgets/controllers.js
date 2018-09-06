@@ -797,8 +797,6 @@ define(['angular', 'moment'], function(angular, moment) {
 
           $scope.widget.widgetType = 'basic';
           $scope.widget.widgetConfig = '';
-        }).finally(function() {
-          // nothing to do
         });
       } else {
         $log.warn($scope.widget.fname + ' not configured with ' +
