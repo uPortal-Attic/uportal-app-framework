@@ -16,7 +16,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Changed
 
 + Default to handling unrecognized widget types as if they were `basic` widgets (#823)
-+ Leverate `npm ci` to speed continuous integration builds (#812)
++ Leverage `npm ci` to speed continuous integration builds (#812)
 
 ### Fixed
 
