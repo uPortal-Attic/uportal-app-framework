@@ -757,7 +757,7 @@ define(['angular', 'moment'], function(angular, moment) {
             if (caseToActivate.widgetUrl) {
               // switch the widget URL and re-fetch JSON using that new config
               $scope.widget.widgetURL = caseToActivate.widgetUrl;
-              $widgetService.getWidgetJson($scope.widget);
+              widgetService.getWidgetJson($scope.widget);
             }
 
             if (caseToActivate.widgetType) {
