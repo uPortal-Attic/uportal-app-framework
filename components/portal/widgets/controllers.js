@@ -727,7 +727,7 @@ define(['angular', 'moment'], function(angular, moment) {
         // and case(s) to match against,
         // so load that dynamic JSON, do the parsing and selecting
         widgetService.getWidgetJson($scope.widget).then(function(data) {
-          // if there's a case matching the returned JSON, activate it
+          // returns the new $scope.widget.widgetType, e.g. 'list-of-links'
 
           $log.warn('Switch widget got JSON ' + data);
 
@@ -788,6 +788,7 @@ define(['angular', 'moment'], function(angular, moment) {
             $scope.widget.widgetType = 'basic';
             $scope.widget.widgetConfig = '';
           }
+          return $scope.widget.widgetType;
         }).catch(function(error) {
           $log.error($scope.widget.fname +
             ' errored fetching or processing JSON [' + $scope.widget.widgetURL
