@@ -61,6 +61,28 @@
         <widget fname="sample-widget__maintenance-custom"></widget>
       </div>
     </div>
+
+    <h3 style="margin-left:26px">Example switch widgets in expanded mode</h3>
+    <div style="margin-left:26px">Switch widgets dynamically change runtime type depending upon the
+      response from a JSON callback. They are useful for composing existing
+      widget types to create composite widgets that fulfill more complicated
+      use cases without proliferating new widget types or opting out of the
+      type system to use an entirely custom widget.</div>
+    <div layout="row" layout-align="center start" style="flex-wrap:wrap;padding:18px;">
+      <div flex-xs="100" class="widget-container">
+        <widget fname="sample-widget__switch"></widget>
+      </div>
+      <div flex-xs="100" class="widget-container">
+        <widget fname="sample-widget__switch_2"></widget>
+      </div>
+      <div flex-xs="100" class="widget-container">
+        <widget fname="sample-widget__switch_otherwise"></widget>
+      </div>
+      <div flex-xs="100" class="widget-container">
+        <widget fname="sample-widget__switch_broken"></widget>
+      </div>
+    </div>
+
     <h2 style="margin-left:26px">Example compact mode widgets</h2>
     <div layout="row" layout-align="center start" style="flex-wrap:wrap;padding:18px;">
         <div flex-xs="100" class="widget-container">
@@ -94,6 +116,9 @@
         <div flex-xs="100" class="widget-container">
           <compact-widget fname="sample-widget__maintenance-custom">
           </compact-widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <compact-widget fname="sample-widget__switch"></compact-widget>
         </div>
       </div>
 </frame-page>

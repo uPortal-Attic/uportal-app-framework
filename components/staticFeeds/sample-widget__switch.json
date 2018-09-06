@@ -1,0 +1,103 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Switch matching first case",
+      "description": "This widget switches runtime type depending upon a JSON feed.",
+      "url": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#switch-widget-type",
+      "iconUrl": null,
+      "mdIcon": "switch_camera",
+      "fname": "sample-widget__switch",
+      "lifecycleState": "PUBLISHED",
+      "target": "_blank",
+      "widgetURL": "/staticFeeds/enrollment-flag-O.json",
+      "widgetType": "switch",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "expression": "report[0].enrollmentFlag",
+        "cases": [
+          {
+            "matchValue": "O",
+            "widgetType": "list-of-links",
+            "widgetConfig": {
+              "links": [
+                {
+                  "title": "Matched the first case",
+                  "href": "",
+                  "icon": "fa-at",
+                  "target": "_blank"
+                },
+                {
+                  "title": "Dynamic value was O",
+                  "href": "",
+                  "icon": "fa-at",
+                  "target": "_blank"
+                }
+              ]
+            }
+          }
+        ],
+        "caseotherwise": {
+          "widgetType": "search-with-links",
+          "widgetConfig": {
+            "actionURL": "https://rprg.wisc.edu/",
+            "actionTarget": "_blank",
+            "actionParameter": "s",
+            "launchText": "Should not display",
+            "links": [
+              {
+                "title": "Otherwise case",
+                "href": "https://rprg.wisc.edu/phases/initiate/",
+                "icon": "fa-map-o",
+                "target": "_blank"
+              },
+              {
+                "title": "Should not display",
+                "href": "https://rprg.wisc.edu/category/resource/",
+                "icon": "fa-th-list",
+                "target": "_blank"
+              }
+            ]
+          }
+        },
+        "launchText": "Honors launchText"
+      },
+      "staticContent": null,
+      "pithyStaticContent": null,
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "keywords": [
+      "complex",
+      "composed",
+      "composite",
+      "flexible",
+      "meta"
+    ],
+    "fname": "sample-widget__switch",
+    "lifecycleState": "PUBLISHED",
+    "rating": 4.5,
+    "portletWebAppName": "/AintGotNoPortlet",
+    "maxUrl": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#switch-widget-type",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 2,
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#switch-widget-type",
+    "title": "Example switch widget",
+    "categories": [
+      "Widget types"
+    ],
+    "portletName": "AintGotNoPortlet",
+    "name": "Example switch widget",
+    "id": "2742",
+    "type": "Portlet",
+    "target": "_blank",
+    "description": "This widget switches runtime type depending upon a JSON feed"
+  }
+}
