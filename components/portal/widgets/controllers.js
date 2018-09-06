@@ -715,7 +715,7 @@ define(['angular', 'moment'], function(angular, moment) {
        * Fetch additional widget data
        */
       var initializeSwitchWidget = function() {
-      $log.warn("Initializing switch widget.");
+      $log.warn('Initializing switch widget.');
       // save widgetConfig as switchConfig so switch can then conditionally
       // mess with widgetConfig in activating a different widget type
       $scope.switchConfig = $scope.widget.widgetConfig;
@@ -729,7 +729,7 @@ define(['angular', 'moment'], function(angular, moment) {
         widgetService.getWidgetJson($scope.widget).then(function(data) {
           // if there's a case matching the returned JSON, activate it
 
-          $log.warn("Switch widget got JSON " + data);
+          $log.warn('Switch widget got JSON ' + data);
 
           var parsedExpression = $parse($scope.switchConfig.expression);
 
@@ -747,7 +747,7 @@ define(['angular', 'moment'], function(angular, moment) {
           if (!caseToActivate && $scope.switchConfig &&
             $scope.switchConfig.caseotherwise) {
             $log.debug($scope.widget.fname +
-              " switching to otherwise case after no case matched value " +
+              ' switching to otherwise case after no case matched value ' +
               dynamicValueToMatch);
             caseToActivate = $scope.switchConfig.caseotherwise;
           }
@@ -765,7 +765,7 @@ define(['angular', 'moment'], function(angular, moment) {
               // switch to the new type
               $scope.widget.widgetType = caseToActivate.widgetType;
             } else {
-              $scope.widget.widgetType = "basic";
+              $scope.widget.widgetType = 'basic';
             }
 
             if (caseToActivate.widgetConfig) {
@@ -785,35 +785,35 @@ define(['angular', 'moment'], function(angular, moment) {
           } else {
 
             $log.debug($scope.widget.fname +
-              " did not switch to any case (not even an otherwise case) " +
-              "for activation, so falling back to being a basic widget.");
+              ' did not switch to any case (not even an otherwise case) ' +
+              'for activation, so falling back to being a basic widget.');
 
-            $scope.widget.widgetType = "basic";
-            $scope.widget.widgetConfig = "";
+            $scope.widget.widgetType = 'basic';
+            $scope.widget.widgetConfig = '';
           }
 
         }).catch(function(error) {
 
           $log.error($scope.widget.fname +
-            " errored fetching or processing JSON [" + $scope.widget.widgetURL
-            + "] to switch on; falling back on being a basic widget.");
+            ' errored fetching or processing JSON [' + $scope.widget.widgetURL
+            + '] to switch on; falling back on being a basic widget.');
           $log.error(error);
 
-          $scope.widget.widgetType = "basic";
-          $scope.widget.widgetConfig = "";
+          $scope.widget.widgetType = 'basic';
+          $scope.widget.widgetConfig = '';
         }).finally(function() {
           // nothing to do
         });
       } else {
 
-        $log.warn($scope.widget.fname + " not configured with " +
-        "URL from which to load JSON [" + $scope.widget.widgetURL + "]," +
-        " expression [" + $scope.switchConfig.expression + "]" +
-        " to parse from that JSON, or cases to match against," +
-        " so falling back on being a basic widget.");
+        $log.warn($scope.widget.fname + ' not configured with ' +
+        'URL from which to load JSON [' + $scope.widget.widgetURL + '],' +
+        ' expression [' + $scope.switchConfig.expression + ']' +
+        ' to parse from that JSON, or cases to match against,' +
+        ' so falling back on being a basic widget.');
 
-        $scope.widget.widgetType = "basic";
-        $scope.widget.widgetConfig = "";
+        $scope.widget.widgetType = 'basic';
+        $scope.widget.widgetConfig = '';
       }
     };
 
