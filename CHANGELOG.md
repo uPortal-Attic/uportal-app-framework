@@ -11,7 +11,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-+ New `switch` widget type.
++ New `switch` widget type, for composing composite widgets by dynamically
+  switching over other types and configurations of widgets. (#820)
 
 ### Changed
 
