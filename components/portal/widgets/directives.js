@@ -154,7 +154,7 @@ define(['angular', 'require'], function(angular, require) {
     };
   })
 
-  .directive('switch', function() {
+  .directive('switchWidget', function() {
     return {
       restrict: 'E',
       scope: {
