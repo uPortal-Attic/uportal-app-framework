@@ -1,0 +1,99 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Bad configuration",
+      "description": "No case matches and no otherwise case is configured so falls back on being a basic widget.",
+      "url": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#switch-widget-type",
+      "iconUrl": null,
+      "mdIcon": "switch_camera",
+      "fname": "sample-widget__switch_broken",
+      "lifecycleState": "PUBLISHED",
+      "target": "_blank",
+      "widgetURL": "this-path-does-not-exist.json",
+      "widgetType": "switch",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "expression": "report[0].enrollmentFlag",
+        "cases": [
+          {
+            "matchValue": "O",
+            "widgetType": "list-of-links",
+            "widgetConfig": {
+              "links": [
+                {
+                  "title": "Matched the first case",
+                  "href": "",
+                  "icon": "fa-at",
+                  "target": "_blank"
+                },
+                {
+                  "title": "Dynamic value was O",
+                  "href": "",
+                  "icon": "fa-at",
+                  "target": "_blank"
+                }
+              ]
+            }
+          },
+          {
+            "matchValue": "H",
+            "widgetType": "list-of-links",
+            "widgetConfig": {
+              "links": [
+                {
+                  "title": "Matched the second case",
+                  "href": "",
+                  "icon": "fa-at",
+                  "target": "_blank"
+                },
+                {
+                  "title": "Dynamic value was H",
+                  "href": "",
+                  "icon": "fa-at",
+                  "target": "_blank"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "staticContent": null,
+      "pithyStaticContent": null,
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "keywords": [
+      "complex",
+      "composed",
+      "composite",
+      "flexible",
+      "meta"
+    ],
+    "fname": "sample-widget__switch_broken",
+    "lifecycleState": "PUBLISHED",
+    "rating": 4.5,
+    "portletWebAppName": "/AintGotNoPortlet",
+    "maxUrl": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#switch-widget-type",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 2,
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#switch-widget-type",
+    "title": "Bad configuration",
+    "categories": [
+      "Widget types"
+    ],
+    "portletName": "AintGotNoPortlet",
+    "name": "Bad configuration",
+    "id": "2742",
+    "type": "Portlet",
+    "target": "_blank",
+    "description": "This widget switches runtime type depending upon a JSON feed"
+  }
+}

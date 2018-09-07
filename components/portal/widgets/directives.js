@@ -154,6 +154,29 @@ define(['angular', 'require'], function(angular, require) {
     };
   })
 
+  .directive('switchWidget', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config',
+      },
+      templateUrl: require.toUrl('./partials/widget-content.html'),
+      controller: 'SwitchWidgetController',
+    };
+  })
+
+  .directive('widgetContent', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config',
+      },
+      templateUrl: require.toUrl('./partials/widget-content.html'),
+    };
+  })
+
   .directive('rssWidget', function() {
     return {
       restrict: 'E',
@@ -187,6 +210,18 @@ define(['angular', 'require'], function(angular, require) {
       },
       templateUrl: require.toUrl('./partials/type__weather.html'),
       controller: 'WeatherWidgetController',
+    };
+  })
+
+  .directive('basicWidget', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config',
+      },
+      templateUrl: require.toUrl('./partials/type__basic.html'),
+      controller: 'BasicWidgetController',
     };
   });
 });
