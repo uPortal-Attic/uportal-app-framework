@@ -13,7 +13,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 + New `switch` widget type ( `<switch-widget>` directive), for composing
   composite widgets by dynamically switching over other types and configurations
-  of widgets. (#820)
+  of widgets. (#820, #826)
 + New `<widget-content>` directive, factored out from the inline `ng-switch` in
   `<widget-card>`. Not a breaking change: `widget-card` behaves the same as
   before, its implementation now delegates to `<widget-content>` for the
