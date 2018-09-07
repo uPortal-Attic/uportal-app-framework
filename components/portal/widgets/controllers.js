@@ -710,6 +710,8 @@ define(['angular', 'moment'], function(angular, moment) {
   .controller('SwitchWidgetController', [
     '$scope', '$log', '$parse', 'widgetService',
     function($scope, $log, $parse, widgetService) {
+      $scope.switching = true;
+
       /**
        * Fetch additional widget data
        */
@@ -791,6 +793,7 @@ define(['angular', 'moment'], function(angular, moment) {
             $scope.widget.widgetType = 'basic';
             $scope.widget.widgetConfig = '';
           }
+          $scope.switching = false;
           return $scope.widget.widgetType;
         }).catch(function(error) {
           $log.error($scope.widget.fname +
@@ -800,6 +803,7 @@ define(['angular', 'moment'], function(angular, moment) {
 
           $scope.widget.widgetType = 'basic';
           $scope.widget.widgetConfig = '';
+          $scope.switching = false;
         });
       } else {
         $log.warn($scope.widget.fname + ' not configured with ' +
@@ -810,6 +814,7 @@ define(['angular', 'moment'], function(angular, moment) {
 
         $scope.widget.widgetType = 'basic';
         $scope.widget.widgetConfig = '';
+        $scope.switching = false;
       }
     };
 

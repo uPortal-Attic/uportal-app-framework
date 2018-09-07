@@ -161,8 +161,19 @@ define(['angular', 'require'], function(angular, require) {
         widget: '=app',
         config: '=config',
       },
-      templateUrl: require.toUrl('./partials/type__switch.html'),
+      templateUrl: require.toUrl('./partials/widget-content.html'),
       controller: 'SwitchWidgetController',
+    };
+  })
+
+  .directive('widgetContent', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config',
+      },
+      templateUrl: require.toUrl('./partials/widget-content.html'),
     };
   })
 

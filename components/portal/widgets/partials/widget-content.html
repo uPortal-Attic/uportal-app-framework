@@ -45,7 +45,9 @@
   </div>
 
   <div ng-switch-when="switch">
-    <loading-gif></loading-gif>
+    <loading-gif ng-if="switching" ></loading-gif>
+    <switch ng-if="!switching"
+      app="widget" config="widget.widgetConfig"></switch>
   </div>
 
   <div ng-switch-when="weather">

@@ -71,56 +71,8 @@
 
   <!-- BODY -->
   <md-card-content class="widget-content">
-
-    <div ng-switch="widgetType" class="widget-type-container">
-
-      <div ng-switch-when="time-sensitive-content">
-        <time-sensitive app="widget" config="widget.widgetConfig"></time-sensitive>
-      </div>
-
-      <div ng-switch-when="option-link">
-        <option-link app="widget" config="widget.widgetConfig"></option-link>
-      </div>
-
-      <div ng-switch-when="rss">
-        <rss-widget app="widget" config="widget.widgetConfig"></rss-widget>
-      </div>
-
-      <div ng-switch-when="action-items">
-        <action-items app="widget" config="widget.widgetConfig"></action-items>
-      </div>
-
-      <div ng-switch-when="list-of-links">
-        <list-of-links app="widget" config="widget.widgetConfig"></list-of-links>
-      </div>
-
-      <div ng-switch-when="search-with-links">
-        <search-with-links app="widget" config="widget.widgetConfig"></search-with-links>
-      </div>
-
-      <div ng-switch-when="switch">
-        <switch app="widget" config="widget.widgetConfig"></switch>
-      </div>
-
-      <div ng-switch-when="weather">
-        <weather-widget app="widget" config="widget.widgetConfig"></weather-widget>
-      </div>
-
-      <div ng-switch-when="custom" class="custom-widget">
-        <div ng-controller="CustomWidgetController as customWidgetCtrl">
-          <div ng-if="loading" layout="row" layout-align="center center">
-            <loading-gif data-object="content" data-empty="isEmpty"></loading-gif>
-          </div>
-          <content-item ng-if="!loading"></content-item>
-        </div>
-      </div>
-
-      <!-- "basic" widget type-->
-      <div ng-switch-default>
-        <basic-widget app="widget" config="widget.widgetConfig"></basic-widget>
-      </div>
-
-    </div>
+      <widget-content app="widget" config="widget.widgetConfig">
+      </widget-content>
   </md-card-content>
 
 </md-card>
