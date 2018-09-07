@@ -61,21 +61,9 @@
     </div>
   </div>
 
-  <!-- "basic" widget type-->
+  <!-- default to an untyped, basic widget -->
   <div ng-switch-default>
-    <a tabindex="-1" class="basic-widget" ng-href="{{ renderUrl() }}"
-      target="{{ widget.target ? widget.target : '_self' }}"
-      rel="noopener noreferrer">
-      <div class="widget-icon-container" layout="column" layout-align="center center">
-        <widget-icon></widget-icon>
-      </div>
-    </a>
-    <launch-button data-aria-label="{{ 'Launch ' + widget.title }}"
-      data-href="{{ renderUrl() }}"
-      data-target="{{ widget.target ? widget.target : '_self' }}"
-      data-rel="noopener noreferrer"
-      data-button-text="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch full app' }}">
-    </launch-button>
+    <basic-widget></basic-widget>
   </div>
 
 </div>

@@ -1,0 +1,17 @@
+<div>
+  <a class="basic-widget" tabindex="-1"
+    ng-href="{{ renderUrl() }}"
+    target="{{ widget.target ? widget.target : '_self' }}"
+    rel="noopener noreferrer">
+    <div class="widget-icon-container"
+      layout="column" layout-align="center center">
+      <widget-icon></widget-icon>
+    </div>
+  </a>
+</div>
+<launch-button data-aria-label="{{ 'Launch ' + widget.title }}"
+  data-href="{{ renderUrl() }}"
+  data-target="{{ widget.target ? widget.target : '_self' }}"
+  data-rel="noopener noreferrer"
+  data-button-text="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch full app' }}">
+</launch-button>

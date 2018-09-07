@@ -156,6 +156,32 @@ define(['angular', 'moment'], function(angular, moment) {
       $scope.initializeWidget($scope.fname);
   }])
 
+  /**
+   * Controller for un-typed (basic) widgets.
+   * Sets launch button url for these widgets.
+   */
+  .controller('BasicWidgetController', [
+    '$scope', '$log', '$localStorage', 'widgetService',
+    function($scope, $log, $localStorage, widgetService) {
+      /**
+       * Set the launch button url for static content,
+       * exclusive mode, and basic widgets
+       * @return {*}
+       */
+      $scope.renderUrl = function renderUrl() {
+        var widget = $scope.widget;
+        // Check for static content or exclusive mode portlets (rare)
+        if (widget.altMaxUrl == false) {
+          if (widget.staticContent != null) {
+            return 'static/' + widget.fname;
+          } else if (widget.renderOnWeb || $localStorage.webPortletRender) {
+            return 'exclusive/' + widget.fname;
+          }
+        }
+        return widget.url;
+      };
+    }])
+
     // External Message Controller
   .controller('WidgetExternalMessageController', [
     '$scope', '$log', 'widgetService',

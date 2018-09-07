@@ -200,5 +200,17 @@ define(['angular', 'require'], function(angular, require) {
       templateUrl: require.toUrl('./partials/type__weather.html'),
       controller: 'WeatherWidgetController',
     };
+  })
+
+  .directive('basicWidget', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config',
+      },
+      templateUrl: require.toUrl('./partials/type__basic.html'),
+      controller: 'BasicWidgetController',
+    };
   });
 });
