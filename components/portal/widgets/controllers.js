@@ -27,10 +27,8 @@ define(['angular', 'moment'], function(angular, moment) {
    * the type and sets launch button url for un-typed (basic) widgets.
    */
   .controller('WidgetCardController', [
-    '$scope', '$log', '$localStorage', '$transclude', '$timeout',
-    'widgetService',
-    function($scope, $log, $localStorage, $transclude, $timeout,
-             widgetService) {
+    '$scope', '$log', '$transclude', '$timeout', 'widgetService',
+    function($scope, $log, $transclude, $timeout, widgetService) {
     /**
      * Check for widget types that require extra configuration
      * (including null/undefined case), default to provided
@@ -132,24 +130,6 @@ define(['angular', 'moment'], function(angular, moment) {
       } else {
         $log.warn('WidgetCardController didn\'t get an fname.');
       }
-    };
-
-    /**
-     * Set the launch button url for static content,
-     * exclusive mode, and basic widgets
-     * @return {*}
-     */
-    $scope.renderUrl = function renderUrl() {
-      var widget = $scope.widget;
-      // Check for static content or exclusive mode portlets (rare)
-      if (widget.altMaxUrl == false) {
-        if (widget.staticContent != null) {
-          return 'static/' + widget.fname;
-        } else if (widget.renderOnWeb || $localStorage.webPortletRender) {
-          return 'exclusive/' + widget.fname;
-        }
-      }
-      return widget.url;
     };
 
     // Initialize the widget
@@ -728,8 +708,8 @@ define(['angular', 'moment'], function(angular, moment) {
 
   // SWITCH widget type
   .controller('SwitchWidgetController', [
-    '$scope', '$log', '$parse', '$localStorage', 'widgetService',
-    function($scope, $log, $parse, $localStorage, widgetService) {
+    '$scope', '$log', '$parse', 'widgetService',
+    function($scope, $log, $parse, widgetService) {
       /**
        * Fetch additional widget data
        */
@@ -831,25 +811,6 @@ define(['angular', 'moment'], function(angular, moment) {
         $scope.widget.widgetType = 'basic';
         $scope.widget.widgetConfig = '';
       }
-    };
-
-    /**
-     * Set the launch button url for static content,
-     * exclusive mode, and basic widgets
-     * @return {*}
-     */
-    $scope.renderUrl = function renderUrl() {
-      // TODO: refactor. This is a copy-and-paste from WidgetCardController
-      var widget = $scope.widget;
-      // Check for static content or exclusive mode portlets (rare)
-      if (widget.altMaxUrl == false) {
-        if (widget.staticContent != null) {
-          return 'static/' + widget.fname;
-        } else if (widget.renderOnWeb || $localStorage.webPortletRender) {
-          return 'exclusive/' + widget.fname;
-        }
-      }
-      return widget.url;
     };
 
     initializeSwitchWidget();
