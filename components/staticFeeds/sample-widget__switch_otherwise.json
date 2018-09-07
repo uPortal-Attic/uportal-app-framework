@@ -4,7 +4,7 @@
     "layoutObject": {
       "nodeId": "-1",
       "title": "Matches neither case",
-      "description": "In this switch neither case matches so it falls back on an otherwise case.",
+      "description": "In this switch neither case matches so it falls back on a default case.",
       "url": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#switch-widget-type",
       "iconUrl": null,
       "mdIcon": "switch_camera",
@@ -58,16 +58,16 @@
             }
           }
         ],
-        "caseotherwise": {
+        "defaultCase": {
           "widgetType": "search-with-links",
           "widgetConfig": {
             "actionURL": "https://rprg.wisc.edu/",
             "actionTarget": "_blank",
             "actionParameter": "s",
-            "launchText": "Otherwise case",
+            "launchText": "Default case",
             "links": [
               {
-                "title": "Otherwise case",
+                "title": "Default case",
                 "href": "https://rprg.wisc.edu/phases/initiate/",
                 "icon": "fa-map-o",
                 "target": "_blank"
@@ -117,6 +117,6 @@
     "id": "2742",
     "type": "Portlet",
     "target": "_blank",
-    "description": "In this switch neither case matches so it falls back on an otherwise case."
+    "description": "In this switch neither case matches so it falls back on an default case."
   }
 }
