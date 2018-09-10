@@ -31,7 +31,8 @@
 
 <!-- list-of-links widget (not collapsing to basic widget)-->
 <div class="widget-body list-of-links"
-  ng-show="config.links.length > 0 && config.links[0].href != widget.url">
+  ng-show="config.links.length > 0
+    && (config.links.length != 1 || config.links[0].href != widget.url)">
 
   <!-- FOUR LINKS OR LESS -->
   <div ng-show="config.links.length > 0 && config.links.length <= 4
