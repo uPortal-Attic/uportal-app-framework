@@ -5,7 +5,7 @@
       {
         "icon": "fa-book",
         "href": "staticFeeds/sample-widget__list-of-one-redundant-link.json",
-        "title": "JSON defining this widget",
+        "title": "Should not display",
         "target": "_blank"
       }
     ]
