@@ -3,8 +3,8 @@
     "canAdd": true,
     "layoutObject": {
       "nodeId": "-1",
-      "title": "list-of-links degrades to basic",
-      "description": "When list-of-links is configured with a single link to its alternativeMaximizedUrl, it degrades to a basic widget.",
+      "title": "list-of-links collapses to basic",
+      "description": "When list-of-links is configured with a single link to its alternativeMaximizedUrl, it collapses to a basic widget.",
       "url": "staticFeeds/sample-widget__list-of-one-redundant-link.json",
       "iconUrl": null,
       "faIcon": "fa-book",
@@ -27,7 +27,7 @@
       "list-of-links"
     ],
     "portletName": "cms",
-    "title": "list-of-links degrades to basic",
+    "title": "list-of-links collapses to basic",
     "keywords": [
       "list",
       "links",
@@ -50,8 +50,8 @@
     "marketplaceScreenshots": [],
     "userRated": 0,
     "faIcon": "fa-briefcase",
-    "description": "When list-of-links is configured with a single link to its alternativeMaximizedUrl, it degrades to a basic widget.",
-    "name": "list-of-links degrades to basic",
+    "description": "When list-of-links is configured with a single link to its alternativeMaximizedUrl, it collapses to a basic widget.",
+    "name": "list-of-links collapses to basic",
     "id": "77",
     "type": "Portlet",
     "target": null
