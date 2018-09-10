@@ -1,0 +1,66 @@
+{
+  "entry": {
+    "canAdd": false,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "generic means custom",
+      "description": "generic is a deprecated alias for the custom widget type.",
+      "url": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#custom-widgets",
+      "iconUrl": null,
+      "mdIcon": "style",
+      "fname": "sample-widget__generic",
+      "lifecycleState": "PUBLISHED",
+      "target": "_blank",
+      "widgetURL": "/web/api/proxy/wiscard",
+      "widgetType": "generic",
+      "widgetTemplate": "<div class='widget-body'>`generic` type widget.</div>\n          <a class='launch-app-button' target='_blank' href='https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#custom-widgets'>Read documentation</a>\n        ",
+      "widgetConfig": {
+        "error": "config JSON not valid, syntax error? Double quotes not escaped?"
+      },
+      "staticContent": "\n        \n          <a href=\"https://online.wiscard.wisc.edu/login.php?cid=120\">Access your Wiscard account.</a>\n        \n      ",
+      "pithyStaticContent": null,
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "categories": [
+      "Applications"
+    ],
+    "portletName": "cms",
+    "title": "generic means custom",
+    "keywords": [
+      "money",
+      "wisccard",
+      "wiscard",
+      "balance",
+      "deposit"
+    ],
+    "fname": "sample-widget__generic",
+    "rating": 0.0,
+    "lifecycleState": "PUBLISHED",
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://online.wiscard.wisc.edu/login.php?cid=120",
+    "portletWebAppName": "/SimpleContentPortlet",
+    "maxUrl": "https://online.wiscard.wisc.edu/login.php?cid=120",
+    "shortUrl": null,
+    "marketplaceScreenshots": [
+      {
+        "url": "/images/screenshotImages/wiscard/wiscardscreenshot.png",
+        "captions": [
+          "View your wiscard balance"
+        ]
+      }
+    ],
+    "userRated": 0,
+    "mdIcon": "style",
+    "relatedPortlets": [],
+    "description": "generic is a deprecated alias for the custom widget type.",
+    "name": "generic means custom",
+    "id": "59968",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}
