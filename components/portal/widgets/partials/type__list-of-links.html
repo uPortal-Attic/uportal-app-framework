@@ -19,18 +19,9 @@
 
 -->
 <!-- ZERO LINKS: emulate a basic widget -->
-<div ng-show="config.links.length == 0">
-  <a tabindex="-1"
-    ng-href="{{ widget.url }}"
-    target="{{ widget.target ? widget.target : '_self' }}"
-    rel="noopener noreferrer"
-    class="basic-widget">
-    <div class="widget-icon-container"
-      layout="column" layout-align="center center">
-      <widget-icon></widget-icon>
-    </div>
-  </a>
-</div>
+<basic-widget
+  ng-show="config.links.length == 0"
+  app="widget" config="widget.widgetConfig"></basic-widget>
 
 <!-- ONE REDUNDANT LINK: collapse to basic widget -->
 
@@ -86,9 +77,10 @@
 
 </div>
 
-<!-- LAUNCH BUTTON -->
+<!-- LAUNCH BUTTON
+  suppress in cases where collapsed to basic-widget, which rendered its own launch button -->
 <launch-button
-  ng-show="config.links.length != 1 || config.links[0].href != widget.url"
+  ng-show="config.links.length > 1 || (config.links.length !=1 || config.links[0].href != widget.url)"
                data-href="{{widget.url}}"
                data-target="{{ widget.target ? widget.target : '_self' }}"
                data-button-text="{{ config.launchText ? config.launchText : 'Launch full app' }}"
