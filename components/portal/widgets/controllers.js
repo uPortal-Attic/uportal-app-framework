@@ -740,13 +740,13 @@ define(['angular', 'moment'], function(angular, moment) {
 
           var caseToActivate = $scope.switchConfig.cases.find(matchesValue);
 
-          // if none of the cases match, select the otherwise case if configured
+          // if none of the cases match, select the default case if configured
           if (!caseToActivate && $scope.switchConfig &&
-            $scope.switchConfig.caseotherwise) {
+            $scope.switchConfig.defaultCase) {
             $log.debug($scope.widget.fname +
-              ' switching to otherwise case after no case matched value ' +
+              ' switching to default case after no case matched value ' +
               dynamicValueToMatch);
-            caseToActivate = $scope.switchConfig.caseotherwise;
+            caseToActivate = $scope.switchConfig.defaultCase;
           }
 
           // a case was selected for activation, so let's activate it
@@ -779,7 +779,7 @@ define(['angular', 'moment'], function(angular, moment) {
               }
           } else {
             $log.debug($scope.widget.fname +
-              ' did not switch to any case (not even an otherwise case) ' +
+              ' did not switch to any case (not even a default case) ' +
               'for activation, so falling back to being a basic widget.');
 
             $scope.widget.widgetType = 'basic';

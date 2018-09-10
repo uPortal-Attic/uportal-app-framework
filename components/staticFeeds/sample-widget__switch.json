@@ -38,7 +38,7 @@
             }
           }
         ],
-        "caseotherwise": {
+        "defaultCase": {
           "widgetType": "search-with-links",
           "widgetConfig": {
             "actionURL": "https://rprg.wisc.edu/",
@@ -47,7 +47,7 @@
             "launchText": "Should not display",
             "links": [
               {
-                "title": "Otherwise case",
+                "title": "Default case",
                 "href": "https://rprg.wisc.edu/phases/initiate/",
                 "icon": "fa-map-o",
                 "target": "_blank"

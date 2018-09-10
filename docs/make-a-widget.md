@@ -573,7 +573,7 @@ benefits.
             }
           }
         ],
-        "caseotherwise": {
+        "defaultCase": {
           "widgetType": "list-of-links",
           "widgetConfig": {
             "links": [
@@ -628,14 +628,14 @@ The keys in `widgetConfig` for a `switch` widget are
   case.
 + `cases`: cases, an array of objects where in each object the key `matchValue`
   keys to the value that would activate that case
-+ `caseotherwise`: `switch` will activate this case if the expression did not
++ `defaultCase`: `switch` will activate this case if the expression did not
   match any of the `matchValue`s of the cases in the `cases[]` array. Optional.
   If not set, defaults to a `basic` widget type with no additional
   `widgetConfig`.
 + {other keys}: The `launchText` key generally honored in `widgetConfig` is
   honored here.
 
-The `caseotherwise` object is
+The `defaultCase` object is
 
 + `widgetType`: the type the widget should become. Any value that would have
   been valid for the `widgetType` `portlet-preference` is valid here. Optional.
