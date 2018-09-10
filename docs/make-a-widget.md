@@ -219,7 +219,7 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
   [the app directory entry](http://uportal-project.github.io/uportal-home/app-directory)
   to represent the link. This provides a more usable click surface, a simpler
   and cleaner user experience, and achieves better consistency with other
-  just-a-link widgets in MyUW.
+  just-a-link widgets in the portal.
 * `list-of-links` presents different quantities of links differently. 1 to 4
   links present as `circle-button`s. 5 to 6 links present as a more
   traditional-style list. Zero links presents as a basic widget.
