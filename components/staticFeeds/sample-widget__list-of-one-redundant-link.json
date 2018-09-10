@@ -1,0 +1,59 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "list-of-links collapses to basic",
+      "description": "When list-of-links is configured with a single link to its alternativeMaximizedUrl, it collapses to a basic widget.",
+      "url": "staticFeeds/sample-widget__list-of-one-redundant-link.json",
+      "iconUrl": null,
+      "faIcon": "fa-book",
+      "fname": "sample-widget__list-of-one-redundant-link",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetURL": "/staticFeeds/list-of-one-redundant-link-via-url.json",
+      "widgetType": "list-of-links",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "getLinksURL": "true",
+        "launchText": "View widget JSON"
+      },
+      "staticContent": "<div><p>Static content goes here.</p></div>",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "categories": [
+      "Widget types",
+      "list-of-links"
+    ],
+    "portletName": "cms",
+    "title": "list-of-links collapses to basic",
+    "keywords": [
+      "list",
+      "links",
+      "ordered",
+      "icons",
+      "few"
+    ],
+    "fname": "sample-widget__list-of-one-redundant-link",
+    "rating": 0.0,
+    "lifecycleState": "PUBLISHED",
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "staticFeeds/sample-widget__list-of-one-redundant-link.json",
+    "portletWebAppName": "/SimpleContentPortlet",
+    "maxUrl": "staticFeeds/sample-widget__list-of-one-redundant-link.json",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 0,
+    "faIcon": "fa-briefcase",
+    "description": "When list-of-links is configured with a single link to its alternativeMaximizedUrl, it collapses to a basic widget.",
+    "name": "list-of-links collapses to basic",
+    "id": "77",
+    "type": "Portlet",
+    "target": null
+  }
+}

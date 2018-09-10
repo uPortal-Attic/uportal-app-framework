@@ -40,15 +40,6 @@
         <widget fname="sample-widget__rss"></widget>
       </div>
       <div flex-xs="100" class="widget-container">
-        <widget fname="sample-widget__list-of-links"></widget>
-      </div>
-      <div flex-xs="100" class="widget-container">
-        <widget fname="sample-widget__list-of-8-links"></widget>
-      </div>
-      <div flex-xs="100" class="widget-container">
-        <widget fname="sample-widget__list-of-no-links"></widget>
-      </div>
-      <div flex-xs="100" class="widget-container">
         <widget fname="sample-widget__search-with-links"></widget>
       </div>
       <div flex-xs="100" class="widget-container">
@@ -61,6 +52,30 @@
         <widget fname="sample-widget__maintenance-custom"></widget>
       </div>
     </div>
+
+    <h3 style="margin-left:26px">
+      Example list-of-links widgets in expanded mode</h3>
+
+      <div style="margin-left:26px">list-of-links widgets change display
+        depending upon how many links. Zero links or a single link that would
+        be redundant with the launch button collapse to a basic widget. Fewer
+        than four links display as circle buttons. More links display as a
+        list.</div>
+      <div layout="row" layout-align="center start"
+        style="flex-wrap:wrap;padding:18px;">
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__list-of-links"></widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__list-of-8-links"></widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__list-of-no-links"></widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__list-of-one-redundant-link"></widget>
+        </div>
+      </div>
 
     <h3 style="margin-left:26px">Example switch widgets in expanded mode</h3>
     <div style="margin-left:26px">Switch widgets dynamically change runtime type depending upon the
@@ -102,6 +117,9 @@
         </div>
         <div flex-xs="100" class="widget-container">
           <compact-widget fname="sample-widget__list-of-no-links"></compact-widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <compact-widget fname="sample-widget__list-of-one-redundant-link"></compact-widget>
         </div>
         <div flex-xs="100" class="widget-container">
           <compact-widget fname="sample-widget__search-with-links"></compact-widget>

@@ -1,0 +1,13 @@
+{
+  "result": "ok",
+  "content": {
+    "links": [
+      {
+        "icon": "fa-book",
+        "href": "staticFeeds/sample-widget__list-of-one-redundant-link.json",
+        "title": "Should not display",
+        "target": "_blank"
+      }
+    ]
+  }
+}

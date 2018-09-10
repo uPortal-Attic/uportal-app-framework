@@ -54,16 +54,8 @@ define(['angular', 'moment'], function(angular, moment) {
                 $log.warn('List of links widget ' + widget.fname + ' failed.');
                 $log.error(error);
               });
-            return 'list-of-links';
           }
-          // If the list of links only has one link and it's the
-          // same as the launch button url, display a basic widget
-          if (widget.widgetConfig.links.length === 1 && widget.altMaxUrl &&
-              widget.widgetConfig.links[0].href === widget.url) {
-            return 'basic';
-          } else {
-            return 'list-of-links';
-          }
+          return 'list-of-links';
         case 'generic':
           // DEPRECATED: Backwards compatibility. Use 'custom' instead.
           return 'custom';
