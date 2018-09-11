@@ -45,7 +45,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Documentation
 
-## [10.1.1][]
+## [10.1.1][] - 2018-08-01
 
 ### Changed
 
@@ -58,7 +58,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 + Action items widget type now fails gracefully when service returns non-number data (#807)
 
 
-## [10.1.0][]
+## [10.1.0][] - 2018-07-26
 
 
 ### Added
@@ -80,7 +80,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 + Enable keyboard activation of widget removal button, when present (#800) & (#805)
 
 
-## [10.0.0][]
+## [10.0.0][] - 2018-07-13
 
 ### Removed
 * Removes `$rootScope.GuestMode` (#777)
@@ -104,7 +104,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Documentation
 * Note in changelog message handling changes needing upgrade coordination (#733)
 
-## [9.2.1][] - 2018-6-8
+## [9.2.1][] - 2018-06-08
 
 ### Changed
 * Per UX guidance: When an app provides a theme name (i.e. "MyUW") and an app
@@ -122,7 +122,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   always preferred (#771)
 
 
-## [9.2.0][] - 2018-5-22
+## [9.2.0][] - 2018-05-22
 
 ### Added
 
@@ -154,7 +154,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 * No longer used LoginOnLoad option removed (#753)
 
-## [9.1.0][] - 2018-4-17
+## [9.1.0][] - 2018-04-17
 
 
 ### Added
@@ -192,7 +192,7 @@ still works in this release, the new `showAllMessages` beta setting is intended
 to replace it. `disableGroupFilteringForMessages` will have no effect in some
 future release. (#742)
 
-## [9.0.2][] - 2018-3-30
+## [9.0.2][] - 2018-03-30
 
 This release is to mop up some weirdness which happened with 9.0.1 and get a
 clean artifact.
@@ -203,7 +203,7 @@ clean artifact.
   (#731)
 * Fix positioning of frame-page title when using on-page side navigation (#738)
 
-## [9.0.1][] - 2018-3-29
+## [9.0.1][] - 2018-03-29
 
 BREAKING CHANGE:
 
@@ -240,7 +240,7 @@ audiences for whom they may not have been intended.
 * Modest improvements to `list-of-links` widget type documentation (#727)
 * Adds glossary (#725)
 
-## [9.0.0][] - 2018-3-21
+## [9.0.0][] - 2018-03-21
 
 ### Breaking changes
 
