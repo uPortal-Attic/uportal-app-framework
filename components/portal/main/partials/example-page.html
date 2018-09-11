@@ -34,12 +34,6 @@
         <widget fname="sample-widget__benefits"></widget>
       </div>
       <div flex-xs="100" class="widget-container">
-        <widget fname="sample-widget__custom"></widget>
-      </div>
-      <div flex-xs="100" class="widget-container">
-          <widget fname="sample-widget__generic"></widget>
-        </div>
-      <div flex-xs="100" class="widget-container">
         <widget fname="sample-widget__rss"></widget>
       </div>
       <div flex-xs="100" class="widget-container">
@@ -100,6 +94,21 @@
         <widget fname="sample-widget__switch_broken"></widget>
       </div>
     </div>
+
+    <h3 style="margin-left:26px">
+      Example custom widgets in expanded mode</h3>
+      <div style="margin-left:26px">custom widgets render arbitrary AngularJS 
+        templates optionally applied to dynamic JSON. `generic` is a deprecated 
+        alias for the `custom` widget type.</div>
+      <div layout="row" layout-align="center start"
+        style="flex-wrap:wrap;padding:18px;">
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__custom"></widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__generic"></widget>
+        </div>
+      </div>
 
     <h2 style="margin-left:26px">Example compact mode widgets</h2>
     <div layout="row" layout-align="center start" style="flex-wrap:wrap;padding:18px;">
