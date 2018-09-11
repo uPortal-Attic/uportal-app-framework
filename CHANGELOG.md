@@ -43,7 +43,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Documentation
 
-## [10.1.1][]
+## [10.1.1][] 2018-08-01
 
 ### Changed
 
@@ -56,7 +56,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 + Action items widget type now fails gracefully when service returns non-number data (#807)
 
 
-## [10.1.0][]
+## [10.1.0][] 2018-07-26
 
 
 ### Added
@@ -78,7 +78,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 + Enable keyboard activation of widget removal button, when present (#800) & (#805)
 
 
-## [10.0.0][]
+## [10.0.0][] 2018-07-13
 
 ### Removed
 * Removes `$rootScope.GuestMode` (#777)
