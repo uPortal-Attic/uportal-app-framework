@@ -55,7 +55,7 @@
       }
     ],
     "userRated": 0,
-    "faIcon": "fa-credit-card-alt",
+    "mdIcon": "build",
     "relatedPortlets": [
       {
         "canAdd": false,
