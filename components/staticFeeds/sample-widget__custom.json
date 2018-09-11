@@ -13,7 +13,7 @@
       "target": "_blank",
       "widgetURL": "/web/api/proxy/wiscard",
       "widgetType": "custom",
-      "widgetTemplate": "\n          <div class='widget-body'>`custom` type widget</div> <a class='launch-app-button' target='_blank' href='sample-widget__custom.json'>View widget JSON</a>\n        ",
+      "widgetTemplate": "\n          <div class='widget-body'>`custom` type widget</div> <a class='launch-app-button' target='_blank' href='staticFeeds/sample-widget__custom.json'>View widget JSON</a>\n        ",
       "widgetConfig": {
         "error": "config JSON not valid, syntax error? Double quotes not escaped?"
       },
