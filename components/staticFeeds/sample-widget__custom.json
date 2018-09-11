@@ -3,9 +3,9 @@
     "canAdd": false,
     "layoutObject": {
       "nodeId": "-1",
-      "title": "Wiscard Balance",
-      "description": "See your wiscard balance, make a deposit, or request money.",
-      "url": "https://online.wiscard.wisc.edu/login.php?cid=120",
+      "title": "Custom widget",
+      "description": "`custom` type widgets render an arbitrary template, optionally considering dynamic JSON",
+      "url": "staticFeeds/sample-widget__custom.json",
       "iconUrl": null,
       "faIcon": "fa-credit-card-alt",
       "fname": "wiscard-balance",
@@ -13,7 +13,7 @@
       "target": "_blank",
       "widgetURL": "/web/api/proxy/wiscard",
       "widgetType": "custom",
-      "widgetTemplate": "\n          <div class='widget-body'>\n            <loading-gif data-object='content' data-empty='isEmpty'></loading-gif>\n            <div ng-if=\"content && (content.data | filter: account=103).length > 0\"  class='center' style='padding:20px; font-size: 35px; '>\n              <i class=\"fa fa-credit-card-alt\" style=\"color: #cbcbcb;\"></i> \n              <span style='color:#b70101; padding-left:10px;'>  {{ (content.data | filter: account=103)[0].balance | currency:\"$\":2}}</span>\n            </div>\n            <div ng-if='isEmpty' >\n              <circle-button data-href='https://online.wiscard.wisc.edu/login.php?cid=120' data-target='_blank' data-fa-icon='fa fa-credit-card-alt' data-title='See balance'></circle-button>\n            </div>\n            <div class='col-xs-6 v-center center'>\n                <circle-button data-href='https://online.wiscard.wisc.edu/login.php?wason=paymentach.php?tab=check' data-target='_blank' data-fa-icon='fa fa-dollar' data-title='Deposit money'></circle-button>\n            </div>\n            <div class='col-xs-6 v-center center'>\n                <circle-button data-href='https://online.wiscard.wisc.edu/login.php?wason=lost.php' data-target='_blank' data-fa-icon='fa fa-exclamation-triangle' data-title='Report lost card'></circle-button>\n            </div>\n          </div>\n          <a class='launch-app-button' target='_blank' href='https://online.wiscard.wisc.edu/login.php?cid=120'>Manage my Wiscard</a>\n        ",
+      "widgetTemplate": "\n          <div class='widget-body'>`custom` type widget</div> <a class='launch-app-button' target='_blank' href='sample-widget__custom.json'>View widget JSON</a>\n        ",
       "widgetConfig": {
         "error": "config JSON not valid, syntax error? Double quotes not escaped?"
       },
@@ -342,8 +342,8 @@
         "target": "_blank"
       }
     ],
-    "description": "See your wiscard balance, make a deposit, or request money.",
-    "name": "Wiscard Balance",
+    "description": "`custom` type widgets render an arbitrary template, optionally considering dynamic JSON",
+    "name": "Custom widget",
     "id": "5996",
     "type": "Portlet",
     "target": "_blank"
