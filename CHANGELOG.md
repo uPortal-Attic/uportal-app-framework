@@ -10,7 +10,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-
++ Added session inactivity checker, and updated logout dialog (#830)
 
 ### Changed
 
@@ -47,7 +47,6 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   `<widget-card>`. Not a breaking change: `<widget-card>` behaves the same as
   before, its implementation now delegates to `<basic-widget>` in the basic
   widget case. (#820)
-+ Added session inactivity checker, and updated logout dialog (#830)
 
 ### Changed
 
