@@ -49,7 +49,9 @@ define(['angular'], function(angular) {
           function(timeoutData) {
             if (timeoutData && timeoutData.expirationMills) {
               $timeout(triggerDialog, timeoutData.expirationMills);
-              $interval(checkInactive, toMillis(checkInactiveDelay), 0, false);
+              if (appInactiveTimeout) {
+                $interval(checkInactive, toMillis(checkInactiveDelay), 0, false);
+              }
             } else {
               $log.info('Timeout data could not be found');
               if ($sessionStorage.portal
@@ -108,6 +110,10 @@ define(['angular'], function(angular) {
      */
     function triggerDialog() {
       $mdDialog.show({
+        /*
+         * this template is inline to avoid accidentally
+         * auto-renewing the session.
+         */
         template:
           '<md-dialog class="dialog__session-expired" ' +
           'aria-label="are you still there">' +
