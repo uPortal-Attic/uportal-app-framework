@@ -50,7 +50,8 @@ define(['angular'], function(angular) {
             if (timeoutData && timeoutData.expirationMills) {
               $timeout(triggerDialog, timeoutData.expirationMills);
               if (appInactiveTimeout) {
-                $interval(checkInactive, toMillis(checkInactiveDelay), 0, false);
+                $interval(checkInactive,
+                    toMillis(checkInactiveDelay), 0, false);
               }
             } else {
               $log.info('Timeout data could not be found');
