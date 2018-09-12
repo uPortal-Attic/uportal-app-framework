@@ -56,9 +56,6 @@ define(['angular', 'moment'], function(angular, moment) {
               });
           }
           return 'list-of-links';
-        case 'generic':
-          // DEPRECATED: Backwards compatibility. Use 'custom' instead.
-          return 'custom';
         case null:
           // If widgetType doesn't exist, show a basic widget
           return 'basic';

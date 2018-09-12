@@ -34,9 +34,6 @@
         <widget fname="sample-widget__benefits"></widget>
       </div>
       <div flex-xs="100" class="widget-container">
-        <widget fname="sample-widget__custom"></widget>
-      </div>
-      <div flex-xs="100" class="widget-container">
         <widget fname="sample-widget__rss"></widget>
       </div>
       <div flex-xs="100" class="widget-container">
@@ -98,16 +95,43 @@
       </div>
     </div>
 
+    <h3 style="margin-left:26px">
+      Example custom widgets in expanded mode</h3>
+      <div style="margin-left:26px">custom widgets render arbitrary AngularJS 
+        templates optionally applied to dynamic JSON. `generic` is a deprecated 
+        alias for the `custom` widget type.</div>
+      <div layout="row" layout-align="center start"
+        style="flex-wrap:wrap;padding:18px;">
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__custom"></widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__generic"></widget>
+        </div>
+      </div>
+
     <h2 style="margin-left:26px">Example compact mode widgets</h2>
     <div layout="row" layout-align="center start" style="flex-wrap:wrap;padding:18px;">
         <div flex-xs="100" class="widget-container">
           <compact-widget fname="sample-widget__benefits"></compact-widget>
         </div>
         <div flex-xs="100" class="widget-container">
-          <compact-widget fname="sample-widget__custom"></compact-widget>
+          <compact-widget fname="sample-widget__rss"></compact-widget>
         </div>
         <div flex-xs="100" class="widget-container">
-          <compact-widget fname="sample-widget__rss"></compact-widget>
+          <compact-widget fname="sample-widget__search-with-links">
+          </compact-widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <compact-widget fname="sample-widget__basic"></compact-widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <compact-widget fname="sample-widget__maintenance-default">
+          </compact-widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <compact-widget fname="sample-widget__maintenance-custom">
+          </compact-widget>
         </div>
         <div flex-xs="100" class="widget-container">
           <compact-widget fname="sample-widget__list-of-links"></compact-widget>
@@ -122,21 +146,23 @@
           <compact-widget fname="sample-widget__list-of-one-redundant-link"></compact-widget>
         </div>
         <div flex-xs="100" class="widget-container">
-          <compact-widget fname="sample-widget__search-with-links"></compact-widget>
-        </div>
-        <div flex-xs="100" class="widget-container">
-          <compact-widget fname="sample-widget__basic"></compact-widget>
-        </div>
-        <div flex-xs="100" class="widget-container">
-          <compact-widget fname="sample-widget__maintenance-default">
-          </compact-widget>
-        </div>
-        <div flex-xs="100" class="widget-container">
-          <compact-widget fname="sample-widget__maintenance-custom">
-          </compact-widget>
-        </div>
-        <div flex-xs="100" class="widget-container">
           <compact-widget fname="sample-widget__switch"></compact-widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <compact-widget fname="sample-widget__switch_2"></compact-widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <compact-widget fname="sample-widget__switch_otherwise">
+          </compact-widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <compact-widget fname="sample-widget__switch_broken"></compact-widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <compact-widget fname="sample-widget__custom"></compact-widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <compact-widget fname="sample-widget__generic"></compact-widget>
         </div>
       </div>
 </frame-page>
