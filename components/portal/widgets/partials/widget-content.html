@@ -63,6 +63,16 @@
     </div>
   </div>
 
+  <!-- `generic` is a deprecated alias for `custom` widget type -->
+  <div ng-switch-when="generic" class="custom-widget">
+      <div ng-controller="CustomWidgetController as customWidgetCtrl">
+        <div ng-if="loading" layout="row" layout-align="center center">
+          <loading-gif data-object="content" data-empty="isEmpty"></loading-gif>
+        </div>
+        <content-item ng-if="!loading"></content-item>
+      </div>
+    </div>
+
   <!-- default to an untyped, basic widget -->
   <div ng-switch-default>
     <basic-widget app="widget" config="widget.widgetConfig"></basic-widget>

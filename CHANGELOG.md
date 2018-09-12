@@ -33,6 +33,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 + Added `aria-label` describing mascot image (#808)
 + More reliably collapses trivial `list-of-links` widgets to `basic` widgets
   (#827)
++ Restored support for deprecated `generic` as alias for `custom` widget type. 
+  (#828)
 
 ### Removed
 

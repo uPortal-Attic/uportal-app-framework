@@ -3,17 +3,17 @@
     "canAdd": false,
     "layoutObject": {
       "nodeId": "-1",
-      "title": "Custom widget",
-      "description": "`custom` type widgets render an arbitrary template, optionally considering dynamic JSON",
-      "url": "staticFeeds/sample-widget__custom.json",
+      "title": "generic means custom",
+      "description": "generic is a deprecated alias for the custom widget type.",
+      "url": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#custom-widgets",
       "iconUrl": null,
-      "faIcon": "fa-credit-card-alt",
-      "fname": "wiscard-balance",
+      "mdIcon": "style",
+      "fname": "sample-widget__generic",
       "lifecycleState": "PUBLISHED",
       "target": "_blank",
       "widgetURL": "/web/api/proxy/wiscard",
-      "widgetType": "custom",
-      "widgetTemplate": "\n          <div class='widget-body'>`custom` type widget</div> <a class='launch-app-button' target='_blank' href='staticFeeds/sample-widget__custom.json'>View widget JSON</a>\n        ",
+      "widgetType": "generic",
+      "widgetTemplate": "<div class='widget-body'>`generic` type widget.</div>\n          <a class='launch-app-button' target='_blank' href='https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#custom-widgets'>Read documentation</a>\n        ",
       "widgetConfig": {
         "error": "config JSON not valid, syntax error? Double quotes not escaped?"
       },
@@ -26,7 +26,7 @@
       "Applications"
     ],
     "portletName": "cms",
-    "title": "Wiscard Balance",
+    "title": "generic means custom",
     "keywords": [
       "money",
       "wisccard",
@@ -34,7 +34,7 @@
       "balance",
       "deposit"
     ],
-    "fname": "wiscard-balance",
+    "fname": "sample-widget__generic",
     "rating": 0.0,
     "lifecycleState": "PUBLISHED",
     "portletReleaseNotes": {
@@ -55,11 +55,11 @@
       }
     ],
     "userRated": 0,
-    "mdIcon": "build",
+    "mdIcon": "style",
     "relatedPortlets": [],
-    "description": "`custom` type widgets render an arbitrary template, optionally considering dynamic JSON",
-    "name": "Custom widget",
-    "id": "5996",
+    "description": "generic is a deprecated alias for the custom widget type.",
+    "name": "generic means custom",
+    "id": "59968",
     "type": "Portlet",
     "target": "_blank"
   }
