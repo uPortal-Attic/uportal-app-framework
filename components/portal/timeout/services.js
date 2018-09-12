@@ -110,15 +110,24 @@ define(['angular', 'jquery'], function(angular, $) {
 
     .factory('sessionInactivityService', ['$log', function($log) {
       var lastActivity = Date.now();
-      
+
+      /**
+       * update the last activity time
+       */
       function onActivity() {
         lastActivity = Date.now();
       }
 
+      /**
+       * retrieve the last activity time
+       */
       function getLastActivity() {
         return lastActivity;
       }
-      
+
+      /**
+       * get the amount of time the user has been inactive
+       */
       function getInactiveDuration() {
         return Date.now() - getLastActivity();
       }
@@ -129,13 +138,14 @@ define(['angular', 'jquery'], function(angular, $) {
         signalActivity: onActivity,
       };
     }])
-    
-    .factory('httpActivityInterceptor', ['sessionInactivityService', function(sessionInactivityService) {
+
+    .factory('httpActivityInterceptor', ['sessionInactivityService',
+      function(sessionInactivityService) {
       return {
         'response': function(response) {
           sessionInactivityService.signalActivity();
           return response;
-        }
+        },
       };
     }])
 

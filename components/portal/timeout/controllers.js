@@ -22,17 +22,19 @@ define(['angular'], function(angular) {
   return angular.module('portal.timeout.controllers', [])
   .controller('PortalTimeoutController', [
     '$sessionStorage', '$log', '$timeout', '$interval',
-    '$mdDialog', '$window', 'APP_OPTIONS', 'MISC_URLS', 
+    '$mdDialog', '$window', 'APP_OPTIONS', 'MISC_URLS',
     'portalShibbolethService', 'sessionInactivityService',
   function(
     $sessionStorage, $log, $timeout, $interval,
-    $mdDialog, $window, APP_OPTIONS, MISC_URLS, 
+    $mdDialog, $window, APP_OPTIONS, MISC_URLS,
     portalShibbolethService, sessionInactivityService
   ) {
-
     var checkInactiveDelay = 1; // Minutes
     var appInactiveTimeout = APP_OPTIONS.inactivityTimeout; // Minutes
 
+    /**
+     * changes minutes to millis
+     */
     function toMillis(minutes) {
       return minutes * 60000;
     }
@@ -65,22 +67,29 @@ define(['angular'], function(angular) {
       }
     }
 
+    /**
+     * check if the session is close to timing out due to inactivity
+     */
     function checkInactive() {
       var inactiveDuration = sessionInactivityService.getInactiveDuration();
 
-      var warningInactiveDuration = toMillis(appInactiveTimeout - (2 * checkInactiveDelay));
-      var dialogInactiveDuration = toMillis(appInactiveTimeout - checkInactiveDelay);
-      var finalInactiveDuration = toMillis(appInactiveTimeout);
+      var warningInactiveDuration =
+          toMillis(appInactiveTimeout - (2 * checkInactiveDelay));
+      var dialogInactiveDuration =
+          toMillis(appInactiveTimeout - checkInactiveDelay);
+      var finalInactiveDuration =
+          toMillis(appInactiveTimeout);
 
       if (inactiveDuration > finalInactiveDuration) {
         redirect();
       } else if (inactiveDuration > warningInactiveDuration) {
         // Trigger dialog with one minute on the clock
-        $timeout(triggerDialog, dialogInactiveDuration - inactiveDuration, false);
+        $timeout(triggerDialog,
+            dialogInactiveDuration - inactiveDuration, false);
       }
     }
 
-    /** 
+    /**
      * Reload to continue the session
      */
     function reload() {
@@ -100,14 +109,16 @@ define(['angular'], function(angular) {
     function triggerDialog() {
       $mdDialog.show({
         template:
-          '<md-dialog class="dialog__session-expired" aria-label="are you still there">' +
+          '<md-dialog class="dialog__session-expired" ' +
+          'aria-label="are you still there">' +
           '  <md-toolbar>' +
           '    <div class="md-toolbar-tools">' +
           '      <h2>Are you still there?</h2>' +
           '    </div>' +
           '  </md-toolbar>' +
           '  <md-dialog-content class="md-dialog-content">' +
-          '    <p>Your session will expire soon. Please reload the page to continue, otherwise you will be logged out.</p>' +
+          '    <p>Your session will expire soon. Please reload the ' +
+          'page to continue, otherwise you will be logged out.</p>' +
           '  </md-dialog-content>' +
           '  <md-dialog-actions layout="row">' +
           '    <md-button aria-label="" ng-click="reloadPage()">' +
@@ -125,7 +136,7 @@ define(['angular'], function(angular) {
           };
           $scope.reloadPage = function() {
             reload();
-          }
+          };
         },
       }).finally(function() {
         redirect();
