@@ -8,6 +8,31 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][]
 
+### Added
+
+
+
+### Changed
+
+
+
+### Fixed
+
+
+
+### Removed
+
+
+
+### Deprecated
+
+
+
+### Documentation
+
+
+
+## [10.2.0][] - 2018-09-12
 
 ### Added
 
@@ -40,10 +65,6 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 + Removes unused photo opt-out on settings page (#811)
 
-### Deprecated
-
-
-### Documentation
 
 ## [10.1.1][] - 2018-08-01
 
@@ -852,7 +873,8 @@ break compatibility with some older components. If the app used any
 * Added ability to have a name for the default theme (#336)
 * Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.1...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.2.0...HEAD
+[10.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.1...v10.2.0
 [10.1.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.0...v10.1.1
 [10.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.0.0...v10.1.0
 [10.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.1...v10.0.0
