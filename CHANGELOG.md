@@ -18,7 +18,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
-
++ Use sentence-case rather within `time-sensitive-content` widget type (#832)
 
 ### Removed
 
