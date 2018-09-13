@@ -1,0 +1,75 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "After the action end date",
+      "description": "time-sensitive-content widgets can solicit feedback after the action period.",
+      "url": "https://rprg.wisc.edu/",
+      "iconUrl": null,
+      "mdIcon": "timelapse",
+      "fname": "sample-widget__time-past",
+      "lifecycleState": "PUBLISHED",
+      "target": "_blank",
+      "widgetURL": null,
+      "widgetType": "time-sensitive-content",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "callsToAction": [
+          {
+            "activeDateRange": {
+              "templateLiveDate": "2017-12-01",
+              "takeActionStartDate": "2017-12-31",
+              "takeActionEndDate": "2018-01-01",
+              "templateRetireDate": "2030-03-30"
+            },
+            "actionName": "Opportunity for action",
+            "daysLeftMessage": "until the iron is no longer hot",
+            "lastDayMessage": "ends today",
+            "actionButton": {
+              "url": 
+                "https://www.example.edu/take-some-action",
+              "label": "Strike while iron is hot"
+            },
+            "learnMoreUrl": "https://en.wikipedia.org/wiki/Blacksmith",
+            "feedbackUrl": "https://www.example.edu/feedback-on-hammering"
+          }
+        ]
+      },
+      "staticContent": "\n            \n                Access the \n                <a href=\"https://rprg.wisc.edu/\">Research Project Resource Guide</a>.\n            \n        ",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "After the action period",
+    "categories": [
+      "time-sensitive-content",
+      "widget"
+    ],
+    "portletName": "advanced-cms",
+    "keywords": [
+      "future",
+      "time"
+    ],
+    "fname": "sample-widget__time-past",
+    "lifecycleState": "PUBLISHED",
+    "rating": 5.0,
+    "relatedPortlets": [],
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://rprg.wisc.edu/",
+    "maxUrl": "https://rprg.wisc.edu/",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 2,
+    "portletWebAppName": "/SimpleContentPortlet",
+    "mdIcon": "timelapse",
+    "description": "time-sensitive-content widgets can solicit feedback after the action period.",
+    "name": "After the action end date",
+    "id": "5296",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}
