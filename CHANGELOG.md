@@ -18,7 +18,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
-
++ `action-items` widget now detects and handles as an error when a quantity
+  callback returns an empty String. (#836)
 
 ### Removed
 

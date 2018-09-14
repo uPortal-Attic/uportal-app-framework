@@ -1,0 +1,48 @@
+{
+  "entry": {
+    "canAdd": false,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Handles empty string quantities",
+      "description": "action-items detects and treats as an error when a JSON callback returns the empty string quantity",
+      "url": "http://www.google.com",
+      "iconUrl": null,
+      "mdIcon": "format_quote",
+      "fname": "sample-widget__action-items_empty-string",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetURL": null,
+      "widgetType": "action-items",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "launchText": "See all",
+        "actionItems": [
+          {
+            "textSingular": "empty string",
+            "textPlural": "empty strings",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_empty-string.json",
+            "actionUrl": "http://www.google.com"
+          }
+        ]
+      },
+      "staticContent": "",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "Handles empty string quantities",
+    "fname": "sample-widget__action-items_empty-string",
+    "rating": 5.0,
+    "lifecycleState": "PUBLISHED",
+    "renderUrl": "http://www.google.com",
+    "maxUrl": "https://www.example.edu/approvals-dasboard",
+    "shortUrl": null,
+    "userRated": 45,
+    "mdIcon": "format_quote",
+    "description": "action-items detects and treats as an error when a JSON callback returns the empty string quantity",
+    "name": "Handles empty string quantities",
+    "id": "222",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}
