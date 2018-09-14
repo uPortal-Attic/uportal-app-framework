@@ -1,0 +1,98 @@
+{
+  "entry": {
+    "canAdd": false,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Some broken quantities",
+      "description": "items fail independently",
+      "url": "http://www.google.com",
+      "iconUrl": null,
+      "mdIcon": "star_half",
+      "fname": "sample-widget__action-items_partially-broken",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetURL": null,
+      "widgetType": "action-items",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "launchText": "See all",
+        "actionItems": [
+          {
+            "textSingular": "unconfigured feedUrl",
+            "textPlural": "unconfigured feedUrls",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "task in inbox",
+            "textPlural": "tasks in inbox",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_0.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "task in someday/maybe",
+            "textPlural": "tasks in someday/maybe",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_17.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "missing JSON source",
+            "textPlural": "missing JSON sources",
+            "feedUrl": "does/not/exist/alas.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "malformed response",
+            "textPlural": "malformed responses",
+            "feedUrl": "staticFeeds/example-json-callbacks/ill-formed.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "nonsensical response",
+            "textPlural": "nonsensical responses",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_nonsense.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "empty string",
+            "textPlural": "empty strings",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_empty-string.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "unfulfilled schema",
+            "textPlural": "unfulfilled schemas",
+            "feedUrl": "list-of-links-via-url.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "next action",
+            "textPlural": "next actions",
+            "feedUrl": "/example-json-callbacks/quantities/quantity_42.json",
+            "actionUrl": "http://www.google.com"
+          }
+        ]
+      },
+      "staticContent": "",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "Some broken quantities",
+    "fname": "sample-widget__action-items_partially-broken",
+    "rating": 5.0,
+    "lifecycleState": "PUBLISHED",
+    "renderUrl": "http://www.google.com",
+    "maxUrl": "https://www.example.edu/approvals-dasboard",
+    "shortUrl": null,
+    "userRated": 45,
+    "mdIcon": "star_half",
+    "description": "items fail independently",
+    "name": "Some broken quantities",
+    "id": "222",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "entry": {
+    "canAdd": false,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Many quantities",
+      "description": "truncates excess quantity items",
+      "url": "http://www.google.com",
+      "iconUrl": null,
+      "mdIcon": "more_horiz",
+      "fname": "sample-widget__action-items_many",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetURL": null,
+      "widgetType": "action-items",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "launchText": "See all",
+        "actionItems": [
+          {
+            "textSingular": "hen",
+            "textPlural": "hens",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_3.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "vulture",
+            "textPlural": "vultures",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_0.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "partridge",
+            "textPlural": "partridges",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_1.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "dove",
+            "textPlural": "doves",
+            "feedUrl": "staticFeeds/example-json-callbacks/quantities/quantity_2.json",
+            "actionUrl": "http://www.google.com"
+          }
+        ]
+      },
+      "staticContent": "",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "Many quantities",
+    "fname": "sample-widget__action-items_many",
+    "rating": 5.0,
+    "lifecycleState": "PUBLISHED",
+    "renderUrl": "http://www.google.com",
+    "maxUrl": "https://www.example.edu/approvals-dasboard",
+    "shortUrl": null,
+    "userRated": 45,
+    "mdIcon": "more_horiz",
+    "description": "truncates excess quantity items",
+    "name": "Many quantities",
+    "id": "222",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}
