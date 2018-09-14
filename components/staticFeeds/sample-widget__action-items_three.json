@@ -1,0 +1,62 @@
+{
+  "entry": {
+    "canAdd": false,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Three quantities",
+      "description": "action-items can show up to three quantities",
+      "url": "http://www.google.com",
+      "iconUrl": null,
+      "mdIcon": "format_list_numbered",
+      "fname": "sample-widget__action-items_three",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetURL": null,
+      "widgetType": "action-items",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "launchText": "See all",
+        "actionItems": [
+          {
+            "textSingular": "timesheet pending approval",
+            "textPlural": "timesheets pending approval",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_17.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "absence request pending approval",
+            "textPlural": "absence requests pending approval",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_0.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "additonal pay item pending",
+            "textPlural": "additional pay items pending",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_1.json",
+            "actionUrl": "http://www.google.com"
+          }
+        ]
+      },
+      "staticContent": "",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "Three quantities",
+    "fname": "sample-widget__action-items_three",
+    "rating": 5.0,
+    "lifecycleState": "PUBLISHED",
+    "renderUrl": "http://www.google.com",
+    "maxUrl": "https://www.example.edu/approvals-dasboard",
+    "shortUrl": null,
+    "userRated": 45,
+    "mdIcon": "format_list_numbered",
+    "description": "action-items can show up to three quantities",
+    "name": "Three quantities",
+    "id": "222",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}
