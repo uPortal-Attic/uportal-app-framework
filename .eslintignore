@@ -1,5 +1,7 @@
-# When adding a path here also consider adding it to .eslintignore
+# Sadly need to manually maintain this file as superset of .gitignore
+# cf. https://github.com/eslint/eslint/issues/9794
 
+# paths that are also .gitignore'd
 .vscode/*
 .classpath
 .idea
@@ -27,3 +29,8 @@ docs/bower_components
 Gemfile.lock
 nbproject/
 components/coverage
+
+# paths to eslintignore beyond those in .gitignore
+components/js/ga.js
+components/staticFeeds/example-json-callbacks/quantities/quantity_ill-formed.json
+docs/
