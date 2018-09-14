@@ -1,0 +1,76 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "After the action start date",
+      "description": "time-sensitive-content widgets count down during the action period.",
+      "url": "https://rprg.wisc.edu/",
+      "iconUrl": null,
+      "mdIcon": "stop",
+      "fname": "sample-widget__time-current",
+      "lifecycleState": "PUBLISHED",
+      "target": "_blank",
+      "widgetURL": null,
+      "widgetType": "time-sensitive-content",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "callsToAction": [
+          {
+            "activeDateRange": {
+              "templateLiveDate": "2017-12-01",
+              "takeActionStartDate": "2018-01-01",
+              "takeActionEndDate": "2050-01-01",
+              "templateRetireDate": "2060-03-30"
+            },
+            "actionName": "Andrew projected retirement date",
+            "daysLeftMessage": "until plausible retirement",
+            "lastDayMessage": "might retire today",
+            "actionButton": {
+              "url": 
+                "https://www.example.edu/take-some-action",
+              "label": "Retire"
+            },
+            "learnMoreUrl": "https://www.ohr.wisc.edu/benefits/retirement/",
+            "feedbackUrl": "https://www.example.edu/feedback-on-retirement"
+          }
+        ]
+      },
+      "staticContent": "\n            \n                Access the \n                <a href=\"https://rprg.wisc.edu/\">Research Project Resource Guide</a>.\n            \n        ",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "Counting down",
+    "categories": [
+      "bad-jokes",
+      "time-sensitive-content",
+      "widget"
+    ],
+    "portletName": "advanced-cms",
+    "keywords": [
+      "future",
+      "time"
+    ],
+    "fname": "sample-widget__time-current",
+    "lifecycleState": "PUBLISHED",
+    "rating": 5.0,
+    "relatedPortlets": [],
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://rprg.wisc.edu/",
+    "maxUrl": "https://rprg.wisc.edu/",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 2,
+    "portletWebAppName": "/SimpleContentPortlet",
+    "mdIcon": "stop",
+    "description": "time-sensitive-content widgets count down during the action period.",
+    "name": "After the action start date",
+    "id": "5296",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}

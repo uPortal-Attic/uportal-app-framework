@@ -1,0 +1,75 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Before the template starts",
+      "description": "time-sensitive-content widgets sleep as basic widgets until a templateLiveDate arrives.",
+      "url": "https://rprg.wisc.edu/",
+      "iconUrl": null,
+      "mdIcon": "snooze",
+      "fname": "sample-widget__time-future",
+      "lifecycleState": "PUBLISHED",
+      "target": "_blank",
+      "widgetURL": null,
+      "widgetType": "time-sensitive-content",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "callsToAction": [
+          {
+            "activeDateRange": {
+              "templateLiveDate": "2100-01-01",
+              "takeActionStartDate": "2100-02-01",
+              "takeActionEndDate": "2100-03-01",
+              "templateRetireDate": "2100-04-01"
+            },
+            "actionName": "The Action Period",
+            "daysLeftMessage": "to take action",
+            "lastDayMessage": "ends today",
+            "actionButton": {
+              "url": 
+                "https://www.example.edu/take-some-action",
+              "label": "Take action"
+            },
+            "learnMoreUrl": "",
+            "feedbackUrl": ""
+          }
+        ]
+      },
+      "staticContent": "\n            \n                Access the \n                <a href=\"https://rprg.wisc.edu/\">Research Project Resource Guide</a>.\n            \n        ",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "Foreshadowing",
+    "categories": [
+      "time-sensitive-content",
+      "widget"
+    ],
+    "portletName": "advanced-cms",
+    "keywords": [
+      "future",
+      "time"
+    ],
+    "fname": "sample-widget__time-future",
+    "lifecycleState": "PUBLISHED",
+    "rating": 5.0,
+    "relatedPortlets": [],
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://rprg.wisc.edu/",
+    "maxUrl": "https://rprg.wisc.edu/",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 2,
+    "portletWebAppName": "/SimpleContentPortlet",
+    "mdIcon": "snooze",
+    "description": "time-sensitive-content widgets sleep as basic widgets until a templateLiveDate arrives.",
+    "name": "Before the template starts",
+    "id": "5296",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}
