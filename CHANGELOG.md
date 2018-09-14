@@ -30,6 +30,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Documentation
 
++ Added localhost examples of `action-items` widget type (#843)
 + Added localhost examples of `time-sensitive-content` widget type (#831)
 
 ## [10.2.0][] - 2018-09-12
