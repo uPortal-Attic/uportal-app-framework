@@ -1,0 +1,47 @@
+{
+  "entry": {
+    "canAdd": false,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "One quantity",
+      "description": "action-items can show a single quantity of action items",
+      "url": "http://www.google.com",
+      "iconUrl": null,
+      "mdIcon": "looks_one",
+      "fname": "sample-widget__action-items_one",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetURL": null,
+      "widgetType": "action-items",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "launchText": "See all",
+        "actionItems": [
+          {
+            "textSingular": "approval awaits your attention.",
+            "textPlural": "approvals await your attention.",
+            "feedUrl": "staticFeeds/example-json-callbacks/quantities/quantity_42.json",
+            "actionUrl": "http://www.google.com"
+          }
+        ]
+      },
+      "staticContent": "",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "One quantity",
+    "fname": "sample-widget__action-items_one",
+    "rating": 5.0,
+    "lifecycleState": "PUBLISHED",
+    "renderUrl": "http://www.google.com",
+    "maxUrl": "https://www.example.edu/approvals-dasboard",
+    "shortUrl": null,
+    "userRated": 45,
+    "mdIcon": "looks_one",
+    "description": "action-items can show a single quantity of action items",
+    "name": "One quantity",
+    "id": "222",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}
