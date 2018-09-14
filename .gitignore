@@ -1,5 +1,3 @@
-# When adding a path here also consider adding it to .eslintignore
-
 .vscode/*
 .classpath
 .idea
