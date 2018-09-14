@@ -32,5 +32,5 @@ components/coverage
 
 # paths to eslintignore beyond those in .gitignore
 components/js/ga.js
-components/staticFeeds/example-json-callbacks/quantities/quantity_ill-formed.json
+components/staticFeeds/example-json-callbacks/ill-formed.json
 docs/

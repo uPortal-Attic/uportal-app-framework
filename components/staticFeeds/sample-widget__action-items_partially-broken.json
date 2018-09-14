@@ -45,8 +45,7 @@
           {
             "textSingular": "malformed response",
             "textPlural": "malformed responses",
-            "feedUrl": 
-              "staticFeeds/example-json-callbacks/quantities/quantity_ill-formed.json",
+            "feedUrl": "staticFeeds/example-json-callbacks/ill-formed.json",
             "actionUrl": "http://www.google.com"
           },
           {
