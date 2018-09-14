@@ -20,19 +20,22 @@
           {
             "textSingular": "timesheet pending approval",
             "textPlural": "timesheets pending approval",
-            "feedUrl": "staticFeeds/quantity_17.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_17.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "absence request pending approval",
             "textPlural": "absence requests pending approval",
-            "feedUrl": "staticFeeds/quantity_0.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_0.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "additonal pay item pending",
             "textPlural": "additional pay items pending",
-            "feedUrl": "staticFeeds/quantity_1.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_1.json",
             "actionUrl": "http://www.google.com"
           }
         ]

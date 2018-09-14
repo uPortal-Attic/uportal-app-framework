@@ -25,13 +25,15 @@
           {
             "textSingular": "task in inbox",
             "textPlural": "tasks in inbox",
-            "feedUrl": "staticFeeds/quantity_0.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_0.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "task in someday/maybe",
             "textPlural": "tasks in someday/maybe",
-            "feedUrl": "staticFeeds/quantity_17.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_17.json",
             "actionUrl": "http://www.google.com"
           },
           {
@@ -43,19 +45,22 @@
           {
             "textSingular": "malformed response",
             "textPlural": "malformed responses",
-            "feedUrl": "staticFeeds/quantity_ill-formed.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_ill-formed.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "nonsensical response",
             "textPlural": "nonsensical responses",
-            "feedUrl": "staticFeeds/quantity_nonsense.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_nonsense.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "empty string",
             "textPlural": "empty strings",
-            "feedUrl": "staticFeeds/quantity_empty-string.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_empty-string.json",
             "actionUrl": "http://www.google.com"
           },
           {
@@ -67,7 +72,7 @@
           {
             "textSingular": "next action",
             "textPlural": "next actions",
-            "feedUrl": "staticFeeds/quantity_42.json",
+            "feedUrl": "/example-json-callbacks/quantities/quantity_42.json",
             "actionUrl": "http://www.google.com"
           }
         ]

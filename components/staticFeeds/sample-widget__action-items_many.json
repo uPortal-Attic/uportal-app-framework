@@ -20,25 +20,28 @@
           {
             "textSingular": "hen",
             "textPlural": "hens",
-            "feedUrl": "staticFeeds/quantity_3.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_3.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "vulture",
             "textPlural": "vultures",
-            "feedUrl": "staticFeeds/quantity_0.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_0.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "partridge",
             "textPlural": "partridges",
-            "feedUrl": "staticFeeds/quantity_1.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_1.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "dove",
             "textPlural": "doves",
-            "feedUrl": "staticFeeds/quantity_2.json",
+            "feedUrl": "staticFeeds/example-json-callbacks/quantities/quantity_2.json",
             "actionUrl": "http://www.google.com"
           }
         ]

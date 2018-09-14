@@ -20,7 +20,7 @@
           {
             "textSingular": "approval awaits your attention.",
             "textPlural": "approvals await your attention.",
-            "feedUrl": "staticFeeds/quantity_42.json",
+            "feedUrl": "staticFeeds/example-json-callbacks/quantities/quantity_42.json",
             "actionUrl": "http://www.google.com"
           }
         ]

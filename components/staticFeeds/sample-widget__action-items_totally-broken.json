@@ -31,19 +31,22 @@
           {
             "textSingular": "malformed response",
             "textPlural": "malformed responses",
-            "feedUrl": "staticFeeds/quantity_ill-formed.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_ill-formed.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "nonsensical response",
             "textPlural": "nonsensical responses",
-            "feedUrl": "staticFeeds/quantity_nonsense.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_nonsense.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "empty string",
             "textPlural": "empty strings",
-            "feedUrl": "staticFeeds/quantity_empty-string.json",
+            "feedUrl": 
+              "staticFeeds/example-json-callbacks/quantities/quantity_empty-string.json",
             "actionUrl": "http://www.google.com"
           },
           {
