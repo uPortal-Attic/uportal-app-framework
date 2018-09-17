@@ -20,6 +20,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 + `action-items` widget now detects and handles as an error when a quantity
   callback returns an empty String. (#836)
++ Use sentence-case rather within `time-sensitive-content` widget type (#832)
 
 ### Removed
 
