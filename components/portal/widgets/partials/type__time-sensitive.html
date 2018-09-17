@@ -23,7 +23,7 @@
   <span class="tsc__title">{{ callToAction.actionName }}</span>
   <div ng-switch="templateStatus" class="tsc__status">
     <!-- Take action period upcoming -->
-    <p ng-switch-when="upcoming">Begins {{ activePeriodStartDate | date:mediumDate }}</p>
+    <p ng-switch-when="upcoming">begins {{ activePeriodStartDate | date:mediumDate }}</p>
     <!-- Take action period ongoing -->
     <div ng-switch-when="ongoing" layout="column" layout-align="center center">
       <p>
@@ -42,7 +42,7 @@
       <p><md-button class="md-raised md-accent" ng-href="{{ callToAction.actionButton.url }}">{{ callToAction.actionButton.label }}</md-button></p>
     </div>
     <!-- Take action period ended -->
-    <p ng-switch-when="ended">Ended {{ activePeriodEndDate | date:mediumDate }}</p>
+    <p ng-switch-when="ended">ended {{ activePeriodEndDate | date:mediumDate }}</p>
   </div>
   <!-- Learn more link -->
   <!-- Give feedback link -->
