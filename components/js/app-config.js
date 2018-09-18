@@ -31,6 +31,7 @@ define(['angular'], function(angular) {
             'appMenuTemplateURL': null,
             'appMenuItems': [],
             'enablePushContentMenu': false,
+            'inactivityTimeout': 30,
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,
