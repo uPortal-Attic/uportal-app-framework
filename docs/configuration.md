@@ -17,8 +17,6 @@ are available.
 + **showSearch**: This boolean hides/shows the search bar at the top.
 + **isWeb**: A flag for special handling for the `uPortal-home` app. Other apps
 should set this to `false`.
-+ **loginDurationMills**: number of milliseconds a login session is valid for.
-Default set to 4 hours (14400000).
 + **gaSearchParam**: Default set to 'q'. This is the param that is tacked on to
 the search result page. Google later strips it in Google Analytics.
 + **showUserSettingsPage**: If set, this will add a **settings** link to the
@@ -57,6 +55,10 @@ containing element for app view(s). A menu that doesn't use the frame-page
 directive yields a hamburger button that does nothing when clicked. See
 [frame-page.html][] to understand how
 this is constructed.
++ **inactivityTimeout**: the length in minutes a login session can remain
+inactive before the server expires it. A dialog will show during the last
+minute of a session, prompting user action. If no action is taken, the user
+will be redirected to `MISC_URLS.loginURL` when the session has expired.
 
 ### SERVICE_LOC
 

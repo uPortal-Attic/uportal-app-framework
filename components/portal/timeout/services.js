@@ -20,7 +20,6 @@
 
 define(['angular', 'jquery'], function(angular, $) {
     return angular.module('portal.timeout.services', [])
-
     /**
     Shibboleth Service
 
@@ -107,5 +106,50 @@ define(['angular', 'jquery'], function(angular, $) {
             shibServiceActivated: shibServiceActivated,
             getUserAttributes: getUserAttributes,
           };
-        }]);
+        }])
+
+    .factory('sessionInactivityService', ['$log', function($log) {
+      var lastActivity = Date.now();
+
+      /**
+       * update the last activity time
+       */
+      function onActivity() {
+        lastActivity = Date.now();
+      }
+
+      /**
+       * retrieve the last activity time
+       */
+      function getLastActivity() {
+        return lastActivity;
+      }
+
+      /**
+       * get the amount of time the user has been inactive
+       */
+      function getInactiveDuration() {
+        return Date.now() - getLastActivity();
+      }
+
+      return {
+        getLastActivity: getLastActivity,
+        getInactiveDuration: getInactiveDuration,
+        signalActivity: onActivity,
+      };
+    }])
+
+    .factory('httpActivityInterceptor', ['sessionInactivityService',
+      function(sessionInactivityService) {
+      return {
+        'response': function(response) {
+          sessionInactivityService.signalActivity();
+          return response;
+        },
+      };
+    }])
+
+    .config(['$httpProvider', function($httpProvider) {
+      $httpProvider.interceptors.push('httpActivityInterceptor');
+    }]);
 });
