@@ -58,7 +58,7 @@ this is constructed.
 + **inactivityTimeout**: the length in minutes a login session can remain
 inactive before the server expires it. A dialog will show during the last
 minute of a session, prompting user action. If no action is taken, the user
-will be redirected to `MISC_URLS.loginURL` when the session has expired.
+will be redirected to `MISC_URLS.logoutURL` when the session has expired.
 
 ### SERVICE_LOC
 
