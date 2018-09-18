@@ -27,16 +27,15 @@
 <meta ng-if="about.description" name="description" content="{{ about.description }}"/>
 <meta ng-if="about.keywords" name="keywords" content="{{ about.keywords }}"/>
 
+<!-- Web component polyfill loader -->
+<!-- Load polyfills; note that "loader" will load these async -->
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.0/webcomponents-bundle.js"></script>
+
+<!-- myuw-web-components -->
+<script type="module" src="https://unpkg.com/@myuw-web-components/myuw-app-bar@1.5.3?module"></script>
+
 <link href="my-app/my-app.css" rel="stylesheet" type="text/css"/>
 <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-
-<!-- web components polyfills -->
-<!-- Web component polyfill loader -->
-<script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-
-<!-- myuw-web-components -->
-<script type="module" src="https://unpkg.com/@myuw-web-components/myuw-app-bar@1.5.3?module"></script>
-<script nomodule scr="https://unpkg.com/@myuw-web-components/myuw-app-bar@1.5.3"></script>
