@@ -1,0 +1,75 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "After the template retires",
+      "description": "time-sensitive-content widget templates can retire entirely, returning the widget to basic-widget-like state.",
+      "url": "https://rprg.wisc.edu/",
+      "iconUrl": null,
+      "mdIcon": "done",
+      "fname": "sample-widget__time-expired",
+      "lifecycleState": "PUBLISHED",
+      "target": "_blank",
+      "widgetURL": null,
+      "widgetType": "time-sensitive-content",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "callsToAction": [
+          {
+            "activeDateRange": {
+              "templateLiveDate": "2017-12-01",
+              "takeActionStartDate": "2017-12-31",
+              "takeActionEndDate": "2018-01-01",
+              "templateRetireDate": "2018-02-30"
+            },
+            "actionName": "Opportunity for action",
+            "daysLeftMessage": "until the action is no longer available",
+            "lastDayMessage": "ends today",
+            "actionButton": {
+              "url": 
+                "https://www.example.edu/take-some-action",
+              "label": "Take action"
+            },
+            "learnMoreUrl": "https://www.example.edu/learn-about-action",
+            "feedbackUrl": "https://www.example.edu/feedback-on-missed-opportunity"
+          }
+        ]
+      },
+      "staticContent": "\n            \n                Access the \n                <a href=\"https://rprg.wisc.edu/\">Research Project Resource Guide</a>.\n            \n        ",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "title": "After the template retires",
+    "categories": [
+      "time-sensitive-content",
+      "widget"
+    ],
+    "portletName": "advanced-cms",
+    "keywords": [
+      "future",
+      "time"
+    ],
+    "fname": "sample-widget__time-expired",
+    "lifecycleState": "PUBLISHED",
+    "rating": 5.0,
+    "relatedPortlets": [],
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://rprg.wisc.edu/",
+    "maxUrl": "https://rprg.wisc.edu/",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 2,
+    "portletWebAppName": "/SimpleContentPortlet",
+    "mdIcon": "done",
+    "description": "time-sensitive-content widget templates can retire entirely, returning the widget to basic-widget-like state.",
+    "name": "After the template retires",
+    "id": "5296",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}
