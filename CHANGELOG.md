@@ -10,7 +10,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-+ Added session inactivity checker, and updated logout dialog (#830)
++ Added session inactivity checker, and updated logout dialog (#830, #837)
 
 ### Changed
 
