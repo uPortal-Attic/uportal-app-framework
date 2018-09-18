@@ -129,7 +129,7 @@
     /* MOBILE BELL ON TOP OF HAMBURGER */
     &.notification-badge-mobile {
       position: absolute;
-      background-color: #fff;
+      background-color: @white;
       width: 18px;
       height: 18px;
       margin: 0;
@@ -182,6 +182,7 @@
         font-size: 36px;
         border-radius: 50%;
         line-height: 40px;
+        color: var(--myuw-app-bar-color, #fff);
       }
 
       &:hover {
@@ -201,13 +202,14 @@
 .priority-gt-xs .priority-notifications {
   height: 46px;
   width: 100%;
-  z-index: @top-bar-1;
   padding: 4px 4px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
   transition: @transition-all;
+  position: fixed;
+  z-index: @top-bar-1;
 
   &.animate-hide {
     opacity: 0;

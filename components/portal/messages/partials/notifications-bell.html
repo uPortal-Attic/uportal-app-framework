@@ -23,7 +23,7 @@
   <!-- MOBILE BELL -->
   <div class="notification-badge notification-badge-mobile" aria-label="{{ status }}"
        ng-show="directiveMode === 'mobile-bell' && vm.notifications.length !== 0 && !vm.isNotificationsPage()">
-    <md-icon>notifications</md-icon>
+    <md-icon class="notification-badge-icon">notifications</md-icon>
   </div>
 
   <!-- DESKTOP NOTIFICATION BELL -->
@@ -39,7 +39,8 @@
       <div class="notification-badge" aria-label="{{ vm.status }}" ng-class="{ 'notification-badge-empty' : vm.notifications.length === 0 }">
         <span class="number-of-nots" ng-show="vm.notifications.length > 0 && !vm.isLoading"
               ng-class="{ 'more-than-10-nots' : (vm.notifications.length > 9) }">{{ vm.notifications.length }}</span>
-        <md-icon>notifications</md-icon>
+              <!-- md-colors="{ color: '{{vm.theme.name}}-primary-50' }" -->
+          <md-icon>notifications</md-icon>
         <md-progress-circular md-mode="indeterminate" ng-show="vm.isLoading" md-diameter="15px" class="md-primary"></md-progress-circular>
       </div>
     </md-button>

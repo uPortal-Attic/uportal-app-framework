@@ -18,62 +18,38 @@
     under the License.
 
 -->
-<md-toolbar md-scroll-shrink class="md-primary" tabindex="0" ng-controller="MessagesController">
-  <notifications-bell mode="priority" class="priority-gt-xs" ng-if="!guestMode" hide-xs></notifications-bell>
-  <span ng-controller="AnnouncementsController" controllerAs="vm"></span>
-  <div class="md-toolbar-tools"  role="banner">
-    <div layout="row" flex-gt-xs="30" flex-xs="40" layout-align="start center">
-      <!-- MAIN MENU TOGGLE -->
-      <md-button class="menu-toggle"
-                 ng-controller="MenuToggleController as vm"
-                 ng-click="vm.showMainMenu()"
-                 ng-class="{ 'menu-margin' : vm.isMenuConfigured }"
-                 ng-show="vm.isMenuConfigured"
-                 ng-cloak>
+<!-- PRIORITY NOTIFICATIONS & POP-UP ANNOUNCEMENTS -->
+<notifications-bell slot="myuw-notifications" mode="priority" class="priority-gt-xs" ng-if="!guestMode" hide-xs></notifications-bell>
+<span ng-controller="AnnouncementsController" controllerAs="vm"></span>
+
+<myuw-app-bar
+    theme-name="{{ portal.theme.title }}"
+    app-name="{{ NAMES.title }}" 
+    app-url="{{ MISC_URLS.rootURL }}">
+    
+    <!-- MAIN MENU TOGGLE -->
+    <md-button slot="myuw-navigation" 
+        class="menu-toggle"
+        ng-controller="MenuToggleController as vm"
+        ng-click="vm.showMainMenu()"
+        ng-class="{ 'menu-margin' : vm.isMenuConfigured }"
+        ng-show="vm.isMenuConfigured"
+        ng-cloak>
         <md-icon>menu</md-icon>
         <md-tooltip md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Menu</md-tooltip>
         <notifications-bell mode="mobile-bell" ng-if="!guestMode" hide-gt-xs></notifications-bell>
-      </md-button>
-
-      <!-- PORTAL TITLE AND APP TITLE -->
-      <!-- If in theme home -->
-      <a ng-if="portal.theme.title === NAMES.title"
-         ng-href="{{ MISC_URLS.rootURL }}"
-         class="title-link"
-         target="_self"
-         aria-label="{{ portal.theme.ariaLabelTitle }}"
-         layout="row"
-         layout-align="start center">
-        <h1 class="md-title" layout="row">
-          <span>{{ portal.theme.title }}</span>
-        </h1>
-      </a>
-
-      <!-- If in separate app -->
-      <div ng-if="portal.theme.title != NAMES.title" layout="row" class="title-link__two-names">
-        <a class="title-link__theme-name" ng-href="{{ MISC_URLS.rootURL }}" target="_self" aria-label="{{ portal.theme.ariaLabelTitle }}">
-          {{ portal.theme.title }}
-        </a>
-        <h1 class="md-title">{{ NAMES.title }}</h1>
-      </div>
-    </div>
+    </md-button>
 
     <!-- SEARCH BUTTON (XS-ONLY) -->
-    <div layout="row" layout-align="end center" flex-xs="60" class="top-bar-controls-xs" hide-gt-xs>
-      <search ng-show="APP_FLAGS.showSearch" mode="mobile-search" layout="row" layout-align="end center" hide-gt-xs></search>
-    </div>
+    <search ng-show="APP_FLAGS.showSearch"  slot="myuw-search" mode="mobile-search" layout="row" layout-align="end center" hide-gt-xs></search>
 
     <!-- SEARCH BAR (SM+) -->
-    <div class="header__search-bar-container" md-colors="{ backgroundColor: '{{portal.theme.name}}-primary' }" layout="row" flex-gt-xs="40" layout-align="center center" hide-xs>
+    <div slot="myuw-search" class="header__search-bar-container" md-colors="{ backgroundColor: '{{portal.theme.name}}-primary' }" layout="row" flex-gt-xs="100" layout-align="center center" hide-xs>
       <search ng-show="APP_FLAGS.showSearch"></search>
     </div>
-    <span flex></span>
 
-    <!-- TOP BAR BUTTONS (SM+) -->
-    <div layout="row" layout-align="end center" flex-gt-xs="30" hide-xs>
-      <mascot-announcement mode="mascot"></mascot-announcement>
-      <notifications-bell mode="bell" ng-if="!guestMode"></notifications-bell>
-      <username layout="row" layout-align="start center"></username>
-    </div>
-  </div>
-</md-toolbar>
+    <mascot-announcement slot="myuw-help" mode="mascot" hide-xs></mascot-announcement>
+    <notifications-bell slot="myuw-notifications" mode="bell" ng-if="!guestMode" hide-xs></notifications-bell>
+    <username slot="myuw-profile" layout="row" layout-align="start center" hide-xs></username>
+
+</myuw-app-bar>

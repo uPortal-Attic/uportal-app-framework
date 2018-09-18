@@ -95,11 +95,10 @@ search {
     }
 
     &.myuw-search__mobile {
+      position: absolute;
       height: 56px;
       max-width: 100%;
       width: 0;
-      //opacity: 0;
-      position: absolute;
       right: 0;
       top: 0;
       padding: 6px 4px;
@@ -153,6 +152,16 @@ search {
 
         md-input-container {
           opacity: 1;
+        }
+      }
+
+      ~ .md-button {
+        min-height: 44px;
+        min-width: 40px;
+        margin-right: 0;
+
+        .material-icons {
+          color: var(--myuw-app-bar-color, @white);
         }
       }
     }

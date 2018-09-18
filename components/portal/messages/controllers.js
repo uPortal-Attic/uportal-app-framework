@@ -188,6 +188,7 @@ define(['angular'], function(angular) {
         vm.isLoading = true;
         vm.renderLimit = 3;
         vm.titleLengthLimit = 140;
+        vm.theme = $rootScope.portal.theme;
 
         // //////////////////
         // Event listeners //

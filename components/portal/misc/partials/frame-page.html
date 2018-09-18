@@ -20,7 +20,7 @@
 -->
 <div class="wrapper__frame-page" ng-class="{ 'frame-page__push-content' : menuPushContent }">
   <div role="main" class="wrapper__push-content" ng-class="{ 'white-page' : whiteBackground }">
-    <main-menu ng-class="{ 'push-content' : menuPushContent, 'main-menu__open' : vm.isMenuOpen(), 'has-priority-notifications' : vm.hasPriorityNotifications }"></main-menu>
+    <main-menu ng-class="{ 'push-content' : menuPushContent, 'main-menu__open' : vm.isMenuOpen() }"></main-menu>
     <div class="wrapper__page-title" layout="row" layout-align="space-between center" ng-if="!menuPushContent">
       <h1 class="md-display-1" ng-if="pageTitle">
         <i ng-if="appIcon.indexOf('fa-') > -1" class="fa {{appIcon}}" aria-hidden="true"></i>
