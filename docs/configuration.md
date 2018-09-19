@@ -25,7 +25,7 @@ _as of 2.2.2_
 + **shibbolethSessionURL**: Default is **null**. When set to a proper string
 (like **'/Shibboleth.sso/Session.json'**) it then adds a timeout alert
 notifying users the session is no longer valid. The action of the pop-up is to
-forward them on to the **MISC_URLS.loginURL**. _as of 2.6.2_
+forward them on to the **MISC_URLS.logoutURL**.
 + **campusIdAttribute**: Default is **null**. Provide a session attribute for
 campus ID (i.e. UW-Madison's **wiscEduStudentID** attribute) so that users can
 see their ID in the username menu. _This is currently unimplemented._
@@ -58,7 +58,7 @@ this is constructed.
 + **inactivityTimeout**: the length in minutes a login session can remain
 inactive before the server expires it. A dialog will show during the last
 minute of a session, prompting user action. If no action is taken, the user
-will be redirected to `MISC_URLS.loginURL` when the session has expired.
+will be redirected to `MISC_URLS.logoutURL` when the session has expired.
 
 ### SERVICE_LOC
 

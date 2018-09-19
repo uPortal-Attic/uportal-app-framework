@@ -376,9 +376,9 @@ define(['angular', 'moment'], function(angular, moment) {
           // Make sure we got a something back
           if (data) {
             // Make sure quantity is a number
-            if (isNaN(data.quantity)) {
+            if (!Number.isInteger(data.quantity)) {
               // Log problem and don't include in list
-              $log.warn('Got non-number data from ' + item.feedUrl);
+              $log.warn('Got non-integer quantity from ' + item.feedUrl);
               // Reduce display limit (only once) to make room for error
               if (!$scope.hasQuantityError) {
                 $scope.itemsLimit -= 1;
