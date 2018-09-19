@@ -1,6 +1,7 @@
 describe('The Home Page', function() {
+/* eslint-disable no-undef */
   it('successfully loads', function() {
-    cy.visit('/');
+    cy.visit('/'); // eslint would have flagged cy as undef
   });
 
   it('includes the portal name in the title', function() {
@@ -13,3 +14,4 @@ describe('The Home Page', function() {
     cy.title().should('include', 'Frame app');
   });
 });
+/* eslint-enable no-undef */
