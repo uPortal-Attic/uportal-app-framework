@@ -18,60 +18,47 @@
         "launchText": "See all",
         "actionItems": [
           {
-            "textSingular": "unconfigured feedUrl",
-            "textPlural": "unconfigured feedUrls",
-            "actionUrl": "http://www.google.com"
-          },
-          {
-            "textSingular": "task in inbox",
-            "textPlural": "tasks in inbox",
-            "feedUrl": 
-              "staticFeeds/example-json-callbacks/quantities/quantity_0.json",
-            "actionUrl": "http://www.google.com"
-          },
-          {
-            "textSingular": "task in someday/maybe",
-            "textPlural": "tasks in someday/maybe",
-            "feedUrl": 
-              "staticFeeds/example-json-callbacks/quantities/quantity_17.json",
-            "actionUrl": "http://www.google.com"
-          },
-          {
-            "textSingular": "missing JSON source",
-            "textPlural": "missing JSON sources",
-            "feedUrl": "does/not/exist/alas.json",
-            "actionUrl": "http://www.google.com"
-          },
-          {
-            "textSingular": "malformed response",
-            "textPlural": "malformed responses",
-            "feedUrl": "staticFeeds/example-json-callbacks/ill-formed.json",
-            "actionUrl": "http://www.google.com"
-          },
-          {
-            "textSingular": "nonsensical response",
-            "textPlural": "nonsensical responses",
-            "feedUrl": 
+            "textSingular": "overdue task",
+            "textPlural": "overdue tasks",
+            "feedUrl":
               "staticFeeds/example-json-callbacks/quantities/quantity_nonsense.json",
             "actionUrl": "http://www.google.com"
           },
           {
-            "textSingular": "empty string",
-            "textPlural": "empty strings",
-            "feedUrl": 
-              "staticFeeds/example-json-callbacks/quantities/quantity_empty-string.json",
-            "actionUrl": "http://www.google.com"
-          },
-          {
-            "textSingular": "unfulfilled schema",
-            "textPlural": "unfulfilled schemas",
-            "feedUrl": "list-of-links-via-url.json",
+            "textSingular": "task due today",
+            "textPlural": "tasks due today",
+            "feedUrl": "staticFeeds/example-json-callbacks/ill-formed.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "next action",
             "textPlural": "next actions",
             "feedUrl": "/example-json-callbacks/quantities/quantity_42.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "project due for review",
+            "textPlural": "projects due for review",
+            "feedUrl": "does/not/exist/alas.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "task waiting on others",
+            "textPlural": "tasks waiting on others",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "task in inbox",
+            "textPlural": "tasks in inbox",
+            "feedUrl":
+              "staticFeeds/example-json-callbacks/quantities/quantity_0.json",
+            "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "task in someday/maybe",
+            "textPlural": "tasks in someday/maybe",
+            "feedUrl":
+              "staticFeeds/example-json-callbacks/quantities/quantity_17.json",
             "actionUrl": "http://www.google.com"
           }
         ]
