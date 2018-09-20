@@ -18,7 +18,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
-
++ `action-items` widgets now handle more kinds of errors more fluently (#839)
 
 ### Removed
 
