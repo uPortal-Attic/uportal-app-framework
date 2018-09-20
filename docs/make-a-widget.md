@@ -344,7 +344,7 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 
 #### When to use `action-items`
 
-* You want to display a list of quantity-based items, with quantities that are expected to change. For example, a manager who has to approve time off could see "5 leave requests need your approval".
+* You want to display a list of quantity-based items, with quantities that are expected to change. For example, a manager who has to approve time off could see "5 leave requests".
 
 #### Additional `action-items` entity file configuration
 
@@ -359,10 +359,10 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
       <![CDATA[{
         "actionItems": [
           {
-            "textSingular": "item needs your attention.",
-            "textPlural": "items need your attention.",
-            "feedUrl": "example/path/to/individual-item-feed",
-            "actionUrl": "example/path/to/take/action"
+            "textSingular": "absence request to approve",
+            "textPlural": "absence requests to approve",
+            "feedUrl": "example/path/to/absence-request-quantity-feed",
+            "actionUrl": "example/path/to/approve/absences"
           }
         ]
       }]]>
@@ -372,7 +372,12 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 
 * **actionItems**: A simple array of items. Each item should have values for each of the four attributes.
 * **textSingular**: Text to show when there is only 1 item of this type requiring attention.
-* **textPlural**: Text to show when there are multiple items of this type requiring attention.
+* **textPlural**: Text to show when there are multiple items of this type
+  requiring attention. The widget will also use this label to describe the
+  problem if there's an error getting the quantity, as in
+  "Unable to count {textPlural}." This reads better when {textPlural} is a noun
+  phrase, as in "approvals awaiting your attention" rather than
+  "approvals await your attention".
 * **feedUrl**: The URL to fetch the *JSON representation* of the quantity of items needing attention.
 * **actionUrl**: The URL where action can be taken for this specific item. If no such URL exists, use the same URL as you use for the "See all" launch button.
 
