@@ -24,6 +24,14 @@ portal-header {
   overflow-y: hidden;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
 
+  myuw-app-bar.has-priority-notifications {
+    height: 102px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background: var(--myuw-app-bar-bg);
+  }
+
   a {
     &:not(.md-button):not(.btn):not(.launch-app-button):not(.full-width):not(.title-link__small) {
       &:hover,
@@ -104,6 +112,11 @@ portal-header {
   .header__search-bar-container {
     height: 100%;
     z-index: @top-bar-2;
+  }
+
+  .header__mascot,
+  .header__bell {
+    display: inline-block;
   }
 
   @media (max-width: @xs) {

@@ -34,6 +34,15 @@ define(['angular', 'require'], function(angular, require) {
     };
 
     /**
+      * Listen for unseen notifications
+      */
+    $scope.$on('HAS_PRIORITY_NOTIFICATIONS', function(event, data) {
+      if (angular.isDefined(data.hasNotifications)) {
+        $scope.hasPriorityNotifications = data.hasNotifications;
+      }
+    });
+
+    /**
      * Set Document title.
      * Asks mainService what the document title ought to be and
      * sets the document title to that value.

@@ -25,8 +25,9 @@
 <myuw-app-bar
     theme-name="{{ portal.theme.title }}"
     app-name="{{ appBarTitle }}" 
-    app-url="{{ MISC_URLS.rootURL }}">
-    
+    app-url="{{ MISC_URLS.rootURL }}"
+    ng-class="{ 'has-priority-notifications' : hasPriorityNotifications }">
+
     <!-- MAIN MENU TOGGLE -->
     <md-button slot="myuw-navigation" 
         class="menu-toggle"
@@ -48,8 +49,8 @@
       <search ng-show="APP_FLAGS.showSearch"></search>
     </div>
 
-    <mascot-announcement slot="myuw-help" mode="mascot" hide-xs></mascot-announcement>
-    <notifications-bell slot="myuw-notifications" mode="bell" ng-if="!guestMode" hide-xs></notifications-bell>
+    <mascot-announcement slot="myuw-notifications" mode="mascot" class="header__mascot" hide-xs></mascot-announcement>
+    <notifications-bell slot="myuw-notifications" mode="bell" class="header__bell" ng-if="!guestMode" hide-xs></notifications-bell>
     <username slot="myuw-profile" layout="row" layout-align="start center" hide-xs></username>
 
 </myuw-app-bar>

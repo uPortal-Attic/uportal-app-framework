@@ -17,7 +17,6 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 + Replaced Angular Material toolbar directive with `myuw-app-bar` v1.5.3 from myuw-web-components library (#836)
   + CSS hierarchy has changed a bit to reflect the absence of the Angular Material toolbar. Custom CSS that targets elements within `md-toolbar` may be affected
-+ Priority notifications bubble sits on top of the top app bar, instead of push it down (#836)
 + Regular side navigation now looks the same on mobile and desktop (#836)
 
 
