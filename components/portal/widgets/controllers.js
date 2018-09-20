@@ -385,6 +385,12 @@ define(['angular', 'moment'], function(angular, moment) {
               }
               // Show error
               $scope.hasQuantityError = true;
+
+              // Add an error to the error array
+              $scope.actionItemErrors.push({
+                textPlural: item.textPlural,
+                actionUrl: item.actionUrl,
+              });
             } else {
               // Add an action item to scope array
               $scope.actionItems.push({
@@ -402,6 +408,13 @@ define(['angular', 'moment'], function(angular, moment) {
           // Log a service failure error
           $log.warn('Problem getting action item data from: ' + item.feedUrl);
           $scope.hasServiceError = true;
+
+              // Add an error to the error array
+              $scope.actionItemErrors.push({
+                textPlural: item.textPlural,
+                actionUrl: item.actionUrl,
+              });
+
           $scope.loading = false;
         });
     };
@@ -443,6 +456,7 @@ define(['angular', 'moment'], function(angular, moment) {
     var initializeActionItems = function() {
       // Initialize bindable members
       $scope.actionItems = [];
+      $scope.actionItemErrors = [];
       $scope.loading = true;
       $scope.hasServiceError = false;
       $scope.hasQuantityError = false;
