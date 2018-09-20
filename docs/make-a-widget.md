@@ -385,7 +385,7 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 
 If there are multiple action item types to display, the widget will display the first 3 in the list. If there are more than 3, it will display a note that says "Showing 3 of \[x]".
 
-The endpoint used for **feedUrl** should return a simple JSON object containing a "quantity" key with a number for a value. For example:
+The endpoint used for **feedUrl** should return a simple JSON object containing a "quantity" key with an integer for a value. For example:
 
 ```json
   {
