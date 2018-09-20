@@ -400,6 +400,13 @@ define(['angular', 'moment'], function(angular, moment) {
                 quantity: data.quantity,
               });
             }
+          } else {
+            // no data
+            // Add an error to the error array
+            $scope.actionItemErrors.push({
+              textPlural: item.textPlural,
+              actionUrl: item.actionUrl,
+            });
           }
 
           return data;
