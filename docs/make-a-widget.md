@@ -344,7 +344,11 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 
 #### When to use `action-items`
 
-* You want to display a list of quantity-based items, with quantities that are expected to change. For example, a manager who has to approve time off could see "5 leave requests".
+Use `action-items` to tell the user how many of specific kinds of things need
+their action.
+
+For example, a manager who approves time off could see "5 leave requests" in an
+"Approve time and absences" widget.
 
 #### Additional `action-items` entity file configuration
 
