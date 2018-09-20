@@ -13,6 +13,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 + Added session inactivity checker, and updated logout dialog (#830)
 + CSS variables for each theme to enable `myuw-app-bar` cooperation with angular material theming (#836)
 
+
 ### Changed
 
 + Replaced Angular Material toolbar directive with `myuw-app-bar` v1.5.3 from myuw-web-components library (#836)
@@ -26,6 +27,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 + Improved spacing/appearance of push-content side navigation for desktop (#836)
 + Mobile search "Close" button now uses arrow icon, so not to be confused with "clear" functionality (#836)
 
+
 ### Removed
 
 
@@ -33,6 +35,22 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Deprecated
 
 
+
+### Documentation
+
+
+
+## [10.3.0][] - 2018-09-19
+
+### Added
+
++ Added session inactivity checker, and updated logout dialog (#830, #837)
+
+### Fixed
+
++ `action-items` widget now detects and handles as an error when a quantity
+  callback returns an empty String. (#836)
++ Use sentence-case rather within `time-sensitive-content` widget type (#832)
 
 ### Documentation
 
@@ -880,7 +898,8 @@ break compatibility with some older components. If the app used any
 * Added ability to have a name for the default theme (#336)
 * Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.2.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.3.0...HEAD
+[10.3.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.2.0...v10.3.0
 [10.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.1...v10.2.0
 [10.1.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.0...v10.1.1
 [10.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.0.0...v10.1.0

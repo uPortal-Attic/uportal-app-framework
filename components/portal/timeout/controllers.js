@@ -103,7 +103,7 @@ define(['angular'], function(angular) {
      * Redirect to end the session;
      */
     function redirect() {
-      $window.location.replace(MISC_URLS.loginURL);
+      $window.location.replace(MISC_URLS.logoutURL);
     }
 
     /**
