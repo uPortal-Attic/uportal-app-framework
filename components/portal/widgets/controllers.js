@@ -437,6 +437,14 @@ define(['angular', 'moment'], function(angular, moment) {
           // Log a missing-config error
           $log.warn('An action item was missing one or '
             + 'more required configuration options');
+
+            if ($scope.config.actionItems[i].textPlural) {
+              // Add an error to the error array
+              $scope.actionItemErrors.push({
+                textPlural: $scope.config.actionItems[i].textPlural,
+                actionUrl: $scope.config.actionItems[i].actionUrl,
+              });
+            }
         }
 
         // If this is the last time through the loop, turn off loading spinner
