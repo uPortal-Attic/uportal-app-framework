@@ -416,11 +416,11 @@ define(['angular', 'moment'], function(angular, moment) {
           $log.warn('Problem getting action item data from: ' + item.feedUrl);
           $scope.hasServiceError = true;
 
-              // Add an error to the error array
-              $scope.actionItemErrors.push({
-                textPlural: item.textPlural,
-                actionUrl: item.actionUrl,
-              });
+          // Add an error to the error array
+          $scope.actionItemErrors.push({
+            textPlural: item.textPlural,
+            actionUrl: item.actionUrl,
+          });
 
           $scope.loading = false;
         });
