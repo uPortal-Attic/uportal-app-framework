@@ -5,13 +5,15 @@
       "nodeId": "-1",
       "title": "List of Links widget type with no links",
       "description": "Demonstrates list-of-links edge case of zero links.",
-      "url": "staticFeeds/list-of-no-links-via-url.json",
+      "url":
+        "staticFeeds/example-json-callbacks/list-of-links/list-of-no-links-via-url.json",
       "iconUrl": null,
       "faIcon": "fa-briefcase",
       "fname": "list-of-links-type-zero-links",
       "lifecycleState": "PUBLISHED",
       "target": null,
-      "widgetURL": "/staticFeeds/list-of-no-links-via-url.json",
+      "widgetURL":
+        "/staticFeeds/example-json-callbacks/list-of-links/list-of-no-links-via-url.json",
       "widgetType": "list-of-links",
       "widgetTemplate": null,
       "widgetConfig": {
