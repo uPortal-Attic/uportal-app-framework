@@ -5,13 +5,15 @@
       "nodeId": "-1",
       "title": "List of Links widget type",
       "description": "Convenient access to up to seven hyperlinks, sourced from widget configuration or from URL",
-      "url": "staticFeeds/list-of-links-via-url.json",
+      "url":
+        "staticFeeds/example-json-callbacks/list-of-links/list-of-links-via-url.json",
       "iconUrl": null,
       "faIcon": "fa-briefcase",
       "fname": "list-of-links-type",
       "lifecycleState": "PUBLISHED",
       "target": null,
-      "widgetURL": "/staticFeeds/list-of-links-via-url.json",
+      "widgetURL":
+        "/staticFeeds/example-json-callbacks/list-of-links/list-of-links-via-url.json",
       "widgetType": "list-of-links",
       "widgetTemplate": null,
       "widgetConfig": {
