@@ -53,6 +53,12 @@
             "textPlural": "unfulfilled schemas",
             "feedUrl": "list-of-links-via-url.json",
             "actionUrl": "http://www.google.com"
+          },
+          {
+            "textSingular": "missing textPlural",
+            "feedUrl":
+              "staticFeeds/example-json-callbacks/quantities/quantity_0.json",
+            "actionUrl": "http://www.google.com"
           }
         ]
       },
