@@ -37,14 +37,14 @@
           {
             "textSingular": "nonsensical response",
             "textPlural": "nonsensical responses",
-            "feedUrl": 
+            "feedUrl":
               "staticFeeds/example-json-callbacks/quantities/quantity_nonsense.json",
             "actionUrl": "http://www.google.com"
           },
           {
             "textSingular": "empty string",
             "textPlural": "empty strings",
-            "feedUrl": 
+            "feedUrl":
               "staticFeeds/example-json-callbacks/quantities/quantity_empty-string.json",
             "actionUrl": "http://www.google.com"
           },
