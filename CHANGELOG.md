@@ -30,7 +30,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Documentation
 
-
++ Refactored localhost example `list-of-links` JSON callbacks into a folder of
+  examples (#840)
 
 ## [10.3.0][] - 2018-09-19
 
