@@ -11,7 +11,8 @@
       "fname": "sample-widget__list-of-one-redundant-link",
       "lifecycleState": "PUBLISHED",
       "target": null,
-      "widgetURL": "/staticFeeds/list-of-one-redundant-link-via-url.json",
+      "widgetURL":
+        "/staticFeeds/example-json-callbacks/list-of-links/list-of-one-redundant-link-via-url.json",
       "widgetType": "list-of-links",
       "widgetTemplate": null,
       "widgetConfig": {

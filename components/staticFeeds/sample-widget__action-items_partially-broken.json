@@ -65,7 +65,8 @@
           {
             "textSingular": "unfulfilled schema",
             "textPlural": "unfulfilled schemas",
-            "feedUrl": "list-of-links-via-url.json",
+            "feedUrl":
+              "staticFeeds/example-json-callbacks/list-of-links/list-of-links-via-url.json",
             "actionUrl": "http://www.google.com"
           },
           {
