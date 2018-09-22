@@ -18,8 +18,8 @@
         "launchText": "See all",
         "actionItems": [
           {
-            "textSingular": "approval awaits your attention.",
-            "textPlural": "approvals await your attention.",
+            "textSingular": "approval awaiting your attention",
+            "textPlural": "approvals awaiting your attention",
             "feedUrl": "staticFeeds/example-json-callbacks/quantities/quantity_42.json",
             "actionUrl": "http://www.google.com"
           }
