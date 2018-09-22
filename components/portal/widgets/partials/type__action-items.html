@@ -20,45 +20,42 @@
 -->
 <div class="widget-body action-items">
   <!-- No action items to display -->
-  <div layout="row" layout-align="center center" ng-show="actionItems.length == 0">
+  <div layout="row" layout-align="center center">
     <!-- Loading case -->
     <loading-gif data-object="actionItems" ng-show="loading"></loading-gif>
 
-    <!-- Error case (endpoint failure) -->
-    <div class="error" layout="row" layout-align="start center" ng-show="hasServiceError">
-      <div><md-icon class="md-warn">warning</md-icon></div>
-      <span>There was an issue loading the information. Click <a href="{{ widget.url }}" target="{{ widget.target ? widget.target : '_self' }}">{{ launchText }}</a> for more info.</span>
+    <div>
+      <md-list class="widget-list md-2-line">
+        <md-list-item aria-label="click to take action"
+          ng-repeat="item in actionItems | limitTo:itemsLimit"
+          ng-click="goToAction(item.actionUrl)" >
+          <div class="action-item__quantity">
+            <span>{{ item.quantity }}</span>
+          </div>
+          <div class="md-list-item-text">
+            <p ng-if="item.quantity == 1">{{ item.textSingular }}</p>
+            <p ng-if="item.quantity != 1">{{ item.textPlural }}</p>
+          </div>
+        </md-list-item>
+        <!-- Error case -->
+        <md-list-item  ng-if="actionItemErrors && actionItemErrors.length">
+          <md-icon class="md-warn action-item__error-quantity">warning</md-icon>
+          <span>
+            Could not count
+            <span ng-repeat="itemError in actionItemErrors">
+              <span ng-if="actionItemErrors.length > 1 && $last">and </span>
+              <span ng-click="goToAction(itemError.actionUrl)">
+                {{itemError.textPlural}}</span><span
+                ng-if="actionItemErrors.length > 2 && !$last">, </span>
+            </span>
+          </span>
+        </md-list-item>
+      </md-list>
+      <!-- Over limit case -->
+      <p ng-show="actionItems.length > itemsLimit" class="action-item__showing">Showing {{ errorQuantity ? itemsLimit + 1 : itemsLimit }} of {{ actionItems.length }}</p>
     </div>
 
-    <!-- Error case (non-number quantity for all items) -->
-    <div class="error" layout="row" layout-align="start center" ng-show="hasQuantityError">
-      <div><md-icon class="md-warn">warning</md-icon></div>
-      <span>One or more items failed to retrieve quantity data. Click <a href="{{ widget.url }}" target="{{ widget.target ? widget.target : '_self' }}">{{ launchText }}</a> for more info.</span>
-    </div>
   </div>
-
-  <!-- Has action items to display -->
-  <div ng-show="actionItems.length > 0">
-    <md-list class="widget-list md-2-line">
-      <md-list-item ng-repeat="item in actionItems | limitTo:itemsLimit" ng-click="goToAction(item.actionUrl)" aria-label="click to take action">
-        <div class="action-item__quantity">
-          <span>{{ item.quantity }}</span>
-        </div>
-        <div class="md-list-item-text">
-          <p ng-if="item.quantity == 1">{{ item.textSingular }}</p>
-          <p ng-if="item.quantity != 1">{{ item.textPlural }}</p>
-        </div>
-      </md-list-item>
-      <!-- Error case (non-number quantity item) -->
-      <md-list-item ng-show="hasQuantityError">
-        <md-icon class="md-warn action-item__error-quantity">warning</md-icon>
-        <p>At least one item failed to retrieve quantity data</p>
-      </md-list-item>
-    </md-list>
-    <!-- Over limit case -->
-    <p ng-show="actionItems.length > itemsLimit" class="action-item__showing">Showing {{ errorQuantity ? itemsLimit + 1 : itemsLimit }} of {{ actionItems.length }}</p>
-  </div>
-
 </div>
 
 <!-- LAUNCH BUTTON -->

@@ -344,7 +344,11 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 
 #### When to use `action-items`
 
-* You want to display a list of quantity-based items, with quantities that are expected to change. For example, a manager who has to approve time off could see "5 leave requests need your approval".
+Use `action-items` to tell the user how many of specific kinds of things need
+their action.
+
+For example, a manager who approves time off could see "5 leave requests" in an
+"Approve time and absences" widget.
 
 #### Additional `action-items` entity file configuration
 
@@ -359,10 +363,10 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
       <![CDATA[{
         "actionItems": [
           {
-            "textSingular": "item needs your attention.",
-            "textPlural": "items need your attention.",
-            "feedUrl": "example/path/to/individual-item-feed",
-            "actionUrl": "example/path/to/take/action"
+            "textSingular": "absence request to approve",
+            "textPlural": "absence requests to approve",
+            "feedUrl": "example/path/to/absence-request-quantity-feed",
+            "actionUrl": "example/path/to/approve/absences"
           }
         ]
       }]]>
@@ -370,17 +374,35 @@ The [rssToJson][] microservice is a fine way to convert desired RSS feeds into t
 </portlet-preference>
 ```
 
-* **actionItems**: A simple array of items. Each item should have values for each of the four attributes.
-* **textSingular**: Text to show when there is only 1 item of this type requiring attention.
-* **textPlural**: Text to show when there are multiple items of this type requiring attention.
-* **feedUrl**: The URL to fetch the *JSON representation* of the quantity of items needing attention.
-* **actionUrl**: The URL where action can be taken for this specific item. If no such URL exists, use the same URL as you use for the "See all" launch button.
+`widgetConfig` for this widget type contains a single key **actionItems** keying
+to an array of objects. Each object in the array should have values for each of
+four keys.
+
+* **textSingular**: Label shown when the quantity is 1
+* **textPlural**: Label shown when the quantity is other than 1. The widget will
+  also use this label to describe the problem if there's an error getting the
+  quantity, as in "Unable to count {textPlural}." This reads better when
+  {textPlural} is a noun phrase, as in "approvals awaiting your attention"
+  rather than "approvals await your attention".
+* **feedUrl**: The URL to fetch the *JSON representation* of the quantity of
+  items needing attention.
+* **actionUrl**: The URL where the user can take action for this specific item.
+  If no such URL exists, use the same URL as you use for the "See all" launch
+  button.
 
 #### Guidance about `action-items`
 
-If there are multiple action item types to display, the widget will display the first 3 in the list. If there are more than 3, it will display a note that says "Showing 3 of \[x]".
+If there are multiple action item types to display, the widget will display the
+first 3 in the list, or the first two if the widget needs to display an error
+message. If any of the action item types fail (independently), the widget shows
+an error message telling the user what it couldn't count.
 
-The endpoint used for **feedUrl** should return a simple JSON object containing a "quantity" key with a number for a value. For example:
+If there are more action item types configured than the widget has room to
+display, it will acknowledge it is not showing everything with
+"Showing {x} of {y}".
+
+The **feedUrl** should return a simple JSON object containing a "quantity" key
+with an integer for a value. For example:
 
 ```json
   {
