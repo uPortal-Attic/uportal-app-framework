@@ -92,6 +92,32 @@ define(['angular'], function(angular) {
             });
         };
 
+      var getRelevantMessages = function() {
+          var relevantMessages = [];
+          var seenMessageIds = [];
+
+          getSeenMessageIds().then(function(seenIds) {
+            seenMessageIds = seenIds;
+            return seenMessageIds;
+          }).then(function(seenMessageIds) {
+            var allMessages = getAllMessages();
+            return allMessages;
+          }).then(function(messages) {
+            var groupedMessages = getMessagesByGroup(messages);
+            return groupedMessages;
+          }).then(function(groupedMessages) {
+            var datedMessages = $filter('filterByDate')(groupedMessages);
+            var dataMessages = getMessagesByData(datedMessages);
+            return dataMessages;
+          }).then(function(dataMessages) {
+            relevantMessages = dataMessages;
+            return relevantMessages;
+          }).catch(function(error) {
+            $log.warn(error);
+          });
+        return relevantMessages;
+      };
+
         /**
          * Filter the array of messages based on each message's groups
          * attribute
@@ -163,7 +189,7 @@ define(['angular'], function(angular) {
                     angular.isArray(message.data.dataMessageTitle)) {
                     var messageTitle = objectToFind;
                     var messageTitleLocation =
-                      message.data.dataMessageTitle;
+                    message.data.dataMessageTitle;
                     angular.forEach(messageTitleLocation, function(value, key) {
                       messageTitle = messageTitle[value];
                     });
@@ -254,6 +280,22 @@ define(['angular'], function(angular) {
             });
         };
 
+        var markMessageAsSeen = function(seenMessage, seenMessageIds) {
+          if (seenMessageIds.indexOf(seenMessage.id) ==-1) {
+            seenMessageIds.push(seenMessage.id);
+          }
+
+          return keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS,
+            seenMessageIds)
+            .then(function() {
+              $rootScope.$emit('notificationChange');
+              return seenMessageIds;
+            }).catch(function(error) {
+              $log.warn('Problem setting seen message IDs in storage');
+              return error;
+            });
+        };
+
         /**
          * Set list of seen IDs in K/V store and session storage
          * @param {Array} originalSeenIds - The ids when the
@@ -329,12 +371,14 @@ define(['angular'], function(angular) {
 
         return {
           getAllMessages: getAllMessages,
+          getRelevantMessages: getRelevantMessages,
           getMessagesByGroup: getMessagesByGroup,
           getMessagesByData: getMessagesByData,
           getSeenMessageIds: getSeenMessageIds,
           setMessagesSeen: setMessagesSeen,
+          markMessageAsSeen: markMessageAsSeen,
           broadcastPriorityFlag: broadcastPriorityFlag,
           broadcastAnnouncementFlag: broadcastAnnouncementFlag,
         };
-    }]);
-});
+      }]);
+  });

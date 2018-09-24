@@ -1,11 +1,261 @@
 {
   "messages": [
     {
-      "id": "sample-uportal-app-framework-basic-notification",
-      "title": "This is a sample basic notification living in uportal-app-framework. It should appear to everyone, even when group filtering is enabled.",
-      "titleShort": null,
+      "id": "in-group",
+      "title": "You are in this group.",
+      "titleShort": "You are in the in crowd.",
+      "description": "Describe me.",
+      "descriptionShort": "Describe me short.",
+      "messageType": "notification",
+      "goLiveDate": "",
+      "expireDate": "",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "Portal Administrators",
+          "FacStaff"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Read documentation",
+        "url": "https://wiki.doit.wisc.edu/confluence/display/MUM/Portal+Administration"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "out-group",
+      "title": "We exclude thee.",
+      "titleShort": "Shun.",
+      "description": "Shun shun.",
+      "descriptionShort": "Oucast!",
+      "messageType": "notification",
+      "goLiveDate": "",
+      "expireDate": "",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "Hobbits",
+          "Elves"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Read documentation",
+        "url": "http://www.atlasobscura.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "dated",
+      "title": "Infamy",
+      "titleShort": "Remember the Maine.",
+      "description": "Or the Alamo.",
+      "descriptionShort": "Oucast!",
+      "messageType": "notification",
+      "goLiveDate": "1941-12-06",
+      "expireDate": "1941-12-07",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Read documentation",
+        "url": "http://www.atlasobscura.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "brave-new-world",
+      "title": "Futura",
+      "titleShort": "We have flying cars.",
+      "description": "And picture phones.",
+      "descriptionShort": "You don't live here!",
+      "messageType": "notification",
+      "goLiveDate": "2041-12-06",
+      "expireDate": "2041-12-07",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Read documentation",
+        "url": "http://www.atlasobscura.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "no-time-like-the-present",
+      "title": "Be here now",
+      "titleShort": "Om.",
+      "description": "Om.",
+      "descriptionShort": "Now!",
+      "messageType": "notification",
+      "goLiveDate": "1941-12-06",
+      "expireDate": "2041-12-07",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Read documentation",
+        "url": "http://www.atlasobscura.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "data is present",
+      "title": "Your 2017 Wisconsin Retirement System Annual Statement of Benefits has been posted in the Benefit Information app under the Statements tab.",
+      "titleShort": "2017 WRS Annual Statement of Benefits now available",
       "description": null,
       "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2018-04-18",
+      "expireDate": "2018-08-18",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "HRS Accessible Users"
+        ]
+      },
+      "data": {
+        "dataUrl": "https://api.what3words.com/v2/forward?addr=index.home.raft&key=YU0ITNIZ",
+        "dataObject": "words",
+        "dataArrayFilter": { "words": "shakes.escape.easy"}
+      },
+      "actionButton": {
+        "label": "Read documentation",
+        "url": "http://www.atlasobscura.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": 1,
+      "title": "You are a Portal Administrator. Take care.",
+      "titleShort": "You are a Portal Administrator.",
+      "description": "Your user account is currently in the super-users group. If you do not currently need super-user privileges, consider dropping from the Portal Administrators group.",
+      "descriptionShort": "Portal Administrators are super-users.",
+      "messageType": "notification",
+      "goLiveDate": "2017-08-14T10:50",
+      "expireDate": "",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "Portal Administrators"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Read documentation",
+        "url": "https://wiki.doit.wisc.edu/confluence/display/MUM/Portal+Administration"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "course-search-notice",
+      "title": "Welcome to the fall semester! Use the Course Search and Enroll app to add, drop and swap courses until the September 14, 2018 deadline.",
+      "titleShort": "Use Course Search and Enroll to add, drop, or swap courses.",
+      "description": "",
+      "descriptionShort": "",
+      "messageType": "notification",
+      "goLiveDate": "2018-08-01",
+      "expireDate": "2018-09-14",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": []
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Course Search And Enroll",
+        "url": "https://enroll.wisc.edu/"
+      },
+      "moreInfoButton": {
+        "label": "Learn more",
+        "url": "https://registrar.wisc.edu/enrollhelp/"
+      },
+      "confirmButton": null
+    },
+    {
+      "id": "demo-high-priority-no-group-no-date",
+      "title": "No group. No date. High priority.",
+      "titleShort": "No group. No date. High priority.",
+      "description": "No group. No date. High priority.",
+      "descriptionShort": "No group. No date. High priority.",
+      "messageType": "notification",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": []
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Go",
+        "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-low-priority-no-group-no-date",
+      "title": "No group. No date. Low priority.",
+      "titleShort": "No group. No date. Low priority.",
+      "description": "Test no group no date. Low priority.",
+      "descriptionShort": "No group. No date. Low priority.",
       "messageType": "notification",
       "goLiveDate": null,
       "expireDate": null,
@@ -15,109 +265,872 @@
         "groups": []
       },
       "data": {
-        "dataUrl": "",
-        "dataObject": "",
-        "dataArrayFilter": {}
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
       },
       "actionButton": {
-        "label": "Take action",
+        "label": "Go",
         "url": "http://www.google.com"
       },
-      "moreInfoButton": {
-        "label": "More info",
-        "url": "http://www.google.com"
-      },
+      "moreInfoButton": null,
       "confirmButton": null
     },
     {
-      "id": "sample-uportal-app-framework-madison-priority-notification",
-      "title": "This is a high priority notification. It should only appear if group filtering is disabled in /settings",
+      "id": "demo-low-priority-valid-group-no-date",
+      "title": "Valid group. No date. Low.",
+      "titleShort": "Valid group. No date. Low priority.",
+      "description": "Valid group. No date. Low priority.",
+      "descriptionShort": "Valid group. No date. Low priority.",
+      "messageType": "notification",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "Portal Administrators"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Go",
+        "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-high-priority-valid-group-no-date",
+      "title": "Valid group. No date. High priority.",
+      "titleShort": "Valid group. No date. High priority.",
+      "description": "Valid group. No date. High priority.",
+      "descriptionShort": "Valid group. No date. High priority.",
+      "messageType": "notification",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "Portal Administrators"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Go",
+        "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-low-priority-valid-group-valid-date",
+      "title": "Valid group. Valid date. Low priority.",
+      "titleShort": "Valid group. Valid date. Low priority.",
+      "description": "Valid group. Valid date. Low priority.",
+      "descriptionShort": "Valid group. Valid date. Low priority.",
+      "messageType": "notification",
+      "goLiveDate": "2016-01-01",
+      "expireDate": "2050-01-01",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "Portal Administrators"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Go",
+        "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-high-priority-valid-group-valid-date",
+      "title": "Valid group. Valid date. High priority.",
+      "titleShort": "Valid group. Valid date. High priority.",
+      "description": "Valid group. No date. High priority.",
+      "descriptionShort": "Valid group. Valid date. High priority.",
+      "messageType": "notification",
+      "goLiveDate": "2016-01-01",
+      "expireDate": "2050-01-01",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "Portal Administrators"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Go",
+        "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-high-priority-invalid-group-valid-date",
+      "title": "Invalid group. Valid date. High priority.",
+      "titleShort": "Invalid group. Valid date. High priority.",
+      "description": "Invalid group. No date. High priority.",
+      "descriptionShort": "Invalid group. Valid date. High priority.",
+      "messageType": "notification",
+      "goLiveDate": "2016-01-01",
+      "expireDate": "2050-01-01",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "Not A Real Group"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Go",
+        "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-high-priority-valid-group-expired-date",
+      "title": "Valid group. Expired date. High priority.",
+      "titleShort": "Valid group. Expired date. High priority.",
+      "description": "Valid group. Expired date. High priority.",
+      "descriptionShort": "Valid group. Expired date. High priority.",
+      "messageType": "notification",
+      "goLiveDate": "2016-01-01",
+      "expireDate": "2016-05-05",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "Portal Administrators"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Go",
+        "url": "http://www.google.com"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": 2,
+      "title": "Your Social Security Number (SSN) in the Student Information System is invalid or missing. Please update your SSN in the Personal Information section in the Student Center.",
       "titleShort": null,
       "description": null,
       "descriptionShort": null,
       "messageType": "notification",
-      "goLiveDate": "2017-08-03",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "Users - Student SSN Update"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Update",
+        "url": "/portal/p/my-info-student-center-ssn.ctf1/max/action.uP?pP_action=loginAction"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": 3,
+      "title": "You need to modify your NetID account to activate essential UW Services.",
+      "titleShort": null,
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": null,
       "expireDate": null,
       "featureImageUrl": null,
       "priority": "high",
-      "dismissible": true,
       "audienceFilter": {
-        "groups": [""]
-       },
+        "groups": [
+          "Users - Service Activation Required"
+        ]
+      },
       "data": {
-        "dataUrl": "",
-        "dataObject": "",
-        "dataArrayFilter": {}
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Activate",
+        "url": "https://www.mynetid.wisc.edu/modify"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": 4,
+      "title": "City of Madison - Declared Snow Emergency",
+      "titleShort": null,
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "Madison Snow Emergency"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Info",
+        "url": "http://www.cityofmadison.com/winter/"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": 5,
+      "title": "Your account is not allowed to use MyUW System. For assistance, contact the Help Desk.",
+      "titleShort": null,
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "System Portal Ineligible"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Get help",
+        "url": "https://kb.wisc.edu/myuwsystem/page.php?id=15303"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": 8,
+      "title": "Performance Management and Development Program Widget",
+      "titleShort": "New PDMP Widget",
+      "description": "Is your area using the new Performance Management and Development Program? Quickly and easily access your performance review via MyUW. This widget will take you to the program to review and document performance management conversations. Just search for 'PMDP' and add the interactive widget.",
+      "descriptionShort": "Search for the new Performance Management and Development Program widget and add it to your homepage today!",
+      "messageType": "announcement",
+      "goLiveDate": "2016-07-26",
+      "expireDate": "2017-12-31",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "PMDP Users"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": null,
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "student-tca-needed-starting-2017",
+      "title": "You need to complete the Student Terms and Conditions Agreement before you can enroll in classes.",
+      "titleShort": null,
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": "high",
+      "dismissible": false,
+      "audienceFilter": {
+        "groups": [
+          "Persons missing needed FRC"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
       },
       "actionButton": {
         "label": "Take action",
-        "url": "http://www.google.com"
+        "url": "https://madison.sisdev.wisc.edu/psp/user-fd/EMPLOYEE/HRMS/s/WEBLIB_U_SR.U_SR_FIN_AGRM_URL.FieldFormula.IScript_GoToFinAgreement"
       },
       "moreInfoButton": {
-        "label": "More info",
-        "url": "http://www.google.com"
+        "label": "Learn more",
+        "url": "http://www.bussvc.wisc.edu/bursar/faqterms.html"
       },
       "confirmButton": null
     },
     {
-      "id": "sample-uportal-app-framework-madison-mascot-announcement",
-      "title": "This is a mascot announcement's long title",
-      "titleShort": "This is a UW-Madison mascot announcement",
-      "description": "This mascot announcement should appear to the UW-Madison group only (unless group filtering is disabled).",
-      "descriptionShort": "This is a short description",
+      "id": "demo-add-widget",
+      "title": "Demo adding widget from announcement",
+      "titleShort": "Add widget to homepage",
+      "description": "This add to home button is a demo",
+      "descriptionShort": "Add campus news to your homepage",
       "messageType": "announcement",
-      "goLiveDate": "2017-08-01T09:30",
-      "expireDate": "2017-08-15",
-      "featureImageUrl": "img/features/bucky-announcement.png",
+      "goLiveDate": "2016-07-26",
+      "expireDate": "2017-12-31",
+      "featureImageUrl": null,
       "priority": null,
       "audienceFilter": {
-        "groups": ["UW-Madison"]
-       },
+        "groups": [
+          "Portal Administrators"
+        ]
+      },
       "data": {
-        "dataUrl": "",
-        "dataObject": "",
-        "dataArrayFilter": {}
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Add to Home",
+        "url": "addToHome/campus-news"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "demo-open-apereo-2018-save-date",
+      "title": "Open Apereo 2018 will be June 3 to 7.",
+      "titleShort": "Open Apereo June 3-7 2018",
+      "description": "Count down to this Montreal conference with a widget.",
+      "descriptionShort": "Add a countdown widget.",
+      "messageType": "announcement",
+      "goLiveDate": "2016-07-26",
+      "expireDate": "2018-06-08",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "Portal Administrators",
+          "Developers"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
       },
       "actionButton": {
         "label": "Add to home",
-        "url": "addToHome/time-and-absence"
+        "url": "addToHome/open-apereo"
+      },
+      "moreInfoButton": "https://www.apereo.org/content/2018-open-apereo-montreal-quebec",
+      "confirmButton": null
+    },
+    {
+      "id": "2017-abe-madison",
+      "title": "Annual Benefits Enrollment begins October 2 and ends October 27, 2017.",
+      "titleShort": "Annual Benefits Enrollment begins Oct 2 and ends Oct 27, 2017.",
+      "description": "Here in predev this notification does not predicate on enrollmentFlag.",
+      "descriptionShort": "predev version",
+      "messageType": "notification",
+      "goLiveDate": "2017-10-02",
+      "expireDate": "2017-10-28",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "FacStaff"
+        ]
+      },
+      "actionButton": {
+        "label": "Enroll",
+        "url": "http://example.edu/"
       },
       "moreInfoButton": {
-        "label": "Read more",
-        "url": "/features"
+        "label": "Learn more",
+        "url": "https://www.wisconsin.edu/abe"
       },
       "confirmButton": null
     },
     {
-      "id": "sample-uportal-app-framework-filtered-popup-announcement",
-      "title": "This is a filtered popup",
-      "titleShort": "Filtered popup",
-      "description": "This popup message should not appear to anyone unless group filtering is disabled (via beta settings).",
-      "descriptionShort": "You must have disabled group filtering!",
-      "messageType": "announcement",
-      "goLiveDate": "2017-08-01T09:30",
-      "expireDate": "2017-08-15",
-      "featureImageUrl": "img/the-cow.png",
-      "priority": null,
+      "id": "2017-abe-system",
+      "title": "Annual Benefits Enrollment begins October 2 and ends October 27, 2017.",
+      "titleShort": "Annual Benefits Enrollment begins Oct 2 and ends Oct 27, 2017.",
+      "description": "Here in predev this notification does not predicate on enrollmentFlag.",
+      "descriptionShort": "predev version",
+      "messageType": "notification",
+      "goLiveDate": "2017-10-02",
+      "expireDate": "2017-10-28",
+      "featureImageUrl": null,
+      "priority": "high",
       "audienceFilter": {
-        "groups": ["Nonexistent-Group"]
-       },
-      "data": {
-        "dataUrl": "",
-        "dataObject": "",
-        "dataArrayFilter": {}
+        "groups": [
+          "UW System Facstaff"
+        ]
       },
       "actionButton": {
-        "label": "Add to home",
-        "url": "/"
+        "label": "Enroll",
+        "url": "http://example.edu/"
       },
       "moreInfoButton": {
-        "label": "Read more",
-        "url": "/features"
+        "label": "Learn more",
+        "url": "https://www.wisconsin.edu/abe"
       },
-      "confirmButton": {
-        "label": "Got it!"
+      "confirmButton": null
+    },
+    {
+      "id": "test-variable-title",
+      "title": "Hardcoded title",
+      "titleShort": "Hardcoded short title",
+      "titleUrl": "/aries/proxy/wiscmailLoginAlertTestAccount",
+      "description": "A test message",
+      "descriptionShort": "predev version",
+      "messageType": "notification",
+      "goLiveDate": "2016-10-02",
+      "expireDate": "2017-12-31",
+      "featureImageUrl": null,
+      "priority": "high",
+      "recurrence": "true",
+      "audienceFilter": {
+        "groups": [
+          "Portal Administrators"
+        ]
+      },
+      "actionButton": null,
+      "moreInfoButton": {
+        "label": "You are here",
+        "url": "https://map.what3words.com/zoom.venue.cages"
+      },
+      "confirmButton": null
+    },
+    {
+      "id": "test-variable-mtest-title",
+      "title": "Hardcoded title",
+      "titleShort": "Hardcoded short title",
+      "titleUrl": "/aries/proxy/wiscmaildiscontinuetest",
+      "description": "A test message with a message",
+      "descriptionShort": "predev version",
+      "messageType": "notification",
+      "goLiveDate": "2016-10-02",
+      "expireDate": "2017-12-31",
+      "featureImageUrl": null,
+      "priority": "high",
+      "recurrence": "true",
+      "audienceFilter": {
+        "groups": [
+          "Portal Administrators"
+        ]
+      },
+      "actionButton": null,
+      "moreInfoButton": {
+        "label": "You are here",
+        "url": "https://map.what3words.com/zoom.venue.cages"
+      },
+      "confirmButton": null
+    },
+    {
+      "id": "test-tier-mascot",
+      "title": "I am an adorable mascot test message.",
+      "titleShort": "Announcement",
+      "description": "This is an announcement for the test tier only.",
+      "descriptionShort": "This is the short description.",
+      "messageType": "announcement",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": []
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "External Link",
+        "url": "https://www.atlasobscura.com/places/elvis-karate-fight-plaque"
+      },
+      "moreInfoButton": {
+        "label": "Relative Link to settings",
+        "url": "/user-settings"
       }
+    },
+    {
+      "id": "O365_Account_Deactivation",
+      "title": "Your O365 email account will be deactivated soon",
+      "titleShort": null,
+      "dismissible": false,
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "authenticated-UW-Madison"
+        ]
+      },
+      "data": {
+        "dataUrl": "/aries/proxy/wiscmailLoginAlert",
+        "dataObject": "result",
+        "dataArrayFilter": {
+          "short": ""
+        },
+        "dataMessageTitle": [
+          "result",
+          0,
+          "short"
+        ],
+        "dataMessageMoreInfoUrl": [
+          "result",
+          0,
+          "url"
+        ]
+      },
+      "moreInfoButton": {
+        "label": "Learn more",
+        "url": "https://www.email.wisc.edu"
+      },
+      "confirmButton": null
+    },
+    {
+      "id": "course-search-and-acad-nav-on-default",
+      "title": "Two academic apps added to your home page",
+      "titleShort": "Apps added to your homepage",
+      "description": "Course Search & Enroll is the new app to find and register for your courses! It's been added to your MyUW homepage, along with Academic Navigator.",
+      "descriptionShort": "Course Search & Enroll is the new app to find and register for your courses! It's been added to your MyUW homepage, along with Academic Navigator.",
+      "messageType": "announcement",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "Student",
+          "AT Support - East",
+          "Advising Gateway Tech Support"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      }
+    },
+    {
+      "id": "madison-my-wisconsin-use-my-wisc-instead",
+      "title": "Try my.wisc.edu instead of my.wisconsin.edu",
+      "titleShort": "Try my.wisc.edu",
+      "description": "Your MyUW experience could be better: use my.wisc.edu instead of my.wisconsin.edu for a MyUW customized to the Madison campus.",
+      "descriptionShort": "UW-Madison has a version of this site with more Madison content.",
+      "messageType": "announcement",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "UW System-Madison"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Go to my.wisc.edu",
+        "url": "https://predev.my.wisc.edu"
+      },
+      "moreInfoButton": {
+        "label": "Learn more",
+        "url": "https://it.wisc.edu/services/myuw"
+      }
+    },
+    {
+      "id": "vote-2018-04-03",
+      "title": "Statewide spring elections are on April 3, 2018. Find information on voting and the Big Ten Voting Challenge at vote.wisc.edu.",
+      "titleShort": "Statewide spring elections are on April 3, 2018.",
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2018-03-15",
+      "expireDate": "2018-04-03T21:00:00",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "UW-Madison"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Go to vote.wisc.edu",
+        "url": "https://vote.wisc.edu"
+      }
+    },
+    {
+      "id": "w2-availible-2018",
+      "title": "Taxes not done yet? Find 2017 tax statements in the Payroll Information app.",
+      "titleShort": null,
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2018-03-27",
+      "expireDate": "2018-04-15T23:59:59",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "HRS Accessible Users"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Go to app",
+        "url": "/portal/p/earnings-statement"
+      }
+    },
+    {
+      "id": "w2-availible-system-2018",
+      "title": "Taxes not done yet? Find 2017 tax statements in the Payroll Information app.",
+      "titleShort": null,
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2018-03-27",
+      "expireDate": "2018-04-15T23:59:59",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "UW System HRS Accessible Users"
+        ]
+      },
+      "data": {
+        "dataUrl": null,
+        "dataObject": null,
+        "dataArrayFilter": null
+      },
+      "actionButton": {
+        "label": "Go to app",
+        "url": "/portal/p/uw-system-earnings-statement"
+      }
+    },
+    {
+      "id": "madison-2017-wrs-sob-posted-april-2018",
+      "title": "Your 2017 Wisconsin Retirement System Annual Statement of Benefits has been posted in the Benefit Information app under the Statements tab.",
+      "titleShort": "2017 WRS Annual Statement of Benefits now available",
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2018-04-18",
+      "expireDate": "2018-08-18",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "HRS Accessible Users"
+        ]
+      },
+      "data": {
+        "dataUrl": "/portal/p/university-staff-benefits-statement/max/benefitStatements.resource.uP",
+        "dataObject": "report",
+        "dataArrayFilter": { "year": 2017, "fullTitle": "WRS"}
+      },
+      "actionButton": {
+        "label": "Access available WRS statements",
+        "url": "/web/exclusive/university-staff-benefits-statement"
+      }
+    },
+    {
+      "id": "system-2017-wrs-sob-posted-april-2018",
+      "title": "Your 2017 Wisconsin Retirement System Annual Statement of Benefits has been posted in the Benefit Information app under the Statements tab.",
+      "titleShort": "2017 WRS Annual Statement of Benefits now available",
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2018-04-18",
+      "expireDate": "2018-08-18",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "UW System HRS Accessible Users"
+        ]
+      },
+      "data": {
+        "dataUrl": "/portal/p/university-staff-benefits-statement/max/benefitStatements.resource.uP",
+        "dataObject": "report",
+        "dataArrayFilter": { "year": 2017, "fullTitle": "WRS"}
+      },
+      "actionButton": {
+        "label": "Access available WRS statements",
+        "url": "/web/exclusive/uw-system-university-staff-benefits-statement"
+      }
+    },
+    {
+      "id": "anyconnect-disconnect",
+      "title": "WiscVPN will transition from Cisco AnyConnect to Palo Alto GlobalProtect on August 15, 2018. Please take the necessary steps to install and connect to WiscVPN with GlobalProtect.",
+      "titleShort": "AnyConnect VPN is transitioning to Palo Alto",
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2018-08-10",
+      "expireDate": "2018-08-16",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "anyConnect Users"
+        ]
+      },
+      "data": {
+      },
+      "actionButton": {
+        "label": "Learn More",
+        "url": "https://it.wisc.edu/news/upgrade-new-wiscvpn-globalprotect-today/"
+      }
+    },
+    {
+      "id": "primary_tech_partners",
+      "title": "Introducing a new DoIT Help Desk support option just for Primary Tech Partners. Choose Option 7 the next time you call the DoIT Help Desk for support for your department.",
+      "titleShort": null,
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2018-08-04",
+      "expireDate": "2018-09-30",
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+          "uw:domain:my.wisc.edu:message_audiences:primary_tech_partners"
+        ]
+      },
+      "data": {
+      },
+      "actionButton": {
+        "label": "Learn More",
+        "url": "https://it.wisc.edu/pcs-news/new-help-option-for-department-it-administrators-primary-tech-partners/"
+      }
+    },
+    {
+      "id": "2018-abe-madison",
+      "title": "Annual Benefits Enrollment begins October 1 and ends October 26, 2018.",
+      "titleShort": "Annual Benefits Enrollment begins Oct 1 and ends Oct 26, 2018.",
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2017-10-01",
+      "expireDate": "2017-10-27",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "HRS Accessible Users"
+        ],
+        "dataUrl": 
+        "/portal/p/university-staff-benefits-statement/exclusive/enrollmentFlag.resource.uP",
+        "dataObject": "report",
+        "dataArrayFilter": {"enrollmentFlag":"O"}
+      },
+      "actionButton": {
+        "label": "Enroll",
+        "url":
+        "https://uat.ps.wisconsin.edu/psp/hrqa-fd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL"
+      },
+      "moreInfoButton": {
+        "label": "Learn more",
+        "url": "https://www.wisconsin.edu/abe"
+      },
+      "confirmButton": null
+    },
+    {
+      "id": "2018-abe-system",
+      "title": "Annual Benefits Enrollment begins October 1 and ends October 26, 2018.",
+      "titleShort": "Annual Benefits Enrollment begins Oct 1 and ends Oct 26, 2018.",
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2018-10-01",
+      "expireDate": "2018-10-27",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+          "UW System HRS Accessible Users" 
+        ],
+        "dataUrl":  
+        "/portal/p/uw-system-university-staff-benefits-statement/exclusive/enrollmentFlag.resource.uP",
+        "dataObject": "report",
+        "dataArrayFilter": {"enrollmentFlag":"O"}
+      },
+      "actionButton": {
+        "label": "Enroll",
+        "url":
+        "https://uat.ps.wisconsin.edu/psp/hrqa-fd/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL"
+      },
+      "moreInfoButton": {
+        "label": "Learn more",
+        "url": "https://www.wisconsin.edu/abe"
+      },
+      "confirmButton": null
     }
   ]
 }

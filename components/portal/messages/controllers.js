@@ -31,7 +31,6 @@ define(['angular'], function(angular) {
         // //////////////////
         // Local variables //
         // //////////////////
-        var allMessages = [];
         $scope.APP_FLAGS = APP_FLAGS;
         $scope.MISC_URLS = MISC_URLS;
         $scope.showMessagesFeatures = false;
@@ -39,97 +38,15 @@ define(['angular'], function(angular) {
         // ////////////////
         // Local methods //
         // ////////////////
-        /**
-         * Get all messages, then pass result on for filtering
-         */
-        var getMessages = function() {
-          messagesService.getAllMessages()
-            .then(function(result) {
-              // Ensure messages exist and check for group filtering
-              if (angular.isArray(result) && result.length > 0) {
-                allMessages = result;
-              } else if (angular.isString(result)) {
-                $scope.messagesError = result;
-              }
+        var markMessageAsSeen = function(message) {
 
-              if ( $localStorage.showAllMessages ) {
-                // simulate the side effect of filterMessages
-                $scope.messages = $filter('separateMessageTypes')(allMessages);
-                $scope.hasMessages = true;
-                $scope.seenMessageIds = messagesService.getSeenMessageIds();
-              } else {
-                filterMessages(allMessages);
-                // side effects:
-                // sets $scope.messages and $scope.hasMessages
-                // and $scope.seenMessageIds
-              }
-
-              return allMessages;
-            })
-            .catch(function(error) {
-              $log.warn('Problem getting all messages for messages controller');
-              return error;
-            });
-        };
-        // Promise to get seen message IDs
-        var promiseSeenMessageIds = function() {
-          return messagesService.getSeenMessageIds();
-        };
-
-        // Promise to resolve urls in messages
-        var promiseMessagesByData = function(messages) {
-          messagesService.getMessagesByData(messages)
-            .then(dataMessageSuccess)
-            .catch(filterMessagesFailure);
-        };
-
-        // Promise to resolve group memberships
-        var promiseMessagesByGroup = function(messages) {
-          return messagesService.getMessagesByGroup(messages);
-        };
-        /**
-         * Determine whether or not messages need to be filtered
-         * by group and data, then execute the relevant promises
-         * @param {Object} allMessages
-         */
-        var filterMessages = function(allMessages) {
-          var dateFilterMessages =
-            $filter('filterByDate')(allMessages);
-          var groupPromise = promiseMessagesByGroup(dateFilterMessages);
-
-          $q.all([promiseSeenMessageIds(),
-                  groupPromise])
-            .then(filterMessagesSuccess)
-            .catch(filterMessagesFailure);
-          };
-
-         /**
-         * Separate the message types in scope for child controllers
-         * @param {Object} result
-         */
-        var filterMessagesSuccess = function(result) {
-          $scope.seenMessageIds = result[0];
-          var grpMsg = result[1];
-
-          var seenAndUnseen =
-            $filter('filterSeenAndUnseen')(grpMsg, $scope.seenMessageIds);
-
-          $q.all(promiseMessagesByData(seenAndUnseen.unseen));
-        };
-
-        var dataMessageSuccess = function(result) {
-          $scope.messages =
-            $filter('separateMessageTypes')(result);
-          $scope.hasMessages = true;
-        };
-
-        /**
-         * Handle errors that occur while resolving promises to
-         * get notifications
-         * @param {Object} error
-         */
-        var filterMessagesFailure = function(error) {
-          $log.warn('Problem getting messages from messagesService');
+          messagesService.markMessageAsSeen(message, $scope.seenMessageIds)
+             .then(function(messageIds) {
+                  $scope.messageIds = messageIds;
+                  return messageIds;
+             }).catch(function(error) {
+               $log.warn('message errror ' + error);
+             });
         };
 
         /**
@@ -138,6 +55,7 @@ define(['angular'], function(angular) {
         var init = function() {
           $scope.hasMessages = false;
           $scope.messages = {};
+          $scope.seenMessageIds;
           $scope.guestMode = true;
 
           mainService.isGuest().then(function(isGuest) {
@@ -145,12 +63,27 @@ define(['angular'], function(angular) {
             if (!isGuest && SERVICE_LOC.messagesURL &&
               SERVICE_LOC.messagesURL.length > 0) {
               $scope.showMessagesFeatures = true;
-              getMessages();
             }
             return isGuest;
           }).catch(function() {
             $log.warn('Problem checking guestMode');
           });
+          if (!$scope.isGuest) {
+            messagesService.getRelevantMessages()
+              .then(function(messages) {
+                $scope.messages = messages;
+                return messages;
+              }).catch(function() {
+                $log.warn('Problem checking guestMode');
+              });
+             messagesService.getSeenMessageIds()
+               .then(function(messageIds) {
+                 $scope.seenMessageIds = messageIds;
+                 return messageIds;
+               }).catch(function(error) {
+                 $log.warn(error);
+               })
+          }
         };
 
         init();
