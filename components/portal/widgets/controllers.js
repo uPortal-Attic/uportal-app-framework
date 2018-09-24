@@ -386,6 +386,12 @@ define(['angular', 'moment'], function(angular, moment) {
               }
               // Show error
               $scope.hasQuantityError = true;
+
+              // Add an error to the error array
+              $scope.actionItemErrors.push({
+                textPlural: item.textPlural,
+                actionUrl: item.actionUrl,
+              });
             } else {
               // Add an action item to scope array
               $scope.actionItems.push({
@@ -395,6 +401,13 @@ define(['angular', 'moment'], function(angular, moment) {
                 quantity: data.quantity,
               });
             }
+          } else {
+            // no data
+            // Add an error to the error array
+            $scope.actionItemErrors.push({
+              textPlural: item.textPlural,
+              actionUrl: item.actionUrl,
+            });
           }
 
           return data;
@@ -404,6 +417,13 @@ define(['angular', 'moment'], function(angular, moment) {
           $log.warn('ACTION ITEMS CONTROLLER: '
             + 'Problem getting action item data from: ' + item.feedUrl);
           $scope.hasServiceError = true;
+
+          // Add an error to the error array
+          $scope.actionItemErrors.push({
+            textPlural: item.textPlural,
+            actionUrl: item.actionUrl,
+          });
+
           $scope.loading = false;
         });
     };
@@ -427,6 +447,16 @@ define(['angular', 'moment'], function(angular, moment) {
           $log.warn('ACTION ITEMS CONTROLLER: '
             + 'An action item was missing one or '
             + 'more required configuration options');
+
+          if (!$scope.config.actionItems[i].textPlural) {
+            $scope.config.actionItems[i].textPlural = 'misconfigured things';
+          }
+
+          // Add an error to the error array
+          $scope.actionItemErrors.push({
+            textPlural: $scope.config.actionItems[i].textPlural,
+            actionUrl: $scope.config.actionItems[i].actionUrl,
+          });
         }
 
         // If this is the last time through the loop, turn off loading spinner
@@ -446,6 +476,7 @@ define(['angular', 'moment'], function(angular, moment) {
     var initializeActionItems = function() {
       // Initialize bindable members
       $scope.actionItems = [];
+      $scope.actionItemErrors = [];
       $scope.loading = true;
       $scope.hasServiceError = false;
       $scope.hasQuantityError = false;

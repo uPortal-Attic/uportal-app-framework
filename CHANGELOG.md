@@ -26,7 +26,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 + Use sentence-case rather within `time-sensitive-content` widget type (#832)
 + Improved spacing/appearance of push-content side navigation for desktop (#836)
 + Mobile search "Close" button now uses arrow icon, so not to be confused with "clear" functionality (#836)
-
++ `action-items` widgets now handle more kinds of errors more fluently (#839)
 
 ### Removed
 
