@@ -21,11 +21,11 @@
 <!-- TIME-SENSITIVE CONTENT -->
 <div class="widget-body" ng-if="callToAction" layout="column" layout-align="center center">
   <span class="tsc__title">{{ callToAction.actionName }}</span>
-  <div ng-switch="templateStatus" class="tsc__status">
+  <div class="tsc__status">
     <!-- Take action period upcoming -->
-    <p ng-switch-when="upcoming">begins {{ activePeriodStartDate | date:mediumDate }}</p>
+    <p ng-if="templateStatus == 'upcoming'">begins {{ activePeriodStartDate | date:mediumDate }}</p>
     <!-- Take action period ongoing -->
-    <div ng-switch-when="ongoing" layout="column" layout-align="center center">
+    <div ng-if="templateStatus == 'ongoing'" layout="column" layout-align="center center">
       <p>
         <span class="tsc__days-left">{{ daysLeft }}</span> day<span ng-if="daysLeft > 1">s</span> left
         <span ng-if="callToAction.daysLeftMessage"> {{ callToAction.daysLeftMessage }}</span>
@@ -33,7 +33,7 @@
       <p><md-button class="md-raised md-accent" ng-href="{{ callToAction.actionButton.url }}">{{ callToAction.actionButton.label }}</md-button></p>
     </div>
     <!-- Last day to take action -->
-    <div ng-switch-when="lastDay" layout="column" layout-align="center center">
+    <div ng-if="templateStatus == 'lastDay'" layout="column" layout-align="center center">
       <p ng-if="callToAction.lastDayMessage"><span class="tsc__last-day"><md-icon class="md-warn" aria-label="warning:">warning</md-icon> {{ callToAction.lastDayMessage }}</span></p>
       <p ng-if="!callToAction.lastDayMessage">
         <span class="tsc__days-left">{{ daysLeft }}</span> day<span ng-if="daysLeft > 1">s</span> left
@@ -42,7 +42,7 @@
       <p><md-button class="md-raised md-accent" ng-href="{{ callToAction.actionButton.url }}">{{ callToAction.actionButton.label }}</md-button></p>
     </div>
     <!-- Take action period ended -->
-    <p ng-switch-when="ended">ended {{ activePeriodEndDate | date:mediumDate }}</p>
+    <p ng-if="templateStatus == 'ended'">ended {{ activePeriodEndDate | date:mediumDate }}</p>
   </div>
   <!-- Learn more link -->
   <!-- Give feedback link -->
