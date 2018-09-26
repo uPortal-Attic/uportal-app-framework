@@ -27,6 +27,14 @@
 <meta ng-if="about.description" name="description" content="{{ about.description }}"/>
 <meta ng-if="about.keywords" name="keywords" content="{{ about.keywords }}"/>
 
+<!-- Web component polyfill loader -->
+<!-- Load polyfills; note that "loader" will load these async -->
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+
+<!-- myuw-web-components -->
+<script type="module" src="https://unpkg.com/@myuw-web-components/myuw-app-bar@1.5.3?module"></script>
+<script nomodule scr="https://unpkg.com/@myuw-web-components/myuw-app-bar@1.5.3"></script>
+
 <link href="my-app/my-app.css" rel="stylesheet" type="text/css"/>
 <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css"/>

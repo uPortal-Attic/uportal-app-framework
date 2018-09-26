@@ -34,6 +34,15 @@ define(['angular', 'require'], function(angular, require) {
     };
 
     /**
+      * Listen for unseen notifications
+      */
+    $scope.$on('HAS_PRIORITY_NOTIFICATIONS', function(event, data) {
+      if (angular.isDefined(data.hasNotifications)) {
+        $scope.hasPriorityNotifications = data.hasNotifications;
+      }
+    });
+
+    /**
      * Set Document title.
      * Asks mainService what the document title ought to be and
      * sets the document title to that value.
@@ -41,6 +50,7 @@ define(['angular', 'require'], function(angular, require) {
      */
     function updateWindowTitle(pageTitle) {
       var appTitle = NAMES.title;
+      $rootScope.appBarTitle = NAMES.title;
 
       var portalTitle = '';
       if ($rootScope.portal && $rootScope.portal.theme &&
@@ -48,6 +58,12 @@ define(['angular', 'require'], function(angular, require) {
         // there's an active theme with a title.
         // consider that title the name of the portal
         portalTitle = $rootScope.portal.theme.title;
+
+        // If it's the same as the configured app title, set the top bar
+        // title to empty string
+        if (NAMES.title === $rootScope.portal.theme.title) {
+          $rootScope.appBarTitle = '';
+        }
       }
 
       var windowTitle =
@@ -66,6 +82,7 @@ define(['angular', 'require'], function(angular, require) {
       $scope.THEMES = THEMES.themes;
       $scope.APP_OPTIONS = APP_OPTIONS;
 
+      // Update window title and set app name in top bar
       if (NAMES.title) {
         updateWindowTitle();
       }

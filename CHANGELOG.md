@@ -10,14 +10,22 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Added
 
++ Added session inactivity checker, and updated logout dialog (#830)
++ CSS variables for each theme to enable `myuw-app-bar` cooperation with angular material theming (#836)
 
 
 ### Changed
 
++ Replaced Angular Material toolbar directive with `myuw-app-bar` v1.5.3 from myuw-web-components library (#836)
+  + CSS hierarchy has changed a bit to reflect the absence of the Angular Material toolbar. Custom CSS that targets elements within `md-toolbar` may be affected
++ Regular side navigation now looks the same on mobile and desktop (#836)
 
 
 ### Fixed
 
++ Use sentence-case rather within `time-sensitive-content` widget type (#832)
++ Improved spacing/appearance of push-content side navigation for desktop (#836)
++ Mobile search "Close" button now uses arrow icon, so not to be confused with "clear" functionality (#836)
 + `action-items` widgets now handle more kinds of errors more fluently (#839)
 
 ### Removed

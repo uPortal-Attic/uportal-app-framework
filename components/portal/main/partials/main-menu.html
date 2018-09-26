@@ -25,34 +25,40 @@
             md-whiteframe="4"
             ng-hide="vm.hideMainMenu">
   <div class="main-menu__focus-anchor-top" tabindex="0" md-autofocus></div>
-  <div class="main-menu__mobile-bar" layout="row" layout-align="end center" hide-gt-xs>
-    <md-button href="features"
-               ng-if="vm.hasUnseenAnnouncements && vm.showMessagesFeatures"
-               ng-click="vm.closeMainMenu();"
-               aria-label="view all announcements">
-      <span><md-icon>new_releases</md-icon></span>
-      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">New features</md-tooltip>
+  <div class="main-menu__mobile-bar" layout="row" layout-align="space-between center">
+    <md-button ng-click="vm.closeMainMenu();" aria-label="close navigation drawer" class="md-icon-button">
+      <md-icon>arrow_back</md-icon>
+      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Close menu</md-tooltip>
     </md-button>
-    <!-- Regular notifications button -->
-    <md-button ng-href="{{ vm.notificationsPageUrl }}"
-               ng-click="vm.pushGAEvent('Sidenav notifications bell (normal state)', 'Click link', 'Normal state');vm.closeMainMenu();"
-               aria-label="view all notifications"
-               ng-if="!vm.hasPriorityNotifications && vm.showMessagesFeatures">
-      <span><md-icon>notifications</md-icon></span>
-      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
-    </md-button>
-    <!-- High priority notifications button -->
-    <md-button ng-href="{{ vm.notificationsPageUrl }}"
-               ng-click="vm.pushGAEvent('Sidenav notifications bell', 'Click link', 'High priority state');vm.closeMainMenu();"
-               aria-label="you have important notifications"
-               ng-if="vm.hasPriorityNotifications && vm.showMessagesFeatures">
-      <span class="main-menu__high-priority">
-        <md-icon class="md-warn">error</md-icon>
-      </span>
-      <span><md-icon>notifications</md-icon></span>
-      <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
-    </md-button>
-    <username></username>
+    <div>
+      <md-button href="features"
+                ng-if="vm.hasUnseenAnnouncements && vm.showMessagesFeatures"
+                ng-click="vm.closeMainMenu();"
+                aria-label="view all announcements">
+        <span><md-icon>new_releases</md-icon></span>
+        <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">New features</md-tooltip>
+      </md-button>
+      <!-- Regular notifications button -->
+      <md-button ng-href="{{ vm.notificationsPageUrl }}"
+                ng-click="vm.pushGAEvent('Sidenav notifications bell (normal state)', 'Click link', 'Normal state');vm.closeMainMenu();"
+                aria-label="view all notifications"
+                ng-if="!vm.hasPriorityNotifications && vm.showMessagesFeatures">
+        <span><md-icon>notifications</md-icon></span>
+        <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
+      </md-button>
+      <!-- High priority notifications button -->
+      <md-button ng-href="{{ vm.notificationsPageUrl }}"
+                ng-click="vm.pushGAEvent('Sidenav notifications bell', 'Click link', 'High priority state');vm.closeMainMenu();"
+                aria-label="you have important notifications"
+                ng-if="vm.hasPriorityNotifications && vm.showMessagesFeatures">
+        <span class="main-menu__high-priority">
+          <md-icon class="md-warn">error</md-icon>
+        </span>
+        <span><md-icon>notifications</md-icon></span>
+        <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
+      </md-button>
+      <username></username>
+    </div>
   </div>
   <md-menu-content>
     <!-- App-specific content/navigation -->

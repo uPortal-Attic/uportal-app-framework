@@ -309,7 +309,7 @@ define(['angular', 'moment'], function(angular, moment) {
         widgetService.getRssAsJson($scope.widget.widgetURL)
           .then(function(result) {
             // If we got data, load it and turn off loading spinner
-            $scope.data = result;
+            $scope.data = result ? result : {};
             $scope.loading = false;
 
             // Check for errors or emptiness and update display as needed
@@ -378,7 +378,8 @@ define(['angular', 'moment'], function(angular, moment) {
             // Make sure quantity is a number
             if (!Number.isInteger(data.quantity)) {
               // Log problem and don't include in list
-              $log.warn('Got non-integer quantity from ' + item.feedUrl);
+              $log.warn('ACTION ITEMS CONTROLLER: '
+                + 'Got non-integer quantity from ' + item.feedUrl);
               // Reduce display limit (only once) to make room for error
               if (!$scope.hasQuantityError) {
                 $scope.itemsLimit -= 1;
@@ -413,7 +414,8 @@ define(['angular', 'moment'], function(angular, moment) {
         })
         .catch(function(error) {
           // Log a service failure error
-          $log.warn('Problem getting action item data from: ' + item.feedUrl);
+          $log.warn('ACTION ITEMS CONTROLLER: '
+            + 'Problem getting action item data from: ' + item.feedUrl);
           $scope.hasServiceError = true;
 
           // Add an error to the error array
@@ -442,7 +444,8 @@ define(['angular', 'moment'], function(angular, moment) {
           assembleActionItemsList($scope.config.actionItems[i]);
         } else {
           // Log a missing-config error
-          $log.warn('An action item was missing one or '
+          $log.warn('ACTION ITEMS CONTROLLER: '
+            + 'An action item was missing one or '
             + 'more required configuration options');
 
           if (!$scope.config.actionItems[i].textPlural) {
@@ -488,7 +491,8 @@ define(['angular', 'moment'], function(angular, moment) {
         checkActionItemsConfigs();
       } else {
         // Action items empty or we're missing something else
-        $log.warn('Action items widget has broken configuration');
+        $log.warn('ACTION ITEMS CONTROLLER: '
+          + 'Action items widget has broken configuration');
         // Display error on widget
         $scope.hasServiceError = true;
         $scope.loading = false;
@@ -666,7 +670,8 @@ define(['angular', 'moment'], function(angular, moment) {
               $scope.isEmpty = true;
             }
           } else {
-            $log.warn('Got nothing back from widget fetch from: ' +
+            $log.warn('CUSTOM WIDGET CONTROLLER: '
+              + 'Got nothing back from widget fetch from: ' +
               $scope.widget.widgetURL);
             $scope.isEmpty = true;
           }
@@ -721,7 +726,7 @@ define(['angular', 'moment'], function(angular, moment) {
     } else {
       $scope.loading = false;
       $scope.isEmpty = true;
-      $log.warn($scope.widget.fname +
+      $log.warn('CUSTOM WIDGET CONTROLLER: ' + $scope.widget.fname +
         ' said it\'s a custom/generic widget, but didn\'t provide a template.');
     }
   }])
@@ -736,7 +741,6 @@ define(['angular', 'moment'], function(angular, moment) {
        * Fetch additional widget data
        */
       var initializeSwitchWidget = function() {
-      $log.warn('Initializing switch widget.');
       // save widgetConfig as switchConfig so switch can then conditionally
       // mess with widgetConfig in activating a different widget type
       $scope.switchConfig = $scope.widget.widgetConfig;
@@ -750,8 +754,6 @@ define(['angular', 'moment'], function(angular, moment) {
         widgetService.getWidgetJson($scope.widget).then(function(data) {
           // returns the new $scope.widget.widgetType, e.g. 'list-of-links'
 
-          $log.warn('Switch widget got JSON ' + data);
-
           var parsedExpression = $parse($scope.switchConfig.expression);
 
           var dynamicValueToMatch = parsedExpression(data);
@@ -761,6 +763,7 @@ define(['angular', 'moment'], function(angular, moment) {
            * dynamicValueToMatch. Used for finding the relevant case to switch
            * to, if any.
            * @param {*} caseToCheck
+           * @return {String} widgetType
            */
           function matchesValue(caseToCheck) {
             return caseToCheck.matchValue === dynamicValueToMatch;
@@ -771,9 +774,6 @@ define(['angular', 'moment'], function(angular, moment) {
           // if none of the cases match, select the default case if configured
           if (!caseToActivate && $scope.switchConfig &&
             $scope.switchConfig.defaultCase) {
-            $log.debug($scope.widget.fname +
-              ' switching to default case after no case matched value ' +
-              dynamicValueToMatch);
             caseToActivate = $scope.switchConfig.defaultCase;
           }
 
@@ -816,21 +816,21 @@ define(['angular', 'moment'], function(angular, moment) {
           $scope.switching = false;
           return $scope.widget.widgetType;
         }).catch(function(error) {
-          $log.error($scope.widget.fname +
+          $log.error('SWITCH WIDGET CONTROLLER: ' + $scope.widget.fname +
             ' errored fetching or processing JSON [' + $scope.widget.widgetURL
             + '] to switch on; falling back on being a basic widget.');
-          $log.error(error);
 
           $scope.widget.widgetType = 'basic';
           $scope.widget.widgetConfig = '';
           $scope.switching = false;
         });
       } else {
-        $log.warn($scope.widget.fname + ' not configured with ' +
-        'URL from which to load JSON [' + $scope.widget.widgetURL + '],' +
-        ' expression [' + $scope.switchConfig.expression + ']' +
-        ' to parse from that JSON, or cases to match against,' +
-        ' so falling back on being a basic widget.');
+        $log.warn('SWITCH WIDGET CONTROLLER: '
+          + $scope.widget.fname + ' not configured with ' +
+          'URL from which to load JSON [' + $scope.widget.widgetURL + '],' +
+          ' expression [' + $scope.switchConfig.expression + ']' +
+          ' to parse from that JSON, or cases to match against,' +
+          ' so falling back on being a basic widget.');
 
         $scope.widget.widgetType = 'basic';
         $scope.widget.widgetConfig = '';

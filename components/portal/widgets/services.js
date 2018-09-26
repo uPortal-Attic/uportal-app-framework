@@ -48,8 +48,8 @@ define(['angular'], function(angular) {
           return undefined;
         })
         .catch(function(error) {
-          $log.warn('Error getting app directory entry for ' + fname);
-          $log.error(error);
+          $log.warn('WIDGET SERVICE: Error getting app directory entry for '
+            + fname);
           return getErrorPage(fname);
         });
     };
@@ -98,8 +98,9 @@ define(['angular'], function(angular) {
             });
             externalMessage.messageText = messageText;
           } else {
-            $log.warn('Could not parse external message text for ' +
-              widget.fname);
+            $log.warn(
+              'WIDGET SERVICE: Couldn\'t parse external message text for '
+              + widget.fname);
           }
 
           // Determine the learn more link if configured
@@ -115,7 +116,7 @@ define(['angular'], function(angular) {
           return externalMessage;
         })
         .catch(function(error) {
-          $log.warn('Could not retrieve external message for: '
+          $log.warn('WIDGET SERVICE: Couldn\'t retrieve external message for: '
             + widget.fname);
           return null;
         });
@@ -146,7 +147,8 @@ define(['angular'], function(angular) {
           return data;
         })
         .catch(function(error) {
-          $log.error(error);
+          $log.warn('WIDGET SERVICE: Couldn\'t get widget json. '
+            + error.status);
         });
     };
 
@@ -162,7 +164,8 @@ define(['angular'], function(angular) {
           return result.data;
         })
         .catch(function(error) {
-          $log.error('Couldn\'t get rss as JSON: ' + error);
+          $log.warn('WIDGET SERVICE: Couldn\'t get RSS as json. '
+            + error.status);
         });
     };
 
@@ -179,8 +182,8 @@ define(['angular'], function(angular) {
           return result.data;
         })
         .catch(function(error) {
-          $log.warn('Couldn\'t get action item quantity.');
-          $log.error(error);
+          $log.warn('WIDGET SERVICE: Couldn\'t get action item quantity. '
+            + error.status);
         });
     };
 

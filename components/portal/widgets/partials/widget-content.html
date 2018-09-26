@@ -19,63 +19,33 @@
 
 -->
 <div ng-switch="widget.widgetType" class="widget-type-container">
-
-  <div ng-switch-when="time-sensitive-content">
-    <time-sensitive app="widget" config="widget.widgetConfig"></time-sensitive>
-  </div>
-
-  <div ng-switch-when="option-link">
-    <option-link app="widget" config="widget.widgetConfig"></option-link>
-  </div>
-
-  <div ng-switch-when="rss">
-    <rss-widget app="widget" config="widget.widgetConfig"></rss-widget>
-  </div>
-
-  <div ng-switch-when="action-items">
-    <action-items app="widget" config="widget.widgetConfig"></action-items>
-  </div>
-
-  <div ng-switch-when="list-of-links">
-    <list-of-links app="widget" config="widget.widgetConfig"></list-of-links>
-  </div>
-
-  <div ng-switch-when="search-with-links">
-    <search-with-links app="widget" config="widget.widgetConfig"></search-with-links>
-  </div>
-
-  <div ng-switch-when="switch">
-    <loading-gif ng-if="switching" ></loading-gif>
-    <switch-widget ng-if="!switching"
-      app="widget" config="widget.widgetConfig"></switch-widget>
-  </div>
-
-  <div ng-switch-when="weather">
-    <weather-widget app="widget" config="widget.widgetConfig"></weather-widget>
-  </div>
-
-  <div ng-switch-when="custom" class="custom-widget">
-    <div ng-controller="CustomWidgetController as customWidgetCtrl">
-      <div ng-if="loading" layout="row" layout-align="center center">
-        <loading-gif data-object="content" data-empty="isEmpty"></loading-gif>
-      </div>
-      <content-item ng-if="!loading"></content-item>
-    </div>
-  </div>
+  <time-sensitive ng-switch-when="time-sensitive-content" app="widget" config="widget.widgetConfig"></time-sensitive>
+  <option-link ng-switch-when="option-link" app="widget" config="widget.widgetConfig"></option-link>
+  <rss-widget ng-switch-when="rss" app="widget" config="widget.widgetConfig"></rss-widget><action-items ng-switch-when="action-items" app="widget" config="widget.widgetConfig"></action-items>
+  <list-of-links ng-switch-when="list-of-links" app="widget" config="widget.widgetConfig"></list-of-links>
+  <search-with-links ng-switch-when="search-with-links" app="widget" config="widget.widgetConfig"></search-with-links>
+  <weather-widget ng-switch-when="weather" app="widget" config="widget.widgetConfig"></weather-widget>
+  
+  <!-- switch widget calls the same file as a template or shows loading -->
+  <loading-gif ng-if="switching" ng-switch-when="switch"></loading-gif>
+  <switch-widget ng-if="!switching" ng-switch-when="switch" 
+    app="widget" config="widget.widgetConfig"></switch-widget>
+  
 
   <!-- `generic` is a deprecated alias for `custom` widget type -->
-  <div ng-switch-when="generic" class="custom-widget">
-      <div ng-controller="CustomWidgetController as customWidgetCtrl">
-        <div ng-if="loading" layout="row" layout-align="center center">
-          <loading-gif data-object="content" data-empty="isEmpty"></loading-gif>
-        </div>
-        <content-item ng-if="!loading"></content-item>
-      </div>
+  <div ng-switch-when="generic" class="custom-widget" ng-controller="CustomWidgetController as customWidgetCtrl">
+    <div ng-if="loading" layout="row" layout-align="center center">
+      <loading-gif data-object="content" data-empty="isEmpty"></loading-gif>
     </div>
-
-  <!-- default to an untyped, basic widget -->
-  <div ng-switch-default>
-    <basic-widget app="widget" config="widget.widgetConfig"></basic-widget>
+    <content-item ng-if="!loading"></content-item>
+  </div>
+  <div ng-switch-when="custom" class="custom-widget" ng-controller="CustomWidgetController as customWidgetCtrl">
+    <div ng-if="loading" layout="row" layout-align="center center">
+      <loading-gif data-object="content" data-empty="isEmpty"></loading-gif>
+    </div>
+    <content-item ng-if="!loading"></content-item>
   </div>
 
+  <!-- default to an untyped, basic widget -->
+  <basic-widget ng-switch-default app="widget" config="widget.widgetConfig"></basic-widget>
 </div>
