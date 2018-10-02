@@ -38,7 +38,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Documentation
 
-
++ added messages to `sample-messages.json` demonstrating message filtering
+  against JSON ([#844][])
 
 ## [10.3.0][] - 2018-09-19
 
@@ -939,3 +940,4 @@ break compatibility with some older components. If the app used any
 [uportal-home #750]: https://github.com/uPortal-Project/uportal-home/pull/750
 [uportal-home #795]: https://github.com/uPortal-Project/uportal-home/pull/795
 [sidenav-documentation]: http://uportal-project.github.io/uportal-app-framework/configurable-menu.html
+[#844]: https://github.com/uPortal-Project/uportal-app-framework/pull/844
