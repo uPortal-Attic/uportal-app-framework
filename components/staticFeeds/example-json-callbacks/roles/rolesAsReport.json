@@ -1,0 +1,63 @@
+{
+  "hrsUrls": {
+    "Request Absence": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.GP_ABS_EESS_REQ.GBL",
+    "Timesheet": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.TL_MSS_EE_SRCH_PRD.GBL",
+    "Web Clock": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.TL_WEB_CLOCK.GBL",
+    "Payable time detail": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.TL_MNG_PAY_VIEW_DT.GBL",
+    "Time Exceptions": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.TL_MNG_EX_PNL_GRP3.GBL",
+    "Time Management": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/s/WEBLIB_PTPP_SC.HOMEPAGE.FieldFormula.IScript_AppHP?pt_fname=HC_TIME_MANAGEMENT",
+    "Approve Absence": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/ROLE_MANAGER.GP_SS_ABS_APPR_L.GBL",
+    "Approve Payable time": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/ROLE_MANAGER.TL_SRCH_APPRV_GRP.GBL",
+    "Dependent Information": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_PERS_DTA_SMRY.GBL",
+    "Dependent Coverage": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_DEPBEN_SUM.GBL",
+    "Benefits Summary": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/EF_BENEFITS_FL.W3EB_GRID_FLU.GBL",
+    "Update TSA Deductions": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_SAV_PICK.GBL",
+    "Personal Information": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/EL_EMPLOYEE_FL.HR_EE_ADDR_FL.GBL",
+    "Open Enrollment/Hire Event": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL",
+    "Approvals": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/EOAWMA_MAIN_FL.EOAWMA_MAIN_FL.GBL",
+    "Team Time": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/TL_START_FL.TL_START_NAV_FLU.GBL?MGR=Y",
+    "Direct Deposit": "https://example.edu/psp/some-tier/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.PY_IC_DIR_DEP.GBL"
+  },
+  "report": [
+    {
+      "ROLE_VIEW_MANAGED_TIMES": "false"
+    },
+    {
+      "ROLE_VIEW_DIRECT_DEPOSIT": "false"
+    },
+    {
+      "ROLE_VIEW_HRS_APPROVALS_WIDGET": "false"
+    },
+    {
+      "ROLE_VIEW_ABSENCE_HISTORIES": "false"
+    },
+    {
+      "ROLE_VIEW_MANAGED_ABSENCES": "false"
+    },
+    {
+      "ROLE_VIEW_TIME_ABS_DASHBOARD": "false"
+    },
+    {
+      "ROLE_VIEW_WEB_CLOCK": "false"
+    },
+    {
+      "ROLE_ENTER_EDIT_CANCEL_OWN_ABSENCES": "false"
+    },
+    {
+      "ROLE_VIEW_TIME_ENTRY_HISTORY": "false"
+    },
+    {
+      "ROLE_TIMESHEET_BUTTON": "false"
+    },
+    {
+      "ROLE_UW_EMPLOYEE_ACTIVE": "true"
+    },
+    {
+      "ROLE_UW_DYN_AM_PUNCH_TIME": "false"
+    }
+  ],
+  "emplid": "00123015",
+  "notification": null,
+  "helpUrl": "#",
+  "genericErrorMessage": "Sorry! MyUW was unable to load your information. Please try again later or <a href=\\\"https://kb.wisc.edu/myuw/page.php?id=50338\\\" target=\\\"_blank\\\">get help</a>."
+}

@@ -118,6 +118,118 @@
       "confirmButton": {
         "label": "Got it!"
       }
+    },
+    {
+      "id": "retains-announcements-through-filter",
+      "title": "Shows because JSON matches filter",
+      "titleShort": "Shows because JSON matches filter",
+      "description": "The demo rolesAsReport JSON includes ROLE_UW_EMPLOYEE_ACTIVE, so you will see this",
+      "descriptionShort": "The demo rolesAsReport JSON includes ROLE_UW_EMPLOYEE_ACTIVE, so you will see this",
+      "messageType": "announcement",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+        ],
+        "dataUrl":
+          "/staticFeeds/example-json-callbacks/roles/rolesAsReport.json",
+        "dataObject": "report",
+        "dataArrayFilter": {"ROLE_UW_EMPLOYEE_ACTIVE":"true"}
+      },
+      "actionButton": {
+        "label": "Add to home",
+        "url": "addToHome/my-hrs-portlet-roles"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "filters-away-announcements-by-json",
+      "title": "SHOULD NOT SHOW because role not held",
+      "titleShort": "SHOULD NOT SHOW because role not held",
+      "description": "The demo rolesAsReport JSON does not have ROLE_VIEW_HRS_APPROVALS_WIDGET, so you should not see this",
+      "descriptionShort": "The demo rolesAsReport JSON does not have ROLE_VIEW_HRS_APPROVALS_WIDGET, so you should not see this",
+      "messageType": "announcement",
+      "goLiveDate": null,
+      "expireDate": null,
+      "featureImageUrl": null,
+      "priority": null,
+      "audienceFilter": {
+        "groups": [
+        ],
+        "dataUrl":
+          "/staticFeeds/example-json-callbacks/roles/rolesAsReport.json",
+        "dataObject": "report",
+        "dataArrayFilter": {"ROLE_VIEW_HRS_APPROVALS_WIDGET":"true"}
+      },
+      "actionButton": {
+        "label": "Add to home",
+        "url": "addToHome/my-hrs-portlet-roles"
+      },
+      "moreInfoButton": null,
+      "confirmButton": null
+    },
+    {
+      "id": "retains-notifications-where-json-matches-filter",
+      "title": "Should show because O in JSON matches O in filter",
+      "titleShort": "Should show because O in JSON matches O in filter",
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2018-01-01",
+      "expireDate": "2024-10-27",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+        ],
+        "dataUrl":
+        "/staticFeeds/enrollment-flag-O.json",
+        "dataObject": "report",
+        "dataArrayFilter": {"enrollmentFlag":"O"}
+      },
+      "actionButton": {
+        "label": "Enroll",
+        "url":
+        "https://www.example.edu/psp/some-tier/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL"
+      },
+      "moreInfoButton": {
+        "label": "Learn more",
+        "url": "https://www.wisconsin.edu/abe"
+      },
+      "confirmButton": null
+    },
+    {
+      "id": "filters-away-notifications-where-json-does-not-match-filter",
+      "title": "SHOULD NOT SHOW because H does not match O",
+      "titleShort": "SHOULD NOT SHOW because H does not match O",
+      "description": null,
+      "descriptionShort": null,
+      "messageType": "notification",
+      "goLiveDate": "2018-01-01",
+      "expireDate": "2024-10-27",
+      "featureImageUrl": null,
+      "priority": "high",
+      "audienceFilter": {
+        "groups": [
+        ],
+        "dataUrl":
+        "/staticFeeds/enrollment-flag-H.json",
+        "dataObject": "report",
+        "dataArrayFilter": {"enrollmentFlag":"O"}
+      },
+      "actionButton": {
+        "label": "Oops",
+        "url":
+        "https://www.example.edu/psp/some-tier/EMPLOYEE/HRMS/c/W3EB_MENU.W3EB_ENR_SELECT.GBL"
+      },
+      "moreInfoButton": {
+        "label": "Got bugs?",
+        "url": "https://www.wisconsin.edu/abe"
+      },
+      "confirmButton": null
     }
   ]
 }
