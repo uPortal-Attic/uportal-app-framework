@@ -86,6 +86,20 @@ In `components/js/app-config.js` set
 
 to source the mock data for the example the home page showcasing some widgets.
 
+Also, in `components/js/override.js`, set
+
+```
+...
+        'messagesURL': 'staticFeeds/sample-messages.json',
+      },
+      'MESSAGES': {
+        'notificationsPageURL': '/notifications',
+      },
+...
+```
+
+to source the example messages.
+
 ### Testing
 
 We love tests. We setup karma to run our tests.
