@@ -133,10 +133,12 @@
       "audienceFilter": {
         "groups": [
         ],
-        "dataUrl":
+        "data": {
+          "dataUrl":
           "/staticFeeds/example-json-callbacks/roles/rolesAsReport.json",
-        "dataObject": "report",
-        "dataArrayFilter": {"ROLE_UW_EMPLOYEE_ACTIVE":"true"}
+          "dataObject": "report",
+          "dataArrayFilter": {"ROLE_UW_EMPLOYEE_ACTIVE":"true"}
+        }
       },
       "actionButton": {
         "label": "Add to home",
@@ -159,10 +161,12 @@
       "audienceFilter": {
         "groups": [
         ],
-        "dataUrl":
-          "/staticFeeds/example-json-callbacks/roles/rolesAsReport.json",
-        "dataObject": "report",
-        "dataArrayFilter": {"ROLE_VIEW_HRS_APPROVALS_WIDGET":"true"}
+        "data": {
+          "dataUrl":
+            "/staticFeeds/example-json-callbacks/roles/rolesAsReport.json",
+          "dataObject": "report",
+          "dataArrayFilter": {"ROLE_VIEW_HRS_APPROVALS_WIDGET":"true"}
+        }
       },
       "actionButton": {
         "label": "Add to home",
@@ -185,10 +189,11 @@
       "audienceFilter": {
         "groups": [
         ],
-        "dataUrl":
-        "/staticFeeds/enrollment-flag-O.json",
-        "dataObject": "report",
-        "dataArrayFilter": {"enrollmentFlag":"O"}
+        "data": {
+          "dataUrl": "/staticFeeds/enrollment-flag-O.json",
+          "dataObject": "report",
+          "dataArrayFilter": {"enrollmentFlag":"O"}
+        }
       },
       "actionButton": {
         "label": "Enroll",
@@ -215,10 +220,11 @@
       "audienceFilter": {
         "groups": [
         ],
-        "dataUrl":
-        "/staticFeeds/enrollment-flag-H.json",
-        "dataObject": "report",
-        "dataArrayFilter": {"enrollmentFlag":"O"}
+        "data": {
+          "dataUrl": "/staticFeeds/enrollment-flag-H.json",
+          "dataObject": "report",
+          "dataArrayFilter": {"enrollmentFlag":"O"}
+        }
       },
       "actionButton": {
         "label": "Oops",
