@@ -170,7 +170,7 @@ define(['angular'], function(angular) {
                     message.title = messageTitle;
                   }
 
-                  // if dataMessageLearnMoreUrl is specified, us it
+                  // if dataMessageLearnMoreUrl is specified, use it
                   if (objectToFind &&
                       message.data.dataMessageMoreInfoUrl &&
                       message.moreInfoButton && angular.isArray(
