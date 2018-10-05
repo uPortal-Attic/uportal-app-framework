@@ -61,8 +61,10 @@ Widget messaging is based on JSON input configured in a [widget's configuration]
 - **description**: Information about an announcement -- appears on the "Features" page and in the popup announcement.
 - **descriptionShort**: Brief information about an announcement -- appears in the mascot announcer menu. *Required if the `messageType` is "announcement".*
 - **messageType**: Accepts either "notification" or "announcement" -- used to distinguish between the two broader categories.
-- **goLiveDate**: *(optional)* Accepts a simple ISO date, including time (as pictured). This is used to restrict displaying a message to a certain day/time.
-- **expireDate**: *(optional)* Accepts a simple ISO date, including time (as pictured). This is used to stop displaying a message at a certain day/time.
+- **goLiveDate**: *(optional)* Accepts a simple ISO date, including time (as
+  pictured). The message will display only after this moment.
+- **expireDate**: *(optional)* Accepts a simple ISO date, including time (as
+  pictured). The message will display only before this moment.
 - **featureImageUrl**: *(optional)* Used by popup announcements and announcements on the Features page.
 - **priority**: Set to "high" if you want the message to be displayed with higher visibility (i.e. As a priority notification or popup announcement, respectively).
 - **recurrence**:*(experimental, optional)* If true, even if a notification is dismissed, it will continue to reoccur in the user's home at the start of every session until the user is no longer a member of the targeted group. For example, if a user is a member of students-with-outstanding-parking-tickets, that user will be confronted with the notification at every login until they pay the fine.
