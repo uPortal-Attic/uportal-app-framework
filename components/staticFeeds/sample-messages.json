@@ -30,9 +30,9 @@
     {
       "id": "sample-uportal-app-framework-madison-priority-notification",
       "title": "This is a high priority notification. It should only appear if group filtering is disabled in /settings",
-      "titleShort": null,
-      "description": null,
-      "descriptionShort": null,
+      "titleShort": "Priority notification to non-existent group",
+      "description": "Displays only if group filtering is disabled",
+      "descriptionShort": "Typically excluded by group filtering",
       "messageType": "notification",
       "goLiveDate": "2017-08-03",
       "featureImageUrl": null,
