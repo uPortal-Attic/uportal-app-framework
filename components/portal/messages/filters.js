@@ -68,7 +68,7 @@ define(['angular', 'moment'], function(angular, moment) {
         });
       };
     })
-    .filter('filterByDate', function() {
+    .filter('filterByDate', ['$log', function($log) {
       // messages pass through filterByDate UNLESS
       // they have a goLiveDate that has not yet arrived OR
       // they have an expireDate that has past.
@@ -79,8 +79,8 @@ define(['angular', 'moment'], function(angular, moment) {
             if (message && message.goLiveDate) {
               var goDate = moment(message.goLiveDate);
               if (!goDate.isValid()) {
-                // invalid date indicates misconfiguration. Err on side of not
-                // showing the broken message.
+                $log.warn('Message ' + message.id +
+                  ' supressed because goLiveDate invalid.');
                 return;
               }
               if (goDate.isAfter()) {
@@ -93,8 +93,8 @@ define(['angular', 'moment'], function(angular, moment) {
             if (message && message.expireDate) {
               var expireDate = moment(message.expireDate);
               if (!expireDate.isValid()) {
-                // invalid date indicates misconfiguration. Err on side of not
-                // showing the broken message.
+                $log.warn('Message ' + message.id +
+                ' supressed because expireDate invalid.');
                 return;
               }
               if (expireDate.isBefore()) {
@@ -107,7 +107,7 @@ define(['angular', 'moment'], function(angular, moment) {
             return message;
           });
         };
-      })
+      }])
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {
