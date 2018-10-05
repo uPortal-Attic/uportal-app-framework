@@ -134,6 +134,7 @@ define(['angular'], function(angular) {
             })
             .catch(function(error) {
               $log.warn('Problem getting groups from portalGroupService');
+              $log.warn(error);
               miscService.redirectUser(
                 error.status, 'Unable to retrieve groups');
             });
