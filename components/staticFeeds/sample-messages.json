@@ -57,14 +57,12 @@
       "confirmButton": null
     },
     {
-      "id": "sample-uportal-app-framework-madison-mascot-announcement",
-      "title": "This is a mascot announcement's long title",
-      "titleShort": "This is a UW-Madison mascot announcement",
+      "id": "sample-madison-announcement",
+      "title": "Announcement to UW-Madison group",
+      "titleShort": "UW-Madison announcement",
       "description": "This mascot announcement should appear to the UW-Madison group only (unless group filtering is disabled).",
-      "descriptionShort": "This is a short description",
+      "descriptionShort": "Filtered to UW-Madison group",
       "messageType": "announcement",
-      "goLiveDate": "2017-08-01T09:30",
-      "expireDate": "2017-08-15",
       "featureImageUrl": "img/features/bucky-announcement.png",
       "priority": null,
       "audienceFilter": {
@@ -81,16 +79,111 @@
       },
       "moreInfoButton": {
         "label": "Read more",
-        "url": "/features"
+        "url":
+          "https://uportal-project.github.io/uportal-app-framework/messaging-implementation.html"
       },
       "confirmButton": null
     },
     {
-      "id": "sample-uportal-app-framework-filtered-popup-announcement",
-      "title": "This is a filtered popup",
-      "titleShort": "Filtered popup",
-      "description": "This popup message should not appear to anyone unless group filtering is disabled (via beta settings).",
-      "descriptionShort": "You must have disabled group filtering!",
+      "id": "sample-expired-announcement",
+      "title": "Expired announcement to everyone",
+      "titleShort": "Expired announcement",
+      "description": "This announcement should not appear unless the setting to show-all-messages is set.",
+      "descriptionShort": "You must have set the show-all-messages flag.",
+      "messageType": "announcement",
+      "goLiveDate": "2017-08-01T09:30",
+      "expireDate": "2017-08-15",
+      "featureImageUrl": "img/the-cow.png",
+      "priority": null,
+      "audienceFilter": {
+        "groups": []
+       },
+      "data": {
+        "dataUrl": "",
+        "dataObject": "",
+        "dataArrayFilter": {}
+      },
+      "actionButton": {
+        "label": "Settings",
+        "url": "/settings"
+      },
+      "moreInfoButton": {
+        "label": "Ducmentation",
+        "url":
+          "https://uportal-project.github.io/uportal-app-framework/messaging-implementation.html"
+      },
+      "confirmButton": {
+        "label": "No worries"
+      }
+    },
+    {
+      "id": "sample-premature-announcement",
+      "title": "Premature announcement to everyone",
+      "titleShort": "Premature announcement",
+      "description": "This announcement should not appear unless the setting to show-all-messages is set.",
+      "descriptionShort": "You must have set the show-all-messages flag.",
+      "messageType": "announcement",
+      "goLiveDate": "2040-08-15",
+      "featureImageUrl": "img/the-cow.png",
+      "priority": null,
+      "audienceFilter": {
+        "groups": null
+       },
+      "data": {
+        "dataUrl": "",
+        "dataObject": "",
+        "dataArrayFilter": {}
+      },
+      "actionButton": {
+        "label": "Settings",
+        "url": "/settings"
+      },
+      "moreInfoButton": {
+        "label": "Documentation",
+        "url":
+          "https://uportal-project.github.io/uportal-app-framework/messaging-implementation.html"
+      },
+      "confirmButton": {
+        "label": "No worries"
+      }
+    },
+    {
+      "id": "sample-current-announcement",
+      "title": "Current announcement to everyone",
+      "titleShort": "Current announcement",
+      "description": "This announcement should appear because its goLiveDate is past and its expireDate is future.",
+      "descriptionShort": "Shows because within configured date range.",
+      "messageType": "announcement",
+      "goLiveDate": "2000-08-15",
+      "expireDate": "2050-10-12",
+      "featureImageUrl": "img/the-cow.png",
+      "priority": null,
+      "audienceFilter": {
+       },
+      "data": {
+        "dataUrl": "",
+        "dataObject": "",
+        "dataArrayFilter": {}
+      },
+      "actionButton": {
+        "label": "Settings",
+        "url": "/settings"
+      },
+      "moreInfoButton": {
+        "label": "Ducmentation",
+        "url":
+          "https://uportal-project.github.io/uportal-app-framework/messaging-implementation.html"
+      },
+      "confirmButton": {
+        "label": "Be gone"
+      }
+    },
+    {
+      "id": "sample-expired-filtered-by-group-announcement",
+      "title": "Expired announcement to non-existent group",
+      "titleShort": "Expired not-for-you announcement",
+      "description": "This popup message should not appear unless the setting to show-all-messages is set.",
+      "descriptionShort": "You must have set the show-all-messages flag.",
       "messageType": "announcement",
       "goLiveDate": "2017-08-01T09:30",
       "expireDate": "2017-08-15",
@@ -105,12 +198,13 @@
         "dataArrayFilter": {}
       },
       "actionButton": {
-        "label": "Add to home",
-        "url": "/"
+        "label": "Settings",
+        "url": "/settings"
       },
       "moreInfoButton": {
-        "label": "Read more",
-        "url": "/features"
+        "label": "Ducmentation",
+        "url":
+          "https://uportal-project.github.io/uportal-app-framework/messaging-implementation.html"
       },
       "confirmButton": {
         "label": "Got it!"
