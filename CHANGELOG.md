@@ -12,7 +12,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 + Added session inactivity checker, and updated logout dialog (#830)
 + CSS variables for each theme to enable `myuw-app-bar` cooperation with angular material theming (#836)
-
++ Added patched Web Components polyfill for AngularJS compatibility (#847)
 
 ### Changed
 
