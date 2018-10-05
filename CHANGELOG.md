@@ -23,6 +23,9 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
++ `audienceFilter.groups` is now optional in messages. Omitting it is the same
+  as setting it to `null` or to an empty array `[]`, namely that no one should
+  be denied the message based on group memberships.
 + `goLiveDate` and `expireDate` are now independently optional in messages.
   Omitting `goLiveDate` means there is no date before which the message is not
   live. Omitting `expireDate` means there is no date after which the message is
