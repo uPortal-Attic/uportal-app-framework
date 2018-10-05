@@ -12,7 +12,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 + Added session inactivity checker, and updated logout dialog (#830)
 + CSS variables for each theme to enable `myuw-app-bar` cooperation with angular material theming (#836)
-
++ Added patched Web Components polyfill for AngularJS compatibility (#847)
 
 ### Changed
 
@@ -83,7 +83,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 + Added `aria-label` describing mascot image (#808)
 + More reliably collapses trivial `list-of-links` widgets to `basic` widgets
   (#827)
-+ Restored support for deprecated `generic` as alias for `custom` widget type. 
++ Restored support for deprecated `generic` as alias for `custom` widget type.
   (#828)
 
 ### Removed
