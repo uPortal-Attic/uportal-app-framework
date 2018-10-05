@@ -7,8 +7,6 @@
       "description": null,
       "descriptionShort": null,
       "messageType": "notification",
-      "goLiveDate": null,
-      "expireDate": null,
       "featureImageUrl": null,
       "priority": null,
       "audienceFilter": {
@@ -37,7 +35,6 @@
       "descriptionShort": null,
       "messageType": "notification",
       "goLiveDate": "2017-08-03",
-      "expireDate": null,
       "featureImageUrl": null,
       "priority": "high",
       "dismissible": true,

@@ -23,6 +23,10 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
++ `goLiveDate` and `expireDate` are now independently optional in messages.
+  Omitting `goLiveDate` means there is no date before which the message is not
+  live. Omitting `expireDate` means there is no date after which the message is
+  expired.
 + Use sentence-case rather within `time-sensitive-content` widget type (#832)
 + Improved spacing/appearance of push-content side navigation for desktop (#836)
 + Mobile search "Close" button now uses arrow icon, so not to be confused with "clear" functionality (#836)
@@ -83,7 +87,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 + Added `aria-label` describing mascot image (#808)
 + More reliably collapses trivial `list-of-links` widgets to `basic` widgets
   (#827)
-+ Restored support for deprecated `generic` as alias for `custom` widget type. 
++ Restored support for deprecated `generic` as alias for `custom` widget type.
   (#828)
 
 ### Removed
