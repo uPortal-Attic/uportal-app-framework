@@ -68,41 +68,46 @@ define(['angular', 'moment'], function(angular, moment) {
         });
       };
     })
-    .filter('filterByDate', function() {
+    .filter('filterByDate', ['$log', function($log) {
+      // messages pass through filterByDate UNLESS
+      // they have a goLiveDate that has not yet arrived OR
+      // they have an expireDate that has past.
       return function(messages) {
-          var thePresent = moment.now();
           return messages.filter(function(message) {
-            var goDate = moment(message.goLiveDate);
-            var stopDate = moment(message.expireDate);
-
-            // If neither date is populated, message is valid.
-            if (!goDate.isValid() && !stopDate.isValid()) {
-              return message;
-            }
-
-            // If both dates are populated,
-            // check if current date is in range.
-            if (goDate.isValid() && stopDate.isValid()) {
-              if (goDate.isBefore(thePresent)
-                && stopDate.isAfter(thePresent)) {
-                return message;
+            // if there is a goLiveDate and we're not sure it's in the future,
+            // omit the message.
+            if (message && message.goLiveDate) {
+              var goDate = moment(message.goLiveDate);
+              if (!goDate.isValid()) {
+                $log.warn('Message ' + message.id +
+                  ' supressed because goLiveDate invalid.');
+                return;
+              }
+              if (goDate.isAfter()) {
+                // message has not yet gone live
+                return;
               }
             }
-
-            // Check for valid goLiveDate
-            if (goDate.isValid() && !stopDate.isValid() &&
-              goDate.isBefore(thePresent)) {
-              return message;
+            // if there is an expireDate and we're not sure it's in the past,
+            // omit the message.
+            if (message && message.expireDate) {
+              var expireDate = moment(message.expireDate);
+              if (!expireDate.isValid()) {
+                $log.warn('Message ' + message.id +
+                ' supressed because expireDate invalid.');
+                return;
+              }
+              if (expireDate.isBefore()) {
+                // message has expired
+                return;
+              }
             }
-
-            // Check for valid expireDate
-            if (stopDate.isValid() && !goDate.isValid() &&
-             stopDate.isAfter(thePresent)) {
-              return message;
-            }
+            // the message was not filtered out as premature or expired,
+            // so pass it through
+            return message;
           });
         };
-      })
+      }])
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {

@@ -28,8 +28,9 @@
 <meta ng-if="about.keywords" name="keywords" content="{{ about.keywords }}"/>
 
 <!-- Web component polyfill loader -->
-<!-- Load polyfills; note that "loader" will load these async -->
-<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+<!-- Loading patched 2.1.3 polyfills for AngularJS compatibility -->
+<script src="js/shadydom.min.js"></script>
+<script src="js/custom-elements.min.js"></script>
 
 <!-- myuw-web-components -->
 <script type="module" src="https://unpkg.com/@myuw-web-components/myuw-app-bar@1.5.3?module"></script>
