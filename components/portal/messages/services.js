@@ -213,8 +213,10 @@ define(['angular'], function(angular) {
                   }
                   return;
                 }).catch(function(error) {
-                  $log.warn(
-                    'Error retrieving data for notification ' + message.id);
+                  if (message) {
+                    $log.warn(
+                      'Error retrieving data for notification ' + message.id);
+                  }
                   $log.error(error);
                 }
               ));
