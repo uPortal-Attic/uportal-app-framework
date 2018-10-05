@@ -61,14 +61,20 @@ Widget messaging is based on JSON input configured in a [widget's configuration]
 - **description**: Information about an announcement -- appears on the "Features" page and in the popup announcement.
 - **descriptionShort**: Brief information about an announcement -- appears in the mascot announcer menu. *Required if the `messageType` is "announcement".*
 - **messageType**: Accepts either "notification" or "announcement" -- used to distinguish between the two broader categories.
-- **goLiveDate**: *(optional)* Accepts a simple ISO date, including time (as pictured). This is used to restrict displaying a message to a certain day/time.
-- **expireDate**: *(optional)* Accepts a simple ISO date, including time (as pictured). This is used to stop displaying a message at a certain day/time.
+- **goLiveDate**: *(optional)* Accepts a simple ISO date, including time (as
+  pictured). The message will display only after this moment.
+- **expireDate**: *(optional)* Accepts a simple ISO date, including time (as
+  pictured). The message will display only before this moment.
 - **featureImageUrl**: *(optional)* Used by popup announcements and announcements on the Features page.
 - **priority**: Set to "high" if you want the message to be displayed with higher visibility (i.e. As a priority notification or popup announcement, respectively).
 - **recurrence**:*(experimental, optional)* If true, even if a notification is dismissed, it will continue to reoccur in the user's home at the start of every session until the user is no longer a member of the targeted group. For example, if a user is a member of students-with-outstanding-parking-tickets, that user will be confronted with the notification at every login until they pay the fine.
 - **dismissible**: *(experimental, optional)* Set to false if you want to disallow users from dismissing a notification. This should only be used for truly critical messages. If the attribute is set to true or not set at all, the notification will be dismissible.
 - **audienceFilter**: A group of attributes related to filtering messages based on a user's group.
-  - **groups**: An attribute to optionally show messages only to specific groups (i.e. uPortal groups). If null or empty array, the message will be shown to everyone. Contact your portal development team for more information about group filtering.
+  - **groups**: *(optional)* Optionally show messages only to specific groups
+    (i.e. uPortal groups) named in this array. If omitted, null, or an empty
+    array, the message will not be suppressed based on user group membership.
+    Contact your portal development team for more information about group
+    filtering.
 - **data**: *(optional)* A group of attributes related to external data retrieved by a dataUrl.
   - **dataUrl**: *(optional)* The message will retrieve data from the dataUrl. If data exists, it will show this message to the user. Only supports JSON.
     You would use this feature if you want to only show the message if the specific user has data. For example: Only show user if they have a certain document.

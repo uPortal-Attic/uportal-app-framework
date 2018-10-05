@@ -23,6 +23,13 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
++ `audienceFilter.groups` is now optional in messages. Omitting it is the same
+  as setting it to `null` or to an empty array `[]`, namely that no one should
+  be denied the message based on group memberships. (#846)
++ `goLiveDate` and `expireDate` are now independently optional in messages.
+  Omitting `goLiveDate` means there is no date before which the message is not
+  live. Omitting `expireDate` means there is no date after which the message is
+  expired. (#846)
 + Use sentence-case rather within `time-sensitive-content` widget type (#832)
 + Improved spacing/appearance of push-content side navigation for desktop (#836)
 + Mobile search "Close" button now uses arrow icon, so not to be confused with "clear" functionality (#836)

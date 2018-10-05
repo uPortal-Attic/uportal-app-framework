@@ -68,6 +68,7 @@ define(['angular'], function(angular) {
             })
             .catch(function(error) {
               $log.warn('Problem getting all messages for messages controller');
+              $log.warn(error);
               return error;
             });
         };

@@ -106,7 +106,8 @@ define(['angular'], function(angular) {
                 var added = false;
                 // If the message's groups array has groups,
                 // check for matches against portal groups
-                if (message.audienceFilter.groups.length > 0) {
+                if (message.audienceFilter && message.audienceFilter.groups
+                  && message.audienceFilter.groups.length > 0) {
                   // For each group for the current message
                   angular.forEach(message.audienceFilter.groups,
                     function(messageGroup) {
@@ -123,8 +124,8 @@ define(['angular'], function(angular) {
                       }
                     });
                 } else {
-                  // If the message's groups array is empty or null,
-                  // show it to everyone
+                  // If the message's groups array is empty or null or
+                  // non-existent, show it to everyone
                   messagesByGroup.push(message);
                   added = true;
                 }
@@ -133,6 +134,7 @@ define(['angular'], function(angular) {
             })
             .catch(function(error) {
               $log.warn('Problem getting groups from portalGroupService');
+              $log.warn(error);
               miscService.redirectUser(
                 error.status, 'Unable to retrieve groups');
             });
@@ -211,7 +213,10 @@ define(['angular'], function(angular) {
                   }
                   return;
                 }).catch(function(error) {
-                  $log.warn('Error retrieving data for notification');
+                  if (message) {
+                    $log.warn(
+                      'Error retrieving data for notification ' + message.id);
+                  }
                   $log.error(error);
                 }
               ));
