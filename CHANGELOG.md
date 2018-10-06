@@ -373,14 +373,14 @@ version or later to avoid showing users a broken mascot announcement experience.
 
 ### Breaking Changes
 
-+   Moves the data object in messages out of the audience object and into a
++ Moves the data object in messages out of the audience object and into a
   separate object. This will affect installations that have configured a
   messages.json file. (#649)
-+   Removes a route formerly used to catch a localStorage error (#643)
++ Removes a route formerly used to catch a localStorage error (#643)
 
-+   To upgrade:
-    - If your app's main.js file uses the `'/sorry-safari'` route, remove it
-    - Also remove the corresponding url-pattern from your app's web.xml file
++ To upgrade:
+  + If your app's main.js file uses the `'/sorry-safari'` route, remove it
+  + Also remove the corresponding url-pattern from your app's web.xml file
 
 When upgrading a shared `messages.json` to use this new structure, all apps
 sourcing that shared `messages.json` will need to be upgraded to this version
