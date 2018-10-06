@@ -96,7 +96,6 @@ and this project adheres to
 
 + Removes unused photo opt-out on settings page (#811)
 
-
 ## [10.1.1][] - 2018-08-01
 
 ### Changed
