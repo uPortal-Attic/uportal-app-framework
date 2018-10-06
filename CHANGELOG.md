@@ -32,7 +32,6 @@ and this project adheres to
   Omitting `goLiveDate` means there is no date before which the message is not
   live. Omitting `expireDate` means there is no date after which the message is
   expired. (#846)
-+ Use sentence-case within `time-sensitive-content` widget type (#832)
 + Improved spacing/appearance of push-content side navigation for desktop (#838)
 + Mobile search "Close" button now uses arrow icon, so not to be confused with
   "clear" functionality (#838)
