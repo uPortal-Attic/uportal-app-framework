@@ -33,7 +33,7 @@ and this project adheres to
   Omitting `goLiveDate` means there is no date before which the message is not
   live. Omitting `expireDate` means there is no date after which the message is
   expired. (#846)
-+ Use sentence-case rather within `time-sensitive-content` widget type (#832)
++ Use sentence-case within `time-sensitive-content` widget type (#832)
 + Improved spacing/appearance of push-content side navigation for desktop (#836)
 + Mobile search "Close" button now uses arrow icon, so not to be confused with
   "clear" functionality (#836)
@@ -55,7 +55,7 @@ and this project adheres to
 
 + `action-items` widget now detects and handles as an error when a quantity
   callback returns an empty String. (#836)
-+ Use sentence-case rather within `time-sensitive-content` widget type (#832)
++ Use sentence-case within `time-sensitive-content` widget type (#832)
 
 ### Documentation in 10.3.0
 
