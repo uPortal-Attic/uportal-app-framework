@@ -11,13 +11,17 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Added
 
 + Added session inactivity checker, and updated logout dialog (#830)
-+ CSS variables for each theme to enable `myuw-app-bar` cooperation with angular material theming (#836)
++ CSS variables for each theme to enable `myuw-app-bar` cooperation with angular
+  material theming (#836)
 + Added patched Web Components polyfill for AngularJS compatibility (#847)
 
 ### Changed
 
-+ Replaced Angular Material toolbar directive with `myuw-app-bar` v1.5.3 from myuw-web-components library (#836)
-  + CSS hierarchy has changed a bit to reflect the absence of the Angular Material toolbar. Custom CSS that targets elements within `md-toolbar` may be affected
++ Replaced Angular Material toolbar directive with `myuw-app-bar` v1.5.3 from
+  myuw-web-components library (#836)
+  + CSS hierarchy has changed a bit to reflect the absence of the Angular
+  Material toolbar. Custom CSS that targets elements within `md-toolbar` may be
+  affected
 + Regular side navigation now looks the same on mobile and desktop (#836)
 
 
@@ -32,7 +36,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
   expired. (#846)
 + Use sentence-case rather within `time-sensitive-content` widget type (#832)
 + Improved spacing/appearance of push-content side navigation for desktop (#836)
-+ Mobile search "Close" button now uses arrow icon, so not to be confused with "clear" functionality (#836)
++ Mobile search "Close" button now uses arrow icon, so not to be confused with
+  "clear" functionality (#836)
 + `action-items` widgets now handle more kinds of errors more fluently (#839)
 
 ### Removed
@@ -82,7 +87,8 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-+ Default to handling unrecognized widget types as if they were `basic` widgets (#823)
++ Default to handling unrecognized widget types as if they were `basic` widgets
+  (#823)
 + Leverage `npm ci` to speed continuous integration builds (#812)
 
 ### Fixed
@@ -102,13 +108,16 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-+ Update modules included in `package.json` and update `package-lock.json` to match (#804)
-+ Error states for action items widget link to launch button for better UX (#807)
++ Update modules included in `package.json` and update `package-lock.json` to
+  match (#804)
++ Error states for action items widget link to launch button for better UX
+  (#807)
 
 ### Fixed
 
 + Fixed compact mode widget removal (#805)
-+ Action items widget type now fails gracefully when service returns non-number data (#807)
++ Action items widget type now fails gracefully when service returns non-number
+  data (#807)
 
 
 ## [10.1.0][] - 2018-07-26
@@ -124,13 +133,16 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Changed
 
 + Widget actions are always visible, no longer only on hover (#794)
-+ Increased padding on sides of expanded widget titles to accommodate menu button (#794)
++ Increased padding on sides of expanded widget titles to accommodate menu
+  button (#794)
 
 ### Fixed
 
-+ Fixed display bug in compact widgets. Compact widgets now correctly use the per-widget contextual menu. (#794)
++ Fixed display bug in compact widgets. Compact widgets now correctly use the
+  per-widget contextual menu. (#794)
 + Make widget removal button focusable by keyboard when present (#797)
-+ Enable keyboard activation of widget removal button, when present (#800) & (#805)
++ Enable keyboard activation of widget removal button, when present (#800) &
+  (#805)
 
 
 ## [10.0.0][] - 2018-07-13
@@ -781,7 +793,9 @@ This release has some code cleanup and some bug fixes. Upgrade from [v4.0.0](htt
 
 ## [4.0.0][] - 2017-04-05
 
-This release adds a widget directive to the app-framework, adds personalized notifications, progresses [Apereo](https://www.apereo.org/) [Incubation](https://www.apereo.org/incubation), and fixes a help url bug.
+This release adds a widget directive to the app-framework, adds personalized
+notifications, progresses [Apereo](https://www.apereo.org/)
+[Incubation](https://www.apereo.org/incubation), and fixes a help url bug.
 
 [Guides Contributors to Apereo CLA compliance](https://github.com/uPortal-Project/uportal-app-framework/pull/381)
 [Changes help url for uw-system schools](https://github.com/uPortal-Project/uportal-app-framework/pull/382)
@@ -793,7 +807,8 @@ This release adds a widget directive to the app-framework, adds personalized not
 ### How to Upgrade from version 3.X
 
 * Change dependency to version 4.0.0
-* For upgrading application consuming notifications programmatically: the [notification service api changed from `getNotificationsByGroups` to `getFilteredNotifications`](https://github.com/uPortal-Project/uportal-app-framework/pull/386/files#diff-9a244329b1c0f99008f0fb506d3b9c64L159). This will not be a concern for most (if not all) applications.
+* For upgrading application consuming notifications programmatically: the
+  [notification service api changed from `getNotificationsByGroups` to `getFilteredNotifications`](https://github.com/uPortal-Project/uportal-app-framework/pull/386/files#diff-9a244329b1c0f99008f0fb506d3b9c64L159). This will not be a concern for most (if not all) applications.
 * If the app had previously named services and directives with the word "widget"
   in the name, naming conflicts may arise due to the new Widget directives and
   services being added. [See the code for more details](https://github.com/uPortal-Project/uportal-app-framework/pull/385/files).
