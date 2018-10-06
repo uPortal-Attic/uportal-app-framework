@@ -20,6 +20,11 @@ BREAKING CHANGES
   times out, the framework will attempt to re-bootstrap a session via portal
   login on next interaction.
 
+Deprecation:
+
++ The Weather widget type is deprecated.
+  It may be removed in a future major release.
+
 Other changes
 
 + In miscService.redirectUser, redirect through login when the status code

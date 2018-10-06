@@ -203,6 +203,9 @@ define(['angular', 'require'], function(angular, require) {
     };
   })
 
+  /**
+   * DEPRECATED
+   */
   .directive('weatherWidget', function() {
     return {
       restrict: 'E',

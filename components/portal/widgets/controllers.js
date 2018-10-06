@@ -843,7 +843,7 @@ define(['angular', 'moment'], function(angular, moment) {
     initializeSwitchWidget();
   }])
 
-  // WEATHER widget type
+  // WEATHER widget type - DEPRECATED
   .controller('WeatherWidgetController', [
     '$scope', '$log', '$q', 'widgetService', 'keyValueService',
     function($scope, $log, $q, widgetService, keyValueService) {
@@ -1037,6 +1037,7 @@ define(['angular', 'moment'], function(angular, moment) {
     $scope.loading = false;
     if ($scope.widget.widgetURL) {
       $scope.loading = true;
+      $log.warn('Weather widget type is deprecated.');
       $scope.weatherData = [];
       $scope.currentUnits = 'F';
       $scope.nextUnits = 'C';
