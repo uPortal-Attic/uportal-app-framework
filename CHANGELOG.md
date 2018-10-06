@@ -24,7 +24,6 @@ and this project adheres to
   affected
 + Regular side navigation now looks the same on mobile and desktop (#836)
 
-
 ### Fixed
 
 + `audienceFilter.groups` is now optional in messages. Omitting it is the same
@@ -42,15 +41,9 @@ and this project adheres to
 
 ### Removed
 
-
-
 ### Deprecated
 
-
-
 ### Documentation
-
-
 
 ## [10.3.0][] - 2018-09-19
 
@@ -119,9 +112,7 @@ and this project adheres to
 + Action items widget type now fails gracefully when service returns non-number
   data (#807)
 
-
 ## [10.1.0][] - 2018-07-26
-
 
 ### Added
 
@@ -143,7 +134,6 @@ and this project adheres to
 + Make widget removal button focusable by keyboard when present (#797)
 + Enable keyboard activation of widget removal button, when present (#800) &
   (#805)
-
 
 ## [10.0.0][] - 2018-07-13
 
@@ -220,7 +210,6 @@ and this project adheres to
 * No longer used LoginOnLoad option removed (#753)
 
 ## [9.1.0][] - 2018-04-17
-
 
 ### Added
 
