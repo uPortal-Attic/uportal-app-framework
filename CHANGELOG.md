@@ -11,17 +11,17 @@ and this project adheres to
 ### Added
 
 + CSS variables for each theme to enable `myuw-app-bar` cooperation with angular
-  material theming (#836)
+  material theming (#838)
 + Added patched Web Components polyfill for AngularJS compatibility (#847)
 
 ### Changed
 
 + Replaced Angular Material toolbar directive with `myuw-app-bar` v1.5.3 from
-  myuw-web-components library (#836)
+  myuw-web-components library (#838)
   + CSS hierarchy has changed a bit to reflect the absence of the Angular
   Material toolbar. Custom CSS that targets elements within `md-toolbar` may be
   affected
-+ Regular side navigation now looks the same on mobile and desktop (#836)
++ Regular side navigation now looks the same on mobile and desktop (#838)
 
 ### Fixed
 
@@ -33,9 +33,9 @@ and this project adheres to
   live. Omitting `expireDate` means there is no date after which the message is
   expired. (#846)
 + Use sentence-case within `time-sensitive-content` widget type (#832)
-+ Improved spacing/appearance of push-content side navigation for desktop (#836)
++ Improved spacing/appearance of push-content side navigation for desktop (#838)
 + Mobile search "Close" button now uses arrow icon, so not to be confused with
-  "clear" functionality (#836)
+  "clear" functionality (#838)
 + `action-items` widgets now handle more kinds of errors more fluently (#839)
 
 ### Removed
