@@ -274,6 +274,7 @@ would need to be upgraded to this version or later to avoid showing messages to
 audiences for whom they may not have been intended.
 
 ### Added in 9.0.1
+
 + Adds resetters to user-settings page (#724)
 + `circle-button` now offers tooltip with full title when title is truncated
   (#727)
