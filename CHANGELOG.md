@@ -138,13 +138,16 @@ and this project adheres to
 ## [10.0.0][] - 2018-07-13
 
 ### Removed
+
 + Removes `$rootScope.GuestMode` (#777)
 
 ### Added
+
 + new filter `canAdd`, useful for filtering portlets on whether user can or
   cannot add them to layout (#791)
 
 ### Changed
+
 + Changes list of links limit to 6 items. (#773)
 + Fixed list of links widget buttons clipping on some screen sizes (#781)
 + Moved widget info (description) and remove button into contextual menu to
@@ -152,16 +155,19 @@ and this project adheres to
 + Upgrades Angular to version 1.7.2 (#788)
 
 ### Fixed
+
 + Dates and titles in RSS widget no longer overlap each other (#780)
 + Removes unused `id` on the widget-removal div, thereby removing a source of
   HTML element `id` uniqueness constraint violations in the markup. (#787)
 
 ### Documentation
+
 + Note in changelog message handling changes needing upgrade coordination (#733)
 
 ## [9.2.1][] - 2018-06-08
 
 ### Changed
+
 + Per UX guidance: When an app provides a theme name (i.e. "MyUW") and an app
   name (i.e. "STAR"), the two names now appear inline (#766)
 + Removed link to Features page ("What's New") from default app configuration
@@ -169,6 +175,7 @@ and this project adheres to
 
 
 ### Fixed
+
 + Fixed potential upgrade path difficulty by making changes to "/about" and
   "/session-info" routes backward compatible (#765)
 + Increased z-index of all dialogs to highest value (101) to ensure they appear
@@ -188,6 +195,7 @@ and this project adheres to
 + Made Google's Roboto web font available (#761)
 
 ### Changed
+
 + "About" page now sources meaningful content from `aboutPageURL` (#755)
 + Use Roboto font family (#761)
 + z-index values adjusted from highest (101) to lowest (51) stated values to
