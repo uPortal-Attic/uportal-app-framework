@@ -47,24 +47,24 @@ and this project adheres to
 
 ## [10.3.0][] - 2018-09-19
 
-### Added
+### Added in 10.3.0
 
 + Added session inactivity checker, and updated logout dialog (#830, #837)
 
-### Fixed
+### Fixed in 10.3.0
 
 + `action-items` widget now detects and handles as an error when a quantity
   callback returns an empty String. (#836)
 + Use sentence-case rather within `time-sensitive-content` widget type (#832)
 
-### Documentation
+### Documentation in 10.3.0
 
 + Added localhost examples of `action-items` widget type (#835)
 + Added localhost examples of `time-sensitive-content` widget type (#831)
 
 ## [10.2.0][] - 2018-09-12
 
-### Added
+### Added in 10.2.0
 
 + New `switch` widget type ( `<switch-widget>` directive), for composing
   composite widgets by dynamically switching over other types and configurations
@@ -78,13 +78,13 @@ and this project adheres to
   before, its implementation now delegates to `<basic-widget>` in the basic
   widget case. (#820)
 
-### Changed
+### Changed in 10.2.0
 
 + Default to handling unrecognized widget types as if they were `basic` widgets
   (#823)
 + Leverage `npm ci` to speed continuous integration builds (#812)
 
-### Fixed
+### Fixed in 10.2.0
 
 + Added `aria-label` describing mascot image (#808)
 + More reliably collapses trivial `list-of-links` widgets to `basic` widgets
@@ -92,20 +92,20 @@ and this project adheres to
 + Restored support for deprecated `generic` as alias for `custom` widget type.
   (#828)
 
-### Removed
+### Removed in 10.2.0
 
 + Removes unused photo opt-out on settings page (#811)
 
 ## [10.1.1][] - 2018-08-01
 
-### Changed
+### Changed in 10.1.1
 
 + Update modules included in `package.json` and update `package-lock.json` to
   match (#804)
 + Error states for action items widget link to launch button for better UX
   (#807)
 
-### Fixed
+### Fixed in 10.1.1
 
 + Fixed compact mode widget removal (#805)
 + Action items widget type now fails gracefully when service returns non-number
@@ -113,20 +113,20 @@ and this project adheres to
 
 ## [10.1.0][] - 2018-07-26
 
-### Added
+### Added in 10.1.0
 
 + Out of the box example page now includes compact mode widget examples, rather
   than just expanded mode widget examples. (#791)
 + New `widgetConfig.maintenanceMessage` for customizing the message a widget
   shows when in `MAINTENANCE` lifecycle state (#798)
 
-### Changed
+### Changed in 10.1.0
 
 + Widget actions are always visible, no longer only on hover (#794)
 + Increased padding on sides of expanded widget titles to accommodate menu
   button (#794)
 
-### Fixed
+### Fixed in 10.1.0
 
 + Fixed display bug in compact widgets. Compact widgets now correctly use the
   per-widget contextual menu. (#794)
@@ -136,16 +136,16 @@ and this project adheres to
 
 ## [10.0.0][] - 2018-07-13
 
-### Removed
+### Removed in 10.0.0
 
 + Removes `$rootScope.GuestMode` (#777)
 
-### Added
+### Added in 10.0.0
 
 + new filter `canAdd`, useful for filtering portlets on whether user can or
   cannot add them to layout (#791)
 
-### Changed
+### Changed in 10.0.0
 
 + Changes list of links limit to 6 items. (#773)
 + Fixed list of links widget buttons clipping on some screen sizes (#781)
@@ -153,19 +153,19 @@ and this project adheres to
   reduce burden on keyboard users (#786)
 + Upgrades Angular to version 1.7.2 (#788)
 
-### Fixed
+### Fixed in 10.0.0
 
 + Dates and titles in RSS widget no longer overlap each other (#780)
 + Removes unused `id` on the widget-removal div, thereby removing a source of
   HTML element `id` uniqueness constraint violations in the markup. (#787)
 
-### Documentation
+### Documentation in 10.0.0
 
 + Note in changelog message handling changes needing upgrade coordination (#733)
 
 ## [9.2.1][] - 2018-06-08
 
-### Changed
+### Changed in 9.2.1
 
 + Per UX guidance: When an app provides a theme name (i.e. "MyUW") and an app
   name (i.e. "STAR"), the two names now appear inline (#766)
@@ -173,7 +173,7 @@ and this project adheres to
   (#770)
 
 
-### Fixed
+### Fixed in 9.2.1
 
 + Fixed potential upgrade path difficulty by making changes to "/about" and
   "/session-info" routes backward compatible (#765)
@@ -185,7 +185,7 @@ and this project adheres to
 
 ## [9.2.0][] - 2018-05-22
 
-### Added
+### Added in 9.2.0
 
 + New "session info" page containing the former content of the "About" page
   (uportal-app-framework version info, app info JSON) (#755)
@@ -193,7 +193,7 @@ and this project adheres to
 + App config option `aboutPageURL` to get text and links for "About" page (#755)
 + Made Google's Roboto web font available (#761)
 
-### Changed
+### Changed in 9.2.0
 
 + "About" page now sources meaningful content from `aboutPageURL` (#755)
 + Use Roboto font family (#761)
@@ -204,7 +204,7 @@ and this project adheres to
   the same JSON file as the app's About page information) (#763)
 + SVG widget icons use the md-icon directive to scale properly (#764)
 
-### Fixed
+### Fixed in 9.2.0
 
 + When priority notification title is truncated, provide full title as tooltip
   (#754)
@@ -212,18 +212,18 @@ and this project adheres to
 + Widgets with overlays can be removed (#760)
 + Notifications' action buttons now open in new tab (#762)
 
-### Removed
+### Removed in 9.2.0
 
 + No longer used LoginOnLoad option removed (#753)
 
 ## [9.1.0][] - 2018-04-17
 
-### Added
+### Added in 9.1.0
 
 + `showAllMessages` beta setting. When true disables all client-side message
   filtering. Useful for demos and testing. (#742)
 
-### Changed
+### Changed in 9.1.0
 
 + `list-of-links` now offers tooltip with full title when it truncates any link
   title, not just those presented via `circle-button`s (#736)
@@ -231,14 +231,14 @@ and this project adheres to
   (#737)
 + Data urls only called when necessary (#747)
 
-### Fixed
+### Fixed in 9.1.0
 
 + `list-of-links` widgets are now `basic` widgets in the zero links edge case
   (#735)
 + `list-of-links` now `aria-label`s links, ensuring a non-truncated version of
   the link label is available to browsers (#736)
 
-### Removed
+### Removed in 9.1.0
 
 + Support for `APP_OPTIONS.optionsTemplateURL` configuration is removed in this
   release. It had previously been documented as "deprecated" but the
@@ -246,7 +246,7 @@ and this project adheres to
   for this feature was already removed as a breaking change for the `9.x`
   version series. (#745)
 
-### Deprecated
+### Deprecated in 9.1.0
 
 The `disableGroupFilteringForMessages` beta setting is deprecated. While it
 still works in this release, the new `showAllMessages` beta setting is intended
@@ -258,7 +258,7 @@ future release. (#742)
 This release is to mop up some weirdness which happened with 9.0.1 and get a
 clean artifact.
 
-### Changed
+### Changed in 9.0.2
 
 + Minor CHANGELOG change
   (#731)
@@ -275,17 +275,17 @@ multiple uPortal App Framework applications, all participating applications
 would need to be upgraded to this version or later to avoid showing messages to
 audiences for whom they may not have been intended.
 
-### Added
+### Added in 9.0.1
 + Adds resetters to user-settings page (#724)
 + `circle-button` now offers tooltip with full title when title is truncated
   (#727)
 
-### Changed
+### Changed in 9.0.1
 
 + Out of the box example `list-of-links` widget now more self-documenting
   (#727, #729)
 
-### Fixed
+### Fixed in 9.0.1
 
 + `circle-button` no longer truncates `aria-label` representation of title
   (#727)
@@ -294,7 +294,7 @@ audiences for whom they may not have been intended.
 ### Build engineering
 
 
-### Documentation
+### Documentation in 9.0.1
 
 + DEPRECATED: Font Awesome icons for `list-of-links` links. Use Material Icons
   instead. (#727)
@@ -332,7 +332,7 @@ Before relying upon a shared `messages.json` using the fixed mascot announcement
 feature, all apps sourcing those messages will need to be upgraded to this
 version or later to avoid showing users a broken mascot announcement experience.
 
-### Added
+### Added in 9.0.0
 
 + `mainService` now offers `computeWindowTitle(...)` (#679)
 + `<frame-page>` directive now offers `page-title` attribute to add a `<h1>`
@@ -343,7 +343,7 @@ version or later to avoid showing users a broken mascot announcement experience.
   cases (#715)
 + Core Infrastructure Initiative badge (#711)
 
-### Changed
+### Changed in 9.0.0
 
 + `<frame-page>` sets document title per existing `app-title` attribute (#682)
 + The `show-add-to-home` attribute on the `<frame-page>` directive now displays
@@ -353,7 +353,7 @@ version or later to avoid showing users a broken mascot announcement experience.
   logically appropriate spot (#694)
 + Improved appearance of add-to-home toast message (#706)
 
-### Fixed
+### Fixed in 9.0.0
 
 + External links in mascot announcements now work again. (#697)
 + "Skip to main content" link now skips more repeated navigation to reach
@@ -361,12 +361,12 @@ version or later to avoid showing users a broken mascot announcement experience.
 + Label widget cover dismiss button as "OK" rather than "Continue" (#675)
 + Fixed widget in-app message example (#714)
 
-### Build engineering
+### Build engineering in 9.0.0
 
 + Update package lockfile with updated dependencies (#704)
 + Update stylelint to version 9.1.3 (#718)
 
-### Documentation
+### Documentation in 9.0.0
 
 + About dynamically sourcing `list-of-links` widget content (#717)
 
@@ -397,7 +397,7 @@ feature all apps participating in a shared `messages.json` will need upgraded
 to this release or later to avoid the not-yet-upgraded apps displaying premature
 or expired messages.
 
-### Added
+### Added in 8.0.0
 
 + track clicks on sidenav footer links (#642)
 + add documentation clarifying major upgrades (#647)
@@ -405,12 +405,12 @@ or expired messages.
 + add the ability to set a message more info button url via an external data
   source (#649)
 
-### Changed
+### Changed in 8.0.0
 
 + update documentation to read more and state intent more clearly (#632)
 + update to latest version (2.0) of karma (#652)
 
-### Fixed
+### Fixed in 8.0.0
 
 + synch priority header with bell (#638)
 + filter messages where today is outside of start and end dates (#639)
@@ -418,7 +418,7 @@ or expired messages.
 + catch localStorage error with IE (#643)
 + implemented filter messages by date (#650)
 
-### Build engineering
+### Build engineering in 8.0.0
 
 + add documentation stating intent to use Conventional commits and tips on how
   to comply (#634)
@@ -470,7 +470,7 @@ JSON web service (#601). Before relying upon this feature in a shared
 framework version or later, otherwise they will not reflect the new dynamic
 notification content.
 
-### Features
+### Features in 7.0.0
 
 + Add on-page side navigation feature (#588) + To use: Set
   `APP_OPTIONS.enablePushContentMenu` to true in your override.js file
@@ -482,7 +482,7 @@ notification content.
   restoring notification from notifications page
 + Support dynamic notification text sourced from JSON web service (#601)
 
-### Fixed
+### Fixed in 7.0.0
 
 + Improves top bar accessibility (#594)
 + Fix the `search-with-links` widget type (#585)
@@ -491,11 +491,11 @@ notification content.
 + Clarify safety of `/settings` tooling to reset in-browser state. (#600)
 + Fix notification rendering robustness against duplicate ids (#602, #603)
 
-### Refactor
+### Refactor in 7.0.0
 
 + Use `moment.js` in `time-sensitive-content` widget type (#593)
 
-### Build engineering
+### Build engineering in 7.0.0
 
 + Now runs `commitlint` on `travis-ci`, removing `precommit` hook that
   previously verified commit messages locally. (#581)
@@ -505,26 +505,26 @@ Note that this project only incidentally uses Java and Maven. In the future
 this front-end product may not use Java at all. (Server-side services uPortal
 app framework relies upon might still use Java, of course.)
 
-### Code style
+### Code style in 7.0.0
 
 + Fix a bunch of JSDoc warnings (#598)
 
 ## [6.1.0][] - 2017-10-18
 
-### Added
+### Added in 6.1.0
 
 + Add filter to determine rel attribute on anchors (#569)
 + Add configurable side navigation (#561) - See
   [uportal-app-framework documentation][sidenav-documentation] of this new
   feature
 
-### Changed
+### Changed in 6.1.0
 
 + Refactor theme names (#568)
 + Update to version 4.2.0 of config-angular (#578)
 + Pull UI Sortable from CDN (#579)
 
-### Fixed
+### Fixed in 6.1.0
 
 + Fix mismatch in portal theme key (#570)
 + Hides notification bell when on notification page (#572)
@@ -570,20 +570,20 @@ URLs in priority notifications as presented in not-yet-upgraded apps.
 
 ## [5.2.0][] - 2017-09-20
 
-### Messages Enhancements
+### Messages Enhancements in 5.2.0
 
 + Notifications may be non-dismissible (#521)
 + Add widget from mascot announcement (#526)
 
-### Widget Enhancements
+### Widget Enhancements in 5.2.0
 
 + Option-link widget evaluates target (#519)
 
-### Configuration Change
+### Configuration Change in 5.2.0
 
 + Default menu options to be null (#514)
 
-### Maintenance
+### Maintenance in 5.2.0
 
 + Shore up licencing (#515) (#523) (#527)
 + Add a changelog (#513)
@@ -597,7 +597,7 @@ feature in a shared messages source, all participating applications must first
 be upgraded to this framework version or later to avoid displaying broken
 announcements in not-yet-upgraded applications.
 
-### Messages Enhancements
+### Messages Enhancements in 5.1.0
 
 + Adds actionbutton and more info button to features page and priority
   notifications (#504)
@@ -605,7 +605,7 @@ announcements in not-yet-upgraded applications.
   (#512)
 + Fixes bug with notification urls not being resolved correctly (#507)
 
-### Code Maintenance and Enhancements
+### Code Maintenance and Enhancements in 5.1.0
 
 + Updates karma to latest version (#511)
 + Adopts Conventional Commits (#487)
@@ -633,13 +633,13 @@ Management service to our repository.
 While we're proud of what we've accomplished in this major release, we hope to
 return to a faster paced release cycle in the future.
 
-### Major Enhancements
+### Major Enhancements in 5.0.0
 
 #### Messages!
 
 + [Simplify disparate forms of in-app messaging](https://github.com/uPortal-Project/uportal-app-framework/pull/484)
 
-### Minor Enhancements
+### Minor Enhancements in 5.0.0
 
 #### Widget Types
 
@@ -669,7 +669,7 @@ return to a faster paced release cycle in the future.
 + [MUMUP-2699 Adds ability for portal skin switching](https://github.com/uPortal-Project/uportal-app-framework/pull/483)
 + [MUMUP-2990 Use portal session rather than Shibboleth](https://github.com/uPortal-Project/uportal-app-framework/pull/491)
 
-### Patch Enhancements
+### Patch Enhancements in 5.0.0
 
 #### Content Changes
 
@@ -677,7 +677,7 @@ return to a faster paced release cycle in the future.
 + [Use sentence case in tooltips.](https://github.com/uPortal-Project/uportal-app-framework/pull/446)
 + [Animate priority notifications [nice-to-have]](https://github.com/uPortal-Project/uportal-app-framework/pull/499)
 
-#### Documentation Improvements
+#### Documentation Improvements in 5.0.0
 
 + [Documentation Syntax Highlighting](https://github.com/uPortal-Project/uportal-app-framework/pull/431)
 + [Adds skinning exercise to docs folder](https://github.com/uPortal-Project/uportal-app-framework/pull/447)
@@ -694,7 +694,7 @@ return to a faster paced release cycle in the future.
 + [docs(github): Add SUPPORT.md to guide questions to the mailing list](https://github.com/uPortal-Project/uportal-app-framework/pull/479)
 + [Acknowledge bundled dependencies and add NOTICE file](https://github.com/uPortal-Project/uportal-app-framework/pull/489)
 
-#### Bug Fixes
+#### Bug Fixes in 5.0.0
 
 + [Fix md-menu forcing scroll when priority notifications visible](https://github.com/uPortal-Project/uportal-app-framework/pull/428)
 + [Portal feature service flatten nested promises](https://github.com/uPortal-Project/uportal-app-framework/pull/438)
@@ -708,7 +708,7 @@ return to a faster paced release cycle in the future.
 + [Fix dismiss/restore message state not persisting](https://github.com/uPortal-Project/uportal-app-framework/pull/497)
 + [upping the expiration on the mock session to be 8 hours](https://github.com/uPortal-Project/uportal-app-framework/pull/501)
 
-#### Dependency Management
+#### Dependency Management in 5.0.0
 
 + [Remove less-1.6.2.js from source](https://github.com/uPortal-Project/uportal-app-framework/pull/439)
 + [Update dependencies to enable Greenkeeper](https://github.com/uPortal-Project/uportal-app-framework/pull/474)
@@ -716,7 +716,7 @@ return to a faster paced release cycle in the future.
 + [Update superstatic to the latest version](https://github.com/uPortal-Project/uportal-app-framework/pull/498)
 + [Update remark-validate-links to the latest version](https://github.com/uPortal-Project/uportal-app-framework/pull/500)
 
-#### Continuous Integration
+#### Continuous Integration in 5.0.0
 
 + [Fixing trivial ESLint checks](https://github.com/uPortal-Project/uportal-app-framework/pull/429)
 + [ESLint Refactor Integration](https://github.com/uPortal-Project/uportal-app-framework/pull/430)
@@ -733,19 +733,19 @@ return to a faster paced release cycle in the future.
 
 ## [4.1.0][] - 2017-05-04
 
-### Code Cleanup
+### Code Cleanup in 4.1.0
 
 [Removes unused sorting function](https://github.com/uPortal-Project/uportal-app-framework/pull/399)
 [Adds local Jekyll files to gitignore](https://github.com/uPortal-Project/uportal-app-framework/pull/405)
 [Replaces hard coded fa-icons with material icon equivalents](https://github.com/uPortal-Project/uportal-app-framework/pull/426)
 
-### CI Enhancements
+### CI Enhancements in 4.1.0
 
 [Tests against multiple jdks, improve build time](https://github.com/uPortal-Project/uportal-app-framework/pull/400)
 [Tests against Windows OS](https://github.com/uPortal-Project/uportal-app-framework/pull/408)
 [Fixes bug where local build wasn't working](https://github.com/uPortal-Project/uportal-app-framework/pull/421)
 
-### Widget Enhancements
+### Widget Enhancements in 4.1.0
 
 [Fixes RSS widget display bug](https://github.com/uPortal-Project/uportal-app-framework/pull/403)
 [Fixes RSS widget display bug](https://github.com/uPortal-Project/uportal-app-framework/pull/406)
@@ -755,13 +755,13 @@ return to a faster paced release cycle in the future.
 [Adds display error message when users try to render an unauthorized widget](https://github.com/uPortal-Project/uportal-app-framework/pull/419)
 [Fixes display bug with error message for unauthorized widget](https://github.com/uPortal-Project/uportal-app-framework/pull/420)
 
-### Apereo Incubation
+### Apereo Incubation in 4.1.0
 
 [Formally bootstraps initial committers](https://github.com/uPortal-Project/uportal-app-framework/pull/404)
 [Acknowledges contributors](https://github.com/uPortal-Project/uportal-app-framework/pull/412)
 [Formalizes release procedures](https://github.com/uPortal-Project/uportal-app-framework/pull/416)
 
-### Header Enhancements
+### Header Enhancements in 4.1.0
 
 [Replaces UW-Madison crest with higher resolution crest](https://github.com/uPortal-Project/uportal-app-framework/pull/413)
 [Replaces name with an avatar](https://github.com/uPortal-Project/uportal-app-framework/pull/414)
@@ -899,18 +899,18 @@ break compatibility with some older components. If the app used any
 `angular-ui-bootstrap` components, it will need to begin prefixing them with
 `uib-`. See `angular-ui-bootstrap` [Migration Guide for Prefixes](https://github.com/angular-ui/bootstrap/wiki/Migration-guide-for-prefixes).
 
-### Build changes
+### Build changes in 3.0.0
 
 + Add postcss/autoprefixer to uw-frame build (#345)
 + Remove dependency on Grunt (#335)
 + Break docs submodule dependency (#337)
 + Tweaked build.js (#348)
 
-### Material
+### Material in 3.0.0
 
 + Upgrade uw-frame to Angular Material 1.1 (#339)
 
-### Miscellaneous fixes
+### Miscellaneous fixes in 3.0.0
 
 + Fix for Safari private browsing bug (#347)
 + Added ability to have a name for the default theme (#336)
