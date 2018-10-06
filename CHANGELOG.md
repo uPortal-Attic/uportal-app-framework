@@ -172,7 +172,6 @@ and this project adheres to
 + Removed link to Features page ("What's New") from default app configuration
   (#770)
 
-
 ### Fixed in 9.2.1
 
 + Fixed potential upgrade path difficulty by making changes to "/about" and
@@ -181,7 +180,6 @@ and this project adheres to
   above other content (#771)
 + Added basic `<body>` styles (override Bootstrap values) to ensure Roboto is
   always preferred (#771)
-
 
 ## [9.2.0][] - 2018-05-22
 
