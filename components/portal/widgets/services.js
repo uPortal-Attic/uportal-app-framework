@@ -147,8 +147,13 @@ define(['angular'], function(angular) {
           return data;
         })
         .catch(function(error) {
-          $log.warn('WIDGET SERVICE: Couldn\'t get widget json. '
-            + error.status);
+          if (widget && widget.fname) {
+            $log.warn('WIDGET SERVICE: Couldn\'t get widget json for ' +
+              widget.fname + '. ' + error.status);
+          } else {
+            $log.warn('WIDGET SERVICE: Couldn\'t get widget json. '
+              + error.status);
+          }
         });
     };
 

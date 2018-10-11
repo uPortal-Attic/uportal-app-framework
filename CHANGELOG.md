@@ -36,6 +36,8 @@ and this project adheres to
 + Mobile search "Close" button now uses arrow icon, so not to be confused with
   "clear" functionality (#838)
 + `action-items` widgets now handle more kinds of errors more fluently (#839)
++ Widget service logging now logs the `fname` of the widget for which it could
+  not retrieve JSON, when that fname is known. (#850)
 
 ### Removed
 
