@@ -48,7 +48,9 @@
   <!-- Give feedback link -->
   <div class="tsc__extra-buttons" layout="row" layout-align="center center">
     <a ng-if="callToAction.learnMoreUrl" ng-href="{{ callToAction.learnMoreUrl }}" target="_blank" rel="noreferrer noopener">Learn more</a>
-    <a ng-if="templateStatus == 'ended' && callToAction.feedbackUrl" ng-href="{{ callToAction.feedbackUrl }}" target="_blank" rel="noreferrer noopener">Give feedback</a>
+    <a ng-if="templateStatus == 'ended' && callToAction.feedbackUrl"
+      ng-href="{{ callToAction.feedbackUrl }}"
+      target="_blank" rel="noreferrer noopener">Give feedback</a>
   </div>
 </div>
 
