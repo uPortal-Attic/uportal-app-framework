@@ -490,7 +490,8 @@ with an integer for a value. For example:
   * **url**: The url where a user can take action
   * **label**: The text the button should display
 * **learnMoreUrl**: *(optional)* Provide a url if you want the widget to display a link for users to get more information.
-* **feedbackUrl**: *(optional)* If set, widget shows a "Give feedback" link after `takeActionEndDate` but before `templateRetireDate`.
+* **feedbackUrl**: *(optional)* If set, widget shows a "Give feedback" link
+  after `takeActionEndDate` but before `templateRetireDate`.
 
 #### Guidance about `time-sensitive-content`
 
