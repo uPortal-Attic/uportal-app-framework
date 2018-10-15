@@ -22,6 +22,8 @@ and this project adheres to
   Material toolbar. Custom CSS that targets elements within `md-toolbar` may be
   affected
 + Regular side navigation now looks the same on mobile and desktop (#838)
++ `time-sensitive-content` widget type now only shows its feedback link after
+  the action period has expired. (#852)
 
 ### Fixed
 
