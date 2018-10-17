@@ -14,7 +14,7 @@ and this project adheres to
   (#853)
 + CSS variables for each theme to enable `myuw-app-bar` cooperation with angular
   material theming (#838)
-+ Added patched Web Components polyfill for AngularJS compatibility (#847)
++ Added patched Web Components polyfill for AngularJS compatibility (#847, #854)
 
 ### Changed
 
