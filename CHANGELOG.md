@@ -10,6 +10,8 @@ and this project adheres to
 
 ### Added
 
++ Link in widget contextual menu to app directory details page about the app.
+  (#853)
 + CSS variables for each theme to enable `myuw-app-bar` cooperation with angular
   material theming (#838)
 + Added patched Web Components polyfill for AngularJS compatibility (#847)
