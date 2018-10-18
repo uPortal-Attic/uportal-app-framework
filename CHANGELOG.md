@@ -10,9 +10,11 @@ and this project adheres to
 
 ### Added
 
++ Link in widget contextual menu to app directory details page about the app.
+  (#853)
 + CSS variables for each theme to enable `myuw-app-bar` cooperation with angular
   material theming (#838)
-+ Added patched Web Components polyfill for AngularJS compatibility (#847)
++ Added patched Web Components polyfill for AngularJS compatibility (#847, #854)
 
 ### Changed
 
@@ -22,9 +24,13 @@ and this project adheres to
   Material toolbar. Custom CSS that targets elements within `md-toolbar` may be
   affected
 + Regular side navigation now looks the same on mobile and desktop (#838)
++ `time-sensitive-content` widget type now only shows its feedback link after
+  the action period has expired. (#852)
 
 ### Fixed
 
++ `list-of-links` no longer erroneously renders blank when it contains 2-4 links
+  the first of which redundant with its launch bar. (#855)
 + `audienceFilter.groups` is now optional in messages. Omitting it is the same
   as setting it to `null` or to an empty array `[]`, namely that no one should
   be denied the message based on group memberships. (#846)
