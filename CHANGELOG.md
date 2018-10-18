@@ -29,6 +29,8 @@ and this project adheres to
 
 ### Fixed
 
++ `list-of-links` no longer erroneously renders blank when it contains 2-4 links
+  the first of which redundant with its launch bar. (#855)
 + `audienceFilter.groups` is now optional in messages. Omitting it is the same
   as setting it to `null` or to an empty array `[]`, namely that no one should
   be denied the message based on group memberships. (#846)
