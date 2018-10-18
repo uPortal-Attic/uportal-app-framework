@@ -1,0 +1,59 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "only collapse when single link",
+      "description": "When list-of-links is configured with multiple links, it does not collapse to a basic widget even when the first link is redundant.",
+      "url": "http://www.exammple.edu/altMaxLink",
+      "iconUrl": null,
+      "faIcon": "fa-book",
+      "fname": "sample-widget__list-of-4-links-first-redundant",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetURL": "/staticFeeds/list-of-four-links-first-redundant-via-url.json",
+      "widgetType": "list-of-links",
+      "widgetTemplate": null,
+      "widgetConfig": {
+        "getLinksURL": "true",
+        "launchText": "Matches first link"
+      },
+      "staticContent": "<div><p>Static content goes here.</p></div>",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "categories": [
+      "Widget types",
+      "list-of-links"
+    ],
+    "portletName": "cms",
+    "title": "list-of-links collapses to basic",
+    "keywords": [
+      "list",
+      "links",
+      "ordered",
+      "icons",
+      "few"
+    ],
+    "fname": "sample-widget__list-of-4-links-first-redundant",
+    "rating": 0.0,
+    "lifecycleState": "PUBLISHED",
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "http://www.exammple.edu/altMaxLink",
+    "portletWebAppName": "/SimpleContentPortlet",
+    "maxUrl": "http://www.exammple.edu/altMaxLink",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 0,
+    "faIcon": "fa-briefcase",
+    "description": "When list-of-links is configured with multiple links, it does not collapse to a basic widget even when the first link is redundant.",
+    "name": "only collapse when single link",
+    "id": "88",
+    "type": "Portlet",
+    "target": null
+  }
+}
