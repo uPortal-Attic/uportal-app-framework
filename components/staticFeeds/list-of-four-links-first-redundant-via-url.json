@@ -1,0 +1,31 @@
+{
+  "result": "ok",
+  "content": {
+    "links": [
+      {
+        "icon": "fa-book",
+        "href": "http://www.exammple.edu/altMaxLink",
+        "title": "Same as launch bar",
+        "target": "_blank"
+      },
+      {
+        "icon": "fa-book",
+        "href": "http://www.exammple.edu/novel-link-1",
+        "title": "Novel link",
+        "target": "_blank"
+      },
+      {
+        "icon": "fa-book",
+        "href": "http://www.exammple.edu/novel-link-2",
+        "title": "Also novel",
+        "target": "_blank"
+      },
+      {
+        "icon": "fa-book",
+        "href": "http://www.exammple.edu/novel-link-3",
+        "title": "Different still",
+        "target": "_blank"
+      }
+    ]
+  }
+}
