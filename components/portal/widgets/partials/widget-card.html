@@ -63,6 +63,13 @@
           <md-icon>info</md-icon>
           <span><strong>{{ widget.title }}:</strong> {{ widget.description }}</span>
         </md-menu-item>
+        <md-menu-item ng-if="widget.fname">
+          <md-button aria-label="Details about {{  widget.title }}"
+            href="/web/apps/details/{{widget.fname}}">
+            <md-icon>details</md-icon>
+            Details
+          </md-button>
+        </md-menu-item>
         <!-- Remove widget button -->
         <div role="button" tabindex="{{ tabindex }}" ng-transclude="removeButton" ng-keyup="triggerRemoveButton($event)"></div>
       </md-menu-content>
