@@ -35,12 +35,25 @@ mkdirp('static/target/css/themes/', function(error) {
   if (error) throw error;
 });
 
-
-const themes = ['uPortal', 'uwMadison', 'uwSystem', 'uwRiverFalls',
-  'uwStevensPoint', 'uwMilwaukee', 'uwWhitewater', 'uwStout',
-  'uwSuperior', 'uwPlatteville', 'uwParkside', 'uwOshkosh',
-  'uwGreenBay', 'uwLaCrosse', 'uwEauClaire', 'uwExtension',
-  'uwColleges'];
+const themes = [
+  'uPortal',
+  'uwMadison',
+  'uwSystem',
+  'uwRiverFalls',
+  'uwStevensPoint',
+  'uwMilwaukee',
+  'uwWhitewater',
+  'uwStout',
+  'uwSuperior',
+  'uwPlatteville',
+  'uwParkside',
+  'uwOshkosh',
+  'uwGreenBay',
+  'uwLaCrosse',
+  'uwEauClaire',
+  'uwExtension',
+  'uwColleges',
+];
 
 // Render less and write to .css file for each theme
 for (let i = 0; i < themes.length; i++) {
@@ -57,42 +70,41 @@ for (let i = 0; i < themes.length; i++) {
   });
 }
 
-copy(
-  'components/',
-  'static/target',
-  copyOptions
-).catch(function(error, results) {
+copy('components/', 'static/target', copyOptions).catch(function(
+    error,
+    results
+) {
   if (error) throw error;
 });
 
 copy(
-  'node_modules/bootstrap/',
-  'static/target/css/themes/node_modules/bootstrap/',
-  copyOptions
+    'node_modules/bootstrap/',
+    'static/target/css/themes/node_modules/bootstrap/',
+    copyOptions
 ).catch(function(error) {
   if (error) throw error;
 });
 
 copy(
-  'node_modules/font-awesome/',
-  'static/target/css/themes/node_modules/font-awesome/',
-  copyOptions
+    'node_modules/font-awesome/',
+    'static/target/css/themes/node_modules/font-awesome/',
+    copyOptions
 ).catch(function(error) {
   if (error) throw error;
 });
 
 copy(
-  'node_modules/normalize.less',
-  'static/target/css/themes/node_modules/normalize.less',
-  copyOptions
+    'node_modules/normalize.less',
+    'static/target/css/themes/node_modules/normalize.less',
+    copyOptions
 ).catch(function(error) {
   if (error) throw error;
 });
 
 copy(
-  'static/superstatic.json',
-  'static/target/superstatic.json',
-  copyOptions
+    'static/superstatic.json',
+    'static/target/superstatic.json',
+    copyOptions
 ).catch(function(error, results) {
   if (error) throw error;
 });
@@ -108,32 +120,33 @@ function writeCss(srcPath, theme, styles) {
   // Output file path for the theme
   const output = 'static/target/css/themes/' + theme + '.css';
   // Render .less styles
-  less.render(styles,
-    {
-      paths: [
-        path.resolve('components/css/angular.less'),
-        path.resolve('components/css/themes/common-variables.less'),
-        path.resolve('components/css/themes/'+theme+'-variables.less'),
-      ],
-      filename: path.resolve(srcPath),
-      compress: true,
-    },
-    function(error, rendered) {
+  less.render(
+      styles,
+      {
+        paths: [
+          path.resolve('components/css/angular.less'),
+          path.resolve('components/css/themes/common-variables.less'),
+          path.resolve('components/css/themes/' + theme + '-variables.less'),
+        ],
+        filename: path.resolve(srcPath),
+        compress: true,
+      },
+      function(error, rendered) {
       // Log errors
-      if (error) throw error;
-      // Auto-prefix css
-      return postcss([autoprefixer])
-      .process(rendered.css)
-      .then(function(result) {
-        result.warnings().forEach(function(warn) {
-          console.warn(warn.toString());
-        });
-        // Write prefixed css to output file
-        fs.writeFile(output, result.css, function(error) {
-          if (error) throw error;
-        });
-        return result;
-      });
-    }
+        if (error) throw error;
+        // Auto-prefix css
+        return postcss([autoprefixer])
+            .process(rendered.css)
+            .then(function(result) {
+              result.warnings().forEach(function(warn) {
+                console.warn(warn.toString());
+              });
+              // Write prefixed css to output file
+              fs.writeFile(output, result.css, function(error) {
+                if (error) throw error;
+              });
+              return result;
+            });
+      }
   );
 }

@@ -32,46 +32,58 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
   }
 
   var framePaths = {
-      'angular': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min',
-      'angular-animate': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-animate.min',
-      'angular-mocks': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-mocks',
-      'angulartics': 'https://cdnjs.cloudflare.com/ajax/libs/angulartics/1.1.0/angulartics.min',
-      'angulartics-google-analytics': [
-          'https://cdnjs.cloudflare.com/ajax/libs/angulartics-google-analytics/0.2.1/angulartics-ga.min',
-          'js/noop',
-      ],
-      'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min',
-      'jquery-ui': 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min',
-      'ngAria': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-aria.min',
-      'ngMaterial': 'https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min',
-      'ngRoute': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min',
-      'ngSanitize': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-sanitize.min',
-      'ngStorage': 'https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min',
-      'ui-bootstrap': 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min',
-      'ui-gravatar': 'https://cdnjs.cloudflare.com/ajax/libs/angular-gravatar/0.4.2/angular-gravatar.min',
-      'app-config': 'js/app-config',
-      'frame-config': 'js/frame-config',
-      'override': 'js/override',
-      'moment': 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min',
+    'angular':
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min',
+    'angular-animate':
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-animate.min',
+    'angular-mocks':
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-mocks',
+    'angulartics':
+      'https://cdnjs.cloudflare.com/ajax/libs/angulartics/1.1.0/angulartics.min',
+    'angulartics-google-analytics': [
+      'https://cdnjs.cloudflare.com/ajax/libs/angulartics-google-analytics/0.2.1/angulartics-ga.min',
+      'js/noop',
+    ],
+    'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min',
+    'jquery-ui':
+      'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min',
+    'ngAria':
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-aria.min',
+    'ngMaterial':
+      'https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min',
+    'ngRoute':
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min',
+    'ngSanitize':
+      'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-sanitize.min',
+    'ngStorage':
+      'https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min',
+    'ui-bootstrap':
+      'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min',
+    'ui-gravatar':
+      'https://cdnjs.cloudflare.com/ajax/libs/angular-gravatar/0.4.2/angular-gravatar.min',
+    'app-config': 'js/app-config',
+    'frame-config': 'js/frame-config',
+    'override': 'js/override',
+    'moment': 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min',
   };
 
   var frameShims = {
-      'angular': {deps: ['jquery'], exports: 'angular'},
-      'angular-animate': {deps: ['angular'], exports: 'angular-animate'},
-      'angular-mocks': {deps: ['angular']},
-      'angulartics': {deps: ['angular'], exports: 'angulartics'},
-      'angulartics-google-analytics': {deps: ['angulartics']},
-      'ngRoute': {deps: ['angular']},
-      'ngSanitize': {deps: ['angular']},
-      'ngStorage': {deps: ['angular']},
-      'ngAria': {deps: ['angular']},
-      'ngMaterial': {
-        deps: ['angular', 'ngAria', 'angular-animate', 'angular-mocks'],
-        exports: 'ngMaterial',
-      },
-      'ui-bootstrap': {deps: ['angular']},
-      'ui-gravatar': {deps: ['angular']},
-      'moment': {exports: 'moment'},
+    'angular': {deps: ['jquery'], exports: 'angular'},
+    'angular-animate': {deps: ['angular'], exports: 'angular-animate'},
+    'angular-mocks': {deps: ['angular']},
+    'angulartics': {deps: ['angular'], exports: 'angulartics'},
+    'angulartics-google-analytics': {deps: ['angulartics']},
+    'ngRoute': {deps: ['angular']},
+    'ngSanitize': {deps: ['angular']},
+    'ngStorage': {deps: ['angular']},
+    'ngAria': {deps: ['angular']},
+    'ngMaterial': {
+      deps: ['angular', 'ngAria', 'angular-animate', 'angular-mocks'],
+      exports: 'ngMaterial',
+    },
+    'ui-bootstrap': {deps: ['angular']},
+    'ui-gravatar': {deps: ['angular']},
+    'moment': {exports: 'moment'},
   };
 
   var allPaths;
@@ -90,10 +102,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
 
   return {
     baseUrl: require.toUrl('.'),
-    packages: [
-        'portal',
-        'my-app',
-    ],
+    packages: ['portal', 'my-app'],
     paths: allPaths,
     shim: allShims,
     waitSeconds: 0,

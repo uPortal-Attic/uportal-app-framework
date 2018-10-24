@@ -18,22 +18,21 @@
  */
 define(['angular'], function(angular) {
   /* Keep in sync with docs/markdown/configuration.md*/
-  return angular.module('override', [])
-    .constant('OVERRIDE', {
-      'APP_OPTIONS': {
-        // 'appMenuTemplateURL': 'portal/misc/partials/example-menu.html',
-        // 'enablePushContentMenu': true,
-      },
-      'SERVICE_LOC': {
-        // 'widgetApi': {
-        //   'entry': 'staticFeeds/',
-        // },
-        // 'aboutURL': 'staticFeeds/about-frame.json',
-        // 'aboutPageURL': 'staticFeeds/about-page.json'
-        // 'messagesURL': 'staticFeeds/sample-messages.json',
-      },
-      'MESSAGES': {
-        // 'notificationsPageURL': '/notifications',
-      },
-    });
+  return angular.module('override', []).constant('OVERRIDE', {
+    APP_OPTIONS: {
+      // 'appMenuTemplateURL': 'portal/misc/partials/example-menu.html',
+      // 'enablePushContentMenu': true,
+    },
+    SERVICE_LOC: {
+      // 'widgetApi': {
+      //   'entry': 'staticFeeds/',
+      // },
+      // 'aboutURL': 'staticFeeds/about-frame.json',
+      // 'aboutPageURL': 'staticFeeds/about-page.json'
+      // 'messagesURL': 'staticFeeds/sample-messages.json',
+    },
+    MESSAGES: {
+      // 'notificationsPageURL': '/notifications',
+    },
+  });
 });

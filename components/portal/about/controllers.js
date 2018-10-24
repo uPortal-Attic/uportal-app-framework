@@ -19,29 +19,38 @@
 'use strict';
 
 define(['angular', 'require'], function(angular, require) {
-  return angular.module('portal.about.controllers', [])
-    .controller('AboutPageController', ['$log', '$scope', '$rootScope',
-      function($log, $scope, $rootScope) {
-      /**
-       * Get 'about' page information to display
-       */
-      var init = function() {
-        $scope.aboutText = [];
-        $scope.aboutLinks = [];
-        // If app has an aboutPageURL specified, portal/main.js
-        // should get the data and set the rootScope values
-        if ($rootScope.about) {
-          if ($rootScope.about.aboutText
-            && $rootScope.about.aboutText.length > 0) {
-            $scope.aboutText = $rootScope.about.aboutText;
-          }
-          if ($rootScope.about.aboutLinks
-            && $rootScope.about.aboutLinks.length > 0) {
-            $scope.aboutLinks = $rootScope.about.aboutLinks;
-          }
-        }
-      };
+  return angular
+      .module('portal.about.controllers', [])
+      .controller('AboutPageController', [
+        '$log',
+        '$scope',
+        '$rootScope',
+        function($log, $scope, $rootScope) {
+        /**
+         * Get 'about' page information to display
+         */
+          var init = function() {
+            $scope.aboutText = [];
+            $scope.aboutLinks = [];
+            // If app has an aboutPageURL specified, portal/main.js
+            // should get the data and set the rootScope values
+            if ($rootScope.about) {
+              if (
+                $rootScope.about.aboutText &&
+              $rootScope.about.aboutText.length > 0
+              ) {
+                $scope.aboutText = $rootScope.about.aboutText;
+              }
+              if (
+                $rootScope.about.aboutLinks &&
+              $rootScope.about.aboutLinks.length > 0
+              ) {
+                $scope.aboutLinks = $rootScope.about.aboutLinks;
+              }
+            }
+          };
 
-      init();
-    }]);
+          init();
+        },
+      ]);
 });

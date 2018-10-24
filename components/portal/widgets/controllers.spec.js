@@ -30,25 +30,40 @@ define(['angular-mocks', 'portal'], function() {
     });
 
     beforeEach(inject(function(
-      $controller, _widgetService_, $log, $q, $rootScope) {
+        $controller,
+        _widgetService_,
+        $log,
+        $q,
+        $rootScope
+    ) {
       scope = $rootScope.$new();
       scope.widget = {};
     }));
 
     describe('WidgetExternalMessageService', function() {
       beforeEach(inject(function(
-        $controller, _widgetService_, $log, $q, $rootScope) {
-        mockWidgetService= jasmine.createSpyObj(
-          'mockWidgetService', ['getWidgetExternalMessage']);
+          $controller,
+          _widgetService_,
+          $log,
+          $q,
+          $rootScope
+      ) {
+        mockWidgetService = jasmine.createSpyObj('mockWidgetService', [
+          'getWidgetExternalMessage',
+        ]);
       }));
 
-      it('should handle happy case',
-        inject(function($controller, $log, $q, $rootScope) {
+      it('should handle happy case', inject(function(
+          $controller,
+          $log,
+          $q,
+          $rootScope
+      ) {
         mockWidgetService.getWidgetExternalMessage.and.callFake(function() {
           var deferred = $q.defer();
           deferred.resolve({
-            'messageText': 'foo',
-            'learnMoreUrl': 'bar',
+            messageText: 'foo',
+            learnMoreUrl: 'bar',
           });
           return deferred.promise;
         });
@@ -63,8 +78,12 @@ define(['angular-mocks', 'portal'], function() {
         expect(scope.widget.externalMessageLearnMoreUrl).toEqual('bar');
       }));
 
-      it('should handle null',
-        inject(function($controller, $log, $q, $rootScope) {
+      it('should handle null', inject(function(
+          $controller,
+          $log,
+          $q,
+          $rootScope
+      ) {
         mockWidgetService.getWidgetExternalMessage.and.callFake(function() {
           var deferred = $q.defer();
           deferred.resolve(null);
@@ -81,32 +100,40 @@ define(['angular-mocks', 'portal'], function() {
         expect(scope.widget.externalMessageLearnMoreUrl).toBeUndefined();
       }));
 
-      it('should handle message text but no learn more url',
-          inject(function($controller, $log, $q, $rootScope) {
-          mockWidgetService.getWidgetExternalMessage.and.callFake(function() {
-            var deferred = $q.defer();
-            deferred.resolve({
-              'messageText': 'foo',
-            });
-            return deferred.promise;
-          });
-          $controller('WidgetExternalMessageController', {
-            $scope: scope,
-            $log: $log,
-            widgetService: mockWidgetService,
-          });
-          scope.$digest();
-
-          expect(scope.widget.externalMessageText).toEqual('foo');
-          expect(scope.widget.externalMessageLearnMoreUrl).toBeUndefined();
-      }));
-
-      it('should handle learn more url but no message text',
-        inject(function($controller, $log, $q, $rootScope) {
+      it('should handle message text but no learn more url', inject(function(
+          $controller,
+          $log,
+          $q,
+          $rootScope
+      ) {
         mockWidgetService.getWidgetExternalMessage.and.callFake(function() {
           var deferred = $q.defer();
           deferred.resolve({
-            'learnMoreUrl': 'bar',
+            messageText: 'foo',
+          });
+          return deferred.promise;
+        });
+        $controller('WidgetExternalMessageController', {
+          $scope: scope,
+          $log: $log,
+          widgetService: mockWidgetService,
+        });
+        scope.$digest();
+
+        expect(scope.widget.externalMessageText).toEqual('foo');
+        expect(scope.widget.externalMessageLearnMoreUrl).toBeUndefined();
+      }));
+
+      it('should handle learn more url but no message text', inject(function(
+          $controller,
+          $log,
+          $q,
+          $rootScope
+      ) {
+        mockWidgetService.getWidgetExternalMessage.and.callFake(function() {
+          var deferred = $q.defer();
+          deferred.resolve({
+            learnMoreUrl: 'bar',
           });
           return deferred.promise;
         });
@@ -121,23 +148,27 @@ define(['angular-mocks', 'portal'], function() {
         expect(scope.widget.externalMessageLearnMoreUrl).toBeUndefined();
       }));
 
-      it('should handle errors from service',
-          inject(function($controller, $log, $q, $rootScope) {
-          mockWidgetService.getWidgetExternalMessage.and.callFake(function() {
-            var deferred = $q.defer();
-            deferred.reject('Some error being simulated');
-            return deferred.promise;
-          });
-          $controller('WidgetExternalMessageController', {
-            $scope: scope,
-            $log: $log,
-            widgetService: mockWidgetService,
-          });
-          scope.$digest();
+      it('should handle errors from service', inject(function(
+          $controller,
+          $log,
+          $q,
+          $rootScope
+      ) {
+        mockWidgetService.getWidgetExternalMessage.and.callFake(function() {
+          var deferred = $q.defer();
+          deferred.reject('Some error being simulated');
+          return deferred.promise;
+        });
+        $controller('WidgetExternalMessageController', {
+          $scope: scope,
+          $log: $log,
+          widgetService: mockWidgetService,
+        });
+        scope.$digest();
 
-          expect(scope.widget.externalMessageText).toBeUndefined();
-          expect(scope.widget.externalMessageLearnMoreUrl).toBeUndefined();
-        }));
+        expect(scope.widget.externalMessageText).toBeUndefined();
+        expect(scope.widget.externalMessageLearnMoreUrl).toBeUndefined();
+      }));
     });
   });
 });

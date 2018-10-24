@@ -19,209 +19,231 @@
 'use strict';
 
 define(['angular', 'require'], function(angular, require) {
-  return angular.module('portal.widgets.directives', [])
+  return (
+    angular
+        .module('portal.widgets.directives', [])
 
-  /**
-   * Just the widget card -- gets the widget type from scope
-   */
-  .directive('widget', ['miscService', function(miscService) {
-    return {
-      restrict: 'E',
-      transclude: {
-        'removeButton': '?removeButton',
-      },
-      scope: {
-        fname: '@',
-      },
-      templateUrl: require.toUrl('./partials/widget-card.html'),
-      controller: 'WidgetCardController',
-      link: {
-        post: function(scope, element, attrs) {
-          element.on('click', function(event) {
-            var el = event.target;
-            while (el && (!el.tagName || el.tagName.toLowerCase() !== 'a')) {
-              el = el.parentNode;
-            }
-            if (el) {
-              miscService.pushGAEvent(attrs.fname, 'widget click', el.href);
-            }
-          });
-        },
-      },
-    };
-  }])
+    /**
+       * Just the widget card -- gets the widget type from scope
+       */
+        .directive('widget', [
+          'miscService',
+          function(miscService) {
+            return {
+              restrict: 'E',
+              transclude: {
+                removeButton: '?removeButton',
+              },
+              scope: {
+                fname: '@',
+              },
+              templateUrl: require.toUrl('./partials/widget-card.html'),
+              controller: 'WidgetCardController',
+              link: {
+                post: function(scope, element, attrs) {
+                  element.on('click', function(event) {
+                    var el = event.target;
+                    while (
+                      el &&
+                    (!el.tagName || el.tagName.toLowerCase() !== 'a')
+                    ) {
+                      el = el.parentNode;
+                    }
+                    if (el) {
+                      miscService.pushGAEvent(
+                          attrs.fname,
+                          'widget click',
+                          el.href
+                      );
+                    }
+                  });
+                },
+              },
+            };
+          },
+        ])
 
-  /**
-   * Just the widget card -- gets the widget type from the scope
-   */
-  .directive('compactWidget', ['miscService', function(miscService) {
-    return {
-      restrict: 'E',
-      transclude: {
-        'removeButton': '?removeButton',
-      },
-      scope: {
-        fname: '@',
-      },
-      templateUrl: require.toUrl('./partials/compact-widget-card.html'),
-      controller: 'WidgetCardController',
-      link: {
-        post: function(scope, element, attrs) {
-          element.on('click', function(event) {
-            var el = event.target;
-            while (el && (!el.tagName || el.tagName.toLowerCase() !== 'a')) {
-              el = el.parentNode;
-            }
-            if (el) {
-              miscService.pushGAEvent(
-                attrs.fname, 'compact widget click', el.href);
-            }
-          });
-        },
-      },
-    };
-  }])
+    /**
+       * Just the widget card -- gets the widget type from the scope
+       */
+        .directive('compactWidget', [
+          'miscService',
+          function(miscService) {
+            return {
+              restrict: 'E',
+              transclude: {
+                removeButton: '?removeButton',
+              },
+              scope: {
+                fname: '@',
+              },
+              templateUrl: require.toUrl('./partials/compact-widget-card.html'),
+              controller: 'WidgetCardController',
+              link: {
+                post: function(scope, element, attrs) {
+                  element.on('click', function(event) {
+                    var el = event.target;
+                    while (
+                      el &&
+                    (!el.tagName || el.tagName.toLowerCase() !== 'a')
+                    ) {
+                      el = el.parentNode;
+                    }
+                    if (el) {
+                      miscService.pushGAEvent(
+                          attrs.fname,
+                          'compact widget click',
+                          el.href
+                      );
+                    }
+                  });
+                },
+              },
+            };
+          },
+        ])
 
-  /**
-   * Show an external message
-   */
-  .directive('externalWidgetMessage', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-      },
-      templateUrl: require.toUrl('./partials/external-message.html'),
-      controller: 'WidgetExternalMessageController',
-    };
-  })
+    /**
+       * Show an external message
+       */
+        .directive('externalWidgetMessage', function() {
+          return {
+            restrict: 'E',
+            scope: {
+              widget: '=app',
+            },
+            templateUrl: require.toUrl('./partials/external-message.html'),
+            controller: 'WidgetExternalMessageController',
+          };
+        })
 
-  /**
-   * Widget type that alternates between basic appearance and time-sensitive
-   * content with a countdown
-   */
-  .directive('timeSensitive', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-        config: '=config',
-      },
-      templateUrl: require.toUrl('./partials/type__time-sensitive.html'),
-      controller: 'TimeSensitiveContentController',
-    };
-  })
+    /**
+       * Widget type that alternates between basic appearance and time-sensitive
+       * content with a countdown
+       */
+        .directive('timeSensitive', function() {
+          return {
+            restrict: 'E',
+            scope: {
+              widget: '=app',
+              config: '=config',
+            },
+            templateUrl: require.toUrl('./partials/type__time-sensitive.html'),
+            controller: 'TimeSensitiveContentController',
+          };
+        })
 
-  .directive('widgetIcon', function() {
-    return {
-      restrict: 'E',
-      templateUrl: require.toUrl('./partials/widget-icon.html'),
-    };
-  })
+        .directive('widgetIcon', function() {
+          return {
+            restrict: 'E',
+            templateUrl: require.toUrl('./partials/widget-icon.html'),
+          };
+        })
 
-  .directive('optionLink', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-        config: '=config',
-      },
-      templateUrl: require.toUrl('./partials/type__option-link.html'),
-      controller: 'OptionLinkController',
-    };
-  })
+        .directive('optionLink', function() {
+          return {
+            restrict: 'E',
+            scope: {
+              widget: '=app',
+              config: '=config',
+            },
+            templateUrl: require.toUrl('./partials/type__option-link.html'),
+            controller: 'OptionLinkController',
+          };
+        })
 
-  .directive('listOfLinks', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-        config: '=config',
-      },
-      templateUrl: require.toUrl('./partials/type__list-of-links.html'),
-    };
-  })
+        .directive('listOfLinks', function() {
+          return {
+            restrict: 'E',
+            scope: {
+              widget: '=app',
+              config: '=config',
+            },
+            templateUrl: require.toUrl('./partials/type__list-of-links.html'),
+          };
+        })
 
-  .directive('searchWithLinks', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-        config: '=config',
-      },
-      templateUrl: require.toUrl('./partials/type__search-with-links.html'),
-      controller: 'SearchWithLinksController',
-    };
-  })
+        .directive('searchWithLinks', function() {
+          return {
+            restrict: 'E',
+            scope: {
+              widget: '=app',
+              config: '=config',
+            },
+            templateUrl: require.toUrl('./partials/type__search-with-links.html'),
+            controller: 'SearchWithLinksController',
+          };
+        })
 
-  .directive('switchWidget', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-        config: '=config',
-      },
-      templateUrl: require.toUrl('./partials/widget-content.html'),
-      controller: 'SwitchWidgetController',
-    };
-  })
+        .directive('switchWidget', function() {
+          return {
+            restrict: 'E',
+            scope: {
+              widget: '=app',
+              config: '=config',
+            },
+            templateUrl: require.toUrl('./partials/widget-content.html'),
+            controller: 'SwitchWidgetController',
+          };
+        })
 
-  .directive('widgetContent', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-        config: '=config',
-      },
-      templateUrl: require.toUrl('./partials/widget-content.html'),
-    };
-  })
+        .directive('widgetContent', function() {
+          return {
+            restrict: 'E',
+            scope: {
+              widget: '=app',
+              config: '=config',
+            },
+            templateUrl: require.toUrl('./partials/widget-content.html'),
+          };
+        })
 
-  .directive('rssWidget', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-        config: '=config',
-      },
-      templateUrl: require.toUrl('./partials/type__rss.html'),
-      controller: 'RssWidgetController',
-    };
-  })
+        .directive('rssWidget', function() {
+          return {
+            restrict: 'E',
+            scope: {
+              widget: '=app',
+              config: '=config',
+            },
+            templateUrl: require.toUrl('./partials/type__rss.html'),
+            controller: 'RssWidgetController',
+          };
+        })
 
-  .directive('actionItems', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-        config: '=config',
-      },
-      templateUrl: require.toUrl('./partials/type__action-items.html'),
-      controller: 'ActionItemsController',
-    };
-  })
+        .directive('actionItems', function() {
+          return {
+            restrict: 'E',
+            scope: {
+              widget: '=app',
+              config: '=config',
+            },
+            templateUrl: require.toUrl('./partials/type__action-items.html'),
+            controller: 'ActionItemsController',
+          };
+        })
 
-  .directive('weatherWidget', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-        config: '=config',
-      },
-      templateUrl: require.toUrl('./partials/type__weather.html'),
-      controller: 'WeatherWidgetController',
-    };
-  })
+        .directive('weatherWidget', function() {
+          return {
+            restrict: 'E',
+            scope: {
+              widget: '=app',
+              config: '=config',
+            },
+            templateUrl: require.toUrl('./partials/type__weather.html'),
+            controller: 'WeatherWidgetController',
+          };
+        })
 
-  .directive('basicWidget', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        widget: '=app',
-        config: '=config',
-      },
-      templateUrl: require.toUrl('./partials/type__basic.html'),
-      controller: 'BasicWidgetController',
-    };
-  });
+        .directive('basicWidget', function() {
+          return {
+            restrict: 'E',
+            scope: {
+              widget: '=app',
+              config: '=config',
+            },
+            templateUrl: require.toUrl('./partials/type__basic.html'),
+            controller: 'BasicWidgetController',
+          };
+        })
+  );
 });

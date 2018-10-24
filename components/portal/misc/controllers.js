@@ -19,124 +19,142 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  return angular.module('portal.misc.controllers', [])
+  return (
+    angular
+        .module('portal.misc.controllers', [])
 
-  /* AddToHomeController */
-    .controller('AddToHomeController', [
-      '$log', '$scope', '$timeout', '$mdToast', 'PortalAddToHomeService',
-      function($log, $scope, $timeout, $mdToast, PortalAddToHomeService) {
-        /**
-         * Check if the given app is in the user's home layout already.
-         * If not, trigger the prompt to add it.
-         * @param {String} fname
-         */
-      var checkInHome = function(fname) {
-          PortalAddToHomeService.inHome(fname)
-            .then(function(data) {
-              $scope.inHome = data;
+    /* AddToHomeController */
+        .controller('AddToHomeController', [
+          '$log',
+          '$scope',
+          '$timeout',
+          '$mdToast',
+          'PortalAddToHomeService',
+          function($log, $scope, $timeout, $mdToast, PortalAddToHomeService) {
+          /**
+           * Check if the given app is in the user's home layout already.
+           * If not, trigger the prompt to add it.
+           * @param {String} fname
+           */
+            var checkInHome = function(fname) {
+              PortalAddToHomeService.inHome(fname)
+                  .then(function(data) {
+                    $scope.inHome = data;
 
-              // If not in home, show toast to add it
-              if (!$scope.inHome) {
-                $timeout(function() {
-                  showAddToHomeToast();
-                }, 1500);
-              }
-
-              return data;
-            }).catch(function() {
-              $log.warn('could not check inHome for ' + fname);
-            });
-        };
-
-        /**
-         * Show a dismissible toast prompting the user to add the app to their
-         * home layout. Dismissing toast persists for the session.
-         */
-        var showAddToHomeToast = function() {
-          $mdToast.show({
-            position: 'top right',
-            hideDelay: false,
-            scope: $scope,
-            preserveScope: true,
-            parent: angular.element(document).find('div.add-to-home-parent')[0],
-            templateUrl:
-              require.toUrl('/portal/misc/partials/toast-add-to-home.html'),
-            controller: function ToastAddToHomeController(
-              $scope,
-              $mdToast,
-              PortalAddToHomeService
-            ) {
-              $scope.addToHome = function() {
-                if (!$scope.inHome
-                  && PortalAddToHomeService.canAddToHome($scope.appFname)) {
-                  $scope.savingAddToHome = true;
-                  PortalAddToHomeService.addToHome($scope.appFname).then(
-                    function() {
-                      // success
-                      $scope.inHome = true;
-                      $scope.successfullyAdded = true;
+                    // If not in home, show toast to add it
+                    if (!$scope.inHome) {
                       $timeout(function() {
-                        $scope.dismissToast();
-                      }, 1000);
-                      return true;
-                    }).catch(function() {
-                      // failed
-                      $scope.addToHomeFailed = true;
+                        showAddToHomeToast();
+                      }, 1500);
                     }
-                  );
-                }
-              };
 
-              $scope.dismissToast = function() {
-                $mdToast.hide();
-                PortalAddToHomeService.dismissForSession();
-              };
-            },
-          });
-        };
+                    return data;
+                  })
+                  .catch(function() {
+                    $log.warn('could not check inHome for ' + fname);
+                  });
+            };
 
-        /**
-         * Check for if current app can be added to home and user
-         * hasn't already dismissed a chance to do so during this session.
-         */
-        var init = function() {
-          // Default it to being in your home to avoid service loading lag
-          $scope.inHome = true;
+            /**
+           * Show a dismissible toast prompting the user to add the app to their
+           * home layout. Dismissing toast persists for the session.
+           */
+            var showAddToHomeToast = function() {
+              $mdToast.show({
+                position: 'top right',
+                hideDelay: false,
+                scope: $scope,
+                preserveScope: true,
+                parent: angular
+                    .element(document)
+                    .find('div.add-to-home-parent')[0],
+                templateUrl: require.toUrl(
+                    '/portal/misc/partials/toast-add-to-home.html'
+                ),
+                controller: function ToastAddToHomeController(
+                    $scope,
+                    $mdToast,
+                    PortalAddToHomeService
+                ) {
+                  $scope.addToHome = function() {
+                    if (
+                      !$scope.inHome &&
+                    PortalAddToHomeService.canAddToHome($scope.appFname)
+                    ) {
+                      $scope.savingAddToHome = true;
+                      PortalAddToHomeService.addToHome($scope.appFname)
+                          .then(function() {
+                            // success
+                            $scope.inHome = true;
+                            $scope.successfullyAdded = true;
+                            $timeout(function() {
+                              $scope.dismissToast();
+                            }, 1000);
+                            return true;
+                          })
+                          .catch(function() {
+                            // failed
+                            $scope.addToHomeFailed = true;
+                          });
+                    }
+                  };
 
-          if (PortalAddToHomeService.canAddToHome()) {
-            // Make sure user didn't already dismiss
-            // add to home toast
-            if (!PortalAddToHomeService.isDismissed()) {
-              if ($scope.appFname) {
-                // Check if in home layout
-                checkInHome($scope.appFname);
-              } else {
-                $scope.$watch('appFname', function() {
-                  // Must be using 2 way binding, add a watch on the fname
+                  $scope.dismissToast = function() {
+                    $mdToast.hide();
+                    PortalAddToHomeService.dismissForSession();
+                  };
+                },
+              });
+            };
+
+            /**
+           * Check for if current app can be added to home and user
+           * hasn't already dismissed a chance to do so during this session.
+           */
+            var init = function() {
+            // Default it to being in your home to avoid service loading lag
+              $scope.inHome = true;
+
+              if (PortalAddToHomeService.canAddToHome()) {
+              // Make sure user didn't already dismiss
+              // add to home toast
+                if (!PortalAddToHomeService.isDismissed()) {
                   if ($scope.appFname) {
+                  // Check if in home layout
                     checkInHome($scope.appFname);
+                  } else {
+                    $scope.$watch('appFname', function() {
+                    // Must be using 2 way binding, add a watch on the fname
+                      if ($scope.appFname) {
+                        checkInHome($scope.appFname);
+                      }
+                    });
                   }
-                });
+                }
               }
-            }
-          }
-        };
+            };
 
-        init();
-      }])
+            init();
+          },
+        ])
 
-  .controller('SkipToContentController',
-   ['$scope', '$location', '$anchorScroll', '$document',
-   function($scope, $location, $anchorScroll, $document) {
-     /**
-      * Sets URL hash, scrolls, and sets focus to specified element by id
-      * @throws {TypeError} when null argument or when element referenced by
-      * id does not exist
-      */
-     $scope.skipToHere = function(htmlElemementId) {
-       $location.hash(htmlElemementId);
-       $anchorScroll();
-       $document[0].getElementById(htmlElemementId).focus();
-     };
-  }]);
+        .controller('SkipToContentController', [
+          '$scope',
+          '$location',
+          '$anchorScroll',
+          '$document',
+          function($scope, $location, $anchorScroll, $document) {
+          /**
+           * Sets URL hash, scrolls, and sets focus to specified element by id
+           * @throws {TypeError} when null argument or when element referenced by
+           * id does not exist
+           */
+            $scope.skipToHere = function(htmlElemementId) {
+              $location.hash(htmlElemementId);
+              $anchorScroll();
+              $document[0].getElementById(htmlElemementId).focus();
+            };
+          },
+        ])
+  );
 });

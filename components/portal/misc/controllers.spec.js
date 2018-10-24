@@ -33,8 +33,12 @@ define(['angular-mocks', 'portal'], function() {
       elementNotToFocus = angular.element('<div id="noFocus">');
     });
 
-    beforeEach(inject(
-     function($rootScope, $controller, _$location_, _$anchorScroll_) {
+    beforeEach(inject(function(
+        $rootScope,
+        $controller,
+        _$location_,
+        _$anchorScroll_
+    ) {
       scope = $rootScope.$new();
       $location = _$location_;
       $controller('SkipToContentController', {
@@ -50,8 +54,14 @@ define(['angular-mocks', 'portal'], function() {
     });
 
     it('should set focus to specified element', inject(function($document) {
-      $document.find('body').eq(0).append(elementToFocus);
-      $document.find('body').eq(0).append(elementNotToFocus);
+      $document
+          .find('body')
+          .eq(0)
+          .append(elementToFocus);
+      $document
+          .find('body')
+          .eq(0)
+          .append(elementNotToFocus);
       spyOn(elementToFocus[0], 'focus');
       spyOn(elementNotToFocus[0], 'focus');
       spyOn($location, 'hash');

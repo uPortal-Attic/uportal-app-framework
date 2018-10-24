@@ -20,39 +20,44 @@
 /* eslint-env node */
 /* global inject */
 define(['angular-mocks', 'portal'], function() {
-    describe('portalGroupService', function() {
-        var service;
-        var httpBackend;
-        var URLS = {};
-        beforeEach(function() {
-          module('portal');
-        });
+  describe('portalGroupService', function() {
+    var service;
+    var httpBackend;
+    var URLS = {};
+    beforeEach(function() {
+      module('portal');
+    });
 
-        beforeEach(inject(function(
-          _portalGroupService_, _$httpBackend_,
-          SERVICE_LOC, MESSAGES, APP_FLAGS
-        ) {
-          service = _portalGroupService_;
-          httpBackend = _$httpBackend_;
-          URLS.group = SERVICE_LOC.groupURL;
-          URLS.feature = SERVICE_LOC.messagesURL;
-        }));
+    beforeEach(inject(function(
+        _portalGroupService_,
+        _$httpBackend_,
+        SERVICE_LOC,
+        MESSAGES,
+        APP_FLAGS
+    ) {
+      service = _portalGroupService_;
+      httpBackend = _$httpBackend_;
+      URLS.group = SERVICE_LOC.groupURL;
+      URLS.feature = SERVICE_LOC.messagesURL;
+    }));
 
-        it('should properly handle filtering nothing', function() {
-          // setup
-          var array = [];
-          var groups = [];
-          // test
-          var results = service.filterArrayByGroups(array, groups);
+    it('should properly handle filtering nothing', function() {
+      // setup
+      var array = [];
+      var groups = [];
+      // test
+      var results = service.filterArrayByGroups(array, groups);
 
-          expect(results).toBeTruthy();
+      expect(results).toBeTruthy();
 
-          expect(results.length).toEqual(0);
-        });
+      expect(results.length).toEqual(0);
+    });
 
-        it('should properly handle filtering with a string ' +
-          'or an array with default attribute of group', function() {
-          // setup
+    it(
+        'should properly handle filtering with a string ' +
+        'or an array with default attribute of group',
+        function() {
+        // setup
           var array = [
             {title: 'in crowd', group: 'in'},
             {title: 'out crowd', group: ['out']},
@@ -65,29 +70,34 @@ define(['angular-mocks', 'portal'], function() {
           expect(results).toBeTruthy();
 
           expect(results.length).toEqual(2);
-        });
+        }
+    );
 
-        it('should properly handle filtering ' +
-          'with an alternate group field name', function() {
-          // setup
+    it(
+        'should properly handle filtering ' +
+        'with an alternate group field name',
+        function() {
+        // setup
           var array = [
             {title: 'in crowd', group: 'in'},
             {title: 'out crowd', group: ['out']},
             {title: 'everyone', group: ['in', 'out']},
           ];
-          var groups = [{title: 'in'}];// uPortal inside joke
+          var groups = [{title: 'in'}]; // uPortal inside joke
           // test
-          var results =
-            service.filterArrayByGroups(array, groups, null, 'title');
+          var results = service.filterArrayByGroups(array, groups, null, 'title');
 
-            expect(results).toBeTruthy();
+          expect(results).toBeTruthy();
 
-            expect(results.length).toEqual(2);
-        });
+          expect(results.length).toEqual(2);
+        }
+    );
 
-        it('should properly handle filtering ' +
-          'with an alternate array field name', function() {
-          // setup
+    it(
+        'should properly handle filtering ' +
+        'with an alternate array field name',
+        function() {
+        // setup
           var array = [
             {title: 'in crowd', theGroup: 'in'},
             {title: 'out crowd', theGroup: ['out']},
@@ -102,6 +112,7 @@ define(['angular-mocks', 'portal'], function() {
           expect(results).toBeTruthy();
 
           expect(results.length).toEqual(2);
-        });
-    });
+        }
+    );
+  });
 });

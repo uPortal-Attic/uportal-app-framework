@@ -19,36 +19,41 @@
 'use strict';
 
 define(['angular'], function(angular) {
-  return angular.module('portal.about.services', [])
-  .factory('portalAboutService', [
-    '$http', 'miscService', 'FRAME_URLS',
-    function($http, miscService, FRAME_URLS) {
-    /**
-     * Gets frame information from generated about-frame.json
-     * @return {*}
-    **/
-    var getFrameDetails = function() {
-      return getDetails(FRAME_URLS.aboutFrame);
-    };
+  return angular
+      .module('portal.about.services', [])
+      .factory('portalAboutService', [
+        '$http',
+        'miscService',
+        'FRAME_URLS',
+        function($http, miscService, FRAME_URLS) {
+        /**
+         * Gets frame information from generated about-frame.json
+         * @return {*}
+         **/
+          var getFrameDetails = function() {
+            return getDetails(FRAME_URLS.aboutFrame);
+          };
 
-    /**
-     * Get information
-     * @param {String} URL
-     * @return {*}
-    **/
-    var getDetails = function(URL) {
-      return $http.get(URL, {cache: true})
-        .then(function(result) {
-          return result.data;
+          /**
+         * Get information
+         * @param {String} URL
+         * @return {*}
+         **/
+          var getDetails = function(URL) {
+            return $http.get(URL, {cache: true}).then(
+                function(result) {
+                  return result.data;
+                },
+                function(reason) {
+                  miscService.redirectUser(reason.status, URL);
+                }
+            );
+          };
+
+          return {
+            getFrameDetails: getFrameDetails,
+            getDetails: getDetails,
+          };
         },
-        function(reason) {
-          miscService.redirectUser(reason.status, URL);
-        });
-    };
-
-    return {
-      getFrameDetails: getFrameDetails,
-      getDetails: getDetails,
-    };
-  }]);
+      ]);
 });

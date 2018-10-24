@@ -20,202 +20,252 @@
 /* eslint-env node */
 /* global inject */
 define(['angular-mocks', 'portal'], function() {
-    describe('mainService', function() {
-        var service;
+  describe('mainService', function() {
+    var service;
 
-        var loginSilentUrl;
-        var httpBackend;
+    var loginSilentUrl;
+    var httpBackend;
 
-        beforeEach(function() {
-          module('portal');
-        });
+    beforeEach(function() {
+      module('portal');
+    });
 
-        beforeEach(inject(function(
-          _mainService_, _$httpBackend_,
-          SERVICE_LOC, MESSAGES, APP_FLAGS
-        ) {
-          service = _mainService_;
-          httpBackend = _$httpBackend_;
+    beforeEach(inject(function(
+        _mainService_,
+        _$httpBackend_,
+        SERVICE_LOC,
+        MESSAGES,
+        APP_FLAGS
+    ) {
+      service = _mainService_;
+      httpBackend = _$httpBackend_;
 
-          if (loginSilentUrl) {
-            httpBackend.whenGET(loginSilentUrl)
-            .respond({'status': 'success', 'username': 'admin'});
-          }
+      if (loginSilentUrl) {
+        httpBackend
+            .whenGET(loginSilentUrl)
+            .respond({status: 'success', username: 'admin'});
+      }
 
-          httpBackend.whenGET(SERVICE_LOC.sessionInfo).respond();
-        }));
+      httpBackend.whenGET(SERVICE_LOC.sessionInfo).respond();
+    }));
 
-        it('should set title to include page, app, and portal name when '
-           + 'all of these are present and non-redundant.', function() {
-          // setup
+    it(
+        'should set title to include page, app, and portal name when ' +
+        'all of these are present and non-redundant.',
+        function() {
+        // setup
           var pageTitle = 'Timesheets';
           var appTitle = 'STAR Time Entry';
           var portalTitle = 'MyUW';
 
           // test
-          var windowTitle =
-            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
+          var windowTitle = service.computeWindowTitle(
+              pageTitle,
+              appTitle,
+              portalTitle
+          );
 
-          expect(windowTitle)
-            .toEqual('Timesheets | STAR Time Entry | MyUW');
+          expect(windowTitle).toEqual('Timesheets | STAR Time Entry | MyUW');
 
           httpBackend.flush();
-        });
+        }
+    );
 
-        it('should set title to omit app name when redundant with portal name',
-          function() {
+    it(
+        'should set title to omit app name when redundant with portal name',
+        function() {
           // setup
           var pageTitle = 'Notifications';
           var appTitle = 'MyUW';
           var portalTitle = 'MyUW';
 
           // test
-          var windowTitle =
-            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
+          var windowTitle = service.computeWindowTitle(
+              pageTitle,
+              appTitle,
+              portalTitle
+          );
 
           expect(windowTitle).toEqual('Notifications | MyUW');
 
           httpBackend.flush();
-        });
+        }
+    );
 
-        it('should set title to omit app name when null', function() {
-          // setup
-          var pageTitle = 'Notifications';
-          var appTitle = null;
-          var portalTitle = 'MyUW';
+    it('should set title to omit app name when null', function() {
+      // setup
+      var pageTitle = 'Notifications';
+      var appTitle = null;
+      var portalTitle = 'MyUW';
 
-          // test
-          var windowTitle =
-            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
+      // test
+      var windowTitle = service.computeWindowTitle(
+          pageTitle,
+          appTitle,
+          portalTitle
+      );
 
-          expect(windowTitle).toEqual('Notifications | MyUW');
+      expect(windowTitle).toEqual('Notifications | MyUW');
 
-          httpBackend.flush();
-        });
+      httpBackend.flush();
+    });
 
-        it('should set title to omit app name when it is empty', function() {
-          // setup
-          var pageTitle = 'Notifications';
-          var appTitle = '';
-          var portalTitle = 'MyUW';
+    it('should set title to omit app name when it is empty', function() {
+      // setup
+      var pageTitle = 'Notifications';
+      var appTitle = '';
+      var portalTitle = 'MyUW';
 
-          // test
-          var windowTitle =
-            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
+      // test
+      var windowTitle = service.computeWindowTitle(
+          pageTitle,
+          appTitle,
+          portalTitle
+      );
 
-          expect(windowTitle).toEqual('Notifications | MyUW');
+      expect(windowTitle).toEqual('Notifications | MyUW');
 
-          httpBackend.flush();
-        });
+      httpBackend.flush();
+    });
 
-        it('should set title to omit page name when it is null',
-          function() {
-          // setup
-          var appTitle = 'STAR Time Entry';
-          var portalTitle = 'MyUW';
+    it('should set title to omit page name when it is null', function() {
+      // setup
+      var appTitle = 'STAR Time Entry';
+      var portalTitle = 'MyUW';
 
-          // test
-          var windowTitle =
-            service.computeWindowTitle(null, appTitle, portalTitle);
+      // test
+      var windowTitle = service.computeWindowTitle(null, appTitle, portalTitle);
 
-          expect(windowTitle).toEqual('STAR Time Entry | MyUW');
+      expect(windowTitle).toEqual('STAR Time Entry | MyUW');
 
-          httpBackend.flush();
-        });
+      httpBackend.flush();
+    });
 
-        it('should set title to omit page name when it is empty string',
-          function() {
+    it(
+        'should set title to omit page name when it is empty string',
+        function() {
           // setup
           var pageTitle = '';
           var appTitle = 'STAR Time Entry';
           var portalTitle = 'MyUW';
 
           // test
-          var windowTitle =
-            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
+          var windowTitle = service.computeWindowTitle(
+              pageTitle,
+              appTitle,
+              portalTitle
+          );
 
           expect(windowTitle).toEqual('STAR Time Entry | MyUW');
 
           httpBackend.flush();
-        });
+        }
+    );
 
-        it('should set title to only the portal name when the app name is '
-          + 'redundant and the page name is not provided.', function() {
-          // setup
+    it(
+        'should set title to only the portal name when the app name is ' +
+        'redundant and the page name is not provided.',
+        function() {
+        // setup
           var pageTitle = '';
           var appTitle = 'MyUW';
           var portalTitle = 'MyUW';
 
           // test
-          var windowTitle =
-            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
+          var windowTitle = service.computeWindowTitle(
+              pageTitle,
+              appTitle,
+              portalTitle
+          );
 
           expect(windowTitle).toEqual('MyUW');
 
           httpBackend.flush();
-        });
+        }
+    );
 
-        it('should set title to only the portal name when redundant with both '
-          + 'the app name and the page name.', function() {
-          // setup
+    it(
+        'should set title to only the portal name when redundant with both ' +
+        'the app name and the page name.',
+        function() {
+        // setup
           var pageTitle = 'MyUW';
           var appTitle = 'MyUW';
           var portalTitle = 'MyUW';
 
           // test
-          var windowTitle =
-            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
+          var windowTitle = service.computeWindowTitle(
+              pageTitle,
+              appTitle,
+              portalTitle
+          );
 
           expect(windowTitle).toEqual('MyUW');
 
           httpBackend.flush();
-        });
+        }
+    );
 
-        it('should set title to only the app name when portal name and page '
-          + 'name are null', function() {
-          // setup
+    it(
+        'should set title to only the app name when portal name and page ' +
+        'name are null',
+        function() {
+        // setup
           var pageTitle = null;
           var appTitle = 'STAR Time and Leave';
           var portalTitle = null;
 
           // test
-          var windowTitle =
-            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
+          var windowTitle = service.computeWindowTitle(
+              pageTitle,
+              appTitle,
+              portalTitle
+          );
 
           expect(windowTitle).toEqual('STAR Time and Leave');
 
           httpBackend.flush();
-        });
+        }
+    );
 
-        it('should set title to only the page name when portal name and app '
-          + 'name are null', function() {
-          // setup
+    it(
+        'should set title to only the page name when portal name and app ' +
+        'name are null',
+        function() {
+        // setup
           var pageTitle = 'SomePage';
           var appTitle = null;
           var portalTitle = null;
 
           // test
-          var windowTitle =
-            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
+          var windowTitle = service.computeWindowTitle(
+              pageTitle,
+              appTitle,
+              portalTitle
+          );
 
           expect(windowTitle).toEqual('SomePage');
 
           httpBackend.flush();
-        });
+        }
+    );
 
-        it('should gracefully handle missing theme.', function() {
-          // setup
-          var pageTitle = 'SomePage';
-          var appTitle = 'SomeApp';
-          var portalTitle = null;
+    it('should gracefully handle missing theme.', function() {
+      // setup
+      var pageTitle = 'SomePage';
+      var appTitle = 'SomeApp';
+      var portalTitle = null;
 
-          // test
-          var windowTitle =
-            service.computeWindowTitle(pageTitle, appTitle, portalTitle);
+      // test
+      var windowTitle = service.computeWindowTitle(
+          pageTitle,
+          appTitle,
+          portalTitle
+      );
 
-          expect(windowTitle).toEqual('SomePage | SomeApp');
+      expect(windowTitle).toEqual('SomePage | SomeApp');
 
-          httpBackend.flush();
-        });
+      httpBackend.flush();
     });
+  });
 });

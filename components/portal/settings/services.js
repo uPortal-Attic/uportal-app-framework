@@ -19,20 +19,25 @@
 'use strict';
 
 define(['angular', 'jquery'], function(angular, $) {
-    return angular.module('portal.settings.services', [])
+  return angular
+      .module('portal.settings.services', [])
 
-    .factory('portalSkinService', ['$q', '$http', 'miscService', 'SERVICE_LOC',
+      .factory('portalSkinService', [
+        '$q',
+        '$http',
+        'miscService',
+        'SERVICE_LOC',
         function($q, $http, miscService, SERVICE_LOC) {
-          /**
-           * Sets the skin on the backend layout manager
-           * @param {string} skinKey
-           * @return {*}
-           */
+        /**
+         * Sets the skin on the backend layout manager
+         * @param {string} skinKey
+         * @return {*}
+         */
           function setPortalSkin(skinKey) {
             if (SERVICE_LOC.portalLayoutRestEndpoint) {
               var parameters = {
-                'action': 'chooseSkin',
-                'skinName': skinKey,
+                action: 'chooseSkin',
+                skinName: skinKey,
               };
               return $http({
                 url: SERVICE_LOC.portalLayoutRestEndpoint,
@@ -47,5 +52,6 @@ define(['angular', 'jquery'], function(angular, $) {
           return {
             setPortalSkin: setPortalSkin,
           };
-        }]);
+        },
+      ]);
 });
