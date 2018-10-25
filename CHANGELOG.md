@@ -49,6 +49,9 @@ and this project adheres to
 
 ### Documentation
 
++ Clarified `takeActionEndDate` in `time-sensitive-content` widget documentation
+  (#861)
+
 ## [10.3.0][] - 2018-09-19
 
 ### Added in 10.3.0
