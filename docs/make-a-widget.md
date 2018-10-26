@@ -486,8 +486,8 @@ with an integer for a value. For example:
     and before `templateRetireDate`, the widget communicates when the action
     stopped being available (e.g "Ended September 20th, 2018"). See "Guidance"
     below for suggested formats and options. Works like SAML `NotOnOrAfter`. If
-    only a date (and not a time) are provided, interprets this as 12:00am, that
-    is as soon as that date starts. So if for example the last day to execute an
+    only a date (and not a time) are provided, interprets this as 00:00, i.e.
+    as soon as that date starts. So if for example the last day to execute an
     Annual Benefits Enrollment opportunity is October 26th, `takeActionEndDate`
     should be set to October 27th.
   * **templateRetireDate**: *(optional)* The date when the widget should switch back to displaying basic content. See "Guidance" heading below for suggested formats and options.
@@ -507,14 +507,14 @@ with an integer for a value. For example:
 
 Configured dates **MUST** match one of the following formats:
 
-+ `'YYYY-MM-DD'` (ex. '2017-09-18'): This format specifies 12:00am on a
++ `'YYYY-MM-DD'` (ex. '2017-09-18'): This format specifies 00:00 on a
   year-specific one-time-only date.
 + `'MM-DD'` (ex. '09-18'): This format specifies a recurring date every year,
-  again with 12:00am implied. Useful for creating recurring annual cycles in
+  again with 00:00 implied. Useful for creating recurring annual cycles in
   `time-sensitive-content` widgets.
 + `'...THH:MM'` (ex. 09-18T10:00): Append the time in hours and minutes to
   either the once-only or the recurring date format to specify a time other than
-  12:00am.
+  00:00
 
 ##### How to configure the active date range in `time-sensitive-content`
 
