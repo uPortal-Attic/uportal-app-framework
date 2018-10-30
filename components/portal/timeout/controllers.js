@@ -156,16 +156,16 @@ define(['angular'], function(angular) {
           };
           $scope.continueLabel = function() {
             return (isContinue)?'OK':'Reload';
-          }
+          };
           $scope.dialogText = function() {
             var result = 'Your session will expire soon due to inactivity. ' +
               'Please press OK to continue, otherwise you will be logged out.';
             if (!isContinue) {
               result = 'Your session has expired.' +
-                ' Please reload the page to continue.'
+                ' Please reload the page to continue.';
             }
             return result;
-          }
+          };
         },
       }).catch($log.error);
     }
