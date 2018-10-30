@@ -31,6 +31,8 @@ define(['angular'], function(angular) {
   ) {
     var checkInactiveDelay = 1; // Minutes
     var appInactiveTimeout = APP_OPTIONS.inactivityTimeout; // Minutes
+    var intervalRef;
+    var isContinue = true;
 
     /**
      * changes minutes to millis
@@ -49,16 +51,14 @@ define(['angular'], function(angular) {
           function(timeoutData) {
             if (timeoutData && timeoutData.expirationMills) {
               $timeout(triggerDialog, timeoutData.expirationMills);
-              if (appInactiveTimeout) {
-                $interval(checkInactive,
-                    toMillis(checkInactiveDelay), 0, false);
-              }
+              refreshSession();
             } else {
               $log.info('Timeout data could not be found');
               if ($sessionStorage.portal
                   && $sessionStorage.portal.username
                   && $sessionStorage.portal.username !== 'guest') {
                 // we know its not a guest session
+                isContinue = false;
                 triggerDialog();
               }
             }
@@ -76,19 +76,22 @@ define(['angular'], function(angular) {
     function checkInactive() {
       var inactiveDuration = sessionInactivityService.getInactiveDuration();
 
-      var warningInactiveDuration =
-          toMillis(appInactiveTimeout - (2 * checkInactiveDelay));
-      var dialogInactiveDuration =
-          toMillis(appInactiveTimeout - checkInactiveDelay);
-      var finalInactiveDuration =
-          toMillis(appInactiveTimeout);
+      var appID = toMillis(appInactiveTimeout);
+      var checkID = toMillis(checkInactiveDelay);
+      var warningID = appID - (2 * checkID);
+      var dialogID = appID - checkID;
+      var finalID = appID;
 
-      if (inactiveDuration > finalInactiveDuration) {
-        redirect();
-      } else if (inactiveDuration > warningInactiveDuration) {
+      if (inactiveDuration >= finalID) {
+        isContinue = false;
+        triggerDialog();
+      } else if (inactiveDuration >= dialogID) {
+        triggerDialog();
+        $timeout(checkInactive, checkID, false);
+      } else if (inactiveDuration >= warningID) {
         // Trigger dialog with one minute on the clock
-        $timeout(triggerDialog,
-            dialogInactiveDuration - inactiveDuration, false);
+        $timeout(checkInactive, dialogID - inactiveDuration, false);
+        $interval.cancel(intervalRef);
       }
     }
 
@@ -100,10 +103,16 @@ define(['angular'], function(angular) {
     }
 
     /**
-     * Redirect to end the session;
+     * Refresh the session
      */
-    function redirect() {
-      $window.location.replace(MISC_URLS.logoutURL);
+    function refreshSession() {
+      if (portalShibbolethService.shibServiceActivated()
+          && appInactiveTimeout) {
+        portalShibbolethService.getSession();
+        isContinue = true;
+        intervalRef = $interval(checkInactive,
+            toMillis(checkInactiveDelay), 0, false);
+      }
     }
 
     /**
@@ -124,12 +133,11 @@ define(['angular'], function(angular) {
           '    </div>' +
           '  </md-toolbar>' +
           '  <md-dialog-content class="md-dialog-content">' +
-          '    <p>Your session will expire soon. Please reload the ' +
-          'page to continue, otherwise you will be logged out.</p>' +
+          '    <p>{{dialogText()}}</p>' +
           '  </md-dialog-content>' +
           '  <md-dialog-actions layout="row">' +
-          '    <md-button aria-label="" ng-click="reloadPage()">' +
-          '      Reload' +
+          '    <md-button aria-label="" ng-click="continueBtn()">' +
+          '      {{continueLabel()}}' +
           '    </md-button>' +
           '  </md-dialog-actions>' +
           '</md-dialog> ',
@@ -138,15 +146,27 @@ define(['angular'], function(angular) {
         openFrom: 'left',
         closeTo: 'right',
         controller: function DialogController($scope, $mdDialog) {
-          $scope.closeDialog = function() {
+          $scope.continueBtn = function() {
+            if (isContinue) {
+              refreshSession();
+            } else {
+              reload();
+            }
             $mdDialog.hide();
           };
-          $scope.reloadPage = function() {
-            reload();
-          };
+          $scope.continueLabel = function() {
+            return (isContinue)?'OK':'Reload';
+          }
+          $scope.dialogText = function() {
+            var result = 'Your session will expire soon due to inactivity. ' +
+              'Please press OK to continue, otherwise you will be logged out.';
+            if (!isContinue) {
+              result = 'Your session has expired.' +
+                ' Please reload the page to continue.'
+            }
+            return result;
+          }
         },
-      }).finally(function() {
-        redirect();
       }).catch($log.error);
     }
 
