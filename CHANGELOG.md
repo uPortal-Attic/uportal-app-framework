@@ -26,6 +26,7 @@ and this project adheres to
 + Regular side navigation now looks the same on mobile and desktop (#838)
 + `time-sensitive-content` widget type now only shows its feedback link after
   the action period has expired. (#852)
++ Inactive timeout dialog now provides less disruptive actions on timeout (#864)
 
 ### Fixed
 
