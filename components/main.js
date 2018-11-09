@@ -23,5 +23,8 @@ require(['./config'], function(config) {
 
     require(['angular', 'my-app'], function(angular) {
         angular.bootstrap(document, ['my-app']);
+        // apply cssvars ponyfill for IE11
+        // eslint-disable-next-line no-undef
+        cssVars({shadowDOM: true, watch: true});
     });
 });

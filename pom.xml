@@ -464,6 +464,8 @@
             <exclude>**/components/js/ga.js</exclude>
             <exclude>**/components/js/webcomponents-bundle.js</exclude>
             <exclude>**/components/js/webcomponents-bundle.js.map</exclude>
+            <exclude>**/components/js/*.min.js</exclude>
+            <exclude>**/components/js/*.min.js.map</exclude>
             <exclude>.gitignore</exclude>
           </excludes>
           <mapping>
