@@ -79,8 +79,13 @@ define(['angular'], function(angular) {
         var getAllMessages = function() {
           return $http.get(SERVICE_LOC.messagesURL)
             .then(function(response) {
+              var priorityFilteredMessages;
               if (response.data && response.data.messages
                 && angular.isArray(response.data.messages)) {
+                  var nonPriorityMessages = $filter('priority')(
+                    priorityFilteredMessages,
+                    nonPriorityMessages
+                  );  
                 return response.data.messages;
               } else {
                 return GET_MESSAGES_FAILED;
@@ -89,6 +94,23 @@ define(['angular'], function(angular) {
             .catch(function(error) {
               miscService.redirectUser(error.status, 'Get all messages');
               return GET_MESSAGES_FAILED;
+            });
+        };
+
+        var getPriorityMessages = function() {
+          getAllMessages()
+            .then(function(response) {
+              
+              var priorityFilteredMessages;
+              var nonPriorityMessages;
+              var priorityMessages = $filter('priority')(
+                priorityFilteredMessages,
+                nonPriorityMessages
+              );
+              return priorityMessages.priority;
+            })
+            .catch(function(error) {
+                return {};
             });
         };
 
@@ -259,6 +281,71 @@ define(['angular'], function(angular) {
             });
         };
 
+        var setMessageSeen = function(message) {
+          // If K/V store isn't activated, don't proceed
+          if (!keyValueService.isKVStoreActivated()) {
+            return $q.resolve($sessionStorage.seenMessageIds);
+          }
+
+          var id = message.id;
+          var seenMessageIds = [];
+
+          getSeenMessageIds()
+            .then(function(result) {
+              if (result.indexOf(id) == -1) {
+                result.push(message.id);
+              } 
+              seenMessageIds = result;
+              return result;
+            }).catch(function(error) {
+              return [];
+            });
+
+            return keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS,
+              seenMessageIds)
+              .then(function() {
+                $rootScope.$emit('notificationChange');
+                return seenMessageIds;
+              })
+              .catch(function(error) {
+                $log.warn('Problem setting seen message IDs in storage');
+                return error;
+              });
+        };
+
+        var setMessageUnseen = function(message) {
+          // If K/V store isn't activated, don't proceed
+          if (!keyValueService.isKVStoreActivated()) {
+            return $q.resolve($sessionStorage.seenMessageIds);
+          }
+
+          var id = message.id;
+          var seenMessageIds = [];
+
+          getSeenMessageIds()
+            .then(function(result) {
+              var index = result.indexOf(id);
+              if (index != -1) {
+                result.splice(index, 1);
+              }
+              seenMessageIds = result;
+              return result;
+            }).catch(function(error) {
+              return [];
+            });
+
+            return keyValueService.setValue(KV_KEYS.VIEWED_MESSAGE_IDS,
+              seenMessageIds)
+              .then(function() {
+                $rootScope.$emit('notificationChange');
+                return seenMessageIds;
+              })
+              .catch(function(error) {
+                $log.warn('Problem setting seen message IDs in storage');
+                return error;
+              });
+        };
+
         /**
          * Set list of seen IDs in K/V store and session storage
          * @param {Array} originalSeenIds - The ids when the
@@ -337,6 +424,8 @@ define(['angular'], function(angular) {
           getMessagesByGroup: getMessagesByGroup,
           getMessagesByData: getMessagesByData,
           getSeenMessageIds: getSeenMessageIds,
+          setMessageSeen: setMessageSeen,
+          setMessageUnseen: setMessageUnseen,
           setMessagesSeen: setMessagesSeen,
           broadcastPriorityFlag: broadcastPriorityFlag,
           broadcastAnnouncementFlag: broadcastAnnouncementFlag,

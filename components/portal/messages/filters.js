@@ -108,6 +108,24 @@ define(['angular', 'moment'], function(angular, moment) {
           });
         };
       }])
+    .filter('priority', function() {
+        return function(messages) {
+          var priorityMessages = {
+            priority: [],
+            insignificant: [],
+          };
+          // Split messages in separate arrays
+          // based on whether the id matches a seen id
+          angular.forEach(messages, function(message) {
+            if (message.priority == 'high') {
+              priorityMessages.priority.push(message);
+            } else {
+              priorityMessages.insignificant.push(message);
+            }
+          });
+          return priorityMessages.priority;
+        };
+      })
     .filter('filterSeenAndUnseen', function() {
       return function(messages, seenMessageIds) {
         var separatedMessages = {

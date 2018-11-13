@@ -157,6 +157,194 @@ define(['angular'], function(angular) {
         init();
       },
     ])
+    .controller('PriorityNotificationsController', ['$q', '$log', '$scope', '$window',
+    '$rootScope', '$location', '$localStorage', '$filter', 'MESSAGES',
+    'SERVICE_LOC', 'miscService', 'messagesService', 'orderByFilter',
+    function($q, $log, $scope, $window, $rootScope, $location, $localStorage,
+             $filter, MESSAGES, SERVICE_LOC, miscService, messagesService,
+             orderByFilter) {
+      // //////////////////
+      // Local variables //
+      // //////////////////
+      var vm = this;
+      var dismissedNotificationIds = [];
+
+      // ///////////////////
+      // Bindable members //
+      // ///////////////////
+      vm.notifications = [];
+      vm.dismissedNotifications = [];
+      vm.priorityNotifications = [];
+      vm.notificationsUrl = MESSAGES.notificationsPageURL;
+      vm.status = 'View notifications';
+      vm.isLoading = true;
+      vm.renderLimit = 3;
+      vm.titleLengthLimit = 140;
+
+      // //////////////////
+      // Event listeners //
+      // //////////////////
+
+      /**
+       * Process event where notifications have changed,
+       * i.e. a dismissal, and ensure that all instances of the
+       * controller are updated.
+       */
+      var notificationChange = $rootScope.$on('notificationChange',
+        function() {
+          configurePriorityNotificationsScope();
+        });
+
+      /**
+       * When the parent controller has messages, initialize
+       * things dependent on messages
+       */
+      $scope.$watch('$parent.hasMessages', function(hasMessages) {
+        // If the parent scope has messages and notifications are enabled,
+        // complete initialization
+        if (hasMessages) {
+          // Check if messages service failed
+          if ($scope.$parent.messagesError) {
+            vm.messagesError = $scope.$parent.messagesError;
+          }
+          // If messages config is set up, configure scope
+          // Else hide messages features
+          if (angular.equals($scope.$parent.showMessagesFeatures, true)) {
+            configurePriorityNotificationsScope();
+          } else {
+            vm.showMessagesFeatures = false;
+            vm.isLoading = false;
+          }
+        }
+      });
+
+      // ////////////////
+      // Local methods //
+      // ////////////////
+
+      /**
+       * Alert the UI to show priority notifications if they exist
+       */
+      var configurePriorityNotificationsScope = function() {
+        // Use angular's built-in filter to grab priority notifications
+        vm.priorityNotifications = $filter('filter')(
+          vm.notifications,
+          {priority: 'high'}
+        );
+        // If priority notifications exist, notify listeners
+        messagesService.broadcastPriorityFlag(
+          vm.priorityNotifications.length > 0
+        );
+        // If there is only one priority notification, track
+        // rendering in analytics
+        if (vm.priorityNotifications.length === 1) {
+          vm.pushGAEvent(
+            'Priority notification',
+            'Render',
+            vm.priorityNotifications[0].id
+          );
+        }
+      };
+
+      /**
+       * Alerts the UI that there are no priority notifications to show
+       */
+      var clearPriorityNotificationsFlags = function() {
+        vm.priorityNotifications = [];
+        // Notify listeners that priority notifications are gone
+        messagesService.broadcastPriorityFlag(false);
+      };
+
+      // ////////////////
+      // Scope methods //
+      // ////////////////
+      /**
+       * Check if user is viewing notifications page
+       * @return {boolean}
+       */
+      vm.isNotificationsPage = function() {
+        return $window.location.pathname === MESSAGES.notificationsPageURL;
+      };
+
+      /**
+       * On-click event to mark a notification as "seen"
+       * @param {Object} notification
+       * @param {boolean} isHighPriority
+       */
+      vm.dismissNotification = function(notification, isHighPriority) {
+        messagesService.setMessageSeen(notification);
+        vm.notifications = $filter('filterOutMessageWithId')(
+          vm.notifications,
+          notification.id
+        );
+        // Add notification to dismissed array
+        vm.dismissedNotifications.push(notification);
+
+        // Add notification's ID to local array of dismissed notification IDs
+        dismissedNotificationIds.push(notification.id);
+
+        // Clear priority notification flags
+        clearPriorityNotificationsFlags();
+      };
+
+      /**
+       * On-click event to mark a notification as "unseen"
+       * @param {Object} notification
+       * @param {boolean} isHighPriority
+       */
+      vm.restoreNotification = function(notification, isHighPriority) {
+        // Remove notification from dismissed array
+        messagesService.setMessageUnseen(notification)
+         .then(function(result) {
+           configurePriorityNotificationsScope();
+           return result;
+         }).catch(function(error) {
+           $log.warn(error);
+         });
+        notificationChange();
+      };
+
+      /**
+       * Log a Google Analytics event for each notification rendered
+       * when a user opens the notifications bell menu
+       */
+      vm.trackRenderedNotifications = function() {
+        // Order notifications by priority flag
+        var orderedNotifications = orderByFilter(
+          vm.notifications,
+          'priority'
+        );
+        // Slice array to first 3 entries (the ones that would be rendered)
+        orderedNotifications = $filter('limitTo')(
+          orderedNotifications,
+          vm.renderLimit
+        );
+        // Log a render event for each rendered notification
+        angular.forEach(orderedNotifications, function(notification) {
+          vm.pushGAEvent(
+            'Notification menu',
+            'Rendered notification',
+            notification.id
+          );
+        });
+      };
+
+      /**
+       * Track clicks on "Notifications" links in mobile menu and top bar
+       * @param {string} category - Context of the event
+       * @param {string} action - Action taken
+       * @param {string} label - Label/data pertinent to event
+       */
+      vm.pushGAEvent = function(category, action, label) {
+        miscService.pushGAEvent(category, action, label);
+      };
+
+      var init = function() {
+        configurePriorityNotificationsScope();
+      }
+
+      init();
+  }])
 
     .controller('NotificationsController', ['$q', '$log', '$scope', '$window',
       '$rootScope', '$location', '$localStorage', '$filter', 'MESSAGES',
@@ -183,7 +371,6 @@ define(['angular'], function(angular) {
         // ///////////////////
         vm.notifications = [];
         vm.dismissedNotifications = [];
-        vm.priorityNotifications = [];
         vm.notificationsUrl = MESSAGES.notificationsPageURL;
         vm.status = 'View notifications';
         vm.isLoading = true;
@@ -202,7 +389,6 @@ define(['angular'], function(angular) {
         var notificationChange = $rootScope.$on('notificationChange',
           function() {
             configureNotificationsScope();
-            configurePriorityNotificationsScope();
           });
 
         /**
@@ -285,9 +471,6 @@ define(['angular'], function(angular) {
             vm.notifications = allNotifications;
           }
 
-          // Configure priority notifications scope
-          configurePriorityNotificationsScope();
-
           // Set aria-label in notifications bell
           vm.status = 'You have '
             + (vm.notifications.length === 0
@@ -307,39 +490,6 @@ define(['angular'], function(angular) {
             ' controller.');
           // Stop loading spinner
           vm.isLoading = false;
-        };
-
-        /**
-         * Alert the UI to show priority notifications if they exist
-         */
-        var configurePriorityNotificationsScope = function() {
-          // Use angular's built-in filter to grab priority notifications
-          vm.priorityNotifications = $filter('filter')(
-            vm.notifications,
-            {priority: 'high'}
-          );
-          // If priority notifications exist, notify listeners
-          messagesService.broadcastPriorityFlag(
-            vm.priorityNotifications.length > 0
-          );
-          // If there is only one priority notification, track
-          // rendering in analytics
-          if (vm.priorityNotifications.length === 1) {
-            vm.pushGAEvent(
-              'Priority notification',
-              'Render',
-              vm.priorityNotifications[0].id
-            );
-          }
-        };
-
-        /**
-         * Alerts the UI that there are no priority notifications to show
-         */
-        var clearPriorityNotificationsFlags = function() {
-          vm.priorityNotifications = [];
-          // Notify listeners that priority notifications are gone
-          messagesService.broadcastPriorityFlag(false);
         };
 
         // ////////////////
@@ -373,12 +523,6 @@ define(['angular'], function(angular) {
           if (SERVICE_LOC.kvURL) {
             messagesService.setMessagesSeen(allSeenMessageIds,
               dismissedNotificationIds, 'dismiss');
-          }
-
-          // Clear priority notification flags if it was a priority
-          // notification
-          if (isHighPriority) {
-            clearPriorityNotificationsFlags();
           }
         };
 
