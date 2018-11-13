@@ -32,6 +32,17 @@ define(['angular', 'require'], function(angular, require) {
       };
     })
 
+    .directive('notificationsBell', function() {
+      return {
+        restrict: 'E',
+        scope: {
+          directiveMode: '@mode',
+        },
+        templateUrl: require.toUrl('./partials/notifications-banner.html'),
+        controller: 'PriorityNotificationsController',
+        controllerAs: 'pn',
+      };
+    })
     .directive('notificationsListItem', function() {
       return {
         restrict: 'E',

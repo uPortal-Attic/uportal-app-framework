@@ -341,7 +341,7 @@ define(['angular'], function(angular) {
 
       var init = function() {
         configurePriorityNotificationsScope();
-      }
+      };
 
       init();
   }])

@@ -1,0 +1,160 @@
+<!--
+
+    Licensed to Apereo under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Apereo licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License.  You may obtain a
+    copy of the License at the following location:
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<div class="notifications" ng-show="vm.showMessagesFeatures">
+
+    <!-- MOBILE BELL -->
+    <div class="notification-badge notification-badge-mobile" aria-label="{{ status }}"
+         ng-show="directiveMode === 'mobile-bell' && vm.notifications.length !== 0 && !vm.isNotificationsPage()">
+      <md-icon class="notification-badge-icon">notifications</md-icon>
+    </div>
+  
+    <!-- DESKTOP NOTIFICATION BELL -->
+    <md-menu class="notifications-menu"
+             ng-show="directiveMode === 'bell' && !vm.isNotificationsPage()"
+             md-offset="-200 0"
+             md-position-mode="target bottom">
+      <md-button ng-click="$mdOpenMenu($event);vm.trackRenderedNotifications()"
+                 class="notification-desktop"
+                 md-no-ink
+                 md-menu-origin>
+        <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
+        <div class="notification-badge" aria-label="{{ vm.status }}" ng-class="{ 'notification-badge-empty' : vm.notifications.length === 0 }">
+          <span class="number-of-nots" ng-show="vm.notifications.length > 0 && !vm.isLoading"
+                ng-class="{ 'more-than-10-nots' : (vm.notifications.length > 9) }">{{ vm.notifications.length }}</span>
+            <md-icon>notifications</md-icon>
+          <md-progress-circular md-mode="indeterminate" ng-show="vm.isLoading" md-diameter="15px" class="md-primary"></md-progress-circular>
+        </div>
+      </md-button>
+      <md-menu-content class="top-bar-menu-content notifications-menu">
+        <md-menu-item layout="row" layout-align="space-between center">
+          <span>Notifications</span>
+          <a md-autofocus ng-href="{{ vm.notificationsUrl }}" ng-click="vm.pushGAEvent('Notification bell menu', 'Click link', 'See all');vm.isNotificationsPage();" aria-label="see all notifications" class="link__see-all">
+            See all <span ng-if="vm.notifications.length > 0">({{ vm.notifications.length }})</span>
+          </a>
+        </md-menu-item>
+        <!-- EMPTY STATE -->
+        <md-menu-item ng-show="vm.notifications.length === 0 || vm.messagesError" class="top-bar-menu-item notifications-empty">
+          <div class="menu-item-content" layout="row" layout-align="center center">
+            <span ng-if="!vm.messagesError">All caught up!</span>
+            <span ng-if="vm.messagesError"><md-icon class="md-warn">warning</md-icon> {{ vm.messagesError }}</span>
+          </div>
+        </md-menu-item>
+        <!-- SHOW UP TO 3 NEW NOTIFICATIONS -->
+        <div ng-show="vm.notifications.length > 0">
+          <md-menu-item ng-repeat="notification in vm.notifications | orderBy:'priority' | limitTo:vm.renderLimit track by $index"
+                        class="top-bar-menu-item">
+            <!-- NOTIFICATION CONTENT -->
+            <div class="menu-item-content" layout="row" layout-align="space-between center">
+              <div flex="80" layout="column" layout-align="center start" tabindex="0">
+                <!-- PRIORITY MESSAGE -->
+                <div class="menu-item__high-priority" ng-if="notification.priority == 'high'">
+                  <md-icon class="md-warn" aria-hidden="true">priority_high</md-icon>
+                  <span>High priority</span>
+                </div>
+                <!-- REGULAR MESSAGE -->
+                <span>{{ notification.title }}</span>
+  
+                <div ng-if="notification.moreInfoButton || notification.actionButton" class="compact-buttons">
+                  <md-button class="md-raised md-accent"
+                             ng-show="notification.actionButton"
+                             ng-href="{{ notification.actionButton.url }}"
+                             ng-click="vm.pushGAEvent('Notification menu item', 'Click action button', notification.id);"
+                             target="_blank"
+                             rel="noopener noreferrer">
+                    {{ notification.actionButton.label }}
+                  </md-button>
+                  <md-button class="md-default"
+                             ng-show="notification.moreInfoButton"
+                             ng-href="{{ notification.moreInfoButton.url }}"
+                             ng-click="vm.pushGAEvent('Notification menu item', 'Click more info', notification.id);"
+                             target="_blank"
+                             rel="noopener noreferrer">
+                    {{ notification.moreInfoButton.label }}
+                  </md-button>
+                </div>
+              </div>
+              <!-- DISMISS BUTTON -->
+              <md-button class="md-icon-button button__mark-seen"
+                         ng-hide="notification.dismissible === false"
+                         ng-click="vm.dismissNotification(notification);vm.pushGAEvent('Notification menu item', 'Dismiss', notification.id)"
+                         aria-label="dismiss this notification"
+                         md-prevent-menu-close="md-prevent-menu-close"
+                         flex="20">
+                <md-icon>clear</md-icon>
+              </md-button>
+            </div>
+          </md-menu-item>
+        </div>
+      </md-menu-content>
+    </md-menu>
+  
+    <!-- PRIORITY NOTIFICATIONS (FIXED-TOP) -->
+    <div class="priority-notifications"
+         ng-class="{ 'animate-hide': vm.priorityNotifications.length === 0 || vm.isNotificationsPage() }"
+         ng-if="directiveMode === 'priority' && !vm.isNotificationsPage()">
+      <div class="priority-bubble"
+           ng-if="vm.priorityNotifications.length == 1"
+           ng-repeat="priority in vm.priorityNotifications | limitTo: 1"
+           layout="row" layout-align="center center" layout-fill>
+        <div class="notification-message">
+          <span>{{ priority.title | limitTo: vm.titleLengthLimit | trim }}</span>
+          <span ng-if="priority.title.length > vm.titleLengthLimit">...</span>
+          <md-tooltip ng-if="priority.title.length > vm.titleLengthLimit">
+            {{ priority.title }}
+          </md-tooltip>
+        </div>
+        <div layout="row" class="compact-buttons">
+          <md-button class="md-raised md-accent"
+                     ng-if="priority.actionButton"
+                     ng-href="{{ priority.actionButton.url }}"
+                     target="_blank"
+                     rel="noopener noreferrer">
+            {{ priority.actionButton.label }}
+          </md-button>
+          <md-button class="md-raised"
+                     ng-if="priority.moreInfoButton"
+                     ng-href="{{ priority.moreInfoButton.url }}"
+                     target="_blank"
+                     rel="noopener noreferrer">
+            {{ priority.moreInfoButton.label }}
+          </md-button>
+        </div>
+        <div class="dismiss-priority">
+          <md-button class="md-icon-button"
+                     ng-hide="priority.dismissible === false"
+                     ng-click="vm.dismissNotification(priority, true);vm.pushGAEvent('Priority notification', 'Dismiss', priority.id)"
+                     aria-label="Dismiss this notification">
+            <md-icon>close</md-icon>
+          </md-button>
+        </div>
+      </div>
+      <div class="priority-bubble" ng-if="vm.priorityNotifications.length > 1" layout="row" layout-align="center center" layout-fill>
+        <div class="notification-message">
+          <span>You have {{ vm.priorityNotifications.length }} important notifications.</span>
+        </div>
+        <div class="compact-buttons">
+          <md-button class="md-raised md-accent" ng-href="{{ vm.notificationsUrl }}">Go to notifications</md-button>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  
