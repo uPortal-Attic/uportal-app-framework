@@ -64,11 +64,6 @@
           <!-- NOTIFICATION CONTENT -->
           <div class="menu-item-content" layout="row" layout-align="space-between center">
             <div flex="80" layout="column" layout-align="center start" tabindex="0">
-              <!-- PRIORITY MESSAGE -->
-              <div class="menu-item__high-priority" ng-if="notification.priority == 'high'">
-                <md-icon class="md-warn" aria-hidden="true">priority_high</md-icon>
-                <span>High priority</span>
-              </div>
               <!-- REGULAR MESSAGE -->
               <span>{{ notification.title }}</span>
 
@@ -105,55 +100,4 @@
       </div>
     </md-menu-content>
   </md-menu>
-
-  <!-- PRIORITY NOTIFICATIONS (FIXED-TOP) -->
-  <div class="priority-notifications"
-       ng-class="{ 'animate-hide': vm.priorityNotifications.length === 0 || vm.isNotificationsPage() }"
-       ng-if="directiveMode === 'priority' && !vm.isNotificationsPage()">
-    <div class="priority-bubble"
-         ng-if="vm.priorityNotifications.length == 1"
-         ng-repeat="priority in vm.priorityNotifications | limitTo: 1"
-         layout="row" layout-align="center center" layout-fill>
-      <div class="notification-message">
-        <span>{{ priority.title | limitTo: vm.titleLengthLimit | trim }}</span>
-        <span ng-if="priority.title.length > vm.titleLengthLimit">...</span>
-        <md-tooltip ng-if="priority.title.length > vm.titleLengthLimit">
-          {{ priority.title }}
-        </md-tooltip>
-      </div>
-      <div layout="row" class="compact-buttons">
-        <md-button class="md-raised md-accent"
-                   ng-if="priority.actionButton"
-                   ng-href="{{ priority.actionButton.url }}"
-                   target="_blank"
-                   rel="noopener noreferrer">
-          {{ priority.actionButton.label }}
-        </md-button>
-        <md-button class="md-raised"
-                   ng-if="priority.moreInfoButton"
-                   ng-href="{{ priority.moreInfoButton.url }}"
-                   target="_blank"
-                   rel="noopener noreferrer">
-          {{ priority.moreInfoButton.label }}
-        </md-button>
-      </div>
-      <div class="dismiss-priority">
-        <md-button class="md-icon-button"
-                   ng-hide="priority.dismissible === false"
-                   ng-click="vm.dismissNotification(priority, true);vm.pushGAEvent('Priority notification', 'Dismiss', priority.id)"
-                   aria-label="Dismiss this notification">
-          <md-icon>close</md-icon>
-        </md-button>
-      </div>
-    </div>
-    <div class="priority-bubble" ng-if="vm.priorityNotifications.length > 1" layout="row" layout-align="center center" layout-fill>
-      <div class="notification-message">
-        <span>You have {{ vm.priorityNotifications.length }} important notifications.</span>
-      </div>
-      <div class="compact-buttons">
-        <md-button class="md-raised md-accent" ng-href="{{ vm.notificationsUrl }}">Go to notifications</md-button>
-      </div>
-    </div>
-  </div>
-
 </div>

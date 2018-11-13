@@ -166,20 +166,20 @@ define(['angular'], function(angular) {
       // //////////////////
       // Local variables //
       // //////////////////
-      var vm = this;
+      var pn = this;
       var dismissedNotificationIds = [];
 
       // ///////////////////
       // Bindable members //
       // ///////////////////
-      vm.notifications = [];
-      vm.dismissedNotifications = [];
-      vm.priorityNotifications = [];
-      vm.notificationsUrl = MESSAGES.notificationsPageURL;
-      vm.status = 'View notifications';
-      vm.isLoading = true;
-      vm.renderLimit = 3;
-      vm.titleLengthLimit = 140;
+      pn.notifications = [];
+      pn.dismissedNotifications = [];
+      pn.priorityNotifications = [];
+      pn.notificationsUrl = MESSAGES.notificationsPageURL;
+      pn.status = 'View notifications';
+      pn.isLoading = true;
+      pn.renderLimit = 3;
+      pn.titleLengthLimit = 140;
 
       // //////////////////
       // Event listeners //
@@ -205,15 +205,15 @@ define(['angular'], function(angular) {
         if (hasMessages) {
           // Check if messages service failed
           if ($scope.$parent.messagesError) {
-            vm.messagesError = $scope.$parent.messagesError;
+            pn.messagesError = $scope.$parent.messagesError;
           }
           // If messages config is set up, configure scope
           // Else hide messages features
           if (angular.equals($scope.$parent.showMessagesFeatures, true)) {
             configurePriorityNotificationsScope();
           } else {
-            vm.showMessagesFeatures = false;
-            vm.isLoading = false;
+            pn.showMessagesFeatures = false;
+            pn.isLoading = false;
           }
         }
       });
@@ -227,21 +227,21 @@ define(['angular'], function(angular) {
        */
       var configurePriorityNotificationsScope = function() {
         // Use angular's built-in filter to grab priority notifications
-        vm.priorityNotifications = $filter('filter')(
-          vm.notifications,
+        pn.priorityNotifications = $filter('filter')(
+          pn.notifications,
           {priority: 'high'}
         );
         // If priority notifications exist, notify listeners
         messagesService.broadcastPriorityFlag(
-          vm.priorityNotifications.length > 0
+          pn.priorityNotifications.length > 0
         );
         // If there is only one priority notification, track
         // rendering in analytics
-        if (vm.priorityNotifications.length === 1) {
-          vm.pushGAEvent(
+        if (pn.priorityNotifications.length === 1) {
+          pn.pushGAEvent(
             'Priority notification',
             'Render',
-            vm.priorityNotifications[0].id
+            pn.priorityNotifications[0].id
           );
         }
       };
@@ -250,7 +250,7 @@ define(['angular'], function(angular) {
        * Alerts the UI that there are no priority notifications to show
        */
       var clearPriorityNotificationsFlags = function() {
-        vm.priorityNotifications = [];
+        pn.priorityNotifications = [];
         // Notify listeners that priority notifications are gone
         messagesService.broadcastPriorityFlag(false);
       };
@@ -262,7 +262,7 @@ define(['angular'], function(angular) {
        * Check if user is viewing notifications page
        * @return {boolean}
        */
-      vm.isNotificationsPage = function() {
+      pn.isNotificationsPage = function() {
         return $window.location.pathname === MESSAGES.notificationsPageURL;
       };
 
@@ -271,14 +271,14 @@ define(['angular'], function(angular) {
        * @param {Object} notification
        * @param {boolean} isHighPriority
        */
-      vm.dismissNotification = function(notification, isHighPriority) {
+      pn.dismissNotification = function(notification, isHighPriority) {
         messagesService.setMessageSeen(notification);
-        vm.notifications = $filter('filterOutMessageWithId')(
-          vm.notifications,
+        pn.notifications = $filter('filterOutMessageWithId')(
+          pn.notifications,
           notification.id
         );
         // Add notification to dismissed array
-        vm.dismissedNotifications.push(notification);
+        pn.dismissedNotifications.push(notification);
 
         // Add notification's ID to local array of dismissed notification IDs
         dismissedNotificationIds.push(notification.id);
@@ -292,7 +292,7 @@ define(['angular'], function(angular) {
        * @param {Object} notification
        * @param {boolean} isHighPriority
        */
-      vm.restoreNotification = function(notification, isHighPriority) {
+      pn.restoreNotification = function(notification, isHighPriority) {
         // Remove notification from dismissed array
         messagesService.setMessageUnseen(notification)
          .then(function(result) {
@@ -308,20 +308,20 @@ define(['angular'], function(angular) {
        * Log a Google Analytics event for each notification rendered
        * when a user opens the notifications bell menu
        */
-      vm.trackRenderedNotifications = function() {
+      pn.trackRenderedNotifications = function() {
         // Order notifications by priority flag
         var orderedNotifications = orderByFilter(
-          vm.notifications,
+          pn.notifications,
           'priority'
         );
         // Slice array to first 3 entries (the ones that would be rendered)
         orderedNotifications = $filter('limitTo')(
           orderedNotifications,
-          vm.renderLimit
+          pn.renderLimit
         );
         // Log a render event for each rendered notification
         angular.forEach(orderedNotifications, function(notification) {
-          vm.pushGAEvent(
+          pn.pushGAEvent(
             'Notification menu',
             'Rendered notification',
             notification.id
@@ -335,7 +335,7 @@ define(['angular'], function(angular) {
        * @param {string} action - Action taken
        * @param {string} label - Label/data pertinent to event
        */
-      vm.pushGAEvent = function(category, action, label) {
+      pn.pushGAEvent = function(category, action, label) {
         miscService.pushGAEvent(category, action, label);
       };
 
