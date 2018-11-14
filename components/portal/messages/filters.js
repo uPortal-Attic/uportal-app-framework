@@ -126,6 +126,22 @@ define(['angular', 'moment'], function(angular, moment) {
         return separatedMessages;
       };
     })
+    .filter('priorities', function() {
+      return function(messages) {
+        var prioritizedMessages = {
+          high: [],
+          low: [],
+        }
+        angular.forEach(messages, function(message) {
+          if (message.priority == 'high') {
+            prioritizedMessages.high.push(message);
+          } else {
+            prioritizedMessages.low.push(message);
+          }
+        });
+        return prioritizedMessages;
+      };
+    })
     .filter('filterOutMessageWithId', function() {
       return function(messages, idToFilterOut) {
         angular.forEach(messages, function(value, key) {
