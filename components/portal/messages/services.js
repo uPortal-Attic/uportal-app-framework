@@ -421,6 +421,7 @@ define(['angular'], function(angular) {
 
         return {
           getAllMessages: getAllMessages,
+          getPriorityMessages: getPriorityMessages,
           getMessagesByGroup: getMessagesByGroup,
           getMessagesByData: getMessagesByData,
           getSeenMessageIds: getSeenMessageIds,

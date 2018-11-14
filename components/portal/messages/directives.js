@@ -32,7 +32,7 @@ define(['angular', 'require'], function(angular, require) {
       };
     })
 
-    .directive('notificationsBell', function() {
+    .directive('notificationsBanner', function() {
       return {
         restrict: 'E',
         scope: {
