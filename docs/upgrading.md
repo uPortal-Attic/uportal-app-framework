@@ -3,7 +3,7 @@ At a glance notes for upgrading apps between major versions.
 
 # 10.x.x to 11.x.x
 
-The addition of web components led to some html structural changes, which caused some CSS selectors to change. The most notable of the changes is the removal of `md-toolbar`. If you relied on these selectors, see https://github.com/uPortal-Project/uportal-app-framework/pull/838/files/91878bc59802a1eec4c4be74de09f363961d19a6 for more detail.
+The addition of web components led to some html structural changes, which caused some CSS selectors to change. The most notable of the changes is the removal of `md-toolbar`. If you relied on these selectors, see [this changeset from PR #838](https://github.com/uPortal-Project/uportal-app-framework/pull/838/files/91878bc59802a1eec4c4be74de09f363961d19a6) for more detail.
 
 # 9.x.x to 10.x.x
 
