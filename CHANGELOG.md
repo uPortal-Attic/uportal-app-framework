@@ -10,25 +10,41 @@ and this project adheres to
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+### Deprecated
+
+### Documentation
+
+## [11.0.0][] - 2018-11-19
+
+### Breaking Change in 11.0.0
++ Replaced Angular Material toolbar directive with `myuw-app-bar` v1.5.3 from
+  myuw-web-components library (#838)
+  + CSS hierarchy has changed a bit to reflect the absence of the Angular
+  Material toolbar. Custom CSS that targets elements within `md-toolbar` may be
+  affected
+
+### Added in 11.0.0
+
 + Link in widget contextual menu to app directory details page about the app.
   (#853)
 + CSS variables for each theme to enable `myuw-app-bar` cooperation with angular
   material theming (#838)
 + Added patched Web Components polyfill for AngularJS compatibility (#847, #854)
 
-### Changed
+### Changed in 11.0.0
 
-+ Replaced Angular Material toolbar directive with `myuw-app-bar` v1.5.3 from
-  myuw-web-components library (#838)
-  + CSS hierarchy has changed a bit to reflect the absence of the Angular
-  Material toolbar. Custom CSS that targets elements within `md-toolbar` may be
-  affected
 + Regular side navigation now looks the same on mobile and desktop (#838)
 + `time-sensitive-content` widget type now only shows its feedback link after
   the action period has expired. (#852)
 + Inactive timeout dialog now provides less disruptive actions on timeout (#864)
 
-### Fixed
+### Fixed in 11.0.0
 
 + `list-of-links` no longer erroneously renders blank when it contains 2-4 links
   the first of which redundant with its launch bar. (#855)
@@ -44,11 +60,7 @@ and this project adheres to
   "clear" functionality (#838)
 + `action-items` widgets now handle more kinds of errors more fluently (#839)
 
-### Removed
-
-### Deprecated
-
-### Documentation
+### Documentation in 11.0.0
 
 + Clarified `takeActionEndDate` in `time-sensitive-content` widget documentation
   (#861)
@@ -923,7 +935,8 @@ break compatibility with some older components. If the app used any
 + Added ability to have a name for the default theme (#336)
 + Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.3.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v11.0.0...HEAD
+[11.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.3.0...v11.0.0
 [10.3.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.2.0...v10.3.0
 [10.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.1...v10.2.0
 [10.1.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.0...v10.1.1
