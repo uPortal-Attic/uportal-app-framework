@@ -105,7 +105,7 @@
     "lint-staged": "^7.0.0",
     "lodash": "^4.0.0",
     "mkdirp": "^0.5.1",
-    "onchange": "^4.0.0",
+    "onchange": "^5.1.1",
     "postcss": "^7.0.0",
     "recursive-copy": "^2.0.5",
     "remark-cli": "^6.0.0",
