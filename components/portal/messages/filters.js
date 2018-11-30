@@ -28,8 +28,9 @@ define(['angular', 'moment'], function(angular, moment) {
           announcements: [],
         };
         angular.forEach(messages, function(message) {
-          if (message.messageType == 'notification' && message.priority == 'high') {
-            separatedMessages.priorityNotifications.push(message);
+          if (message.messageType == 'notification'
+            && message.priority == 'high') {
+              separatedMessages.priorityNotifications.push(message);
           } else {
             if (message.messageType == 'notification') {
               separatedMessages.notifications.push(message);
