@@ -314,10 +314,7 @@ define(['angular'], function(angular) {
          */
         var configurePriorityNotificationsScope = function() {
           // Use angular's built-in filter to grab priority notifications
-          vm.priorityNotifications = $filter('filter')(
-            vm.notifications,
-            {priority: 'high'}
-          );
+          vm.priorityNotifications = $scope.$parent.messages.priorityNotifications;
           // If priority notifications exist, notify listeners
           messagesService.broadcastPriorityFlag(
             vm.priorityNotifications.length > 0

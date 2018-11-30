@@ -24,16 +24,21 @@ define(['angular', 'moment'], function(angular, moment) {
       return function(messages) {
         var separatedMessages = {
           notifications: [],
+          priorityNotifications: [],
           announcements: [],
         };
-        separatedMessages.announcements = $filter('filter')(
-          messages,
-          {messageType: 'announcement'}
-        );
-        separatedMessages.notifications = $filter('filter')(
-          messages,
-          {messageType: 'notification'}
-        );
+        angular.forEach(messages, function(message) {
+          if (message.messageType == 'notification' && message.priority == 'high') {
+            separatedMessages.priorityNotifications.push(message);
+          } else {
+            if (message.messageType == 'notification') {
+              separatedMessages.notifications.push(message);
+            }
+          }
+          if (message.messageType == 'announcement') {
+            separatedMessages.announcements.push(message);
+          }
+        });
         return separatedMessages;
       };
     }])
