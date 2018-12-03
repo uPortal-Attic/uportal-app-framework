@@ -11,6 +11,7 @@ and this project adheres to
 ### Added
 
 ### Changed
++ Decoupled priority notifications and non-priority notifications. (#868)
 
 ### Fixed
 
