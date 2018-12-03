@@ -20,7 +20,7 @@
 
 define(['angular', 'moment'], function(angular, moment) {
   return angular.module('portal.messages.filters', [])
-    .filter('separateMessageTypes', ['$filter', function($filter) {
+    .filter('separateMessageTypes', function() {
       return function(messages) {
         var separatedMessages = {
           notifications: [],
@@ -28,21 +28,22 @@ define(['angular', 'moment'], function(angular, moment) {
           announcements: [],
         };
         angular.forEach(messages, function(message) {
-          if (message.messageType == 'notification'
-            && message.priority == 'high') {
-              separatedMessages.priorityNotifications.push(message);
-          } else {
-            if (message.messageType == 'notification') {
-              separatedMessages.notifications.push(message);
+          if (message) {
+            if (message.messageType === 'notification') {
+              if (message.priority === 'high') {
+                separatedMessages.priorityNotifications.push(message);
+              } else {
+                separatedMessages.notifications.push(message);
+              }
+            } else if (message.messageType === 'announcement') {
+              separatedMessages.announcements.push(message);
             }
           }
-          if (message.messageType == 'announcement') {
-            separatedMessages.announcements.push(message);
-          }
-        });
+        }
+        );
         return separatedMessages;
       };
-    }])
+    })
     .filter('addToHome', function() {
       return function(messages, MISC_URLS, PortalAddToHomeService) {
         angular.forEach(messages, function(message) {
