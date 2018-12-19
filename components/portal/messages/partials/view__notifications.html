@@ -39,7 +39,7 @@
           <md-content>
             <md-list class="notifications-list" flex>
               <md-list-item class="notification-item"
-                            ng-repeat="notification in vm.notifications | orderBy:'priority' track by $index"
+                            ng-repeat="notification in vm.combinedNotifications | orderBy:'priority' track by $index"
                             layout="row"
                             layout-align="start center">
 

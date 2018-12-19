@@ -184,6 +184,7 @@ define(['angular'], function(angular) {
         vm.notifications = [];
         vm.dismissedNotifications = [];
         vm.priorityNotifications = [];
+        vm.combinedNotifications = [];
         vm.notificationsUrl = MESSAGES.notificationsPageURL;
         vm.status = 'View notifications';
         vm.isLoading = true;
@@ -246,6 +247,18 @@ define(['angular'], function(angular) {
           }
         };
 
+        var uniqueArray = function(value, index, self) {
+          return self.indexOf(value) === index;
+        };
+
+        var combineNotifications = function(notifications) {
+          var allNotifications = vm.combinedNotifications;
+          angular.forEach(notifications, function(notification) {
+            allNotifications.push(notification);
+          });
+          vm.combinedNotifications = allNotifications.filter(uniqueArray);
+        };
+
         /**
          * Separate seen and unseen notifications, then set scope variables
          * @param {Object} result
@@ -272,6 +285,7 @@ define(['angular'], function(angular) {
 
             // Set scope notifications and dismissed notifications
             vm.notifications = separatedNotifications.unseen;
+            combineNotifications(vm.notifications);
             vm.dismissedNotifications = separatedNotifications.seen;
 
             // Set local dismissedNotificationIds (used for tracking
@@ -283,6 +297,7 @@ define(['angular'], function(angular) {
             // If there aren't any seen notification IDs, just set all
             // notifications
             vm.notifications = allNotifications;
+            combineNotifications(vm.notifications);
           }
 
           // Configure priority notifications scope
@@ -313,13 +328,13 @@ define(['angular'], function(angular) {
          * Alert the UI to show priority notifications if they exist
          */
         var configurePriorityNotificationsScope = function() {
-          // Use angular's built-in filter to grab priority notifications
           vm.priorityNotifications =
             $scope.$parent.messages.priorityNotifications;
           // If priority notifications exist, notify listeners
           messagesService.broadcastPriorityFlag(
             vm.priorityNotifications.length > 0
           );
+          combineNotifications(vm.priorityNotifications);
           // If there is only one priority notification, track
           // rendering in analytics
           if (vm.priorityNotifications.length === 1) {
