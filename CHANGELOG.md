@@ -12,6 +12,7 @@ and this project adheres to
 
 ### Changed
 + Decoupled priority notifications and non-priority notifications. (#868)
++ Point directly to files in unpkg (#870)
 
 ### Fixed
 
