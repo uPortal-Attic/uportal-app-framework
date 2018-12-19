@@ -185,6 +185,7 @@ define(['angular'], function(angular) {
         vm.dismissedNotifications = [];
         vm.priorityNotifications = [];
         vm.notificationsUrl = MESSAGES.notificationsPageURL;
+        vm.priorityNotificationsUrl = MESSAGES.priorityNotificationsPageURL;
         vm.status = 'View notifications';
         vm.isLoading = true;
         vm.renderLimit = 3;

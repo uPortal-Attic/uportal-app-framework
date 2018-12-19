@@ -60,6 +60,7 @@ define(['angular'], function(angular) {
         })
         .value('MESSAGES', {
             'notificationsPageURL': '/web/notifications',
+            'priorityNotificationsPageURL': '/web/priorityNotifications',
         })
         .value('MISC_URLS', {
             'feedbackURL': 'https://my.wisc.edu/portal/p/feedback',

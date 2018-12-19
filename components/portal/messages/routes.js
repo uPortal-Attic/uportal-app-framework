@@ -22,6 +22,10 @@ define(['require'], function(require) {
       templateUrl: require.toUrl('./partials/view__notifications.html'),
       controller: 'MessagesController',
     },
+    'priorityNotifications': {
+      templateUrl: require.toUrl('./partials/view__priority-notifications.html'),
+      controller: 'MessagesController',
+    },
     'announcements': {
       templateUrl: require.toUrl('./partials/view__features.html'),
       controller: 'MessagesController',
