@@ -14,6 +14,7 @@ and this project adheres to
 + Decoupled priority notifications and non-priority notifications. (#868)
 
 ### Fixed
++ List of links widget has more consistent appearance across browsers and screen sizes (#871)
 
 ### Removed
 
