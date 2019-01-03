@@ -260,10 +260,18 @@ define(['angular'], function(angular) {
             if (index === -1) {
               allNotifications.push(notification);
             } else {
-              vm.dismissedNotifications.push(notification);
+              pushDismissal(notification);
             }
           });
           vm.combinedNotifications = allNotifications.filter(uniqueArray);
+        };
+
+        var pushDismissal = function(notification) {
+          vm.dismissedNotifications.push(notification);
+          dismissedNotificationIds.push(notification.id);
+
+          vm.dismissedNotifications = $filter(uniqueArray);
+          vm.dismissedNotificationIds = $filter(uniqueArray);
         };
 
         /**
