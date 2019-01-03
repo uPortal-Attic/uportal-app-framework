@@ -114,8 +114,7 @@ define(['angular'], function(angular) {
 
           var seenAndUnseen =
             $filter('filterSeenAndUnseen')(grpMsg, $scope.seenMessageIds);
-
-          $q.all(promiseMessagesByData(seenAndUnseen.unseen));
+            $q.all(promiseMessagesByData(seenAndUnseen.unseen));
         };
 
         var dataMessageSuccess = function(result) {
@@ -222,6 +221,7 @@ define(['angular'], function(angular) {
             // Else hide messages features
             if (angular.equals($scope.$parent.showMessagesFeatures, true)) {
               configureNotificationsScope();
+              configurePriorityNotificationsScope();
             } else {
               vm.showMessagesFeatures = false;
               vm.isLoading = false;
@@ -239,6 +239,7 @@ define(['angular'], function(angular) {
         var configureNotificationsScope = function() {
           if ($scope.$parent.messages.notifications) {
             allNotifications = $scope.$parent.messages.notifications;
+            combineNotifications(allNotifications);
             vm.showMessagesFeatures = true;
             // Get seen message IDs, then configure scope
             $q.all(promiseSeenMessageIds)
@@ -254,7 +255,11 @@ define(['angular'], function(angular) {
         var combineNotifications = function(notifications) {
           var allNotifications = vm.combinedNotifications;
           angular.forEach(notifications, function(notification) {
-            allNotifications.push(notification);
+          
+            var index = dismissedNotificationIds.indexOf(notification.id);
+            if (index === -1) {
+              allNotifications.push(notification);
+            }
           });
           vm.combinedNotifications = allNotifications.filter(uniqueArray);
         };
@@ -271,7 +276,7 @@ define(['angular'], function(angular) {
 
             // Separate seen and unseen
             separatedNotifications = $filter('filterSeenAndUnseen')(
-              allNotifications,
+              vm.combinedNotifications,
               result.seenMessageIds
             );
             angular.forEach(separatedNotifications.seen, function(message) {
@@ -284,9 +289,18 @@ define(['angular'], function(angular) {
             });
 
             // Set scope notifications and dismissed notifications
-            vm.notifications = separatedNotifications.unseen;
+            var lowPriotityUnseen = $filter('filter')(
+              separatedNotifications.unseen,
+              {priority: '!high'}
+            );
+
+            vm.notifications = lowPriotityUnseen;
             combineNotifications(vm.notifications);
-            vm.dismissedNotifications = separatedNotifications.seen;
+            angular.forEach(separatedNotifications.seen, function(notification) {
+              vm.dismissedNotifications.push(notification);
+            });
+
+            vm.dismissedNotifications = vm.dismissedNotifications.filter(uniqueArray);
 
             // Set local dismissedNotificationIds (used for tracking
             // dismissed messages in the K/V store
@@ -372,10 +386,21 @@ define(['angular'], function(angular) {
          * @param {boolean} isHighPriority
          */
         vm.dismissNotification = function(notification, isHighPriority) {
-          vm.notifications = $filter('filterOutMessageWithId')(
-            vm.notifications,
+          vm.combinedNotifications = $filter('filterOutMessageWithId')(
+            vm.combinedNotifications,
             notification.id
           );
+          if (isHighPriority) {
+            vm.priorityNotifications = $filter('filterOutMessageWithId')(
+              vm.priorityNotifications,
+              notification.id
+            );
+          } else {
+            vm.notifications = $filter('filterOutMessageWithId')(
+              vm.notifications,
+              notification.id
+            );
+          }
           // Add notification to dismissed array
           vm.dismissedNotifications.push(notification);
 
@@ -386,6 +411,8 @@ define(['angular'], function(angular) {
           if (SERVICE_LOC.kvURL) {
             messagesService.setMessagesSeen(allSeenMessageIds,
               dismissedNotificationIds, 'dismiss');
+          } else {
+            $log.warn('KV Store inactive');
           }
 
           // Clear priority notification flags if it was a priority
