@@ -108,7 +108,7 @@ define(['angular'], function(angular) {
          * Separate the message types in scope for child controllers
          * @param {Object} result
          */
-        var filterMessagesSuccess = function(result) {
+        var   filterMessagesSuccess = function(result) {
           $scope.seenMessageIds = result[0];
           var grpMsg = result[1];
 
@@ -259,6 +259,8 @@ define(['angular'], function(angular) {
             var index = dismissedNotificationIds.indexOf(notification.id);
             if (index === -1) {
               allNotifications.push(notification);
+            } else {
+              vm.dismissedNotifications.push(notification);
             }
           });
           vm.combinedNotifications = allNotifications.filter(uniqueArray);
