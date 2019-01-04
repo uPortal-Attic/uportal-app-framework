@@ -270,8 +270,8 @@ define(['angular'], function(angular) {
           vm.dismissedNotifications.push(notification);
           dismissedNotificationIds.push(notification.id);
 
-          vm.dismissedNotifications = $filter(uniqueArray);
-          vm.dismissedNotificationIds = $filter(uniqueArray);
+          vm.dismissedNotifications.filter(uniqueArray);
+          dismissedNotificationIds.filter(uniqueArray);
         };
 
         /**
@@ -295,6 +295,8 @@ define(['angular'], function(angular) {
                   .indexOf(message);
                 separatedNotifications.unseen.push(message);
                 separatedNotifications.seen.splice(index, 1);
+              } else {
+                pushDismissal(message);
               }
             });
 
@@ -307,7 +309,7 @@ define(['angular'], function(angular) {
             vm.notifications = lowPriotityUnseen;
             combineNotifications(vm.notifications);
             angular.forEach(separatedNotifications.seen, function(notification) {
-              vm.dismissedNotifications.push(notification);
+              pushDismissal(notification);
             });
 
             vm.dismissedNotifications = vm.dismissedNotifications.filter(uniqueArray);
@@ -411,12 +413,14 @@ define(['angular'], function(angular) {
               notification.id
             );
           }
+          pushDismissal(notification);
+         /*
           // Add notification to dismissed array
           vm.dismissedNotifications.push(notification);
 
           // Add notification's ID to local array of dismissed notification IDs
           dismissedNotificationIds.push(notification.id);
-
+          */
           // Call service to save changes if k/v store enabled
           if (SERVICE_LOC.kvURL) {
             messagesService.setMessagesSeen(allSeenMessageIds,
