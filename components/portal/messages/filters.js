@@ -20,7 +20,7 @@
 
 define(['angular', 'moment'], function(angular, moment) {
   return angular.module('portal.messages.filters', [])
-    .filter('separateMessageTypes', function() {
+  .filter('separateMessageTypes', ['$filter', function($filter) {
       return function(messages) {
         var separatedMessages = {
           notifications: [],
@@ -36,7 +36,7 @@ define(['angular', 'moment'], function(angular, moment) {
         );
         return separatedMessages;
       };
-    })
+    }])
     .filter('addToHome', function() {
       return function(messages, MISC_URLS, PortalAddToHomeService) {
         angular.forEach(messages, function(message) {
