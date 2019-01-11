@@ -18,6 +18,7 @@ and this project adheres to
 + List of links widget has more consistent appearance across browsers and screen sizes (#871)
 
 ### Removed
+ + Undoes #868. (#874)
 
 ### Deprecated
 
