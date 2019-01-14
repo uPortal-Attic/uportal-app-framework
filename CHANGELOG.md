@@ -11,12 +11,14 @@ and this project adheres to
 ### Added
 
 ### Changed
+
 + Decoupled priority notifications and non-priority notifications. (#868)
 + Point directly to files in unpkg (#870)
 
 ### Fixed
 
 ### Removed
+
 + Undoes #868. (#874)
 
 ### Deprecated
