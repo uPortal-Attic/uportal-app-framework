@@ -12,15 +12,12 @@ and this project adheres to
 
 ### Changed
 
-+ Decoupled priority notifications and non-priority notifications. (#868)
 + Point directly to files in unpkg (#870)
 
 ### Fixed
 + List of links widget has more consistent appearance across browsers and screen sizes (#871)
 
 ### Removed
-
-+ Undoes #868. (#874)
 
 ### Deprecated
 
