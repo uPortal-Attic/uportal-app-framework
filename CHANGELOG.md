@@ -17,7 +17,7 @@ and this project adheres to
 ### Fixed
 
 ### Removed
- + Undoes #868. (#874)
++ Undoes #868. (#874)
 
 ### Deprecated
 
