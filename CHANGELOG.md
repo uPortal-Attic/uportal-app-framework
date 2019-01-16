@@ -16,6 +16,8 @@ and this project adheres to
 
 ### Fixed
 
++ List of links widget has more consistent appearance across browsers and screen sizes (#875)
+
 ### Removed
 
 ### Deprecated

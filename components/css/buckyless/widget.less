@@ -193,35 +193,52 @@
       div[class^="list-of-links__"] {
         height: 194px;
         overflow: hidden;
+        display: -webkit-box;
         display: flex;
+        -webkit-flex-flow: row wrap;
         flex-flow: row wrap;
+        max-width: 290px;
+        margin: 0 auto;
 
         &.list-of-links__1 {
+          -webkit-box-pack: center;
           justify-content: center;
+          -webkit-box-align: center;
           align-items: center;
+          -webkit-align-content: center;
           align-content: center;
         }
 
         &.list-of-links__2 {
+          -webkit-box-pack: space-around;
           justify-content: space-around;
+          -webkit-box-align: baseline;
           align-items: baseline;
+          -webkit-align-content: center;
           align-content: center;
           padding: 40px 0;
         }
 
         &.list-of-links__3 {
+          -webkit-box-pack: space-around;
           justify-content: space-around;
+          -webkit-box-align: baseline;
           align-items: baseline;
+          -webkit-align-content: space-around;
           align-content: space-around;
         }
 
         &.list-of-links__4 {
+          -webkit-box-pack: space-around;
           justify-content: space-around;
+          -webkit-box-align: baseline;
           align-items: baseline;
+          -webkit-align-content: flex-start;
           align-content: flex-start;
         }
 
         &.list-of-links__long {
+          -webkit-box-pack: space-around;
           justify-content: space-around;
 
           .widget-list a:hover {
@@ -231,7 +248,8 @@
 
         circle-button {
           width: 120px;
-          height: 96px;
+          height: 90px;
+          max-height: 90px;
           text-align: center;
         }
       }
