@@ -17,6 +17,8 @@ and this project adheres to
 ### Fixed
 
 + List of links widget has more consistent appearance across browsers and screen sizes (#875)
++ Action items widget degrades to basic widget when it is configured with just
+  one indicator and that one indicator is failing. ( [#876][] )
 
 ### Removed
 
@@ -981,3 +983,5 @@ break compatibility with some older components. If the app used any
 [uportal-home #750]: https://github.com/uPortal-Project/uportal-home/pull/750
 [uportal-home #795]: https://github.com/uPortal-Project/uportal-home/pull/795
 [sidenav-documentation]: http://uportal-project.github.io/uportal-app-framework/configurable-menu.html
+
+[#876]: https://github.com/uPortal-Project/uportal-app-framework/pull/876
