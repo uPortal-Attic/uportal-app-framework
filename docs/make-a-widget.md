@@ -392,14 +392,18 @@ four keys.
 
 #### Guidance about `action-items`
 
-If there are multiple action item types to display, the widget will display the
-first 3 in the list, or the first two if the widget needs to display an error
-message. If any of the action item types fail (independently), the widget shows
-an error message telling the user what it couldn't count.
-
-If there are more action item types configured than the widget has room to
-display, it will acknowledge it is not showing everything with
-"Showing {x} of {y}".
+* If `action-items` is configured with just one indicator and that one indicator
+  is failing, `action-items` silently degrades to be a `basic` widget. This is
+  to avoid distracting and taunting the user with broken functionality -- in the
+  case where the best it can do is offer a single hyperlink, the best it can do
+  is offer that single hyperlink as simply and clearly as possible.
+* If there are succeeding and failing indicators, `action-items` shows the first
+  up to 2 succeding indicators, and an error message telling the user what it
+  couldn't count.
+* If there are only succeeding indicators, `action-items` shows the first up to
+  3 indicators.
+* If there are more indicators configured than it can display, it will
+  acknowledge it is not showing everything with "Showing {x} of {y}".
 
 The **feedUrl** should return a simple JSON object containing a "quantity" key
 with an integer for a value. For example:
