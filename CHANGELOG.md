@@ -22,6 +22,8 @@ and this project adheres to
 
 ### Removed
 
++ Consolidated treatment of in-app messages to a single type (notifications) and removed features that supported "announcements" (e.g. Mascot in top bar, /features page, etc.) (#878)
+
 ### Deprecated
 
 ### Documentation
