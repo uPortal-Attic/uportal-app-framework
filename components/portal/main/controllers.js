@@ -243,15 +243,6 @@ define(['angular', 'require'], function(angular, require) {
       });
 
       /**
-       * Listen for unseen announcements
-       */
-      $scope.$on('HAS_UNSEEN_ANNOUNCEMENTS', function(event, data) {
-        if (angular.isDefined(data.hasNotifications)) {
-          vm.hasUnseenAnnouncements = data.hasAnnouncements;
-        }
-      });
-
-      /**
        * Close side nav on scroll to avoid awkward interaction
        */
       $window.onscroll = function() {
@@ -342,16 +333,15 @@ define(['angular', 'require'], function(angular, require) {
       };
 
       /**
-       * Configure notifications/announcements features in main menu
+       * Configure notifications features in main menu
        * if messages configuration is properly set up
        */
       var configureMessagesFeatures = function() {
         // If messages config is properly set up, set directive scope,
         // otherwise hide messages features
         if (SERVICE_LOC.messagesURL && SERVICE_LOC.messagesURL !== '') {
-          // Set flags for notifications/announcements
+          // Set flags for notifications
           vm.hasPriorityNotifications = $localStorage.hasPriorityNotifications;
-          vm.hasUnseenAnnouncements = $localStorage.hasUnseenAnnouncements;
         } else {
           vm.showMessagesFeatures = false;
         }
