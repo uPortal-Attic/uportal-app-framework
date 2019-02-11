@@ -91,8 +91,6 @@ define(['angular', 'require'], function(angular, require) {
       $rootScope.$watch('portal.theme', function(newValue, oldValue) {
         if (newValue && newValue !== oldValue) {
           updateWindowTitle();
-          // eslint-disable-next-line no-undef
-          cssVars({shadowDOM: true});
         }
       });
 
