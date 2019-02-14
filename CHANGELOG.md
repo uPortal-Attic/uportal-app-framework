@@ -10,6 +10,8 @@ and this project adheres to
 
 ### Added
 
++ Tell IE users about recommended browsers during application bootstrapping (#877)
+
 ### Changed
 
 + Point directly to files in unpkg (#870)
