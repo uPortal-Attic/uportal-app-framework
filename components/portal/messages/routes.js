@@ -21,6 +21,6 @@ define(['require'], function(require) {
     'notifications': {
       templateUrl: require.toUrl('./partials/view__notifications.html'),
       controller: 'MessagesController',
-    }
+    },
   };
 });

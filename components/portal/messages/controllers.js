@@ -444,5 +444,5 @@ define(['angular'], function(angular) {
         vm.pushGAEvent = function(category, action, label) {
           miscService.pushGAEvent(category, action, label);
         };
-    }])
+    }]);
 });

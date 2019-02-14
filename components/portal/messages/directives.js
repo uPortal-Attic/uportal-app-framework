@@ -37,5 +37,5 @@ define(['angular', 'require'], function(angular, require) {
         restrict: 'E',
         templateUrl: require.toUrl('./partials/notifications-list-item.html'),
       };
-    })
+    });
 });
