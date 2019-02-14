@@ -37,17 +37,5 @@ define(['angular', 'require'], function(angular, require) {
         restrict: 'E',
         templateUrl: require.toUrl('./partials/notifications-list-item.html'),
       };
-    })
-
-    .directive('mascotAnnouncement', function() {
-      return {
-        restrict: 'E',
-        templateUrl: require.toUrl('./partials/announcement-mascot.html'),
-        scope: {
-          mode: '@',
-        },
-        controller: 'AnnouncementsController',
-        controllerAs: 'vm',
-      };
     });
 });

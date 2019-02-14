@@ -319,19 +319,6 @@ define(['angular'], function(angular) {
           $localStorage.hasPriorityNotifications = hasNotifications;
         };
 
-        /**
-         * Notify listeners that unseen announcements flag has changed
-         * @param {boolean} hasAnnouncements
-         */
-        var broadcastAnnouncementFlag = function(hasAnnouncements) {
-          $rootScope.$broadcast('HAS_UNSEEN_ANNOUNCEMENTS',
-            {hasAnnouncements: hasAnnouncements}
-          );
-
-          // Update storage
-          $localStorage.hasUnseenAnnouncements = hasAnnouncements;
-        };
-
         return {
           getAllMessages: getAllMessages,
           getMessagesByGroup: getMessagesByGroup,
@@ -339,7 +326,6 @@ define(['angular'], function(angular) {
           getSeenMessageIds: getSeenMessageIds,
           setMessagesSeen: setMessagesSeen,
           broadcastPriorityFlag: broadcastPriorityFlag,
-          broadcastAnnouncementFlag: broadcastAnnouncementFlag,
         };
     }]);
 });

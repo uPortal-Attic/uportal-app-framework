@@ -1087,7 +1087,7 @@ define(['angular'], function(angular) {
             'id': 'showAllMessages',
             'title': 'Show all messages',
             'description': 'Disable client-side filtering of portal-wide ' +
-              'messages (i.e. notifications, mascot announcements). ' +
+              'messages (i.e. notifications). ' +
               'Useful for demoing or testing messages you would not ' +
               'otherwise see. (page refresh required)',
           },

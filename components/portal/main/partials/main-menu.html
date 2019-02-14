@@ -31,13 +31,6 @@
       <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Close menu</md-tooltip>
     </md-button>
     <div>
-      <md-button href="features"
-                ng-if="vm.hasUnseenAnnouncements && vm.showMessagesFeatures"
-                ng-click="vm.closeMainMenu();"
-                aria-label="view all announcements">
-        <span><md-icon>new_releases</md-icon></span>
-        <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">New features</md-tooltip>
-      </md-button>
       <!-- Regular notifications button -->
       <md-button ng-href="{{ vm.notificationsPageUrl }}"
                 ng-click="vm.pushGAEvent('Sidenav notifications bell (normal state)', 'Click link', 'Normal state');vm.closeMainMenu();"

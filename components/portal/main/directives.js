@@ -60,13 +60,5 @@ define(['angular', 'require'], function(angular, require) {
         restrict: 'E',
         templateUrl: require.toUrl('./partials/footer.html'),
       };
-    })
-
-  .directive('featuresModalTemplate', function() {
-      return {
-          restrict: 'E',
-          templateUrl:
-            require.toUrl('./partials/features-dialog-template.html'),
-      };
   });
 });
