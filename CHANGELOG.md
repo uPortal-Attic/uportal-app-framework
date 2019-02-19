@@ -11,6 +11,7 @@ and this project adheres to
 ### Added
 
 + Tell IE users about recommended browsers during application bootstrapping (#877)
++ Track IE alert with a cookie so users aren't badgered too often (#881)
 
 ### Changed
 
