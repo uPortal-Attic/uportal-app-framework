@@ -8,6 +8,12 @@ and this project adheres to
 
 ## [Unreleased][]
 
+### Breaking change in 12.0.0
+
+12.0.0 removes features that supported "announcements" and `/features`. This
+may break downstream apps relying upon these in their routes, as it
+did for `uPortal-home`.
+
 ### Added
 
 + Tell IE users about recommended browsers during application bootstrapping

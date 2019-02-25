@@ -2,6 +2,14 @@
 
 At a glance notes for upgrading apps between major versions.
 
+## 11.x.x to 12.x.x
+
+12.0.0 removes features that supported "announcements" and `/features`. This may
+break downstream apps relying upon these in their routes, as it did for
+`uPortal-home` (cf. [uPortal-home #781][]). Also, messages in `messages.json` of
+type `announcement` will no longer have any effect, consider converting these to
+type `notification`.
+
 ## 10.x.x to 11.x.x
 
 The addition of web components led to some html structural changes, which caused
@@ -157,3 +165,5 @@ To upgrade:
 ## 3.x.x to 4.x.x
 
 - Rename custom directives that include the word `widget`
+
+[uPortal-home #781]: https://github.com/uPortal-Project/uportal-home/pull/871
