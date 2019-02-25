@@ -16,6 +16,7 @@ The deprecated `$rootScope.GuestMode` has been removed. Replace references with
 a direct call to `mainService.isGuest()` where possible. If you rely on
 `GuestMode` within a partial, you can populate a locally scoped variable within
 the controller, upon initialization.
+
 ```
 $scope.guestMode = true;
 
