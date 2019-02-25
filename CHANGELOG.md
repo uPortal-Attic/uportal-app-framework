@@ -10,7 +10,8 @@ and this project adheres to
 
 ### Added
 
-+ Tell IE users about recommended browsers during application bootstrapping (#877)
++ Tell IE users about recommended browsers during application bootstrapping
+  (#877)
 + Track IE alert with a cookie so users aren't badgered too often (#881)
 
 ### Changed
@@ -19,13 +20,16 @@ and this project adheres to
 
 ### Fixed
 
-+ List of links widget has more consistent appearance across browsers and screen sizes (#875)
++ List of links widget has more consistent appearance across browsers and screen
+  sizes (#875)
 + Action items widget degrades to basic widget when it is configured with just
   one indicator and that one indicator is failing. ( [#876][] )
 
 ### Removed
 
-+ Consolidated treatment of in-app messages to a single type (notifications) and removed features that supported "announcements" (e.g. Mascot in top bar, /features page, etc.) (#878)
++ Consolidated treatment of in-app messages to a single type (notifications) and
+  removed features that supported "announcements" (e.g. Mascot in top bar,
+  /features page, etc.) (#878)
 
 ### Deprecated
 
