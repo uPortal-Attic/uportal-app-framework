@@ -4,11 +4,18 @@ At a glance notes for upgrading apps between major versions.
 
 ## 10.x.x to 11.x.x
 
-The addition of web components led to some html structural changes, which caused some CSS selectors to change. The most notable of the changes is the removal of `md-toolbar`. If you relied on these selectors, see [this changeset from PR #838](https://github.com/uPortal-Project/uportal-app-framework/pull/838/files/91878bc59802a1eec4c4be74de09f363961d19a6) for more detail.
+The addition of web components led to some html structural changes, which caused
+some CSS selectors to change. The most notable of the changes is the removal of
+`md-toolbar`. If you relied on these selectors, see
+[this changeset from PR #838](https://github.com/uPortal-Project/uportal-app-framework/pull/838/files/91878bc59802a1eec4c4be74de09f363961d19a6)
+for more detail.
 
 ## 9.x.x to 10.x.x
 
-The deprecated `$rootScope.GuestMode` has been removed. Replace references with a direct call to `mainService.isGuest()` where possible. If you rely on `GuestMode` within a partial, you can populate a locally scoped variable within the controller, upon initialization.
+The deprecated `$rootScope.GuestMode` has been removed. Replace references with
+a direct call to `mainService.isGuest()` where possible. If you rely on
+`GuestMode` within a partial, you can populate a locally scoped variable within
+the controller, upon initialization.
 ```
 $scope.guestMode = true;
 
@@ -22,7 +29,7 @@ mainService.isGuest().then(function(result) {
 
 ## 8.x.x to 9.x.x
 
-The framework will include in the document title the value of the `app-title` 
+The framework will include in the document title the value of the `app-title`
 attribute, if set, on the `frame-page` directive.
 
 With the removal of the `<app-header>`, support for the
@@ -30,8 +37,8 @@ With the removal of the `<app-header>`, support for the
 
 A similar `appMenuTemplateURL` configuration replaces the removed feature. The
 framework displays the content referenced by `appMenuTemplateURL`, if set and
-not superseded by `appMenuItems`, in the side navigation menu. Templates built 
-for reference by `optionsTemplateURL` may need minor layout/appearance 
+not superseded by `appMenuItems`, in the side navigation menu. Templates built
+for reference by `optionsTemplateURL` may need minor layout/appearance
 adjustments for suitability for use as `appMenutemplateURL`. (#684)
 
 To upgrade:
@@ -41,7 +48,7 @@ To upgrade:
   within-page `h1` heading as before.
 + Update applications previously using `APP_OPTIONS.optionsTemplateURL` to use
   `APP_OPTIONS.appMenuTemplateURL` instead. HTML templates previously used
-  as `optionsTemplateURL` may need a bit of tweaking for suitability for use as 
+  as `optionsTemplateURL` may need a bit of tweaking for suitability for use as
   an `appMenuTemplateURL`.
 
 ## 7.x.x to 8.x.x
@@ -87,7 +94,8 @@ To upgrade:
 
 - Wrap routed views in a `<frame-page>` directive.
   - remove extraneous `<app-header>` directives.
-- Remove `app-options-template` attribute from existing `<frame-page>` directives. Replace with a partial in `overrides.js`:
+- Remove `app-options-template` attribute from existing `<frame-page>`
+  directives. Replace with a partial in `overrides.js`:
   - from
     ```html
     <frame-page app-title="App Name Here"
@@ -134,7 +142,8 @@ To upgrade:
 
 ## 4.x.x to 5.x.x
 
-- Update the notifications page url attribute name in `override.js` (note the pluralization)
+- Update the notifications page url attribute name in `override.js` (note the
+  pluralization)
   - from `NOTIFICATIONS.notificationFullURL`
   - to `MESSAGES.notificationsPageURL`
 - Update location for getting notifications feed in `override.js`
