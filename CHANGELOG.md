@@ -38,6 +38,7 @@ and this project adheres to
 ## [11.0.0][] - 2018-11-19
 
 ### Breaking Change in 11.0.0
+
 + Replaced Angular Material toolbar directive with `myuw-app-bar` v1.5.3 from
   myuw-web-components library (#838)
   + CSS hierarchy has changed a bit to reflect the absence of the Angular
