@@ -16,9 +16,8 @@ did for `uPortal-home`.
 
 ### Added
 
-+ Tell IE users about recommended browsers during application bootstrapping
-  (#877)
-+ Track IE alert with a cookie so users aren't badgered too often (#881)
++ Tell IE users about recommended browsers during application bootstrapping,
+  tracking this with a cookie so users aren't badgered too often. (#877, #881)
 
 ### Changed
 
@@ -28,8 +27,8 @@ did for `uPortal-home`.
 
 + List of links widget has more consistent appearance across browsers and screen
   sizes (#875)
-+ Action items widget degrades to basic widget when it is configured with just
-  one indicator and that one indicator is failing. ( [#876][] )
++ Action items widget degrades to basic widget when configured with just one
+  indicator and that one indicator is failing. ( [#876][] )
 
 ### Removed
 
