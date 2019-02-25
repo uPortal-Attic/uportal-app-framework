@@ -2,11 +2,11 @@
 
 At a glance notes for upgrading apps between major versions.
 
-# 10.x.x to 11.x.x
+## 10.x.x to 11.x.x
 
 The addition of web components led to some html structural changes, which caused some CSS selectors to change. The most notable of the changes is the removal of `md-toolbar`. If you relied on these selectors, see [this changeset from PR #838](https://github.com/uPortal-Project/uportal-app-framework/pull/838/files/91878bc59802a1eec4c4be74de09f363961d19a6) for more detail.
 
-# 9.x.x to 10.x.x
+## 9.x.x to 10.x.x
 
 The deprecated `$rootScope.GuestMode` has been removed. Replace references with a direct call to `mainService.isGuest()` where possible. If you rely on `GuestMode` within a partial, you can populate a locally scoped variable within the controller, upon initialization.
 ```
@@ -20,7 +20,7 @@ mainService.isGuest().then(function(result) {
  });
  ```
 
-# 8.x.x to 9.x.x
+## 8.x.x to 9.x.x
 
 The framework will include in the document title the value of the `app-title` 
 attribute, if set, on the `frame-page` directive.
@@ -44,7 +44,7 @@ To upgrade:
   as `optionsTemplateURL` may need a bit of tweaking for suitability for use as 
   an `appMenuTemplateURL`.
 
-# 7.x.x to 8.x.x
+## 7.x.x to 8.x.x
 
 - move the data name/value pairs from the audience filter into a new `data`
   object  in messages.json
@@ -83,7 +83,7 @@ To upgrade:
   }
   ```
 
-# 6.x.x to 7.x.x
+## 6.x.x to 7.x.x
 
 - Wrap routed views in a `<frame-page>` directive.
   - remove extraneous `<app-header>` directives.
@@ -110,7 +110,7 @@ To upgrade:
     };
     ```
 
-# 5.x.x to 6.x.x
+## 5.x.x to 6.x.x
 
 - Change pom.xml to reflect new dependency version (and name).
   - from
@@ -132,7 +132,7 @@ To upgrade:
     </dependency>
     ```
 
-# 4.x.x to 5.x.x
+## 4.x.x to 5.x.x
 
 - Update the notifications page url attribute name in `override.js` (note the pluralization)
   - from `NOTIFICATIONS.notificationFullURL`
@@ -144,6 +144,6 @@ To upgrade:
 - Add a default theme configuration to override.js
   - e.g. set `APP_FLAGS.defaultTheme` to `'uw-madison'`
 
-# 3.x.x to 4.x.x
+## 3.x.x to 4.x.x
 
 - Rename custom directives that include the word `widget`
