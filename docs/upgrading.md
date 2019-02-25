@@ -45,6 +45,7 @@ To upgrade:
   an `appMenuTemplateURL`.
 
 # 7.x.x to 8.x.x
+
 - move the data name/value pairs from the audience filter into a new `data`
   object  in messages.json
   - from
@@ -83,6 +84,7 @@ To upgrade:
   ```
 
 # 6.x.x to 7.x.x
+
 - Wrap routed views in a `<frame-page>` directive.
   - remove extraneous `<app-header>` directives.
 - Remove `app-options-template` attribute from existing `<frame-page>` directives. Replace with a partial in `overrides.js`:
@@ -109,6 +111,7 @@ To upgrade:
     ```
 
 # 5.x.x to 6.x.x
+
 - Change pom.xml to reflect new dependency version (and name).
   - from
     ```xml
@@ -130,6 +133,7 @@ To upgrade:
     ```
 
 # 4.x.x to 5.x.x
+
 - Update the notifications page url attribute name in `override.js` (note the pluralization)
   - from `NOTIFICATIONS.notificationFullURL`
   - to `MESSAGES.notificationsPageURL`
@@ -141,4 +145,5 @@ To upgrade:
   - e.g. set `APP_FLAGS.defaultTheme` to `'uw-madison'`
 
 # 3.x.x to 4.x.x
+
 - Rename custom directives that include the word `widget`
