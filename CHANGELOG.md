@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased][]
+## [12.0.0][] - 2019-02-25
 
 ### Breaking change in 12.0.0
 
@@ -956,7 +956,8 @@ break compatibility with some older components. If the app used any
 + Added ability to have a name for the default theme (#336)
 + Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v11.0.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.0.0...HEAD
+[12.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v11.0.0...v12.0.0
 [11.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.3.0...v11.0.0
 [10.3.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.2.0...v10.3.0
 [10.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.1...v10.2.0
