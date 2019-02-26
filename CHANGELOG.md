@@ -8,7 +8,9 @@ and this project adheres to
 
 ## [unreleased][]
 
-(No changes so far.)
+### Documentation
+
++ Removed docker.doit steps from release process. (#884)
 
 ## [12.0.0][] - 2019-02-26
 
