@@ -40,6 +40,11 @@ did for `uPortal-home`.
   removed features that supported "announcements" (e.g. Mascot in top bar,
   /features page, etc.) (#878)
 
+### Build
+
++ Mark fewer dependencies in `package-lock.json` optional. #883
++ Source `onetime` via  http rather than https. #883
+
 ### Deprecated
 
 ### Documentation
