@@ -10,7 +10,7 @@ and this project adheres to
 
 (No changes so far.)
 
-## [12.0.0][] - 2019-02-25
+## [12.0.0][] - 2019-02-26
 
 ### Breaking change in 12.0.0
 
