@@ -19,7 +19,7 @@
 
 -->
 <style type="text/css">
-  .no-js, .bad-browser {
+  .no-js {
     margin-bottom: 0;
     font-size: medium;
     background: #EEE;
@@ -29,11 +29,56 @@
   }
 
   .slowfade {
-      -webkit-transition: opacity 1.5s; /* For Safari 3.1 to 6.0 */
-      transition: opacity 1.5s;
-      opacity: 0;
+    -webkit-transition: opacity 1.5s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 1.5s;
+    opacity: 0;
+  }
+
+  #ieAlert {
+    display: none;
   }
 </style>
+<!--Bad browser error message-->
+<div id="ieAlert" ng-hide="portal.hideIEAlert" class="md-dialog-container" style="top: 0px; height: 100%; width: 100%; background: rgba(0,0,0,0.3); z-index: 2001;">
+  <md-dialog style="background: #fff;" class="md-transition-in" role="alertdialog" tabindex="-1">
+    <md-dialog-content class="md-dialog-content" role="document" tabindex="-1">
+      <h2 class="md-title">MyUW works best in Firefox and Chrome</h2>
+      <div class="md-dialog-content-body">
+        <a href="https://kb.wisc.edu/page.php?id=44398" target="_blank" style="color: #0479a8; text-decoration: none; font-size: 14px; line-height: 20px;">Get help updating your browser.</a>
+      </div>
+    </md-dialog-content>   
+    <md-dialog-actions>
+      <md-button ng-click="portal.hideIEAlert = true" class="md-primary md-confirm-button" type="button" onclick="createCookie('ieAlertCookie', 'true', 20)" style="text-transform: none; margin: 8px 0 8px 8px; min-height: 36px; min-width: 88px;">Close</md-sbutton>
+    </md-dialog-actions>     
+  </md-dialog>
+</div>
+<script>
+  // If it's IE and the ieAlertCookie is null, show the alert
+  if(window.navigator.userAgent.match(/(MSIE|Trident)/)) {
+    if (readCookie('ieAlertCookie') === null) {
+      document.getElementById('ieAlert').style.display = 'flex';
+    }
+  }
+
+  function readCookie(name) {
+	  var nameEQ = name + "=";
+	  var ca = document.cookie.split(';');
+	  for(var i=0;i < ca.length;i++) {
+		  var c = ca[i];
+		  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		  if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	  }
+	  return null;
+  };
+
+  function createCookie(name, value, days) {
+    var date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    var expires = "; expires="+date.toGMTString();
+    document.cookie = name+"="+value+expires+"; path=/";
+  };
+</script>
+
 <!-- Loading state -->
 <div ng-hide="portal.loading.hidden" ng-class="{slowfade: portal.loading.startFade}" style="
         position : fixed;
@@ -49,13 +94,6 @@
         margin: -8px;
         font-family: Roboto, Helvetica Neue, sans-serif;"
       id="loading-splash">
-        <!--Bad browser error message-->
-        <!--[if lt IE 10]>
-        <div class="bad-browser">
-          <span class="fa fa-frown-o"></span>
-          <p>Sorry, {{portal.theme.title}} beta does not support your browser.<br/><a href="https://kb.wisc.edu/myuw/page.php?id=51345">Learn how to upgrade your browser.</a></p>
-        </div>
-        <![endif]-->
         <!--No javascript enabled-->
         <noscript>
             <div class="no-js" role="alert">
@@ -69,3 +107,4 @@
         </noscript>
         <!--loading for realz-->
         Loading...</div>
+        

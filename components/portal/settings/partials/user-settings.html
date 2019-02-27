@@ -34,11 +34,11 @@
         <div layout-xs="column" layout-align-xs="center start" layout="row" layout-align="start center">
           <md-button class="md-primary md-raised"
                      ng-click="resetMessages()"
-                     aria-label="reset seen announcements and notifications">
+                     aria-label="reset seen notifications">
             Reset {{ portal.theme.title }} messages
             <i class="fa fa-spin fa-circle-o" ng-if="loadingResetMessages"></i>
           </md-button>
-          <small>Click to see previously-dismissed notifications, mascot announcements, and popup announcements.</small>
+          <small>Click to see previously-dismissed notifications.</small>
         </div>
         <!-- RESET LAYOUT -->
         <div layout-xs="column" layout-align-xs="center start"  layout="row" layout-align="start center" ng-if="MISC_URLS.resetLayoutURL">

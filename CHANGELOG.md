@@ -6,17 +6,44 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased][]
+## [unreleased][]
+
+(No changes so far.)
+
+## [12.0.0][] - 2019-02-26
+
+### Breaking change in 12.0.0
+
+12.0.0 removes features that supported "announcements" and `/features`. This
+may break downstream apps relying upon these in their routes, as it
+did for `uPortal-home`.
 
 ### Added
 
++ Tell IE users about recommended browsers during application bootstrapping,
+  tracking this with a cookie so users aren't badgered too often. (#877, #881)
+
 ### Changed
-+ Decoupled priority notifications and non-priority notifications. (#868)
+
 + Point directly to files in unpkg (#870)
 
 ### Fixed
 
++ List of links widget has more consistent appearance across browsers and screen
+  sizes (#875)
++ Action items widget degrades to basic widget when configured with just one
+  indicator and that one indicator is failing. ( [#876][] )
+
 ### Removed
+
++ Consolidated treatment of in-app messages to a single type (notifications) and
+  removed features that supported "announcements" (e.g. Mascot in top bar,
+  /features page, etc.) (#878)
+
+### Build
+
++ Mark fewer dependencies in `package-lock.json` optional. #883
++ Source `onetime` via  http rather than https. #883
 
 ### Deprecated
 
@@ -25,6 +52,7 @@ and this project adheres to
 ## [11.0.0][] - 2018-11-19
 
 ### Breaking Change in 11.0.0
+
 + Replaced Angular Material toolbar directive with `myuw-app-bar` v1.5.3 from
   myuw-web-components library (#838)
   + CSS hierarchy has changed a bit to reflect the absence of the Angular
@@ -937,7 +965,8 @@ break compatibility with some older components. If the app used any
 + Added ability to have a name for the default theme (#336)
 + Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v11.0.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.0.0...HEAD
+[12.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v11.0.0...v12.0.0
 [11.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.3.0...v11.0.0
 [10.3.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.2.0...v10.3.0
 [10.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.1...v10.2.0
@@ -979,3 +1008,5 @@ break compatibility with some older components. If the app used any
 [uportal-home #750]: https://github.com/uPortal-Project/uportal-home/pull/750
 [uportal-home #795]: https://github.com/uPortal-Project/uportal-home/pull/795
 [sidenav-documentation]: http://uportal-project.github.io/uportal-app-framework/configurable-menu.html
+
+[#876]: https://github.com/uPortal-Project/uportal-app-framework/pull/876

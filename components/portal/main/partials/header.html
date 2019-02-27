@@ -18,9 +18,8 @@
     under the License.
 
 -->
-<!-- PRIORITY NOTIFICATIONS & POP-UP ANNOUNCEMENTS -->
+<!-- PRIORITY NOTIFICATIONS -->
 <notifications-bell slot="myuw-notifications" mode="priority" class="priority-gt-xs" ng-if="!guestMode" hide-xs></notifications-bell>
-<span ng-controller="AnnouncementsController" controllerAs="vm"></span>
 
 <myuw-app-bar
     theme-name="{{ portal.theme.title }}"
@@ -48,8 +47,7 @@
     <div slot="myuw-search" class="header__search-bar-container" md-colors="{ backgroundColor: '{{portal.theme.name}}-primary' }" layout="row" flex-gt-xs="100" layout-align="center center" hide-xs>
       <search ng-show="APP_FLAGS.showSearch"></search>
     </div>
-
-    <mascot-announcement slot="myuw-notifications" mode="mascot" class="header__mascot" hide-xs></mascot-announcement>
+    
     <notifications-bell slot="myuw-notifications" mode="bell" class="header__bell" ng-if="!guestMode" hide-xs></notifications-bell>
     <username slot="myuw-profile" layout="row" layout-align="start center" hide-xs></username>
 
