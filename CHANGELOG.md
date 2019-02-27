@@ -10,6 +10,10 @@ and this project adheres to
 
 (No changes so far.)
 
+### Dependency upgrades in unreleased
+
++ Upgraded `remark-validate-links` to `^8.0.0` (#873)
+
 ## [12.0.0][] - 2019-02-26
 
 ### Breaking change in 12.0.0
