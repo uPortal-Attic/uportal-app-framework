@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "After the template retires",
       "description": "time-sensitive-content widget templates can retire entirely, returning the widget to basic-widget-like state.",
       "url": "https://rprg.wisc.edu/",

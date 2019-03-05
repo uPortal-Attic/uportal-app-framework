@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": false,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Three quantities",
       "description": "action-items can show up to three quantities",
       "url": "http://www.google.com",

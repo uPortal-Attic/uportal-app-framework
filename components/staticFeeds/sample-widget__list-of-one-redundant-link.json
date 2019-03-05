@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "list-of-links collapses to basic",
       "description": "When list-of-links is configured with a single link to its alternativeMaximizedUrl, it collapses to a basic widget.",
       "url": "staticFeeds/sample-widget__list-of-one-redundant-link.json",

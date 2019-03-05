@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": false,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Many quantities",
       "description": "truncates excess quantity items",
       "url": "http://www.google.com",

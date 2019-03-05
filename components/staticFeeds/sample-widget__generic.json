@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": false,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "generic means custom",
       "description": "generic is a deprecated alias for the custom widget type.",
       "url": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#custom-widgets",

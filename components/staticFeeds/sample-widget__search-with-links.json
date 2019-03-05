@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Research Project Resource Guide",
       "description": "Find on and off campus resources available for each phase and step of your research project.",
       "url": "https://rprg.wisc.edu/",
@@ -57,7 +56,6 @@
       {
         "canAdd": false,
         "layoutObject": {
-          "nodeId": "-1",
           "title": "Classes I Teach Map",
           "description": "View a map of the buildings in which the classes you teach meet.",
           "url": "/portal/p/taught-classes-map/render.uP",
@@ -113,7 +111,6 @@
       {
         "canAdd": false,
         "layoutObject": {
-          "nodeId": "-1",
           "title": "Faculty Center",
           "description": "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information.",
           "url": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
@@ -171,7 +168,6 @@
       {
         "canAdd": false,
         "layoutObject": {
-          "nodeId": "-1",
           "title": "Research Facilities and Tools - Administrator",
           "description": "Create, edit, and manage all descriptions for the Research Facilities and Tools module.",
           "url": "/portal/p/rcat_admin/render.uP",
@@ -220,7 +216,6 @@
       {
         "canAdd": false,
         "layoutObject": {
-          "nodeId": "-1",
           "title": "Research Tab Messages",
           "description": "This module provides information about the status of modules and services on the Reserach tab.",
           "url": "/portal/p/research-tab-messages/render.uP",
@@ -269,7 +264,6 @@
       {
         "canAdd": false,
         "layoutObject": {
-          "nodeId": "-1",
           "title": "PI Financials Tool",
           "description": "View financial information about sponsored projects and gifts.",
           "url": "https://pi.wisc.edu",

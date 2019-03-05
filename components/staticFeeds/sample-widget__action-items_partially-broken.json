@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": false,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Some broken quantities",
       "description": "items fail independently",
       "url": "http://www.google.com",
