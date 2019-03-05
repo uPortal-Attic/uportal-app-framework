@@ -8,7 +8,11 @@ and this project adheres to
 
 ## [unreleased][]
 
-(No changes so far.)
+### Fixes in unreleased
+
++ Now uses `fname` rather than `nodeId` when generating HTML element IDs for
+  widgets. In practice `nodeId` was always `-1` and so wasn't leading to unique
+  HTML element IDs. (#885)
 
 ### Dependency upgrades in unreleased
 
