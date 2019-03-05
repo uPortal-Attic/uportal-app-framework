@@ -37,12 +37,12 @@
     </md-menu-content>
   </md-menu>
   <!-- Widget clickable area -->
-  <a aria-labelledby="appTitle_widget.title-{{::widget.nodeId}}" tabindex="0" ng-href="{{widget.url}}" target="{{::widget.target}}" rel="noopener noreferrer">
+  <a aria-labelledby="appTitle_widget.title-{{::widget.fname}}" tabindex="0" ng-href="{{widget.url}}" target="{{::widget.target}}" rel="noopener noreferrer">
     <div class="icon-container">
       <widget-icon></widget-icon>
     </div>
     <div class="list-item-container">
-      <h4 id="appTitle_widget.title-{{::widget.nodeId}}">{{ ::widget.title }}</h4>
+      <h4 id="appTitle_widget.title-{{::widget.fname}}">{{ ::widget.title }}</h4>
     </div>
   </a>
 </md-card>
