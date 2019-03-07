@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Some App Under Maintenance",
       "description": "An example of an app in maintenance mode.",
       "url": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",

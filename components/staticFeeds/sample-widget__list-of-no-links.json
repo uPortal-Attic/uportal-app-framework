@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "List of Links widget type with no links",
       "description": "Demonstrates list-of-links edge case of zero links.",
       "url": "staticFeeds/list-of-no-links-via-url.json",

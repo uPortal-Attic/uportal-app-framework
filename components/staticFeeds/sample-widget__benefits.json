@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Benefit Information",
       "description": "Summary information about your current benefit enrollments and links to your WRS Statement of Benefits.",
       "url": "/portal/p/university-staff-benefits-statement/render.uP",

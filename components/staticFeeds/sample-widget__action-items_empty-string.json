@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": false,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Handles empty string quantities",
       "description": "action-items detects and treats as an error when a JSON callback returns the empty string quantity",
       "url": "http://www.google.com",

@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "List of Links widget type",
       "description": "Convenient access to up to seven hyperlinks, sourced from widget configuration or from URL",
       "url": "staticFeeds/list-of-links-via-url.json",

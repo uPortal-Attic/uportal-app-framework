@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": false,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Custom widget",
       "description": "`custom` type widgets render an arbitrary template, optionally considering dynamic JSON",
       "url": "staticFeeds/sample-widget__custom.json",
