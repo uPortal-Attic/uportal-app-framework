@@ -13,15 +13,15 @@ cf.
 
 ### Notification bell
 
-On medium and large screens, a bell icon button appears in the application's top
-bar. If the user has unseen notifications, the bell displays a number and shows
-a preview window when clicked. Clicking the
-"See all" link brings users to the notifications page for a more detailed view.
+On medium and large screens, the top app bar shows a bell icon button. If the
+user has unseen notifications, the bell displays a number and shows a preview
+window when clicked. "See all" links to the notifications page for a detailed
+view.
 
 [![notification bell in top bar](./img/notifications/top-bar-bell.png)](img/notifications/top-bar-bell.png)
 
-On small screens, a small bell icon without a count appears on top of the mobile
-menu button.
+On small screens, the mobile menu button shows a small bell icon without a
+count.
 
 [![notification bell on mobile](./img/notifications/mobile-bell.png)](img/notifications/mobile-bell.png)
 
@@ -34,13 +34,10 @@ notifications page that also displays the number of unseen notifications.
 
 ### Priority notifications
 
-For critical notifications that require a higher degree of visibility,
-notifications can be designated as "high priority" and will appear more
-prominently, fixed above the
-application top bar. In cases when the user has more than one priority
-notification to view, a generic message will be displayed, featuring the
-priority notifications
-count and a link to the notifications page.
+Critical notifications designated "high priority" will appear more prominently,
+fixed above the application top bar. When the user has more than one priority
+notification, the framework displays a generic message featuring the priority
+notifications count and a link to the notifications page.
 
 [![priority notification](./img/notifications/priority.png)](img/notifications/priority.png)
 
