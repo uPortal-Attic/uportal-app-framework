@@ -106,8 +106,8 @@ Widget messaging is based on JSON input configured in a
 - **moreInfoButton**: Defines where the user can read more, see more, or
   interact with the subject of the message. Same format as `actionButton`.
 
-A given message can have at most one each of the `actionButton`,
-`moreInfoButton`, and `confirmButton` buttons.
+A given message can have at most one each of the `actionButton` and
+`moreInfoButton`.
 
 Historically there was a **messageType** that distinguished between
 "notification" and "announcement". This *no longer has any effect.*
