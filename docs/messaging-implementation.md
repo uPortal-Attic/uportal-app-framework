@@ -104,9 +104,8 @@ Widget messaging is based on JSON input configured in a
 - **actionButton**: Defines the call to action associated with the notification.
   - **label**: The button's text
   - **url**: The URL to go to when clicked
-- **moreInfoButton**: Used to display a button link to a place where the user
-  can read more, see more, or interact with the subject of the message. Uses the
-  same format as `actionButton`.
+- **moreInfoButton**: Defines where the user can read more, see more, or
+  interact with the subject of the message. Same format as `actionButton`.
 - **confirmButton**: Used to display a confirmation button on popup
   announcements. Uses the same format as `actionButton`.
   **Required for `messageType` "announcement" with `priority` "high".**
