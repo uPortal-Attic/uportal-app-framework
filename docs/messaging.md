@@ -50,10 +50,10 @@ float to the top of the lists.
 
 ## Widget messaging
 
-Widget messaging can be used to give the user a message in a way that interrupts
-a user's interaction with a widget.  A dialog appears over the widget allowing
-the user to continue after reading the message.  An optional `Learn more` button
- is an opportunity to link to a learn more page.
+Widget messaging can interrupt a user's interaction with a widget. The user can
+continue to use the widget after dismissing the dialog that appears
+appears over the widget. Optionally a `Learn more` button can link to a learn
+more page.
 
 ![widget messaging](./img/notifications/widget-overlay-messaging.png)
 
