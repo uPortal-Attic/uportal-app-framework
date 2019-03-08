@@ -104,9 +104,6 @@ Widget messaging is based on JSON input configured in a
 - **actionButton**: Defines the call to action associated with the notification.
   - **label**: The button's text
   - **url**: The URL to go to when clicked
-    - **addToHome** For an "Add To Home" action button, where the user is asked
-      to add a widget to their home layout, the url is formatted:
-      "addToHome/{fName}", where fName = the fname of the widget.
 - **moreInfoButton**: Used to display a button link to a place where the user
   can read more, see more, or interact with the subject of the message. Uses the
   same format as `actionButton`.
