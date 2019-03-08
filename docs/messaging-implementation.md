@@ -74,10 +74,9 @@ Widget messaging is based on JSON input configured in a
   example, if a user is a member of students-with-outstanding-parking-tickets,
   that user will be confronted with the notification at every login until they
   pay the fine.
-- **dismissible**: *(experimental, optional)* Set to false if you want to
-  disallow users from dismissing a notification. This should only be used for
-  truly critical messages. If the attribute is set to true or not set at all,
-  the notification will be dismissible.
+- **dismissible**: *(experimental, optional)* `false` prevents dismissing the
+  notification. If `true` or not set at all, the notification will be
+  dismissible.
 - **audienceFilter**: A group of attributes related to filtering messages based
   on a user's group.
   - **groups**: *(optional)* Optionally show messages only to specific groups
