@@ -18,8 +18,6 @@ Widget messaging is based on JSON input configured in a
         {
             "id": "sample-unactivated-services-notification",
             "title": "You need to modify your NetID account to activate essential UW Services.",
-            "description": "Because this message's messageType is 'notification', this field is not actually needed.",
-            "descriptionShort": null,
             "messageType": "notification",
             "goLiveDate": "2017-08-01T09:30",
             "expireDate": "2017-08-02",
@@ -67,10 +65,6 @@ Widget messaging is based on JSON input configured in a
     "City of Madison - Declared Snow Emergency").
   - Use the word "You" for well-targeted messages known to be relevant to the
     viewing user. ("You have an unpaid parking ticket.")
-- **description**: Information about an announcement -- appears on the
-  "Features" page and in the popup announcement.
-- **descriptionShort**: Brief information about an announcement -- appears in
-  the mascot announcer menu. *Required if the `messageType` is "announcement".*
 - **messageType**: Accepts either "notification" or "announcement" -- used to
   distinguish between the two broader categories.
 - **goLiveDate**: *(optional)* Accepts a simple ISO date, including time (as
