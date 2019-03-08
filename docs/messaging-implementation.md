@@ -18,7 +18,6 @@ Widget messaging is based on JSON input configured in a
         {
             "id": "sample-unactivated-services-notification",
             "title": "You need to modify your NetID account to activate essential UW Services.",
-            "titleShort": null,
             "description": "Because this message's messageType is 'notification', this field is not actually needed.",
             "descriptionShort": null,
             "messageType": "notification",
@@ -67,8 +66,6 @@ Widget messaging is based on JSON input configured in a
     Emergency").
   - Use the word "You" when the group- or data-filtering for a message is
     somewhat specific (i.e. Users with unactivated accounts).
-- **titleShort**: A shorter version of the message title used by the mascot
-  announcer menu. *Required if the `messageType` is "announcement".*
 - **description**: Information about an announcement -- appears on the
   "Features" page and in the popup announcement.
 - **descriptionShort**: Brief information about an announcement -- appears in
