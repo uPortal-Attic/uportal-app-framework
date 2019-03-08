@@ -102,7 +102,6 @@ Widget messaging is based on JSON input configured in a
     `more info button`.  Expects an array for where to find the
     `more info button url` in the data response from `dataUrl`.
 - **actionButton**: Defines the call to action associated with the notification.
-  **Required if the `messageType` is "notification".**
   - **label**: The button's text
   - **url**: The URL to go to when clicked
     - **addToHome** For an "Add To Home" action button, where the user is asked
