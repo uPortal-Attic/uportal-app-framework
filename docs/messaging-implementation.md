@@ -112,27 +112,6 @@ A given message can have at most one each of the `actionButton` and
 Historically there was a **messageType** that distinguished between
 "notification" and "announcement". This *no longer has any effect.*
 
-## Configuring the mascot announcer
-
-The `mascotImg` variable in [the theme](theming.md) sets the theme-specific
-mascot. If `mascotImg` is unset, it defaults to a generic robot mascot.
-
-![default mascot image](./img/announcement-character.png)
-
-### Creating a mascot image
-
-The image itself should have the following characteristics:
-
-![./img/mascot/mascot-w-comments.png](img/mascot/mascot-w-comments.png)
-
-+ A. Height of always-visible portion: 16px from top
-+ B. Eye height: 12px from top, so that you can see them during the hidden state.
-+ C. Full height : 40px
-+ D. Full width : 60px
-+ E. Transparent background
-
-*Note: The mascot image can be an animated gif, but animations should be limited to e.g. blinking eyes to achieve subtle presence without excessive distraction.*
-
 ## Configuring a widget message
 
 Configuration is done by two required items and one optional.  Required is a url
