@@ -153,7 +153,6 @@ Example widget configuration
 
 ```
 
-
 ## Exercises
 
 ### Notifications
