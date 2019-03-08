@@ -64,10 +64,10 @@ Widget messaging is based on JSON input configured in a
     "City of Madison - Declared Snow Emergency").
   - Use the word "You" for well-targeted messages known to be relevant to the
     viewing user. ("You have an unpaid parking ticket.")
-- **goLiveDate**: *(optional)* Accepts a simple ISO date, including time (as
-  pictured). The message will display only after this moment.
-- **expireDate**: *(optional)* Accepts a simple ISO date, including time (as
-  pictured). The message will display only before this moment.
+- **goLiveDate**: *(optional)* ISO date, including time (as pictured). The
+  message will display only after this moment.
+- **expireDate**: *(optional)* ISO date, including time (as pictured). The
+  message will display only before this moment.
 - **featureImageUrl**: *(optional)* Used by popup announcements and
   announcements on the Features page.
 - **priority**: Set to "high" if you want the message to be displayed with
