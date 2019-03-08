@@ -65,8 +65,8 @@ Widget messaging is based on JSON input configured in a
   - Use general language and avoid pronouns for broadly visible messages that
     may not be relevant to the viewing user (example:
     "City of Madison - Declared Snow Emergency").
-  - Use the word "You" when the group- or data-filtering for a message is
-    somewhat specific (i.e. Users with unactivated accounts).
+  - Use the word "You" for well-targeted messages known to be relevant to the
+    viewing user. ("You have an unpaid parking ticket.")
 - **description**: Information about an announcement -- appears on the
   "Features" page and in the popup announcement.
 - **descriptionShort**: Brief information about an announcement -- appears in
