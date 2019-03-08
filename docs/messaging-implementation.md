@@ -77,8 +77,9 @@ Widget messaging is based on JSON input configured in a
 - **dismissible**: *(experimental, optional)* `false` prevents dismissing the
   notification. If `true` or not set at all, the notification will be
   dismissible.
-- **audienceFilter**: A group of attributes related to filtering messages based
-  on a user's group.
+- **audienceFilter**: A group of attributes related to filtering messages to
+  their intended audiences. Aspirationally, more than group filtering. In
+  practice all that's here is group filering.
   - **groups**: *(optional)* Optionally show messages only to specific groups
     (i.e. uPortal groups) named in this array. If omitted, null, or an empty
     array, the message will not be suppressed based on user group membership.
