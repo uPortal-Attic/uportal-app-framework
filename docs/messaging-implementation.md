@@ -40,8 +40,7 @@ Widget messaging is based on JSON input configured in a
             "moreInfoButton": {
               "label": "Learn more",
               "url": "/learnMore"
-            },
-            "confirmButton": null
+            }
         }
     ]
 }
@@ -106,9 +105,6 @@ Widget messaging is based on JSON input configured in a
   - **url**: The URL to go to when clicked
 - **moreInfoButton**: Defines where the user can read more, see more, or
   interact with the subject of the message. Same format as `actionButton`.
-- **confirmButton**: Used to display a confirmation button on popup
-  announcements. Uses the same format as `actionButton`.
-  **Required for `messageType` "announcement" with `priority` "high".**
 
 A given message can have at most one each of the `actionButton`,
 `moreInfoButton`, and `confirmButton` buttons.
