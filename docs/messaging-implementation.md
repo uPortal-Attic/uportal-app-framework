@@ -4,7 +4,8 @@ Notifications and Announcements (notifications, mascot announcements, popup anno
 JSON feed containing certain attributes and flags. See the [configuraton](configuration.md) doc for information about how to
 point uportal-app-framework to your desired feed.
 
-Widget messaging is based on JSON input configured in a [widget's configuration](make-a-widget.md).
+Widget messaging is based on JSON input configured in a
+[widget's configuration](make-a-widget.md).
 
 ## Example message
 
