@@ -101,8 +101,7 @@ Widget messaging is based on JSON input configured in a
   - **dataMessageMoreInfoUrl** Sets the url of a configured
     `more info button`.  Expects an array for where to find the
     `more info button url` in the data response from `dataUrl`.
-- **actionButton**: Used to display a call to action button and to provide the
-  URL for a notification when clicked.
+- **actionButton**: Defines the call to action associated with the notification.
   **Required if the `messageType` is "notification".**
   - **label**: The button's text
   - **url**: The URL to go to when clicked
