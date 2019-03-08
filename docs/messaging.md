@@ -1,7 +1,6 @@
 # In-app messaging (user-facing content)
 
-This application supports a variety of forms of in-app messaging. We categorize these types of messages under
-three broader categories: Notifications, Announcements, and Widget Messaging.
+This application framework offers messages (notifications) to users.
 
 ## Notifications
 
