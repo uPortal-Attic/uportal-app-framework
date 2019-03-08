@@ -41,7 +41,7 @@ notifications count and a link to the notifications page.
 
 [![priority notification](./img/notifications/priority.png)](img/notifications/priority.png)
 
-### Nofitications page
+### Notifications page
 
 On the notifications page, users can view, follow calls to action on, and
 dismiss their notifications. They can also click the "Dismissed" tab to view
