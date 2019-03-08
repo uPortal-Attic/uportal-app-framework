@@ -3,32 +3,18 @@
 Style note: where entries mention other entries, their first such mention is
 *emphasized*.
 
-## announcement
-
-Announcements are a kind of *message* that tell the user about new and improved
-experiences available in the portal. They help to set and update user
-expectations and may help the user to update their home page to take advantage
-of newly available or newly relevant *widgets*.
-
 ## message
 
-Message is the generic collection term encompassing *notifications* and
-*announcements*. Notfications and announcements are collectively "messages".
-
-This collection term is useful because notifications and announcements share
-
-* sourcing
-* some features
-* some metadata.
+Notfications are "messages".
 
 Messages are intended to be portal-wide. Regardless of which uPortal
 Application Framework application a user is using within a portal, they have the
-same actionable opportunities available via the portal-wide *notification bell*
-and the same highlighted new or improved experiences via the announcements
-mechanism. In this way messages are
+same actionable opportunities available via the portal-wide *notification bell*.
 
-* navigation affordances, helping users to get to the right place to take a
-  desired action or experience a new feature.
+In this way messages are
+
+* navigation affordances, helping users to get to the right place to take an
+  action.
 * discovery affordances, helping users having completed a task in an application
   to discover and navigate to a valuable next task potentially beyond that
   application.
@@ -81,11 +67,11 @@ ecosystem.
 Application Framework implementing portal home page functionality.
 For example, uPortal-home implements user experiences of a customized and
 personalized portal home page, a searchable and browseable directory of apps,
-notifications, and announcements.
+and notifications.
 
 uPortal-home is intended as the application linked from applications written in
 the uPortal Application Framework, to fulfill portal-wide home page, search,
-notifications, and announcements needs.
+and notification needs.
 
 Like uPortal Application Framework, `uPortal-home` is an open source software
 product incubating in Apereo in the context of the uPortal escosystem.
