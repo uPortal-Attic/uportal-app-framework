@@ -189,37 +189,3 @@ You can use this example JSON:
     "confirmButton": null
 }
 ```
-
-### Announcements
-
-Try adding this announcement to the sample feed:
-
-```json
-{
-    "id": "sample-announcement-uportal-app-framework-docs",
-    "title": "My first feature announcement",
-    "titleShort": "First announcement",
-    "description": null,
-    "descriptionShort": "A trial of uPortal-Home's features",
-    "messageType": "announcement",
-    "goLiveDate": "2017-08-01T09:30",
-    "expireDate": "2017-08-02",
-    "featureImageUrl": null,
-    "priority": null,
-    "audienceFilter": {
-        "groups": null,
-    },
-    "actionButton": null,
-    "moreInfoButton": {
-        "label": "Learn more",
-        "url": "http://uportal-project.github.io/uportal-app-framework/messaging-implementation.html"
-    },
-    "confirmButton": null
-}
-```
-
-Try some of the following things:
-
-- Give it "high" priority and a confirm button
-- Adjust the live/expire dates
-- Give it a feature image url
