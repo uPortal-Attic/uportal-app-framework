@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [unreleased][]
 
+### Enhancements in unreleased
+
++ Adds link to MyUW news in `about-page.json` (#887)
+
 ### Fixes in unreleased
 
 + Now uses `fname` rather than `nodeId` when generating HTML element IDs for
