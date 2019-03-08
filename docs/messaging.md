@@ -8,7 +8,7 @@ Notifications are messages about **you** (i.e. the user). They're for delivering
 information that pertains to the user or a group the user belongs to.
 Notifications are discoverable in the following ways:
 
-#### Notification bell
+### Notification bell
 
 On medium and large screens, a bell icon button appears in the application's top
 bar. If the user has unseen notifications, the bell displays a number and shows
@@ -22,14 +22,14 @@ menu button.
 
 [![notification bell on mobile](./img/notifications/mobile-bell.png)](img/notifications/mobile-bell.png)
 
-#### Mobile menu link
+### Mobile menu link
 
 In addition to the bell icon, the mobile menu contains a link to the
 notifications page that also displays the number of unseen notifications.
 
 [![mobile menu notifications link](./img/notifications/mobile-link.png)](img/notifications/mobile-link.png)
 
-#### Priority notifications
+### Priority notifications
 
 For critical notifications that require a higher degree of visibility,
 notifications can be designated as "high priority" and will appear more
@@ -41,7 +41,7 @@ count and a link to the notifications page.
 
 [![priority notification](./img/notifications/priority.png)](img/notifications/priority.png)
 
-#### Nofitications page
+### Nofitications page
 
 On the notifications page, users can view their notifications, dismiss them, and
 follow calls to action. They can also click the "Dismissed" tab to view
@@ -59,7 +59,7 @@ modals.
 See the [technical implementation doc](messaging-implementation.md) to see how
 to create a mascot image and how to write both types of announcements.
 
-#### Mascot announcer
+### Mascot announcer
 
 When enabled and when the user has unseen announcements, a mascot appears in the
 top bar.
@@ -79,7 +79,7 @@ announcements.
 
 ![mascot clicked state](./img/mascot/presenting-mascot.png)
 
-#### Popup modal
+### Popup modal
 
 Announcements that are designated "high priority" will appear in the mascot
 announcer's menu, but will also be displayed in the form of a modal upon loading
