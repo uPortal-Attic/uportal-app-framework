@@ -59,7 +59,7 @@ Widget messaging is based on JSON input configured in a
 - **title**: The text to be displayed as the message's main content.
   **Best practices:**
   - Be concise! Try to limit the message's title to ~140 characters. Shorter
-    titles improve click-through and are less likely to cause display issues on
+    titles improve click-through and are more likely to display correctly on
     smaller screens. *Note: Titles longer than 140 characters will be truncated (with ellipsis) to ensure consistent appearance.*
   - Use general language and avoid pronouns for broadly visible messages that
     may not pertain to specific users' needs (ex. "City of Madison - Declared Snow
