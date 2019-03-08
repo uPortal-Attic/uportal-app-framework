@@ -18,7 +18,6 @@ Widget messaging is based on JSON input configured in a
         {
             "id": "sample-unactivated-services-notification",
             "title": "You need to modify your NetID account to activate essential UW Services.",
-            "messageType": "notification",
             "goLiveDate": "2017-08-01T09:30",
             "expireDate": "2017-08-02",
             "featureImageUrl": null,
@@ -65,8 +64,6 @@ Widget messaging is based on JSON input configured in a
     "City of Madison - Declared Snow Emergency").
   - Use the word "You" for well-targeted messages known to be relevant to the
     viewing user. ("You have an unpaid parking ticket.")
-- **messageType**: Accepts either "notification" or "announcement" -- used to
-  distinguish between the two broader categories.
 - **goLiveDate**: *(optional)* Accepts a simple ISO date, including time (as
   pictured). The message will display only after this moment.
 - **expireDate**: *(optional)* Accepts a simple ISO date, including time (as
@@ -133,6 +130,9 @@ Widget messaging is based on JSON input configured in a
 
 A given message can have at most one each of the `actionButton`,
 `moreInfoButton`, and `confirmButton` buttons.
+
+Historically there was a **messageType** that distinguished between
+"notification" and "announcement". This *no longer has any effect.*
 
 ## Configuring the mascot announcer
 
