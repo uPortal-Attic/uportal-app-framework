@@ -57,8 +57,8 @@ Widget messaging is based on JSON input configured in a
 - **id**: A unique string to identify the message. This is used for tracking
   seen/unseen messages, dimissed notifications, and the sort order on the
   notifications page.
-- **title**: The text to be displayed as the message's main content -- used in
-  all message types. **Best practices:**
+- **title**: The text to be displayed as the message's main content.
+  **Best practices:**
   - Be concise! Try to limit your message's title to ~140 characters. Shorter
     titles improve click-through and are less likely to cause display issues on
     smaller screens. *Note: Titles longer than 140 characters will be truncated (with ellipsis) to ensure consistent appearance.*
