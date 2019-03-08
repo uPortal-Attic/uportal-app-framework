@@ -68,7 +68,7 @@ Widget messaging is based on JSON input configured in a
 - **expireDate**: *(optional)* ISO date, including time (as pictured). The
   message will display only before this moment.
 - **priority**: "high" triggers higher visibility
-- **recurrence**:*(experimental, optional)* If true, even if a notification is
+- **recurrence**: *(experimental, optional)* If true, even if a notification is
   dismissed, it will continue to reoccur in the user's home at the start of
   every session until the user is no longer a member of the targeted group. For
   example, if a user is a member of students-with-outstanding-parking-tickets,
