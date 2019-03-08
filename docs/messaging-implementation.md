@@ -63,8 +63,8 @@ Widget messaging is based on JSON input configured in a
     *Titles longer than 140 characters will be truncated (with ellipsis)* for
     consistent appearance.
   - Use general language and avoid pronouns for broadly visible messages that
-    may not pertain to specific users' needs (ex. "City of Madison - Declared Snow
-    Emergency").
+    may not be relevant to the viewing user (example:
+    "City of Madison - Declared Snow Emergency").
   - Use the word "You" when the group- or data-filtering for a message is
     somewhat specific (i.e. Users with unactivated accounts).
 - **description**: Information about an announcement -- appears on the
