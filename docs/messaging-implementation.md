@@ -82,9 +82,7 @@ Widget messaging is based on JSON input configured in a
   practice all that's here is group filering.
   - **groups**: *(optional)* Optionally show messages only to specific groups
     (i.e. uPortal groups) named in this array. If omitted, null, or an empty
-    array, the message will not be suppressed based on user group membership.
-    Contact your portal development team for more information about group
-    filtering.
+    array, group memberships will not limit message display.
 - **data**: *(optional)* A group of attributes related to external data
   retrieved by a dataUrl.
   - **dataUrl**: *(optional)* The message will retrieve data from the dataUrl.
