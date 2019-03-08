@@ -49,7 +49,7 @@ count and a link to the notifications page.
 On the notifications page, users can view their notifications, dismiss them, and
 follow calls to action. They can also click the "Dismissed" tab to view
 notifications they've previously dismissed. High priority notifications
-float to the top of the list.
+float to the top of the lists.
 
 ## Announcements
 
