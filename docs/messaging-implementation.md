@@ -20,7 +20,6 @@ Widget messaging is based on JSON input configured in a
             "title": "You need to modify your NetID account to activate essential UW Services.",
             "goLiveDate": "2017-08-01T09:30",
             "expireDate": "2017-08-02",
-            "featureImageUrl": null,
             "priority": "high",
             "recurrence": true,
             "dismissible": false,
@@ -68,8 +67,6 @@ Widget messaging is based on JSON input configured in a
   message will display only after this moment.
 - **expireDate**: *(optional)* ISO date, including time (as pictured). The
   message will display only before this moment.
-- **featureImageUrl**: *(optional)* Used by popup announcements and
-  announcements on the Features page.
 - **priority**: Set to "high" if you want the message to be displayed with
   higher visibility (i.e. As a priority notification or popup announcement,
   respectively).
