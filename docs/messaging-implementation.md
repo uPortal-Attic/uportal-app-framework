@@ -85,25 +85,20 @@ Widget messaging is based on JSON input configured in a
     array, group memberships will not limit message display.
 - **data**: *(optional)* A group of attributes related to external data
   retrieved by a dataUrl.
-  - **dataUrl**: *(optional)* The message will retrieve data from the dataUrl.
-    If data exists, it will show this message to the user. Only supports JSON.
-    You would use this feature if you want to only show the message if the
-    specific user has data. For example: Only show user if they have a certain
-    document.
-  - **dataObject**: *(optional)* Will only be looked at if `dataUrl` is present,
-    otherwise ignored. Used as an optional further refinement from dataUrl, if
-    you want the notification to show only if the specific object is in the data.
-  - **dataArrayFilter**: Will only be looked at if `dataUrl` is present,
-    otherwise ignored. Used as an optional further refinement from dataUrl. If
-    your object return is an array, you can filter on the array. Does support
-    multiple filtering criteria as shown in the example. If used in conjunction
-    with `dataObject`, will filter to `dataObject` first.  [AngularJS array
-    filtering documentation] (https://docs.angularjs.org/api/ng/filter/filter)
-  - **dataMessageTitle** Will be used if dataUrl is specified. Used to set the
-    title of the message from the data response from `dataUrl`.  Expects an
-    array for where to find the title in the data response from `dataUrl`.
-  - **dataMessageMoreInfoUrl** Will be used if `dataUrl` is specified and the
-    `more info button` is configured.  Used to set the url of the
+  - **dataUrl**: *(optional)* The user's browser will retrieve JSON data from
+    the dataUrl. If data exists, the message displays. Use this feature to only
+    show the message if the specific user has data. For example: Only show a
+    message if the user as a specific document.
+  - **dataObject**: *(optional)* An optional further refinement from dataUrl.
+    The notification will show only if the named object is in the data.
+  - **dataArrayFilter**: An optional further refinement from dataUrl, filtering
+    the returned array. Supports multiple filtering criteria as shown in the
+    example. Filters to `dataObject` first if `dataObject` is set.
+    [AngularJS array filtering documentation](https://docs.angularjs.org/api/ng/filter/filter)
+  - **dataMessageTitle** Sets the title of the message from the data response
+    from `dataUrl`.  Expects an array for where to find the title in the data
+    response from `dataUrl`.
+  - **dataMessageMoreInfoUrl** Sets the url of a configured
     `more info button`.  Expects an array for where to find the
     `more info button url` in the data response from `dataUrl`.
 - **actionButton**: Used to display a call to action button and to provide the
