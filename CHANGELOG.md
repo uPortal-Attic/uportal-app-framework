@@ -14,6 +14,11 @@ and this project adheres to
   widgets. In practice `nodeId` was always `-1` and so wasn't leading to unique
   HTML element IDs. (#885)
 
+### Documentation in unreleased
+
++ Corrects changelog and upgrading documentation to reflect `12.0.0`'s treating
+  all messages as notifications. Otherwise catches up documentation  (#886)
+
 ### Dependency upgrades in unreleased
 
 + Upgraded `remark-validate-links` to `^8.0.0` (#873)
