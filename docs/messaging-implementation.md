@@ -170,13 +170,8 @@ You can use this example JSON:
 {
     "id": "sample-notification-uportal-app-framework-docs",
     "title": "Learn how to create a notification",
-    "titleShort": null,
-    "description": null,
-    "descriptionShort": null,
-    "messageType": "notification",
     "goLiveDate": null,
     "expireDate": null,
-    "featureImageUrl": null,
     "priority": null,
     "audienceFilter": {
         "groups": [],
@@ -185,7 +180,6 @@ You can use this example JSON:
         "label": "Take action",
         "url": "http://uportal-project.github.io/uportal-app-framework/messaging-implementation.html"
     },
-    "moreInfoButton": null,
-    "confirmButton": null
+    "moreInfoButton": null
 }
 ```
