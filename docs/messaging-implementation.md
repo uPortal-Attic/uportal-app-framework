@@ -122,6 +122,7 @@ The url to find the JSON object can be both external and internal to the app's
 configuration.
 
 Example JSON object
+
 ```json
 {
   "status": "Success",
@@ -135,6 +136,7 @@ Example JSON object
 ```
 
 Example widget configuration
+
 ```xml
 <portlet-preference>
     <name>widgetExternalMessageUrl</name>
