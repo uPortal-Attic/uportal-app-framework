@@ -4,9 +4,12 @@ This application framework offers messages (notifications) to users.
 
 ## Notifications
 
-Notifications are messages about **you** (i.e. the user). They're for delivering
-information that pertains to the user or a group the user belongs to.
-Notifications are discoverable in the following ways:
+Notifications are messages about **you** (i.e. the user).
+
+cf.
+
++ [MyUW Notifications Overview][]
++ [MyUW Notifications Guidelines][]
 
 ### Notification bell
 
@@ -95,4 +98,5 @@ the user to continue after reading the message.  An optional `Learn more` button
 
 ![widget messaging](./img/notifications/widget-overlay-messaging.png)
 
-
+[MyUW Notifications Overview]: https://kb.wisc.edu/myuw/71187
+[MyUW Notifications Guidelines]: https://docs.google.com/document/d/1xa3t5gibaSgYGtGBKeIt0EGMC9XSMaOwVlgJtMCZ-Vg/edit
