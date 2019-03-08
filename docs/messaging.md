@@ -1,4 +1,4 @@
-# In-app messaging (user-facing content)
+# Messages (notifications)
 
 This application framework offers messages (notifications) to users.
 
