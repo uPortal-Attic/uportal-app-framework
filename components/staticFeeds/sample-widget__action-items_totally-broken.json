@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": false,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "All broken quantities",
       "description": "action-items when all its items fail",
       "url": "http://www.google.com",

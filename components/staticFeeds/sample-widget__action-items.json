@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": false,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Action Items",
       "description": "See how many items need your attention",
       "url": "http://www.google.com",

@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Bad configuration",
       "description": "No case matches and no default case is configured so falls back on being a basic widget.",
       "url": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#switch-widget-type",

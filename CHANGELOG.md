@@ -8,9 +8,19 @@ and this project adheres to
 
 ## [unreleased][]
 
-### Documentation
+### Fixes in unreleased
+
++ Now uses `fname` rather than `nodeId` when generating HTML element IDs for
+  widgets. In practice `nodeId` was always `-1` and so wasn't leading to unique
+  HTML element IDs. (#885)
+
+### Documentation in unreleased
 
 + Removed docker.doit steps from release process. (#884)
+
+### Dependency upgrades in unreleased
+
++ Upgraded `remark-validate-links` to `^8.0.0` (#873)
 
 ## [12.0.0][] - 2019-02-26
 

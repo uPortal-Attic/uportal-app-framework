@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Matches 2nd case",
       "description": "In this case the second case matches.",
       "url": "https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#switch-widget-type",

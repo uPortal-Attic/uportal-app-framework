@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": false,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "UWRF News",
       "description": "Local news important for UW-River Falls",
       "url": "https://www.uwrf.edu/News/",
@@ -58,7 +57,6 @@
       {
         "canAdd": false,
         "layoutObject": {
-          "nodeId": "-1",
           "title": "News About MyUW",
           "description": "News about MyUW.",
           "url": "/portal/p/myuw-news/render.uP",
@@ -113,7 +111,6 @@
       {
         "canAdd": false,
         "layoutObject": {
-          "nodeId": "-1",
           "title": "Responsive MyUW",
           "description": "Information about the new responsive view of MyUW",
           "url": "/portal/p/responsive-myuw-announcement/render.uP",
@@ -162,7 +159,6 @@
       {
         "canAdd": false,
         "layoutObject": {
-          "nodeId": "-1",
           "title": "HR, Payroll and Benefits News",
           "description": "News and announcements about University of Wisconsin HR, Payroll, and Benefit topics.",
           "url": "/portal/p/hr-payroll-benefits-news/render.uP",
@@ -220,7 +216,6 @@
       {
         "canAdd": false,
         "layoutObject": {
-          "nodeId": "-1",
           "title": "DoIT Help Desk Notices",
           "description": "Computing support news and notices from the Help Desk.",
           "url": "/portal/p/doit-help-desk-notices/render.uP",
@@ -271,7 +266,6 @@
       {
         "canAdd": false,
         "layoutObject": {
-          "nodeId": "-1",
           "title": "New! Mobile MyUW",
           "description": "Information about the new mobile view of MyUW",
           "url": "/portal/p/mobile-myuw-announcement/render.uP",

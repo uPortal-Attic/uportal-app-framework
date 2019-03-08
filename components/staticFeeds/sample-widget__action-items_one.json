@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": false,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "One quantity",
       "description": "action-items can show a single quantity of action items",
       "url": "http://www.google.com",

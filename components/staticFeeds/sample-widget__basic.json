@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "Faculty Center",
       "description": "View your teaching schedule, class roster, and advisee information, and manage grades and textbook information.",
       "url": "/portal/p/faculty-center/max/action.uP?pP_action=loginAction",
