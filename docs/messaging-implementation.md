@@ -1,7 +1,8 @@
 # In-app messaging (technical implementation)
 
-Notifications and Announcements (notifications, mascot announcements, popup announcements, etc.) share a single data model. They depend on a
-JSON feed containing certain attributes and flags. See the [configuraton](configuration.md) doc for information about how to
+Notifications depend on a
+JSON feed containing certain attributes and flags. See the
+[configuraton](configuration.md) doc for information about how to
 point uportal-app-framework to your desired feed.
 
 Widget messaging is based on JSON input configured in a
