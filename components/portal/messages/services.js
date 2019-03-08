@@ -57,19 +57,13 @@ define(['angular'], function(angular) {
          * @typedef {Object} Message
          * @property {number} id
          * @property {string} title
-         * @property {string} titleShort
-         * @property {string} description
-         * @property {string} descriptionShort
-         * @property {string} messageType
          * @property {string} goLiveDate
          * @property {string} expireDate
-         * @property {string} featureImageUrl
          * @property {string} priority
          * @property {Boolean} recurrence
          * @property {Boolean} dismissible
          * @property {Object} actionButton
          * @property {Object} moreInfoButton
-         * @property {Object} confirmButton
          */
 
         /**

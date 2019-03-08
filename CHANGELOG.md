@@ -16,6 +16,8 @@ and this project adheres to
 
 ### Documentation in unreleased
 
++ Corrects changelog and upgrading documentation to reflect `12.0.0`'s treating
+  all messages as notifications. Otherwise catches up documentation  (#886)
 + Removed docker.doit steps from release process. (#884)
 
 ### Dependency upgrades in unreleased
@@ -28,7 +30,10 @@ and this project adheres to
 
 12.0.0 removes features that supported "announcements" and `/features`. This
 may break downstream apps relying upon these in their routes, as it
-did for `uPortal-home`.
+did for `uPortal-home`. All messages are now treated as if they were
+`messageType` `notification`, but notifications still do not support the
+`addToHome` special action URL syntax that `announcements` had supported, so
+announcements using that feature do not automatically port forward cleanly.
 
 ### Added
 
@@ -48,8 +53,8 @@ did for `uPortal-home`.
 
 ### Removed
 
-+ Consolidated treatment of in-app messages to a single type (notifications) and
-  removed features that supported "announcements" (e.g. Mascot in top bar,
++ All messages are now treated as if they were `messageType` `notiifcation`.
+  Removed features that supported "announcements" (e.g. Mascot in top bar,
   /features page, etc.) (#878)
 
 ### Build

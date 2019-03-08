@@ -49,7 +49,6 @@ define(['angular'], function(angular) {
             'ariaLabelTitle': 'My U W',
             'crestalt': 'UW Crest',
             'group': 'UW-Madison',
-            'mascotImg': 'img/bucky.gif',
             'profileUrl': null,
             'footerLinks': [{'url': '/web/static/myuw-help',
                              'target': '_blank',
@@ -128,7 +127,6 @@ define(['angular'], function(angular) {
             'ariaLabelTitle': 'My U W',
             'crestalt': 'UW River Falls Logo',
             'group': 'UW System-River Falls',
-            'mascotImg': 'img/uwrf-mascot.gif',
             'footerLinks': [
              {'url': 'https://technology.uwrf.edu/',
                'target': '_blank',
@@ -692,7 +690,6 @@ define(['angular'], function(angular) {
             'ariaLabelTitle': 'My U W',
             'crestalt': 'UW Platteville',
             'group': 'UW System-Platteville',
-            'mascotImg': 'img/uwp-pete.png',
             'footerLinks': [{
                 'url': 'https://kb.wisconsin.edu/myuwsystem/page.php?id=15303',
                 'target': '_blank',

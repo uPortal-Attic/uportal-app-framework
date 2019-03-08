@@ -6,9 +6,12 @@ At a glance notes for upgrading apps between major versions.
 
 12.0.0 removes features that supported "announcements" and `/features`. This may
 break downstream apps relying upon these in their routes, as it did for
-`uPortal-home` (cf. [uPortal-home #781][]). Also, messages in `messages.json` of
-type `announcement` will no longer have any effect, consider converting these to
-type `notification`.
+`uPortal-home` (cf. [uPortal-home #781][]). `messageType` in `messages.json` no
+longer has any effect: all messages are treated as if they were of `messageType`
+`notification`. The `addToHome` special action URL syntax is no longer
+supported. In practice this means adopters need to carefully intentionally port
+forward local `messages.json` in light of what features are now supported and
+what has been removed.
 
 ## 10.x.x to 11.x.x
 
