@@ -17,7 +17,7 @@ Widget messaging is based on JSON input configured in a
     "messages": [
         {
             "id": "sample-unactivated-services-notification",
-            "title": "You need to modify your NetID account to activate essential UW Services.",
+            "title": "PRIORITY NOTIFICATIONS ARE DEPRECATED. You need to modify your NetID account to activate essential UW Services.",
             "goLiveDate": "2017-08-01T09:30",
             "expireDate": "2017-08-02",
             "priority": "high",
@@ -66,7 +66,7 @@ Widget messaging is based on JSON input configured in a
   message will display only after this moment.
 - **expireDate**: *(optional)* ISO date, including time (as pictured). The
   message will display only before this moment.
-- **priority**: "high" triggers higher visibility
+- **priority**: DEPRECATED "high" triggers higher visibility
 - **recurrence**: *(experimental, optional)* If true, even if a notification is
   dismissed, it will continue to reoccur in the user's home at the start of
   every session until the user is no longer a member of the targeted group. For
@@ -108,6 +108,9 @@ Widget messaging is based on JSON input configured in a
 
 A given message can have at most one each of the `actionButton` and
 `moreInfoButton`.
+
+"PRIORITY" NOTIFICATIONS ARE DEPRECATED. In a future release notifications with
+non-null "priority" will not be supported.
 
 Historically there was a **messageType** that distinguished between
 "notification" and "announcement". This *no longer has any effect.*
@@ -162,7 +165,7 @@ Follow these steps to create a notification.
 1. Add a JSON message to
 [components/staticFeeds/sample-messages.json](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/sample-messages.json)
 2. [Start frame](quickstart.md)
-3. Try changing some of the options like making the priority "high".
+3. Try changing some of the options.
 
 You can use this example JSON:
 
