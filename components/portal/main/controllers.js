@@ -186,6 +186,23 @@ define(['angular', 'require'], function(angular, require) {
     });
   }])
 
+  .controller('NotificationsController', ['$messagesService', '$scope',
+    '$document',
+    function($messagesService, $scope, $document) {
+      var myNotificationsArray = '[{"id":"hardcoded","title":"test me","actionButton":{"label":"button","url":"www.atlasobscura.com"}]';
+      var init = function() {
+        var event = new CustomEvent('myuw-has-notifications', {
+          bubbles: true,
+          detail: {
+            notifications: myNotificationsArray,
+          },
+          });
+          $document.dispatchEvent(event);
+      };
+
+      init();
+    }])
+
   /* Main menu toggle controller */
   .controller('MenuToggleController', ['$mdSidenav', 'APP_OPTIONS',
     function($mdSidenav, APP_OPTIONS) {

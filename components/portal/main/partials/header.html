@@ -47,8 +47,10 @@
     <div slot="myuw-search" class="header__search-bar-container" md-colors="{ backgroundColor: '{{portal.theme.name}}-primary' }" layout="row" flex-gt-xs="100" layout-align="center center" hide-xs>
       <search ng-show="APP_FLAGS.showSearch"></search>
     </div>
-    
-    <notifications-bell slot="myuw-notifications" mode="bell" class="header__bell" ng-if="!guestMode" hide-xs></notifications-bell>
+    <myuw-notifications slot="myuw-notifications" see-all-url="/">
+      <span slot="myuw-notifications-empty">All caught up!</span>
+    </myuw-notifications>
+   
     <username slot="myuw-profile" layout="row" layout-align="start center" hide-xs></username>
 
 </myuw-app-bar>
