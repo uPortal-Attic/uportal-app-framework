@@ -35,6 +35,7 @@ define(['angular', 'require'], function(angular, require) {
 
     /**
       * Listen for unseen notifications
+      * PRIORITY NOTIFICATIONS ARE DEPRECATED
       */
     $scope.$on('HAS_PRIORITY_NOTIFICATIONS', function(event, data) {
       if (angular.isDefined(data.hasNotifications)) {
@@ -235,6 +236,7 @@ define(['angular', 'require'], function(angular, require) {
 
       /**
        * Listen for unseen notifications
+       * PRIORITY NOTIFICATIONS ARE DEPRECATED
        */
       $scope.$on('HAS_PRIORITY_NOTIFICATIONS', function(event, data) {
         if (angular.isDefined(data.hasNotifications)) {
