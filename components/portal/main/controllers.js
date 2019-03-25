@@ -23,11 +23,11 @@ define(['angular', 'require'], function(angular, require) {
 
   .controller('PortalMainController', [
     '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
-    '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS',
+    '$location', '$log', 'NAMES', 'MISC_URLS', 'APP_FLAGS',
     'APP_OPTIONS', 'THEMES', 'miscService', 'mainService',
     function(
       $localStorage, $sessionStorage, $scope, $rootScope, $document,
-      $location, NAMES, MISC_URLS, APP_FLAGS,
+      $location, $log, NAMES, MISC_URLS, APP_FLAGS,
       APP_OPTIONS, THEMES, miscService, mainService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
@@ -41,6 +41,25 @@ define(['angular', 'require'], function(angular, require) {
         $scope.hasPriorityNotifications = data.hasNotifications;
       }
     });
+
+    function getBanners() {
+      mainService.getBanners()
+        .then(function(result) {
+          // Ensure messages exist and check for group filtering
+          if (angular.isArray(result) && result.length > 0) {
+            $scope.banner.message = result[0].text;
+            $scope.banner.confirmingText = result[0].buttons[0].label;
+            $scope.banner.confirmingUrl = result[0].buttons[0].url;
+            $scope.bannerHasContent = true;
+          }
+
+          return result;
+        })
+        .catch(function(error) {
+          $log.warn('Problem getting banner messages');
+          return error;
+        });
+    }
 
     /**
      * Set Document title.
@@ -74,6 +93,7 @@ define(['angular', 'require'], function(angular, require) {
 
     // =====functions ======
     var init = function() {
+      getBanners();
       $scope.$storage = $localStorage.$default(defaults);
 
       $scope.NAMES=NAMES;
@@ -81,6 +101,13 @@ define(['angular', 'require'], function(angular, require) {
       $scope.MISC_URLS=MISC_URLS;
       $scope.THEMES = THEMES.themes;
       $scope.APP_OPTIONS = APP_OPTIONS;
+      $scope.bannerHasContent = false;
+      $scope.banner = {
+        'message': '',
+        'confirming-text': '',
+        'confirming-url': '',
+        'dismissiveText': 'Skip for now'
+      }
 
       // Update window title and set app name in top bar
       if (NAMES.title) {

@@ -119,10 +119,27 @@ define(['angular'], function(angular) {
         return windowTitle;
       }
 
+      function getBanners() {
+        return $http.get(SERVICE_LOC.bannersURL)
+          .then(function(response) {
+            if (response.data && response.data.messages
+              && angular.isArray(response.data.messages)) {
+              return response.data.messages;
+            } else {
+              return GET_BANNERS_FAILED;
+            }
+          })
+          .catch(function(error) {
+            miscService.redirectUser(error.status, 'Get all messages');
+            return GET_BANNERS_FAILED;
+          });
+      }
+
     return {
       getUser: getUser,
       isGuest: isGuest,
       computeWindowTitle: computeWindowTitle,
+      getBanners: getBanners
     };
   }]);
 });
