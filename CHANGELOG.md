@@ -11,6 +11,7 @@ and this project adheres to
 ### Enhancements in unreleased
 
 + Adds link to MyUW news in `about-page.json` (#887)
++ Adds myuw-banner component to consume feed from myuw-banner-messages-back-end (#891)
 
 ### Fixes in unreleased
 
