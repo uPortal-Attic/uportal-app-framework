@@ -29,6 +29,9 @@ define(['angular'], function(angular) {
       var prom = $http.get(SERVICE_LOC.sessionInfo, {cache: true});
       var userPromise;
 
+      // Service messages
+      var GET_BANNERS_FAILED = 'Could not get banner messages at this time.';
+
       var getUser = function() {
         if (userPromise) {
           return userPromise;
@@ -119,6 +122,9 @@ define(['angular'], function(angular) {
         return windowTitle;
       }
 
+      /**
+       * Get banner messages from bannersURL endpoint
+       */
       function getBanners() {
         return $http.get(SERVICE_LOC.bannersURL)
           .then(function(response) {
@@ -139,7 +145,7 @@ define(['angular'], function(angular) {
       getUser: getUser,
       isGuest: isGuest,
       computeWindowTitle: computeWindowTitle,
-      getBanners: getBanners
+      getBanners: getBanners,
     };
   }]);
 });

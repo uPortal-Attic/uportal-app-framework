@@ -42,6 +42,9 @@ define(['angular', 'require'], function(angular, require) {
       }
     });
 
+    /**
+     * Get banner messages
+     */
     function getBanners() {
       mainService.getBanners()
         .then(function(result) {
@@ -106,8 +109,8 @@ define(['angular', 'require'], function(angular, require) {
         'message': '',
         'confirming-text': '',
         'confirming-url': '',
-        'dismissiveText': 'Skip for now'
-      }
+        'dismissiveText': 'Skip for now',
+      };
 
       // Update window title and set app name in top bar
       if (NAMES.title) {
