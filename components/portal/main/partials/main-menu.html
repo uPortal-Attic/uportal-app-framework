@@ -39,7 +39,7 @@
         <span><md-icon>notifications</md-icon></span>
         <md-tooltip class="top-bar-tooltip" md-direction="bottom" md-delay="500">Notifications</md-tooltip>
       </md-button>
-      <!-- High priority notifications button -->
+      <!-- High priority notifications button (DEPRECATED) -->
       <md-button ng-href="{{ vm.notificationsPageUrl }}"
                 ng-click="vm.pushGAEvent('Sidenav notifications bell', 'Click link', 'High priority state');vm.closeMainMenu();"
                 aria-label="you have important notifications"
