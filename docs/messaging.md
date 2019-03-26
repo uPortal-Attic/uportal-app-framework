@@ -32,12 +32,12 @@ notifications page that also displays the number of unseen notifications.
 
 [![mobile menu notifications link](./img/notifications/mobile-link.png)](img/notifications/mobile-link.png)
 
-### Priority notifications
+### Priority notifications (DEPRECATED)
 
-Critical notifications designated "high priority" will appear more prominently,
-fixed above the application top bar. When the user has more than one priority
-notification, the framework displays a generic message featuring the priority
-notifications count and a link to the notifications page.
+DEPRECATED. Critical notifications designated "high priority" will appear more
+prominently, fixed above the application top bar. When the user has more than
+one priority notification, the framework displays a generic message featuring
+the priority notifications count and a link to the notifications page.
 
 [![priority notification](./img/notifications/priority.png)](img/notifications/priority.png)
 
@@ -46,7 +46,7 @@ notifications count and a link to the notifications page.
 On the notifications page, users can view, follow calls to action on, and
 dismiss their notifications. They can also click the "Dismissed" tab to view
 notifications they've previously dismissed. High priority notifications
-float to the top of the lists.
+(DEPRECATED) float to the top of the lists.
 
 ## Widget messaging
 

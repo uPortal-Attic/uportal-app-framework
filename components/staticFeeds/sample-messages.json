@@ -23,7 +23,7 @@
     },
     {
       "id": "sample-uportal-app-framework-madison-priority-notification",
-      "title": "This is a high priority notification. It should only appear if group filtering is disabled in /settings",
+      "title": "PRIORITY NOTIFICATIONS ARE DEPRECATED. This is a high priority notification. It should only appear if group filtering is disabled in /settings",
       "goLiveDate": "2017-08-03",
       "priority": "high",
       "dismissible": true,

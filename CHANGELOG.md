@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [unreleased][]
 
+### Deprecations in unreleased
+
++ "priority" notifications are deprecated. (#890)
+
 ### Enhancements in unreleased
 
 + Adds link to MyUW news in `about-page.json` (#887)
