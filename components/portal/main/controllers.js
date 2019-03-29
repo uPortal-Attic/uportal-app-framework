@@ -24,11 +24,11 @@ define(['angular', 'require'], function(angular, require) {
   .controller('PortalMainController', [
     '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
     '$location', '$log', 'NAMES', 'MISC_URLS', 'APP_FLAGS',
-    'APP_OPTIONS', 'THEMES', 'miscService', 'mainService',
+    'APP_OPTIONS', 'SERVICE_LOC', 'THEMES', 'miscService', 'mainService',
     function(
       $localStorage, $sessionStorage, $scope, $rootScope, $document,
       $location, $log, NAMES, MISC_URLS, APP_FLAGS,
-      APP_OPTIONS, THEMES, miscService, mainService) {
+      APP_OPTIONS, SERVICE_LOC, THEMES, miscService, mainService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
@@ -97,7 +97,10 @@ define(['angular', 'require'], function(angular, require) {
 
     // =====functions ======
     var init = function() {
-      getBanners();
+      if (SERVICE_LOC.bannersURL) {
+        getBanners();
+      }
+
       $scope.$storage = $localStorage.$default(defaults);
 
       $scope.NAMES=NAMES;
