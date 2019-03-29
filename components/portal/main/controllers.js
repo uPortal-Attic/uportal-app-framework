@@ -52,8 +52,10 @@ define(['angular', 'require'], function(angular, require) {
           // Ensure messages exist
           if (angular.isArray(result) && result.length > 0) {
             $scope.banner.message = result[0].text;
-            $scope.banner.confirmingText = result[0].buttons[0].label;
-            $scope.banner.confirmingUrl = result[0].buttons[0].url;
+            if (result[0].button) {
+              $scope.banner.confirmingText = result[0].button.label;
+              $scope.banner.confirmingUrl = result[0].button.url;
+            }
             $scope.bannerHasContent = true;
           }
 

@@ -2,21 +2,17 @@
   "messages": [
     {
       "text": "You are a MyUW Administrator.",
-      "buttons": [
-        {
-          "label": "Administrate",
-          "url": "/web/exclusive/portal-administration"
-        }
-      ]
+      "button": {
+        "label": "Administrate",
+        "url": "/web/exclusive/portal-administration"
+      }
     },
     {
       "text": "Secondary test banner",
-      "buttons": [
-        {
-          "label": "Do thing",
-          "url": "#"
-        }
-      ]
+      "button": {
+        "label": "Do thing",
+        "url": "#"
+      }
     }
   ]
 }
