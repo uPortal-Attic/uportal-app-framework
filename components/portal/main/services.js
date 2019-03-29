@@ -136,7 +136,7 @@ define(['angular'], function(angular) {
             }
           })
           .catch(function(error) {
-            miscService.redirectUser(error.status, 'Get all messages');
+            miscService.redirectUser(error.status, 'Get banner messages');
             return GET_BANNERS_FAILED;
           });
       }
