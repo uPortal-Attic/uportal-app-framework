@@ -1,14 +1,13 @@
-# In-app messaging (technical implementation)
+# Messages (technical implementation)
+
+## Bell notifications
 
 Notifications depend on a
 JSON feed containing certain attributes and flags. See the
 [configuraton](configuration.md) doc for information about how to
 point uportal-app-framework to your desired feed.
 
-Widget messaging is based on JSON input configured in a
-[widget's configuration](make-a-widget.md).
-
-## Example message
+### Example bell notification message
 
 *Note: All messages must be contained within the "messages" array.*
 
@@ -115,7 +114,38 @@ non-null "priority" will not be supported.
 Historically there was a **messageType** that distinguished between
 "notification" and "announcement". This *no longer has any effect.*
 
-## Configuring a widget message
+## Banner messages
+
+Banner messages are sourced from a JSON feed. See
+[configuraton](configuration.md) for information about how to point
+uportal-app-framework to a banner message feed.
+
+When no feed is configured, the framework turns off the banner message feature.
+
+Banner messages are sourced as an array, but only the first item in the array
+informs the user experience; any messages after the first in the array have no
+effect. (The back end is therefore expected to prioritize these messages.)
+
+```json
+{
+  "messages": [
+    {
+      "text": "Brief message to user",
+      "icon": "optional-material-icon",
+      "button": {
+        "label: "Take action",
+        "url": "https://www.example.edu/somewhere"
+      }
+    }
+  ]
+}
+
+A zero item array of banner messages suppresses the banner message feature.
+
+## Widget messages
+
+Widget messaging is based on JSON input configured in a
+[widget's configuration](make-a-widget.md).
 
 Configuration is done by two required items and one optional.  Required is a url
 where to find a JSON object and an array representing where in the object the
@@ -158,7 +188,7 @@ Example widget configuration
 
 ## Exercises
 
-### Notifications
+### Bell notifications
 
 Follow these steps to create a notification.
 

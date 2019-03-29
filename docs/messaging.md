@@ -48,6 +48,15 @@ dismiss their notifications. They can also click the "Dismissed" tab to view
 notifications they've previously dismissed. High priority notifications
 (DEPRECATED) float to the top of the lists.
 
+## Banner messages
+
+Separately from the bell notifications, the framework supports banner messages.
+
+[![banner message](./img/banners/banner.png)](img/banners/banner.png)
+
+Banner messages have message text, an optional icon, and an optional single
+action button.
+
 ## Widget messaging
 
 Widget messaging can interrupt a user's interaction with a widget. The user can

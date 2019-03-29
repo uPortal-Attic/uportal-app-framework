@@ -1,0 +1,19 @@
+{
+  "messages": [
+    {
+      "text": "Example banner message",
+      "icon": "inbox",
+      "button": {
+        "label": "Read documentation",
+        "url": "https://uportal-project.github.io/uportal-app-framework/messaging.html"
+      }
+    },
+    {
+      "text": "Secondary test banner",
+      "button": {
+        "label": "Do thing",
+        "url": "#"
+      }
+    }
+  ]
+}
