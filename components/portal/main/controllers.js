@@ -49,7 +49,7 @@ define(['angular', 'require'], function(angular, require) {
     function getBanners() {
       mainService.getBanners()
         .then(function(result) {
-          // Ensure messages exist and check for group filtering
+          // Ensure messages exist
           if (angular.isArray(result) && result.length > 0) {
             $scope.banner.message = result[0].text;
             $scope.banner.confirmingText = result[0].buttons[0].label;
