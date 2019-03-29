@@ -1,11 +1,11 @@
 {
   "messages": [
     {
-      "text": "You are a MyUW Administrator.",
-      "icon": "settings",
+      "text": "Example banner message",
+      "icon": "inbox",
       "button": {
-        "label": "Administrate",
-        "url": "/web/exclusive/portal-administration"
+        "label": "Read documentation",
+        "url": "https://uportal-project.github.io/uportal-app-framework/messaging.html"
       }
     },
     {
