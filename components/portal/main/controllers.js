@@ -55,6 +55,7 @@ define(['angular', 'require'], function(angular, require) {
             if (result[0].button) {
               $scope.banner.confirmingText = result[0].button.label;
               $scope.banner.confirmingUrl = result[0].button.url;
+              $scope.banner.icon = result[0].icon;
             }
             $scope.bannerHasContent = true;
           }

@@ -2,6 +2,7 @@
   "messages": [
     {
       "text": "You are a MyUW Administrator.",
+      "icon": "settings",
       "button": {
         "label": "Administrate",
         "url": "/web/exclusive/portal-administration"

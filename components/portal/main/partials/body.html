@@ -26,7 +26,7 @@
   </div>
   <div class="my-uw-body">
     <portal-header ng-controller="MessagesController"></portal-header>
-    <myuw-banner ng-if="banner && banner.message" message="{{ banner.message }}" icon="" confirming-text="{{ banner.confirmingText }}" confirming-url="{{ banner.confirmingUrl }}" dismissive-text="{{ banner.dismissiveText }}"></myuw-banner>
+    <myuw-banner ng-if="banner && banner.message" message="{{ banner.message }}" icon="{{banner.icon}}" confirming-text="{{ banner.confirmingText }}" confirming-url="{{ banner.confirmingUrl }}" dismissive-text="{{ banner.dismissiveText }}"></myuw-banner>
 
     <div class="page-content" layout="column" tabindex="0" role="main">
       <div role="main" class="region-main" class="no-padding">
