@@ -29,7 +29,7 @@ define(['angular'], function(angular) {
         //   'entry': 'staticFeeds/',
         // },
         // 'aboutURL': 'staticFeeds/about-frame.json',
-        // 'aboutPageURL': 'staticFeeds/about-page.json'
+        // 'aboutPageURL': 'staticFeeds/about-page.json',
         // 'bannersURL': 'staticFeeds/sample-banners.json',
         // 'messagesURL': 'staticFeeds/sample-messages.json',
       },
