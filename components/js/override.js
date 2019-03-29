@@ -30,8 +30,8 @@ define(['angular'], function(angular) {
         // },
         // 'aboutURL': 'staticFeeds/about-frame.json',
         // 'aboutPageURL': 'staticFeeds/about-page.json'
+        // 'bannersURL': 'staticFeeds/sample-banners.json',
         // 'messagesURL': 'staticFeeds/sample-messages.json',
-        // 'bannersURL': 'staticFeeds/sample-banners.json'
       },
       'MESSAGES': {
         // 'notificationsPageURL': '/notifications',
