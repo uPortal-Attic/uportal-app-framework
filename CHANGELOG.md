@@ -15,7 +15,9 @@ and this project adheres to
 ### Enhancements in unreleased
 
 + Adds link to MyUW news in `about-page.json` (#887)
-+ Adds myuw-banner component to consume feed from myuw-banner-messages-back-end (#891)
++ Adds myuw-banner component to consume feed from myuw-banner-messages-back-end.
+  Optionally set new `SERVICE_LOC.bannersURL` to opt in to this feature; without
+  that setting nothing changes. (#891)
 
 ### Fixes in unreleased
 
