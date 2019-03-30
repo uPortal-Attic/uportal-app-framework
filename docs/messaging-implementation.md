@@ -139,6 +139,7 @@ effect. (The back end is therefore expected to prioritize these messages.)
     }
   ]
 }
+```
 
 A zero item array of banner messages suppresses the banner message feature.
 
