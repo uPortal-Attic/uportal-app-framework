@@ -17,7 +17,7 @@ and this project adheres to
 + Adds link to MyUW news in `about-page.json` (#887)
 + Adds myuw-banner component to consume feed from myuw-banner-messages-back-end.
   Optionally set new `SERVICE_LOC.bannersURL` to opt in to this feature; without
-  that setting nothing changes. (#891)
+  that setting nothing changes. (#891, #893)
 
 ### Fixes in unreleased
 

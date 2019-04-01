@@ -128,9 +128,9 @@ define(['angular'], function(angular) {
       function getBanners() {
         return $http.get(SERVICE_LOC.bannersURL)
           .then(function(response) {
-            if (response.data && response.data.messages
-              && angular.isArray(response.data.messages)) {
-              return response.data.messages;
+            if (response.data
+              && angular.isArray(response.data)) {
+              return response.data;
             } else {
               return GET_BANNERS_FAILED;
             }
