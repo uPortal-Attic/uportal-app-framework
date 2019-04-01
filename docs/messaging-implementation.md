@@ -127,18 +127,17 @@ informs the user experience; any messages after the first in the array have no
 effect. (The back end is therefore expected to prioritize these messages.)
 
 ```json
-{
-  "messages": [
-    {
-      "text": "Brief message to user",
-      "icon": "optional-material-icon",
-      "button": {
-        "label: "Take action",
-        "url": "https://www.example.edu/somewhere"
-      }
+[
+  {
+    "text": "Brief message to user",
+    "icon": "optional-material-icon",
+    "button": {
+      "label": "Take action",
+      "url": "https://www.example.edu/somewhere"
     }
-  ]
-}
+  }
+]
+
 ```
 
 A zero item array of banner messages suppresses the banner message feature.
