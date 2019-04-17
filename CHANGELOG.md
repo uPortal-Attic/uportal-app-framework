@@ -18,7 +18,8 @@ and this project adheres to
 + Adds myuw-banner component to consume feed from myuw-banner-messages-back-end.
   Optionally set new `SERVICE_LOC.bannersURL` to opt in to this feature; without
   that setting nothing changes. (#891, #893)
-+ Adds myuw-help-link web component 1.0.0 as dependency available in page (#894)
++ Adds `myuw-help-link` web component 1.x as dependency available in page
+  (#894, #896)
 
 ### Fixes in unreleased
 
