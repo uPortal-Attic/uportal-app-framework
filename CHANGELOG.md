@@ -26,6 +26,7 @@ and this project adheres to
 + Now uses `fname` rather than `nodeId` when generating HTML element IDs for
   widgets. In practice `nodeId` was always `-1` and so wasn't leading to unique
   HTML element IDs. (#885)
++ Prevent multiple session-exipred dialogs from displaying. (#897)
 
 ### Documentation in unreleased
 
