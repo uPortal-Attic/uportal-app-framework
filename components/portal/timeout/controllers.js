@@ -145,6 +145,7 @@ define(['angular'], function(angular) {
         clickOutsideToClose: false,
         openFrom: 'left',
         closeTo: 'right',
+        multiple: false,
         controller: function DialogController($scope, $mdDialog) {
           $scope.continueBtn = function() {
             if (isContinue) {
