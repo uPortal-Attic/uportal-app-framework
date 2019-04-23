@@ -96,7 +96,7 @@
     border-radius: 50%;
   }
 
-  #skeleton__grid {
+  #skeleton__content {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -104,16 +104,23 @@
     position: relative;
     top: 64px;
     width: 100%;
-    max-width: 1260px;
+    height: 100%;
     margin: 16px auto;
   }
 
-  .skeleton__grid--widget {
-    width: 290px;
-    height: 290px;
-    margin: 10px;
+  .skeleton__content--block {
+    height: 100%;
+    margin: 16px;
+    border-radius: 4px;
+    width: 80%;
     animation: pulse 1.5s infinite ease-in-out;
   }
+
+  .skeleton__content--block:nth-child(2) {
+    height: 400px;
+    width: 60%;
+  }
+
 
   @media (max-width: 600px) {
     #skeleton__search {
@@ -181,18 +188,7 @@
           <div id="skeleton__search"></div>
           <div id="skeleton__profile"></div>
         </header>
-        <main id="skeleton__grid">
-          <div class="skeleton__grid--widget"></div>
-          <div class="skeleton__grid--widget"></div>
-          <div class="skeleton__grid--widget"></div>
-          <div class="skeleton__grid--widget"></div>
-          <div class="skeleton__grid--widget"></div>
-          <div class="skeleton__grid--widget"></div>
-          <div class="skeleton__grid--widget"></div>
-          <div class="skeleton__grid--widget"></div>
-          <div class="skeleton__grid--widget"></div>
-          <div class="skeleton__grid--widget"></div>
-          <div class="skeleton__grid--widget"></div>
-          <div class="skeleton__grid--widget"></div>
+        <main id="skeleton__content">
+          <div class="skeleton__content--block"></div>
         </main>
 </div>
