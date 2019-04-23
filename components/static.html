@@ -31,6 +31,17 @@
     }
   }
 
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+
   .no-js {
     margin-bottom: 0;
     font-size: medium;
@@ -121,7 +132,6 @@
     width: 60%;
   }
 
-
   @media (max-width: 600px) {
     #skeleton__search {
       display: none;
@@ -170,6 +180,7 @@
 </script>
 
 <!-- Loading state -->
+<h1 class="sr-only">The application is getting ready...</h1>
 <div ng-hide="portal.loading.hidden" ng-class="{slowfade: portal.loading.startFade}" class="skeleton" id="loading-splash">
         <!--No javascript enabled-->
         <noscript>
