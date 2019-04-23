@@ -20,6 +20,7 @@ and this project adheres to
   that setting nothing changes. (#891, #893)
 + Adds `myuw-help-link` web component 1.x as dependency available in page
   (#894, #896)
++ Upgrades "Loading" splash screen to show a content preview (#898)
 
 ### Fixes in unreleased
 
