@@ -1,50 +1,53 @@
 # Adding dependencies to your frame-based app
 
-Suppose you want to inject `ngMarked` (does not ship in `uportal-app-framework` out of the box) into your `uportal-app-framework` app.
+Suppose you want to inject `ngMessages` (does not ship in `uportal-app-framework` out of the box) into your `uportal-app-framework` app.
 
-Add it to the RequireJS configuration for `my-app`, which is merged into the base frame configuration at build time.
+These steps describe how to add it to the RequireJS configuration for `my-app`, which is merged into the base frame configuration at build time.
 
-## Paths and shims
+## Set up path and shim
 
-Let's inject them into the `requirejs` configuration. We inject `marked` and `ngMarked` into the
-project via the `/my-app/app-config.js`.
+1. Create an `app-config.js` file in the `/my-app/` directory (`/my-app/app-config.js`)
+2. Set the **path** where requirejs can find your dependency (we get most dependencies from [cdnjs](https://cdnjs.com/))
+3. Set the **shim** for your dependency (and note anything it depends upon)
 
-Here is the content of that file:
+Here is the content of that `app-config.js` file:
 
-```JavaScript
+```js
 'use strict';
 define([], function() {
   return {
     paths: {
-      'marked': 'path/or/uri/to/marked',
-      'ngMarked': 'path/or/uri/to/angular-marked',
+      'ngMessages': 'https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.6.0/angular-messages.min',
     },
     shims: {
-      'ngMarked': {
-        deps: ['marked', 'angular'],
+      'ngMessages': {
+        deps: ['angular'],
       },
     },
   };
 });
 ```
 
-It just returns an object with paths and shims with the relative path (webapp being the working directory here) to the artifacts.
-To learn more about how `app-config.js`works, check out [/config.js](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/config.js) in uportal-app-framework's source code. It takes the returned object from `app-config.js` and merges it in with the frame configuration.
+This file returns an object with paths and shims with the relative path (webapp being the working directory here) to the artifacts.
+To learn more about how `app-config.js` works, check out [config.js](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/config.js) in uportal-app-framework's source code. It takes the returned object from `app-config.js` and merges it in with the frame configuration.
 
-## Injecting the angular module into your app
+## Inject the dependency into your app module
 
-Now that require knows about the artifact, we can now use that module in the angular configuration. In your app's `my-app/main.js`, you would inject marked and ngMarked, then add the `'hc.marked'` module. Here's what the contents of `main.js` might look like:
+Now that requirejs knows about the dependency, we can use it in the angular configuration.
 
-```JavaScript
+Inject ngMessages into your app's `/my-app/main.js` file. Here's what the contents of `main.js` might look like:
+
+```js
 define([
-  'angular', 'jquery', 'portal', 'marked', 'ngMarked', 'portal/main/routes',
-  'portal/settings/routes', 'portal/notifications/route',
-  'portal/features/route', 'portal/about/route', 'my-app/home/route',
-  ], function(angular, $, portal, marked, ngMarked, main,
-    settings, notifications, features, about, home) {
-    return angular.module('my-app', [
-      'portal', 'hc.marked', 'docs.main.controllers',
-    ]).config(['$routeProvider', '$locationProvider',
+  'angular', 'jquery', 'portal', 'ngRoute',
+  'ngMessages', // your new dependency
+  'portal/main/routes', 'portal/settings/routes',  'portal/notifications/route',
+  'portal/features/route',  'portal/about/route',  'my-app/home/route',
+  ],
+  function(angular, $, portal, main, settings, notifications, features, about, home) {
+    return angular
+      .module('my-app', ['portal', 'ngMessages']) // ready for your app to use
+      .config(['$routeProvider', '$locationProvider',
         function($routeProvider, $locationProvider) {
           $routeProvider
             .when('/settings', settings.betaSettings)
@@ -54,11 +57,9 @@ define([
             .when('/access-denied', main.accessDenied)
             .when('/server-error', main.serverError)
             .when('/demo', home.demo)
-            .when('/home', home.docHome)
-            .when('/md/:markdownfilename', home.md)
-            .otherwise(home.docHome);
-    }]);
+            .otherwise(home.demo);
+  ]);
 });
 ```
 
-And that should be it.
+Your dependency should now be available to all of your angular controllers, directives, etc. If you encounter problems, check for compatibility with `uportal-app-framework` dependency versions (check [config.js](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/config.js) to see all existing dependencies).
