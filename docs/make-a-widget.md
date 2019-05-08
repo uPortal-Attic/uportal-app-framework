@@ -698,6 +698,7 @@ reads its `widgetTemplate` as per normal. This means that a `switch` widget can 
 ## Other configuration common across widget types
 
 ### Launch button text
+
 If you provide a `widgetConfig` with any defined widget type (i.e. not a custom widget) with a value for `launchText`, it will replace the text of the
 launch button with the provided value, even for non-widgets. Use sentence case in launch button text.
 
