@@ -25,6 +25,7 @@ and this project adheres to
 + Adds optional `launchUrl` and `launchUrlTarget` fields to `widgetConfig`,
   parallel to existing `launchText`. These customize the launch bar URL and
   target, only in the expanded mode of non-custom non-option-link widgets.
+  ( [#904][] )
 
 ### Fixes in unreleased
 
@@ -1046,3 +1047,4 @@ break compatibility with some older components. If the app used any
 [sidenav-documentation]: http://uportal-project.github.io/uportal-app-framework/configurable-menu.html
 
 [#876]: https://github.com/uPortal-Project/uportal-app-framework/pull/876
+[#904]: https://github.com/uPortal-Project/uportal-app-framework/pull/904
