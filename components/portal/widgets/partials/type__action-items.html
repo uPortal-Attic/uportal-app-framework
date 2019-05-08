@@ -72,7 +72,7 @@
 <launch-button
 ng-show="!actionItems || actionItems.length != 0
   || !actionItemErrors || actionItemErrors.length != 1"
-  data-href="{{ widget.url }}"
-  data-target="{{ widget.target ? widget.target : '_self' }}"
+  data-href="{{config.launchUrl ? config.launchUrl : widget.url}}"
+  data-target="{{ config.launchUrlTarget ? config.launchUrlTarget : widget.target ? widget.target : '_self' }}"
   data-button-text="{{ launchText }}"
   data-aria-label="{{ 'Launch ' + widget.title }}"></launch-button>

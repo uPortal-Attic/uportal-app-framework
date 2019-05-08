@@ -87,6 +87,6 @@
 
 <!-- Launch app button -->
 <launch-button data-href="{{ ::widget.url }}"
-               data-target="{{ widget.target ? widget.target : '_self' }}"
+               data-target="{{ config.launchUrlTarget ? config.launchUrlTarget : widget.target ? widget.target : '_self' }}"
                data-button-text="Launch full app"
                data-aria-label="Launch weather app"></launch-button>
