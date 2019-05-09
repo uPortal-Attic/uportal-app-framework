@@ -18,8 +18,6 @@ and this project adheres to
 + Adds myuw-banner component to consume feed from myuw-banner-messages-back-end.
   Optionally set new `SERVICE_LOC.bannersURL` to opt in to this feature; without
   that setting nothing changes. (#891, #893)
-+ Adds `myuw-help-link` web component 1.x as dependency available in page
-  (#894, #896)
 + Upgrades "Loading" splash screen to show a content preview (#898)
 + Upgrade banner component to latest version (#899)
 + Adds optional `launchUrl` and `launchUrlTarget` fields to `widgetConfig`,
