@@ -698,10 +698,35 @@ reads its `widgetTemplate` as per normal. This means that a `switch` widget can 
 ## Other configuration common across widget types
 
 ### Launch button text
+
 If you provide a `widgetConfig` with any defined widget type (i.e. not a custom widget) with a value for `launchText`, it will replace the text of the
 launch button with the provided value, even for non-widgets. Use sentence case in launch button text.
 
 Read more about the [launch button best practices](widget-launch-button.md).
+
+### Launch button URL
+
+Likewise, `launchUrl` in `widgetConfig` will customize the URL that the launch
+bar links to, but *only in the context of the expanded mode widget*. This
+overrides the widget `alternativeMaximizedLink`, only in the context of
+rendering the expanded-mode widget.
+
+Therefore specifying both `alternativeMaximizedLink` and
+`widgetConfig.launchUrl` is a way to configure the app directory entry to launch
+to either of two URLs, the `launchUrl` in the context of the expanded mode widget
+and the `alternativeMaximizedLink` in all other contexts. The
+`alternativeMaximizedLink` could even link to the expanded mode widget.
+
+Like `launchText`, this doesn't automatically work for `custom`-type widgets. A
+custom widget template could implement this feature but is not guaranteed to
+have done so.
+
+`config.launchUrlTarget` overrides widget `target` like how `config.launchUrl`
+overrides widget `alternativeMaximizedLink`.
+
+Neither `launchUrl` nor `launchUrlTarget` have effect in option-link type widgets,
+because such widgets dynamically set the launch URL depending upon the option
+the user selects.
 
 ### Maintenance mode
 If your widget/application depends on a service that is currently experiencing an outage or planned maintenance, you can
