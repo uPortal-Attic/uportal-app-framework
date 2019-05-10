@@ -1,6 +1,7 @@
 .vscode/*
 .classpath
 .idea
+.java-version
 .project
 .settings
 target/
