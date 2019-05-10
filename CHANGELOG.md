@@ -21,7 +21,7 @@ and this project adheres to
   [myuw-banner-message-backend][]. Optionally set new `SERVICE_LOC.bannersURL`
   to opt in to this feature; without that setting nothing changes.
   (#891, #893, #899)
-+ Upgrades "Loading" splash screen to show a content preview (#898)
++ Upgrades "Loading" splash screen to show a content preview (#898, #907)
 + Adds optional `launchUrl` and `launchUrlTarget` fields to `widgetConfig`,
   parallel to existing `launchText`. These customize the launch bar URL and
   target, only in the expanded mode of non-custom non-option-link widgets.
