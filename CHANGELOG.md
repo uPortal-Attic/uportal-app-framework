@@ -18,7 +18,7 @@ and this project adheres to
 
 + Adds link to MyUW news in `about-page.json` (#887)
 + Adds myuw-banner component `1.1.1` to consume feed from
-  [myuw-banner-message-back-end][]. Optionally set new `SERVICE_LOC.bannersURL`
+  [myuw-banner-message-backend][]. Optionally set new `SERVICE_LOC.bannersURL`
   to opt in to this feature; without that setting nothing changes.
   (#891, #893, #899)
 + Upgrades "Loading" splash screen to show a content preview (#898)
