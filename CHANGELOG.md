@@ -8,11 +8,13 @@ and this project adheres to
 
 ## [unreleased][]
 
-### Deprecations in unreleased
+## [12.1.0][] - 2019-05-10
+
+### Deprecations in 12.1.10
 
 + "priority" notifications are deprecated. (#890)
 
-### Enhancements in unreleased
+### Enhancements in 12.1.0
 
 + Adds link to MyUW news in `about-page.json` (#887)
 + Adds myuw-banner component to consume feed from
@@ -25,21 +27,21 @@ and this project adheres to
   target, only in the expanded mode of non-custom non-option-link widgets.
   ( [#904][] )
 
-### Fixes in unreleased
+### Fixes in 12.1.0
 
 + Now uses `fname` rather than `nodeId` when generating HTML element IDs for
   widgets. In practice `nodeId` was always `-1` and so wasn't leading to unique
   HTML element IDs. (#885)
 + Prevent multiple session-expired dialogs from displaying. (#897)
 
-### Documentation in unreleased
+### Documentation in 12.1.0
 
 + Corrects changelog and upgrading documentation to reflect `12.0.0`'s treating
   all messages as notifications. Otherwise catches up documentation  (#886)
 + Adjust "injecting dependencies" doc to cover a couple extra points of
   confusion (#900)
 
-### Dependency upgrades in unreleased
+### Dependency upgrades in 12.1.0
 
 + Upgraded `remark-validate-links` to `^8.0.0` (#873)
 
@@ -1001,7 +1003,8 @@ break compatibility with some older components. If the app used any
 + Added ability to have a name for the default theme (#336)
 + Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.0.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.1.0...HEAD
+[12.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.0.0...v12.1.0
 [12.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v11.0.0...v12.0.0
 [11.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.3.0...v11.0.0
 [10.3.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.2.0...v10.3.0
