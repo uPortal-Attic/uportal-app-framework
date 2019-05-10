@@ -15,9 +15,9 @@ and this project adheres to
 ### Enhancements in unreleased
 
 + Adds link to MyUW news in `about-page.json` (#887)
-+ Adds myuw-banner component to consume feed from myuw-banner-message-back-end.
-  Optionally set new `SERVICE_LOC.bannersURL` to opt in to this feature; without
-  that setting nothing changes. (#891, #893)
++ Adds myuw-banner component to consume feed from
+  [myuw-banner-message-back-end][]. Optionally set new `SERVICE_LOC.bannersURL`
+  to opt in to this feature; without that setting nothing changes. (#891, #893)
 + Upgrades "Loading" splash screen to show a content preview (#898)
 + Upgrade banner component to latest version (#899)
 + Adds optional `launchUrl` and `launchUrlTarget` fields to `widgetConfig`,
@@ -1047,3 +1047,5 @@ break compatibility with some older components. If the app used any
 
 [#876]: https://github.com/uPortal-Project/uportal-app-framework/pull/876
 [#904]: https://github.com/uPortal-Project/uportal-app-framework/pull/904
+
+[myuw-banner-message-backend]: https://git.doit.wisc.edu/myuw/myuw-banner-message-backend
