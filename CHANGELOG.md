@@ -36,7 +36,8 @@ and this project adheres to
 
 + Corrects changelog and upgrading documentation to reflect `12.0.0`'s treating
   all messages as notifications. Otherwise catches up documentation  (#886)
-+ Adjust "injecting dependencies" doc to cover a couple extra points of confusion (#900)
++ Adjust "injecting dependencies" doc to cover a couple extra points of
+  confusion (#900)
 
 ### Dependency upgrades in unreleased
 
