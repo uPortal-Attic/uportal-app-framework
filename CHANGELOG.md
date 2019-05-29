@@ -8,6 +8,13 @@ and this project adheres to
 
 ## [unreleased][]
 
++ feature: in `list-of-links` widget type, new `widgetConfig` option
+  `suppressLaunchButton` which will make the widget omit the launch button
+  across the bottom of the widget.
++ documentation: stop documenting that omitting `launchText` in `list-of-links`
+  widgets would supress the widget launch button. This didn't work and instead
+  such list-of-links widgets would use default launch button text.
+
 ## [12.1.0][] - 2019-05-10
 
 ### Deprecations in 12.1.10

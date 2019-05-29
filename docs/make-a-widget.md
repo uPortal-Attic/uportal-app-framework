@@ -210,10 +210,11 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 
 #### Guidance about `list-of-links`
 
-* Omitting `launchText` suppresses the launch button
-  at the bottom of the list-of-links widget. This is appropriate when there's
-  nothing more to launch, that is, when the list-of-links widget presents
-  all the intended links and that's all there is to it.
+* Setting `suppressLaunchButton` in widgetConfig to a truthy value suppresses
+  the launch button at the bottom of the list-of-links widget. This is
+  appropriate when there's nothing more to launch, that is, when the
+  list-of-links widget presents all the intended links and that's all there is
+  to it.
 * Avoid using a `list-of-links` widget to display one link.
   Instead, use the name and `alternativeMaximizedLink` of
   [the app directory entry](http://uportal-project.github.io/uportal-home/app-directory)

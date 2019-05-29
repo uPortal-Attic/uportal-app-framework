@@ -15,7 +15,7 @@
       "widgetTemplate": null,
       "widgetConfig": {
         "getLinksURL": "true",
-        "launchText": "View widget JSON"
+        "suppressLaunchButton": true
       },
       "widgetExternalMessageUrl": "/staticFeeds/sample-widget_message.json",
       "widgetExtneralMessageTextObjectLocation": ["result", 0, "message"],
