@@ -1,0 +1,56 @@
+{
+  "entry": {
+    "canAdd": false,
+    "layoutObject": {
+      "title": "remote-content widget",
+      "description": "`remote-content` type widgets render abritrary markup sourced from a URL",
+      "url": "/staticFeeds/sample-widget__remote.json",
+      "iconUrl": null,
+      "faIcon": "fa-credit-card-alt",
+      "fname": "sample-widget__remote",
+      "lifecycleState": "PUBLISHED",
+      "target": "_blank",
+      "widgetURL": "/staticFeeds/remoteWidgetExample.html",
+      "widgetType": "remote-content",
+      "widgetConfig": {
+      },
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "categories": [
+      "Applications"
+    ],
+    "portletName": "cms",
+    "title": "remote-content widget",
+    "keywords": [
+      "money",
+      "wisccard",
+      "wiscard",
+      "balance",
+      "deposit"
+    ],
+    "fname": "sample-widget__remote",
+    "rating": 0.0,
+    "lifecycleState": "PUBLISHED",
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://online.wiscard.wisc.edu/login.php?cid=120",
+    "portletWebAppName": "/SimpleContentPortlet",
+    "maxUrl": "https://online.wiscard.wisc.edu/login.php?cid=120",
+    "shortUrl": null,
+    "marketplaceScreenshots": [
+
+    ],
+    "userRated": 0,
+    "mdIcon": "build",
+    "relatedPortlets": [],
+    "description": "`remote-content` type widgets render abritrary markup sourced from a URL",
+    "name": "Remote widget",
+    "id": "6796",
+    "type": "Portlet",
+    "target": "_blank"
+  }
+}
