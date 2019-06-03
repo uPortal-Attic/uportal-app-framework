@@ -213,6 +213,18 @@ define(['angular', 'require'], function(angular, require) {
     };
   })
 
+  .directive('remoteContentWidget', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config',
+      },
+      templateUrl: require.toUrl('./partials/type__remote-content.html'),
+      controller: 'RemoteContentWidgetController',
+    };
+  })
+
   .directive('basicWidget', function() {
     return {
       restrict: 'E',
