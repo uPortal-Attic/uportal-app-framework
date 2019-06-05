@@ -8,6 +8,7 @@ and this project adheres to
 
 ## [unreleased][]
 
++ feature: new `remote-content` widget type
 + feature: in `list-of-links` widget type, new `widgetConfig` option
   `suppressLaunchButton` which will make the widget omit the launch button
   across the bottom of the widget.

@@ -1042,5 +1042,32 @@ define(['angular', 'moment'], function(angular, moment) {
     } else {
       $log.warn('WeatherWidgetController did not receive a widgetURL');
     }
-  }]);
+  }])
+
+  .controller('RemoteContentWidgetController', [
+    '$scope', '$http', '$log',
+    function($scope, $http, $log) {
+      var initRemoteContentWidget = function() {
+        $scope.loading = true;
+        $log.debug('entered initRemoteContentWidget()');
+
+
+        $http.get($scope.widget.widgetURL).then(function(result) {
+          $scope.remoteContent = result.data;
+          $scope.loading = false;
+          $log.debug(
+            'Got [' + result.data + '] from [' +
+            $scope.widget.widgetURL + ']' );
+          return result;
+        }).catch(function(error) {
+          $scope.remoteContentErrors = error;
+          $log.error(error);
+          return error;
+        }
+        );
+      };
+
+      initRemoteContentWidget();
+    }]
+  );
 });

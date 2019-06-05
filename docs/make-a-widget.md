@@ -862,6 +862,35 @@ By doing just this we were able to generate:
 
 ![custom widget](./img/custom-widget.png)
 
+## remote-content widgets
+
+The `remote-content` widget type sources a URL for the widget content, allowing
+generating the widget content server-side.
+
+```xml
+<portlet-preference>
+    <name>widgetType</name>
+    <value>remote-content</value>
+</portlet-preference>
+```
+
+```xml
+<portlet-preference>
+  <name>widgetURL</name>
+  <value>/hrs-integration/widgets/benefit-information.html</value>
+</portlet-preference>
+```
+
+While waiting for the asynchronous request to the `widgetURL`, the
+remote-content widget type shows a loading indicator.
+
+The remote content should include the widget launch button if appropriate. The
+`remote-content` widget template will not provide a launch button except in the
+error case. The widget will use literally the markup responded from the
+`widgetURL` as the widget markup.
+
+If the asynchronous request receives an error response, `remote-content` falls
+back on rendering as if it were at `basic` widget.
 
 [rssToJson]: https://github.com/UW-Madison-DoIT/rssToJson
 [documentation about the app directory]: http://uportal-project.github.io/uportal-home/app-directory.html
