@@ -91,7 +91,8 @@ define(['angular'], function(angular) {
         .then(function(result) {
           if (widget.widgetExtneralMessageTextObjectLocation &&
             angular.isArray(widget.widgetExtneralMessageTextObjectLocation)) {
-            var messageText = result.data;
+            //DOUG CHANGE
+            var messageText = result.data.result;
             angular.forEach(widget.widgetExtneralMessageTextObjectLocation,
               function(value, key) {
                 messageText = messageText[value];
