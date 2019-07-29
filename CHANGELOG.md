@@ -8,7 +8,9 @@ and this project adheres to
 
 ## [unreleased][], putatively 12.3.0
 
-(No changes yet.)
++ fix: upgrade `angular-material` dependency to
+  [1.1.19](https://github.com/angular/material/blob/master/CHANGELOG.md#1119-2019-05-31)
+  from 1.1.11, thereby picking up a bunch of little bug fixes
 
 ## [12.2.0][] - 2019-06-07
 
@@ -1015,7 +1017,8 @@ break compatibility with some older components. If the app used any
 + Added ability to have a name for the default theme (#336)
 + Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.1.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.2.0...HEAD
+[12.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.1.0...v12.2.0
 [12.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.0.0...v12.1.0
 [12.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v11.0.0...v12.0.0
 [11.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.3.0...v11.0.0
