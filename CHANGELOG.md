@@ -8,7 +8,9 @@ and this project adheres to
 
 ## [unreleased][], putatively 12.3.0
 
-(No changes yet.)
++ fix: upgrade `angular-material` dependency to
+  [1.1.19](https://github.com/angular/material/blob/master/CHANGELOG.md#1119-2019-05-31)
+  from 1.1.11, thereby picking up a bunch of little bug fixes
 
 ## [12.2.0][] - 2019-06-07
 
