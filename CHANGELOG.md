@@ -8,6 +8,9 @@ and this project adheres to
 
 ## [unreleased][], putatively 12.3.0
 
++ fix: upgrade `AngularJS` dependency to
+  [1.7.8](https://github.com/angular/angular.js/blob/master/CHANGELOG.md#178-enthusiastic-oblation-2019-03-11)
+  from 1.7.2, thereby picking up a bunch of little bug fixes
 + fix: upgrade `angular-material` dependency to
   [1.1.19](https://github.com/angular/material/blob/master/CHANGELOG.md#1119-2019-05-31)
   from 1.1.11, thereby picking up a bunch of little bug fixes
