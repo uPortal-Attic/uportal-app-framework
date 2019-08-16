@@ -14,6 +14,7 @@ and this project adheres to
 + fix: upgrade `angular-material` dependency to
   [1.1.19](https://github.com/angular/material/blob/master/CHANGELOG.md#1119-2019-05-31)
   from 1.1.11, thereby picking up a bunch of little bug fixes
++ fix: update FontAwesome version to [5.0.13](https://github.com/uPortal-Project/uportal-app-framework/pull/925)
 
 ## [12.2.0][] - 2019-06-07
 
