@@ -120,7 +120,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "font-awesome": "^5.0.13",
+    "font-awesome": "^4.7.0",
     "normalize.less": "^1.0.0"
   },
   "engines": {
