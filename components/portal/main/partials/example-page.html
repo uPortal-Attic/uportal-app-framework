@@ -177,6 +177,22 @@
           </div>
         </div>
 
+
+    <h3 style="margin-left:26px">
+      Example failing silently when so configured</h3>
+      <div style="margin-left:26px">Demonstrates fail-silently attribute
+        on widget directive. There are two widgets here with bogus fnames,
+        but the second has fail-silently true, so it silently disappears.</div>
+      <div layout="row" layout-align="center start"
+        style="flex-wrap:wrap;padding:18px;">
+        <div flex-xs="100" class="widget-container">
+          <widget fname="no-exist-1"></widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <widget fname="no-exist-2" fail-silently="true"></widget>
+        </div>
+      </div>
+
     <h2 style="margin-left:26px">Example compact mode widgets</h2>
     <div layout="row" layout-align="center start" style="flex-wrap:wrap;padding:18px;">
         <div flex-xs="100" class="widget-container">

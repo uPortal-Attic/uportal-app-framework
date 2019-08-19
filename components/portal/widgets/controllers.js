@@ -90,8 +90,11 @@ define(['angular', 'moment'], function(angular, moment) {
      * from the provided fname attribute, makes transcluded content
      * focusable
      * @param {string} fname
+     * @param {string} failSilently
      */
-    $scope.initializeWidget = function(fname) {
+    $scope.initializeWidget = function(fname, failSilently) {
+
+      $log.error("For name " + fname + " failSilently is " + failSilently);
       // Initialize scope variables
       $scope.widget = {};
       $scope.widgetType = '';
@@ -105,6 +108,7 @@ define(['angular', 'moment'], function(angular, moment) {
           if (data) {
             $scope.widget = data;
             $scope.widgetType = widgetType(data);
+            $scope.failSilently = failSilently;
           }
           // If there's a remove button, make it focusable by keyboard
           if ($transclude.isSlotFilled('removeButton')) {
@@ -122,7 +126,7 @@ define(['angular', 'moment'], function(angular, moment) {
     };
 
     // Initialize the widget
-      $scope.initializeWidget($scope.fname);
+      $scope.initializeWidget($scope.fname, $scope.failSilently);
   }])
 
   /**
