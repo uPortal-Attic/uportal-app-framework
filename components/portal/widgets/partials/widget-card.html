@@ -18,7 +18,9 @@
     under the License.
 
 -->
-<md-card class="widget-frame" id="widget-id-{{ widget.fname }}" aria-label="{{ widget.title }} widget">
+<md-card id="widget-id-{{ widget.fname }}" aria-label="{{ widget.title }} widget"
+  ng-hide="failSilently && widget.widgetConfig && widget.widgetConfig.error"
+  class="widget-frame" >
 
   <!-- MAINTENANCE MODE OVERLAY -->
   <div class="overlay__widget-mode" ng-if="widget.lifecycleState === 'MAINTENANCE'">

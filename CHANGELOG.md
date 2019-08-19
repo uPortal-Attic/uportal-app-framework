@@ -8,6 +8,9 @@ and this project adheres to
 
 ## [unreleased][], putatively 12.3.0
 
++ feature: new optional `fail-silently` attribute on `widget` directive
+  enables invoking a `widget` in contexts where it's not certain that the
+  viewing user has permission on the widget or that it even exists
 + fix: upgrade `AngularJS` dependency to
   [1.7.8](https://github.com/angular/angular.js/blob/master/CHANGELOG.md#178-enthusiastic-oblation-2019-03-11)
   from 1.7.2, thereby picking up a bunch of little bug fixes
