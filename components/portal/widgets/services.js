@@ -66,6 +66,7 @@ define(['angular'], function(angular) {
         mdIcon: 'help',
         widgetType: 'generic',
         widgetConfig: {
+          error: true,
           additionalText: 'Please contact your help desk if you ' +
             'feel you should be able to access this content',
         },
