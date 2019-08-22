@@ -11,6 +11,10 @@ and this project adheres to
 + feature: new optional `fail-silently` attribute on `widget` directive
   enables invoking a `widget` in contexts where it's not certain that the
   viewing user has permission on the widget or that it even exists
+
++ tweak: Changes search bar prompt text to "Search for apps by keyword..." from
+  "Search MyUW" (#922)
+
 + fix: upgrade `AngularJS` dependency to
   [1.7.8](https://github.com/angular/angular.js/blob/master/CHANGELOG.md#178-enthusiastic-oblation-2019-03-11)
   from 1.7.2, thereby picking up a bunch of little bug fixes
