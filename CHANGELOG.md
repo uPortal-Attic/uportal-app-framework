@@ -24,6 +24,14 @@ and this project adheres to
   from 1.1.11, thereby picking up a bunch of little bug fixes
 + fix: update FontAwesome version to [5.0.13](https://github.com/uPortal-Project/uportal-app-framework/pull/925)
 
+### Development process change
+
++ Added checkbox to Pull Request template reminding to consider security
+  implications of change. Need for checks to ensure considering security
+  implications of change was flagged in UW Cybersecurity Risk Management
+  Framework review of MyUW; this is one tiny process change to partially
+  address that finding. (#908)
+
 ## [12.2.0][] - 2019-06-07
 
 + feature: new `remote-content` widget type
