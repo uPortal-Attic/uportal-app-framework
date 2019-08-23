@@ -20,27 +20,36 @@
 -->
 <div>Debugging: fname={{::widget.fname}}; title={{ widget.title }}; mdIcon={{widget.mdIcon}}; faIcon={{widget.faIcon}}; svg-icon={{widget.iconUrl}};;; {{widget.faIcon | limitTo : 100 : 3}}</div>
 
-
-
 <myuw-compact-card ng-if="widget && widget.mdIcon"
+id="{{::widget.fname}}-myuw-compact-card"
 title="MD {{ widget.title }}"
 uid="{{::widget.fname}}"
 url="http://www.google.com"
 md-icon="{{widget.mdIcon}}"></myuw-compact-card>
 
 <myuw-compact-card ng-if="widget && !widget.mdIcon && widget.faIcon"
+id="{{::widget.fname}}-myuw-compact-card"
 title="FA {{ widget.title }}"
 uid="{{::widget.fname}}"
 url="http://www.google.com"
 fa-icon="{{widget.faIcon | limitTo : 100 : 3}}"></myuw-compact-card>
 
 <myuw-compact-card ng-if="widget && !widget.mdIcon && !widget.faIcon && widget.iconUrl"
+id="{{::widget.fname}}-myuw-compact-card"
 title="SVG {{ widget.title }}"
 uid="{{::widget.fname}}"
 url="http://www.google.com"
 svg-icon="{{widget.iconUrl}}"></myuw-compact-card>
 
 <myuw-compact-card ng-if="widget && !widget.mdIcon && !widget.faIcon && !widget.iconUrl"
+id="{{::widget.fname}}-myuw-compact-card"
 title="NONE {{ widget.title }}"
 uid="{{::widget.fname}}"
 url="http://www.google.com"></myuw-compact-card>
+
+<script ng-if="widget">
+const el = document.getElementById('{{::widget.fname}}-myuw-compact-card');
+  el.addEventListener('deleteCardNotify', event => {
+    window.alert("Sorry! Removing a tile from your layout in compact display mode is temporarily unsupported. Switch to expanded widget mode to enable removing content from your layout. Learn more about widget display modes at https://kb.wisc.edu/myuw/51574 .");
+  });
+</script>
