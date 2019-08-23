@@ -93,8 +93,6 @@ define(['angular', 'moment'], function(angular, moment) {
      * @param {string} failSilently
      */
     $scope.initializeWidget = function(fname, failSilently) {
-
-      $log.error("For name " + fname + " failSilently is " + failSilently);
       // Initialize scope variables
       $scope.widget = {};
       $scope.widgetType = '';
