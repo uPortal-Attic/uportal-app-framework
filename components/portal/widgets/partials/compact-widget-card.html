@@ -22,25 +22,25 @@
 id="{{::widget.fname}}-myuw-compact-card"
 title="{{::widget.title}}"
 uid="{{::widget.fname}}"
-url="http://www.google.com"
+url="{{::widget.url}}"
 md-icon="{{::widget.mdIcon}}"></myuw-compact-card>
 
 <myuw-compact-card ng-if="widget && !widget.mdIcon && widget.faIcon"
 id="{{::widget.fname}}-myuw-compact-card"
 title="{{::widget.title}}"
 uid="{{::widget.fname}}"
-url="http://www.google.com"
+url="{{::widget.url}}"
 fa-icon="{{::widget.faIcon | limitTo : 100 : 3}}"></myuw-compact-card>
 
 <myuw-compact-card ng-if="widget && !widget.mdIcon && !widget.faIcon && widget.iconUrl"
 id="{{::widget.fname}}-myuw-compact-card"
 title="{{::widget.title}}"
 uid="{{::widget.fname}}"
-url="http://www.google.com"
+url="{{::widget.url}}"
 svg-icon="{{::widget.iconUrl}}"></myuw-compact-card>
 
 <myuw-compact-card ng-if="widget && !widget.mdIcon && !widget.faIcon && !widget.iconUrl"
 id="{{::widget.fname}}-myuw-compact-card"
 title="{{::widget.title}}"
 uid="{{::widget.fname}}"
-url="http://www.google.com"></myuw-compact-card>
+url="{{::widget.url}}"></myuw-compact-card>
