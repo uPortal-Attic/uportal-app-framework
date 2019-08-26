@@ -30,7 +30,9 @@ define(['angular'], function(angular) {
      * @property {string} learnMoreUrl
     */
 
+   // eslint-disable-next-line angular/document-service
    document.addEventListener('deleteCardNotify', function() {
+    // eslint-disable-next-line angular/document-service
     document.defaultView.alert('Sorry! Removing a tile from your layout in compact display mode is temporarily unsupported. Switch to expanded widget mode to enable removing content from your layout. Learn more about widget display modes at https://kb.wisc.edu/myuw/51574 .');
   });
     /**
