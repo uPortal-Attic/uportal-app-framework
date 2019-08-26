@@ -44,10 +44,3 @@ id="{{::widget.fname}}-myuw-compact-card"
 title="{{::widget.title}}"
 uid="{{::widget.fname}}"
 url="http://www.google.com"></myuw-compact-card>
-
-<script ng-if="widget">
-const el = document.getElementById('{{::widget.fname}}-myuw-compact-card');
-  el.addEventListener('deleteCardNotify', event => {
-    window.alert("Sorry! Removing a tile from your layout in compact display mode is temporarily unsupported. Switch to expanded widget mode to enable removing content from your layout. Learn more about widget display modes at https://kb.wisc.edu/myuw/51574 .");
-  });
-</script>
