@@ -20,28 +20,28 @@
 -->
 <myuw-compact-card ng-if="widget && widget.mdIcon"
 id="{{::widget.fname}}-myuw-compact-card"
-title="{{ widget.title }}"
+title="{{::widget.title}}"
 uid="{{::widget.fname}}"
 url="http://www.google.com"
-md-icon="{{widget.mdIcon}}"></myuw-compact-card>
+md-icon="{{::widget.mdIcon}}"></myuw-compact-card>
 
 <myuw-compact-card ng-if="widget && !widget.mdIcon && widget.faIcon"
 id="{{::widget.fname}}-myuw-compact-card"
-title="{{ widget.title }}"
+title="{{::widget.title}}"
 uid="{{::widget.fname}}"
 url="http://www.google.com"
-fa-icon="{{widget.faIcon | limitTo : 100 : 3}}"></myuw-compact-card>
+fa-icon="{{::widget.faIcon | limitTo : 100 : 3}}"></myuw-compact-card>
 
 <myuw-compact-card ng-if="widget && !widget.mdIcon && !widget.faIcon && widget.iconUrl"
 id="{{::widget.fname}}-myuw-compact-card"
-title="{{ widget.title }}"
+title="{{::widget.title}}"
 uid="{{::widget.fname}}"
 url="http://www.google.com"
-svg-icon="{{widget.iconUrl}}"></myuw-compact-card>
+svg-icon="{{::widget.iconUrl}}"></myuw-compact-card>
 
 <myuw-compact-card ng-if="widget && !widget.mdIcon && !widget.faIcon && !widget.iconUrl"
 id="{{::widget.fname}}-myuw-compact-card"
-title="{{ widget.title }}"
+title="{{::widget.title}}"
 uid="{{::widget.fname}}"
 url="http://www.google.com"></myuw-compact-card>
 
