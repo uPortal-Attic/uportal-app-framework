@@ -6,7 +6,26 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [unreleased][], putatively 12.3.0
+## [unreleased][], putatively 13.0.0
+
+WARNING: Depends upon `myuw-compact-card` 1.x which is unstable. Switch to
+depending upon a specific version (or move to a stable version series) before
+releasing app-framework.
+
+BREAKING CHANGE: uses `myuw-compact-card` to implement compact mode widget
+display. This is a step towards implementing MyUW in something other than
+AngularJS, by implementing the UI pieces in not-AngularJS-specific
+Web Components rather than in AngularJS-specific Directives. However,
+
++ Deleting cards from the layout in compact card mode is temporarily
+  unsupported. Attempting to do so shows an alert apologizing.
++ Font Awesome icon support in `myuw-compact-card` does not precisely match that
+  in the prior implementation of the compact card directive, so upon migrating
+  to this version of the app framework
+  **some icon choices may need to be changed**. In particular, some icon  name
+  aliases and modifier suffixes are not supported.
+
+Also in this release:
 
 + feature: new optional `fail-silently` attribute on `widget` directive
   enables invoking a `widget` in contexts where it's not certain that the
