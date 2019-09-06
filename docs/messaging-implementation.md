@@ -20,7 +20,6 @@ point uportal-app-framework to your desired feed.
             "goLiveDate": "2017-08-01T09:30",
             "expireDate": "2017-08-02",
             "priority": "high",
-            "recurrence": true,
             "dismissible": false,
             "audienceFilter": {
                 "groups": ["Users - Service Activation Required"],
@@ -66,12 +65,6 @@ point uportal-app-framework to your desired feed.
 - **expireDate**: *(optional)* ISO date, including time (as pictured). The
   message will display only before this moment.
 - **priority**: DEPRECATED "high" triggers higher visibility
-- **recurrence**: *(experimental, optional)* If true, even if a notification is
-  dismissed, it will continue to reoccur in the user's home at the start of
-  every session until the user is no longer a member of the targeted group. For
-  example, if a user is a member of students-with-outstanding-parking-tickets,
-  that user will be confronted with the notification at every login until they
-  pay the fine.
 - **dismissible**: *(experimental, optional)* `false` prevents dismissing the
   notification. If `true` or not set at all, the notification will be
   dismissible.
