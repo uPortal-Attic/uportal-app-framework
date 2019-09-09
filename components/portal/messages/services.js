@@ -60,7 +60,6 @@ define(['angular'], function(angular) {
          * @property {string} goLiveDate
          * @property {string} expireDate
          * @property {string} priority
-         * @property {Boolean} recurrence
          * @property {Boolean} dismissible
          * @property {Object} actionButton
          * @property {Object} moreInfoButton

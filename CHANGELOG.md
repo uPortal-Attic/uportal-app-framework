@@ -25,6 +25,9 @@ Web Components rather than in AngularJS-specific Directives. However,
   **some icon choices may need to be changed**. In particular, some icon  name
   aliases and modifier suffixes are not supported.
 
+BREAKING CHANGE: `recurrence` flag on messages that had been "experimental" in
+prior releases is removed in this release. It had not been working reliably.
+
 Also in this release:
 
 + feature: new optional `fail-silently` attribute on `widget` directive
