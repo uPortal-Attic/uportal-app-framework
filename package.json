@@ -106,7 +106,7 @@
     "lodash": "^4.0.0",
     "mkdirp": "^0.5.1",
     "onchange": "^4.0.0",
-    "postcss": "^7.0.0",
+    "postcss": "^7.0.21",
     "recursive-copy": "^2.0.5",
     "remark-cli": "^6.0.0",
     "remark-preset-lint-consistent": "^2.0.0",
