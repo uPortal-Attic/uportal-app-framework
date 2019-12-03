@@ -103,7 +103,7 @@
     "karma-safari-launcher": "^1.0.0",
     "less": "3.8.1",
     "lint-staged": "^7.0.0",
-    "lodash": "^4.0.0",
+    "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
     "onchange": "^4.0.0",
     "postcss": "^7.0.0",
@@ -119,7 +119,7 @@
     "superstatic": "~6.0.0"
   },
   "dependencies": {
-    "bootstrap": "^3.3.6",
+    "bootstrap": "^3.4.1",
     "font-awesome": "^4.7.0",
     "normalize.less": "^1.0.0"
   },
@@ -129,7 +129,7 @@
   "eslintConfig": {
     "root": true,
     "parserOptions": {
-      "ecmaVersion": 5
+      "ecmaVersion": 2015
     },
     "env": {
       "browser": true,
@@ -159,6 +159,8 @@
         "array"
       ],
       "angular/controller-as": "off",
+      "angular/definedundefined": "off",
+      "angular/document-service": "off",
       "compat/compat": "error",
       "arrow-parens": "off",
       "constructor-super": "off",
@@ -167,10 +169,12 @@
       "no-this-before-super": "off",
       "no-invalid-this": "off",
       "no-var": "off",
+      "padded-blocks": "off",
       "prefer-rest-params": "off",
       "prefer-spread": "off",
-      "valid-jsdoc": "warn",
+      "require-jsdoc": "off",
       "rest-spread-spacing": "off",
+      "valid-jsdoc": "warn",
       "yield-star-spacing": "off"
     }
   },

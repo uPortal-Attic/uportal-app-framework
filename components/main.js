@@ -21,10 +21,17 @@ require(['./config'], function(config) {
     // eslint-disable-next-line angular/module-getter
     require.config(config);
 
-    require(['angular', 'my-app'], function(angular) {
+    require(
+      [
+        'angular',
+        'my-app',
+        './portal/misc/LaunchButtonElement',
+      ],
+      function(angular) {
         angular.bootstrap(document, ['my-app']);
         // apply cssvars ponyfill for IE11
         // eslint-disable-next-line no-undef
         cssVars({shadowDOM: true});
-    });
+      }
+    );
 });

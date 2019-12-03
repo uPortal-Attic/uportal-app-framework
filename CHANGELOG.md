@@ -46,6 +46,8 @@ Also in this release:
   from 1.1.11, thereby picking up a bunch of little bug fixes
 + fix: update FontAwesome version to [5.0.13](https://github.com/uPortal-Project/uportal-app-framework/pull/925)
 
++ Changed launch-button element from AngularJS directive to custom element
+
 ### Development process change
 
 + Added checkbox to Pull Request template reminding to consider security
