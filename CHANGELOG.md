@@ -10,16 +10,17 @@ and this project adheres to
 
 BREAKING CHANGE: `recurrence` flag on messages that had been "experimental" in
 prior releases is removed in this release. It had not been working reliably.
+( [#933][] )
 
 Also in this release:
 
 + feature: new optional `fail-silently` attribute on `widget` directive
   enables invoking a `widget` in contexts where it's not certain that the
-  viewing user has permission on the widget or that it even exists
-+ feature: add localhost demo of new compact card web component
+  viewing user has permission on the widget or that it even exists ( [#927][] )
++ feature: add localhost demo of new compact card web component ( [#929] )
 
 + tweak: Changes search bar prompt text to "Search for apps by keyword..." from
-  "Search MyUW" (#922)
+  "Search MyUW" ( [#922][] )
 
 + fix: upgrade `AngularJS` dependency to
   [1.7.8](https://github.com/angular/angular.js/blob/master/CHANGELOG.md#178-enthusiastic-oblation-2019-03-11)
@@ -27,7 +28,7 @@ Also in this release:
 + fix: upgrade `angular-material` dependency to
   [1.1.19](https://github.com/angular/material/blob/master/CHANGELOG.md#1119-2019-05-31)
   from 1.1.11, thereby picking up a bunch of little bug fixes
-+ fix: update FontAwesome version to [5.0.13](https://github.com/uPortal-Project/uportal-app-framework/pull/925)
++ fix: update FontAwesome version to 5.0.13 ( [#925][] )
 
 ### Development process change
 
@@ -1091,5 +1092,10 @@ break compatibility with some older components. If the app used any
 
 [#876]: https://github.com/uPortal-Project/uportal-app-framework/pull/876
 [#904]: https://github.com/uPortal-Project/uportal-app-framework/pull/904
+[#922]: https://github.com/uPortal-Project/uportal-app-framework/pull/922
+[#925]: https://github.com/uPortal-Project/uportal-app-framework/pull/925
+[#927]: https://github.com/uPortal-Project/uportal-app-framework/pull/927
+[#929]: https://github.com/uPortal-Project/uportal-app-framework/pull/929
+[#933]: https://github.com/uPortal-Project/uportal-app-framework/pull/933
 
 [myuw-banner-message-backend]: https://git.doit.wisc.edu/myuw/myuw-banner-message-backend
