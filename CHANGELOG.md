@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [unreleased][], putatively 13.0.0
+## [13.0.0][] - 2020-01-06
 
 BREAKING CHANGE: `recurrence` flag on messages that had been "experimental" in
 prior releases is removed in this release. It had not been working reliably.
@@ -1042,7 +1042,8 @@ break compatibility with some older components. If the app used any
 + Added ability to have a name for the default theme (#336)
 + Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.2.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.0.0...HEAD
+[13.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.2.0...v13.0.0
 [12.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.1.0...v12.2.0
 [12.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.0.0...v12.1.0
 [12.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v11.0.0...v12.0.0
