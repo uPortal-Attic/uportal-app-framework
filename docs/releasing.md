@@ -1,7 +1,5 @@
 # uPortal-app-framework release engineering
 
-Release engineering for `uPortal-app-framework` is pretty automated. We actually only have to do a few things.
-
 ## Release authorization
 
 This project has [adopted Apache rules][] with necessary or pragmatic local adaptations.
