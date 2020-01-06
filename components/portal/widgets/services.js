@@ -30,11 +30,6 @@ define(['angular'], function(angular) {
      * @property {string} learnMoreUrl
     */
 
-   // eslint-disable-next-line angular/document-service
-   document.addEventListener('deleteCardNotify', function() {
-    // eslint-disable-next-line angular/document-service
-    document.defaultView.alert('Sorry! Removing a tile from your layout in compact display mode is temporarily unsupported. Switch to expanded widget mode to enable removing content from your layout. Learn more about widget display modes at https://kb.wisc.edu/myuw/51574 .');
-  });
     /**
      * Get the a single app's full entity file as JSON
      * @param {string} fname - The app's fname value (<fname> in entity files)
