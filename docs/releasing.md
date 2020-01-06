@@ -31,12 +31,21 @@ You'll use this version number in a few places.
 
 ### Milestone in GitHub
 
-+ [Create a milestone][uportal-app-framework milestones] named for the version you're cutting, if it does not yet exist.
-+ If using an existing milestone, ensure nothing is currently erroneously marked with that milestone, e.g. open pull requests or issues that someone hoped might be resolved for this version but alas were not. You can examine this by simply [clicking the milestone's name][uportal-app-framework milestones] to view the milestone.
-+ Mark the [pull requests that merged to `master`][uportal-app-framework closed pull requests] since the previous release with that milestone.
++ [Create a milestone][uportal-app-framework milestones]
+  named for the version you're cutting, if it does not yet exist.
++ If using an existing milestone, ensure nothing is currently erroneously marked
+  with that milestone, e.g. open pull requests or issues that someone hoped
+  might be resolved for this version but alas were not. You can examine this by
+  simply [clicking the milestone's name][uportal-app-framework milestones]
+  to view the milestone.
++ Mark the
+  [pull requests that merged to `master`][uportal-app-framework closed pull requests]
+  since the previous release with that milestone.
 + [Close the milestone][uportal-app-framework milestones].
 
-Tada! The pull requests in this release now say the version they released in right on them. And there's a handy milestone that rolls up all the pull requests in this version.
+Tada! The pull requests in this release now say the version they released in
+right on them. And there's a handy milestone that rolls up all the pull requests
+in this version.
 
 ## Release steps
 
