@@ -8,23 +8,6 @@ and this project adheres to
 
 ## [unreleased][], putatively 13.0.0
 
-WARNING: Depends upon `myuw-compact-card` 1.x which is unstable. Switch to
-depending upon a specific version (or move to a stable version series) before
-releasing app-framework.
-
-BREAKING CHANGE: uses `myuw-compact-card` to implement compact mode widget
-display. This is a step towards implementing MyUW in something other than
-AngularJS, by implementing the UI pieces in not-AngularJS-specific
-Web Components rather than in AngularJS-specific Directives. However,
-
-+ Deleting cards from the layout in compact card mode is temporarily
-  unsupported. Attempting to do so shows an alert apologizing.
-+ Font Awesome icon support in `myuw-compact-card` does not precisely match that
-  in the prior implementation of the compact card directive, so upon migrating
-  to this version of the app framework
-  **some icon choices may need to be changed**. In particular, some icon  name
-  aliases and modifier suffixes are not supported.
-
 BREAKING CHANGE: `recurrence` flag on messages that had been "experimental" in
 prior releases is removed in this release. It had not been working reliably.
 
