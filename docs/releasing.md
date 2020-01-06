@@ -22,9 +22,12 @@ what kind of release it's appropriate to include them in: major, minor, or patch
 
 ### Determining the release version from those labels
 
-The next release should be the least-significant kind of release appropriate to include all the changes. For example, if it's all patch-appropriate change, you're cutting a patch release, but if there's even just one breaking change, it's a major release.
+The next release should be the least-significant kind of release appropriate to
+include all the changes. For example, if it's all patch-appropriate change,
+you're cutting a patch release, but if there's even just one breaking change,
+it's a major release.
 
-Now that you have a version you need to update that in a few places.
+You'll use this version number in a few places.
 
 ### Milestone in GitHub
 
