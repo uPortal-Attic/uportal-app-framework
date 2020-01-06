@@ -4,7 +4,12 @@
 
 This project has [adopted Apache rules][] with necessary or pragmatic local adaptations.
 
-Release authorization, or the delegation of release authority to one or more release engineers, should be documented by [a suitable vote][Apache Release Policy re Release Approval] of [the uPortal-app-framework Committers][] on [uportal-dev@][].
+One local adaptation is that although Apache would call for
+[a suitable vote][Apache Release Policy re Release Approval] of
+[the uPortal-app-framework Committers][] on [uportal-dev@][]
+to authorize specific releases,
+in this project the committers have delegated discretionary release
+authority to release engineers. We cut a lot of releases; we don't vote first.
 
 ## Select a version
 
