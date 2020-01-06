@@ -15,7 +15,10 @@ authority to release engineers. We cut a lot of releases; we don't vote first.
 
 ### Labeling pull requests
 
-Look at the [closed pull requests][uportal-app-framework closed pull requests] that were done since the last release. There should be labels on pull requests communicating what kind of release it's appropriate to include them in: major, minor, or patch (x.y.z respectively). (See [Semantic Versioning][], especially if you're adding missing change-type labels on those closed pull requests.)
+Look at [closed pull requests][uportal-app-framework closed pull requests]
+since the last release. There should be labels on pull requests communicating
+what kind of release it's appropriate to include them in: major, minor, or patch
+(x.y.z respectively). (See [Semantic Versioning][].)
 
 ### Determining the release version from those labels
 
