@@ -18,14 +18,14 @@
     under the License.
 
 -->
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <!--Meta information sourced from app's aboutPageURL -->
-<meta ng-if="about.description" name="description" content="{{ about.description }}"/>
-<meta ng-if="about.keywords" name="keywords" content="{{ about.keywords }}"/>
+<meta ng-if="about.description" name="description" content="{{ about.description }}" />
+<meta ng-if="about.keywords" name="keywords" content="{{ about.keywords }}" />
 
 
 <!-- Web component polyfills -->
@@ -35,17 +35,21 @@
 <script src="js/webcomponents-bundle.js"></script>
 
 <!-- myuw-web-components -->
-<script type="module" src="https://unpkg.com/@myuw-web-components/myuw-app-bar@1.5.4/dist/myuw-app-bar.min.mjs"></script>
+<script type="module"
+  src="https://unpkg.com/@myuw-web-components/myuw-app-bar@1.5.4/dist/myuw-app-bar.min.mjs"></script>
 <script nomodule src="https://unpkg.com/@myuw-web-components/myuw-app-bar@1.5.4/dist/myuw-app-bar.min.js"></script>
 
 <script type="module" src="https://unpkg.com/@myuw-web-components/myuw-banner@1.1.1/dist/myuw-banner.min.mjs"></script>
 <script nomodule scr="https://unpkg.com/@myuw-web-components/myuw-banner@1.1.1/dist/myuw-banner.min.js"></script>
 
+<!-- Testing changes included in PR-19 -->
+<script type="module" src="http://cdn.my.wisc.edu/@myuw-web-components/myuw-help@PR-19/myuw-help.min.mjs"></script>
+<!-- <script nomodule src="https://unpkg.com/@myuw-web-components/myuw-help@1.5.0/myuw-help.min.js"></script> -->
 
 <script src="https://unpkg.com/@myuw-web-components/myuw-compact-card@^1"></script>
 
-<link href="my-app/my-app.css" rel="stylesheet" type="text/css"/>
-<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.19/angular-material.min.css"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link href="my-app/my-app.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.19/angular-material.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />

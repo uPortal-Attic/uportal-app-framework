@@ -19,36 +19,60 @@
 
 -->
 <!-- PRIORITY NOTIFICATIONS -->
-<notifications-bell slot="myuw-notifications" mode="priority" class="priority-gt-xs" ng-if="!guestMode" hide-xs></notifications-bell>
+<notifications-bell slot="myuw-notifications" mode="priority" class="priority-gt-xs" ng-if="!guestMode" hide-xs>
+</notifications-bell>
 
-<myuw-app-bar
-    theme-name="{{ portal.theme.title }}"
-    app-name="{{ appBarTitle }}"
-    app-url="{{ MISC_URLS.rootURL }}"
-    ng-class="{ 'has-priority-notifications' : hasPriorityNotifications }">
+<myuw-app-bar theme-name="{{ portal.theme.title }}" app-name="{{ appBarTitle }}" app-url="{{ MISC_URLS.rootURL }}"
+  ng-class="{ 'has-priority-notifications' : hasPriorityNotifications }">
 
-    <!-- MAIN MENU TOGGLE -->
-    <md-button slot="myuw-navigation"
-        class="menu-toggle"
-        ng-controller="MenuToggleController as vm"
-        ng-click="vm.showMainMenu()"
-        ng-class="{ 'menu-margin' : vm.isMenuConfigured }"
-        ng-show="vm.isMenuConfigured"
-        ng-cloak>
-        <md-icon>menu</md-icon>
-        <md-tooltip md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Menu</md-tooltip>
-        <notifications-bell mode="mobile-bell" ng-if="!guestMode" hide-gt-xs></notifications-bell>
-    </md-button>
+  <!-- MAIN MENU TOGGLE -->
+  <md-button slot="myuw-navigation" class="menu-toggle" ng-controller="MenuToggleController as vm"
+    ng-click="vm.showMainMenu()" ng-class="{ 'menu-margin' : vm.isMenuConfigured }" ng-show="vm.isMenuConfigured"
+    ng-cloak>
+    <md-icon>menu</md-icon>
+    <md-tooltip md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Menu</md-tooltip>
+    <notifications-bell mode="mobile-bell" ng-if="!guestMode" hide-gt-xs></notifications-bell>
+  </md-button>
 
-    <!-- SEARCH BUTTON (XS-ONLY) -->
-    <search ng-show="APP_FLAGS.showSearch"  slot="myuw-search" mode="mobile-search" layout="row" layout-align="end center" hide-gt-xs></search>
+  <!-- SEARCH BUTTON (XS-ONLY) -->
+  <search ng-show="APP_FLAGS.showSearch" slot="myuw-search" mode="mobile-search" layout="row" layout-align="end center"
+    hide-gt-xs></search>
 
-    <!-- SEARCH BAR (SM+) -->
-    <div slot="myuw-search" class="header__search-bar-container" md-colors="{ backgroundColor: '{{portal.theme.name}}-primary' }" layout="row" flex-gt-xs="100" layout-align="center center" hide-xs>
-      <search ng-show="APP_FLAGS.showSearch"></search>
+  <!-- SEARCH BAR (SM+) -->
+  <div slot="myuw-search" class="header__search-bar-container"
+    md-colors="{ backgroundColor: '{{portal.theme.name}}-primary' }" layout="row" flex-gt-xs="100"
+    layout-align="center center" hide-xs>
+    <search ng-show="APP_FLAGS.showSearch"></search>
+  </div>
+
+  <notifications-bell slot="myuw-notifications" mode="bell" class="header__bell" ng-if="!guestMode" hide-xs>
+  </notifications-bell>
+
+  <myuw-help myuw-help-title="Help links" slot="myuw-help" show-button>
+    <div slot="myuw-help-content">
+      <ul class="list-of-links">
+        <li>
+          <a href="https://kb.wisc.edu/6454" rel="noopener noreferrer" target="_blank">Live Chat </a>
+        </li>
+        <li>
+          <a href="/portal/p/feedback">Submit a Help Request</a>
+        </li>
+        <li>
+          <a href="https://kb.wisc.edu/myuw/" target="_blank">Knowledge Base</a>
+        </li>
+        <li>
+          <a href="https://kb.wisc.edu/myuw/page.php?id=47710" target="_blank">Known Issues</a>
+        </li>
+        <li>
+          <a href="/portal/p/feedback">Feedback</a>
+        </li>
+        <li>
+          <a href="http://helpdesk.wisc.edu/myuw/page.php?id=2843" target="_blank">NetID Issues</a>
+        </li>
+      </ul>
     </div>
+  </myuw-help>
 
-    <notifications-bell slot="myuw-notifications" mode="bell" class="header__bell" ng-if="!guestMode" hide-xs></notifications-bell>
-    <username slot="myuw-profile" layout="row" layout-align="start center" hide-xs></username>
+  <username slot="myuw-profile" layout="row" layout-align="start center" hide-xs></username>
 
 </myuw-app-bar>
