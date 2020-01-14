@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Next (presumably 13.1.0)
+
++ Add myuw-help web component to myuw-app-bar at top of page. ( [#941][] )
+
 ## [13.0.0][] - 2020-01-06
 
 BREAKING CHANGE: `recurrence` flag on messages that had been "experimental" in
@@ -1097,5 +1101,6 @@ break compatibility with some older components. If the app used any
 [#927]: https://github.com/uPortal-Project/uportal-app-framework/pull/927
 [#929]: https://github.com/uPortal-Project/uportal-app-framework/pull/929
 [#933]: https://github.com/uPortal-Project/uportal-app-framework/pull/933
+[#941]: https://github.com/uPortal-Project/uportal-app-framework/pull/941
 
 [myuw-banner-message-backend]: https://git.doit.wisc.edu/myuw/myuw-banner-message-backend
