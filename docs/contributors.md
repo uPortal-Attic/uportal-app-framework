@@ -15,6 +15,7 @@ This project gratefully acknowledges its contributors, including:
 + Jason Samsa ( @jsamsa )
 + David Sibley ( @davidmsibley )
 + Christian Murphy ( @ChristianMurphy )
++ Paulina Nogal ( @nogalpaulina )
 
 (Roughly in order of first contribution).
 
