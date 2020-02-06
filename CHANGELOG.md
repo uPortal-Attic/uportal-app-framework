@@ -21,7 +21,7 @@ Also in this release:
 + feature: new optional `fail-silently` attribute on `widget` directive
   enables invoking a `widget` in contexts where it's not certain that the
   viewing user has permission on the widget or that it even exists ( [#927][] )
-+ feature: add localhost demo of new compact card web component ( [#929] )
++ feature: add localhost demo of new compact card web component ( [#929][] )
 
 + tweak: Changes search bar prompt text to "Search for apps by keyword..." from
   "Search MyUW" ( [#922][] )
