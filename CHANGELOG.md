@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Next (presumably 13.1.0)
+## [13.1.0][] - 2020-02-06
 
 + Add myuw-help web component to myuw-app-bar at top of page. ( [#941][] )
 
@@ -1047,7 +1047,8 @@ break compatibility with some older components. If the app used any
 + Added ability to have a name for the default theme (#336)
 + Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.0.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.0...HEAD
+[13.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.0.0...v13.1.0
 [13.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.2.0...v13.0.0
 [12.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.1.0...v12.2.0
 [12.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.0.0...v12.1.0
