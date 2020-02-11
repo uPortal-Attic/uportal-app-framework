@@ -78,16 +78,6 @@ git push origin uportal-app-framework-maven-<version>
 + Deploy npm package to the world; `npm publish`. (if you don't have [publish rights][uportal-app-framework access on npm] contact authors)
 + Push git changes to the github via `git push origin master` and `git push origin <tag>`
 
-### Docker release
-
-Deploy a new version to `docker.doit.wisc.edu` (note the version below x.y.z should be the release version)
-
-```
-git checkout vx.y.z
-docker build -t docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:x.y.z .
-docker push docker.doit.wisc.edu/myuw/uportal-app-framework-superstatic:x.y.z
-```
-
 ### Release notes
 
 * There should now be a couple tags above the `Latest release` on [the GitHub releases page][uportal-app-framework releases]
