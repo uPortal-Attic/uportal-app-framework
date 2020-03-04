@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Next - maybe 13.1.1 - not yet released
+
++ Remove import and example usage of not-actually-used `myuw-compact-card`
+  Web Component. (Apparently this was breaking support for
+  recent-but-not-latest MS Edge browser.)
+
 ## [13.1.0][] - 2020-02-07
 
 + Add myuw-help web component to myuw-app-bar at top of page. ( [#941][] )
