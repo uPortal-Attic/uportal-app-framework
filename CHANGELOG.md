@@ -6,7 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Next - maybe 13.1.1 - not yet released
+## [unreleased][]
+
+No changes yet.
+
+## [13.1.1][] - 2020-03-06
 
 + Remove import and example usage of not-actually-used `myuw-compact-card`
   Web Component. (Apparently this was breaking support for
@@ -1054,7 +1058,8 @@ break compatibility with some older components. If the app used any
 + Added ability to have a name for the default theme (#336)
 + Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.1...HEAD
+[13.1.1]:  https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.0...v13.1.1
 [13.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.0.0...v13.1.0
 [13.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.2.0...v13.0.0
 [12.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.1.0...v12.2.0
