@@ -92,12 +92,11 @@ git push origin uportal-app-framework-maven-<version>
 
 ### Updating JIRA issues
 
-UW-Madison uses a private JIRA instance tracking work on this project. If the
-Release Engineer does not have access to the instance, enlist a
-[MyUW Developer][the uPortal-app-framework Committers] on [uportal-dev@][] to
-perform this.
+UW-Madison uses a private JIRA instance tracking work on this project.
+In practice committers serving as release engineers on uportal-app-framework are
+UW-Madison staff with access to this private JIRA.
 
-In the `MUMUP` JIRA project, find the last unreleased patch version. If the
+In the [`MUMUP` JIRA project][], find the last unreleased patch version. If the
 current release is a major or minor update, rename the version accordingly.
 Apply that version as a `Fix Version` to the JIRA tickets resolved since the
 last release. When all tickets have been added, `Release` the version and
@@ -122,3 +121,4 @@ create the next patch version.
 [uportal-dev@]: https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev
 [my-app-seed]: https://github.com/UW-Madison-DoIT/my-app-seed
 [my-app-seed pom]: https://github.com/UW-Madison-DoIT/my-app-seed/blob/master/pom.xml
+[`MUMUP` JIRA project]: https://jira.doit.wisc.edu/jira/projects/MUMUP?selectedItem=com.atlassian.jira.jira-projects-plugin%3Arelease-page&status=unreleased
