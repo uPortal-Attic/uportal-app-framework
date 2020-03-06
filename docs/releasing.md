@@ -80,11 +80,11 @@ git push origin uportal-app-framework-maven-<version>
 
 ### Release notes
 
-* There should now be a couple tags above the `Latest release` on [the GitHub releases page][uportal-app-framework releases]
-* Click into the top one ( `uportal-app-framework-maven-x.y.z`)
-* Edit tag
-* Title the release `x.y.z`, optionally `x.y.z - pithy summary`
-* Add release notes, linking pull requests included in this release, linking the newly released documentation, and especially articulating anything interesting about the upgrade path to this release for frame-based app developers.
++ There should now be a couple tags above the `Latest release` on [the GitHub releases page][uportal-app-framework releases]
++ Click into the top one ( `uportal-app-framework-maven-x.y.z`)
++ Edit tag
++ Title the release `x.y.z`, optionally `x.y.z - pithy summary`
++ Add release notes, linking pull requests included in this release, linking the newly released documentation, and especially articulating anything interesting about the upgrade path to this release for frame-based app developers.
 
 ### Updating JIRA issues
 
