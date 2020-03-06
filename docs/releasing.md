@@ -86,10 +86,6 @@ git push origin uportal-app-framework-maven-<version>
 * Title the release `x.y.z`, optionally `x.y.z - pithy summary`
 * Add release notes, linking pull requests included in this release, linking the newly released documentation, and especially articulating anything interesting about the upgrade path to this release for frame-based app developers.
 
-### Update My App Seed
-
-[My App Seed][my-app-seed] is a template for developers to use when creating new frame apps. When cutting a release, be sure to update the [my-app-seed pom][] so future adopters can start developing using the latest code.
-
 ### Updating JIRA issues
 
 UW-Madison uses a private JIRA instance tracking work on this project.
