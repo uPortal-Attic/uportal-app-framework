@@ -11,6 +11,7 @@ and this project adheres to
 + Remove import and example usage of not-actually-used `myuw-compact-card`
   Web Component. (Apparently this was breaking support for
   recent-but-not-latest MS Edge browser.)
++ Upgrade myuw-help Web Component to version 1.5.2
 
 ## [13.1.0][] - 2020-02-07
 
