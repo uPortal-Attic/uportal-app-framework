@@ -102,11 +102,6 @@ Apply that version as a `Fix Version` to the JIRA tickets resolved since the
 last release. When all tickets have been added, `Release` the version and
 create the next patch version.
 
-### Communicating
-
-* Announce the release on the [MyUW Developer Group][]
-
-
 [Semantic Versioning]: http://semver.org/
 [uportal-app-framework closed pull requests]: https://github.com/uPortal-Project/uportal-app-framework/pulls?q=is%3Apr+is%3Aclosed
 [uportal-app-framework milestones]: https://github.com/uPortal-Project/uportal-app-framework/milestones
