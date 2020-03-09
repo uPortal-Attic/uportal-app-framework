@@ -10,7 +10,7 @@ and this project adheres to
 
 + No changes yet
 
-## [13.1.2][] 2020-03-09
+## [13.1.2][] - 2020-03-09
 
 + Change CSS style `portal-header` -> `overflow-y: initial`
   rather than `overflow-y: hidden`. This had broken the new help dialog in
