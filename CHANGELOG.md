@@ -8,8 +8,13 @@ and this project adheres to
 
 ## [unreleased][]
 
++ No changes yet
+
+## [13.1.2][] 2020-03-09
+
 + Change CSS style `portal-header` -> `overflow-y: initial`
-  rather than `overflow-y: hidden`.
+  rather than `overflow-y: hidden`. This had broken the new help dialog in
+  e.g. Safari.
 
 ## [13.1.1][] - 2020-03-06
 
@@ -1059,7 +1064,8 @@ break compatibility with some older components. If the app used any
 + Added ability to have a name for the default theme (#336)
 + Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.1...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.2...HEAD
+[13.1.2]:  https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.1...v13.1.2
 [13.1.1]:  https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.0...v13.1.1
 [13.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.0.0...v13.1.0
 [13.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.2.0...v13.0.0
