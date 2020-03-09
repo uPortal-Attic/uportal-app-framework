@@ -8,7 +8,8 @@ and this project adheres to
 
 ## [unreleased][]
 
-No changes yet.
++ Change CSS style `portal-header` -> `overflow-y: initial`
+  rather than `overflow-y: hidden`.
 
 ## [13.1.1][] - 2020-03-06
 
