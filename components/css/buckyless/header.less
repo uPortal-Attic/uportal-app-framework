@@ -109,61 +109,7 @@ portal-header {
     }
   }
 
-  .header__search-bar-container {
-    height: 100%;
-    z-index: @top-bar-2;
-  }
-
   .header__bell {
     display: inline-block;
-  }
-
-  @media (max-width: @xs) {
-    .search-xs {
-      width: 100%;
-      position: absolute;
-      top: 56px;
-      z-index: @top-bar-1;
-      overflow: hidden;
-      transition: @transition-height;
-      background: rgba(0, 0, 0, 0.4);
-
-      &:not(.search-expanded) {
-        height: 0;
-      }
-
-      &.search-expanded {
-        height: 56px;
-      }
-
-      form {
-        height: auto;
-        max-width: none;
-
-        .myuw-search {
-          padding: 2px 0 2px 18px;
-          margin: 8px 12px;
-          height: 40px;
-          background: @white;
-
-          .search-submit-xs {
-            min-height: 0;
-            height: 40px;
-            width: 15%;
-            border-radius: 0;
-            position: relative;
-            top: -2px;
-            right: -2px;
-          }
-
-          .md-input {
-            float: left;
-            color: @grayscale10;
-            height: 36px;
-            width: 85%;
-          }
-        }
-      }
-    }
   }
 }

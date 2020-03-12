@@ -89,7 +89,6 @@ define([
         'portal.misc.filters',
         'portal.misc.services',
         'portal.search.controllers',
-        'portal.search.directives',
         'portal.search.services',
         'portal.settings.controllers',
         'portal.settings.directives',
