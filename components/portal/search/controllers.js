@@ -24,36 +24,35 @@ define(['angular'], function(angular) {
     'PortalSearchService',
     '$location',
     '$window',
+    '$document',
     'SEARCH',
     'APP_FLAGS',
     function(PortalSearchService,
              $location,
              $window,
+             $document,
              SEARCH,
              APP_FLAGS) {
       var vm = this;
       // scope functions
 
-      vm.submit = function() {
-        if (vm.initialFilter != '') {
-          if (APP_FLAGS.isWeb) {
-              $location.path('apps/search/'+ vm.initialFilter);
-          } else {
-              // frame app redirect
-              $window.location = SEARCH.searchURL + vm.initialFilter;
-          }
-        }
-      };
+         $document[0].body.addEventListener('myuw-search', function(event) {
+            vm.initialFilter = event.detail.value;
 
-      vm.toggleSearch = function() {
-        vm.searchExpanded = !vm.searchExpanded;
-      };
+            if (vm.initialFilter != '') {
+              if (APP_FLAGS.isWeb) {
+                  $location.path('apps/search/'+ vm.initialFilter);
+              } else {
+                  // frame app redirect
+                  $window.location = SEARCH.searchURL + vm.initialFilter;
+              }
+            }
+        }, false);
 
-      // init function
-      var init = function() {
-        vm.initialFilter = '';
-        vm.searchExpanded = false;
-      };
-      init();
+        // init function
+        var init = function() {
+            vm.initialFilter = '';
+        };
+        init();
     }]);
 });

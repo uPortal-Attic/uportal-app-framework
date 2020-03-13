@@ -34,16 +34,7 @@
     <notifications-bell mode="mobile-bell" ng-if="!guestMode" hide-gt-xs></notifications-bell>
   </md-button>
 
-  <!-- SEARCH BUTTON (XS-ONLY) -->
-  <search ng-show="APP_FLAGS.showSearch" slot="myuw-search" mode="mobile-search" layout="row" layout-align="end center"
-    hide-gt-xs></search>
-
-  <!-- SEARCH BAR (SM+) -->
-  <div slot="myuw-search" class="header__search-bar-container"
-    md-colors="{ backgroundColor: '{{portal.theme.name}}-primary' }" layout="row" flex-gt-xs="100"
-    layout-align="center center" hide-xs>
-    <search ng-show="APP_FLAGS.showSearch"></search>
-  </div>
+  <myuw-search slot="myuw-search" input-label="Search for apps by keyword..." button-label="Submit search" icon="search" ng-controller="PortalSearchController"></myuw-search>
 
   <notifications-bell slot="myuw-notifications" mode="bell" class="header__bell" ng-if="!guestMode" hide-xs>
   </notifications-bell>
