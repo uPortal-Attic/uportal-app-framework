@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [14.0.0][] - 2020-03-13
+
+### Breaking Change in 14.0.0
+
++ Replace existing search form with `myuw-search` v1.5.0 from myuw-web-components library ( [#951][] )
++ Two files related to old search form have been reemoved: components/portal/search/directives.js and components/portal/search/partials/search.html 
+
 ## [13.1.0][] - 2020-02-07
 
 + Add myuw-help web component to myuw-app-bar at top of page. ( [#941][] )
