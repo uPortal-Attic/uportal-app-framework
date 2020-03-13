@@ -6,12 +6,29 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [unreleased][]
+
++ No changes yet
+
 ## [14.0.0][] - 2020-03-13
 
 ### Breaking Change in 14.0.0
 
 + Replace existing search form with `myuw-search` v1.5.0 from myuw-web-components library ( [#951][] )
 + Two files related to old search form have been reemoved: components/portal/search/directives.js and components/portal/search/partials/search.html 
+
+## [13.1.2][] - 2020-03-09
+
++ Change CSS style `portal-header` -> `overflow-y: initial`
+  rather than `overflow-y: hidden`. This had broken the new help dialog in
+  e.g. Safari.
+
+## [13.1.1][] - 2020-03-06
+
++ Remove import and example usage of not-actually-used `myuw-compact-card`
+  Web Component. (Apparently this was breaking support for
+  recent-but-not-latest MS Edge browser.)
++ Upgrade myuw-help Web Component to version 1.5.2
 
 ## [13.1.0][] - 2020-02-07
 
@@ -1054,7 +1071,9 @@ break compatibility with some older components. If the app used any
 + Added ability to have a name for the default theme (#336)
 + Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.0...HEAD
+[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.2...HEAD
+[13.1.2]:  https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.1...v13.1.2
+[13.1.1]:  https://github.com/uPortal-Project/uportal-app-framework/compare/v13.1.0...v13.1.1
 [13.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v13.0.0...v13.1.0
 [13.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.2.0...v13.0.0
 [12.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v12.1.0...v12.2.0
