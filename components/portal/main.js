@@ -43,7 +43,6 @@ define([
     './misc/filters',
     './misc/services',
     './search/controllers',
-    './search/directives',
     './search/services',
     './settings/controllers',
     './settings/directives',

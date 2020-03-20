@@ -10,6 +10,10 @@ and this project adheres to
 
 + No changes yet
 
+## [14.0.1][] - 2020-03-20
+
++ Add $scope.apply inside myuw-search event listener to notify AngularJS of the change ( [#952][] )
+
 ## [14.0.0][] - 2020-03-13
 
 ### Breaking Change in 14.0.0
