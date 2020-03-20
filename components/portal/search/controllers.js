@@ -20,14 +20,15 @@
 
 define(['angular'], function(angular) {
   return angular.module('portal.search.controllers', [])
-  .controller('PortalSearchController', [
+  .controller('PortalSearchController', ['$scope',
     'PortalSearchService',
     '$location',
     '$window',
     '$document',
     'SEARCH',
     'APP_FLAGS',
-    function(PortalSearchService,
+    function($scope,
+             PortalSearchService,
              $location,
              $window,
              $document,
@@ -36,12 +37,17 @@ define(['angular'], function(angular) {
       var vm = this;
       // scope functions
 
-         $document[0].body.addEventListener('myuw-search', function(event) {
+          $document[0].body.addEventListener('myuw-search', function(event) {
             vm.initialFilter = event.detail.value;
 
             if (vm.initialFilter != '') {
               if (APP_FLAGS.isWeb) {
+                // Notify Angular that we'd like to update the $location.path
+                // See https://groups.google.com/forum/#!topic/angular/nFbtADyEHg8
+                // https://stackoverflow.com/questions/27512111/why-we-need-to-call-scope-apply-inside-dom-event-listener
+                $scope.$apply(function() {
                   $location.path('apps/search/'+ vm.initialFilter);
+                });
               } else {
                   // frame app redirect
                   $window.location = SEARCH.searchURL + vm.initialFilter;
