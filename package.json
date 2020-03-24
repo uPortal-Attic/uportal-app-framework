@@ -102,7 +102,7 @@
     "karma-requirejs": "1.1.0",
     "karma-safari-launcher": "^1.0.0",
     "less": "3.8.1",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^10.0.9",
     "lodash": "^4.0.0",
     "mkdirp": "^0.5.1",
     "onchange": "^4.0.0",
