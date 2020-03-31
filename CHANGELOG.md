@@ -1090,5 +1090,7 @@ break compatibility with some older components. If the app used any
 [#929]: https://github.com/uPortal-Project/uportal-app-framework/pull/929
 [#933]: https://github.com/uPortal-Project/uportal-app-framework/pull/933
 [#941]: https://github.com/uPortal-Project/uportal-app-framework/pull/941
+[#951]: https://github.com/uPortal-Project/uportal-app-framework/pull/951
+[#952]: https://github.com/uPortal-Project/uportal-app-framework/pull/952
 
 [myuw-banner-message-backend]: https://git.doit.wisc.edu/myuw/myuw-banner-message-backend
