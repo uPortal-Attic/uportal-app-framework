@@ -19,7 +19,7 @@ and this project adheres to
 ### Breaking Change in 14.0.0
 
 + Replace existing search form with `myuw-search` v1.5.0 from myuw-web-components library ( [#951][] )
-+ Two files related to old search form have been reemoved: components/portal/search/directives.js and components/portal/search/partials/search.html 
++ Two files related to old search form have been reemoved: components/portal/search/directives.js and components/portal/search/partials/search.html
 
 ## 13.1.2 - 2020-03-09
 
