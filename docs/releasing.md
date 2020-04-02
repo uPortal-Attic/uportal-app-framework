@@ -113,12 +113,8 @@ create the next patch version.
 [uportal-app-framework access on npm]: https://www.npmjs.com/package/@uportal/app-framework/access
 [Release Maven artifacts]: https://central.sonatype.org/pages/releasing-the-deployment.html
 [central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
-[uportal-app-framework releases]: https://github.com/uPortal-Project/uportal-app-framework/releases
-[MyUW Developer Group]: https://groups.google.com/forum/#!forum/myuw-developers
 [adopted Apache rules]: https://github.com/uPortal-Project/uportal-app-framework/blob/master/committers.md#rules
 [Apache Release Policy re Release Approval]: http://www.apache.org/legal/release-policy.html#release-approval
 [the uPortal-app-framework Committers]: https://github.com/uPortal-Project/uportal-app-framework/blob/master/committers.md#who-are-the-committers
 [uportal-dev@]: https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev
-[my-app-seed]: https://github.com/UW-Madison-DoIT/my-app-seed
-[my-app-seed pom]: https://github.com/UW-Madison-DoIT/my-app-seed/blob/master/pom.xml
 [`MUMUP` JIRA project]: https://jira.doit.wisc.edu/jira/projects/MUMUP?selectedItem=com.atlassian.jira.jira-projects-plugin%3Arelease-page&status=unreleased
