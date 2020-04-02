@@ -6,15 +6,8 @@ matrix:
   include:
     - os: linux
       dist: trusty
-      jdk: oraclejdk8
+      jdk: openjdk8
       env: BROWSERS=ChromeHeadlessNoSandbox,FirefoxHeadless
-    - os: linux
-      dist: trusty
-      jdk: openjdk7
-      env: BROWSERS=ChromeHeadlessNoSandbox,FirefoxHeadless
-    - os: osx
-      osx_image: xcode8.3
-      env: BROWSERS=ChromeHeadless,Safari
 
 addons:
   chrome: stable
