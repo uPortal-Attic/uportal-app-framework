@@ -57,6 +57,9 @@ Before cutting the release, do what you can to square away the documentation for
 
 Now do release for Java.
 
+Use the Maven command line client to prepare, build, sign, and publish to the
+Sonatype-hosted central open source software artifact repository.
+
 ```sh
 mvn release:prepare
 mvn release:perform
