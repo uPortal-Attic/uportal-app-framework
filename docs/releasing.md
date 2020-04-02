@@ -69,7 +69,8 @@ git push origin master
 git push origin uportal-app-framework-maven-<version>
 ```
 
-+ Release maven artifacts from [central staging repository][central Maven staging repository]
++ [Release Maven artifacts][] from
+  [central staging repository][central Maven staging repository]
 
 
 ### Node release
@@ -103,6 +104,7 @@ create the next patch version.
 [uportal-app-framework milestones]: https://github.com/uPortal-Project/uportal-app-framework/milestones
 [CHANGELOG]: ../CHANGELOG.md
 [uportal-app-framework access on npm]: https://www.npmjs.com/package/@uportal/app-framework/access
+[Release Maven artifacts]: https://central.sonatype.org/pages/releasing-the-deployment.html
 [central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
 [uportal-app-framework releases]: https://github.com/uPortal-Project/uportal-app-framework/releases
 [MyUW Developer Group]: https://groups.google.com/forum/#!forum/myuw-developers
