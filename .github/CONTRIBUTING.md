@@ -3,6 +3,8 @@
 + Be kind. (Uphold the [code of conduct][]).
 + Be an ICLA signatory. (Comply with [Apereo licensing policy][Apereo website on licensing]).
 + Try to compose commit messages implementing [Conventional Commits][].
++ Consider running `npm run lint-all` to catch earliest the issues that the
+  continuous integration build is going to flag.
 
 ## Code of conduct
 
@@ -38,6 +40,15 @@ by continuous integration (e.g. Travis-CI) on pull requests.
 You can locally lint (check for style compliance) your most recent commit message by `npm run lint-commit`.
 
 You can locally lint your commit messages via a pre-commit hook by running `npm run add-hooks`.
+
+## Linting
+
+The Travis-CI continual integration build continually lints the codebase.
+
+You can run linting locally to discover earlier what Travis-CI might be
+concerned about in your changes.
+
+`npm run lint-all`
 
 [uportal-home website on incubating]: http://uportal-project.github.io/uportal-home/apereo-incubation.html
 [Apereo inbound intellectual property licensing practices]: https://www.apereo.org/licensing/practices
