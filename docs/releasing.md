@@ -78,14 +78,6 @@ git push origin uportal-app-framework-maven-<version>
 + Deploy npm package to the world; `npm publish`. (if you don't have [publish rights][uportal-app-framework access on npm] contact authors)
 + Push git changes to the github via `git push origin master` and `git push origin <tag>`
 
-### Release notes
-
-+ There should now be a couple tags above the `Latest release` on [the GitHub releases page][uportal-app-framework releases]
-+ Click into the top one ( `uportal-app-framework-maven-x.y.z`)
-+ Edit tag
-+ Title the release `x.y.z`, optionally `x.y.z - pithy summary`
-+ Add release notes, linking pull requests included in this release, linking the newly released documentation, and especially articulating anything interesting about the upgrade path to this release for frame-based app developers.
-
 ### Updating JIRA issues
 
 UW-Madison uses a private JIRA instance tracking work on this project.
