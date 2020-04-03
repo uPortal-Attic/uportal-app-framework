@@ -104,7 +104,7 @@
     "less": "3.8.1",
     "lint-staged": "^7.0.0",
     "lodash": "^4.0.0",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.4",
     "onchange": "^4.0.0",
     "postcss": "^7.0.0",
     "recursive-copy": "^2.0.5",
