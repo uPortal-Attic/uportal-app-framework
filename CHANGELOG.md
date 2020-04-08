@@ -10,14 +10,15 @@ and this project adheres to
 
 + No changes yet
 
-## 14.0.1 - 2020-03-20
+## 14.0.1 - 2020-04-08
 
-+ Add $scope.apply inside myuw-search event listener to notify AngularJS of the change ( [#952][] )
++ Upgrade myuw-search Web Component to version 1.5.1 ( [#963][] )
 
-## 14.0.0 - 2020-03-13
+## 14.0.0 - 2020-04-01
 
 ### Breaking Change in 14.0.0
 
++ Add $scope.apply inside myuw-search event listener to notify AngularJS of the change ( [#952][] )
 + Replace existing search form with `myuw-search` v1.5.0 from myuw-web-components library ( [#951][] )
 + Two files related to old search form have been reemoved: components/portal/search/directives.js and components/portal/search/partials/search.html
 
@@ -1092,5 +1093,6 @@ break compatibility with some older components. If the app used any
 [#941]: https://github.com/uPortal-Project/uportal-app-framework/pull/941
 [#951]: https://github.com/uPortal-Project/uportal-app-framework/pull/951
 [#952]: https://github.com/uPortal-Project/uportal-app-framework/pull/952
+[#963]: https://github.com/uPortal-Project/uportal-app-framework/pull/963
 
 [myuw-banner-message-backend]: https://git.doit.wisc.edu/myuw/myuw-banner-message-backend
