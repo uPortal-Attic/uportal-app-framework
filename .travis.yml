@@ -20,7 +20,6 @@ before_install:
 script :
   - npm run build-static
   - npm test -- --browsers $BROWSERS
-  - npm run lint-commit-ci
   - npm run lint-js
   - npm run lint-css
   - npm run lint-md
