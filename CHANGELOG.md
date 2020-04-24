@@ -10,6 +10,18 @@ and this project adheres to
 
 + No changes yet
 
+## 15.0.0 - 2020-04-24
+
+### Breaking Change in 15.0.0
+
++ Replace existing profile menu with `myuw-profile` v1.6.1 from myuw-web-components library ( [#964][] )
++ Two files related to old profile menu have been removed: components/portal/main/partials/username.html
+  and buckyless/directives/username-menu.less
++ Remove unused username elements
++ Upgrade myuw-help Web Component to version 1.5.3
++ Add tooltip to my-uw-help
++ Add role="toolbar" to myuw-app-bar
+
 ## 14.0.1 - 2020-04-08
 
 + Upgrade myuw-search Web Component to version 1.5.1 ( [#963][] )
@@ -1094,5 +1106,6 @@ break compatibility with some older components. If the app used any
 [#951]: https://github.com/uPortal-Project/uportal-app-framework/pull/951
 [#952]: https://github.com/uPortal-Project/uportal-app-framework/pull/952
 [#963]: https://github.com/uPortal-Project/uportal-app-framework/pull/963
+[#964]: https://github.com/uPortal-Project/uportal-app-framework/pull/964
 
 [myuw-banner-message-backend]: https://git.doit.wisc.edu/myuw/myuw-banner-message-backend
