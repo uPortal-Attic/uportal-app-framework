@@ -49,7 +49,6 @@ define(['angular', 'require'], function(angular, require) {
   .directive('username', function() {
     return {
       restrict: 'E',
-      templateUrl: require.toUrl('./partials/username.html'),
       controller: 'SessionCheckController',
       controllerAs: 'sessionCtrl',
     };

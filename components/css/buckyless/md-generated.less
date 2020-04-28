@@ -130,36 +130,6 @@ md-menu-content.top-bar-menu-content {
     }
   }
 
-  &.username-menu-content {
-    .md-2-line {
-      .display-name {
-        font-weight: 600;
-        margin: 0;
-        text-transform: capitalize;
-      }
-
-      .campus-id {
-        margin: 0;
-        font-size: 12px;
-        color: @grayscale8;
-        white-space: nowrap;
-      }
-    }
-
-    md-menu-item.top-bar-menu-item {
-      max-width: none;
-
-      > a {
-        height: auto;
-        margin: 0;
-      }
-
-      &:hover {
-        background-color: @grayscale1;
-      }
-    }
-  }
-
   md-menu-item {
     a.link__see-all {
       max-width: 110px;
@@ -259,4 +229,9 @@ md-tooltip {
       background: rgba(0, 0, 0, 0.95);
     }
   }
+}
+
+// Adjust z-index of tooltips
+.md-panel-outer-wrapper.md-panel-is-showing {
+  z-index: 54 !important;
 }

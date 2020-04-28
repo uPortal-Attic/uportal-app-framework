@@ -163,9 +163,9 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Username */
   .controller('SessionCheckController',
-  ['$log', '$scope', 'mainService', 'NAMES',
+  ['$log', '$scope', '$document', 'mainService', 'NAMES',
   'APP_FLAGS', '$sessionStorage', '$localStorage', '$rootScope',
-  function($log, $scope, mainService, NAMES,
+  function($log, $scope, $document, mainService, NAMES,
            APP_FLAGS, $sessionStorage, $localStorage, $rootScope) {
     var vm = this;
     vm.user = [];
@@ -211,6 +211,10 @@ define(['angular', 'require'], function(angular, require) {
         vm.campusId = vm.user[vm.campusIdAttribute];
       }
 
+      $document[0].dispatchEvent(new CustomEvent('myuw-login', {
+        bubbles: true,
+        detail: {person: {'firstName': vm.username},
+      }}));
       return result;
     }).catch(function() {
       $log.warn('could not get user');
