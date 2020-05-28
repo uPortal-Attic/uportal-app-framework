@@ -10,6 +10,11 @@ and this project adheres to
 
 + No changes yet
 
+## 15.0.1 - 2020-05-28
+
++ Update paths to settings pages
++ Remove Guest Login button, which now is taken care of by myuw-profile component
+
 ## 15.0.0 - 2020-04-24
 
 ### Breaking Change in 15.0.0
