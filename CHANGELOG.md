@@ -10,12 +10,18 @@ and this project adheres to
 
 + No changes yet
 
-## 15.0.1 - 2020-05-28
+## 15.0.2
+
++ Upgrade myuw-profile web component to version 1.6.3
++ Remove `hide-xs` in `main-menu.html` to prevent hiding the myuw-profile on mobile on the drawer/left hand menu - we want it there all time
++ Run `npm audit fix` to fix some vulnerabilities in node modules
+
+## 15.0.1
 
 + Update paths to settings pages
 + Remove Guest Login button, which now is taken care of by myuw-profile component
 
-## 15.0.0 - 2020-04-24
+## 15.0.0
 
 ### Breaking Change in 15.0.0
 

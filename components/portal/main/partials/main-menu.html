@@ -52,7 +52,7 @@
       </md-button>
 
       <myuw-profile class="header__profile" ng-controller="SessionCheckController as sessionCtrl" slot="myuw-profile"
-        login-url="{{ MISC_URLS.myuwHome }}" logout-url="{{ MISC_URLS.logoutURL }}" hide-xs>
+        login-url="{{ MISC_URLS.myuwHome }}" logout-url="{{ MISC_URLS.logoutURL }}">
         <a ng-if="sessionCtrl.profileUrl != ''" ng-href="{{ sessionCtrl.profileUrl }}"
           ng-click="pushGAEvent('Top Bar', 'Click Link', 'Profile');" aria-label="See your profile information"
           slot="nav-item">Profile</a>
