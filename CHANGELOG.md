@@ -12,7 +12,7 @@ and this project adheres to
 
 ## 15.0.3
 
-+ Update import path to use latest unpkg version
++ Update import path to use latest unpkg version ( [#967][])
 
 ## 15.0.2
 
@@ -1122,5 +1122,6 @@ break compatibility with some older components. If the app used any
 [#952]: https://github.com/uPortal-Project/uportal-app-framework/pull/952
 [#963]: https://github.com/uPortal-Project/uportal-app-framework/pull/963
 [#964]: https://github.com/uPortal-Project/uportal-app-framework/pull/964
+[#967]: https://github.com/uPortal-Project/uportal-app-framework/pull/967
 
 [myuw-banner-message-backend]: https://git.doit.wisc.edu/myuw/myuw-banner-message-backend
