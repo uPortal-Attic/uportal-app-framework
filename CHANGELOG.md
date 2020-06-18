@@ -10,6 +10,10 @@ and this project adheres to
 
 + No changes yet
 
+## 15.0.3
+
++ Update import path to use latest unpkg version
+
 ## 15.0.2
 
 + Upgrade myuw-profile web component to version 1.6.3
