@@ -24,6 +24,7 @@ and this project adheres to
 + Add tooltip to my-uw-help
 + Add role="toolbar" to myuw-app-bar
 + Update paths to settings pages
++ Adds `ngResource` 1.7.8
 + Updated dependencies
 
 ## 14.0.1 - 2020-04-08
