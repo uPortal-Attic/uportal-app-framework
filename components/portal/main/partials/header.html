@@ -65,6 +65,7 @@
 
   <!-- GUEST MODE ONLY -->
   <md-button
+     ng-controller="SessionCheckController as sessionCtrl"
      ng-href="{{ MISC_URLS.myuwHome }}"
      slot="myuw-profile"
      ng-show="sessionCtrl.guestMode"
