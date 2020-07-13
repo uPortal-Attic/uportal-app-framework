@@ -10,6 +10,10 @@ and this project adheres to
 
 + No changes yet
 
+## 15.0.5
+
++ Fix defaulting into guest mode in myuw-profile component
+
 ## 15.0.4
 
 + Fix variable passing to myuw-profile in side navigation bar, so that its logout button points to the right address
