@@ -178,7 +178,6 @@ define(['angular', 'require'], function(angular, require) {
       && $sessionStorage.portal.theme.profileUrl) ?
       $sessionStorage.portal.theme.profileUrl : '';
     vm.campusIdAttribute = APP_FLAGS.campusIdAttribute;
-    vm.guestMode = true;
     vm.MISC_URLS = $rootScope.MISC_URLS;
 
     // Tell username menu which element to focus upon opening (accessibility)

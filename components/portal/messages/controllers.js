@@ -138,7 +138,6 @@ define(['angular'], function(angular) {
         var init = function() {
           $scope.hasMessages = false;
           $scope.messages = {};
-          $scope.guestMode = true;
 
           mainService.isGuest().then(function(isGuest) {
             $scope.guestMode = isGuest;

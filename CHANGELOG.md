@@ -6,9 +6,32 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 16.0.1
+
++ Fix defaulting into guest mode in myuw-profile component
+
 ## 16.0.0 - 2020-07-03
 
 Breaking change: downgrade angular-resource to 1.5.8 from 1.7.8
+
+## 15.0.4
+
++ Fix variable passing to myuw-profile in side navigation bar, so that its logout button points to the right address
+
+## 15.0.3
+
++ Update import path to use latest unpkg version ( [#967][])
+
+## 15.0.2
+
++ Upgrade myuw-profile web component to version 1.6.3
++ Remove `hide-xs` in `main-menu.html` to prevent hiding the myuw-profile on mobile on the drawer/left hand menu - we want it there all time
++ Run `npm audit fix` to fix some vulnerabilities in node modules
+
+## 15.0.1
+
++ Update paths to settings pages
++ Remove Guest Login button, which now is taken care of by myuw-profile component
 
 ## 15.0.0 - 2020-07-03
 
