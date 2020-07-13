@@ -6,13 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 16.0.1
+
++ Fix defaulting into guest mode in myuw-profile component
+
 ## 16.0.0 - 2020-07-03
 
 Breaking change: downgrade angular-resource to 1.5.8 from 1.7.8
-
-## 15.0.5
-
-+ Fix defaulting into guest mode in myuw-profile component
 
 ## 15.0.4
 
