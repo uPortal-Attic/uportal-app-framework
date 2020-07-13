@@ -6,9 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## unreleased
+## 16.0.0 - 2020-07-03
 
-+ No changes yet
+Breaking change: downgrade angular-resource to 1.5.8 from 1.7.8
 
 ## 15.0.5
 
@@ -33,17 +33,26 @@ and this project adheres to
 + Update paths to settings pages
 + Remove Guest Login button, which now is taken care of by myuw-profile component
 
-## 15.0.0
+## 15.0.0 - 2020-07-03
 
 ### Breaking Change in 15.0.0
 
-+ Replace existing profile menu with `myuw-profile` v1.6.1 from myuw-web-components library ( [#964][] )
++ Replace existing profile menu with `myuw-profile` v1.6.3 from myuw-web-components library sourced via unpkg ( [#964][], [#967][] )
 + Two files related to old profile menu have been removed: components/portal/main/partials/username.html
   and buckyless/directives/username-menu.less
 + Remove unused username elements
++ Remove Guest Login button, which now is taken care of by myuw-profile component
++ Remove `hide-xs` in `main-menu.html` to prevent hiding the myuw-profile on mobile on the drawer/left hand menu - we want it there all time
++ Fix variable passing to myuw-profile in side navigation bar, so that its logout button points to the right address
+
+### Other changes in 15.0.0
+
 + Upgrade myuw-help Web Component to version 1.5.3
 + Add tooltip to my-uw-help
 + Add role="toolbar" to myuw-app-bar
++ Update paths to settings pages
++ Adds `ngResource` 1.7.8
++ Updated dependencies
 
 ## 14.0.1 - 2020-04-08
 
