@@ -211,10 +211,18 @@ define(['angular', 'require'], function(angular, require) {
         vm.campusId = vm.user[vm.campusIdAttribute];
       }
 
-      $document[0].dispatchEvent(new CustomEvent('myuw-login', {
-        bubbles: true,
-        detail: {person: {'firstName': vm.username},
-      }}));
+     // Check session info to identify if user is a guest
+      if (vm.user.firstName && vm.user.lastName) {
+        $document[0].dispatchEvent(new CustomEvent('myuw-login', {
+          bubbles: true,
+          detail: {person: {'firstName': vm.username},
+        }}));
+      } else {
+       $document[0].dispatchEvent(new CustomEvent('myuw-login', {
+          detail: {person: null},
+        }));
+     }
+
       return result;
     }).catch(function() {
       $log.warn('could not get user');

@@ -8,7 +8,7 @@ and this project adheres to
 
 ## 16.0.1
 
-+ Fix defaulting into guest mode in myuw-profile component
++ Check session info to identify if user is a guest to display a bubble vs login button
 
 ## 16.0.0 - 2020-07-03
 
