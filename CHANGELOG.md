@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 16.0.2
+
++ Remove myuw-profile from the side navigation drawer menu
++ Always keep myuw-profile button on header menu
+
 ## 16.0.1
 
 + Check session info to identify if user is a guest to display a bubble vs login button
