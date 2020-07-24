@@ -22,12 +22,12 @@ define(['angular'], function(angular) {
   return angular.module('portal.messages.controllers', [])
 
     .controller('MessagesController', [
-      '$q', '$log', '$scope', '$document', '$rootScope', '$location', '$localStorage',
-      '$sessionStorage', '$filter', '$mdDialog', 'APP_FLAGS', 'MISC_URLS',
-      'SERVICE_LOC', 'mainService', 'miscService', 'messagesService',
-      function($q, $log, $scope, $document, $rootScope, $location, $localStorage,
-               $sessionStorage, $filter, $mdDialog, APP_FLAGS, MISC_URLS,
-               SERVICE_LOC, mainService, miscService, messagesService) {
+      '$q', '$log', '$scope', '$document', '$localStorage',
+      '$filter', 'APP_FLAGS', 'MISC_URLS',
+      'SERVICE_LOC', 'mainService', 'messagesService',
+      function ($q, $log, $scope, $document, $localStorage,
+        $filter, APP_FLAGS, MISC_URLS,
+        SERVICE_LOC, mainService, messagesService) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -126,7 +126,6 @@ define(['angular'], function(angular) {
         };
 
         var triggerMessages = function(messages) {
-
           $document[0].dispatchEvent(new CustomEvent('myuw-has-notifications', {
             bubbles: true,
             detail: {
