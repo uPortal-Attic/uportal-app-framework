@@ -25,7 +25,7 @@ define(['angular'], function(angular) {
       '$q', '$log', '$scope', '$document', '$localStorage',
       '$filter', 'APP_FLAGS', 'MISC_URLS',
       'SERVICE_LOC', 'mainService', 'messagesService',
-      function ($q, $log, $scope, $document, $localStorage,
+      function($q, $log, $scope, $document, $localStorage,
         $filter, APP_FLAGS, MISC_URLS,
         SERVICE_LOC, mainService, messagesService) {
         // //////////////////
