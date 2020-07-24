@@ -18,10 +18,6 @@
     under the License.
 
 -->
-<!-- PRIORITY NOTIFICATIONS -->
-<notifications-bell slot="myuw-notifications" mode="priority" class="priority-gt-xs" ng-if="true">
-</notifications-bell>
-
 <myuw-app-bar role="toolbar" theme-name="{{ portal.theme.title }}" app-name="{{ appBarTitle }}" app-url="{{ MISC_URLS.rootURL }}"
   ng-class="{ 'has-priority-notifications' : hasPriorityNotifications }">
 
@@ -36,8 +32,6 @@
 
   <myuw-search slot="myuw-search" input-label="Search for apps by keyword..." button-label="Submit search" icon="search" ng-controller="PortalSearchController"></myuw-search>
 
-  <notifications-bell slot="myuw-notifications" mode="bell" class="header__bell" ng-if="true">
-  </notifications-bell>
   <myuw-notifications
     slot="myuw-notifications"
     limit=""
