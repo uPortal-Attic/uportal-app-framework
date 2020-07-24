@@ -22,10 +22,10 @@ define(['angular'], function(angular) {
   return angular.module('portal.messages.controllers', [])
 
     .controller('MessagesController', [
-      '$q', '$log', '$scope', '$rootScope', '$location', '$localStorage',
+      '$q', '$log', '$scope', '$document', '$rootScope', '$location', '$localStorage',
       '$sessionStorage', '$filter', '$mdDialog', 'APP_FLAGS', 'MISC_URLS',
       'SERVICE_LOC', 'mainService', 'miscService', 'messagesService',
-      function($q, $log, $scope, $rootScope, $location, $localStorage,
+      function($q, $log, $scope, $document, $rootScope, $location, $localStorage,
                $sessionStorage, $filter, $mdDialog, APP_FLAGS, MISC_URLS,
                SERVICE_LOC, mainService, miscService, messagesService) {
         // //////////////////
@@ -126,12 +126,12 @@ define(['angular'], function(angular) {
         };
 
         var triggerMessages = function(messages) {
-          console.log("trigger", messages);
-          document.dispatchEvent(new CustomEvent('myuw-has-notifications', {
+
+          $document[0].dispatchEvent(new CustomEvent('myuw-has-notifications', {
             bubbles: true,
             detail: {
-              notifications: messages
-            }
+              notifications: messages,
+            },
           }));
         };
 
@@ -166,5 +166,5 @@ define(['angular'], function(angular) {
 
         init();
       },
-    ])  
+    ]);
 });
