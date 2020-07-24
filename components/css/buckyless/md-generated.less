@@ -98,38 +98,6 @@ md-menu-content.top-bar-menu-content {
   padding: 0;
   position: relative;
 
-  &.notifications-menu {
-    min-width: 400px;
-
-    md-menu-item {
-      &.top-bar-menu-item {
-        max-width: 505px;
-
-        .compact-buttons {
-          .md-button:not([disabled]),
-          .md-button:disabled {
-            text-transform: none;
-            line-height: 28px;
-            min-width: 60px;
-            min-height: 28px;
-            font-size: 12px;
-            font-weight: 500;
-            margin-left: 0;
-          }
-        }
-
-        &.notifications-empty {
-          min-height: 140px;
-          color: @grayscale8;
-        }
-
-        @media (min-width: @xs) {
-          width: 505px;
-        }
-      }
-    }
-  }
-
   md-menu-item {
     a.link__see-all {
       max-width: 110px;
