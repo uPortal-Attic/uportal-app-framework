@@ -31,7 +31,7 @@ define(['angular'], function(angular) {
         // 'aboutURL': 'staticFeeds/about-frame.json',
         // 'aboutPageURL': 'staticFeeds/about-page.json',
         // 'bannersURL': 'staticFeeds/sample-banners.json',
-        // 'messagesURL': 'staticFeeds/sample-messages.json',
+        'messagesURL': 'staticFeeds/sample-messages.json',
       },
       'MESSAGES': {
         // 'notificationsPageURL': '/notifications',
