@@ -6,11 +6,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 17.0.1
+
++ Update component `myuw-notifications` to v1.3.0
++ Fix the bug when using `myuw-nofitications`, showing the bell even messages are disabled
++ Fix styles on `myuw-nofitications`
+
 ## 17.0.0
 
 ### Breaking Changes
 
-+ Replace existing notification menu with `myuw-notification` v1.2.0 from myuw-web-components library
++ Replace existing notification menu with `myuw-notifications` v1.2.0 from myuw-web-components library
 
 
 ## 16.0.1
