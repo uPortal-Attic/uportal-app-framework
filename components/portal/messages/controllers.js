@@ -167,10 +167,10 @@ define(['angular'], function(angular) {
       },
     ])
 
-    .controller('NotificationsController', ['$q', '$log', '$scope', '$window',
+    .controller('NotificationsController', ['$q', '$log', '$document', '$scope', '$window',
     '$rootScope', '$location', '$localStorage', '$filter', 'MESSAGES',
     'SERVICE_LOC', 'miscService', 'messagesService', 'orderByFilter',
-    function($q, $log, $scope, $window, $rootScope, $location, $localStorage,
+    function($q, $log, $document, $scope, $window, $rootScope, $location, $localStorage,
              $filter, MESSAGES, SERVICE_LOC, miscService, messagesService,
              orderByFilter) {
       // //////////////////
@@ -236,6 +236,14 @@ define(['angular'], function(angular) {
           }
         }
       });
+
+      $document[0].addEventListener('myuw-notification-dismissed', (event) => {
+        // The event passes a detail object with a single
+        // property: "notificationId", which is the "id" value of
+        // the dismissed notification
+        var dismissedNotificationId = event.detail.notificationId;
+        vm.dismissNotification(dismissedNotificationId);
+      }, false);
 
       // ////////////////
       // Local methods //
@@ -359,27 +367,27 @@ define(['angular'], function(angular) {
        * @param {Object} notification
        * @param {boolean} isHighPriority
        */
-      vm.dismissNotification = function(notification, isHighPriority) {
+      vm.dismissNotification = function(notificationId) {
+        // Add notification to dismissed array
+        const dismissedNotification = $filter('filterMessageWithIdOnly')(
+          vm.notifications,
+          notificationId
+        );
+
+        vm.dismissedNotifications.push(dismissedNotification);
+
         vm.notifications = $filter('filterOutMessageWithId')(
           vm.notifications,
-          notification.id
+          notificationId
         );
-        // Add notification to dismissed array
-        vm.dismissedNotifications.push(notification);
 
         // Add notification's ID to local array of dismissed notification IDs
-        dismissedNotificationIds.push(notification.id);
+        dismissedNotificationIds.push(notificationId);
 
         // Call service to save changes if k/v store enabled
         if (SERVICE_LOC.kvURL) {
           messagesService.setMessagesSeen(allSeenMessageIds,
             dismissedNotificationIds, 'dismiss');
-        }
-
-        // Clear priority notification flags if it was a priority
-        // notification
-        if (isHighPriority) {
-          clearPriorityNotificationsFlags();
         }
       };
 
