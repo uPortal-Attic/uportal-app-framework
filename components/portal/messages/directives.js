@@ -16,25 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-define(['angular'], function(angular) {
-  /* Keep in sync with docs/markdown/configuration.md*/
-  return angular.module('override', [])
-    .constant('OVERRIDE', {
-      'APP_OPTIONS': {
-        // 'appMenuTemplateURL': 'portal/misc/partials/example-menu.html',
-        // 'enablePushContentMenu': true,
-      },
-      'SERVICE_LOC': {
-        // 'widgetApi': {
-        //   'entry': 'staticFeeds/',
-        // },
-        // 'aboutURL': 'staticFeeds/about-frame.json',
-        // 'aboutPageURL': 'staticFeeds/about-page.json',
-        // 'bannersURL': 'staticFeeds/sample-banners.json',
-        'messagesURL': 'staticFeeds/sample-messages.json',
-      },
-      'MESSAGES': {
-        // 'notificationsPageURL': '/notifications',
-      },
+'use strict';
+
+define(['angular', 'require'], function(angular, require) {
+  return angular.module('portal.messages.directives', [])
+
+    .directive('notificationsListItem', function() {
+      return {
+        restrict: 'E',
+        templateUrl: require.toUrl('./partials/notifications-list-item.html'),
+      };
     });
 });
