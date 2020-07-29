@@ -121,7 +121,7 @@ define(['angular', 'moment'], function(angular, moment) {
     })
     .filter('filterMessageWithIdOnly', function() {
       return function(messages, idToFilterOut) {
-        const filteredMessages = angular.forEach(messages, function(value, key) {
+        var filteredMessages = angular.forEach(messages, function(value, key) {
           if (value.id === idToFilterOut) {
             return messages[key];
           }

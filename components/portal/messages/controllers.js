@@ -237,12 +237,14 @@ define(['angular'], function(angular) {
         }
       });
 
-      $document[0].addEventListener('myuw-notification-dismissed', (event) => {
+      $document[0].addEventListener('myuw-notification-dismissed', function(event) {
         // The event passes a detail object with a single
         // property: "notificationId", which is the "id" value of
         // the dismissed notification
-        var dismissedNotificationId = event.detail.notificationId;
-        vm.dismissNotification(dismissedNotificationId);
+        if (!event.detail.ignore) {
+          var dismissedNotificationId = event.detail.notificationId;
+          vm.dismissNotification(dismissedNotificationId);
+        }
       }, false);
 
       // ////////////////
@@ -342,15 +344,6 @@ define(['angular'], function(angular) {
         }
       };
 
-      /**
-       * Alerts the UI that there are no priority notifications to show
-       */
-      var clearPriorityNotificationsFlags = function() {
-        vm.priorityNotifications = [];
-        // Notify listeners that priority notifications are gone
-        messagesService.broadcastPriorityFlag(false);
-      };
-
       // ////////////////
       // Scope methods //
       // ////////////////
@@ -369,7 +362,7 @@ define(['angular'], function(angular) {
        */
       vm.dismissNotification = function(notificationId) {
         // Add notification to dismissed array
-        const dismissedNotification = $filter('filterMessageWithIdOnly')(
+        var dismissedNotification = $filter('filterMessageWithIdOnly')(
           vm.notifications,
           notificationId
         );
@@ -389,6 +382,13 @@ define(['angular'], function(angular) {
           messagesService.setMessagesSeen(allSeenMessageIds,
             dismissedNotificationIds, 'dismiss');
         }
+
+        $document[0].dispatchEvent(new CustomEvent('myuw-notification-dismissed', {
+            detail: {
+              notificationId: notificationId,
+              ignore: true,
+            },
+          }));
       };
 
       /**
