@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Next release
+
+* Add optional attribute `include-context-menu` on `widget` directive.
+  attribute effectively defaults to `true`;
+  when set to `false` suppresses the upper-right context menu on widgets.
+
 ## 17.0.1
 
 + Update component `myuw-notifications` to v1.3.0

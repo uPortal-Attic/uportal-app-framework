@@ -193,6 +193,26 @@
         </div>
       </div>
 
+      <h3 style="margin-left:26px">
+        Example suppressing context menu when so configured</h3>
+      <div style="margin-left:26px">
+        Demonstrates include-context-menu attribute on widget directive.
+        These widgets have attribute include-context-menu present
+        with value false and true respectively.
+        The attribute effectively defaults to true when omitted.
+        It is omitted for all other widgets on this example page.</div>
+      <div layout="row" layout-align="center start"
+        style="flex-wrap:wrap;padding:18px;">
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__benefits"
+            include-context-menu="false"></widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__benefits"
+            include-context-menu="true"></widget>
+        </div>
+      </div>
+
     <h2 style="margin-left:26px">Example compact mode widgets</h2>
     <div layout="row" layout-align="center start" style="flex-wrap:wrap;padding:18px;">
         <div flex-xs="100" class="widget-container">
