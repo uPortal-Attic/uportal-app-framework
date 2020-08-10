@@ -167,10 +167,10 @@ define(['angular'], function(angular) {
       },
     ])
 
-    .controller('NotificationsController', ['$q', '$log', '$document', '$scope', '$window',
-    '$rootScope', '$location', '$localStorage', '$filter', 'MESSAGES',
+    .controller('NotificationsController', ['$q', '$log', '$document',
+    '$scope', '$window', '$localStorage', '$filter', 'MESSAGES',
     'SERVICE_LOC', 'miscService', 'messagesService', 'orderByFilter',
-    function($q, $log, $document, $scope, $window, $rootScope, $location, $localStorage,
+    function($q, $log, $document, $scope, $window, $rootScope,
              $filter, MESSAGES, SERVICE_LOC, miscService, messagesService,
              orderByFilter) {
       // //////////////////
@@ -237,15 +237,17 @@ define(['angular'], function(angular) {
         }
       });
 
-      $document[0].addEventListener('myuw-notification-dismissed', function(event) {
-        // The event passes a detail object with properties: "notificationId",
-        // which is the "id" value of the dismissed notification, and "dismissedFromOutside",
-        // which is used to sync states between this and myuw-notifications
-        if (event.detail.hasOwnProperty("dismissedFromOutside") == false) {
-          var dismissedNotificationId = event.detail.notificationId;
-          vm.dismissNotification(dismissedNotificationId, false);
-        }
-      }, false);
+      $document[0].addEventListener('myuw-notification-dismissed',
+        function(event) {
+          // The event passes a detail object with properties: "notificationId",
+          // which is the "id" value of the dismissed notification, and
+          // "dismissedFromOutside", which is used to sync states between this
+          // and myuw-notifications
+          if (event.detail.hasOwnProperty('dismissedFromOutside') == false) {
+            var dismissedNotificationId = event.detail.notificationId;
+            vm.dismissNotification(dismissedNotificationId, false);
+          }
+        }, false);
 
       // ////////////////
       // Local methods //
@@ -384,12 +386,14 @@ define(['angular'], function(angular) {
         }
 
         // Dispatch event to notify myuw-notifications on the dismissal
-        $document[0].dispatchEvent(new CustomEvent('myuw-notification-dismissed', {
+        $document[0].dispatchEvent(
+          new CustomEvent('myuw-notification-dismissed', {
             detail: {
               notificationId: notificationId,
               dismissedFromOutside: dismissedFromOutside,
             },
-          }));
+          }
+        ));
       };
 
       /**
