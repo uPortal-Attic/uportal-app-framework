@@ -27,7 +27,6 @@
     ng-cloak>
     <md-icon>menu</md-icon>
     <md-tooltip md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Menu</md-tooltip>
-    <notifications-bell mode="mobile-bell" ng-if="!guestMode" hide-gt-xs></notifications-bell>
   </md-button>
 
   <myuw-search slot="myuw-search" input-label="Search for apps by keyword..." button-label="Submit search" icon="search" ng-controller="PortalSearchController"></myuw-search>
@@ -39,6 +38,7 @@
     ng-if="showMessagesFeatures"
   >
     <span slot="myuw-notifications-empty">All caught up!</span>
+    <md-tooltip aria-label="Open notifications list" md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Notifications</md-tooltip>
   </myuw-notifications>
 
   <myuw-help myuw-help-title="Help with MyUW" slot="myuw-help" show-button>
