@@ -238,12 +238,12 @@ define(['angular'], function(angular) {
       });
 
       $document[0].addEventListener('myuw-notification-dismissed', function(event) {
-        // The event passes a detail object with a single
-        // property: "notificationId", which is the "id" value of
-        // the dismissed notification
-        if (!event.detail.ignore) {
+        // The event passes a detail object with properties: "notificationId",
+        // which is the "id" value of the dismissed notification, and "dismissedFromOutside",
+        // which is used to sync states between this and myuw-notifications
+        if (event.detail.hasOwnProperty("dismissedFromOutside") == false) {
           var dismissedNotificationId = event.detail.notificationId;
-          vm.dismissNotification(dismissedNotificationId);
+          vm.dismissNotification(dismissedNotificationId, false);
         }
       }, false);
 
@@ -360,7 +360,7 @@ define(['angular'], function(angular) {
        * @param {Object} notification
        * @param {boolean} isHighPriority
        */
-      vm.dismissNotification = function(notificationId) {
+      vm.dismissNotification = function(notificationId, dismissedFromOutside) {
         // Add notification to dismissed array
         var dismissedNotification = $filter('filterMessageWithIdOnly')(
           vm.notifications,
@@ -383,10 +383,11 @@ define(['angular'], function(angular) {
             dismissedNotificationIds, 'dismiss');
         }
 
+        // Dispatch event to notify myuw-notifications on the dismissal
         $document[0].dispatchEvent(new CustomEvent('myuw-notification-dismissed', {
             detail: {
               notificationId: notificationId,
-              ignore: true,
+              dismissedFromOutside: dismissedFromOutside,
             },
           }));
       };
@@ -396,7 +397,7 @@ define(['angular'], function(angular) {
        * @param {Object} notification
        * @param {boolean} isHighPriority
        */
-      vm.restoreNotification = function(notification, isHighPriority) {
+      vm.restoreNotification = function(notification) {
         // Remove notification from dismissed array
         vm.dismissedNotifications = $filter('filterOutMessageWithId')(
           vm.dismissedNotifications,
@@ -417,6 +418,15 @@ define(['angular'], function(angular) {
           messagesService.setMessagesSeen(allSeenMessageIds,
             dismissedNotificationIds, 'restore');
         }
+
+        // Dispatch event to notify myuw-notifications on the restoration
+        $document[0].dispatchEvent(new CustomEvent('myuw-has-notifications', {
+          bubbles: true,
+          detail: {
+            notifications: [notification],
+          },
+        }));
+
         notificationChange();
       };
 

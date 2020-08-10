@@ -49,7 +49,7 @@
                 <div class="notifications-list__action">
                   <md-button class="md-icon-button"
                              ng-hide="notification.dismissible === false"
-                             ng-click="vm.dismissNotification(notification, notification.priority === 'high');pushGAEvent('Notifications page', 'Dismiss notification', notification.id)"
+                             ng-click="vm.dismissNotification(notification.id, true);pushGAEvent('Notifications page', 'Dismiss notification', notification.id)"
                              aria-label="dismiss this notification">
                     <md-icon>clear</md-icon>
                     <md-tooltip md-delay="500">Dismiss notification</md-tooltip>
@@ -78,7 +78,7 @@
                 <!-- RESTORE BUTTON -->
                 <div class="notification-list__action">
                   <md-button class="md-icon-button"
-                             ng-click="vm.restoreNotification(notification, notification.priority === 'high');pushGAEvent('Notifications page', 'Restore notification', notification.id)"
+                             ng-click="vm.restoreNotification(notification);pushGAEvent('Notifications page', 'Restore notification', notification.id)"
                              aria-label="restore this notification">
                     <md-icon>undo</md-icon>
                     <md-tooltip md-delay="500">Restore notification</md-tooltip>
