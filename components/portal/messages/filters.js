@@ -119,6 +119,16 @@ define(['angular', 'moment'], function(angular, moment) {
         return messages;
       };
     })
+    .filter('filterMessageWithIdOnly', function() {
+      return function(messages, idToFilterOut) {
+        var filteredMessages = angular.forEach(messages, function(value, key) {
+          if (value.id === idToFilterOut) {
+            return messages[key];
+          }
+        });
+        return filteredMessages[0]; // assume id is unique
+      };
+    })
     .filter('filterForCommonElements', function() {
       return function(array1, array2) {
         return array1.filter(function(element) {

@@ -1,0 +1,94 @@
+<!--
+
+    Licensed to Apereo under one or more contributor license
+    agreements. See the NOTICE file distributed with this work
+    for additional information regarding copyright ownership.
+    Apereo licenses this file to you under the Apache License,
+    Version 2.0 (the "License"); you may not use this file
+    except in compliance with the License.  You may obtain a
+    copy of the License at the following location:
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<frame-page app-title="Notifications" app-icon="notifications" page-title="Notifications" white-background="true">
+  <div class="notifications view__notifications" ng-controller="NotificationsController as vm">
+    <!-- EMPTY CASE -->
+    <div class="notifications__empty" ng-if="vm.notifications.length == 0 && vm.dismissedNotifications.length == 0">
+      <span ng-if="!vm.messagesError">
+        You have no notifications to view at this time.
+      </span>
+      <span ng-if="vm.messagesError">
+        <md-icon class="md-warn">warning</md-icon> {{ vm.messagesError }}
+      </span>
+    </div>
+    <md-tabs md-dynamic-height md-border-bottom ng-if="vm.notifications.length > 0 || vm.dismissedNotifications.length > 0">
+      <!-- UNSEEN NOTIFICATIONS -->
+      <md-tab ng-if="vm.notifications.length > 0">
+        <md-tab-label>
+          New&nbsp;&nbsp;<span class="badge">{{ vm.notifications.length }}</span>
+        </md-tab-label>
+        <md-tab-body>
+          <md-content>
+            <md-list class="notifications-list" flex>
+              <md-list-item class="notification-item"
+                            ng-repeat="notification in vm.notifications | orderBy:'priority' track by $index"
+                            layout="row"
+                            layout-align="start center">
+
+                <notifications-list-item></notifications-list-item>
+
+                <!-- DISMISS BUTTON -->
+                <div class="notifications-list__action">
+                  <md-button class="md-icon-button"
+                             ng-hide="notification.dismissible === false"
+                             ng-click="vm.dismissNotification(notification.id, true);pushGAEvent('Notifications page', 'Dismiss notification', notification.id)"
+                             aria-label="dismiss this notification">
+                    <md-icon>clear</md-icon>
+                    <md-tooltip md-delay="500">Dismiss notification</md-tooltip>
+                  </md-button>
+                </div>
+              </md-list-item>
+            </md-list>
+          </md-content>
+        </md-tab-body>
+      </md-tab>
+      <!-- DISMISSED NOTIFICATIONS TAB -->
+      <md-tab ng-if="vm.dismissedNotifications.length > 0">
+        <md-tab-label>
+          Dismissed&nbsp;&nbsp;<span class="badge">{{ vm.dismissedNotifications.length }}</span>
+        </md-tab-label>
+        <md-tab-body>
+          <md-content>
+            <md-list class="notifications-list" flex>
+              <md-list-item class="notification-item"
+                            ng-repeat="notification in vm.dismissedNotifications | orderBy:['-priority', '-id']  track by $index"
+                            layout="row"
+                            layout-align="start center">
+
+                <notifications-list-item></notifications-list-item>
+
+                <!-- RESTORE BUTTON -->
+                <div class="notification-list__action">
+                  <md-button class="md-icon-button"
+                             ng-click="vm.restoreNotification(notification);pushGAEvent('Notifications page', 'Restore notification', notification.id)"
+                             aria-label="restore this notification">
+                    <md-icon>undo</md-icon>
+                    <md-tooltip md-delay="500">Restore notification</md-tooltip>
+                  </md-button>
+                </div>
+              </md-list-item>
+            </md-list>
+          </md-content>
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+  </div>
+</frame-page>

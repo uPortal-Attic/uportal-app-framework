@@ -23,6 +23,7 @@ define(['angular',
     'portal/settings/routes',
     'portal/about/route',
     'portal/help/routes',
+    'portal/messages/routes',
   ], function(
       angular, $, portal, main, settings,
       about, help, messages
@@ -34,6 +35,7 @@ define(['angular',
         $routeProvider
         .when('/settings', settings.betaSettings)
         .when('/user-settings', settings.userSettings)
+        .when('/notifications', messages.notifications)
         .when('/about', about)
         .when('/session-info', help.sessionInfo)
         .when('/access-denied', main.accessDenied)
