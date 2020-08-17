@@ -46,7 +46,7 @@
                 <notifications-list-item></notifications-list-item>
 
                 <!-- DISMISS BUTTON -->
-                <div class="notifications-list__action md-secondary">
+                <div class="notifications-list__action">
                   <md-button class="md-icon-button"
                              ng-hide="notification.dismissible === false"
                              ng-click="vm.dismissNotification(notification.id, true);pushGAEvent('Notifications page', 'Dismiss notification', notification.id)"
@@ -76,7 +76,7 @@
                 <notifications-list-item></notifications-list-item>
 
                 <!-- RESTORE BUTTON -->
-                <div class="notification-list__action md-secondary">
+                <div class="notification-list__action">
                   <md-button class="md-icon-button"
                              ng-click="vm.restoreNotification(notification);pushGAEvent('Notifications page', 'Restore notification', notification.id)"
                              aria-label="restore this notification">
