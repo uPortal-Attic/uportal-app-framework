@@ -14,7 +14,7 @@ and this project adheres to
 
 ## 17.0.1
 
-+ Upgrade component `myuw-notifications` to v1.3.2
++ Upgrade component `myuw-notifications` to v1.3.3
 + Fix the bug when using `myuw-nofitications`, showing the bell even messages are disabled
 + Fix `myuw-notifications` "See all" page and styles
 
