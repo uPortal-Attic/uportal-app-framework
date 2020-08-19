@@ -48,7 +48,7 @@
                 <!-- DISMISS BUTTON -->
                 <div class="notifications-list__action">
                   <md-button class="md-icon-button"
-                             ng-hide="notification.dismissible === false"
+                             ng-style="{'visibility' : notification.dismissible === false  ? 'hidden' : 'visible'}"
                              ng-click="vm.dismissNotification(notification.id, true);pushGAEvent('Notifications page', 'Dismiss notification', notification.id)"
                              aria-label="dismiss this notification">
                     <md-icon>clear</md-icon>
