@@ -168,7 +168,7 @@ define(['angular'], function(angular) {
     ])
 
     .controller('NotificationsController', ['$q', '$log', '$document',
-    '$scope', '$window', '$localStorage', '$filter', 'MESSAGES',
+    '$scope', '$window', '$rootScope', '$filter', 'MESSAGES',
     'SERVICE_LOC', 'miscService', 'messagesService', 'orderByFilter',
     function($q, $log, $document, $scope, $window, $rootScope,
              $filter, MESSAGES, SERVICE_LOC, miscService, messagesService,
