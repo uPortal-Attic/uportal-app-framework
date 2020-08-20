@@ -204,9 +204,9 @@ into tier-specific overlays because it replaces the application's `override.js`
 configuration of the frame.
 
 Another, complementary option is to override `overlay-config.js` in
-tier-specific overlays. This has the advantage of *not* being `override.js` and
+tier-specific overlays. This has the advantage of _not_ being `override.js` and
 so not clobbering whatever the application was doing in `override.js`.
-This has the disadvantage of *not* being `override.js` and so not overriding
+This has the disadvantage of _not_ being `override.js` and so not overriding
 `app-config`. The framework has no current special support for
  `overlay-config.js` -- that is, the framework does not expect anything of that
  module, does not use it for anything, and does not consult it in interpreting
