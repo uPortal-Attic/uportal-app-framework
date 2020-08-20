@@ -48,6 +48,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'ngRoute': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-route.min',
       'ngSanitize': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-sanitize.min',
       'ngStorage': 'https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min',
+      'ngTasty': 'https://cdnjs.cloudflare.com/ajax/libs/ng-tasty/0.6.1/ng-tasty-tpls.min',
       'ui-bootstrap': 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min',
       'ui-gravatar': 'https://cdnjs.cloudflare.com/ajax/libs/angular-gravatar/0.4.2/angular-gravatar.min',
       'app-config': 'js/app-config',
@@ -66,6 +67,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'ngRoute': {deps: ['angular']},
       'ngSanitize': {deps: ['angular']},
       'ngStorage': {deps: ['angular']},
+      'ngTasty': {deps: ['angular']},
       'ngAria': {deps: ['angular']},
       'ngMaterial': {
         deps: ['angular', 'ngAria', 'angular-animate', 'angular-mocks'],
