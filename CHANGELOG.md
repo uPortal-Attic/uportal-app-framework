@@ -11,6 +11,7 @@ and this project adheres to
 + Add optional attribute `include-context-menu` on `widget` directive.
   attribute effectively defaults to `true`;
   when set to `false` suppresses the upper-right context menu on widgets.
++ Add `ngTasty` dependency for use in apps using the framework
 
 ## 17.0.1
 
