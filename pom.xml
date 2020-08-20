@@ -468,6 +468,7 @@
             <exclude>**/components/js/*.min.js</exclude>
             <exclude>**/components/js/*.min.js.map</exclude>
             <exclude>.gitignore</exclude>
+            <exclude>.npmrc</exclude>
           </excludes>
           <mapping>
             <less>JAVADOC_STYLE</less>
