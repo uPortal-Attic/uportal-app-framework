@@ -32,6 +32,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
   }
 
   var framePaths = {
+      'angucomplete': 'js/angucomplete',
       'angular': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min',
       'angular-animate': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-animate.min',
       'angular-mocks': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-mocks',
@@ -42,7 +43,9 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       ],
       'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min',
       'jquery-ui': 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min',
+      'ngAnimate': 'js/angular-animate.min',
       'ngAria': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-aria.min',
+      'ngCsv': 'js/ng-csv.min',
       'ngMaterial': 'https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.19/angular-material.min',
       'ngResource': 'https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.5.8/angular-resource.min',
       'ngRoute': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-route.min',
@@ -51,6 +54,8 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'ngTasty': 'https://cdnjs.cloudflare.com/ajax/libs/ng-tasty/0.6.1/ng-tasty-tpls.min',
       'ui-bootstrap': 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min',
       'ui-gravatar': 'https://cdnjs.cloudflare.com/ajax/libs/angular-gravatar/0.4.2/angular-gravatar.min',
+      'ui.select': 'js/select.min',
+      'ui.utils': 'js/ui-utils.min',
       'app-config': 'js/app-config',
       'frame-config': 'js/frame-config',
       'override': 'js/override',
@@ -58,11 +63,14 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
   };
 
   var frameShims = {
+      'angucomplete': {deps: ['angular']},
       'angular': {deps: ['jquery'], exports: 'angular'},
       'angular-animate': {deps: ['angular'], exports: 'angular-animate'},
       'angular-mocks': {deps: ['angular']},
       'angulartics': {deps: ['angular'], exports: 'angulartics'},
       'angulartics-google-analytics': {deps: ['angulartics']},
+      'ngAnimate': {deps: ['angular']},
+      'ngCsv': {deps: ['angular']},
       'ngResource': {deps: ['angular']},
       'ngRoute': {deps: ['angular']},
       'ngSanitize': {deps: ['angular']},
@@ -75,6 +83,8 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       },
       'ui-bootstrap': {deps: ['angular']},
       'ui-gravatar': {deps: ['angular']},
+      'ui.select': {deps: ['angular']},
+      'ui.util': {deps: ['angular']},
       'moment': {exports: 'moment'},
   };
 

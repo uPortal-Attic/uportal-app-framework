@@ -11,7 +11,12 @@ and this project adheres to
 + Add optional attribute `include-context-menu` on `widget` directive.
   attribute effectively defaults to `true`;
   when set to `false` suppresses the upper-right context menu on widgets.
-+ Add `ngTasty` dependency for use in apps using the framework
++ Add `angucomplete`, `ngTasty`, `ngAnimate`, `ui.select`, `ui.utils`, and
+  `ngCsv` dependencies for use in apps using the framework.
+  These are dependencies that were in practice used by MUMAA apps.
+  Adding them to the framework makes these dependencies available from the
+  framework to those MUMAA apps on upgrade as well as available to any other
+  upgrading apps.
 
 ## 17.0.1
 
