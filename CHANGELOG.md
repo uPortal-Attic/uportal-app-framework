@@ -8,7 +8,7 @@ and this project adheres to
 
 ## Next release
 
-* Add optional attribute `include-context-menu` on `widget` directive.
++ Add optional attribute `include-context-menu` on `widget` directive.
   attribute effectively defaults to `true`;
   when set to `false` suppresses the upper-right context menu on widgets.
 
