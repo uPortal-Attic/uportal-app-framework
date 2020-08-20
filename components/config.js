@@ -59,6 +59,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'app-config': 'js/app-config',
       'frame-config': 'js/frame-config',
       'override': 'js/override',
+      'overlay-config': 'js/overlay-config',
       'moment': 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min',
   };
 
@@ -81,6 +82,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
         deps: ['angular', 'ngAria', 'angular-animate', 'angular-mocks'],
         exports: 'ngMaterial',
       },
+      'overlay-config': {deps: ['angular']},
       'ui-bootstrap': {deps: ['angular']},
       'ui-gravatar': {deps: ['angular']},
       'ui.select': {deps: ['angular']},

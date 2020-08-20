@@ -17,6 +17,16 @@ and this project adheres to
   Adding them to the framework makes these dependencies available from the
   framework to those MUMAA apps on upgrade as well as available to any other
   upgrading apps.
++ Add `overlay-config`, a module intended for overlaying upon in tier-specific
+  overlays on uportal-app-framework applications.
+  overlay-config by default is an empty module.
+  Replace that file in tier-specific overlays to set tier-specific settings.
+  That is, the layers are
+  a tier-specific overlay (overrides overlay-config to set tier-specifics)
+  overlays upon
+  an application (overrides override.js to set app options etc)
+  overlays upon
+  this framework.
 
 ## 17.0.1
 

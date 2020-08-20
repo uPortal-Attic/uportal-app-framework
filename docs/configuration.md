@@ -193,6 +193,29 @@ list][uportal-user@].
 Collaborating on developing `uPortal-app-framework`? Discuss on [the
 development list][uportal-dev@].
 
+## Tier-specific application configuration
+
+One option is to additionally override `override.js` in tier-specific overlays.
+This has the advantage that anything configurable in `override.js`
+(that is, anything configured in app-config), and an additions to that,
+are arbitrarily configurable in tier-specific overlays. This is powerful.
+It also may duplicate application configuration that's the same in all tiers
+into tier-specific overlays because it replaces the application's `override.js`
+configuration of the frame.
+
+Another, complementary option is to override `overlay-config.js` in
+tier-specific overlays. This has the advantage of *not* being `override.js` and
+so not clobbering whatever the application was doing in `override.js`.
+This has the disadvantage of *not* being `override.js` and so not overriding
+`app-config`. The framework has no current special support for
+ `overlay-config.js` -- that is, the framework does not expect anything of that
+ module, does not use it for anything, and does not consult it in interpreting
+ framework configuration. `overlay-config` is currently whatever the downstream
+ applications make of it -- if a particular application invents a constant
+ configured in that module and gives that constant meaning, then that constant
+ becomes configurable per-tier by overriding the implementation of this module
+ in tier-specific overlays.
+
 [KeyValueStore]: https://github.com/UW-Madison-DoIT/KeyValueStore
 [uportal-dev@]: https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev
 [uportal-user@]: https://groups.google.com/a/apereo.org/forum/#!forum/uportal-user
