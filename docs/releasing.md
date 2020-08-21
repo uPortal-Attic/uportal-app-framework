@@ -87,13 +87,6 @@ Then,
 + [Release Maven artifacts][] from
   [central staging repository][central Maven staging repository]
 
-
-### Node release
-
-+ Update the npm package by running `npm version <update_type>` where <update_type> is based on the selection above: patch, minor, or major. This will: change the version in `package.json`, commit that (locally), and make a tag in the format `vx.y.z`. [Read more about publishing on npm docs](https://docs.npmjs.com/getting-started/publishing-npm-packages#updating-the-package).
-+ Deploy npm package to the world; `npm publish`. (if you don't have [publish rights][uportal-app-framework access on npm] contact authors)
-+ Push git changes to the github via `git push origin master` and `git push origin <tag>`
-
 ### Updating JIRA issues
 
 UW-Madison uses a private JIRA instance tracking work on this project.
