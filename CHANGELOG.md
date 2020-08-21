@@ -12,6 +12,13 @@ It is those war files that are being versioned.
 
 ## Next release
 
+(No changes yet)
+
+## 17.0.0 - 2020-08-21
+
++ **Breaking change**:
+  Replace existing notification menu with `myuw-notifications` v1.3.3
+  from myuw-web-components library
 + Add optional attribute `include-context-menu` on `widget` directive.
   attribute effectively defaults to `true`;
   when set to `false` suppresses the upper-right context menu on widgets.
