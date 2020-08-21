@@ -28,24 +28,20 @@ and this project adheres to
   overlays upon
   this framework.
 
-## 17.0.1
+## 16.0.2 - 2020-07-22
 
-+ Upgrade component `myuw-notifications` to v1.3.3
-+ Fix the bug when using `myuw-nofitications`, showing the bell even messages are disabled
-+ Fix `myuw-notifications` "See all" page and styles
-
-## 17.0.0
-
-### Breaking Changes
-
-+ Replace existing notification menu with `myuw-notifications` v1.2.0 from myuw-web-components library
-
++ Always keep myuw-profile button on header menu,
+  rather than hiding at extra small size.
+  Remove myuw-profile from the side navigation drawer menu,
+  rather than including it there at extra small size. ( [#974][] )
++ Check session info to identify if user is a guest
+  to display a bubble vs login button.
+  Stop defaulting `SessionCheckController` and `MessagesController`
+  `guestMode` to true ( [#972][] )
 
 ## 16.0.1
 
-+ Check session info to identify if user is a guest to display a bubble vs login button
-+ Remove myuw-profile from the side navigation drawer menu
-+ Always keep myuw-profile button on header menu
+The 16.0.1 release process fumbled. Use 16.0.2 instead.
 
 ## 16.0.0 - 2020-07-03
 
@@ -1177,5 +1173,7 @@ break compatibility with some older components. If the app used any
 [#963]: https://github.com/uPortal-Project/uportal-app-framework/pull/963
 [#964]: https://github.com/uPortal-Project/uportal-app-framework/pull/964
 [#967]: https://github.com/uPortal-Project/uportal-app-framework/pull/967
+[#972]: https://github.com/uPortal-Project/uportal-app-framework/pull/972
+[#974]: https://github.com/uPortal-Project/uportal-app-framework/pull/974
 
 [myuw-banner-message-backend]: https://git.doit.wisc.edu/myuw/myuw-banner-message-backend
