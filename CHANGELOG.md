@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+The versions in this change log should match those published
+to [the Sonatype Maven Central Repository][].
+It is those war files that are being versioned.
+
 ## Next release
 
 + Add optional attribute `include-context-menu` on `widget` directive.
@@ -1177,3 +1181,5 @@ break compatibility with some older components. If the app used any
 [#974]: https://github.com/uPortal-Project/uportal-app-framework/pull/974
 
 [myuw-banner-message-backend]: https://git.doit.wisc.edu/myuw/myuw-banner-message-backend
+
+[the Sonatype Maven Central Repository]: https://search.maven.org/artifact/org.apereo.uportal/uportal-app-framework
