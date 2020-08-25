@@ -86,7 +86,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'ui-bootstrap': {deps: ['angular']},
       'ui-gravatar': {deps: ['angular']},
       'ui.select': {deps: ['angular']},
-      'ui.util': {deps: ['angular']},
+      'ui.utils': {deps: ['angular']},
       'moment': {exports: 'moment'},
   };
 
