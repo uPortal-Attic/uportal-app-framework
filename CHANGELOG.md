@@ -12,7 +12,8 @@ It is those war files that are being versioned.
 
 ## Next release
 
-(No changes yet)
++ fork ngTasty 0.6.1 with modification to use AngularJS 1.6 `$http.then()` API
+  rather than AngularJS 1.4 `$http.get()`.
 
 ## 17.0.0 - 2020-08-21
 
