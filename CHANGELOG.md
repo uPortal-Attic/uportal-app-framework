@@ -6,25 +6,280 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased][]
+The versions in this change log should match those published
+to [the Sonatype Maven Central Repository][].
+It is those war files that are being versioned.
+
+## Next release
+
++ fork ngTasty with modification to support AngularJS 1.6
++ fix typo in `ui.utils` dependency import.
++ fix style guidance on how to write "My UW System":
+  unlike "My UW-Madison", the System form is hyphenless.
+
+## 17.0.0 - 2020-08-21
+
++ **Breaking change**:
+  Replace existing notification menu with `myuw-notifications` v1.3.3
+  from myuw-web-components library
++ Add optional attribute `include-context-menu` on `widget` directive.
+  attribute effectively defaults to `true`;
+  when set to `false` suppresses the upper-right context menu on widgets.
++ Add `angucomplete`, `ngTasty`, `ngAnimate`, `ui.select`, `ui.utils`, and
+  `ngCsv` dependencies for use in apps using the framework.
+  These are dependencies that were in practice used by MUMAA apps.
+  Adding them to the framework makes these dependencies available from the
+  framework to those MUMAA apps on upgrade as well as available to any other
+  upgrading apps.
++ Add `overlay-config`, a module intended for overlaying upon in tier-specific
+  overlays on uportal-app-framework applications.
+  overlay-config by default is an empty module.
+  Replace that file in tier-specific overlays to set tier-specific settings.
+  That is, the layers are
+  a tier-specific overlay (overrides overlay-config to set tier-specifics)
+  overlays upon
+  an application (overrides override.js to set app options etc)
+  overlays upon
+  this framework.
+
+## 16.0.2 - 2020-07-22
+
++ Always keep myuw-profile button on header menu,
+  rather than hiding at extra small size.
+  Remove myuw-profile from the side navigation drawer menu,
+  rather than including it there at extra small size. ( [#974][] )
++ Check session info to identify if user is a guest
+  to display a bubble vs login button.
+  Stop defaulting `SessionCheckController` and `MessagesController`
+  `guestMode` to true ( [#972][] )
+
+## 16.0.1
+
+The 16.0.1 release process fumbled. Use 16.0.2 instead.
+
+## 16.0.0 - 2020-07-03
+
+Breaking change: downgrade angular-resource to 1.5.8 from 1.7.8
+
+## 15.0.4
+
++ Fix variable passing to myuw-profile in side navigation bar, so that its logout button points to the right address
+
+## 15.0.3
+
++ Update import path to use latest unpkg version ( [#967][])
+
+## 15.0.2
+
++ Upgrade myuw-profile web component to version 1.6.3
++ Remove `hide-xs` in `main-menu.html` to prevent hiding the myuw-profile on mobile on the drawer/left hand menu - we want it there all time
++ Run `npm audit fix` to fix some vulnerabilities in node modules
+
+## 15.0.1
+
++ Update paths to settings pages
++ Remove Guest Login button, which now is taken care of by myuw-profile component
+
+## 15.0.0 - 2020-07-03
+
+### Breaking Change in 15.0.0
+
++ Replace existing profile menu with `myuw-profile` v1.6.3 from myuw-web-components library sourced via unpkg ( [#964][], [#967][] )
++ Two files related to old profile menu have been removed: components/portal/main/partials/username.html
+  and buckyless/directives/username-menu.less
++ Remove unused username elements
++ Remove Guest Login button, which now is taken care of by myuw-profile component
++ Remove `hide-xs` in `main-menu.html` to prevent hiding the myuw-profile on mobile on the drawer/left hand menu - we want it there all time
++ Fix variable passing to myuw-profile in side navigation bar, so that its logout button points to the right address
+
+### Other changes in 15.0.0
+
++ Upgrade myuw-help Web Component to version 1.5.3
++ Add tooltip to my-uw-help
++ Add role="toolbar" to myuw-app-bar
++ Update paths to settings pages
++ Adds `ngResource` 1.7.8
++ Updated dependencies
+
+## 14.0.1 - 2020-04-08
+
++ Upgrade myuw-search Web Component to version 1.5.1 ( [#963][] )
+
+## 14.0.0 - 2020-04-01
+
+### Breaking Change in 14.0.0
+
++ Add $scope.apply inside myuw-search event listener to notify AngularJS of the change ( [#952][] )
++ Replace existing search form with `myuw-search` v1.5.0 from myuw-web-components library ( [#951][] )
++ Two files related to old search form have been reemoved: components/portal/search/directives.js and components/portal/search/partials/search.html
+
+## 13.1.2 - 2020-03-09
+
++ Change CSS style `portal-header` -> `overflow-y: initial`
+  rather than `overflow-y: hidden`. This had broken the new help dialog in
+  e.g. Safari.
+
+## 13.1.1 - 2020-03-06
+
++ Remove import and example usage of not-actually-used `myuw-compact-card`
+  Web Component. (Apparently this was breaking support for
+  recent-but-not-latest MS Edge browser.)
++ Upgrade myuw-help Web Component to version 1.5.2
+
+## 13.1.0 - 2020-02-07
+
++ Add myuw-help web component to myuw-app-bar at top of page. ( [#941][] )
+
+## 13.0.0 - 2020-01-06
+
+BREAKING CHANGE: `recurrence` flag on messages that had been "experimental" in
+prior releases is removed in this release. It had not been working reliably.
+( [#933][] )
+
+Also in this release:
+
++ feature: new optional `fail-silently` attribute on `widget` directive
+  enables invoking a `widget` in contexts where it's not certain that the
+  viewing user has permission on the widget or that it even exists ( [#927][] )
++ feature: add localhost demo of new compact card web component ( [#929][] )
+
++ tweak: Changes search bar prompt text to "Search for apps by keyword..." from
+  "Search MyUW" ( [#922][] )
+
++ fix: upgrade `AngularJS` dependency to
+  [1.7.8](https://github.com/angular/angular.js/blob/master/CHANGELOG.md#178-enthusiastic-oblation-2019-03-11)
+  from 1.7.2, thereby picking up a bunch of little bug fixes
++ fix: upgrade `angular-material` dependency to
+  [1.1.19](https://github.com/angular/material/blob/master/CHANGELOG.md#1119-2019-05-31)
+  from 1.1.11, thereby picking up a bunch of little bug fixes
++ fix: update FontAwesome version to 5.0.13 ( [#925][] )
+
+### Development process change
+
++ Added checkbox to Pull Request template reminding to consider security
+  implications of change. Need for checks to ensure considering security
+  implications of change was flagged in UW Cybersecurity Risk Management
+  Framework review of MyUW; this is one tiny process change to partially
+  address that finding. (#908)
+
+## 12.2.0 - 2019-06-07
+
++ feature: new `remote-content` widget type
++ feature: in `list-of-links` widget type, new `widgetConfig` option
+  `suppressLaunchButton` which will make the widget omit the launch button
+  across the bottom of the widget.
++ documentation: stop documenting that omitting `launchText` in `list-of-links`
+  widgets would supress the widget launch button. This didn't work and instead
+  such list-of-links widgets would use default launch button text.
+
+## 12.1.0 - 2019-05-10
+
+### Deprecations in 12.1.10
+
++ "priority" notifications are deprecated. (#890)
+
+### Enhancements in 12.1.0
+
++ Adds link to MyUW news in `about-page.json` (#887)
++ Adds myuw-banner component `1.1.1` to consume feed from
+  [myuw-banner-message-backend][]. Optionally set new `SERVICE_LOC.bannersURL`
+  to opt in to this feature; without that setting nothing changes.
+  (#891, #893, #899)
++ Upgrades "Loading" splash screen to show a content preview (#898, #907)
++ Adds optional `launchUrl` and `launchUrlTarget` fields to `widgetConfig`,
+  parallel to existing `launchText`. These customize the launch bar URL and
+  target, only in the expanded mode of non-custom non-option-link widgets.
+  ( [#904][] )
+
+### Fixes in 12.1.0
+
++ Now uses `fname` rather than `nodeId` when generating HTML element IDs for
+  widgets. In practice `nodeId` was always `-1` and so wasn't leading to unique
+  HTML element IDs. (#885)
++ Prevent multiple session-expired dialogs from displaying. (#897)
+
+### Documentation in 12.1.0
+
++ Corrects changelog and upgrading documentation to reflect `12.0.0`'s treating
+  all messages as notifications. Otherwise catches up documentation  (#886)
++ Adjust "injecting dependencies" doc to cover a couple extra points of
+  confusion (#900)
+
+### Dependency upgrade in 12.1.0
+
++ Upgraded `remark-validate-links` to `^8.0.0` (#873)
+
+## 12.0.0 - 2019-02-26
+
+### Breaking change in 12.0.0
+
+12.0.0 removes features that supported "announcements" and `/features`. This
+may break downstream apps relying upon these in their routes, as it
+did for `uPortal-home`. All messages are now treated as if they were
+`messageType` `notification`, but notifications still do not support the
+`addToHome` special action URL syntax that `announcements` had supported, so
+announcements using that feature do not automatically port forward cleanly.
 
 ### Added
 
-+ CSS variables for each theme to enable `myuw-app-bar` cooperation with angular
-  material theming (#838)
-+ Added patched Web Components polyfill for AngularJS compatibility (#847)
++ Tell IE users about recommended browsers during application bootstrapping,
+  tracking this with a cookie so users aren't badgered too often. (#877, #881)
 
 ### Changed
+
++ Point directly to files in unpkg (#870)
+
+### Fixed
+
++ List of links widget has more consistent appearance across browsers and screen
+  sizes (#875)
++ Action items widget degrades to basic widget when configured with just one
+  indicator and that one indicator is failing. ( [#876][] )
+
+### Removed
+
++ All messages are now treated as if they were `messageType` `notiifcation`.
+  Removed features that supported "announcements" (e.g. Mascot in top bar,
+  /features page, etc.) (#878)
+
+### Build
+
++ Mark fewer dependencies in `package-lock.json` optional. #883
++ Source `onetime` via  http rather than https. #883
+
+### Deprecated
+
+### Documentation
+
+## 11.0.0 - 2018-11-19
+
+### Breaking Change in 11.0.0
 
 + Replaced Angular Material toolbar directive with `myuw-app-bar` v1.5.3 from
   myuw-web-components library (#838)
   + CSS hierarchy has changed a bit to reflect the absence of the Angular
   Material toolbar. Custom CSS that targets elements within `md-toolbar` may be
   affected
+
+### Added in 11.0.0
+
++ Link in widget contextual menu to app directory details page about the app.
+  (#853)
++ CSS variables for each theme to enable `myuw-app-bar` cooperation with angular
+  material theming (#838)
++ Added patched Web Components polyfill for AngularJS compatibility (#847, #854)
+
+### Changed in 11.0.0
+
 + Regular side navigation now looks the same on mobile and desktop (#838)
++ `time-sensitive-content` widget type now only shows its feedback link after
+  the action period has expired. (#852)
++ Inactive timeout dialog now provides less disruptive actions on timeout (#864)
 
-### Fixed
+### Fixed in 11.0.0
 
++ `list-of-links` no longer erroneously renders blank when it contains 2-4 links
+  the first of which redundant with its launch bar. (#855)
 + `audienceFilter.groups` is now optional in messages. Omitting it is the same
   as setting it to `null` or to an empty array `[]`, namely that no one should
   be denied the message based on group memberships. (#846)
@@ -39,13 +294,12 @@ and this project adheres to
 + Widget service logging now logs the `fname` of the widget for which it could
   not retrieve JSON, when that fname is known. (#850)
 
-### Removed
+### Documentation in 11.0.0
 
-### Deprecated
++ Clarified `takeActionEndDate` in `time-sensitive-content` widget documentation
+  (#861)
 
-### Documentation
-
-## [10.3.0][] - 2018-09-19
+## 10.3.0 - 2018-09-19
 
 ### Added in 10.3.0
 
@@ -62,7 +316,7 @@ and this project adheres to
 + Added localhost examples of `action-items` widget type (#835)
 + Added localhost examples of `time-sensitive-content` widget type (#831)
 
-## [10.2.0][] - 2018-09-12
+## 10.2.0 - 2018-09-12
 
 ### Added in 10.2.0
 
@@ -96,7 +350,7 @@ and this project adheres to
 
 + Removes unused photo opt-out on settings page (#811)
 
-## [10.1.1][] - 2018-08-01
+## 10.1.1 - 2018-08-01
 
 ### Changed in 10.1.1
 
@@ -111,7 +365,7 @@ and this project adheres to
 + Action items widget type now fails gracefully when service returns non-number
   data (#807)
 
-## [10.1.0][] - 2018-07-26
+## 10.1.0 - 2018-07-26
 
 ### Added in 10.1.0
 
@@ -134,7 +388,7 @@ and this project adheres to
 + Enable keyboard activation of widget removal button, when present (#800) &
   (#805)
 
-## [10.0.0][] - 2018-07-13
+## 10.0.0 - 2018-07-13
 
 ### Removed in 10.0.0
 
@@ -163,7 +417,7 @@ and this project adheres to
 
 + Note in changelog message handling changes needing upgrade coordination (#733)
 
-## [9.2.1][] - 2018-06-08
+## 9.2.1 - 2018-06-08
 
 ### Changed in 9.2.1
 
@@ -181,7 +435,7 @@ and this project adheres to
 + Added basic `<body>` styles (override Bootstrap values) to ensure Roboto is
   always preferred (#771)
 
-## [9.2.0][] - 2018-05-22
+## 9.2.0 - 2018-05-22
 
 ### Added in 9.2.0
 
@@ -214,7 +468,7 @@ and this project adheres to
 
 + No longer used LoginOnLoad option removed (#753)
 
-## [9.1.0][] - 2018-04-17
+## 9.1.0 - 2018-04-17
 
 ### Added in 9.1.0
 
@@ -251,7 +505,7 @@ still works in this release, the new `showAllMessages` beta setting is intended
 to replace it. `disableGroupFilteringForMessages` will have no effect in some
 future release. (#742)
 
-## [9.0.2][] - 2018-03-30
+## 9.0.2 - 2018-03-30
 
 This release is to mop up some weirdness which happened with 9.0.1 and get a
 clean artifact.
@@ -262,7 +516,7 @@ clean artifact.
   (#731)
 + Fix positioning of frame-page title when using on-page side navigation (#738)
 
-## [9.0.1][] - 2018-03-29
+## 9.0.1 - 2018-03-29
 
 BREAKING CHANGE:
 
@@ -300,7 +554,7 @@ audiences for whom they may not have been intended.
 + Modest improvements to `list-of-links` widget type documentation (#727)
 + Adds glossary (#725)
 
-## [9.0.0][] - 2018-03-21
+## 9.0.0 - 2018-03-21
 
 ### Breaking changes
 
@@ -369,7 +623,7 @@ version or later to avoid showing users a broken mascot announcement experience.
 
 + About dynamically sourcing `list-of-links` widget content (#717)
 
-## [8.0.0][] - 2018-01-08
+## 8.0.0 - 2018-01-08
 
 ### Breaking Changes
 
@@ -428,7 +682,7 @@ or expired messages.
 + require npm 5.6.0 or higher (#644)
 + resolved appveyor require.js flakiness (#645)
 
-## [7.0.0][] - 2017-11-30
+## 7.0.0 - 2017-11-30
 
 ### BREAKING CHANGES
 
@@ -508,7 +762,7 @@ app framework relies upon might still use Java, of course.)
 
 + Fix a bunch of JSDoc warnings (#598)
 
-## [6.1.0][] - 2017-10-18
+## 6.1.0 - 2017-10-18
 
 ### Added in 6.1.0
 
@@ -537,11 +791,11 @@ app framework relies upon might still use Java, of course.)
   notifications/announcements (#613)
 + Clarify that side navigation subheader is not a link (#617)
 
-## [6.0.3][] - 2017-09-29
+## 6.0.3 - 2017-09-29
 
 + fix(messages): return nothing on filter fail (#554)
 
-## [6.0.2][] - 2017-09-29
+## 6.0.2 - 2017-09-29
 
 BREAKING CHANGE: This release fixes priority notifications (#553). Before
 relying upon fixed notifications in a shared messages source, all participating
@@ -554,20 +808,20 @@ URLs in priority notifications as presented in not-yet-upgraded apps.
 + renaming angularjs-portal to uportal-home (#549)
 + correct references uportal app framework (#548)
 
-## [6.0.1][] - 2017-09-25
+## 6.0.1 - 2017-09-25
 
 + Cleaning up project name relics (#538, #539, #540, #541, #542)
 + Fix typo in time-sensitive widget (#537)
 
-## [6.0.0][] - 2017-09-22
+## 6.0.0 - 2017-09-22
 
 + Renaming project to uportal-app-framework
 
-## [5.2.1][] - 2017-09-21
+## 5.2.1 - 2017-09-21
 
 + Add time-sensitive-content widget type (#524)
 
-## [5.2.0][] - 2017-09-20
+## 5.2.0 - 2017-09-20
 
 ### Messages Enhancements in 5.2.0
 
@@ -588,7 +842,7 @@ URLs in priority notifications as presented in not-yet-upgraded apps.
 + Add a changelog (#513)
 + Release using Conventional Commits (#516)
 
-## [5.1.0][] - 2017-09-01
+## 5.1.0 - 2017-09-01
 
 BREAKING CHANGES: This release adds a feature to mascot announcements for adding
 a widget to home directly from the announcement. Before relying upon this
@@ -610,7 +864,7 @@ announcements in not-yet-upgraded applications.
 + Adopts Conventional Commits (#487)
 + Adds additional project status badges (#510)
 
-## [5.0.0][] - 2017-08-24
+## 5.0.0 - 2017-08-24
 
 Version 5.0.0 of uPortal-App-Framework consists of 67 pull requests over more
 than three months of work.
@@ -730,7 +984,7 @@ return to a faster paced release cycle in the future.
 + [style(less): Add Stylelint](https://github.com/uPortal-Project/uportal-app-framework/pull/485)
 + [style(md): Add Remarklint](https://github.com/uPortal-Project/uportal-app-framework/pull/486)
 
-## [4.1.0][] - 2017-05-04
+## 4.1.0 - 2017-05-04
 
 ### Code Cleanup in 4.1.0
 
@@ -769,15 +1023,15 @@ return to a faster paced release cycle in the future.
 [Fixes display bug where drop down user menu covered user's avatar](https://github.com/uPortal-Project/uportal-app-framework/pull/422)
 [Fixes display bug in user drop down menu](https://github.com/uPortal-Project/uportal-app-framework/pull/425)
 
-## [4.0.3][] - 2017-04-13
+## 4.0.3 - 2017-04-13
 
 [Fixes a bug where rss widgets would always show an error](https://github.com/uPortal-Project/uportal-app-framework/pull/397)
 
-## [4.0.2][] - 2017-04-13
+## 4.0.2 - 2017-04-13
 
 Bug fixes for a specific widget (leave balances) #395 #394
 
-## [4.0.1][] - 2017-04-13
+## 4.0.1 - 2017-04-13
 
 This release has some code cleanup and some bug fixes. Upgrade from [v4.0.0](https://github.com/uPortal-Project/uportal-app-framework/releases/tag/uw-frame-maven-4.0.0) by only updating the dependency version.
 
@@ -786,7 +1040,7 @@ This release has some code cleanup and some bug fixes. Upgrade from [v4.0.0](htt
 [Ensures consistent link launch behavior in widgets](https://github.com/uPortal-Project/uportal-app-framework/pull/391)
 [Fixes bug where icons weren't showing when using the widget directive](https://github.com/uPortal-Project/uportal-app-framework/pull/393)
 
-## [4.0.0][] - 2017-04-05
+## 4.0.0 - 2017-04-05
 
 This release adds a widget directive to the app-framework, adds personalized
 notifications, progresses [Apereo](https://www.apereo.org/)
@@ -809,11 +1063,11 @@ notifications, progresses [Apereo](https://www.apereo.org/)
   services being added. [See the code for more details](https://github.com/uPortal-Project/uportal-app-framework/pull/385/files).
   This will not be a concern for most applications.
 
-## [3.1.4][] - 2017-03-20
+## 3.1.4 - 2017-03-20
 
 Fixes a bug where text in a static portlet was hard to read (#380)
 
-## [3.1.3][] - 2017-03-09
+## 3.1.3 - 2017-03-09
 
 Adds back in UW-Lacrosse theming
 
@@ -821,13 +1075,13 @@ Adds back in UW-Lacrosse theming
 
 Unreleased due to issues pushing to Maven Central.
 
-## [3.1.1][] - 2017-03-02
+## 3.1.1 - 2017-03-02
 
 Increases Notification documentation #375
 Adds more documentation about best practices for notifications #376
 Adjusts link colors for themes #377
 
-## [3.1.0][] - 2017-02-21
+## 3.1.0 - 2017-02-21
 
 ### Uses GitHub Pages
 
@@ -855,7 +1109,7 @@ Adjusts link colors for themes #377
 [Adds codeclimate badges](https://github.com/uPortal-Project/uportal-app-framework/pull/359)
 [Adds dependenci badges](https://github.com/uPortal-Project/uportal-app-framework/pull/358)
 
-## [3.0.3][] - 2016-12-20
+## 3.0.3 - 2016-12-20
 
 Patch release. Simply bump the app's dependency declaration from `uw-frame`
 `3.0.2` to `3.0.3` to adopt this release.
@@ -870,7 +1124,7 @@ See also
 + [the 3.0.3 milestone](https://github.com/uPortal-Project/uportal-app-framework/milestone/9?closed=1).
 + [release announcement](https://groups.google.com/forum/#!topic/myuw-developers/evV8Ie3AhfQ).
 
-## [3.0.2][] - 2016-12-14
+## 3.0.2 - 2016-12-14
 
 Patch release. Trivial upgrade from `v3.0.1` (or even `v3.0.0`).
 
@@ -887,7 +1141,7 @@ Supporting links:
 
 Unreleased due to issues pushing to Maven Central.
 
-## [3.0.0][] - 2016-11-28
+## 3.0.0 - 2016-11-28
 
 ### Major Version Upgrade
 
@@ -915,44 +1169,29 @@ break compatibility with some older components. If the app used any
 + Added ability to have a name for the default theme (#336)
 + Fixed format for announcement end date (#332)
 
-[unreleased]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.3.0...HEAD
-[10.3.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.2.0...v10.3.0
-[10.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.1...v10.2.0
-[10.1.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.1.0...v10.1.1
-[10.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v10.0.0...v10.1.0
-[10.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.1...v10.0.0
-[9.2.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.2.0...v9.2.1
-[9.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.1.0...v9.2.0
-[9.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.2...v9.1.0
-[9.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.1...v9.0.2
-[9.0.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v9.0.0...v9.0.1
-[9.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v8.0.0...v9.0.0
-[8.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v7.0.0...v8.0.0
-[7.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.1.0...v7.0.0
-[6.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.3...v6.1.0
-[6.0.3]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.2...v6.0.3
-[6.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.1...v6.0.2
-[6.0.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v6.0.0...v6.0.1
-[6.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v5.2.1...v6.0.0
-[5.2.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v5.2.0...v5.2.1
-[5.2.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v5.1.0...v5.2.0
-[5.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v5.0.0...v5.1.0
-[5.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v4.1.0...v5.0.0
-[4.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v4.0.3...v4.1.0
-[4.0.3]: https://github.com/uPortal-Project/uportal-app-framework/compare/v4.0.2...v4.0.3
-[4.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v4.0.1...v4.0.2
-[4.0.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v4.0.0...v4.0.1
-[4.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v3.1.4...v4.0.0
-[3.1.4]: https://github.com/uPortal-Project/uportal-app-framework/compare/v3.1.3...v3.1.4
-[3.1.3]: https://github.com/uPortal-Project/uportal-app-framework/compare/v3.1.1...v3.1.3
-[3.1.1]: https://github.com/uPortal-Project/uportal-app-framework/compare/v3.1.0...v3.1.1
-[3.1.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v3.0.3...v3.1.0
-[3.0.3]: https://github.com/uPortal-Project/uportal-app-framework/compare/v3.0.2...v3.0.3
-[3.0.2]: https://github.com/uPortal-Project/uportal-app-framework/compare/v3.0.0...v3.0.2
-[3.0.0]: https://github.com/uPortal-Project/uportal-app-framework/compare/v2.9.0...v3.0.0
 [uportal-home #739]: https://github.com/uPortal-Project/uportal-home/pull/739
 [uportal-home #742]: https://github.com/uPortal-Project/uportal-home/pull/742
 [uportal-home #747]: https://github.com/uPortal-Project/uportal-home/pull/747
 [uportal-home #750]: https://github.com/uPortal-Project/uportal-home/pull/750
 [uportal-home #795]: https://github.com/uPortal-Project/uportal-home/pull/795
 [sidenav-documentation]: http://uportal-project.github.io/uportal-app-framework/configurable-menu.html
+
+[#876]: https://github.com/uPortal-Project/uportal-app-framework/pull/876
+[#904]: https://github.com/uPortal-Project/uportal-app-framework/pull/904
+[#922]: https://github.com/uPortal-Project/uportal-app-framework/pull/922
+[#925]: https://github.com/uPortal-Project/uportal-app-framework/pull/925
+[#927]: https://github.com/uPortal-Project/uportal-app-framework/pull/927
+[#929]: https://github.com/uPortal-Project/uportal-app-framework/pull/929
+[#933]: https://github.com/uPortal-Project/uportal-app-framework/pull/933
+[#941]: https://github.com/uPortal-Project/uportal-app-framework/pull/941
+[#951]: https://github.com/uPortal-Project/uportal-app-framework/pull/951
+[#952]: https://github.com/uPortal-Project/uportal-app-framework/pull/952
+[#963]: https://github.com/uPortal-Project/uportal-app-framework/pull/963
+[#964]: https://github.com/uPortal-Project/uportal-app-framework/pull/964
+[#967]: https://github.com/uPortal-Project/uportal-app-framework/pull/967
+[#972]: https://github.com/uPortal-Project/uportal-app-framework/pull/972
+[#974]: https://github.com/uPortal-Project/uportal-app-framework/pull/974
+
+[myuw-banner-message-backend]: https://git.doit.wisc.edu/myuw/myuw-banner-message-backend
+
+[the Sonatype Maven Central Repository]: https://search.maven.org/artifact/org.apereo.uportal/uportal-app-framework

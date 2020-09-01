@@ -210,10 +210,11 @@ Example of how the `widgetURL` should respond (note the `content.links` path):
 
 #### Guidance about `list-of-links`
 
-* Omitting `launchText` suppresses the launch button
-  at the bottom of the list-of-links widget. This is appropriate when there's
-  nothing more to launch, that is, when the list-of-links widget presents
-  all the intended links and that's all there is to it.
+* Setting `suppressLaunchButton` in widgetConfig to a truthy value suppresses
+  the launch button at the bottom of the list-of-links widget. This is
+  appropriate when there's nothing more to launch, that is, when the
+  list-of-links widget presents all the intended links and that's all there is
+  to it.
 * Avoid using a `list-of-links` widget to display one link.
   Instead, use the name and `alternativeMaximizedLink` of
   [the app directory entry](http://uportal-project.github.io/uportal-home/app-directory)
@@ -392,14 +393,18 @@ four keys.
 
 #### Guidance about `action-items`
 
-If there are multiple action item types to display, the widget will display the
-first 3 in the list, or the first two if the widget needs to display an error
-message. If any of the action item types fail (independently), the widget shows
-an error message telling the user what it couldn't count.
-
-If there are more action item types configured than the widget has room to
-display, it will acknowledge it is not showing everything with
-"Showing {x} of {y}".
+* If `action-items` is configured with just one indicator and that one indicator
+  is failing, `action-items` silently degrades to be a `basic` widget. This is
+  to avoid distracting and taunting the user with broken functionality -- in the
+  case where the best it can do is offer a single hyperlink, the best it can do
+  is offer that single hyperlink as simply and clearly as possible.
+* If there are succeeding and failing indicators, `action-items` shows the first
+  up to 2 succeding indicators, and an error message telling the user what it
+  couldn't count.
+* If there are only succeeding indicators, `action-items` shows the first up to
+  3 indicators.
+* If there are more indicators configured than it can display, it will
+  acknowledge it is not showing everything with "Showing {x} of {y}".
 
 The **feedUrl** should return a simple JSON object containing a "quantity" key
 with an integer for a value. For example:
@@ -481,7 +486,15 @@ with an integer for a value. For example:
 * **activeDateRange**: An object used to determine when to switch to the time-sensitive content, with the following attributes:
   * **templateLiveDate**: The date when the widget should switch from basic content to time-sensitive content. See "Guidance" heading below for suggested formats and options.
   * **takeActionStartDate**: *(optional)* The date when action can be taken. Provide a value if you want the widget to communicate when taking action will be possible (e.g. "Begins September 11th, 2018"). See "Guidance" heading below for suggested formats and options.
-  * **takeActionEndDate**: *(optional)* The date when the action can no longer be taken. Required if `takeActionStartDate` is present. Provide a value if you want the widget to communicate when the action stopped being available (e.d "Ended September 20th, 2018"). See "Guidance" heading below for suggested formats and options.
+  * **takeActionEndDate**: *(optional)* The moment when the action can no longer
+    be taken. Required if `takeActionStartDate` is present. After this moment
+    and before `templateRetireDate`, the widget communicates when the action
+    stopped being available (e.g "Ended September 20th, 2018"). See "Guidance"
+    below for suggested formats and options. Works like SAML `NotOnOrAfter`. If
+    only a date (and not a time) are provided, interprets this as 00:00, i.e.
+    as soon as that date starts. So if for example the last day to execute an
+    Annual Benefits Enrollment opportunity is October 26th, `takeActionEndDate`
+    should be set to October 27th.
   * **templateRetireDate**: *(optional)* The date when the widget should switch back to displaying basic content. See "Guidance" heading below for suggested formats and options.
 * **actionName**: The name of the action users can take (e.g. "Annual benefits enrollment").
 * **daysLeftMessage**: *(optional)* The language to display during the countdown of remaining days. The widget will always display "# days left". Provide a value if you want to add text after the default text (e.g. A `daysLeftMessage` with the value "to change benefits" would result in the message: "# days left to change benefits").
@@ -490,16 +503,23 @@ with an integer for a value. For example:
   * **url**: The url where a user can take action
   * **label**: The text the button should display
 * **learnMoreUrl**: *(optional)* Provide a url if you want the widget to display a link for users to get more information.
-* **feedbackUrl**: *(optional)* Provide a url if you want the widget to display a link where users can give feedback about the taking action.
+* **feedbackUrl**: *(optional)* If set, widget shows a "Give feedback" link
+  after `takeActionEndDate` but before `templateRetireDate`.
 
 #### Guidance about `time-sensitive-content`
 
 ##### Date formatting  in `time-sensitive-content`
 
-Provided dates **MUST** match one of the following formats:
-+ `'YYYY-MM-DD'` (ex. '2017-09-18'): Use this format if the call to action doesn't happen on the same date every year and if the time of day is unknown or unimportant
-+ `'MM-DD'` (ex. '09-18'): Use this format if the date for this action is the same every year
-+ `'...THH:MM'` (ex. 09-18T10:00): Append the time in hours and minutes if you want to set a specific time of day
+Configured dates **MUST** match one of the following formats:
+
++ `'YYYY-MM-DD'` (ex. '2017-09-18'): This format specifies 00:00 on a
+  year-specific one-time-only date.
++ `'MM-DD'` (ex. '09-18'): This format specifies a recurring date every year,
+  again with 00:00 implied. Useful for creating recurring annual cycles in
+  `time-sensitive-content` widgets.
++ `'...THH:MM'` (ex. 09-18T10:00): Append the time in hours and minutes to
+  either the once-only or the recurring date format to specify a time other than
+  00:00
 
 ##### How to configure the active date range in `time-sensitive-content`
 
@@ -679,10 +699,35 @@ reads its `widgetTemplate` as per normal. This means that a `switch` widget can 
 ## Other configuration common across widget types
 
 ### Launch button text
+
 If you provide a `widgetConfig` with any defined widget type (i.e. not a custom widget) with a value for `launchText`, it will replace the text of the
 launch button with the provided value, even for non-widgets. Use sentence case in launch button text.
 
 Read more about the [launch button best practices](widget-launch-button.md).
+
+### Launch button URL
+
+Likewise, `launchUrl` in `widgetConfig` will customize the URL that the launch
+bar links to, but *only in the context of the expanded mode widget*. This
+overrides the widget `alternativeMaximizedLink`, only in the context of
+rendering the expanded-mode widget.
+
+Therefore specifying both `alternativeMaximizedLink` and
+`widgetConfig.launchUrl` is a way to configure the app directory entry to launch
+to either of two URLs, the `launchUrl` in the context of the expanded mode widget
+and the `alternativeMaximizedLink` in all other contexts. The
+`alternativeMaximizedLink` could even link to the expanded mode widget.
+
+Like `launchText`, this doesn't automatically work for `custom`-type widgets. A
+custom widget template could implement this feature but is not guaranteed to
+have done so.
+
+`config.launchUrlTarget` overrides widget `target` like how `config.launchUrl`
+overrides widget `alternativeMaximizedLink`.
+
+Neither `launchUrl` nor `launchUrlTarget` have effect in option-link type widgets,
+because such widgets dynamically set the launch URL depending upon the option
+the user selects.
 
 ### Maintenance mode
 If your widget/application depends on a service that is currently experiencing an outage or planned maintenance, you can
@@ -817,6 +862,35 @@ By doing just this we were able to generate:
 
 ![custom widget](./img/custom-widget.png)
 
+## remote-content widgets
+
+The `remote-content` widget type sources a URL for the widget content, allowing
+generating the widget content server-side.
+
+```xml
+<portlet-preference>
+    <name>widgetType</name>
+    <value>remote-content</value>
+</portlet-preference>
+```
+
+```xml
+<portlet-preference>
+  <name>widgetURL</name>
+  <value>/hrs-integration/widgets/benefit-information.html</value>
+</portlet-preference>
+```
+
+While waiting for the asynchronous request to the `widgetURL`, the
+remote-content widget type shows a loading indicator.
+
+The remote content should include the widget launch button if appropriate. The
+`remote-content` widget template will not provide a launch button except in the
+error case. The widget will use literally the markup responded from the
+`widgetURL` as the widget markup.
+
+If the asynchronous request receives an error response, `remote-content` falls
+back on rendering as if it were at `basic` widget.
 
 [rssToJson]: https://github.com/UW-Madison-DoIT/rssToJson
 [documentation about the app directory]: http://uportal-project.github.io/uportal-home/app-directory.html

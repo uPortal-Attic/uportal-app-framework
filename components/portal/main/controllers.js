@@ -23,24 +23,50 @@ define(['angular', 'require'], function(angular, require) {
 
   .controller('PortalMainController', [
     '$localStorage', '$sessionStorage', '$scope', '$rootScope', '$document',
-    '$location', 'NAMES', 'MISC_URLS', 'APP_FLAGS',
-    'APP_OPTIONS', 'THEMES', 'miscService', 'mainService',
+    '$location', '$log', 'NAMES', 'MISC_URLS', 'APP_FLAGS',
+    'APP_OPTIONS', 'SERVICE_LOC', 'THEMES', 'miscService', 'mainService',
     function(
       $localStorage, $sessionStorage, $scope, $rootScope, $document,
-      $location, NAMES, MISC_URLS, APP_FLAGS,
-      APP_OPTIONS, THEMES, miscService, mainService) {
+      $location, $log, NAMES, MISC_URLS, APP_FLAGS,
+      APP_OPTIONS, SERVICE_LOC, THEMES, miscService, mainService) {
     var defaults = {
       layoutMode: 'list', // other option is 'widgets
     };
 
     /**
       * Listen for unseen notifications
+      * PRIORITY NOTIFICATIONS ARE DEPRECATED
       */
     $scope.$on('HAS_PRIORITY_NOTIFICATIONS', function(event, data) {
       if (angular.isDefined(data.hasNotifications)) {
         $scope.hasPriorityNotifications = data.hasNotifications;
       }
     });
+
+    /**
+     * Get banner messages
+     */
+    function getBanners() {
+      mainService.getBanners()
+        .then(function(result) {
+          // Ensure messages exist
+          if (angular.isArray(result) && result.length > 0) {
+            $scope.banner.message = result[0].text;
+            if (result[0].button) {
+              $scope.banner.confirmingText = result[0].button.label;
+              $scope.banner.confirmingUrl = result[0].button.url;
+              $scope.banner.icon = result[0].icon;
+            }
+            $scope.bannerHasContent = true;
+          }
+
+          return result;
+        })
+        .catch(function(error) {
+          $log.warn('Problem getting banner messages');
+          return error;
+        });
+    }
 
     /**
      * Set Document title.
@@ -74,6 +100,10 @@ define(['angular', 'require'], function(angular, require) {
 
     // =====functions ======
     var init = function() {
+      if (SERVICE_LOC.bannersURL) {
+        getBanners();
+      }
+
       $scope.$storage = $localStorage.$default(defaults);
 
       $scope.NAMES=NAMES;
@@ -81,6 +111,13 @@ define(['angular', 'require'], function(angular, require) {
       $scope.MISC_URLS=MISC_URLS;
       $scope.THEMES = THEMES.themes;
       $scope.APP_OPTIONS = APP_OPTIONS;
+      $scope.bannerHasContent = false;
+      $scope.banner = {
+        'message': '',
+        'confirming-text': '',
+        'confirming-url': '',
+        'dismissiveText': 'Skip for now',
+      };
 
       // Update window title and set app name in top bar
       if (NAMES.title) {
@@ -126,9 +163,9 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Username */
   .controller('SessionCheckController',
-  ['$log', '$scope', 'mainService', 'NAMES',
+  ['$log', '$scope', '$document', 'mainService', 'NAMES',
   'APP_FLAGS', '$sessionStorage', '$localStorage', '$rootScope',
-  function($log, $scope, mainService, NAMES,
+  function($log, $scope, $document, mainService, NAMES,
            APP_FLAGS, $sessionStorage, $localStorage, $rootScope) {
     var vm = this;
     vm.user = [];
@@ -141,7 +178,7 @@ define(['angular', 'require'], function(angular, require) {
       && $sessionStorage.portal.theme.profileUrl) ?
       $sessionStorage.portal.theme.profileUrl : '';
     vm.campusIdAttribute = APP_FLAGS.campusIdAttribute;
-    vm.guestMode = true;
+    vm.MISC_URLS = $rootScope.MISC_URLS;
 
     // Tell username menu which element to focus upon opening (accessibility)
     if (APP_FLAGS.showUserSettingsPage) {
@@ -173,6 +210,18 @@ define(['angular', 'require'], function(angular, require) {
       if (vm.campusIdAttribute && vm.user[vm.campusIdAttribute]) {
         vm.campusId = vm.user[vm.campusIdAttribute];
       }
+
+     // Check session info to identify if user is a guest
+      if (vm.user.firstName && vm.user.lastName) {
+        $document[0].dispatchEvent(new CustomEvent('myuw-login', {
+          bubbles: true,
+          detail: {person: {'firstName': vm.username},
+        }}));
+      } else {
+       $document[0].dispatchEvent(new CustomEvent('myuw-login', {
+          detail: {person: null},
+        }));
+     }
 
       return result;
     }).catch(function() {
@@ -235,19 +284,11 @@ define(['angular', 'require'], function(angular, require) {
 
       /**
        * Listen for unseen notifications
+       * PRIORITY NOTIFICATIONS ARE DEPRECATED
        */
       $scope.$on('HAS_PRIORITY_NOTIFICATIONS', function(event, data) {
         if (angular.isDefined(data.hasNotifications)) {
           vm.hasPriorityNotifications = data.hasNotifications;
-        }
-      });
-
-      /**
-       * Listen for unseen announcements
-       */
-      $scope.$on('HAS_UNSEEN_ANNOUNCEMENTS', function(event, data) {
-        if (angular.isDefined(data.hasNotifications)) {
-          vm.hasUnseenAnnouncements = data.hasAnnouncements;
         }
       });
 
@@ -342,16 +383,15 @@ define(['angular', 'require'], function(angular, require) {
       };
 
       /**
-       * Configure notifications/announcements features in main menu
+       * Configure notifications features in main menu
        * if messages configuration is properly set up
        */
       var configureMessagesFeatures = function() {
         // If messages config is properly set up, set directive scope,
         // otherwise hide messages features
         if (SERVICE_LOC.messagesURL && SERVICE_LOC.messagesURL !== '') {
-          // Set flags for notifications/announcements
+          // Set flags for notifications
           vm.hasPriorityNotifications = $localStorage.hasPriorityNotifications;
-          vm.hasUnseenAnnouncements = $localStorage.hasUnseenAnnouncements;
         } else {
           vm.showMessagesFeatures = false;
         }

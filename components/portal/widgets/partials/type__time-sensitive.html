@@ -48,7 +48,9 @@
   <!-- Give feedback link -->
   <div class="tsc__extra-buttons" layout="row" layout-align="center center">
     <a ng-if="callToAction.learnMoreUrl" ng-href="{{ callToAction.learnMoreUrl }}" target="_blank" rel="noreferrer noopener">Learn more</a>
-    <a ng-if="callToAction.feedbackUrl" ng-href="{{ callToAction.feedbackUrl }}" target="_blank" rel="noreferrer noopener">Give feedback</a>
+    <a ng-if="templateStatus == 'ended' && callToAction.feedbackUrl"
+      ng-href="{{ callToAction.feedbackUrl }}"
+      target="_blank" rel="noreferrer noopener">Give feedback</a>
   </div>
 </div>
 
@@ -60,7 +62,7 @@
 </a>
 
 <!-- LAUNCH BUTTON -->
-<launch-button data-href="{{widget.url}}"
-               data-target="{{ widget.target ? widget.target : '_self' }}"
+<launch-button data-href="{{config.launchUrl ? config.launchUrl : widget.url}}"
+               data-target="{{ config.launchUrlTarget ? config.launchUrlTarget : widget.target ? widget.target : '_self' }}"
                data-button-text="{{ config.launchText ? config.launchText : 'Launch full app' }}"
                data-aria-label="{{ 'Launch ' + widget.title }}"></launch-button>

@@ -2,9 +2,8 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "List of (many) Links widget type",
-      "description": "Demonstrates presentation when seven or more links",
+      "description": "Demonstrates presentation when seven or more links and custom launchUrl, launchUrlTarget in widgetConfig",
       "url": "staticFeeds/list-of-8-links-via-url.json",
       "iconUrl": null,
       "faIcon": "fa-briefcase",
@@ -16,7 +15,9 @@
       "widgetTemplate": null,
       "widgetConfig": {
         "getLinksURL": "true",
-        "launchText": "View widget JSON"
+        "launchText": "Custom launchText",
+        "launchUrl" : "https://www.example.edu/custom/launchUrl/shouldOpenInNewTab",
+        "launchUrlTarget" : "_blank"
       },
       "widgetExternalMessageUrl": "/staticFeeds/sample-widget_message.json",
       "widgetExtneralMessageTextObjectLocation": ["result", 0, "message"],

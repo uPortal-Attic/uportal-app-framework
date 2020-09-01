@@ -72,6 +72,10 @@
         <div flex-xs="100" class="widget-container">
           <widget fname="sample-widget__list-of-one-redundant-link"></widget>
         </div>
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__list-of-4-links-first-redundant">
+          </widget>
+        </div>
       </div>
 
     <h3 style="margin-left:26px">Example switch widgets in expanded mode</h3>
@@ -97,7 +101,7 @@
 
     <h3 style="margin-left:26px">
       Example `time-sensitive-content` widgets in expanded mode</h3>
-      <div style="margin-left:26px">`time-sensitive-content` widgets render 
+      <div style="margin-left:26px">`time-sensitive-content` widgets render
         different content depending upon the date.</div>
       <div layout="row" layout-align="center start"
         style="flex-wrap:wrap;padding:18px;">
@@ -120,7 +124,7 @@
 
       <h3 style="margin-left:26px">
         Example `action-items` widgets in expanded mode</h3>
-      <div style="margin-left:26px">`action-items` widgets render indicators of quantities. Individual quantity 
+      <div style="margin-left:26px">`action-items` widgets render indicators of quantities. Individual quantity
       indicators fail independently. When there are more items than can be displayed, `action-items` prioritizes items that are not failing.</div>
       <div layout="row" layout-align="center start"
         style="flex-wrap:wrap;padding:18px;">
@@ -134,15 +138,15 @@
           <widget fname="sample-widget__action-items_many"></widget>
         </div>
         <div flex-xs="100" class="widget-container">
-          <widget 
+          <widget
             fname="sample-widget__action-items_partially-broken"></widget>
         </div>
         <div flex-xs="100" class="widget-container">
-          <widget 
+          <widget
             fname="sample-widget__action-items_totally-broken"></widget>
         </div>
         <div flex-xs="100" class="widget-container">
-          <widget 
+          <widget
             fname="sample-widget__action-items_empty-string"></widget>
         </div>
       </div>
@@ -150,8 +154,8 @@
 
     <h3 style="margin-left:26px">
       Example custom widgets in expanded mode</h3>
-      <div style="margin-left:26px">custom widgets render arbitrary AngularJS 
-        templates optionally applied to dynamic JSON. `generic` is a deprecated 
+      <div style="margin-left:26px">custom widgets render arbitrary AngularJS
+        templates optionally applied to dynamic JSON. `generic` is a deprecated
         alias for the `custom` widget type.</div>
       <div layout="row" layout-align="center start"
         style="flex-wrap:wrap;padding:18px;">
@@ -160,6 +164,52 @@
         </div>
         <div flex-xs="100" class="widget-container">
           <widget fname="sample-widget__generic"></widget>
+        </div>
+      </div>
+
+      <h3 style="margin-left:26px">
+        Example remote-content widget in expanded mode</h3>
+        <div style="margin-left:26px">remote-content widgets render arbitrary markup sourced from a URL.</div>
+        <div layout="row" layout-align="center start"
+          style="flex-wrap:wrap;padding:18px;">
+          <div flex-xs="100" class="widget-container">
+            <widget fname="sample-widget__remote"></widget>
+          </div>
+        </div>
+
+
+    <h3 style="margin-left:26px">
+      Example failing silently when so configured</h3>
+      <div style="margin-left:26px">Demonstrates fail-silently attribute
+        on widget directive. There are two widgets here with bogus fnames,
+        but the second has fail-silently true, so it silently disappears.</div>
+      <div layout="row" layout-align="center start"
+        style="flex-wrap:wrap;padding:18px;">
+        <div flex-xs="100" class="widget-container">
+          <widget fname="no-exist-1"></widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <widget fname="no-exist-2" fail-silently="true"></widget>
+        </div>
+      </div>
+
+      <h3 style="margin-left:26px">
+        Example suppressing context menu when so configured</h3>
+      <div style="margin-left:26px">
+        Demonstrates include-context-menu attribute on widget directive.
+        These widgets have attribute include-context-menu present
+        with value false and true respectively.
+        The attribute effectively defaults to true when omitted.
+        It is omitted for all other widgets on this example page.</div>
+      <div layout="row" layout-align="center start"
+        style="flex-wrap:wrap;padding:18px;">
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__benefits"
+            include-context-menu="false"></widget>
+        </div>
+        <div flex-xs="100" class="widget-container">
+          <widget fname="sample-widget__benefits"
+            include-context-menu="true"></widget>
         </div>
       </div>
 
@@ -231,28 +281,28 @@
         </div>
 
         <div flex-xs="100" class="widget-container">
-          <compact-widget 
+          <compact-widget
             fname="sample-widget__action-items_one"></compact-widget>
         </div>
         <div flex-xs="100" class="widget-container">
-          <compact-widget 
+          <compact-widget
             fname="sample-widget__action-items_three"></compact-widget>
         </div>
         <div flex-xs="100" class="widget-container">
-          <compact-widget 
+          <compact-widget
             fname="sample-widget__action-items_many"></compact-widget>
         </div>
         <div flex-xs="100" class="widget-container">
-          <compact-widget 
+          <compact-widget
             fname="sample-widget__action-items_partially-broken">
           </compact-widget>
         </div>
         <div flex-xs="100" class="widget-container">
-          <compact-widget 
+          <compact-widget
             fname="sample-widget__action-items_totally-broken"></compact-widget>
         </div>
         <div flex-xs="100" class="widget-container">
-          <compact-widget 
+          <compact-widget
             fname="sample-widget__action-items_empty-string"></compact-widget>
         </div>
 
@@ -263,4 +313,7 @@
           <compact-widget fname="sample-widget__generic"></compact-widget>
         </div>
       </div>
+
+
+      <h2 style="margin-left:26px">Compact widget using new web component hurray</h2>
 </frame-page>

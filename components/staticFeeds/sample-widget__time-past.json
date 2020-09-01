@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "After the action end date",
       "description": "time-sensitive-content widgets can solicit feedback after the action period.",
       "url": "https://rprg.wisc.edu/",

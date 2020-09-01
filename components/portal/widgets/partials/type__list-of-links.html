@@ -34,8 +34,10 @@
     && (config.links.length != 1 || config.links[0].href != widget.url)">
 
   <!-- FOUR LINKS OR LESS -->
+  <!-- Use circle buttons iff 2, 3, 4 links or 1 link that did not collapse
+       to basic. -->
   <div ng-show="config.links.length > 0 && config.links.length <= 4
-    && config.links[0].href != widget.url"
+    && (config.links.length != 1 || config.links[0].href != widget.url)"
     class="list-of-links__{{config.links.length}}">
     <circle-button ng-if="item.icon.indexOf('fa-') > -1"
                    ng-repeat="item in config.links"
@@ -80,8 +82,9 @@
 <!-- LAUNCH BUTTON
   suppress in cases where collapsed to basic-widget, which rendered its own launch button -->
 <launch-button
-  ng-show="config.links.length > 1 || (config.links.length !=1 || config.links[0].href != widget.url)"
-               data-href="{{widget.url}}"
-               data-target="{{ widget.target ? widget.target : '_self' }}"
-               data-button-text="{{ config.launchText ? config.launchText : 'Launch full app' }}"
-               data-aria-label="{{ 'Launch ' + widget.title }}"></launch-button>
+  ng-show="!config.suppressLaunchButton &&
+    (config.links.length !=1 || config.links[0].href != widget.url)"
+  data-href="{{config.launchUrl ? config.launchUrl : widget.url}}"
+  data-target="{{ config.launchUrlTarget ? config.launchUrlTarget : widget.target ? widget.target : '_self' }}"
+  data-button-text="{{ config.launchText ? config.launchText : 'Launch full app' }}"
+  data-aria-label="{{ 'Launch ' + widget.title }}"></launch-button>

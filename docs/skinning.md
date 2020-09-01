@@ -34,7 +34,6 @@ For a more in-depth discussion of theming, see [theming](theming.md)
                   'ariaLabelTitle': '',
                   'crestalt': '',
                   'group': 'Everyone',
-                  'mascotImg': 'img/robot-taco.gif',
                   'footerLinks': [
                     {
                       'url': 'https://www.merriam-webster.com/dictionary/help',

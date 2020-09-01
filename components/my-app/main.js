@@ -36,7 +36,6 @@ define(['angular',
         .when('/settings', settings.betaSettings)
         .when('/user-settings', settings.userSettings)
         .when('/notifications', messages.notifications)
-        .when('/features', messages.announcements)
         .when('/about', about)
         .when('/session-info', help.sessionInfo)
         .when('/access-denied', main.accessDenied)

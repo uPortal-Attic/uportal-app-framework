@@ -32,4 +32,4 @@ See the [notifications documentation](messaging-implementation.md) for detailed 
 
 ## MyUW-specific language
 
-"MyUW" by itself should never contain spaces. However, "My UW-Madison," "My UW-System," etc. are always spaced and hyphenated as written here.
+"MyUW" by itself should never contain spaces. However, "My UW-Madison," "My UW System," etc. are always spaced and hyphenated as written here.

@@ -1,21 +1,18 @@
 {
   "name": "@uportal/app-framework",
-  "version": "10.3.0",
+  "version": "17.0.0",
   "description": "Application Framework for uPortal",
   "scripts": {
-    "commitmsg": "commitlint -e",
     "add-hooks": "npm install husky --no-save",
     "commit": "commit",
     "test": "karma start components/karma.conf.js --single-run",
     "build-static": "node tools/static/build.js",
-    "lint-all": "npm run lint-js && npm run lint-md && npm run lint-commit && npm run lint-css",
+    "lint-all": "npm run lint-js && npm run lint-md && npm run lint-css",
     "lint-staged": "lint-staged",
     "lint-css": "stylelint --syntax less components/css/**/*.less",
-    "dev-lint-js": "onchange components/** -i -- eslint --quiet --ext js --ext json --ext md --format html --output-file static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern components/js/ga.js --ignore-pattern *.min.js --ignore-pattern components/staticFeeds/example-json-callbacks/ill-formed.json",
-    "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern components/js/ga.js --ignore-pattern *.min.js --ignore-pattern components/staticFeeds/example-json-callbacks/ill-formed.json",
+    "dev-lint-js": "onchange components/** -i -- eslint --quiet --ext js --ext json --ext md --format html --output-file static/target/lint-out.html . --ignore-path .gitignore --ignore-pattern components/js/angucomplete.js --ignore-pattern components/js/ga.js --ignore-pattern *.min.js --ignore-pattern components/js/webcomponents-bundle.js --ignore-pattern components/staticFeeds/example-json-callbacks/ill-formed.json",
+    "lint-js": "eslint --ext js --ext json --ext md . --ignore-path .gitignore  --ignore-pattern docs/ --ignore-pattern components/js/angucomplete.js --ignore-pattern components/js/ga.js --ignore-pattern *.min.js --ignore-pattern components/js/webcomponents-bundle.js --ignore-pattern components/staticFeeds/example-json-callbacks/ill-formed.json",
     "lint-md": "remark . --frail --ignore-path .gitignore",
-    "lint-commit": "commitlint --from HEAD~1",
-    "lint-commit-ci": "commitlint-travis",
     "precommit": "lint-staged",
     "postbuild-static": "htmlprocessor static/index.html -o static/target/index.html",
     "prestatic": "npm run build-static",
@@ -70,9 +67,6 @@
   },
   "homepage": "https://github.com/uPortal-Project/uportal-app-framework",
   "devDependencies": {
-    "@commitlint/cli": "^7.0.0",
-    "@commitlint/config-conventional": "^7.0.0",
-    "@commitlint/travis-cli": "^7.0.0",
     "autoprefixer": "^9.0.0",
     "concurrently": "^3.1.0",
     "eslint": "^5.0.0",
@@ -103,15 +97,15 @@
     "karma-safari-launcher": "^1.0.0",
     "less": "3.8.1",
     "lint-staged": "^7.0.0",
-    "lodash": "^4.0.0",
+    "lodash": "^4.17.19",
     "mkdirp": "^0.5.1",
     "onchange": "^4.0.0",
     "postcss": "^7.0.0",
     "recursive-copy": "^2.0.5",
-    "remark-cli": "^5.0.0",
+    "remark-cli": "^6.0.0",
     "remark-preset-lint-consistent": "^2.0.0",
     "remark-preset-lint-recommended": "^3.0.0",
-    "remark-validate-links": "^7.0.0",
+    "remark-validate-links": "^8.0.0",
     "requirejs": "^2.2.0",
     "rimraf": "^2.5.4",
     "stylelint": "^9.1.3",
@@ -119,8 +113,8 @@
     "superstatic": "~6.0.0"
   },
   "dependencies": {
-    "bootstrap": "^3.3.6",
-    "font-awesome": "^4.6.3",
+    "bootstrap": "^3.4.1",
+    "font-awesome": "^4.7.0",
     "normalize.less": "^1.0.0"
   },
   "engines": {
@@ -199,10 +193,5 @@
     "*.{js,json,md}": "eslint --ext js --ext json --ext md --ignore-pattern docs/",
     "*.md": "remark --frail",
     "*.less": "stylelint --syntax less"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   }
 }

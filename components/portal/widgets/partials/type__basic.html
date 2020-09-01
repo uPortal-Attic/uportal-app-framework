@@ -30,8 +30,8 @@
   </a>
 </div>
 <launch-button data-aria-label="{{ 'Launch ' + widget.title }}"
-  data-href="{{ renderUrl() }}"
-  data-target="{{ widget.target ? widget.target : '_self' }}"
+  data-href="{{ config.launchUrl? config.launchUrl : renderUrl() }}"
+  data-target="{{ config.launchUrlTarget ? config.launchUrlTarget : widget.target ? widget.target : '_self' }}"
   data-rel="noopener noreferrer"
   data-button-text="{{ widget.widgetConfig.launchText ? widget.widgetConfig.launchText : 'Launch full app' }}">
 </launch-button>

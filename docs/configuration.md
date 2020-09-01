@@ -58,12 +58,14 @@ this is constructed.
 + **inactivityTimeout**: the length in minutes a login session can remain
 inactive before the server expires it. A dialog will show during the last
 minute of a session, prompting user action. If no action is taken, the user
-will be redirected to `MISC_URLS.logoutURL` when the session has expired.
+will be prompted to reload the page when the session has expired.
 
 ### SERVICE_LOC
 
 + **aboutURL**: Additional data to show in **/session-info**.
 + **aboutPageURL**: A URL to get JSON data about the app. This data is used on the text/link content for the app's "About" page, as well as the app's "description" and "keywords" `<meta>` tags. See [About page](about-page.md) for more information.
++ **bannersURL**: Optional URL to source
+  [banner messages JSON](messaging-implementation.md).
 + **sessionInfo**: Where the frame gets data about the logged in user. [Example][session.json].
 + **messagesURL**: An end point to a feed of messages.
 [Example][sample-messages.json]. Messages at the
@@ -190,6 +192,29 @@ Questions about using `uPortal-app-framework`? [Ask on the user
 list][uportal-user@].
 Collaborating on developing `uPortal-app-framework`? Discuss on [the
 development list][uportal-dev@].
+
+## Tier-specific application configuration
+
+One option is to additionally override `override.js` in tier-specific overlays.
+This has the advantage that anything configurable in `override.js`
+(that is, anything configured in app-config), and an additions to that,
+are arbitrarily configurable in tier-specific overlays. This is powerful.
+It also may duplicate application configuration that's the same in all tiers
+into tier-specific overlays because it replaces the application's `override.js`
+configuration of the frame.
+
+Another, complementary option is to override `overlay-config.js` in
+tier-specific overlays. This has the advantage of _not_ being `override.js` and
+so not clobbering whatever the application was doing in `override.js`.
+This has the disadvantage of _not_ being `override.js` and so not overriding
+`app-config`. The framework has no current special support for
+ `overlay-config.js` -- that is, the framework does not expect anything of that
+ module, does not use it for anything, and does not consult it in interpreting
+ framework configuration. `overlay-config` is currently whatever the downstream
+ applications make of it -- if a particular application invents a constant
+ configured in that module and gives that constant meaning, then that constant
+ becomes configurable per-tier by overriding the implementation of this module
+ in tier-specific overlays.
 
 [KeyValueStore]: https://github.com/UW-Madison-DoIT/KeyValueStore
 [uportal-dev@]: https://groups.google.com/a/apereo.org/forum/#!forum/uportal-dev

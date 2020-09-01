@@ -49,7 +49,6 @@ define(['angular', 'require'], function(angular, require) {
   .directive('username', function() {
     return {
       restrict: 'E',
-      templateUrl: require.toUrl('./partials/username.html'),
       controller: 'SessionCheckController',
       controllerAs: 'sessionCtrl',
     };
@@ -59,14 +58,6 @@ define(['angular', 'require'], function(angular, require) {
       return {
         restrict: 'E',
         templateUrl: require.toUrl('./partials/footer.html'),
-      };
-    })
-
-  .directive('featuresModalTemplate', function() {
-      return {
-          restrict: 'E',
-          templateUrl:
-            require.toUrl('./partials/features-dialog-template.html'),
       };
   });
 });

@@ -19,36 +19,30 @@
 
 -->
 <!-- NOTIFICATION CONTENT -->
-<div class="md-list-item-text"
-   layout="row"
-   layout-align="start center"
-   layout-xs="column"
-   layout-align-xs="center start">
-  <!-- Notification text -->
-  <div layout="column" layout-align="center start" flex-gt-xs="70">
-    <div class="notification__priority-message" ng-if="notification.priority === 'high'">
-      <md-icon class="md-warn">priority_high</md-icon>
-      <span>High priority</span>
+<div class="md-list-item-text" layout="row" layout-align="start center" layout-xs="column"
+    layout-align-xs="center start">
+    <!-- Notification text -->
+    <div layout="column" layout-align="center start" flex-gt-xs="70">
+        <div class="notification__priority-message" ng-if="notification.priority === 'high'">
+            <md-icon class="md-warn">priority_high</md-icon>
+            <span><b>High priority</b></span>
+        </div>
+        <div>{{ notification.title }}</div>
     </div>
-    <div>{{ notification.title }}</div>
-  </div>
-  <!-- Notification buttons -->
-  <div ng-if="notification.moreInfoButton || notification.actionButton" class="notification-buttons" flex-gt-xs="30" layout="row" layout-align="end center">
-    <md-button class="md-raised md-accent"
-               ng-href="{{ notification.actionButton.url }}"
-               ng-if="notification.actionButton && notification.actionButton.url"
-               ng-click="pushGAEvent('notifications page', 'take action', notification.actionButton.url)"
-               target="_blank"
-               rel="noopener noreferrer">
-      {{ notification.actionButton.label }}
-    </md-button>
-    <md-button class="md-raised md-default"
-               ng-href="{{ notification.moreInfoButton.url }}"
-               ng-if="notification.moreInfoButton && notification.moreInfoButton.url"
-               ng-click="pushGAEvent('notifications page', 'more info', notification.moreInfoButton.url)"
-               target="_blank"
-               rel="noopener noreferrer">
-      {{ notification.moreInfoButton.label }}
-    </md-button>
-  </div>
+    <!-- Notification buttons -->
+    <div ng-if="notification.moreInfoButton || notification.actionButton" class="notification-buttons" flex-gt-xs="30"
+        layout="row" layout-align="end center">
+        <md-button class="md-raised md-accent" ng-href="{{ notification.actionButton.url }}"
+            ng-if="notification.actionButton && notification.actionButton.url"
+            ng-click="pushGAEvent('notifications page', 'take action', notification.actionButton.url)" target="_blank"
+            rel="noopener noreferrer">
+            {{ notification.actionButton.label }}
+        </md-button>
+        <md-button class="md-raised md-default" ng-href="{{ notification.moreInfoButton.url }}"
+            ng-if="notification.moreInfoButton && notification.moreInfoButton.url"
+            ng-click="pushGAEvent('notifications page', 'more info', notification.moreInfoButton.url)" target="_blank"
+            rel="noopener noreferrer">
+            {{ notification.moreInfoButton.label }}
+        </md-button>
+    </div>
 </div>

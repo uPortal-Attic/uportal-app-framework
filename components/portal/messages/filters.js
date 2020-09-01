@@ -20,23 +20,6 @@
 
 define(['angular', 'moment'], function(angular, moment) {
   return angular.module('portal.messages.filters', [])
-    .filter('separateMessageTypes', ['$filter', function($filter) {
-      return function(messages) {
-        var separatedMessages = {
-          notifications: [],
-          announcements: [],
-        };
-        separatedMessages.announcements = $filter('filter')(
-          messages,
-          {messageType: 'announcement'}
-        );
-        separatedMessages.notifications = $filter('filter')(
-          messages,
-          {messageType: 'notification'}
-        );
-        return separatedMessages;
-      };
-    }])
     .filter('addToHome', function() {
       return function(messages, MISC_URLS, PortalAddToHomeService) {
         angular.forEach(messages, function(message) {
@@ -134,6 +117,16 @@ define(['angular', 'moment'], function(angular, moment) {
           }
         });
         return messages;
+      };
+    })
+    .filter('filterMessageWithIdOnly', function() {
+      return function(messages, idToFilterOut) {
+        var filteredMessages = angular.forEach(messages, function(value, key) {
+          if (value.id === idToFilterOut) {
+            return messages[key];
+          }
+        });
+        return filteredMessages[0]; // assume id is unique
       };
     })
     .filter('filterForCommonElements', function() {

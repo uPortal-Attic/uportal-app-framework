@@ -19,7 +19,30 @@
 
 -->
 <style type="text/css">
-  .no-js, .bad-browser {
+  @keyframes pulse {
+    0% {
+      background-color: rgba(165, 165, 165, 0.1);
+    }
+    50% {
+      background-color: rgba(165, 165, 165, 0.3);
+    }
+    100% {
+      background-color: rgba(165, 165, 165, 0.1);
+    }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+
+  .no-js {
     margin-bottom: 0;
     font-size: medium;
     background: #EEE;
@@ -29,33 +52,136 @@
   }
 
   .slowfade {
-      -webkit-transition: opacity 1.5s; /* For Safari 3.1 to 6.0 */
-      transition: opacity 1.5s;
-      opacity: 0;
+    -webkit-transition: opacity 1.5s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 1.5s;
+    opacity: 0;
+  }
+
+  #ieAlert {
+    display: none;
+  }
+
+  #loading-splash {
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+    color: darkgrey;
+    background: #EAE8DF;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    font-size: xx-large;
+    margin: 0;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+  }
+
+  #skeleton__header {
+    height:64px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+
+  #skeleton__menu,
+  #skeleton__profile,
+  #skeleton__search {
+    width: 42px;
+    height: 42px;
+    margin: 0 16px;
+    border-radius: 4px;
+    background: #EAE8DF;
+  }
+
+  #skeleton__search {
+    width: 33%;
+    margin: 0 auto;
+  }
+
+  #skeleton__profile {
+    border-radius: 50%;
+  }
+
+  #skeleton__content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    top: 64px;
+    width: 100%;
+    height: 100%;
+    margin: 16px auto;
+  }
+
+  .skeleton__content--block {
+    height: 100%;
+    margin: 16px;
+    border-radius: 4px;
+    width: 80%;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+
+  .skeleton__content--block:nth-child(2) {
+    height: 400px;
+    width: 60%;
+  }
+
+  @media (max-width: 600px) {
+    #skeleton__search {
+      display: none;
+    }
   }
 </style>
+<!--Bad browser error message-->
+<div id="ieAlert" ng-hide="portal.hideIEAlert" class="md-dialog-container" style="top: 0px; height: 100%; width: 100%; background: rgba(0,0,0,0.3); z-index: 2001;">
+  <md-dialog style="background: #fff;" class="md-transition-in" role="alertdialog" tabindex="-1">
+    <md-dialog-content class="md-dialog-content" role="document" tabindex="-1">
+      <h2 class="md-title">MyUW works best in Firefox and Chrome</h2>
+      <div class="md-dialog-content-body">
+        <a href="https://kb.wisc.edu/page.php?id=44398" target="_blank" style="color: #0479a8; text-decoration: none; font-size: 14px; line-height: 20px;">Get help updating your browser.</a>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+      <md-button ng-click="portal.hideIEAlert = true" class="md-primary md-confirm-button" type="button" onclick="createCookie('ieAlertCookie', 'true', 20)" style="text-transform: none; margin: 8px 0 8px 8px; min-height: 36px; min-width: 88px;">Close</md-sbutton>
+    </md-dialog-actions>
+  </md-dialog>
+</div>
+<script>
+  // If it's IE and the ieAlertCookie is null, show the alert
+  if(window.navigator.userAgent.match(/(MSIE|Trident)/)) {
+    if (readCookie('ieAlertCookie') === null) {
+      document.getElementById('ieAlert').style.display = 'flex';
+    }
+  }
+
+  function readCookie(name) {
+	  var nameEQ = name + "=";
+	  var ca = document.cookie.split(';');
+	  for(var i=0;i < ca.length;i++) {
+		  var c = ca[i];
+		  while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		  if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	  }
+	  return null;
+  };
+
+  function createCookie(name, value, days) {
+    var date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    var expires = "; expires="+date.toGMTString();
+    document.cookie = name+"="+value+expires+"; path=/";
+  };
+</script>
+
 <!-- Loading state -->
-<div ng-hide="portal.loading.hidden" ng-class="{slowfade: portal.loading.startFade}" style="
-        position : fixed;
-        top: 0;
-        z-index: 2000;
-        color: darkgrey;
-        background: #EAE8DF;
-        height: 100vh;
-        width: 100vw;
-        text-align: center;
-        padding-top: 45vh;
-        font-size: xx-large;
-        margin: -8px;
-        font-family: Roboto, Helvetica Neue, sans-serif;"
-      id="loading-splash">
-        <!--Bad browser error message-->
-        <!--[if lt IE 10]>
-        <div class="bad-browser">
-          <span class="fa fa-frown-o"></span>
-          <p>Sorry, {{portal.theme.title}} beta does not support your browser.<br/><a href="https://kb.wisc.edu/myuw/page.php?id=51345">Learn how to upgrade your browser.</a></p>
-        </div>
-        <![endif]-->
+<div ng-hide="portal.loading.hidden" ng-class="{slowfade: portal.loading.startFade}" class="skeleton" id="loading-splash">
+  <h1 class="sr-only">The application is getting ready...</h1>
         <!--No javascript enabled-->
         <noscript>
             <div class="no-js" role="alert">
@@ -67,5 +193,13 @@
             </div>
           </div>
         </noscript>
-        <!--loading for realz-->
-        Loading...</div>
+        <!-- Skeleton screen for loading -- emphasize the coming content, not the loading experience -->
+        <header id="skeleton__header">
+          <div id="skeleton__menu"></div>
+          <div id="skeleton__search"></div>
+          <div id="skeleton__profile"></div>
+        </header>
+        <main id="skeleton__content">
+          <div class="skeleton__content--block"></div>
+        </main>
+</div>

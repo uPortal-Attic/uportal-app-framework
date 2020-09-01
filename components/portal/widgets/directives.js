@@ -32,6 +32,8 @@ define(['angular', 'require'], function(angular, require) {
       },
       scope: {
         fname: '@',
+        failSilently: '@?',
+        includeContextMenu: '@?',
       },
       templateUrl: require.toUrl('./partials/widget-card.html'),
       controller: 'WidgetCardController',
@@ -210,6 +212,18 @@ define(['angular', 'require'], function(angular, require) {
       },
       templateUrl: require.toUrl('./partials/type__weather.html'),
       controller: 'WeatherWidgetController',
+    };
+  })
+
+  .directive('remoteContentWidget', function() {
+    return {
+      restrict: 'E',
+      scope: {
+        widget: '=app',
+        config: '=config',
+      },
+      templateUrl: require.toUrl('./partials/type__remote-content.html'),
+      controller: 'RemoteContentWidgetController',
     };
   })
 

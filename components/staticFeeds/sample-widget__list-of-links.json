@@ -2,7 +2,6 @@
   "entry": {
     "canAdd": true,
     "layoutObject": {
-      "nodeId": "-1",
       "title": "List of Links widget type",
       "description": "Convenient access to up to seven hyperlinks, sourced from widget configuration or from URL",
       "url": "staticFeeds/list-of-links-via-url.json",
@@ -16,7 +15,7 @@
       "widgetTemplate": null,
       "widgetConfig": {
         "getLinksURL": "true",
-        "launchText": "View widget JSON"
+        "suppressLaunchButton": true
       },
       "widgetExternalMessageUrl": "/staticFeeds/sample-widget_message.json",
       "widgetExtneralMessageTextObjectLocation": ["result", 0, "message"],

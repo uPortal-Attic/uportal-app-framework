@@ -90,8 +90,9 @@ define(['angular', 'moment'], function(angular, moment) {
      * from the provided fname attribute, makes transcluded content
      * focusable
      * @param {string} fname
+     * @param {string} failSilently
      */
-    $scope.initializeWidget = function(fname) {
+    $scope.initializeWidget = function(fname, failSilently) {
       // Initialize scope variables
       $scope.widget = {};
       $scope.widgetType = '';
@@ -105,6 +106,7 @@ define(['angular', 'moment'], function(angular, moment) {
           if (data) {
             $scope.widget = data;
             $scope.widgetType = widgetType(data);
+            $scope.failSilently = failSilently;
           }
           // If there's a remove button, make it focusable by keyboard
           if ($transclude.isSlotFilled('removeButton')) {
@@ -122,7 +124,7 @@ define(['angular', 'moment'], function(angular, moment) {
     };
 
     // Initialize the widget
-      $scope.initializeWidget($scope.fname);
+      $scope.initializeWidget($scope.fname, $scope.failSilently);
   }])
 
   /**
@@ -1042,5 +1044,32 @@ define(['angular', 'moment'], function(angular, moment) {
     } else {
       $log.warn('WeatherWidgetController did not receive a widgetURL');
     }
-  }]);
+  }])
+
+  .controller('RemoteContentWidgetController', [
+    '$scope', '$http', '$log',
+    function($scope, $http, $log) {
+      var initRemoteContentWidget = function() {
+        $scope.loading = true;
+        $log.debug('entered initRemoteContentWidget()');
+
+
+        $http.get($scope.widget.widgetURL).then(function(result) {
+          $scope.remoteContent = result.data;
+          $scope.loading = false;
+          $log.debug(
+            'Got [' + result.data + '] from [' +
+            $scope.widget.widgetURL + ']' );
+          return result;
+        }).catch(function(error) {
+          $scope.remoteContentErrors = error;
+          $log.error(error);
+          return error;
+        }
+        );
+      };
+
+      initRemoteContentWidget();
+    }]
+  );
 });

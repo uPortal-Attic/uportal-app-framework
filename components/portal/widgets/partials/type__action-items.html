@@ -18,7 +18,16 @@
     under the License.
 
 -->
-<div class="widget-body action-items">
+<!-- Single configured indicator failed: emulate a basic widget-->
+<basic-widget
+  ng-show="actionItems && actionItems.length == 0
+    && actionItemErrors && actionItemErrors.length == 1"
+  app="widget" config="widget.widgetConfig"></basic-widget>
+
+<div
+  ng-show="!actionItems || actionItems.length != 0
+    || !actionItemErrors || actionItemErrors.length != 1"
+  class="widget-body action-items">
   <!-- No action items to display -->
   <div layout="row" layout-align="center center">
     <!-- Loading case -->
@@ -59,7 +68,11 @@
 </div>
 
 <!-- LAUNCH BUTTON -->
-<launch-button data-href="{{ widget.url }}"
-               data-target="{{ widget.target ? widget.target : '_self' }}"
-               data-button-text="{{ launchText }}"
-               data-aria-label="{{ 'Launch ' + widget.title }}"></launch-button>
+<!-- suppress when degraded to a basic widget, which rendered its own launch button-->
+<launch-button
+ng-show="!actionItems || actionItems.length != 0
+  || !actionItemErrors || actionItemErrors.length != 1"
+  data-href="{{config.launchUrl ? config.launchUrl : widget.url}}"
+  data-target="{{ config.launchUrlTarget ? config.launchUrlTarget : widget.target ? widget.target : '_self' }}"
+  data-button-text="{{ launchText }}"
+  data-aria-label="{{ 'Launch ' + widget.title }}"></launch-button>

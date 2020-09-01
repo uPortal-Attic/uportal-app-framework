@@ -30,7 +30,7 @@
   <groupId>org.apereo.uportal</groupId>
   <artifactId>uportal-app-framework</artifactId>
   <packaging>war</packaging>
-  <version>10.3.1-SNAPSHOT</version>
+  <version>17.0.1-SNAPSHOT</version>
   <name>uPortal Application Framework</name>
   <description>App Framework for uPortal</description>
   <url>https://github.com/uPortal-Project/uportal-app-framework</url>
@@ -461,10 +461,14 @@
             <exclude>**/docs/**/*.scss</exclude>
             <exclude>**/components/coverage/**</exclude>
             <exclude>**/components/test_out/**</exclude>
+            <exclude>**/components/js/angucomplete.js</exclude>
             <exclude>**/components/js/ga.js</exclude>
+            <exclude>**/components/js/webcomponents-bundle.js</exclude>
+            <exclude>**/components/js/webcomponents-bundle.js.map</exclude>
             <exclude>**/components/js/*.min.js</exclude>
             <exclude>**/components/js/*.min.js.map</exclude>
             <exclude>.gitignore</exclude>
+            <exclude>.npmrc</exclude>
           </excludes>
           <mapping>
             <less>JAVADOC_STYLE</less>
