@@ -10,7 +10,7 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## Next release
+## 17.0.1 - 2020-09-01
 
 + fork ngTasty with modification to support AngularJS 1.6
 + fix typo in `ui.utils` dependency import.
