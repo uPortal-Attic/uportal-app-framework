@@ -103,7 +103,6 @@ create the next patch version.
 [uportal-app-framework closed pull requests]: https://github.com/uPortal-Project/uportal-app-framework/pulls?q=is%3Apr+is%3Aclosed
 [uportal-app-framework milestones]: https://github.com/uPortal-Project/uportal-app-framework/milestones
 [CHANGELOG]: ../CHANGELOG.md
-[uportal-app-framework access on npm]: https://www.npmjs.com/package/@uportal/app-framework/access
 [Release Maven artifacts]: https://central.sonatype.org/pages/releasing-the-deployment.html
 [central Maven staging repository]: https://oss.sonatype.org/#stagingRepositories
 [adopted Apache rules]: https://github.com/uPortal-Project/uportal-app-framework/blob/master/committers.md#rules
