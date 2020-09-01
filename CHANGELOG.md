@@ -16,6 +16,9 @@ It is those war files that are being versioned.
 + fix typo in `ui.utils` dependency import.
 + fix style guidance on how to write "My UW System":
   unlike "My UW-Madison", the System form is hyphenless.
++ Widget service logging now logs
+  the `fname` of the widget for which it could not retrieve JSON,
+  when that fname is known. (#850)
 
 ## 17.0.0 - 2020-08-21
 
@@ -291,8 +294,6 @@ announcements using that feature do not automatically port forward cleanly.
 + Mobile search "Close" button now uses arrow icon, so not to be confused with
   "clear" functionality (#838)
 + `action-items` widgets now handle more kinds of errors more fluently (#839)
-+ Widget service logging now logs the `fname` of the widget for which it could
-  not retrieve JSON, when that fname is known. (#850)
 
 ### Documentation in 11.0.0
 
