@@ -53,7 +53,9 @@
     </md-card-header-text>
 
     <!-- Widget contextual menu -->
-    <md-menu class="widget-action" md-position-mode="target-right bottom">
+    <md-menu
+      ng-if="!includeContextMenu || includeContextMenu != 'false'"
+      class="widget-action" md-position-mode="target-right bottom">
       <md-button class="md-icon-button" aria-label="open {{ widget.title }} menu" ng-click="$mdOpenMenu($event)">
         <md-tooltip class="widget-action-tooltip" md-direction="top" role="tooltip">
           Open {{ widget.title }} menu

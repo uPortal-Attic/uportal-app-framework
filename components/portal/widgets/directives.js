@@ -33,6 +33,7 @@ define(['angular', 'require'], function(angular, require) {
       scope: {
         fname: '@',
         failSilently: '@?',
+        includeContextMenu: '@?',
       },
       templateUrl: require.toUrl('./partials/widget-card.html'),
       controller: 'WidgetCardController',

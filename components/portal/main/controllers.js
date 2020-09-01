@@ -163,9 +163,9 @@ define(['angular', 'require'], function(angular, require) {
 
   /* Username */
   .controller('SessionCheckController',
-  ['$log', '$scope', 'mainService', 'NAMES',
+  ['$log', '$scope', '$document', 'mainService', 'NAMES',
   'APP_FLAGS', '$sessionStorage', '$localStorage', '$rootScope',
-  function($log, $scope, mainService, NAMES,
+  function($log, $scope, $document, mainService, NAMES,
            APP_FLAGS, $sessionStorage, $localStorage, $rootScope) {
     var vm = this;
     vm.user = [];
@@ -178,7 +178,7 @@ define(['angular', 'require'], function(angular, require) {
       && $sessionStorage.portal.theme.profileUrl) ?
       $sessionStorage.portal.theme.profileUrl : '';
     vm.campusIdAttribute = APP_FLAGS.campusIdAttribute;
-    vm.guestMode = true;
+    vm.MISC_URLS = $rootScope.MISC_URLS;
 
     // Tell username menu which element to focus upon opening (accessibility)
     if (APP_FLAGS.showUserSettingsPage) {
@@ -210,6 +210,18 @@ define(['angular', 'require'], function(angular, require) {
       if (vm.campusIdAttribute && vm.user[vm.campusIdAttribute]) {
         vm.campusId = vm.user[vm.campusIdAttribute];
       }
+
+     // Check session info to identify if user is a guest
+      if (vm.user.firstName && vm.user.lastName) {
+        $document[0].dispatchEvent(new CustomEvent('myuw-login', {
+          bubbles: true,
+          detail: {person: {'firstName': vm.username},
+        }}));
+      } else {
+       $document[0].dispatchEvent(new CustomEvent('myuw-login', {
+          detail: {person: null},
+        }));
+     }
 
       return result;
     }).catch(function() {

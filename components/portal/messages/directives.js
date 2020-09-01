@@ -20,17 +20,6 @@
 
 define(['angular', 'require'], function(angular, require) {
   return angular.module('portal.messages.directives', [])
-    .directive('notificationsBell', function() {
-      return {
-        restrict: 'E',
-        scope: {
-          directiveMode: '@mode',
-        },
-        templateUrl: require.toUrl('./partials/notifications-bell.html'),
-        controller: 'NotificationsController',
-        controllerAs: 'vm',
-      };
-    })
 
     .directive('notificationsListItem', function() {
       return {

@@ -22,12 +22,12 @@ define(['angular'], function(angular) {
   return angular.module('portal.messages.controllers', [])
 
     .controller('MessagesController', [
-      '$q', '$log', '$scope', '$rootScope', '$location', '$localStorage',
-      '$sessionStorage', '$filter', '$mdDialog', 'APP_FLAGS', 'MISC_URLS',
-      'SERVICE_LOC', 'mainService', 'miscService', 'messagesService',
-      function($q, $log, $scope, $rootScope, $location, $localStorage,
-               $sessionStorage, $filter, $mdDialog, APP_FLAGS, MISC_URLS,
-               SERVICE_LOC, mainService, miscService, messagesService) {
+      '$q', '$log', '$scope', '$document', '$localStorage',
+      '$filter', 'APP_FLAGS', 'MISC_URLS',
+      'SERVICE_LOC', 'mainService', 'messagesService',
+      function($q, $log, $scope, $document, $localStorage,
+        $filter, APP_FLAGS, MISC_URLS,
+        SERVICE_LOC, mainService, messagesService) {
         // //////////////////
         // Local variables //
         // //////////////////
@@ -57,6 +57,7 @@ define(['angular'], function(angular) {
                 $scope.messages = allMessages;
                 $scope.hasMessages = true;
                 $scope.seenMessageIds = messagesService.getSeenMessageIds();
+                triggerMessages($scope.messages);
               } else {
                 filterMessages(allMessages);
                 // side effects:
@@ -121,6 +122,16 @@ define(['angular'], function(angular) {
         var dataMessageSuccess = function(result) {
           $scope.messages = result;
           $scope.hasMessages = true;
+          triggerMessages($scope.messages);
+        };
+
+        var triggerMessages = function(messages) {
+          $document[0].dispatchEvent(new CustomEvent('myuw-has-notifications', {
+            bubbles: true,
+            detail: {
+              notifications: messages,
+            },
+          }));
         };
 
         /**
@@ -138,7 +149,6 @@ define(['angular'], function(angular) {
         var init = function() {
           $scope.hasMessages = false;
           $scope.messages = {};
-          $scope.guestMode = true;
 
           mainService.isGuest().then(function(isGuest) {
             $scope.guestMode = isGuest;
@@ -157,284 +167,307 @@ define(['angular'], function(angular) {
       },
     ])
 
-    .controller('NotificationsController', ['$q', '$log', '$scope', '$window',
-      '$rootScope', '$location', '$localStorage', '$filter', 'MESSAGES',
-      'SERVICE_LOC', 'miscService', 'messagesService', 'orderByFilter',
-      function($q, $log, $scope, $window, $rootScope, $location, $localStorage,
-               $filter, MESSAGES, SERVICE_LOC, miscService, messagesService,
-               orderByFilter) {
-        // //////////////////
-        // Local variables //
-        // //////////////////
-        var vm = this;
-        var allNotifications = [];
-        var separatedNotifications = {};
-        var dismissedNotificationIds = [];
-        var allSeenMessageIds = [];
+    .controller('NotificationsController', ['$q', '$log', '$document',
+    '$scope', '$window', '$rootScope', '$filter', 'MESSAGES',
+    'SERVICE_LOC', 'miscService', 'messagesService', 'orderByFilter',
+    function($q, $log, $document, $scope, $window, $rootScope,
+             $filter, MESSAGES, SERVICE_LOC, miscService, messagesService,
+             orderByFilter) {
+      // //////////////////
+      // Local variables //
+      // //////////////////
+      var vm = this;
+      var allNotifications = [];
+      var separatedNotifications = {};
+      var dismissedNotificationIds = [];
+      var allSeenMessageIds = [];
 
-        // Promise to get seen message IDs
-        var promiseSeenMessageIds = {
-          seenMessageIds: messagesService.getSeenMessageIds(),
-        };
+      // Promise to get seen message IDs
+      var promiseSeenMessageIds = {
+        seenMessageIds: messagesService.getSeenMessageIds(),
+      };
 
-        // ///////////////////
-        // Bindable members //
-        // ///////////////////
-        vm.notifications = [];
-        vm.dismissedNotifications = [];
-        vm.priorityNotifications = [];
-        vm.notificationsUrl = MESSAGES.notificationsPageURL;
-        vm.status = 'View notifications';
-        vm.isLoading = true;
-        vm.renderLimit = 3;
-        vm.titleLengthLimit = 140;
+      // ///////////////////
+      // Bindable members //
+      // ///////////////////
+      vm.notifications = [];
+      vm.dismissedNotifications = [];
+      vm.priorityNotifications = [];
+      vm.notificationsUrl = MESSAGES.notificationsPageURL;
+      vm.status = 'View notifications';
+      vm.isLoading = true;
+      vm.renderLimit = 3;
+      vm.titleLengthLimit = 140;
 
-        // //////////////////
-        // Event listeners //
-        // //////////////////
+      // //////////////////
+      // Event listeners //
+      // //////////////////
 
-        /**
-         * Process event where notifications have changed,
-         * i.e. a dismissal, and ensure that all instances of the
-         * controller are updated.
-         */
-        var notificationChange = $rootScope.$on('notificationChange',
-          function() {
-            configureNotificationsScope();
-            configurePriorityNotificationsScope();
-          });
-
-        /**
-         * When the parent controller has messages, initialize
-         * things dependent on messages
-         */
-        $scope.$watch('$parent.hasMessages', function(hasMessages) {
-          // If the parent scope has messages and notifications are enabled,
-          // complete initialization
-          if (hasMessages) {
-            // Check if messages service failed
-            if ($scope.$parent.messagesError) {
-              vm.messagesError = $scope.$parent.messagesError;
-            }
-            // If messages config is set up, configure scope
-            // Else hide messages features
-            if (angular.equals($scope.$parent.showMessagesFeatures, true)) {
-              configureNotificationsScope();
-            } else {
-              vm.showMessagesFeatures = false;
-              vm.isLoading = false;
-            }
-          }
+      /**
+       * Process event where notifications have changed,
+       * i.e. a dismissal, and ensure that all instances of the
+       * controller are updated.
+       */
+      var notificationChange = $rootScope.$on('notificationChange',
+        function() {
+          configureNotificationsScope();
+          configurePriorityNotificationsScope();
         });
 
-        // ////////////////
-        // Local methods //
-        // ////////////////
-        /**
-         * Get notifications from parent scope, then pass them on
-         * for filtering by seen/unseen
-         */
-        var configureNotificationsScope = function() {
-          if ($scope.$parent.messages) {
-            allNotifications = $scope.$parent.messages;
-            vm.showMessagesFeatures = true;
-            // Get seen message IDs, then configure scope
-            $q.all(promiseSeenMessageIds)
-              .then(getSeenMessageIdsSuccess)
-              .catch(getSeenMessageIdsFailure);
+      /**
+       * When the parent controller has messages, initialize
+       * things dependent on messages
+       */
+      $scope.$watch('$parent.hasMessages', function(hasMessages) {
+        // If the parent scope has messages and notifications are enabled,
+        // complete initialization
+        if (hasMessages) {
+          // Check if messages service failed
+          if ($scope.$parent.messagesError) {
+            vm.messagesError = $scope.$parent.messagesError;
           }
-        };
-
-        /**
-         * Separate seen and unseen notifications, then set scope variables
-         * @param {Object} result
-         */
-        var getSeenMessageIdsSuccess = function(result) {
-          if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
-            && result.seenMessageIds.length > 0) {
-            // Save all seenMessageIds for later
-            allSeenMessageIds = result.seenMessageIds;
-
-            // Separate seen and unseen
-            separatedNotifications = $filter('filterSeenAndUnseen')(
-              allNotifications,
-              result.seenMessageIds
-            );
-
-            // Set scope notifications and dismissed notifications
-            vm.notifications = separatedNotifications.unseen;
-            vm.dismissedNotifications = separatedNotifications.seen;
-
-            // Set local dismissedNotificationIds (used for tracking
-            // dismissed messages in the K/V store
-            angular.forEach(vm.dismissedNotifications, function(value) {
-              dismissedNotificationIds.push(value.id);
-            });
+          // If messages config is set up, configure scope
+          // Else hide messages features
+          if (angular.equals($scope.$parent.showMessagesFeatures, true)) {
+            configureNotificationsScope();
           } else {
-            // If there aren't any seen notification IDs, just set all
-            // notifications
-            vm.notifications = allNotifications;
+            vm.showMessagesFeatures = false;
+            vm.isLoading = false;
           }
+        }
+      });
 
-          // Configure priority notifications scope
-          configurePriorityNotificationsScope();
-
-          // Set aria-label in notifications bell
-          vm.status = 'You have '
-            + (vm.notifications.length === 0
-              ? 'no' : vm.notifications.length)
-            + ' notifications';
-
-          // Stop loading spinner
-          vm.isLoading = false;
-        };
-
-        /**
-         * Handle errors getting seen message IDs
-         * @param {Object} error
-         */
-        var getSeenMessageIdsFailure = function(error) {
-          $log.warn('Couldn\'t get seen message IDs for notifications ' +
-            ' controller.');
-          // Stop loading spinner
-          vm.isLoading = false;
-        };
-
-        /**
-         * Alert the UI to show priority notifications if they exist
-         */
-        var configurePriorityNotificationsScope = function() {
-          // Use angular's built-in filter to grab priority notifications
-          vm.priorityNotifications = $filter('filter')(
-            vm.notifications,
-            {priority: 'high'}
-          );
-          // If priority notifications exist, notify listeners
-          messagesService.broadcastPriorityFlag(
-            vm.priorityNotifications.length > 0
-          );
-          // If there is only one priority notification, track
-          // rendering in analytics
-          if (vm.priorityNotifications.length === 1) {
-            vm.pushGAEvent(
-              'Priority notification',
-              'Render',
-              vm.priorityNotifications[0].id
-            );
+      $document[0].addEventListener('myuw-notification-dismissed',
+        function(event) {
+          // The event passes a detail object with properties: "notificationId",
+          // which is the "id" value of the dismissed notification, and
+          // "dismissedFromOutside", which is used to sync states between this
+          // and myuw-notifications
+          if (event.detail.hasOwnProperty('dismissedFromOutside') == false) {
+            var dismissedNotificationId = event.detail.notificationId;
+            vm.dismissNotification(dismissedNotificationId, false);
           }
-        };
+        }, false);
 
-        /**
-         * Alerts the UI that there are no priority notifications to show
-         */
-        var clearPriorityNotificationsFlags = function() {
-          vm.priorityNotifications = [];
-          // Notify listeners that priority notifications are gone
-          messagesService.broadcastPriorityFlag(false);
-        };
+      // ////////////////
+      // Local methods //
+      // ////////////////
+      /**
+       * Get notifications from parent scope, then pass them on
+       * for filtering by seen/unseen
+       */
+      var configureNotificationsScope = function() {
+        if ($scope.$parent.messages) {
+          allNotifications = $scope.$parent.messages;
+          vm.showMessagesFeatures = true;
+          // Get seen message IDs, then configure scope
+          $q.all(promiseSeenMessageIds)
+            .then(getSeenMessageIdsSuccess)
+            .catch(getSeenMessageIdsFailure);
+        }
+      };
 
-        // ////////////////
-        // Scope methods //
-        // ////////////////
-        /**
-         * Check if user is viewing notifications page
-         * @return {boolean}
-         */
-        vm.isNotificationsPage = function() {
-          return $window.location.pathname === MESSAGES.notificationsPageURL;
-        };
+      /**
+       * Separate seen and unseen notifications, then set scope variables
+       * @param {Object} result
+       */
+      var getSeenMessageIdsSuccess = function(result) {
+        if (result.seenMessageIds && angular.isArray(result.seenMessageIds)
+          && result.seenMessageIds.length > 0) {
+          // Save all seenMessageIds for later
+          allSeenMessageIds = result.seenMessageIds;
 
-        /**
-         * On-click event to mark a notification as "seen"
-         * @param {Object} notification
-         * @param {boolean} isHighPriority
-         */
-        vm.dismissNotification = function(notification, isHighPriority) {
-          vm.notifications = $filter('filterOutMessageWithId')(
-            vm.notifications,
-            notification.id
-          );
-          // Add notification to dismissed array
-          vm.dismissedNotifications.push(notification);
-
-          // Add notification's ID to local array of dismissed notification IDs
-          dismissedNotificationIds.push(notification.id);
-
-          // Call service to save changes if k/v store enabled
-          if (SERVICE_LOC.kvURL) {
-            messagesService.setMessagesSeen(allSeenMessageIds,
-              dismissedNotificationIds, 'dismiss');
-          }
-
-          // Clear priority notification flags if it was a priority
-          // notification
-          if (isHighPriority) {
-            clearPriorityNotificationsFlags();
-          }
-        };
-
-        /**
-         * On-click event to mark a notification as "unseen"
-         * @param {Object} notification
-         * @param {boolean} isHighPriority
-         */
-        vm.restoreNotification = function(notification, isHighPriority) {
-          // Remove notification from dismissed array
-          vm.dismissedNotifications = $filter('filterOutMessageWithId')(
-            vm.dismissedNotifications,
-            notification.id
+          // Separate seen and unseen
+          separatedNotifications = $filter('filterSeenAndUnseen')(
+            allNotifications,
+            result.seenMessageIds
           );
 
-          // Add notification to non-dismissed array
-          vm.notifications.push(notification);
+          // Set scope notifications and dismissed notifications
+          vm.notifications = separatedNotifications.unseen;
+          vm.dismissedNotifications = separatedNotifications.seen;
 
-          // Remove the corresponding entry from
-          // local array of dismissed notification IDs
-          var index = dismissedNotificationIds.indexOf(notification.id);
-          if (index !== -1) {
-            dismissedNotificationIds.splice(index, 1);
-          }
-          // Call service to save changes if k/v store enabled
-          if (SERVICE_LOC.kvURL) {
-            messagesService.setMessagesSeen(allSeenMessageIds,
-              dismissedNotificationIds, 'restore');
-          }
-          notificationChange();
-        };
-
-        /**
-         * Log a Google Analytics event for each notification rendered
-         * when a user opens the notifications bell menu
-         */
-        vm.trackRenderedNotifications = function() {
-          // Order notifications by priority flag
-          var orderedNotifications = orderByFilter(
-            vm.notifications,
-            'priority'
-          );
-          // Slice array to first 3 entries (the ones that would be rendered)
-          orderedNotifications = $filter('limitTo')(
-            orderedNotifications,
-            vm.renderLimit
-          );
-          // Log a render event for each rendered notification
-          angular.forEach(orderedNotifications, function(notification) {
-            vm.pushGAEvent(
-              'Notification menu',
-              'Rendered notification',
-              notification.id
-            );
+          // Set local dismissedNotificationIds (used for tracking
+          // dismissed messages in the K/V store
+          angular.forEach(vm.dismissedNotifications, function(value) {
+            dismissedNotificationIds.push(value.id);
           });
-        };
+        } else {
+          // If there aren't any seen notification IDs, just set all
+          // notifications
+          vm.notifications = allNotifications;
+        }
 
-        /**
-         * Track clicks on "Notifications" links in mobile menu and top bar
-         * @param {string} category - Context of the event
-         * @param {string} action - Action taken
-         * @param {string} label - Label/data pertinent to event
-         */
-        vm.pushGAEvent = function(category, action, label) {
-          miscService.pushGAEvent(category, action, label);
-        };
-    }]);
+        // Configure priority notifications scope
+        configurePriorityNotificationsScope();
+
+        // Set aria-label in notifications bell
+        vm.status = 'You have '
+          + (vm.notifications.length === 0
+            ? 'no' : vm.notifications.length)
+          + ' notifications';
+
+        // Stop loading spinner
+        vm.isLoading = false;
+      };
+
+      /**
+       * Handle errors getting seen message IDs
+       * @param {Object} error
+       */
+      var getSeenMessageIdsFailure = function(error) {
+        $log.warn('Couldn\'t get seen message IDs for notifications ' +
+          ' controller.');
+        // Stop loading spinner
+        vm.isLoading = false;
+      };
+
+      /**
+       * Alert the UI to show priority notifications if they exist
+       */
+      var configurePriorityNotificationsScope = function() {
+        // Use angular's built-in filter to grab priority notifications
+        vm.priorityNotifications = $filter('filter')(
+          vm.notifications,
+          {priority: 'high'}
+        );
+        // If priority notifications exist, notify listeners
+        messagesService.broadcastPriorityFlag(
+          vm.priorityNotifications.length > 0
+        );
+        // If there is only one priority notification, track
+        // rendering in analytics
+        if (vm.priorityNotifications.length === 1) {
+          vm.pushGAEvent(
+            'Priority notification',
+            'Render',
+            vm.priorityNotifications[0].id
+          );
+        }
+      };
+
+      // ////////////////
+      // Scope methods //
+      // ////////////////
+      /**
+       * Check if user is viewing notifications page
+       * @return {boolean}
+       */
+      vm.isNotificationsPage = function() {
+        return $window.location.pathname === MESSAGES.notificationsPageURL;
+      };
+
+      /**
+       * On-click event to mark a notification as "seen"
+       * @param {Object} notification
+       * @param {boolean} isHighPriority
+       */
+      vm.dismissNotification = function(notificationId, dismissedFromOutside) {
+        // Add notification to dismissed array
+        var dismissedNotification = $filter('filterMessageWithIdOnly')(
+          vm.notifications,
+          notificationId
+        );
+
+        vm.dismissedNotifications.push(dismissedNotification);
+
+        vm.notifications = $filter('filterOutMessageWithId')(
+          vm.notifications,
+          notificationId
+        );
+
+        // Add notification's ID to local array of dismissed notification IDs
+        dismissedNotificationIds.push(notificationId);
+
+        // Call service to save changes if k/v store enabled
+        if (SERVICE_LOC.kvURL) {
+          messagesService.setMessagesSeen(allSeenMessageIds,
+            dismissedNotificationIds, 'dismiss');
+        }
+
+        // Dispatch event to notify myuw-notifications on the dismissal
+        $document[0].dispatchEvent(
+          new CustomEvent('myuw-notification-dismissed', {
+            detail: {
+              notificationId: notificationId,
+              dismissedFromOutside: dismissedFromOutside,
+            },
+          }
+        ));
+      };
+
+      /**
+       * On-click event to mark a notification as "unseen"
+       * @param {Object} notification
+       * @param {boolean} isHighPriority
+       */
+      vm.restoreNotification = function(notification) {
+        // Remove notification from dismissed array
+        vm.dismissedNotifications = $filter('filterOutMessageWithId')(
+          vm.dismissedNotifications,
+          notification.id
+        );
+
+        // Add notification to non-dismissed array
+        vm.notifications.push(notification);
+
+        // Remove the corresponding entry from
+        // local array of dismissed notification IDs
+        var index = dismissedNotificationIds.indexOf(notification.id);
+        if (index !== -1) {
+          dismissedNotificationIds.splice(index, 1);
+        }
+        // Call service to save changes if k/v store enabled
+        if (SERVICE_LOC.kvURL) {
+          messagesService.setMessagesSeen(allSeenMessageIds,
+            dismissedNotificationIds, 'restore');
+        }
+
+        // Dispatch event to notify myuw-notifications on the restoration
+        $document[0].dispatchEvent(new CustomEvent('myuw-has-notifications', {
+          bubbles: true,
+          detail: {
+            notifications: [notification],
+          },
+        }));
+
+        notificationChange();
+      };
+
+      /**
+       * Log a Google Analytics event for each notification rendered
+       * when a user opens the notifications bell menu
+       */
+      vm.trackRenderedNotifications = function() {
+        // Order notifications by priority flag
+        var orderedNotifications = orderByFilter(
+          vm.notifications,
+          'priority'
+        );
+        // Slice array to first 3 entries (the ones that would be rendered)
+        orderedNotifications = $filter('limitTo')(
+          orderedNotifications,
+          vm.renderLimit
+        );
+        // Log a render event for each rendered notification
+        angular.forEach(orderedNotifications, function(notification) {
+          vm.pushGAEvent(
+            'Notification menu',
+            'Rendered notification',
+            notification.id
+          );
+        });
+      };
+
+      /**
+       * Track clicks on "Notifications" links in mobile menu and top bar
+       * @param {string} category - Context of the event
+       * @param {string} action - Action taken
+       * @param {string} label - Label/data pertinent to event
+       */
+      vm.pushGAEvent = function(category, action, label) {
+        miscService.pushGAEvent(category, action, label);
+      };
+    }]
+  );
 });

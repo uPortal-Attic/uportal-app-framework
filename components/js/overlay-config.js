@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to Apereo under one or more contributor license
  * agreements. See the NOTICE file distributed with this work
  * for additional information regarding copyright ownership.
@@ -16,33 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-portal-header {
-  .username-menu {
-    .md-button.avatar__default {
-      display: inline-block;
-      outline: none;
-      border-radius: 50%;
-      height: 40px;
-      width: 40px;
-      min-width: initial;
-      margin-left: 8px;
-      padding: 4px;
-      text-transform: uppercase;
-
-      > span {
-        color: @username-menu-color;
-        background-color: @username-menu-bg;
-        border-radius: 50%;
-        display: block;
-        margin: 0;
-        overflow: hidden;
-        position: relative;
-        height: 32px;
-        width: 32px;
-        line-height: 32px;
-        font-size: 18px;
-        font-weight: 400;
-      }
-    }
-  }
-}
+define(['angular'], function(angular) {
+  return angular.module('overlay-config', []);
+  // replace this file in tier-specific overlay with
+  // a fork of this file that defines an overlay-config module
+  // with the definition specific to that tier.
+  //
+  // (Typically, declaring values for constants such that these values differ
+  // by tier, e.g. specifying use of mocks in some tiers and of live data in
+  // other tiers.)
+});
