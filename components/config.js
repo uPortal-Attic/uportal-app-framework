@@ -51,7 +51,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'ngRoute': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-route.min',
       'ngSanitize': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-sanitize.min',
       'ngStorage': 'https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min',
-      'ngTasty': 'https://cdnjs.cloudflare.com/ajax/libs/ng-tasty/0.6.1/ng-tasty-tpls.min',
+      'ngTasty': 'js/ng-tasty-tpls.min',
       'ui-bootstrap': 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min',
       'ui-gravatar': 'https://cdnjs.cloudflare.com/ajax/libs/angular-gravatar/0.4.2/angular-gravatar.min',
       'ui.select': 'js/select.min',
@@ -86,7 +86,7 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'ui-bootstrap': {deps: ['angular']},
       'ui-gravatar': {deps: ['angular']},
       'ui.select': {deps: ['angular']},
-      'ui.util': {deps: ['angular']},
+      'ui.utils': {deps: ['angular']},
       'moment': {exports: 'moment'},
   };
 

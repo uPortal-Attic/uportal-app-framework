@@ -12,7 +12,8 @@ It is those war files that are being versioned.
 
 ## Next release
 
-(No changes yet)
++ fork ngTasty with modification to support AngularJS 1.6
++ fix typo in `ui.utils` dependency import.
 
 ## 17.0.0 - 2020-08-21
 
