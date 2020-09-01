@@ -14,6 +14,8 @@ It is those war files that are being versioned.
 
 + fork ngTasty with modification to support AngularJS 1.6
 + fix typo in `ui.utils` dependency import.
++ fix style guidance on how to write "My UW System":
+  unlike "My UW-Madison", the System form is hyphenless.
 
 ## 17.0.0 - 2020-08-21
 
