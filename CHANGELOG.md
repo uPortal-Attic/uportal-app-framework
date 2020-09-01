@@ -16,6 +16,9 @@ It is those war files that are being versioned.
 + fix typo in `ui.utils` dependency import.
 + fix style guidance on how to write "My UW System":
   unlike "My UW-Madison", the System form is hyphenless.
++ Widget service logging now logs
+  the `fname` of the widget for which it could not retrieve JSON,
+  when that fname is known. (#850)
 
 ## 17.0.0 - 2020-08-21
 
