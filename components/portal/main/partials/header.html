@@ -31,16 +31,6 @@
 
   <myuw-search slot="myuw-search" input-label="Search for apps by keyword..." button-label="Submit search" icon="search" ng-controller="PortalSearchController"></myuw-search>
 
-  <myuw-notifications
-    slot="myuw-notifications"
-    limit=""
-    see-all-url="/web/notifications"
-    ng-if="showMessagesFeatures"
-  >
-    <span slot="myuw-notifications-empty">All caught up!</span>
-    <md-tooltip aria-label="Open notifications list" md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Notifications</md-tooltip>
-  </myuw-notifications>
-
   <myuw-help myuw-help-title="Help with MyUW" slot="myuw-help" show-button>
     <md-tooltip aria-label="Open help dialog" class="top-bar-tooltip" md-direction="bottom" md-delay="500">Help
     </md-tooltip>
@@ -65,6 +55,16 @@
       </ul>
     </div>
   </myuw-help>
+
+  <myuw-notifications
+    hide-xs
+    slot="myuw-notifications"
+    limit=""
+    see-all-url="/web/notifications"
+  >
+    <span slot="myuw-notifications-empty">All caught up!</span>
+    <md-tooltip aria-label="Open notifications list" md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Notifications</md-tooltip>
+  </myuw-notifications>
 
   <myuw-profile class="header__profile" ng-controller="SessionCheckController as sessionCtrl" slot="myuw-profile"
     login-url="{{ MISC_URLS.myuwHome }}" logout-url="{{ MISC_URLS.logoutURL }}">
