@@ -30,7 +30,7 @@
   <groupId>org.apereo.uportal</groupId>
   <artifactId>uportal-app-framework</artifactId>
   <packaging>war</packaging>
-  <version>17.0.2-SNAPSHOT</version>
+  <version>17.0.2</version>
   <name>uPortal Application Framework</name>
   <description>App Framework for uPortal</description>
   <url>https://github.com/uPortal-Project/uportal-app-framework</url>
@@ -55,7 +55,7 @@
     <connection>scm:git:git@github.com:uPortal-Project/uportal-app-framework.git</connection>
     <developerConnection>scm:git:git@github.com:uPortal-Project/uportal-app-framework.git</developerConnection>
     <url>https://github.com/uPortal-project/uportal-app-framework</url>
-    <tag>HEAD</tag>
+    <tag>uportal-app-framework-maven-17.0.2</tag>
   </scm>
 
   <properties>
