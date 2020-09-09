@@ -13,6 +13,7 @@ It is those war files that are being versioned.
 ## 17.0.2 - 2020-09-08
 
 + Update `myuw-notifications` to v1.3.4
++ Remove notifications bell from sidenav and keep in visible in the header at all times for better accessibility
 
 ## 17.0.1 - 2020-09-01
 
