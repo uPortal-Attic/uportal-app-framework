@@ -10,6 +10,11 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
+## 17.0.3 - 2020-10-02
+
++ Update `myuw-notifications` to v1.4.0
++ Update `myuw-banner` to v1.2.1
+
 ## 17.0.2 - 2020-09-08
 
 + Update `myuw-notifications` to v1.3.4
