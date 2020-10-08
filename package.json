@@ -1,6 +1,6 @@
 {
   "name": "@uportal/app-framework",
-  "version": "17.0.0",
+  "version": "17.0.4",
   "description": "Application Framework for uPortal",
   "scripts": {
     "add-hooks": "npm install husky --no-save",
