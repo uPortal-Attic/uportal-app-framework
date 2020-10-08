@@ -36,6 +36,17 @@ concerned about in your changes.
 
 `npm run lint-all`
 
+## No package-lock.json
+
+That's an experiment. Maybe we just don't need it.
+The dependency tree becomes concrete in specific named versioned builds
+(and even snapshots) published to the artifact repository.
+Overlaying upon those published artifacts is how the framework is adopted in
+practice (and not by building it from source).
+
+So trying not keeping a package-lock.json.
+
+
 [uportal-home website on incubating]: http://uportal-project.github.io/uportal-home/apereo-incubation.html
 [Apereo inbound intellectual property licensing practices]: https://www.apereo.org/licensing/practices
 [Apereo Individual Contributor License Agreement]: https://www.apereo.org/sites/default/files/Licensing%20Agreements/apereo-icla.pdf
