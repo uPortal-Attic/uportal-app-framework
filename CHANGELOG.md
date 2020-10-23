@@ -10,6 +10,10 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
+## Future release
+
++ Handle zero-options case in option-link widget type
+
 ## 17.0.4 - 2020-10-12
 
 + Update `myuw-banner` to v1.2.2
