@@ -33,8 +33,14 @@
     <div ng-if="widget.widgetData.length == 0" layout="row" layout-align="center center">
       <loading-gif data-object='widget.widgetData'></loading-gif>
     </div>
+
+    <!-- IF ZERO ELEMENTS -->
+    <div ng-if="widget.widgetData && config.singleElement && !widget.widgetData[config.display]">
+      <p><a ng-href="widget.uri">{{widget.uri_message}}</a></p>
+    </div>
+
     <!-- IF ONE ELEMENT -->
-    <div ng-if="config.singleElement && (!widget.widgetData[config.arrayName] || widget.widgetData[config.arrayName].length == 0)"
+    <div ng-if="widget.widgetData && config.singleElement && (!widget.widgetData[config.arrayName] || widget.widgetData[config.arrayName].length == 0)"
          layout="row" layout-align="center center">
       <span title='{{ widget.widgetData[config.display].length > 26 ? widget.widgetData[config.display] : "" }}'>
         {{ widget.widgetData[config.display] | trimMiddle:26 }}
