@@ -13,6 +13,7 @@ It is those war files that are being versioned.
 ## Future release
 
 + Handle zero-options case in option-link widget type
++ Implement Snippets for the MyUW Tag Manager Account
 
 ## 17.0.4 - 2020-10-12
 
