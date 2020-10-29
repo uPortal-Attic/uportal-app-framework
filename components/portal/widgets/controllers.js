@@ -671,6 +671,8 @@ define(['angular', 'moment'], function(angular, moment) {
               eval($scope.widget.widgetConfig.evalString)) {
               $scope.isEmpty = true;
             }
+          } else if (($scope.widget === 'student-orientation') && !data) {
+              return studentOrientationWidgetError();
           } else {
             $log.warn('CUSTOM WIDGET CONTROLLER: '
               + 'Got nothing back from widget fetch from: ' +
@@ -683,6 +685,24 @@ define(['angular', 'moment'], function(angular, moment) {
           $scope.loading = false;
         });
       }
+    };
+
+      // Custom error message on Student Orientation widget
+      var studentOrientationWidgetError = function() {
+      return {
+        title: student-orientation,
+        mdIcon: 'help',
+        widgetType: 'generic',
+        widgetConfig: {
+          error: true,
+          additionalText: 'Please contact <a href="https://soar.wisc.edu/">SOAR office</a> if you need immediate assistance.',
+        },
+        widgetTemplate: '<div class=\'overlay__widget-mode\'>' +
+        '<div class=\'overlay-content\' style="background-color: #f5f5f5">' +
+        '<p><md-icon class=\'md-warn\'>warning</md-icon></p>' +
+        '<p>There was an issue loading the information. Contact <a href="https://soar.wisc.edu/">SOAR office</a> if you need immediate assistance.</p>' +
+        '</div></div>',
+      };
     };
 
     /**

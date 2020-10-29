@@ -12,6 +12,7 @@ It is those war files that are being versioned.
 
 ## Future release
 
++ Custom error message on Student Orientation widget
 + Handle zero-options case in option-link widget type
 + Implement Snippets for the MyUW Tag Manager Account
 
