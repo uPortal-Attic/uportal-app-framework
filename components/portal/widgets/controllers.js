@@ -690,7 +690,7 @@ define(['angular', 'moment'], function(angular, moment) {
       // Custom error message on Student Orientation widget
       var studentOrientationWidgetError = function() {
       return {
-        title: student-orientation,
+        title: 'student-orientation',
         mdIcon: 'help',
         widgetType: 'generic',
         widgetConfig: {
