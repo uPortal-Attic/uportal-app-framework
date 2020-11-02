@@ -2,22 +2,10 @@
 
 ## Introduction
 
-[www.google.com/analytics](https://www.google.com/analytics) (GA for short) is
-a great (and free) way to analyze traffic to a web application. By default
-uportal-app-framework disables GA.
-
-## Basic configuration
-
-Add in a `/js/config.js` file that will overwrite the `components/js/config.js`.
-
-<!-- eslint-disable no-unused-vars -->
-```javascript
-var config = {
-  gaID: 'UA-########-##',
-};
-```
+Uses Google Tag Manager, with the MyUW and WPS organizations hard-coded.
 
 ## Site search
+
 GA has a great feature called site search. It collects information about what
 people are searching for within a site. To configure it in
 uportal-app-framework is a couple steps.
