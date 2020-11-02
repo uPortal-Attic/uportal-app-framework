@@ -33,8 +33,6 @@
   <uw-body></uw-body>
 
   <!--javascript-->
-  <script type="text/javascript" src="js/config.js"></script>
-  <script type="text/javascript" src="js/ga.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="main"></script>
 
 </body>

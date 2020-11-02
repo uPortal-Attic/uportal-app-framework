@@ -14,6 +14,7 @@ It is those war files that are being versioned.
 
 + Handle zero-options case in option-link widget type
 + Implement Snippets for the MyUW Tag Manager Account
++ Remove Google Analytics JavaScript import obviated by Google Tag Manager
 
 ## 17.0.4 - 2020-10-12
 
