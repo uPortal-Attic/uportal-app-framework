@@ -16,6 +16,8 @@ It is those war files that are being versioned.
 + portalShibbolethService no longer invokes miscService.redirectUser on error
   of the Shibboleth SP JSON service it calls. That JSON service normally fails
   in public.my site contexts.
++ Make the text label of circle-button clickable,
+  increasing the size of the click target and thus the usability
 + Updates `myuw-search` to v.1.5.5
 
 ## 18.1.0
