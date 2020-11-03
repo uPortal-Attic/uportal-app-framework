@@ -194,13 +194,17 @@ define(['angular', 'jquery'], function(angular, $) {
      * @param {string} value
      */
     var pushGAEvent = function(category, action, label, value) {
-      $analytics.eventTrack(action, {
-        'category': category,
-        'label': label,
-        'value': (value || label),
+
+      dataLayer.push({
+        'event': 'MyUW Event',
+        'event_action' : action,
+        'event_category': category,
+        'event_label': label,
+        'event_value': (value || label)
       });
+
       $log.log(
-        'ga event logged action: ' + action +
+        'pushed event to tag manager: action: ' + action +
         ', category: ' + category + ', label: ' + label);
     };
 
