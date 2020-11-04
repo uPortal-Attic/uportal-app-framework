@@ -37,4 +37,8 @@
   ng-href="{{ cbDisabled ? '#' : href}}"
   target="{{cbDisabled ? '' : target}}" rel='noopener noreferrer'>
   {{title | truncate:trunclen}}
+  <md-tooltip ng-if="title.length > trunclen"
+    md-direction="bottom">
+    {{ title }}
+  </md-tooltip>
 </a>
