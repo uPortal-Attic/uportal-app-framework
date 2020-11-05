@@ -194,7 +194,7 @@ define(['angular', 'jquery'], function(angular, $) {
      * @param {string} value
      */
     var pushGAEvent = function(category, action, label, value) {
-
+      // eslint-disable-next-line no-undef
       dataLayer.push({
         'event': 'MyUW Event',
         'event_action': action,
