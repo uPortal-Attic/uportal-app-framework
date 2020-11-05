@@ -200,7 +200,7 @@ define(['angular', 'jquery'], function(angular, $) {
         'event_action' : action,
         'event_category': category,
         'event_label': label,
-        'event_value': (value || label)
+        'event_value': (value || label),
       });
 
       $log.log(
