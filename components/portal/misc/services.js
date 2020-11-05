@@ -197,7 +197,7 @@ define(['angular', 'jquery'], function(angular, $) {
 
       dataLayer.push({
         'event': 'MyUW Event',
-        'event_action' : action,
+        'event_action': action,
         'event_category': category,
         'event_label': label,
         'event_value': (value || label),
