@@ -2,6 +2,19 @@
 
 At a glance notes for upgrading apps between major versions.
 
+## 17 to 18
+
+18.0.0 drops direct instantiation of Google Analytics in favor of hard-coded
+usage of Google Tag Manager. Tag Manager is an additional layer of abstraction
+in front of, among other things, Google Analytics.
+
+Configuring a Google Analytics property id in `config.json`
+no longer has any effect.
+
+In order for an application using framework version 18 and later to continue to
+participate in Google Analytics, WPS will need to provision it in one or both of
+the relevant Google Tag Manager organizations.
+
 ## 11.x.x to 12.x.x
 
 12.0.0 removes features that supported "announcements" and `/features`. This may
