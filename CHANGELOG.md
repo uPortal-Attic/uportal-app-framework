@@ -10,10 +10,12 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## Future release
+## 18.0.0 - 2020-11-06
 
-+ Handle zero-options case in option-link widget type
-+ Implement Snippets for the MyUW Tag Manager Account
++ **Breaking change**:
+  Adopts Google Tag Manager using MyUW and WPS tag manager accounts.
+  Prior `config.json` Google Analytics configuration no longer has effect.
++ Handles zero-options case in option-link widget type
 
 ## 17.0.4 - 2020-10-12
 
