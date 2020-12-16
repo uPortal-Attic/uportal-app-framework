@@ -730,23 +730,23 @@ because such widgets dynamically set the launch URL depending upon the option
 the user selects.
 
 ### Maintenance mode
-If your widget/application depends on a service that is currently experiencing an outage or planned maintenance, you can
-add the `maintenanceMode` attribute to your `widgetConfig` with a value of "true." Widgets in maintenance mode will display
-a message communicating that the app is unavailable and the widget will be disabled (unclickable). To turn maintenance mode off,
-simply set the attributes value to "false" or remove it from your `widgetConfig` altogether.
+
+Widgets in maintenance mode will display
+a message communicating that the app is unavailable and the widget will be disabled (unclickable).
+
+Place widgets into or out of Maintenance mode live via Portlet Administration.
+(Edit --> set lifecycle state to Maintenance --> Save).
+Only Portal Administrators can do this.
+
+However. Entity import will clobber this live change unless the entity also reflects the change, via
 
 Example:
 
 ```xml
-<portlet-preference>
-  <name>widgetConfig</name>
-  <value>
-    <![CDATA[{
-      "launchText" : "See all the Weather",
-      "maintenanceMode" : true
-    }]]>
-  </value>
-</portlet-preference>
+<parameter>
+  <name>PortletLifecycleState.inMaintenanceMode</name>
+  <value>true</value>
+</parameter>
 ```
 
 Widgets in maintenance mode will show a default maintenance message
