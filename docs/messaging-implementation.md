@@ -147,7 +147,7 @@ learn more url can be found.
 The url to find the JSON object can be both external and internal to the app's
 configuration.
 
-Example JSON object
+Example JSON object (at `/example/path/to/some.json`)
 
 ```json
 {
