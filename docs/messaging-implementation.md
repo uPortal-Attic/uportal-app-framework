@@ -173,7 +173,7 @@ Example widget configuration
     <value>["result", 0, "message"]</value>
 </portlet-preference>
 <portlet-preference>
-    <name>widgetExternalMessageLearnMoreUrl</name>
+    <name>widgetExternalMessageLearnMoreUrlLocation</name>
     <value>["learnMoreUrl"]</value>
 </portlet-preference>
 
