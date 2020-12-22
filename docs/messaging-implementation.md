@@ -137,6 +137,8 @@ A zero item array of banner messages suppresses the banner message feature.
 
 ## Widget messages
 
+Colloquially known as "widget tablecloths" because they overlay on a widget.
+
 Widget messaging is based on JSON input configured in a
 [widget's configuration](make-a-widget.md).
 
