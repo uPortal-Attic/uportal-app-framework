@@ -170,14 +170,35 @@ Example widget configuration
 </portlet-preference>
 <portlet-preference>
     <name>widgetExternalMessageTextObjectLocation</name>
-    <value>["result", 0, "message"]</value>
+    <value>result</value>
+    <value>0</value>
+    <value>message</value>
 </portlet-preference>
 <portlet-preference>
     <name>widgetExternalMessageLearnMoreUrlLocation</name>
-    <value>["learnMoreUrl"]</value>
+    <value>learnMoreUrl</value>
 </portlet-preference>
 
 ```
+
+Note that the
+`widgetExternalMessageTextObjectLocation` and
+`widgetExternalMessageLearnMoreUrlLocation` preferences
+are a query language,
+indexing into the JSON.
+
+In these examples, `widgetExternalMessageTextObjectLocation` is telling the
+framework to read the message text from the value of `message` in the zeroth
+item of the array named `result` in the JSON.
+
+In these examples, `widgetExternalMessageLearnMoreUrlLocation` is telling the
+framework to read the URL for the Learn more button
+from the value of `learnMoreUrl` in the JSON.
+
+This means there's tremendous flexibility in JSON that can work to drive
+widget messaging. It will often be feasible
+to re-purpose JSON from other purposes
+to drive widget messaging, un-modified.
 
 ## Exercises
 
