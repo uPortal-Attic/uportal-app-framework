@@ -166,7 +166,7 @@ Example widget configuration
 ```xml
 <portlet-preference>
     <name>widgetExternalMessageUrl</name>
-    <value>locationToFindJSONObject</value>
+    <value>/example/path/to/some.json</value>
 </portlet-preference>
 <portlet-preference>
     <name>widgetExtneralMessageTextObjectLocation</name>
