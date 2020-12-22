@@ -140,12 +140,24 @@ A zero item array of banner messages suppresses the banner message feature.
 Widget messaging is based on JSON input configured in a
 [widget's configuration](make-a-widget.md).
 
-Configuration is done by two required items and one optional.  Required is a url
-where to find a JSON object and an array representing where in the object the
-message can be found.  Optional is an array representing where in the object the
-learn more url can be found.
-The url to find the JSON object can be both external and internal to the app's
-configuration.
+Three portlet-preferences configure on-widget dismissable messages.
+
+- `widgetExternalMessageUrl` (required): the URL from which to read the JSON.
+  Typically this is to a static file, or to a URL proxied through the REST proxy,
+  or to a resource URL within a Portlet.
+  If this portlet-preference is not set,
+  the widget message does not display at all.
+- `widgetExternalMessageTextObjectLocation` (required):
+  a multi-valued portlet-preference representing the query path into the JSON
+  to read the String representing the text to show on the widget.
+  If the path does not point to a value in the JSON,
+  the widget message does not display at all.
+- `widgetExternalMessageLearnMoreUrlLocation` (optional):
+  a multi-valued portlet-preference representing the query path into the JSON
+  to read the String
+  representing the URL to which a "Learn more" button should link.
+  If not present or if it does not point to a value in the JSON,
+  the "Learn more" button does not show.
 
 Example JSON object (at `/example/path/to/some.json`)
 
