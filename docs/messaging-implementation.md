@@ -169,7 +169,7 @@ Example widget configuration
     <value>/example/path/to/some.json</value>
 </portlet-preference>
 <portlet-preference>
-    <name>widgetExtneralMessageTextObjectLocation</name>
+    <name>widgetExternalMessageTextObjectLocation</name>
     <value>["result", 0, "message"]</value>
 </portlet-preference>
 <portlet-preference>
