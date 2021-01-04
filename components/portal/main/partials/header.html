@@ -18,21 +18,68 @@
     under the License.
 
 -->
-<myuw-app-bar role="toolbar" theme-name="{{ portal.theme.title }}" app-name="{{ appBarTitle }}" app-url="{{ MISC_URLS.rootURL }}"
+<myuw-app-bar
+  role="toolbar"
+  theme-name="{{ portal.theme.title }}"
+  app-name="{{ appBarTitle }}"
+  app-url="{{ MISC_URLS.rootURL }}"
   ng-class="{ 'has-priority-notifications' : hasPriorityNotifications }">
 
   <!-- MAIN MENU TOGGLE -->
-  <md-button slot="myuw-navigation" class="menu-toggle" ng-controller="MenuToggleController as vm"
-    ng-click="vm.showMainMenu()" ng-class="{ 'menu-margin' : vm.isMenuConfigured }" ng-show="vm.isMenuConfigured"
+  <md-button
+    slot="myuw-navigation"
+    class="menu-toggle"
+    ng-controller="MenuToggleController as vm"
+    ng-click="vm.showMainMenu()"
+    ng-class="{ 'menu-margin' : vm.isMenuConfigured }"
+    ng-show="vm.isMenuConfigured"
     ng-cloak>
     <md-icon>menu</md-icon>
-    <md-tooltip md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Menu</md-tooltip>
+    <md-tooltip
+      md-direction="bottom"
+      md-delay="400"
+      md-autohide
+      class="top-bar-tooltip">
+      Menu</md-tooltip>
   </md-button>
 
-  <myuw-search slot="myuw-search" input-label="Search for apps by keyword..." button-label="Submit search" icon="search" ng-controller="PortalSearchController"></myuw-search>
+  <myuw-search
+   slot="myuw-search"
+   input-label="Search for apps by keyword..."
+   button-label="Submit search"
+   icon="search"
+   ng-controller="PortalSearchController"></myuw-search>
 
-  <myuw-help myuw-help-title="Help with MyUW" slot="myuw-help" show-button>
-    <md-tooltip aria-label="Open help dialog" class="top-bar-tooltip" md-direction="bottom" md-delay="500">Help
+  <myuw-feedback
+    hide-sm
+    hide-xs
+    myuw-feedback-title="Feedback"
+    slot="myuw-feedback"
+    show-button>
+    <md-tooltip
+      aria-label="Open feedback dialog"
+      class="top-bar-tooltip"
+      md-direction="bottom"
+      md-delay="400">Feedback
+    </md-tooltip>
+    <div slot="myuw-feedback-content">
+      <p>Please tell us what you think about the new all-in-one, integrated home for MyUW widgets.</p>
+      <div id="feedback-dialog-actions">
+        <a class="feedback-dialog-action" target="_blank" rel="noopener noreferrer" href="https://my.wisc.edu/portal/p/feedback.ctf5/max/render.uP">
+          Give Feedback</a>
+      </div>
+    </div>
+  </myuw-feedback>
+
+  <myuw-help
+   myuw-help-title="Help with MyUW"
+   slot="myuw-help"
+   show-button>
+    <md-tooltip
+      aria-label="Open help dialog"
+      class="top-bar-tooltip"
+      md-direction="bottom"
+      md-delay="400">Help
     </md-tooltip>
     <div slot="myuw-help-content">
       <ul class="list-of-links">
@@ -62,11 +109,21 @@
     see-all-url="/web/notifications"
   >
     <span slot="myuw-notifications-empty">All caught up!</span>
-    <md-tooltip aria-label="Open notifications list" md-direction="bottom" md-delay="500" md-autohide class="top-bar-tooltip">Notifications</md-tooltip>
+    <md-tooltip
+      aria-label="Open notifications list"
+      md-direction="bottom"
+      md-delay="400"
+      md-autohide
+      class="top-bar-tooltip">
+      Notifications</md-tooltip>
   </myuw-notifications>
 
-  <myuw-profile class="header__profile" ng-controller="SessionCheckController as sessionCtrl" slot="myuw-profile"
-    login-url="{{ MISC_URLS.myuwHome }}" logout-url="{{ MISC_URLS.logoutURL }}">
+  <myuw-profile
+    class="header__profile"
+    ng-controller="SessionCheckController as sessionCtrl"
+    slot="myuw-profile"
+    login-url="{{ MISC_URLS.myuwHome }}"
+    logout-url="{{ MISC_URLS.logoutURL }}">
     <a ng-if="sessionCtrl.profileUrl != ''" ng-href="{{ sessionCtrl.profileUrl }}"
       ng-click="pushGAEvent('Top Bar', 'Click Link', 'Profile');" aria-label="See your profile information"
       slot="nav-item">Profile</a>
@@ -76,8 +133,12 @@
     <a ng-if="$storage.showSettings"
       ng-attr-md-autofocus="{{ sessionCtrl.usernameMenuFocus == 'beta-settings' ? '' : undefined }}" href="settings"
       slot="nav-item" aria-label="Change beta settings">Beta settings</a>
-    <md-tooltip ng-hide="sessionCtrl.guestMode" aria-label="Open options menu" class="top-bar-tooltip"
-      style="margin-top: 24px !important;" md-direction="bottom" md-delay="500">
+    <md-tooltip
+      ng-hide="sessionCtrl.guestMode"
+      aria-label="Open options menu"
+      class="top-bar-tooltip"
+      style="margin-top: 24px !important;" 
+      md-direction="bottom" md-delay="400">
       Options</md-tooltip>
   </myuw-profile>
 
