@@ -137,17 +137,31 @@ A zero item array of banner messages suppresses the banner message feature.
 
 ## Widget messages
 
+Colloquially known as "widget tablecloths" because they overlay on a widget.
+
 Widget messaging is based on JSON input configured in a
 [widget's configuration](make-a-widget.md).
 
-Configuration is done by two required items and one optional.  Required is a url
-where to find a JSON object and an array representing where in the object the
-message can be found.  Optional is an array representing where in the object the
-learn more url can be found.
-The url to find the JSON object can be both external and internal to the app's
-configuration.
+Three portlet-preferences configure on-widget dismissable messages.
 
-Example JSON object
+- `widgetExternalMessageUrl` (required): the URL from which to read the JSON.
+  Typically this is to a static file, or to a URL proxied through the REST proxy,
+  or to a resource URL within a Portlet.
+  If this portlet-preference is not set,
+  the widget message does not display at all.
+- `widgetExternalMessageTextObjectLocation` (required):
+  a multi-valued portlet-preference representing the query path into the JSON
+  to read the String representing the text to show on the widget.
+  If the path does not point to a value in the JSON,
+  the widget message does not display at all.
+- `widgetExternalMessageLearnMoreUrlLocation` (optional):
+  a multi-valued portlet-preference representing the query path into the JSON
+  to read the String
+  representing the URL to which a "Learn more" button should link.
+  If not present or if it does not point to a value in the JSON,
+  the "Learn more" button does not show.
+
+Example JSON object (at `/example/path/to/some.json`)
 
 ```json
 {
@@ -166,18 +180,39 @@ Example widget configuration
 ```xml
 <portlet-preference>
     <name>widgetExternalMessageUrl</name>
-    <value>locationToFindJSONObject</value>
+    <value>/example/path/to/some.json</value>
 </portlet-preference>
 <portlet-preference>
-    <name>widgetExtneralMessageTextObjectLocation</name>
-    <value>["result", 0, "message"]</value>
+    <name>widgetExternalMessageTextObjectLocation</name>
+    <value>result</value>
+    <value>0</value>
+    <value>message</value>
 </portlet-preference>
 <portlet-preference>
-    <name>widgetExternalMessageLearnMoreUrl</name>
-    <value>["learnMoreUrl"]</value>
+    <name>widgetExternalMessageLearnMoreUrlLocation</name>
+    <value>learnMoreUrl</value>
 </portlet-preference>
 
 ```
+
+Note that the
+`widgetExternalMessageTextObjectLocation` and
+`widgetExternalMessageLearnMoreUrlLocation` preferences
+are a query language,
+indexing into the JSON.
+
+In these examples, `widgetExternalMessageTextObjectLocation` is telling the
+framework to read the message text from the value of `message` in the zeroth
+item of the array named `result` in the JSON.
+
+In these examples, `widgetExternalMessageLearnMoreUrlLocation` is telling the
+framework to read the URL for the Learn more button
+from the value of `learnMoreUrl` in the JSON.
+
+This means there's tremendous flexibility in JSON that can work to drive
+widget messaging. It will often be feasible
+to re-purpose JSON from other purposes
+to drive widget messaging, un-modified.
 
 ## Exercises
 
