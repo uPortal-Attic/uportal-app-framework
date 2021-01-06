@@ -12,7 +12,7 @@ It is those war files that are being versioned.
 
 ## 18.0.1 - 2020-12-?
 
-+ Update `myuw-search`to v.1.5.2
++ Update `myuw-search`to v.1.5.3
 + Update `myuw-notifications` to v.1.4.1
 + Update `myuw-profile` to v.1.6.5
 + Add `myuw-feedback` v.1.0.2
