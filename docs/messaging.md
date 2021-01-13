@@ -1,6 +1,11 @@
-# Messages (notifications)
+# Messaging
 
-This application framework offers messages (notifications) to users.
+Messaging features in the app framework include
+
++ "Notifications" available in the notification bell in the top app bar,
++ "Banners" across the top of the page under the top app bar,
++ "Tablecloths" over top of individual widgets, and
++ "Maintenance messages" on disabled widgets
 
 ## Notifications
 
