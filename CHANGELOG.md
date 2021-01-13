@@ -901,7 +901,6 @@ than three months of work.
 
 The major change featured in this release is the consolidation of notifications,
 features, and announcements into the messages data model.
-[Documentation for creating messages can be found here.](http://uportal-project.github.io/uportal-app-framework/messaging-implementation.html)
 
 This release also features a new Action Items widget type, and added
 functionality to the List of Links widget type. We've added support for a
