@@ -134,8 +134,6 @@ point uportal-app-framework to a notifications feed.
   **Best practices:**
   + Be concise! Limit the title to 140 characters. Shorter titles improve
     click-through and are more likely to display correctly on smaller screens.
-    *Titles longer than 140 characters will be truncated (with ellipsis)* for
-    consistent appearance.
   + Use general language and avoid pronouns for broadly visible messages that
     may not be relevant to the viewing user (example:
     "City of Madison - Declared Snow Emergency").

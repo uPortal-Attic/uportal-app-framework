@@ -28,8 +28,6 @@ Defer to the typography specs provided by [Google Material](https://material.goo
 
 See the [notifications documentation](messaging.md#configuring-notifications).
 
-*Note: Notifications with titles longer than 140 characters will be truncated (with ellipsis) to ensure consistent appearance.*
-
 ## MyUW-specific language
 
 "MyUW" by itself should never contain spaces. However, "My UW-Madison," "My UW System," etc. are always spaced and hyphenated as written here.
