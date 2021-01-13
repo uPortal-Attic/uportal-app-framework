@@ -44,8 +44,6 @@ detailing the notifications and offering a hyperlink to the notifications page.
 
 ![screenshot showing notification drawer opened from bell with two notifications in drawer](./img/notifications/notifications-drawer-two-notifications.png)
 
-![screenshot showing notifications page](./img/notifications/notifications-page.png)
-
 ### Notifications in hamburger menu
 
 In addition to the bell icon, the left hand hamburger menu includes a link to notifications.
@@ -74,6 +72,8 @@ On the notifications page, users can view, follow calls to action on, and
 dismiss their notifications. They can also click the "Dismissed" tab to view
 notifications they've previously dismissed. High priority notifications
 (DEPRECATED) float to the top of the lists.
+
+![screenshot showing notifications page](./img/notifications/notifications-page.png)
 
 ### Configuring notifications
 
