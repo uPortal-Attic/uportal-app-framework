@@ -64,6 +64,13 @@ Currently, priority notifications show in the same places and ways
 as non-priority notifications.
 Priority notifications get a little extra emphasis where they appear.
 
+Specifically, a `high` value for `priority`
+
++ flags the notification as presented in the notification drawer accessed from the notification bells
++ flags the notification as presented on the notifications page
+
+![screenshot showing UI treatment flagging priority notifications](./img/notifications/priority-notification-ui-treatment.png)
+
 This feature is deprecated. Consider using a banner message instead.
 
 ### Notifications page
@@ -175,16 +182,6 @@ point uportal-app-framework to a notifications feed.
 
 A given message can have at most one each of the `actionButton` and
 `moreInfoButton`.
-
-"PRIORITY" NOTIFICATIONS ARE DEPRECATED. In a future release notifications with
-non-null "priority" will not be supported.
-
-Currently, a `high` value for `priority`
-
-- flags the notification as presented in the notification drawer accessed from the notification bells
-- flags the notification as presented on the notifications page
-
-![screenshot showing UI treatment flagging priority notifications](./img/notifications/priority-notification-ui-treatment.png)
 
 Historically there was a **messageType** that distinguished between
 "notification" and "announcement". This *no longer has any effect.*
