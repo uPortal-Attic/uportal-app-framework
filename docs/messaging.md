@@ -26,24 +26,34 @@ cf.
 
 ### Notification bell
 
-On medium and large screens, the top app bar shows a bell icon button. If the
-user has unseen notifications, the bell displays a number and shows a preview
-window when clicked. "See all" links to the notifications page for a detailed
-view.
+The top app bar shows a bell icon button at all screen widths.
 
-[![notification bell in top bar](./img/notifications/top-bar-bell.png)](img/notifications/top-bar-bell.png)
+![screenshot showing empty notification bell in top app bar](./img/notifications/notification-top-app-bar-zero-notifications.png)
 
-On small screens, the mobile menu button shows a small bell icon without a
-count.
+If the user has unresolved notifications,
+the bell displays the quantity of those unresolved notifications.
+In the below example, the user has 2 unresolved notifications.
 
-[![notification bell on mobile](./img/notifications/mobile-bell.png)](img/notifications/mobile-bell.png)
+![screenshot showing notification bell in top app bar](./img/notifications/notification-bell-in-top-app-bar.png)
+
+At sufficiently wide widths, clicking the notification button opens a drawer
+detailing the notifications and offering a hyperlink to the notifications page.
+(At too-narrow widths, clicking the button navigates directly to the notifications page.)
+
+![screenshot showing notification drawer opened from bell with zero notifications in drawer](./img/notifications/notifications-drawer-zero-notifications.png)
+
+![screenshot showing notification drawer opened from bell with two notifications in drawer](./img/notifications/notifications-drawer-two-notifications.png)
+
+![screenshot showing notifications page](./img/notifications/notifications-page.png)
 
 ### Mobile menu link
 
-In addition to the bell icon, the mobile menu contains a link to the
-notifications page that also displays the number of unseen notifications.
+In addition to the bell icon, the left hand hamburger menu includes a link to notifications.
 
-[![mobile menu notifications link](./img/notifications/mobile-link.png)](img/notifications/mobile-link.png)
+[![screenshot of top app bar showing upper left hamburger menu control](./img/notifications/mobile-link.png)](img/notifications/hamburger-menu.png)
+
+[![screenshot of open hamburger menu emphasizing the notifications link](./img/notifications/mobile-link.png)](img/notifications/hamburger-menu-notifications-link.png)
+
 
 ### Priority notifications (DEPRECATED)
 
