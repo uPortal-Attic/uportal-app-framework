@@ -729,6 +729,10 @@ Neither `launchUrl` nor `launchUrlTarget` have effect in option-link type widget
 because such widgets dynamically set the launch URL depending upon the option
 the user selects.
 
+### Widget messaging
+
+See [documentation about displaying messages over top of widgets](messaging.md#widget-messaging).
+
 ### Maintenance mode
 
 Widgets in maintenance mode will display
