@@ -47,12 +47,16 @@ notifications page that also displays the number of unseen notifications.
 
 ### Priority notifications (DEPRECATED)
 
-DEPRECATED. Critical notifications designated "high priority" will appear more
-prominently, fixed above the application top bar. When the user has more than
-one priority notification, the framework displays a generic message featuring
-the priority notifications count and a link to the notifications page.
+DEPRECATED.
 
-[![priority notification](./img/notifications/priority.png)](img/notifications/priority.png)
+Previously, priority notifications got emphatic UI treatment including
+showing as a bar at the top of the page.
+
+Currently, priority notifications show in the same places and ways
+as non-priority notifications.
+Priority notifications get a little extra emphasis where they appear.
+
+This feature is deprecated. Consider using a banner message instead.
 
 ### Notifications page
 
