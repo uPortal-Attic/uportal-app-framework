@@ -220,34 +220,3 @@ This means there's tremendous flexibility in JSON that can work to drive
 widget messaging. It will often be feasible
 to re-purpose JSON from other purposes
 to drive widget messaging, un-modified.
-
-## Exercises
-
-### Bell notifications
-
-Follow these steps to create a notification.
-
-1. Add a JSON message to
-[components/staticFeeds/sample-messages.json](https://github.com/uPortal-Project/uportal-app-framework/blob/master/components/staticFeeds/sample-messages.json)
-2. [Start frame](quickstart.md)
-3. Try changing some of the options.
-
-You can use this example JSON:
-
-```json
-{
-    "id": "sample-notification-uportal-app-framework-docs",
-    "title": "Learn how to create a notification",
-    "goLiveDate": null,
-    "expireDate": null,
-    "priority": null,
-    "audienceFilter": {
-        "groups": [],
-    },
-    "actionButton": {
-        "label": "Take action",
-        "url": "http://uportal-project.github.io/uportal-app-framework/messaging-implementation.html"
-    },
-    "moreInfoButton": null
-}
-```
