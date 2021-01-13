@@ -310,5 +310,9 @@ widget messaging. It will often be feasible
 to re-purpose JSON from other purposes
 to drive widget messaging, un-modified.
 
+### Widget maintenance messages
+
+See [widget documentation about maintenance mode](make-a-widget.md#maintenance-mode).
+
 [MyUW Notifications Overview]: https://kb.wisc.edu/myuw/71187
 [MyUW Notifications Guidelines]: https://docs.google.com/document/d/1xa3t5gibaSgYGtGBKeIt0EGMC9XSMaOwVlgJtMCZ-Vg/edit
