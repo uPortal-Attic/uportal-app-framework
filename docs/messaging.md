@@ -6,6 +6,14 @@ This application framework offers messages (notifications) to users.
 
 Notifications are messages about **you** (i.e. the user).
 
+Preferably these are *actionable* and the user can resolve them and thereby
+make them go away. They're conceptually a "to do list" of important stuff to
+take action upon.
+
+The idea is that a user might be accessing MyUW for purpose A,
+notice a notification, thereby become aware of task B,
+and click into the notification to take action to complete B.
+
 cf.
 
 + [MyUW Notifications Overview][]
