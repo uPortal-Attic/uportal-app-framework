@@ -46,13 +46,13 @@ detailing the notifications and offering a hyperlink to the notifications page.
 
 ![screenshot showing notifications page](./img/notifications/notifications-page.png)
 
-### Mobile menu link
+### Notifications in hamburger menu
 
 In addition to the bell icon, the left hand hamburger menu includes a link to notifications.
 
-[![screenshot of top app bar showing upper left hamburger menu control](./img/notifications/mobile-link.png)](img/notifications/hamburger-menu.png)
+![screenshot of top app bar showing upper left hamburger menu control](./img/notifications/hamburger-menu.png)
 
-[![screenshot of open hamburger menu emphasizing the notifications link](./img/notifications/mobile-link.png)](img/notifications/hamburger-menu-notifications-link.png)
+![screenshot of open hamburger menu emphasizing the notifications link](./img/notifications/hamburger-menu-notifications-link.png)
 
 
 ### Priority notifications (DEPRECATED)
