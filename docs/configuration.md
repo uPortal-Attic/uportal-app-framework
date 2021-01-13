@@ -65,7 +65,7 @@ will be prompted to reload the page when the session has expired.
 + **aboutURL**: Additional data to show in **/session-info**.
 + **aboutPageURL**: A URL to get JSON data about the app. This data is used on the text/link content for the app's "About" page, as well as the app's "description" and "keywords" `<meta>` tags. See [About page](about-page.md) for more information.
 + **bannersURL**: Optional URL to source
-  [banner messages JSON](messaging-implementation.md).
+  [banner messages JSON](messaging.md#configuring-banner-messages).
 + **sessionInfo**: Where the frame gets data about the logged in user. [Example][session.json].
 + **messagesURL**: An end point to a feed of messages.
 [Example][sample-messages.json]. Messages at the

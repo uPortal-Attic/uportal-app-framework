@@ -27,8 +27,7 @@ With gratitude to the many [contributors to this project](contributors.md).
 
 + [Frame-specific directives](directives.md)
 + [Navigation](configurable-menu.md)
-+ [In-app messaging (user-facing content)](messaging.md)
-+ [In-app messaging (technical implementation)](messaging-implementation.md)
++ [Notifications, banners, and widget messages](messaging.md)
 + [Access and permission management](coarse-grain-access.md)
 + [Beta settings](beta-settings.md)
 + [Material design](material.md)

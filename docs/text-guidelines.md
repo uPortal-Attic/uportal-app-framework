@@ -26,9 +26,7 @@ Defer to the typography specs provided by [Google Material](https://material.goo
   * Use the word "You" when the notification pertains to a specific group of users
 * `label` attribute  of action buttons should be 2-3 words at most
 
-See the [notifications documentation](messaging-implementation.md) for detailed information.
-
-*Note: Notifications with titles longer than 140 characters will be truncated (with ellipsis) to ensure consistent appearance.*
+See the [notifications documentation](messaging.md#configuring-notifications).
 
 ## MyUW-specific language
 
