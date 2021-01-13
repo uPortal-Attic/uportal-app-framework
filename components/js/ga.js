@@ -11,8 +11,27 @@ function _gaLt(event){
     if(el && el.href){
     if(el.href.indexOf(location.host) == -1 && el.href != 'javascript:;'){ /* external link */
             var eventOptions = {eventCategory: 'Outbound Link', eventAction: el.href, eventLabel : el.text };
-            window.ga('send', 'event', eventOptions);
-            console.log('ga event logged c: Outbound Link a: '+el.href+' l:'+ el.text);
+
+            // old direct Google Analytics integration
+            // window.ga('send', 'event', eventOptions);
+            //console.log('ga event logged c: Outbound Link a: '+el.href+' l:'+ el.text);
+
+            // new abstracted Google Tag Manager integration
+            var action = el.href;
+            var category = 'Outbound Link';
+            var label = el.text;
+
+            dataLayer.push({
+              'event': 'MyUW Event',
+              'event_action': action,
+              'event_category': category,
+              'event_label': label
+            });
+
+            console.log(
+              'ga.js pushed event to tag manager: action: ' + action +
+              ', category: ' + category + ', label: ' + label);
+
             // Click will open in a new window if it is the middle button or the
             // meta or control keys are held
             var target = (el.target && !el.target.match(/^_(self|parent|top)$/i)) ? el.target : false;
