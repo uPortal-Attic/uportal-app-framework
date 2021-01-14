@@ -10,7 +10,13 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## 18.1.0 - 2021-01-14
+## Next (18.1.0?)
+
+No changes yet.
+
+Will probably add myuw-feedback, predicated on a feature flag.
+
+## 18.0.1 - 2021-01-14
 
 + Updates `myuw-app-bar` to v.1.7.2
 + Updates `myuw-banner` to v1.2.3
