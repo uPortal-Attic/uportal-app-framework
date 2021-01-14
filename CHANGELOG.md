@@ -10,15 +10,15 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## 18.0.1 - 2021-01-14
+## 18.1.0 - 2021-01-14
 
-+ Update `myuw-search`to v.1.5.4
-+ Update `myuw-notifications` to v.1.4.1
-+ Update `myuw-profile` to v.1.6.5
-+ Update `myuw-app-bar` to v.1.7.2
-+ Update `myuw-banner` to v1.2.3
-+ Add `myuw-feedback` v.1.0.2
-+ Fix MyUW custom Outbound Link event firing
++ New feature: adds `myuw-feedback` v.1.0.2 in top app bar
++ Updates `myuw-app-bar` to v.1.7.2
++ Updates `myuw-banner` to v1.2.3
++ Updates `myuw-notifications` to v.1.4.1
++ Updates `myuw-profile` to v.1.6.5
++ Updates `myuw-search` to v.1.5.4
++ Fixes MyUW custom Outbound Link event firing
 
 ## 18.0.0 - 2020-11-06
 
