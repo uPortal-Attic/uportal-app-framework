@@ -12,7 +12,6 @@ It is those war files that are being versioned.
 
 ## 18.1.0 - 2021-01-14
 
-+ New feature: adds `myuw-feedback` v.1.0.2 in top app bar
 + Updates `myuw-app-bar` to v.1.7.2
 + Updates `myuw-banner` to v1.2.3
 + Updates `myuw-notifications` to v.1.4.1
