@@ -456,6 +456,7 @@
             <exclude>**/components/staticFeeds/keyvalue/**</exclude>
             <exclude>**/docs/_site/**</exclude>
             <exclude>**/docs/bower_components/**</exclude>
+            <exclude>**/docs/.ruby-version</exclude>
             <exclude>**/*.json</exclude>
             <exclude>**/*.lock</exclude>
             <exclude>**/docs/**/*.scss</exclude>
@@ -469,6 +470,7 @@
             <exclude>**/components/js/*.min.js.map</exclude>
             <exclude>.gitignore</exclude>
             <exclude>.npmrc</exclude>
+            <exclude>.java-version</exclude>
           </excludes>
           <mapping>
             <less>JAVADOC_STYLE</less>
