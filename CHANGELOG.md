@@ -16,6 +16,7 @@ It is those war files that are being versioned.
 + Update `myuw-notifications` to v.1.4.1
 + Update `myuw-profile` to v.1.6.5
 + Update `myuw-app-bar` to v.1.7.2
++ Update `myuw-banner` to v1.2.3
 + Add `myuw-feedback` v.1.0.2
 + Fix MyUW custom Outbound Link event firing
 
