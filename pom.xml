@@ -164,6 +164,7 @@
                 <executable>npm</executable>
                 <arguments>
                   <argument>install</argument>
+                  <argument>--verbose</argument>
                 </arguments>
               </configuration>
             </execution>
@@ -178,6 +179,7 @@
                 <arguments>
                   <argument>run</argument>
                   <argument>build-static</argument>
+                  <argument>--verbose</argument>
                 </arguments>
               </configuration>
             </execution>
