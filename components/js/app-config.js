@@ -24,6 +24,7 @@ define(['angular'], function(angular) {
             'isWeb': false,
             'defaultTheme': 0,
             'showUserSettingsPage': false,
+            'showFeedbackComponent': false,
             'debug': false,
             'campusIdAttribute': null,
         })
