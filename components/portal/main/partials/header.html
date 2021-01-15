@@ -50,6 +50,28 @@
    icon="search"
    ng-controller="PortalSearchController"></myuw-search>
 
+   <myuw-feedback
+    ng-if="APP_FLAGS.showFeedbackComponent"
+    hide-sm
+    hide-xs
+    myuw-feedback-title="Feedback"
+    slot="myuw-feedback"
+    show-button>
+    <md-tooltip
+      aria-label="Open feedback dialog"
+      class="top-bar-tooltip"
+      md-direction="bottom"
+      md-delay="400">Feedback
+    </md-tooltip>
+    <div slot="myuw-feedback-content">
+      <p>Please tell us what you think about the new all-in-one, integrated home for MyUW widgets.</p>
+      <div id="feedback-dialog-actions">
+        <a class="feedback-dialog-action" target="_blank" rel="noopener noreferrer" href="https://my.wisc.edu/portal/p/feedback.ctf5/max/render.uP">
+          Give Feedback</a>
+      </div>
+    </div>
+  </myuw-feedback>
+
   <myuw-help
    myuw-help-title="Help with MyUW"
    slot="myuw-help"
