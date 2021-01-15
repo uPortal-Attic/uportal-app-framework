@@ -29,7 +29,8 @@ forward them on to the **MISC_URLS.logoutURL**.
 + **campusIdAttribute**: Default is **null**. Provide a session attribute for
 campus ID (i.e. UW-Madison's **wiscEduStudentID** attribute) so that users can
 see their ID in the username menu. _This is currently unimplemented._
-
++ **showFeedbackComponent**: If set to true, MyUW Feedback web component will be
+activated in the header. Default is **false** _as of 18.1.0_.
 
 ### APP_OPTIONS
 
