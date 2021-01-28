@@ -10,9 +10,14 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## Next (18.1.0)
+## Next (18.1.2)
 
-+ Re-adding myuw-feedback web component with conditional flag feature
+## 18.1.1
+
++ Updates `myuw-search` to v.1.5.5
+
+## 18.1.0
++ Adds myuw-feedback web component with conditional flag feature
 
 ## 18.0.1 - 2021-01-14
 
