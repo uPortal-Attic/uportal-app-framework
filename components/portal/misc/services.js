@@ -165,16 +165,26 @@ define(['angular', 'jquery'], function(angular, $) {
   function($analytics, $http, $window, $location, $log, MISC_URLS) {
     /**
      * Used to redirect users to login screen
+     *    if result code is
+     *    0 (Shibboleth weirdness?) or
+     *   302 (a shib redirect?) or
+     *   401 (Unauthorized, due to lack of authentication?)
      *    Setup MISC_URLS.loginURL in js/app-config.js to have redirects happen
      * @param {number} status
      * @param {string} caller
     **/
     var redirectUser = function(status, caller) {
-      $log.log('redirect because status ' + status + ' from ' + caller);
-      if (MISC_URLS.loginURL) {
-        $window.location.replace(MISC_URLS.loginURL);
+      if (status === 0 || status === 302 || status === 401) {
+        $log.log('redirect happening due to ' + status);
+        if (MISC_URLS.loginURL) {
+          $window.location.replace(MISC_URLS.loginURL);
+        } else {
+          $log.warn('MISC_URLS.loginURL was not set, cannot redirect');
+        }
       } else {
-        $log.warn('MISC_URLS.loginURL was not set, cannot redirect');
+        $log.warn(
+          'Strange behavior from ' + caller +
+          '. Returned status code : ' + status);
       }
     };
 

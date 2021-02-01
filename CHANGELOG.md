@@ -12,23 +12,14 @@ It is those war files that are being versioned.
 
 ## Next
 
-+ miscService.redirectUser no longer predicates redirecting on response code.
-  This has the effect of supporting the newly generated
-  401 Unauthorized responses from uPortal server.
-  The intention is that if the server gets confused about the user's session,
-  it responds 401 Unauthorized
-  (which is mis-named and really means "unauthenticated",
-  as distinct from authenticated and FORBIDDEN). uPortal-home detects the 401
-  error response and redirects the user to login to become fully authenticated
-  again, establishing a fresh uPortal session, and tada! the user gets a
-  consistent, logged-in experience rather than
-  an inconsistent only-sort-of-logged-in experience.
++ miscService.redirectUser will now redirect on status 401, not just on 0 and 302
 + portalShibbolethService no longer invokes miscService.redirectUser on error
   of the Shibboleth SP JSON service it calls. That JSON service normally fails
   in public.my site contexts.
 + Updates `myuw-search` to v.1.5.5
 
 ## 18.1.0
+
 + Adds myuw-feedback web component with conditional flag feature
 
 ## 18.0.1 - 2021-01-14
