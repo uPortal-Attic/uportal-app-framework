@@ -32,7 +32,9 @@ define(['angular', 'jquery'], function(angular, $) {
       'miscService', 'SERVICE_LOC',
         function($http, $log, miscService, SERVICE_LOC) {
           var onError = function(response) {
-            miscService.redirectUser(response.status, 'Shibboleth Service');
+            // do not redirect on failure of the Shibboleth session request,
+            // as this normally fails on public.my sites
+            // miscService.redirectUser(response.status, 'Shibboleth Service');
             return response.data;
           };
 

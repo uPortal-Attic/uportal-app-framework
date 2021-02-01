@@ -23,6 +23,9 @@ It is those war files that are being versioned.
   again, establishing a fresh uPortal session, and tada! the user gets a
   consistent, logged-in experience rather than
   an inconsistent only-sort-of-logged-in experience.
++ portalShibbolethService no longer invokes miscService.redirectUser on error
+  of the Shibboleth SP JSON service it calls. That JSON service normally fails
+  in public.my site contexts.
 + Updates `myuw-search` to v.1.5.5
 
 ## 18.1.0
