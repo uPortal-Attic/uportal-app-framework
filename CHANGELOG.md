@@ -12,6 +12,7 @@ It is those war files that are being versioned.
 
 ## Next
 
++ miscService.redirectUser will now redirect on status 401, not just on 0 and 302
 + portalShibbolethService no longer invokes miscService.redirectUser on error
   of the Shibboleth SP JSON service it calls. That JSON service normally fails
   in public.my site contexts.
