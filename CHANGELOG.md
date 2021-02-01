@@ -18,6 +18,7 @@ It is those war files that are being versioned.
 + Updates `myuw-search` to v.1.5.5
 
 ## 18.1.0
+
 + Adds myuw-feedback web component with conditional flag feature
 
 ## 18.0.1 - 2021-01-14
