@@ -10,7 +10,7 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## Next (18.1.2)
+## Next
 
 + portalShibbolethService no longer invokes miscService.redirectUser on error
   of the Shibboleth SP JSON service it calls. That JSON service normally fails
