@@ -164,8 +164,8 @@ define(['angular', 'jquery'], function(angular, $) {
   .factory('miscService',
   function($analytics, $http, $window, $location, $log, MISC_URLS) {
     /**
-     * Used to redirect users to login screen
-     *    if result code is
+     * Redirects users to uPortal server login
+     *  if result code is
      *    0 (Shibboleth weirdness?) or
      *   302 (a shib redirect?) or
      *   401 (Unauthorized, due to lack of authentication?)
