@@ -12,7 +12,9 @@ It is those war files that are being versioned.
 
 ## Next
 
-(No changes yet.)
++ miscUrl.redirectUser will set refUrl on the redirect to uPortal login
+  so that uPortal login will return the user to the page
+  that launched the log-in-again redirect.
 
 ## 18.1.1 - 2021-02-02
 

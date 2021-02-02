@@ -164,12 +164,14 @@ define(['angular', 'jquery'], function(angular, $) {
   .factory('miscService',
   function($analytics, $http, $window, $location, $log, MISC_URLS) {
     /**
-     * Used to redirect users to login screen
-     *    if result code is
+     * Redirects users to uPortal server login
+     *  if result code is
      *    0 (Shibboleth weirdness?) or
-     *   302 (a shib redirect?) or
-     *   401 (Unauthorized, due to lack of authentication?)
-     *    Setup MISC_URLS.loginURL in js/app-config.js to have redirects happen
+     *    302 (a shib redirect?) or
+     *    401 (Unauthorized, due to lack of authentication?)
+     *  Requires MISC_URLS.loginURL in js/app-config.js
+     *  Sets refUrl to current URL, so that uPortal will attempt to return the
+     *  user to the current page after login.
      * @param {number} status
      * @param {string} caller
     **/
@@ -177,7 +179,10 @@ define(['angular', 'jquery'], function(angular, $) {
       if (status === 0 || status === 302 || status === 401) {
         $log.log('redirect happening due to ' + status);
         if (MISC_URLS.loginURL) {
-          $window.location.replace(MISC_URLS.loginURL);
+          var currentUrl = $window.href;
+          var currentUrlEncoded = encodeURIComponent(currentUrl);
+          var newUrl = MISC_URLS.loginURL + '?refUrl=' + currentUrlEncoded;
+          $window.location.replace(newUrl);
         } else {
           $log.warn('MISC_URLS.loginURL was not set, cannot redirect');
         }
