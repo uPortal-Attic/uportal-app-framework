@@ -181,7 +181,7 @@ define(['angular', 'jquery'], function(angular, $) {
         if (MISC_URLS.loginURL) {
           var currentUrl = $window.href;
           var currentUrlEncoded = encodeURIComponent(currentUrl);
-          var newUrl = MISC_URLS.loginURL + "?refUrl=" + currentUrlEncoded;
+          var newUrl = MISC_URLS.loginURL + '?refUrl=' + currentUrlEncoded;
           $window.location.replace(newUrl);
         } else {
           $log.warn('MISC_URLS.loginURL was not set, cannot redirect');
