@@ -20,7 +20,7 @@ It is those war files that are being versioned.
   increasing the size of the click target and thus the usability
 + Updates `myuw-search` to v.1.5.5
 
-## 18.1.0
+## 18.1.0 - 2021-01-27
 
 + Adds myuw-feedback web component with conditional flag feature
 
