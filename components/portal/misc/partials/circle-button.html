@@ -31,6 +31,14 @@
     {{ title }}
   </md-tooltip>
 </md-button>
-<p ng-show="title">
+<a
+  ng-show="title"
+  aria-label="open {{ title }}" tabindex="-1"
+  ng-href="{{ cbDisabled ? '#' : href}}"
+  target="{{cbDisabled ? '' : target}}" rel='noopener noreferrer'>
   {{title | truncate:trunclen}}
-</p>
+  <md-tooltip ng-if="title.length > trunclen"
+    md-direction="bottom">
+    {{ title }}
+  </md-tooltip>
+</a>
