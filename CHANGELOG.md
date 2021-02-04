@@ -25,7 +25,7 @@ It is those war files that are being versioned.
   asynchronous request was never reliable and is now emphatically deprecated
   as it will function correctly in strictly a subset of the situations where
   miscService.redirectUser will now function correctly.)
-+ Fixed several calls to miscService.redirectUser
++ Fixed several calls to `miscService.redirectUser`
   that did not correctly convey the status code.
 
 ## 18.1.1 - 2021-02-02
