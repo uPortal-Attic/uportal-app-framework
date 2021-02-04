@@ -38,7 +38,7 @@ define(['angular'], function(angular) {
         }
 
         userPromise = prom
-          .then(function(result, status) { // success function
+          .then(function(result) { // success function
             var person = result.data.person;
             return person;
           })
