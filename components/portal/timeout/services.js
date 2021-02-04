@@ -98,7 +98,7 @@ define(['angular', 'jquery'], function(angular, $) {
               .catch(function(error) {
                 $log.warn('Failed to get Shibboleth session info');
                 $log.error(error);
-                miscService.redirectUser(status, 'Get User Info');
+                miscService.redirectUser(error.status, 'Get User Info');
               });
           }
 
