@@ -42,8 +42,8 @@ define(['angular'], function(angular) {
             var person = result.data.person;
             return person;
           })
-          .catch(function(data, status) { // failure function
-            miscService.redirectUser(status, 'Get User Info');
+          .catch(function(error) { // failure function
+            miscService.redirectUser(error.status, 'Get User Info');
           });
         return userPromise;
       };
