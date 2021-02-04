@@ -12,9 +12,21 @@ It is those war files that are being versioned.
 
 ## Next
 
-+ miscUrl.redirectUser will set refUrl on the redirect to uPortal login
-  so that uPortal login will return the user to the page
-  that launched the log-in-again redirect.
+**Breaking change: pivot away from "silent" login.**
+
++ `miscService.redirectUser` will set `refUrl` on the redirect to uPortal login
+  so that uPortal login will return the user to
+  the page that launched the log-in-again redirect.
++ Undocumented configuration `loginSilentURL` is deprecated
+  and now defaults to regular, non-silent login.
+  (With improved `miscService.redirectUser` triggering and behavior,
+  **all login attempts should be changed to trigger miscService.redirectUser**
+  or to directly link to login; attempting to "silently" bootstrap login in an
+  asynchronous request was never reliable and is now emphatically deprecated
+  as it will function correctly in strictly a subset of the situations where
+  miscService.redirectUser will now function correctly.)
++ Fixed several calls to miscService.redirectUser
+  that did not correctly convey the status code.
 
 ## 18.1.1 - 2021-02-02
 
