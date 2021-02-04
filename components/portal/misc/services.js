@@ -179,7 +179,7 @@ define(['angular', 'jquery'], function(angular, $) {
       if (status === 0 || status === 302 || status === 401) {
         $log.log('redirect happening due to ' + status);
         if (MISC_URLS.loginURL) {
-          var currentUrl = $window.href;
+          var currentUrl = $window.location.href;
           var currentUrlEncoded = encodeURIComponent(currentUrl);
           var newUrl = MISC_URLS.loginURL + '?refUrl=' + currentUrlEncoded;
           $window.location.replace(newUrl);

@@ -39,7 +39,7 @@ define(['angular'], function(angular) {
             'aboutPageURL': null,
             'groupURL': '/portal/api/groups',
             'kvURL': '/storage',
-            'loginSilentURL': '/portal/Login?silent=true',
+            'loginSilentURL': '/portal/Login', // deprecated
             'messagesURL': '', // staticFeeds/sample-messages.json
             'sessionInfo': 'staticFeeds/session.json',
             'shibbolethSessionURL': 'staticFeeds/Shibboleth.sso/Session.json',
@@ -65,7 +65,7 @@ define(['angular'], function(angular) {
         .value('MISC_URLS', {
             'feedbackURL': 'https://my.wisc.edu/portal/p/feedback',
             'helpdeskURL': 'https://kb.wisc.edu/helpdesk/',
-            'loginURL': '/portal/Login?profile=bucky',
+            'loginURL': '/portal/Login',
             'logoutURL': '/portal/Logout',
             'myuwHome': 'https://my.wisc.edu',
             'resetLayoutURL': '/portal/p/reset-my-layout',
