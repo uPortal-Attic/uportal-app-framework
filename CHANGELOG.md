@@ -10,7 +10,7 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## Next
+## 19.0.0 - 2021-02-04
 
 **Breaking change: pivot away from "silent" login.**
 
