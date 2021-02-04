@@ -112,8 +112,11 @@ the "See all" link should go).
 
 + **feedbackURL**: A link to a feedback form
 + **helpdeskURL**: Link to the relevant help desk
-+ **loginURL**: How a user would login. Used for guestMode, and for stale
-sessions when they hit a service.
++ **loginURL**: How a user would login.
+  In intentionally unauthenticated views, this is the href of the Login link.
+  When calls to back end services fail apparently for lack of being logged in,
+  this is the URL the framework will redirect through
+  to attempt to log the user in again server-side.
 + **logoutURL**: The sign out link
 + **myuwHome**: The home page for MyUW
 + **rootURL**: The root URL used for what happens when they click the crest.
