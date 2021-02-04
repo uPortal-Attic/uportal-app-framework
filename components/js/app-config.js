@@ -39,7 +39,7 @@ define(['angular'], function(angular) {
             'aboutPageURL': null,
             'groupURL': '/portal/api/groups',
             'kvURL': '/storage',
-            'loginSilentURL': '/portal/Login?silent=true',
+            'loginSilentURL': '/portal/Login', // deprecated; use MISC_URLS.loginURL instead
             'messagesURL': '', // staticFeeds/sample-messages.json
             'sessionInfo': 'staticFeeds/session.json',
             'shibbolethSessionURL': 'staticFeeds/Shibboleth.sso/Session.json',
