@@ -14,7 +14,7 @@ It is those war files that are being versioned.
 
 + Consistently cache when using `$http.get`.
   Previously some usages did not cache.
-
++ Configure angulartics to integrate with Google Tag Manager.
 
 ## 19.0.0 - 2021-02-05
 
