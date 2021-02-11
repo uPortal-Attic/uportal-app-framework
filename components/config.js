@@ -37,10 +37,6 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'angular-animate': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-animate.min',
       'angular-mocks': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-mocks',
       'angulartics': 'https://cdnjs.cloudflare.com/ajax/libs/angulartics/1.1.0/angulartics.min',
-      'angulartics-google-analytics': [
-          'https://cdnjs.cloudflare.com/ajax/libs/angulartics-google-analytics/0.2.1/angulartics-ga.min',
-          'js/noop',
-      ],
       'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min',
       'jquery-ui': 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min',
       'ngAnimate': 'js/angular-animate.min',

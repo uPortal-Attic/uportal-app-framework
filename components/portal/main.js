@@ -59,13 +59,6 @@ define([
     'ui-gravatar',
     'angulartics-google-analytics',
 ], function(angular, require) {
-    // Define a stub in case this angular module is undefined, i.e. was blocked
-    try {
-        angular.module('angulartics.google.analytics');
-    } catch (e) {
-      angular.module('angulartics.google.analytics', []);
-    }
-
     return angular.module('portal', [
         'app-config',
         'override',
@@ -105,7 +98,6 @@ define([
         'ui.bootstrap',
         'ui.gravatar',
         'angulartics',
-        'angulartics.google.analytics',
     ])
 
     .config([
