@@ -121,11 +121,14 @@ define([
     });
 
     /**
-   * Send interactions to the dataLayer, i.e. for event tracking in Google Analytics
+   * Send interactions to the dataLayer,
+   * i.e. for event tracking in Google Analytics
    * @name eventTrack
    *
    * @param {string} action Required 'action' (string) associated with the event
-   * @param {object} properties Comprised of the mandatory field 'category' (string) and optional  fields 'label' (string), 'value' (integer) and 'noninteraction' (boolean)
+   * @param {object} properties Comprised of the mandatory field
+   *   'category' (string) and optional  fields 'label' (string),
+   *   'value' (integer) and 'noninteraction' (boolean)
    */
 
     $analyticsProvider.registerEventTrack(function(action, properties) {
