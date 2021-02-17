@@ -57,7 +57,6 @@ define([
     './widgets/services',
     'ui-bootstrap',
     'ui-gravatar',
-    'angulartics-google-analytics',
 ], function(angular, require) {
     return angular.module('portal', [
         'app-config',
