@@ -183,7 +183,7 @@ define(['angular'], function(angular) {
      * @return {number} The number of items needing attention
      */
     var getActionItemQuantity = function(url) {
-      return $http.get(url)
+      return $http.get(url, {cache: true})
         .then(function(result) {
           return result.data;
         })
