@@ -149,7 +149,7 @@ define(['angular'], function(angular) {
           angular.forEach(messages, function(message) {
             if (message.data && message.data.dataUrl) {
               // If the message has a dataUrl, add it to promises array
-              promises.push($http.get(message.data.dataUrl)
+              promises.push($http.get(message.data.dataUrl, {cache: true})
                 .then(function(result) {
                   var objectToFind = result.data;
 
