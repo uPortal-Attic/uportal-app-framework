@@ -143,7 +143,6 @@ define([
             'value': properties.value,
             'interaction-type': properties.noninteraction,
         });
-
     });
 
       $analyticsProvider.firstPageview(true);
