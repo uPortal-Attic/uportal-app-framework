@@ -40,7 +40,8 @@ define(['angular'], function(angular) {
       var entrySuffix =
         angular.isUndefined(SERVICE_LOC.widgetApi.entrySuffix) ? '.json' :
           SERVICE_LOC.widgetApi.entrySuffix;
-      return $http.get(SERVICE_LOC.widgetApi.entry + fname + entrySuffix, {cache: true})
+      return $http.get(SERVICE_LOC.widgetApi.entry + fname + entrySuffix,
+        {cache: true})
         .then(function(result) {
           if (angular.isDefined(result.data.entry.layoutObject)) {
             return result.data.entry.layoutObject;
