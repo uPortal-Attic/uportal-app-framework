@@ -61,7 +61,7 @@ define(['angular', 'jquery'], function(angular, $) {
            * @return {*|Function|any|Promise}
            */
           function getSession() {
-            return $http.get(SERVICE_LOC.shibbolethSessionURL)
+            return $http.get(SERVICE_LOC.shibbolethSessionURL, {cache: true})
                         .then(onGetSessionSuccess, onError);
           }
 
