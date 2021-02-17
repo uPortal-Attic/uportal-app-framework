@@ -1054,7 +1054,7 @@ define(['angular', 'moment'], function(angular, moment) {
         $log.debug('entered initRemoteContentWidget()');
 
 
-        $http.get($scope.widget.widgetURL).then(function(result) {
+        $http.get($scope.widget.widgetURL, {cache: true}).then(function(result) {
           $scope.remoteContent = result.data;
           $scope.loading = false;
           $log.debug(
