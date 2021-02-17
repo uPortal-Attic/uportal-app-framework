@@ -59,13 +59,6 @@ define([
     'ui-gravatar',
     'angulartics-google-analytics',
 ], function(angular, require) {
-    // Define a stub in case this angular module is undefined, i.e. was blocked
-    try {
-        angular.module('angulartics.google.analytics');
-    } catch (e) {
-      angular.module('angulartics.google.analytics', []);
-    }
-
     return angular.module('portal', [
         'app-config',
         'override',
@@ -105,7 +98,6 @@ define([
         'ui.bootstrap',
         'ui.gravatar',
         'angulartics',
-        'angulartics.google.analytics',
     ])
 
     .config([
@@ -117,7 +109,44 @@ define([
         'default': 'https://yt3.ggpht.com/-xE0EQR3Ngt8/AAAAAAAAAAI/AAAAAAAAAAA/zTofDHA3-s4/s100-c-k-no/photo.jpg',
       };
 
+      // Google Tag Manager integration from
+      // https://web.archive.org/web/20160630102903/https://github.com/angulartics/angulartics/blob/master/src/angulartics-gtm.js
+      $analyticsProvider.registerPageTrack(function(path) {
+        // eslint-disable-next-line angular/window-service
+        var dataLayer = window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+            'event': 'content-view',
+            'content-name': path,
+        });
+    });
+
+    /**
+   * Send interactions to the dataLayer,
+   * i.e. for event tracking in Google Analytics
+   * @name eventTrack
+   *
+   * @param {string} action Required 'action' (string) associated with the event
+   * @param {object} properties Comprised of the mandatory field
+   *   'category' (string) and optional  fields 'label' (string),
+   *   'value' (integer) and 'noninteraction' (boolean)
+   */
+
+    $analyticsProvider.registerEventTrack(function(action, properties) {
+      // eslint-disable-next-line angular/window-service
+        var dataLayer = window.dataLayer = window.dataLayer || [];
+        properties = properties || {};
+        dataLayer.push({
+            'event': properties.event || 'interaction',
+            'target': properties.category,
+            'action': action,
+            'target-properties': properties.label,
+            'value': properties.value,
+            'interaction-type': properties.noninteraction,
+        });
+    });
+
       $analyticsProvider.firstPageview(true);
+      $analyticsProvider.withAutoBase(true);
       $mdThemingProvider.alwaysWatchTheme(true);
       $mdThemingProvider.generateThemesOnDemand(true);
 
