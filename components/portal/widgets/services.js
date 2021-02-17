@@ -40,7 +40,8 @@ define(['angular'], function(angular) {
       var entrySuffix =
         angular.isUndefined(SERVICE_LOC.widgetApi.entrySuffix) ? '.json' :
           SERVICE_LOC.widgetApi.entrySuffix;
-      return $http.get(SERVICE_LOC.widgetApi.entry + fname + entrySuffix)
+      return $http.get(SERVICE_LOC.widgetApi.entry + fname + entrySuffix,
+        {cache: true})
         .then(function(result) {
           if (angular.isDefined(result.data.entry.layoutObject)) {
             return result.data.entry.layoutObject;
@@ -183,7 +184,7 @@ define(['angular'], function(angular) {
      * @return {number} The number of items needing attention
      */
     var getActionItemQuantity = function(url) {
-      return $http.get(url)
+      return $http.get(url, {cache: true})
         .then(function(result) {
           return result.data;
         })

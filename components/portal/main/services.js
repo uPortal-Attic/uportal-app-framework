@@ -126,7 +126,7 @@ define(['angular'], function(angular) {
        * Get banner messages from bannersURL endpoint
        */
       function getBanners() {
-        return $http.get(SERVICE_LOC.bannersURL)
+        return $http.get(SERVICE_LOC.bannersURL, {cache: true})
           .then(function(response) {
             if (response.data
               && angular.isArray(response.data)) {

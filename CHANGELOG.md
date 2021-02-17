@@ -10,6 +10,12 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
+## Next
+
++ Consistently cache when using `$http.get`.
+  Previously some usages did not cache.
+
+
 ## 19.0.0 - 2021-02-05
 
 **Breaking change: pivot away from "silent" login.**

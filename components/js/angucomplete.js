@@ -119,7 +119,7 @@
 
 
               } else {
-                $http.get($scope.url + str, {}).
+                $http.get($scope.url + str, {cache: true}).
                   success(function (responseData, status, headers, config) {
                     $scope.searching = false;
                     $scope.processResults(responseData);

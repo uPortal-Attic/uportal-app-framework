@@ -58,7 +58,7 @@ define(['angular', 'jquery'], function(angular, $) {
       };
 
       var getValue = function(key) {
-        return $http.get(SERVICE_LOC.kvURL + '/'+key)
+        return $http.get(SERVICE_LOC.kvURL + '/'+key, {cache: true})
                   .then(successFn, errorFn);
       };
 
