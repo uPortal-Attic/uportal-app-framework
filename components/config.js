@@ -65,7 +65,6 @@ define(['./my-app/app-config.js'], function(myAppConfig) {
       'angular-animate': {deps: ['angular'], exports: 'angular-animate'},
       'angular-mocks': {deps: ['angular']},
       'angulartics': {deps: ['angular'], exports: 'angulartics'},
-      'angulartics-google-analytics': {deps: ['angulartics']},
       'ngAnimate': {deps: ['angular']},
       'ngCsv': {deps: ['angular']},
       'ngResource': {deps: ['angular']},
