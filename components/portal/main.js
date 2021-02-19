@@ -146,7 +146,6 @@ define([
     });
 
       $analyticsProvider.firstPageview(true);
-      $analyticsProvider.withAutoBase(true);
       $mdThemingProvider.alwaysWatchTheme(true);
       $mdThemingProvider.generateThemesOnDemand(true);
 
