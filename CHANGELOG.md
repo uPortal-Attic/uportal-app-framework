@@ -10,7 +10,7 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## Next
+## 19.0.1 - 2021-02-19
 
 + Consistently cache when using `$http.get`.
   Previously some usages did not cache.
