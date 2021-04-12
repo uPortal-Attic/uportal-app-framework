@@ -10,6 +10,11 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
+Next 
+## 19.0.2 - 2021-04-12
+
++ Update `myuw-banner` to v1.2.4
+
 ## 19.0.1 - 2021-03-03
 
 + Consistently cache when using `$http.get`.
