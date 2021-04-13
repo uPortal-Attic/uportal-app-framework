@@ -10,7 +10,13 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-Next 
+Next
+
+## 19.0.3 - 2021-04-12
+
++ Update `myuw-banner` to v2.0.0 (this is a goofy version that hard-codes a
+  Lear more link. It should be soon replaced with a non-goofy version.)
+
 ## 19.0.2 - 2021-04-12
 
 + Update `myuw-banner` to v1.2.4
