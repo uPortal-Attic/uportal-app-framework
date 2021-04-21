@@ -31,6 +31,15 @@ Next
 
 **Breaking change: pivot away from "silent" login.**
 
+`MISC_URLS.loginURL` must *not* have a parameter on it. Prior to this version,
+`/portal/Login?profile=bucky` was a typical value.
+That value will not work in this version.
+The `profile` parameter is unnnecessary as MyUW uPortal
+now defaults to the correct profile anyway.
+So the equivalent, typical value is now `/portal/Login`. Note that the framework
+defaults to that value so adopting applications can decline to override this
+value and thereby inherit the typical value from the framework.
+
 + `miscService.redirectUser` will set `refUrl` on the redirect to uPortal login
   so that uPortal login will return the user to
   the page that launched the log-in-again redirect.

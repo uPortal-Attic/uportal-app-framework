@@ -2,6 +2,17 @@
 
 At a glance notes for upgrading apps between major versions.
 
+## 18 to 19
+
+19 drops the "silent login" feature in favor of detecting when calls to the
+server are failing for lack of authentication and redirecting through uPortal
+login setting the `refUrl` parameter to encourage a redirect from uPortal back
+to the current path when the session is (re-)established.
+
+`MISC_URLS.loginURL` *must not* have a request parameter on it in 19.
+So, `/portal/Login`, not `/portal/Login?profile=...`. Note that an application
+using the app framework may not need to override `MISC_URLS.loginURL` at all.
+
 ## 17 to 18
 
 18.0.0 drops direct instantiation of Google Analytics in favor of hard-coded
