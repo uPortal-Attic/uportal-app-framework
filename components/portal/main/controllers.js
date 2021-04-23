@@ -52,10 +52,15 @@ define(['angular', 'require'], function(angular, require) {
           // Ensure messages exist
           if (angular.isArray(result) && result.length > 0) {
             $scope.banner.message = result[0].text;
-            if (result[0].button) {
-              $scope.banner.confirmingText = result[0].button.label;
-              $scope.banner.confirmingUrl = result[0].button.url;
+            if (result[0]['action-button']) {
+              $scope.banner.actionLabel = result[0]['action-button'].label;
+              $scope.banner.actionAriaLabel = result[0]['action-button']['aria-label'];
+              $scope.banner.actionUrl = result[0]['action-button'].url;
               $scope.banner.icon = result[0].icon;
+              if (result[0]['learn-more-button']) {
+                $scope.banner.learnMoreUrl = result[0]['learn-more-button'].url;
+                $scope.banner.learnMoreAriaLabel = result[0]['learn-more-button']['aria-label'];
+              }
             }
             $scope.bannerHasContent = true;
           }
@@ -114,9 +119,11 @@ define(['angular', 'require'], function(angular, require) {
       $scope.bannerHasContent = false;
       $scope.banner = {
         'message': '',
-        'confirming-text': '',
-        'confirming-url': '',
-        'dismissiveText': 'Skip for now',
+        'action-label': '',
+        'action-aria-label': '',
+        'action-url': '',
+        'learn-more-aria-label': '',
+        'learn-more-url': '',
       };
 
       // Update window title and set app name in top bar

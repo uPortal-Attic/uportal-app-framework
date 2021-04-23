@@ -1,17 +1,28 @@
 [
   {
-    "text": "Example banner message",
-    "icon": "inbox",
-    "button": {
-      "label": "Read documentation",
-      "url": "https://uportal-project.github.io/uportal-app-framework/messaging.html"
+    "text":"This is an example banner message",
+    "icon":"notifications_active",
+    "action-button":{
+      "label":"Action button label",
+      "aria-label":"This is the ARIA label for the action button",
+      "url":"https://www.example.edu/example-action-url"
+    },
+    "learn-more-button":{
+      "aria-label":"Learn more button ARIA label",
+      "url":"https://www.example.edu/example-learn-more-url"
     }
   },
   {
-    "text": "Secondary test banner",
-    "button": {
-      "label": "Do thing",
-      "url": "#"
+    "text":"A subsequent message that will be ignored.",
+    "icon":"campaign",
+    "action-button":{
+      "label":"Verb",
+      "aria-label":"Actions are a verb",
+      "url":"https://www.example.edu/another-example-action-url"
+    },
+    "learn-more-button":{
+      "aria-label":"Noun",
+      "url":"https://www.example.edu/another-example-learn-more-url"
     }
   }
 ]

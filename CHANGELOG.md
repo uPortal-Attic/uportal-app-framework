@@ -10,7 +10,9 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-Next
+## Next
+
++ Update `myuw-banner` to v3.0.0 (non-goofy support for Learn more link).
 
 ## 19.0.3 - 2021-04-12
 
