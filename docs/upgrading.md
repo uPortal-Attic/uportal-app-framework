@@ -2,6 +2,19 @@
 
 At a glance notes for upgrading apps between major versions.
 
+## 20 to 21
+
+The framework no longer attempts to count down to Shibboleth SP session timeout
+and no longer attempts to proactively display a dialog indicating the session
+will expire / has expired.
+
+`activityTimeout` and `shibbolethSessionURL` no longer have effect.
+
+`portal.timeout.controllers` and `portal.timeout.services` packages are removed.
+
+`PortalTimeoutController`, `portalShibbolethService`,
+and `sessionInactivityService` are removed.
+
 ## 19 to 20
 
 Frame 20 adopts `myuw-banner` v3 and relies upon myuw banner back-end v2,
