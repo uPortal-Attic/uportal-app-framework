@@ -2,6 +2,15 @@
 
 At a glance notes for upgrading apps between major versions.
 
+## 19 to 20
+
+Frame 20 adopts `myuw-banner` v3 and relies upon myuw banner back-end v2,
+which changes the data model for banner messages to support learn more links
+and ARIA labels. Implementing apps not setting the banner URL and so not using
+the banner message feature are unaffected. Implementing apps using this feature
+will need to use a compatible banner message backend so that the frame
+recognizes the banner message data model.
+
 ## 18 to 19
 
 19 drops the "silent login" feature in favor of detecting when calls to the
