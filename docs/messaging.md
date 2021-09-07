@@ -190,8 +190,8 @@ Separately from the bell notifications, the framework supports banner messages.
 
 [![banner message](./img/banners/banner.png)](img/banners/banner.png)
 
-Banner messages have message text, an optional icon, and an optional single
-action button.
+Banner messages have message text, an optional icon, an optional single
+action button, and an optional single learn more button.
 
 ### Configuring banner messages
 
@@ -208,15 +208,17 @@ effect. (The back end is therefore expected to prioritize these messages.)
 ```json
 [
   {
-    "text": "Brief message to user",
-    "icon": "optional-material-icon",
-    "button": {
-      "label": "Take action",
-      "url": "https://www.example.edu/somewhere"
-    }
+    "text": "COVID-19 vaccines available on campus. Make an appointment now!",
+    "icon": "coronavirus",
+    "action-button": {
+      "label": "Make appointment",
+      "aria-label": "Open MyUHS to make a COVID-19 vaccination appointment.",
+      "url": "https://go.wisc.edu/myuhs"},
+    "learn-more-button": {
+      "aria-label": "Learn more about COVID-19 vaccination on campus.",
+      "url": "https://covidresponse.wisc.edu\/covid-19-vaccine-information/"}
   }
 ]
-
 ```
 
 A zero item array of banner messages suppresses the banner message feature.
