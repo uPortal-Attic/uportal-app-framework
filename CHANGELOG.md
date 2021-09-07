@@ -10,6 +10,16 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
+## Next
+
+BREAKING CHANGES
+
++ Removed timeout controller and service. No longer attempts to show a dialog
+  indicating the session is ending / has ended. This did not work reliably and
+  was adding more confusion than clarity. Instead if the server-side session
+  times out, the framework will attempt to re-bootstrap a session via portal
+  login on next interaction.
+
 ## 20.0.0 - 2021-04-23
 
 + Update `myuw-banner` to v3.0.0 (non-goofy support for Learn more link).
