@@ -1,0 +1,69 @@
+{
+  "entry": {
+    "canAdd": true,
+    "layoutObject": {
+      "nodeId": "-1",
+      "title": "Two ways to source links",
+      "description": "Specify links as an external URL or directly in an array in widgetConfig",
+      "url": "staticFeeds/list-of-8-links-via-url.json",
+      "iconUrl": null,
+      "faIcon": "fa-briefcase",
+      "fname": "list-of-local-links",
+      "lifecycleState": "PUBLISHED",
+      "target": null,
+      "widgetType": "list-of-links",
+      "widgetConfig": {
+        "links":[
+          {
+            "title":"in widetConfig",
+            "href":"https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#additional-list-of-links-entity-file-configuration",
+            "icon":"code",
+            "target":"_blank"
+          },
+          {
+            "title":"in widgetUrl",
+            "href":"https://github.com/uPortal-Project/uportal-app-framework/blob/master/docs/make-a-widget.md#sourcing-list-of-links-content-from-a-url",
+            "icon":"link",
+            "target":"_blank"
+          }
+        ],
+        "launchText": "View widget JSON"
+      },
+      "staticContent": "<div><p>Static content goes here.</p></div>",
+      "altMaxUrl": true,
+      "renderOnWeb": false
+    },
+    "categories": [
+      "Widget types"
+    ],
+    "portletName": "cms",
+    "title": "Specify links in widgetConfig",
+    "keywords": [
+      "list",
+      "links",
+      "ordered",
+      "icons",
+      "many"
+    ],
+    "fname": "list-of-local-links",
+    "rating": 0.0,
+    "lifecycleState": "PUBLISHED",
+    "portletReleaseNotes": {
+      "releaseDate": null,
+      "initialReleaseDate": null,
+      "releaseNotes": null
+    },
+    "renderUrl": "https://www.example.edu",
+    "portletWebAppName": "/SimpleContentPortlet",
+    "maxUrl": "https://www.example.edu",
+    "shortUrl": null,
+    "marketplaceScreenshots": [],
+    "userRated": 0,
+    "faIcon": "fa-briefcase",
+    "description": "Specify links as an external URL or directly in an array in widgetConfig",
+    "name": "Two ways to source links",
+    "id": "763",
+    "type": "Portlet",
+    "target": null
+  }
+}
