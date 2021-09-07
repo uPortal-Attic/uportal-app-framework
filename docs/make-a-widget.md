@@ -56,7 +56,9 @@ to create one from scratch. Widgets are app directory entries, so see also [docu
 
 * **title**: The widget title
 * **fname**: The technical name of the app entry (lowercase and hyphenated)
-* **desc**: Description of the app (visible when hovering the widget's "info" icon
+* **desc**: Description of the app
+  (visible in the widget's contextual menu and on the details page for the app)
+  (limit 255 characters)
 * **mdIcon** parameter: The widget's icon
 * **alternativeMaximizedLink** parameter: An optional parameter to use if your widget links to an external URL
 * **keywords** portlet-preference: A list of keywords to expose your widget when users search the app directory
