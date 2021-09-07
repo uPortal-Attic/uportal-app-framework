@@ -10,7 +10,36 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## 19.0.1 - 2021-02-19
+## Next (21.0.0)
+
+BREAKING CHANGES
+
++ Removed timeout controller and service. No longer attempts to show a dialog
+  indicating the session is ending / has ended. This did not work reliably and
+  was adding more confusion than clarity. Instead if the server-side session
+  times out, the framework will attempt to re-bootstrap a session via portal
+  login on next interaction.
+
+Other changes
+
++ In miscService.redirectUser, redirect through login when the status code
+  is undefined. This is intended to better handle observed weirdness where the
+  status code is coming through undefined on failed attempt to get session info.
+
+## 20.0.0 - 2021-04-23
+
++ Update `myuw-banner` to v3.0.0 (non-goofy support for Learn more link).
+
+## 19.0.3 - 2021-04-12
+
++ Update `myuw-banner` to v2.0.0 (this is a goofy version that hard-codes a
+  Learn more link. It should be soon replaced with a non-goofy version.)
+
+## 19.0.2 - 2021-04-12
+
++ Update `myuw-banner` to v1.2.4
+
+## 19.0.1 - 2021-03-03
 
 + Consistently cache when using `$http.get`.
   Previously some usages did not cache.
@@ -19,6 +48,15 @@ It is those war files that are being versioned.
 ## 19.0.0 - 2021-02-05
 
 **Breaking change: pivot away from "silent" login.**
+
+`MISC_URLS.loginURL` must *not* have a parameter on it. Prior to this version,
+`/portal/Login?profile=bucky` was a typical value.
+That value will not work in this version.
+The `profile` parameter is unnnecessary as MyUW uPortal
+now defaults to the correct profile anyway.
+So the equivalent, typical value is now `/portal/Login`. Note that the framework
+defaults to that value so adopting applications can decline to override this
+value and thereby inherit the typical value from the framework.
 
 + `miscService.redirectUser` will set `refUrl` on the redirect to uPortal login
   so that uPortal login will return the user to

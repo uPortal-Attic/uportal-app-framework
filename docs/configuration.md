@@ -22,10 +22,6 @@ the search result page. Google later strips it in Google Analytics.
 + **showUserSettingsPage**: If set, this will add a **settings** link to the
 user drop down which will point at **/user-settings**. Default is **false**.
 _as of 2.2.2_
-+ **shibbolethSessionURL**: Default is **null**. When set to a proper string
-(like **'/Shibboleth.sso/Session.json'**) it then adds a timeout alert
-notifying users the session is no longer valid. The action of the pop-up is to
-forward them on to the **MISC_URLS.logoutURL**.
 + **campusIdAttribute**: Default is **null**. Provide a session attribute for
 campus ID (i.e. UW-Madison's **wiscEduStudentID** attribute) so that users can
 see their ID in the username menu. _This is currently unimplemented._
@@ -56,10 +52,6 @@ containing element for app view(s). A menu that doesn't use the frame-page
 directive yields a hamburger button that does nothing when clicked. See
 [frame-page.html][] to understand how
 this is constructed.
-+ **inactivityTimeout**: the length in minutes a login session can remain
-inactive before the server expires it. A dialog will show during the last
-minute of a session, prompting user action. If no action is taken, the user
-will be prompted to reload the page when the session has expired.
 
 ### SERVICE_LOC
 

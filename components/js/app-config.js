@@ -32,7 +32,6 @@ define(['angular'], function(angular) {
             'appMenuTemplateURL': null,
             'appMenuItems': [],
             'enablePushContentMenu': false,
-            'inactivityTimeout': 30,
         })
         .value('SERVICE_LOC', {
             'aboutURL': null,
@@ -42,7 +41,6 @@ define(['angular'], function(angular) {
             'loginSilentURL': '/portal/Login', // deprecated
             'messagesURL': '', // staticFeeds/sample-messages.json
             'sessionInfo': 'staticFeeds/session.json',
-            'shibbolethSessionURL': 'staticFeeds/Shibboleth.sso/Session.json',
             'portalLayoutRestEndpoint': null, // '/portal/api/layout',
             'widgetApi': {
               'entry': '/portal/api/marketplace/entry/', // 'staticFeeds/'

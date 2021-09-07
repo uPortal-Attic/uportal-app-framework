@@ -2,6 +2,39 @@
 
 At a glance notes for upgrading apps between major versions.
 
+## 20 to 21
+
+The framework no longer attempts to count down to Shibboleth SP session timeout
+and no longer attempts to proactively display a dialog indicating the session
+will expire / has expired.
+
+`activityTimeout` and `shibbolethSessionURL` no longer have effect.
+
+`portal.timeout.controllers` and `portal.timeout.services` packages are removed.
+
+`PortalTimeoutController`, `portalShibbolethService`,
+and `sessionInactivityService` are removed.
+
+## 19 to 20
+
+Frame 20 adopts `myuw-banner` v3 and relies upon myuw banner back-end v2,
+which changes the data model for banner messages to support learn more links
+and ARIA labels. Implementing apps not setting the banner URL and so not using
+the banner message feature are unaffected. Implementing apps using this feature
+will need to use a compatible banner message backend so that the frame
+recognizes the banner message data model.
+
+## 18 to 19
+
+19 drops the "silent login" feature in favor of detecting when calls to the
+server are failing for lack of authentication and redirecting through uPortal
+login setting the `refUrl` parameter to encourage a redirect from uPortal back
+to the current path when the session is (re-)established.
+
+`MISC_URLS.loginURL` *must not* have a request parameter on it in 19.
+So, `/portal/Login`, not `/portal/Login?profile=...`. Note that an application
+using the app framework may not need to override `MISC_URLS.loginURL` at all.
+
 ## 17 to 18
 
 18.0.0 drops direct instantiation of Google Analytics in favor of hard-coded
