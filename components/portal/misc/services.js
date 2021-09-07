@@ -166,6 +166,7 @@ define(['angular', 'jquery'], function(angular, $) {
     /**
      * Redirects users to uPortal server login
      *  if result code is
+     *    undefined (Shibboleth weirdness?) or
      *    0 (Shibboleth weirdness?) or
      *    302 (a shib redirect?) or
      *    401 (Unauthorized, due to lack of authentication?)
@@ -176,12 +177,15 @@ define(['angular', 'jquery'], function(angular, $) {
      * @param {string} caller
     **/
     var redirectUser = function(status, caller) {
-      if (status === 0 || status === 302 || status === 401) {
-        $log.log('redirect happening due to ' + status);
+      if (!status || status === 0 || status === 302 || status === 401) {
+
         if (MISC_URLS.loginURL) {
           var currentUrl = $window.location.href;
           var currentUrlEncoded = encodeURIComponent(currentUrl);
           var newUrl = MISC_URLS.loginURL + '?refUrl=' + currentUrlEncoded;
+          $log.log('redirecting to ' + newUrl +
+            ' on behalf of caller ' + caller +
+            'which signaled status ' + status);
           $window.location.replace(newUrl);
         } else {
           $log.warn('MISC_URLS.loginURL was not set, cannot redirect');
