@@ -20,12 +20,6 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <parent>
-    <groupId>org.jasig.parent</groupId>
-    <artifactId>jasig-parent</artifactId>
-    <version>41</version>
-  </parent>
-
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apereo.uportal</groupId>
   <artifactId>uportal-app-framework</artifactId>
@@ -136,17 +130,7 @@
           <pushChanges>false</pushChanges>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.sonatype.plugins</groupId>
-        <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.5</version>
-        <extensions>false</extensions>
-        <configuration>
-          <serverId>sonatype-nexus-staging</serverId>
-          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-          <autoReleaseAfterClose>true</autoReleaseAfterClose>
-        </configuration>
-      </plugin>
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -482,5 +466,21 @@
       </plugin>
     </plugins>
   </build>
+
+
+  <repositories>
+    <repository>
+      <id>myuw-public-releases</id>
+      <url>https://artifacts.doit.wisc.edu/artifactory/myuw-public-releases</url>
+      <releases><enabled>true</enabled></releases>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>myuw-public-snapshots</id>
+      <url>https://artifacts.doit.wisc.edu/artifactory/myuw-public-snapshots</url>
+      <releases><enabled>false</enabled></releases>
+      <snapshots><enabled>true</enabled></snapshots>
+    </repository>
+  </repositories>
 
 </project>
