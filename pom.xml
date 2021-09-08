@@ -130,7 +130,6 @@
           <useReleaseProfile>false</useReleaseProfile>
           <releaseProfiles>release</releaseProfiles>
           <goals>deploy</goals>
-          <localCheckout>true</localCheckout>
           <scmCommentPrefix>chore(release): </scmCommentPrefix>
           <tagNameFormat>uportal-app-framework-maven-@{project.version}</tagNameFormat>
           <pushChanges>false</pushChanges>
