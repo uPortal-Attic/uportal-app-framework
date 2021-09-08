@@ -10,7 +10,11 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## Next (21.0.0)
+## Next
+
+Now building 21.0.2-SNAPSHOT.
+
+## 21.0.1 - 2021-09-08
 
 BREAKING CHANGES
 
@@ -30,6 +34,10 @@ Other changes
 + In miscService.redirectUser, redirect through login when the status code
   is undefined. This is intended to better handle observed weirdness where the
   status code is coming through undefined on failed attempt to get session info.
+
+## 21.0.0
+
+(There was no 21.0.0 release.)
 
 ## 20.0.0 - 2021-04-23
 
