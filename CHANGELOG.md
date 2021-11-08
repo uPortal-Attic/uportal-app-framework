@@ -12,7 +12,8 @@ It is those war files that are being versioned.
 
 ## Next
 
-Now building 21.0.2-SNAPSHOT.
+## 21.0.2 - 2021-11-08
++ Update import path to use latest unpkg version of MyUW Help Web Component
 
 ## 21.0.1 - 2021-09-08
 
