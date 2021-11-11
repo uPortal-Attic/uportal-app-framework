@@ -12,6 +12,11 @@ It is those war files that are being versioned.
 
 ## Next
 
+## 21.0.3 - 2021-11-11
++ Add feature flag to check which layout is used and utilize new boolean values to conditionally display Reset layout option.
++ Create new newLayoutResetService service to handle layout reset.
+
+
 ## 21.0.2 - 2021-11-08
 + Update import path to use latest unpkg version of MyUW Help Web Component
 

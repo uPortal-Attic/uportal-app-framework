@@ -40,14 +40,31 @@
           </md-button>
           <small>Click to see previously-dismissed notifications.</small>
         </div>
-        <!-- RESET LAYOUT -->
-        <div layout-xs="column" layout-align-xs="center start"  layout="row" layout-align="start center" ng-if="MISC_URLS.resetLayoutURL">
+        <!-- RESET OLD LAYOUT -->
+        <div layout-xs="column" 
+             layout-align-xs="center start" 
+             layout="row" 
+             layout-align="start center" 
+             ng-if="MISC_URLS.resetLayoutURL && APP_FLAGS.useOldLayout">
           <md-button class="md-warn md-raised"
                      ng-href="{{MISC_URLS.resetLayoutURL}}"
                      aria-label="reset layout">
             Reset layout
           </md-button>
-          <small>Click to reset your portal layout.</small>
+          <small>Click to reset your portal layout</small>
+        </div>
+        <!-- RESET NEW LAYOUT -->
+        <div layout-xs="column" 
+             layout-align-xs="center start" 
+             layout="row" 
+             layout-align="start center" 
+             ng-if="MISC_URLS.resetNewLayoutURL && APP_FLAGS.useNewLayout">
+          <md-button class="md-warn md-raised"
+            ng-click="resetNewLayout()"
+            aria-label="reset layout">
+            Reset layout
+          </md-button>
+          <small>Click to reset your portal layout</small>
         </div>
       </div>
       <h4 class="md-subhead">Reset In-Browser State<br>

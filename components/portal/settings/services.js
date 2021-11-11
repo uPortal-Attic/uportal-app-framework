@@ -20,9 +20,31 @@
 
 define(['angular', 'jquery'], function(angular, $) {
     return angular.module('portal.settings.services', [])
+      .factory('newLayoutResetService', ['$q', '$http', '$log', 'miscService', 'SERVICE_LOC', 'APP_FLAGS',
+        function($q, $http, $log, miscService, SERVICE_LOC, APP_FLAGS) {
+          $log.log("in newLayoutResetService");
 
-    .factory('portalSkinService', ['$q', '$http', 'miscService', 'SERVICE_LOC',
-        function($q, $http, miscService, SERVICE_LOC) {
+          function resetNewLayoutPOST() {
+            if (SERVICE_LOC.portalNewLayoutResetEndpoint) {
+              return $http({
+                url: SERVICE_LOC.portalNewLayoutResetEndpoint,
+                method: 'POST',
+              }).catch(function (err) {
+                 $log.log(err);
+                 throw err;
+            });
+            } else {
+              return $q.resolve();
+            }
+          }
+
+          return {
+            resetNewLayoutPOST: resetNewLayoutPOST,
+          };
+        }])
+
+    .factory('portalSkinService', ['$q', '$http', '$log', 'miscService', 'SERVICE_LOC',
+        function($q, $http, $log, miscService, SERVICE_LOC) {
           /**
            * Sets the skin on the backend layout manager
            * @param {string} skinKey
