@@ -10,10 +10,12 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## Next
+## Next - may be versioned 21.0.2
 
-## 21.0.2 - 2021-11-08
 + Update import path to use latest unpkg version of MyUW Help Web Component
++ Backs out the 21.0.1 change to redirect through login when the status code
+  is undefined, because this was leading to infinite redirects when loading
+  the layout failed.
 
 ## 21.0.1 - 2021-09-08
 
