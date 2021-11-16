@@ -23,16 +23,20 @@ define(['angular', 'jquery'], function(angular, $) {
       .factory('newLayoutResetService', ['$q', '$http', '$log', 'miscService', 'SERVICE_LOC', 'APP_FLAGS',
         function($q, $http, $log, miscService, SERVICE_LOC, APP_FLAGS) {
           $log.log("in newLayoutResetService");
-
           function resetNewLayoutPOST() {
             if (SERVICE_LOC.portalNewLayoutResetEndpoint) {
               return $http({
                 url: SERVICE_LOC.portalNewLayoutResetEndpoint,
                 method: 'POST',
-              }).catch(function (err) {
-                 $log.log(err);
-                 throw err;
-            });
+              })
+              .then(function(result) {
+                $log.log("success", result);
+                return result.data;
+              })
+              .catch(function(error) {
+                $log.warn('NEW LAYOUT WIDGET RESET SERVICE: Couldn\'t make POST request '
+                  + error.status);
+              });
             } else {
               return $q.resolve();
             }
