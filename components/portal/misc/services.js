@@ -166,18 +166,19 @@ define(['angular', 'jquery'], function(angular, $) {
     /**
      * Redirects users to uPortal server login
      *  if result code is
-     *    undefined (Shibboleth weirdness?) or
      *    0 (Shibboleth weirdness?) or
      *    302 (a shib redirect?) or
      *    401 (Unauthorized, due to lack of authentication?)
      *  Requires MISC_URLS.loginURL in js/app-config.js
      *  Sets refUrl to current URL, so that uPortal will attempt to return the
      *  user to the current page after login.
+     * Does NOT redirect if result code is undefined, because in practice
+     * this has led to infinite redirects.
      * @param {number} status
      * @param {string} caller
     **/
     var redirectUser = function(status, caller) {
-      if (!status || status === 0 || status === 302 || status === 401) {
+      if (status === 0 || status === 302 || status === 401) {
 
         if (MISC_URLS.loginURL) {
           var currentUrl = $window.location.href;
