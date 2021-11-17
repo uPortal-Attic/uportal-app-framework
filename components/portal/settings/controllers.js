@@ -49,17 +49,22 @@ define(['angular'], function(angular) {
     });
   }])
     .controller('PortalUserSettingsController', [
-      '$scope', '$q', '$window', '$localStorage',
+      '$scope', '$q', '$http','$window', 'newLayoutResetService', '$localStorage',
       '$log', '$sessionStorage', '$rootScope',
-      'KV_KEYS', 'keyValueService',
+      'KV_KEYS', 'keyValueService', 'APP_FLAGS', 'SERVICE_LOC',
       function(
-      $scope, $q, $window, $localStorage,
+      $scope, $q, $http, $window, newLayoutResetService, $localStorage,
       $log, $sessionStorage, $rootScope,
-      KV_KEYS, keyValueService
+      KV_KEYS, keyValueService, APP_FLAGS, SERVICE_LOC
     ) {
       var init = function() {
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
         $scope.KV_KEYS = KV_KEYS;
+      };
+
+      $scope.resetNewLayout = function() {
+        $log.log("clicked reset button");
+        newLayoutResetService.resetNewLayoutPOST();
       };
 
       $scope.resetMessages = function() {

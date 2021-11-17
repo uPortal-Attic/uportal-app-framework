@@ -27,6 +27,8 @@ define(['angular'], function(angular) {
             'showFeedbackComponent': false,
             'debug': false,
             'campusIdAttribute': null,
+            'useNewLayout': true,
+            'useOldLayout': false,
         })
         .value('APP_OPTIONS', {
             'appMenuTemplateURL': null,
@@ -42,6 +44,7 @@ define(['angular'], function(angular) {
             'messagesURL': '', // staticFeeds/sample-messages.json
             'sessionInfo': 'staticFeeds/session.json',
             'portalLayoutRestEndpoint': null, // '/portal/api/layout',
+            'portalNewLayoutResetEndpoint': '/layout-service/reset',
             'widgetApi': {
               'entry': '/portal/api/marketplace/entry/', // 'staticFeeds/'
               'entrySuffix': '.json',
@@ -67,6 +70,7 @@ define(['angular'], function(angular) {
             'logoutURL': '/portal/Logout',
             'myuwHome': 'https://my.wisc.edu',
             'resetLayoutURL': '/portal/p/reset-my-layout',
+            'resetNewLayoutURL': '/layout-service/reset',
             'rootURL': '/web',
             'addToHomeURLS': {
               'layoutURL': '/portal/web/layoutDoc?tab=UW Bucky Home',
