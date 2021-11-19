@@ -75,6 +75,9 @@ define(['angular'], function(angular) {
         }).catch(function() {
           $scope.resetLayoutSuccess= false;
           $scope.resetLayoutFail = true;
+          $timeout(function() {
+            showResetLayoutToast();
+          }, 1000);
           $log.log("Reset layout failed");
         });
       };
@@ -85,12 +88,11 @@ define(['angular'], function(angular) {
         var showResetLayoutToast = function() {
           $mdToast.show({
             position: 'bottom right',
-            hideDelay: false,//4000,
+            hideDelay: 4000,
             scope: $scope,
             preserveScope: true,
             parent: angular.element(document).find('.wrapper__frame-page')[0],
-            templateUrl:
-              require.toUrl('../misc/partials/toast-reset-layout.html'),
+            templateUrl: require.toUrl(MISC_URLS.resetToastURL),
             controller: function ToastResetLayoutController(
               $scope,
               $mdToast,
