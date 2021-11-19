@@ -50,12 +50,12 @@ define(['angular'], function(angular) {
   }])
     .controller('PortalUserSettingsController', [
       '$scope', '$q', '$http','$window', 'newLayoutResetService', '$localStorage', '$timeout', '$mdToast',
-      '$log', '$sessionStorage', '$rootScope',
-      'KV_KEYS', 'keyValueService', 'APP_FLAGS', 'SERVICE_LOC',
+      '$log', '$sessionStorage', '$rootScope', '$mdDialog',
+      'KV_KEYS', 'keyValueService', 'miscService', 'APP_FLAGS', 'SERVICE_LOC',
       function(
       $scope, $q, $http, $window, newLayoutResetService, $localStorage, $timeout, $mdToast,
-      $log, $sessionStorage, $rootScope,
-      KV_KEYS, keyValueService, APP_FLAGS, SERVICE_LOC
+      $log, $sessionStorage, $rootScope, $mdDialog,
+      KV_KEYS, keyValueService, miscService, APP_FLAGS, SERVICE_LOC
     ) {
       var init = function() {
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
@@ -67,44 +67,32 @@ define(['angular'], function(angular) {
         function() {
           $scope.resetLayoutSuccess = true;
           $scope.resetLayoutFail = false;
-          $log.log("reset layout succeeded");
-          $timeout(function() {
-            showResetLayoutToast();
-          }, 1000);
+          $log.log('reset layout succeeded');
+
+          var logInAgainRequiredAlert = $mdDialog.alert()
+          .title('MyUW session reset required')
+          .textContent('You have reset your layout. When you close this dialog, MyUW will attempt to log you in again so that this change takes effect. You can then click MyUW in the upper left corner to return to the MyUW front page to view your reset layout.')
+          .ok('Log me in again now');
+
+        $mdDialog
+          .show(logInAgainRequiredAlert)
+          .finally(function() {
+            miscService.redirectUser(302, 'Redirect after layout reset.');
+          });
+
           return true;
         }).catch(function() {
           $scope.resetLayoutSuccess= false;
           $scope.resetLayoutFail = true;
-          $timeout(function() {
-            showResetLayoutToast();
-          }, 1000);
-          $log.log("Reset layout failed");
+
+          // broken: this toast doesn't actually render
+          $mdToast.showSimple('Reset layout failed');
+
+          $log.log('Reset layout failed');
         });
       };
 
-        /**
-         * Show a toast with reset layout status update with option to dismiss it.
-        */
-        var showResetLayoutToast = function() {
-          $mdToast.show({
-            position: 'bottom right',
-            hideDelay: 4000,
-            scope: $scope,
-            preserveScope: true,
-            parent: angular.element(document).find('.wrapper__frame-page')[0],
-            templateUrl:
-              require.toUrl('./partials/toast-reset-layout.html'),
-            controller: function ToastResetLayoutController(
-              $scope,
-              $mdToast,
-              newLayoutResetService
-            ) {
-              $scope.dismissToast = function() {
-                $mdToast.hide();
-              };
-            },
-          });
-        };
+
 
       $scope.resetMessages = function() {
         delete $sessionStorage.seenMessageIds;
