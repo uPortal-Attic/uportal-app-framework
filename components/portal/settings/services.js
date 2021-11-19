@@ -22,7 +22,6 @@ define(['angular', 'jquery'], function(angular, $) {
     return angular.module('portal.settings.services', [])
       .factory('newLayoutResetService', ['$q', '$http', '$log', 'miscService', 'SERVICE_LOC', 'APP_FLAGS',
         function($q, $http, $log, miscService, SERVICE_LOC, APP_FLAGS) {
-          $log.log("in newLayoutResetService");
           function resetNewLayoutPOST() {
             if (SERVICE_LOC.portalNewLayoutResetEndpoint) {
               return $http({
