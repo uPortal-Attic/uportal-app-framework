@@ -51,11 +51,11 @@ define(['angular'], function(angular) {
     .controller('PortalUserSettingsController', [
       '$scope', '$q', '$http','$window', 'newLayoutResetService', '$localStorage', '$timeout', '$mdToast',
       '$log', '$sessionStorage', '$rootScope',
-      'KV_KEYS', 'keyValueService', 'APP_FLAGS', 'SERVICE_LOC', 'MISC_URLS',
+      'KV_KEYS', 'keyValueService', 'APP_FLAGS', 'SERVICE_LOC',
       function(
       $scope, $q, $http, $window, newLayoutResetService, $localStorage, $timeout, $mdToast,
       $log, $sessionStorage, $rootScope,
-      KV_KEYS, keyValueService, APP_FLAGS, SERVICE_LOC, MISC_URLS
+      KV_KEYS, keyValueService, APP_FLAGS, SERVICE_LOC
     ) {
       var init = function() {
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
