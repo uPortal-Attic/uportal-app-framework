@@ -92,7 +92,8 @@ define(['angular'], function(angular) {
             scope: $scope,
             preserveScope: true,
             parent: angular.element(document).find('.wrapper__frame-page')[0],
-            templateUrl: require.toUrl(MISC_URLS.resetToastURL),
+            templateUrl:
+              require.toUrl('./partials/toast-reset-layout.html'),
             controller: function ToastResetLayoutController(
               $scope,
               $mdToast,
