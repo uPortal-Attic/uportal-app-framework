@@ -49,11 +49,11 @@ define(['angular'], function(angular) {
     });
   }])
     .controller('PortalUserSettingsController', [
-      '$scope', '$q', '$http','$window', 'newLayoutResetService', '$localStorage',
+      '$scope', '$q', '$http','$window', 'newLayoutResetService', '$localStorage', '$timeout', '$mdToast',
       '$log', '$sessionStorage', '$rootScope',
       'KV_KEYS', 'keyValueService', 'APP_FLAGS', 'SERVICE_LOC',
       function(
-      $scope, $q, $http, $window, newLayoutResetService, $localStorage,
+      $scope, $q, $http, $window, newLayoutResetService, $localStorage, $timeout, $mdToast,
       $log, $sessionStorage, $rootScope,
       KV_KEYS, keyValueService, APP_FLAGS, SERVICE_LOC
     ) {
@@ -63,9 +63,45 @@ define(['angular'], function(angular) {
       };
 
       $scope.resetNewLayout = function() {
-        $log.log("clicked reset button");
-        newLayoutResetService.resetNewLayoutPOST();
+        newLayoutResetService.resetNewLayoutPOST().then(
+        function() {
+          $scope.resetLayoutSuccess = true;
+          $scope.resetLayoutFail = false;
+          $log.log("reset layout succeeded");
+          $timeout(function() {
+            showResetLayoutToast();
+          }, 1000);
+          return true;
+        }).catch(function() {
+          $scope.resetLayoutSuccess= false;
+          $scope.resetLayoutFail = true;
+          $log.log("Reset layout failed");
+        });
       };
+
+        /**
+         * Show a toast with reset layout status update with option to dismiss it.
+        */
+        var showResetLayoutToast = function() {
+          $mdToast.show({
+            position: 'bottom right',
+            hideDelay: false,//4000,
+            scope: $scope,
+            preserveScope: true,
+            parent: angular.element(document).find('.wrapper__frame-page')[0],
+            templateUrl:
+              require.toUrl('/portal/misc/partials/toast-reset-layout.html'),
+            controller: function ToastResetLayoutController(
+              $scope,
+              $mdToast,
+              newLayoutResetService
+            ) {
+              $scope.dismissToast = function() {
+                $mdToast.hide();
+              };
+            },
+          });
+        };
 
       $scope.resetMessages = function() {
         delete $sessionStorage.seenMessageIds;
