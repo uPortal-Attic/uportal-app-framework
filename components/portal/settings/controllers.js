@@ -51,11 +51,11 @@ define(['angular'], function(angular) {
     .controller('PortalUserSettingsController', [
       '$scope', '$q', '$http','$window', 'newLayoutResetService', '$localStorage', '$timeout', '$mdToast',
       '$log', '$sessionStorage', '$rootScope',
-      'KV_KEYS', 'keyValueService', 'APP_FLAGS', 'SERVICE_LOC',
+      'KV_KEYS', 'keyValueService', 'APP_FLAGS', 'SERVICE_LOC', 'MISC_URLS',
       function(
       $scope, $q, $http, $window, newLayoutResetService, $localStorage, $timeout, $mdToast,
       $log, $sessionStorage, $rootScope,
-      KV_KEYS, keyValueService, APP_FLAGS, SERVICE_LOC
+      KV_KEYS, keyValueService, APP_FLAGS, SERVICE_LOC, MISC_URLS
     ) {
       var init = function() {
         $scope.kvEnabled = keyValueService.isKVStoreActivated();
@@ -92,8 +92,7 @@ define(['angular'], function(angular) {
             scope: $scope,
             preserveScope: true,
             parent: angular.element(document).find('.wrapper__frame-page')[0],
-            templateUrl:
-              require.toUrl('/web/portal/misc/partials/toast-reset-layout.html'),
+            templateUrl: require.toUrl(MISC_URLS.resetToastURL),
             controller: function ToastResetLayoutController(
               $scope,
               $mdToast,

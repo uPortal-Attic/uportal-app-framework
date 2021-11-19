@@ -72,6 +72,7 @@ define(['angular'], function(angular) {
             'resetLayoutURL': '/portal/p/reset-my-layout',
             'resetNewLayoutURL': '/layout-service/reset',
             'rootURL': '/web',
+            'resetToastURL': '/web/portal/settings/partials/toast-reset-layout.html',
             'addToHomeURLS': {
               'layoutURL': '/portal/web/layoutDoc?tab=UW Bucky Home',
               'addToHomeActionURL':
