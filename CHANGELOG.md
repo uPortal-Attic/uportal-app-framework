@@ -10,14 +10,11 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## Next - may be versioned 21.0.2
+## 21.0.2 - 2021-11-22
 
-## 21.0.3 - 2021-11-11
-+ Add feature flag to check which layout is used and utilize new boolean values to conditionally display Reset layout option.
-+ Create new newLayoutResetService service to handle layout reset.
-+ Show toast with layout reset status info.
-
-## 21.0.2 - 2021-11-08
++ Switches Reset layout button in user settings to reset in the new
+  layout service when the new layout service is active, as set via new
+  feature flag.
 + Update import path to use latest unpkg version of MyUW Help Web Component
 + Backs out the 21.0.1 change to redirect through login when the status code
   is undefined, because this was leading to infinite redirects when loading
