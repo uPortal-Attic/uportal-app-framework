@@ -12,6 +12,7 @@ It is those war files that are being versioned.
 
 ## Next
 
++ Make tooltip text more accessible by adding contrasting background to it
 + Show toast when layout reset fails.
 
 ## 21.0.2 - 2021-11-22
