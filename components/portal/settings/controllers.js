@@ -65,8 +65,6 @@ define(['angular'], function(angular) {
       $scope.resetNewLayout = function() {
         newLayoutResetService.resetNewLayoutPOST().then(
         function() {
-          $scope.resetLayoutSuccess = true;
-          $scope.resetLayoutFail = false;
           $log.log('reset layout succeeded');
 
           var logInAgainRequiredAlert = $mdDialog.alert()
@@ -82,11 +80,24 @@ define(['angular'], function(angular) {
 
           return true;
         }).catch(function() {
-          $scope.resetLayoutSuccess= false;
-          $scope.resetLayoutFail = true;
-
-          // broken: this toast doesn't actually render
-          $mdToast.showSimple('Reset layout failed');
+          $mdToast.show({
+            position: 'bottom right',
+            hideDelay: 4000,
+            scope: $scope,
+            preserveScope: true,
+            parent: angular.element(document).find('.wrapper__frame-page')[0],
+            templateUrl:
+              require.toUrl('/web/portal/misc/partials/toast-reset-layout.html'),
+            controller: function ToastResetLayoutController(
+              $scope,
+              $mdToast,
+              newLayoutResetService
+            ) {
+              $scope.dismissToast = function() {
+                $mdToast.hide();
+              };
+            },
+          });
 
           $log.log('Reset layout failed');
         });
