@@ -176,32 +176,29 @@ md-menu-content.top-bar-menu-content {
 md-tooltip {
   &.widget-action-tooltip {
     max-width: 250px;
+    background: #fff;
+    white-space: normal;
+    height: auto;
+    line-height: 18px;
+    font-size: 12px;
+    padding: 4px 8px;
 
-    .md-content {
-      background: rgba(0, 0, 0, 0.85);
-      white-space: normal;
-      height: auto;
-      line-height: 18px;
-      font-size: 12px;
+    @media (max-width: @xs) {
+      line-height: 20px;
       padding: 4px 8px;
-
-      @media (max-width: @xs) {
-        line-height: 20px;
-        padding: 4px 8px;
-      }
     }
   }
 
   &.top-bar-tooltip {
     .md-content {
-      background: rgba(0, 0, 0, 0.95);
+      background: #fff;
     }
   }
 }
 
 // Adjust z-index of tooltips
 .md-panel-outer-wrapper.md-panel-is-showing {
-  z-index: 54 !important;
+  z-index: 70 !important;
 }
 
 notifications-list-item {
