@@ -10,6 +10,10 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
+## Next
+
++ Show toast when layout reset fails.
+
 ## 21.0.2 - 2021-11-22
 
 + Switches Reset layout button in user settings to reset in the new
