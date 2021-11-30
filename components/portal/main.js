@@ -234,8 +234,8 @@ define([
       var loadingCompleteSequence = function() {
         // loading sequence
         $rootScope.portal.loading = {};
-        $rootScope.portal.loading.startFade = true;
         $timeout(function() {
+          $rootScope.portal.loading.startFade = true;
           $rootScope.portal.loading.hidden = true;
         }, 1500);
 
