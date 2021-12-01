@@ -192,26 +192,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <!-- Loading state -->
-<div ng-hide="portal.loading.hidden" ng-class="{slowfade: portal.loading.startFade}" class="skeleton" id="loading-splash">
+<div ng-hide="portal.loading.hidden" ng-class="{slowfade: portal.loading.hidden}" class="skeleton" id="loading-splash">
   <h1 class="sr-only">The application is getting ready...</h1>
-        <!--No javascript enabled-->
-        <noscript>
-            <div class="no-js" role="alert">
-            <div class="container">
-              <i class="fa fa-2x fw fa-exclamation-triangle pull-left"></i>
-              <strong>
-                Please <a href="http://enable-javascript.com" target="_blank" rel='noopener noreferrer'>enable Javascript</a> to interact with all forms and features on our website.  For further assistance, contact the <a href="https://kb.wisc.edu/helpdesk/" target="_blank" rel='noopener noreferrer'>Help Desk</a>.
-              </strong>
-            </div>
-          </div>
-        </noscript>
-        <!-- Skeleton screen for loading -- emphasize the coming content, not the loading experience -->
-        <header id="skeleton__header">
-          <div id="skeleton__menu"></div>
-          <div id="skeleton__search"></div>
-          <div id="skeleton__profile"></div>
-        </header>
-        <main id="skeleton__content">
-          <div class="skeleton__content--block"></div>
-        </main>
+  <!--No javascript enabled-->
+  <noscript>
+      <div class="no-js" role="alert">
+      <div class="container">
+        <i class="fa fa-2x fw fa-exclamation-triangle pull-left"></i>
+        <strong>
+          Please <a href="http://enable-javascript.com" target="_blank" rel='noopener noreferrer'>enable Javascript</a> to interact with all forms and features on our website.  For further assistance, contact the <a href="https://kb.wisc.edu/helpdesk/" target="_blank" rel='noopener noreferrer'>Help Desk</a>.
+        </strong>
+      </div>
+    </div>
+  </noscript>
+  <!-- Skeleton screen for loading -- emphasize the coming content, not the loading experience -->
+  <header id="skeleton__header">
+    <div id="skeleton__menu"></div>
+    <div id="skeleton__search"></div>
+    <div id="skeleton__profile"></div>
+  </header>
+  <main id="skeleton__content">
+    <div class="skeleton__content--block"></div>
+  </main>
 </div>
