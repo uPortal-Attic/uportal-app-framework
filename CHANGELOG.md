@@ -12,7 +12,7 @@ It is those war files that are being versioned.
 
 ## Next
 
-+ Move startFade into a timeout to avoid skeleton content fading out before it hides.
++ Remove additional startFade so that the skeleton content fades out on hiding.
 + Make tooltip text more accessible by adding contrasting background to it.
 + Show toast when layout reset fails.
 
