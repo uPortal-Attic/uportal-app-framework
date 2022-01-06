@@ -12,6 +12,7 @@ It is those war files that are being versioned.
 
 ## Next
 
++ Updates `myuw-profile` to v.1.6.6
 + Remove additional startFade so that the skeleton content fades out on hiding.
 + Make tooltip text more accessible by adding contrasting background to it.
 + Show toast when layout reset fails.
