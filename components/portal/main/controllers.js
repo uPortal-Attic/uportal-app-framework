@@ -205,7 +205,6 @@ define(['angular', 'require'], function(angular, require) {
 
     mainService.getUser().then(function(result) {
       vm.user = result;
-
       if (vm.user.firstName || vm.user.displayName) {
         vm.username = vm.user.firstName ?
           vm.user.firstName.toLowerCase() : vm.user.displayName.toLowerCase();
@@ -222,7 +221,10 @@ define(['angular', 'require'], function(angular, require) {
       if (vm.user.firstName && vm.user.lastName) {
         $document[0].dispatchEvent(new CustomEvent('myuw-login', {
           bubbles: true,
-          detail: {person: {'firstName': vm.username},
+          detail: {person: {
+            'firstName': vm.user.firstName,
+            'lastName': vm.user.lastName
+          },
         }}));
       } else {
        $document[0].dispatchEvent(new CustomEvent('myuw-login', {
