@@ -12,6 +12,8 @@ It is those war files that are being versioned.
 
 ## Next
 
++ Include lastName to be passed into myuw-login event listener
++ Updates `myuw-profile` to v.1.6.7
 + Updates `myuw-profile` to v.1.6.6
 + Remove additional startFade so that the skeleton content fades out on hiding.
 + Make tooltip text more accessible by adding contrasting background to it.
