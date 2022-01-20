@@ -12,11 +12,11 @@ It is those war files that are being versioned.
 
 ## Next
 
++ Make tooltips more readable by applying contrasting background
 + Include lastName to be passed into myuw-login event listener
 + Updates `myuw-profile` to v.1.6.7
 + Updates `myuw-profile` to v.1.6.6
 + Remove additional startFade so that the skeleton content fades out on hiding.
-+ Make tooltip text more accessible by adding contrasting background to it.
 + Show toast when layout reset fails.
 
 ## 21.0.2 - 2021-11-22
