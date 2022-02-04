@@ -10,13 +10,13 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## Next
+## 21.0.3 - 2022-02-04
 
++ Apply focus style to widget action button
 + Make tooltips more readable by applying contrasting background
 + Include lastName to be passed into myuw-login event listener
 + Updates `myuw-profile` to v.1.6.7
-+ Updates `myuw-profile` to v.1.6.6
-+ Remove additional startFade so that the skeleton content fades out on hiding.
++ Remove additional startFade so that the skeleton content fades out on hiding
 + Show toast when layout reset fails.
 
 ## 21.0.2 - 2021-11-22
