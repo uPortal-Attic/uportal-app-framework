@@ -79,8 +79,8 @@ portal-header {
   }
 
   .menu-toggle.md-button.menu-margin {
-    min-width: 48px;
-    margin: 0;
+    min-width: 44px;
+    margin-right: 6px;
 
     ~ .title-link h1 {
       @media (min-width: @xs) {
@@ -97,6 +97,14 @@ portal-header {
     .material-icons:not(.notification-badge-icon) {
       color: var(--myuw-app-bar-color, @white);
     }
+  }
+
+  .menu-toggle:hover {
+    background-color: rgba(0,0,0,0.2);
+  }
+  .menu-toggle:focus {
+    outline: 2px solid #5e9ed6;
+    outline: -webkit-focus-ring-color auto 5px;
   }
 
   .top-bar-controls-xs {

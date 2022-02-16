@@ -12,6 +12,7 @@ It is those war files that are being versioned.
 
 ## 21.0.3 - 2022-02-16
 
++ Visual improvements for hover and focus effects on interactive elements
 + Updates `myuw-help` to v.1.5.4
 + Updates `myuw-feedbback` to v.1.0.3
 + Apply focus style to widget action button
