@@ -289,7 +289,6 @@
 
       .widget-list {
         max-height: 194px;
-
         li a {
           div {
             display: inline-block;
@@ -546,6 +545,7 @@
   }
 }
 
+// Only compact mode
 .list-content {
   position: relative;
   margin: 5px;
@@ -625,8 +625,9 @@
   a {
     transition: @background-transition;
     box-shadow: 0 0 0 transparent;
-    &:focus {
-      outline: 2px solid #5e9ed6;
+      &:focus {
+        outline: 2px solid #5e9ed6;
+    }
   }
 }
 
@@ -755,6 +756,4 @@
 
 .widget-grid {
   margin: 15px 15px 0;
-}
-
 }
