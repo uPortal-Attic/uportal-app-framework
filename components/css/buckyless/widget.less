@@ -562,13 +562,11 @@
   a {
     display: block;
     height: 100%;
-    box-shadow: 0 2px 0 #ddd;
     border-radius: 4px;
     transition: @background-transition;
 
     &:hover {
       background-color: #f8f8f8;
-      box-shadow: 0 3px 0 #ddd;
     }
     &:focus {
       outline: 2px solid #5E9ED6;
@@ -621,6 +619,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover {
+    border: 1px solid #f8f8f8;
+  }
 
   a {
     transition: @background-transition;
