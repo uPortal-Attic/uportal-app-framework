@@ -10,10 +10,11 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
-## 21.0.3 - 2022-02-16
 
+## 21.0.3 - 2022-02-21
++ Remove max-width from tooltips
 + Visual improvements for hover and focus effects on interactive elements
-+ Updates `myuw-help` to v.1.5.4
++ Updates `myuw-help` to v.1.5.5
 + Updates `myuw-feedbback` to v.1.0.3
 + Apply focus style to widget action button
 + Make tooltips more readable by applying contrasting background
