@@ -10,6 +10,10 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
+## 21.0.4 - 2022-03-04
+
++ Update `myuw-notifications` to v1.4.2
++ Adjust z-index and position of tooltips attached to header buttons
 
 ## 21.0.3 - 2022-02-22
 
