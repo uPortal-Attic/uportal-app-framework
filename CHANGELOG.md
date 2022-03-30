@@ -10,6 +10,11 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
+## 21.0.5 - 2022-04-04
+
++ Update `myuw-feedback` to v1.0.5
++ Set showFeedbackComponent to true, to activate Feedback Web Component in header
+
 ## 21.0.4 - 2022-03-07
 
 + Update `myuw-notifications` to v1.4.2
