@@ -10,6 +10,10 @@ The versions in this change log should match those published
 to [the Sonatype Maven Central Repository][].
 It is those war files that are being versioned.
 
+## Unreleased
+
++ Update inactive UW-System Help link with https://kb.wisconsin.edu/myuwsystem/
+
 ## 21.0.5 - 2022-04-04
 
 + Update `myuw-feedback` to v1.0.5
